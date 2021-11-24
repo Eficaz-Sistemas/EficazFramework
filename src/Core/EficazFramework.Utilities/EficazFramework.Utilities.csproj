@@ -24,6 +24,11 @@
     <NeutralLanguage>pt-BR</NeutralLanguage>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <Configurations>Debug;Release</Configurations>
+	<GenerateDocumentationFile>true</GenerateDocumentationFile>
+	<DefaultDocumentationFolder>..\..\..\Docs\Api\Utilities</DefaultDocumentationFolder>
+	<DefaultDocumentationAssemblyPageName>EficazFramework.Utilities</DefaultDocumentationAssemblyPageName>
+	<DefaultDocumentationFileNameMode>Name</DefaultDocumentationFileNameMode>
+	<DefaultDocumentationGeneratedPages>Assembly, Types, Members</DefaultDocumentationGeneratedPages>
   </PropertyGroup>
 
   <ItemGroup>

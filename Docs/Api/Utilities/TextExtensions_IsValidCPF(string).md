@@ -1,0 +1,17 @@
+#### [EficazFramework.Utilities](EficazFramework_Utilities.md 'EficazFramework.Utilities')
+### [EficazFramework.Extensions](EficazFramework_Utilities.md#EficazFramework_Extensions 'EficazFramework.Extensions').[TextExtensions](TextExtensions.md 'EficazFramework.Extensions.TextExtensions')
+## TextExtensions.IsValidCPF(string) Method
+Verifica a veracidade do número de CPF informado.  
+```csharp
+public static bool IsValidCPF(this string CPF);
+```
+#### Parameters
+<a name='EficazFramework_Extensions_TextExtensions_IsValidCPF(string)_CPF'></a>
+`CPF` [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')  
+O CPF a ser analisado.
+  
+#### Returns
+[System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')  
+Boolean
+### Remarks
+Antes de utilizar este método, faz-se necessário remover a máscara do número.

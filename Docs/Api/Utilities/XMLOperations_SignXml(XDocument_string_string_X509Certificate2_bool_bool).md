@@ -1,0 +1,30 @@
+#### [EficazFramework.Utilities](EficazFramework_Utilities.md 'EficazFramework.Utilities')
+### [EficazFramework.XML](EficazFramework_Utilities.md#EficazFramework_XML 'EficazFramework.XML').[XMLOperations](XMLOperations.md 'EficazFramework.XML.XMLOperations')
+## XMLOperations.SignXml(XDocument, string, string, X509Certificate2, bool, bool) Method
+Realiza a assinatura digital de um documento XML.  
+```csharp
+public static void SignXml(ref System.Xml.Linq.XDocument xdoc, string tag, string id, System.Security.Cryptography.X509Certificates.X509Certificate2 certificate, bool signAsSHA256=false, bool emptyURI=false);
+```
+#### Parameters
+<a name='EficazFramework_XML_XMLOperations_SignXml(System_Xml_Linq_XDocument_string_string_System_Security_Cryptography_X509Certificates_X509Certificate2_bool_bool)_xdoc'></a>
+`xdoc` [System.Xml.Linq.XDocument](https://docs.microsoft.com/en-us/dotnet/api/System.Xml.Linq.XDocument 'System.Xml.Linq.XDocument')  
+O XMLDocument a ser assinado.
+  
+<a name='EficazFramework_XML_XMLOperations_SignXml(System_Xml_Linq_XDocument_string_string_System_Security_Cryptography_X509Certificates_X509Certificate2_bool_bool)_tag'></a>
+`tag` [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')  
+A tag para localização do ponto de assinatura.
+  
+<a name='EficazFramework_XML_XMLOperations_SignXml(System_Xml_Linq_XDocument_string_string_System_Security_Cryptography_X509Certificates_X509Certificate2_bool_bool)_id'></a>
+`id` [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')  
+A tag a ser assinada.
+  
+<a name='EficazFramework_XML_XMLOperations_SignXml(System_Xml_Linq_XDocument_string_string_System_Security_Cryptography_X509Certificates_X509Certificate2_bool_bool)_certificate'></a>
+`certificate` [System.Security.Cryptography.X509Certificates.X509Certificate2](https://docs.microsoft.com/en-us/dotnet/api/System.Security.Cryptography.X509Certificates.X509Certificate2 'System.Security.Cryptography.X509Certificates.X509Certificate2')  
+  
+<a name='EficazFramework_XML_XMLOperations_SignXml(System_Xml_Linq_XDocument_string_string_System_Security_Cryptography_X509Certificates_X509Certificate2_bool_bool)_signAsSHA256'></a>
+`signAsSHA256` [System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')  
+  
+<a name='EficazFramework_XML_XMLOperations_SignXml(System_Xml_Linq_XDocument_string_string_System_Security_Cryptography_X509Certificates_X509Certificate2_bool_bool)_emptyURI'></a>
+`emptyURI` [System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')  
+  
+### Remarks
