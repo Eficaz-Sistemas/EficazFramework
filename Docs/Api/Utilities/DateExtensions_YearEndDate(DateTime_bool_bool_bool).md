@@ -1,5 +1,5 @@
-#### [EficazFramework.Utilities](EficazFramework_Utilities.md 'EficazFramework.Utilities')
-### [EficazFramework.Extensions](EficazFramework_Utilities.md#EficazFramework_Extensions 'EficazFramework.Extensions').[DateExtensions](DateExtensions.md 'EficazFramework.Extensions.DateExtensions')
+#### [EficazFramework.Utilities](EficazFrameworkUtilities.md 'EficazFramework Utilities')
+### [EficazFramework.Extensions](EficazFrameworkUtilities.md#EficazFramework_Extensions 'EficazFramework.Extensions').[DateExtensions](DateExtensions.md 'EficazFramework.Extensions.DateExtensions')
 ## DateExtensions.YearEndDate(DateTime, bool, bool, bool) Method
 Retorna a última data disponível para um ano determinado.  
 ```csharp

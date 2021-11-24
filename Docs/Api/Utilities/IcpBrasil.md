@@ -1,5 +1,5 @@
-#### [EficazFramework.Utilities](EficazFramework_Utilities.md 'EficazFramework.Utilities')
-### [EficazFramework.Security.Credential](EficazFramework_Utilities.md#EficazFramework_Security_Credential 'EficazFramework.Security.Credential')
+#### [EficazFramework.Utilities](EficazFrameworkUtilities.md 'EficazFramework Utilities')
+### [EficazFramework.Security.Credential](EficazFrameworkUtilities.md#EficazFramework_Security_Credential 'EficazFramework.Security.Credential')
 ## IcpBrasil Class
 ```csharp
 public class IcpBrasil : System.Security.Cryptography.X509Certificates.X509Certificate2

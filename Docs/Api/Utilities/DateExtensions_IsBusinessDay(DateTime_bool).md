@@ -1,5 +1,5 @@
-#### [EficazFramework.Utilities](EficazFramework_Utilities.md 'EficazFramework.Utilities')
-### [EficazFramework.Extensions](EficazFramework_Utilities.md#EficazFramework_Extensions 'EficazFramework.Extensions').[DateExtensions](DateExtensions.md 'EficazFramework.Extensions.DateExtensions')
+#### [EficazFramework.Utilities](EficazFrameworkUtilities.md 'EficazFramework Utilities')
+### [EficazFramework.Extensions](EficazFrameworkUtilities.md#EficazFramework_Extensions 'EficazFramework.Extensions').[DateExtensions](DateExtensions.md 'EficazFramework.Extensions.DateExtensions')
 ## DateExtensions.IsBusinessDay(DateTime, bool) Method
 Analise se uma data qualquer se trata de um dia útil ou não.  
 ```csharp

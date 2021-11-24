@@ -1,5 +1,5 @@
-#### [EficazFramework.Utilities](EficazFramework_Utilities.md 'EficazFramework.Utilities')
-### [EficazFramework.XML](EficazFramework_Utilities.md#EficazFramework_XML 'EficazFramework.XML')
+#### [EficazFramework.Utilities](EficazFrameworkUtilities.md 'EficazFramework Utilities')
+### [EficazFramework.XML](EficazFrameworkUtilities.md#EficazFramework_XML 'EficazFramework.XML')
 ## XMLOperations Class
 ```csharp
 public class XMLOperations

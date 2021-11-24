@@ -1,5 +1,5 @@
-#### [EficazFramework.Utilities](EficazFramework_Utilities.md 'EficazFramework.Utilities')
-### [EficazFramework.Extensions](EficazFramework_Utilities.md#EficazFramework_Extensions 'EficazFramework.Extensions').[FinancialExtensions](FinancialExtensions.md 'EficazFramework.Extensions.FinancialExtensions')
+#### [EficazFramework.Utilities](EficazFrameworkUtilities.md 'EficazFramework Utilities')
+### [EficazFramework.Extensions](EficazFrameworkUtilities.md#EficazFramework_Extensions 'EficazFramework.Extensions').[FinancialExtensions](FinancialExtensions.md 'EficazFramework.Extensions.FinancialExtensions')
 ## FinancialExtensions.CalculaTaxa(Nullable&lt;double&gt;, double, int, Capitalizacao, int) Method
 Calcula a taxa de juros de uma operação com base no capital aplicado em um período desejado.  
 NOTA: A taxa retornada será referente à unidade de tempo do período (ao dia, ao mês, etc).  

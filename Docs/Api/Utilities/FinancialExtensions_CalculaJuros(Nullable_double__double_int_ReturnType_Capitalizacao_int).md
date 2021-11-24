@@ -1,5 +1,5 @@
-#### [EficazFramework.Utilities](EficazFramework_Utilities.md 'EficazFramework.Utilities')
-### [EficazFramework.Extensions](EficazFramework_Utilities.md#EficazFramework_Extensions 'EficazFramework.Extensions').[FinancialExtensions](FinancialExtensions.md 'EficazFramework.Extensions.FinancialExtensions')
+#### [EficazFramework.Utilities](EficazFrameworkUtilities.md 'EficazFramework Utilities')
+### [EficazFramework.Extensions](EficazFrameworkUtilities.md#EficazFramework_Extensions 'EficazFramework.Extensions').[FinancialExtensions](FinancialExtensions.md 'EficazFramework.Extensions.FinancialExtensions')
 ## FinancialExtensions.CalculaJuros(Nullable&lt;double&gt;, double, int, ReturnType, Capitalizacao, int) Method
 Calcula os juros sobre um capital, a uma taxa e período desejado.  
 NOTA: periodo e taxa devem estar na mesma unidade de tempo (ao dia, ao mês, etc).  

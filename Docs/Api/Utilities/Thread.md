@@ -1,5 +1,5 @@
-#### [EficazFramework.Utilities](EficazFramework_Utilities.md 'EficazFramework.Utilities')
-### [EficazFramework.Threading](EficazFramework_Utilities.md#EficazFramework_Threading 'EficazFramework.Threading')
+#### [EficazFramework.Utilities](EficazFrameworkUtilities.md 'EficazFramework Utilities')
+### [EficazFramework.Threading](EficazFrameworkUtilities.md#EficazFramework_Threading 'EficazFramework.Threading')
 ## Thread Class
 This singleton class provides a common application situations that requires platform invariant actions,  
 such Request Message Box, Sincronization Context (for multi-thread sync), etc.  

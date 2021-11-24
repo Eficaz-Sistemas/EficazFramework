@@ -1,5 +1,5 @@
-#### [EficazFramework.Utilities](EficazFramework_Utilities.md 'EficazFramework.Utilities')
-### [EficazFramework.XML](EficazFramework_Utilities.md#EficazFramework_XML 'EficazFramework.XML').[XMLOperations](XMLOperations.md 'EficazFramework.XML.XMLOperations')
+#### [EficazFramework.Utilities](EficazFrameworkUtilities.md 'EficazFramework Utilities')
+### [EficazFramework.XML](EficazFrameworkUtilities.md#EficazFramework_XML 'EficazFramework.XML').[XMLOperations](XMLOperations.md 'EficazFramework.XML.XMLOperations')
 ## XMLOperations.ToXmlDocument(XDocument) Method
 Converte uma instância de System.Xml.Linq.XDocument para System.Xml.XmlDocument  
 ```csharp
