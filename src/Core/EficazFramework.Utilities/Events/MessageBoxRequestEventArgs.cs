@@ -8,19 +8,19 @@ public class MessageEventArgs : EventArgs
     public string DialogResourceKey { get; set; }
 
     public string Title { get; set; } = Resources.Strings.Events.MessageBox_DefaultTitle;
-    public eMessageIcon IconReference { get; set; } = eMessageIcon.None;
+    public MessageIcon IconReference { get; set; } = MessageIcon.None;
     public object Content { get; set; } = null;
     public bool EnableReporting { get; set; } = false;
     public string StackTrace { get; set; } = null;
-    public eMessageButtons Buttons { get; set; } = eMessageButtons.OK;
-    public eMessageType Type { get; set; } = eMessageType.Default;
+    public MessageButtons Buttons { get; set; } = MessageButtons.OK;
+    public MessageType Type { get; set; } = MessageType.Default;
     public object Tag { get; set; }
     public ModalAssist ModalAssist { get; } = new ModalAssist();
 }
 
 public delegate void MessageEventHandler(object sender, MessageEventArgs e);
 
-public enum eMessageIcon
+public enum MessageIcon
 {
     None = 0,
     Exclamation = 1,
@@ -30,7 +30,7 @@ public enum eMessageIcon
     Like = 21
 }
 
-public enum eMessageButtons
+public enum MessageButtons
 {
     // 
     // Summary:
@@ -50,12 +50,12 @@ public enum eMessageButtons
     YesNo = 4
 }
 
-public enum eMessageType
+public enum MessageType
 {
     Default = 0,
     SnackBar = 1
 }
-public enum eMessageResult
+public enum MessageResult
 {
     // 
     // Summary:

@@ -15,7 +15,7 @@
 </PackageReleaseNotes>
     <RepositoryType>git</RepositoryType>
     <PackageTags>utilitários IO api</PackageTags>
-    <PackageIcon>icon.png</PackageIcon>
+    <PackageIcon>logo.png</PackageIcon>
     <PackageIconUrl>https://efsuporte.blob.core.windows.net/portal/EficazFramework.png</PackageIconUrl>
     <RepositoryUrl>https://dev.azure.com/eficazcs/EficazFramework/_git/Main</RepositoryUrl>
     <SignAssembly>true</SignAssembly>
@@ -24,7 +24,6 @@
     <NeutralLanguage>pt-BR</NeutralLanguage>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <Configurations>Debug;Release</Configurations>
-    <ApplicationIcon>icon.ico</ApplicationIcon>
   </PropertyGroup>
 
   <ItemGroup>
@@ -32,13 +31,17 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Include="..\..\..\..\..\..\OneDrive\Documentos Eficaz\Assets\Logo\PNG\Símbolo\Colorido\icon.png">
+    <None Include="..\..\..\Assets\logo.png">
       <Pack>True</Pack>
       <PackagePath>\</PackagePath>
     </None>
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="DefaultDocumentation" Version="0.7.9">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
     <PackageReference Include="Microsoft.AspNetCore.SignalR.Client" Version="6.0.0" />
     <PackageReference Include="System.Security.Cryptography.Xml" Version="6.0.0" />
   </ItemGroup>

@@ -15,7 +15,7 @@ public class ApplicationManager
 
         public static bool IsRunning(ApplicationDefinition application)
         {
-            return (RunningAplications.Where(app => app.Metadata == application && (app.SessionID == 0 | app.SessionID == SessionManager.Instance.CurrentSession.ID)).Count() > 0);
+            return (RunningAplications.Where(app => app.Metadata == application && (app.SessionID == 0 | app.SessionID == SessionManager.Instance.CurrentSession.ID)).Any());
         }
         public static void Activate(ApplicationDefinition application)
         {
@@ -45,7 +45,7 @@ public class ScopedApplicationManager
 
     public bool IsRunning(ApplicationDefinition application)
     {
-        return (RunningAplications.Where(app => app.Metadata == application && (app.SessionID == 0 | app.SessionID == SessionManager.Instance.CurrentSession.ID)).Count() > 0);
+        return (RunningAplications.Where(app => app.Metadata == application && (app.SessionID == 0 | app.SessionID == SessionManager.Instance.CurrentSession.ID)).Any());
     }
     public void Activate(ApplicationDefinition application)
     {

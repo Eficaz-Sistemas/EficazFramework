@@ -1,6 +1,6 @@
 ﻿using System.Threading;
 
-namespace EficazFramework.Utilities.Threading;
+namespace EficazFramework.Threading;
 
 /// <summary>
 /// This singleton class provides a common application situations that requires platform invariant actions,

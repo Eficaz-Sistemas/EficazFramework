@@ -7,19 +7,19 @@ namespace EficazFramework.Threading;
 
 public class ModalAssist
 {
-    private TaskCompletionSource<EficazFramework.Events.eMessageResult> task = null;
+    private TaskCompletionSource<EficazFramework.Events.MessageResult> task = null;
 
-    public async Task<EficazFramework.Events.eMessageResult> Push()
+    public async Task<EficazFramework.Events.MessageResult> Push()
     {
         if (task == null)
-            task = new TaskCompletionSource<Events.eMessageResult>();
+            task = new TaskCompletionSource<Events.MessageResult>();
         return await task.Task;
     }
 
-    public void Release(EficazFramework.Events.eMessageResult result)
+    public void Release(EficazFramework.Events.MessageResult result)
     {
         if (task == null)
-            task = new TaskCompletionSource<Events.eMessageResult>();
+            task = new TaskCompletionSource<Events.MessageResult>();
         task.SetResult(result);
     }
 }

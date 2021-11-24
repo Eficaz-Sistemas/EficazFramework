@@ -3,7 +3,7 @@ using System.Net.Http;
 using System.Text.Json;
 using System.Threading.Tasks;
 
-namespace EficazFramework.Utilities.ThirdPart;
+namespace EficazFramework.ThirdPart;
 
 public class TimeZone
 {

@@ -14,7 +14,7 @@ public static class NumberExtensions
     /// <param name="gender">Define se será escrito no mesculino (dois) ou feminino (duas).</param>
     /// <returns>String</returns>
     /// <remarks></remarks>
-    public static string ToWords(this short number, eGender gender = eGender.Masculino)
+    public static string ToWords(this short number, Gender gender = Gender.Masculino)
     {
         return ToWordsInternal(number, gender);
     }
@@ -26,7 +26,7 @@ public static class NumberExtensions
     /// <param name="currency">A moeda a ser utilizada. Tipos suportados: Real Brasileiro, Dólar Americano e Euro.</param>
     /// <returns>String</returns>
     /// <remarks></remarks>
-    public static string ToWords(this short number, eCurrency currency)
+    public static string ToWords(this short number, Currency currency)
     {
         return ToWordsInternal(number, currency);
     }
@@ -47,7 +47,7 @@ public static class NumberExtensions
     /// <param name="gender">Define se será escrito no mesculino (dois) ou feminino (duas).</param>
     /// <returns>String</returns>
     /// <remarks></remarks>
-    public static string ToWords(this int number, eGender gender = eGender.Masculino)
+    public static string ToWords(this int number, Gender gender = Gender.Masculino)
     {
         return ToWordsInternal(number, gender);
     }
@@ -59,7 +59,7 @@ public static class NumberExtensions
     /// <param name="currency">A moeda a ser utilizada. Tipos suportados: Real Brasileiro, Dólar Americano e Euro.</param>
     /// <returns>String</returns>
     /// <remarks></remarks>
-    public static string ToWords(this int number, eCurrency currency)
+    public static string ToWords(this int number, Currency currency)
     {
         return ToWordsInternal(number, currency);
     }
@@ -80,7 +80,7 @@ public static class NumberExtensions
     /// <param name="gender">Define se será escrito no mesculino (dois) ou feminino (duas).</param>
     /// <returns>String</returns>
     /// <remarks></remarks>
-    public static string ToWords(this long number, eGender gender = eGender.Masculino)
+    public static string ToWords(this long number, Gender gender = Gender.Masculino)
     {
         return ToWordsInternal(number, gender);
     }
@@ -92,7 +92,7 @@ public static class NumberExtensions
     /// <param name="currency">A moeda a ser utilizada. Tipos suportados: Real Brasileiro, Dólar Americano e Euro.</param>
     /// <returns>String</returns>
     /// <remarks></remarks>
-    public static string ToWords(this long number, eCurrency currency)
+    public static string ToWords(this long number, Currency currency)
     {
         return ToWordsInternal(number, currency);
     }
@@ -113,7 +113,7 @@ public static class NumberExtensions
     /// <param name="gender">Define se será escrito no mesculino (dois) ou feminino (duas).</param>
     /// <returns>String</returns>
     /// <remarks></remarks>
-    public static string ToWords(this double number, eGender gender = eGender.Masculino)
+    public static string ToWords(this double number, Gender gender = Gender.Masculino)
     {
         return ToWordsInternal(Conversions.ToDecimal(number), gender);
     }
@@ -125,7 +125,7 @@ public static class NumberExtensions
     /// <param name="currency">A moeda a ser utilizada. Tipos suportados: Real Brasileiro, Dólar Americano e Euro.</param>
     /// <returns>String</returns>
     /// <remarks></remarks>
-    public static string ToWords(this double number, eCurrency currency)
+    public static string ToWords(this double number, Currency currency)
     {
         return ToWordsInternal(Conversions.ToDecimal(number), currency);
     }
@@ -146,7 +146,7 @@ public static class NumberExtensions
     /// <param name="gender">Define se será escrito no mesculino (dois) ou feminino (duas).</param>
     /// <returns>String</returns>
     /// <remarks></remarks>
-    public static string ToWords(this decimal number, eGender gender = eGender.Masculino)
+    public static string ToWords(this decimal number, Gender gender = Gender.Masculino)
     {
         return ToWordsInternal(number, gender);
     }
@@ -158,7 +158,7 @@ public static class NumberExtensions
     /// <param name="currency">A moeda a ser utilizada. Tipos suportados: Real Brasileiro, Dólar Americano e Euro.</param>
     /// <returns>String</returns>
     /// <remarks></remarks>
-    public static string ToWords(this decimal number, eCurrency currency)
+    public static string ToWords(this decimal number, Currency currency)
     {
         return ToWordsInternal(number, currency);
     }
@@ -173,14 +173,14 @@ public static class NumberExtensions
 
     /* TODO ERROR: Skipped RegionDirectiveTrivia */
     /* TODO ERROR: Skipped RegionDirectiveTrivia */
-    private static string ToWordsInternal(decimal number, eGender gender = eGender.Masculino)
+    private static string ToWordsInternal(decimal number, Gender gender = Gender.Masculino)
     {
         return GeraExtensoInternal(number, false, gender);
     }
 
-    private static string ToWordsInternal(decimal number, eCurrency Currency)
+    private static string ToWordsInternal(decimal number, Currency Currency)
     {
-        return GeraExtensoInternal(number, true, eGender.Masculino, Currency);
+        return GeraExtensoInternal(number, true, Gender.Masculino, Currency);
     }
 
     private static readonly string[] unidades = new string[] { "Zero", "Um", "Dois", "Três", "Quatro", "Cinco", "Seis", "Sete", "Oito", "Nove" };
@@ -193,24 +193,24 @@ public static class NumberExtensions
     private static readonly string[] dolar_us = new string[] { "Dólar", "Dólares", "Centavo", "Centavos" };
     private static readonly string[] euro_eu = new string[] { "Euro", "Euros", "Cêntimo", "Cêntimos" };
 
-    private static string GeraExtensoInternal(decimal number, bool moeda, eGender genero, eCurrency tipoMoeda = eCurrency.Real_BRL)
+    private static string GeraExtensoInternal(decimal number, bool moeda, Gender genero, Currency tipoMoeda = Currency.Real_BRL)
     {
         var currency = Array.Empty<string>();
         switch (tipoMoeda)
         {
-            case eCurrency.Real_BRL:
+            case Currency.Real_BRL:
                 {
                     currency = real_br;
                     break;
                 }
 
-            case eCurrency.Dolar_USD:
+            case Currency.Dolar_USD:
                 {
                     currency = dolar_us;
                     break;
                 }
 
-            case eCurrency.Euro_EUR:
+            case Currency.Euro_EUR:
                 {
                     currency = euro_eu;
                     break;
@@ -310,7 +310,7 @@ public static class NumberExtensions
                     {
                         if (milhares == 0 & centenas == 0)
                         {
-                            numstr = GetNumberStringArray(milhoes, eGender.Masculino) + " Milhão";
+                            numstr = GetNumberStringArray(milhoes, Gender.Masculino) + " Milhão";
                             if (moeda == true)
                             {
                                 numstr += " de";
@@ -320,44 +320,44 @@ public static class NumberExtensions
                         {
                             if (milhares < 100)
                             {
-                                numstr = GetNumberStringArray(milhoes, eGender.Masculino) + " Milhão e ";
+                                numstr = GetNumberStringArray(milhoes, Gender.Masculino) + " Milhão e ";
                             }
                             else if (milhares == 100 | milhares == 200 | milhares == 300 | milhares == 400 | milhares == 500 | milhares == 600 | milhares == 700 | milhares == 800 | milhares == 900)
 
                             {
-                                numstr = GetNumberStringArray(milhoes, eGender.Masculino) + " Milhão e ";
+                                numstr = GetNumberStringArray(milhoes, Gender.Masculino) + " Milhão e ";
                             }
                             else
                             {
-                                numstr = GetNumberStringArray(milhoes, eGender.Masculino) + " Milhão, ";
+                                numstr = GetNumberStringArray(milhoes, Gender.Masculino) + " Milhão, ";
                             }
                         }
                         else if (milhares == 0 & centenas > 0)
                         {
                             if (centenas < 100)
                             {
-                                numstr = GetNumberStringArray(milhoes, eGender.Masculino) + " Milhão";
+                                numstr = GetNumberStringArray(milhoes, Gender.Masculino) + " Milhão";
                             }
                             else if (centenas == 100 | centenas == 200 | centenas == 300 | centenas == 400 | centenas == 500 | centenas == 600 | centenas == 700 | centenas == 800 | centenas == 900)
 
                             {
-                                numstr = GetNumberStringArray(milhoes, eGender.Masculino) + " Milhão e ";
+                                numstr = GetNumberStringArray(milhoes, Gender.Masculino) + " Milhão e ";
                             }
                             else
                             {
-                                numstr = GetNumberStringArray(milhoes, eGender.Masculino) + " Milhão";
+                                numstr = GetNumberStringArray(milhoes, Gender.Masculino) + " Milhão";
                             }
                         }
                         else if (milhares > 0 & centenas > 0)
                         {
-                            numstr = GetNumberStringArray(milhoes, eGender.Masculino) + " Milhão, ";
+                            numstr = GetNumberStringArray(milhoes, Gender.Masculino) + " Milhão, ";
                         }
                     }
                     else if (milhoes > 1)
                     {
                         if (milhares == 0 & centenas == 0)
                         {
-                            numstr = GetNumberStringArray(milhoes, eGender.Masculino) + " Milhões";
+                            numstr = GetNumberStringArray(milhoes, Gender.Masculino) + " Milhões";
                             if (moeda == true)
                             {
                                 numstr += " de";
@@ -367,37 +367,37 @@ public static class NumberExtensions
                         {
                             if (milhares < 100)
                             {
-                                numstr = GetNumberStringArray(milhoes, eGender.Masculino) + " Milhões e ";
+                                numstr = GetNumberStringArray(milhoes, Gender.Masculino) + " Milhões e ";
                             }
                             else if (milhares == 100 | milhares == 200 | milhares == 300 | milhares == 400 | milhares == 500 | milhares == 600 | milhares == 700 | milhares == 800 | milhares == 900)
 
                             {
-                                numstr = GetNumberStringArray(milhoes, eGender.Masculino) + " Milhões e ";
+                                numstr = GetNumberStringArray(milhoes, Gender.Masculino) + " Milhões e ";
                             }
                             else
                             {
-                                numstr = GetNumberStringArray(milhoes, eGender.Masculino) + " Milhões, ";
+                                numstr = GetNumberStringArray(milhoes, Gender.Masculino) + " Milhões, ";
                             }
                         }
                         else if (milhares == 0 & centenas > 0)
                         {
                             if (centenas < 100)
                             {
-                                numstr = GetNumberStringArray(milhoes, eGender.Masculino) + " Milhões";
+                                numstr = GetNumberStringArray(milhoes, Gender.Masculino) + " Milhões";
                             }
                             else if (centenas == 100 | centenas == 200 | centenas == 300 | centenas == 400 | centenas == 500 | centenas == 600 | centenas == 700 | centenas == 800 | centenas == 900)
 
                             {
-                                numstr = GetNumberStringArray(milhoes, eGender.Masculino) + " Milhões e ";
+                                numstr = GetNumberStringArray(milhoes, Gender.Masculino) + " Milhões e ";
                             }
                             else
                             {
-                                numstr = GetNumberStringArray(milhoes, eGender.Masculino) + " Milhões";
+                                numstr = GetNumberStringArray(milhoes, Gender.Masculino) + " Milhões";
                             }
                         }
                         else if (milhares > 0 & centenas > 0)
                         {
-                            numstr = GetNumberStringArray(milhoes, eGender.Masculino) + " Milhões, ";
+                            numstr = GetNumberStringArray(milhoes, Gender.Masculino) + " Milhões, ";
                         }
                     }
 
@@ -448,13 +448,13 @@ public static class NumberExtensions
         {
             case 1:
                 {
-                    numstr = numstr + " e " + GetNumberStringArray(centavos, eGender.Masculino) + $" {currency[2]}"; // " Centavo"
+                    numstr = numstr + " e " + GetNumberStringArray(centavos, Gender.Masculino) + $" {currency[2]}"; // " Centavo"
                     break;
                 }
 
             case var case5 when case5 > 1:
                 {
-                    numstr = numstr + " e " + GetNumberStringArray(centavos, eGender.Masculino) + $" {currency[3]}"; // " Centavos"
+                    numstr = numstr + " e " + GetNumberStringArray(centavos, Gender.Masculino) + $" {currency[3]}"; // " Centavos"
                     break;
                 }
         }
@@ -462,7 +462,7 @@ public static class NumberExtensions
         return numstr;
     }
 
-    private static string GetNumberStringArray(int number, eGender gender)
+    private static string GetNumberStringArray(int number, Gender gender)
     {
         int centena, dezena, unidade;
         string numstr = "";
@@ -472,13 +472,13 @@ public static class NumberExtensions
                 {
                     switch (gender)
                     {
-                        case eGender.Masculino:
+                        case Gender.Masculino:
                             {
                                 numstr = unidades[number];
                                 break;
                             }
 
-                        case eGender.Feminino:
+                        case Gender.Feminino:
                             {
                                 numstr = unidadesFem[number];
                                 break;
@@ -523,13 +523,13 @@ public static class NumberExtensions
                             {
                                 switch (gender)
                                 {
-                                    case eGender.Masculino:
+                                    case Gender.Masculino:
                                         {
                                             numstr = centenas[0];
                                             break;
                                         }
 
-                                    case eGender.Feminino:
+                                    case Gender.Feminino:
                                         {
                                             numstr = centenasFem[0];
                                             break;
@@ -546,13 +546,13 @@ public static class NumberExtensions
                                 unidade = Conversions.ToInteger(number.ToString().Substring(2, 1));
                                 switch (gender)
                                 {
-                                    case eGender.Masculino:
+                                    case Gender.Masculino:
                                         {
                                             numstr = centenas[centena];
                                             break;
                                         }
 
-                                    case eGender.Feminino:
+                                    case Gender.Feminino:
                                         {
                                             numstr = centenasFem[centena];
                                             break;
@@ -598,13 +598,13 @@ public static class NumberExtensions
     }
 
     /* TODO ERROR: Skipped RegionDirectiveTrivia */
-    public enum eGender
+    public enum Gender
     {
         Masculino = 0,
         Feminino = 1
     }
 
-    public enum eCurrency
+    public enum Currency
     {
         Real_BRL = 0,
         Dolar_USD = 1,
