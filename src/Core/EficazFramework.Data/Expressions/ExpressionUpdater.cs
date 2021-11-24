@@ -1,7 +1,6 @@
 ﻿
-namespace EficazFramework.Expressions
+namespace EficazFramework.Expressions;
+
+public class ExpressionUpdater
 {
-    public class ExpressionUpdater
-    {
-    }
 }

@@ -4,102 +4,101 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
 
-namespace EficazFramework.Extensions
+namespace EficazFramework.Extensions;
+
+/// <summary>
+/// An IQueryable wrapper that allows us to visit the query's expression tree just before LINQ to SQL gets to it.
+/// This is based on the excellent work of Tomas Petricek: http://tomasp.net/blog/linq-expand.aspx
+/// </summary>
+public class ExpandableQuery<T> : IQueryable<T>, IOrderedQueryable<T>, IOrderedQueryable
 {
-    /// <summary>
-    /// An IQueryable wrapper that allows us to visit the query's expression tree just before LINQ to SQL gets to it.
-    /// This is based on the excellent work of Tomas Petricek: http://tomasp.net/blog/linq-expand.aspx
-    /// </summary>
-    public class ExpandableQuery<T> : IQueryable<T>, IOrderedQueryable<T>, IOrderedQueryable
+    private readonly ExpandableQueryProvider<T> _provider;
+    private readonly IQueryable<T> _inner;
+
+    internal IQueryable<T> InnerQuery
     {
-        private ExpandableQueryProvider<T> _provider;
-        private IQueryable<T> _inner;
-
-        internal IQueryable<T> InnerQuery
+        get
         {
-            get
-            {
-                return _inner;
-            }
-        }
-
-        // Original query, that we're wrapping
-        internal ExpandableQuery(IQueryable<T> inner)
-        {
-            _inner = inner;
-            _provider = new ExpandableQueryProvider<T>(this);
-        }
-
-        Expression IQueryable.Expression
-        {
-            get
-            {
-                return _inner.Expression;
-            }
-        }
-
-        Type IQueryable.ElementType
-        {
-            get
-            {
-                return typeof(T);
-            }
-        }
-
-        IQueryProvider IQueryable.Provider
-        {
-            get
-            {
-                return _provider;
-            }
-        }
-
-        public IEnumerator<T> GetEnumerator()
-        {
-            return _inner.GetEnumerator();
-        }
-
-        IEnumerator IEnumerable.GetEnumerator()
-        {
-            return _inner.GetEnumerator();
-        }
-
-        public override string ToString()
-        {
-            return _inner.ToString();
+            return _inner;
         }
     }
 
-    class ExpandableQueryProvider<T> : IQueryProvider
+    // Original query, that we're wrapping
+    internal ExpandableQuery(IQueryable<T> inner)
     {
-        private ExpandableQuery<T> _query;
+        _inner = inner;
+        _provider = new ExpandableQueryProvider<T>(this);
+    }
 
-        internal ExpandableQueryProvider(ExpandableQuery<T> query)
+    Expression IQueryable.Expression
+    {
+        get
         {
-            _query = query;
+            return _inner.Expression;
         }
+    }
 
-        // The following four methods first call ExpressionExpander to visit the expression tree, then call
-        // upon the inner query to do the remaining work.
-
-        IQueryable<TElement> IQueryProvider.CreateQuery<TElement>(Expression expression)
+    Type IQueryable.ElementType
+    {
+        get
         {
-            return new ExpandableQuery<TElement>(_query.InnerQuery.Provider.CreateQuery<TElement>(expression.Expand()));
+            return typeof(T);
         }
+    }
 
-        IQueryable IQueryProvider.CreateQuery(Expression expression)
+    IQueryProvider IQueryable.Provider
+    {
+        get
         {
-            return _query.InnerQuery.Provider.CreateQuery(expression.Expand());
+            return _provider;
         }
+    }
 
-        TResult IQueryProvider.Execute<TResult>(Expression expression)
-        {
-            return _query.InnerQuery.Provider.Execute<TResult>(expression.Expand());
-        }
+    public IEnumerator<T> GetEnumerator()
+    {
+        return _inner.GetEnumerator();
+    }
 
-        object IQueryProvider.Execute(Expression expression)
-        {
-            return _query.InnerQuery.Provider.Execute(expression.Expand());
-        }
+    IEnumerator IEnumerable.GetEnumerator()
+    {
+        return _inner.GetEnumerator();
+    }
+
+    public override string ToString()
+    {
+        return _inner.ToString();
+    }
+}
+
+class ExpandableQueryProvider<T> : IQueryProvider
+{
+    private readonly ExpandableQuery<T> _query;
+
+    internal ExpandableQueryProvider(ExpandableQuery<T> query)
+    {
+        _query = query;
+    }
+
+    // The following four methods first call ExpressionExpander to visit the expression tree, then call
+    // upon the inner query to do the remaining work.
+
+    IQueryable<TElement> IQueryProvider.CreateQuery<TElement>(Expression expression)
+    {
+        return new ExpandableQuery<TElement>(_query.InnerQuery.Provider.CreateQuery<TElement>(expression.Expand()));
+    }
+
+    IQueryable IQueryProvider.CreateQuery(Expression expression)
+    {
+        return _query.InnerQuery.Provider.CreateQuery(expression.Expand());
+    }
+
+    TResult IQueryProvider.Execute<TResult>(Expression expression)
+    {
+        return _query.InnerQuery.Provider.Execute<TResult>(expression.Expand());
+    }
+
+    object IQueryProvider.Execute(Expression expression)
+    {
+        return _query.InnerQuery.Provider.Execute(expression.Expand());
     }
 }

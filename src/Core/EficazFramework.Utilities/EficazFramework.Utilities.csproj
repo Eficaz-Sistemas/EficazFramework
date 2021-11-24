@@ -31,6 +31,14 @@
 	<DefaultDocumentationGeneratedPages>Assembly, Types, Members</DefaultDocumentationGeneratedPages>
   </PropertyGroup>
 
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <NoWarn>1573;1591;1701;1702</NoWarn>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <NoWarn>1573;1591;1701;1702</NoWarn>
+  </PropertyGroup>
+
   <ItemGroup>
     <None Remove="Commands\DelayedAction.vb" />
   </ItemGroup>

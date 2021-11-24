@@ -12,6 +12,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{72380FF4
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EficazFramework.Utilities", "Core\EficazFramework.Utilities\EficazFramework.Utilities.csproj", "{3FC5BA27-3EFB-4271-ACCD-65EF476B12B4}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EficazFramework.Data", "Core\EficazFramework.Data\EficazFramework.Data.csproj", "{6F404FD1-60F3-4A05-A576-BEAF9EDAFD12}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -22,12 +24,17 @@ Global
 		{3FC5BA27-3EFB-4271-ACCD-65EF476B12B4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3FC5BA27-3EFB-4271-ACCD-65EF476B12B4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3FC5BA27-3EFB-4271-ACCD-65EF476B12B4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6F404FD1-60F3-4A05-A576-BEAF9EDAFD12}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6F404FD1-60F3-4A05-A576-BEAF9EDAFD12}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6F404FD1-60F3-4A05-A576-BEAF9EDAFD12}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6F404FD1-60F3-4A05-A576-BEAF9EDAFD12}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{3FC5BA27-3EFB-4271-ACCD-65EF476B12B4} = {64E9A101-EA8E-41FB-9022-DDD601ACB847}
+		{6F404FD1-60F3-4A05-A576-BEAF9EDAFD12} = {64E9A101-EA8E-41FB-9022-DDD601ACB847}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {727FB557-A5D6-456A-81CB-C45F2F95FCEB}

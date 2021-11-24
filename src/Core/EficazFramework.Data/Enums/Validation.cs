@@ -1,10 +1,9 @@
 ﻿
-namespace EficazFramework.Enums
+namespace EficazFramework.Enums;
+
+public enum ValidationMode
 {
-    public enum ValidationMode
-    {
-        DataAnnotations = 0,
-        Fluent = 1,
-        Disabled = 99
-    }
+    DataAnnotations = 0,
+    Fluent = 1,
+    Disabled = 99
 }

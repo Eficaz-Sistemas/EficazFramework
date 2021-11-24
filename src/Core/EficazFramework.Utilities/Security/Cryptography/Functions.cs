@@ -7,7 +7,7 @@ using System.Text.RegularExpressions;
 
 namespace EficazFramework.Security.Cryptography;
 
-public class Functionss
+public class Functions
 {
 
     private static readonly TripleDES _des = TripleDES.Create();

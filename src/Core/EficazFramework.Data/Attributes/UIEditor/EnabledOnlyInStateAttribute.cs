@@ -1,33 +1,31 @@
 ﻿using System;
 
-namespace EficazFramework.Attributes.UIEditor.EditingState
-{
+namespace EficazFramework.Attributes.UIEditor.EditingState;
 
-    /// <summary>
-    /// TBA: Working only with EfSearchBox in WPF
-    /// </summary>
-    /// <remarks></remarks>
-    [AttributeUsage(AttributeTargets.Property)]
-    public class EnabledOnlyInStateAttribute : Attribute
+/// <summary>
+/// TBA: Working only with EfSearchBox in WPF
+/// </summary>
+/// <remarks></remarks>
+[AttributeUsage(AttributeTargets.Property)]
+public class EnabledOnlyInStateAttribute : Attribute
+{
+    public EnabledOnlyInStateAttribute(EficazFramework.Enums.CRUD.State State)
     {
-        public EnabledOnlyInStateAttribute(EficazFramework.Enums.CRUD.eState State)
+        _state = State;
+    }
+
+    private EficazFramework.Enums.CRUD.State _state;
+
+    public EficazFramework.Enums.CRUD.State ScreenState
+    {
+        get
         {
-            _state = State;
+            return _state;
         }
 
-        private EficazFramework.Enums.CRUD.eState _state;
-
-        public EficazFramework.Enums.CRUD.eState ScreenState
+        set
         {
-            get
-            {
-                return _state;
-            }
-
-            set
-            {
-                _state = value;
-            }
+            _state = value;
         }
     }
 }

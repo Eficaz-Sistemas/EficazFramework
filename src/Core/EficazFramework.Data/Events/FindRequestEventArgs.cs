@@ -1,5 +1,5 @@
 ﻿
-namespace EficazFramework.Events
+namespace EficazFrameworkCore.Events
 {
     public sealed class FindRequestEventArgs
     {

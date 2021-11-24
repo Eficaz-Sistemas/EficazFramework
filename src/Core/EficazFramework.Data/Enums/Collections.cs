@@ -1,9 +1,8 @@
 ﻿
-namespace EficazFramework.Enums.Collection
+namespace EficazFramework.Enums.Collection;
+
+public enum SortOrientation
 {
-    public enum SortOrientation
-    {
-        Asceding = 0,
-        Descending = 1
-    }
+    Asceding = 0,
+    Descending = 1
 }

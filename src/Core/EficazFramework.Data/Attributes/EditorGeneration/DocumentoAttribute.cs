@@ -1,16 +1,15 @@
 ﻿using System;
 
-namespace EficazFramework.Attributes.UIEditor.EditorGeneration
-{
-    [AttributeUsage(AttributeTargets.Property)]
-    public class DocumentoAttribute : Attribute
-    {
-        public DocumentoAttribute(EficazFramework.Enums.eDocumentos tipoDocumento)
-        {
-            TipoDocumento = tipoDocumento;
-        }
+namespace EficazFramework.Attributes.UIEditor.EditorGeneration;
 
-        public EficazFramework.Enums.eDocumentos TipoDocumento { get; set; } = EficazFramework.Enums.eDocumentos.CNPJ_CPF;
-        public string UFProperty { get; set; }
+[AttributeUsage(AttributeTargets.Property)]
+public class DocumentoAttribute : Attribute
+{
+    public DocumentoAttribute(EficazFramework.Enums.Documentos tipoDocumento)
+    {
+        TipoDocumento = tipoDocumento;
     }
+
+    public EficazFramework.Enums.Documentos TipoDocumento { get; set; } = EficazFramework.Enums.Documentos.CNPJ_CPF;
+    public string UFProperty { get; set; }
 }

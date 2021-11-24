@@ -17,17 +17,32 @@
     <PackageTags>data efcore entityframeworkcore persistência</PackageTags>
     <NeutralLanguage>pt-BR</NeutralLanguage>
     <Authors>Eficaz Sistemas</Authors>
-    <ApplicationIcon>icon.ico</ApplicationIcon>
-    <PackageIcon>icon.png</PackageIcon>
+    <PackageIcon>logo.png</PackageIcon>
     <PackageIconUrl>https://efsuporte.blob.core.windows.net/portal/EficazFramework.png</PackageIconUrl>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <Configurations>Debug;Release</Configurations>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+	<GenerateDocumentationFile>true</GenerateDocumentationFile>
+	<DefaultDocumentationFolder>..\..\..\Docs\Api\Data</DefaultDocumentationFolder>
+	<DefaultDocumentationAssemblyPageName>EficazFramework Data</DefaultDocumentationAssemblyPageName>
+	<DefaultDocumentationFileNameMode>Name</DefaultDocumentationFileNameMode>
+	<DefaultDocumentationGeneratedPages>Assembly, Types, Members</DefaultDocumentationGeneratedPages>
+  </PropertyGroup>
+	
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+     <NoWarn>1573;1591;1701;1702</NoWarn>
   </PropertyGroup>
 
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+	  <NoWarn>1573;1591;1701;1702</NoWarn>
+  </PropertyGroup>
+	
   <ItemGroup>
+    <Compile Remove="Repositories\Services\API\**" />
     <Compile Remove="ViewModels\Entity\**" />
+    <EmbeddedResource Remove="Repositories\Services\API\**" />
     <EmbeddedResource Remove="ViewModels\Entity\**" />
+    <None Remove="Repositories\Services\API\**" />
     <None Remove="ViewModels\Entity\**" />
   </ItemGroup>
 
@@ -43,6 +58,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="DefaultDocumentation" Version="0.7.9">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="6.0.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Relational" Version="6.0.0" />
     <PackageReference Include="System.Security.Permissions" Version="6.0.0" />
@@ -109,14 +128,13 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Include="..\..\icon.png">
-      <Pack>True</Pack>
-      <PackagePath></PackagePath>
-    </None>
+      <None Include="..\..\..\Assets\logo.png">
+          <Pack>True</Pack>
+          <PackagePath>\</PackagePath>
+      </None>
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Repositories\Services\API\" />
     <Folder Include="ViewModels\VMServices\Audit\Model\" />
   </ItemGroup>
 

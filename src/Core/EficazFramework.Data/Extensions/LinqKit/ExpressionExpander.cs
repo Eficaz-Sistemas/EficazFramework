@@ -3,54 +3,92 @@ using System.Collections.Generic;
 using System.Linq.Expressions;
 using System.Reflection;
 
-namespace EficazFramework.Extensions
+namespace EficazFramework.Extensions;
+
+/// <summary>
+/// Custom expresssion visitor for ExpandableQuery. This expands calls to Expression.Compile() and
+/// collapses captured lambda references in subqueries which LINQ to SQL can't otherwise handle.
+/// </summary>
+class ExpressionExpander : Extensions.ExpressionVisitor
 {
+    // Replacement parameters - for when invoking a lambda expression.
+    private readonly Dictionary<ParameterExpression, Expression> _replaceVars = null;
+
+    internal ExpressionExpander()
+    {
+    }
+
+    private ExpressionExpander(Dictionary<ParameterExpression, Expression> replaceVars)
+    {
+        _replaceVars = replaceVars;
+    }
+
+    protected override Expression VisitParameter(ParameterExpression p)
+    {
+        if (_replaceVars != null && _replaceVars.ContainsKey(p))
+        {
+            return _replaceVars[p];
+        }
+        else
+        {
+            return base.VisitParameter(p);
+        }
+    }
 
     /// <summary>
-    /// Custom expresssion visitor for ExpandableQuery. This expands calls to Expression.Compile() and
-    /// collapses captured lambda references in subqueries which LINQ to SQL can't otherwise handle.
+    /// Flatten calls to Invoke so that Entity Framework can understand it. Calls to Invoke are generated
+    /// by PredicateBuilder.
     /// </summary>
-    class ExpressionExpander : Extensions.ExpressionVisitor
+    protected override Expression VisitInvocation(InvocationExpression iv)
     {
-        // Replacement parameters - for when invoking a lambda expression.
-        private Dictionary<ParameterExpression, Expression> _replaceVars = null;
-
-        internal ExpressionExpander()
+        var target = iv.Expression;
+        if (target is MemberExpression mexpression)
         {
+            target = TransformExpr(mexpression);
         }
 
-        private ExpressionExpander(Dictionary<ParameterExpression, Expression> replaceVars)
+        if (target is ConstantExpression cexpression)
         {
-            _replaceVars = replaceVars;
+            target = (cexpression).Value as Expression;
         }
 
-        protected override Expression VisitParameter(ParameterExpression p)
+        LambdaExpression lambda = (LambdaExpression)target;
+        Dictionary<ParameterExpression, Expression> replaceVars;
+        if (_replaceVars is null)
         {
-            if (_replaceVars != null && _replaceVars.ContainsKey(p))
-            {
-                return _replaceVars[p];
-            }
-            else
-            {
-                return base.VisitParameter(p);
-            }
+            replaceVars = new Dictionary<ParameterExpression, Expression>();
+        }
+        else
+        {
+            replaceVars = new Dictionary<ParameterExpression, Expression>(_replaceVars);
         }
 
-        /// <summary>
-        /// Flatten calls to Invoke so that Entity Framework can understand it. Calls to Invoke are generated
-        /// by PredicateBuilder.
-        /// </summary>
-        protected override Expression VisitInvocation(InvocationExpression iv)
+        try
         {
-            var target = iv.Expression;
-            if (target is MemberExpression)
+            for (int i = 0, loopTo = lambda.Parameters.Count - 1; i <= loopTo; i++)
+                replaceVars.Add(lambda.Parameters[i], iv.Arguments[i]);
+        }
+        catch (ArgumentException ex)
+        {
+            throw new InvalidOperationException("Invoke cannot be called recursively - try using a temporary variable.", ex);
+        }
+
+        return new ExpressionExpander(replaceVars).Visit(lambda.Body);
+    }
+
+    protected override Expression VisitMethodCall(MethodCallExpression m)
+    {
+        if (m.Method.Name == "Invoke" && !ReferenceEquals(m.Method.DeclaringType, typeof(Extensions.Expressions)))
+        {
+            var target = m.Arguments[0];
+            if (target is MemberExpression mexpression)
             {
-                target = TransformExpr((MemberExpression)target);
+                target = TransformExpr(mexpression);
             }
 
-            if (target is ConstantExpression)
+            if (target is ConstantExpression cexpression)
             {
-                target = ((ConstantExpression)target).Value as Expression;
+                target = cexpression.Value as Expression;
             }
 
             LambdaExpression lambda = (LambdaExpression)target;
@@ -67,7 +105,7 @@ namespace EficazFramework.Extensions
             try
             {
                 for (int i = 0, loopTo = lambda.Parameters.Count - 1; i <= loopTo; i++)
-                    replaceVars.Add(lambda.Parameters[i], iv.Arguments[i]);
+                    replaceVars.Add(lambda.Parameters[i], m.Arguments[i + 1]);
             }
             catch (ArgumentException ex)
             {
@@ -77,108 +115,68 @@ namespace EficazFramework.Extensions
             return new ExpressionExpander(replaceVars).Visit(lambda.Body);
         }
 
-        protected override Expression VisitMethodCall(MethodCallExpression m)
+        // Expand calls to an expression's Compile() method:
+        if (m.Method.Name == "Compile" && m.Object is MemberExpression expression)
         {
-            if (m.Method.Name == "Invoke" && !ReferenceEquals(m.Method.DeclaringType, typeof(Extensions.Expressions)))
+            MemberExpression me = expression;
+            var newExpr = TransformExpr(me);
+            if (!ReferenceEquals(newExpr, me))
             {
-                var target = m.Arguments[0];
-                if (target is MemberExpression)
-                {
-                    target = TransformExpr((MemberExpression)target);
-                }
-
-                if (target is ConstantExpression)
-                {
-                    target = ((ConstantExpression)target).Value as Expression;
-                }
-
-                LambdaExpression lambda = (LambdaExpression)target;
-                Dictionary<ParameterExpression, Expression> replaceVars;
-                if (_replaceVars is null)
-                {
-                    replaceVars = new Dictionary<ParameterExpression, Expression>();
-                }
-                else
-                {
-                    replaceVars = new Dictionary<ParameterExpression, Expression>(_replaceVars);
-                }
-
-                try
-                {
-                    for (int i = 0, loopTo = lambda.Parameters.Count - 1; i <= loopTo; i++)
-                        replaceVars.Add(lambda.Parameters[i], m.Arguments[i + 1]);
-                }
-                catch (ArgumentException ex)
-                {
-                    throw new InvalidOperationException("Invoke cannot be called recursively - try using a temporary variable.", ex);
-                }
-
-                return new ExpressionExpander(replaceVars).Visit(lambda.Body);
+                return newExpr;
             }
-
-            // Expand calls to an expression's Compile() method:
-            if (m.Method.Name == "Compile" && m.Object is MemberExpression)
-            {
-                MemberExpression me = (MemberExpression)m.Object;
-                var newExpr = TransformExpr(me);
-                if (!ReferenceEquals(newExpr, me))
-                {
-                    return newExpr;
-                }
-            }
-
-            // Strip out any nested calls to AsExpandable():
-            if (m.Method.Name == "AsExpandable" && !ReferenceEquals(m.Method.DeclaringType, typeof(Extensions.Expressions)))
-            {
-                return m.Arguments[0];
-            }
-
-            return base.VisitMethodCall(m);
         }
 
-        protected override Expression VisitMemberAccess(MemberExpression m)
+        // Strip out any nested calls to AsExpandable():
+        if (m.Method.Name == "AsExpandable" && !ReferenceEquals(m.Method.DeclaringType, typeof(Extensions.Expressions)))
         {
-            // Strip out any references to expressions captured by outer variables - LINQ to SQL can't handle these:
-            if (m.Member.DeclaringType.Name.StartsWith("<>"))
-            {
-                return TransformExpr(m);
-            }
-
-            return base.VisitMemberAccess(m);
+            return m.Arguments[0];
         }
 
-        private Expression TransformExpr(MemberExpression input)
+        return base.VisitMethodCall(m);
+    }
+
+    protected override Expression VisitMemberAccess(MemberExpression m)
+    {
+        // Strip out any references to expressions captured by outer variables - LINQ to SQL can't handle these:
+        if (m.Member.DeclaringType.Name.StartsWith("<>"))
         {
-            // Collapse captured outer variables
-            if (input is null || !(input.Member is FieldInfo) || !input.Member.DeclaringType.IsNested || !input.Member.DeclaringType.Name.StartsWith("<>"))
+            return TransformExpr(m);
+        }
+
+        return base.VisitMemberAccess(m);
+    }
+
+    private Expression TransformExpr(MemberExpression input)
+    {
+        // Collapse captured outer variables
+        if (input is null || input.Member is not FieldInfo || !input.Member.DeclaringType.IsNested || !input.Member.DeclaringType.Name.StartsWith("<>"))
+        {
+            // captured outer variable
+            return input;
+        }
+
+        if (input.Expression is ConstantExpression cexpression)
+        {
+            var obj = cexpression.Value;
+            if (obj is null)
             {
-                // captured outer variable
                 return input;
             }
 
-            if (input.Expression is ConstantExpression)
+            var t = obj.GetType();
+            if (!t.IsNested || !t.Name.StartsWith("<>"))
             {
-                var obj = ((ConstantExpression)input.Expression).Value;
-                if (obj is null)
-                {
-                    return input;
-                }
-
-                var t = obj.GetType();
-                if (!t.IsNested || !t.Name.StartsWith("<>"))
-                {
-                    return input;
-                }
-
-                FieldInfo fi = (FieldInfo)input.Member;
-                var result = fi.GetValue(obj);
-                if (result is Expression)
-                {
-                    return this.Visit((Expression)result);
-                }
+                return input;
             }
 
-            return input;
+            FieldInfo fi = (FieldInfo)input.Member;
+            var result = fi.GetValue(obj);
+            if (result is Expression expression)
+            {
+                return this.Visit(expression);
+            }
         }
+
+        return input;
     }
 }

@@ -1,9 +1,8 @@
 ﻿
-namespace EficazFramework.Collections
+namespace EficazFramework.Collections;
+
+public class SortDescription
 {
-    public class SortDescription
-    {
-        public string PropertyName { get; set; }
-        public EficazFramework.Enums.Collection.SortOrientation Direction { get; set; }
-    }
+    public string PropertyName { get; set; }
+    public EficazFramework.Enums.Collection.SortOrientation Direction { get; set; }
 }

@@ -1,80 +1,79 @@
 ﻿using System;
 
-namespace EficazFramework.Events
+namespace EficazFramework.Events;
+
+public sealed class ExpressionEventArgs
 {
-    public sealed class ExpressionEventArgs
+    public string PropertyDisplayName { get; private set; }
+
+    private string _propertyPath = null;
+    public string PropertyPath
     {
-        public string PropertyDisplayName { get; private set; }
-
-        private string _propertyPath = null;
-        public string PropertyPath
+        get
         {
-            get
-            {
-                return _propertyPath;
-            }
-
-            set
-            {
-                _propertyPath = value;
-            }
+            return _propertyPath;
         }
 
-        private EficazFramework.Enums.eCompareMethod _operator;
-        public EficazFramework.Enums.eCompareMethod Operator
+        set
         {
-            get
-            {
-                return _operator;
-            }
-
-            set
-            {
-                _operator = value;
-            }
-        }
-
-        private object _value;
-        public object ValueTyped
-        {
-            get
-            {
-                return _value;
-            }
-
-            set
-            {
-                _value = value;
-            }
-        }
-
-        public EficazFramework.Expressions.ExpressionItem CurrentItem { get; private set; }
-        public Type BaseType { get; private set; }
-        public object Entry { get; private set; }
-
-        public ExpressionEventArgs(string display, string propertyPath, EficazFramework.Enums.eCompareMethod @operator, object value, Type baseType, EficazFramework.Expressions.ExpressionItem item, object entry = null)
-        {
-            PropertyDisplayName = display;
-            PropertyPath = propertyPath;
-            Operator = @operator;
-            ValueTyped = value;
-            BaseType = baseType;
-            CurrentItem = item;
-            Entry = entry;
+            _propertyPath = value;
         }
     }
 
-    public delegate void ExpressionEventHandler(object sender, ExpressionEventArgs e);
-
-    public sealed class ExpressionBuiltEventArgs
+    private EficazFramework.Enums.CompareMethod _operator;
+    public EficazFramework.Enums.CompareMethod Operator
     {
-        public object Expression { get; set; }
-
-        public ExpressionBuiltEventArgs(object expression)
+        get
         {
-            Expression = expression;
+            return _operator;
+        }
+
+        set
+        {
+            _operator = value;
         }
     }
 
-    public delegate void ExpressionBuiltEventHandler(object sender, ExpressionBuiltEventArgs e);
+    private object _value;
+    public object ValueTyped
+    {
+        get
+        {
+            return _value;
+        }
+
+        set
+        {
+            _value = value;
+        }
+    }
+
+    public EficazFramework.Expressions.ExpressionItem CurrentItem { get; private set; }
+    public Type BaseType { get; private set; }
+    public object Entry { get; private set; }
+
+    public ExpressionEventArgs(string display, string propertyPath, EficazFramework.Enums.CompareMethod @operator, object value, Type baseType, EficazFramework.Expressions.ExpressionItem item, object entry = null)
+    {
+        PropertyDisplayName = display;
+        PropertyPath = propertyPath;
+        Operator = @operator;
+        ValueTyped = value;
+        BaseType = baseType;
+        CurrentItem = item;
+        Entry = entry;
+    }
 }
+
+public delegate void ExpressionEventHandler(object sender, ExpressionEventArgs e);
+
+public sealed class ExpressionBuiltEventArgs
+{
+    public object Expression { get; set; }
+
+    public ExpressionBuiltEventArgs(object expression)
+    {
+        Expression = expression;
+    }
+}
+
+public delegate void ExpressionBuiltEventHandler(object sender, ExpressionBuiltEventArgs e);
