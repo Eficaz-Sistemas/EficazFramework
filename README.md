@@ -26,7 +26,7 @@
    - ViewModel cadastral pré-definition
    - Leitor/Escritor de XML e JSON
    - Construtor de expressões Func<T, Bool> para elaboração de operadores .Where<T>()
-   - Integração com EntityFrameworkCore, versão 5.0 e superiores
+   - Integração com EntityFrameworkCore
    - SDK de desenvolvimento, publicado no MarketPlace do Visual Studio, com template de classes para tabelas de dados, suportando MsSQL, MySQL, OracleSQL e SqlLite, com classes parciais, permitindo expansão manual.
    
 #### Integração com projetos do SPED, com mapeamento de campos e consumo de Web-Services
@@ -49,4 +49,5 @@
    - Engine de geração e impressão de relatórios em XAML (XPS)
 
 #### Biblioteca de extensão para Blazor (Server-Side e WebAssembly)
+   - Novos Componentes, Templates e Layouts para melhor padronização das aplicações, conforme sua natureza
    - Interface de usuário MaterialDesign, utilizando a biblioteca OpenSource [MudBlazor](https://github.com/MudBlazor/MudBlazor)
