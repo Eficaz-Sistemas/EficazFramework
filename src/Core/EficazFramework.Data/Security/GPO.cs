@@ -250,7 +250,7 @@ public class Identity : List<RoleMember>
         base.Clear();
     }
 
-    protected static void ThrowDefaultException()
+    private static void ThrowDefaultException()
     {
         throw new UnauthorizedAccessException(Resources.Strings.Security.GPO_Violation);
     }

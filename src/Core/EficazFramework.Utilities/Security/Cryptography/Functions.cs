@@ -19,7 +19,7 @@ public class Functions
         return Encript(text, _md5.ComputeHash(Encoding.Unicode.GetBytes(parameter1)), _md5.ComputeHash(Encoding.Unicode.GetBytes(parameter2)));
     }
 
-    protected static string Encript(string text, byte[] key, byte[] iv)
+    private static string Encript(string text, byte[] key, byte[] iv)
     {
         try
         {
@@ -40,7 +40,7 @@ public class Functions
         return Decript(text, md5.ComputeHash(Encoding.Unicode.GetBytes(parameter1)), md5.ComputeHash(Encoding.Unicode.GetBytes(parameter2)));
     }
 
-    protected static string Decript(string text, byte[] key, byte[] iv)
+    private static string Decript(string text, byte[] key, byte[] iv)
     {
         try
         {
@@ -55,7 +55,7 @@ public class Functions
         }
     }
 
-    protected static byte[] Transform(byte[] input, ICryptoTransform CryptoTransform)
+    private static byte[] Transform(byte[] input, ICryptoTransform CryptoTransform)
     {
         // create the necessary streams
         var memStream = new MemoryStream();

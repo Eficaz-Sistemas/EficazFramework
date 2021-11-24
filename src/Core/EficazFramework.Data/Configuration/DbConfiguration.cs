@@ -8,11 +8,8 @@ namespace EficazFramework.Configuration;
 public class DbConfiguration : System.ComponentModel.INotifyPropertyChanged
 {
 
-    /* TODO ERROR: Skipped RegionDirectiveTrivia */
-    protected static string _FILE = "data_provider.json";
+    private static readonly string _FILE = "data_provider.json";
 
-    /* TODO ERROR: Skipped EndRegionDirectiveTrivia */
-    /* TODO ERROR: Skipped RegionDirectiveTrivia */
     public static string SettingsPath { get; set; } = $@"{Environment.CurrentDirectory}\Settings\";
 
     private string _serverName = ".";
@@ -146,7 +143,7 @@ public class DbConfiguration : System.ComponentModel.INotifyPropertyChanged
         }
     }
 
-    protected static DbConfiguration _singleton = new();
+    private static DbConfiguration _singleton = new();
     public static DbConfiguration Instance
     {
         get
@@ -191,7 +188,6 @@ public class DbConfiguration : System.ComponentModel.INotifyPropertyChanged
         }
 
         string result = provider.CreateConnectionString(database, username, password);
-        provider = null;
         return result;
     }
 
