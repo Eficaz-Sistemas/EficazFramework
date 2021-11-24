@@ -1,0 +1,617 @@
+﻿using System;
+using Microsoft.VisualBasic.CompilerServices;
+
+namespace EficazFramework.Extensions;
+
+public static class NumberExtensions
+{
+
+    /* TODO ERROR: Skipped RegionDirectiveTrivia */
+    /// <summary>
+    /// Retorna o número por extenso.
+    /// </summary>
+    /// <param name="number">O número a ser escrito.</param>
+    /// <param name="gender">Define se será escrito no mesculino (dois) ou feminino (duas).</param>
+    /// <returns>String</returns>
+    /// <remarks></remarks>
+    public static string ToWords(this short number, eGender gender = eGender.Masculino)
+    {
+        return ToWordsInternal(number, gender);
+    }
+
+    /// <summary>
+    /// Retorna o número por extenso, em moeda.
+    /// </summary>
+    /// <param name="number">O número a ser escrito.</param>
+    /// <param name="currency">A moeda a ser utilizada. Tipos suportados: Real Brasileiro, Dólar Americano e Euro.</param>
+    /// <returns>String</returns>
+    /// <remarks></remarks>
+    public static string ToWords(this short number, eCurrency currency)
+    {
+        return ToWordsInternal(number, currency);
+    }
+
+    public static bool ShortTryParseNullable(string text, ref short? outValue)
+    {
+        bool success = short.TryParse(text, out short parsedValue);
+        outValue = success ? parsedValue : default(short?);
+        return success;
+    }
+
+
+    /* TODO ERROR: Skipped RegionDirectiveTrivia */
+    /// <summary>
+    /// Retorna o número por extenso.
+    /// </summary>
+    /// <param name="number">O número a ser escrito.</param>
+    /// <param name="gender">Define se será escrito no mesculino (dois) ou feminino (duas).</param>
+    /// <returns>String</returns>
+    /// <remarks></remarks>
+    public static string ToWords(this int number, eGender gender = eGender.Masculino)
+    {
+        return ToWordsInternal(number, gender);
+    }
+
+    /// <summary>
+    /// Retorna o número por extenso, em moeda.
+    /// </summary>
+    /// <param name="number">O número a ser escrito.</param>
+    /// <param name="currency">A moeda a ser utilizada. Tipos suportados: Real Brasileiro, Dólar Americano e Euro.</param>
+    /// <returns>String</returns>
+    /// <remarks></remarks>
+    public static string ToWords(this int number, eCurrency currency)
+    {
+        return ToWordsInternal(number, currency);
+    }
+
+    public static bool IntegerTryParseNullable(string text, ref int? outValue)
+    {
+        bool success = int.TryParse(text, out int parsedValue);
+        outValue = success ? parsedValue : default(int?);
+        return success;
+    }
+
+
+    /* TODO ERROR: Skipped RegionDirectiveTrivia */
+    /// <summary>
+    /// Retorna o número por extenso.
+    /// </summary>
+    /// <param name="number">O número a ser escrito.</param>
+    /// <param name="gender">Define se será escrito no mesculino (dois) ou feminino (duas).</param>
+    /// <returns>String</returns>
+    /// <remarks></remarks>
+    public static string ToWords(this long number, eGender gender = eGender.Masculino)
+    {
+        return ToWordsInternal(number, gender);
+    }
+
+    /// <summary>
+    /// Retorna o número por extenso, em moeda.
+    /// </summary>
+    /// <param name="number">O número a ser escrito.</param>
+    /// <param name="currency">A moeda a ser utilizada. Tipos suportados: Real Brasileiro, Dólar Americano e Euro.</param>
+    /// <returns>String</returns>
+    /// <remarks></remarks>
+    public static string ToWords(this long number, eCurrency currency)
+    {
+        return ToWordsInternal(number, currency);
+    }
+
+    public static bool LongTryParseNullable(string text, ref long? outValue)
+    {
+        bool success = long.TryParse(text, out long parsedValue);
+        outValue = success ? parsedValue : default(long?);
+        return success;
+    }
+
+
+    /* TODO ERROR: Skipped RegionDirectiveTrivia */
+    /// <summary>
+    /// Retorna o número por extenso.
+    /// </summary>
+    /// <param name="number">O número a ser escrito.</param>
+    /// <param name="gender">Define se será escrito no mesculino (dois) ou feminino (duas).</param>
+    /// <returns>String</returns>
+    /// <remarks></remarks>
+    public static string ToWords(this double number, eGender gender = eGender.Masculino)
+    {
+        return ToWordsInternal(Conversions.ToDecimal(number), gender);
+    }
+
+    /// <summary>
+    /// Retorna o número por extenso, em moeda.
+    /// </summary>
+    /// <param name="number">O número a ser escrito.</param>
+    /// <param name="currency">A moeda a ser utilizada. Tipos suportados: Real Brasileiro, Dólar Americano e Euro.</param>
+    /// <returns>String</returns>
+    /// <remarks></remarks>
+    public static string ToWords(this double number, eCurrency currency)
+    {
+        return ToWordsInternal(Conversions.ToDecimal(number), currency);
+    }
+
+    public static bool DoubleTryParseNullable(string text, ref double? outValue)
+    {
+        bool success = double.TryParse(text, out double parsedValue);
+        outValue = success ? parsedValue : default(double?);
+        return success;
+    }
+
+
+    /* TODO ERROR: Skipped RegionDirectiveTrivia */
+    /// <summary>
+    /// Retorna o número por extenso.
+    /// </summary>
+    /// <param name="number">O número a ser escrito.</param>
+    /// <param name="gender">Define se será escrito no mesculino (dois) ou feminino (duas).</param>
+    /// <returns>String</returns>
+    /// <remarks></remarks>
+    public static string ToWords(this decimal number, eGender gender = eGender.Masculino)
+    {
+        return ToWordsInternal(number, gender);
+    }
+
+    /// <summary>
+    /// Retorna o número por extenso, em moeda.
+    /// </summary>
+    /// <param name="number">O número a ser escrito.</param>
+    /// <param name="currency">A moeda a ser utilizada. Tipos suportados: Real Brasileiro, Dólar Americano e Euro.</param>
+    /// <returns>String</returns>
+    /// <remarks></remarks>
+    public static string ToWords(this decimal number, eCurrency currency)
+    {
+        return ToWordsInternal(number, currency);
+    }
+
+    public static bool DecimalTryParseNullable(string text, ref decimal? outValue)
+    {
+        bool success = decimal.TryParse(text, out decimal parsedValue);
+        outValue = success ? parsedValue : default(decimal?);
+        return success;
+    }
+
+
+    /* TODO ERROR: Skipped RegionDirectiveTrivia */
+    /* TODO ERROR: Skipped RegionDirectiveTrivia */
+    private static string ToWordsInternal(decimal number, eGender gender = eGender.Masculino)
+    {
+        return GeraExtensoInternal(number, false, gender);
+    }
+
+    private static string ToWordsInternal(decimal number, eCurrency Currency)
+    {
+        return GeraExtensoInternal(number, true, eGender.Masculino, Currency);
+    }
+
+    private static readonly string[] unidades = new string[] { "Zero", "Um", "Dois", "Três", "Quatro", "Cinco", "Seis", "Sete", "Oito", "Nove" };
+    private static readonly string[] unidadesFem = new string[] { "Zero", "Uma", "Duas", "Três", "Quatro", "Cinco", "Seis", "Sete", "Oito", "Nove" };
+    private static readonly string[] dezenas1 = new string[] { "Dez", "Onze", "Doze", "Treze", "Quatorze", "Quinze", "Dezesseis", "Dezessete", "Dezoito", "Dezenove" };
+    private static readonly string[] dezenas2 = new string[] { "Vinte", "Trinta", "Quarenta", "Cinquenta", "Sessenta", "Setenta", "Oitenta", "Noventa" };
+    private static readonly string[] centenas = new string[] { "Cem", "Cento", "Duzentos", "Trezentos", "Quatrocentos", "Quinhentos", "Seiscentos", "Setecentos", "Oitocentos", "Novecentos" };
+    private static readonly string[] centenasFem = new string[] { "Cem", "Cento", "Duzentas", "Trezentas", "Quatrocentas", "Quinhentas", "Seiscentas", "Setecentas", "Oitocentas", "Novecentas" };
+    private static readonly string[] real_br = new string[] { "Real", "Reais", "Centavo", "Centavos" };
+    private static readonly string[] dolar_us = new string[] { "Dólar", "Dólares", "Centavo", "Centavos" };
+    private static readonly string[] euro_eu = new string[] { "Euro", "Euros", "Cêntimo", "Cêntimos" };
+
+    private static string GeraExtensoInternal(decimal number, bool moeda, eGender genero, eCurrency tipoMoeda = eCurrency.Real_BRL)
+    {
+        var currency = Array.Empty<string>();
+        switch (tipoMoeda)
+        {
+            case eCurrency.Real_BRL:
+                {
+                    currency = real_br;
+                    break;
+                }
+
+            case eCurrency.Dolar_USD:
+                {
+                    currency = dolar_us;
+                    break;
+                }
+
+            case eCurrency.Euro_EUR:
+                {
+                    currency = euro_eu;
+                    break;
+                }
+        }
+
+        // variaveis
+        number = Math.Abs(number);
+        string numstr = "";
+        int reais;
+        int centavos;
+
+        // separa a parte inteira da parte fracionaria
+        reais = (int)Math.Truncate(number);
+        centavos = Conversions.ToInteger((number - reais) * 100);
+
+        // parte inteira
+        switch (reais.ToString().Trim().Length)
+        {
+            case var @case when @case <= 3: // centenas
+                {
+                    if (reais != 1)
+                    {
+                        numstr = GetNumberStringArray(reais, genero);
+                        if (moeda == true)
+                        {
+                            numstr += $" {currency[1]}"; // " Reais"
+                        }
+                    }
+                    else
+                    {
+                        numstr = GetNumberStringArray(reais, genero);
+                        if (moeda == true)
+                        {
+                            numstr += $" {currency[0]}"; // " Real"
+                        }
+                    }
+
+                    break;
+                }
+
+            case var case1 when case1 <= 6: // milhares
+                {
+                    int centenas, milhares;
+                    decimal tmp = (decimal)(reais / (double)1000);
+                    milhares = Conversions.ToInteger(tmp);
+                    centenas = reais - milhares * 1000;
+                    numstr = GetNumberStringArray(milhares, genero) + " Mil";
+                    if (centenas < 101)
+                    {
+                        if (centenas > 0)
+                        {
+                            numstr = numstr + " e " + GetNumberStringArray(centenas, genero);
+                            if (moeda == true)
+                            {
+                                numstr += $" {currency[1]}"; // " Reais"
+                            }
+                        }
+                        else
+                        {
+                            if (moeda == true)
+                            {
+                                numstr += $" {currency[1]}"; // " Reais"
+                            }
+                        }
+                    }
+                    else if (centenas == 100 | centenas == 200 | centenas == 300 | centenas == 400 | centenas == 500 | centenas == 600 | centenas == 700 | centenas == 800 | centenas == 900)
+
+                    {
+                        numstr = numstr + " e " + GetNumberStringArray(centenas, genero);
+                        if (moeda == true)
+                        {
+                            numstr += $" {currency[1]}"; // " Reais"
+                        }
+                    }
+                    else
+                    {
+                        numstr = numstr + ", " + GetNumberStringArray(centenas, genero);
+                        if (moeda == true)
+                        {
+                            numstr += $" {currency[1]}"; // " Reais"
+                        }
+                    }
+
+                    break;
+                }
+
+            case var case2 when case2 <= 9: // milhões
+                {
+                    int centenas, milhares, milhoes;
+                    decimal tmp = (decimal)(reais / (double)1000000);
+                    milhoes = Conversions.ToInteger(tmp);
+                    tmp = (decimal)((reais - milhoes * 1000000) / (double)1000);
+                    milhares = Conversions.ToInteger(tmp);
+                    centenas = Conversions.ToInteger((tmp - milhares) * 1000);
+                    if (milhoes == 1)
+                    {
+                        if (milhares == 0 & centenas == 0)
+                        {
+                            numstr = GetNumberStringArray(milhoes, eGender.Masculino) + " Milhão";
+                            if (moeda == true)
+                            {
+                                numstr += " de";
+                            }
+                        }
+                        else if (milhares > 0 & centenas == 0)
+                        {
+                            if (milhares < 100)
+                            {
+                                numstr = GetNumberStringArray(milhoes, eGender.Masculino) + " Milhão e ";
+                            }
+                            else if (milhares == 100 | milhares == 200 | milhares == 300 | milhares == 400 | milhares == 500 | milhares == 600 | milhares == 700 | milhares == 800 | milhares == 900)
+
+                            {
+                                numstr = GetNumberStringArray(milhoes, eGender.Masculino) + " Milhão e ";
+                            }
+                            else
+                            {
+                                numstr = GetNumberStringArray(milhoes, eGender.Masculino) + " Milhão, ";
+                            }
+                        }
+                        else if (milhares == 0 & centenas > 0)
+                        {
+                            if (centenas < 100)
+                            {
+                                numstr = GetNumberStringArray(milhoes, eGender.Masculino) + " Milhão";
+                            }
+                            else if (centenas == 100 | centenas == 200 | centenas == 300 | centenas == 400 | centenas == 500 | centenas == 600 | centenas == 700 | centenas == 800 | centenas == 900)
+
+                            {
+                                numstr = GetNumberStringArray(milhoes, eGender.Masculino) + " Milhão e ";
+                            }
+                            else
+                            {
+                                numstr = GetNumberStringArray(milhoes, eGender.Masculino) + " Milhão";
+                            }
+                        }
+                        else if (milhares > 0 & centenas > 0)
+                        {
+                            numstr = GetNumberStringArray(milhoes, eGender.Masculino) + " Milhão, ";
+                        }
+                    }
+                    else if (milhoes > 1)
+                    {
+                        if (milhares == 0 & centenas == 0)
+                        {
+                            numstr = GetNumberStringArray(milhoes, eGender.Masculino) + " Milhões";
+                            if (moeda == true)
+                            {
+                                numstr += " de";
+                            }
+                        }
+                        else if (milhares > 0 & centenas == 0)
+                        {
+                            if (milhares < 100)
+                            {
+                                numstr = GetNumberStringArray(milhoes, eGender.Masculino) + " Milhões e ";
+                            }
+                            else if (milhares == 100 | milhares == 200 | milhares == 300 | milhares == 400 | milhares == 500 | milhares == 600 | milhares == 700 | milhares == 800 | milhares == 900)
+
+                            {
+                                numstr = GetNumberStringArray(milhoes, eGender.Masculino) + " Milhões e ";
+                            }
+                            else
+                            {
+                                numstr = GetNumberStringArray(milhoes, eGender.Masculino) + " Milhões, ";
+                            }
+                        }
+                        else if (milhares == 0 & centenas > 0)
+                        {
+                            if (centenas < 100)
+                            {
+                                numstr = GetNumberStringArray(milhoes, eGender.Masculino) + " Milhões";
+                            }
+                            else if (centenas == 100 | centenas == 200 | centenas == 300 | centenas == 400 | centenas == 500 | centenas == 600 | centenas == 700 | centenas == 800 | centenas == 900)
+
+                            {
+                                numstr = GetNumberStringArray(milhoes, eGender.Masculino) + " Milhões e ";
+                            }
+                            else
+                            {
+                                numstr = GetNumberStringArray(milhoes, eGender.Masculino) + " Milhões";
+                            }
+                        }
+                        else if (milhares > 0 & centenas > 0)
+                        {
+                            numstr = GetNumberStringArray(milhoes, eGender.Masculino) + " Milhões, ";
+                        }
+                    }
+
+                    if (milhares > 0)
+                    {
+                        numstr = numstr + GetNumberStringArray(milhares, genero) + " Mil";
+                    }
+
+                    if (centenas < 101)
+                    {
+                        if (centenas > 0)
+                        {
+                            numstr = numstr + " e " + GetNumberStringArray(centenas, genero);
+                        }
+
+                        if (moeda == true)
+                        {
+                            numstr += $" {currency[1]}"; // " Reais"
+                        }
+                    }
+                    else
+                    {
+                        numstr = numstr + ", " + GetNumberStringArray(centenas, genero);
+                        if (moeda == true)
+                        {
+                            numstr += $" {currency[1]}"; // " Reais"
+                        }
+                    }
+
+                    break;
+                }
+
+            case var case3 when case3 <= 12: // bilhões
+                {
+                    numstr = "zzz...";
+                    break;
+                }
+
+            case var case4 when case4 <= 15: // trilhões
+                {
+                    numstr = "chega né?...";
+                    break;
+                }
+        }
+
+        // parte fracionaria
+        switch (centavos)
+        {
+            case 1:
+                {
+                    numstr = numstr + " e " + GetNumberStringArray(centavos, eGender.Masculino) + $" {currency[2]}"; // " Centavo"
+                    break;
+                }
+
+            case var case5 when case5 > 1:
+                {
+                    numstr = numstr + " e " + GetNumberStringArray(centavos, eGender.Masculino) + $" {currency[3]}"; // " Centavos"
+                    break;
+                }
+        }
+        // fim
+        return numstr;
+    }
+
+    private static string GetNumberStringArray(int number, eGender gender)
+    {
+        int centena, dezena, unidade;
+        string numstr = "";
+        switch (number.ToString().Length)
+        {
+            case 1:
+                {
+                    switch (gender)
+                    {
+                        case eGender.Masculino:
+                            {
+                                numstr = unidades[number];
+                                break;
+                            }
+
+                        case eGender.Feminino:
+                            {
+                                numstr = unidadesFem[number];
+                                break;
+                            }
+                    }
+
+                    break;
+                }
+
+            case 2:
+                {
+                    switch (number)
+                    {
+                        case var @case when @case < 20:
+                            {
+                                numstr = dezenas1[number - 10];
+                                break;
+                            }
+
+                        case var case1 when case1 >= 20:
+                            {
+                                dezena = Conversions.ToInteger(number.ToString()[..1]);
+                                unidade = Conversions.ToInteger(number.ToString().Substring(1, 1));
+                                numstr = dezenas2[dezena - 2];
+                                if (unidade > 0)
+                                {
+                                    numstr = numstr + " e " + unidades[unidade];
+                                }
+
+                                break;
+                            }
+                    }
+
+                    break;
+                }
+
+            case 3:
+                {
+                    switch (number)
+                    {
+                        case 100:
+                            {
+                                switch (gender)
+                                {
+                                    case eGender.Masculino:
+                                        {
+                                            numstr = centenas[0];
+                                            break;
+                                        }
+
+                                    case eGender.Feminino:
+                                        {
+                                            numstr = centenasFem[0];
+                                            break;
+                                        }
+                                }
+
+                                break;
+                            }
+
+                        case var case2 when case2 > 100:
+                            {
+                                centena = Conversions.ToInteger(number.ToString()[..1]);
+                                dezena = Conversions.ToInteger(number.ToString().Substring(1, 1));
+                                unidade = Conversions.ToInteger(number.ToString().Substring(2, 1));
+                                switch (gender)
+                                {
+                                    case eGender.Masculino:
+                                        {
+                                            numstr = centenas[centena];
+                                            break;
+                                        }
+
+                                    case eGender.Feminino:
+                                        {
+                                            numstr = centenasFem[centena];
+                                            break;
+                                        }
+                                }
+
+                                if (dezena > 0)
+                                {
+                                    switch (int.Parse(dezena.ToString() + unidade ?? ""))
+                                    {
+                                        case var case3 when case3 < 20:
+                                            {
+                                                numstr = numstr + " e " + dezenas1[Conversions.ToInteger(dezena.ToString() + unidade) - 10];
+                                                break;
+                                            }
+
+                                        case var case4 when case4 >= 20:
+                                            {
+                                                numstr = numstr + " e " + dezenas2[dezena - 2];
+                                                if (unidade > 0)
+                                                {
+                                                    numstr = numstr + " e " + unidades[unidade];
+                                                }
+
+                                                break;
+                                            }
+                                    }
+                                }
+                                else
+                                {
+                                    numstr = numstr + " e " + unidades[unidade];
+                                }
+
+                                break;
+                            }
+                    }
+
+                    break;
+                }
+        }
+
+        return numstr;
+    }
+
+    /* TODO ERROR: Skipped RegionDirectiveTrivia */
+    public enum eGender
+    {
+        Masculino = 0,
+        Feminino = 1
+    }
+
+    public enum eCurrency
+    {
+        Real_BRL = 0,
+        Dolar_USD = 1,
+        Euro_EUR = 2
+    }
+
+
+
+
+}

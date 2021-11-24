@@ -1,0 +1,784 @@
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Linq;
+using System.Linq.Expressions;
+using EficazFramework.Extensions;
+using Microsoft.VisualBasic;
+using Microsoft.VisualBasic.CompilerServices;
+
+namespace EficazFramework.Expressions
+{
+
+	public class ExpressionItem : INotifyPropertyChanged
+	{
+		#region Fields
+
+		internal ExpressionBuilder _tmpOwnerExpressionBuilder = null;
+		internal ExpressionUpdater _tmpOwnerExpressionUpdater = null;
+
+		#endregion
+
+		#region Properties
+
+		#region Common Usage
+
+		private ExpressionProperty _selectedProperty;
+		public ExpressionProperty SelectedProperty
+		{
+			get
+			{
+				return _selectedProperty;
+			}
+
+			set
+			{
+				_selectedProperty = value;
+				RaisePropertyChanged("SelectedProperty");
+				RaisePropertyChanged("EnumValues");
+				OnExpressionProperty_Changed();
+			}
+		}
+
+		private IEnumerable<EnumMember> _availableOperators = null;
+		public IEnumerable<EnumMember> AvailableOperators
+		{
+			get
+			{
+				return _availableOperators;
+			}
+		}
+
+		private Enums.eCompareMethod _operator = Enums.eCompareMethod.Equals;
+		public Enums.eCompareMethod Operator
+		{
+			get
+			{
+				return _operator;
+			}
+
+			set
+			{
+				_operator = value;
+				RaisePropertyChanged("Operator");
+				RaisePropertyChanged("ValueToString");
+			}
+		}
+
+		public IEnumerable<EnumMember> EnumValues
+		{
+			get
+			{
+				if (SelectedProperty is null)
+					return null;
+				return SelectedProperty.GetEnumValues();
+			}
+		}
+
+		private object _value1;
+		public object Value1
+		{
+			get
+			{
+				return _value1;
+			}
+
+			set
+			{
+				_value1 = CoerceValueChanged(value);
+				var args = RaisePropertyChanged("Value1");
+				OnValue_Changed(args);
+				RaisePropertyChanged("ValueToString");
+			}
+		}
+
+		private string _value1StringFormat;
+		public string Value1StringFormat
+		{
+			get
+			{
+				return _value1StringFormat;
+			}
+
+			set
+			{
+				_value1StringFormat = value;
+				RaisePropertyChanged("Value1StringFormat");
+			}
+		}
+
+		private object _value2;
+		public object Value2
+		{
+			get
+			{
+				return _value2;
+			}
+
+			set
+			{
+				_value2 = CoerceValueChanged(value, true);
+				var args = RaisePropertyChanged("Value2");
+				OnValue_Changed(args);
+				RaisePropertyChanged("ValueToString");
+			}
+		}
+
+		private string _value2StringFormat;
+		public string Value2StringFormat
+		{
+			get
+			{
+				return _value2StringFormat;
+			}
+
+			set
+			{
+				_value2StringFormat = value;
+				RaisePropertyChanged("Value2StringFormat");
+			}
+		}
+
+		// RESULTING STRING VALUE:
+		public string ValueToString
+		{
+			get
+			{
+				return Conversions.ToString(ParseValueToString());
+			}
+		}
+
+		#region Blazor Helper
+
+		public string SelectedPropertyPath
+		{
+			get
+			{
+				if (SelectedProperty is null)
+					return null;
+				return SelectedProperty.PropertyPath;
+			}
+
+			set
+			{
+				SelectedProperty = _tmpOwnerExpressionBuilder?.Properties.Where(f => (f.PropertyPath ?? "") == (value ?? "")).FirstOrDefault();
+				RaisePropertyChanged("SelectedPropertyPath");
+			}
+		}
+
+		#endregion
+
+		#endregion
+
+		#region UPDATE MODE
+
+		public bool UpdateMode { get; set; } = false;
+
+		private object _valueToUpdate;
+		public object ValueToUpdate
+		{
+			get
+			{
+				return _valueToUpdate;
+			}
+
+			set
+			{
+				_valueToUpdate = CoerceValueChanged(value);
+				RaisePropertyChanged("ValueToUpdate");
+			}
+		}
+
+		private bool _allowExpession = false;
+		public bool AllowExpression
+		{
+			get
+			{
+				return _allowExpession;
+			}
+
+			set
+			{
+				_allowExpession = value;
+				RaisePropertyChanged("AllowExpression");
+			}
+		}
+
+		private UpdateValueMode _updateValueType = UpdateValueMode.Fixed;
+		public UpdateValueMode UpdateValueType
+		{
+			get
+			{
+				return _updateValueType;
+			}
+
+			set
+			{
+				_updateValueType = (UpdateValueMode)ValueType_Coercion(value);
+				RaisePropertyChanged("UpdateValueType");
+				OnValueType_Changed();
+			}
+		}
+
+		#endregion
+
+		#region DateTime Helpers
+
+		public DateTime? DateTimeValue1
+		{
+			get
+			{
+				if (_value1 == null)
+					return null;
+				return (DateTime?)_value1;
+			}
+
+			set
+			{
+				Value1 = CoerceValueChanged(value);
+			}
+		}
+
+		public DateTime? DateTimeValue2
+		{
+			get
+			{
+				if (_value2 == null)
+					return null;
+				return (DateTime?)_value2;
+			}
+
+			set
+			{
+				Value2 = CoerceValueChanged(value);
+			}
+		}
+
+		#endregion
+
+		#endregion
+
+		#region Property Coercion
+
+		private object CoerceValueChanged(object value, bool datafinal = false)
+		{
+			if (SelectedProperty is null)
+				return value;
+			if (SelectedProperty.Editor == Expressions.eExpressionEditor.Number)
+			{
+				if (value is null)
+					return null;
+
+				double result;
+                bool valid = double.TryParse(value.ToString(), out result);
+				if (valid == false)
+					return null;
+				else
+					return result; // And Me.SelectedProperty.AllowNull = True
+			}
+
+			if (UpdateMode == false)
+			{
+				if (SelectedProperty.Editor != Expressions.eExpressionEditor.Date | Operator != EficazFramework.Enums.eCompareMethod.Between)
+					return value;
+			}
+			else if (SelectedProperty.Editor != Expressions.eExpressionEditor.Date)
+				return value;
+			DateTime resultDate;
+			DateTime? originalDate = (DateTime?)value;
+			if (originalDate.HasValue == false)
+				return null;
+			if (Operator != EficazFramework.Enums.eCompareMethod.Between)
+			{
+				resultDate = originalDate.Value.Date;
+			}
+			else if (datafinal == false)
+			{
+				resultDate = new DateTime(originalDate.Value.Year, originalDate.Value.Month, originalDate.Value.Day, 0, 0, 0);
+			}
+			else
+			{
+				resultDate = new DateTime(originalDate.Value.Year, originalDate.Value.Month, originalDate.Value.Day, 23, 59, 59);
+			}
+
+			return resultDate;
+		}
+
+		private object ValueType_Coercion(UpdateValueMode value)
+		{
+			if (AllowExpression == false & value == UpdateValueMode.Expression)
+			{
+				return UpdateValueMode.Fixed;
+			}
+			else
+			{
+				return value;
+			}
+		}
+
+		#endregion
+
+		#region Property Changed
+
+		private void OnExpressionProperty_Changed()
+		{
+			if (SelectedProperty is null)
+			{
+				_availableOperators = null;
+				RaisePropertyChanged("AvailableOperators");
+				Operator = EficazFramework.Enums.eCompareMethod.Equals;
+				Value1 = null;
+				Value2 = null;
+				ValueToUpdate = null;
+				AllowExpression = false;
+			}
+			else
+			{
+				_availableOperators = SelectedProperty.GetOperators();
+				RaisePropertyChanged("AvailableOperators");
+				Operator = SelectedProperty.DefaultOperator;
+				Value1 = SelectedProperty.DefaultValue1;
+				Value2 = SelectedProperty.DefaultValue2;
+				ValueToUpdate = SelectedProperty.DefaultValue1;
+				AllowExpression = SelectedProperty.AllowExpressions;
+			}
+		}
+
+		private void OnValueType_Changed()
+		{
+			ValueToUpdate = null;
+		}
+
+		private void OnValue_Changed(PropertyChangedEventArgs e)
+		{
+			if (SelectedProperty is null)
+				return;
+			if (!UpdateMode)
+			{
+				if (Value1 is null & e.PropertyName == "Value1")
+				{
+					Value2 = null;
+					return;
+				}
+
+				if (e.PropertyName == "Value2" & Value2 is null & Operator == EficazFramework.Enums.eCompareMethod.Between)
+					return;
+			}
+			else if (ValueToUpdate is null)
+				return;
+		}
+
+
+		#endregion
+
+		#region Helpers
+
+		private object ParseValueToString()
+		{
+			if (UpdateMode == false)
+			{
+				if (Conversions.ToBoolean(Operators.ConditionalCompareObjectEqual(Value1, null, false)))
+					return null;
+				if (Value2 is null & Operator == EficazFramework.Enums.eCompareMethod.Between)
+					return null;
+				string pattern1 = Value1StringFormat;
+				string pattern2 = Value2StringFormat;
+				switch (SelectedProperty.Editor)
+				{
+					case Expressions.eExpressionEditor.Date:
+						{
+							if (string.IsNullOrEmpty(pattern1) | string.IsNullOrWhiteSpace(pattern1))
+								pattern1 = System.Threading.Thread.CurrentThread.CurrentUICulture.DateTimeFormat.ShortDatePattern;
+							if (string.IsNullOrEmpty(pattern2) | string.IsNullOrWhiteSpace(pattern2))
+								pattern2 = System.Threading.Thread.CurrentThread.CurrentUICulture.DateTimeFormat.ShortDatePattern;
+							if (Operator == EficazFramework.Enums.eCompareMethod.Between)
+							{
+								return string.Format("{0:" + pattern1 + "} - {1:" + pattern2 + "}", Value1, Value2);
+							}
+							else
+							{
+								if (!string.IsNullOrEmpty(Value1StringFormat))
+									pattern1 = Value1StringFormat;
+								return string.Format("{0:" + pattern1 + "}", Value1);
+							}
+						}
+
+					case Expressions.eExpressionEditor.Number:
+						{
+							if (Operator == EficazFramework.Enums.eCompareMethod.Between)
+							{
+								return string.Format("{0:" + pattern1 + "} - {1:" + pattern2 + "}", Value1, Value2);
+							}
+							else
+							{
+								return string.Format("{0:" + pattern1 + "}", Value1.ToString());
+							}
+						}
+
+					case Expressions.eExpressionEditor.BoolSelection:
+						{
+							if (Conversions.ToBoolean(Value1) == true)
+								return Resources.Strings.Descriptions.BoolToYesNo_True;
+							else
+								return Resources.Strings.Descriptions.BoolToYesNo_False;
+						}
+
+					case Expressions.eExpressionEditor.EnumSelection:
+						{
+							return Extensions.Enums.GetDescription(Value1);
+						}
+
+					case Expressions.eExpressionEditor.EnumLocalizedSelection:
+						{
+							return Extensions.Enums.GetLocalizedDescription(Value1);
+						}
+
+					default:
+						{
+							if (Value1 != null)
+								return Value1.ToString();
+							break;
+						}
+				}
+			}
+			else
+			{
+				if (Conversions.ToBoolean(Operators.ConditionalCompareObjectEqual(ValueToUpdate, null, false)))
+					return null;
+				switch (SelectedProperty.Editor)
+				{
+					case Expressions.eExpressionEditor.Date:
+						{
+							string pattern = System.Threading.Thread.CurrentThread.CurrentUICulture.DateTimeFormat.ShortDatePattern;
+							return string.Format("{0:" + pattern + "}", ValueToUpdate);
+						}
+
+					case Expressions.eExpressionEditor.Number:
+						{
+							return ValueToUpdate.ToString();
+						}
+
+					case Expressions.eExpressionEditor.BoolSelection:
+						{
+							if (Conversions.ToBoolean(ValueToUpdate) == true)
+								return Resources.Strings.Descriptions.BoolToYesNo_True;
+							else
+								return Resources.Strings.Descriptions.BoolToYesNo_False;
+						}
+
+					case Expressions.eExpressionEditor.EnumSelection:
+						{
+							return Extensions.Enums.GetDescription(ValueToUpdate);
+						}
+
+					case Expressions.eExpressionEditor.EnumLocalizedSelection:
+						{
+							return Extensions.Enums.GetLocalizedDescription(ValueToUpdate);
+						}
+
+					default:
+						{
+							return ValueToUpdate.ToString();
+						}
+				}
+			}
+
+			return null;
+		}
+
+		#endregion
+
+		#region Expression
+
+		internal static System.Reflection.MethodInfo ContainsMethod = typeof(string).GetMethod("Contains", new[] { typeof(string) });
+		internal static System.Reflection.MethodInfo StartsWithMethod = typeof(string).GetMethod("StartsWith", new[] { typeof(string) });
+		internal static System.Reflection.MethodInfo LengthMethod = typeof(string).GetMethod("get_Length", new[] { typeof(string) });
+		internal static System.Reflection.MethodInfo ToLowerMethod = typeof(string).GetMethod("ToLower", Array.Empty<Type>());
+		internal static System.Reflection.MethodInfo NullToEmptyMethod = typeof(Extensions.TextExtensions).GetMethod("NullToEmpty", new[] { typeof(string) });
+
+		internal string Validate(ref bool ignores, bool allowNulls)
+		{
+			var errors = new System.Text.StringBuilder();
+			errors.Append("");
+			// 
+			if (SelectedProperty is null)
+            {
+				ignores = true;
+				return null;
+			}
+			bool canbenull = SelectedProperty.AllowNull && allowNulls;
+			if (Value1 is null & ignores == false & canbenull == false)
+			{
+				errors.AppendLine(string.Format(Resources.Strings.Validation.Required, SelectedProperty.DisplayName));
+			}
+
+			if (Value2 is null & Operator == EficazFramework.Enums.eCompareMethod.Between & ignores == false & canbenull == false)
+			{
+				errors.AppendLine(string.Format(Resources.Strings.Validation.Required, SelectedProperty.DisplayName));
+			}
+			// 
+			string finalStr = errors.ToString().Trim();
+            return finalStr;
+		}
+
+		public Expression<Func<TElement, bool>> Build<TElement>(Expressions.ExpressionBuilder ownerExpressionBuilder)
+		{
+            _tmpOwnerExpressionBuilder = ownerExpressionBuilder ?? throw new NullReferenceException();
+
+            if (Operator != Enums.eCompareMethod.Between && Value1 == null && SelectedProperty.AllowNull)
+				return null;
+
+            if (Operator == Enums.eCompareMethod.Between && (Value1 == null || Value2 == null) && SelectedProperty.AllowNull)
+                return null;
+
+            if (SelectedProperty.Editor != Expressions.eExpressionEditor.Findable)
+				return (Expression<Func<TElement, bool>>)BuildExpression<TElement>(Value1, Value2);
+			else
+				return BuildForeignExpression<TElement>(Value1);
+		}
+
+		internal Expression BuildExpression<TElement>(object value, object value2 = null) // Expression(Of Func(Of TElement, Boolean))
+		{
+			// Dim m As Expression = ExpressionBuilder._MP
+			if (!_tmpOwnerExpressionBuilder._MP_new.ContainsKey(typeof(TElement)))
+				_tmpOwnerExpressionBuilder._MP_new.Add(typeof(TElement), Expression.Parameter(typeof(TElement), "f"));
+			Expression m = _tmpOwnerExpressionBuilder._MP_new[typeof(TElement)];
+			var args = new Events.ExpressionEventArgs(SelectedProperty.DisplayName, SelectedProperty.PropertyPath, Operator, value, typeof(TElement), this);
+			_tmpOwnerExpressionBuilder.CallExpressionBuilding(_tmpOwnerExpressionBuilder, args);
+			var path = args.PropertyPath.Split("."); // Me.SelectedProperty.PropertyPath.Split(".")
+			foreach (var access in path)
+				m = Expression.Property(m, access);
+            var resolvedValue = m.Type.IsEnum ? Enum.Parse(m.Type, Conversions.ToString(args.ValueTyped)) : Conversion.CTypeDynamic(args.ValueTyped, m.Type);
+            // If value.GetType.IsEnum Then resolvedValue = CInt(value)
+            object c;
+            if (Nullable.GetUnderlyingType(m.Type) is null)
+				c = Expression.Constant(resolvedValue);
+			else
+			{
+				if (args.ValueTyped is null)
+					c = Expression.Constant(null);
+				else
+					c = Expression.Convert(Expression.Constant(args.ValueTyped, args.ValueTyped.GetType()), m.Type);
+			}
+
+			object c2 = null;
+			if (args.Operator == EficazFramework.Enums.eCompareMethod.Between)
+			{
+				object resolvedValue2 = null;
+				if (m.Type.IsEnum)
+				{
+					resolvedValue = Enum.Parse(m.Type, Conversions.ToString(value2));
+				}
+				else
+				{
+					resolvedValue = Conversion.CTypeDynamic(value2, m.Type);
+				}
+
+                // If value2.GetType.IsEnum Then resolvedValue2 = CInt(value2)
+                if (Nullable.GetUnderlyingType(m.Type) is null)
+					c2 = Expression.Constant(resolvedValue2);
+				else
+				{
+					if (value2 is null)
+						c2 = Expression.Constant(null);
+					else
+						c2 = Expression.Convert(Expression.Constant(value2, value2.GetType()), m.Type);
+				}
+			}
+
+            Expression b;
+            switch (args.Operator)
+			{
+				case EficazFramework.Enums.eCompareMethod.BiggerThan:
+					{
+						b = Expression.GreaterThan(m, (Expression)c);
+						break;
+					}
+
+				case EficazFramework.Enums.eCompareMethod.BiggerOrEqualThan:
+					{
+						b = Expression.GreaterThanOrEqual(m, (Expression)c);
+						break;
+					}
+
+				case EficazFramework.Enums.eCompareMethod.Equals:
+					{
+						b = Expression.Equal(m, (Expression)c);
+						break;
+					}
+
+				case EficazFramework.Enums.eCompareMethod.Different:
+					{
+						b = Expression.NotEqual(m, (Expression)c);
+						break;
+					}
+
+				case EficazFramework.Enums.eCompareMethod.Contains:
+					{
+						b = Expression.Call(m, ContainsMethod, (Expression)c);
+						break;
+					}
+
+				case EficazFramework.Enums.eCompareMethod.StartsWith:
+					{
+						b = Expression.Call(m, StartsWithMethod, (Expression)c);
+						break;
+					}
+
+				case EficazFramework.Enums.eCompareMethod.Length:
+					{
+						m = Expression.Property(m, "Length");
+						b = Expression.Equal(m, Expression.Constant(args.ValueTyped, typeof(int)));
+						break;
+					}
+
+				case EficazFramework.Enums.eCompareMethod.Between:
+					{
+						b = Expression.And(Expression.GreaterThanOrEqual(m, (Expression)c), Expression.LessThanOrEqual(m, (Expression)c2));
+						break;
+					}
+
+				case EficazFramework.Enums.eCompareMethod.LowerOrEqualThan:
+					{
+						b = Expression.LessThanOrEqual(m, (Expression)c);
+						break;
+					}
+
+				case EficazFramework.Enums.eCompareMethod.LowerThan:
+					{
+						b = Expression.LessThan(m, (Expression)c);
+						break;
+					}
+
+				default:
+					{
+						b = Expression.Equal(m, (Expression)c);
+						break;
+					}
+			}
+
+			return Expression.Lambda(b, _tmpOwnerExpressionBuilder._MP_new[typeof(TElement)]);
+			// Return Expression.Lambda(Of Func(Of TElement, Boolean))(b, ExpressionBuilder._MP_new(GetType(TElement)))
+		}
+
+		internal Expression<Func<TElement, bool>> BuildForeignExpression<TElement>(object value)
+		{
+			// Dim e As ParameterExpression = Expression.Parameter(GetType(TElement), "f")
+			// Dim m As Expression = ExpressionBuilder._MP
+			if (!_tmpOwnerExpressionBuilder._MP_new.ContainsKey(typeof(TElement)))
+				_tmpOwnerExpressionBuilder._MP_new.Add(typeof(TElement), Expression.Parameter(typeof(TElement), "f"));
+			Expression m; // = ExpressionBuilder._MP_new(GetType(TElement))
+			Expression b = null;
+			var args = new Events.ExpressionEventArgs(SelectedProperty.DisplayName, SelectedProperty.PropertyPath, Operator, value, typeof(TElement), this);
+			_tmpOwnerExpressionBuilder.CallExpressionBuilding(_tmpOwnerExpressionBuilder, args);
+			foreach (var mp in SelectedProperty.FindableRelationships)
+			{
+				m = _tmpOwnerExpressionBuilder._MP_new[typeof(TElement)];
+				var path = args.PropertyPath.Split("."); // Me.SelectedProperty.PropertyPath.Split(".")
+				foreach (var access in path)
+				{
+					if (!((access ?? "") == (path.LastOrDefault() ?? "")))
+					{
+						m = Expression.Property(m, access);
+					}
+					else
+					{
+						m = Expression.Property(m, mp.ForeignKey);
+					}
+				}
+
+				object finalvalue = null;
+				object c; // = Expression.Constant(finalvalue) 'Expression.Convert(Expression.Constant(resolvedValue, resolvedValue.GetType), m.Type)
+				if (value != null)
+                {
+					var resolvedValue = args.ValueTyped.GetType().GetProperty(mp.PrincipalKey).GetValue(args.ValueTyped);
+					finalvalue = Conversion.CTypeDynamic(resolvedValue, resolvedValue.GetType());
+
+					if (resolvedValue.GetType().IsEnum)
+						finalvalue = Conversions.ToInteger(resolvedValue);
+
+					if (Nullable.GetUnderlyingType(m.Type) is null)
+						c = Expression.Constant(finalvalue);
+					else
+						c = Expression.Convert(Expression.Constant(finalvalue, finalvalue.GetType()), m.Type);
+				}
+				else
+                {
+					c = Expression.Constant(finalvalue);
+				}
+
+				switch (args.Operator)
+				{
+					case EficazFramework.Enums.eCompareMethod.Equals:
+						{
+							if (b is null)
+								b = Expression.Equal(m, (Expression)c);
+							else
+								b = Expression.And(b, Expression.Equal(m, (Expression)c));
+							break;
+						}
+
+					case EficazFramework.Enums.eCompareMethod.Different:
+						{
+							if (b is null)
+								b = Expression.NotEqual(m, (Expression)c);
+							else
+								b = Expression.And(b, Expression.NotEqual(m, (Expression)c));
+							break;
+						}
+
+					default:
+						{
+							throw new InvalidOperationException("Foreign Expressions Tress don't support this comparer operator.");
+						}
+				}
+			}
+
+			return (Expression<Func<TElement, bool>>)Expression.Lambda(b, _tmpOwnerExpressionBuilder._MP_new[typeof(TElement)]);
+			// Return Expression.Lambda(Of Func(Of TElement, Boolean))(b, ExpressionBuilder._MP_new(GetType(TElement)))
+		}
+
+		#endregion
+
+		public override string ToString()
+		{
+			if (UpdateMode == false)
+			{
+				return string.Format("{0} {1} {2}; ", SelectedProperty?.DisplayName, OperatorToString(), ValueToString);
+			}
+			else
+			{
+				return "not implemented yet";
+			}
+		}
+
+		private object OperatorToString()
+		{
+			return Extensions.Enums.GetDescription(Operator);
+		}
+
+		private PropertyChangedEventArgs RaisePropertyChanged(string propertyname)
+		{
+			var args = new PropertyChangedEventArgs(propertyname);
+			PropertyChanged?.Invoke(this, args);
+			return args;
+		}
+
+		#region Events
+
+		public event EventHandler UpdateValueModeChanged;
+		public event PropertyChangedEventHandler PropertyChanged;
+
+		#endregion
+
+	}
+
+	public enum UpdateValueMode
+	{
+		[Attributes.DisplayName("Controls_ExpressionBuilder_ValueTypeColumn_Fixed")]
+		Fixed = 0,
+		[Attributes.DisplayName("Controls_ExpressionBuilder_ValueTypeColumn_Expression")]
+		Expression = 1
+	}
+
+}

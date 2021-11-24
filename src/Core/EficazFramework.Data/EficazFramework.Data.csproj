@@ -1,0 +1,123 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <Version>6.0.0-preview002</Version>
+    <AssemblyVersion>5.9.6.0</AssemblyVersion>
+    <FileVersion>5.9.6.0</FileVersion>
+    <RootNamespace>EficazFramework</RootNamespace>
+    <SignAssembly>true</SignAssembly>
+    <AssemblyOriginatorKeyFile>EfCore.snk</AssemblyOriginatorKeyFile>
+    <DelaySign>false</DelaySign>
+    <Company>Eficaz Sistemas de Gestão e Inteligência Tributária</Company>
+    <Copyright>Copyright ©  2021. Eficaz Sistemas de Gestão e Inteligência Tributária Ltda.</Copyright>
+    <Description>Permite acesso e persistência à fontes de dados, além de formatação e validação das informações.</Description>
+    <RepositoryUrl>https://dev.azure.com/eficazcs/EficazFramework/_git/Main</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <PackageTags>data efcore entityframeworkcore persistência</PackageTags>
+    <NeutralLanguage>pt-BR</NeutralLanguage>
+    <Authors>Eficaz Sistemas</Authors>
+    <ApplicationIcon>icon.ico</ApplicationIcon>
+    <PackageIcon>icon.png</PackageIcon>
+    <PackageIconUrl>https://efsuporte.blob.core.windows.net/portal/EficazFramework.png</PackageIconUrl>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <Configurations>Debug;Release</Configurations>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="ViewModels\Entity\**" />
+    <EmbeddedResource Remove="ViewModels\Entity\**" />
+    <None Remove="ViewModels\Entity\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Remove="Events\FindRequestEventArgs.cs" />
+    <Compile Remove="Repositories\Services\EntityRepository.cs" />
+    <Compile Remove="Repositories\Services\IRepository.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="Repositories\IRepository.cs~RF156ba4ed.TMP" />
+    <None Remove="ViewModels\VMServices\SingleItemEdit\SingleEdit.cs~RF1f9be0b0.TMP" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="6.0.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Relational" Version="6.0.0" />
+    <PackageReference Include="System.Security.Permissions" Version="6.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Resources\Strings\Commands.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Commands.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Resources\Strings\DataDescriptions.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>DataDescriptions.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Resources\Strings\Security.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Security.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Resources\Strings\Validation.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Validation.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Resources\Strings\ViewModel.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>ViewModel.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="Resources\Strings\Commands.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Commands.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>EficazFramework.Resources.Strings</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\Strings\DataDescriptions.resx">
+      <CustomToolNamespace>EficazFramework.Resources.Strings</CustomToolNamespace>
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>DataDescriptions.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\Strings\Security.resx">
+      <CustomToolNamespace>EficazFramework.Resources.Strings</CustomToolNamespace>
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Security.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\Strings\Validation.resx">
+      <CustomToolNamespace>EficazFramework.Resources.Strings</CustomToolNamespace>
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Validation.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\Strings\ViewModel.resx">
+      <CustomToolNamespace>EficazFramework.Resources.Strings</CustomToolNamespace>
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>ViewModel.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\EficazFramework.Utilities\EficazFramework.Utilities.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="..\..\icon.png">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Repositories\Services\API\" />
+    <Folder Include="ViewModels\VMServices\Audit\Model\" />
+  </ItemGroup>
+
+</Project>
