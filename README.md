@@ -1,11 +1,8 @@
 # EficazFramework
 
 [![Build status](https://dev.azure.com/eficazcs/EficazFrameworkCore/_apis/build/status/Build%20EficazFramework)](https://dev.azure.com/eficazcs/EficazFrameworkCore/_build/latest?definitionId=2)
-
 [![Release](https://vsrm.dev.azure.com/eficazcs/_apis/public/Release/badge/dc412c10-c0cf-4499-827b-d13704a984ab/3/5)](https://dev.azure.com/eficazcs/EficazFrameworkCore/_release?view=all&_a=releases&definitionId=3)
-
 ![Visual Studio Marketplace Version](https://img.shields.io/visual-studio-marketplace/v/eficazsistemasdegestoeintelignciatributrialtda.efcorev4?label=SDK&logo=Eficaz%20Sistemas)
-
 [![Gitter](https://badges.gitter.im/EficazSistemas/community.svg)](https://gitter.im/EficazSistemas/community?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
 
    Bem vindo ao ambiente de gerenciamento da EficazFramework, para dotNet.
