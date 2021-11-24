@@ -1,7 +1,6 @@
 # EficazFramework
 
 ![Azure DevOps tests](https://img.shields.io/azure-devops/tests/eficazcs/EficazFramework/18?compact_message)
-![Azure DevOps tests](https://img.shields.io/azure-devops/tests/eficazcs/EficazFramework/18?compact_message)
 ![Azure DevOps coverage](https://img.shields.io/azure-devops/coverage/eficazcs/EficazFramework/18)
 [![Release](https://vsrm.dev.azure.com/eficazcs/_apis/public/Release/badge/dc412c10-c0cf-4499-827b-d13704a984ab/3/5)](https://dev.azure.com/eficazcs/EficazFramework/_release?view=all&_a=releases&definitionId=3)
 ![Discord](https://img.shields.io/discord/846078359498653706)
