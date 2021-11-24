@@ -18,8 +18,7 @@ public class DataImport<TSource, TCache> : ViewModelService<TSource>
     internal override void DisposeManagedCallerObjects()
     {
         base.DisposeManagedCallerObjects();
-        Repositories.DataImportRepository<TSource, TCache> repo = ViewModelInstance.Repository as Repositories.DataImportRepository<TSource, TCache>;
-        if (repo == null) return;
+        if (ViewModelInstance.Repository is not Repositories.DataImportRepository<TSource, TCache> repo) return;
         repo.Cache.Clear();
         repo.DataContext.Clear();
         repo.Log.Clear();

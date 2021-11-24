@@ -2,6 +2,7 @@
 
 namespace EficazFramework.Attributes.UIEditor.EditingState;
 
+[AttributeUsage(AttributeTargets.Property)]
 public class VisibleIfAttribute : Attribute
 {
     public VisibleIfAttribute(string propertyName, EficazFramework.Enums.CompareMethod comparemethod, object expectedValue = null)

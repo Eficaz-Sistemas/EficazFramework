@@ -200,8 +200,8 @@ public abstract class RepositoryBase<T> : INotifyPropertyChanged, IDisposable wh
 
     private void AddInternal(object item)
     {
-        if (item is T && (!DataContext.Contains((T)item)))
-            DataContext.Add((T)item);
+        if (item is T t && (!DataContext.Contains(t)))
+            DataContext.Add(t);
         ItemAdded(item);
     }
 
@@ -224,7 +224,7 @@ public abstract class RepositoryBase<T> : INotifyPropertyChanged, IDisposable wh
         DeleteInternal(item);
         Exception delEx = null;
         if (commit) delEx = Commit();
-        if (delEx != null && item is T) DataContext.Add((T)item);
+        if (delEx != null && item is T t) DataContext.Add(t);
         return delEx;
     }
 
@@ -236,14 +236,14 @@ public abstract class RepositoryBase<T> : INotifyPropertyChanged, IDisposable wh
         DeleteInternal(item);
         Exception delEx = null;
         if (commit) delEx = await CommitAsync(cancellationToken);
-        if (delEx != null && item is T) DataContext.Add((T)item);
+        if (delEx != null && item is T t) DataContext.Add(t);
         return delEx;
     }
 
     private void DeleteInternal(object item)
     {
-        if (item is T && DataContext.Contains((T)item))
-            DataContext.Remove((T)item);
+        if (item is T t && DataContext.Contains(t))
+            DataContext.Remove(t);
         ItemDeleted(item);
     }
 

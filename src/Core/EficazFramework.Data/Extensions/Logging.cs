@@ -14,6 +14,7 @@ public class DbContextLoggerProvider : ILoggerProvider
 
     public void Dispose()
     {
+        GC.SuppressFinalize(this);
     }
 
     private class DbContextLogger : ILogger

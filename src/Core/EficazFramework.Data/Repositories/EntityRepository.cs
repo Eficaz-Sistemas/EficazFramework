@@ -190,7 +190,7 @@ public sealed class EntityRepository<TEntity> : Repositories.RepositoryBase<TEnt
             {
                 it.State = EntityState.Unchanged;
             }
-            await DbContext.SaveChangesAsync();
+            await DbContext.SaveChangesAsync(cancelationToken);
             return null;
         }
         catch (Exception ex)
@@ -317,12 +317,12 @@ public sealed class EntityRepository<TEntity> : Repositories.RepositoryBase<TEnt
     /// <param name="orderbyDefinition">Definições de ordenação (SortDescription).</param>
     /// <param name="use_thenby">Define se deve ser utilizado o método ThenBy, para multiciplidade de ocorrências de ordenação.</param>
     /// <returns></returns>
-    private IQueryable<TEntity> GetIOrderedQueryable(IQueryable<TEntity> query, Collections.SortDescription orderbyDefinition, bool use_thenby = false)
+    private static IQueryable<TEntity> GetIOrderedQueryable(IQueryable<TEntity> query, Collections.SortDescription orderbyDefinition, bool use_thenby = false)
     {
         var t = typeof(TEntity);
         var parameter = System.Linq.Expressions.Expression.Parameter(t, "p");
         var propertyReference = System.Linq.Expressions.Expression.Property(parameter, orderbyDefinition.PropertyName);
-        object sortExpression = null;
+        object sortExpression;
         var propType = typeof(TEntity).GetProperty(orderbyDefinition.PropertyName).PropertyType;
         if (orderbyDefinition.Direction == EficazFramework.Enums.Collection.SortOrientation.Asceding)
         {

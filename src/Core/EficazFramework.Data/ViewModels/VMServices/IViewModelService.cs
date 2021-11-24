@@ -118,7 +118,7 @@ public static partial class ServiceUtils
     public static ViewModel<T> AddCustom<T>(this ViewModel<T> viewmodel, string name, ViewModelService<T> service) where T : class
     {
         var stype = service.GetType();
-        if (viewmodel.Services.Where(f => object.ReferenceEquals(f.GetType(), stype)).Count() > 0)
+        if (viewmodel.Services.Where(f => ReferenceEquals(f.GetType(), stype)).Any())
             throw new ArgumentException(string.Format(Resources.Strings.ViewModel.ServiceAlreadyAdded, stype.Name));
         viewmodel._servicesInternal.Add(name, service);
         return viewmodel;
