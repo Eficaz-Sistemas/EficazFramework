@@ -49,6 +49,16 @@
   	</None>
   	<None Include="Components\Selectors\MDIApplication.razor" />
   	<None Include="Components\Selectors\MDIContainer.razor" />
+  	<None Include="Layouts\CleanLayout.razor" />
+  	<None Include="Layouts\LandingLayout.razor" />
+  	<None Include="Layouts\MdiLayout.razor" />
+  	<None Include="Layouts\MudAppBarDrawerLayout.razor" />
+  	<None Include="Templates\ApplicationMVVMToolbar.razor" />
+  	<None Include="Templates\Applications.razor" />
+  	<None Include="Templates\CookieConsent.razor" />
+  	<None Include="Templates\Footer.razor" />
+  	<None Include="Templates\NavBarApps.razor" />
+  	<None Include="Templates\StartMenu.razor" />
   </ItemGroup>
 	
   <ItemGroup>

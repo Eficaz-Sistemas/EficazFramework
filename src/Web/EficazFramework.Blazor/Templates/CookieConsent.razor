@@ -1,0 +1,8 @@
+﻿@namespace EficazFramework.Templates
+
+@if (!HasCookieConsent)
+{
+    <div id="cookieConsent" class="" role="alert">
+        @RenderSnackBar()
+    </div>
+}

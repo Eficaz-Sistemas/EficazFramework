@@ -1,0 +1,21 @@
+﻿@using System.Globalization;
+@inject EficazFramework.Application.ScopedSessionManager SessionManager
+@namespace EficazFramework.Templates
+
+<MudBlazor.MudTabs @ref="_tabsHost" Position="@MudBlazor.Position.Left" Border="true" Class="startmenu content-flex-fit" TabPanelClass="startmenu-tabpanels" PanelClass="mdicontainer-tabs-panel">
+    @InitialTabsContent
+    <MudBlazor.MudTabPanel Icon="@AppsTabIcon" ToolTip="Aplicativos">
+        <div class="@IndexPanelCss">
+
+            <MudBlazor.MudGrid>
+                <div class="ma-4 flex-grow-1">
+                    @HeaderContent
+                </div>
+            </MudBlazor.MudGrid>
+
+            <Applications @ref="_appsMenu" />
+        </div>
+    </MudBlazor.MudTabPanel>
+    @TabsContent
+</MudBlazor.MudTabs>
+

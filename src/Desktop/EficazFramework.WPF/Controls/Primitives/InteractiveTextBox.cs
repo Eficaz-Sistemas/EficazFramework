@@ -179,7 +179,7 @@ public abstract partial class InteractiveTextBox : TextBox
     {
         base.OnApplyTemplate();
         _PART_Popup = (Popup)GetTemplateChild("PART_Popup");
-        FrameworkElement pp = (FrameworkElement)GetValue(PopupContentProperty);
+        //FrameworkElement pp = (FrameworkElement)GetValue(PopupContentProperty);
         //var ppstyle = GetValue(PopupContentStyleProperty);
         //if (ppstyle != null) pp.Style = (Style)ppstyle;
         if (PopupContent != null && _PART_Popup != null)

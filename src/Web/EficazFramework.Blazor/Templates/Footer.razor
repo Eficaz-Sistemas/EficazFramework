@@ -1,0 +1,23 @@
+﻿@using MudBlazor.Extensions;
+@using MudBlazor.Utilities;
+@namespace EficazFramework.Templates
+
+<footer class="@Classname" style="@Style">
+    <MudBlazor.MudText Typo="MudBlazor.Typo.subtitle2" Class="mt-1 mb-1 mr-4" Style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis; flex-grow: 1;">
+        @($"{System.DateTime.Now.Year}. Eficaz Sistemas de Gestão e Inteligência Tributária")
+    </MudBlazor.MudText>
+    <div class="d-flex justitfy-end" style="margin-top:2px; margin-bottom:-2px; flex-grow:0;">
+        <MudBlazor.MudLink Href="https://www.linkedin.com/company/eficazcs" Target="_blank" Style="line-height: normal; color: var(--mud-palette-dark) !important; ">
+            <MudBlazor.MudIcon Icon="@MudBlazor.Icons.Custom.Brands.LinkedIn" />
+        </MudBlazor.MudLink>
+        <MudBlazor.MudLink Href="https://twitter.com/eficazcs" Target="_blank" Style="line-height: normal; color: var(--mud-palette-dark) !important; ">
+            <MudBlazor.MudIcon Icon="@MudBlazor.Icons.Custom.Brands.Twitter" />
+        </MudBlazor.MudLink>
+        <MudBlazor.MudLink Href="https://www.facebook.com/EficazCS/" Target="_blank" Style="line-height: normal; color: var(--mud-palette-dark) !important; ">
+            <MudBlazor.MudIcon Icon="@MudBlazor.Icons.Custom.Brands.Facebook" />
+        </MudBlazor.MudLink>
+        <MudBlazor.MudLink Href="https://www.instagram.com/sistemaseficaz/" Target="_blank" Style="line-height: normal; color: var(--mud-palette-dark) !important; ">
+            <MudBlazor.MudIcon Icon="@MudBlazor.Icons.Custom.Brands.Instagram" />
+        </MudBlazor.MudLink>
+    </div>
+</footer>

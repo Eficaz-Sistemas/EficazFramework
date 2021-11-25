@@ -21,10 +21,3 @@
 | :--- | :--- |
 | [VisualTreeHelpers](VisualTreeHelpers.md 'EficazFramework.XAML.Utilities.VisualTreeHelpers') |  |
   
-<a name='XamlGeneratedNamespace'></a>
-## XamlGeneratedNamespace Namespace
-
-| Classes | |
-| :--- | :--- |
-| [GeneratedInternalTypeHelper](GeneratedInternalTypeHelper.md 'XamlGeneratedNamespace.GeneratedInternalTypeHelper') | GeneratedInternalTypeHelper<br/> |
-  

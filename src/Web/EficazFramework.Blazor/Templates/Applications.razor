@@ -1,0 +1,45 @@
+﻿@using System.Globalization;
+@inject EficazFramework.Application.ScopedSessionManager SessionManager
+@namespace EficazFramework.Templates
+
+<div class="pa-4">
+    <MudBlazor.MudTextField @ref="searchTb" Immediate="true" Variant="MudBlazor.Variant.Filled" Placeholder="@EficazFramework.Resources.Strings.Components.StartMenu_SearchTB" @bind-Value="Search" Adornment="@MudBlazor.Adornment.End" AdornmentIcon="@MudBlazor.Icons.Material.Filled.Search" />
+</div>
+
+<div class="pt-4 mx-4 flex-grow-1 app-list">
+    @foreach (string gp in AppGroups)
+    {
+        //Group Name
+        <div class="d-flex">
+            <MudBlazor.MudText Typo="@MudBlazor.Typo.subtitle2">@gp</MudBlazor.MudText>
+            <hr class="flex-grow-1 align-self-center mx-5" style=" border-bottom: 0px; border-color: var(--mud-palette-lines-inputs); opacity: 0.3;"  />
+        </div>
+
+        //General Devices:
+        <MudBlazor.MudHidden Breakpoint="@MudBlazor.Breakpoint.Xs">
+            <MudBlazor.MudGrid Justify="@MudBlazor.Justify.FlexStart" Spacing="2" Class="pa-6">
+                <div class="d-flex align-content-start flex-wrap">
+                    @foreach (EficazFramework.Application.ApplicationDefinition app in FilteredApps.Where((app) => app.Group == gp).ToList())
+                    {
+                        <MudBlazor.MudButton Size="@MudBlazor.Size.Medium" OnClick="() => OpenApp_Button_Click(app)" Class="startmenu-buttons" Style="text-transform:unset">
+                            <div style="display:block">
+                                <MudBlazor.MudIcon Icon="@ResolvedIcon(app)" Size="@MudBlazor.Size.Large" />
+                                <MudBlazor.MudText Typo="@MudBlazor.Typo.subtitle2">@app.TooltipTilte</MudBlazor.MudText>
+                            </div>
+                        </MudBlazor.MudButton>
+                    }
+                </div>
+            </MudBlazor.MudGrid>
+        </MudBlazor.MudHidden>
+
+        //Small Devices Only
+        <MudBlazor.MudHidden Breakpoint="@MudBlazor.Breakpoint.SmAndUp">
+            <MudBlazor.MudList Clickable>
+                @foreach (EficazFramework.Application.ApplicationDefinition app in FilteredApps.Where((app) => app.Group == gp).ToList())
+                {
+                    <MudBlazor.MudListItem OnClick="() => OpenApp_Button_Click(app)" Text="@app.TooltipTilte" Icon="@ResolvedIcon(app)" />
+                }
+            </MudBlazor.MudList>
+        </MudBlazor.MudHidden>
+    }
+</div>

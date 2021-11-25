@@ -1,0 +1,53 @@
+﻿@using Microsoft.AspNetCore.Components.Routing
+@namespace EficazFramework.Templates
+
+<style>
+    .mud-drawer-fixed.mud-drawer-mini:not(.mud-drawer-clipped-never), 
+    .mud-drawer-fixed.mud-drawer-persistent:not(.mud-drawer-clipped-never), 
+    .mud-drawer-fixed.mud-drawer-responsive.mud-drawer-clipped-always, 
+    .mud-drawer-fixed.mud-drawer-temporary.mud-drawer-clipped-always {
+        overflow-x:hidden
+    }
+
+</style>
+
+<MudBlazor.MudCard Class="mt-1" Elevation="0">
+    <MudBlazor.MudCardHeader>
+        <CardHeaderAvatar>
+            <MudBlazor.MudAvatar Color="MudBlazor.Color.Primary" Variant="MudBlazor.Variant.Filled" Class="ml-n2">
+                <MudBlazor.MudIcon Icon="@MudBlazor.Icons.Material.Filled.Person" />
+            </MudBlazor.MudAvatar>
+        </CardHeaderAvatar>
+        <CardHeaderContent>
+            @if (DrawerLayout?.DrawerOpen ?? false)
+            {
+                <div class="ml-n4">
+                    <MudBlazor.MudText Typo="MudBlazor.Typo.body2" Class="px-4 text-nowrap">@DrawerLayout.UserLine1</MudBlazor.MudText>
+                    <MudBlazor.MudText Typo="MudBlazor.Typo.caption" Class="px-4 text-nowrap">@DrawerLayout.UserLine2</MudBlazor.MudText>
+                </div>
+            }
+        </CardHeaderContent>
+    </MudBlazor.MudCardHeader>
+</MudBlazor.MudCard>
+
+<MudBlazor.MudDivider Class="mb-2" />
+
+@foreach (string gp in AppGroups)
+{
+    if (!string.IsNullOrEmpty(gp))
+    {
+        <MudBlazor.MudText Typo="@MudBlazor.Typo.subtitle2" Class="@($"mt-1 ml-2 {ResolveGroupTitleClass("d-hidden")}")" Style="opacity: 0.75; white-space: nowrap;">@gp</MudBlazor.MudText>
+    }
+
+    @foreach (EficazFramework.Application.ApplicationDefinition app in FilteredApps.Where((app) => app.Group == gp).ToList())
+    {
+        <MudBlazor.MudNavLink Icon="@ResolvedIcon(app)"
+                              Match="@NavLinkMatch.All"
+                              Class="text-nowrap"
+                              Href="@($"/{app.Attributes.Item($"Blazor:{EficazFramework.Application.ApplicationDefinitions.ROUTE}")}")">
+            @app.TooltipTilte
+        </MudBlazor.MudNavLink>
+    }
+
+    @*<MudBlazor.MudDivider Class="my-2" />*@
+}

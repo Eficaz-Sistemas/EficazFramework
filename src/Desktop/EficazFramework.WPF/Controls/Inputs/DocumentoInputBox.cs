@@ -131,28 +131,15 @@ public class DocumentoInputBox : TextBox
 
     private string FormatText(string value)
     {
-        switch (Documento)
+        return Documento switch
         {
-            case EDocumentos.CEP:
-                return value.FormatCEP();
-
-            case EDocumentos.CNPJ:
-            case EDocumentos.CNPJ_CPF:
-            case EDocumentos.CPF:
-                return value.FormatRFBDocument();
-
-            case EDocumentos.Fone:
-                return value.FormatFone();
-
-            case EDocumentos.IE:
-                return value.FormatIE(UF);
-
-            case EDocumentos.PIS_NIT:
-                return value.FormataPIS();
-
-            default:
-                return "";
-        }
+            EDocumentos.CEP => value.FormatCEP(),
+            EDocumentos.CNPJ or EDocumentos.CNPJ_CPF or EDocumentos.CPF => value.FormatRFBDocument(),
+            EDocumentos.Fone => value.FormatFone(),
+            EDocumentos.IE => value.FormatIE(UF),
+            EDocumentos.PIS_NIT => value.FormataPIS(),
+            _ => "",
+        };
     }
 
     private string ResolveValue(string text)

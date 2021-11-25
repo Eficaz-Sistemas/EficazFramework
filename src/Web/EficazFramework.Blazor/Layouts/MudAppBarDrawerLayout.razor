@@ -1,0 +1,63 @@
+﻿@namespace EficazFramework.Layouts
+@inherits LayoutComponentBase
+@inject EficazFramework.Services.ThemeProvider themeProvider
+@inject MudBlazor.IDialogService Dialog
+
+<MudBlazor.MudThemeProvider Theme="@themeProvider.Theme" />
+<MudBlazor.MudDialogProvider />
+<MudBlazor.MudSnackbarProvider />
+
+<style>
+    .mud-drawer .mud-drawer-content {
+        height: 100%;
+        max-height: 100%;
+        display: flex;
+        flex-shrink: 0;
+        flex-grow: 1;
+        flex: 0 0 auto;
+        flex-direction: column;
+        overflow-y: hidden;
+    }
+</style>
+
+<MudBlazor.MudLayout>
+    <MudBlazor.MudAppBar Elevation="1">
+        <MudBlazor.MudIconButton Icon="@EficazFramework.Icons.Brands.Eficaz" Color="MudBlazor.Color.Inherit" Edge="MudBlazor.Edge.Start" OnClick="@((e) => DrawerToggle())" />
+        <MudBlazor.MudText Typo="MudBlazor.Typo.h6" Class="ml-3 text-truncate">@Title</MudBlazor.MudText>
+        <MudBlazor.MudSpacer />
+        <div>
+            @CustomAppBarContent
+        </div>
+		<MudBlazor.MudDivider Vertical="true" FlexItem="true" DividerType="MudBlazor.DividerType.Middle" Class="mx-4 my-3" />
+        <MudBlazor.MudIconButton Icon="@MudBlazor.Icons.Material.Filled.MoreVert" Color="MudBlazor.Color.Inherit" Edge="MudBlazor.Edge.End" />
+    </MudBlazor.MudAppBar>
+    <MudBlazor.MudDrawer OpenMiniOnHover="true" Variant="MudBlazor.DrawerVariant.Mini"
+                         @bind-Open="@DrawerOpen" Breakpoint="@MudBlazor.Breakpoint.Always" ClipMode="MudBlazor.DrawerClipMode.Always"
+                         Elevation="2">
+        <MudBlazor.MudNavMenu Style="overflow-y: auto; overflow-x: hidden; padding-bottom: 24px;">
+            <CascadingValue Value="this">
+                <EficazFramework.Templates.NavBarApps />
+            </CascadingValue>
+        </MudBlazor.MudNavMenu>
+        <div style="height:40px;"></div>
+    </MudBlazor.MudDrawer>
+    <MudBlazor.MudMainContent Class="d-flex">
+        <MudBlazor.MudContainer Class="mud-container-mini" MaxWidth="MudBlazor.MaxWidth.ExtraLarge">
+            <CascadingValue Name="Layout" Value="this">
+                @Body
+            </CascadingValue>
+        </MudBlazor.MudContainer>
+    </MudBlazor.MudMainContent>
+    <EficazFramework.Templates.Footer Style="z-index: calc(var(--mud-zindex-appbar) + 3); " />
+</MudBlazor.MudLayout>
+
+<div id="blazor-error-ui">
+    <environment include="Staging,Production">
+        @Resources.Strings.Layouts.BlazorError_Production
+    </environment>
+    <environment include="Development">
+        @Resources.Strings.Layouts.BlazorError_Development
+    </environment>
+    <a href="" class="reload">@Resources.Strings.Layouts.BlazorError_Reload</a>
+    <a class="dismiss">🗙</a>
+</div>

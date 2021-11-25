@@ -1,0 +1,90 @@
+﻿@namespace EficazFramework.Templates 
+@typeparam T
+
+@if (ViewModel != null && ViewModel.IsLoading == false)
+{
+    @ChildContent
+
+    if (Command_AddNew == true && (ViewModel.State == Enums.CRUD.State.Leitura || ViewModel.State == Enums.CRUD.State.Bloqueado))
+    {
+        <MudBlazor.MudTooltip Text="@EficazFramework.Resources.Strings.Commands.New">
+            <MudBlazor.MudFab OnClick='() => ViewModel.Commands["New"].Execute(null)' Color="MudBlazor.Color.Secondary" Icon="@MudBlazor.Icons.Material.Filled.Add" />
+        </MudBlazor.MudTooltip>
+    }
+    if (Command_SaveAll == true && (ViewModel.State == Enums.CRUD.State.Leitura || ViewModel.State == Enums.CRUD.State.Bloqueado))
+    {
+        <MudBlazor.MudTooltip Text="@EficazFramework.Resources.Strings.Commands.Save">
+            <MudBlazor.MudFab OnClick='() => ViewModel.Commands["Save"].Execute(null)' Color="MudBlazor.Color.Secondary" Icon="@MudBlazor.Icons.Material.Filled.Save" />
+        </MudBlazor.MudTooltip>
+
+    }
+    if (Command_Refresh == true && (ViewModel.State == Enums.CRUD.State.Leitura || ViewModel.State == Enums.CRUD.State.Bloqueado))
+    {
+        <MudBlazor.MudTooltip Text="@EficazFramework.Resources.Strings.Commands.Refresh" Class="mr-2">
+            <MudBlazor.MudFab OnClick='() => ViewModel.Commands["Get"].Execute(null)' Color="@(Command_AddNew == true ? MudBlazor.Color.Primary : MudBlazor.Color.Secondary)" Size="@(Command_AddNew == true ? MudBlazor.Size.Small : MudBlazor.Size.Medium)" Icon="@MudBlazor.Icons.Material.Filled.Refresh" />
+        </MudBlazor.MudTooltip>
+    }
+    if (Filter_Input == true && (ViewModel.State == Enums.CRUD.State.Leitura))
+    {
+        <MudBlazor.MudHidden Breakpoint="@MudBlazor.Breakpoint.SmAndDown">
+            <MudBlazor.MudTextField Immediate @bind-Value="Filter_Text" Adornment="MudBlazor.Adornment.Start" Placeholder="@Resources.Strings.Commands.Search" Variant="@MudBlazor.Variant.Outlined" Class="mdi-application-search-bar mx-2" />
+        </MudBlazor.MudHidden>
+    }
+
+    if (Command_Save == true && (ViewModel.State == Enums.CRUD.State.Novo || ViewModel.State == Enums.CRUD.State.Edicao))
+    {
+        <MudBlazor.MudHidden Breakpoint="MudBlazor.Breakpoint.SmAndDown">
+            <MudBlazor.MudButton Variant="MudBlazor.Variant.Filled" Color="MudBlazor.Color.Primary" DisableElevation StartIcon="@MudBlazor.Icons.Material.Filled.Save" OnClick='() => ViewModel.Commands["Save"].Execute(null)'>
+                @EficazFramework.Resources.Strings.Commands.Save
+            </MudBlazor.MudButton>
+        </MudBlazor.MudHidden>
+        <MudBlazor.MudHidden Breakpoint="MudBlazor.Breakpoint.MdAndUp">
+            <MudBlazor.MudTooltip Text="@EficazFramework.Resources.Strings.Commands.Save">
+                <MudBlazor.MudFab OnClick='() => ViewModel.Commands["Save"].Execute(null)' Color="MudBlazor.Color.Secondary" Icon="@MudBlazor.Icons.Material.Filled.Save" />
+            </MudBlazor.MudTooltip>
+        </MudBlazor.MudHidden>
+    }
+    if (Command_Cancel == true && (ViewModel.State == Enums.CRUD.State.Novo || ViewModel.State == Enums.CRUD.State.Edicao))
+    {
+        <MudBlazor.MudHidden Breakpoint="MudBlazor.Breakpoint.SmAndDown">
+            <MudBlazor.MudButton Variant="MudBlazor.Variant.Filled" Color="MudBlazor.Color.Primary" DisableElevation StartIcon="@MudBlazor.Icons.Material.Filled.Cancel" OnClick='() => ViewModel.Commands["Cancel"].Execute(null)'>
+                @EficazFramework.Resources.Strings.Commands.Cancel
+            </MudBlazor.MudButton>
+        </MudBlazor.MudHidden>
+        <MudBlazor.MudHidden Breakpoint="MudBlazor.Breakpoint.MdAndUp">
+            <MudBlazor.MudTooltip Text="@EficazFramework.Resources.Strings.Commands.Cancel">
+                <MudBlazor.MudFab OnClick='() => ViewModel.Commands["Cancel"].Execute(null)' Color="MudBlazor.Color.Primary" Icon="@MudBlazor.Icons.Material.Filled.Cancel" Size="MudBlazor.Size.Small" />
+            </MudBlazor.MudTooltip>
+        </MudBlazor.MudHidden>
+    }
+
+    if (Command_Save == true && (ViewModel.State == Enums.CRUD.State.NovoDetalhe || ViewModel.State == Enums.CRUD.State.EdicaoDeDelhe))
+    {
+        <MudBlazor.MudHidden Breakpoint="MudBlazor.Breakpoint.SmAndDown">
+            <MudBlazor.MudButton Variant="MudBlazor.Variant.Filled" Color="MudBlazor.Color.Primary" DisableElevation StartIcon="@MudBlazor.Icons.Material.Filled.SaveAlt" OnClick='() => ViewModel.Commands[$"SaveDetail_{GetDetailName()}"].Execute(null)'>
+                @EficazFramework.Resources.Strings.Commands.Confirm
+            </MudBlazor.MudButton>
+        </MudBlazor.MudHidden>
+        <MudBlazor.MudHidden Breakpoint="MudBlazor.Breakpoint.MdAndUp">
+            <MudBlazor.MudTooltip Text="@EficazFramework.Resources.Strings.Commands.Confirm">
+                <MudBlazor.MudFab OnClick='() => ViewModel.Commands[$"SaveDetail_{GetDetailName()}"].Execute(null)' Color="MudBlazor.Color.Secondary" Icon="@MudBlazor.Icons.Material.Filled.SaveAlt" />
+            </MudBlazor.MudTooltip>
+        </MudBlazor.MudHidden>
+    }
+    if (Command_Cancel == true && (ViewModel.State == Enums.CRUD.State.NovoDetalhe || ViewModel.State == Enums.CRUD.State.EdicaoDeDelhe))
+    {
+        <MudBlazor.MudHidden Breakpoint="MudBlazor.Breakpoint.SmAndDown">
+            <MudBlazor.MudButton Variant="MudBlazor.Variant.Filled" Color="MudBlazor.Color.Primary" DisableElevation StartIcon="@MudBlazor.Icons.Material.Filled.Cancel" OnClick='() => ViewModel.Commands[$"CancelDetail_{GetDetailName()}"].Execute(null)'>
+                @EficazFramework.Resources.Strings.Commands.Cancel
+            </MudBlazor.MudButton>
+        </MudBlazor.MudHidden>
+        <MudBlazor.MudHidden Breakpoint="MudBlazor.Breakpoint.MdAndUp">
+            <MudBlazor.MudTooltip Text="@EficazFramework.Resources.Strings.Commands.Cancel">
+                <MudBlazor.MudFab OnClick='() => ViewModel.Commands[$"CancelDetail_{GetDetailName()}"].Execute(null)' Color="MudBlazor.Color.Primary" Icon="@MudBlazor.Icons.Material.Filled.Cancel" Size="MudBlazor.Size.Small" />
+            </MudBlazor.MudTooltip>
+        </MudBlazor.MudHidden>
+    }
+
+    <MudBlazor.MudDivider Vertical />
+
+}

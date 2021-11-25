@@ -1,0 +1,28 @@
+﻿@namespace EficazFramework.Layouts
+@inherits LayoutComponentBase
+@inject EficazFramework.Services.ThemeProvider themeProvider
+@inject MudBlazor.IDialogService Dialog
+
+<MudBlazor.MudThemeProvider Theme="@themeProvider.Theme" />
+<MudBlazor.MudDialogProvider />
+<MudBlazor.MudSnackbarProvider />
+
+<MudBlazor.MudLayout>
+    <MudBlazor.MudContainer MaxWidth="MudBlazor.MaxWidth.ExtraLarge">
+        <MudBlazor.MudMainContent Class="content-mdi">
+            @Body
+        </MudBlazor.MudMainContent>
+    </MudBlazor.MudContainer>
+    <EficazFramework.Templates.Footer />
+</MudBlazor.MudLayout>
+
+<div id="blazor-error-ui">
+    <environment include="Staging,Production">
+        @Resources.Strings.Layouts.BlazorError_Development
+    </environment>
+    <environment include="Development">
+        @Resources.Strings.Layouts.BlazorError_Development
+    </environment>
+    <a href="" class="reload">@Resources.Strings.Layouts.BlazorError_Reload</a>
+    <a class="dismiss">🗙</a>
+</div>
