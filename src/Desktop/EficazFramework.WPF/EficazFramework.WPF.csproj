@@ -24,6 +24,11 @@
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <Configurations>Debug;Release</Configurations>
     <RuntimeIdentifiers>win-x64;win-x86</RuntimeIdentifiers>
+	<GenerateDocumentationFile>true</GenerateDocumentationFile>
+	<DefaultDocumentationFolder>..\..\..\Docs\Api\Desktop-WPF</DefaultDocumentationFolder>
+	<DefaultDocumentationAssemblyPageName>EficazFramework WPF</DefaultDocumentationAssemblyPageName>
+	<DefaultDocumentationFileNameMode>Name</DefaultDocumentationFileNameMode>
+	<DefaultDocumentationGeneratedPages>Assembly, Types, Members</DefaultDocumentationGeneratedPages>
   </PropertyGroup>
 	
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
@@ -38,6 +43,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="DefaultDocumentation" Version="0.7.9">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
     <PackageReference Include="MaterialDesignThemes" Version="4.3.0-ci60" />
     <PackageReference Include="Microsoft.Xaml.Behaviors.Wpf" Version="1.1.39" />
   </ItemGroup>

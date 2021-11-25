@@ -22,6 +22,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EficazFramework.WPF", "Desk
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EficazFramework.WPF.DesignTools", "Desktop\EficazFramework.WPF.designtools\EficazFramework.WPF.DesignTools.csproj", "{C20FE946-9839-41EF-ABEF-97892B6441CC}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Web", "Web", "{6652DDD9-BA92-4AB2-BD84-2434876566EA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
