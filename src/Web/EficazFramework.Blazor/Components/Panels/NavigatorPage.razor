@@ -1,0 +1,9 @@
+﻿@namespace EficazFramework.Components
+@inherits ComponentBase
+
+@if (IsVisible)
+{
+    <div class="@ClassNames" style="@Style">
+        @ChildContent
+    </div>
+}

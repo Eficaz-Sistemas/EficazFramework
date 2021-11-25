@@ -39,10 +39,16 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Components\Panels\l5t002mw.04g~" />
+  </ItemGroup>
+
+  <ItemGroup>
   	<None Include="..\..\..\Assets\logo.png">
   		<Pack>True</Pack>
   		<PackagePath>\</PackagePath>
   	</None>
+  	<None Include="Components\Selectors\MDIApplication.razor" />
+  	<None Include="Components\Selectors\MDIContainer.razor" />
   </ItemGroup>
 	
   <ItemGroup>

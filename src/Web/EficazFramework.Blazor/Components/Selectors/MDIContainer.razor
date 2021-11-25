@@ -1,0 +1,22 @@
+﻿@namespace EficazFramework.Components
+@inject EficazFramework.Application.ScopedSessionManager SessionManager
+
+<CascadingValue Name="MDIContainer" Value="this">
+    <MudBlazor.MudTabs @ref="tabsmanager" KeepPanelsAlive Position="@MudBlazor.Position.Bottom" Elevation="@Elevation" Class="@($"mdicontainer {Class}")" TabPanelClass="mdicontainer-tabpanels" PanelClass="mdicontainer-panel d-flex" Color="@MudBlazor.Color.Primary">
+        <MudBlazor.MudTabPanel Icon="@EficazFramework.Icons.Brands.Eficaz" ToolTip="@Resources.Strings.Components.MDIContainer_StartTab" ID='@("sc:0|app:tab_start")'>
+            @Index
+        </MudBlazor.MudTabPanel>
+        @foreach (Application.ApplicationInstance app in GetRunningApplications())
+        {
+            <MudBlazor.MudTabPanel Icon="@ResolvedIcon(app)" ToolTip="@app.LongTitle" ID="@(GetTabID(app))">
+                <CascadingValue Name="MDIApplication" Value="@app">
+                    <EficazFramework.Components.MDIApplication>
+                        <div style="display:contents;@StyleBuilder()">
+                            @RenderApplicationMetadata(app)
+                        </div>
+                    </EficazFramework.Components.MDIApplication>
+                </CascadingValue>
+            </MudBlazor.MudTabPanel>
+        }
+    </MudBlazor.MudTabs>
+</CascadingValue>
