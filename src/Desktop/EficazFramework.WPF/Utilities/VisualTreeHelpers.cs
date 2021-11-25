@@ -109,7 +109,7 @@ public partial class VisualTreeHelpers
         for (int i = 0, loopTo = VisualTreeHelper.GetChildrenCount(parent) - 1; i <= loopTo; i++)
         {
             var child = VisualTreeHelper.GetChild(parent, i);
-            if (!(child is T))
+            if (child is not T)
             {
                 var result = FindVisualChildByProperty<T>(child, dp, value);
                 if (result != null)

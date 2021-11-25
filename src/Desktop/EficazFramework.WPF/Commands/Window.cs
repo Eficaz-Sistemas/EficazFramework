@@ -31,7 +31,6 @@ public class Window
     public static ICommand ShutDown { get; private set; } = new EficazFramework.Commands.CommandBase(ShutDown_Execute);
     private static void ShutDown_Execute(object sender, Events.ExecuteEventArgs e)
     {
-        System.Windows.Window win = XAML.Utilities.VisualTreeHelpers.FindAnchestor<System.Windows.Window>((DependencyObject)e.Parameter);
         System.Windows.Application.Current.Shutdown();
     }
 

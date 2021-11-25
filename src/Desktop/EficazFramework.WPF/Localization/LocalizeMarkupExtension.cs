@@ -27,10 +27,9 @@ public class LocalizeText : MarkupExtension
         string internal_dictionary = DictionaryName;
         string internal_assembly = Assembly;
 
-        IProvideValueTarget target = serviceProvider.GetService(typeof(IProvideValueTarget)) as IProvideValueTarget;
         try
         {
-            if (target != null && target.TargetProperty is DependencyProperty)
+            if (serviceProvider.GetService(typeof(IProvideValueTarget)) is IProvideValueTarget target && target.TargetProperty is DependencyProperty)
             {
                 if (string.IsNullOrEmpty(internal_assembly)) internal_assembly = ResourceManager.GetAssembly((DependencyObject)target.TargetObject);
                 if (string.IsNullOrEmpty(internal_dictionary)) internal_dictionary = ResourceManager.GetDictionaryName((DependencyObject)target.TargetObject);

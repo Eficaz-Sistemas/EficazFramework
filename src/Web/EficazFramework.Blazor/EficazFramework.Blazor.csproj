@@ -20,17 +20,22 @@
 	 <NeutralLanguage>pt-BR</NeutralLanguage>
 	 <SignAssembly>true</SignAssembly>
 	 <AssemblyOriginatorKeyFile>EfCore.snk</AssemblyOriginatorKeyFile>
-	 <AssemblyName>EficazFramework.Blazor</AssemblyName>
+	 <AssemblyName>$(MSBuildProjectName)</AssemblyName>
 	 <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
 	 <Description>Controles, extensões e utulitários para implementação Blazor.</Description>
+	 <GenerateDocumentationFile>true</GenerateDocumentationFile>
+	 <DefaultDocumentationFolder>..\..\..\Docs\Api\Web-Blazor</DefaultDocumentationFolder>
+	 <DefaultDocumentationAssemblyPageName>EficazFramework Blazor</DefaultDocumentationAssemblyPageName>
+	 <DefaultDocumentationFileNameMode>Name</DefaultDocumentationFileNameMode>
+	 <DefaultDocumentationGeneratedPages>Assembly, Types, Members</DefaultDocumentationGeneratedPages>
   </PropertyGroup>
 	
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-  	<NoWarn>1573;1591;1701;1702</NoWarn>
+  	<NoWarn>1573;1591;1701;1702;8603;8618</NoWarn>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
-  	<NoWarn>1573;1591;1701;1702</NoWarn>
+  	<NoWarn>1573;1591;1701;1702;8603;8618</NoWarn>
   </PropertyGroup>
 
   <ItemGroup>
@@ -45,6 +50,10 @@
   </ItemGroup>
 	
   <ItemGroup>
+    <PackageReference Include="DefaultDocumentation" Version="0.7.9">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
     <PackageReference Include="MudBlazor" Version="6.0.2" />
   </ItemGroup>
 	

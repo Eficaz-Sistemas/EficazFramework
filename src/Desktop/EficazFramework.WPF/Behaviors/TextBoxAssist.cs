@@ -12,7 +12,7 @@ public partial class TextBox
     {
         if (element is null)
         {
-            throw new ArgumentNullException("element");
+            throw new ArgumentNullException(nameof(element));
         }
         return (bool)element.GetValue(SelectAllOnFocusProperty);
     }
@@ -20,7 +20,7 @@ public partial class TextBox
     {
         if (element is null)
         {
-            throw new ArgumentNullException("element");
+            throw new ArgumentNullException(nameof(element));
         }
         element.SetValue(SelectAllOnFocusProperty, value);
     }
@@ -28,10 +28,9 @@ public partial class TextBox
 
     private static void OnSelectAllOnFocusChanged(object source, DependencyPropertyChangedEventArgs e)
     {
-        if (!(source is System.Windows.Controls.TextBox))
+        if (source is not System.Windows.Controls.TextBox)
             return;
-        System.Windows.Controls.TextBox tb = source as System.Windows.Controls.TextBox;
-        if (tb is null)
+        if (source is not System.Windows.Controls.TextBox tb)
             return;
         var dpd = DependencyPropertyDescriptor.FromProperty(System.Windows.UIElement.IsKeyboardFocusedProperty, typeof(System.Windows.Controls.TextBox));
         if (dpd is null)
@@ -48,9 +47,8 @@ public partial class TextBox
 
     private static void TextBox_GotKeyboardFocus(object sender, EventArgs e)
     {
-        if (!(sender is System.Windows.Controls.TextBox))
+        if (sender is not System.Windows.Controls.TextBox)
             return;
-        System.Windows.Controls.TextBox tb = sender as System.Windows.Controls.TextBox;
         //if (Controls.Calculator.GetTransportEnabled(tb) == true & Controls.CalculatorUtilities.TransportValue.HasValue)
         //{
         //    if (!(tb is Controls.NumberInputBox))
@@ -78,7 +76,7 @@ public partial class TextBox
         //    }
         //}
 
-        if (tb is null)
+        if (sender is not System.Windows.Controls.TextBox tb)
             return;
         tb.SelectionStart = 0;
         tb.SelectionLength = tb.Text.Length;

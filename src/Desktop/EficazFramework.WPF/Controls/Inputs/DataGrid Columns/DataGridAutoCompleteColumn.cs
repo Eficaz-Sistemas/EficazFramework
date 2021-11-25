@@ -140,7 +140,7 @@ public partial class DataGridAutoCompleteColumn : System.Windows.Controls.DataGr
 
     protected override FrameworkElement GenerateEditingElement(DataGridCell cell, object dataItem)
     {
-        AutoComplete tb = new AutoComplete();
+        AutoComplete tb = new();
         tb.FreeText = FreeText;
         if (FreeText == false)
         {

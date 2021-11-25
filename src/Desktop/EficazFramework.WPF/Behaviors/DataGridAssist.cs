@@ -34,10 +34,7 @@ public partial class DataGridAssist
 
     private static void OnEnterKeyNavigationChanged(object source, DependencyPropertyChangedEventArgs e)
     {
-        if (!(source is System.Windows.Controls.DataGrid))
-            return;
-        System.Windows.Controls.DataGrid dg = source as System.Windows.Controls.DataGrid;
-        if (dg is null)
+        if (source is not System.Windows.Controls.DataGrid dg)
             return;
 
         if ((bool)e.NewValue)
@@ -91,9 +88,8 @@ public partial class DataGridAssist
         }
         else if (e.Key == Key.Escape)
         {
-            if (e.OriginalSource is AutoComplete)
+            if (e.OriginalSource is AutoComplete sb)
             {
-                AutoComplete sb = (AutoComplete)e.OriginalSource;
                 if (sb.IsPopupOpened == true & sb.FreeText == true)
                 {
                     sb.ClosePopup();
@@ -140,8 +136,8 @@ public partial class DataGridAssist
                 if (clindex > 0)
                 {
                     var result = cell.PredictFocus(FocusNavigationDirection.Left);
-                    if (result is DataGridCell)
-                        cell = (DataGridCell)result;
+                    if (result is DataGridCell cell1)
+                        cell = cell1;
                     else
                         cell = Utilities.VisualTreeHelpers.FindAnchestor<DataGridCell>(result);
                 }
@@ -154,15 +150,15 @@ public partial class DataGridAssist
                         return;
                     }
 
-                    if (!(newcell is DataGridCell))
+                    if (newcell is not DataGridCell)
                         newcell = Utilities.VisualTreeHelpers.FindAnchestor<DataGridCell>(newcell);
                 }
             }
             else if (dg.Columns.Count - 1 > clindex)
             {
                 var result = cell.PredictFocus(FocusNavigationDirection.Right);
-                if (result is DataGridCell)
-                    cell = (DataGridCell)result;
+                if (result is DataGridCell cell1)
+                    cell = cell1;
                 else
                     cell = Utilities.VisualTreeHelpers.FindAnchestor<DataGridCell>(result);
             }
@@ -175,7 +171,7 @@ public partial class DataGridAssist
                     return;
                 }
 
-                if (!(newcell is DataGridCell))
+                if (newcell is not DataGridCell)
                     newcell = Utilities.VisualTreeHelpers.FindAnchestor<DataGridCell>(newcell);
 
                 if (newcell != null)
@@ -183,7 +179,7 @@ public partial class DataGridAssist
                     for (int i = clindex; i >= 1; i -= 1)
                     {
                         newcell = ((DataGridCell)newcell).PredictFocus(FocusNavigationDirection.Left);
-                        if (!(newcell is DataGridCell))
+                        if (newcell is not DataGridCell)
                             newcell = Utilities.VisualTreeHelpers.FindAnchestor<DataGridCell>(newcell);
                     }
 
@@ -207,7 +203,7 @@ public partial class DataGridAssist
             if (cell.IsReadOnly == false)
             {
                 dg.BeginEdit();
-                if (!(cell.Content is TextBlock))
+                if (cell.Content is not TextBlock)
                     cell.MoveFocus(new TraversalRequest(FocusNavigationDirection.Next));
             }
 
@@ -301,8 +297,8 @@ public partial class DataGridAssist
     internal static void DataGrid_PreviewMouseDoubleClickMouseDoubleClick(object sender, MouseButtonEventArgs e)
     {
         System.Windows.Controls.DataGrid dg = (System.Windows.Controls.DataGrid)sender;
-        DataGridCell cell = default;
-        if (!(e.OriginalSource is DataGridCell))
+        DataGridCell cell;
+        if (e.OriginalSource is not DataGridCell)
             cell = Utilities.VisualTreeHelpers.FindAnchestor<DataGridCell>((DependencyObject)e.OriginalSource);
         else
             cell = (DataGridCell)e.OriginalSource;
@@ -413,7 +409,7 @@ public partial class DataGridAssist
             if (cell.IsReadOnly == false)
             {
                 dg.BeginEdit();
-                if (!(cell.Content is TextBlock))
+                if (cell.Content is not TextBlock)
                 {
                     cell.MoveFocus(new TraversalRequest(FocusNavigationDirection.Next));
                 }
@@ -428,8 +424,7 @@ public partial class DataGridAssist
         for (int i = 0, loopTo = VisualTreeHelper.GetChildrenCount(reference) - 1; i <= loopTo; i++)
         {
             DependencyObject child = VisualTreeHelper.GetChild(reference, i);
-            DataGridColumnHeader colHeader = child as DataGridColumnHeader;
-            if (colHeader != null && object.ReferenceEquals(colHeader.Column, column))
+            if (child is DataGridColumnHeader colHeader && object.ReferenceEquals(colHeader.Column, column))
             {
                 return colHeader;
             }
@@ -452,7 +447,7 @@ public partial class DataGridAssist
     {
         if (element is null)
         {
-            throw new ArgumentNullException("element");
+            throw new ArgumentNullException(nameof(element));
         }
 
         return (bool)element.GetValue(ShowFilterProperty);
@@ -461,7 +456,7 @@ public partial class DataGridAssist
     {
         if (element is null)
         {
-            throw new ArgumentNullException("element");
+            throw new ArgumentNullException(nameof(element));
         }
 
         element.SetValue(ShowFilterProperty, value);

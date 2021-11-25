@@ -248,7 +248,7 @@ public abstract partial class InteractiveTextBox : TextBox
         SetValue(IsPopupOpenedPropertyKey, false);
         MDIWindow.SetAcceptEnterKeyNavigation(this, true);
         var focused = Keyboard.FocusedElement;
-        if (!(focused is TextBox))
+        if (focused is not TextBox)
             if (movefocus) MoveFocus(new TraversalRequest(FocusNavigationDirection.First));
 
         Debug.WriteLine("Popup Closed (from InteractiveTextBox)");

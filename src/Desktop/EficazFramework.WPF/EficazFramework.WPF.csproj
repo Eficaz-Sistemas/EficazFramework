@@ -32,11 +32,11 @@
   </PropertyGroup>
 	
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-  	<NoWarn>1573;1591;1701;1702</NoWarn>
+  	<NoWarn>IDE0044;1573;1591;1701;1702;CA2211</NoWarn>
   </PropertyGroup>
   
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
-  	<NoWarn>1573;1591;1701;1702</NoWarn>
+  	<NoWarn>IDE0044;1573;1591;1701;1702;CA2211</NoWarn>
   </PropertyGroup>
   <ItemGroup>
     <Compile Remove="Themes\Generic\Icons\PackIconDataFactory.cs" />

@@ -4,11 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace EficazFramework.Enums
+namespace EficazFramework.Enums;
+
+public enum ObserverMode
 {
-    public enum ObserverMode
-    {
-        ElementReference = 0,
-        CssClass = 1
-    }
+    ElementReference = 0,
+    CssClass = 1
 }

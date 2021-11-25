@@ -14,7 +14,7 @@ public class DocumentoInputBox : TextBox
         //EficazFramework.docu
     }
 
-    readonly Regex rg = new Regex(@"[^\d]");
+    readonly Regex rg = new(@"[^\d]");
 
     #region Properties
 

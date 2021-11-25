@@ -242,8 +242,7 @@ public sealed partial class MDIWindow : HeaderedContentControl
 
     private static void OnWindowStateChanged(DependencyObject obj, DependencyPropertyChangedEventArgs e)
     {
-        MDIWindow window = obj as MDIWindow;
-        if (window != null)
+        if (obj is MDIWindow window)
         {
             var args = new Events.WindowStateChangedEventArgs(WindowStateChangedEvent, (WindowState)e.OldValue, (WindowState)e.NewValue);
             window.RaiseEvent(args);

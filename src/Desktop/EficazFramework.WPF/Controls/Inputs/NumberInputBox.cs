@@ -20,7 +20,7 @@ public partial class NumberInputBox : TextBox
     public static readonly DependencyProperty DecimalPlacesProperty = DependencyProperty.Register("DecimalPlaces", typeof(int), typeof(NumberInputBox), new PropertyMetadata(0));
     public static readonly DependencyProperty MinimumProperty = DependencyProperty.Register("Minimum", typeof(double), typeof(NumberInputBox), new PropertyMetadata(double.NaN));
     public static readonly DependencyProperty MaximumProperty = DependencyProperty.Register("Maximum", typeof(double), typeof(NumberInputBox), new PropertyMetadata(double.MaxValue));
-    private System.Text.RegularExpressions.Regex validchars = new System.Text.RegularExpressions.Regex("^[0-9]*$");
+    private System.Text.RegularExpressions.Regex validchars = new("^[0-9]*$");
 
     public double? Value
     {
@@ -73,17 +73,6 @@ public partial class NumberInputBox : TextBox
         }
     }
 
-    private void CoerceText()
-    {
-        if (double.TryParse(Text, out _) == false)
-            SetValue(NumberInputBox.TextProperty, default);
-        double tmp = Convert.ToDouble(Text);
-        if (tmp < Minimum & !double.IsNaN(Minimum))
-            SetValue(NumberInputBox.TextProperty, Minimum);
-        if (tmp > Maximum)
-            SetValue(NumberInputBox.TextProperty, Maximum);
-    }
-
     private void Pasting(object sender, DataObjectPastingEventArgs e)
     {
         if (e.DataObject.GetDataPresent(typeof(string)))
@@ -95,7 +84,7 @@ public partial class NumberInputBox : TextBox
                 return;
             }
 
-            pastedText = pastedText ?? "".Replace(Environment.NewLine, string.Empty);
+            pastedText ??= "".Replace(Environment.NewLine, string.Empty);
             var selectedText = SelectedText;
             if (string.IsNullOrEmpty(selectedText))
             {
@@ -128,7 +117,7 @@ public partial class NumberInputBox : TextBox
                 {
                     if (Minimum < 0d)
                     {
-                        if (!Text.Contains("-"))
+                        if (!Text.Contains('-'))
                         {
                             if (Text.Length <= 0)
                             {

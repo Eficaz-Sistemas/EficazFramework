@@ -191,8 +191,10 @@ public partial class DataGridInputColumn : System.Windows.Controls.DataGridTextC
                 return tb;
 
             case InputMode.Number:
-                var numtb = new NumberInputBox();
-                numtb.Language = System.Windows.Markup.XmlLanguage.GetLanguage(System.Threading.Thread.CurrentThread.CurrentUICulture.IetfLanguageTag);
+                var numtb = new NumberInputBox
+                {
+                    Language = System.Windows.Markup.XmlLanguage.GetLanguage(System.Threading.Thread.CurrentThread.CurrentUICulture.IetfLanguageTag)
+                };
                 numtb.SetBinding(NumberInputBox.TextProperty, Binding);
                 numtb.DecimalPlaces = NumberDecimalPlaces;
                 numtb.TextAlignment = Alignment;
@@ -203,8 +205,10 @@ public partial class DataGridInputColumn : System.Windows.Controls.DataGridTextC
                 return numtb;
 
             case InputMode.Date:
-                var dtbox = new DateInputBox();
-                dtbox.Language = System.Windows.Markup.XmlLanguage.GetLanguage(System.Threading.Thread.CurrentThread.CurrentUICulture.IetfLanguageTag);
+                var dtbox = new DateInputBox
+                {
+                    Language = System.Windows.Markup.XmlLanguage.GetLanguage(System.Threading.Thread.CurrentThread.CurrentUICulture.IetfLanguageTag)
+                };
                 BindingOperations.ClearBinding(dtbox, DateInputBox.TextProperty);
                 dtbox.SetBinding(DateInputBox.ValueProperty, Binding);
                 dtbox.TextAlignment = Alignment;
@@ -217,8 +221,10 @@ public partial class DataGridInputColumn : System.Windows.Controls.DataGridTextC
                 return base.GenerateEditingElement(cell, dataItem);
 
             case InputMode.Documento:
-                var doctb = new DocumentoInputBox();
-                doctb.Language = System.Windows.Markup.XmlLanguage.GetLanguage(System.Threading.Thread.CurrentThread.CurrentUICulture.IetfLanguageTag);
+                var doctb = new DocumentoInputBox
+                {
+                    Language = System.Windows.Markup.XmlLanguage.GetLanguage(System.Threading.Thread.CurrentThread.CurrentUICulture.IetfLanguageTag)
+                };
                 doctb.SetBinding(DocumentoInputBox.ValueProperty, Binding);
                 doctb.TextAlignment = Alignment;
                 doctb.Documento = Documento;

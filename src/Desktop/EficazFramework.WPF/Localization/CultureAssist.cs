@@ -4,7 +4,7 @@ public class CultureAssist
 {
     public static void SetCulture(string culture)
     {
-        System.Globalization.CultureInfo c = new System.Globalization.CultureInfo(culture);
+        System.Globalization.CultureInfo c = new(culture);
         System.Threading.Thread.CurrentThread.CurrentCulture = c;
         System.Threading.Thread.CurrentThread.CurrentUICulture = c;
         System.Globalization.CultureInfo.CurrentCulture = c;

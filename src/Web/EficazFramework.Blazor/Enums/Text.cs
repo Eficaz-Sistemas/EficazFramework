@@ -1,18 +1,15 @@
 ﻿using DisplayNameAttribute = EficazFramework.Attributes.DisplayNameAttribute;
 
-namespace EficazFramework.Enums
+namespace EficazFramework.Enums;
+
+public enum TextAlignment
 {
-    public enum TextAlignment
-    {
-        [DisplayName("text-align: left;")]
-        Left,
-        [DisplayName("text-align: center;")]
-        Center,
-        [DisplayName("text-align: right;")]
-        Right,
-        [DisplayName("text-align: justify;")]
-        Justify
-    }
-
-
+    [DisplayName("text-align: left;")]
+    Left,
+    [DisplayName("text-align: center;")]
+    Center,
+    [DisplayName("text-align: right;")]
+    Right,
+    [DisplayName("text-align: justify;")]
+    Justify
 }

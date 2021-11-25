@@ -69,7 +69,7 @@ public class MDIContainer : Selector
 
     // Fields and Constants
     public const double TaskIconSizeValue = 46D;
-    public static GridLength TaskIconSizeValueRow = new GridLength(TaskIconSizeValue, GridUnitType.Pixel);
+    public static GridLength TaskIconSizeValueRow = new(TaskIconSizeValue, GridUnitType.Pixel);
     protected Guid MyInstanceID = Guid.NewGuid(); //RadioButton group by instance...
 
     private ItemsControl _PART_TaskBarHost = null;
@@ -100,12 +100,11 @@ public class MDIContainer : Selector
 
         UIElement target = null;
 
-        var window = element as MDIWindow;
-        if (window != null)
+        if (element is MDIWindow window)
         {
             window.FocusChanged += OnWindowFocusChanged;
             window.Closed += OnWindowClosed;
-            if (!(item is MDIWindow))
+            if (item is not MDIWindow)
             {
                 Application.ApplicationInstance appinfo = null;
 
@@ -227,8 +226,7 @@ public class MDIContainer : Selector
 
     private void OnWindowClosed(object sender, RoutedEventArgs e)
     {
-        var window = sender as MDIWindow;
-        if (window != null)
+        if (sender is MDIWindow window)
         {
             //RadioButton taskbt = (from b in _taskBarAppsCollection
             //                      where b.DataContext == window | b.DataContext == window.Content
@@ -321,7 +319,7 @@ public class MDIContainer : Selector
             MDIWindow sourcecontainer = (MDIWindow)ItemContainerGenerator.ContainerFromItem(item);
             if (sourcecontainer != null)
             {
-                Binding b = new Binding(nameof(MDIWindow.IsSelected)) { Mode = BindingMode.TwoWay, UpdateSourceTrigger = UpdateSourceTrigger.PropertyChanged, Source = sourcecontainer };
+                Binding b = new(nameof(MDIWindow.IsSelected)) { Mode = BindingMode.TwoWay, UpdateSourceTrigger = UpdateSourceTrigger.PropertyChanged, Source = sourcecontainer };
                 rdinstance.SetBinding(RadioButton.IsCheckedProperty, b);
                 SetApplicationDefinition(rdinstance, sourcecontainer.AppDefinition);
             }
