@@ -1,0 +1,45 @@
+﻿@namespace EficazFramework.Components.Dialogs
+
+<MudBlazor.MudDialog>
+    <DialogContent>
+        @*@System.Text.Encodings.Web.HtmlEncoder.Default.Encode((Args?.Content != null ? Args.Content.ToString() : "").Replace(Environment.NewLine, "<br/>"))*@
+        @((MarkupString)(Args?.Content?.ToString() ?? "").Replace(Environment.NewLine,"<br/>"))
+    </DialogContent>
+    <DialogActions>
+        @switch (Args.Buttons)
+        {
+            case Events.MessageButtons.OK:
+                <MudBlazor.MudButton Color="@MudBlazor.Color.Primary" OnClick='() => MudDialog.Close(MudBlazor.DialogResult.Ok<EficazFramework.Events.MessageResult>(Events.MessageResult.OK))'>
+                    @EficazFramework.Resources.Strings.Events.MessageBox_Ok
+                </MudBlazor.MudButton>
+                break;
+            case Events.MessageButtons.OKCancel:
+                <MudBlazor.MudButton Color="@MudBlazor.Color.Primary" OnClick='() => MudDialog.Close(MudBlazor.DialogResult.Ok<EficazFramework.Events.MessageResult>(Events.MessageResult.OK))'>
+                    @EficazFramework.Resources.Strings.Events.MessageBox_Ok
+                </MudBlazor.MudButton>
+                <MudBlazor.MudButton OnClick='() => MudDialog.Close(MudBlazor.DialogResult.Ok<EficazFramework.Events.MessageResult>(Events.MessageResult.Cancel))'>
+                    @EficazFramework.Resources.Strings.Events.MessageBox_Cancel
+                </MudBlazor.MudButton>
+                break;
+            case Events.MessageButtons.YesNo:
+                <MudBlazor.MudButton Color="@MudBlazor.Color.Primary" OnClick='() => MudDialog.Close(MudBlazor.DialogResult.Ok<EficazFramework.Events.MessageResult>(Events.MessageResult.Yes))'>
+                    @EficazFramework.Resources.Strings.Events.MessageBox_Yes
+                </MudBlazor.MudButton>
+                <MudBlazor.MudButton OnClick='() => MudDialog.Close(MudBlazor.DialogResult.Ok<EficazFramework.Events.MessageResult>(Events.MessageResult.No))'>
+                    @EficazFramework.Resources.Strings.Events.MessageBox_No
+                </MudBlazor.MudButton>
+                break;
+            case Events.MessageButtons.YesNoCancel:
+                <MudBlazor.MudButton Color="@MudBlazor.Color.Primary" OnClick='() => MudDialog.Close(MudBlazor.DialogResult.Ok<EficazFramework.Events.MessageResult>(Events.MessageResult.Yes))'>
+                    @EficazFramework.Resources.Strings.Events.MessageBox_Yes
+                </MudBlazor.MudButton>
+                <MudBlazor.MudButton OnClick='() => MudDialog.Close(MudBlazor.DialogResult.Ok<EficazFramework.Events.MessageResult>(Events.MessageResult.No))'>
+                    @EficazFramework.Resources.Strings.Events.MessageBox_No
+                </MudBlazor.MudButton>
+                <MudBlazor.MudButton OnClick='() => MudDialog.Close(MudBlazor.DialogResult.Ok<EficazFramework.Events.MessageResult>(Events.MessageResult.Cancel))'>
+                    @EficazFramework.Resources.Strings.Events.MessageBox_Cancel
+                </MudBlazor.MudButton>
+                break;
+        }
+    </DialogActions>
+</MudBlazor.MudDialog>
