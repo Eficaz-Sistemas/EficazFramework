@@ -1,0 +1,109 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0-windows</TargetFramework>
+    <UseWPF>true</UseWPF>
+    <Version>6.0.0-preview001</Version>
+    <AssemblyVersion>5.9.7.0</AssemblyVersion>
+    <FileVersion>5.9.7.0</FileVersion>
+    <RootNamespace>EficazFramework</RootNamespace>
+    <Authors>Eficaz Sistemas</Authors>
+    <Company>Eficaz Sistemas de Gestão e Inteligência Tributária</Company>
+    <Description>Controles, extensões e utulitários para implementação WPF.</Description>
+    <Copyright>Copyright ©  2021. Eficaz Sistemas de Gestão e Inteligência Tributária Ltda.</Copyright>
+    <SignAssembly>true</SignAssembly>
+    <AssemblyOriginatorKeyFile>EfCore.snk</AssemblyOriginatorKeyFile>
+    <PackageIcon>logo.png</PackageIcon>
+    <PackageIconUrl>https://efsuporte.blob.core.windows.net/portal/EficazFramework.png</PackageIconUrl>
+    <RepositoryUrl>https://eficazcs.visualstudio.com/_git/EficazFramework</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <PackageTags>wpf api controls markup xaml</PackageTags>
+    <NeutralLanguage>pt-BR</NeutralLanguage>
+    <DelaySign>false</DelaySign>
+    <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <Configurations>Debug;Release</Configurations>
+    <RuntimeIdentifiers>win-x64;win-x86</RuntimeIdentifiers>
+  </PropertyGroup>
+	
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+  	<NoWarn>1573;1591;1701;1702</NoWarn>
+  </PropertyGroup>
+  
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+  	<NoWarn>1573;1591;1701;1702</NoWarn>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Remove="Themes\Generic\Icons\PackIconDataFactory.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="MaterialDesignThemes" Version="4.3.0-ci60" />
+    <PackageReference Include="Microsoft.Xaml.Behaviors.Wpf" Version="1.1.39" />
+  </ItemGroup>
+	
+  <ItemGroup>
+    <None Include="..\..\..\Assets\logo.png">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
+  </ItemGroup>
+	  
+  <ItemGroup>
+    <Compile Update="Resources\Strings\Controls.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Controls.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="Resources\Strings\Controls.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Controls.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>EficazFramework.Resources.Strings</CustomToolNamespace>
+    </EmbeddedResource>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Page Update="Themes\Generic\Icons\Commerce.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Themes\MaterialDesign.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Themes\Generic\Icons\App.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Themes\MaterialDesign\InteractiveTextBox.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Themes\MaterialDesign\MDI.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Themes\MaterialDesign\SessionView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Controls\Panels\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageFile Include="$(OutputPath)\EficazFramework.WPF.DesignTools.dll">
+      <Kind>Lib</Kind>
+      <TargetPath>Design\EficazFramework.WPF.DesignTools.dll</TargetPath>
+    </PackageFile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Core\EficazFramework.Data\EficazFramework.Data.csproj" />
+    <ProjectReference Include="..\..\Core\EficazFramework.Utilities\EficazFramework.Utilities.csproj" />
+  </ItemGroup>
+
+  <!--<Target Name="MovePackage" AfterTargets="Pack">
+    <Move SourceFiles="$(OutputPath)..\$(PackageId).$(PackageVersion).nupkg" DestinationFolder="$(SolutionDir)Publish\Packages" />
+  </Target>-->
+
+</Project>

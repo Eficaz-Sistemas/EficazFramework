@@ -1,0 +1,110 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:efcore="clr-namespace:EficazFramework.Controls"
+                    xmlns:efcoreocale="clr-namespace:EficazFramework.Localization"
+                    xmlns:md="http://materialdesigninxaml.net/winfx/xaml/themes" >
+
+    <BooleanToVisibilityConverter x:Key="boolToVis"  />
+
+    <Style TargetType="efcore:ExpressionBuilder">
+        <Setter Property="Focusable" Value="False" />
+        <Setter Property="IsTabStop" Value="False" />
+        <Setter Property="FocusVisualStyle" Value="{x:Null}" />
+        <Setter Property="md:ShadowAssist.ShadowDepth" Value="Depth0" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="efcore:ExpressionBuilder">
+                    <!--<Border Background="Red"/>-->
+                    <Grid>
+                        <md:Card md:ShadowAssist.ShadowDepth="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=(md:ShadowAssist.ShadowDepth)}">
+                            <Expander Header="{TemplateBinding Header}" IsExpanded="{TemplateBinding IsExpanded}">
+                                <Grid Margin="20,0,20,20">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto" />
+                                        <ColumnDefinition Width="1*" />
+                                        <ColumnDefinition Width="Auto" />
+                                    </Grid.ColumnDefinitions>
+                                    <Button x:Name="PART_AddCommand" 
+                                            Style="{StaticResource MaterialDesignToolButton}" 
+                                            ToolTip="{efcoreocale:LocalizeText ExpressionBuilder_AddCommand, 
+                                                                               Assembly=EficazFramework.WPF, 
+                                                                               DictionaryName=EficazFramework.Resources.Strings.Controls}"
+                                            Command="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=ViewModel.AddNewItemCommand}"
+                                            Visibility="{Binding  RelativeSource={RelativeSource TemplatedParent}, Path=ViewModel.CanAddExpressions, Converter={StaticResource boolToVis}}"
+                                            Margin="0,40,0,0"
+                                            VerticalAlignment="Top">
+                                        <md:PackIcon Kind="Add" />
+                                    </Button>
+                                    <DataGrid x:Name="PART_DataGrid" 
+                                              AutoGenerateColumns="False"
+                                              Grid.Column="1" 
+                                              Margin="16,0"
+                                              CanUserAddRows="False" 
+                                              CanUserResizeRows="False" 
+                                              CanUserDeleteRows="False" 
+                                              CanUserReorderColumns="False"
+                                              CanUserSortColumns="False"
+                                              DataContext="{TemplateBinding ViewModel}"
+                                              ItemsSource="{Binding Items}">
+                                        <DataGrid.Columns>
+                                            <DataGridTemplateColumn>
+                                                <DataGridTemplateColumn.CellTemplate>
+                                                    <DataTemplate>
+                                                        <Button x:Name="PART_DeleteCommand" 
+                                                                Margin="-8" Width="Auto" Height="Auto" Padding="0"
+                                                                ToolTip="{efcoreocale:LocalizeText ExpressionBuilder_DeleteCommand, 
+                                                                                                   Assembly=EficazFramework.WPF, 
+                                                                                                   DictionaryName=EficazFramework.Resources.Strings.Controls}"
+                                                                Command="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType=efcore:ExpressionBuilder}, Path=ViewModel.DeleteItemCommand}"
+                                                                CommandParameter="{Binding}"
+                                                                Style="{StaticResource MaterialDesignToolButton}" >
+                                                            <md:PackIcon Kind="Delete" />
+                                                        </Button>
+                                                    </DataTemplate>
+                                                </DataGridTemplateColumn.CellTemplate>
+                                            </DataGridTemplateColumn>
+                                            <md:DataGridComboBoxColumn IsEditable="False" 
+                                                                       SelectedValueBinding="{Binding SelectedProperty, UpdateSourceTrigger=PropertyChanged}"
+                                                                       DisplayMemberPath="DisplayName"
+                                                                       TextBinding="{Binding SelectedProperty.DisplayName}"
+                                                                       Header="{efcoreocale:LocalizeText ExpressionBuilder_CL_Field, 
+                                                                                                         Assembly=EficazFramework.WPF, 
+                                                                                                         DictionaryName=EficazFramework.Resources.Strings.Controls, 
+                                                                                                         StringFormat={}{0}:}" />
+                                            <md:DataGridComboBoxColumn IsEditable="False"
+                                                                       ItemsSourceBinding="{Binding AvailableOperators}"
+                                                                       SelectedValueBinding="{Binding Operator, UpdateSourceTrigger=PropertyChanged}"
+                                                                       SelectedValuePath="Value"
+                                                                       DisplayMemberPath="Description"
+                                                                       Header="{efcoreocale:LocalizeText ExpressionBuilder_CL_Operator, 
+                                                                                                       Assembly=EficazFramework.WPF, 
+                                                                                                       DictionaryName=EficazFramework.Resources.Strings.Controls, 
+                                                                                                       StringFormat={}{0}:}" />
+                                            <efcore:DataGridExpressionColumn Width="1*" 
+                                                                                     md:HintAssist.Hint="valor..."
+                                                                                     Header="{efcoreocale:LocalizeText ExpressionBuilder_CL_Value, 
+                                                                                                                       Assembly=EficazFramework.WPF, 
+                                                                                                                       DictionaryName=EficazFramework.Resources.Strings.Controls, 
+                                                                                                                       StringFormat={}{0}:}" />
+                                        </DataGrid.Columns>
+                                    </DataGrid>
+
+
+                                    <Button Style="{StaticResource MaterialDesignFloatingActionButton}"
+                                            ToolTip="{efcoreocale:LocalizeText ExpressionBuilder_FindCommand, 
+                                                                                Assembly=EficazFramework.WPF, 
+                                                                                DictionaryName=EficazFramework.Resources.Strings.Controls}"
+                                            Grid.Column="2"
+                                            VerticalAlignment="Bottom">
+                                        <md:PackIcon Kind="Search" />
+                                    </Button>
+                                </Grid>
+                            </Expander>
+                        </md:Card>
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+</ResourceDictionary>

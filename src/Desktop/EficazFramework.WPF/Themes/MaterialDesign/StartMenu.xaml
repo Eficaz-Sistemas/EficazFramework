@@ -1,0 +1,246 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:md="http://materialdesigninxaml.net/winfx/xaml/themes"
+                    xmlns:efcore="clr-namespace:EficazFramework.Controls"
+                    xmlns:efcoreapp="clr-namespace:EficazFramework.Application;assembly=EficazFramework.Utilities"
+                    xmlns:efcorelocale="clr-namespace:EficazFramework.Localization">
+    
+    <DataTemplate DataType="{x:Type efcoreapp:ApplicationDefinition}" x:Key="EfCore.DataTemplate.PinnedApplication">
+        <DataTemplate.Resources>
+            <DataTemplate DataType="{x:Type Geometry}">
+                <Path Stretch="Uniform"
+                      Width="72" Height="72"
+                      RenderOptions.BitmapScalingMode="HighQuality"
+                      Data="{Binding}"
+                      Fill="{Binding RelativeSource={RelativeSource Self}, Path=(TextBlock.Foreground)}"/>
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type md:PackIconKind}">
+                <md:PackIcon Width="72" Height="72"
+                             RenderOptions.BitmapScalingMode="HighQuality"
+                             Kind="{Binding}"/>
+            </DataTemplate>
+        </DataTemplate.Resources>
+        <Button Style="{StaticResource MaterialDesignFlatButton}"
+                Content="{Binding}"
+                CommandParameter="{Binding}" />
+    </DataTemplate>
+
+    <Style TargetType="{x:Type efcore:StartMenu}" BasedOn="{StaticResource MaterialDesignNavigatilRailTabControl}">
+        <Setter Property="KeyboardNavigation.TabNavigation" Value="Cycle" />
+        <Setter Property="KeyboardNavigation.ControlTabNavigation" Value="Contained" />
+        <Setter Property="TabStripPlacement" Value="Left" />
+        <Setter Property="Padding" Value="20" />
+        <Setter Property="efcorelocale:ResourceManager.Assembly" Value="EficazFramework.WPF" />
+        <Setter Property="efcorelocale:ResourceManager.DictionaryName" Value="EficazFramework.Resources.Strings.Controls" />
+        <Setter Property="DataContext" Value="{Binding RelativeSource={RelativeSource Mode=Self}}" />
+        <Setter Property="ItemsSource">
+            <Setter.Value>
+                <CompositeCollection>
+                    <!--Start Menu Initial Tab-->
+                    <TabItem x:Name="FixeStartItem"  
+                             ToolTip="{efcorelocale:LocalizeText StartMenu_MainTab, Assembly=EficazFramework.WPF, DictionaryName=EficazFramework.Resources.Strings.Controls}"
+                             ToolTipService.Placement="Right"
+                             Style="{StaticResource MaterialDesignNavigationRailTabItem}">
+                        <TabItem.Header>
+                            <md:PackIcon Kind="Apps" Width="32" Height="32" />
+                        </TabItem.Header>
+                        <ContentPresenter Focusable="False" Content="{Binding}">
+                            <ContentPresenter.ContentTemplate>
+                                <DataTemplate>
+                                    <Grid MinWidth="400">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="Auto" />
+                                            <RowDefinition Height="Auto" />
+                                            <RowDefinition Height="1*" />
+                                        </Grid.RowDefinitions>
+
+                                        <!--Header-->
+                                        <Grid>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="Auto"/>
+                                                <ColumnDefinition Width="1*"/>
+                                                <ColumnDefinition Width="Auto"/>
+                                            </Grid.ColumnDefinitions>
+                                            <Button Style="{StaticResource MaterialDesignFlatButton}" 
+                                                    Width="32" Height="32"
+                                                    ToolTip="{efcorelocale:LocalizeText StartMenu_AllApps, Assembly=EficazFramework.WPF, DictionaryName=EficazFramework.Resources.Strings.Controls}"
+                                                    Command="{Binding AppsViewModeCommand}"
+                                                    Padding="0" x:Name="PART_ViewModeButton">
+                                                <md:PackIcon Kind="FormatListText" Width="26" Height="26" />
+                                            </Button>
+                                            <TextBlock VerticalAlignment="Center" 
+                                                       FontWeight="Bold"  
+                                                       Grid.Column="1" Margin="25,0" 
+                                                       TextTrimming="WordEllipsis"
+                                                       Text="{Binding WelcomeText, FallbackValue={efcorelocale:LocalizeText StartMenu_DefaultWelcomeText, Assembly=EficazFramework.WPF, DictionaryName=EficazFramework.Resources.Strings.Controls}}"
+                                                       Style="{StaticResource MaterialDesignSubtitle2TextBlock}"/>
+                                            <ContentPresenter Focusable="False" Grid.Column="2"
+                                                              HorizontalAlignment="Right" Height="32" 
+                                                              Content="{Binding MainPageTopRightContent}"/>
+                                        </Grid>
+
+                                        <!--Search-->
+                                        <!--Style="{StaticResource EfCore.Style.StartMenuMaterialDesignTextBoxBase}"-->
+                                        <TextBox x:Name="PART_FindTextBox" Grid.Row="1"
+                                                 Margin="0,20" BorderBrush="{x:Null}" BorderThickness="0"
+                                                 Text="{Binding SearchAppLiteral, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
+                                                 md:TextFieldAssist.TextFieldCornerRadius="4"
+                                                 md:TextFieldAssist.HasFilledTextField="True"
+                                                 md:TextFieldAssist.RippleOnFocusEnabled="True"
+                                                 md:HintAssist.IsFloating="False"
+                                                 md:TextFieldAssist.UnderlineCornerRadius="0,0,4,4"
+                                                 md:HintAssist.Hint="{efcorelocale:LocalizeText StartMenu_SearchTB, Assembly=EficazFramework.WPF, DictionaryName=EficazFramework.Resources.Strings.Controls}" />
+
+                                        <!--Apps-->
+                                        <ScrollViewer HorizontalScrollBarVisibility="Disabled" 
+                                                      VerticalScrollBarVisibility="Auto"
+                                                      Focusable="False" IsTabStop="False"
+                                                      Grid.Row="2">
+                                            <ItemsControl x:Name="PART_AppsHost"
+                                                          Focusable="False" IsTabStop="False"
+                                                          ItemsSource="{Binding PinnedApplications}">
+                                                <ItemsControl.GroupStyle>
+                                                    <GroupStyle HidesIfEmpty="true" >
+                                                        <GroupStyle.HeaderTemplate>
+                                                            <DataTemplate>
+                                                                <Grid>
+                                                                    <Grid.ColumnDefinitions>
+                                                                        <ColumnDefinition Width="Auto"/>
+                                                                        <ColumnDefinition Width="1*"/>
+                                                                    </Grid.ColumnDefinitions>
+                                                                    <TextBlock Text="{Binding Name}" 
+                                                                               Style="{StaticResource MaterialDesignSubtitle2TextBlock}" Margin="3" />
+                                                                    <Rectangle VerticalAlignment="Center" 
+                                                                               Height="1" Grid.Column="1" Margin="5"
+                                                                               Fill="{DynamicResource MaterialDesignDivider}"/>
+                                                                </Grid>
+                                                            </DataTemplate>
+                                                        </GroupStyle.HeaderTemplate>
+                                                    </GroupStyle>
+                                                </ItemsControl.GroupStyle>
+                                                <ItemsControl.ItemTemplate>
+                                                    <DataTemplate DataType="{x:Type efcoreapp:ApplicationDefinition}">
+                                                        <Button Style="{StaticResource MaterialDesignFlatButton}"
+                                                                Command="{Binding OpenApplicationCommand, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=efcore:StartMenu}}"
+                                                                Foreground="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=(TextElement.Foreground)}"
+                                                                Tag="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=efcore:StartMenu}}"
+                                                                CommandParameter="{Binding}" CommandTarget="{Binding RelativeSource={RelativeSource Mode=Self}}"
+                                                                x:Name="baseBT" Width="96" Height="96">
+                                                            <Button.Resources>
+                                                                <DataTemplate DataType="{x:Type Geometry}">
+                                                                    <Path Stretch="Uniform"
+                                                                          Width="48" Height="48"
+                                                                          RenderOptions.BitmapScalingMode="HighQuality"
+                                                                          Data="{Binding}"
+                                                                          Fill="{Binding RelativeSource={RelativeSource Self}, Path=(TextBlock.Foreground)}"/>
+                                                                </DataTemplate>
+                                                                <DataTemplate DataType="{x:Type md:PackIconKind}">
+                                                                    <md:PackIcon Width="48" Height="48"
+                                                                                 RenderOptions.BitmapScalingMode="HighQuality"
+                                                                                 Kind="{Binding}"/>
+                                                                </DataTemplate>
+                                                            </Button.Resources>
+                                                            <Button.ContextMenu>
+                                                                <ContextMenu StaysOpen="False" Tag="{Binding PlacementTarget.Tag, RelativeSource={RelativeSource Mode=Self}}" >
+                                                                    <Button Command="{Binding Tag.PinOffApplicationCommand, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ContextMenu}}"
+                                                                            CommandParameter="{Binding}" Style="{StaticResource MaterialDesignToolButton}" >
+                                                                        <StackPanel Orientation="Horizontal">
+                                                                            <md:PackIcon Margin="0,0,15,0" Kind="PinOff"/>
+                                                                            <TextBlock Text="{efcorelocale:LocalizeText StartMenu_PinOffApp, DictionaryName=EficazFramework.Resources.Strings.Controls, Assembly=EficazFramework.WPF}"/>
+                                                                        </StackPanel>
+                                                                        <Button.Triggers>
+                                                                            <EventTrigger RoutedEvent="ButtonBase.Click">
+                                                                                <BeginStoryboard>
+                                                                                    <Storyboard>
+                                                                                        <BooleanAnimationUsingKeyFrames Storyboard.Target="{Binding RelativeSource={RelativeSource AncestorType=ContextMenu}}"
+											                                                                            Storyboard.TargetProperty="IsOpen" >
+                                                                                            <DiscreteBooleanKeyFrame Value="False" KeyTime="0:0:0.1"/>
+                                                                                        </BooleanAnimationUsingKeyFrames>
+                                                                                    </Storyboard>
+                                                                                </BeginStoryboard>
+                                                                            </EventTrigger>
+                                                                        </Button.Triggers>
+                                                                    </Button>
+                                                                </ContextMenu>
+                                                            </Button.ContextMenu>
+                                                            <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+                                                                <ContentPresenter Focusable="False" Content="{Binding Icon}"/>
+                                                                <TextBlock Text="{Binding Title}" VerticalAlignment="Center" TextAlignment="Center" TextTrimming="CharacterEllipsis" Margin="0,3,0,0" />
+                                                            </StackPanel>
+                                                        </Button>
+                                                    </DataTemplate>
+                                                </ItemsControl.ItemTemplate>
+                                                <ItemsControl.ItemsPanel>
+                                                    <ItemsPanelTemplate>
+                                                        <UniformGrid Columns="6" IsItemsHost="True" />
+                                                    </ItemsPanelTemplate>
+                                                </ItemsControl.ItemsPanel>
+                                            </ItemsControl>
+                                        </ScrollViewer>
+                                    </Grid>
+                                    <DataTemplate.Triggers>
+                                        <DataTrigger Binding="{Binding AllAppsList}" Value="True">
+                                            <Setter TargetName="PART_ViewModeButton" Property="Content">
+                                                <Setter.Value>
+                                                    <md:PackIcon Kind="Apps" Width="26" Height="26" />
+                                                </Setter.Value>
+                                            </Setter>
+                                            <Setter TargetName="PART_ViewModeButton" Property="ToolTip" Value="{efcorelocale:LocalizeText StartMenu_GridApps, Assembly=EficazFramework.WPF, DictionaryName=EficazFramework.Resources.Strings.Controls}"/>
+                                            <Setter TargetName="PART_AppsHost" Property="ItemsPanel">
+                                                <Setter.Value>
+                                                    <ItemsPanelTemplate>
+                                                        <StackPanel IsItemsHost="True" />
+                                                    </ItemsPanelTemplate>
+                                                </Setter.Value>
+                                            </Setter>
+                                            <Setter TargetName="PART_AppsHost" Property="ItemTemplate">
+                                                <Setter.Value>
+                                                    <DataTemplate DataType="{x:Type efcoreapp:ApplicationDefinition}">
+                                                        <Button Style="{StaticResource MaterialDesignFlatButton}"
+                                                                Foreground="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=(TextElement.Foreground)}"
+                                                                Command="{Binding OpenApplicationCommand, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=efcore:StartMenu}}"
+                                                                CommandParameter="{Binding}"
+                                                                HorizontalContentAlignment="Left">
+                                                            <Button.Resources>
+                                                                <DataTemplate DataType="{x:Type Geometry}">
+                                                                    <Path Stretch="Uniform"
+                                                                          Width="16" Height="16"
+                                                                          RenderOptions.BitmapScalingMode="HighQuality"
+                                                                          Data="{Binding}"
+                                                                          Fill="{Binding RelativeSource={RelativeSource Self}, Path=(TextBlock.Foreground)}"/>
+                                                                </DataTemplate>
+                                                                <DataTemplate DataType="{x:Type md:PackIconKind}">
+                                                                    <md:PackIcon Width="16" Height="16"
+                                                                                 RenderOptions.BitmapScalingMode="HighQuality"
+                                                                                 Kind="{Binding}"/>
+                                                                </DataTemplate>
+                                                            </Button.Resources>
+                                                            <Grid>
+                                                                <Grid.ColumnDefinitions>
+                                                                    <ColumnDefinition Width="Auto"/>
+                                                                    <ColumnDefinition Width="1*"/>
+                                                                </Grid.ColumnDefinitions>
+                                                                <ContentPresenter Focusable="False" Content="{Binding Icon}"/>
+                                                                <TextBlock Text="{Binding TooltipTilte}" VerticalAlignment="Center" TextAlignment="Left" TextTrimming="CharacterEllipsis" Margin="6,0,0,0" Grid.Column="1" />
+                                                            </Grid>
+                                                        </Button>
+                                                    </DataTemplate>
+                                                </Setter.Value>
+                                            </Setter>
+                                            <Setter TargetName="PART_AppsHost" Property="ItemsSource" Value="{Binding Applications}" />
+                                        </DataTrigger>
+                                    </DataTemplate.Triggers>
+
+                                </DataTemplate>
+                            </ContentPresenter.ContentTemplate>
+                        </ContentPresenter>
+                    </TabItem>
+                    <CollectionContainer />
+                </CompositeCollection>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="PinnedApplicationTemplate" Value="{StaticResource EfCore.DataTemplate.PinnedApplication}" />
+    </Style>
+
+
+</ResourceDictionary>

@@ -3,7 +3,7 @@
 ## EntityRepository&lt;TEntity&gt;.GetIOrderedQueryable(IQueryable&lt;TEntity&gt;, SortDescription, bool) Method
 Obtém uma instância de query ordenável (instrução ORDER BY em T-SQL) do tipo IOrderedQueryable.  
 ```csharp
-private System.Linq.IQueryable<TEntity> GetIOrderedQueryable(System.Linq.IQueryable<TEntity> query, EficazFramework.Collections.SortDescription orderbyDefinition, bool use_thenby=false);
+private static System.Linq.IQueryable<TEntity> GetIOrderedQueryable(System.Linq.IQueryable<TEntity> query, EficazFramework.Collections.SortDescription orderbyDefinition, bool use_thenby=false);
 ```
 #### Parameters
 <a name='EficazFramework_Repositories_EntityRepository_TEntity__GetIOrderedQueryable(System_Linq_IQueryable_TEntity__EficazFramework_Collections_SortDescription_bool)_query'></a>
