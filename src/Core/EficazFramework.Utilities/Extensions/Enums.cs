@@ -92,16 +92,13 @@ public static class Enums
         var enumType = value.GetType();
         try
         {
-            // Dim att = value.GetType().GetField(value.ToString).GetCustomAttributes(GetType(Common.Attributes.UIEditor.EditorGeneration.EnumDescriptionAttribute), True)
-            var att = enumType.GetMember(result)?.First().GetCustomAttributes(typeof(EficazFramework.Attributes.DisplayNameAttribute), true);
-            if ((att?.Length) <= 0 == true)
-                att = enumType.GetField(value.ToString())?.GetCustomAttributes(typeof(EficazFramework.Attributes.DisplayNameAttribute), true);
+            // System.ComponentModel.DescriptionAttribute
+            var att = enumType.GetMember(result)?.First().GetCustomAttributes(typeof(System.ComponentModel.DescriptionAttribute), true).FirstOrDefault();
+            if (att == null)
+                att = enumType.GetField(value.ToString())?.GetCustomAttributes(typeof(System.ComponentModel.DescriptionAttribute), true);
             if (att is not null)
             {
-                if (att.Length > 0)
-                {
-                    result = ((EficazFramework.Attributes.DisplayNameAttribute)att[0]).DisplayName;
-                }
+                result = ((System.ComponentModel.DescriptionAttribute)att).Description;
             }
         }
         catch

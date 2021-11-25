@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
-    <Version>6.0.0-preview002</Version>
+    <Version>6.0.0-preview001</Version>
     <AssemblyVersion>5.9.7.0</AssemblyVersion>
     <FileVersion>5.9.7.0</FileVersion>
     <RootNamespace>EficazFramework</RootNamespace>
