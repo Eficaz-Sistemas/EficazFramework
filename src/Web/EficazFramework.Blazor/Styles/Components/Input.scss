@@ -1,0 +1,20 @@
+﻿.text-right > .mud-input-control-input-container > .mud-input > input.mud-input-root {
+    text-align: right;
+}
+
+.text-center > .mud-input-control-input-container > .mud-input > input.mud-input-root {
+    text-align: center;
+}
+
+.text-justify > .mud-input-control-input-container > .mud-input > input.mud-input-root {
+    text-align: justify;
+}
+
+div.text-match div, div.mud-input input {
+    text-align: match-parent
+}
+
+.text-match > .mud-input > input.mud-input-root, div.mud-input-slot.mud-input-root {
+    text-align: match-parent;
+}
+

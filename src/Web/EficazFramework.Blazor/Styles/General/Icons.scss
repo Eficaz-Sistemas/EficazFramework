@@ -1,0 +1,15 @@
+﻿.brand {
+    font-size: 1.5rem;
+    font-weight: 400;
+    letter-spacing: .1rem;
+    line-height: 1.7;
+    color: var(--mud-theme-on-appbar);
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.brand:hover {
+    cursor: pointer;
+    background-color: var(--mud-theme-default-hover);
+    transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms, box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms, border 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+}

@@ -1,0 +1,64 @@
+{
+  "selection": [
+    {
+      "order": 0,
+      "name": "brand-eficaz",
+      "ligatures": ""
+    }
+  ],
+  "metadata": {
+    "name": "Eficaz",
+    "importSize": {
+      "width": null,
+      "height": 1024
+    },
+    "designer": "Henrique Clausing",
+    "iconsHash": 1327694302
+  },
+  "height": 1024,
+  "prevSize": 32,
+  "icons": [
+    {
+      "paths": [
+        "M490.961 293.058l-301.421 103.787 65.187 463.831 311.056-107.107-14.315-101.847-186.495 64.214-11.993-85.335 166.537-57.344-14.121-100.472-166.537 57.344-10.446-74.323 176.858-60.9zM770.125 169.518c-8.060 0.85-16.756 2.281-26.092 4.294-9.34 2.012-19.972 5.073-31.901 9.18-16.054 5.529-32.561 13.858-49.515 24.986s-31.608 25.794-43.958 43.995c-13.601 19.594-22.408 40.783-26.422 63.568-4.009 22.785-4.661 43.813-1.953 63.081l1.544 11.011-43.355 14.929 12.767 90.838 43.355-14.926 34.82 247.742 124.556-42.888-34.816-247.746 60.561-20.852-12.767-90.838-61.935 21.327-2.321-16.516c-1.677-11.928 0.558-23.399 6.706-34.415s16.103-18.892 29.865-23.631c6.425-2.211 12.094-3.803 17.007-4.773s9.959-1.866 15.133-2.686zM511.991 0c282.769 0 512 229.23 512 512s-229.231 512-512 512c-282.77 0-512-229.231-512-512s229.23-512 512-512z"
+      ],
+      "tags": [
+        "brand-eficaz"
+      ],
+      "defaultCode": 59648,
+      "grid": 0
+    }
+  ],
+  "colorThemes": [],
+  "preferences": {
+    "showGlyphs": true,
+    "showQuickUse": true,
+    "showQuickUse2": true,
+    "showSVGs": true,
+    "fontPref": {
+      "prefix": "icon-",
+      "metadata": {
+        "fontFamily": "icomoon"
+      },
+      "metrics": {
+        "emSize": 1024,
+        "baseline": 6.25,
+        "whitespace": 50
+      },
+      "embed": false
+    },
+    "imagePref": {
+      "prefix": "icon-",
+      "png": true,
+      "useClassSelector": true,
+      "color": 0,
+      "bgColor": 16777215,
+      "classSelector": ".icon"
+    },
+    "historySize": 50,
+    "showCodes": true,
+    "gridSize": 16,
+    "showGrid": false
+  },
+  "IcoMoonType": "icon-set"
+}

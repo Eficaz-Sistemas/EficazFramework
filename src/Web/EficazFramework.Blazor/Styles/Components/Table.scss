@@ -1,0 +1,8 @@
+﻿.ef-table-scroll {
+    overflow-x: scroll;
+}
+
+.ef-table-scroll table td:first-child {
+    position: sticky;
+    left: 0;
+}

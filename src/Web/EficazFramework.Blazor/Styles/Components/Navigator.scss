@@ -1,0 +1,28 @@
+﻿.mud-nav-link.active:not(.mud-nav-link-disabled) {
+    border-right: 2px var(--mud-palette-primary) solid;
+}
+
+
+.mud-nav-link.active:not(.mud-nav-link-disabled) .mud-icon-root {
+    color: var(--mud-palette-primary);
+}
+
+.navitem_main {
+    display: flex;
+    height: -moz-available; /* WebKit-based browsers will ignore this. */
+    height: -webkit-fill-available; /* Mozilla-based browsers will ignore this. */
+}
+
+@keyframes navitem_entrance_keyframe {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+.navitem_animate {
+    animation: 0.25s ease-in navitem_entrance_keyframe
+}

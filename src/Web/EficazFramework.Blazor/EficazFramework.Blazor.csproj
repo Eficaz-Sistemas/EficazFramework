@@ -1,0 +1,81 @@
+<Project Sdk="Microsoft.NET.Sdk.Razor">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <AddRazorSupportForMvc>true</AddRazorSupportForMvc>
+	 <Version>6.0.0-preview001</Version>
+	 <AssemblyVersion>5.9.7.0</AssemblyVersion>
+	 <FileVersion>5.9.7.0</FileVersion>
+	 <RootNamespace>EficazFramework</RootNamespace>
+	 <Authors>Eficaz Sistemas</Authors>
+	 <Company>Eficaz Sistemas de Gestão e Inteligência Tributária</Company>
+	 <Copyright>Copyright ©  2021. Eficaz Sistemas de Gestão e Inteligência Tributária Ltda.</Copyright>
+	 <PackageIcon>logo.png</PackageIcon>
+	 <PackageIconUrl>https://efsuporte.blob.core.windows.net/portal/EficazFramework.png</PackageIconUrl>
+	 <RepositoryUrl>https://github.com/Eficaz-Sistemas/EficazFramework</RepositoryUrl>
+	 <RepositoryType>git</RepositoryType>
+	 <PackageTags>blazor api components web html css</PackageTags>
+	 <NeutralLanguage>pt-BR</NeutralLanguage>
+	 <SignAssembly>true</SignAssembly>
+	 <AssemblyOriginatorKeyFile>EfCore.snk</AssemblyOriginatorKeyFile>
+	 <AssemblyName>EficazFramework.Blazor</AssemblyName>
+	 <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+	 <Description>Controles, extensões e utulitários para implementação Blazor.</Description>
+  </PropertyGroup>
+	
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+  	<NoWarn>1573;1591;1701;1702</NoWarn>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+  	<NoWarn>1573;1591;1701;1702</NoWarn>
+  </PropertyGroup>
+
+  <ItemGroup>
+  	<None Include="..\..\..\Assets\logo.png">
+  		<Pack>True</Pack>
+  		<PackagePath>\</PackagePath>
+  	</None>
+  </ItemGroup>
+	
+  <ItemGroup>
+    <FrameworkReference Include="Microsoft.AspNetCore.App" />
+  </ItemGroup>
+	
+  <ItemGroup>
+    <PackageReference Include="MudBlazor" Version="6.0.2" />
+  </ItemGroup>
+	
+  <ItemGroup>
+    <ProjectReference Include="..\..\Core\EficazFramework.Data\EficazFramework.Data.csproj" />
+    <ProjectReference Include="..\..\Core\EficazFramework.Utilities\EficazFramework.Utilities.csproj" />
+  </ItemGroup>
+	
+  <ItemGroup>
+    <Compile Update="Resources\Strings\Components.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Components.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Resources\Strings\Layouts.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Layouts.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+	
+  <ItemGroup>
+    <EmbeddedResource Update="Resources\Strings\Components.resx">
+      <CustomToolNamespace>EficazFramework.Resources.Strings</CustomToolNamespace>
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Components.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\Strings\Layouts.resx">
+      <CustomToolNamespace>EficazFramework.Resources.Strings</CustomToolNamespace>
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Layouts.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+</Project>

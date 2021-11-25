@@ -15,7 +15,7 @@
     <AssemblyOriginatorKeyFile>EfCore.snk</AssemblyOriginatorKeyFile>
     <PackageIcon>logo.png</PackageIcon>
     <PackageIconUrl>https://efsuporte.blob.core.windows.net/portal/EficazFramework.png</PackageIconUrl>
-    <RepositoryUrl>https://eficazcs.visualstudio.com/_git/EficazFramework</RepositoryUrl>
+    <RepositoryUrl>https://github.com/Eficaz-Sistemas/EficazFramework</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
     <PackageTags>wpf api controls markup xaml</PackageTags>
     <NeutralLanguage>pt-BR</NeutralLanguage>

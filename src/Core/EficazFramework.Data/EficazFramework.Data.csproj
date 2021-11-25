@@ -12,7 +12,7 @@
     <Company>Eficaz Sistemas de Gestão e Inteligência Tributária</Company>
     <Copyright>Copyright ©  2021. Eficaz Sistemas de Gestão e Inteligência Tributária Ltda.</Copyright>
     <Description>Permite acesso e persistência à fontes de dados, além de formatação e validação das informações.</Description>
-    <RepositoryUrl>https://dev.azure.com/eficazcs/EficazFramework/_git/Main</RepositoryUrl>
+    <RepositoryUrl>https://github.com/Eficaz-Sistemas/EficazFramework</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
     <PackageTags>data efcore entityframeworkcore persistência</PackageTags>
     <NeutralLanguage>pt-BR</NeutralLanguage>

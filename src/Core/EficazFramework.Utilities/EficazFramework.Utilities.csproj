@@ -17,7 +17,7 @@
     <PackageTags>utilitários IO api</PackageTags>
     <PackageIcon>logo.png</PackageIcon>
     <PackageIconUrl>https://efsuporte.blob.core.windows.net/portal/EficazFramework.png</PackageIconUrl>
-    <RepositoryUrl>https://dev.azure.com/eficazcs/EficazFramework/_git/Main</RepositoryUrl>
+    <RepositoryUrl>https://github.com/Eficaz-Sistemas/EficazFramework</RepositoryUrl>
     <SignAssembly>true</SignAssembly>
     <AssemblyOriginatorKeyFile>EfCore.snk</AssemblyOriginatorKeyFile>
     <DelaySign>false</DelaySign>
