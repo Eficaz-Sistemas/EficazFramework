@@ -1,5 +1,6 @@
 ﻿using EficazFramework.Extensions;
 using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Collections.Specialized;
 using System.ComponentModel;
@@ -11,9 +12,9 @@ public class SessionManager : INotifyPropertyChanged
 {
     static SessionManager()
     {
-        Sessions.Add(new Session() { ID = 0, Name = "Public" });
-        Instance.CurrentSession = Sessions[0];
-        Sessions.CollectionChanged += Sessions_CollectionChanged;
+        SessionsInternal.Add(new Session() { ID = 0, Name = "Public" });
+        Instance.CurrentSession = SessionsInternal[0];
+        SessionsInternal.CollectionChanged += Sessions_CollectionChanged;
     }
 
     public static SessionManager Instance { get; } = new SessionManager();
@@ -21,10 +22,7 @@ public class SessionManager : INotifyPropertyChanged
     private Session _current;
     public Session CurrentSession
     {
-        get
-        {
-            return _current;
-        }
+        get => _current;
         set
         {
             _current = value;
@@ -33,13 +31,28 @@ public class SessionManager : INotifyPropertyChanged
         }
     }
 
-    public static ObservableCollection<Session> Sessions { get; } = new ObservableCollection<Session>();
+    private static readonly Dictionary<long, Session> SessionsIDs = new();
+
+    private static ObservableCollection<Session> SessionsInternal { get; } = new ObservableCollection<Session>();
+
+    public static ReadOnlyCollection<Session> Sessions 
+    {
+        get => SessionsInternal.ToReadOnlyCollection<Session>();
+    }
+
     private static void Sessions_CollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
     {
+        if (e.NewItems != null && e.NewItems.Count > 0)
+        {
+            foreach (Session news in e.NewItems)
+            {
+                SessionsIDs.Add(news.ID, news);
+            }
+        }
         if (e.OldItems != null && e.OldItems.Count > 0)
         {
             if (e.OldItems.Contains(Instance.CurrentSession))
-                Instance.CurrentSession = Sessions.LastOrDefault();
+                Instance.CurrentSession = SessionsInternal.LastOrDefault();
 
             foreach (Session old in e.OldItems)
             {
@@ -49,26 +62,44 @@ public class SessionManager : INotifyPropertyChanged
                     app.Dispose();
                     Application.ApplicationManager.RunningAplications.Remove(app);
                 }
+                SessionsIDs.Remove(old.ID);
             }
         }
     }
 
     public static void ActivateSession(long ID)
     {
-        Session exists = Sessions.Where(s => s.ID == ID).FirstOrDefault();
+        Session exists = SessionsInternal.Where(s => s.ID == ID).FirstOrDefault();
         Instance.CurrentSession = exists ?? throw new NullReferenceException(string.Format(Resources.Strings.Application.SessionNotFoundByID, ID));
     }
 
-    public static void ActivateSession(Session session)
+    public static void ActivateSession(Session session, bool update = false)
     {
-        Session exists = Sessions.Where(s => s.ID == session.ID).FirstOrDefault();
+        Session exists = SessionsInternal.Where(s => s.ID == session.ID).FirstOrDefault();
         if (exists == null)
         {
-            Sessions.Add(session);
+            SessionsInternal.Add(session);
             Instance.CurrentSession = session;
             return;
         }
+        if (update)
+        {
+            exists.Icon = session.Icon;
+            exists.Name = session.Name;
+            exists.ShowIdAsIcon = session.ShowIdAsIcon;
+            exists.Tag = session.Tag;
+        }
         Instance.CurrentSession = exists;
+    }
+
+    public static void DisposeSession(long ID)
+    {
+        SessionsInternal.Remove(SessionsInternal.FirstOrDefault(s => s.ID == ID));
+    }
+
+    public static void DisposeSession(Session session)
+    {
+        SessionsInternal.Remove(session);
     }
 
     public event PropertyChangedEventHandler PropertyChanged;
@@ -80,19 +111,16 @@ public class ScopedSessionManager : INotifyPropertyChanged
 {
     public ScopedSessionManager()
     {
-        Sessions.Add(new Session() { ID = 0, Name = "Public" });
+        SessionsInternal.Add(new Session() { ID = 0, Name = "Public" });
         CurrentSession = Sessions[0];
-        Sessions.CollectionChanged += Sessions_CollectionChanged;
+        SessionsInternal.CollectionChanged += Sessions_CollectionChanged;
     }
 
     private Session _current;
     public Session CurrentSession
     {
-        get
-        {
-            return _current;
-        }
-        set
+        get => _current;
+        private set
         {
             _current = value;
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(CurrentSession)));
@@ -102,42 +130,75 @@ public class ScopedSessionManager : INotifyPropertyChanged
 
     public ScopedApplicationManager ApplicationManager { get; } = new ScopedApplicationManager();
 
-    public ObservableCollection<Session> Sessions { get; } = new ObservableCollection<Session>();
+    private readonly Dictionary<long, Session> SessionsIDs = new();
+
+    private ObservableCollection<Session> SessionsInternal { get; } = new ObservableCollection<Session>();
+
+    public ReadOnlyCollection<Session> Sessions
+    {
+        get => SessionsInternal.ToReadOnlyCollection<Session>();
+    }
+
     private void Sessions_CollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
     {
+        if (e.NewItems != null && e.NewItems.Count > 0)
+        {
+            foreach (Session news in e.NewItems)
+            {
+                SessionsIDs.Add(news.ID, news);
+            }
+        }
         if (e.OldItems != null && e.OldItems.Count > 0)
         {
             if (e.OldItems.Contains(CurrentSession))
-                CurrentSession = Sessions.LastOrDefault();
+                CurrentSession = SessionsInternal.LastOrDefault();
 
             foreach (Session old in e.OldItems)
             {
-                var apps = ApplicationManager.RunningAplications.Where((e) => e.SessionID == old.ID);
+                var apps = Application.ApplicationManager.RunningAplications.Where((e) => e.SessionID == old.ID);
                 foreach (ApplicationInstance app in apps)
                 {
                     app.Dispose();
-                    ApplicationManager.RunningAplications.Remove(app);
+                    Application.ApplicationManager.RunningAplications.Remove(app);
                 }
+                SessionsIDs.Remove(old.ID);
             }
         }
     }
 
     public void ActivateSession(long ID)
     {
-        Session exists = Sessions.Where(s => s.ID == ID).FirstOrDefault();
+        Session exists = SessionsInternal.Where(s => s.ID == ID).FirstOrDefault();
         CurrentSession = exists ?? throw new NullReferenceException(string.Format(Resources.Strings.Application.SessionNotFoundByID, ID));
     }
 
-    public void ActivateSession(Session session)
+    public void ActivateSession(Session session, bool update = false)
     {
-        Session exists = Sessions.Where(s => s.ID == session.ID).FirstOrDefault();
+        Session exists = SessionsInternal.Where(s => s.ID == session.ID).FirstOrDefault();
         if (exists == null)
         {
-            Sessions.Add(session);
+            SessionsInternal.Add(session);
             CurrentSession = session;
             return;
         }
+        if (update)
+        {
+            exists.Icon = session.Icon;
+            exists.Name = session.Name;
+            exists.ShowIdAsIcon = session.ShowIdAsIcon;
+            exists.Tag = session.Tag;
+        }
         CurrentSession = exists;
+    }
+
+    public void DisposeSession(long ID)
+    {
+        SessionsInternal.Remove(SessionsInternal.FirstOrDefault(s => s.ID == ID));
+    }
+
+    public void DisposeSession(Session session)
+    {
+        SessionsInternal.Remove(session);
     }
 
     public event PropertyChangedEventHandler PropertyChanged;
@@ -147,107 +208,82 @@ public class ScopedSessionManager : INotifyPropertyChanged
 
 public class Session : INotifyPropertyChanged
 {
-
-    #region SectionInformation
-
     public Session()
         {
             RemoveSectionCommand = new Commands.CommandBase(RemoveSection_Executed);
         }
 
-        private long _id;
-        public long ID
+    private long _id;
+    public long ID
+    {
+        get => _id;
+        set
         {
-            get
-            {
-                return _id;
-            }
-
-            set
-            {
-                _id = value;
-                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(ID)));
-            }
+            _id = value;
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(ID)));
         }
+    }
 
-        public bool SectionIdLargerText
+    public bool SectionIdLargerText
+    {
+        get
         {
-            get
-            {
-                if (ID.ToString().Length >= 3)
-                    return true;
-                else
-                    return false;
-            }
+            if (ID.ToString().Length >= 3)
+                return true;
+            else
+                return false;
         }
+    }
 
-        private object _icon;
-        public object Icon
+    private object _icon;
+    public object Icon
+    {
+        get => _icon;
+        set
         {
-            get
-            {
-                return _icon;
-            }
-
-            set
-            {
-                _icon = value;
-                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Icon)));
-            }
+            _icon = value;
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Icon)));
         }
+    }
 
-        private string _name;
-        public string Name
+    private string _name;
+    public string Name
+    {
+        get => _name;
+        set
         {
-            get
-            {
-                return _name;
-            }
-
-            set
-            {
-                _name = value;
-                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Name)));
-            }
+            _name = value;
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Name)));
         }
+    }
 
-        private bool _showIdAsIcon;
-        public bool ShowIdAsIcon
+    private bool _showIdAsIcon;
+    public bool ShowIdAsIcon
+    {
+        get => _showIdAsIcon;
+        set
         {
-            get
-            {
-                return _showIdAsIcon;
-            }
-
-            set
-            {
-                _showIdAsIcon = value;
-                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(ShowIdAsIcon)));
-            }
+            _showIdAsIcon = value;
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(ShowIdAsIcon)));
         }
+    }
 
-        private object _tag;
-        public object Tag
+    private object _tag;
+    public object Tag
+    {
+        get => _tag;
+        set
         {
-            get
-            {
-                return _tag;
-            }
-
-            set
-            {
-                _tag = value;
-                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Tag)));
-            }
+            _tag = value;
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Tag)));
         }
+    }
 
-        public Commands.CommandBase RemoveSectionCommand { get; }
-        private void RemoveSection_Executed(object sender, Events.ExecuteEventArgs e)
-        {
-            SessionManager.Sessions.Remove(this);
-        }
-
-    #endregion
+    public Commands.CommandBase RemoveSectionCommand { get; }
+    private void RemoveSection_Executed(object sender, Events.ExecuteEventArgs e)
+    {
+        SessionManager.DisposeSession(this);
+    }
 
     public override string ToString()
     {

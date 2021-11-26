@@ -12,8 +12,6 @@ namespace EficazFramework.Collections;
 
 public class ObservableDictionary<TKey, TValue> : IDictionary<TKey, TValue>, INotifyPropertyChanged, INotifyCollectionChanged
 {
-
-    /* TODO ERROR: Skipped RegionDirectiveTrivia */
     public ObservableDictionary()
     {
         m_Dictionary = new Dictionary<TKey, TValue>();
@@ -44,16 +42,12 @@ public class ObservableDictionary<TKey, TValue> : IDictionary<TKey, TValue>, INo
         m_Dictionary = new Dictionary<TKey, TValue>(capacity, comparer);
     }
 
-    /* TODO ERROR: Skipped EndRegionDirectiveTrivia */
-    /* TODO ERROR: Skipped RegionDirectiveTrivia */
     private const string CountString = "Count";
     private const string IndexerName = "Item[]";
     private const string KeysName = "Keys";
     private const string ValuesName = "Values";
     private readonly IDictionary<TKey, TValue> m_Dictionary;
 
-    /* TODO ERROR: Skipped EndRegionDirectiveTrivia */
-    /* TODO ERROR: Skipped RegionDirectiveTrivia */
     protected IDictionary<TKey, TValue> Dictionary
     {
         get
@@ -62,8 +56,6 @@ public class ObservableDictionary<TKey, TValue> : IDictionary<TKey, TValue>, INo
         }
     }
 
-    /* TODO ERROR: Skipped EndRegionDirectiveTrivia */
-    /* TODO ERROR: Skipped RegionDirectiveTrivia */
     public void Clear()
     {
         if (Dictionary.Count > 0)

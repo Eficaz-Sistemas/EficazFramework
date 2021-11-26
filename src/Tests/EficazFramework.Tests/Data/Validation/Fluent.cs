@@ -22,6 +22,9 @@ public class Fluent
 
         instance.Mail = "@def.com";
         validator.Validate(instance).Should().NotBeNullOrEmpty();
+
+        instance.Mail = null;
+        validator.Validate(instance).Should().BeNullOrEmpty();
     }
 
     [Test]
