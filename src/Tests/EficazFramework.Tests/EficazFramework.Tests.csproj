@@ -32,6 +32,11 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Update="Resources\Strings\TestStrings.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>TestStrings.resx</DependentUpon>
+    </Compile>
     <Compile Update="SPED\Schemas\Sources\EFD-ICMS IPI.Designer.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
@@ -50,6 +55,11 @@
   </ItemGroup>
 
   <ItemGroup>
+    <EmbeddedResource Update="Resources\Strings\TestStrings.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>TestStrings.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>EficazFramework.Resources.Strings</CustomToolNamespace>
+    </EmbeddedResource>
     <EmbeddedResource Update="SPED\Schemas\Sources\EFD-ICMS IPI.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <CustomToolNamespace>EficazFramework.SPED.Schemas.Sources</CustomToolNamespace>

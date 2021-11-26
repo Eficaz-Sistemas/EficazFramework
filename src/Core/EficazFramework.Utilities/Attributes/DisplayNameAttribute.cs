@@ -1,7 +1,10 @@
 ﻿using System;
+using System.Diagnostics.CodeAnalysis;
 
 namespace EficazFramework.Attributes;
-    [AttributeUsage(AttributeTargets.Field | AttributeTargets.Property)]
+
+[AttributeUsage(AttributeTargets.Field | AttributeTargets.Property)]
+[ExcludeFromCodeCoverage]
 public class DisplayNameAttribute : Attribute
 {
     public DisplayNameAttribute(string DescriptionOrResource)

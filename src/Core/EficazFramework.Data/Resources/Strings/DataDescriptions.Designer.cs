@@ -185,5 +185,14 @@ namespace EficazFramework.Resources.Strings {
                 return ResourceManager.GetString("eComparer_StartsWith", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a PIS ou NIT.
+        /// </summary>
+        public static string eDocumento_PIS_NIT {
+            get {
+                return ResourceManager.GetString("eDocumento_PIS_NIT", resourceCulture);
+            }
+        }
     }
 }

@@ -1,8 +1,10 @@
 ﻿using EficazFramework.Threading;
 using System;
+using System.Diagnostics.CodeAnalysis;
 
 namespace EficazFramework.Events;
 
+[ExcludeFromCodeCoverage]
 public class MessageEventArgs : EventArgs
 {
     public string DialogResourceKey { get; set; }

@@ -1,4 +1,8 @@
-﻿namespace EficazFramework.Events;
+﻿using System.Diagnostics.CodeAnalysis;
+
+namespace EficazFramework.Events;
+
+[ExcludeFromCodeCoverage]
 public class ExecuteEventArgs
 {
     private object _parameter;

@@ -17,9 +17,15 @@ public class SessionManager : INotifyPropertyChanged
         SessionsInternal.CollectionChanged += Sessions_CollectionChanged;
     }
 
+    /// <summary>
+    /// Instância singleton para uso com Binding e INotifyPropertyChanged.
+    /// </summary>
     public static SessionManager Instance { get; } = new SessionManager();
 
     private Session _current;
+    /// <summary>
+    /// Contém informações acerca da Seção Ativa.
+    /// </summary>
     public Session CurrentSession
     {
         get => _current;
@@ -31,10 +37,16 @@ public class SessionManager : INotifyPropertyChanged
         }
     }
 
+    /// <summary>
+    /// Dicionário das seções ativas, útil para evitar ativação em duplicidade.
+    /// </summary>
     private static readonly Dictionary<long, Session> SessionsIDs = new();
 
     private static ObservableCollection<Session> SessionsInternal { get; } = new ObservableCollection<Session>();
 
+    /// <summary>
+    /// Listagem de Seções Iniciadas (aka "Múltiplas áreas de trabalho")
+    /// </summary>
     public static ReadOnlyCollection<Session> Sessions 
     {
         get => SessionsInternal.ToReadOnlyCollection<Session>();
@@ -117,6 +129,9 @@ public class ScopedSessionManager : INotifyPropertyChanged
     }
 
     private Session _current;
+    /// <summary>
+    /// Contém informações acerca da Seção Ativa.
+    /// </summary>
     public Session CurrentSession
     {
         get => _current;
@@ -128,12 +143,21 @@ public class ScopedSessionManager : INotifyPropertyChanged
         }
     }
 
+    /// <summary>
+    /// Armazena e gerencia informações sobre aplicativos neste scopo de seções.
+    /// </summary>
     public ScopedApplicationManager ApplicationManager { get; } = new ScopedApplicationManager();
 
+    /// <summary>
+    /// Dicionário das seções ativas, útil para evitar ativação em duplicidade.
+    /// </summary>
     private readonly Dictionary<long, Session> SessionsIDs = new();
 
     private ObservableCollection<Session> SessionsInternal { get; } = new ObservableCollection<Session>();
 
+    /// <summary>
+    /// Listagem de Seções Iniciadas (aka "Múltiplas áreas de trabalho")
+    /// </summary>
     public ReadOnlyCollection<Session> Sessions
     {
         get => SessionsInternal.ToReadOnlyCollection<Session>();

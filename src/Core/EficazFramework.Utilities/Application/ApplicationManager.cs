@@ -6,18 +6,40 @@ using System.IO;
 using System.Linq;
 
 namespace EficazFramework.Application;
-public class ApplicationManager
+public static class ApplicationManager
+{
+    /// <summary>
+    /// Listagem de aplicações disponíveis para trabalho (pode ser utilizada como menu principal)
+    /// </summary>
+    public static ObservableCollection<ApplicationDefinition> AllAplications { get; } = new ObservableCollection<ApplicationDefinition>();
+
+    /// <summary>
+    /// Cache de aplicativos em execução
+    /// </summary>
+    public static ObservableCollection<ApplicationInstance> RunningAplications { get; } = new ObservableCollection<ApplicationInstance>();
+
+    /// <summary>
+    /// Retorna se um aplicativo está em execução atualmente.
+    /// </summary>
+    /// <param name="application">Instância de aplicativo a ser verificado.</param>
+    /// <param name="scope">(Opcional) Instância de ApplicationManager em escopo, caso não esteja utilizando em Singleton.</param>
+    /// <returns></returns>
+    public static bool IsRunning(this ApplicationDefinition application, ScopedApplicationManager scope = null)
     {
-
-        public static ObservableCollection<ApplicationDefinition> AllAplications { get; } = new ObservableCollection<ApplicationDefinition>();
-        public static ObservableCollection<ApplicationInstance> RunningAplications { get; } = new ObservableCollection<ApplicationInstance>();
-
-
-        public static bool IsRunning(ApplicationDefinition application)
-        {
+        if (scope is null)
             return (RunningAplications.Where(app => app.Metadata == application && (app.SessionID == 0 | app.SessionID == SessionManager.Instance.CurrentSession.ID)).Any());
-        }
-        public static void Activate(ApplicationDefinition application)
+        else
+            return scope.IsRunning(application);
+    }
+
+    /// <summary>
+    /// Ativa uma aplicação para trabalho. Caso ainda não esteja em execução, uma nova intância é criada.
+    /// </summary>
+    /// <param name="application">Manifesto de aplicativo a ser iniciado ou ativado.</param>
+    /// <param name="scope">(Opcional) Instância de ApplicationManager em escopo, caso não esteja utilizando em Singleton.</param>
+    public static void Activate(this ApplicationDefinition application, ScopedApplicationManager scope = null)
+    {
+        if (scope is null)
         {
             bool running = IsRunning(application);
             ApplicationInstance instance = null;
@@ -26,27 +48,47 @@ public class ApplicationManager
                 instance = new ApplicationInstance(application);
                 RunningAplications.Add(instance);
             }
-            else 
+            else
             {
-                instance = RunningAplications.Where(app => app.Metadata == application && (app.SessionID == 0 | app.SessionID == SessionManager.Instance.CurrentSession.ID)).FirstOrDefault(); 
+                instance = RunningAplications.Where(app => app.Metadata == application && (app.SessionID == 0 | app.SessionID == SessionManager.Instance.CurrentSession.ID)).FirstOrDefault();
             }
             ActiveAppChanged?.Invoke(instance, EventArgs.Empty);
         }
-
-        public static event EventHandler ActiveAppChanged;
-
+        else
+        {
+            scope.Activate(application);
+        }
     }
+
+    public static event EventHandler ActiveAppChanged;
+}
 
 public class ScopedApplicationManager
 {
-
+    /// <summary>
+    /// Listagem de aplicações disponíveis para trabalho (pode ser utilizada como menu principal)
+    /// </summary>
     public ObservableCollection<ApplicationDefinition> AllAplications { get; } = new ObservableCollection<ApplicationDefinition>();
+
+    /// <summary>
+    /// Cache de aplicativos em execução
+    /// </summary>
     public ObservableCollection<ApplicationInstance> RunningAplications { get; } = new ObservableCollection<ApplicationInstance>();
 
+    /// <summary>
+    /// Retorna se um aplicativo está em execução atualmente.
+    /// </summary>
+    /// <param name="application">Instância de aplicativo a ser verificado.</param>
+    /// <returns></returns>
     public bool IsRunning(ApplicationDefinition application)
     {
         return (RunningAplications.Where(app => app.Metadata == application && (app.SessionID == 0 | app.SessionID == SessionManager.Instance.CurrentSession.ID)).Any());
     }
+
+    /// <summary>
+    /// Ativa uma aplicação para trabalho. Caso ainda não esteja em execução, uma nova intância é criada.
+    /// </summary>
+    /// <param name="application">Manifesto de aplicativo a ser iniciado ou ativado.</param>
     public void Activate(ApplicationDefinition application)
     {
         bool running = IsRunning(application);

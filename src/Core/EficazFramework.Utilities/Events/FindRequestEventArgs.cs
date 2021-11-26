@@ -1,7 +1,9 @@
 ﻿using System;
-using System.Windows;
+using System.Diagnostics.CodeAnalysis;
 
 namespace EficazFramework.Events;
+
+[ExcludeFromCodeCoverage]
 public sealed partial class FindRequestEventArgs : EventArgs
 {
     private object _tag;

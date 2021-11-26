@@ -117,47 +117,8 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="BoolToYesNo_False" xml:space="preserve">
-    <value>Não</value>
-  </data>
-  <data name="BoolToYesNo_True" xml:space="preserve">
-    <value>Sim</value>
-  </data>
-  <data name="eComparer_Between" xml:space="preserve">
-    <value>Entre</value>
-  </data>
-  <data name="eComparer_Bigger" xml:space="preserve">
-    <value>Maior que</value>
-  </data>
-  <data name="eComparer_BiggerOrEqualThan" xml:space="preserve">
-    <value>Maior ou igual a</value>
-  </data>
-  <data name="eComparer_Contains" xml:space="preserve">
-    <value>Contém</value>
-  </data>
-  <data name="eComparer_Different" xml:space="preserve">
-    <value>Diferente de</value>
-  </data>
-  <data name="eComparer_Equals" xml:space="preserve">
-    <value>Igual a</value>
-  </data>
-  <data name="eComparer_Is" xml:space="preserve">
-    <value>Igual a</value>
-  </data>
-  <data name="eComparer_IsNot" xml:space="preserve">
-    <value>Diferente de</value>
-  </data>
-  <data name="eComparer_Length" xml:space="preserve">
-    <value>Compr. do Texto</value>
-  </data>
-  <data name="eComparer_LowerOrEqualThan" xml:space="preserve">
-    <value>Menor ou igual a</value>
-  </data>
-  <data name="eComparer_LowerThan" xml:space="preserve">
-    <value>Menor que</value>
-  </data>
-  <data name="eComparer_StartsWith" xml:space="preserve">
-    <value>Inicia com</value>
+  <data name="eDocumento_eMail" xml:space="preserve">
+    <value>e-Mail</value>
   </data>
   <data name="eDocumento_PIS_NIT" xml:space="preserve">
     <value>PIS ou NIT</value>

@@ -19,7 +19,7 @@ public static int BusinessDayInterval(this DateTime StartDate, DateTime FinalDat
     var current = StartDate.AddDays(1);
     while (current <= FinalDate)
     {
-        if (current.IsBusinessDay(ConsiderSaturday) == true)
+        if (current.IsBusinessDay(ConsiderSaturday))
         {
             result += 1;
         }
@@ -182,6 +182,11 @@ public static DateTime YearStartDate(this DateTime BaseDate, bool BussinessDay =
     }
     else
     {
+        tmp_date = tmp_date.ToBusinessDay(false, ConsiderSaturday);
+        if (tmp_date.Year != BaseDate.Year)
+        {
+            tmp_date = new DateTime(BaseDate.Year, 1, 1, 0, 0, 0).ToBusinessDay(true, ConsiderSaturday);
+        }
         return tmp_date.ToBusinessDay(false, ConsiderSaturday);
     }
 }
