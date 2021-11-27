@@ -4,8 +4,6 @@ namespace EficazFramework.Extensions;
 
 public static class FinancialExtensions
 {
-
-    /* TODO ERROR: Skipped RegionDirectiveTrivia */
     public enum ReturnType
     {
         Juros = 0,
@@ -26,8 +24,6 @@ public static class FinancialExtensions
         Anual = 3
     }
 
-
-    /* TODO ERROR: Skipped RegionDirectiveTrivia */
     /// <summary>
     /// Calcula os juros sobre um capital, a uma taxa e período desejado.
     /// NOTA: periodo e taxa devem estar na mesma unidade de tempo (ao dia, ao mês, etc).
@@ -42,59 +38,27 @@ public static class FinancialExtensions
     /// <remarks></remarks>
     public static double CalculaJuros(this double capital, double taxa, int periodo, ReturnType retorno = ReturnType.Montante, Capitalizacao tipo = Capitalizacao.JurosSimples, int rounding = -1)
     {
-        double resultado = 0;
-        switch (tipo)
+        double resultado = tipo switch
         {
-            case Capitalizacao.JurosSimples:
-                {
-                    switch (retorno)
-                    {
-                        case ReturnType.Montante:
-                            {
-                                resultado = capital * (1 + taxa / 100) * periodo;
-                                break;
-                            }
-
-                        case ReturnType.Juros:
-                            {
-                                resultado = capital * (taxa / 100 * periodo);
-                                break;
-                            }
-                    }
-
-                    break;
-                }
-
-            case Capitalizacao.JurosCompostos:
-                {
-                    switch (retorno)
-                    {
-                        case ReturnType.Montante:
-                            {
-                                resultado = Math.Pow(capital * (1 + taxa / 100), periodo);
-                                break;
-                            }
-
-                        case ReturnType.Juros:
-                            {
-                                resultado = Math.Pow(capital * (taxa / 100), periodo);
-                                break;
-                            }
-                    }
-
-                    break;
-                }
-        }
+            Capitalizacao.JurosSimples => retorno switch
+            {
+                ReturnType.Montante => capital * (1 + (taxa / 100 * periodo)),
+                ReturnType.Juros => capital * (taxa / 100) * periodo,
+                _ => 0D
+            },
+            Capitalizacao.JurosCompostos => retorno switch
+            {
+                ReturnType.Montante => capital * Math.Pow(1 + (taxa / 100), periodo),
+                ReturnType.Juros => (capital * Math.Pow(1 + (taxa / 100), periodo)) - capital,
+                _ => 0D
+            },
+            _ => 0D
+        };
 
         if (rounding <= -1)
-        {
             return resultado;
-        }
         else
-        {
             return Math.Round(resultado, rounding);
-            // Return (Round(resultado * Pow(1, rounding), 0) / (Pow(1, rounding)))
-        }
     }
 
     /// <summary>
@@ -111,60 +75,8 @@ public static class FinancialExtensions
     /// <remarks></remarks>
     public static double CalculaJuros(this double? capital, double taxa, int periodo, ReturnType retorno = ReturnType.Montante, Capitalizacao tipo = Capitalizacao.JurosSimples, int rounding = -1)
     {
-        double resultado = 0;
-        double cap = capital.Value;
-        switch (tipo)
-        {
-            case Capitalizacao.JurosSimples:
-                {
-                    switch (retorno)
-                    {
-                        case ReturnType.Montante:
-                            {
-                                resultado = cap * (1 + taxa / 100) * periodo;
-                                break;
-                            }
-
-                        case ReturnType.Juros:
-                            {
-                                resultado = cap * (taxa / 100 * periodo);
-                                break;
-                            }
-                    }
-
-                    break;
-                }
-
-            case Capitalizacao.JurosCompostos:
-                {
-                    switch (retorno)
-                    {
-                        case ReturnType.Montante:
-                            {
-                                resultado = Math.Pow(cap * (1 + taxa / 100), periodo);
-                                break;
-                            }
-
-                        case ReturnType.Juros:
-                            {
-                                resultado = Math.Pow(cap * (taxa / 100), periodo);
-                                break;
-                            }
-                    }
-
-                    break;
-                }
-        }
-
-        if (rounding <= -1)
-        {
-            return resultado;
-        }
-        else
-        {
-            return Math.Round(resultado, rounding);
-            // Return (Round(resultado * Pow(1, rounding), 0) / (Pow(1, rounding)))
-        }
+        double cap = capital ?? 0D;
+        return cap.CalculaJuros(taxa, periodo, retorno, tipo, rounding);
     }
 
     /// <summary>
@@ -180,32 +92,17 @@ public static class FinancialExtensions
     /// <remarks></remarks>
     public static double CalculaTaxa(this double capital, double montante, int periodo, Capitalizacao tipo = Capitalizacao.JurosSimples, int rounding = -1)
     {
-        double resultado = 0;
-        switch (tipo)
+        double resultado = tipo switch
         {
-            case Capitalizacao.JurosSimples:
-                {
-                    resultado = capital * periodo / (montante - capital) / 100;
-                    break;
-                }
-
-            case Capitalizacao.JurosCompostos:
-                {
-                    break;
-                }
-                // TODO...
-                // Return 0
-        }
+            Capitalizacao.JurosSimples => capital* periodo / (montante - capital) / 100,
+            Capitalizacao.JurosCompostos => 0D, //TODO
+            _ => 0D
+        };
 
         if (rounding <= -1)
-        {
             return resultado;
-        }
         else
-        {
             return Math.Round(resultado, rounding);
-            // Return (Round(resultado * Pow(1, rounding), 0) / (Pow(1, rounding)))
-        }
     }
 
     /// <summary>
@@ -221,33 +118,8 @@ public static class FinancialExtensions
     /// <remarks></remarks>
     public static double CalculaTaxa(this double? capital, double montante, int periodo, Capitalizacao tipo = Capitalizacao.JurosSimples, int rounding = -1)
     {
-        double resultado = 0;
-        double cap = capital.Value;
-        switch (tipo)
-        {
-            case Capitalizacao.JurosSimples:
-                {
-                    resultado = cap * periodo / (montante - cap) / 100;
-                    break;
-                }
-
-            case Capitalizacao.JurosCompostos:
-                {
-                    break;
-                }
-                // TODO...
-                // Return 0
-        }
-
-        if (rounding <= -1)
-        {
-            return resultado;
-        }
-        else
-        {
-            return Math.Round(resultado, rounding);
-            // Return (Round(resultado * Pow(1, rounding), 0) / (Pow(1, rounding)))
-        }
+        double cap = capital ?? 0D;
+        return cap.CalculaTaxa(montante, periodo, tipo, rounding);
     }
 
 
