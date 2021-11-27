@@ -278,7 +278,7 @@ public class ExpressionProperty
     internal IEnumerable<EnumMember> GetOperators()
     {
         return (from e in Operators
-                select new EnumMember() { Description = Extensions.Enums.GetLocalizedDescription(e, GetType().Assembly, "EficazFramework.Resources.Strings.DataDescriptions"), Value = e }).ToArray();
+                select new EnumMember() { Description = Extensions.Enums.GetLocalizedDescription(e, typeof(EficazFramework.Resources.Strings.DataDescriptions)), Value = e }).ToArray();
     }
 
     public override string ToString()

@@ -3729,97 +3729,56 @@ public class LogradouroExtensions
 
 public static class LocalizationExtensions
 {
-    private static readonly Dictionary<string, System.Resources.ResourceManager> _resourcesCache = new();
+    private static readonly Dictionary<Type, System.Resources.ResourceManager> _resourcesCache = new();
 
+    /// <summary>
+    /// Retorna o texto no idioma (System.Globalization.Culture.CultureInfo) atual.
+    /// Utiliza o dicionário EficazFramework.Resources.Strings.Descriptions.
+    /// </summary>
+    /// <param name="text">ID do texto a ser localizado.</param>
+    /// <returns></returns>
     public static string Localize(this string text)
     {
-        return text.Localize("EficazFramework.Resources.Strings.Descriptions", "EficazFramework.Utilities", null);
+        return text.Localize(typeof(EficazFramework.Resources.Strings.Descriptions), null);
     }
 
+    /// <summary>
+    /// Retorna o texto no idioma (System.Globalization.Culture.CultureInfo) atual.
+    /// Utiliza o dicionário EficazFramework.Resources.Strings.Descriptions.
+    /// </summary>
+    /// <param name="text">ID do texto a ser localizado.</param>
+    /// <param name="stringformat">(Opcional) Máscara para formatação do texto resultante.</param>
+    /// <returns></returns>
     public static string Localize(this string text, string stringformat)
     {
-        return text.Localize("EficazFramework.Resources.Strings.Descriptions", "EficazFramework.Utilities", stringformat);
+        return text.Localize(typeof(EficazFramework.Resources.Strings.Descriptions), stringformat);
     }
 
-
-
-    public static string Localize(this string text, string resourceManagerFullName, string stringformat)
-    {
-        System.Reflection.Assembly assembly = Type.GetType(resourceManagerFullName).Assembly;
-        return text.Localize(resourceManagerFullName, assembly, stringformat);
-    }
-
-    public static string Localize(this string text, Type resourceManagerType, string stringformat)
-    {
-        return text.Localize(resourceManagerType.ToString(), resourceManagerType.Assembly, stringformat);
-    }
-
-
-
-    //public static string Localize(this string text, string resourceManagerFullName, Type type)
-    //{
-    //    return text.Localize(resourceManagerFullName, type.Assembly, null);
-    //}
-
-    //public static string Localize(this string text, string resourceManagerFullName, Type type, string stringformat)
-    //{
-    //    return text.Localize(resourceManagerFullName, type.Assembly, stringformat);
-    //}
-
-
-
-    public static string Localize(this string text, string resourceManagerFullName, string assembly, string stringformat)
+    /// <summary>
+    /// Retorna o texto no idioma (System.Globalization.Culture.CultureInfo) atual
+    /// </summary>
+    /// <param name="text">ID do texto a ser localizado.</param>
+    /// <param name="resourceManager">Tipo do dicionário ResourceManager a ser consultado.</param>
+    /// <param name="stringformat">(Opcional) Máscara para formatação do texto resultante.</param>
+    /// <returns></returns>
+    public static string Localize(this string text, Type resourceManager, string stringformat)
     {
         try
         {
-            System.Reflection.Assembly ass = null;
-            try
-            {
-                ass = System.Reflection.Assembly.Load(assembly);
-            }
-            catch
-            {
-                ass = System.Reflection.Assembly.LoadFile(Environment.CurrentDirectory + @"\Apps\" + assembly + ".dll");
-            }
+            System.Resources.ResourceManager resourceManagerInstance;
+            string tmpstring = text;
 
-            if (ass is null)
-                return text;
-            return text.Localize(resourceManagerFullName, ass, stringformat);
-        }
-        catch
-        {
-            return text;
-        }
-    }
-
-    public static string Localize(this string text, string resourceManagerFullName, System.Reflection.Assembly assembly, string stringformat)
-    {
-        try
-        {
-            string tmpstring; // = resourceName
-            if (_resourcesCache.ContainsKey(resourceManagerFullName))
+            if (_resourcesCache.ContainsKey(resourceManager))
             {
-                tmpstring = _resourcesCache[resourceManagerFullName].GetString(text);
-                if (tmpstring != null)
-                {
-                    if (stringformat == null)
-                        return tmpstring;
-                    else
-                        return string.Format(stringformat, tmpstring);
-                }
-                else if (stringformat == null)
-                    return text;
-                else
-                    return string.Format(stringformat, text);
+                resourceManagerInstance = _resourcesCache[resourceManager];
+            }
+            else
+            {
+                resourceManagerInstance = new(resourceManager);
+                _resourcesCache.Add(resourceManager, resourceManagerInstance);
             }
 
-            // Dim resolvedResourceTypeName As String = Nothing
-            tmpstring = text;
-            var rstype = assembly.GetType(resourceManagerFullName);
-            System.Resources.ResourceManager resourceManager = new(rstype);
-            //System.Resources.ResourceManager resourceManager = (System.Resources.ResourceManager)rstype.GetProperty("ResourceManager").GetValue(new object(), null); // (this string.Format("{0}.{1}", Me.Assembly, Me.ResourceManager), ass)
-            _resourcesCache.Add(resourceManagerFullName, resourceManager);
-            tmpstring = resourceManager.GetString(text);
+            tmpstring = resourceManagerInstance.GetString(text);
             if (tmpstring != null)
             {
                 if (stringformat == null)
@@ -3827,7 +3786,8 @@ public static class LocalizationExtensions
                 else
                     return string.Format(stringformat, tmpstring);
             }
-            else if (stringformat == null)
+
+            if (stringformat == null)
                 return text;
             else
                 return string.Format(stringformat, text);

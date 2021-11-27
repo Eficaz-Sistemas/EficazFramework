@@ -7,213 +7,272 @@ namespace EficazFramework.Extensions;
 
 public static class Enums
 {
+    private static TEnum[] GetEnumList<TEnum>()
+    {
+        if (typeof(TEnum).IsEnum == false & !ReferenceEquals(typeof(TEnum).BaseType, typeof(TEnum))) { return null; }
+        return Enum.GetValues(typeof(TEnum)).Cast<TEnum>().ToArray();
+    }
+    private static object[] GetEnumList(Type enumType)
+    {
+        if (enumType.IsEnum == false & !ReferenceEquals(enumType.BaseType, enumType)) { return null; }
+        return Enum.GetValues(enumType).Cast<object>().ToArray();
+    }
+
+    /// <summary>
+    /// Obtém uma listagem de pares Valor/Descrição de cada membro de TEnum
+    /// </summary>
+    /// <returns>IEnumerable of EnumMember</returns>
     public static IEnumerable<EnumMember> GetValues<TEnum>()
     {
-        if (typeof(TEnum).IsEnum == false & !ReferenceEquals(typeof(TEnum).BaseType, typeof(TEnum))) { return null; }
-        TEnum[] values = Enum.GetValues(typeof(TEnum)).Cast<TEnum>().ToArray();
-        return values.Select(e => new EnumMember { Description = GetDescription(e), Value = e }).ToList();
+        return GetEnumList<TEnum>().Select(e => new EnumMember { Description = e.GetDescription(), Value = e }).ToList();
     }
 
+    /// <summary>
+    /// Obtém uma listagem de pares Valor/Descrição de cada membro de enumType
+    /// </summary>
+    /// <returns>IEnumerable of EnumMember</returns>
     public static IEnumerable<EnumMember> GetValues(Type enumType)
     {
-        if (enumType.IsEnum == false & !ReferenceEquals(enumType.BaseType, enumType)) { return null; }
-        var values = Enum.GetValues(enumType);
-        var result = new List<EnumMember>();
-        for (int i = 0; i < values.Length; i++)
-        {
-            result.Add(new EnumMember { Description = GetDescription(values.GetValue(i)), Value = values.GetValue(i) });
-        }
-        return result;
+        return GetEnumList(enumType).Select(e => new EnumMember { Description = e.GetDescription(), Value = e }).ToList();
     }
 
+    /// <summary>
+    /// Obtém uma listagem de pares Valor/Descrição do Enumerador Booleano
+    /// </summary>
+    /// <returns>IEnumerable of EnumMember</returns>
+    public static IEnumerable<EnumMember> GetBoolValues(BoolDescriptionType boolText = BoolDescriptionType.YesNo)
+    {
+        return new List<EnumMember>
+        {
+            new EnumMember() { Value = true, Description = boolText switch
+            {
+                BoolDescriptionType.YesNo =>  EficazFramework.Resources.Strings.Descriptions.BoolToYesNo_True,
+                _ => EficazFramework.Resources.Strings.Descriptions.BoolToTrueFalse_True
+            } },
+            new EnumMember() { Value = false, Description = boolText switch
+            {
+                BoolDescriptionType.YesNo =>  EficazFramework.Resources.Strings.Descriptions.BoolToYesNo_False,
+                _ => EficazFramework.Resources.Strings.Descriptions.BoolToYesNo_False
+            } }
+        };
+    }
+
+    /// <summary>
+    /// Obtém uma listagem de Valor/Categoria/Descrição de cada membro de TEnum
+    /// </summary>
+    /// <returns>IEnumerable of GroupedEnumMember</returns>
+    public static IEnumerable<GroupedEnumMember> GetValuesWithCategory<TEnum>()
+    {
+        return GetEnumList<TEnum>().Select(e => new GroupedEnumMember { Category = e.GetCategory(), Description = e.GetDescription(), Value = e }).ToList();
+    }
+
+    /// <summary>
+    /// Obtém uma listagem de Valor/Categoria/Descrição de cada membro de enumType
+    /// </summary>
+    /// <returns>IEnumerable of GroupedEnumMember</returns>
+    public static IEnumerable<GroupedEnumMember> GetValuesWithCategory(this Type EnumType)
+    {
+        return GetEnumList(EnumType).Select(e => new GroupedEnumMember { Category = e.GetCategory(), Description = e.GetDescription(), Value = e }).ToList();
+    }
+
+
+
+
+
+    /// <summary>
+    /// Obtém uma listagem de pares Valor/Descrição (no idioma de System.Globalization.Culture.CultureInfo atual) de cada membro de TEnum
+    /// </summary>
+    /// <returns>IEnumerable of EnumMember</returns>
     public static IEnumerable<EnumMember> GetLocalizedValues<TEnum>()
     {
-        if (typeof(TEnum).IsEnum == false & !ReferenceEquals(typeof(TEnum).BaseType, typeof(TEnum))) { return null; }
-        TEnum[] values = Enum.GetValues(typeof(TEnum)).Cast<TEnum>().ToArray();
-        return values.Select(e => new EnumMember { Description = GetLocalizedDescription(e), Value = e }).ToList();
+        return GetValues<TEnum>().Select(e => new EnumMember { Description = e.Value.GetLocalizedDescription(), Value = e.Value }).ToList();
     }
 
+    /// <summary>
+    /// Obtém uma listagem de pares Valor/Descrição (no idioma de System.Globalization.Culture.CultureInfo atual) de cada membro de TEnum
+    /// </summary>
+    /// <returns>IEnumerable of EnumMember</returns>
+    public static IEnumerable<EnumMember> GetLocalizedValues<TEnum>(Type resourceType)
+    {
+        return GetValues<TEnum>().Select(e => new EnumMember { Description = e.Value.GetLocalizedDescription(resourceType), Value = e.Value }).ToList();
+    }
+
+    /// <summary>
+    /// Obtém uma listagem de pares Valor/Descrição (no idioma de System.Globalization.Culture.CultureInfo atual) de cada membro de enumType
+    /// </summary>
+    /// <returns>IEnumerable of EnumMember</returns>
     public static IEnumerable<EnumMember> GetLocalizedValues(Type enumType)
     {
-        if (enumType.IsEnum == false & !ReferenceEquals(enumType.BaseType, enumType)) { return null; }
-        var values = Enum.GetValues(enumType);
-        var result = new List<EnumMember>();
-        for (int i = 0; i < values.Length; i++)
-        {
-            result.Add(new EnumMember { Description = GetLocalizedDescription(values.GetValue(i)), Value = values.GetValue(i) });
-        }
-        return result;
+        return GetValues(enumType).Select(e => new EnumMember { Description = e.Value.GetLocalizedDescription(), Value = e.Value }).ToList();
     }
 
-    public static IEnumerable<EnumMember> GetLocalizedValues<TEnum>(string resourceTypeName)
+    /// <summary>
+    /// Obtém uma listagem de pares Valor/Descrição (no idioma de System.Globalization.Culture.CultureInfo atual) de cada membro de enumType
+    /// </summary>
+    /// <returns>IEnumerable of EnumMember</returns>
+    public static IEnumerable<EnumMember> GetLocalizedValues(Type enumType, Type resourceType)
     {
-        if (typeof(TEnum).IsEnum == false & !ReferenceEquals(typeof(TEnum).BaseType, typeof(TEnum))) { return null; }
-        TEnum[] values = Enum.GetValues(typeof(TEnum)).Cast<TEnum>().ToArray();
-        return values.Select(e => new EnumMember { Description = GetLocalizedDescription(e, typeof(TEnum).Assembly, resourceTypeName), Value = e }).ToList();
+        return GetValues(enumType).Select(e => new EnumMember { Description = e.Value.GetLocalizedDescription(resourceType), Value = e.Value }).ToList();
     }
 
-    public static IEnumerable<EnumMember> GetBoolValues()
+    /// <summary>
+    /// Obtém uma listagem de pares Valor/Descrição (no idioma de System.Globalization.Culture.CultureInfo atual) de cada membro de TEnum
+    /// </summary>
+    /// <returns>IEnumerable of EnumMember</returns>
+    public static IEnumerable<GroupedEnumMember> GetLocalizedValuesWithCategory<TEnum>()
     {
-        var result = new List<EnumMember>
-        {
-            new EnumMember() { Value = true, Description = EficazFramework.Resources.Strings.Descriptions.BoolToYesNo_True },
-            new EnumMember() { Value = false, Description = EficazFramework.Resources.Strings.Descriptions.BoolToYesNo_False }
-        };
-        var arr = result.ToArray();
-        return arr;
+        return GetEnumList<TEnum>().Select(e => new GroupedEnumMember { Category = e.GetLocalizedCategory(), Description = e.GetLocalizedDescription(), Value = e }).ToList();
     }
 
-#pragma warning disable IDE0060 // Remover o parâmetro não utilizado
-    public static IEnumerable<GroupedEnumMember> GetValuesWithCategory<TEnum>(this Type EnumType)
+    /// <summary>
+    /// Obtém uma listagem de pares Valor/Descrição (no idioma de System.Globalization.Culture.CultureInfo atual) de cada membro de enumType
+    /// </summary>
+    /// <returns>IEnumerable of EnumMember</returns>
+    public static IEnumerable<GroupedEnumMember> GetLocalizedValuesWithCategory(this Type EnumType)
     {
-        if (typeof(TEnum).IsEnum == false & !ReferenceEquals(typeof(TEnum).BaseType, typeof(TEnum))) { return null; }
-        TEnum[] values = Enum.GetValues(typeof(TEnum)).Cast<TEnum>().ToArray();
-        return values.Select(e => new GroupedEnumMember { Category = GetCategory(e), Description = GetDescription(e), Value = e }).ToList();
+        return GetEnumList(EnumType).Select(e => new GroupedEnumMember { Category = e.GetLocalizedCategory(), Description = e.GetLocalizedDescription(), Value = e }).ToList();
     }
 
-    public static IEnumerable<GroupedEnumMember> GetLocalizedValuesWithCategory<TEnum>(this Type EnumType)
-#pragma warning restore IDE0060 // Remover o parâmetro não utilizado
+    /// <summary>
+    /// Obtém uma listagem de pares Valor/Descrição (no idioma de System.Globalization.Culture.CultureInfo atual) de cada membro de TEnum
+    /// </summary>
+    /// <returns>IEnumerable of EnumMember</returns>
+    public static IEnumerable<GroupedEnumMember> GetLocalizedValuesWithCategory<TEnum>(Type resourceType)
     {
-        if (typeof(TEnum).IsEnum == false & !ReferenceEquals(typeof(TEnum).BaseType, typeof(TEnum))) { return null; }
-        TEnum[] values = Enum.GetValues(typeof(TEnum)).Cast<TEnum>().ToArray();
-        return values.Select(e => new GroupedEnumMember { Category = GetLocalizedCategory(e), Description = GetLocalizedDescription(e), Value = e }).ToList();
+        return GetEnumList<TEnum>().Select(e => new GroupedEnumMember { Category = e.GetLocalizedCategory(resourceType), Description = e.GetLocalizedDescription(resourceType), Value = e }).ToList();
     }
 
-    public static IEnumerable<GroupedEnumMember> GetLocalizedValuesWithCategory<TEnum>(string resourceTypeName)
+    /// <summary>
+    /// Obtém uma listagem de pares Valor/Descrição (no idioma de System.Globalization.Culture.CultureInfo atual) de cada membro de enumType
+    /// </summary>
+    /// <returns>IEnumerable of EnumMember</returns>
+    public static IEnumerable<GroupedEnumMember> GetLocalizedValuesWithCategory(this Type EnumType, Type resourceType)
     {
-        if (typeof(TEnum).IsEnum == false & !ReferenceEquals(typeof(TEnum).BaseType, typeof(TEnum))) { return null; }
-        TEnum[] values = Enum.GetValues(typeof(TEnum)).Cast<TEnum>().ToArray();
-        return values.Select(e => new GroupedEnumMember { Category = GetLocalizedCategory(e, resourceTypeName), Description = GetLocalizedDescription(e, resourceTypeName), Value = e }).ToList();
+        return GetEnumList(EnumType).Select(e => new GroupedEnumMember { Category = e.GetLocalizedCategory(resourceType), Description = e.GetLocalizedDescription(resourceType), Value = e }).ToList();
     }
 
+
+
+
+    /// <summary>
+    /// Retorna a descrição para o valor de Enum desejado
+    /// </summary>
+    /// <returns></returns>
     public static string GetDescription(this object value)
     {
         string result = value.ToString();
         var enumType = value.GetType();
         try
         {
-            // System.ComponentModel.DescriptionAttribute
             var att = enumType.GetMember(result)?.First().GetCustomAttributes(typeof(System.ComponentModel.DescriptionAttribute), true).FirstOrDefault();
-            if (att == null)
-                att = enumType.GetField(value.ToString())?.GetCustomAttributes(typeof(System.ComponentModel.DescriptionAttribute), true);
-            if (att is not null)
-            {
+            if (att != null)
                 result = ((System.ComponentModel.DescriptionAttribute)att).Description;
-            }
-        }
-        catch
-        {
-            // result = value.ToString
-        } // ex As Exception
-
-        return result;
-    }
-
-    public static string GetCategory(this object value)
-    {
-        string result = value.ToString();
-        var enumType = value.GetType();
-        try
-        {
-            // Dim att = value.GetType().GetField(value.ToString).GetCustomAttributes(GetType(Common.Attributes.UIEditor.EditorGeneration.EnumDescriptionAttribute), True)
-            var att = enumType.GetMember(result)?.First().GetCustomAttributes(typeof(CategoryAttribute), true);
-            if ((att?.Length) <= 0 == true)
-                att = enumType.GetField(value.ToString())?.GetCustomAttributes(typeof(CategoryAttribute), true);
-            if (att is not null)
+            else
             {
-                if (att.Length > 0)
-                {
-                    result = ((CategoryAttribute)att[0]).Category;
-                }
+                att = enumType.GetField(value.ToString())?.GetCustomAttributes(typeof(EficazFramework.Attributes.DisplayNameAttribute), true).FirstOrDefault();
+                if (att != null)
+                    result = ((EficazFramework.Attributes.DisplayNameAttribute)att).DisplayName;
+
             }
         }
-        catch
-        {
-            // result = value.ToString
-        } // ex As Exception
+        catch { }
 
         return result;
     }
 
-    public static string GetLocalizedDescription(this bool value, BoolDescriptionType mode)
-    {
-        return mode switch
-        {
-            BoolDescriptionType.YesNo => value == true ? Resources.Strings.Descriptions.BoolToYesNo_True : Resources.Strings.Descriptions.BoolToYesNo_False,
-            _ => value == true ? Resources.Strings.Descriptions.BoolToTrueFalse_True : Resources.Strings.Descriptions.BoolToTrueFalse_False
-        };
-    }
-
-    public static string GetLocalizedDescription(this bool value, string trueValue, string falseValue)
-    {
-        return value == true ? trueValue : falseValue;
-    }
-
+    /// <summary>
+    /// Retorna a descrição para o valor de Enum desejado
+    /// </summary>
+    /// <returns></returns>
     public static string GetLocalizedDescription(this object value)
     {
         string result = value.ToString();
+        Type resourceManager;
         var enumType = value.GetType();
         try
         {
-            // Dim att = value.GetType().GetField(value.ToString).GetCustomAttributes(GetType(Common.Attributes.UIEditor.EditorGeneration.EnumDescriptionAttribute), True)
-            var att = enumType.GetMember(result)?.First().GetCustomAttributes(typeof(EficazFramework.Attributes.DisplayNameAttribute), true);
-            if ((att?.Length) <= 0 == true)
-                att = enumType.GetField(value.ToString())?.GetCustomAttributes(typeof(EficazFramework.Attributes.DisplayNameAttribute), true);
-            if (att is not null)
+            var att = enumType.GetMember(result)?.First().GetCustomAttributes(typeof(System.ComponentModel.DescriptionAttribute), true).FirstOrDefault();
+            if (att != null)
+                result = ((System.ComponentModel.DescriptionAttribute)att).Description;
+            else
             {
-                if (att.Length > 0)
+                att = enumType.GetField(value.ToString())?.GetCustomAttributes(typeof(EficazFramework.Attributes.DisplayNameAttribute), true).FirstOrDefault();
+                if (att != null)
                 {
-                    var attr = (EficazFramework.Attributes.DisplayNameAttribute)att[0];
-                    result = attr.DisplayName;
-                    if (attr.ResourceType != null)
-                    {
-                        return result.Localize(attr.ResourceType, "{0}");
-                    }
+                    result = ((EficazFramework.Attributes.DisplayNameAttribute)att).DisplayName;
+                    resourceManager = ((EficazFramework.Attributes.DisplayNameAttribute)att).ResourceType;
                 }
             }
         }
-        catch
-        {
-            // result = value.ToString
-        } // ex As Exception
+        catch { }
 
         return result.Localize();
     }
 
-    public static string GetLocalizedDescription(this object value, string resourceTypeName)
+    /// <summary>
+    /// Retorna a descrição para o valor de Enum desejado
+    /// </summary>
+    /// <returns></returns>
+    public static string GetLocalizedDescription(this object value, Type resourceType)
     {
-        return value.GetDescription().Localize(resourceTypeName, null);
+        string result = value.ToString();
+        var enumType = value.GetType();
+        try
+        {
+            var att = enumType.GetMember(result)?.First().GetCustomAttributes(typeof(System.ComponentModel.DescriptionAttribute), true).FirstOrDefault();
+            if (att != null)
+                result = ((System.ComponentModel.DescriptionAttribute)att).Description;
+            else
+            {
+                att = enumType.GetField(value.ToString())?.GetCustomAttributes(typeof(EficazFramework.Attributes.DisplayNameAttribute), true).FirstOrDefault();
+                if (att != null)
+                {
+                    result = ((EficazFramework.Attributes.DisplayNameAttribute)att).DisplayName;
+                }
+            }
+        }
+        catch { }
+
+        return result.Localize(resourceType, null);
     }
 
-    public static string GetLocalizedDescription(this object value, string assembly, string resourceTypeName)
+    /// <summary>
+    /// Retorna a Categoria para o valor de Enum desejado
+    /// </summary>
+    /// <returns></returns>
+    public static string GetCategory(this object value)
     {
-        return value.GetDescription().Localize(resourceTypeName, assembly, null);
+        string result = "";
+        var enumType = value.GetType();
+        try
+        {
+            var att = enumType.GetMember(value.ToString())?.First().GetCustomAttributes(typeof(CategoryAttribute), true).FirstOrDefault();
+            if (att != null)
+                result = ((CategoryAttribute)att).Category;
+        }
+        catch { }
+
+        return result;
     }
 
-    public static string GetLocalizedDescription(this object value, System.Reflection.Assembly assembly, string resourceTypeName)
-    {
-        return value.GetDescription().Localize(resourceTypeName, assembly, null);
-    }
-
+    /// <summary>
+    /// Retorna a Categoria para o valor de Enum desejado
+    /// </summary>
+    /// <returns></returns>
     public static string GetLocalizedCategory(this object value)
     {
         return value.GetCategory().Localize();
     }
 
-    public static string GetLocalizedCategory(this object value, string resourceTypeName)
+    /// <summary>
+    /// Retorna a Categoria para o valor de Enum desejado
+    /// </summary>
+    /// <returns></returns>
+    public static string GetLocalizedCategory(this object value, Type resourceType)
     {
-        return value.GetCategory().Localize(resourceTypeName, null);
+        return value.GetCategory().Localize(resourceType, null);
     }
 
-    public static string GetLocalizedCategory(this object value, string assembly, string resourceTypeName)
-    {
-        return value.GetCategory().Localize(resourceTypeName, assembly, null);
-    }
-
-    public static string GetLocalizedCategory(this object value, System.Reflection.Assembly assembly, string resourceTypeName)
-    {
-        return value.GetCategory().Localize(resourceTypeName, assembly, null);
-    }
 }
 
 public class EnumMember

@@ -95,5 +95,14 @@ namespace EficazFramework.Resources.Strings {
                 return ResourceManager.GetString("BoolToYesNo_True", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Maior ou igual a.
+        /// </summary>
+        public static string eComparer_BiggerOrEqualThan {
+            get {
+                return ResourceManager.GetString("eComparer_BiggerOrEqualThan", resourceCulture);
+            }
+        }
     }
 }
