@@ -38,7 +38,7 @@
                 <CompositeCollection>
                     <!--Start Menu Initial Tab-->
                     <TabItem x:Name="FixeStartItem"  
-                             ToolTip="{efcorelocale:LocalizeText StartMenu_MainTab, Assembly=EficazFramework.WPF, DictionaryName=EficazFramework.Resources.Strings.Controls}"
+                             ToolTip="{efcorelocale:LocalizeText StartMenu_MainTab, Assembly=EficazFramework.WPF, ResourceType=EficazFramework.Resources.Strings.Controls}"
                              ToolTipService.Placement="Right"
                              Style="{StaticResource MaterialDesignNavigationRailTabItem}">
                         <TabItem.Header>
@@ -63,7 +63,7 @@
                                             </Grid.ColumnDefinitions>
                                             <Button Style="{StaticResource MaterialDesignFlatButton}" 
                                                     Width="32" Height="32"
-                                                    ToolTip="{efcorelocale:LocalizeText StartMenu_AllApps, Assembly=EficazFramework.WPF, DictionaryName=EficazFramework.Resources.Strings.Controls}"
+                                                    ToolTip="{efcorelocale:LocalizeText StartMenu_AllApps, ResourceType=EficazFramework.Resources.Strings.Controls}"
                                                     Command="{Binding AppsViewModeCommand}"
                                                     Padding="0" x:Name="PART_ViewModeButton">
                                                 <md:PackIcon Kind="FormatListText" Width="26" Height="26" />
@@ -72,7 +72,7 @@
                                                        FontWeight="Bold"  
                                                        Grid.Column="1" Margin="25,0" 
                                                        TextTrimming="WordEllipsis"
-                                                       Text="{Binding WelcomeText, FallbackValue={efcorelocale:LocalizeText StartMenu_DefaultWelcomeText, Assembly=EficazFramework.WPF, DictionaryName=EficazFramework.Resources.Strings.Controls}}"
+                                                       Text="{Binding WelcomeText, FallbackValue={efcorelocale:LocalizeText StartMenu_DefaultWelcomeText, ResourceType=EficazFramework.Resources.Strings.Controls}}"
                                                        Style="{StaticResource MaterialDesignSubtitle2TextBlock}"/>
                                             <ContentPresenter Focusable="False" Grid.Column="2"
                                                               HorizontalAlignment="Right" Height="32" 
@@ -89,7 +89,7 @@
                                                  md:TextFieldAssist.RippleOnFocusEnabled="True"
                                                  md:HintAssist.IsFloating="False"
                                                  md:TextFieldAssist.UnderlineCornerRadius="0,0,4,4"
-                                                 md:HintAssist.Hint="{efcorelocale:LocalizeText StartMenu_SearchTB, Assembly=EficazFramework.WPF, DictionaryName=EficazFramework.Resources.Strings.Controls}" />
+                                                 md:HintAssist.Hint="{efcorelocale:LocalizeText StartMenu_SearchTB, ResourceType=EficazFramework.Resources.Strings.Controls}" />
 
                                         <!--Apps-->
                                         <ScrollViewer HorizontalScrollBarVisibility="Disabled" 
@@ -146,7 +146,7 @@
                                                                             CommandParameter="{Binding}" Style="{StaticResource MaterialDesignToolButton}" >
                                                                         <StackPanel Orientation="Horizontal">
                                                                             <md:PackIcon Margin="0,0,15,0" Kind="PinOff"/>
-                                                                            <TextBlock Text="{efcorelocale:LocalizeText StartMenu_PinOffApp, DictionaryName=EficazFramework.Resources.Strings.Controls, Assembly=EficazFramework.WPF}"/>
+                                                                            <TextBlock Text="{efcorelocale:LocalizeText StartMenu_PinOffApp, ResourceType=EficazFramework.Resources.Strings.Controls}"/>
                                                                         </StackPanel>
                                                                         <Button.Triggers>
                                                                             <EventTrigger RoutedEvent="ButtonBase.Click">
@@ -185,7 +185,7 @@
                                                     <md:PackIcon Kind="Apps" Width="26" Height="26" />
                                                 </Setter.Value>
                                             </Setter>
-                                            <Setter TargetName="PART_ViewModeButton" Property="ToolTip" Value="{efcorelocale:LocalizeText StartMenu_GridApps, Assembly=EficazFramework.WPF, DictionaryName=EficazFramework.Resources.Strings.Controls}"/>
+                                            <Setter TargetName="PART_ViewModeButton" Property="ToolTip" Value="{efcorelocale:LocalizeText StartMenu_GridApps, ResourceType=EficazFramework.Resources.Strings.Controls}"/>
                                             <Setter TargetName="PART_AppsHost" Property="ItemsPanel">
                                                 <Setter.Value>
                                                     <ItemsPanelTemplate>

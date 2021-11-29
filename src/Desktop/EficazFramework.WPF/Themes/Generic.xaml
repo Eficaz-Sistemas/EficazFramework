@@ -3,6 +3,7 @@
     xmlns:efcorebh="clr-namespace:EficazFramework.XAML.Behaviors"
     xmlns:efcoreev="clr-namespace:EficazFramework.Events;assembly=EficazFramework.Utilities"
     xmlns:efcorelocale="clr-namespace:EficazFramework.Localization"
+    xmlns:efcoreStrings="clr-namespace:EficazFramework.Resources.Strings"
     xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
@@ -69,28 +70,28 @@
                 <Button x:Name="OkButton" Width="90" Visibility="Collapsed" 
                         Tag="{x:Static efcoreev:MessageResult.OK}"
                         Style="{StaticResource MaterialDesignFlatButton}"
-                        Content="{efcorelocale:LocalizeText MessageBox_Ok, Assembly=EficazFramework.Utilities, DictionaryName=EficazFramework.Resources.Strings.Events}"
+                        Content="{efcorelocale:LocalizeText MessageBox_Ok, ResourceType=EficazFramework.Resources.StringsEvents}"
                         Command="materialDesign:DialogHost.CloseDialogCommand"
                         CommandParameter="{x:Static efcoreev:MessageResult.OK}"/>
                 
                 <Button x:Name="YesButton" Width="90" Visibility="Collapsed" 
                         Tag="{x:Static efcoreev:MessageResult.Yes}" 
                         Style="{StaticResource MaterialDesignFlatButton}"
-                        Content="{efcorelocale:LocalizeText MessageBox_Yes, Assembly=EficazFramework.Utilities, DictionaryName=EficazFramework.Resources.Strings.Events}"
+                        Content="{efcorelocale:LocalizeText MessageBox_Yes, ResourceType=EficazFramework.Resources.StringsEvents}"
                         Command="materialDesign:DialogHost.CloseDialogCommand"
                         CommandParameter="{x:Static efcoreev:MessageResult.Yes}"/>
                 
                 <Button x:Name="NoButton" Width="90" Visibility="Collapsed" 
                         Tag="{x:Static efcoreev:MessageResult.No}" 
                         Style="{StaticResource MaterialDesignFlatButton}"
-                        Content="{efcorelocale:LocalizeText MessageBox_No, Assembly=EficazFramework.Utilities, DictionaryName=EficazFramework.Resources.Strings.Events}"
+                        Content="{efcorelocale:LocalizeText MessageBox_No, ResourceType=EficazFramework.Resources.StringsEvents}"
                         Command="materialDesign:DialogHost.CloseDialogCommand"
                         CommandParameter="{x:Static efcoreev:MessageResult.No}"/>
                 
                 <Button x:Name="CancelButton" Width="90" Visibility="Collapsed" 
                         Tag="{x:Static efcoreev:MessageResult.Cancel}" 
                         Style="{StaticResource MaterialDesignFlatButton}"
-                        Content="{efcorelocale:LocalizeText MessageBox_Cancel, Assembly=EficazFramework.Utilities, DictionaryName=EficazFramework.Resources.Strings.Events}"
+                        Content="{efcorelocale:LocalizeText MessageBox_Cancel, ResourceType=EficazFramework.Resources.StringsEvents}"
                         Command="materialDesign:DialogHost.CloseDialogCommand"
                         CommandParameter="{x:Static efcoreev:MessageResult.Cancel}"/>
                 

@@ -32,7 +32,7 @@
    - Integração com EntityFrameworkCore
    - SDK de desenvolvimento, publicado no MarketPlace do Visual Studio, com template de classes para tabelas de dados, suportando MsSQL, MySQL, OracleSQL e SqlLite, com classes parciais, permitindo expansão manual.
    
-#### Integração com projetos do SPED, com mapeamento de campos e consumo de Web-Services (Projeto EficazFramework.SPED)
+#### Integração com projetos do SPED, com mapeamento de campos e consumo de Web-Services, no Projeto [EficazFramework.SPED](https://github.com/Eficaz-Sistemas/EficazFramework.SPED)
    - CT-e e CT-eOS
    - DAPI
    - e-CredAc portaria CAT 83/09 e 207/09

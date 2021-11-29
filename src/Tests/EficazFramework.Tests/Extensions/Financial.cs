@@ -28,6 +28,9 @@ class Financial
         // Simples
         1000D.CalculaTaxa(1020D, 2, FinancialExtensions.Capitalizacao.JurosSimples).Should().Be(1D);
 
+        // Compostos
+        1000D.CalculaTaxa(1020.100000000000023D, 2, FinancialExtensions.Capitalizacao.JurosCompostos).Should().BeApproximately(1D, 0.001D);
+
     }
 
 }

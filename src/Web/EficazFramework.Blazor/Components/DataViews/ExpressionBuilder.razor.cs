@@ -148,7 +148,7 @@ public partial class ExpressionBuilder
     {
         internal OperatorConverter()
         {
-            SetFunc = (e) => e.GetLocalizedDescription(typeof(EficazFramework.Enums.CompareMethod).Assembly, "EficazFramework.Resources.Strings.DataDescriptions");
+            SetFunc = (e) => e.GetLocalizedDescription(typeof(EficazFramework.Resources.Strings.DataDescriptions));
         }
     }
 

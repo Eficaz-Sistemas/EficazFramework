@@ -94,8 +94,8 @@ public static class FinancialExtensions
     {
         double resultado = tipo switch
         {
-            Capitalizacao.JurosSimples => capital* periodo / (montante - capital) / 100,
-            Capitalizacao.JurosCompostos => 0D, //TODO
+            Capitalizacao.JurosSimples => capital * periodo / (montante - capital) / 100D,
+            Capitalizacao.JurosCompostos => (Math.Pow(montante / capital, 1D / periodo) - 1D) * 100D,
             _ => 0D
         };
 

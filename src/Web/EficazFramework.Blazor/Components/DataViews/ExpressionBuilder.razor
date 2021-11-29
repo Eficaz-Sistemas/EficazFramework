@@ -127,7 +127,7 @@
                                                 break;
 
                                             case EficazFramework.Expressions.ExpressionEditor.BoolSelection:
-                                            <MudBlazor.MudCheckBox @bind-Checked="context.Value1" Converter="@(new EficazFramework.Converters.ObjectToBoolConverter())" Color="@MudBlazor.Color.Primary" Class="ma-n4"><span class="ml-2">@(((bool?)context.Value1)?.GetLocalizedDescription(BoolDescriptionType.YesNo))</span></MudBlazor.MudCheckBox>
+                                            <MudBlazor.MudCheckBox @bind-Checked="context.Value1" Converter="@(new EficazFramework.Converters.ObjectToBoolConverter())" Color="@MudBlazor.Color.Primary" Class="ma-n4"><span class="ml-2">@(((bool?)context.Value1)?.GetBoolValue()))</span></MudBlazor.MudCheckBox>
                                                 break;
 
                                             case EficazFramework.Expressions.ExpressionEditor.EnumLocalizedSelection:

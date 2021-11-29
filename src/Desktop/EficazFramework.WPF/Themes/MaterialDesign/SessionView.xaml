@@ -57,7 +57,7 @@
                                         </Grid.ColumnDefinitions>
                                         <Button Style="{StaticResource  MaterialDesignOutlinedButton}"
                                                 Width="128" Height="128" Margin="10"
-                                                ToolTip="{efcorelocale:LocalizeText SessionView_AddSessionLabel, Assembly=EficazFramework.WPF, DictionaryName=EficazFramework.Resources.Strings.Controls}"
+                                                ToolTip="{efcorelocale:LocalizeText SessionView_AddSessionLabel, ResourceType=EficazFramework.Resources.Strings.Controls}"
                                                 ToolTipService.Placement="Top"
                                                 Command="{TemplateBinding NewSessionRequestCommand}">
                                             <md:PackIcon Kind="Add" Width="64" Height="64"/>
@@ -82,8 +82,7 @@
                     <ControlTemplate.Triggers>
                         <DataTrigger Binding="{Binding Source={x:Static efcoreapp:SessionManager.Instance}, Path=CurrentSession.ID}" Value="0">
                             <Setter TargetName="PART_SessionButton" Property="ToolTip" Value="{efcorelocale:LocalizeText SessionZeroTooltip, 
-                                                                                                                         Assembly=EficazFramework.Utilities, 
-                                                                                                                         DictionaryName=EficazFramework.Resources.Strings.Application}" />
+                                                                                                                         ResourceType=EficazFramework.Resources.Strings.Application}" />
                             <Setter TargetName="PART_SessionButton" Property="Width" Value="{x:Static efcore:MDIContainer.TaskIconSizeValue}" />
                         </DataTrigger>
                     </ControlTemplate.Triggers>

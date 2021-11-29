@@ -61,6 +61,10 @@ class Enum
         values.Count().Should().Be(2);
         values.First(b => (bool)b.Value == true).Description.Should().Be("Sim");
         values.First(b => (bool)b.Value == false).Description.Should().Be("Não");
+        values = Enums.GetBoolValues(BoolDescriptionType.TrueFalse);
+        values.Count().Should().Be(2);
+        values.First(b => (bool)b.Value == true).Description.Should().Be("Verdadeiro");
+        values.First(b => (bool)b.Value == false).Description.Should().Be("Falso");
     }
 
     [Test, Order(4)]
@@ -98,13 +102,13 @@ class Enum
 
         var valuesComp2 = Enums.GetLocalizedValuesWithCategory<DocumentosTeste>(typeof(EficazFramework.Resources.Strings.TestStrings));
         var gp2 = valuesComp2.GroupBy(p => p.Category).ToList();
-        gp2.Count().Should().Be(2);
+        gp2.Count.Should().Be(2);
         gp2.First(k => k.Key == "Contato").Count().Should().Be(3);
         gp2.First(k => k.Key == "").Count().Should().Be(6);
 
         var valuesComp3 = Enums.GetLocalizedValuesWithCategory(typeof(DocumentosTeste), typeof(EficazFramework.Resources.Strings.TestStrings));
         var gp3 = valuesComp3.GroupBy(p => p.Category).ToList();
-        gp3.Count().Should().Be(2);
+        gp3.Count.Should().Be(2);
         gp3.First(k => k.Key == "Contato").Count().Should().Be(3);
         gp3.First(k => k.Key == "").Count().Should().Be(6);
     }

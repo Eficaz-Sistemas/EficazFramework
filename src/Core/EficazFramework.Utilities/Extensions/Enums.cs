@@ -52,7 +52,7 @@ public static class Enums
             new EnumMember() { Value = false, Description = boolText switch
             {
                 BoolDescriptionType.YesNo =>  EficazFramework.Resources.Strings.Descriptions.BoolToYesNo_False,
-                _ => EficazFramework.Resources.Strings.Descriptions.BoolToYesNo_False
+                _ => EficazFramework.Resources.Strings.Descriptions.BoolToTrueFalse_False
             } }
         };
     }
@@ -271,6 +271,19 @@ public static class Enums
     public static string GetLocalizedCategory(this object value, Type resourceType)
     {
         return value.GetCategory().Localize(resourceType, null);
+    }
+
+    /// <summary>
+    /// Retorna a string para o valor bool especificado
+    /// </summary>
+    /// <returns>IEnumerable of EnumMember</returns>
+    public static string GetBoolValue(this bool value, BoolDescriptionType boolText = BoolDescriptionType.YesNo)
+    {
+        return boolText switch
+        {
+            BoolDescriptionType.YesNo => value ? EficazFramework.Resources.Strings.Descriptions.BoolToYesNo_True : EficazFramework.Resources.Strings.Descriptions.BoolToYesNo_False,
+            _ => value ? EficazFramework.Resources.Strings.Descriptions.BoolToTrueFalse_True : EficazFramework.Resources.Strings.Descriptions.BoolToTrueFalse_False
+        };
     }
 
 }
