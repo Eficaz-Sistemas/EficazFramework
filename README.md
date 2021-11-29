@@ -1,3 +1,5 @@
+# ![EficazFramework](Assets/GitHub-HeaderReadme.png)
+
 # EficazFramework
 
 ![Azure DevOps tests](https://img.shields.io/azure-devops/tests/eficazcs/EficazFramework/18?compact_message)
