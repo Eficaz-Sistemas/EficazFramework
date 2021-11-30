@@ -14,7 +14,7 @@ public static class NumberExtensions
         // Use G format to get significant digits.
         // Then convert to double and use F format.
         var decimalDigit = System.Globalization.CultureInfo.CurrentCulture.NumberFormat.NumberDecimalSeparator;
-        var gFormatted = String.Format(string.Join("", "{0:", $"G{SignificantDigits}", "}"), d);
+        var gFormatted = String.Format(string.Join("", "{0:", $"G{SignificantDigits}", "}"), Math.Abs(d));
         string result = Convert.ToDecimal(gFormatted).ToString("F99");
 
         // Remove trailing 0s.
@@ -39,6 +39,9 @@ public static class NumberExtensions
         }
         if (result.EndsWith(decimalDigit) && MinDecimals == 0)
             result = result.Replace(decimalDigit, "");
+
+        if (d < 0)
+            result = $"-{result}";
 
         if (MinDecimals > 0)
         {
