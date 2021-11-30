@@ -1,12 +1,80 @@
-﻿using System;
-using Microsoft.VisualBasic.CompilerServices;
+﻿using Microsoft.VisualBasic.CompilerServices;
+using System;
+using System.Text.RegularExpressions;
 
 namespace EficazFramework.Extensions;
 
 public static class NumberExtensions
 {
+    /// <summary>
+    /// Retorna o número formatado na quantidade de algarismos significativos desejada.
+    /// </summary>
+    public static string ToSignificantDigits(this double d, int SignificantDigits, int MinDecimals = 0)
+    {
+        // Use G format to get significant digits.
+        // Then convert to double and use F format.
+        var decimalDigit = System.Globalization.CultureInfo.CurrentCulture.NumberFormat.NumberDecimalSeparator;
+        var gFormatted = String.Format(string.Join("", "{0:", $"G{SignificantDigits}", "}"), d);
+        string result = Convert.ToDecimal(gFormatted).ToString("F99");
 
-    /* TODO ERROR: Skipped RegionDirectiveTrivia */
+        // Remove trailing 0s.
+        result = result.TrimEnd('0');
+
+        // Rmove the decimal point and leading 0s,
+        // leaving just the digits.
+        string test = result.Replace(decimalDigit, "").TrimStart('0');
+
+        // See if we have enough significant digits.
+        if (SignificantDigits > test.Length)
+        {
+            // Add trailing 0s.
+            result += new string('0', SignificantDigits - test.Length);
+        }
+        else
+        {
+            // See if we should remove the trailing decimal point.
+            if ((SignificantDigits < test.Length) &&
+                result.EndsWith("."))
+                result = result[0..^1];
+        }
+        if (result.EndsWith(decimalDigit) && MinDecimals == 0)
+            result = result.Replace(decimalDigit, "");
+
+        if (MinDecimals > 0)
+        {
+            var parts = result.Split(decimalDigit);
+            if (parts.Length == 1 || parts[1].Length < MinDecimals)
+                return double.Parse(result).ToString($"F{MinDecimals}");
+        }
+
+        return result;
+    }
+
+    /// <summary>
+    /// Retorna o número formatado na quantidade de algarismos significativos desejada.
+    /// </summary>
+    public static string ToSignificantDigits(this double? d, int SignificantDigits, int MinDecimals = 0)
+    {
+        return ToSignificantDigits(d ?? 0.0D, SignificantDigits, MinDecimals);
+    }
+
+    /// <summary>
+    /// Retorna o número formatado na quantidade de algarismos significativos desejada.
+    /// </summary>
+    public static string ToSignificantDigits(this decimal d, int SignificantDigits, int MinDecimals = 0)
+    {
+        return ToSignificantDigits((double)d, SignificantDigits, MinDecimals);
+    }
+
+    /// <summary>
+    /// Retorna o número formatado na quantidade de algarismos significativos desejada.
+    /// </summary>
+    public static string ToSignificantDigits(this decimal? d, int SignificantDigits, int MinDecimals = 0)
+    {
+        return ToSignificantDigits((double)(d ?? 0.0M), SignificantDigits, MinDecimals);
+    }
+
+
     /// <summary>
     /// Retorna o número por extenso.
     /// </summary>
@@ -31,15 +99,6 @@ public static class NumberExtensions
         return ToWordsInternal(number, currency);
     }
 
-    public static bool ShortTryParseNullable(string text, ref short? outValue)
-    {
-        bool success = short.TryParse(text, out short parsedValue);
-        outValue = success ? parsedValue : default(short?);
-        return success;
-    }
-
-
-    /* TODO ERROR: Skipped RegionDirectiveTrivia */
     /// <summary>
     /// Retorna o número por extenso.
     /// </summary>
@@ -64,15 +123,6 @@ public static class NumberExtensions
         return ToWordsInternal(number, currency);
     }
 
-    public static bool IntegerTryParseNullable(string text, ref int? outValue)
-    {
-        bool success = int.TryParse(text, out int parsedValue);
-        outValue = success ? parsedValue : default(int?);
-        return success;
-    }
-
-
-    /* TODO ERROR: Skipped RegionDirectiveTrivia */
     /// <summary>
     /// Retorna o número por extenso.
     /// </summary>
@@ -97,15 +147,6 @@ public static class NumberExtensions
         return ToWordsInternal(number, currency);
     }
 
-    public static bool LongTryParseNullable(string text, ref long? outValue)
-    {
-        bool success = long.TryParse(text, out long parsedValue);
-        outValue = success ? parsedValue : default(long?);
-        return success;
-    }
-
-
-    /* TODO ERROR: Skipped RegionDirectiveTrivia */
     /// <summary>
     /// Retorna o número por extenso.
     /// </summary>
@@ -130,15 +171,6 @@ public static class NumberExtensions
         return ToWordsInternal(Conversions.ToDecimal(number), currency);
     }
 
-    public static bool DoubleTryParseNullable(string text, ref double? outValue)
-    {
-        bool success = double.TryParse(text, out double parsedValue);
-        outValue = success ? parsedValue : default(double?);
-        return success;
-    }
-
-
-    /* TODO ERROR: Skipped RegionDirectiveTrivia */
     /// <summary>
     /// Retorna o número por extenso.
     /// </summary>
@@ -163,16 +195,7 @@ public static class NumberExtensions
         return ToWordsInternal(number, currency);
     }
 
-    public static bool DecimalTryParseNullable(string text, ref decimal? outValue)
-    {
-        bool success = decimal.TryParse(text, out decimal parsedValue);
-        outValue = success ? parsedValue : default(decimal?);
-        return success;
-    }
 
-
-    /* TODO ERROR: Skipped RegionDirectiveTrivia */
-    /* TODO ERROR: Skipped RegionDirectiveTrivia */
     private static string ToWordsInternal(decimal number, Gender gender = Gender.Masculino)
     {
         return GeraExtensoInternal(number, false, gender);
@@ -195,27 +218,13 @@ public static class NumberExtensions
 
     private static string GeraExtensoInternal(decimal number, bool moeda, Gender genero, Currency tipoMoeda = Currency.Real_BRL)
     {
-        var currency = Array.Empty<string>();
-        switch (tipoMoeda)
+        var currency = tipoMoeda switch
         {
-            case Currency.Real_BRL:
-                {
-                    currency = real_br;
-                    break;
-                }
-
-            case Currency.Dolar_USD:
-                {
-                    currency = dolar_us;
-                    break;
-                }
-
-            case Currency.Euro_EUR:
-                {
-                    currency = euro_eu;
-                    break;
-                }
-        }
+            Currency.Real_BRL => real_br,
+            Currency.Dolar_USD => dolar_us,
+            Currency.Euro_EUR => euro_eu,
+            _ => throw new NotImplementedException()
+        };
 
         // variaveis
         number = Math.Abs(number);
@@ -597,7 +606,6 @@ public static class NumberExtensions
         return numstr;
     }
 
-    /* TODO ERROR: Skipped RegionDirectiveTrivia */
     public enum Gender
     {
         Masculino = 0,

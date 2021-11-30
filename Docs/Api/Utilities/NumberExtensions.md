@@ -9,6 +9,10 @@ Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.O
 
 | Methods | |
 | :--- | :--- |
+| [ToSignificantDigits(decimal, int, int)](NumberExtensions_ToSignificantDigits(decimal_int_int).md 'EficazFramework.Extensions.NumberExtensions.ToSignificantDigits(decimal, int, int)') | Retorna o número formatado na quantidade de algarismos significativos desejada.<br/> |
+| [ToSignificantDigits(double, int, int)](NumberExtensions_ToSignificantDigits(double_int_int).md 'EficazFramework.Extensions.NumberExtensions.ToSignificantDigits(double, int, int)') | Retorna o número formatado na quantidade de algarismos significativos desejada.<br/> |
+| [ToSignificantDigits(Nullable&lt;decimal&gt;, int, int)](NumberExtensions_ToSignificantDigits(Nullable_decimal__int_int).md 'EficazFramework.Extensions.NumberExtensions.ToSignificantDigits(System.Nullable&lt;decimal&gt;, int, int)') | Retorna o número formatado na quantidade de algarismos significativos desejada.<br/> |
+| [ToSignificantDigits(Nullable&lt;double&gt;, int, int)](NumberExtensions_ToSignificantDigits(Nullable_double__int_int).md 'EficazFramework.Extensions.NumberExtensions.ToSignificantDigits(System.Nullable&lt;double&gt;, int, int)') | Retorna o número formatado na quantidade de algarismos significativos desejada.<br/> |
 | [ToWords(decimal, Currency)](NumberExtensions_ToWords(decimal_Currency).md 'EficazFramework.Extensions.NumberExtensions.ToWords(decimal, EficazFramework.Extensions.NumberExtensions.Currency)') | Retorna o número por extenso, em moeda.<br/> |
 | [ToWords(decimal, Gender)](NumberExtensions_ToWords(decimal_Gender).md 'EficazFramework.Extensions.NumberExtensions.ToWords(decimal, EficazFramework.Extensions.NumberExtensions.Gender)') | Retorna o número por extenso.<br/> |
 | [ToWords(double, Currency)](NumberExtensions_ToWords(double_Currency).md 'EficazFramework.Extensions.NumberExtensions.ToWords(double, EficazFramework.Extensions.NumberExtensions.Currency)') | Retorna o número por extenso, em moeda.<br/> |
