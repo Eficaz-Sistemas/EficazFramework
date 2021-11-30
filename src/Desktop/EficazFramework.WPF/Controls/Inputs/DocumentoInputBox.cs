@@ -137,7 +137,7 @@ public class DocumentoInputBox : TextBox
             EDocumentos.CNPJ or EDocumentos.CNPJ_CPF or EDocumentos.CPF => value.FormatRFBDocument(),
             EDocumentos.Fone => value.FormatFone(),
             EDocumentos.IE => value.FormatIE(UF),
-            EDocumentos.PIS_NIT => value.FormataPIS(),
+            EDocumentos.PIS_NIT => value.FormatPIS(),
             _ => "",
         };
     }

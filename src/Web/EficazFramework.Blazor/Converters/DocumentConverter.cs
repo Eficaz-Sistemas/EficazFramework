@@ -53,7 +53,7 @@ internal class DocumentConverter<T> : MudBlazor.DefaultConverter<T>
         {
             Enums.Documentos.CNPJ_CPF or Enums.Documentos.CNPJ or Enums.Documentos.CPF => test.ToString(_setCulture).FormatRFBDocument(),
             Enums.Documentos.IE => test.ToString(_setCulture).FormatIE(UF),
-            Enums.Documentos.PIS_NIT => test.ToString(_setCulture).FormataPIS(),
+            Enums.Documentos.PIS_NIT => test.ToString(_setCulture).FormatPIS(),
             Enums.Documentos.CEP => test.ToString(_setCulture).FormatCEP(),
             Enums.Documentos.Fone => test.ToString(_setCulture).FormatFone(),
             _ => "",

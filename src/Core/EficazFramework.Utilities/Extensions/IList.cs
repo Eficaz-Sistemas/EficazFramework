@@ -12,15 +12,16 @@ public static class IListExtensions
         return new ReadOnlyCollection<T>(source);
     }
 
-    public static IList<TSource> DistinctBy<TSource, TKey>(this IList<TSource> source, Func<TSource, TKey> keySelector)
-    {
-        var knownKeys = new HashSet<TKey>();
-        return (IList<TSource>)source.Where(element => knownKeys.Add(keySelector(element)));
-    }
-
     public static List<List<T>> Split<T>(this List<T> items, int sliceSize = 100)
     {
         var list = new List<List<T>>();
+
+        if (sliceSize <= 0)
+        {
+            list.Add(items);
+            return list;
+        }
+
         int i = 0;
         while (i < items.Count)
         {

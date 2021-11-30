@@ -6,7 +6,96 @@ namespace EficazFramework.Extensions;
 public class Text
 {
     [Test]
-    public void InscricoesEstaduais()
+    public void Substring()
+    {
+        // Left
+        "Eficaz".Left(0).Should().Be("");
+        "Eficaz".Left(1).Should().Be("E");
+        "Eficaz".Left(2).Should().Be("Ef");
+
+        // Mid
+        "Eficaz".Mid(0).Should().Be("Eficaz");
+        "Eficaz".Mid(1).Should().Be("ficaz");
+        "Eficaz".Mid(2).Should().Be("icaz");
+        "Eficaz".Mid(0, 1).Should().Be("E");
+        "Eficaz".Mid(1, 1).Should().Be("f");
+        "Eficaz".Mid(2, 1).Should().Be("i");
+        "Eficaz".Mid(0, 3).Should().Be("Efi");
+        "Eficaz".Mid(1, 3).Should().Be("fic");
+        "Eficaz".Mid(2, 3).Should().Be("ica");
+
+        // Right
+        "Eficaz".Right(0).Should().Be("");
+        "Eficaz".Right(1).Should().Be("z");
+        "Eficaz".Right(2).Should().Be("az");
+        "Eficaz".Right(3).Should().Be("caz");
+    }
+
+    [Test]
+    public void FormataCEP()
+    {
+        "37990000".FormatCEP().Should().Be("37.990-000");
+        "037990000".FormatCEP().Should().Be("037.990-000");
+        "7990000".FormatCEP().Should().Be("7.990-000");
+        "14407760".FormatCEP().Should().Be("14.407-760");
+    }
+
+    [Test]
+    public void FormataFone()
+    {
+        "5441245".FormatFone().Should().Be("544-1245");
+        "35441245".FormatFone().Should().Be("3544-1245");
+        "3535441245".FormatFone().Should().Be("(35) 3544-1245");
+        "553535441245".FormatFone().Should().Be("+55 (35) 3544-1245");
+
+        "99712741".FormatFone().Should().Be("9971-2741");
+        "999712741".FormatFone().Should().Be("99971-2741");
+        "1699712741".FormatFone().Should().Be("(16) 9971-2741");
+        "16999712741".FormatFone().Should().Be("(16) 99971-2741");
+        "551699712741".FormatFone().Should().Be("+55 (16) 9971-2741");
+        "5516999712741".FormatFone().Should().Be("+55 (16) 99971-2741");
+    }
+
+    [Test]
+    public void FormataLogradouro()
+    {
+        var result = "Rua Tiradentes".FormatLogradouro();
+        result.Should().HaveCount(2);
+        result[0].Should().Be("Rua");
+        result[1].Should().Be("Tiradentes");
+
+        result = "rua tiradentes".FormatLogradouro();
+        result.Should().HaveCount(2);
+        result[0].Should().Be("Rua");
+        result[1].Should().Be("Tiradentes");
+
+        result = "rua tiradentes".FormatLogradouro(false);
+        result.Should().HaveCount(2);
+        result[0].Should().Be("Rua");
+        result[1].Should().Be("tiradentes");
+    }
+
+    [Test]
+    public void FormataDocumentoRFB()
+    {
+        "07731253619".FormatRFBDocument().Should().Be("077.312.536-19");
+        "10608025000126".FormatRFBDocument().Should().Be("10.608.025/0001-26");
+    }
+
+    [Test]
+    public void FormataPIS()
+    {
+        "20476695850".FormatPIS().Should().Be("204.76695.85-0");
+        "20685458924".FormatPIS().Should().Be("206.85458.92-4");
+    }
+
+
+
+
+
+
+    [Test]
+    public void ValidaInscricoesEstaduais()
     {
         "0100270100128".IsValidInscricaoEstadual("AC").Should().Be(true);
         "0100100500168".IsValidInscricaoEstadual("AC").Should().Be(true);
@@ -18,6 +107,8 @@ public class Text
         "0100085700327".IsValidInscricaoEstadual("AC").Should().Be(true);
         "0100020400159".IsValidInscricaoEstadual("AC").Should().Be(true);
         "0101444400561".IsValidInscricaoEstadual("AC").Should().Be(true);
+        "1101444400561".IsValidInscricaoEstadual("AC").Should().Be(false);
+        "1101444400560".IsValidInscricaoEstadual("AC").Should().Be(false);
         "241056870".IsValidInscricaoEstadual("AL").Should().Be(true);
         "246010100".IsValidInscricaoEstadual("AL").Should().Be(true);
         "242238831".IsValidInscricaoEstadual("AL").Should().Be(true);
@@ -38,6 +129,8 @@ public class Text
         "053719778".IsValidInscricaoEstadual("AM").Should().Be(true);
         "053991532".IsValidInscricaoEstadual("AM").Should().Be(true);
         "042355087".IsValidInscricaoEstadual("AM").Should().Be(true);
+        "142355087".IsValidInscricaoEstadual("AM").Should().Be(false);
+        "042355086".IsValidInscricaoEstadual("AM").Should().Be(false);
         "030285038".IsValidInscricaoEstadual("AP").Should().Be(true);
         "030292522".IsValidInscricaoEstadual("AP").Should().Be(true);
         "030482488".IsValidInscricaoEstadual("AP").Should().Be(true);
@@ -48,6 +141,8 @@ public class Text
         "030483905".IsValidInscricaoEstadual("AP").Should().Be(true);
         "030247616".IsValidInscricaoEstadual("AP").Should().Be(true);
         "030090658".IsValidInscricaoEstadual("AP").Should().Be(true);
+        "130247616".IsValidInscricaoEstadual("AP").Should().Be(false);
+        "030090657".IsValidInscricaoEstadual("AP").Should().Be(false);
         "73309877".IsValidInscricaoEstadual("BA").Should().Be(true);
         "73322466".IsValidInscricaoEstadual("BA").Should().Be(true);
         "75823430".IsValidInscricaoEstadual("BA").Should().Be(true);
@@ -57,6 +152,8 @@ public class Text
         "102154377".IsValidInscricaoEstadual("BA").Should().Be(true);
         "16895056".IsValidInscricaoEstadual("BA").Should().Be(true);
         "78575129".IsValidInscricaoEstadual("BA").Should().Be(true);
+        "06895056".IsValidInscricaoEstadual("BA").Should().Be(false);
+        "78575128".IsValidInscricaoEstadual("BA").Should().Be(false);
         "015356000".IsValidInscricaoEstadual("BA").Should().Be(true);
         "066843260".IsValidInscricaoEstadual("CE").Should().Be(true);
         "066150639".IsValidInscricaoEstadual("CE").Should().Be(true);
@@ -68,6 +165,8 @@ public class Text
         "065960670".IsValidInscricaoEstadual("CE").Should().Be(true);
         "062858742".IsValidInscricaoEstadual("CE").Should().Be(true);
         "069951888".IsValidInscricaoEstadual("CE").Should().Be(true);
+        "162858742".IsValidInscricaoEstadual("CE").Should().Be(false);
+        "069951887".IsValidInscricaoEstadual("CE").Should().Be(false);
         "0748900000111".IsValidInscricaoEstadual("DF").Should().Be(true);
         "0750889600156".IsValidInscricaoEstadual("DF").Should().Be(true);
         "0752439100124".IsValidInscricaoEstadual("DF").Should().Be(true);
@@ -78,6 +177,8 @@ public class Text
         "0737785100133".IsValidInscricaoEstadual("DF").Should().Be(true);
         "0733095700138".IsValidInscricaoEstadual("DF").Should().Be(true);
         "0765533900157".IsValidInscricaoEstadual("DF").Should().Be(true);
+        "1733095700138".IsValidInscricaoEstadual("DF").Should().Be(false);
+        "0765533900158".IsValidInscricaoEstadual("DF").Should().Be(false);
         "081905866".IsValidInscricaoEstadual("ES").Should().Be(true);
         "082262284".IsValidInscricaoEstadual("ES").Should().Be(true);
         "081310412".IsValidInscricaoEstadual("ES").Should().Be(true);
@@ -280,4 +381,5 @@ public class Text
         "294507965".IsValidInscricaoEstadual("TO").Should().Be(true);
         "294840303".IsValidInscricaoEstadual("TO").Should().Be(true);
     }
+
 }

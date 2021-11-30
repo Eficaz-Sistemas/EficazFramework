@@ -121,6 +121,11 @@ public static class TextExtensions
             return @base;
         switch (@base.Length)
         {
+            case 7: // 544-1511
+                {
+                    return string.Format(@"{0:000\-0000}", number);
+                }
+
             case 8: // 3544-1511
                 {
                     return string.Format(@"{0:0000\-0000}", number);
@@ -152,7 +157,7 @@ public static class TextExtensions
 
             case 13: // +55 12 34567-8900
                 {
-                    return string.Format(@"{0:\+00\ 00 00000\-0000}", number);
+                    return string.Format(@"{0:\+00\ \(00\) 00000\-0000}", number);
                 }
 
             default:
@@ -250,12 +255,12 @@ public static class TextExtensions
                     if (documento.Contains('.') | documento.Contains('-'))
                         return documento;
                     else
-                        return FormataCNPJ(documento);
+                        return FormatCNPJ(documento);
                 }
 
             case 11:
                 {
-                    return FormataCPF(documento);
+                    return FormatCPF(documento);
                 }
 
             default:
@@ -265,18 +270,18 @@ public static class TextExtensions
         }
     }
 
-    private static string FormataCNPJ(this string documento)
+    private static string FormatCNPJ(this string documento)
     {
         return documento[..2] + "." + documento.Substring(2, 3) + "." + documento.Substring(5, 3) + "/" + documento.Substring(8, 4) + "-" + documento.Substring(12, 2);
         // Return [String].Format("{0:00\.000\.000\/0000\-00}", documento) Long para CNPJ
     }
 
-    public static string FormataPIS(this string documento)
+    public static string FormatPIS(this string documento)
     {
         return Convert.ToDecimal(documento).ToString(@"#000\.00000\.00\-0");
     }
 
-    private static string FormataCPF(this string documento)
+    private static string FormatCPF(this string documento)
     {
         return documento[..3] + "." + documento.Substring(3, 3) + "." + documento.Substring(6, 3) + "-" + documento.Substring(9, 2);
     }
