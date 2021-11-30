@@ -20,8 +20,8 @@ Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.O
 | [IsValidInscricaoEstadual(string, string)](TextExtensions_IsValidInscricaoEstadual(string_string).md 'EficazFramework.Extensions.TextExtensions.IsValidInscricaoEstadual(string, string)') | Verifica a veracidade do número de Inscrição Estadual informado.<br/> |
 | [IsValidPISePASEP(string)](TextExtensions_IsValidPISePASEP(string).md 'EficazFramework.Extensions.TextExtensions.IsValidPISePASEP(string)') | Verifica a veracidade do número de PIS/Pasep informado.<br/> |
 | [Left(string, int)](TextExtensions_Left(string_int).md 'EficazFramework.Extensions.TextExtensions.Left(string, int)') | Returns the left part of this string instance.<br/> |
-| [Mid(string, int)](TextExtensions_Mid(string_int).md 'EficazFramework.Extensions.TextExtensions.Mid(string, int)') | Returns the mid part of this string instance.<br/> |
 | [Mid(string, int, int)](TextExtensions_Mid(string_int_int).md 'EficazFramework.Extensions.TextExtensions.Mid(string, int, int)') | Returns the mid part of this string instance.<br/> |
+| [Mid(string, int)](TextExtensions_Mid(string_int).md 'EficazFramework.Extensions.TextExtensions.Mid(string, int)') | Returns the mid part of this string instance.<br/> |
 | [RemoveTextMask(string)](TextExtensions_RemoveTextMask(string).md 'EficazFramework.Extensions.TextExtensions.RemoveTextMask(string)') | Remove todos os caracteres de máscara (literais) de uma string.<br/> |
 | [Right(string, int)](TextExtensions_Right(string_int).md 'EficazFramework.Extensions.TextExtensions.Right(string, int)') | Returns the right part of the string instance.<br/> |
 | [SplitByLength(string, int)](TextExtensions_SplitByLength(string_int).md 'EficazFramework.Extensions.TextExtensions.SplitByLength(string, int)') | Divide uma string em numa lista de substrings, conforme a quantidade de caracteres desejada<br/> |
