@@ -494,6 +494,7 @@ public static class TextExtensions
         texto = Regex.Replace(texto, "[Í|Ì|Ï|Î]", "I", RegexOptions.IgnoreCase & RegexOptions.CultureInvariant);
         texto = Regex.Replace(texto, "[Ó|Ò|Ö|Ô|Õ]", "O", RegexOptions.IgnoreCase & RegexOptions.CultureInvariant);
         texto = Regex.Replace(texto, "[Ú|Ù|Ü|Û]", "U", RegexOptions.IgnoreCase & RegexOptions.CultureInvariant);
+        texto = Regex.Replace(texto, "[ç]", "c", RegexOptions.IgnoreCase & RegexOptions.CultureInvariant);
         texto = Regex.Replace(texto, "[Ç]", "C", RegexOptions.IgnoreCase & RegexOptions.CultureInvariant);
         return texto;
     }
@@ -577,13 +578,6 @@ public static class TextExtensions
             return name.ToUpper();
         }
     }
-
-    public static string NullToEmpty(this string name)
-    {
-        string result = name ?? "";
-        return result;
-    }
-
 
     /// <summary>
     /// Verifica a veracidade do número de CNPJ informado.

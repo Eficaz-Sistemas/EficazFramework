@@ -1,5 +1,6 @@
 ﻿using FluentAssertions;
 using NUnit.Framework;
+using System.Linq;
 
 namespace EficazFramework.Extensions;
 
@@ -83,16 +84,111 @@ public class Text
     }
 
     [Test]
-    public void FormataPIS()
+    public void FormataPisPasep()
     {
         "20476695850".FormatPIS().Should().Be("204.76695.85-0");
         "20685458924".FormatPIS().Should().Be("206.85458.92-4");
     }
 
+    [Test]
+    public void RemoveAcentos()
+    {
+        "áàäâã".GetClearText().Should().Be("aaaaa");
+        "éèëê".GetClearText().Should().Be("eeee");
+        "íìïî".GetClearText().Should().Be("iiii");
+        "óòöôõ".GetClearText().Should().Be("ooooo");
+        "úùüû".GetClearText().Should().Be("uuuu");
+        "ÁÀÄÂÃ".GetClearText().Should().Be("AAAAA");
+        "ÉÈËÊ".GetClearText().Should().Be("EEEE");
+        "ÍÌÏÎ".GetClearText().Should().Be("IIII");
+        "ÓÒÖÔÕ".GetClearText().Should().Be("OOOOO");
+        "ÚÙÜÛ".GetClearText().Should().Be("UUUU");
+        "ç".GetClearText().Should().Be("c");
+        "C".GetClearText().Should().Be("C");
+    }
+
+    [Test]
+    public void RemoveMascara()
+    {
+        "077.312.536-19".RemoveTextMask().Should().Be("07731253619");
+        "10.608.025/0001-26".RemoveTextMask().Should().Be("10608025000126");
+        "?/.-]=';[".RemoveTextMask().Should().Be("");
+    }
+
+    [Test]
+    public void SplitByLength()
+    {
+        var result = "henrique".SplitByLength(1);
+        result.Should().HaveCount(8);
+        result.Where(r => r.Length > 1).Count().Should().BeLessThanOrEqualTo(0);
+        
+        result = "henrique".SplitByLength(2);
+        result.Should().HaveCount(4);
+        result.Where(r => r.Length > 2).Count().Should().BeLessThanOrEqualTo(0);
+        
+        result = "henrique".SplitByLength(3);
+        result.Should().HaveCount(3);
+        result.Where(r => r.Length > 3).Count().Should().BeLessThanOrEqualTo(0);
+
+        result = "henrique".SplitByLength(4);
+        result.Should().HaveCount(2);
+        result.Where(r => r.Length > 4).Count().Should().BeLessThanOrEqualTo(0);
+
+        result = "henrique".SplitByLength(5);
+        result.Should().HaveCount(2);
+        result.Where(r => r.Length > 5).Count().Should().BeLessThanOrEqualTo(0);
+
+        result = "henrique".SplitByLength(7);
+        result.Should().HaveCount(2);
+        result.Where(r => r.Length > 7).Count().Should().BeLessThanOrEqualTo(0);
+        result.ElementAt(1).Length.Should().Be(1);
+
+        result = "henrique".SplitByLength(8);
+        result.Should().HaveCount(1);
+        result.Where(r => r.Length > 8).Count().Should().BeLessThanOrEqualTo(0);
+    }
+
+    [Test]
+    public void ToTitleCase()
+    {
+        "henrique clausing".ToTitleCase().Should().Be("Henrique Clausing");
+        "HENRIQUE CLAUSING".ToTitleCase().Should().Be("Henrique Clausing");
+    }
 
 
 
+    // Validações:
 
+    [Test]
+    public void ValidaEMail()
+    {
+        "hcl@gmail.com".IsValidEmailAddress().Should().Be(true);
+        "h.cl@gmail.com".IsValidEmailAddress().Should().Be(true);
+        "h_cl@gmail.com".IsValidEmailAddress().Should().Be(true);
+        "h-cl@gmail.com".IsValidEmailAddress().Should().Be(true);
+        "h cl@gmail.com".IsValidEmailAddress().Should().Be(false);
+        "hcl@gmail.".IsValidEmailAddress().Should().Be(false);
+        "hcl@".IsValidEmailAddress().Should().Be(false);
+        "hclgmail.com".IsValidEmailAddress().Should().Be(false);
+    }
+
+    [Test]
+    public void ValidaDocumentoRFB()
+    {
+        "07731253619".IsValidCPF().Should().Be(true);
+        "077.312.536-19".IsValidCPF().Should().Be(false);
+        "07731253620".IsValidCPF().Should().Be(false);
+        "077.312.536-20".IsValidCPF().Should().Be(false);
+        "07831253620".IsValidCPF().Should().Be(false);
+        "078.312.536-20".IsValidCPF().Should().Be(false);
+
+        "10608025000126".IsValidCNPJ().Should().Be(true);
+        "10.608.025/0001-26".IsValidCNPJ().Should().Be(false);
+        "10608025000127".IsValidCNPJ().Should().Be(false);
+        "10.608.025/0001-27".IsValidCNPJ().Should().Be(false);
+        "11608025000126".IsValidCNPJ().Should().Be(false);
+        "11.608.025/0001-26".IsValidCNPJ().Should().Be(false);
+    }
 
     [Test]
     public void ValidaInscricoesEstaduais()
@@ -381,5 +477,17 @@ public class Text
         "294507965".IsValidInscricaoEstadual("TO").Should().Be(true);
         "294840303".IsValidInscricaoEstadual("TO").Should().Be(true);
     }
+
+    [Test]
+    public void ValidaPisPasep()
+    {
+        "20476695850".IsValidPISePASEP().Should().Be(true);
+        "204.76695.85-0".IsValidPISePASEP().Should().Be(false);
+        "20476695851".IsValidPISePASEP().Should().Be(false);
+        "204.76695.85-1".IsValidPISePASEP().Should().Be(false);
+        "21476695850".IsValidPISePASEP().Should().Be(false);
+        "214.76695.85-0".IsValidPISePASEP().Should().Be(false);
+    }
+
 
 }
