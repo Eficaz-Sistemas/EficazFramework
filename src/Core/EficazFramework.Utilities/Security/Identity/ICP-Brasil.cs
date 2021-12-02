@@ -133,7 +133,6 @@ public class IcpBrasil : X509Certificate2
             if (!cert.Subject.ToLower().Contains("icp-brasil"))
                 continue;
             final.Add(new IcpBrasil(cert.RawData, cert));
-            // final.Add(CType(cert, IcpBrasil_X509Certificate2))
         }
 
         return final.OrderBy(f => f.Titular).ToList();

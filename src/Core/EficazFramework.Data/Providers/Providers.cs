@@ -40,7 +40,7 @@ internal class MsSqlServer : IDataProvider
             throw new NullReferenceException(Resources.Strings.Validation.DbConfigurationNull);
 
         if (DbConfiguration.UseConnectionStringEncryption == true)
-            return Security.Cryptography.Functions.Encript($"Data Source={EficazFramework.Configuration.DbConfiguration.Instance.ServerData};Database={database};User ID={username};Password={password};Connect Timeout={30};Integrated Security=False;MultipleActiveResultSets=True;", "#hd@cl$cb#", "#hccdlb_321#");
+            return Security.Cryptography.Functions.Encript($"Data Source={EficazFramework.Configuration.DbConfiguration.Instance.ServerData};Database={database};User ID={username};Password={password};Connect Timeout={30};Integrated Security=False;MultipleActiveResultSets=True;", "#hd@cl$cb#");
 
         return $"Data Source={EficazFramework.Configuration.DbConfiguration.Instance.ServerData};Database={database};User ID={username};Password={password};Connect Timeout={30};Integrated Security=False;MultipleActiveResultSets=True;";
     }
@@ -56,9 +56,9 @@ internal class SqlLite : IDataProvider
         if (DbConfiguration.UseConnectionStringEncryption == true)
         {
             if (!string.IsNullOrEmpty(password))
-                return Security.Cryptography.Functions.Encript($"Data Source={database}.db;Password={password}", "#hd@cl$cb#", "#hccdlb_321#");
+                return Security.Cryptography.Functions.Encript($"Data Source={database}.db;Password={password}", "#hd@cl$cb#");
             else
-                return Security.Cryptography.Functions.Encript($"Data Source={database}.db;", "#hd@cl$cb#", "#hccdlb_321#");
+                return Security.Cryptography.Functions.Encript($"Data Source={database}.db;", "#hd@cl$cb#");
         }
 
         if (!string.IsNullOrEmpty(password))
@@ -76,7 +76,7 @@ internal class MySQL : IDataProvider
             throw new NullReferenceException(Resources.Strings.Validation.DbConfigurationNull);
 
         if (DbConfiguration.UseConnectionStringEncryption == true)
-            return Security.Cryptography.Functions.Encript($"Server={EficazFramework.Configuration.DbConfiguration.Instance.ServerName};Port={EficazFramework.Configuration.DbConfiguration.Instance.Port};Database={database};Uid={username};Pwd={password};Connect Timeout={30};", "#hd@cl$cb#", "#hccdlb_321#");
+            return Security.Cryptography.Functions.Encript($"Server={EficazFramework.Configuration.DbConfiguration.Instance.ServerName};Port={EficazFramework.Configuration.DbConfiguration.Instance.Port};Database={database};Uid={username};Pwd={password};Connect Timeout={30};", "#hd@cl$cb#");
 
         return $"Server={EficazFramework.Configuration.DbConfiguration.Instance.ServerName};Port={EficazFramework.Configuration.DbConfiguration.Instance.Port};Database={database};Uid={username};Pwd={password};Connect Timeout={30};";
     }
@@ -90,7 +90,7 @@ internal class Oracle : IDataProvider
             throw new NullReferenceException(Resources.Strings.Validation.DbConfigurationNull);
 
         if (DbConfiguration.UseConnectionStringEncryption == true)
-            return Security.Cryptography.Functions.Encript($"Data Source={EficazFramework.Configuration.DbConfiguration.Instance.ServerData};Database={database};User ID={username};Password={password};Connect Timeout={30};Integrated Security=no;", "#hd@cl$cb#", "#hccdlb_321#");
+            return Security.Cryptography.Functions.Encript($"Data Source={EficazFramework.Configuration.DbConfiguration.Instance.ServerData};Database={database};User ID={username};Password={password};Connect Timeout={30};Integrated Security=no;", "#hd@cl$cb#");
 
         return $"Data Source={EficazFramework.Configuration.DbConfiguration.Instance.ServerData};Database={database};User ID={username};Password={password};Connect Timeout={30};Integrated Security=no;";
     }

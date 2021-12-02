@@ -12,11 +12,25 @@ public class SerializationOperations
         return (T)serializer.Deserialize(source);
     }
 
-    public static T FromXmlAsync<T>(System.IO.Stream source)
+    public static T FromXml<T>(string sourcePath)
     {
-        var serializer = new System.Xml.Serialization.XmlSerializer(typeof(T));
-        return (T)serializer.Deserialize(source);
+        var file = System.IO.File.OpenRead(sourcePath);
+        var result = FromXml<T>(file);
+        file.Close();
+        file.Dispose();
+        return result;
     }
+
+    public async static Task<T> FromXmlAsync<T>(System.IO.Stream source)
+    {
+        return await Task.Run(() => FromXml<T>(source));
+    }
+
+    public async static Task<T> FromXmlAsync<T>(string sourcePath)
+    {
+        return await Task.Run(() => FromXml<T>(sourcePath));
+    }
+
 
     // ### TO XML
 
@@ -42,7 +56,7 @@ public class SerializationOperations
 
     public static void ToXml<T>(T source, string targetpath, System.Xml.XmlWriterSettings settings)
     {
-        var file = new System.IO.FileStream(targetpath, System.IO.FileMode.OpenOrCreate, System.IO.FileAccess.ReadWrite);
+        var file = new System.IO.FileStream(targetpath, System.IO.FileMode.Create, System.IO.FileAccess.ReadWrite);
         ToXml(source, file, settings);
         file.Close();
         file.Dispose();
@@ -50,45 +64,22 @@ public class SerializationOperations
 
     public static async Task ToXmlAsync<T>(T source, System.IO.Stream target)
     {
-        var settings = new System.Xml.XmlWriterSettings() { Indent = true };
-        await ToXmlAsync(source, target, settings);
+        await Task.Run(() => ToXml<T>(source, target));
     }
 
     public static async Task ToXmlAsync<T>(T source, System.IO.Stream target, System.Xml.XmlWriterSettings settings)
     {
-        var writer = System.Xml.XmlWriter.Create(target, settings);
-        var serializer = new System.Xml.Serialization.XmlSerializer(typeof(T));
-        await Task.Run(() =>
-        {
-            serializer.Serialize(writer, source);
-            return true;
-        });
-        writer.Dispose();
+        await Task.Run(() => ToXml<T>(source, target, settings));
     }
 
     public static async Task ToXmlAsync<T>(T source, string targetpath)
     {
-        var settings = new System.Xml.XmlWriterSettings() { Indent = true };
-        var file = new System.IO.FileStream(targetpath, System.IO.FileMode.OpenOrCreate, System.IO.FileAccess.ReadWrite);
-        await ToXmlAsync(source, file, settings);
-        file.Close();
-        await file.DisposeAsync();
+        await Task.Run(() => ToXml<T>(source, targetpath));
     }
 
     public static async Task ToXmlAsync<T>(T source, string targetpath, System.Xml.XmlWriterSettings settings)
     {
-        var file = new System.IO.FileStream(targetpath, System.IO.FileMode.OpenOrCreate, System.IO.FileAccess.ReadWrite);
-        await ToXmlAsync(source, file, settings);
-        file.Close();
-        await file.DisposeAsync();
-    }
-
-    public static async Task ToXmlFileAsync<T>(T source, string targetpath, System.Xml.XmlWriterSettings settings)
-    {
-        var file = new System.IO.FileStream(targetpath, System.IO.FileMode.OpenOrCreate, System.IO.FileAccess.ReadWrite);
-        await ToXmlAsync(source, file, settings);
-        file.Close();
-        await file.DisposeAsync();
+        await Task.Run(() => ToXml<T>(source, targetpath, settings));
     }
 
     // ### FROM JSON
@@ -99,6 +90,11 @@ public class SerializationOperations
     };
 
     public static T FromJson<T>(string source)
+    {
+        return System.Text.Json.JsonSerializer.Deserialize<T>(source, JsonSerializerOptions);
+    }
+
+    public static T FromJson<T>(System.IO.Stream source)
     {
         return System.Text.Json.JsonSerializer.Deserialize<T>(source, JsonSerializerOptions);
     }

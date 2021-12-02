@@ -1,5 +1,6 @@
 ﻿using Microsoft.VisualBasic.CompilerServices;
 using System;
+using System.Diagnostics.CodeAnalysis;
 using System.IO;
 using System.Security.Cryptography;
 using System.Text;
@@ -14,43 +15,47 @@ public class Functions
     private static readonly MD5 _md5 = MD5.Create();
     private static readonly UTF8Encoding _utf8 = new();
 
-    public static string Encript(string text, string parameter1, string parameter2)
+    public static string Encript(string text, string parameter1)
     {
-        return Encript(text, _md5.ComputeHash(Encoding.Unicode.GetBytes(parameter1)), _md5.ComputeHash(Encoding.Unicode.GetBytes(parameter2)));
+        return Encript(text, _md5.ComputeHash(Encoding.Unicode.GetBytes(parameter1)));
     }
 
-    private static string Encript(string text, byte[] key, byte[] iv)
+    private static string Encript(string text, byte[] key)
     {
         try
         {
             var input = _utf8.GetBytes(text);
-            var output = Transform(input, _des.CreateEncryptor(key, iv));
+            _des.Key = key;
+            _des.GenerateIV();
+            var output = Transform(input, _des.CreateEncryptor());
             return Convert.ToBase64String(output);
         }
-        catch
+        catch(Exception ex)
         {
-            // Dialogs.EfCrashDialog.ShowError("Erro 0x00000002", "bad data", "Informações corrompidas ou inválidas. Por favor entre em contato com o suporte.")
+            Console.WriteLine(ex.ToString());
             return "bad data";
         }
     }
 
-    public static string Decript(string text, string parameter1, string parameter2)
+    public static string Decript(string text, string parameter1)
     {
         var md5 = MD5.Create();
-        return Decript(text, md5.ComputeHash(Encoding.Unicode.GetBytes(parameter1)), md5.ComputeHash(Encoding.Unicode.GetBytes(parameter2)));
+        return Decript(text, md5.ComputeHash(Encoding.Unicode.GetBytes(parameter1)));
     }
 
-    private static string Decript(string text, byte[] key, byte[] iv)
+    private static string Decript(string text, byte[] key)
     {
         try
         {
             var input = Convert.FromBase64String(text);
-            var output = Transform(input, _des.CreateDecryptor(key, iv));
+            _des.Key = key;
+            _des.GenerateIV();
+            var output = Transform(input, _des.CreateDecryptor());
             return _utf8.GetString(output);
         }
-        catch
+        catch (Exception ex)
         {
-            // Dialogs.EfCrashDialog.ShowError("Erro 0x00000002", "bad data", "Informações corrompidas ou inválidas. Por favor entre em contato com o suporte.")
+            Console.WriteLine(ex.ToString());
             return "bad data";
         }
     }
@@ -63,16 +68,10 @@ public class Functions
 
         // transform the bytes as requested
         cryptStream.Write(input, 0, input.Length);
-        cryptStream.FlushFinalBlock();
-
-        // Read the memory stream and convert it back into byte array
-        memStream.Position = 0;
-        var result = new byte[Conversions.ToInteger(memStream.Length - 1) + 1];
-        memStream.Read(result, 0, result.Length);
+        byte[] result = memStream.ToArray();
 
         // close and release the streams
         memStream.Close();
-        cryptStream.Close();
 
         // hand back the encrypted buffer
         return result;
