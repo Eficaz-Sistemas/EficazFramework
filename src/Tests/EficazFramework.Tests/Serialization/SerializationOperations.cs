@@ -1,4 +1,5 @@
-﻿using FluentAssertions;
+﻿using EficazFramework.Shared;
+using FluentAssertions;
 using NUnit.Framework;
 using System;
 using System.Threading.Tasks;
@@ -228,8 +229,3 @@ public class Json
 
 }
 
-public class MockClass
-{
-    public int Id { get; set; }
-    public string Name { get; set; }
-}

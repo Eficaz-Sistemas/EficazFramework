@@ -47,7 +47,6 @@ public abstract class HubClient : IAsyncDisposable
     }
 
     private Action<string, string, string> _receiveMessageCallBack;
-
     public Action<string, string, string> ReceiveMessageCallBack
     {
         get => _receiveMessageCallBack;

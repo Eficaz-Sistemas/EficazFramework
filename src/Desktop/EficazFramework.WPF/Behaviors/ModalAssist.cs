@@ -15,8 +15,6 @@ public class ModalAssist
             object result = await MaterialDesignThemes.Wpf.DialogHost.Show(args, dialogRef);
             if (result is EficazFramework.Events.MessageResult result1)
             {
-                //if (!args.ModalAssist.IsSync())
-                //    await args.ModalAssist.Push();
                 args.ModalAssist.Release(result1);
                 return;
             }

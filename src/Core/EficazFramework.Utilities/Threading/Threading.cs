@@ -24,10 +24,3 @@ public class Thread
     public static event EficazFramework.Events.MessageEventHandler MessageBoxRequest;
 
 }
-
-public interface IAppActionCenterContent
-{
-    string ID { get; }
-    string MimeType { get; }
-    string MimeTypeDescription { get; }
-}
