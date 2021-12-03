@@ -2,37 +2,37 @@
 
 # EficazFramework
 
-![Azure DevOps tests](https://img.shields.io/azure-devops/tests/eficazcs/EficazFramework/18?compact_message)
-![Azure DevOps coverage](https://img.shields.io/azure-devops/coverage/eficazcs/EficazFramework/18)
+![Azure DevOps tests](https://efshields.azurewebsites.net:/azure-devops/tests/eficazcs/EficazFramework/18?compact_message)
+![Azure DevOps coverage](https://efshields.azurewebsites.net:/azure-devops/coverage/eficazcs/EficazFramework/18)
 [![Release](https://vsrm.dev.azure.com/eficazcs/_apis/public/Release/badge/dc412c10-c0cf-4499-827b-d13704a984ab/3/5)](https://dev.azure.com/eficazcs/EficazFramework/_release?view=all&_a=releases&definitionId=3)
 ![Discord](https://img.shields.io/discord/846078359498653706)
 <!---![Visual Studio Marketplace Version](https://img.shields.io/visual-studio-marketplace/v/eficazsistemasdegestoeintelignciatributrialtda.efcorev4?label=SDK&logo=Eficaz%20Sistemas)-->
 
    Bem vindo ao ambiente de gerenciamento da EficazFramework, para dotNet.
    
-   Este projeto tem por finalidade oferecer funcionalidades extras e padronizadas a toda a grade de aplicaÁıes da Eficaz, para diversas plataformas.
+   Este projeto tem por finalidade oferecer funcionalidades extras e padronizadas a toda a grade de aplica√ß√µes da Eficaz, para diversas plataformas.
    
-   Desenvolvida e lapidada com base na experiÍncia adquirida nas duas versıes anteriores, utilizando agora o ambiente hÌbrido do .NET (Core) ao invÈs de classes PCL. A vers„o deste framework ir· acompanhar a vers„o do dotnet.
+   Desenvolvida e lapidada com base na experi√™ncia adquirida nas duas vers√µes anteriores, utilizando agora o ambiente h√≠brido do .NET (Core) ao inv√©s de classes PCL. A vers√£o deste framework ir√° acompanhar a vers√£o do dotnet.
    
-   Esta vers„o conta atualmente com uma quantidade maior de instruÁıes sem plataforma especÌfica, e foi estruturada para utilizaÁ„o dos recursos de ImplantaÁ„o e Entrega ContÌnua de aplicaÁıes (Azure DevOps).
+   Esta vers√£o conta atualmente com uma quantidade maior de instru√ß√µes sem plataforma espec√≠fica, e foi estruturada para utiliza√ß√£o dos recursos de Implanta√ß√£o e Entrega Cont√≠nua de aplica√ß√µes (Azure DevOps).
 
-   O repositÛrio de cÛdigo est· em sincronizaÁ„o contÌnua com sua cÛpia no [Azure Repos](https://dev.azure.com/eficazcs/EficazFramework).
+   O reposit√≥rio de c√≥digo est√° em sincroniza√ß√£o cont√≠nua com sua c√≥pia no [Azure Repos](https://dev.azure.com/eficazcs/EficazFramework).
 
-   A distribuiÁ„o das bilbiotecas ser· disponibilizada por meio de pacotes Nuget, atravÈs do [Feed de Pacotes da Eficaz](https://pkgs.dev.azure.com/eficazcs/_packaging/DevPackages/nuget/v3/index.json).
+   A distribui√ß√£o das bilbiotecas ser√° disponibilizada por meio de pacotes Nuget, atrav√©s do [Feed de Pacotes da Eficaz](https://pkgs.dev.azure.com/eficazcs/_packaging/DevPackages/nuget/v3/index.json).
 
 #### Ambiente Multi-Plataformas
-   - Extensıes para operaÁıes comuns em datas e n˙meros
-   - Extensıes para trabalho com textos e suas formataÁıes, incluindo documentos federais e estaduais
-   - Extensıes para manipuraÁ„o de listas de objetos
-   - Extensıes para resoluÁ„o de caminhos de properties em inst‚ncia de objetos (Reflection)
-   - ViewModel base, com mecanismo de injeÁ„o de dependÍncias, para extenÁ„o de recursos com base na necessidade de cada aplicativo ou rotina
-   - ViewModel cadastral prÈ-definition
+   - Extens√µes para opera√ß√µes comuns em datas e n√∫meros
+   - Extens√µes para trabalho com textos e suas formata√ß√µes, incluindo documentos federais e estaduais
+   - Extens√µes para manipura√ß√£o de listas de objetos
+   - Extens√µes para resolu√ß√£o de caminhos de properties em inst√¢ncia de objetos (Reflection)
+   - ViewModel base, com mecanismo de inje√ß√£o de depend√™ncias, para exten√ß√£o de recursos com base na necessidade de cada aplicativo ou rotina
+   - ViewModel cadastral pr√©-definition
    - Leitor/Escritor de XML e JSON
-   - Construtor de expressıes Func<T, Bool> para elaboraÁ„o de operadores .Where<T>()
-   - IntegraÁ„o com EntityFrameworkCore
-   - SDK de desenvolvimento, publicado no MarketPlace do Visual Studio, com template de classes para tabelas de dados, suportando MsSQL, MySQL, OracleSQL e SqlLite, com classes parciais, permitindo expans„o manual.
+   - Construtor de express√µes Func<T, Bool> para elabora√ß√£o de operadores .Where<T>()
+   - Integra√ß√£o com EntityFrameworkCore
+   - SDK de desenvolvimento, publicado no MarketPlace do Visual Studio, com template de classes para tabelas de dados, suportando MsSQL, MySQL, OracleSQL e SqlLite, com classes parciais, permitindo expans√£o manual.
    
-#### IntegraÁ„o com projetos do SPED, com mapeamento de campos e consumo de Web-Services, no Projeto [EficazFramework.SPED](https://github.com/Eficaz-Sistemas/EficazFramework.SPED)
+#### Integra√ß√£o com projetos do SPED, com mapeamento de campos e consumo de Web-Services, no Projeto [EficazFramework.SPED](https://github.com/Eficaz-Sistemas/EficazFramework.SPED)
    - CT-e e CT-eOS
    - DAPI
    - e-CredAc portaria CAT 83/09 e 207/09
@@ -40,17 +40,17 @@
    - ECD
    - ECF
    - EFD ICMS / IPI
-   - EFD ContribuiÁıes
+   - EFD Contribui√ß√µes
    - GNRE
-   - NF-e, versıes 2.00 e 3.10
+   - NF-e, vers√µes 2.00 e 3.10
    - NFS-e (Ginfes)
 
-#### Biblioteca de extens„o para Windows Presentation Foundation (WPF)
-   - Controles Visuais para melhor experiÍncia de utilizaÁ„o pelo usu·rio
-   - Extensıes para XAML e Code-Behind
-   - Interface de usu·rio MaterialDesign, utilizando a biblioteca OpenSource [MaterialDesignInXAML Toolkit](https://github.com/MaterialDesignInXAML/MaterialDesignInXamlToolkit)
-   - Engine de geraÁ„o e impress„o de relatÛrios em XAML (XPS)
+#### Biblioteca de extens√£o para Windows Presentation Foundation (WPF)
+   - Controles Visuais para melhor experi√™ncia de utiliza√ß√£o pelo usu√°rio
+   - Extens√µes para XAML e Code-Behind
+   - Interface de usu√°rio MaterialDesign, utilizando a biblioteca OpenSource [MaterialDesignInXAML Toolkit](https://github.com/MaterialDesignInXAML/MaterialDesignInXamlToolkit)
+   - Engine de gera√ß√£o e impress√£o de relat√≥rios em XAML (XPS)
 
-#### Biblioteca de extens„o para Blazor (Server-Side e WebAssembly)
-   - Novos Componentes, Templates e Layouts para melhor padronizaÁ„o das aplicaÁıes, conforme sua natureza
-   - Interface de usu·rio MaterialDesign, utilizando a biblioteca OpenSource [MudBlazor](https://github.com/MudBlazor/MudBlazor)
+#### Biblioteca de extens√£o para Blazor (Server-Side e WebAssembly)
+   - Novos Componentes, Templates e Layouts para melhor padroniza√ß√£o das aplica√ß√µes, conforme sua natureza
+   - Interface de usu√°rio MaterialDesign, utilizando a biblioteca OpenSource [MudBlazor](https://github.com/MudBlazor/MudBlazor)
