@@ -5,7 +5,8 @@
 ![Azure DevOps tests](http://efshields.brazilsouth.azurecontainer.io:/azure-devops/tests/eficazcs/EficazFramework/18?compact_message)
 ![Azure DevOps coverage](http://efshields.brazilsouth.azurecontainer.io:/azure-devops/coverage/eficazcs/EficazFramework/18)
 [![Release](https://vsrm.dev.azure.com/eficazcs/_apis/public/Release/badge/dc412c10-c0cf-4499-827b-d13704a984ab/3/5)](https://dev.azure.com/eficazcs/EficazFramework/_release?view=all&_a=releases&definitionId=3)
-![Discord](https://img.shields.io/discord/846078359498653706)
+![Discord](http://efshields.brazilsouth.azurecontainer.io:/discord/846078359498653706?color=purple&logo=discord&logoColor=white)
+![Twitter Follow](http://efshields.brazilsouth.azurecontainer.io:/twitter/follow/EficazCS?color=blue&label=Twitter&logo=twitter&logoColor=white&style=plastic)
 <!---![Visual Studio Marketplace Version](https://img.shields.io/visual-studio-marketplace/v/eficazsistemasdegestoeintelignciatributrialtda.efcorev4?label=SDK&logo=Eficaz%20Sistemas)-->
 
    Bem vindo ao ambiente de gerenciamento da EficazFramework, para dotNet.
