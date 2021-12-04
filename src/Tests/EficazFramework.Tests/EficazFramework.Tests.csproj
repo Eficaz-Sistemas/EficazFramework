@@ -10,6 +10,8 @@
     <Description>Biblioteca de testes da Eficaz Framework Core.</Description>
 
     <RootNamespace>EficazFramework</RootNamespace>
+
+    <SignAssembly>False</SignAssembly>
   </PropertyGroup>
 
   <ItemGroup>
@@ -75,6 +77,10 @@
       <LastGenOutput>XML.Designer.cs</LastGenOutput>
       <CustomToolNamespace>EficazFramework.SPED.Schemas.Sources</CustomToolNamespace>
     </EmbeddedResource>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Resources\Mocks\" />
   </ItemGroup>
 
 </Project>

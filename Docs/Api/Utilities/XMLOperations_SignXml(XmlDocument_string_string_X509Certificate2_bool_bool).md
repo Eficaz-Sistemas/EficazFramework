@@ -3,7 +3,7 @@
 ## XMLOperations.SignXml(XmlDocument, string, string, X509Certificate2, bool, bool) Method
 Realiza a assinatura digital de um documento XML.  
 ```csharp
-public static void SignXml(System.Xml.XmlDocument xml, string tag, string id, System.Security.Cryptography.X509Certificates.X509Certificate2 certificate, bool signAsSHA256=false, bool emptyURI=false);
+public static void SignXml(System.Xml.XmlDocument xml, string tag, string idTag, System.Security.Cryptography.X509Certificates.X509Certificate2 certificate, bool signAsSHA256=false, bool emptyURI=false);
 ```
 #### Parameters
 <a name='EficazFramework_XML_XMLOperations_SignXml(System_Xml_XmlDocument_string_string_System_Security_Cryptography_X509Certificates_X509Certificate2_bool_bool)_xml'></a>
@@ -14,9 +14,9 @@ O XMLDocument a ser assinado.
 `tag` [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')  
 A tag para localização do ponto de assinatura.
   
-<a name='EficazFramework_XML_XMLOperations_SignXml(System_Xml_XmlDocument_string_string_System_Security_Cryptography_X509Certificates_X509Certificate2_bool_bool)_id'></a>
-`id` [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')  
-A tag a ser assinada.
+<a name='EficazFramework_XML_XMLOperations_SignXml(System_Xml_XmlDocument_string_string_System_Security_Cryptography_X509Certificates_X509Certificate2_bool_bool)_idTag'></a>
+`idTag` [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')  
+A tag com a ID a ser assinada.
   
 <a name='EficazFramework_XML_XMLOperations_SignXml(System_Xml_XmlDocument_string_string_System_Security_Cryptography_X509Certificates_X509Certificate2_bool_bool)_certificate'></a>
 `certificate` [System.Security.Cryptography.X509Certificates.X509Certificate2](https://docs.microsoft.com/en-us/dotnet/api/System.Security.Cryptography.X509Certificates.X509Certificate2 'System.Security.Cryptography.X509Certificates.X509Certificate2')  

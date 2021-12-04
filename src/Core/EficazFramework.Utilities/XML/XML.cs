@@ -17,9 +17,9 @@ public class XMLOperations
     /// </summary>
     /// <param name="xml">O XMLDocument a ser assinado.</param>
     /// <param name="tag">A tag para localização do ponto de assinatura.</param>
-    /// <param name="id">A tag a ser assinada.</param>
+    /// <param name="idTag">A tag com a ID a ser assinada.</param>
     /// <remarks></remarks>
-    public static void SignXml(XmlDocument xml, string tag, string id, X509Certificate2 certificate, bool signAsSHA256 = false, bool emptyURI = false)
+    public static void SignXml(XmlDocument xml, string tag, string idTag, X509Certificate2 certificate, bool signAsSHA256 = false, bool emptyURI = false)
     {
         // ## Realiza ajustes necessários no XMLDocument e confere se a URI informada é válida
         // If xml.PreserveWhitespace = True Then
@@ -49,7 +49,7 @@ public class XMLOperations
         // ## Faz umas coisas que eu não entendi
         var @ref = new Reference();
         if (emptyURI == false)
-            @ref.Uri = "#" + xml.GetElementsByTagName(id).Item(0).Attributes.Cast<XmlNode>().Where(att => att.Name.ToLower() == "id").First().InnerText;
+            @ref.Uri = "#" + xml.GetElementsByTagName(idTag).Item(0).Attributes.Cast<XmlNode>().Where(att => att.Name.ToLower() == "id").First().InnerText;
         else
             @ref.Uri = "";
         @ref.AddTransform(new XmlDsigEnvelopedSignatureTransform());
@@ -84,19 +84,19 @@ public class XMLOperations
     /// </summary>
     /// <param name="xdoc">O XMLDocument a ser assinado.</param>
     /// <param name="tag">A tag para localização do ponto de assinatura.</param>
-    /// <param name="id">A tag a ser assinada.</param>
+    /// <param name="idTag">A tag com a ID a ser assinada.</param>
     /// <remarks></remarks>
-    public static void SignXml(ref XDocument xdoc, string tag, string id, X509Certificate2 certificate, bool signAsSHA256 = false, bool emptyURI = false)
+    public static void SignXml(ref XDocument xdoc, string tag, string idTag, X509Certificate2 certificate, bool signAsSHA256 = false, bool emptyURI = false)
     {
         var xml = ToXmlDocument(xdoc);
-        SignXml(xml, tag, id, certificate, signAsSHA256, emptyURI);
+        SignXml(xml, tag, idTag, certificate, signAsSHA256, emptyURI);
         xdoc = ToXDocument(xml);
     }
 
     /// <summary>
     /// Converte uma instância de System.Xml.XmlElement para System.Xml.Linq.XElement
     /// </summary>
-    public static object ToXElement(XmlElement source)
+    public static XElement ToXElement(XmlElement source)
     {
         return XElement.Parse(source.OuterXml);
     }
