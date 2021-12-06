@@ -1,12 +1,5 @@
 #### [EficazFramework.Data](EficazFrameworkData.md 'EficazFramework Data')
 ### Namespaces
-<a name='EficazFramework_Attributes_UIEditor_EditingState'></a>
-## EficazFramework.Attributes.UIEditor.EditingState Namespace
-
-| Classes | |
-| :--- | :--- |
-| [EnabledOnlyInStateAttribute](EnabledOnlyInStateAttribute.md 'EficazFramework.Attributes.UIEditor.EditingState.EnabledOnlyInStateAttribute') | TBA: Working only with EfSearchBox in WPF<br/> |
-  
 <a name='EficazFramework_Configuration'></a>
 ## EficazFramework.Configuration Namespace
 

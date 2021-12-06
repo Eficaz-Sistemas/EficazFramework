@@ -1,11 +1,9 @@
 ﻿using System;
+using System.Diagnostics.CodeAnalysis;
 
 namespace EficazFramework.Attributes.UIEditor.EditingState;
 
-/// <summary>
-/// TBA: Working only with EfSearchBox in WPF
-/// </summary>
-/// <remarks></remarks>
+[ExcludeFromCodeCoverage]
 [AttributeUsage(AttributeTargets.Property)]
 public class EnabledOnlyInStateAttribute : Attribute
 {

@@ -1,7 +1,9 @@
 ﻿using System;
+using System.Diagnostics.CodeAnalysis;
 
 namespace EficazFramework.Attributes.UIEditor.EditingState;
 
+[ExcludeFromCodeCoverage]
 [AttributeUsage(AttributeTargets.Property)]
 public class VisibleIfAttribute : Attribute
 {

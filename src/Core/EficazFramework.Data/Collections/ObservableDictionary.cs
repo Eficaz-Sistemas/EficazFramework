@@ -75,6 +75,12 @@ public class ObservableDictionary<TKey, TValue> : IDictionary<TKey, TValue>, INo
         Insert(key, value, true);
     }
 
+    public void AddOrReplace(TKey key, TValue value)
+    {
+        Insert(key, value, false);
+    }
+
+
     public bool Remove(KeyValuePair<TKey, TValue> item)
     {
         return Remove(item.Key);
@@ -85,9 +91,10 @@ public class ObservableDictionary<TKey, TValue> : IDictionary<TKey, TValue>, INo
         if (key is null)
             throw new ArgumentNullException(nameof(key));
         _ = Dictionary.TryGetValue(key, out _);
+        TValue value = Dictionary[key];
         bool removed = Dictionary.Remove(key);
         if (removed)
-            OnCollectionChanged(); // FieldsNotifyCollectionChangedAction.Remove, New KeyValuePair(Of TKey, TValue)(key, item)
+            OnCollectionChanged(NotifyCollectionChangedAction.Remove, new KeyValuePair<TKey, TValue>(key, value));
         return removed;
     }
 
@@ -229,12 +236,7 @@ public class ObservableDictionary<TKey, TValue> : IDictionary<TKey, TValue>, INo
         CollectionChanged?.Invoke(this, new NotifyCollectionChangedEventArgs(action, newItem, oldItem, IndexOf(oldItem.Key)));
     }
 
-    // Private Sub OnCollectionChanged(ByVal action As NotifyCollectionChangedAction, ByVal newItems As IList)
-    // OnPropertyChanged()
-    // RaiseEvent CollectionChanged(Me, New NotifyCollectionChangedEventArgs(action, newItems, ))
-    // End Sub
-
-    public int IndexOf(object key)
+    public int IndexOf(TKey key)
     {
         int i = 0;
         foreach (var pair in Dictionary)
@@ -251,10 +253,6 @@ public class ObservableDictionary<TKey, TValue> : IDictionary<TKey, TValue>, INo
 
         return i;
     }
-
-    /* TODO ERROR: Skipped EndRegionDirectiveTrivia */
-    /* TODO ERROR: Skipped RegionDirectiveTrivia */
     public event PropertyChangedEventHandler PropertyChanged;
     public event NotifyCollectionChangedEventHandler CollectionChanged;
-    /* TODO ERROR: Skipped EndRegionDirectiveTrivia */
 }
