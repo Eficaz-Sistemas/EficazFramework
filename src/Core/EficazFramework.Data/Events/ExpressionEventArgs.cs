@@ -1,52 +1,17 @@
 ﻿using System;
+using System.Diagnostics.CodeAnalysis;
 
 namespace EficazFramework.Events;
 
+[ExcludeFromCodeCoverage]
 public sealed class ExpressionEventArgs
 {
     public string PropertyDisplayName { get; private set; }
+    public string PropertyPath { get; set; } = null;
 
-    private string _propertyPath = null;
-    public string PropertyPath
-    {
-        get
-        {
-            return _propertyPath;
-        }
+    public EficazFramework.Enums.CompareMethod Operator { get; set; }
 
-        set
-        {
-            _propertyPath = value;
-        }
-    }
-
-    private EficazFramework.Enums.CompareMethod _operator;
-    public EficazFramework.Enums.CompareMethod Operator
-    {
-        get
-        {
-            return _operator;
-        }
-
-        set
-        {
-            _operator = value;
-        }
-    }
-
-    private object _value;
-    public object ValueTyped
-    {
-        get
-        {
-            return _value;
-        }
-
-        set
-        {
-            _value = value;
-        }
-    }
+    public object ValueTyped { get; set; }
 
     public EficazFramework.Expressions.ExpressionItem CurrentItem { get; private set; }
     public Type BaseType { get; private set; }
@@ -66,6 +31,7 @@ public sealed class ExpressionEventArgs
 
 public delegate void ExpressionEventHandler(object sender, ExpressionEventArgs e);
 
+[ExcludeFromCodeCoverage]
 public sealed class ExpressionBuiltEventArgs
 {
     public object Expression { get; set; }

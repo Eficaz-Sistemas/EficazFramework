@@ -1,7 +1,9 @@
 ﻿using System;
+using System.Diagnostics.CodeAnalysis;
 
 namespace EficazFramework.Events;
 
+[ExcludeFromCodeCoverage]
 public class CRUDEventArgs<T> : EventArgs where T : class
 {
     public CRUDEventArgs(Enums.CRUD.Action action, Enums.CRUD.State state = Enums.CRUD.State.Processando, T entry = null)
@@ -18,33 +20,8 @@ public class CRUDEventArgs<T> : EventArgs where T : class
     public T CurrentEntry { get; private set; }
     public EficazFramework.Collections.StringCollection ValidationErrors { get; private set; } = new EficazFramework.Collections.StringCollection();
 
-    private bool _cancel;
-    public bool Cancel
-    {
-        get
-        {
-            return _cancel;
-        }
-
-        set
-        {
-            _cancel = value;
-        }
-    }
-
-    private object _tag;
-    public object Tag
-    {
-        get
-        {
-            return _tag;
-        }
-
-        set
-        {
-            _tag = value;
-        }
-    }
+    public bool Cancel { get; set; }
+    public object Tag { get; set; }
 }
 
 public delegate void CRUDEventHandler<T>(object sender, CRUDEventArgs<T> e) where T : class;

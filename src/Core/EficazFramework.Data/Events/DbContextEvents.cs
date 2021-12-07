@@ -1,7 +1,9 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using System.Diagnostics.CodeAnalysis;
 
 namespace EficazFramework.Events;
 
+[ExcludeFromCodeCoverage]
 public class DbContextConfiguringEventArgs
 {
     public DbContextConfiguringEventArgs(DbContextOptionsBuilder optionsBuilder)

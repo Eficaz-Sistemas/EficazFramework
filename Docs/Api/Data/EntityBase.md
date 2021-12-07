@@ -23,7 +23,7 @@ Implements [EficazFramework.Entities.IEntity](https://docs.microsoft.com/en-us/d
 
 | Properties | |
 | :--- | :--- |
-| [HasErrors](EntityBase_HasErrors.md 'EficazFramework.Entities.EntityBase.HasErrors') | Retorna verdadeiro caso o objeto possua erro ou falso caso esteja OK.<br/>Porém 'FORÇA' a validação de todo o objeto.<br/> |
+| [HasErrors](EntityBase_HasErrors.md 'EficazFramework.Entities.EntityBase.HasErrors') | Retorna verdadeiro caso o objeto possua erro ou falso caso esteja OK.<br/>Porém FORÇA a validação de todo o objeto.<br/> |
 
 | Methods | |
 | :--- | :--- |

@@ -2,7 +2,7 @@
 ### [EficazFramework.Entities](EficazFrameworkData.md#EficazFramework_Entities 'EficazFramework.Entities').[EntityBase](EntityBase.md 'EficazFramework.Entities.EntityBase')
 ## EntityBase.HasErrors Property
 Retorna verdadeiro caso o objeto possua erro ou falso caso esteja OK.  
-Porém 'FORÇA' a validação de todo o objeto.  
+Porém FORÇA a validação de todo o objeto.  
 ```csharp
 public bool HasErrors { get; }
 ```

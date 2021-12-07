@@ -33,10 +33,6 @@ public interface IEntity
 /// <remarks></remarks>
 public abstract class EntityBase : IEntity, INotifyPropertyChanged, INotifyDataErrorInfo, EficazFramework.Validation.IFluentValidatableClass
 {
-
-    // Implements IEntity
-
-    /* TODO ERROR: Skipped RegionDirectiveTrivia */
     /// <summary>
     /// Obtém o(s) erro(s) na Entity ou de uma de duas propriedades, através do método Validate() de cada plataforma.
     /// </summary>
@@ -55,59 +51,26 @@ public abstract class EntityBase : IEntity, INotifyPropertyChanged, INotifyDataE
 
     /// <summary>
     /// Retorna verdadeiro caso o objeto possua erro ou falso caso esteja OK.
-    /// Porém 'FORÇA' a validação de todo o objeto.
+    /// Porém FORÇA a validação de todo o objeto.
     /// </summary>
     /// <value></value>
     /// <returns>Boolean</returns>
     /// <remarks></remarks>
     [Attributes.UIEditor.EditorGeneration.IgnoreAttribute()]
-    public bool HasErrors
-    {
-        get
-        {
-            if (this.Validate(null).Count > 0)
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
-        }
-    }
+    public bool HasErrors => Validate(null).Count > 0;
 
-    /* TODO ERROR: Skipped EndRegionDirectiveTrivia */
-    /* TODO ERROR: Skipped RegionDirectiveTrivia */
     private bool _isLoaded = false;
-
     [Attributes.UIEditor.EditorGeneration.IgnoreAttribute()]
-    public bool IsLoaded
-    {
-        get
-        {
-            return _isLoaded;
-        }
-    }
+    public bool IsLoaded => _isLoaded;
 
     private bool _isNew = false;
-
     [Attributes.UIEditor.EditorGeneration.IgnoreAttribute()]
-    public bool IsNew
-    {
-        get
-        {
-            return _isNew;
-        }
-    }
+    public bool IsNew => _isNew;    
 
     private bool _selected;
     public bool IsSelected
     {
-        get
-        {
-            return _selected;
-        }
-
+        get => _selected;
         set
         {
             _selected = value;
@@ -118,11 +81,7 @@ public abstract class EntityBase : IEntity, INotifyPropertyChanged, INotifyDataE
     private bool _postProcessed = false;
     public bool PostProcessed
     {
-        get
-        {
-            return _postProcessed;
-        }
-
+        get => _postProcessed;
         set
         {
             _postProcessed = value;
@@ -133,11 +92,7 @@ public abstract class EntityBase : IEntity, INotifyPropertyChanged, INotifyDataE
     private EficazFramework.Enums.ValidationMode _vmode = EficazFramework.Validation.Definitions.InitialValidationMode;
     public EficazFramework.Enums.ValidationMode ValidationMode
     {
-        get
-        {
-            return _vmode;
-        }
-
+        get => _vmode;
         set
         {
             _vmode = value;
@@ -148,20 +103,14 @@ public abstract class EntityBase : IEntity, INotifyPropertyChanged, INotifyDataE
     private EficazFramework.Validation.Fluent.IValidator _validator;
     public EficazFramework.Validation.Fluent.IValidator Validator
     {
-        get
-        {
-            return _validator;
-        }
-
+        get => _validator;
         set
         {
             _validator = value;
+            ReportPropertyChanged(nameof(Validator));
         }
     }
 
-
-    /* TODO ERROR: Skipped EndRegionDirectiveTrivia */
-    /* TODO ERROR: Skipped RegionDirectiveTrivia */
     /// <summary>
     /// Cria uma nova instância de entidade do tipo 'TEntity' e marca-a com IsNew = True
     /// </summary>
@@ -210,7 +159,7 @@ public abstract class EntityBase : IEntity, INotifyPropertyChanged, INotifyDataE
             if (string.IsNullOrEmpty(propertyName) | string.IsNullOrWhiteSpace(propertyName))
             {
                 // Validate entire object
-                System.ComponentModel.DataAnnotations.Validator.TryValidateObject(this, new System.ComponentModel.DataAnnotations.ValidationContext(this), validationresults, true);
+                _ = System.ComponentModel.DataAnnotations.Validator.TryValidateObject(this, new System.ComponentModel.DataAnnotations.ValidationContext(this), validationresults, true);
             }
             else
             {
@@ -246,7 +195,6 @@ public abstract class EntityBase : IEntity, INotifyPropertyChanged, INotifyDataE
         ErrorsChanged?.Invoke(this, new DataErrorsChangedEventArgs(propertyName));
     }
 
-    /* TODO ERROR: Skipped RegionDirectiveTrivia */
     public void SetIsLoaded()
     {
         _isLoaded = true;
@@ -259,20 +207,13 @@ public abstract class EntityBase : IEntity, INotifyPropertyChanged, INotifyDataE
         ReportPropertyChanged(nameof(IsLoaded));
     }
 
-    /* TODO ERROR: Skipped EndRegionDirectiveTrivia */
-    /* TODO ERROR: Skipped RegionDirectiveTrivia */
     public void UnSetNew()
     {
         _isNew = false;
     }
 
-    /* TODO ERROR: Skipped EndRegionDirectiveTrivia */
-    /* TODO ERROR: Skipped EndRegionDirectiveTrivia */
-    /* TODO ERROR: Skipped RegionDirectiveTrivia */
     public event PropertyChangedEventHandler PropertyChanged;
     public event EventHandler<System.ComponentModel.DataErrorsChangedEventArgs> ErrorsChanged;
-
-    /* TODO ERROR: Skipped EndRegionDirectiveTrivia */
 }
 
 public class EntityMappingConfigurator

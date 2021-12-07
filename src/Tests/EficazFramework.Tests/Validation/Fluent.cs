@@ -2,9 +2,9 @@
 using NUnit.Framework;
 using EficazFramework.Validation.Fluent.Rules;
 
-namespace EficazFramework.Data.Validation;
+namespace EficazFramework.Validation;
 
-public class Fluent
+public class FluentTests
 {
     [Test]
     public void Mail()
