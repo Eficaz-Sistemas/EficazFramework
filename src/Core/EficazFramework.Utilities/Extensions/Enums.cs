@@ -187,7 +187,7 @@ public static class Enums
     public static string GetLocalizedDescription(this object value)
     {
         string result = value.ToString();
-        Type resourceManager;
+        Type resourceManager = default;
         var enumType = value.GetType();
         try
         {
@@ -206,7 +206,7 @@ public static class Enums
         }
         catch { }
 
-        return result.Localize();
+        return result.Localize(resourceManager, null);
     }
 
     /// <summary>

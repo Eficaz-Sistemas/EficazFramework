@@ -22,7 +22,7 @@ namespace EficazFramework.Resources.Strings {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "17.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class TestStrings {
+    public class TestStrings {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
@@ -36,7 +36,7 @@ namespace EficazFramework.Resources.Strings {
         ///   Retorna a instância de ResourceManager armazenada em cache usada por essa classe.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Resources.ResourceManager ResourceManager {
+        public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
                     global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("EficazFramework.Resources.Strings.TestStrings", typeof(TestStrings).Assembly);
@@ -51,7 +51,7 @@ namespace EficazFramework.Resources.Strings {
         ///   pesquisas de recursos que usam essa classe de recurso de tipo de alta segurança.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Globalization.CultureInfo Culture {
+        public static global::System.Globalization.CultureInfo Culture {
             get {
                 return resourceCulture;
             }
@@ -63,7 +63,7 @@ namespace EficazFramework.Resources.Strings {
         /// <summary>
         ///   Consulta uma cadeia de caracteres localizada semelhante a e-Mail.
         /// </summary>
-        internal static string eDocumento_eMail {
+        public static string eDocumento_eMail {
             get {
                 return ResourceManager.GetString("eDocumento_eMail", resourceCulture);
             }
@@ -72,9 +72,36 @@ namespace EficazFramework.Resources.Strings {
         /// <summary>
         ///   Consulta uma cadeia de caracteres localizada semelhante a PIS ou NIT.
         /// </summary>
-        internal static string eDocumento_PIS_NIT {
+        public static string eDocumento_PIS_NIT {
             get {
                 return ResourceManager.GetString("eDocumento_PIS_NIT", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Time A.
+        /// </summary>
+        public static string EnumTeamA {
+            get {
+                return ResourceManager.GetString("EnumTeamA", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Time B.
+        /// </summary>
+        public static string EnumTeamB {
+            get {
+                return ResourceManager.GetString("EnumTeamB", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Time C.
+        /// </summary>
+        public static string EnumTeamC {
+            get {
+                return ResourceManager.GetString("EnumTeamC", resourceCulture);
             }
         }
     }

@@ -123,4 +123,13 @@
   <data name="eDocumento_PIS_NIT" xml:space="preserve">
     <value>PIS ou NIT</value>
   </data>
+  <data name="EnumTeamA" xml:space="preserve">
+    <value>Time A</value>
+  </data>
+  <data name="EnumTeamB" xml:space="preserve">
+    <value>Time B</value>
+  </data>
+  <data name="EnumTeamC" xml:space="preserve">
+    <value>Time C</value>
+  </data>
 </root>

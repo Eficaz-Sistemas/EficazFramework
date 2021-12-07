@@ -11,7 +11,9 @@
 
     <RootNamespace>EficazFramework</RootNamespace>
 
-    <SignAssembly>False</SignAssembly>
+    <SignAssembly>True</SignAssembly>
+
+    <AssemblyOriginatorKeyFile>E:\Henrique Clausing\Repositorios\Current\EficazFramework\src\Core\EficazFramework.Data\EfCore.snk</AssemblyOriginatorKeyFile>
   </PropertyGroup>
 
   <ItemGroup>
@@ -58,7 +60,7 @@
 
   <ItemGroup>
     <EmbeddedResource Update="Resources\Strings\TestStrings.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
+      <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>TestStrings.Designer.cs</LastGenOutput>
       <CustomToolNamespace>EficazFramework.Resources.Strings</CustomToolNamespace>
     </EmbeddedResource>
