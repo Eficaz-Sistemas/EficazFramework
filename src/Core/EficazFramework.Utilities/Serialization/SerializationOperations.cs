@@ -103,6 +103,7 @@ public class SerializationOperations
     {
         string filecontent = System.IO.File.ReadAllText(sourcePath);
         return FromJson<T>(filecontent);
+        
     }
 
     public static async Task<T> FromJsonAsync<T>(string source)
@@ -138,7 +139,7 @@ public class SerializationOperations
 
     public static void ToJsonFile<T>(T source, string targetPath)
     {
-        var file = new System.IO.FileStream(targetPath, System.IO.FileMode.OpenOrCreate, System.IO.FileAccess.ReadWrite);
+        var file = new System.IO.FileStream(targetPath, System.IO.FileMode.Create, System.IO.FileAccess.ReadWrite);
         string datastring = ToJson(source);
         file.Write(System.Text.Encoding.UTF8.GetBytes(datastring));
         file.Close();
@@ -162,7 +163,7 @@ public class SerializationOperations
 
     public static async Task ToJsonFileAsync<T>(T source, string targetPath)
     {
-        var file = new System.IO.FileStream(targetPath, System.IO.FileMode.OpenOrCreate, System.IO.FileAccess.ReadWrite);
+        var file = new System.IO.FileStream(targetPath, System.IO.FileMode.Create, System.IO.FileAccess.ReadWrite);
         await System.Text.Json.JsonSerializer.SerializeAsync(file, source, new System.Text.Json.JsonSerializerOptions { WriteIndented = true });
         file.Close();
         await file.DisposeAsync();

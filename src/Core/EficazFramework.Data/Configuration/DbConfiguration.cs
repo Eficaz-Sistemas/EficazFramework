@@ -70,11 +70,11 @@ public class DbConfiguration : System.ComponentModel.INotifyPropertyChanged
         {
             if ((Port.HasValue == true && Port > 0) == true)
             {
-                return _serverName + @"\" + _instanceName + "," + Port;
+                return $@"{_serverName}\{_instanceName},{_port}";
             }
             else
             {
-                return _serverName + @"\" + _instanceName;
+                return $@"{_serverName}\{_instanceName}";
             }
         }
     }
@@ -190,9 +190,6 @@ public class DbConfiguration : System.ComponentModel.INotifyPropertyChanged
         string result = provider.CreateConnectionString(database, username, password);
         return result;
     }
-
-    /* TODO ERROR: Skipped EndRegionDirectiveTrivia */
-    /* TODO ERROR: Skipped RegionDirectiveTrivia */
     public static void Load()
     {
         DbConfiguration data = null;
@@ -223,9 +220,5 @@ public class DbConfiguration : System.ComponentModel.INotifyPropertyChanged
         Serialization.SerializationOperations.ToJsonFile(Instance, SettingsPath + _FILE);
     }
 
-    /* TODO ERROR: Skipped EndRegionDirectiveTrivia */
-    /* TODO ERROR: Skipped RegionDirectiveTrivia */
     public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-
-    /* TODO ERROR: Skipped EndRegionDirectiveTrivia */
 }

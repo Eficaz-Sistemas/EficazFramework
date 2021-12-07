@@ -56,15 +56,15 @@ internal class SqlLite : IDataProvider
         if (DbConfiguration.UseConnectionStringEncryption == true)
         {
             if (!string.IsNullOrEmpty(password))
-                return Security.Cryptography.Functions.Encript($"Data Source={database}.db;Password={password}", "#hd@cl$cb#");
+                return Security.Cryptography.Functions.Encript($"Data Source={database};Password={password};", "#hd@cl$cb#");
             else
-                return Security.Cryptography.Functions.Encript($"Data Source={database}.db;", "#hd@cl$cb#");
+                return Security.Cryptography.Functions.Encript($"Data Source={database};", "#hd@cl$cb#");
         }
 
         if (!string.IsNullOrEmpty(password))
-            return $"Data Source={database}.db;Password={password}";
+            return $"Data Source={database};Password={password};";
         else
-            return $"Data Source={database}.db;";
+            return $"Data Source={database};";
     }
 }
 
