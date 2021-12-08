@@ -285,7 +285,11 @@ public class ExpressionItemTests
         item.Value1 = 1500.5678M;
         item.ValueToString.Should().Be(null);
         item.Value2 = 900.362M;
+
+        var originalCulture = System.Globalization.CultureInfo.CurrentCulture;
+        System.Globalization.CultureInfo.CurrentCulture = new System.Globalization.CultureInfo("pt-BR");
         item.ValueToString.Should().Be("1.500,57 - 900,36");
+        System.Globalization.CultureInfo.CurrentCulture = originalCulture;
     }
 
     [Test]
