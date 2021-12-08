@@ -13,7 +13,7 @@
 
     <SignAssembly>True</SignAssembly>
 
-    <AssemblyOriginatorKeyFile>E:\Henrique Clausing\Repositorios\Current\EficazFramework\src\Core\EficazFramework.Data\EfCore.snk</AssemblyOriginatorKeyFile>
+    <AssemblyOriginatorKeyFile>EfCore.snk</AssemblyOriginatorKeyFile>
   </PropertyGroup>
 
   <ItemGroup>
