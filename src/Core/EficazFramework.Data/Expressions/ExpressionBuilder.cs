@@ -330,7 +330,7 @@ public class ExpressionBuilder : INotifyPropertyChanged
                 if (ex.SelectedProperty is null)
                     continue;
                 if (groupCollInfo is null)
-                    groupCollInfo = ex.SelectedProperty.GetCollectionCollectionPropertyInfo<TElement>();
+                    groupCollInfo = ex.SelectedProperty.GetCollectionPropertyInfo<TElement>();
                 if (groupCollType is null)
                     groupCollType = ex.SelectedProperty.GetCollectionGenericType<TElement>();
                 if (!_MP_new.ContainsKey(groupCollType))

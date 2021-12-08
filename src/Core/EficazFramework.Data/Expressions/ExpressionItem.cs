@@ -25,11 +25,7 @@ public class ExpressionItem : INotifyPropertyChanged
     private ExpressionProperty _selectedProperty;
     public ExpressionProperty SelectedProperty
     {
-        get
-        {
-            return _selectedProperty;
-        }
-
+        get => _selectedProperty;
         set
         {
             _selectedProperty = value;
@@ -38,24 +34,12 @@ public class ExpressionItem : INotifyPropertyChanged
             OnExpressionProperty_Changed();
         }
     }
-
-    private IEnumerable<EnumMember> _availableOperators = null;
-    public IEnumerable<EnumMember> AvailableOperators
-    {
-        get
-        {
-            return _availableOperators;
-        }
-    }
+    public IEnumerable<EnumMember> AvailableOperators { get; private set; } = null;
 
     private Enums.CompareMethod _operator = Enums.CompareMethod.Equals;
     public Enums.CompareMethod Operator
     {
-        get
-        {
-            return _operator;
-        }
-
+        get => _operator;
         set
         {
             _operator = value;
@@ -77,11 +61,7 @@ public class ExpressionItem : INotifyPropertyChanged
     private object _value1;
     public object Value1
     {
-        get
-        {
-            return _value1;
-        }
-
+        get => _value1;
         set
         {
             _value1 = CoerceValueChanged(value);
@@ -94,11 +74,7 @@ public class ExpressionItem : INotifyPropertyChanged
     private string _value1StringFormat;
     public string Value1StringFormat
     {
-        get
-        {
-            return _value1StringFormat;
-        }
-
+        get => _value1StringFormat;
         set
         {
             _value1StringFormat = value;
@@ -109,11 +85,7 @@ public class ExpressionItem : INotifyPropertyChanged
     private object _value2;
     public object Value2
     {
-        get
-        {
-            return _value2;
-        }
-
+        get => _value2;
         set
         {
             _value2 = CoerceValueChanged(value, true);
@@ -126,11 +98,7 @@ public class ExpressionItem : INotifyPropertyChanged
     private string _value2StringFormat;
     public string Value2StringFormat
     {
-        get
-        {
-            return _value2StringFormat;
-        }
-
+        get => _value2StringFormat;
         set
         {
             _value2StringFormat = value;
@@ -176,11 +144,7 @@ public class ExpressionItem : INotifyPropertyChanged
     private object _valueToUpdate;
     public object ValueToUpdate
     {
-        get
-        {
-            return _valueToUpdate;
-        }
-
+        get => _valueToUpdate;
         set
         {
             _valueToUpdate = CoerceValueChanged(value);
@@ -191,11 +155,7 @@ public class ExpressionItem : INotifyPropertyChanged
     private bool _allowExpession = false;
     public bool AllowExpression
     {
-        get
-        {
-            return _allowExpession;
-        }
-
+        get => _allowExpession;
         set
         {
             _allowExpession = value;
@@ -206,11 +166,7 @@ public class ExpressionItem : INotifyPropertyChanged
     private UpdateValueMode _updateValueType = UpdateValueMode.Fixed;
     public UpdateValueMode UpdateValueType
     {
-        get
-        {
-            return _updateValueType;
-        }
-
+        get => _updateValueType;
         set
         {
             _updateValueType = (UpdateValueMode)ValueType_Coercion(value);
@@ -282,22 +238,21 @@ public class ExpressionItem : INotifyPropertyChanged
         }
         else if (SelectedProperty.Editor != Expressions.ExpressionEditor.Date)
             return value;
+
         DateTime resultDate;
         DateTime? originalDate = (DateTime?)value;
+
         if (originalDate.HasValue == false)
             return null;
+
         if (Operator != EficazFramework.Enums.CompareMethod.Between)
-        {
             resultDate = originalDate.Value.Date;
-        }
+
         else if (datafinal == false)
-        {
             resultDate = new DateTime(originalDate.Value.Year, originalDate.Value.Month, originalDate.Value.Day, 0, 0, 0);
-        }
+
         else
-        {
             resultDate = new DateTime(originalDate.Value.Year, originalDate.Value.Month, originalDate.Value.Day, 23, 59, 59);
-        }
 
         return resultDate;
     }
@@ -305,13 +260,9 @@ public class ExpressionItem : INotifyPropertyChanged
     private object ValueType_Coercion(UpdateValueMode value)
     {
         if (AllowExpression == false & value == UpdateValueMode.Expression)
-        {
             return UpdateValueMode.Fixed;
-        }
         else
-        {
             return value;
-        }
     }
 
     #endregion
@@ -322,7 +273,7 @@ public class ExpressionItem : INotifyPropertyChanged
     {
         if (SelectedProperty is null)
         {
-            _availableOperators = null;
+            AvailableOperators = null;
             RaisePropertyChanged("AvailableOperators");
             Operator = EficazFramework.Enums.CompareMethod.Equals;
             Value1 = null;
@@ -332,7 +283,7 @@ public class ExpressionItem : INotifyPropertyChanged
         }
         else
         {
-            _availableOperators = SelectedProperty.GetOperators();
+            AvailableOperators = SelectedProperty.GetOperators();
             RaisePropertyChanged("AvailableOperators");
             Operator = SelectedProperty.DefaultOperator;
             Value1 = SelectedProperty.DefaultValue1;
@@ -342,10 +293,7 @@ public class ExpressionItem : INotifyPropertyChanged
         }
     }
 
-    private void OnValueType_Changed()
-    {
-        ValueToUpdate = null;
-    }
+    private void OnValueType_Changed() => ValueToUpdate = null;
 
     private void OnValue_Changed(PropertyChangedEventArgs e)
     {
@@ -365,7 +313,6 @@ public class ExpressionItem : INotifyPropertyChanged
         else if (ValueToUpdate is null)
             return;
     }
-
 
     #endregion
 
@@ -387,16 +334,18 @@ public class ExpressionItem : INotifyPropertyChanged
                     {
                         if (string.IsNullOrEmpty(pattern1) | string.IsNullOrWhiteSpace(pattern1))
                             pattern1 = System.Threading.Thread.CurrentThread.CurrentUICulture.DateTimeFormat.ShortDatePattern;
+
                         if (string.IsNullOrEmpty(pattern2) | string.IsNullOrWhiteSpace(pattern2))
                             pattern2 = System.Threading.Thread.CurrentThread.CurrentUICulture.DateTimeFormat.ShortDatePattern;
+
                         if (Operator == EficazFramework.Enums.CompareMethod.Between)
-                        {
                             return string.Format("{0:" + pattern1 + "} - {1:" + pattern2 + "}", Value1, Value2);
-                        }
+
                         else
                         {
                             if (!string.IsNullOrEmpty(Value1StringFormat))
                                 pattern1 = Value1StringFormat;
+
                             return string.Format("{0:" + pattern1 + "}", Value1);
                         }
                     }
@@ -404,13 +353,10 @@ public class ExpressionItem : INotifyPropertyChanged
                 case Expressions.ExpressionEditor.Number:
                     {
                         if (Operator == EficazFramework.Enums.CompareMethod.Between)
-                        {
                             return string.Format("{0:" + pattern1 + "} - {1:" + pattern2 + "}", Value1, Value2);
-                        }
+
                         else
-                        {
                             return string.Format("{0:" + pattern1 + "}", Value1.ToString());
-                        }
                     }
 
                 case Expressions.ExpressionEditor.BoolSelection:
@@ -422,14 +368,10 @@ public class ExpressionItem : INotifyPropertyChanged
                     }
 
                 case Expressions.ExpressionEditor.EnumSelection:
-                    {
-                        return Extensions.Enums.GetDescription(Value1);
-                    }
+                    return Extensions.Enums.GetDescription(Value1);
 
                 case Expressions.ExpressionEditor.EnumLocalizedSelection:
-                    {
-                        return Extensions.Enums.GetLocalizedDescription(Value1);
-                    }
+                    return Extensions.Enums.GetLocalizedDescription(Value1);
 
                 default:
                     {
@@ -452,9 +394,7 @@ public class ExpressionItem : INotifyPropertyChanged
                     }
 
                 case Expressions.ExpressionEditor.Number:
-                    {
-                        return ValueToUpdate.ToString();
-                    }
+                    return ValueToUpdate.ToString();
 
                 case Expressions.ExpressionEditor.BoolSelection:
                     {
@@ -465,14 +405,10 @@ public class ExpressionItem : INotifyPropertyChanged
                     }
 
                 case Expressions.ExpressionEditor.EnumSelection:
-                    {
-                        return Extensions.Enums.GetDescription(ValueToUpdate);
-                    }
+                    return Extensions.Enums.GetDescription(ValueToUpdate);
 
                 case Expressions.ExpressionEditor.EnumLocalizedSelection:
-                    {
-                        return Extensions.Enums.GetLocalizedDescription(ValueToUpdate);
-                    }
+                    return Extensions.Enums.GetLocalizedDescription(ValueToUpdate);
 
                 default:
                     {
@@ -506,14 +442,11 @@ public class ExpressionItem : INotifyPropertyChanged
         }
         bool canbenull = SelectedProperty.AllowNull && allowNulls;
         if (Value1 is null & ignores == false & canbenull == false)
-        {
             errors.AppendLine(string.Format(Resources.Strings.Validation.Required, SelectedProperty.DisplayName));
-        }
 
         if (Value2 is null & Operator == EficazFramework.Enums.CompareMethod.Between & ignores == false & canbenull == false)
-        {
             errors.AppendLine(string.Format(Resources.Strings.Validation.Required, SelectedProperty.DisplayName));
-        }
+
         // 
         string finalStr = errors.ToString().Trim();
         return finalStr;
@@ -564,13 +497,9 @@ public class ExpressionItem : INotifyPropertyChanged
         {
             object resolvedValue2;
             if (m.Type.IsEnum)
-            {
                 resolvedValue2 = Enum.Parse(m.Type, Conversions.ToString(value2));
-            }
             else
-            {
                 resolvedValue2 = Conversion.CTypeDynamic(value2, m.Type);
-            }
 
             // If value2.GetType.IsEnum Then resolvedValue2 = CInt(value2)
             if (Nullable.GetUnderlyingType(m.Type) is null)
@@ -656,13 +585,10 @@ public class ExpressionItem : INotifyPropertyChanged
         }
 
         return Expression.Lambda(b, _tmpOwnerExpressionBuilder._MP_new[typeof(TElement)]);
-        // Return Expression.Lambda(Of Func(Of TElement, Boolean))(b, ExpressionBuilder._MP_new(GetType(TElement)))
     }
 
     internal Expression<Func<TElement, bool>> BuildForeignExpression<TElement>(object value)
     {
-        // Dim e As ParameterExpression = Expression.Parameter(GetType(TElement), "f")
-        // Dim m As Expression = ExpressionBuilder._MP
         if (!_tmpOwnerExpressionBuilder._MP_new.ContainsKey(typeof(TElement)))
             _tmpOwnerExpressionBuilder._MP_new.Add(typeof(TElement), Expression.Parameter(typeof(TElement), "f"));
         Expression m; // = ExpressionBuilder._MP_new(GetType(TElement))
@@ -676,13 +602,9 @@ public class ExpressionItem : INotifyPropertyChanged
             foreach (var access in path)
             {
                 if (!((access ?? "") == (path.LastOrDefault() ?? "")))
-                {
                     m = Expression.Property(m, access);
-                }
                 else
-                {
                     m = Expression.Property(m, mp.ForeignKey);
-                }
             }
 
             object finalvalue = null;
@@ -697,6 +619,7 @@ public class ExpressionItem : INotifyPropertyChanged
 
                 if (Nullable.GetUnderlyingType(m.Type) is null)
                     c = Expression.Constant(finalvalue);
+
                 else
                     c = Expression.Convert(Expression.Constant(finalvalue, finalvalue.GetType()), m.Type);
             }
@@ -733,7 +656,6 @@ public class ExpressionItem : INotifyPropertyChanged
         }
 
         return (Expression<Func<TElement, bool>>)Expression.Lambda(b, _tmpOwnerExpressionBuilder._MP_new[typeof(TElement)]);
-        // Return Expression.Lambda(Of Func(Of TElement, Boolean))(b, ExpressionBuilder._MP_new(GetType(TElement)))
     }
 
     #endregion
@@ -741,19 +663,12 @@ public class ExpressionItem : INotifyPropertyChanged
     public override string ToString()
     {
         if (UpdateMode == false)
-        {
             return string.Format("{0} {1} {2}; ", SelectedProperty?.DisplayName, OperatorToString(), ValueToString);
-        }
         else
-        {
             return "not implemented yet";
-        }
     }
 
-    private object OperatorToString()
-    {
-        return Extensions.Enums.GetDescription(Operator);
-    }
+    private object OperatorToString() => Extensions.Enums.GetDescription(Operator);
 
     private PropertyChangedEventArgs RaisePropertyChanged(string propertyname)
     {
@@ -773,8 +688,8 @@ public class ExpressionItem : INotifyPropertyChanged
 
 public enum UpdateValueMode
 {
-    [Attributes.DisplayName("Controls_ExpressionBuilder_ValueTypeColumn_Fixed")]
+    [Attributes.DisplayName("eUpdateValueMode_Fixed", ResourceType = typeof(Resources.Strings.DataDescriptions))]
     Fixed = 0,
-    [Attributes.DisplayName("Controls_ExpressionBuilder_ValueTypeColumn_Expression")]
+    [Attributes.DisplayName("eUpdateValueMode_Expression", ResourceType = typeof(Resources.Strings.DataDescriptions))]
     Expression = 1
 }

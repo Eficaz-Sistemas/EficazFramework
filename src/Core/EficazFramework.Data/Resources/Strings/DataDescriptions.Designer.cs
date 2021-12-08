@@ -194,5 +194,23 @@ namespace EficazFramework.Resources.Strings {
                 return ResourceManager.GetString("eDocumento_PIS_NIT", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Expressão.
+        /// </summary>
+        public static string eUpdateValueMode_Expression {
+            get {
+                return ResourceManager.GetString("eUpdateValueMode_Expression", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Fixo.
+        /// </summary>
+        public static string eUpdateValueMode_Fixed {
+            get {
+                return ResourceManager.GetString("eUpdateValueMode_Fixed", resourceCulture);
+            }
+        }
     }
 }

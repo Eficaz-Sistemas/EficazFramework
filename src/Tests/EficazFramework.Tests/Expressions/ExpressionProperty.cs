@@ -99,6 +99,14 @@ public class ExpressionPropertyTests
         values.ElementAt(0).Description.Should().Be("Time A");
         values.ElementAt(1).Description.Should().Be("Time B");
         values.ElementAt(2).Description.Should().Be("Time C");
+
+        // excluded enums
+        string[] excluded = { "TeamB" };
+        enumProperty.EnumExcludedMembers = excluded;
+        values = enumProperty.GetEnumValues();
+        values.Should().HaveCount(2);
+        values.ElementAt(0).Description.Should().Be("EnumTeamA");
+        values.ElementAt(1).Description.Should().Be("EnumTeamC");
     }
 }
 

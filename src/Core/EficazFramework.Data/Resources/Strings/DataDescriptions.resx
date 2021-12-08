@@ -162,4 +162,10 @@
   <data name="eDocumento_PIS_NIT" xml:space="preserve">
     <value>PIS ou NIT</value>
   </data>
+  <data name="eUpdateValueMode_Expression" xml:space="preserve">
+    <value>Expressão</value>
+  </data>
+  <data name="eUpdateValueMode_Fixed" xml:space="preserve">
+    <value>Fixo</value>
+  </data>
 </root>

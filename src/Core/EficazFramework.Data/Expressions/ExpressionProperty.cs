@@ -1,9 +1,7 @@
-﻿using System;
+﻿using EficazFramework.Extensions;
+using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
 using System.Linq;
-using EficazFramework.Extensions;
-using Microsoft.Extensions.Primitives;
 
 namespace EficazFramework.Expressions;
 
@@ -14,6 +12,7 @@ public class ExpressionProperty
 
     public string PropertyPath { get; set; }
   
+    [Obsolete("Porting do componente ExpressionUpdate pendente.")]
     public string UpdatePropertyPath { get; set; }
 
     public string DisplayName { get; set; }
@@ -79,7 +78,7 @@ public class ExpressionProperty
         return DisplayName;
     }
 
-    internal System.Reflection.PropertyInfo GetCollectionCollectionPropertyInfo<TElement>()
+    internal System.Reflection.PropertyInfo GetCollectionPropertyInfo<TElement>()
     {
         if (CollectionName == null)
             return null;
@@ -90,7 +89,7 @@ public class ExpressionProperty
     {
         if (CollectionName == null)
             return null;
-        var collInfo = GetCollectionCollectionPropertyInfo<TElement>();
+        var collInfo = GetCollectionPropertyInfo<TElement>();
         if (collInfo != null)
             return collInfo.PropertyType.GetGenericArguments().FirstOrDefault();
         else
