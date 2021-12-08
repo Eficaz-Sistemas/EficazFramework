@@ -28,6 +28,9 @@ public class ExpressionItem : INotifyPropertyChanged
         get => _selectedProperty;
         set
         {
+            if (IsLocked())
+                return;
+
             _selectedProperty = value;
             RaisePropertyChanged("SelectedProperty");
             RaisePropertyChanged("EnumValues");
@@ -42,6 +45,9 @@ public class ExpressionItem : INotifyPropertyChanged
         get => _operator;
         set
         {
+            if (IsLocked())
+                return;
+
             _operator = value;
             RaisePropertyChanged("Operator");
             RaisePropertyChanged("ValueToString");
@@ -240,7 +246,7 @@ public class ExpressionItem : INotifyPropertyChanged
             return value;
 
         DateTime resultDate;
-        DateTime? originalDate = (DateTime?)value;
+        DateTime? originalDate = value as DateTime?;
 
         if (originalDate.HasValue == false)
             return null;
@@ -420,6 +426,15 @@ public class ExpressionItem : INotifyPropertyChanged
         return null;
     }
 
+    private bool IsLocked()
+    {
+        if (!UpdateMode)
+            return !(_tmpOwnerExpressionBuilder?.CanBuildCustomExpressions ?? true);
+        else
+            return !true;
+        // TODO: use _tmpOwnerExpressionUpdater?.CanBuildCustomExpressions ?? true
+    }
+
     #endregion
 
     #region Expression
@@ -430,8 +445,9 @@ public class ExpressionItem : INotifyPropertyChanged
     internal static System.Reflection.MethodInfo ToLowerMethod = typeof(string).GetMethod("ToLower", Array.Empty<Type>());
     internal static System.Reflection.MethodInfo NullToEmptyMethod = typeof(Extensions.TextExtensions).GetMethod("NullToEmpty", new[] { typeof(string) });
 
-    internal string Validate(ref bool ignores, bool allowNulls)
+    internal string Validate(ref bool ignores)
     {
+        ignores = false;
         var errors = new System.Text.StringBuilder();
         errors.Append("");
         // 
@@ -440,15 +456,18 @@ public class ExpressionItem : INotifyPropertyChanged
             ignores = true;
             return null;
         }
-        bool canbenull = SelectedProperty.AllowNull && allowNulls;
-        if (Value1 is null & ignores == false & canbenull == false)
+        bool parentAllowsNull = !UpdateMode ? (_tmpOwnerExpressionBuilder?.AllowNulls ?? false) : false;
+        bool canbenull = SelectedProperty.AllowNull && parentAllowsNull;
+        if (Value1 is null && ignores == false && canbenull == false)
             errors.AppendLine(string.Format(Resources.Strings.Validation.Required, SelectedProperty.DisplayName));
 
-        if (Value2 is null & Operator == EficazFramework.Enums.CompareMethod.Between & ignores == false & canbenull == false)
+        if (Value2 is null && Operator == EficazFramework.Enums.CompareMethod.Between && ignores == false && canbenull == false)
             errors.AppendLine(string.Format(Resources.Strings.Validation.Required, SelectedProperty.DisplayName));
 
         // 
         string finalStr = errors.ToString().Trim();
+        if (string.IsNullOrEmpty(finalStr) || string.IsNullOrWhiteSpace(finalStr))
+            return null;
         return finalStr;
     }
 
@@ -663,12 +682,12 @@ public class ExpressionItem : INotifyPropertyChanged
     public override string ToString()
     {
         if (UpdateMode == false)
-            return string.Format("{0} {1} {2}; ", SelectedProperty?.DisplayName, OperatorToString(), ValueToString);
+            return string.Format("{0} {1} {2}", SelectedProperty?.DisplayName, OperatorToString(), ValueToString);
         else
             return "not implemented yet";
     }
 
-    private object OperatorToString() => Extensions.Enums.GetDescription(Operator);
+    private object OperatorToString() => Extensions.Enums.GetLocalizedDescription(Operator);
 
     private PropertyChangedEventArgs RaisePropertyChanged(string propertyname)
     {
