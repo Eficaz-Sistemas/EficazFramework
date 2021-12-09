@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
 using System.Linq.Expressions;
-using EficazFramework.Extensions;
 using Microsoft.VisualBasic;
 using Microsoft.VisualBasic.CompilerServices;
 
@@ -37,7 +36,7 @@ public class ExpressionItem : INotifyPropertyChanged
             OnExpressionProperty_Changed();
         }
     }
-    public IEnumerable<EnumMember> AvailableOperators { get; private set; } = null;
+    public IEnumerable<Extensions.EnumMember> AvailableOperators { get; private set; } = null;
 
     private Enums.CompareMethod _operator = Enums.CompareMethod.Equals;
     public Enums.CompareMethod Operator
@@ -54,7 +53,7 @@ public class ExpressionItem : INotifyPropertyChanged
         }
     }
 
-    public IEnumerable<EnumMember> EnumValues
+    public IEnumerable<Extensions.EnumMember> EnumValues
     {
         get
         {
@@ -113,13 +112,7 @@ public class ExpressionItem : INotifyPropertyChanged
     }
 
     // RESULTING STRING VALUE:
-    public string ValueToString
-    {
-        get
-        {
-            return Conversions.ToString(ParseValueToString());
-        }
-    }
+    public string ValueToString => Conversions.ToString(ParseValueToString());
 
     #region Blazor Helper
 
@@ -456,7 +449,7 @@ public class ExpressionItem : INotifyPropertyChanged
             ignores = true;
             return null;
         }
-        bool parentAllowsNull = !UpdateMode ? (_tmpOwnerExpressionBuilder?.AllowNulls ?? false) : false;
+        bool parentAllowsNull = !UpdateMode ? (_tmpOwnerExpressionBuilder?.AllowNulls ?? false) : false; // todo: change last 'false' to 
         bool canbenull = SelectedProperty.AllowNull && parentAllowsNull;
         if (Value1 is null && ignores == false && canbenull == false)
             errors.AppendLine(string.Format(Resources.Strings.Validation.Required, SelectedProperty.DisplayName));

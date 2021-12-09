@@ -37,10 +37,7 @@
 | [DataReader](DataReader.md 'EficazFramework.Extensions.DataReader') |  |
 | [DbCommand](DbCommand.md 'EficazFramework.Extensions.DbCommand') |  |
 | [DbContext](DbContext.md 'EficazFramework.Extensions.DbContext') |  |
-| [ExpandableQuery&lt;T&gt;](ExpandableQuery_T_.md 'EficazFramework.Extensions.ExpandableQuery&lt;T&gt;') | An IQueryable wrapper that allows us to visit the query's expression tree just before LINQ to SQL gets to it.<br/>This is based on the excellent work of Tomas Petricek: http://tomasp.net/blog/linq-expand.aspx<br/> |
-| [ExpressionExpander](ExpressionExpander.md 'EficazFramework.Extensions.ExpressionExpander') | Custom expresssion visitor for ExpandableQuery. This expands calls to Expression.Compile() and<br/>collapses captured lambda references in subqueries which LINQ to SQL can't otherwise handle.<br/> |
 | [Expressions](Expressions.md 'EficazFramework.Extensions.Expressions') | Refer to http://www.albahari.com/nutshell/linqkit.html and<br/>http://tomasp.net/blog/linq-expand.aspx for more information.<br/><br/>This is a part of LinqKit Tool.<br/>See http://www.albahari.com/expressions for information and examples.<br/> |
-| [ExpressionVisitor](ExpressionVisitor.md 'EficazFramework.Extensions.ExpressionVisitor') | This comes from Matt Warren's sample:<br/>http://blogs.msdn.com/mattwar/archive/2007/07/31/linq-building-an-iqueryable-provider-part-ii.aspx<br/> |
   
 <a name='EficazFramework_Providers'></a>
 ## EficazFramework.Providers Namespace

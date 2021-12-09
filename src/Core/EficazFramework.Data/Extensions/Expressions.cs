@@ -18,37 +18,10 @@ namespace EficazFramework.Extensions;
 /// <remarks></remarks>
 public static class Expressions
 {
-    //private static readonly MethodInfo ContainsMethod = typeof(string).GetRuntimeMethod("Contains", new[] { typeof(string) });
-    // Private AnyMethod As MethodInfo = GetType(IQueryable).GetMethod("Any", {GetType(IQueryable)})
-
-    public static Expression<Func<T, bool>> True<T>()
-    {
-        return f => true;
-    }
-
-    public static Expression<Func<T, bool>> False<T>()
-    {
-        return f => false;
-    }
-
-    public static Expression<Func<T, bool>> Or<T>(this Expression<Func<T, bool>> expr1, Expression<Func<T, bool>> expr2)
-    {
-        if (expr2 is null)
-        {
-            return expr1;
-        }
-
-        return Expression.Lambda<Func<T, bool>>(Expression.Or(expr1.Body, expr2.Body), expr1.Parameters[0]);
-        // Dim invokedExpr = Expression.Invoke(expr2, expr1.Parameters.Cast(Of Expression)())
-        // Return Expression.Lambda(Of Func(Of T, Boolean))(Expression.[Or](expr1.Body, invokedExpr), expr1.Parameters)
-    }
-
     public static Expression<Func<T, bool>> And<T>(this Expression<Func<T, bool>> expr1, Expression<Func<T, bool>> expr2)
     {
         if (expr2 is null)
-        {
             return expr1;
-        }
 
         return Expression.Lambda<Func<T, bool>>(Expression.And(expr1.Body, expr2.Body), expr1.Parameters[0]);
         // Dim invokedExpr = Expression.Invoke(expr2, expr1.Parameters.Cast(Of Expression)())
@@ -57,32 +30,12 @@ public static class Expressions
 
     public static Expression<Func<T, bool>> Any<T>(this Expression<Func<T, bool>> expr1, PropertyInfo info, Expression innerExpression)
     {
-        // Dim e As ParameterExpression = Expression.Parameter(GetType(T), "e")
         var m = Expression.Property(expr1.Parameters[0], info);
         var b = Expression.Call(typeof(Enumerable), "Any", new Type[] { info.PropertyType.GenericTypeArguments[0] }, m, innerExpression);
-        return Expression.Lambda<Func<T, bool>>(b, expr1.Parameters[0]); // vapo...
-                                                                         // Dim b = Expression.Call(anymethod, Expression.PropertyOrField(e, info.Name), innerExpression)
-                                                                         // Return Expression.Lambda(Of Func(Of T, Boolean))(b, e) 'b
-    }
-
-    public static IQueryable<T> AsExpandable<T>(this IQueryable<T> query)
-    {
-        if (query is Extensions.ExpandableQuery<T> queryresult)
-        {
-            return queryresult;
-        }
-
-        return new Extensions.ExpandableQuery<T>(query);
-    }
-
-    public static Expression<TDelegate> Expand<TDelegate>(this Expression<TDelegate> expr)
-    {
-        return (Expression<TDelegate>)new Extensions.ExpressionExpander().Visit(expr);
-    }
-
-    public static Expression Expand(this Expression expr)
-    {
-        return new Extensions.ExpressionExpander().Visit(expr);
+        return Expression.Lambda<Func<T, bool>>(b, expr1.Parameters[0]); 
+        // vapo...
+        // Dim b = Expression.Call(anymethod, Expression.PropertyOrField(e, info.Name), innerExpression)
+        // Return Expression.Lambda(Of Func(Of T, Boolean))(b, e) 'b
     }
 
     public static TResult Invoke<TResult>(this Expression<Func<TResult>> expr)

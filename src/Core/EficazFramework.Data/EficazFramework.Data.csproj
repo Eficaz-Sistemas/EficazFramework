@@ -46,10 +46,13 @@
     </ItemGroup>
 	
   <ItemGroup>
+    <Compile Remove="Extensions\LinqKit\**" />
     <Compile Remove="Repositories\Services\API\**" />
     <Compile Remove="ViewModels\Entity\**" />
+    <EmbeddedResource Remove="Extensions\LinqKit\**" />
     <EmbeddedResource Remove="Repositories\Services\API\**" />
     <EmbeddedResource Remove="ViewModels\Entity\**" />
+    <None Remove="Extensions\LinqKit\**" />
     <None Remove="Repositories\Services\API\**" />
     <None Remove="ViewModels\Entity\**" />
   </ItemGroup>

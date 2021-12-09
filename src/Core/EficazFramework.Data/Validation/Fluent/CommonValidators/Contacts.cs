@@ -1,6 +1,6 @@
 ﻿using System;
+using System.Linq.Expressions;
 using EficazFramework.Extensions;
-using Microsoft.VisualBasic.CompilerServices;
 
 namespace EficazFramework.Validation.Fluent.Rules;
 
@@ -11,7 +11,7 @@ public abstract class Contatos<T> : Rules.ValidationRule<T> where T : class
 
     public override string Validate(T instance)
     {
-        var value = this.Property.Invoke(instance); // instance.GetPropertyValue(Me.PropertyName)
+        var value = Property.Invoke(instance); // instance.GetPropertyValue(Me.PropertyName)
         if (value == null) return null;
         if (string.IsNullOrEmpty(value.ToString())) return null;
         return ValidateContato((string)value);
