@@ -13,11 +13,9 @@
    
    Este projeto tem por finalidade oferecer funcionalidades extras e padronizadas a toda a grade de aplicações da Eficaz, para diversas plataformas.
    
-   Desenvolvida e lapidada com base na experiência adquirida nas duas versões anteriores, utilizando agora o ambiente híbrido do .NET (Core) ao invés de classes PCL. A versão deste framework irá acompanhar a versão do dotnet.
+   Desenvolvida e lapidada com base na experiência adquirida nas duas versões anteriores, atualizada para acompanhar a versão mais recente do .NET (Core).
    
    Esta versão conta atualmente com uma quantidade maior de instruções sem plataforma específica, e foi estruturada para utilização dos recursos de Implantação e Entrega Contínua de aplicações (Azure DevOps).
-
-   O repositório de código está em sincronização contínua com sua cópia no [Azure Repos](https://dev.azure.com/eficazcs/EficazFramework).
 
    A distribuição das bilbiotecas será disponibilizada por meio de pacotes Nuget, através do [Feed de Pacotes da Eficaz](https://pkgs.dev.azure.com/eficazcs/_packaging/DevPackages/nuget/v3/index.json).
 
