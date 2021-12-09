@@ -58,6 +58,36 @@ public class Text
     }
 
     [Test]
+    public void FormataInscricaoEstadual()
+    {
+        "0192123239204".FormatIE("AC").Should().Be("01.921.232/392-04");
+        "197961878".FormatIE("AM").Should().Be("19.796.187-8");
+        "21663949".FormatIE("BA").Should().Be("216639-49");
+        "412818043".FormatIE("CE").Should().Be("41281804-3");
+        "0741801100161".FormatIE("DF").Should().Be("07418011001-61");
+        "357949382".FormatIE("ES").Should().Be("35794938-2");
+        "100310060".FormatIE("GO").Should().Be("10.031.006-0");
+        "120160960".FormatIE("MA").Should().Be("12016096-0");
+        "65791337833".FormatIE("MT").Should().Be("6579133783-3");
+        "280574517".FormatIE("MS").Should().Be("28057451-7");
+        "5128464487031".FormatIE("MG").Should().Be("512.846448.70-31");
+        //"154712086".FormatIE("PA").Should().Be("15.471208-6");
+        "464804507".FormatIE("PB").Should().Be("46480450-7");
+        "9179443853".FormatIE("PR").Should().Be("917.94438-53");
+        //"473164116".FormatIE("PE").Should().Be("4731641-16");
+        "915826380".FormatIE("PI").Should().Be("91582638-0");
+        "75133553".FormatIE("RJ").Should().Be("75.133.55-3");
+        "203479602".FormatIE("RN").Should().Be("20.347.960-2");
+        "3045088416".FormatIE("RS").Should().Be("304/5088416");
+        //"95715028357508".FormatIE("RO").Should().Be("9571502835750-8");
+        "240001738".FormatIE("RR").Should().Be("24000173-8");
+        "550884360766".FormatIE("SP").Should().Be("550.884.360.766");
+        "827969970".FormatIE("SC").Should().Be("827.969.970");
+        "028325281".FormatIE("SE").Should().Be("02832528-1");
+        //"92036578081".FormatIE("TO").Should().Be("9203657808-1");
+    }
+
+    [Test]
     public void FormataLogradouro()
     {
         var result = "Rua Tiradentes".FormatLogradouro();
@@ -456,6 +486,7 @@ public class Text
         "270759107".IsValidInscricaoEstadual("SE").Should().Be(true);
         "270684719".IsValidInscricaoEstadual("SE").Should().Be(true);
         "271274956".IsValidInscricaoEstadual("SE").Should().Be(true);
+        "411121143119".IsValidInscricaoEstadual("SP").Should().Be(false);
         "401121143119".IsValidInscricaoEstadual("SP").Should().Be(true);
         "310653082113".IsValidInscricaoEstadual("SP").Should().Be(true);
         "310437609110".IsValidInscricaoEstadual("SP").Should().Be(true);
@@ -466,6 +497,7 @@ public class Text
         "310157067117".IsValidInscricaoEstadual("SP").Should().Be(true);
         "310512850112".IsValidInscricaoEstadual("SP").Should().Be(true);
         "401033839116".IsValidInscricaoEstadual("SP").Should().Be(true);
+        "293895741".IsValidInscricaoEstadual("TO").Should().Be(false);
         "293895740".IsValidInscricaoEstadual("TO").Should().Be(true);
         "290659000".IsValidInscricaoEstadual("TO").Should().Be(true);
         "290030757".IsValidInscricaoEstadual("TO").Should().Be(true);
@@ -476,6 +508,10 @@ public class Text
         "290675286".IsValidInscricaoEstadual("TO").Should().Be(true);
         "294507965".IsValidInscricaoEstadual("TO").Should().Be(true);
         "294840303".IsValidInscricaoEstadual("TO").Should().Be(true);
+        "294840303".IsValidInscricaoEstadual("EX").Should().Be(true);
+        "294840303".IsValidInscricaoEstadual(null).Should().Be(false);
+        "".IsValidInscricaoEstadual("EX").Should().Be(true);
+        "".IsValidInscricaoEstadual(null).Should().Be(true);
     }
 
     [Test]

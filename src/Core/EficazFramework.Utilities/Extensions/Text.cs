@@ -350,7 +350,7 @@ public static class TextExtensions
 
             case "ES":
                 {
-                    return string.Format("{0:000000000}", Conversions.ToLong(IE));
+                    return string.Format(@"{0:00000000\-0}", Conversions.ToLong(IE));
                 }
             // txtIE.Text = Format(txtIE.Text, "@@@@@@@@@")
 
@@ -362,7 +362,7 @@ public static class TextExtensions
 
             case "MA":
                 {
-                    return string.Format("{0:000000000}", Conversions.ToLong(IE));
+                    return string.Format(@"{0:00000000\-0}", Conversions.ToLong(IE));
                 }
             // txtIE.Text = Format(txtIE.Text, "@@@@@@@@@")
 
@@ -374,7 +374,7 @@ public static class TextExtensions
 
             case "MS":
                 {
-                    return string.Format("{0:000000000}", Conversions.ToLong(IE));
+                    return string.Format(@"{0:00000000\-0}", Conversions.ToLong(IE));
                 }
             // txtIE.Text = Format(txtIE.Text, "@@@@@@@@@")
 
@@ -398,7 +398,7 @@ public static class TextExtensions
 
             case "PR":
                 {
-                    return string.Format(@"{0:00000000\-00}", Conversions.ToLong(IE));
+                    return string.Format(@"{0:000\.00000\-00}", Conversions.ToLong(IE));
                 }
             // txtIE.Text = Format(txtIE.Text, "@@@@@@@@-@@")
 
@@ -410,7 +410,7 @@ public static class TextExtensions
 
             case "PI":
                 {
-                    return string.Format("{0:000000000}", Conversions.ToLong(IE));
+                    return string.Format(@"{0:00000000\-0}", Conversions.ToLong(IE));
                 }
             // txtIE.Text = Format(txtIE.Text, "@@@@@@@@@")
 
@@ -458,7 +458,7 @@ public static class TextExtensions
 
             case "SE":
                 {
-                    return string.Format(@"{0:000000000\-0}", Conversions.ToLong(IE));
+                    return string.Format(@"{0:00000000\-0}", Conversions.ToLong(IE));
                 }
             // txtIE.Text = Format(txtIE.Text, "@@@@@@@@@-@")
 
@@ -466,7 +466,7 @@ public static class TextExtensions
                 {
                     // txtIE.Text = Format(txtIE.Text, "@@@@@@@@@@@")
 
-                    return string.Format("{0:00000000000}", Conversions.ToLong(IE));
+                    return string.Format(@"{0:0000000000\-0}", Conversions.ToLong(IE));
                 }
 
             default:

@@ -133,6 +133,21 @@ public class FluentTests
     }
 
     [Test]
+    public void MinLenght()
+    {
+        EficazFramework.Validation.Fluent.Validator<SampleObject> validator = new EficazFramework.Validation.Fluent.Validator<SampleObject>().MinLenght((e) => e.Obs, 6);
+
+        SampleObject instance = new() { Obs = "Abc" };
+        validator.Validate(instance).Should().NotBeNullOrEmpty();
+
+        instance.Obs = "Abcdef";
+        validator.Validate(instance).Should().BeNullOrEmpty();
+
+        instance.Obs = "Abcdefg";
+        validator.Validate(instance).Should().BeNullOrEmpty();
+    }
+
+    [Test]
     public void MaxLenght()
     {
         EficazFramework.Validation.Fluent.Validator<SampleObject> validator = new EficazFramework.Validation.Fluent.Validator<SampleObject>().MaxLenght((e) => e.Obs, 6);
