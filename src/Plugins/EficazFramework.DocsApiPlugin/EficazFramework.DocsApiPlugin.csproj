@@ -5,11 +5,32 @@
 	<TargetFramework>netstandard2.0</TargetFramework>
 	<DevelopmentDependency>true</DevelopmentDependency>
 	<SuppressDependenciesWhenPacking>true</SuppressDependenciesWhenPacking>
+	<AssemblyVersion>1.0.0</AssemblyVersion>
+	<FileVersion>1.0.0.0</FileVersion>
+	<RootNamespace>EficazFramework</RootNamespace>
+	<Company>Eficaz Sistemas de Gestão e Inteligência Tributária</Company>
+	<Copyright>Copyright ©  2021. Eficaz Sistemas de Gestão e Inteligência Tributária Ltda.</Copyright>
+	<Description>Plugin para pacote DefaultDocument para geração da Documentação por Markdown em estrutura de pastas.</Description>
+	<RepositoryUrl>https://github.com/Eficaz-Sistemas/EficazFramework</RepositoryUrl>
+	<RepositoryType>git</RepositoryType>
+	<PackageTags>docs</PackageTags>
+	<NeutralLanguage>pt-BR</NeutralLanguage>
+	<Authors>Eficaz Sistemas</Authors>
+	<PackageIcon>logo.png</PackageIcon>
+	<PackageIconUrl>https://efsuporte.blob.core.windows.net/portal/EficazFramework.png</PackageIconUrl>
+	<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
   </PropertyGroup>
-
-	<ItemGroup>
-		<None Update="EficazFramework.DocsApiPlugin.targets" Pack="true" PackagePath="build\" />
-	</ItemGroup>
+	
+  <ItemGroup>
+  	<None Include="..\..\..\Assets\logo.png">
+  		<Pack>True</Pack>
+  		<PackagePath>\</PackagePath>
+  	</None>
+  </ItemGroup>
+	
+  <ItemGroup>
+  	<None Update="EficazFramework.DocsApiPlugin.targets" Pack="true" PackagePath="build\" />
+  </ItemGroup>
 	
   <ItemGroup>
     <PackageReference Include="DefaultDocumentation.Api" Version="0.8.0-alpha2" />
