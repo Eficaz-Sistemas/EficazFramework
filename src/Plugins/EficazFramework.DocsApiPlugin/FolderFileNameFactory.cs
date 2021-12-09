@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.IO;
 using System.Linq;
 using System.Threading;
@@ -8,6 +9,8 @@ using DefaultDocumentation.Api;
 using DefaultDocumentation.Models;
 
 namespace EficazFramework.DocsApiPlugin;
+
+[ExcludeFromCodeCoverage]
 public sealed class FolderFileNameFactory : IFileNameFactory
 {
     public string Name => "Folder";
