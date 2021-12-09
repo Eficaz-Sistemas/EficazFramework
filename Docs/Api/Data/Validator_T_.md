@@ -18,7 +18,7 @@ Implements [IValidator](IValidator.md 'EficazFramework.Validation.Fluent.IValida
 
 | Methods | |
 | :--- | :--- |
-| [Validate(object, string)](Validator_T__Validate(object_string).md 'EficazFramework.Validation.Fluent.Validator&lt;T&gt;.Validate(object, string)') | Executa a validação da propriedade argumentada da instância<br/> |
 | [Validate(object)](Validator_T__Validate(object).md 'EficazFramework.Validation.Fluent.Validator&lt;T&gt;.Validate(object)') | Executa a validação completa da instância<br/> |
-| [ValidateAsync(object, string)](Validator_T__ValidateAsync(object_string).md 'EficazFramework.Validation.Fluent.Validator&lt;T&gt;.ValidateAsync(object, string)') | Executa a validação da propriedade argumentada da instância<br/> |
+| [Validate(object, string)](Validator_T__Validate(object_string).md 'EficazFramework.Validation.Fluent.Validator&lt;T&gt;.Validate(object, string)') | Executa a validação da propriedade argumentada da instância<br/> |
 | [ValidateAsync(object)](Validator_T__ValidateAsync(object).md 'EficazFramework.Validation.Fluent.Validator&lt;T&gt;.ValidateAsync(object)') | Executa a validação completa da instância<br/> |
+| [ValidateAsync(object, string)](Validator_T__ValidateAsync(object_string).md 'EficazFramework.Validation.Fluent.Validator&lt;T&gt;.ValidateAsync(object, string)') | Executa a validação da propriedade argumentada da instância<br/> |

@@ -27,6 +27,7 @@
 	<DefaultDocumentationAssemblyPageName>EficazFramework Data</DefaultDocumentationAssemblyPageName>
 	<DefaultDocumentationFileNameMode>Name</DefaultDocumentationFileNameMode>
 	<DefaultDocumentationGeneratedPages>Assembly, Types, Members</DefaultDocumentationGeneratedPages>
+	<DefaultDocumentationFileNameFactory>Folder</DefaultDocumentationFileNameFactory>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
