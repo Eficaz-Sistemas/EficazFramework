@@ -35,6 +35,7 @@
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
 	  <NoWarn>1573;1591;1701;1702</NoWarn>
+	  <DisableDefaultDocumentation>true</DisableDefaultDocumentation>
   </PropertyGroup>
 
     <ItemGroup>

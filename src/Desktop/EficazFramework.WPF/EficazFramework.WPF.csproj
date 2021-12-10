@@ -37,7 +37,9 @@
   
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
   	<NoWarn>IDE0044;1573;1591;1701;1702;CA2211</NoWarn>
+	<DisableDefaultDocumentation>true</DisableDefaultDocumentation>
   </PropertyGroup>
+	
   <ItemGroup>
     <Compile Remove="Themes\Generic\Icons\PackIconDataFactory.cs" />
   </ItemGroup>
