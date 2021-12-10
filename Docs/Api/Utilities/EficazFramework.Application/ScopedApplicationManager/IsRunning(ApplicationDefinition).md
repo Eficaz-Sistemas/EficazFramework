@@ -1,0 +1,20 @@
+#### [EficazFramework.Utilities](EficazFrameworkData.md 'EficazFramework Data')
+### [EficazFramework.Application](EficazFrameworkData.md#EficazFramework.Application 'EficazFramework.Application').[ScopedApplicationManager](EficazFramework.Application/ScopedApplicationManager.md 'EficazFramework.Application.ScopedApplicationManager')
+
+## ScopedApplicationManager.IsRunning(ApplicationDefinition) Method
+
+Retorna se um aplicativo está em execução atualmente.
+
+```csharp
+public bool IsRunning(EficazFramework.Application.ApplicationDefinition application);
+```
+#### Parameters
+
+<a name='EficazFramework.Application.ScopedApplicationManager.IsRunning(EficazFramework.Application.ApplicationDefinition).application'></a>
+
+`application` [EficazFramework.Application.ApplicationDefinition](https://docs.microsoft.com/en-us/dotnet/api/EficazFramework.Application.ApplicationDefinition 'EficazFramework.Application.ApplicationDefinition')
+
+Instância de aplicativo a ser verificado.
+
+#### Returns
+[System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')

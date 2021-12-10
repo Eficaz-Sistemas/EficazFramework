@@ -25,9 +25,9 @@
 	 <Description>Controles, extensões e utulitários para implementação Blazor.</Description>
 	 <GenerateDocumentationFile>true</GenerateDocumentationFile>
 	 <DefaultDocumentationFolder>..\..\..\Docs\Api\Web-Blazor</DefaultDocumentationFolder>
-	 <DefaultDocumentationAssemblyPageName>EficazFramework Blazor</DefaultDocumentationAssemblyPageName>
-	 <DefaultDocumentationFileNameMode>Name</DefaultDocumentationFileNameMode>
+	 <DefaultDocumentationAssemblyPageName>EficazFramework Data</DefaultDocumentationAssemblyPageName>
 	 <DefaultDocumentationGeneratedPages>Assembly, Types, Members</DefaultDocumentationGeneratedPages>
+	 <DefaultDocumentationFileNameFactory>Folder</DefaultDocumentationFileNameFactory>
   </PropertyGroup>
 	
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
@@ -67,6 +67,10 @@
 	
   <ItemGroup>
     <PackageReference Include="DefaultDocumentation" Version="0.8.0-alpha2">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="EficazFramework.DocsApiPlugin" Version="1.0.0">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>

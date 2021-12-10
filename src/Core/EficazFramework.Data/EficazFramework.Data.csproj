@@ -27,7 +27,6 @@
 	<DefaultDocumentationAssemblyPageName>EficazFramework Data</DefaultDocumentationAssemblyPageName>
 	<DefaultDocumentationGeneratedPages>Assembly, Types, Members</DefaultDocumentationGeneratedPages>
 	<DefaultDocumentationFileNameFactory>Folder</DefaultDocumentationFileNameFactory>
-	<DefaultDocumentationPlugins>$(DefaultDocumentationPlugins)|$(MSBuildThisFileDirectory)../../Plugins/EficazFramework.DocsApiPlugin/bin/$(Configuration)/netstandard2.0/EficazFramework.DocsApiPlugin.dll</DefaultDocumentationPlugins> 
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
@@ -71,6 +70,10 @@
 
   <ItemGroup>
     <PackageReference Include="DefaultDocumentation" Version="0.8.0-alpha2">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="EficazFramework.DocsApiPlugin" Version="1.0.0">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
@@ -136,7 +139,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\Plugins\EficazFramework.DocsApiPlugin\EficazFramework.DocsApiPlugin.csproj" />
     <ProjectReference Include="..\EficazFramework.Utilities\EficazFramework.Utilities.csproj" />
   </ItemGroup>
 
