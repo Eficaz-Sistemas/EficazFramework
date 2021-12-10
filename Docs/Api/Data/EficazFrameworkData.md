@@ -1,119 +1,133 @@
 #### [EficazFramework.Data](EficazFrameworkData.md 'EficazFramework Data')
+
+## EficazFramework.Data Assembly
 ### Namespaces
-<a name='EficazFramework_Configuration'></a>
+
+<a name='EficazFramework.Configuration'></a>
+
 ## EficazFramework.Configuration Namespace
 
 | Classes | |
 | :--- | :--- |
-| [DbConfiguration](DbConfiguration.md 'EficazFramework.Configuration.DbConfiguration') |  |
-  
-<a name='EficazFramework_Entities'></a>
+| [DbConfiguration](EficazFramework.Configuration/DbConfiguration.md 'EficazFramework.Configuration.DbConfiguration') | |
+
+<a name='EficazFramework.Entities'></a>
+
 ## EficazFramework.Entities Namespace
 
 | Classes | |
 | :--- | :--- |
-| [EntityBase](EntityBase.md 'EficazFramework.Entities.EntityBase') | Implementa o modelo-base de Entity para uso com EntityFrameworkCore.<br/>Deve ser herdado para implementar a validação de dados, seguindo os protocolos de cada Plataforma.<br/> |
-  
-<a name='EficazFramework_Enums'></a>
+| [EntityBase](EficazFramework.Entities/EntityBase.md 'EficazFramework.Entities.EntityBase') | Implementa o modelo-base de Entity para uso com EntityFrameworkCore.<br/>Deve ser herdado para implementar a validação de dados, seguindo os protocolos de cada Plataforma. |
+
+<a name='EficazFramework.Enums'></a>
+
 ## EficazFramework.Enums Namespace
 
 | Enums | |
 | :--- | :--- |
-| [CompareMethod](CompareMethod.md 'EficazFramework.Enums.CompareMethod') |  |
-  
-<a name='EficazFramework_Enums_CRUD'></a>
+| [CompareMethod](EficazFramework.Enums/CompareMethod.md 'EficazFramework.Enums.CompareMethod') | |
+
+<a name='EficazFramework.Enums.CRUD'></a>
+
 ## EficazFramework.Enums.CRUD Namespace
 
 | Enums | |
 | :--- | :--- |
-| [Action](Action.md 'EficazFramework.Enums.CRUD.Action') | Informa o momento em que o evento ViewModelAction foi disparado<br/> |
-| [State](State.md 'EficazFramework.Enums.CRUD.State') | Efetua a comunicação de estado entre ViewModel e View, posicionando a última na tela condizente ao estado da ViewModel.<br/> |
-  
-<a name='EficazFramework_Extensions'></a>
+| [Action](EficazFramework.Enums.CRUD/Action.md 'EficazFramework.Enums.CRUD.Action') | Informa o momento em que o evento ViewModelAction foi disparado |
+| [State](EficazFramework.Enums.CRUD/State.md 'EficazFramework.Enums.CRUD.State') | Efetua a comunicação de estado entre ViewModel e View, posicionando a última na tela condizente ao estado da ViewModel. |
+
+<a name='EficazFramework.Extensions'></a>
+
 ## EficazFramework.Extensions Namespace
 
 | Classes | |
 | :--- | :--- |
-| [DataReader](DataReader.md 'EficazFramework.Extensions.DataReader') |  |
-| [DbCommand](DbCommand.md 'EficazFramework.Extensions.DbCommand') |  |
-| [DbContext](DbContext.md 'EficazFramework.Extensions.DbContext') |  |
-| [Expressions](Expressions.md 'EficazFramework.Extensions.Expressions') | Refer to http://www.albahari.com/nutshell/linqkit.html and<br/>http://tomasp.net/blog/linq-expand.aspx for more information.<br/><br/>This is a part of LinqKit Tool.<br/>See http://www.albahari.com/expressions for information and examples.<br/> |
-  
-<a name='EficazFramework_Providers'></a>
+| [DataReader](EficazFramework.Extensions/DataReader.md 'EficazFramework.Extensions.DataReader') | |
+| [DbCommand](EficazFramework.Extensions/DbCommand.md 'EficazFramework.Extensions.DbCommand') | |
+| [DbContext](EficazFramework.Extensions/DbContext.md 'EficazFramework.Extensions.DbContext') | |
+| [Expressions](EficazFramework.Extensions/Expressions.md 'EficazFramework.Extensions.Expressions') | Refer to http://www.albahari.com/nutshell/linqkit.html and<br/>http://tomasp.net/blog/linq-expand.aspx for more information.<br/><br/>This is a part of LinqKit Tool.<br/>See http://www.albahari.com/expressions for information and examples. |
+
+<a name='EficazFramework.Providers'></a>
+
 ## EficazFramework.Providers Namespace
 
 | Enums | |
 | :--- | :--- |
-| [ConnectionProviders](ConnectionProviders.md 'EficazFramework.Providers.ConnectionProviders') |  |
-  
-<a name='EficazFramework_Repositories'></a>
+| [ConnectionProviders](EficazFramework.Providers/ConnectionProviders.md 'EficazFramework.Providers.ConnectionProviders') | |
+
+<a name='EficazFramework.Repositories'></a>
+
 ## EficazFramework.Repositories Namespace
 
 | Classes | |
 | :--- | :--- |
-| [ApiRepository&lt;TEntity&gt;](ApiRepository_TEntity_.md 'EficazFramework.Repositories.ApiRepository&lt;TEntity&gt;') |  |
-| [DataImportRepository&lt;TSource,TCache&gt;](DataImportRepository_TSource_TCache_.md 'EficazFramework.Repositories.DataImportRepository&lt;TSource,TCache&gt;') |  |
-| [EntityRepository&lt;TEntity&gt;](EntityRepository_TEntity_.md 'EficazFramework.Repositories.EntityRepository&lt;TEntity&gt;') |  |
-| [RepositoryBase&lt;T&gt;](RepositoryBase_T_.md 'EficazFramework.Repositories.RepositoryBase&lt;T&gt;') |  |
-  
-<a name='EficazFramework_Security'></a>
+| [ApiRepository&lt;TEntity&gt;](EficazFramework.Repositories/ApiRepository_TEntity_.md 'EficazFramework.Repositories.ApiRepository<TEntity>') | |
+| [DataImportRepository&lt;TSource,TCache&gt;](EficazFramework.Repositories/DataImportRepository_TSource,TCache_.md 'EficazFramework.Repositories.DataImportRepository<TSource,TCache>') | |
+| [EntityRepository&lt;TEntity&gt;](EficazFramework.Repositories/EntityRepository_TEntity_.md 'EficazFramework.Repositories.EntityRepository<TEntity>') | |
+| [RepositoryBase&lt;T&gt;](EficazFramework.Repositories/RepositoryBase_T_.md 'EficazFramework.Repositories.RepositoryBase<T>') | |
+
+<a name='EficazFramework.Security'></a>
+
 ## EficazFramework.Security Namespace
 
 | Classes | |
 | :--- | :--- |
-| [Role](Role.md 'EficazFramework.Security.Role') |  |
-| [RoleEditor](RoleEditor.md 'EficazFramework.Security.RoleEditor') |  |
-| [RoleMember](RoleMember.md 'EficazFramework.Security.RoleMember') |  |
-  
-<a name='EficazFramework_Validation_Fluent'></a>
+| [Role](EficazFramework.Security/Role.md 'EficazFramework.Security.Role') | |
+| [RoleEditor](EficazFramework.Security/RoleEditor.md 'EficazFramework.Security.RoleEditor') | |
+| [RoleMember](EficazFramework.Security/RoleMember.md 'EficazFramework.Security.RoleMember') | |
+
+<a name='EficazFramework.Validation.Fluent'></a>
+
 ## EficazFramework.Validation.Fluent Namespace
 
 | Classes | |
 | :--- | :--- |
-| [ValidationResult](ValidationResult.md 'EficazFramework.Validation.Fluent.ValidationResult') | Lista resultante dos métodos de Validação<br/> |
-| [Validator&lt;T&gt;](Validator_T_.md 'EficazFramework.Validation.Fluent.Validator&lt;T&gt;') | Classe definitiva da validação fluente, com estrutura genérica ao tipo a ser validado.<br/> |
+| [ValidationResult](EficazFramework.Validation.Fluent/ValidationResult.md 'EficazFramework.Validation.Fluent.ValidationResult') | Lista resultante dos métodos de Validação |
+| [Validator&lt;T&gt;](EficazFramework.Validation.Fluent/Validator_T_.md 'EficazFramework.Validation.Fluent.Validator<T>') | Classe definitiva da validação fluente, com estrutura genérica ao tipo a ser validado. |
 
 | Interfaces | |
 | :--- | :--- |
-| [IValidator](IValidator.md 'EficazFramework.Validation.Fluent.IValidator') | Define a instrumentação inicial para validação fluente.<br/> |
-  
-<a name='EficazFramework_Validation_Fluent_Rules'></a>
+| [IValidator](EficazFramework.Validation.Fluent/IValidator.md 'EficazFramework.Validation.Fluent.IValidator') | Define a instrumentação inicial para validação fluente. |
+
+<a name='EficazFramework.Validation.Fluent.Rules'></a>
+
 ## EficazFramework.Validation.Fluent.Rules Namespace
 
 | Classes | |
 | :--- | :--- |
-| [Documentos&lt;T&gt;](Documentos_T_.md 'EficazFramework.Validation.Fluent.Rules.Documentos&lt;T&gt;') |  |
-| [Equals&lt;T&gt;](Equals_T_.md 'EficazFramework.Validation.Fluent.Rules.Equals&lt;T&gt;') |  |
-| [MaxLenght&lt;T&gt;](MaxLenght_T_.md 'EficazFramework.Validation.Fluent.Rules.MaxLenght&lt;T&gt;') |  |
-| [MinLenght&lt;T&gt;](MinLenght_T_.md 'EficazFramework.Validation.Fluent.Rules.MinLenght&lt;T&gt;') |  |
-| [Range&lt;T&gt;](Range_T_.md 'EficazFramework.Validation.Fluent.Rules.Range&lt;T&gt;') |  |
-| [RangePeriod&lt;T&gt;](RangePeriod_T_.md 'EficazFramework.Validation.Fluent.Rules.RangePeriod&lt;T&gt;') |  |
-| [Required&lt;T&gt;](Required_T_.md 'EficazFramework.Validation.Fluent.Rules.Required&lt;T&gt;') |  |
-| [RequiredIf&lt;T&gt;](RequiredIf_T_.md 'EficazFramework.Validation.Fluent.Rules.RequiredIf&lt;T&gt;') |  |
-| [Test&lt;T&gt;](Test_T_.md 'EficazFramework.Validation.Fluent.Rules.Test&lt;T&gt;') |  |
-| [ValidationRule&lt;T&gt;](ValidationRule_T_.md 'EficazFramework.Validation.Fluent.Rules.ValidationRule&lt;T&gt;') | Classa padrão de regra de validação. Deve ser herdada.<br/> |
-| [ValidatorUtils](ValidatorUtils.md 'EficazFramework.Validation.Fluent.Rules.ValidatorUtils') | Conunto de métodos auxiliares para composição das regras de validação in-built<br/> |
-  
-<a name='EficazFramework_ViewModels'></a>
+| [Documentos&lt;T&gt;](EficazFramework.Validation.Fluent.Rules/Documentos_T_.md 'EficazFramework.Validation.Fluent.Rules.Documentos<T>') | |
+| [Equals&lt;T&gt;](EficazFramework.Validation.Fluent.Rules/Equals_T_.md 'EficazFramework.Validation.Fluent.Rules.Equals<T>') | |
+| [MaxLenght&lt;T&gt;](EficazFramework.Validation.Fluent.Rules/MaxLenght_T_.md 'EficazFramework.Validation.Fluent.Rules.MaxLenght<T>') | |
+| [MinLenght&lt;T&gt;](EficazFramework.Validation.Fluent.Rules/MinLenght_T_.md 'EficazFramework.Validation.Fluent.Rules.MinLenght<T>') | |
+| [Range&lt;T&gt;](EficazFramework.Validation.Fluent.Rules/Range_T_.md 'EficazFramework.Validation.Fluent.Rules.Range<T>') | |
+| [RangePeriod&lt;T&gt;](EficazFramework.Validation.Fluent.Rules/RangePeriod_T_.md 'EficazFramework.Validation.Fluent.Rules.RangePeriod<T>') | |
+| [Required&lt;T&gt;](EficazFramework.Validation.Fluent.Rules/Required_T_.md 'EficazFramework.Validation.Fluent.Rules.Required<T>') | |
+| [RequiredIf&lt;T&gt;](EficazFramework.Validation.Fluent.Rules/RequiredIf_T_.md 'EficazFramework.Validation.Fluent.Rules.RequiredIf<T>') | |
+| [Test&lt;T&gt;](EficazFramework.Validation.Fluent.Rules/Test_T_.md 'EficazFramework.Validation.Fluent.Rules.Test<T>') | |
+| [ValidationRule&lt;T&gt;](EficazFramework.Validation.Fluent.Rules/ValidationRule_T_.md 'EficazFramework.Validation.Fluent.Rules.ValidationRule<T>') | Classa padrão de regra de validação. Deve ser herdada. |
+| [ValidatorUtils](EficazFramework.Validation.Fluent.Rules/ValidatorUtils.md 'EficazFramework.Validation.Fluent.Rules.ValidatorUtils') | Conunto de métodos auxiliares para composição das regras de validação in-built |
+
+<a name='EficazFramework.ViewModels'></a>
+
 ## EficazFramework.ViewModels Namespace
 
 | Classes | |
 | :--- | :--- |
-| [ViewModel&lt;T&gt;](ViewModel_T_.md 'EficazFramework.ViewModels.ViewModel&lt;T&gt;') | Provê a estrutura básica de ViewModel em leitura tabular.<br/>Adicione funções, como operações CRUD e Registro de Repositório utilizando as extensões disponíveis<br/> |
-  
-<a name='EficazFramework_ViewModels_Services'></a>
+| [ViewModel&lt;T&gt;](EficazFramework.ViewModels/ViewModel_T_.md 'EficazFramework.ViewModels.ViewModel<T>') | Provê a estrutura básica de ViewModel em leitura tabular.<br/>Adicione funções, como operações CRUD e Registro de Repositório utilizando as extensões disponíveis |
+
+<a name='EficazFramework.ViewModels.Services'></a>
+
 ## EficazFramework.ViewModels.Services Namespace
 
 | Classes | |
 | :--- | :--- |
-| [Audit&lt;T&gt;](Audit_T_.md 'EficazFramework.ViewModels.Services.Audit&lt;T&gt;') |  |
-| [GPO&lt;T&gt;](GPO_T_.md 'EficazFramework.ViewModels.Services.GPO&lt;T&gt;') |  |
-| [IndexViewNavigator&lt;T&gt;](IndexViewNavigator_T_.md 'EficazFramework.ViewModels.Services.IndexViewNavigator&lt;T&gt;') |  |
-| [PagedViewNavigator&lt;T&gt;](PagedViewNavigator_T_.md 'EficazFramework.ViewModels.Services.PagedViewNavigator&lt;T&gt;') |  |
-| [ServiceUtils](ServiceUtils.md 'EficazFramework.ViewModels.Services.ServiceUtils') |  |
-| [SingleEdit&lt;T&gt;](SingleEdit_T_.md 'EficazFramework.ViewModels.Services.SingleEdit&lt;T&gt;') | Serviço de gravação e/ou cancelamento de alterações para ViewModel<br/> |
-| [SingleEditDetail&lt;T,D&gt;](SingleEditDetail_T_D_.md 'EficazFramework.ViewModels.Services.SingleEditDetail&lt;T,D&gt;') |  |
-| [TabularEdit&lt;T&gt;](TabularEdit_T_.md 'EficazFramework.ViewModels.Services.TabularEdit&lt;T&gt;') | Serviço de gravação e/ou cancelamento de alterações para ViewModel<br/> |
-| [TabularEditDetail&lt;T,D&gt;](TabularEditDetail_T_D_.md 'EficazFramework.ViewModels.Services.TabularEditDetail&lt;T,D&gt;') |  |
-| [ViewModelService&lt;T&gt;](ViewModelService_T_.md 'EficazFramework.ViewModels.Services.ViewModelService&lt;T&gt;') |  |
-  
+| [Audit&lt;T&gt;](EficazFramework.ViewModels.Services/Audit_T_.md 'EficazFramework.ViewModels.Services.Audit<T>') | |
+| [GPO&lt;T&gt;](EficazFramework.ViewModels.Services/GPO_T_.md 'EficazFramework.ViewModels.Services.GPO<T>') | |
+| [IndexViewNavigator&lt;T&gt;](EficazFramework.ViewModels.Services/IndexViewNavigator_T_.md 'EficazFramework.ViewModels.Services.IndexViewNavigator<T>') | |
+| [PagedViewNavigator&lt;T&gt;](EficazFramework.ViewModels.Services/PagedViewNavigator_T_.md 'EficazFramework.ViewModels.Services.PagedViewNavigator<T>') | |
+| [ServiceUtils](EficazFramework.ViewModels.Services/ServiceUtils.md 'EficazFramework.ViewModels.Services.ServiceUtils') | |
+| [SingleEdit&lt;T&gt;](EficazFramework.ViewModels.Services/SingleEdit_T_.md 'EficazFramework.ViewModels.Services.SingleEdit<T>') | Serviço de gravação e/ou cancelamento de alterações para ViewModel |
+| [SingleEditDetail&lt;T,D&gt;](EficazFramework.ViewModels.Services/SingleEditDetail_T,D_.md 'EficazFramework.ViewModels.Services.SingleEditDetail<T,D>') | |
+| [TabularEdit&lt;T&gt;](EficazFramework.ViewModels.Services/TabularEdit_T_.md 'EficazFramework.ViewModels.Services.TabularEdit<T>') | Serviço de gravação e/ou cancelamento de alterações para ViewModel |
+| [TabularEditDetail&lt;T,D&gt;](EficazFramework.ViewModels.Services/TabularEditDetail_T,D_.md 'EficazFramework.ViewModels.Services.TabularEditDetail<T,D>') | |
+| [ViewModelService&lt;T&gt;](EficazFramework.ViewModels.Services/ViewModelService_T_.md 'EficazFramework.ViewModels.Services.ViewModelService<T>') | |

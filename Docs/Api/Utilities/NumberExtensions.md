@@ -1,25 +1,27 @@
 #### [EficazFramework.Utilities](EficazFrameworkUtilities.md 'EficazFramework Utilities')
-### [EficazFramework.Extensions](EficazFrameworkUtilities.md#EficazFramework_Extensions 'EficazFramework.Extensions')
+### [EficazFramework.Extensions](EficazFrameworkUtilities.md#EficazFramework.Extensions 'EficazFramework.Extensions')
+
 ## NumberExtensions Class
+
 ```csharp
 public static class NumberExtensions
 ```
 
-Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.Object 'System.Object') &#129106; NumberExtensions  
+Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.Object 'System.Object') &#129106; NumberExtensions
 
 | Methods | |
 | :--- | :--- |
-| [ToSignificantDigits(decimal, int, int)](NumberExtensions_ToSignificantDigits(decimal_int_int).md 'EficazFramework.Extensions.NumberExtensions.ToSignificantDigits(decimal, int, int)') | Retorna o número formatado na quantidade de algarismos significativos desejada.<br/> |
-| [ToSignificantDigits(double, int, int)](NumberExtensions_ToSignificantDigits(double_int_int).md 'EficazFramework.Extensions.NumberExtensions.ToSignificantDigits(double, int, int)') | Retorna o número formatado na quantidade de algarismos significativos desejada.<br/> |
-| [ToSignificantDigits(Nullable&lt;decimal&gt;, int, int)](NumberExtensions_ToSignificantDigits(Nullable_decimal__int_int).md 'EficazFramework.Extensions.NumberExtensions.ToSignificantDigits(System.Nullable&lt;decimal&gt;, int, int)') | Retorna o número formatado na quantidade de algarismos significativos desejada.<br/> |
-| [ToSignificantDigits(Nullable&lt;double&gt;, int, int)](NumberExtensions_ToSignificantDigits(Nullable_double__int_int).md 'EficazFramework.Extensions.NumberExtensions.ToSignificantDigits(System.Nullable&lt;double&gt;, int, int)') | Retorna o número formatado na quantidade de algarismos significativos desejada.<br/> |
-| [ToWords(decimal, Currency)](NumberExtensions_ToWords(decimal_Currency).md 'EficazFramework.Extensions.NumberExtensions.ToWords(decimal, EficazFramework.Extensions.NumberExtensions.Currency)') | Retorna o número por extenso, em moeda.<br/> |
-| [ToWords(decimal, Gender)](NumberExtensions_ToWords(decimal_Gender).md 'EficazFramework.Extensions.NumberExtensions.ToWords(decimal, EficazFramework.Extensions.NumberExtensions.Gender)') | Retorna o número por extenso.<br/> |
-| [ToWords(double, Currency)](NumberExtensions_ToWords(double_Currency).md 'EficazFramework.Extensions.NumberExtensions.ToWords(double, EficazFramework.Extensions.NumberExtensions.Currency)') | Retorna o número por extenso, em moeda.<br/> |
-| [ToWords(double, Gender)](NumberExtensions_ToWords(double_Gender).md 'EficazFramework.Extensions.NumberExtensions.ToWords(double, EficazFramework.Extensions.NumberExtensions.Gender)') | Retorna o número por extenso.<br/> |
-| [ToWords(int, Currency)](NumberExtensions_ToWords(int_Currency).md 'EficazFramework.Extensions.NumberExtensions.ToWords(int, EficazFramework.Extensions.NumberExtensions.Currency)') | Retorna o número por extenso, em moeda.<br/> |
-| [ToWords(int, Gender)](NumberExtensions_ToWords(int_Gender).md 'EficazFramework.Extensions.NumberExtensions.ToWords(int, EficazFramework.Extensions.NumberExtensions.Gender)') | Retorna o número por extenso.<br/> |
-| [ToWords(long, Currency)](NumberExtensions_ToWords(long_Currency).md 'EficazFramework.Extensions.NumberExtensions.ToWords(long, EficazFramework.Extensions.NumberExtensions.Currency)') | Retorna o número por extenso, em moeda.<br/> |
-| [ToWords(long, Gender)](NumberExtensions_ToWords(long_Gender).md 'EficazFramework.Extensions.NumberExtensions.ToWords(long, EficazFramework.Extensions.NumberExtensions.Gender)') | Retorna o número por extenso.<br/> |
-| [ToWords(short, Currency)](NumberExtensions_ToWords(short_Currency).md 'EficazFramework.Extensions.NumberExtensions.ToWords(short, EficazFramework.Extensions.NumberExtensions.Currency)') | Retorna o número por extenso, em moeda.<br/> |
-| [ToWords(short, Gender)](NumberExtensions_ToWords(short_Gender).md 'EficazFramework.Extensions.NumberExtensions.ToWords(short, EficazFramework.Extensions.NumberExtensions.Gender)') | Retorna o número por extenso.<br/> |
+| [ToSignificantDigits(this decimal, int, int)](NumberExtensions.ToSignificantDigits(thisdecimal,int,int).md 'EficazFramework.Extensions.NumberExtensions.ToSignificantDigits(this decimal, int, int)') | Retorna o número formatado na quantidade de algarismos significativos desejada. |
+| [ToSignificantDigits(this double, int, int)](NumberExtensions.ToSignificantDigits(thisdouble,int,int).md 'EficazFramework.Extensions.NumberExtensions.ToSignificantDigits(this double, int, int)') | Retorna o número formatado na quantidade de algarismos significativos desejada. |
+| [ToSignificantDigits(this Nullable&lt;decimal&gt;, int, int)](NumberExtensions.ToSignificantDigits(thisNullable_decimal_,int,int).md 'EficazFramework.Extensions.NumberExtensions.ToSignificantDigits(this System.Nullable<decimal>, int, int)') | Retorna o número formatado na quantidade de algarismos significativos desejada. |
+| [ToSignificantDigits(this Nullable&lt;double&gt;, int, int)](NumberExtensions.ToSignificantDigits(thisNullable_double_,int,int).md 'EficazFramework.Extensions.NumberExtensions.ToSignificantDigits(this System.Nullable<double>, int, int)') | Retorna o número formatado na quantidade de algarismos significativos desejada. |
+| [ToWords(this decimal, Currency)](NumberExtensions.ToWords(thisdecimal,Currency).md 'EficazFramework.Extensions.NumberExtensions.ToWords(this decimal, EficazFramework.Extensions.NumberExtensions.Currency)') | Retorna o número por extenso, em moeda. |
+| [ToWords(this decimal, Gender)](NumberExtensions.ToWords(thisdecimal,Gender).md 'EficazFramework.Extensions.NumberExtensions.ToWords(this decimal, EficazFramework.Extensions.NumberExtensions.Gender)') | Retorna o número por extenso. |
+| [ToWords(this double, Currency)](NumberExtensions.ToWords(thisdouble,Currency).md 'EficazFramework.Extensions.NumberExtensions.ToWords(this double, EficazFramework.Extensions.NumberExtensions.Currency)') | Retorna o número por extenso, em moeda. |
+| [ToWords(this double, Gender)](NumberExtensions.ToWords(thisdouble,Gender).md 'EficazFramework.Extensions.NumberExtensions.ToWords(this double, EficazFramework.Extensions.NumberExtensions.Gender)') | Retorna o número por extenso. |
+| [ToWords(this int, Currency)](NumberExtensions.ToWords(thisint,Currency).md 'EficazFramework.Extensions.NumberExtensions.ToWords(this int, EficazFramework.Extensions.NumberExtensions.Currency)') | Retorna o número por extenso, em moeda. |
+| [ToWords(this int, Gender)](NumberExtensions.ToWords(thisint,Gender).md 'EficazFramework.Extensions.NumberExtensions.ToWords(this int, EficazFramework.Extensions.NumberExtensions.Gender)') | Retorna o número por extenso. |
+| [ToWords(this long, Currency)](NumberExtensions.ToWords(thislong,Currency).md 'EficazFramework.Extensions.NumberExtensions.ToWords(this long, EficazFramework.Extensions.NumberExtensions.Currency)') | Retorna o número por extenso, em moeda. |
+| [ToWords(this long, Gender)](NumberExtensions.ToWords(thislong,Gender).md 'EficazFramework.Extensions.NumberExtensions.ToWords(this long, EficazFramework.Extensions.NumberExtensions.Gender)') | Retorna o número por extenso. |
+| [ToWords(this short, Currency)](NumberExtensions.ToWords(thisshort,Currency).md 'EficazFramework.Extensions.NumberExtensions.ToWords(this short, EficazFramework.Extensions.NumberExtensions.Currency)') | Retorna o número por extenso, em moeda. |
+| [ToWords(this short, Gender)](NumberExtensions.ToWords(thisshort,Gender).md 'EficazFramework.Extensions.NumberExtensions.ToWords(this short, EficazFramework.Extensions.NumberExtensions.Gender)') | Retorna o número por extenso. |

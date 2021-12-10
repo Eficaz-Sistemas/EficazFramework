@@ -1,23 +1,28 @@
 #### [EficazFramework.WPF](EficazFrameworkWPF.md 'EficazFramework WPF')
+
+## EficazFramework.WPF Assembly
 ### Namespaces
-<a name='EficazFramework_Controls_Primitives'></a>
+
+<a name='EficazFramework.Controls.Primitives'></a>
+
 ## EficazFramework.Controls.Primitives Namespace
 
 | Classes | |
 | :--- | :--- |
-| [MultiRangeBase](MultiRangeBase.md 'EficazFramework.Controls.Primitives.MultiRangeBase') | Represents an element that has a start and end value within a specific range.  |
-  
-<a name='EficazFramework_XAML_Behaviors'></a>
+| [MultiRangeBase](MultiRangeBase.md 'EficazFramework.Controls.Primitives.MultiRangeBase') | Represents an element that has a start and end value within a specific range. |
+
+<a name='EficazFramework.XAML.Behaviors'></a>
+
 ## EficazFramework.XAML.Behaviors Namespace
 
 | Classes | |
 | :--- | :--- |
-| [TextBoxInputMaskBehavior](TextBoxInputMaskBehavior.md 'EficazFramework.XAML.Behaviors.TextBoxInputMaskBehavior') | InputMask for Textbox with 2 Properties: [EficazFramework.XAML.Behaviors.TextBoxInputMaskBehavior.InputMask](https://docs.microsoft.com/en-us/dotnet/api/EficazFramework.XAML.Behaviors.TextBoxInputMaskBehavior.InputMask 'EficazFramework.XAML.Behaviors.TextBoxInputMaskBehavior.InputMask'), [EficazFramework.XAML.Behaviors.TextBoxInputMaskBehavior.PromptChar](https://docs.microsoft.com/en-us/dotnet/api/EficazFramework.XAML.Behaviors.TextBoxInputMaskBehavior.PromptChar 'EficazFramework.XAML.Behaviors.TextBoxInputMaskBehavior.PromptChar').<br/> |
-  
-<a name='EficazFramework_XAML_Utilities'></a>
+| [TextBoxInputMaskBehavior](TextBoxInputMaskBehavior.md 'EficazFramework.XAML.Behaviors.TextBoxInputMaskBehavior') | InputMask for Textbox with 2 Properties: [EficazFramework.XAML.Behaviors.TextBoxInputMaskBehavior.InputMask](https://docs.microsoft.com/en-us/dotnet/api/EficazFramework.XAML.Behaviors.TextBoxInputMaskBehavior.InputMask 'EficazFramework.XAML.Behaviors.TextBoxInputMaskBehavior.InputMask'), [EficazFramework.XAML.Behaviors.TextBoxInputMaskBehavior.PromptChar](https://docs.microsoft.com/en-us/dotnet/api/EficazFramework.XAML.Behaviors.TextBoxInputMaskBehavior.PromptChar 'EficazFramework.XAML.Behaviors.TextBoxInputMaskBehavior.PromptChar'). |
+
+<a name='EficazFramework.XAML.Utilities'></a>
+
 ## EficazFramework.XAML.Utilities Namespace
 
 | Classes | |
 | :--- | :--- |
-| [VisualTreeHelpers](VisualTreeHelpers.md 'EficazFramework.XAML.Utilities.VisualTreeHelpers') |  |
-  
+| [VisualTreeHelpers](VisualTreeHelpers.md 'EficazFramework.XAML.Utilities.VisualTreeHelpers') | |

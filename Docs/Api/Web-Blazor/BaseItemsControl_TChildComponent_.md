@@ -1,30 +1,33 @@
 #### [EficazFramework.Blazor](EficazFrameworkBlazor.md 'EficazFramework Blazor')
-### [EficazFramework.Components](EficazFrameworkBlazor.md#EficazFramework_Components 'EficazFramework.Components')
-## BaseItemsControl&lt;TChildComponent&gt; Class
+### [EficazFramework.Components](EficazFrameworkBlazor.md#EficazFramework.Components 'EficazFramework.Components')
+
+## BaseItemsControl<TChildComponent> Class
+
 ```csharp
 public abstract class BaseItemsControl<TChildComponent> : EficazFramework.Components.ComponentBase
     where TChildComponent : EficazFramework.Components.ComponentBase
 ```
 #### Type parameters
-<a name='EficazFramework_Components_BaseItemsControl_TChildComponent__TChildComponent'></a>
-`TChildComponent`  
-  
 
-Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.Object 'System.Object') &#129106; [Microsoft.AspNetCore.Components.ComponentBase](https://docs.microsoft.com/en-us/dotnet/api/Microsoft.AspNetCore.Components.ComponentBase 'Microsoft.AspNetCore.Components.ComponentBase') &#129106; [ComponentBase](ComponentBase.md 'EficazFramework.Components.ComponentBase') &#129106; BaseItemsControl&lt;TChildComponent&gt;  
+<a name='EficazFramework.Components.BaseItemsControl_TChildComponent_.TChildComponent'></a>
+
+`TChildComponent`
+
+Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.Object 'System.Object') &#129106; [Microsoft.AspNetCore.Components.ComponentBase](https://docs.microsoft.com/en-us/dotnet/api/Microsoft.AspNetCore.Components.ComponentBase 'Microsoft.AspNetCore.Components.ComponentBase') &#129106; [ComponentBase](ComponentBase.md 'EficazFramework.Components.ComponentBase') &#129106; BaseItemsControl<TChildComponent>
 
 Derived  
-&#8627; [BaseBindableItemsControl&lt;TChildComponent,TData&gt;](BaseBindableItemsControl_TChildComponent_TData_.md 'EficazFramework.Components.BaseBindableItemsControl&lt;TChildComponent,TData&gt;')  
+&#8627; [BaseBindableItemsControl&lt;TChildComponent,TData&gt;](BaseBindableItemsControl_TChildComponent,TData_.md 'EficazFramework.Components.BaseBindableItemsControl<TChildComponent,TData>')
 
 | Properties | |
 | :--- | :--- |
-| [ChildContent](BaseItemsControl_TChildComponent__ChildContent.md 'EficazFramework.Components.BaseItemsControl&lt;TChildComponent&gt;.ChildContent') | Collection of T<br/> |
-| [Items](BaseItemsControl_TChildComponent__Items.md 'EficazFramework.Components.BaseItemsControl&lt;TChildComponent&gt;.Items') | Items - will be ignored when ItemsSource is not null<br/> |
-| [LastContainer](BaseItemsControl_TChildComponent__LastContainer.md 'EficazFramework.Components.BaseItemsControl&lt;TChildComponent&gt;.LastContainer') | Gets the Selected TChildComponent<br/> |
-| [SelectedContainer](BaseItemsControl_TChildComponent__SelectedContainer.md 'EficazFramework.Components.BaseItemsControl&lt;TChildComponent&gt;.SelectedContainer') | Gets the Selected TChildComponent<br/> |
-| [SelectedIndex](BaseItemsControl_TChildComponent__SelectedIndex.md 'EficazFramework.Components.BaseItemsControl&lt;TChildComponent&gt;.SelectedIndex') | Selected MudCarouselItem's index<br/> |
+| [ChildContent](BaseItemsControl_TChildComponent_.ChildContent.md 'EficazFramework.Components.BaseItemsControl<TChildComponent>.ChildContent') | Collection of T |
+| [Items](BaseItemsControl_TChildComponent_.Items.md 'EficazFramework.Components.BaseItemsControl<TChildComponent>.Items') | Items - will be ignored when ItemsSource is not null |
+| [LastContainer](BaseItemsControl_TChildComponent_.LastContainer.md 'EficazFramework.Components.BaseItemsControl<TChildComponent>.LastContainer') | Gets the Selected TChildComponent |
+| [SelectedContainer](BaseItemsControl_TChildComponent_.SelectedContainer.md 'EficazFramework.Components.BaseItemsControl<TChildComponent>.SelectedContainer') | Gets the Selected TChildComponent |
+| [SelectedIndex](BaseItemsControl_TChildComponent_.SelectedIndex.md 'EficazFramework.Components.BaseItemsControl<TChildComponent>.SelectedIndex') | Selected MudCarouselItem's index |
 
 | Methods | |
 | :--- | :--- |
-| [MoveTo(int)](BaseItemsControl_TChildComponent__MoveTo(int).md 'EficazFramework.Components.BaseItemsControl&lt;TChildComponent&gt;.MoveTo(int)') | Move to Item at desired index<br/> |
-| [Next()](BaseItemsControl_TChildComponent__Next().md 'EficazFramework.Components.BaseItemsControl&lt;TChildComponent&gt;.Next()') | Move to Next Item<br/> |
-| [Previous()](BaseItemsControl_TChildComponent__Previous().md 'EficazFramework.Components.BaseItemsControl&lt;TChildComponent&gt;.Previous()') | Move to Previous Item<br/> |
+| [MoveTo(int)](BaseItemsControl_TChildComponent_.MoveTo(int).md 'EficazFramework.Components.BaseItemsControl<TChildComponent>.MoveTo(int)') | Move to Item at desired index |
+| [Next()](BaseItemsControl_TChildComponent_.Next().md 'EficazFramework.Components.BaseItemsControl<TChildComponent>.Next()') | Move to Next Item |
+| [Previous()](BaseItemsControl_TChildComponent_.Previous().md 'EficazFramework.Components.BaseItemsControl<TChildComponent>.Previous()') | Move to Previous Item |
