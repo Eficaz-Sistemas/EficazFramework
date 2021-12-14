@@ -7,7 +7,6 @@ namespace EficazFramework.Repositories.Services
 {
     public abstract class QueryBase
     {
-
         public abstract string MsSqlCommandText { get; }
         public abstract string SqlLiteCommandText { get; }
         public abstract string MySqlCommandText { get; }
@@ -23,7 +22,6 @@ namespace EficazFramework.Repositories.Services
             Parameters.Add("dtin", () => DataInicial);
             Parameters.Add("dtfim", () => DataFinal);
         }
-
 
         public DateTime DataInicial { get; set; }
         public DateTime DataFinal { get; set; }
@@ -49,35 +47,14 @@ namespace EficazFramework.Extensions
             if (cmd.Connection.State != System.Data.ConnectionState.Open) await cmd.Connection.OpenAsync();
             cmd.CommandTimeout = int.MaxValue;
 
-            switch (Configuration.DbConfiguration.Instance.Provider)
+            cmd.CommandText = Configuration.DbConfiguration.Instance.Provider switch
             {
-                case Providers.ConnectionProviders.MsSQL:
-                    {
-                        cmd.CommandText = query.MsSqlCommandText;
-                        break;
-                    }
-
-                case Providers.ConnectionProviders.SqlLite:
-                    {
-                        cmd.CommandText = query.SqlLiteCommandText;
-                        break;
-                    }
-
-                case Providers.ConnectionProviders.MySQL:
-                    {
-                        cmd.CommandText = query.MySqlCommandText;
-                        break;
-                    }
-
-                case Providers.ConnectionProviders.Oracle:
-                    {
-                        cmd.CommandText = query.OracleCommandText;
-                        break;
-                    }
-
-                default:
-                    break;
-            }
+                Providers.ConnectionProviders.MsSQL => query.MsSqlCommandText,
+                Providers.ConnectionProviders.SqlLite => query.SqlLiteCommandText,
+                Providers.ConnectionProviders.MySQL => query.MySqlCommandText,
+                Providers.ConnectionProviders.Oracle => query.OracleCommandText,
+                _ => null
+            };
 
             foreach (KeyValuePair<string, Func<object>> item in query.Parameters)
             {
@@ -92,35 +69,14 @@ namespace EficazFramework.Extensions
             if (cmd.Connection.State != System.Data.ConnectionState.Open) cmd.Connection.Open();
             cmd.CommandTimeout = int.MaxValue;
 
-            switch (Configuration.DbConfiguration.Instance.Provider)
+            cmd.CommandText = Configuration.DbConfiguration.Instance.Provider switch
             {
-                case Providers.ConnectionProviders.MsSQL:
-                    {
-                        cmd.CommandText = query.MsSqlCommandText;
-                        break;
-                    }
-
-                case Providers.ConnectionProviders.SqlLite:
-                    {
-                        cmd.CommandText = query.SqlLiteCommandText;
-                        break;
-                    }
-
-                case Providers.ConnectionProviders.MySQL:
-                    {
-                        cmd.CommandText = query.MySqlCommandText;
-                        break;
-                    }
-
-                case Providers.ConnectionProviders.Oracle:
-                    {
-                        cmd.CommandText = query.OracleCommandText;
-                        break;
-                    }
-
-                default:
-                    break;
-            }
+                Providers.ConnectionProviders.MsSQL => query.MsSqlCommandText,
+                Providers.ConnectionProviders.SqlLite => query.SqlLiteCommandText,
+                Providers.ConnectionProviders.MySQL => query.MySqlCommandText,
+                Providers.ConnectionProviders.Oracle => query.OracleCommandText,
+                _ => null
+            };
 
             foreach (KeyValuePair<string, Func<object>> item in query.Parameters)
             {
