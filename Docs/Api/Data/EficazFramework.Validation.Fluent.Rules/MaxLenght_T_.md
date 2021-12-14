@@ -14,11 +14,37 @@ internal class MaxLenght<T> : EficazFramework.Validation.Fluent.Rules.Validation
 `T`
 
 Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.Object 'System.Object') &#129106; [EficazFramework.Validation.Fluent.Rules.ValidationRule&lt;](EficazFramework.Validation.Fluent.Rules/ValidationRule_T_.md 'EficazFramework.Validation.Fluent.Rules.ValidationRule<T>')[T](EficazFramework.Validation.Fluent.Rules/MaxLenght_T_.md#EficazFramework.Validation.Fluent.Rules.MaxLenght_T_.T 'EficazFramework.Validation.Fluent.Rules.MaxLenght<T>.T')[&gt;](EficazFramework.Validation.Fluent.Rules/ValidationRule_T_.md 'EficazFramework.Validation.Fluent.Rules.ValidationRule<T>') &#129106; MaxLenght<T>
+### Constructors
 
-| Constructors | |
-| :--- | :--- |
-| [MaxLenght(Expression&lt;Func&lt;T,object&gt;&gt;, int)](EficazFramework.Validation.Fluent.Rules/MaxLenght_T_/MaxLenght(Expression_Func_T,object__,int).md 'EficazFramework.Validation.Fluent.Rules.MaxLenght<T>.MaxLenght(System.Linq.Expressions.Expression<System.Func<T,object>>, int)') | Regra de validação contra valores e/ou referências nulas ou vazias |
+<a name='EficazFramework.Validation.Fluent.Rules.MaxLenght_T_.MaxLenght(System.Linq.Expressions.Expression_System.Func_T,object__,int)'></a>
 
-| Properties | |
-| :--- | :--- |
-| [Lenght](EficazFramework.Validation.Fluent.Rules/MaxLenght_T_/Lenght.md 'EficazFramework.Validation.Fluent.Rules.MaxLenght<T>.Lenght') | Limite de caracteres aceito. |
+## MaxLenght(Expression<Func<T,object>>, int) Constructor
+
+Regra de validação contra valores e/ou referências nulas ou vazias
+
+```csharp
+public MaxLenght(System.Linq.Expressions.Expression<System.Func<T,object>> propertyexpression, int lenght);
+```
+#### Parameters
+
+<a name='EficazFramework.Validation.Fluent.Rules.MaxLenght_T_.MaxLenght(System.Linq.Expressions.Expression_System.Func_T,object__,int).propertyexpression'></a>
+
+`propertyexpression` [System.Linq.Expressions.Expression&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Linq.Expressions.Expression-1 'System.Linq.Expressions.Expression`1')[System.Func&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-2 'System.Func`2')[T](EficazFramework.Validation.Fluent.Rules/MaxLenght_T_.md#EficazFramework.Validation.Fluent.Rules.MaxLenght_T_.T 'EficazFramework.Validation.Fluent.Rules.MaxLenght<T>.T')[,](https://docs.microsoft.com/en-us/dotnet/api/System.Func-2 'System.Func`2')[System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.Object 'System.Object')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-2 'System.Func`2')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Linq.Expressions.Expression-1 'System.Linq.Expressions.Expression`1')
+
+<a name='EficazFramework.Validation.Fluent.Rules.MaxLenght_T_.MaxLenght(System.Linq.Expressions.Expression_System.Func_T,object__,int).lenght'></a>
+
+`lenght` [System.Int32](https://docs.microsoft.com/en-us/dotnet/api/System.Int32 'System.Int32')
+### Properties
+
+<a name='EficazFramework.Validation.Fluent.Rules.MaxLenght_T_.Lenght'></a>
+
+## MaxLenght<T>.Lenght Property
+
+Limite de caracteres aceito.
+
+```csharp
+public int Lenght { get; set; }
+```
+
+#### Property Value
+[System.Int32](https://docs.microsoft.com/en-us/dotnet/api/System.Int32 'System.Int32')

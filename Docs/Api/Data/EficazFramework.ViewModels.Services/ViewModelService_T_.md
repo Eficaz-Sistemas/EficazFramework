@@ -28,9 +28,42 @@ Derived
 &#8627; [TabularEditDetail&lt;T,D&gt;](EficazFramework.ViewModels.Services/TabularEditDetail_T,D_.md 'EficazFramework.ViewModels.Services.TabularEditDetail<T,D>')
 
 Implements [System.IDisposable](https://docs.microsoft.com/en-us/dotnet/api/System.IDisposable 'System.IDisposable'), [System.ComponentModel.INotifyPropertyChanged](https://docs.microsoft.com/en-us/dotnet/api/System.ComponentModel.INotifyPropertyChanged 'System.ComponentModel.INotifyPropertyChanged')
+### Methods
 
-| Methods | |
-| :--- | :--- |
-| [DisposeManagedCallerObjects()](EficazFramework.ViewModels.Services/ViewModelService_T_/DisposeManagedCallerObjects().md 'EficazFramework.ViewModels.Services.ViewModelService<T>.DisposeManagedCallerObjects()') | Tarefa pendente: descartar o estado gerenciado (objetos gerenciados) |
-| [DisposeUnManagedCallerObjects()](EficazFramework.ViewModels.Services/ViewModelService_T_/DisposeUnManagedCallerObjects().md 'EficazFramework.ViewModels.Services.ViewModelService<T>.DisposeUnManagedCallerObjects()') | Tarefa pendente: liberar recursos não gerenciados (objetos não gerenciados) e substituir o finalizador<br/>Tarefa pendente: definir campos grandes como nulos |
-| [RaisePropertyChanged(string)](EficazFramework.ViewModels.Services/ViewModelService_T_/RaisePropertyChanged(string).md 'EficazFramework.ViewModels.Services.ViewModelService<T>.RaisePropertyChanged(string)') | Notifica às views que houve alteração em alguma propriedade do ViewModel |
+<a name='EficazFramework.ViewModels.Services.ViewModelService_T_.DisposeManagedCallerObjects()'></a>
+
+## ViewModelService<T>.DisposeManagedCallerObjects() Method
+
+Tarefa pendente: descartar o estado gerenciado (objetos gerenciados)
+
+```csharp
+internal virtual void DisposeManagedCallerObjects();
+```
+
+<a name='EficazFramework.ViewModels.Services.ViewModelService_T_.DisposeUnManagedCallerObjects()'></a>
+
+## ViewModelService<T>.DisposeUnManagedCallerObjects() Method
+
+Tarefa pendente: liberar recursos não gerenciados (objetos não gerenciados) e substituir o finalizador  
+Tarefa pendente: definir campos grandes como nulos
+
+```csharp
+internal virtual void DisposeUnManagedCallerObjects();
+```
+
+<a name='EficazFramework.ViewModels.Services.ViewModelService_T_.RaisePropertyChanged(string)'></a>
+
+## ViewModelService<T>.RaisePropertyChanged(string) Method
+
+Notifica às views que houve alteração em alguma propriedade do ViewModel
+
+```csharp
+public void RaisePropertyChanged(string propertyName);
+```
+#### Parameters
+
+<a name='EficazFramework.ViewModels.Services.ViewModelService_T_.RaisePropertyChanged(string).propertyName'></a>
+
+`propertyName` [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
+
+Nome da propriedade que deve notificar a View para atualização de Binding
