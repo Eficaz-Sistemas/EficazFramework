@@ -1,5 +1,5 @@
-#### [EficazFramework.Utilities](EficazFrameworkData.md 'EficazFramework Data')
-### [EficazFramework.Threading](EficazFrameworkData.md#EficazFramework.Threading 'EficazFramework.Threading')
+#### [EficazFramework.Utilities](EficazFrameworkUtilities.md 'EficazFramework Utilities')
+### [EficazFramework.Threading](EficazFrameworkUtilities.md#EficazFramework.Threading 'EficazFramework.Threading')
 
 ## Thread Class
 

@@ -1,5 +1,5 @@
-#### [EficazFramework.WPF](EficazFrameworkData.md 'EficazFramework Data')
-### [EficazFramework.XAML.Behaviors](EficazFrameworkData.md#EficazFramework.XAML.Behaviors 'EficazFramework.XAML.Behaviors')
+#### [EficazFramework.WPF](EficazFrameworkWPF.md 'EficazFramework WPF')
+### [EficazFramework.XAML.Behaviors](EficazFrameworkWPF.md#EficazFramework.XAML.Behaviors 'EficazFramework.XAML.Behaviors')
 
 ## TextBoxInputMaskBehavior Class
 

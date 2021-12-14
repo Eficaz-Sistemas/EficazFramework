@@ -1,5 +1,5 @@
-#### [EficazFramework.WPF](EficazFrameworkData.md 'EficazFramework Data')
-### [EficazFramework.XAML.Utilities](EficazFrameworkData.md#EficazFramework.XAML.Utilities 'EficazFramework.XAML.Utilities')
+#### [EficazFramework.WPF](EficazFrameworkWPF.md 'EficazFramework WPF')
+### [EficazFramework.XAML.Utilities](EficazFrameworkWPF.md#EficazFramework.XAML.Utilities 'EficazFramework.XAML.Utilities')
 
 ## VisualTreeHelpers Class
 

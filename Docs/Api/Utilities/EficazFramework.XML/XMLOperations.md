@@ -1,5 +1,5 @@
-#### [EficazFramework.Utilities](EficazFrameworkData.md 'EficazFramework Data')
-### [EficazFramework.XML](EficazFrameworkData.md#EficazFramework.XML 'EficazFramework.XML')
+#### [EficazFramework.Utilities](EficazFrameworkUtilities.md 'EficazFramework Utilities')
+### [EficazFramework.XML](EficazFrameworkUtilities.md#EficazFramework.XML 'EficazFramework.XML')
 
 ## XMLOperations Class
 

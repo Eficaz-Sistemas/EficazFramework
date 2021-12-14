@@ -1,5 +1,5 @@
-#### [EficazFramework.Utilities](EficazFrameworkData.md 'EficazFramework Data')
-### [EficazFramework.Application](EficazFrameworkData.md#EficazFramework.Application 'EficazFramework.Application')
+#### [EficazFramework.Utilities](EficazFrameworkUtilities.md 'EficazFramework Utilities')
+### [EficazFramework.Application](EficazFrameworkUtilities.md#EficazFramework.Application 'EficazFramework.Application')
 
 ## ApplicationManager Class
 

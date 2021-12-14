@@ -1,5 +1,5 @@
-#### [EficazFramework.Utilities](EficazFrameworkData.md 'EficazFramework Data')
-### [EficazFramework.Security.Credential](EficazFrameworkData.md#EficazFramework.Security.Credential 'EficazFramework.Security.Credential')
+#### [EficazFramework.Utilities](EficazFrameworkUtilities.md 'EficazFramework Utilities')
+### [EficazFramework.Security.Credential](EficazFrameworkUtilities.md#EficazFramework.Security.Credential 'EficazFramework.Security.Credential')
 
 ## IcpBrasil Class
 

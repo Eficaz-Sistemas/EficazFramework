@@ -1,5 +1,5 @@
-#### [EficazFramework.Utilities](EficazFrameworkData.md 'EficazFramework Data')
-### [EficazFramework.Extensions](EficazFrameworkData.md#EficazFramework.Extensions 'EficazFramework.Extensions')
+#### [EficazFramework.Utilities](EficazFrameworkUtilities.md 'EficazFramework Utilities')
+### [EficazFramework.Extensions](EficazFrameworkUtilities.md#EficazFramework.Extensions 'EficazFramework.Extensions')
 
 ## ObjectExtensions Class
 

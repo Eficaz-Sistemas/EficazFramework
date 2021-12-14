@@ -1,5 +1,5 @@
-#### [EficazFramework.Utilities](EficazFrameworkData.md 'EficazFramework Data')
-### [EficazFramework.Commands](EficazFrameworkData.md#EficazFramework.Commands 'EficazFramework.Commands')
+#### [EficazFramework.Utilities](EficazFrameworkUtilities.md 'EficazFramework Utilities')
+### [EficazFramework.Commands](EficazFrameworkUtilities.md#EficazFramework.Commands 'EficazFramework.Commands')
 
 ## CommandBase Class
 

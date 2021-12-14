@@ -1,4 +1,4 @@
-#### [EficazFramework.Blazor](EficazFrameworkData.md 'EficazFramework Data')
+#### [EficazFramework.Blazor](EficazFrameworkBlazor.md 'EficazFramework Blazor')
 
 ## EficazFramework.Blazor Assembly
 ### Namespaces

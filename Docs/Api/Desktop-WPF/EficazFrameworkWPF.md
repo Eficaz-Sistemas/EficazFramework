@@ -1,4 +1,4 @@
-#### [EficazFramework.WPF](EficazFrameworkData.md 'EficazFramework Data')
+#### [EficazFramework.WPF](EficazFrameworkWPF.md 'EficazFramework WPF')
 
 ## EficazFramework.WPF Assembly
 ### Namespaces

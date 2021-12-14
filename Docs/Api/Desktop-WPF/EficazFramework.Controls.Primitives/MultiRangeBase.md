@@ -1,5 +1,5 @@
-#### [EficazFramework.WPF](EficazFrameworkData.md 'EficazFramework Data')
-### [EficazFramework.Controls.Primitives](EficazFrameworkData.md#EficazFramework.Controls.Primitives 'EficazFramework.Controls.Primitives')
+#### [EficazFramework.WPF](EficazFrameworkWPF.md 'EficazFramework WPF')
+### [EficazFramework.Controls.Primitives](EficazFrameworkWPF.md#EficazFramework.Controls.Primitives 'EficazFramework.Controls.Primitives')
 
 ## MultiRangeBase Class
 
