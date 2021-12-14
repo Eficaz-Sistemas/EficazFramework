@@ -27,7 +27,7 @@
 	<GenerateDocumentationFile>true</GenerateDocumentationFile>
 	<DefaultDocumentationFolder>..\..\..\Docs\Api\Desktop-WPF</DefaultDocumentationFolder>
 	<DefaultDocumentationAssemblyPageName>EficazFramework Data</DefaultDocumentationAssemblyPageName>
-	<DefaultDocumentationGeneratedPages>Assembly, Types, Members</DefaultDocumentationGeneratedPages>
+	<DefaultDocumentationGeneratedPages>Assembly, Types</DefaultDocumentationGeneratedPages>
 	<DefaultDocumentationFileNameFactory>Folder</DefaultDocumentationFileNameFactory>
   </PropertyGroup>
 	
