@@ -39,7 +39,18 @@ public class Sessions
         EficazFramework.Application.SessionManager.Instance.CurrentSession.ID.Should().Be(2);
         EficazFramework.Application.SessionManager.ActivateSession(1);
         EficazFramework.Application.SessionManager.Instance.CurrentSession.ID.Should().Be(1);
+
+        try
+        {
+            EficazFramework.Application.SessionManager.ActivateSession(99);
+            throw new NullReferenceException("bad");
+        }
+        catch (NullReferenceException ex)
+        {
+            ex.Message.Should().Be(String.Format(Resources.Strings.Application.SessionNotFoundByID, 99));
+        }
     }
+
 
     [Test, Order(3)]
     public void AvoidDuplicated()

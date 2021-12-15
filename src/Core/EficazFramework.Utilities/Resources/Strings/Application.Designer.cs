@@ -22,7 +22,7 @@ namespace EficazFramework.Resources.Strings {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "17.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class Application {
+    public class Application {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
@@ -36,7 +36,7 @@ namespace EficazFramework.Resources.Strings {
         ///   Retorna a instância de ResourceManager armazenada em cache usada por essa classe.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Resources.ResourceManager ResourceManager {
+        public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
                     global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("EficazFramework.Resources.Strings.Application", typeof(Application).Assembly);
@@ -51,7 +51,7 @@ namespace EficazFramework.Resources.Strings {
         ///   pesquisas de recursos que usam essa classe de recurso de tipo de alta segurança.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Globalization.CultureInfo Culture {
+        public static global::System.Globalization.CultureInfo Culture {
             get {
                 return resourceCulture;
             }
@@ -63,7 +63,7 @@ namespace EficazFramework.Resources.Strings {
         /// <summary>
         ///   Consulta uma cadeia de caracteres localizada semelhante a Não há nenhuma seção ativa para iniciar este aplicativo..
         /// </summary>
-        internal static string NoSessionForPrivateApp {
+        public static string NoSessionForPrivateApp {
             get {
                 return ResourceManager.GetString("NoSessionForPrivateApp", resourceCulture);
             }
@@ -72,7 +72,7 @@ namespace EficazFramework.Resources.Strings {
         /// <summary>
         ///   Consulta uma cadeia de caracteres localizada semelhante a A seção {0} não está iniciada..
         /// </summary>
-        internal static string SessionNotFoundByID {
+        public static string SessionNotFoundByID {
             get {
                 return ResourceManager.GetString("SessionNotFoundByID", resourceCulture);
             }
@@ -81,7 +81,7 @@ namespace EficazFramework.Resources.Strings {
         /// <summary>
         ///   Consulta uma cadeia de caracteres localizada semelhante a Nenhuma seção iniciada.
         /// </summary>
-        internal static string SessionZeroTooltip {
+        public static string SessionZeroTooltip {
             get {
                 return ResourceManager.GetString("SessionZeroTooltip", resourceCulture);
             }

@@ -1,6 +1,7 @@
 ﻿using FluentAssertions;
 using NUnit.Framework;
 using System;
+using System.IO;
 using System.Linq;
 
 namespace EficazFramework.Application;
@@ -32,7 +33,8 @@ public class Apps
         EficazFramework.Application.ApplicationDefinition cobranca = new()
         {
             Group = "Financeiro",
-            Title = "Cobrança"
+            Title = "Cobrança",
+            IsPublic = false
         };
         EficazFramework.Application.ApplicationDefinition suporte = new()
         {
@@ -93,8 +95,18 @@ public class Apps
     {
         EficazFramework.Application.ApplicationManager.AllAplications[1].Activate();
         EficazFramework.Application.ApplicationManager.RunningAplications.Count.Should().Be(1);
-        EficazFramework.Application.ApplicationManager.AllAplications[4].Activate();
+        EficazFramework.Application.ApplicationManager.AllAplications[5].Activate();
         EficazFramework.Application.ApplicationManager.RunningAplications.Count.Should().Be(2);
+        try
+        {
+            EficazFramework.Application.ApplicationManager.AllAplications[4].Activate();
+            throw new NullReferenceException("bad");
+
+        }
+        catch (InvalidDataException ex)
+        {
+            ex.Message.Should().Be(Resources.Strings.Application.NoSessionForPrivateApp);
+        }
     }
 
     [Test, Order(3)]
@@ -123,7 +135,7 @@ public class Apps
     {
         sap.AllAplications[1].Activate(sap);
         sap.RunningAplications.Count.Should().Be(1);
-        sap.AllAplications[4].Activate(sap);
+        sap.AllAplications[5].Activate(sap);
         sap.RunningAplications.Count.Should().Be(2);
     }
 

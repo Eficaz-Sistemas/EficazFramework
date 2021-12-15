@@ -89,7 +89,7 @@
 
   <ItemGroup>
     <EmbeddedResource Update="Resources\Strings\Application.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
+      <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Application.Designer.cs</LastGenOutput>
       <CustomToolNamespace>EficazFramework.Resources.Strings</CustomToolNamespace>
     </EmbeddedResource>
