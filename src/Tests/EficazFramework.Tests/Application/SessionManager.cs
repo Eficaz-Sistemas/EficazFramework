@@ -21,9 +21,18 @@ public class Sessions
         EficazFramework.Application.SessionManager.ActivateSession(new EficazFramework.Application.Session()
         {
             ID = 1,
-            Name = "Desktop 2"
+            Name = "Desktop 1",
+            Icon = "<svg/>",
+            ShowIdAsIcon = true,
+            Tag = "My first app"
         });
         EficazFramework.Application.SessionManager.Instance.CurrentSession.Should().NotBeNull();
+        EficazFramework.Application.SessionManager.Instance.CurrentSession.SectionIdLargerText.Should().BeFalse();
+        EficazFramework.Application.SessionManager.Instance.CurrentSession.Name.Should().Be("Desktop 1");
+        EficazFramework.Application.SessionManager.Instance.CurrentSession.Icon.Should().Be("<svg/>");
+        EficazFramework.Application.SessionManager.Instance.CurrentSession.ShowIdAsIcon.Should().BeTrue();
+        EficazFramework.Application.SessionManager.Instance.CurrentSession.Tag.Should().Be("My first app");
+        EficazFramework.Application.SessionManager.Instance.CurrentSession.ToString().Should().Be("1 - Desktop 1");
         EficazFramework.Application.SessionManager.Instance.CurrentSession.ID.Should().Be(1);
     }
 
@@ -33,13 +42,13 @@ public class Sessions
         EficazFramework.Application.SessionManager.Instance.CurrentSession.ID.Should().Be(1);
         EficazFramework.Application.SessionManager.ActivateSession(new EficazFramework.Application.Session()
         {
-            ID = 2,
-            Name = "Desktop 3"
+            ID = 2222,
+            Name = "Desktop 2222"
         });
-        EficazFramework.Application.SessionManager.Instance.CurrentSession.ID.Should().Be(2);
+        EficazFramework.Application.SessionManager.Instance.CurrentSession.ID.Should().Be(2222);
+        EficazFramework.Application.SessionManager.Instance.CurrentSession.SectionIdLargerText.Should().BeTrue();
         EficazFramework.Application.SessionManager.ActivateSession(1);
         EficazFramework.Application.SessionManager.Instance.CurrentSession.ID.Should().Be(1);
-
         try
         {
             EficazFramework.Application.SessionManager.ActivateSession(99);
@@ -51,13 +60,12 @@ public class Sessions
         }
     }
 
-
     [Test, Order(3)]
     public void AvoidDuplicated()
     {
         EficazFramework.Application.SessionManager.ActivateSession(new EficazFramework.Application.Session()
         {
-            ID = 2,
+            ID = 2222,
             Name = "Desktop 3, Copy"
         });
         _ = EficazFramework.Application.SessionManager.Sessions.GroupBy(i => i.ID).Count(gp => gp.Count() > 1).Should().Be(0);
@@ -68,8 +76,8 @@ public class Sessions
     public void Dispose()
     {
         EficazFramework.Application.SessionManager.DisposeSession(1);
-        EficazFramework.Application.SessionManager.Instance.CurrentSession.ID.Should().Be(2);
-        EficazFramework.Application.SessionManager.DisposeSession(EficazFramework.Application.SessionManager.Sessions[1]); //SESSION 1 AT LAST POSITION
+        EficazFramework.Application.SessionManager.Instance.CurrentSession.ID.Should().Be(2222);
+        EficazFramework.Application.SessionManager.Instance.CurrentSession.RemoveSectionCommand.Execute(null);
         EficazFramework.Application.SessionManager.Instance.CurrentSession.ID.Should().Be(0);
     }
 
