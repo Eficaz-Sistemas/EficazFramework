@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Diagnostics.CodeAnalysis;
 using System.IO;
 using System.Linq;
 
@@ -256,12 +257,14 @@ public sealed class ApplicationInstance : ApplicationDefinition, INotifyProperty
 
 }
 
+[ExcludeFromCodeCoverage]
 public sealed class ApplicationAttribute
 {
     public string Key { get; set; }
     public object Value { get; set; }
 }
 
+[ExcludeFromCodeCoverage]
 public sealed class ApplicationAttributeCollection : List<ApplicationAttribute>
 {
     public object Item(string key)
