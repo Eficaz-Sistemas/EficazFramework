@@ -3,10 +3,12 @@ using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 
 namespace EficazFramework.Security;
 
+[ExcludeFromCodeCoverage]
 public class GPO
 {
     private static Guid _adminGroup = Guid.Parse("63e11c7d-eec3-4fe4-9548-a4d800dc417b");
@@ -149,6 +151,7 @@ public class GPO
     }
 }
 
+[ExcludeFromCodeCoverage]
 public class Identity : List<RoleMember>
 {
     protected bool _frozen = false;
@@ -245,6 +248,7 @@ public class Identity : List<RoleMember>
     }
 }
 
+[ExcludeFromCodeCoverage]
 public class Role : EficazFramework.Entities.EntityBase // database Entity
 {
 
@@ -410,6 +414,7 @@ public class Role : EficazFramework.Entities.EntityBase // database Entity
 
 }
 
+[ExcludeFromCodeCoverage]
 public class Member
 {
     public Member(Guid id, Guid group, string name, byte[] image)
@@ -426,6 +431,7 @@ public class Member
     public byte[] Image { get; private set; }
 }
 
+[ExcludeFromCodeCoverage]
 public class RoleMember : Entities.EntityBase // database Entity
 {
 
@@ -537,6 +543,7 @@ public class RoleMember : Entities.EntityBase // database Entity
     }
 }
 
+[ExcludeFromCodeCoverage]
 public class RoleEditor : EficazFramework.Entities.EntityBase // NOT db entity, just for View Formating
 {
     private string _entityName;
@@ -695,6 +702,7 @@ public class RoleEditor : EficazFramework.Entities.EntityBase // NOT db entity, 
 
 }
 
+[ExcludeFromCodeCoverage]
 public class CommonRoleGUIDs
 {
     [Display(Name = "Data_MVVM_GPO_AppAccess")]

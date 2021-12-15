@@ -21,24 +21,11 @@ internal class InMemoryDbContext : Microsoft.EntityFrameworkCore.DbContext
         var blogmodel = modelBuilder.Entity<Classes.Blog>();
         blogmodel.HasKey(x => x.Id);
         blogmodel.HasMany(left => left.Posts).WithOne(right => right.Blog).HasForeignKey(pk => pk.BlogId);
-        blogmodel.Ignore(x => x.IsLoaded);
-        blogmodel.Ignore(x => x.IsNew);
-        blogmodel.Ignore(x => x.IsSelected);
-        blogmodel.Ignore(x => x.HasErrors);
-        blogmodel.Ignore(x => x.PostProcessed);
-        blogmodel.Ignore(x => x.ValidationMode);
-        blogmodel.Ignore(x => x.Validator);
+        Entities.EntityMappingConfigurator.MapBaseClassProperties<Classes.Blog>(blogmodel);
 
         var postmodel = modelBuilder.Entity<Classes.Post>();
         postmodel.HasKey(x => new { x.BlogId, x.PostId });
-        postmodel.Ignore(x => x.IsLoaded);
-        postmodel.Ignore(x => x.IsNew);
-        postmodel.Ignore(x => x.IsSelected);
-        postmodel.Ignore(x => x.HasErrors);
-        postmodel.Ignore(x => x.PostProcessed);
-        postmodel.Ignore(x => x.ValidationMode);
-        postmodel.Ignore(x => x.Validator);
-
+        Entities.EntityMappingConfigurator.MapBaseClassProperties<Classes.Post>(postmodel);
     }
 
     internal DbSet<Classes.Blog> Blogs { get; set; }
