@@ -14,7 +14,8 @@ public static class DbContext
     /// </summary>
     public static bool Exists(this Microsoft.EntityFrameworkCore.DbContext context)
     {
-        return ((RelationalDatabaseCreator)context.GetService<IDatabaseCreator>()).Exists();
+        IDatabaseCreator creator = context.GetService<IDatabaseCreator>();
+        return creator.CanConnect();
     }
 
     /// <summary>
@@ -22,7 +23,8 @@ public static class DbContext
     /// </summary>
     public async static Task<bool> ExistsAsync(this Microsoft.EntityFrameworkCore.DbContext context)
     {
-        return await ((RelationalDatabaseCreator)context.GetService<IDatabaseCreator>()).ExistsAsync();
+        IDatabaseCreator creator = context.GetService<IDatabaseCreator>();
+        return await creator.CanConnectAsync();
     }
 
     /// <summary>
@@ -31,6 +33,16 @@ public static class DbContext
     public static bool AllMigrationsApplied(this Microsoft.EntityFrameworkCore.DbContext context)
     {
         var applied = context.GetService<IHistoryRepository>().GetAppliedMigrations().Select(m => m.MigrationId);
+        var total = context.GetService<IMigrationsAssembly>().Migrations.Select(m => m.Key);
+        return !total.Except(applied).Any();
+    }
+
+    /// <summary>
+    /// Verifica se todos os migrations foram devidamente aplicados
+    /// </summary>
+    public async static Task<bool> AllMigrationsAppliedAsync(this Microsoft.EntityFrameworkCore.DbContext context)
+    {
+        var applied = (await context.GetService<IHistoryRepository>().GetAppliedMigrationsAsync()).Select(m => m.MigrationId);
         var total = context.GetService<IMigrationsAssembly>().Migrations.Select(m => m.Key);
         return !total.Except(applied).Any();
     }

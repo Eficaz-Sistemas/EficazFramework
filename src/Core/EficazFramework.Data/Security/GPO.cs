@@ -12,23 +12,12 @@ public class GPO
     private static Guid _adminGroup = Guid.Parse("63e11c7d-eec3-4fe4-9548-a4d800dc417b");
     private static int _concurrentCount = int.MaxValue;
 
-    private static Identity _id = null;
-    public static Identity Identity
-    {
-        get
-        {
-            return _id;
-        }
-    }
+    public static Identity Identity { get; private set; } = null;
 
     private static bool _forceGPO = false;
     public static bool IsEnabled
     {
-        get
-        {
-            return _forceGPO;
-        }
-
+        get => _forceGPO;
         set
         {
             if (_forceGPO == true & value == false)
@@ -63,13 +52,13 @@ public class GPO
     {
         if (identity is null)
             throw new UnauthorizedAccessException(Resources.Strings.Security.GPO_NoIdentityLogon);
-        _id = (Identity)identity;
+        Identity = (Identity)identity;
         Authenticated?.Invoke(null, EventArgs.Empty);
     }
 
     public static void Logoff()
     {
-        _id = null;
+        Identity = null;
         LogoffCompleted?.Invoke(null, EventArgs.Empty);
     }
 
@@ -270,11 +259,7 @@ public class Role : EficazFramework.Entities.EntityBase // database Entity
     [Key()]
     public Guid Key
     {
-        get
-        {
-            return _key;
-        }
-
+        get => _key;
         set
         {
             _key = value;
@@ -284,10 +269,7 @@ public class Role : EficazFramework.Entities.EntityBase // database Entity
 
     public int Order
     {
-        get
-        {
-            return _order;
-        }
+        get => _order;
 
         set
         {
@@ -306,11 +288,7 @@ public class Role : EficazFramework.Entities.EntityBase // database Entity
     /// </summary>
     public string Group
     {
-        get
-        {
-            return _group;
-        }
-
+        get => _group;
         set
         {
             _group = value;
@@ -328,11 +306,7 @@ public class Role : EficazFramework.Entities.EntityBase // database Entity
     /// </summary>
     public string EntityDisplayName
     {
-        get
-        {
-            return _entityName;
-        }
-
+        get => _entityName;
         set
         {
             _entityName = value;
@@ -345,11 +319,7 @@ public class Role : EficazFramework.Entities.EntityBase // database Entity
     /// </summary>
     public string Entity
     {
-        get
-        {
-            return _entityType;
-        }
-
+        get => _entityType;
         set
         {
             _entityType = value;
@@ -362,11 +332,7 @@ public class Role : EficazFramework.Entities.EntityBase // database Entity
     /// </summary>
     public Guid RolAction
     {
-        get
-        {
-            return _role;
-        }
-
+        get => _role;
         set
         {
             _role = value;
@@ -377,11 +343,7 @@ public class Role : EficazFramework.Entities.EntityBase // database Entity
     // <ForeignKey("Role_FK")>
     public virtual Collections.AsyncObservableCollection<RoleMember> Members
     {
-        get
-        {
-            return _members;
-        }
-
+        get => _members;
         set
         {
             _members = value;
@@ -467,20 +429,14 @@ public class Member
 public class RoleMember : Entities.EntityBase // database Entity
 {
 
-    /* TODO ERROR: Skipped RegionDirectiveTrivia */
     private Guid _roleKey;
     private Guid _member_group;
     private Role _roleEntry;
 
-    /* TODO ERROR: Skipped EndRegionDirectiveTrivia */
     private Guid _id;
     public Guid ID
     {
-        get
-        {
-            return _id;
-        }
-
+        get => _id;
         set
         {
             _id = value;
@@ -494,11 +450,7 @@ public class RoleMember : Entities.EntityBase // database Entity
     [Key()]
     public Guid Role_FK
     {
-        get
-        {
-            return _roleKey;
-        }
-
+        get => _roleKey;
         set
         {
             _roleKey = value;
@@ -512,11 +464,7 @@ public class RoleMember : Entities.EntityBase // database Entity
     [Key()]
     public Guid MemberOrGroup
     {
-        get
-        {
-            return _member_group;
-        }
-
+        get => _member_group;
         set
         {
             _member_group = value;
@@ -530,11 +478,7 @@ public class RoleMember : Entities.EntityBase // database Entity
     /// </summary>
     public Role Role
     {
-        get
-        {
-            return _roleEntry;
-        }
-
+        get => _roleEntry;
         set
         {
             _roleEntry = value;
@@ -595,8 +539,6 @@ public class RoleMember : Entities.EntityBase // database Entity
 
 public class RoleEditor : EficazFramework.Entities.EntityBase // NOT db entity, just for View Formating
 {
-
-    /* TODO ERROR: Skipped RegionDirectiveTrivia */
     private string _entityName;
     private string _group;
     private Role _selectOrRead = null;
@@ -608,8 +550,6 @@ public class RoleEditor : EficazFramework.Entities.EntityBase // NOT db entity, 
     private bool? _editChecked = default;
     private bool? _deleteChecked = default;
 
-    /* TODO ERROR: Skipped EndRegionDirectiveTrivia */
-    /* TODO ERROR: Skipped RegionDirectiveTrivia */
     /// <summary>
     /// (Optional) Group. Just for better structure on the View editor.
     /// DataGrid:           |            |           |
@@ -620,11 +560,7 @@ public class RoleEditor : EficazFramework.Entities.EntityBase // NOT db entity, 
     /// </summary>
     public string Group
     {
-        get
-        {
-            return _group;
-        }
-
+        get => _group;
         set
         {
             _group = value;
@@ -642,11 +578,7 @@ public class RoleEditor : EficazFramework.Entities.EntityBase // NOT db entity, 
     /// </summary>
     public string EntityDisplayName
     {
-        get
-        {
-            return _entityName;
-        }
-
+        get => _entityName;
         set
         {
             _entityName = value;
@@ -654,14 +586,9 @@ public class RoleEditor : EficazFramework.Entities.EntityBase // NOT db entity, 
         }
     }
 
-    /* TODO ERROR: Skipped RegionDirectiveTrivia */
     public Role SelectRole
     {
-        get
-        {
-            return _selectOrRead;
-        }
-
+        get => _selectOrRead;
         set
         {
             _selectOrRead = value;
@@ -673,11 +600,7 @@ public class RoleEditor : EficazFramework.Entities.EntityBase // NOT db entity, 
 
     public bool? SelectChecked
     {
-        get
-        {
-            return _selectedChecked;
-        }
-
+        get => _selectedChecked;
         set
         {
             _selectedChecked = value;
@@ -685,15 +608,9 @@ public class RoleEditor : EficazFramework.Entities.EntityBase // NOT db entity, 
         }
     }
 
-    /* TODO ERROR: Skipped EndRegionDirectiveTrivia */
-    /* TODO ERROR: Skipped RegionDirectiveTrivia */
     public Role InsertRole
     {
-        get
-        {
-            return _insertRole;
-        }
-
+        get => _insertRole;
         set
         {
             _insertRole = value;
@@ -705,11 +622,7 @@ public class RoleEditor : EficazFramework.Entities.EntityBase // NOT db entity, 
 
     public bool? InsertChecked
     {
-        get
-        {
-            return _insertChecked;
-        }
-
+        get => _insertChecked;
         set
         {
             _insertChecked = value;
@@ -717,15 +630,9 @@ public class RoleEditor : EficazFramework.Entities.EntityBase // NOT db entity, 
         }
     }
 
-    /* TODO ERROR: Skipped EndRegionDirectiveTrivia */
-    /* TODO ERROR: Skipped RegionDirectiveTrivia */
     public Role EditRole
     {
-        get
-        {
-            return _editRole;
-        }
-
+        get => _editRole;
         set
         {
             _editRole = value;
@@ -737,11 +644,7 @@ public class RoleEditor : EficazFramework.Entities.EntityBase // NOT db entity, 
 
     public bool? EditChecked
     {
-        get
-        {
-            return _editChecked;
-        }
-
+        get => _editChecked;
         set
         {
             _editChecked = value;
@@ -749,15 +652,9 @@ public class RoleEditor : EficazFramework.Entities.EntityBase // NOT db entity, 
         }
     }
 
-    /* TODO ERROR: Skipped EndRegionDirectiveTrivia */
-    /* TODO ERROR: Skipped RegionDirectiveTrivia */
     public Role DeleteRole
     {
-        get
-        {
-            return _deleteRole;
-        }
-
+        get => _deleteRole;
         set
         {
             _deleteRole = value;
@@ -769,11 +666,7 @@ public class RoleEditor : EficazFramework.Entities.EntityBase // NOT db entity, 
 
     public bool? DeleteChecked
     {
-        get
-        {
-            return _deleteChecked;
-        }
-
+        get => _deleteChecked;
         set
         {
             _deleteChecked = value;
@@ -781,7 +674,6 @@ public class RoleEditor : EficazFramework.Entities.EntityBase // NOT db entity, 
         }
     }
 
-    /* TODO ERROR: Skipped EndRegionDirectiveTrivia */
     public void Reset()
     {
         SelectChecked = false;
@@ -801,13 +693,10 @@ public class RoleEditor : EficazFramework.Entities.EntityBase // NOT db entity, 
         return result;
     }
 
-    /* TODO ERROR: Skipped EndRegionDirectiveTrivia */
 }
 
 public class CommonRoleGUIDs
 {
-    // These are the common operations that GPO could consider.
-    // For custom operations, create a new GUID and commit to database. You will need to script actions for their.
     [Display(Name = "Data_MVVM_GPO_AppAccess")]
     public static Guid ACCESS { get; private set; } = new Guid("9228A019-82E5-473F-8A01-8EC33F3297A4");
     [Display(Name = "Data_MVVM_GPO_AppRead")]
