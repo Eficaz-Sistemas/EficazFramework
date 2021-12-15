@@ -373,6 +373,7 @@ public sealed class EntityRepository<TEntity> : Repositories.RepositoryBase<TEnt
     /// <returns></returns>
     public async Task RunCommandAsync(string command)
     {
+        PrepareDbContext();
         System.Data.Common.DbCommand cmd = DbContext.Database.GetDbConnection().CreateCommand();
         cmd.CommandText = command;
         cmd.CommandTimeout = int.MaxValue;

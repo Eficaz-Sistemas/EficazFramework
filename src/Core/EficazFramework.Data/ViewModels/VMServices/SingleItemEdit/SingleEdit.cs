@@ -26,7 +26,6 @@ public class SingleEdit<T> : ViewModelService<T> where T : class
             ViewModelInstance.Commands["New"].Execute(null);
     }
 
-    /* TODO ERROR: Skipped RegionDirectiveTrivia */
     public static readonly Guid CommonGUIDs_ADDED = Guid.Parse("81961B4B-5ABE-4F67-BD02-5201095946F5");
     public static readonly Guid CommonGUIDs_EDITING = Guid.Parse("8C4F51CF-1DF3-4D7A-8761-E95D16FBA920");
     public static readonly Guid CommonGUIDs_SAVED = Guid.Parse("E6232EA7-6026-469D-869C-C65D220F75DF");
@@ -37,11 +36,7 @@ public class SingleEdit<T> : ViewModelService<T> where T : class
     /// </summary>
     public T CurrentEntry
     {
-        get
-        {
-            return _currentEntry;
-        }
-
+        get => _currentEntry;
         set
         {
             if (_currentEntry != value)
@@ -67,46 +62,22 @@ public class SingleEdit<T> : ViewModelService<T> where T : class
     /// <summary>
     /// Notifica a View se o comando Novo está habilitado.
     /// </summary>
-    public bool CanAdd
-    {
-        get
-        {
-            return ViewModelInstance.State == Enums.CRUD.State.Bloqueado | ViewModelInstance.State == Enums.CRUD.State.Leitura;
-        }
-    }
+    public bool CanAdd => ViewModelInstance.State == Enums.CRUD.State.Bloqueado | ViewModelInstance.State == Enums.CRUD.State.Leitura;
 
     /// <summary>
     /// Notifica a View se o comando Editar está habilitado.
     /// </summary>
-    public bool CanEdit
-    {
-        get
-        {
-            return ViewModelInstance.State == Enums.CRUD.State.Leitura & CurrentEntry != null;
-        }
-    }
+    public bool CanEdit => ViewModelInstance.State == Enums.CRUD.State.Leitura & CurrentEntry != null;
 
     /// <summary>
     /// Notifica a View se o comando salvar está habilitado.
     /// </summary>
-    public bool CanSave
-    {
-        get
-        {
-            return ViewModelInstance.State != Enums.CRUD.State.Bloqueado & ViewModelInstance.State != Enums.CRUD.State.Processando & ViewModelInstance.State != Enums.CRUD.State.Leitura;
-        }
-    }
+    public bool CanSave => ViewModelInstance.State != Enums.CRUD.State.Bloqueado & ViewModelInstance.State != Enums.CRUD.State.Processando & ViewModelInstance.State != Enums.CRUD.State.Leitura;
 
     /// <summary>
     /// Notifica a View se o comando Excluir está habilitado.
     /// </summary>
-    public bool CanDelete
-    {
-        get
-        {
-            return ViewModelInstance.State == Enums.CRUD.State.Leitura & CurrentEntry != null;
-        }
-    }
+    public bool CanDelete => ViewModelInstance.State == Enums.CRUD.State.Leitura & CurrentEntry != null;
 
     /// <summary>
     /// Notifica a View se o comando de cancelamento de gravação assíncrona está disponível.
@@ -116,17 +87,8 @@ public class SingleEdit<T> : ViewModelService<T> where T : class
     /// <summary>
     /// Notifica a View se o comando cancelar está disponível.
     /// </summary>
-    public bool CanCancelEntry
-    {
-        get
-        {
-            return ViewModelInstance.State == Enums.CRUD.State.Edicao | ViewModelInstance.State == Enums.CRUD.State.Novo;
-        }
-    }
+    public bool CanCancelEntry => ViewModelInstance.State == Enums.CRUD.State.Edicao | ViewModelInstance.State == Enums.CRUD.State.Novo;
 
-    /* TODO ERROR: Skipped EndRegionDirectiveTrivia */
-
-    /* TODO ERROR: Skipped RegionDirectiveTrivia */
     /// <summary>
     /// Ações do comando Novo
     /// </summary>
@@ -436,8 +398,6 @@ public class SingleEdit<T> : ViewModelService<T> where T : class
         }
     }
 
-    /* TODO ERROR: Skipped EndRegionDirectiveTrivia */
-    /* TODO ERROR: Skipped RegionDirectiveTrivia */
     /// <summary>
     /// Acão ao acionar o cancelamento da operação de gravação assíncrona
     /// </summary>
@@ -574,8 +534,6 @@ public class SingleEdit<T> : ViewModelService<T> where T : class
     }
 
 
-    /* TODO ERROR: Skipped EndRegionDirectiveTrivia */
-    /* TODO ERROR: Skipped RegionDirectiveTrivia */
     /// <summary>
     /// Atualiza o valor da Propriedade CanSave após a mudança de estado do ViewModel.
     /// </summary>
@@ -609,8 +567,6 @@ public class SingleEdit<T> : ViewModelService<T> where T : class
     }
 
 
-    /* TODO ERROR: Skipped EndRegionDirectiveTrivia */
-    /* TODO ERROR: Skipped RegionDirectiveTrivia */
     internal override void DisposeManagedCallerObjects()
     {
         base.DisposeManagedCallerObjects();
@@ -623,8 +579,6 @@ public class SingleEdit<T> : ViewModelService<T> where T : class
         ViewModelInstance.Commands.Remove("Delete");
         ViewModelInstance.Services.Remove(ServiceUtils.KEY_SINGLEEDIT);
     }
-
-    /* TODO ERROR: Skipped EndRegionDirectiveTrivia */
 }
 
 public static partial class ServiceUtils

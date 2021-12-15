@@ -6,16 +6,16 @@ using System.Threading.Tasks;
 
 namespace EficazFramework.Resources.Mocks.Classes;
 
-class Blog
+internal class Blog : Entities.EntityBase
 {
-    public System.Guid Id { get; set; }   
+    public System.Guid Id { get; set; } = Guid.NewGuid();
     public string Name { get; set; }
 
     public List<Post> Posts { get; set; }
 
 }
 
-class Post
+internal class Post : Entities.EntityBase
 {
     public Blog Blog { get; set; }  
     public System.Guid BlogId { get; set; }
