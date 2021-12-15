@@ -9,11 +9,11 @@
 [![Twitter Follow](http://efshields.brazilsouth.azurecontainer.io:/twitter/follow/EficazCS?color=blue&label=twitter&logo=twitter&logoColor=white&style=flat-square)](https://twitter.com/EficazCS)
 <!---![Visual Studio Marketplace Version](https://img.shields.io/visual-studio-marketplace/v/eficazsistemasdegestoeintelignciatributrialtda.efcorev4?label=SDK&logo=Eficaz%20Sistemas)-->
 
-   Bem vindo ao ambiente de gerenciamento da EficazFramework, para dotNet.
+   Bem vindo ao ambiente de gerenciamento da EficazFramework, para .NET.
    
    Este projeto tem por finalidade oferecer funcionalidades extras e padronizadas a toda a grade de aplicações da Eficaz, para diversas plataformas.
    
-   Desenvolvida e lapidada com base na experiência adquirida nas duas versões anteriores, atualizada para acompanhar a versão mais recente do .NET (Core).
+   Desenvolvida e lapidada com base na experiência adquirida nas duas versões anteriores, atualizada para acompanhar a versão mais recente do .NET.
    
    Esta versão conta atualmente com uma quantidade maior de instruções sem plataforma específica, e foi estruturada para utilização dos recursos de Implantação e Entrega Contínua de aplicações (Azure DevOps).
 
@@ -41,8 +41,8 @@
    - EFD ICMS / IPI
    - EFD Contribuições
    - GNRE
-   - NF-e, versões 2.00 e 3.10
-   - NFS-e (Ginfes)
+   - NF-e
+   - NFS-e
 
 #### Biblioteca de extensão para Windows Presentation Foundation (WPF)
    - Controles Visuais para melhor experiência de utilização pelo usuário
