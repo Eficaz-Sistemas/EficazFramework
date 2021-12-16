@@ -16,7 +16,7 @@
    Desenvolvida e lapidada com base na experiência adquirida nas duas versões anteriores, atualizada para acompanhar a versão mais recente do .NET.
 
 ## Documentação
-[Acesse aqui a documentação](https://github.com/Eficaz-Sistemas/EficazFramework/blob/master/Docs/Api/Index.md)
+[Acesse aqui a documentação](Docs/Api/Index.md)
    
 ## Características
 
