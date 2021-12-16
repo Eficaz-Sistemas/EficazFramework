@@ -59,6 +59,10 @@ class Date
         october21Date.MonthEndDate().Should().Be(new DateTime(2021, 10, 31, 0, 0, 0));
         october21Date.MonthEndDate(true).Should().Be(new DateTime(2021, 10, 29, 0, 0, 0));
         october21Date.MonthEndDate(true, true).Should().Be(new DateTime(2021, 10, 30, 0, 0, 0));
+        new DateTime(2021, 11, 01).MonthEndDate().Should().Be(new DateTime(2021, 11, 30, 0, 0, 0));
+        new DateTime(2021, 11, 01).MonthEndDate(true).Should().Be(new DateTime(2021, 11, 30, 0, 0, 0));
+        new DateTime(2021, 11, 01).MonthEndDate(true, true).Should().Be(new DateTime(2021, 11, 30, 0, 0, 0));
+        new DateTime(2021, 11, 01).MonthEndDate(true, true, true).Should().Be(new DateTime(2021, 11, 30, 23, 59, 59));
     }
 
     [Test]
