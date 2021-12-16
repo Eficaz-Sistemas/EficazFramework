@@ -9,15 +9,16 @@
 [![Twitter Follow](http://efshields.brazilsouth.azurecontainer.io:/twitter/follow/EficazCS?color=blue&label=twitter&logo=twitter&logoColor=white&style=flat-square)](https://twitter.com/EficazCS)
 <!---![Visual Studio Marketplace Version](https://img.shields.io/visual-studio-marketplace/v/eficazsistemasdegestoeintelignciatributrialtda.efcorev4?label=SDK&logo=Eficaz%20Sistemas)-->
 
-   Bem vindo ao ambiente de gerenciamento da EficazFramework, para .NET.
+   Bem vindo à EficazFramework, biblioteca de extensões, componentes e utilitários para aplicações .NET em geral.
    
-   Este projeto tem por finalidade oferecer funcionalidades extras e padronizadas a toda a grade de aplicações da Eficaz, para diversas plataformas.
+   Este projeto tem por finalidade oferecer funcionalidades extras e padronizadas para diversas plataformas.
    
    Desenvolvida e lapidada com base na experiência adquirida nas duas versões anteriores, atualizada para acompanhar a versão mais recente do .NET.
-   
-   Esta versão conta atualmente com uma quantidade maior de instruções sem plataforma específica, e foi estruturada para utilização dos recursos de Implantação e Entrega Contínua de aplicações (Azure DevOps).
 
-   A distribuição das bilbiotecas será disponibilizada por meio de pacotes Nuget, através do [Feed de Pacotes da Eficaz](https://pkgs.dev.azure.com/eficazcs/_packaging/DevPackages/nuget/v3/index.json).
+## Documentação
+[Acesse aqui a documentação](https://github.com/Eficaz-Sistemas/EficazFramework/blob/master/Docs/Api/Index.md)
+   
+## Características
 
 #### Ambiente Multi-Plataformas
    - Extensões para operações comuns em datas e números
@@ -53,3 +54,7 @@
 #### Biblioteca de extensão para Blazor (Server-Side e WebAssembly)
    - Novos Componentes, Templates e Layouts para melhor padronização das aplicações, conforme sua natureza
    - Interface de usuário MaterialDesign, utilizando a biblioteca OpenSource [MudBlazor](https://github.com/MudBlazor/MudBlazor)
+   
+   
+#### Pré-Requisitos
+   - [.NET 6.0](https://dotnet.microsoft.com/download/dotnet/6.0), para versão mais recente da biblioteca (pode sofrer alterações sem aviso prévio).
