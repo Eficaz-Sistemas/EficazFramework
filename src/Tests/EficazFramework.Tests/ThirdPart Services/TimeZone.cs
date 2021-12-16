@@ -13,6 +13,7 @@ public class TimeZoneTests
     {
         var result = await TimeZone.Now();
         (result as DateTime?).Should().NotBeNull();
+
     }
 
 }

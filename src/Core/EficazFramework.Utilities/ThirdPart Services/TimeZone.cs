@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics.CodeAnalysis;
 using System.Net.Http;
 using System.Text.Json;
 using System.Threading.Tasks;
@@ -39,6 +40,7 @@ public class TimeZone
 
 public class TimeZoneData
 {
+    [ExcludeFromCodeCoverage]
     public string Status { get; set; }
     public string Formatted { get; set; }
 
@@ -53,5 +55,6 @@ public class TimeZoneData
         }
     }
 
+    [ExcludeFromCodeCoverage]
     public int Timestamp { get; set; }
 }
