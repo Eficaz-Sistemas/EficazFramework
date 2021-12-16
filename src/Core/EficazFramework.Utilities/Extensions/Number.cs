@@ -221,6 +221,8 @@ public static class NumberExtensions
     private static readonly string[] real_br = new string[] { "Real", "Reais", "Centavo", "Centavos" };
     private static readonly string[] dolar_us = new string[] { "Dólar", "Dólares", "Centavo", "Centavos" };
     private static readonly string[] euro_eu = new string[] { "Euro", "Euros", "Cêntimo", "Cêntimos" };
+    private static readonly string[] naturais = new string[] { "Inteiro", "Inteiros", "Décimo", "Décimos", "Centésimo", "Centésimos" };
+    private static readonly string[] naturaisFem = new string[] { "Inteira", "Inteiras", "Décima", "Décimas", "Centésima", "Centésimas" };
 
     private static string GeraExtensoInternal(decimal number, bool moeda, Gender genero, Currency tipoMoeda = Currency.Real_BRL)
     {
@@ -231,247 +233,198 @@ public static class NumberExtensions
             Currency.Euro_EUR => euro_eu,
             _ => throw new NotImplementedException()
         };
+        var generoNaturais = genero switch
+        {
+            Gender.Masculino => naturais,
+            Gender.Feminino => naturaisFem,
+            _ => throw new NotImplementedException()
+        };
 
         // variaveis
         number = Math.Abs(number);
         string numstr = "";
-        int reais;
-        int centavos;
+        int inteiros;
+        int fracao;
 
         // separa a parte inteira da parte fracionaria
-        reais = (int)Math.Truncate(number);
-        centavos = Conversions.ToInteger((number - reais) * 100);
+        inteiros = (int)Math.Truncate(number);
+        fracao = Conversions.ToInteger((number - inteiros) * 100);
 
         // parte inteira
-        switch (reais.ToString().Trim().Length)
+        var pluralIndex = 0;
+        switch (inteiros.ToString().Trim().Length)
         {
             case var @case when @case <= 3: // centenas
+            {
+                if (inteiros != 1)
                 {
-                    if (reais != 1)
-                    {
-                        numstr = GetNumberStringArray(reais, genero);
-                        if (moeda == true)
-                        {
-                            numstr += $" {currency[1]}"; // " Reais"
-                        }
-                    }
-                    else
-                    {
-                        numstr = GetNumberStringArray(reais, genero);
-                        if (moeda == true)
-                        {
-                            numstr += $" {currency[0]}"; // " Real"
-                        }
-                    }
-
-                    break;
+                    numstr = GetNumberStringArray(inteiros, genero);
+                    pluralIndex = 1;
                 }
+                else
+                    numstr = GetNumberStringArray(inteiros, genero);
+
+                if (moeda == true)
+                    numstr += $" {currency[pluralIndex]}"; // " Real[0] - Reais[1]"
+                else
+                    numstr += $" {generoNaturais[pluralIndex]}"; // " Inteiro/a[0] - Inteiros/as[1]"
+                break;
+            }
 
             case var case1 when case1 <= 6: // milhares
+            {
+                int centenas, milhares;
+                decimal tmp = (decimal)(inteiros / (double)1000);
+                milhares = Conversions.ToInteger(tmp);
+                centenas = inteiros - milhares * 1000;
+                numstr = GetNumberStringArray(milhares, genero) + " Mil";
+                if (centenas < 101)
                 {
-                    int centenas, milhares;
-                    decimal tmp = (decimal)(reais / (double)1000);
-                    milhares = Conversions.ToInteger(tmp);
-                    centenas = reais - milhares * 1000;
-                    numstr = GetNumberStringArray(milhares, genero) + " Mil";
-                    if (centenas < 101)
-                    {
-                        if (centenas > 0)
-                        {
-                            numstr = numstr + " e " + GetNumberStringArray(centenas, genero);
-                            if (moeda == true)
-                            {
-                                numstr += $" {currency[1]}"; // " Reais"
-                            }
-                        }
-                        else
-                        {
-                            if (moeda == true)
-                            {
-                                numstr += $" {currency[1]}"; // " Reais"
-                            }
-                        }
-                    }
-                    else if (centenas == 100 | centenas == 200 | centenas == 300 | centenas == 400 | centenas == 500 | centenas == 600 | centenas == 700 | centenas == 800 | centenas == 900)
-
-                    {
+                    if (centenas > 0)
                         numstr = numstr + " e " + GetNumberStringArray(centenas, genero);
-                        if (moeda == true)
-                        {
-                            numstr += $" {currency[1]}"; // " Reais"
-                        }
-                    }
-                    else
-                    {
-                        numstr = numstr + ", " + GetNumberStringArray(centenas, genero);
-                        if (moeda == true)
-                        {
-                            numstr += $" {currency[1]}"; // " Reais"
-                        }
-                    }
-
-                    break;
                 }
+                else if (centenas == 100 | centenas == 200 | centenas == 300 | centenas == 400 | centenas == 500 | centenas == 600 | centenas == 700 | centenas == 800 | centenas == 900)
+                    numstr = numstr + " e " + GetNumberStringArray(centenas, genero);
+                else
+                    numstr = numstr + ", " + GetNumberStringArray(centenas, genero);
+
+                if (moeda == true)
+                    numstr += $" {currency[1]}"; // " Reais"
+                else
+                    numstr += $" {generoNaturais[1]}"; // " Inteiros"
+                break;
+            }
 
             case var case2 when case2 <= 9: // milhões
+            {
+                int centenas, milhares, milhoes;
+                decimal tmp = (decimal)(inteiros / (double)1000000);
+                milhoes = Conversions.ToInteger(tmp);
+                tmp = (decimal)((inteiros - milhoes * 1000000) / (double)1000);
+                milhares = Conversions.ToInteger(tmp);
+                centenas = Conversions.ToInteger((tmp - milhares) * 1000);
+                if (milhoes == 1)
                 {
-                    int centenas, milhares, milhoes;
-                    decimal tmp = (decimal)(reais / (double)1000000);
-                    milhoes = Conversions.ToInteger(tmp);
-                    tmp = (decimal)((reais - milhoes * 1000000) / (double)1000);
-                    milhares = Conversions.ToInteger(tmp);
-                    centenas = Conversions.ToInteger((tmp - milhares) * 1000);
-                    if (milhoes == 1)
+                    if (milhares == 0 & centenas == 0)
                     {
-                        if (milhares == 0 & centenas == 0)
-                        {
-                            numstr = GetNumberStringArray(milhoes, Gender.Masculino) + " Milhão";
-                            if (moeda == true)
-                            {
-                                numstr += " de";
-                            }
-                        }
-                        else if (milhares > 0 & centenas == 0)
-                        {
-                            if (milhares < 100)
-                            {
-                                numstr = GetNumberStringArray(milhoes, Gender.Masculino) + " Milhão e ";
-                            }
-                            else if (milhares == 100 | milhares == 200 | milhares == 300 | milhares == 400 | milhares == 500 | milhares == 600 | milhares == 700 | milhares == 800 | milhares == 900)
-
-                            {
-                                numstr = GetNumberStringArray(milhoes, Gender.Masculino) + " Milhão e ";
-                            }
-                            else
-                            {
-                                numstr = GetNumberStringArray(milhoes, Gender.Masculino) + " Milhão, ";
-                            }
-                        }
-                        else if (milhares == 0 & centenas > 0)
-                        {
-                            if (centenas < 100)
-                            {
-                                numstr = GetNumberStringArray(milhoes, Gender.Masculino) + " Milhão";
-                            }
-                            else if (centenas == 100 | centenas == 200 | centenas == 300 | centenas == 400 | centenas == 500 | centenas == 600 | centenas == 700 | centenas == 800 | centenas == 900)
-
-                            {
-                                numstr = GetNumberStringArray(milhoes, Gender.Masculino) + " Milhão e ";
-                            }
-                            else
-                            {
-                                numstr = GetNumberStringArray(milhoes, Gender.Masculino) + " Milhão";
-                            }
-                        }
-                        else if (milhares > 0 & centenas > 0)
-                        {
+                        numstr = GetNumberStringArray(milhoes, Gender.Masculino) + " Milhão";
+                        if (moeda == true)
+                            numstr += " de";
+                    }
+                    else if (milhares > 0 & centenas == 0)
+                    {
+                        if (milhares < 100)
+                            numstr = GetNumberStringArray(milhoes, Gender.Masculino) + " Milhão e ";
+                        else if (milhares == 100 | milhares == 200 | milhares == 300 | milhares == 400 | milhares == 500 | milhares == 600 | milhares == 700 | milhares == 800 | milhares == 900)
+                            numstr = GetNumberStringArray(milhoes, Gender.Masculino) + " Milhão e ";
+                        else
                             numstr = GetNumberStringArray(milhoes, Gender.Masculino) + " Milhão, ";
-                        }
                     }
-                    else if (milhoes > 1)
+                    else if (milhares == 0 & centenas > 0)
                     {
-                        if (milhares == 0 & centenas == 0)
-                        {
-                            numstr = GetNumberStringArray(milhoes, Gender.Masculino) + " Milhões";
-                            if (moeda == true)
-                            {
-                                numstr += " de";
-                            }
-                        }
-                        else if (milhares > 0 & centenas == 0)
-                        {
-                            if (milhares < 100)
-                            {
-                                numstr = GetNumberStringArray(milhoes, Gender.Masculino) + " Milhões e ";
-                            }
-                            else if (milhares == 100 | milhares == 200 | milhares == 300 | milhares == 400 | milhares == 500 | milhares == 600 | milhares == 700 | milhares == 800 | milhares == 900)
-
-                            {
-                                numstr = GetNumberStringArray(milhoes, Gender.Masculino) + " Milhões e ";
-                            }
-                            else
-                            {
-                                numstr = GetNumberStringArray(milhoes, Gender.Masculino) + " Milhões, ";
-                            }
-                        }
-                        else if (milhares == 0 & centenas > 0)
-                        {
-                            if (centenas < 100)
-                            {
-                                numstr = GetNumberStringArray(milhoes, Gender.Masculino) + " Milhões";
-                            }
-                            else if (centenas == 100 | centenas == 200 | centenas == 300 | centenas == 400 | centenas == 500 | centenas == 600 | centenas == 700 | centenas == 800 | centenas == 900)
-
-                            {
-                                numstr = GetNumberStringArray(milhoes, Gender.Masculino) + " Milhões e ";
-                            }
-                            else
-                            {
-                                numstr = GetNumberStringArray(milhoes, Gender.Masculino) + " Milhões";
-                            }
-                        }
-                        else if (milhares > 0 & centenas > 0)
-                        {
-                            numstr = GetNumberStringArray(milhoes, Gender.Masculino) + " Milhões, ";
-                        }
+                        if (centenas < 100)
+                            numstr = GetNumberStringArray(milhoes, Gender.Masculino) + " Milhão";
+                        else if (centenas == 100 | centenas == 200 | centenas == 300 | centenas == 400 | centenas == 500 | centenas == 600 | centenas == 700 | centenas == 800 | centenas == 900)
+                            numstr = GetNumberStringArray(milhoes, Gender.Masculino) + " Milhão e ";
+                        else
+                            numstr = GetNumberStringArray(milhoes, Gender.Masculino) + " Milhão";
                     }
-
-                    if (milhares > 0)
-                    {
-                        numstr = numstr + GetNumberStringArray(milhares, genero) + " Mil";
-                    }
-
-                    if (centenas < 101)
-                    {
-                        if (centenas > 0)
-                        {
-                            numstr = numstr + " e " + GetNumberStringArray(centenas, genero);
-                        }
-
-                        if (moeda == true)
-                        {
-                            numstr += $" {currency[1]}"; // " Reais"
-                        }
-                    }
-                    else
-                    {
-                        numstr = numstr + ", " + GetNumberStringArray(centenas, genero);
-                        if (moeda == true)
-                        {
-                            numstr += $" {currency[1]}"; // " Reais"
-                        }
-                    }
-
-                    break;
+                    else if (milhares > 0 & centenas > 0)
+                        numstr = GetNumberStringArray(milhoes, Gender.Masculino) + " Milhão, ";
                 }
+                else if (milhoes > 1)
+                {
+                    if (milhares == 0 & centenas == 0)
+                    {
+                        numstr = GetNumberStringArray(milhoes, Gender.Masculino) + " Milhões";
+                        if (moeda == true)
+                        {
+                            numstr += " de";
+                        }
+                    }
+                    else if (milhares > 0 & centenas == 0)
+                    {
+                        if (milhares < 100)
+                            numstr = GetNumberStringArray(milhoes, Gender.Masculino) + " Milhões e ";
+                        else if (milhares == 100 | milhares == 200 | milhares == 300 | milhares == 400 | milhares == 500 | milhares == 600 | milhares == 700 | milhares == 800 | milhares == 900)
+                            numstr = GetNumberStringArray(milhoes, Gender.Masculino) + " Milhões e ";
+                        else
+                            numstr = GetNumberStringArray(milhoes, Gender.Masculino) + " Milhões, ";
+                    }
+                    else if (milhares == 0 & centenas > 0)
+                    {
+                        if (centenas < 100)
+                            numstr = GetNumberStringArray(milhoes, Gender.Masculino) + " Milhões";
+                        else if (centenas == 100 | centenas == 200 | centenas == 300 | centenas == 400 | centenas == 500 | centenas == 600 | centenas == 700 | centenas == 800 | centenas == 900)
+                            numstr = GetNumberStringArray(milhoes, Gender.Masculino) + " Milhões e ";
+                        else
+                            numstr = GetNumberStringArray(milhoes, Gender.Masculino) + " Milhões";
+                    }
+                    else if (milhares > 0 & centenas > 0)
+                        numstr = GetNumberStringArray(milhoes, Gender.Masculino) + " Milhões, ";
+                }
+
+                if (milhares > 0)
+                    numstr = numstr + GetNumberStringArray(milhares, genero) + " Mil";
+
+                if (centenas < 101)
+                {
+                    if (centenas > 0)
+                        numstr = numstr + " e " + GetNumberStringArray(centenas, genero);
+                }
+                else
+                {
+                    numstr = numstr + ", " + GetNumberStringArray(centenas, genero);
+                }
+
+                if (moeda == true)
+                    numstr += $" {currency[1]}"; // " Reais"
+                else
+                    numstr += $" {generoNaturais[1]}"; // " Inteiros"
+                break;
+            }
 
             case var case3 when case3 <= 12: // bilhões
-                {
-                    numstr = "zzz...";
-                    break;
-                }
+            {
+                numstr = "zzz...";
+                break;
+            }
 
             case var case4 when case4 <= 15: // trilhões
-                {
-                    numstr = "chega né?...";
-                    break;
-                }
+            {
+                numstr = "chega né?...";
+                break;
+            }
         }
+        if (fracao == 0)
+            numstr = numstr.Replace(generoNaturais[1], "").Replace(generoNaturais[0], "").Trim();
 
         // parte fracionaria
-        switch (centavos)
+        if (fracao == 1)
         {
-            case 1:
+            if (moeda == true)
+                numstr = numstr + " e " + GetNumberStringArray(fracao, Gender.Masculino) + $" {currency[2]}"; // " Centavo"
+            else
+                numstr = numstr + " e " + GetNumberStringArray(fracao, genero) + $" {generoNaturais[4]}"; // " Centésimo/a"
+        }
+        else if (fracao != 0)
+        {
+            if (moeda == true)
+                numstr = numstr + " e " + GetNumberStringArray(fracao, Gender.Masculino) + $" {currency[3]}"; // " Centavos"
+            else
+            {
+                if (fracao % 10 == 0)
                 {
-                    numstr = numstr + " e " + GetNumberStringArray(centavos, Gender.Masculino) + $" {currency[2]}"; // " Centavo"
-                    break;
+                    if (fracao == 10)
+                        numstr = numstr + " e " + GetNumberStringArray(fracao / 10, genero) + $" {generoNaturais[2]}"; // " Décimo/a"
+                    else
+                        numstr = numstr + " e " + GetNumberStringArray(fracao / 10, genero) + $" {generoNaturais[3]}"; // " Décimos/as"
                 }
-
-            case var case5 when case5 > 1:
+                else
                 {
-                    numstr = numstr + " e " + GetNumberStringArray(centavos, Gender.Masculino) + $" {currency[3]}"; // " Centavos"
-                    break;
+                    numstr = numstr + " e " + GetNumberStringArray(fracao, genero) + $" {generoNaturais[5]}"; // " Centésimos/as"
                 }
+            }
         }
         // fim
         return numstr;

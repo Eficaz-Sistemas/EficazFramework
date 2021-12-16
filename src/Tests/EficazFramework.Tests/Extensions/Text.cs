@@ -35,15 +35,26 @@ public class Text
     [Test]
     public void FormataCEP()
     {
-        "37990000".FormatCEP().Should().Be("37.990-000");
-        "037990000".FormatCEP().Should().Be("037.990-000");
+        "799".FormatCEP().Should().Be("799");
+        "3799".FormatCEP().Should().Be("3-799");
+        "37990".FormatCEP().Should().Be("37-990");
+        "379900".FormatCEP().Should().Be("379-900");
         "7990000".FormatCEP().Should().Be("7.990-000");
+        "37990000".FormatCEP().Should().Be("37.990-000");
         "14407760".FormatCEP().Should().Be("14.407-760");
+        "037990000".FormatCEP().Should().Be("037.990-000");
+        "0037990000".FormatCEP().Should().Be("0.037.990-000");
+        "00037990000".FormatCEP().Should().Be("00.037.990-000");
+        "00037990000".FormatCEP().Should().Be("00.037.990-000");
+        "000037990000".FormatCEP().Should().Be("000.037.990-000");
+        "0000037990000".FormatCEP().Should().Be("0000037990000");
     }
 
     [Test]
     public void FormataFone()
     {
+        "abc".FormatFone().Should().Be("abc");
+
         "5441245".FormatFone().Should().Be("544-1245");
         "35441245".FormatFone().Should().Be("3544-1245");
         "3535441245".FormatFone().Should().Be("(35) 3544-1245");
@@ -181,6 +192,7 @@ public class Text
     [Test]
     public void ToTitleCase()
     {
+        TextExtensions.ToTitleCase(null).Should().Be(null);
         "henrique clausing".ToTitleCase().Should().Be("Henrique Clausing");
         "HENRIQUE CLAUSING".ToTitleCase().Should().Be("Henrique Clausing");
     }
@@ -223,6 +235,7 @@ public class Text
     [Test]
     public void ValidaInscricoesEstaduais()
     {
+        "100270100128".IsValidInscricaoEstadual("AC").Should().Be(true);
         "0100270100128".IsValidInscricaoEstadual("AC").Should().Be(true);
         "0100100500168".IsValidInscricaoEstadual("AC").Should().Be(true);
         "0100336500102".IsValidInscricaoEstadual("AC").Should().Be(true);
@@ -269,6 +282,7 @@ public class Text
         "030090658".IsValidInscricaoEstadual("AP").Should().Be(true);
         "130247616".IsValidInscricaoEstadual("AP").Should().Be(false);
         "030090657".IsValidInscricaoEstadual("AP").Should().Be(false);
+        "3309877".IsValidInscricaoEstadual("BA").Should().Be(false);
         "73309877".IsValidInscricaoEstadual("BA").Should().Be(true);
         "73322466".IsValidInscricaoEstadual("BA").Should().Be(true);
         "75823430".IsValidInscricaoEstadual("BA").Should().Be(true);
@@ -512,6 +526,8 @@ public class Text
         "294840303".IsValidInscricaoEstadual(null).Should().Be(false);
         "".IsValidInscricaoEstadual("EX").Should().Be(true);
         "".IsValidInscricaoEstadual(null).Should().Be(true);
+        "0000".IsValidInscricaoEstadual("??").Should().Be(false);
+
     }
 
     [Test]
