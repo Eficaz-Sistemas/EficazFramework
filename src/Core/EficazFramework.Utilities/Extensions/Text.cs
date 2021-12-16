@@ -4,6 +4,7 @@ using System.Linq;
 using System.Reflection;
 using System.Reflection.Emit;
 using System.Security.AccessControl;
+using System.Text;
 using System.Text.RegularExpressions;
 using Microsoft.VisualBasic.CompilerServices;
 
@@ -522,6 +523,18 @@ public static class TextExtensions
         return Enumerable.Range(0, Conversions.ToInteger(Math.Ceiling(texto.Length / (double)tamanho))).Select(i => texto.Substring(i * tamanho, Math.Min(texto.Length - i * tamanho, tamanho)));
     }
 
+    /// <summary>
+    /// Converte a sequência de caracteres desejada em formato de URL Slug
+    /// </summary>
+    /// <returns></returns>
+    public static string ToUrlSlug(this string value)
+    {
+        value = (value ?? "").GetClearText().ToLowerInvariant();
+        value = Regex.Replace(value, @"[^A-Za-z0-9\s-]", "");
+        value = Regex.Replace(value, @"\s+", " ").Trim();
+        value = Regex.Replace(value, @"\s", "-");
+        return value;
+    }
 
     /// <summary>
     /// Verifica se o endereço de e-mail informado é válido.
@@ -3739,18 +3752,6 @@ public static class LocalizationExtensions
     public static string Localize(this string text)
     {
         return text.Localize(typeof(EficazFramework.Resources.Strings.Descriptions), null);
-    }
-
-    /// <summary>
-    /// Retorna o texto no idioma (System.Globalization.Culture.CultureInfo) atual.
-    /// Utiliza o dicionário EficazFramework.Resources.Strings.Descriptions.
-    /// </summary>
-    /// <param name="text">ID do texto a ser localizado.</param>
-    /// <param name="stringformat">(Opcional) Máscara para formatação do texto resultante.</param>
-    /// <returns></returns>
-    public static string Localize(this string text, string stringformat)
-    {
-        return text.Localize(typeof(EficazFramework.Resources.Strings.Descriptions), stringformat);
     }
 
     /// <summary>

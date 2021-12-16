@@ -95,6 +95,7 @@ public class Apps
     {
         EficazFramework.Application.ApplicationManager.AllAplications[1].Activate();
         EficazFramework.Application.ApplicationManager.RunningAplications.Count.Should().Be(1);
+        EficazFramework.Application.ApplicationManager.RunningAplications[0].ToString().Should().Be("[0] - Clientes");
         EficazFramework.Application.ApplicationManager.AllAplications[5].Activate();
         EficazFramework.Application.ApplicationManager.RunningAplications.Count.Should().Be(2);
         try

@@ -3,6 +3,7 @@ using NUnit.Framework;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace EficazFramework.Commands;
@@ -39,7 +40,8 @@ public class Actions
         };
         async void action() => await CustomActionAsync(parameters);
         TimeSpan start = DateTime.Now.TimeOfDay;
-        await EficazFramework.Commands.DelayedAction.InvokeAsync(action, delay, default);
+        CancellationTokenSource tks = new();
+        await EficazFramework.Commands.DelayedAction.InvokeAsync(action, delay, tks.Token);
         TimeSpan delta = DateTime.Now.TimeOfDay - start;
         delta.Milliseconds.Should().BeGreaterThanOrEqualTo(delay);
     }

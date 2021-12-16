@@ -35,6 +35,7 @@ public abstract class EntityBase : IEntity, INotifyPropertyChanged, INotifyDataE
 {
     /// <summary>
     /// Obtém o(s) erro(s) na Entity ou de uma de duas propriedades, através do método Validate() de cada plataforma.
+    /// Implementa de INotifyPropertyChanged.GetErrors()
     /// </summary>
     /// <param name="propertyName">O nome da propriedade a ser validada. Utilize 'Nothing' para validar toda a Entity.</param>
     /// <returns>IEnumerable</returns>
@@ -44,14 +45,22 @@ public abstract class EntityBase : IEntity, INotifyPropertyChanged, INotifyDataE
         return Validate(propertyName);
     }
 
+    /// <summary>
+    /// Obtém o(s) erro(s) na Entity ou de uma de duas propriedades, através do método Validate() de cada plataforma.
+    /// Implementa de INotifyPropertyChanged.ErrorText()
+    /// </summary>
+    /// <param name="propertyName">O nome da propriedade a ser validada. Utilize 'Nothing' para validar toda a Entity.</param>
+    /// <returns>IEnumerable</returns>
+    /// <remarks></remarks>
     public string ErrorText(string propertyName)
     {
-        return Validate(propertyName).FirstOrDefault();
+        return Validate(propertyName).ToString();
     }
 
     /// <summary>
     /// Retorna verdadeiro caso o objeto possua erro ou falso caso esteja OK.
     /// Porém FORÇA a validação de todo o objeto.
+    /// Implementa de INotifyPropertyChanged.HasErrors
     /// </summary>
     /// <value></value>
     /// <returns>Boolean</returns>

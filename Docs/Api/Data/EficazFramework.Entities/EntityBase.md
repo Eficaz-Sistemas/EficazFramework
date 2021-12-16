@@ -31,7 +31,8 @@ Implements [EficazFramework.Entities.IEntity](https://docs.microsoft.com/en-us/d
 ## EntityBase.HasErrors Property
 
 Retorna verdadeiro caso o objeto possua erro ou falso caso esteja OK.  
-Porém FORÇA a validação de todo o objeto.
+Porém FORÇA a validação de todo o objeto.  
+Implementa de INotifyPropertyChanged.HasErrors
 
 ```csharp
 public bool HasErrors { get; }
@@ -66,11 +67,38 @@ Tipo de Entidade a ser instanciada
 #### Returns
 [TEntity](EficazFramework.Entities/EntityBase.md#EficazFramework.Entities.EntityBase.Create_TEntity_().TEntity 'EficazFramework.Entities.EntityBase.Create<TEntity>().TEntity')
 
+<a name='EficazFramework.Entities.EntityBase.ErrorText(string)'></a>
+
+## EntityBase.ErrorText(string) Method
+
+Obtém o(s) erro(s) na Entity ou de uma de duas propriedades, através do método Validate() de cada plataforma.  
+Implementa de INotifyPropertyChanged.ErrorText()
+
+```csharp
+public string ErrorText(string propertyName);
+```
+#### Parameters
+
+<a name='EficazFramework.Entities.EntityBase.ErrorText(string).propertyName'></a>
+
+`propertyName` [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
+
+O nome da propriedade a ser validada. Utilize 'Nothing' para validar toda a Entity.
+
+Implements [ErrorText(string)](https://docs.microsoft.com/en-us/dotnet/api/EficazFramework.Entities.IEntity.ErrorText#EficazFramework_Entities_IEntity_ErrorText_System_String_ 'EficazFramework.Entities.IEntity.ErrorText(System.String)')
+
+#### Returns
+[System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')  
+IEnumerable
+
+### Remarks
+
 <a name='EficazFramework.Entities.EntityBase.GetErrors(string)'></a>
 
 ## EntityBase.GetErrors(string) Method
 
-Obtém o(s) erro(s) na Entity ou de uma de duas propriedades, através do método Validate() de cada plataforma.
+Obtém o(s) erro(s) na Entity ou de uma de duas propriedades, através do método Validate() de cada plataforma.  
+Implementa de INotifyPropertyChanged.GetErrors()
 
 ```csharp
 public System.Collections.IEnumerable GetErrors(string propertyName);

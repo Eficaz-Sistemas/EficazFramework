@@ -197,6 +197,12 @@ public class Text
         "HENRIQUE CLAUSING".ToTitleCase().Should().Be("Henrique Clausing");
     }
 
+    [Test]
+    public void ToUrlSlugTest()
+    {
+        "HENRIQUE CLAUSING".ToUrlSlug().Should().Be("henrique-clausing");
+        "Como sobreviver em um mundo de LOUCOS".ToUrlSlug().Should().Be("como-sobreviver-em-um-mundo-de-loucos");
+    }
 
 
     // Validações:

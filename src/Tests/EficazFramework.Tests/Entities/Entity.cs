@@ -78,6 +78,8 @@ public class EntityTests
                                  .Required(o => o.Name)
                                  .Mail(o => o.Mail)
                                  .CNPJouCPF(o => o.Document);
+        ((Collections.StringCollection)instance.GetErrors(nameof(instance.Name))).Should().HaveCount(1);
+        instance.ErrorText(nameof(instance.Name)).Length.Should().BeGreaterThan(0);
         instance.Validate(null).Count.Should().Be(3);
     }
 

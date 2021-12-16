@@ -23,6 +23,7 @@ class Enum
         docs.Count().Should().Be(12);
         docs.ElementAt(6).Value.Should().Be(EficazFramework.Enums.CompareMethod.BiggerOrEqualThan);
         docs.ElementAt(6).Description.Should().Be("eComparer_BiggerOrEqualThan");
+        docs.ElementAt(6).ToString().Should().Be("eComparer_BiggerOrEqualThan");
 
     }
 
@@ -39,6 +40,7 @@ class Enum
         valuesComp1.Count().Should().Be(12);
         valuesComp1.ElementAt(6).Value.Should().Be(EficazFramework.Enums.CompareMethod.BiggerOrEqualThan);
         valuesComp1.ElementAt(6).Description.Should().Be(EficazFramework.Resources.Strings.DataDescriptions.eComparer_BiggerOrEqualThan);
+        valuesComp1.ElementAt(6).ToString().Should().Be(EficazFramework.Resources.Strings.DataDescriptions.eComparer_BiggerOrEqualThan);
         valuesComp1.Count(c => c.Description == c.Value.ToString()).Should().Be(0);
 
         var valuesComp2 = Enums.GetLocalizedValues<DocumentosTeste>(typeof(EficazFramework.Resources.Strings.TestStrings));
@@ -76,6 +78,7 @@ class Enum
         gp.Count().Should().Be(2);
         var contato = gp.First(gp => gp.Key == "Contato");
         contato.Count().Should().Be(3);
+        contato.First().ToString().Should().Be("[Contato] CEP");
 
         var enumValues2 = Enums.GetValuesWithCategory(typeof(DocumentosTeste));
         enumValues2.Count().Should().Be(9);

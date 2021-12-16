@@ -77,18 +77,7 @@ public class Functions
         return result;
     }
 
-    public static string ToUrlSlug(string value)
-    {
-        value = value.ToLowerInvariant();
-        var bytes = Encoding.GetEncoding("Cyrillic").GetBytes(value);
-        value = Encoding.ASCII.GetString(bytes);
-        value = Regex.Replace(value, @"\s", "-", RegexOptions.Compiled);
-        value = Regex.Replace(value, @"[^a-z0-9\s-_]", "", RegexOptions.Compiled);
-        value = value.Trim('-', '_');
-        value = Regex.Replace(value, "([-_]){2,}", "$1", RegexOptions.Compiled);
-        return value;
-    }
-
+    [ExcludeFromCodeCoverage]
     public static string ComputeMD5Hash(string value)
     {
         var bytes = MD5.Create().ComputeHash(Encoding.UTF8.GetBytes(value));
@@ -101,6 +90,7 @@ public class Functions
         return result;
     }
 
+    [ExcludeFromCodeCoverage]
     public static string ComputeSHA256Hash(string value)
     {
         var bytes = SHA256.Create().ComputeHash(Encoding.UTF8.GetBytes(value));
