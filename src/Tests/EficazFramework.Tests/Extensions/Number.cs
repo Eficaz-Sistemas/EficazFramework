@@ -10,6 +10,7 @@ class Number
     public void ToWords()
     {
         //currency - reais
+        (1102385.95M.ToWords(NumberExtensions.Currency.Real_BRL) ?? "").ToLower().Should().Be("um milhão, cento e dois mil, trezentos e oitenta e cinco reais e noventa e cinco centavos");
         (2385.95M.ToWords(NumberExtensions.Currency.Real_BRL) ?? "").ToLower().Should().Be("dois mil, trezentos e oitenta e cinco reais e noventa e cinco centavos");
         (2385.95D.ToWords(NumberExtensions.Currency.Real_BRL) ?? "").ToLower().Should().Be("dois mil, trezentos e oitenta e cinco reais e noventa e cinco centavos");
         (2385.95M.ToWords(NumberExtensions.Currency.Dolar_USD) ?? "").ToLower().Should().Be("dois mil, trezentos e oitenta e cinco dólares e noventa e cinco centavos");
@@ -18,33 +19,44 @@ class Number
         (2100.ToWords(NumberExtensions.Currency.Real_BRL) ?? "").ToLower().Should().Be("dois mil e cem reais");
         (257.ToWords(NumberExtensions.Currency.Real_BRL) ?? "").ToLower().Should().Be("duzentos e cinquenta e sete reais");
         (33.ToWords(NumberExtensions.Currency.Real_BRL) ?? "").ToLower().Should().Be("trinta e três reais");
+        (19.1.ToWords(NumberExtensions.Currency.Real_BRL) ?? "").ToLower().Should().Be("dezenove reais e dez centavos");
+        (19.ToWords(NumberExtensions.Currency.Real_BRL) ?? "").ToLower().Should().Be("dezenove reais");
         (1.9.ToWords(NumberExtensions.Currency.Real_BRL) ?? "").ToLower().Should().Be("um real e noventa centavos");
         (1.9.ToWords(NumberExtensions.Currency.Dolar_USD) ?? "").ToLower().Should().Be("um dólar e noventa centavos");
         (1.9.ToWords(NumberExtensions.Currency.Euro_EUR) ?? "").ToLower().Should().Be("um euro e noventa cêntimos");
+        (1.01.ToWords(NumberExtensions.Currency.Real_BRL) ?? "").ToLower().Should().Be("um real e um centavo");
         (1.ToWords(NumberExtensions.Currency.Real_BRL) ?? "").ToLower().Should().Be("um real");
         (((long)1).ToWords(NumberExtensions.Currency.Real_BRL) ?? "").ToLower().Should().Be("um real");
         (((short)1).ToWords(NumberExtensions.Currency.Real_BRL) ?? "").ToLower().Should().Be("um real");
 
         // masculino
+        (1102385.95M.ToWords(NumberExtensions.Gender.Masculino) ?? "").ToLower().Should().Be("um milhão, cento e dois mil, trezentos e oitenta e cinco inteiros e noventa e cinco centésimos");
         (2385.95M.ToWords(NumberExtensions.Gender.Masculino) ?? "").ToLower().Should().Be("dois mil, trezentos e oitenta e cinco inteiros e noventa e cinco centésimos");
         (2385.95D.ToWords(NumberExtensions.Gender.Masculino) ?? "").ToLower().Should().Be("dois mil, trezentos e oitenta e cinco inteiros e noventa e cinco centésimos");
         (2385.ToWords(NumberExtensions.Gender.Masculino) ?? "").ToLower().Should().Be("dois mil, trezentos e oitenta e cinco");
         (2100.ToWords(NumberExtensions.Gender.Masculino) ?? "").ToLower().Should().Be("dois mil e cem");
         (257.ToWords(NumberExtensions.Gender.Masculino) ?? "").ToLower().Should().Be("duzentos e cinquenta e sete");
         (33.ToWords(NumberExtensions.Gender.Masculino) ?? "").ToLower().Should().Be("trinta e três");
+        (19.1.ToWords(NumberExtensions.Gender.Masculino) ?? "").ToLower().Should().Be("dezenove inteiros e um décimo");
+        (19.ToWords(NumberExtensions.Gender.Masculino) ?? "").ToLower().Should().Be("dezenove");
         (1.9.ToWords(NumberExtensions.Gender.Masculino) ?? "").ToLower().Should().Be("um inteiro e nove décimos");
+        (1.01.ToWords(NumberExtensions.Gender.Masculino) ?? "").ToLower().Should().Be("um inteiro e um centésimo");
         (1.ToWords(NumberExtensions.Gender.Masculino) ?? "").ToLower().Should().Be("um");
         (((long)1).ToWords(NumberExtensions.Gender.Masculino) ?? "").ToLower().Should().Be("um");
         (((short)1).ToWords(NumberExtensions.Gender.Masculino) ?? "").ToLower().Should().Be("um");
 
         // feminimo
+        (1102385.95M.ToWords(NumberExtensions.Gender.Feminino) ?? "").ToLower().Should().Be("um milhão, cento e duas mil, trezentas e oitenta e cinco inteiras e noventa e cinco centésimas");
         (2385.95M.ToWords(NumberExtensions.Gender.Feminino) ?? "").ToLower().Should().Be("duas mil, trezentas e oitenta e cinco inteiras e noventa e cinco centésimas");
         (2385.95D.ToWords(NumberExtensions.Gender.Feminino) ?? "").ToLower().Should().Be("duas mil, trezentas e oitenta e cinco inteiras e noventa e cinco centésimas");
         (2385.ToWords(NumberExtensions.Gender.Feminino) ?? "").ToLower().Should().Be("duas mil, trezentas e oitenta e cinco");
         (2100.ToWords(NumberExtensions.Gender.Feminino) ?? "").ToLower().Should().Be("duas mil e cem");
         (257.ToWords(NumberExtensions.Gender.Feminino) ?? "").ToLower().Should().Be("duzentas e cinquenta e sete");
         (33.ToWords(NumberExtensions.Gender.Feminino) ?? "").ToLower().Should().Be("trinta e três");
+        (19.1.ToWords(NumberExtensions.Gender.Feminino) ?? "").ToLower().Should().Be("dezenove inteiras e uma décima");
+        (19.ToWords(NumberExtensions.Gender.Feminino) ?? "").ToLower().Should().Be("dezenove");
         (1.9.ToWords(NumberExtensions.Gender.Feminino) ?? "").ToLower().Should().Be("uma inteira e nove décimas");
+        (1.01.ToWords(NumberExtensions.Gender.Feminino) ?? "").ToLower().Should().Be("uma inteira e uma centésima");
         (1.ToWords(NumberExtensions.Gender.Feminino) ?? "").ToLower().Should().Be("uma");
         (((long)1).ToWords(NumberExtensions.Gender.Feminino) ?? "").ToLower().Should().Be("uma");
         (((short)1).ToWords(NumberExtensions.Gender.Feminino) ?? "").ToLower().Should().Be("uma");

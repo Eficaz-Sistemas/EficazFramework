@@ -551,7 +551,21 @@ public static class NumberExtensions
                                 }
                                 else
                                 {
-                                    numstr = numstr + " e " + unidades[unidade];
+                                    switch (gender)
+                                    {
+                                        case Gender.Masculino:
+                                            {
+                                                numstr = numstr + " e " + unidades[unidade];
+                                                break;
+                                            }
+
+                                        case Gender.Feminino:
+                                            {
+                                                numstr = numstr + " e " + unidadesFem[unidade];
+                                                break;
+                                            }
+                                    }
+
                                 }
 
                                 break;
