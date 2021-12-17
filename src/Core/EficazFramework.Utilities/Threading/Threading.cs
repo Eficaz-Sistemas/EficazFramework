@@ -16,11 +16,4 @@ public class Thread
 
     public static SynchronizationContext SynchronizationContext { get; private set; }
 
-    public static void RequestMessageBox(object sender, EficazFramework.Events.MessageEventArgs args)
-    {
-        MessageBoxRequest?.Invoke(sender, args);
-    }
-
-    public static event EficazFramework.Events.MessageEventHandler MessageBoxRequest;
-
 }

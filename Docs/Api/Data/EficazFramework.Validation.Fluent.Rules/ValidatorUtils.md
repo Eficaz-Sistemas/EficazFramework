@@ -475,31 +475,3 @@ public static EficazFramework.Validation.Fluent.Validator<T> RequiredIf<T>(this 
 
 #### Returns
 [EficazFramework.Validation.Fluent.Validator&lt;](EficazFramework.Validation.Fluent/Validator_T_.md 'EficazFramework.Validation.Fluent.Validator<T>')[T](EficazFramework.Validation.Fluent.Rules/ValidatorUtils.md#EficazFramework.Validation.Fluent.Rules.ValidatorUtils.RequiredIf_T_(thisEficazFramework.Validation.Fluent.Validator_T_,System.Linq.Expressions.Expression_System.Func_T,object__,System.Linq.Expressions.Expression_System.Func_T,bool__,bool).T 'EficazFramework.Validation.Fluent.Rules.ValidatorUtils.RequiredIf<T>(this EficazFramework.Validation.Fluent.Validator<T>, System.Linq.Expressions.Expression<System.Func<T,object>>, System.Linq.Expressions.Expression<System.Func<T,bool>>, bool).T')[&gt;](EficazFramework.Validation.Fluent/Validator_T_.md 'EficazFramework.Validation.Fluent.Validator<T>')
-
-<a name='EficazFramework.Validation.Fluent.Rules.ValidatorUtils.Test_T_(thisEficazFramework.Validation.Fluent.Validator_T_,System.Linq.Expressions.Expression_System.Func_T,object__)'></a>
-
-## ValidatorUtils.Test<T>(this Validator<T>, Expression<Func<T,object>>) Method
-
-Adiciona uma validação de teste.
-
-```csharp
-public static EficazFramework.Validation.Fluent.Validator<T> Test<T>(this EficazFramework.Validation.Fluent.Validator<T> validator, System.Linq.Expressions.Expression<System.Func<T,object>> propertyexpression)
-    where T : class;
-```
-#### Type parameters
-
-<a name='EficazFramework.Validation.Fluent.Rules.ValidatorUtils.Test_T_(thisEficazFramework.Validation.Fluent.Validator_T_,System.Linq.Expressions.Expression_System.Func_T,object__).T'></a>
-
-`T`
-#### Parameters
-
-<a name='EficazFramework.Validation.Fluent.Rules.ValidatorUtils.Test_T_(thisEficazFramework.Validation.Fluent.Validator_T_,System.Linq.Expressions.Expression_System.Func_T,object__).validator'></a>
-
-`validator` [EficazFramework.Validation.Fluent.Validator&lt;](EficazFramework.Validation.Fluent/Validator_T_.md 'EficazFramework.Validation.Fluent.Validator<T>')[T](EficazFramework.Validation.Fluent.Rules/ValidatorUtils.md#EficazFramework.Validation.Fluent.Rules.ValidatorUtils.Test_T_(thisEficazFramework.Validation.Fluent.Validator_T_,System.Linq.Expressions.Expression_System.Func_T,object__).T 'EficazFramework.Validation.Fluent.Rules.ValidatorUtils.Test<T>(this EficazFramework.Validation.Fluent.Validator<T>, System.Linq.Expressions.Expression<System.Func<T,object>>).T')[&gt;](EficazFramework.Validation.Fluent/Validator_T_.md 'EficazFramework.Validation.Fluent.Validator<T>')
-
-<a name='EficazFramework.Validation.Fluent.Rules.ValidatorUtils.Test_T_(thisEficazFramework.Validation.Fluent.Validator_T_,System.Linq.Expressions.Expression_System.Func_T,object__).propertyexpression'></a>
-
-`propertyexpression` [System.Linq.Expressions.Expression&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Linq.Expressions.Expression-1 'System.Linq.Expressions.Expression`1')[System.Func&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-2 'System.Func`2')[T](EficazFramework.Validation.Fluent.Rules/ValidatorUtils.md#EficazFramework.Validation.Fluent.Rules.ValidatorUtils.Test_T_(thisEficazFramework.Validation.Fluent.Validator_T_,System.Linq.Expressions.Expression_System.Func_T,object__).T 'EficazFramework.Validation.Fluent.Rules.ValidatorUtils.Test<T>(this EficazFramework.Validation.Fluent.Validator<T>, System.Linq.Expressions.Expression<System.Func<T,object>>).T')[,](https://docs.microsoft.com/en-us/dotnet/api/System.Func-2 'System.Func`2')[System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.Object 'System.Object')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-2 'System.Func`2')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Linq.Expressions.Expression-1 'System.Linq.Expressions.Expression`1')
-
-#### Returns
-[EficazFramework.Validation.Fluent.Validator&lt;](EficazFramework.Validation.Fluent/Validator_T_.md 'EficazFramework.Validation.Fluent.Validator<T>')[T](EficazFramework.Validation.Fluent.Rules/ValidatorUtils.md#EficazFramework.Validation.Fluent.Rules.ValidatorUtils.Test_T_(thisEficazFramework.Validation.Fluent.Validator_T_,System.Linq.Expressions.Expression_System.Func_T,object__).T 'EficazFramework.Validation.Fluent.Rules.ValidatorUtils.Test<T>(this EficazFramework.Validation.Fluent.Validator<T>, System.Linq.Expressions.Expression<System.Func<T,object>>).T')[&gt;](EficazFramework.Validation.Fluent/Validator_T_.md 'EficazFramework.Validation.Fluent.Validator<T>')

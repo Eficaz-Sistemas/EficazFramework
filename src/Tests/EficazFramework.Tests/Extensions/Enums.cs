@@ -59,6 +59,7 @@ class Enum
     [Test, Order(3)]
     public void GetBoolValues()
     {
+        _ = Resources.Strings.Descriptions.Culture;
         var values = Enums.GetBoolValues();
         values.Count().Should().Be(2);
         values.First(b => (bool)b.Value == true).Description.Should().Be("Sim");

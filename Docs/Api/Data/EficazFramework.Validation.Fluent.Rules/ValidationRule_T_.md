@@ -25,8 +25,7 @@ Derived
 &#8627; [Range&lt;T&gt;](EficazFramework.Validation.Fluent.Rules/Range_T_.md 'EficazFramework.Validation.Fluent.Rules.Range<T>')  
 &#8627; [RangePeriod&lt;T&gt;](EficazFramework.Validation.Fluent.Rules/RangePeriod_T_.md 'EficazFramework.Validation.Fluent.Rules.RangePeriod<T>')  
 &#8627; [Required&lt;T&gt;](EficazFramework.Validation.Fluent.Rules/Required_T_.md 'EficazFramework.Validation.Fluent.Rules.Required<T>')  
-&#8627; [RequiredIf&lt;T&gt;](EficazFramework.Validation.Fluent.Rules/RequiredIf_T_.md 'EficazFramework.Validation.Fluent.Rules.RequiredIf<T>')  
-&#8627; [Test&lt;T&gt;](EficazFramework.Validation.Fluent.Rules/Test_T_.md 'EficazFramework.Validation.Fluent.Rules.Test<T>')
+&#8627; [RequiredIf&lt;T&gt;](EficazFramework.Validation.Fluent.Rules/RequiredIf_T_.md 'EficazFramework.Validation.Fluent.Rules.RequiredIf<T>')
 ### Properties
 
 <a name='EficazFramework.Validation.Fluent.Rules.ValidationRule_T_.Property'></a>

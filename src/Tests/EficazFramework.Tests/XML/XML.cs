@@ -26,6 +26,19 @@ public class OperationTests
         // Assert
         XMLOperations.SignXml(source, "Name", "MockClass", cert, true, true);
         Console.WriteLine(source.OuterXml);
+
+        // Error message
+        Exception ex = null;
+        try
+        {
+            XMLOperations.SignXml(source, "Naame", "MockClassSS", cert, true, true);
+        }
+        catch (Exception e)
+        {
+            ex = e;
+        }
+        ex.Should().NotBeNull();
+
     }
 
     [Test]
@@ -43,6 +56,18 @@ public class OperationTests
         // Assert
         XMLOperations.SignXml(ref sourceX, "Id", "MockClass", cert, true, true);
         Console.WriteLine(sourceX.ToString());
+
+        // Error message
+        Exception ex = null;
+        try
+        {
+            XMLOperations.SignXml(ref sourceX, "IDd", "MockClassSS", cert, true, true);
+        }
+        catch (Exception e) 
+        {
+            ex = e;
+        }
+        ex.Should().NotBeNull();
     }
 
     [Test]

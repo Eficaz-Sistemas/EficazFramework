@@ -6,6 +6,12 @@ namespace EficazFramework.Validation;
 
 public class FluentTests
 {
+    [Test, Order(0)]
+    public void Init()
+    {
+        EficazFramework.Validation.Definitions.InitialValidationMode = Enums.ValidationMode.Fluent;
+    }
+
     [Test]
     public void Mail()
     {
@@ -133,6 +139,18 @@ public class FluentTests
     }
 
     [Test]
+    public void PIS()
+    {
+        EficazFramework.Validation.Fluent.Validator<SampleObject> validator = new EficazFramework.Validation.Fluent.Validator<SampleObject>().PisPasep((e) => e.Document);
+
+        SampleObject instance = new() { Document = "20476695850" };
+        validator.Validate(instance).Should().BeNullOrEmpty();
+
+        instance.Document = "20476695851";
+        validator.Validate(instance).Should().NotBeNullOrEmpty();
+    }
+
+    [Test]
     public void MinLenght()
     {
         EficazFramework.Validation.Fluent.Validator<SampleObject> validator = new EficazFramework.Validation.Fluent.Validator<SampleObject>().MinLenght((e) => e.Obs, 6);
@@ -214,6 +232,25 @@ public class FluentTests
     }
 
     [Test]
+    public void RangePeriod()
+    {
+        EficazFramework.Validation.Fluent.Validator<SampleObject> validator = new EficazFramework.Validation.Fluent.Validator<SampleObject>().RangePeriodo((e) => e.Inicio, (e) => e.Fim);
+
+        SampleObject instance = new() { Inicio = 1, Fim = 2 };
+        validator.Validate(instance).Should().BeNullOrEmpty();
+
+        instance.Inicio = 2;
+        validator.Validate(instance).Should().BeNullOrEmpty();
+
+        instance.Inicio = 3;
+        validator.Validate(instance).Should().NotBeNullOrEmpty();
+
+        ((EficazFramework.Validation.Fluent.Rules.RangePeriod<SampleObject>)validator.ValidationRules[0]).AllowEquals = false;
+        instance.Inicio = 2;
+        validator.Validate(instance).Should().NotBeNullOrEmpty();
+    }
+
+    [Test]
     public void Required()
     {
         EficazFramework.Validation.Fluent.Validator<SampleObject> validator = new EficazFramework.Validation.Fluent.Validator<SampleObject>().Required((e) => e.Name);
@@ -232,44 +269,25 @@ public class FluentTests
     }
 
     [Test]
-    public void RequiredIf()
+    public void Equals()
     {
-        EficazFramework.Validation.Fluent.Validator<SampleObject> validator = new EficazFramework.Validation.Fluent.Validator<SampleObject>().RequiredIf((e) => e.Name,
-                                                                                                                                                                 when => when.Document == "123");
-
-        SampleObject instance = new() { Name = "John", Document = "123" };
-        validator.Validate(instance).Should().BeNullOrEmpty();
-        instance.Document = "";
-        validator.Validate(instance).Should().BeNullOrEmpty();
-        instance.Document = "456";
+        EficazFramework.Validation.Fluent.Validator<SampleObject> validator = new EficazFramework.Validation.Fluent.Validator<SampleObject>().Equals((e) => e.Name, (e) => e.Name);
+        SampleObject instance = new() { Name = "equality" };
         validator.Validate(instance).Should().BeNullOrEmpty();
 
-        //
-        instance.Name = "";
-        instance.Document = "123";
+        validator = new EficazFramework.Validation.Fluent.Validator<SampleObject>().Equals((e) => e.Name, (e) => "not equal");
         validator.Validate(instance).Should().NotBeNullOrEmpty();
-        instance.Document = "";
-        validator.Validate(instance).Should().BeNullOrEmpty();
-        instance.Document = "456";
-        validator.Validate(instance).Should().BeNullOrEmpty();
+    }
 
-        //
-        instance.Name = " ";
-        instance.Document = "123";
-        validator.Validate(instance).Should().BeNullOrEmpty();
-        instance.Document = "";
-        validator.Validate(instance).Should().BeNullOrEmpty();
-        instance.Document = "456";
-        validator.Validate(instance).Should().BeNullOrEmpty();
+    [Test]
+    public void ValidationResultTest()
+    {
+        var instance = EficazFramework.Validation.Fluent.ValidationResult.NullInstance;
+        instance.Should().HaveCount(1);
+        instance[0].Should().Be(EficazFramework.Resources.Strings.Validation.NullInstance);
 
-        //
-        instance.Name = null;
-        instance.Document = "123";
-        validator.Validate(instance).Should().NotBeNullOrEmpty();
-        instance.Document = "";
-        validator.Validate(instance).Should().BeNullOrEmpty();
-        instance.Document = "456";
-        validator.Validate(instance).Should().BeNullOrEmpty();
+        var instance2 = EficazFramework.Validation.Fluent.ValidationResult.Empty;
+        instance2.Should().HaveCount(0);
     }
 
 }
@@ -285,5 +303,6 @@ internal class SampleObject
     internal string Obs { get; set; }
     internal System.DateTime CreatedIn { get; set; }
     internal string State { get; set; }
-
+    internal int Inicio { get; set; }
+    internal int Fim { get; set; }
 }

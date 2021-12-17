@@ -10,9 +10,11 @@ public class Sessions
     [Test, Order(0)]
     public void Init()
     {
+        _ = Resources.Strings.Application.Culture;
         EficazFramework.Application.SessionManager.Sessions.Count.Should().Be(1);
         EficazFramework.Application.SessionManager.Instance.CurrentSession.Should().NotBeNull();
         EficazFramework.Application.SessionManager.Instance.CurrentSession.ID.Should().Be(0);
+        EficazFramework.Application.SessionManager.Instance.CurrentSession.Name = Resources.Strings.Application.SessionZeroTooltip;
     }
 
     [Test, Order(1)]

@@ -103,7 +103,6 @@
 | [RangePeriod&lt;T&gt;](EficazFramework.Validation.Fluent.Rules/RangePeriod_T_.md 'EficazFramework.Validation.Fluent.Rules.RangePeriod<T>') | |
 | [Required&lt;T&gt;](EficazFramework.Validation.Fluent.Rules/Required_T_.md 'EficazFramework.Validation.Fluent.Rules.Required<T>') | |
 | [RequiredIf&lt;T&gt;](EficazFramework.Validation.Fluent.Rules/RequiredIf_T_.md 'EficazFramework.Validation.Fluent.Rules.RequiredIf<T>') | |
-| [Test&lt;T&gt;](EficazFramework.Validation.Fluent.Rules/Test_T_.md 'EficazFramework.Validation.Fluent.Rules.Test<T>') | |
 | [ValidationRule&lt;T&gt;](EficazFramework.Validation.Fluent.Rules/ValidationRule_T_.md 'EficazFramework.Validation.Fluent.Rules.ValidationRule<T>') | Classa padrão de regra de validação. Deve ser herdada. |
 | [ValidatorUtils](EficazFramework.Validation.Fluent.Rules/ValidatorUtils.md 'EficazFramework.Validation.Fluent.Rules.ValidatorUtils') | Conunto de métodos auxiliares para composição das regras de validação in-built |
 

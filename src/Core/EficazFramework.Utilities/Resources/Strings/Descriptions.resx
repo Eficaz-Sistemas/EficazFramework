@@ -129,7 +129,4 @@
   <data name="BoolToYesNo_True" xml:space="preserve">
     <value>Sim</value>
   </data>
-  <data name="eComparer_BiggerOrEqualThan" xml:space="preserve">
-    <value>Maior ou igual a</value>
-  </data>
 </root>
