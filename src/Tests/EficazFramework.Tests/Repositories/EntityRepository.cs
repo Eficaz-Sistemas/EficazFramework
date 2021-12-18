@@ -19,6 +19,7 @@ public class EntityRepositoryTests
         var result = repository.FetchItems();
         repository.DbContext.Should().NotBeNull();
         result.Count.Should().Be(0);
+        repository.OrderByDefinitions.Add(new Collections.SortDescription() { PropertyName = "Name", Direction = Enums.Collection.SortOrientation.Asceding });
         result = await repository.FetchItemsAsync(default);
         result.Count.Should().Be(0);
         repository.DbContextInstanceRequest -= (s, e) => e.Instance = new Resources.Mocks.InMemoryDbContext();
@@ -35,14 +36,23 @@ public class EntityRepositoryTests
     }
 
     [Test, Order(3)]
-    public async Task VaidationTest()
+    public async Task ValidationTest()
     {
         var repository = new EntityRepository<Resources.Mocks.Classes.Blog>();
         repository.Validator = new Validation.Fluent.Validator<Resources.Mocks.Classes.Blog>();
         repository.Validator.Required(x => x.Name);
         var newEntry = repository.Create();
+
         repository.Validate(newEntry).Should().HaveCount(1);
         (await repository.ValidateAsync(newEntry)).Should().HaveCount(1);
+
+        repository.Validate(null).Should().HaveCount(0);
+        (await repository.ValidateAsync(null)).Should().HaveCount(0);
+
+        repository.Validator = null;
+        repository.Validate(newEntry).Should().HaveCount(0);
+        (await repository.ValidateAsync(newEntry)).Should().HaveCount(0);
+
     }
 
     [Test, Order(4)]
@@ -50,7 +60,7 @@ public class EntityRepositoryTests
     {
         var repository = new EntityRepository<Resources.Mocks.Classes.Blog>();
         repository.DbContextInstanceRequest += (s, e) => e.Instance = new Resources.Mocks.InMemoryDbContext();
-        repository.PrepareDbContext();
+        //repository.PrepareDbContext();
         
         var newEntry = repository.Create();
         newEntry.Name = "My New Blog";
@@ -153,8 +163,8 @@ public class EntityRepositoryTests
         await repository.FetchItemsAsync(default);
         repository.DataContext.Should().HaveCount(1);
         repository.DbContext.Attach(repository.DataContext.First());
-
         repository.DataContext.First().Name = "My Updated Blog!";
+
         ex = repository.Commit();
         ex.Should().BeNull();
         repository.DbContext.Set<Resources.Mocks.Classes.Blog>().AsNoTracking().FirstOrDefault().Name.Should().Be("My Updated Blog!");

@@ -16,6 +16,7 @@ public class DbContextConfiguringEventArgs
 
 public delegate void DbContextConfiguringEventHandler(DbContext sender, DbContextConfiguringEventArgs args);
 
+[ExcludeFromCodeCoverage]
 public class DbContextModelCreatingEventArgs
 {
     public DbContextModelCreatingEventArgs(ModelBuilder modelbuilder)
@@ -28,6 +29,7 @@ public class DbContextModelCreatingEventArgs
 
 public delegate void DbContextModelCreatingEventHandler(DbContext sender, DbContextModelCreatingEventArgs args);
 
+[ExcludeFromCodeCoverage]
 public class DbContextInstanceCreatingEventArgs
 {
     public DbContext Instance { get; set; }

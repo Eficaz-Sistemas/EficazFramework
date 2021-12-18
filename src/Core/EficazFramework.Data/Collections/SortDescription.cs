@@ -2,7 +2,6 @@
 
 namespace EficazFramework.Collections;
 
-[ExcludeFromCodeCoverage]
 public class SortDescription
 {
     public string PropertyName { get; set; }
