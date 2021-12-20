@@ -57,8 +57,12 @@ public class Sessions
             ID = 2222,
             Name = "Desktop 2222"
         });
+        manager.CurrentSection.PropertyChanged += PropertyChanged;
+        manager.CurrentSection.ShowIdAsIcon = true;
+        manager.CurrentSection.Tag.Should().Be("mudou o ícone");
         manager.CurrentSection.ID.Should().Be(2222);
         manager.CurrentSection.SectionIdLargerText.Should().BeTrue();
+
         manager.ActivateSection(1);
         manager.CurrentSection.ID.Should().Be(1);
         try
@@ -91,6 +95,16 @@ public class Sessions
         manager.CurrentSection.ID.Should().Be(2222);
         manager.DisposeSection(manager.CurrentSection);
         manager.CurrentSection.ID.Should().Be(0);
+    }
+
+    private void PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
+    {
+        if (e.PropertyName == nameof(Application.Section.ShowIdAsIcon))
+        {
+            var mngr = sender as Application.Section;
+            mngr.PropertyChanged -= PropertyChanged;
+            mngr.Tag = "mudou o ícone";
+        }
     }
 
 }

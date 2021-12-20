@@ -205,6 +205,85 @@ public class FluentTests
 
         instance.Total = 1.20M;
         validator.Validate(instance).Should().NotBeNullOrEmpty();
+
+
+    }
+
+    [Test]
+    public void RangeDouble()
+    {
+        EficazFramework.Validation.Fluent.Validator<SampleObject> validator = new EficazFramework.Validation.Fluent.Validator<SampleObject>().Range((e) => e.Total2, 1.15d, 1.19d);
+
+        SampleObject instance = new() { Total2 = 1.14d };
+        validator.Validate(instance).Should().NotBeNullOrEmpty();
+
+        instance.Total2 = 1.15d;
+        validator.Validate(instance).Should().BeNullOrEmpty();
+
+        instance.Total2 = 1.16d;
+        validator.Validate(instance).Should().BeNullOrEmpty();
+
+        instance.Total2 = 1.18d;
+        validator.Validate(instance).Should().BeNullOrEmpty();
+
+        instance.Total2 = 1.19d;
+        validator.Validate(instance).Should().BeNullOrEmpty();
+
+        instance.Total2 = 1.20d;
+        validator.Validate(instance).Should().NotBeNullOrEmpty();
+
+
+    }
+
+
+    [Test]
+    public void RangeInt16()
+    {
+        EficazFramework.Validation.Fluent.Validator<SampleObject> validator = new EficazFramework.Validation.Fluent.Validator<SampleObject>().Range((e) => e.Inicio2, (short)1, (short)4);
+
+        SampleObject instance = new() { Inicio2 = 0 };
+        validator.Validate(instance).Should().NotBeNullOrEmpty();
+
+        instance.Inicio2 = 1;
+        validator.Validate(instance).Should().BeNullOrEmpty();
+
+        instance.Inicio2 = 2;
+        validator.Validate(instance).Should().BeNullOrEmpty();
+
+        instance.Inicio2 = 3;
+        validator.Validate(instance).Should().BeNullOrEmpty();
+
+        instance.Inicio2 = 4;
+        validator.Validate(instance).Should().BeNullOrEmpty();
+
+        instance.Inicio2 = 5;
+        validator.Validate(instance).Should().NotBeNullOrEmpty();
+
+
+    }
+
+    [Test]
+    public void RangeInt64()
+    {
+        EficazFramework.Validation.Fluent.Validator<SampleObject> validator = new EficazFramework.Validation.Fluent.Validator<SampleObject>().Range((e) => e.Inicio3, (long)1, (long)4);
+
+        SampleObject instance = new() { Inicio3 = 0 };
+        validator.Validate(instance).Should().NotBeNullOrEmpty();
+
+        instance.Inicio3 = 1;
+        validator.Validate(instance).Should().BeNullOrEmpty();
+
+        instance.Inicio3 = 2;
+        validator.Validate(instance).Should().BeNullOrEmpty();
+
+        instance.Inicio3 = 3;
+        validator.Validate(instance).Should().BeNullOrEmpty();
+
+        instance.Inicio3 = 4;
+        validator.Validate(instance).Should().BeNullOrEmpty();
+
+        instance.Inicio3 = 5;
+        validator.Validate(instance).Should().NotBeNullOrEmpty();
     }
 
     [Test]
@@ -269,6 +348,40 @@ public class FluentTests
     }
 
     [Test]
+    public void RequiredIf()
+    {
+        EficazFramework.Validation.Fluent.Validator<SampleObject> validator = new EficazFramework.Validation.Fluent.Validator<SampleObject>().RequiredIf((e) => e.Document, (e) => (e.Name ?? "").Contains("empresa"), true);
+
+        SampleObject instance = new() { Name = null };
+        validator.Validate(instance).Should().BeNullOrEmpty();
+
+        instance.Name = "";
+        validator.Validate(instance).Should().BeNullOrEmpty();
+
+        instance.Name = " ";
+        validator.Validate(instance).Should().BeNullOrEmpty();
+
+        instance.Name = "hello world!";
+        validator.Validate(instance).Should().BeNullOrEmpty();
+
+        instance.Name = "empresa";
+        validator.Validate(instance).Should().NotBeNullOrEmpty();
+
+        instance.Document = "1";
+        validator.Validate(instance).Should().BeNullOrEmpty();
+
+        instance.Document = "";
+        validator.Validate(instance).Should().BeNullOrEmpty();
+
+        ((Validation.Fluent.Rules.RequiredIf<SampleObject>)validator.ValidationRules[0]).AllowEmpty = false;
+        validator.Validate(instance).Should().NotBeNullOrEmpty();
+
+        instance.Name = " ";
+        validator.Validate(instance).Should().BeNullOrEmpty();
+    }
+
+
+    [Test]
     public void Equals()
     {
         EficazFramework.Validation.Fluent.Validator<SampleObject> validator = new EficazFramework.Validation.Fluent.Validator<SampleObject>().Equals((e) => e.Name, (e) => e.Name);
@@ -290,6 +403,14 @@ public class FluentTests
         instance2.Should().HaveCount(0);
     }
 
+    [Test]
+    public void ExceptionString()
+    {
+        var result = Validation.Fluent.ValidationResult.GetValidationException("Name", new System.Exception("só testando"));
+        result.Should().HaveCount(1);
+        result[0].Should().Be(string.Format(Resources.Strings.Validation.ValidationException, "Name", "só testando"));
+    }
+
 }
 
 
@@ -300,9 +421,15 @@ internal class SampleObject
     internal string Mail { get; set; }
     internal string Document { get; set; }
     internal decimal Total { get; set; }
+    internal double Total2 { get; set; }
     internal string Obs { get; set; }
     internal System.DateTime CreatedIn { get; set; }
     internal string State { get; set; }
     internal int Inicio { get; set; }
     internal int Fim { get; set; }
+    internal short Inicio2 { get; set; }
+    internal short Fim2 { get; set; }
+    internal long Inicio3 { get; set; }
+    internal long Fim3 { get; set; }
+
 }
