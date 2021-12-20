@@ -12,6 +12,9 @@ public class Apps
 
     private void GenerateAppList()
     {
+        if (_appManager.AllAplications.Count > 0)
+            return;
+
         EficazFramework.Application.ApplicationDefinition index = new()
         {
             Group = "",
@@ -89,8 +92,9 @@ public class Apps
     }
 
     [Test, Order(2)]
-    public void Activate()
+    public void ActivateAndClose()
     {
+        GenerateAppList();
         _appManager.AllAplications[1].Activate();
         _appManager.RunningAplications.Count.Should().Be(1);
         _appManager.RunningAplications[0].ToString().Should().Be("[0] - Clientes");
@@ -112,13 +116,17 @@ public class Apps
         _appManager.RunningAplications.First().Content = "client app";
         _appManager.RunningAplications.First().PropertyChanged -= PropertyChanged;
         _appManager.RunningAplications.First().NotifyContent.Should().Be("3 novos");
+
+        _appManager.RunningAplications.Last().Close();
+        _appManager.RunningAplications.Count.Should().Be(1);
     }
 
     [Test, Order(3)]
     public void AvoidDuplicated()
     {
+        GenerateAppList();
         _appManager.AllAplications[1].Activate();
-        _appManager.RunningAplications.Count.Should().Be(2);
+        _appManager.RunningAplications.Count.Should().Be(1);
     }
 
     private void PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)

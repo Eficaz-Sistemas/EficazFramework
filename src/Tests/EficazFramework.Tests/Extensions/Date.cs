@@ -35,6 +35,7 @@ class Date
         saturday.ToBusinessDay(true, true).Should().Be(saturday);
         saturday.ToBusinessDay(false, true).Should().Be(saturday);
         saturday.AddDays(1).ToBusinessDay(false, true).Should().Be(saturday);
+        new DateTime(2021, 12, 20).ToBusinessDay(true, true).Should().Be(new DateTime(2021, 12, 20));
     }
 
     [Test]
@@ -63,6 +64,10 @@ class Date
         new DateTime(2021, 11, 01).MonthEndDate(true).Should().Be(new DateTime(2021, 11, 30, 0, 0, 0));
         new DateTime(2021, 11, 01).MonthEndDate(true, true).Should().Be(new DateTime(2021, 11, 30, 0, 0, 0));
         new DateTime(2021, 11, 01).MonthEndDate(true, true, true).Should().Be(new DateTime(2021, 11, 30, 23, 59, 59));
+        new DateTime(2020, 02, 01).MonthEndDate().Should().Be(new DateTime(2020, 02, 29, 0, 0, 0));
+        new DateTime(2020, 02, 01).MonthEndDate(false, false, true).Should().Be(new DateTime(2020, 02, 29, 23, 59, 59));
+        new DateTime(2021, 02, 01).MonthEndDate().Should().Be(new DateTime(2021, 02, 28, 0, 0, 0));
+        new DateTime(2021, 02, 01).MonthEndDate(false, false, true).Should().Be(new DateTime(2021, 02, 28, 23, 59, 59));
     }
 
     [Test]

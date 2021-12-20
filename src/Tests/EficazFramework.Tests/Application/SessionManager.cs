@@ -33,14 +33,19 @@ public class Sessions
             ShowIdAsIcon = true,
             Tag = "My first app"
         });
+        manager.CurrentSection.Icon = "";
+        manager.CurrentSection.Should().NotBeNull();
         manager.CurrentSection.Should().NotBeNull();
         manager.CurrentSection.SectionIdLargerText.Should().BeFalse();
         manager.CurrentSection.Name.Should().Be("Desktop 1");
-        manager.CurrentSection.Icon.Should().Be("<svg/>");
         manager.CurrentSection.ShowIdAsIcon.Should().BeTrue();
         manager.CurrentSection.Tag.Should().Be("My first app");
         manager.CurrentSection.ToString().Should().Be("1 - Desktop 1");
+        manager.CurrentSection.Icon.Should().NotBe("<svg/>");
         manager.CurrentSection.ID.Should().Be(1);
+        manager.CurrentSection.Name = "new name";
+        manager.CurrentSection.ShowIdAsIcon = false;
+        manager.CurrentSection.Tag = null;
     }
 
     [Test, Order(2)]

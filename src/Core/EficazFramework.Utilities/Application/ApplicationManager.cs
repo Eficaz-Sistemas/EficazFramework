@@ -59,12 +59,23 @@ public class ApplicationManager
         {
             instance = new ApplicationInstance(application, _sectionManager);
             RunningAplications.Add(instance);
+            instance.AppClosed += AppClosed;
         }
         else
         {
             instance = RunningAplications.Where(app => app.Metadata == application && (app.SessionID == 0 | app.SessionID == _sectionManager.CurrentSection.ID)).FirstOrDefault();
         }
         ActiveAppChanged?.Invoke(instance, EventArgs.Empty);
+    }
+
+    private void AppClosed(object sender, System.EventArgs e)
+    {
+        var instance = sender as ApplicationInstance;
+        if (instance != null)
+        {
+            instance.AppClosed -= AppClosed;
+            RunningAplications.Remove(instance);
+        }
     }
 
     public event EventHandler ActiveAppChanged;
@@ -177,7 +188,7 @@ public sealed class ApplicationInstance : ApplicationDefinition, INotifyProperty
     }
 
     //Methods
-    public void RaiseAppClosed()
+    public void Close()
     {
         AppClosed?.Invoke(this, EventArgs.Empty);
         Dispose();

@@ -297,7 +297,7 @@ public sealed partial class MDIWindow : HeaderedContentControl
             token.RoutedEvent = ClosedEvent;
             RaiseEvent(token);
             if (AppDefinition != null)
-                AppDefinition.RaiseAppClosed();
+                AppDefinition.Close();
         }
     }
 
