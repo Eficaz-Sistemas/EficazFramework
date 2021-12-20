@@ -74,6 +74,18 @@ public class Apps
         {
             app.IsRunning().Should().Be(false);
         }
+        list.FirstOrDefault().FirstChar.Should().Be('I');
+
+        Exception appEx = null;
+        try
+        {
+            ApplicationInstance app = new();
+        }
+        catch (UnauthorizedAccessException ex)
+        {
+            appEx = ex;
+        }
+        appEx.Should().NotBeNull();
     }
 
     [Test, Order(2)]
@@ -94,6 +106,12 @@ public class Apps
         {
             ex.Message.Should().Be(Resources.Strings.Application.NoSessionForPrivateApp);
         }
+        _appManager.RunningAplications.First().Content.Should().BeNull();
+        _appManager.RunningAplications.First().NotifyContent.Should().BeNull();
+        _appManager.RunningAplications.First().PropertyChanged += PropertyChanged;
+        _appManager.RunningAplications.First().Content = "client app";
+        _appManager.RunningAplications.First().PropertyChanged -= PropertyChanged;
+        _appManager.RunningAplications.First().NotifyContent.Should().Be("3 novos");
     }
 
     [Test, Order(3)]
@@ -101,5 +119,14 @@ public class Apps
     {
         _appManager.AllAplications[1].Activate();
         _appManager.RunningAplications.Count.Should().Be(2);
+    }
+
+    private void PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
+    {
+        if (e.PropertyName == nameof(EficazFramework.Application.ApplicationInstance.Content))
+        {
+            var app = (EficazFramework.Application.ApplicationInstance)sender;
+            app.NotifyContent = "3 novos";
+        }
     }
 }

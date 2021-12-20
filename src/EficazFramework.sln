@@ -28,7 +28,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EficazFramework.Blazor", "W
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Docs", "Docs", "{2EF21EC5-D38B-49F2-AD36-5B871F378805}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EficazFramework.DocsApiPlugin", "Plugins\EficazFramework.DocsApiPlugin\EficazFramework.DocsApiPlugin.csproj", "{6733EC3A-A6E2-49DD-9ED1-9EEA3F0E9F73}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EficazFramework.DocsApiPlugin", "Plugins\EficazFramework.DocsApiPlugin\EficazFramework.DocsApiPlugin.csproj", "{6733EC3A-A6E2-49DD-9ED1-9EEA3F0E9F73}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Samples", "Samples", "{42E6F1B1-3BC0-40A3-A68D-462906F326A9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

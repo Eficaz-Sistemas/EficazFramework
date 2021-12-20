@@ -105,18 +105,6 @@ public class ApplicationDefinition : INotifyPropertyChanged
     {
         PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyname)) ;
     }
-
-
-    //public override bool Equals(object obj)
-    //{
-    //    if (!(obj is ApplicationInstance)) { return base.Equals(obj); }
-    //    return ((ApplicationInstance)obj)._metadata == this;
-    //}
-
-    //public override int GetHashCode()
-    //{
-    //    return base.GetHashCode();
-    //}
 }
 
 public sealed class ApplicationInstance : ApplicationDefinition, INotifyPropertyChanged, IDisposable
@@ -156,9 +144,9 @@ public sealed class ApplicationInstance : ApplicationDefinition, INotifyProperty
     private object _content = null;
     public object Content
     {
-        get { return _content; }
+        get => _content;
         set
-        { 
+        {
             _content = value;
             if (IsLoading == true) IsLoading = false;
             RaisePropertyChanged(nameof(Content));
@@ -168,14 +156,14 @@ public sealed class ApplicationInstance : ApplicationDefinition, INotifyProperty
     private object _notifyContent = null;
     public object NotifyContent
     {
-        get { return _notifyContent; }
+        get => _notifyContent;
         set { _notifyContent = value; RaisePropertyChanged(nameof(NotifyContent)); }
     }
 
     private bool _isloading = true;
     public bool IsLoading
     {
-        get { return _isloading; }
+        get => _isloading;
         set
         { _isloading = value; RaisePropertyChanged(nameof(IsLoading)); }
     }
