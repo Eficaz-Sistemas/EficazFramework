@@ -10,7 +10,7 @@ namespace EficazFramework.Components;
 public partial class MDIContainer
 {
     private MudBlazor.MudTabs tabsmanager;
-    private string idtorender = null;
+    private string idtorender;
 
     [Parameter] public RenderFragment Index { get; set; }
     [Parameter] public int Elevation { get; set; }
@@ -37,16 +37,16 @@ public partial class MDIContainer
     protected IEnumerable<EficazFramework.Application.ApplicationInstance> GetRunningApplications()
     {
 
-        return SessionManager.ApplicationManager.RunningAplications.Where((e) =>
+        return Application.ApplicationManager.Instance.RunningAplications.Where((e) =>
                 {
                     Application.ApplicationInstance app = e as Application.ApplicationInstance;
-                    return (app.SessionID == 0 || app.SessionID == Application.SessionManager.Instance.CurrentSession.ID);
+                    return (app.SessionID == 0 || app.SessionID == Application.ApplicationManager.Instance?.SectionManager.CurrentSection?.ID);
                 }).ToList();
     }
 
     protected string GetTabID(EficazFramework.Application.ApplicationInstance app)
     {
-        return $"sc:{(app.IsPublic ? 0 : SessionManager.CurrentSession.ID)}|app:{app.TooltipTilte}";
+        return $"sc:{(app.IsPublic ? 0 : Application.ApplicationManager.Instance.SectionManager.CurrentSection.ID)}|app:{app.TooltipTilte}";
     }
 
 
@@ -73,7 +73,7 @@ public partial class MDIContainer
         if (app == null)
             return "";
 
-        string resolved = (string)(app.Attributes.Where((e) => e.Key == $"Blazor:{EficazFramework.Application.ApplicationDefinitions.ICON}").FirstOrDefault().Value ?? "");
+        string resolved = (string)(app.Attributes.Where((e) => e.Key == $"Blazor:{EficazFramework.Application.ApplicationDefinitions.ICON}").FirstOrDefault()?.Value ?? "");
         if (string.IsNullOrEmpty(resolved))
             resolved = (string)(app.Icon ?? "");
 
@@ -88,8 +88,8 @@ public partial class MDIContainer
             return;
         }
 
-        idtorender = $"sc:{(app.IsPublic ? 0 : SessionManager.CurrentSession.ID)}|app:{app.TooltipTilte}";
-        SessionManager.ApplicationManager.Activate(app);
+        idtorender = $"sc:{(app.IsPublic ? 0 : Application.ApplicationManager.Instance.SectionManager.CurrentSection.ID)}|app:{app.TooltipTilte}";
+        Application.ApplicationManager.Instance.Activate(app);
         StateHasChanged();
     }
 
@@ -100,7 +100,7 @@ public partial class MDIContainer
         if (instance != null)
         {
 
-            SessionManager.ApplicationManager.RunningAplications.Remove(app);
+            Application.ApplicationManager.Instance.RunningAplications.Remove(app);
             idtorender = null;
             StateHasChanged();
         }

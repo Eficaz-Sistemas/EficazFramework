@@ -12,9 +12,6 @@ public static class ServiceCollectionExtensions
         if (applicationManager)
             serviceCollection.AddApplicationManager();
 
-        if (sessionManager)
-            serviceCollection.AddSessionManager();
-
         return serviceCollection.AddThemeProvider()
                                 .AddMudServices()
                                 .AddMudBlazorScrollManager();
@@ -22,12 +19,7 @@ public static class ServiceCollectionExtensions
 
     private static IServiceCollection AddApplicationManager(this IServiceCollection serviceCollection)
     {
-        return serviceCollection.AddScoped<EficazFramework.Application.ScopedApplicationManager>();
-    }
-
-    private static IServiceCollection AddSessionManager(this IServiceCollection serviceCollection)
-    {
-        return serviceCollection.AddScoped<EficazFramework.Application.ScopedSessionManager>();
+        return serviceCollection.AddScoped<EficazFramework.Application.ApplicationManager>();
     }
 
     private static IServiceCollection AddThemeProvider(this IServiceCollection serviceCollection)

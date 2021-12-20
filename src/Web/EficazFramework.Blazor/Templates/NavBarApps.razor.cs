@@ -8,7 +8,6 @@ namespace EficazFramework.Templates;
 
 public partial class NavBarApps
 {
-    [Inject] EficazFramework.Application.ScopedSessionManager SessionManager { get; set; }
     [CascadingParameter] private EficazFramework.Layouts.MudAppBarDrawerLayout DrawerLayout { get; set; }
 
     //internal MudBlazor.MudTextField<string> searchTb;
@@ -40,7 +39,7 @@ public partial class NavBarApps
     {
         get
         {
-            return SessionManager.ApplicationManager.AllAplications.Where(eapp =>
+            return Application.ApplicationManager.Instance?.AllAplications.Where(eapp =>
                 CultureInfo.InvariantCulture.CompareInfo.IndexOf(eapp.TooltipTilte, Search ?? "", CompareOptions.IgnoreNonSpace | CompareOptions.IgnoreCase) >= 0 ||
                 CultureInfo.InvariantCulture.CompareInfo.IndexOf(eapp.Group, Search ?? "", CompareOptions.IgnoreNonSpace | CompareOptions.IgnoreCase) >= 0).ToList();
         }
@@ -51,7 +50,7 @@ public partial class NavBarApps
         if (app == null)
             return "";
 
-        string resolved = (string)(app.Attributes.Where((e) => e.Key == $"Blazor:{EficazFramework.Application.ApplicationDefinitions.ICON}").FirstOrDefault().Value ?? "");
+        string resolved = (string)((app.Attributes.Where((e) => e.Key == $"Blazor:{EficazFramework.Application.ApplicationDefinitions.ICON}").FirstOrDefault()?.Value) ?? "");
         if (string.IsNullOrEmpty(resolved))
             resolved = (string)(app.Icon ?? "");
 

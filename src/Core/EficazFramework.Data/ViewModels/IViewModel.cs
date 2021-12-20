@@ -16,11 +16,16 @@ public class ViewModel<T> : INotifyPropertyChanged, IDisposable where T : class
 
     public ViewModel()
     {
-        SessionID = EficazFramework.Application.SessionManager.Instance.CurrentSession?.ID ?? 0;
+        SectionID = Application.ApplicationManager.Instance?.SectionManager.CurrentSection?.ID ?? 0;
         Commands.Add("Get", new EficazFramework.Commands.CommandBase(Get_Execute));
     }
 
-    /* TODO ERROR: Skipped RegionDirectiveTrivia */
+    public ViewModel(long sectionId)
+    {
+        SectionID = sectionId;
+        Commands.Add("Get", new EficazFramework.Commands.CommandBase(Get_Execute));
+    }
+
     private System.Threading.CancellationTokenSource _CancelationTokenSource = null;
 
     public object[] Arguments { get; set; }
@@ -31,10 +36,7 @@ public class ViewModel<T> : INotifyPropertyChanged, IDisposable where T : class
     private Enums.CRUD.State _state = Enums.CRUD.State.Bloqueado;
     public Enums.CRUD.State State
     {
-        get
-        {
-            return _state;
-        }
+        get => _state;
 
         internal set
         {
@@ -44,16 +46,13 @@ public class ViewModel<T> : INotifyPropertyChanged, IDisposable where T : class
         }
     }
 
-    public long SessionID { get; private set; }
+    public long SectionID { get; private set; } = 0;
 
     // ### Persistance
     private Repositories.RepositoryBase<T> _repository;
     public Repositories.RepositoryBase<T> Repository
     {
-        get
-        {
-            return _repository;
-        }
+        get => _repository;
 
         internal set
         {
@@ -69,17 +68,8 @@ public class ViewModel<T> : INotifyPropertyChanged, IDisposable where T : class
 
     // ### Service Injection
     internal Dictionary<string, Services.ViewModelService<T>> _servicesInternal = new();
-    public Dictionary<string, Services.ViewModelService<T>> Services
-    {
-        get
-        {
-            return _servicesInternal;
-        }
-    }
+    public Dictionary<string, Services.ViewModelService<T>> Services => _servicesInternal;
 
-    /* TODO ERROR: Skipped EndRegionDirectiveTrivia */
-    /* TODO ERROR: Skipped RegionDirectiveTrivia */
-    // ### INotifyPropertyChanged & View States
 
     /// <summary>
     /// Notifica às views que houve alteração em alguma propriedade do ViewModel
@@ -246,8 +236,6 @@ public class ViewModel<T> : INotifyPropertyChanged, IDisposable where T : class
         ViewModelAction?.Invoke(this, args);
     }
 
-    /* TODO ERROR: Skipped EndRegionDirectiveTrivia */
-    /* TODO ERROR: Skipped RegionDirectiveTrivia */
     /// <summary>
     /// Disparado quando alguma propriedade de entidade monitorada sofre alteração de valor.
     /// </summary>
@@ -266,8 +254,6 @@ public class ViewModel<T> : INotifyPropertyChanged, IDisposable where T : class
         return Task.CompletedTask;
     }
 
-    /* TODO ERROR: Skipped EndRegionDirectiveTrivia */
-    /* TODO ERROR: Skipped RegionDirectiveTrivia */
     /// <summary>
     /// Evento disparado quando uma propriedade do ViewModel é alterada.
     /// </summary>

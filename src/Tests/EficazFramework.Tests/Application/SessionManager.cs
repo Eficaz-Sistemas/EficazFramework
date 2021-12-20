@@ -7,20 +7,24 @@ namespace EficazFramework.Application;
 
 public class Sessions
 {
+    EficazFramework.Application.ApplicationManager _appManager = new();
+    EficazFramework.Application.SectionManager manager;
+
     [Test, Order(0)]
     public void Init()
     {
+        manager = _appManager.SectionManager;
         _ = Resources.Strings.Application.Culture;
-        EficazFramework.Application.SessionManager.Sessions.Count.Should().Be(1);
-        EficazFramework.Application.SessionManager.Instance.CurrentSession.Should().NotBeNull();
-        EficazFramework.Application.SessionManager.Instance.CurrentSession.ID.Should().Be(0);
-        EficazFramework.Application.SessionManager.Instance.CurrentSession.Name = Resources.Strings.Application.SessionZeroTooltip;
+        manager.Sections.Count.Should().Be(1);
+        manager.CurrentSection.Should().NotBeNull();
+        manager.CurrentSection.ID.Should().Be(0);
+        manager.CurrentSection.Name = Resources.Strings.Application.SessionZeroTooltip;
     }
 
     [Test, Order(1)]
     public void Create()
     {
-        EficazFramework.Application.SessionManager.ActivateSession(new EficazFramework.Application.Session()
+        manager.ActivateSection(new EficazFramework.Application.Section()
         {
             ID = 1,
             Name = "Desktop 1",
@@ -28,32 +32,32 @@ public class Sessions
             ShowIdAsIcon = true,
             Tag = "My first app"
         });
-        EficazFramework.Application.SessionManager.Instance.CurrentSession.Should().NotBeNull();
-        EficazFramework.Application.SessionManager.Instance.CurrentSession.SectionIdLargerText.Should().BeFalse();
-        EficazFramework.Application.SessionManager.Instance.CurrentSession.Name.Should().Be("Desktop 1");
-        EficazFramework.Application.SessionManager.Instance.CurrentSession.Icon.Should().Be("<svg/>");
-        EficazFramework.Application.SessionManager.Instance.CurrentSession.ShowIdAsIcon.Should().BeTrue();
-        EficazFramework.Application.SessionManager.Instance.CurrentSession.Tag.Should().Be("My first app");
-        EficazFramework.Application.SessionManager.Instance.CurrentSession.ToString().Should().Be("1 - Desktop 1");
-        EficazFramework.Application.SessionManager.Instance.CurrentSession.ID.Should().Be(1);
+        manager.CurrentSection.Should().NotBeNull();
+        manager.CurrentSection.SectionIdLargerText.Should().BeFalse();
+        manager.CurrentSection.Name.Should().Be("Desktop 1");
+        manager.CurrentSection.Icon.Should().Be("<svg/>");
+        manager.CurrentSection.ShowIdAsIcon.Should().BeTrue();
+        manager.CurrentSection.Tag.Should().Be("My first app");
+        manager.CurrentSection.ToString().Should().Be("1 - Desktop 1");
+        manager.CurrentSection.ID.Should().Be(1);
     }
 
     [Test, Order(2)]
     public void Activate()
     {
-        EficazFramework.Application.SessionManager.Instance.CurrentSession.ID.Should().Be(1);
-        EficazFramework.Application.SessionManager.ActivateSession(new EficazFramework.Application.Session()
+        manager.CurrentSection.ID.Should().Be(1);
+        manager.ActivateSection(new EficazFramework.Application.Section()
         {
             ID = 2222,
             Name = "Desktop 2222"
         });
-        EficazFramework.Application.SessionManager.Instance.CurrentSession.ID.Should().Be(2222);
-        EficazFramework.Application.SessionManager.Instance.CurrentSession.SectionIdLargerText.Should().BeTrue();
-        EficazFramework.Application.SessionManager.ActivateSession(1);
-        EficazFramework.Application.SessionManager.Instance.CurrentSession.ID.Should().Be(1);
+        manager.CurrentSection.ID.Should().Be(2222);
+        manager.CurrentSection.SectionIdLargerText.Should().BeTrue();
+        manager.ActivateSection(1);
+        manager.CurrentSection.ID.Should().Be(1);
         try
         {
-            EficazFramework.Application.SessionManager.ActivateSession(99);
+            manager.ActivateSection(99);
             throw new NullReferenceException("bad");
         }
         catch (NullReferenceException ex)
@@ -65,81 +69,22 @@ public class Sessions
     [Test, Order(3)]
     public void AvoidDuplicated()
     {
-        EficazFramework.Application.SessionManager.ActivateSession(new EficazFramework.Application.Session()
+        manager.ActivateSection(new EficazFramework.Application.Section()
         {
             ID = 2222,
             Name = "Desktop 3, Copy"
         });
-        _ = EficazFramework.Application.SessionManager.Sessions.GroupBy(i => i.ID).Count(gp => gp.Count() > 1).Should().Be(0);
+        _ = manager.Sections.GroupBy(i => i.ID).Count(gp => gp.Count() > 1).Should().Be(0);
 
     }
 
     [Test, Order(4)]
     public void Dispose()
     {
-        EficazFramework.Application.SessionManager.DisposeSession(1);
-        EficazFramework.Application.SessionManager.Instance.CurrentSession.ID.Should().Be(2222);
-        EficazFramework.Application.SessionManager.Instance.CurrentSession.RemoveSectionCommand.Execute(null);
-        EficazFramework.Application.SessionManager.Instance.CurrentSession.ID.Should().Be(0);
+        manager.DisposeSection(1);
+        manager.CurrentSection.ID.Should().Be(2222);
+        manager.DisposeSection(manager.CurrentSection.ID);
+        manager.CurrentSection.ID.Should().Be(0);
     }
-
-
-    private EficazFramework.Application.ScopedSessionManager scp;
-
-    [Test, Order(4)]
-    public void Scoped_Init()
-    {
-        scp = new();
-        scp.Sessions.Count.Should().Be(1);
-        scp.CurrentSession.Should().NotBeNull();
-        scp.CurrentSession.ID.Should().Be(0);
-    }
-
-    [Test, Order(5)]
-    public void Scoped_Create()
-    {
-        scp.ActivateSession(new EficazFramework.Application.Session()
-        {
-            ID = 1,
-            Name = "Desktop 2"
-        });
-        scp.CurrentSession.Should().NotBeNull();
-        scp.CurrentSession.ID.Should().Be(1);
-    }
-
-    [Test, Order(6)]
-    public void Scoped_Activate()
-    {
-        scp.ActivateSession(new EficazFramework.Application.Session()
-        {
-            ID = 2,
-            Name = "Desktop 3"
-        });
-        scp.CurrentSession.ID.Should().Be(2);
-        scp.ActivateSession(1);
-        scp.CurrentSession.ID.Should().Be(1);
-    }
-
-    [Test, Order(7)]
-    public void Scoped_AvoidDuplicated()
-    {
-        scp.ActivateSession(new EficazFramework.Application.Session()
-        {
-            ID = 2,
-            Name = "Desktop 3, Copy"
-        });
-        _ = scp.Sessions.GroupBy(i => i.ID).Count(gp => gp.Count() > 1).Should().Be(0);
-
-    }
-
-    [Test, Order(8)]
-    public void Scoped_Dispose()
-    {
-        scp.DisposeSession(1);
-        scp.CurrentSession.ID.Should().Be(2);
-        scp.DisposeSession(scp.Sessions[1]); //SESSION 1 AT LAST POSITION
-        scp.CurrentSession.ID.Should().Be(0);
-    }
-
 
 }

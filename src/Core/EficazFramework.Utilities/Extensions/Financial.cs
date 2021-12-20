@@ -40,19 +40,16 @@ public static class FinancialExtensions
     {
         double resultado = tipo switch
         {
-            Capitalizacao.JurosSimples => retorno switch
-            {
-                ReturnType.Montante => capital * (1 + (taxa / 100 * periodo)),
-                ReturnType.Juros => capital * (taxa / 100) * periodo,
-                _ => 0D
-            },
             Capitalizacao.JurosCompostos => retorno switch
             {
-                ReturnType.Montante => capital * Math.Pow(1 + (taxa / 100), periodo),
                 ReturnType.Juros => (capital * Math.Pow(1 + (taxa / 100), periodo)) - capital,
-                _ => 0D
+                _ => capital * Math.Pow(1 + (taxa / 100), periodo)
             },
-            _ => 0D
+            _ => retorno switch
+            {
+                ReturnType.Juros => capital * (taxa / 100) * periodo,
+                _ => capital * (1 + (taxa / 100 * periodo))
+            }
         };
 
         if (rounding <= -1)
@@ -94,9 +91,8 @@ public static class FinancialExtensions
     {
         double resultado = tipo switch
         {
-            Capitalizacao.JurosSimples => capital * periodo / (montante - capital) / 100D,
             Capitalizacao.JurosCompostos => (Math.Pow(montante / capital, 1D / periodo) - 1D) * 100D,
-            _ => 0D
+            _ => capital * periodo / (montante - capital) / 100D
         };
 
         if (rounding <= -1)

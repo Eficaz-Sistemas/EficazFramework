@@ -12,25 +12,25 @@ public class SessionView : Control, IDisposable
 
     public SessionView()
     {
-        Applications = new ListCollectionView(Application.ApplicationManager.RunningAplications)
+        Applications = new ListCollectionView(Application.ApplicationManager.Instance.RunningAplications)
         {
             Filter = (e) =>
                                     {
                                         Application.ApplicationInstance app = e as Application.ApplicationInstance;
-                                        return (app.SessionID == 0 || app.SessionID == Application.SessionManager.Instance.CurrentSession.ID);
+                                        return (app.SessionID == 0 || app.SessionID == Application.ApplicationManager.Instance.SectionManager.CurrentSection.ID);
                                     }
         };
-        Sessions = new ListCollectionView(Application.SessionManager.Sessions)
+        Sessions = new ListCollectionView(Application.ApplicationManager.Instance.SectionManager.Sections)
         {
             Filter = (e) =>
                                 {
-                                    Application.Session s = e as Application.Session;
+                                    Application.Section s = e as Application.Section;
                                     return s.ID != 0;
                                 }
         };
         SetValue(OpenSessionsCommandPropertyKey, new Commands.CommandBase(SessionsView_Executed));
         SetValue(NewSessionRequestCommandPropertyKey, new Commands.CommandBase(SessionRequest_Executed));
-        Application.SessionManager.Instance.CurrentSectionChanged += OnSessionChanged;
+        Application.ApplicationManager.Instance.SectionManager.CurrentSectionChanged += OnSessionChanged;
 
     }
 
@@ -156,7 +156,7 @@ public class SessionView : Control, IDisposable
 
     public void Dispose()
     {
-        Application.SessionManager.Instance.CurrentSectionChanged -= OnSessionChanged;
+        Application.ApplicationManager.Instance.SectionManager.CurrentSectionChanged -= OnSessionChanged;
         GC.SuppressFinalize(this);
     }
 

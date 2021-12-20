@@ -26,10 +26,7 @@ public partial class DelayedAction
         {
             await Task.Run(action, cancellationtoken);
         }
-        catch (ObjectDisposedException ex)
-        {
-            System.Diagnostics.Debug.WriteLine(ex.ToString());
-        }
+        catch { }
     }
 
 }

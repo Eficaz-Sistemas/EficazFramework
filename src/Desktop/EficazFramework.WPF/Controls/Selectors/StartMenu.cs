@@ -19,12 +19,12 @@ public class StartMenu : TabControl
         SetValue(CustomTabsProperty, new ObservableCollection<TabItem>());
         //CustomTabs.CollectionChanged += CustomTabs_CollectionChanged;
 
-        Applications = new ListCollectionView(Application.ApplicationManager.AllAplications);
+        Applications = new ListCollectionView(Application.ApplicationManager.Instance.AllAplications);
         Applications.SortDescriptions.Add(new System.ComponentModel.SortDescription("TooltipTilte", System.ComponentModel.ListSortDirection.Ascending));
         Applications.GroupDescriptions.Add(new PropertyGroupDescription("FirstChar"));
 
         ExcludedUris = new ObservableCollection<string>();
-        PinnedApplications = new ListCollectionView(Application.ApplicationManager.AllAplications);
+        PinnedApplications = new ListCollectionView(Application.ApplicationManager.Instance.AllAplications);
         PinnedApplications.GroupDescriptions.Add(new PropertyGroupDescription("Group"));
         PinnedApplications.Filter = (app) =>
         {
@@ -256,7 +256,7 @@ public class StartMenu : TabControl
     {
         if (e.Parameter == null) return;
         if ((e.Parameter as EficazFramework.Application.ApplicationDefinition) == null) return;
-        EficazFramework.Application.ApplicationManager.Activate((Application.ApplicationDefinition)e.Parameter);
+        Application.ApplicationManager.Instance.Activate((Application.ApplicationDefinition)e.Parameter);
         SetValue(IsPopupOpenedProperty, false);
     }
 

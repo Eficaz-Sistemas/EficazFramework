@@ -9,10 +9,9 @@
 
 | Classes | |
 | :--- | :--- |
+| [ApplicationExtensions](EficazFramework.Application/ApplicationExtensions.md 'EficazFramework.Application.ApplicationExtensions') | |
 | [ApplicationManager](EficazFramework.Application/ApplicationManager.md 'EficazFramework.Application.ApplicationManager') | |
-| [ScopedApplicationManager](EficazFramework.Application/ScopedApplicationManager.md 'EficazFramework.Application.ScopedApplicationManager') | |
-| [ScopedSessionManager](EficazFramework.Application/ScopedSessionManager.md 'EficazFramework.Application.ScopedSessionManager') | |
-| [SessionManager](EficazFramework.Application/SessionManager.md 'EficazFramework.Application.SessionManager') | |
+| [SectionManager](EficazFramework.Application/SectionManager.md 'EficazFramework.Application.SectionManager') | |
 
 <a name='EficazFramework.Commands'></a>
 

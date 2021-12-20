@@ -14,7 +14,7 @@ public partial class Applications
     private string _search;
     public string Search
     {
-        get { return _search; }
+        get => _search;
         set
         {
             _search = value;
@@ -38,7 +38,7 @@ public partial class Applications
     {
         get
         {
-            return SessionManager.ApplicationManager.AllAplications.Where(eapp =>
+            return Application.ApplicationManager.Instance.AllAplications.Where(eapp =>
                                                                             CultureInfo.InvariantCulture.CompareInfo.IndexOf(eapp.TooltipTilte, Search ?? "", CompareOptions.IgnoreNonSpace | CompareOptions.IgnoreCase) >= 0 ||
                                                                             CultureInfo.InvariantCulture.CompareInfo.IndexOf(eapp.Group, Search ?? "", CompareOptions.IgnoreNonSpace | CompareOptions.IgnoreCase) >= 0).ToList();
         }
@@ -54,7 +54,7 @@ public partial class Applications
         if (app == null)
             return "";
 
-        string resolved = (string)(app.Attributes.Where((e) => e.Key == $"Blazor:{EficazFramework.Application.ApplicationDefinitions.ICON}").FirstOrDefault().Value ?? "");
+        string resolved = (string)(app.Attributes.Where((e) => e.Key == $"Blazor:{EficazFramework.Application.ApplicationDefinitions.ICON}").FirstOrDefault()?.Value ?? "");
         if (string.IsNullOrEmpty(resolved))
             resolved = (string)(app.Icon ?? "");
 

@@ -547,5 +547,10 @@ public class Text
         "214.76695.85-0".IsValidPISePASEP().Should().Be(false);
     }
 
-
+    // Localization:
+    [Test]
+    public void Localize()
+    {
+        "eDocumento_PIS_NIT".Localize(typeof(EficazFramework.Resources.Strings.TestStrings), "Documento selecionado: {0}").Should().Be($"Documento selecionado: {EficazFramework.Resources.Strings.TestStrings.eDocumento_PIS_NIT}");
+    }
 }

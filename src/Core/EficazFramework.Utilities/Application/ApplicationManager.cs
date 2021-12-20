@@ -7,65 +7,26 @@ using System.IO;
 using System.Linq;
 
 namespace EficazFramework.Application;
-public static class ApplicationManager
+public class ApplicationManager
 {
-    /// <summary>
-    /// Listagem de aplicações disponíveis para trabalho (pode ser utilizada como menu principal)
-    /// </summary>
-    public static ObservableCollection<ApplicationDefinition> AllAplications { get; } = new ObservableCollection<ApplicationDefinition>();
-
-    /// <summary>
-    /// Cache de aplicativos em execução
-    /// </summary>
-    public static ObservableCollection<ApplicationInstance> RunningAplications { get; } = new ObservableCollection<ApplicationInstance>();
-
-    /// <summary>
-    /// Retorna se um aplicativo está em execução atualmente.
-    /// </summary>
-    /// <param name="application">Instância de aplicativo a ser verificado.</param>
-    /// <param name="scope">(Opcional) Instância de ApplicationManager em escopo, caso não esteja utilizando em Singleton.</param>
-    /// <returns></returns>
-    public static bool IsRunning(this ApplicationDefinition application, ScopedApplicationManager scope = null)
+    public ApplicationManager()
     {
-        if (scope is null)
-            return (RunningAplications.Where(app => app.Metadata == application && (app.SessionID == 0 | app.SessionID == SessionManager.Instance.CurrentSession.ID)).Any());
-        else
-            return scope.IsRunning(application);
+        _sectionManager = new(this);
+        Instance = this;
     }
 
     /// <summary>
-    /// Ativa uma aplicação para trabalho. Caso ainda não esteja em execução, uma nova intância é criada.
+    /// Retorna em padrão singleton a Última Instância de ApplicationManager instanciada.
     /// </summary>
-    /// <param name="application">Manifesto de aplicativo a ser iniciado ou ativado.</param>
-    /// <param name="scope">(Opcional) Instância de ApplicationManager em escopo, caso não esteja utilizando em Singleton.</param>
-    public static void Activate(this ApplicationDefinition application, ScopedApplicationManager scope = null)
-    {
-        if (scope is null)
-        {
-            bool running = IsRunning(application);
-            ApplicationInstance instance = null;
-            if (!running)
-            {
-                instance = new ApplicationInstance(application);
-                RunningAplications.Add(instance);
-            }
-            else
-            {
-                instance = RunningAplications.Where(app => app.Metadata == application && (app.SessionID == 0 | app.SessionID == SessionManager.Instance.CurrentSession.ID)).FirstOrDefault();
-            }
-            ActiveAppChanged?.Invoke(instance, EventArgs.Empty);
-        }
-        else
-        {
-            scope.Activate(application);
-        }
-    }
+    public static ApplicationManager Instance { get; private set; }
 
-    public static event EventHandler ActiveAppChanged;
-}
+    private SectionManager _sectionManager;
 
-public class ScopedApplicationManager
-{
+    /// <summary>
+    /// Instância de SectionManager para gestão de múltiplas área de trabalho.
+    /// </summary>
+    public SectionManager SectionManager => _sectionManager;
+
     /// <summary>
     /// Listagem de aplicações disponíveis para trabalho (pode ser utilizada como menu principal)
     /// </summary>
@@ -83,7 +44,7 @@ public class ScopedApplicationManager
     /// <returns></returns>
     public bool IsRunning(ApplicationDefinition application)
     {
-        return (RunningAplications.Where(app => app.Metadata == application && (app.SessionID == 0 | app.SessionID == SessionManager.Instance.CurrentSession.ID)).Any());
+        return (RunningAplications.Where(app => app.Metadata == application && (app.SessionID == 0 | app.SessionID == _sectionManager.CurrentSection.ID)).Any());
     }
 
     /// <summary>
@@ -96,18 +57,17 @@ public class ScopedApplicationManager
         ApplicationInstance instance = null;
         if (!running)
         {
-            instance = new ApplicationInstance(application);
+            instance = new ApplicationInstance(application, _sectionManager);
             RunningAplications.Add(instance);
         }
         else
         {
-            instance = RunningAplications.Where(app => app.Metadata == application && (app.SessionID == 0 | app.SessionID == SessionManager.Instance.CurrentSession.ID)).FirstOrDefault();
+            instance = RunningAplications.Where(app => app.Metadata == application && (app.SessionID == 0 | app.SessionID == _sectionManager.CurrentSection.ID)).FirstOrDefault();
         }
         ActiveAppChanged?.Invoke(instance, EventArgs.Empty);
     }
 
     public event EventHandler ActiveAppChanged;
-
 }
 
 public class ApplicationDefinition : INotifyPropertyChanged
@@ -161,7 +121,7 @@ public class ApplicationDefinition : INotifyPropertyChanged
 
 public sealed class ApplicationInstance : ApplicationDefinition, INotifyPropertyChanged, IDisposable
 {
-    public ApplicationInstance(ApplicationDefinition fromDefinition)
+    internal ApplicationInstance(ApplicationDefinition fromDefinition, SectionManager sectionManager)
     {
         Metadata = fromDefinition;
         SplashScreen = fromDefinition.SplashScreen;
@@ -179,11 +139,16 @@ public sealed class ApplicationInstance : ApplicationDefinition, INotifyProperty
         IsLoading = true;
         if (!fromDefinition.IsPublic)
         {
-            if  (SessionManager.Instance.CurrentSession?.ID == 0) throw new InvalidDataException(Resources.Strings.Application.NoSessionForPrivateApp);
-            SessionID = SessionManager.Instance.CurrentSession?.ID ?? throw new InvalidDataException(Resources.Strings.Application.NoSessionForPrivateApp);
+            if  (sectionManager.CurrentSection?.ID == 0) throw new InvalidDataException(Resources.Strings.Application.NoSessionForPrivateApp);
+            SessionID = sectionManager.CurrentSection?.ID ?? throw new InvalidDataException(Resources.Strings.Application.NoSessionForPrivateApp);
         }
         else { SessionID = 0; }
 
+    }
+
+    public ApplicationInstance()
+    {
+        throw new UnauthorizedAccessException();
     }
         
     public long SessionID { get; set; }
@@ -243,18 +208,6 @@ public sealed class ApplicationInstance : ApplicationDefinition, INotifyProperty
     // Events
     public event EventHandler AppClosed;
 
-
-    //public override bool Equals(object obj)
-    //{
-    //    if (!(obj is ApplicationDefinition)) { return base.Equals(obj); }
-    //    return _metadata == obj;
-    //}
-
-    //public override int GetHashCode()
-    //{
-    //    return base.GetHashCode();
-    //}
-
 }
 
 [ExcludeFromCodeCoverage]
@@ -271,4 +224,27 @@ public sealed class ApplicationAttributeCollection : List<ApplicationAttribute>
     {
         return this.Where(it => it.Key == key).Select(it => it.Value).FirstOrDefault();
     }
+}
+
+public static class ApplicationExtensions
+{
+    /// <summary>
+    /// Retorna se um aplicativo está em execução atualmente.
+    /// </summary>
+    /// <param name="application">Instância de aplicativo a ser verificado.</param>
+    /// <returns></returns>
+    public static bool IsRunning(this ApplicationDefinition application)
+    {
+        return ApplicationManager.Instance.IsRunning(application);
+    }
+
+    /// <summary>
+    /// Ativa uma aplicação para trabalho. Caso ainda não esteja em execução, uma nova intância é criada.
+    /// </summary>
+    /// <param name="application">Manifesto de aplicativo a ser iniciado ou ativado.</param>
+    public static void Activate(this ApplicationDefinition application)
+    {
+        ApplicationManager.Instance.Activate(application);
+    }
+
 }

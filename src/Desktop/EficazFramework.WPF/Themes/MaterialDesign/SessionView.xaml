@@ -19,7 +19,7 @@
                                       md:ColorZoneAssist.Background="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=(md:ColorZoneAssist.Background)}"
                                       md:ColorZoneAssist.Foreground="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=(md:ColorZoneAssist.Foreground)}">
                             <Button x:Name="PART_SessionButton"
-                                    DataContext="{Binding Source={x:Static efcoreapp:SessionManager.Instance}}"
+                                    DataContext="{Binding Source={x:Static efcoreapp:ApplicationManager.Instance}, Path=SectionManager}"
                                     Style="{StaticResource MaterialDesignToolForegroundButton}"
                                     Content="{Binding CurrentSession}"
                                     ContentTemplate="{TemplateBinding SelectedSessionTemplate}"
@@ -66,7 +66,7 @@
                                                   Grid.Column="1" Padding="5,0,0,0"
                                                   IsSynchronizedWithCurrentItem="True"
                                                   Foreground="{DynamicResource PrimaryHueMidBrush}"  
-                                                  SelectedItem="{Binding Source={x:Static efcoreapp:SessionManager.Instance}, Path=CurrentSession}"
+                                                  SelectedItem="{Binding Source={x:Static efcoreapp:ApplicationManager.Instance}, Path=SectionManager.CurrentSection}"
                                                   ItemTemplate="{TemplateBinding SessionListItemTemplate}">
                                             <ListView.ItemsPanel>
                                                 <ItemsPanelTemplate>
@@ -80,7 +80,7 @@
                         </Popup>
                     </Grid>
                     <ControlTemplate.Triggers>
-                        <DataTrigger Binding="{Binding Source={x:Static efcoreapp:SessionManager.Instance}, Path=CurrentSession.ID}" Value="0">
+                        <DataTrigger Binding="{Binding Source={x:Static efcoreapp:ApplicationManager.Instance}, Path=SectionManager.CurrentSection.ID}" Value="0">
                             <Setter TargetName="PART_SessionButton" Property="ToolTip" Value="{efcorelocale:LocalizeText SessionZeroTooltip, 
                                                                                                                          ResourceType=EficazFramework.Resources.Strings.Application}" />
                             <Setter TargetName="PART_SessionButton" Property="Width" Value="{x:Static efcore:MDIContainer.TaskIconSizeValue}" />
@@ -91,7 +91,7 @@
         </Setter>
         <Setter Property="SelectedSessionTemplate">
             <Setter.Value>
-                <DataTemplate DataType="{x:Type efcoreapp:Session}">
+                <DataTemplate DataType="{x:Type efcoreapp:Section}">
                     <StackPanel Orientation="Horizontal" 
                                 VerticalAlignment="Center"
                                 HorizontalAlignment="Center">
@@ -125,7 +125,7 @@
         </Setter>
         <Setter Property="SessionListItemTemplate">
             <Setter.Value>
-                <DataTemplate DataType="{x:Type efcoreapp:Session}">
+                <DataTemplate DataType="{x:Type efcoreapp:Section}">
                     <Border BorderBrush="{DynamicResource MaterialDesignDivider}" 
                             Background="Transparent" 
                             ToolTip="{Binding Name}"

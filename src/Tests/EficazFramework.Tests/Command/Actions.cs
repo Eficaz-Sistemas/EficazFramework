@@ -42,8 +42,19 @@ public class Actions
         TimeSpan start = DateTime.Now.TimeOfDay;
         CancellationTokenSource tks = new();
         await EficazFramework.Commands.DelayedAction.InvokeAsync(action, delay, tks.Token);
-        TimeSpan delta = DateTime.Now.TimeOfDay - start;
-        delta.Milliseconds.Should().BeGreaterThanOrEqualTo(delay);
+        tks.Cancel();
+        Exception cEx = null;
+        try
+        {
+            await EficazFramework.Commands.DelayedAction.InvokeAsync(action, delay, tks.Token);
+            TimeSpan delta = DateTime.Now.TimeOfDay - start;
+            delta.Milliseconds.Should().BeGreaterThanOrEqualTo(delay);
+        }
+        catch (TaskCanceledException tex)
+        {
+            cEx = tex;
+        }
+        cEx.Should().NotBeNull();
     }
 
     private static void CustomAction(Dictionary<string, bool> config)
