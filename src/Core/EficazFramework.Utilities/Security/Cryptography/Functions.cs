@@ -10,96 +10,40 @@ namespace EficazFramework.Security.Cryptography;
 
 public class Functions
 {
-
-    private static readonly TripleDES _des = TripleDES.Create();
     private static readonly MD5 _md5 = MD5.Create();
-    private static readonly UTF8Encoding _utf8 = new();
 
-    public static string Encript(string text, string parameter1)
+    public static string Encript(string text, string key)
     {
-        return Encript(text, _md5.ComputeHash(Encoding.Unicode.GetBytes(parameter1)));
+        return Encript(text, _md5.ComputeHash(Encoding.Unicode.GetBytes(key)));
     }
 
     private static string Encript(string text, byte[] key)
     {
-        try
-        {
-            var input = _utf8.GetBytes(text);
-            _des.Key = key;
-            _des.GenerateIV();
-            var output = Transform(input, _des.CreateEncryptor());
+            var input = Encoding.UTF8.GetBytes(text);
+            var output = CreateDes(key).CreateEncryptor().TransformFinalBlock(input, 0, input.Length);
             return Convert.ToBase64String(output);
-        }
-        catch(Exception ex)
-        {
-            Console.WriteLine(ex.ToString());
-            return "bad data";
-        }
     }
 
-    public static string Decript(string text, string parameter1)
+    public static string Decript(string text, string key)
     {
         var md5 = MD5.Create();
-        return Decript(text, md5.ComputeHash(Encoding.Unicode.GetBytes(parameter1)));
+        return Decript(text, md5.ComputeHash(Encoding.Unicode.GetBytes(key)));
     }
 
     private static string Decript(string text, byte[] key)
     {
-        try
-        {
             var input = Convert.FromBase64String(text);
-            _des.Key = key;
-            _des.GenerateIV();
-            var output = Transform(input, _des.CreateDecryptor());
-            return _utf8.GetString(output);
-        }
-        catch (Exception ex)
-        {
-            Console.WriteLine(ex.ToString());
-            return "bad data";
-        }
+            var output = CreateDes(key).CreateDecryptor().TransformFinalBlock(input, 0, input.Length);
+            return (Encoding.UTF8.GetString(output) ?? "").Replace("\u0000", "");
     }
 
-    private static byte[] Transform(byte[] input, ICryptoTransform CryptoTransform)
+    private static TripleDES CreateDes(byte[] key)
     {
-        // create the necessary streams
-        var memStream = new MemoryStream();
-        var cryptStream = new CryptoStream(memStream, CryptoTransform, CryptoStreamMode.Write);
-
-        // transform the bytes as requested
-        cryptStream.Write(input, 0, input.Length);
-        byte[] result = memStream.ToArray();
-
-        // close and release the streams
-        memStream.Close();
-
-        // hand back the encrypted buffer
-        return result;
-    }
-
-    [ExcludeFromCodeCoverage]
-    public static string ComputeMD5Hash(string value)
-    {
-        var bytes = MD5.Create().ComputeHash(Encoding.UTF8.GetBytes(value));
-        StringBuilder sBuilder = new();
-        for (int i = 0; i < bytes.Length; i++)
-        {
-            sBuilder.Append(bytes[i].ToString("x2"));
-        }
-        string result = sBuilder.ToString();
-        return result;
-    }
-
-    [ExcludeFromCodeCoverage]
-    public static string ComputeSHA256Hash(string value)
-    {
-        var bytes = SHA256.Create().ComputeHash(Encoding.UTF8.GetBytes(value));
-        StringBuilder sBuilder = new();
-        for (int i = 0; i < bytes.Length; i++)
-        {
-            sBuilder.Append(bytes[i].ToString("x2"));
-        }
-        string result = sBuilder.ToString();
-        return result;
+        TripleDES des = TripleDES.Create();
+        des.Mode = CipherMode.ECB;
+        des.Padding = PaddingMode.Zeros;
+        des.Key = key;
+        des.IV = new byte[des.BlockSize / 8];
+        return des;
     }
 }

@@ -24,6 +24,7 @@ public class Sessions
     [Test, Order(1)]
     public void Create()
     {
+        manager.ApplicationManager.Should().NotBeNull();
         manager.ActivateSection(new EficazFramework.Application.Section()
         {
             ID = 1,
@@ -73,7 +74,7 @@ public class Sessions
         {
             ID = 2222,
             Name = "Desktop 3, Copy"
-        });
+        }, true);
         _ = manager.Sections.GroupBy(i => i.ID).Count(gp => gp.Count() > 1).Should().Be(0);
 
     }
@@ -83,7 +84,7 @@ public class Sessions
     {
         manager.DisposeSection(1);
         manager.CurrentSection.ID.Should().Be(2222);
-        manager.DisposeSection(manager.CurrentSection.ID);
+        manager.DisposeSection(manager.CurrentSection);
         manager.CurrentSection.ID.Should().Be(0);
     }
 
