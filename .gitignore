@@ -338,3 +338,4 @@ ASALocalRun/
 healthchecksdb
 /SPED
 /src/Tests/EficazFramework.Tests/coverage.json
+/SDK
