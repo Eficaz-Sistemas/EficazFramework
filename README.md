@@ -1,4 +1,4 @@
-# ![EficazFramework](Assets/GitHub-HeaderReadme.png)
+# <p align="center"> ![EficazFramework](Assets/GitHub-HeaderReadme.png)
 
 # EficazFramework
 
