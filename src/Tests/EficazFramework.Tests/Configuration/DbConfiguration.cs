@@ -23,17 +23,28 @@ public class DbConfigurationTests
         DbConfiguration.Instance.InstanceName.Should().Be("EfSQLEXPRESS");
         DbConfiguration.Instance.ServerData.Should().Be(@".\EfSQLEXPRESS");
         DbConfiguration.Instance.SingleTennant.Should().BeFalse();
+        DbConfiguration.Instance.ShouldSerializePort().Should().BeFalse();
 
         DbConfiguration.Instance.ServerName = "myserver";
         DbConfiguration.Instance.InstanceName = "myinstance";
         DbConfiguration.Instance.Port = 1436;
+        DbConfiguration.Instance.SingleTennant = true;
         DbConfiguration.Instance.ServerData.Should().Be(@"myserver\myinstance,1436");
+        DbConfiguration.Instance.ShouldSerializePort().Should().BeTrue();
         DbConfiguration.Save();
         
         DbConfiguration.Instance.ServerName = ".";
         DbConfiguration.Instance.InstanceName = "myinstance2";
         DbConfiguration.Instance.Port = 1437;
         DbConfiguration.Instance.ServerData.Should().Be(@".\myinstance2,1437");
+
+        DbConfiguration.Load();
+        DbConfiguration.Instance.ServerName = "myserver";
+        DbConfiguration.Instance.InstanceName = "myinstance";
+        DbConfiguration.Instance.Port = 1436;
+        DbConfiguration.Instance.SingleTennant = true;
+        DbConfiguration.Instance.ServerData.Should().Be(@"myserver\myinstance,1436");
+        DbConfiguration.Instance.ShouldSerializePort().Should().BeTrue();
 
         System.IO.File.Delete($"{DbConfiguration.SettingsPath}data_provider.json");
     }
