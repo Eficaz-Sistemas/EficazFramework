@@ -552,5 +552,7 @@ public class Text
     public void Localize()
     {
         "eDocumento_PIS_NIT".Localize(typeof(EficazFramework.Resources.Strings.TestStrings), "Documento selecionado: {0}").Should().Be($"Documento selecionado: {EficazFramework.Resources.Strings.TestStrings.eDocumento_PIS_NIT}");
+        "eDocumento_PIS_NIT".Localize(typeof(EficazFramework.Resources.Strings.Application), null).Should().Be("eDocumento_PIS_NIT");
+        "eDocumento_PIS_NIT".Localize(typeof(EficazFramework.Resources.Strings.Application), "Documento selecionado: {0}").Should().Be("Documento selecionado: eDocumento_PIS_NIT");
     }
 }

@@ -135,6 +135,10 @@ public abstract class EntityBase : IEntity, INotifyPropertyChanged, INotifyDataE
                 (entity as EntityBase)._isNew = true;
                 (entity as EntityBase)._isLoaded = true;
             }
+            else
+            {
+                throw new ArgumentException("The Type of TEntity not inherits from EntityBase.");
+            }
             return entity;
         }
         catch (Exception)
@@ -168,7 +172,7 @@ public abstract class EntityBase : IEntity, INotifyPropertyChanged, INotifyDataE
             if (string.IsNullOrEmpty(propertyName) | string.IsNullOrWhiteSpace(propertyName))
             {
                 // Validate entire object
-                _ = System.ComponentModel.DataAnnotations.Validator.TryValidateObject(this, new System.ComponentModel.DataAnnotations.ValidationContext(this), validationresults, true);
+                System.ComponentModel.DataAnnotations.Validator.TryValidateObject(this, new System.ComponentModel.DataAnnotations.ValidationContext(this), validationresults, true);
             }
             else
             {
@@ -178,7 +182,6 @@ public abstract class EntityBase : IEntity, INotifyPropertyChanged, INotifyDataE
                 {
                     throw new ArgumentNullException(string.Format(CultureInfo.CurrentCulture, "O membro {0} nao foi encontrado na intância {1}.", propertyName, GetType()));
                 }
-
                 System.ComponentModel.DataAnnotations.Validator.TryValidateProperty(prop.GetValue(this, null), new System.ComponentModel.DataAnnotations.ValidationContext(this) { MemberName = propertyName }, validationresults);
             }
 

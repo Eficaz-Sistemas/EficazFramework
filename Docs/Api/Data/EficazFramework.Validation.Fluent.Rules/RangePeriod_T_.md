@@ -100,7 +100,7 @@ public string ValuesStringFormatForMessage { get; set; }
 Obtém o nome da propriedade a ser validada pela regra
 
 ```csharp
-private string GetStartPropertyName();
+internal string GetStartPropertyName();
 ```
 
 #### Returns

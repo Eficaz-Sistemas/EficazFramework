@@ -34,7 +34,7 @@ internal class RangePeriod<T> : Rules.ValidationRule<T> where T : class
     /// <summary>
     /// Obtém o nome da propriedade a ser validada pela regra
     /// </summary>
-    private string GetStartPropertyName()
+    internal string GetStartPropertyName()
     {
         if (StartProperty is null)
             return null;

@@ -2,6 +2,7 @@
 using NUnit.Framework;
 using EficazFramework.Validation.Fluent.Rules;
 using System.ComponentModel.DataAnnotations;
+using System;
 
 namespace EficazFramework.Entities;
 
@@ -30,9 +31,21 @@ public class EntityTests
         instance2.IsNew.Should().BeFalse();
         instance2.IsSelected = true;
         instance2.IsSelected.Should().BeTrue();
+
+        Exception ex = null;
+        try
+        {
+            _ = EntityBase.Create<SystemException>();
+        }
+        catch (Exception affEx)
+        {
+            ex = affEx;
+        }
+        ex.Should().NotBeNull();
     }
 
     //not working
+    [Test, Order(1)]
     public void DataAnnotationValidationTest()
     {
         SampleClass instance = new()
@@ -89,16 +102,16 @@ public class EntityTests
 }
 
 
-internal class SampleClass : EntityBase
+public class SampleClass : EntityBase
 {
-    internal int ID { get; set; }
+    public int ID { get; set; }
     [Required(AllowEmptyStrings = false, ErrorMessage = "droga não pode ficar em branco.")]
-    internal string Name { get; set; }
-    internal string Mail { get; set; }
-    internal string Document { get; set; }
-    internal decimal Total { get; set; }
-    internal string Obs { get; set; }
-    internal System.DateTime CreatedIn { get; set; }
-    internal string State { get; set; }
+    public string Name { get; set; }
+    public string Mail { get; set; }
+    public string Document { get; set; }
+    public decimal Total { get; set; }
+    public string Obs { get; set; }
+    public System.DateTime CreatedIn { get; set; }
+    public string State { get; set; }
 
 }

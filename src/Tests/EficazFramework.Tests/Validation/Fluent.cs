@@ -235,6 +235,25 @@ public class FluentTests
 
     }
 
+    [Test]
+    public void RangeDouble2()
+    {
+        EficazFramework.Validation.Fluent.Validator<SampleObject> validator = new EficazFramework.Validation.Fluent.Validator<SampleObject>().Range((e) => e.Total, 1.15M, decimal.MaxValue);
+
+        SampleObject instance = new() { Total = 1.14M };
+        validator.Validate(instance).Should().NotBeNullOrEmpty();
+
+        instance.Total = 1.15M;
+        validator.Validate(instance).Should().BeNullOrEmpty();
+
+        validator = new EficazFramework.Validation.Fluent.Validator<SampleObject>().Range((e) => e.Total, decimal.MinValue, 1.15M);
+
+        instance.Total = 1.16M;
+        validator.Validate(instance).Should().NotBeNullOrEmpty();
+
+        instance.Total = 1.15M;
+        validator.Validate(instance).Should().BeNullOrEmpty();
+    }
 
     [Test]
     public void RangeInt16()
@@ -327,6 +346,10 @@ public class FluentTests
         ((EficazFramework.Validation.Fluent.Rules.RangePeriod<SampleObject>)validator.ValidationRules[0]).AllowEquals = false;
         instance.Inicio = 2;
         validator.Validate(instance).Should().NotBeNullOrEmpty();
+
+        validator = new EficazFramework.Validation.Fluent.Validator<SampleObject>().RangePeriodo(null, null);
+        ((Fluent.Rules.RangePeriod<SampleObject>)validator.ValidationRules[0]).GetStartPropertyName().Should().BeNull();
+        ((Fluent.Rules.RangePeriod<SampleObject>)validator.ValidationRules[0]).GetPropertyName().Should().BeNull();
     }
 
     [Test]
