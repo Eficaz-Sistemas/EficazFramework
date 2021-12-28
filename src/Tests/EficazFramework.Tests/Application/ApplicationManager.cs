@@ -102,6 +102,7 @@ public class Apps
         _appManager.RunningAplications.Count.Should().Be(2);
         try
         {
+            Resources.Strings.Application.Culture = Resources.Strings.Application.Culture;
             _appManager.AllAplications[4].Activate();
             throw new NullReferenceException("bad");
 

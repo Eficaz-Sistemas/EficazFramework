@@ -17,6 +17,7 @@ class Number
         (2385.95M.ToWords(NumberExtensions.Currency.Euro_EUR) ?? "").ToLower().Should().Be("dois mil, trezentos e oitenta e cinco euros e noventa e cinco cêntimos");
         (2385.ToWords(NumberExtensions.Currency.Real_BRL) ?? "").ToLower().Should().Be("dois mil, trezentos e oitenta e cinco reais");
         (2100.ToWords(NumberExtensions.Currency.Real_BRL) ?? "").ToLower().Should().Be("dois mil e cem reais");
+        (300.ToWords(NumberExtensions.Currency.Real_BRL) ?? "").ToLower().Should().Be("trezentos reais");
         (257.ToWords(NumberExtensions.Currency.Real_BRL) ?? "").ToLower().Should().Be("duzentos e cinquenta e sete reais");
         (33.ToWords(NumberExtensions.Currency.Real_BRL) ?? "").ToLower().Should().Be("trinta e três reais");
         (19.1.ToWords(NumberExtensions.Currency.Real_BRL) ?? "").ToLower().Should().Be("dezenove reais e dez centavos");
@@ -35,6 +36,7 @@ class Number
         (2385.95D.ToWords(NumberExtensions.Gender.Masculino) ?? "").ToLower().Should().Be("dois mil, trezentos e oitenta e cinco inteiros e noventa e cinco centésimos");
         (2385.ToWords(NumberExtensions.Gender.Masculino) ?? "").ToLower().Should().Be("dois mil, trezentos e oitenta e cinco");
         (2100.ToWords(NumberExtensions.Gender.Masculino) ?? "").ToLower().Should().Be("dois mil e cem");
+        (300.ToWords(NumberExtensions.Gender.Masculino) ?? "").ToLower().Should().Be("trezentos");
         (257.ToWords(NumberExtensions.Gender.Masculino) ?? "").ToLower().Should().Be("duzentos e cinquenta e sete");
         (33.ToWords(NumberExtensions.Gender.Masculino) ?? "").ToLower().Should().Be("trinta e três");
         (19.1.ToWords(NumberExtensions.Gender.Masculino) ?? "").ToLower().Should().Be("dezenove inteiros e um décimo");
@@ -51,6 +53,7 @@ class Number
         (2385.95D.ToWords(NumberExtensions.Gender.Feminino) ?? "").ToLower().Should().Be("duas mil, trezentas e oitenta e cinco inteiras e noventa e cinco centésimas");
         (2385.ToWords(NumberExtensions.Gender.Feminino) ?? "").ToLower().Should().Be("duas mil, trezentas e oitenta e cinco");
         (2100.ToWords(NumberExtensions.Gender.Feminino) ?? "").ToLower().Should().Be("duas mil e cem");
+        (300.ToWords(NumberExtensions.Gender.Feminino) ?? "").ToLower().Should().Be("trezentas");
         (257.ToWords(NumberExtensions.Gender.Feminino) ?? "").ToLower().Should().Be("duzentas e cinquenta e sete");
         (33.ToWords(NumberExtensions.Gender.Feminino) ?? "").ToLower().Should().Be("trinta e três");
         (19.1.ToWords(NumberExtensions.Gender.Feminino) ?? "").ToLower().Should().Be("dezenove inteiras e uma décima");
