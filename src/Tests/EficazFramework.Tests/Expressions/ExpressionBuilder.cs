@@ -1,6 +1,7 @@
 ﻿using FluentAssertions;
 using NUnit.Framework;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace EficazFramework.Expressions;
@@ -229,6 +230,115 @@ public class ExpressionBuilderTests
         builder.Items.Should().HaveCount(1); // 2, if it isn'tt locked
         builder.Items.Add(new ExpressionItem());
         builder.Items.Should().HaveCount(2); // here it's possible to add, for internal usage.
+    }
+
+    [Test, Order(4)]
+    public void ExpressionBuildTest()
+    {
+        List<Validation.SampleObject> source = new()
+        {
+            new() { ID = 1, Name = "Item 1" },
+            new() { ID = 2, Name = "Item 2" },
+            new() { ID = 3, Name = "Item 3" },
+            new() { ID = 4, Name = "Item 4" },
+            new() { ID = 5, Name = "Item 5" },
+            new() { ID = 9, Name = "kkkkkk" }
+        };
+        ExpressionBuilder builder = DefaultInstance();
+        builder.AddNewItemCommand.Execute(null);
+
+        // numbers, dates: 
+        builder.Items[0].SelectedProperty = builder.Properties[0];
+        builder.Items[0].SelectedProperty.DisplayName.Should().Be("Código");
+        builder.Items[0].Operator.Should().Be(Enums.CompareMethod.Equals);
+        builder.Items[0].Value1.Should().Be(1);
+
+        var expression = builder.GetExpression<Validation.SampleObject>();
+        expression.Should().NotBeNull();
+        expression.ReturnType.Should().Be(typeof(bool));
+        source.Where(expression.Compile()).ToList().Should().HaveCount(1);
+
+        builder.Items[0].Operator = Enums.CompareMethod.BiggerThan;
+        expression = builder.GetExpression<Validation.SampleObject>();
+        expression.Should().NotBeNull();
+        expression.ReturnType.Should().Be(typeof(bool));
+        source.Where(expression.Compile()).ToList().Should().HaveCount(5);
+
+        builder.Items[0].Operator = Enums.CompareMethod.BiggerOrEqualThan;
+        builder.Items[0].Value1 = 3;
+        expression = builder.GetExpression<Validation.SampleObject>();
+        expression.Should().NotBeNull();
+        expression.ReturnType.Should().Be(typeof(bool));
+        source.Where(expression.Compile()).ToList().Should().HaveCount(4);
+
+        builder.Items[0].Operator = Enums.CompareMethod.LowerOrEqualThan;
+        expression = builder.GetExpression<Validation.SampleObject>();
+        expression.Should().NotBeNull();
+        expression.ReturnType.Should().Be(typeof(bool));
+        source.Where(expression.Compile()).ToList().Should().HaveCount(3);
+
+        builder.Items[0].Operator = Enums.CompareMethod.LowerThan;
+        expression = builder.GetExpression<Validation.SampleObject>();
+        expression.Should().NotBeNull();
+        expression.ReturnType.Should().Be(typeof(bool));
+        source.Where(expression.Compile()).ToList().Should().HaveCount(2);
+
+        builder.Items[0].Operator = Enums.CompareMethod.Between;
+        builder.Items[0].Value1 = 2;
+        builder.Items[0].Value2 = 4 ;
+        expression = builder.GetExpression<Validation.SampleObject>();
+        expression.Should().NotBeNull();
+        expression.ReturnType.Should().Be(typeof(bool));
+        source.Where(expression.Compile()).ToList().Should().HaveCount(3);
+
+        builder.Items[0].Operator = Enums.CompareMethod.Different;
+        builder.Items[0].Value1 = 5;
+        expression = builder.GetExpression<Validation.SampleObject>();
+        expression.Should().NotBeNull();
+        expression.ReturnType.Should().Be(typeof(bool));
+        source.Where(expression.Compile()).ToList().Should().HaveCount(5);
+
+        // texts
+        builder.Items[0].SelectedProperty = builder.Properties[1];
+        builder.Items[0].Operator = Enums.CompareMethod.Equals;
+        builder.Items[0].Value1 = "Item 2";
+        expression = builder.GetExpression<Validation.SampleObject>();
+        expression.Should().NotBeNull();
+        expression.ReturnType.Should().Be(typeof(bool));
+        source.Where(expression.Compile()).ToList().Should().HaveCount(1);
+
+        builder.Items[0].Operator = Enums.CompareMethod.Equals;
+        builder.Items[0].Value1 = "Item";
+        expression = builder.GetExpression<Validation.SampleObject>();
+        expression.Should().NotBeNull();
+        expression.ReturnType.Should().Be(typeof(bool));
+        source.Where(expression.Compile()).ToList().Should().HaveCount(0);
+
+        builder.Items[0].Operator = Enums.CompareMethod.Contains;
+        builder.Items[0].Value1 = "tem";
+        expression = builder.GetExpression<Validation.SampleObject>();
+        expression.Should().NotBeNull();
+        expression.ReturnType.Should().Be(typeof(bool));
+        source.Where(expression.Compile()).ToList().Should().HaveCount(5);
+
+        builder.Items[0].Value1 = "kk";
+        expression = builder.GetExpression<Validation.SampleObject>();
+        expression.Should().NotBeNull();
+        expression.ReturnType.Should().Be(typeof(bool));
+        source.Where(expression.Compile()).ToList().Should().HaveCount(1);
+
+        builder.Items[0].Operator = Enums.CompareMethod.StartsWith;
+        builder.Items[0].Value1 = "It";
+        expression = builder.GetExpression<Validation.SampleObject>();
+        expression.Should().NotBeNull();
+        expression.ReturnType.Should().Be(typeof(bool));
+        source.Where(expression.Compile()).ToList().Should().HaveCount(5);
+
+        builder.Items[0].Value1 = "kk";
+        expression = builder.GetExpression<Validation.SampleObject>();
+        expression.Should().NotBeNull();
+        expression.ReturnType.Should().Be(typeof(bool));
+        source.Where(expression.Compile()).ToList().Should().HaveCount(1);
     }
 
 
