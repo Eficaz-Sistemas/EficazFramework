@@ -6,6 +6,7 @@
 	<SuppressDependenciesWhenPacking>true</SuppressDependenciesWhenPacking>
 	<AssemblyVersion>1.0.1</AssemblyVersion>
 	<FileVersion>1.0.1.0</FileVersion>
+	<Version>1.0.1</Version>
 	<RootNamespace>EficazFramework</RootNamespace>
 	<Company>Eficaz Sistemas de Gestão e Inteligência Tributária</Company>
 	<Copyright>Copyright ©  2021. Eficaz Sistemas de Gestão e Inteligência Tributária Ltda.</Copyright>
