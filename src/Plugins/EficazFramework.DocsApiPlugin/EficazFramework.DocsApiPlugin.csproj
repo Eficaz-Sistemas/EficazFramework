@@ -4,8 +4,8 @@
 	<TargetFramework>netstandard2.0</TargetFramework>
 	<DevelopmentDependency>true</DevelopmentDependency>
 	<SuppressDependenciesWhenPacking>true</SuppressDependenciesWhenPacking>
-	<AssemblyVersion>1.0.0</AssemblyVersion>
-	<FileVersion>1.0.0.0</FileVersion>
+	<AssemblyVersion>1.0.1</AssemblyVersion>
+	<FileVersion>1.0.1.0</FileVersion>
 	<RootNamespace>EficazFramework</RootNamespace>
 	<Company>Eficaz Sistemas de Gestão e Inteligência Tributária</Company>
 	<Copyright>Copyright ©  2021. Eficaz Sistemas de Gestão e Inteligência Tributária Ltda.</Copyright>
@@ -15,13 +15,13 @@
 	<PackageTags>docs</PackageTags>
 	<NeutralLanguage>pt-BR</NeutralLanguage>
 	<Authors>Eficaz Sistemas</Authors>
-	<PackageIcon>logo.png</PackageIcon>
+	<PackageIcon>docs.png</PackageIcon>
 	<PackageIconUrl>https://efsuporte.blob.core.windows.net/portal/EficazFramework.png</PackageIconUrl>
 	<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
   </PropertyGroup>
 	
   <ItemGroup>
-  	<None Include="..\..\..\Assets\logo.png">
+  	<None Include="..\..\..\Assets\docs.png">
   		<Pack>True</Pack>
   		<PackagePath>\</PackagePath>
   	</None>
