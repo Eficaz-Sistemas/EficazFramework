@@ -56,11 +56,11 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
-    <PackageReference Include="EficazFramework.DocsApiPlugin" Version="1.0.0">
+    <PackageReference Include="EficazFramework.DocsApiPlugin" Version="1.0.1">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
-    <PackageReference Include="Microsoft.AspNetCore.SignalR.Client" Version="6.0.0" />
+    <PackageReference Include="Microsoft.AspNetCore.SignalR.Client" Version="6.0.1" />
     <PackageReference Include="System.Security.Cryptography.Xml" Version="6.0.0" />
   </ItemGroup>
 

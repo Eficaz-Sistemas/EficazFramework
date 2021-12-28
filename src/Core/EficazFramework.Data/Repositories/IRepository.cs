@@ -26,10 +26,7 @@ public abstract class RepositoryBase<T> : INotifyPropertyChanged, IDisposable wh
     /// <returns></returns>
     public int PageSize
     {
-        get
-        {
-            return _pagesize;
-        }
+        get => _pagesize;
 
         set
         {
@@ -102,8 +99,6 @@ public abstract class RepositoryBase<T> : INotifyPropertyChanged, IDisposable wh
 
     #region T
 
-    /* TODO ERROR: Skipped EndRegionDirectiveTrivia */
-    /* TODO ERROR: Skipped RegionDirectiveTrivia */
     /// <summary>
     /// Solicita a criação de uma nova instância de T
     /// </summary>
@@ -124,10 +119,7 @@ public abstract class RepositoryBase<T> : INotifyPropertyChanged, IDisposable wh
     /// <returns></returns>
     public EficazFramework.Validation.Fluent.Validator<T> Validator
     {
-        get
-        {
-            return _validator;
-        }
+        get => _validator;
 
         set
         {
@@ -174,8 +166,6 @@ public abstract class RepositoryBase<T> : INotifyPropertyChanged, IDisposable wh
 
     #region Generic
 
-    /* TODO ERROR: Skipped EndRegionDirectiveTrivia */
-    /* TODO ERROR: Skipped RegionDirectiveTrivia */
     /// <summary>
     /// Adiciona um item recém-criado à lista de items.
     /// </summary>
@@ -213,9 +203,6 @@ public abstract class RepositoryBase<T> : INotifyPropertyChanged, IDisposable wh
     }
 
 
-
-    /* TODO ERROR: Skipped EndRegionDirectiveTrivia */
-    /* TODO ERROR: Skipped RegionDirectiveTrivia */
     /// <summary>
     /// Solicita a exclusão de um item da lista de items
     /// </summary>

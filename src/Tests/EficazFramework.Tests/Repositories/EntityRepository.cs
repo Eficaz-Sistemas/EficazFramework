@@ -5,6 +5,8 @@ using System.Linq;
 using EficazFramework.Validation.Fluent.Rules;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
+using EficazFramework.Extensions;
+using System.Collections.Generic;
 
 namespace EficazFramework.Repositories;
 
@@ -22,6 +24,14 @@ public class EntityRepositoryTests
         repository.OrderByDefinitions.Add(new Collections.SortDescription() { PropertyName = "Name", Direction = Enums.Collection.SortOrientation.Asceding });
         result = await repository.FetchItemsAsync(default);
         result.Count.Should().Be(0);
+
+        repository.OrderByDefinitions.Clear();
+        repository.CustomFetch = async () => (await repository.DbContext.Set<Resources.Mocks.Classes.Blog>().ToListAsync()).ToObservableCollection<Resources.Mocks.Classes.Blog>();
+        result = repository.FetchItems();
+        result.Count.Should().Be(0);
+        result = await repository.FetchItemsAsync(default);
+        result.Count.Should().Be(0);
+
         repository.DbContextInstanceRequest -= (s, e) => e.Instance = new Resources.Mocks.InMemoryDbContext();
     }
 
