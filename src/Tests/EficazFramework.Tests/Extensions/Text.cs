@@ -566,5 +566,11 @@ public class Text
 
         "eUpdateValueMode_Expression".Localize(typeof(EficazFramework.Resources.Strings.DataDescriptions), null).Should().Be(EficazFramework.Resources.Strings.DataDescriptions.eUpdateValueMode_Expression);
         "eUpdateValueMode_Fixed".Localize(typeof(EficazFramework.Resources.Strings.DataDescriptions), null).Should().Be(EficazFramework.Resources.Strings.DataDescriptions.eUpdateValueMode_Fixed);
+
+        EficazFramework.Resources.Strings.Descriptions.Culture = EficazFramework.Resources.Strings.Descriptions.Culture;
+        true.GetBoolValue(BoolDescriptionType.YesNo).Should().Be(EficazFramework.Resources.Strings.Descriptions.BoolToYesNo_True);
+        false.GetBoolValue(BoolDescriptionType.YesNo).Should().Be(EficazFramework.Resources.Strings.Descriptions.BoolToYesNo_False);
+        true.GetBoolValue(BoolDescriptionType.TrueFalse).Should().Be(EficazFramework.Resources.Strings.Descriptions.BoolToTrueFalse_True);
+        false.GetBoolValue(BoolDescriptionType.TrueFalse).Should().Be(EficazFramework.Resources.Strings.Descriptions.BoolToTrueFalse_False);
     }
 }

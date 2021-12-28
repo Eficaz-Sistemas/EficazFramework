@@ -27,6 +27,7 @@ public class OperationTests
         Exception ex = null;
         try
         {
+            Resources.Strings.XML.Culture = Resources.Strings.XML.Culture;
             XMLOperations.SignXml(source, "Naame", "MockClassSS", null, true, true);
         }
         catch (Exception e)

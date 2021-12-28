@@ -336,7 +336,7 @@ public static class NumberExtensions
                 {
                     if (milhares == 0 & centenas == 0)
                     {
-                        numstr = GetNumberStringArray(milhoes, Gender.Masculino) + " Milhões";
+                        numstr = GetNumberStringArray(milhoes, genero) + " Milhões";
                         if (moeda == true)
                         {
                             numstr += " de";
@@ -345,23 +345,23 @@ public static class NumberExtensions
                     else if (milhares > 0 & centenas == 0)
                     {
                         if (milhares < 100)
-                            numstr = GetNumberStringArray(milhoes, Gender.Masculino) + " Milhões e ";
+                            numstr = GetNumberStringArray(milhoes, genero) + " Milhões e ";
                         else if (milhares == 100 | milhares == 200 | milhares == 300 | milhares == 400 | milhares == 500 | milhares == 600 | milhares == 700 | milhares == 800 | milhares == 900)
-                            numstr = GetNumberStringArray(milhoes, Gender.Masculino) + " Milhões e ";
+                            numstr = GetNumberStringArray(milhoes, genero) + " Milhões e ";
                         else
-                            numstr = GetNumberStringArray(milhoes, Gender.Masculino) + " Milhões, ";
+                            numstr = GetNumberStringArray(milhoes, genero) + " Milhões, ";
                     }
                     else if (milhares == 0 & centenas > 0)
                     {
                         if (centenas < 100)
-                            numstr = GetNumberStringArray(milhoes, Gender.Masculino) + " Milhões";
+                            numstr = GetNumberStringArray(milhoes, genero) + " Milhões";
                         else if (centenas == 100 | centenas == 200 | centenas == 300 | centenas == 400 | centenas == 500 | centenas == 600 | centenas == 700 | centenas == 800 | centenas == 900)
-                            numstr = GetNumberStringArray(milhoes, Gender.Masculino) + " Milhões e ";
+                            numstr = GetNumberStringArray(milhoes, genero) + " Milhões e ";
                         else
-                            numstr = GetNumberStringArray(milhoes, Gender.Masculino) + " Milhões";
+                            numstr = GetNumberStringArray(milhoes, genero) + " Milhões";
                     }
                     else if (milhares > 0 & centenas > 0)
-                        numstr = GetNumberStringArray(milhoes, Gender.Masculino) + " Milhões, ";
+                        numstr = GetNumberStringArray(milhoes, genero) + " Milhões, ";
                 }
 
                 if (milhares > 0)
@@ -374,10 +374,14 @@ public static class NumberExtensions
                 }
                 else
                 {
-                    numstr = numstr + ", " + GetNumberStringArray(centenas, genero);
-                }
+                    if (!(centenas % 100 == 0))
+                    {
+                        numstr = numstr + ", ";
+                    }
+                    numstr = numstr + GetNumberStringArray(centenas, genero);
+                    }
 
-                if (moeda == true)
+                    if (moeda == true)
                     numstr += $" {currency[1]}"; // " Reais"
                 else
                     numstr += $" {generoNaturais[1]}"; // " Inteiros"
