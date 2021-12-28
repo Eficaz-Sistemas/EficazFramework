@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using EficazFramework.Extensions;
 using System.Collections.Generic;
+using System.Threading;
 
 namespace EficazFramework.Repositories;
 
@@ -26,6 +27,10 @@ public class EntityRepositoryTests
         await repository.GetAsync(default);
         repository.DataContext.Should().HaveCount(0);
         repository.CurrentPage.Should().Be(1);
+        repository.OrderByDefinitions[0].Direction = Enums.Collection.SortOrientation.Descending;
+        await repository.GetAsync(default);
+        repository.DataContext.Should().HaveCount(0);
+        repository.CurrentPage.Should().Be(1);
 
         repository.OrderByDefinitions.Clear();
         repository.CustomFetch = async () => (await repository.DbContext.Set<Resources.Mocks.Classes.Blog>().ToListAsync()).ToObservableCollection<Resources.Mocks.Classes.Blog>();
@@ -34,6 +39,13 @@ public class EntityRepositoryTests
         result = await repository.FetchItemsAsync(default);
         result.Count.Should().Be(0);
 
+        CancellationTokenSource tks = new();
+        repository.DbContextInstanceRequest += (s, e) => tks.Cancel();
+        await repository.FetchItemsAsync(tks.Token);
+        tks = new();
+        repository.CustomFetch = null;
+        await repository.FetchItemsAsync(tks.Token);
+        repository.DbContextInstanceRequest -= (s, e) => tks.Cancel();
         repository.DbContextInstanceRequest -= (s, e) => e.Instance = new Resources.Mocks.InMemoryDbContext();
         repository.Dispose();
     }
@@ -62,10 +74,22 @@ public class EntityRepositoryTests
         repository.Validate(null).Should().HaveCount(0);
         (await repository.ValidateAsync(null)).Should().HaveCount(0);
 
+        repository.DbContextInstanceRequest += (s, e) => e.Instance = new Resources.Mocks.InMemoryDbContext();
+        newEntry.Name = "not null";
+        repository.Validate(newEntry).Should().HaveCount(0);
+        repository.Validate(null).Should().HaveCount(0);
+        (await repository.ValidateAsync(null)).Should().HaveCount(0);
+        repository.Add(newEntry, true);
+        newEntry.Name = null;
+        repository.Validate(null).Should().HaveCount(1);
+        (await repository.ValidateAsync(null)).Should().HaveCount(1);
+        repository.Delete(newEntry, true);
+
+        repository.DbContextInstanceRequest -= (s, e) => e.Instance = new Resources.Mocks.InMemoryDbContext();
+
         repository.Validator = null;
         repository.Validate(newEntry).Should().HaveCount(0);
         (await repository.ValidateAsync(newEntry)).Should().HaveCount(0);
-
     }
 
     [Test, Order(4)]
@@ -212,6 +236,8 @@ public class EntityRepositoryTests
         ex = await repository.CancelAsync(newEntry);
         ex.Should().BeNull();
         newEntry.Name.Should().Be("My New Blog");
+        repository.Detach(newEntry);
+        repository.DbContext.Entry(newEntry).State.Should().Be(EntityState.Detached);
     }
 
 }

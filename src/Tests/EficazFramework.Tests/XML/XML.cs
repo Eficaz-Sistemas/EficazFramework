@@ -23,12 +23,25 @@ public class OperationTests
         System.IO.File.Delete(target);
         System.Security.Cryptography.X509Certificates.X509Certificate2 cert = MockCertificate();
 
+        // null certificate
+        Exception ex = null;
+        try
+        {
+            XMLOperations.SignXml(source, "Naame", "MockClassSS", null, true, true);
+        }
+        catch (Exception e)
+        {
+            ex = e;
+        }
+        ex.Should().NotBeNull();
+        ex = null;
+
         // Assert
         XMLOperations.SignXml(source, "Name", "MockClass", cert, true, true);
         Console.WriteLine(source.OuterXml);
 
         // Error message
-        Exception ex = null;
+        ex = null;
         try
         {
             XMLOperations.SignXml(source, "Naame", "MockClassSS", cert, true, true);

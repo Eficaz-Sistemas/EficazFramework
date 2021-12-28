@@ -552,7 +552,19 @@ public class Text
     public void Localize()
     {
         "eDocumento_PIS_NIT".Localize(typeof(EficazFramework.Resources.Strings.TestStrings), "Documento selecionado: {0}").Should().Be($"Documento selecionado: {EficazFramework.Resources.Strings.TestStrings.eDocumento_PIS_NIT}");
+        "eDocumento_PIS_NIT".Localize(typeof(EficazFramework.Resources.Strings.DataDescriptions), "Documento selecionado: {0}").Should().Be($"Documento selecionado: {EficazFramework.Resources.Strings.DataDescriptions.eDocumento_PIS_NIT}");
         "eDocumento_PIS_NIT".Localize(typeof(EficazFramework.Resources.Strings.Application), null).Should().Be("eDocumento_PIS_NIT");
         "eDocumento_PIS_NIT".Localize(typeof(EficazFramework.Resources.Strings.Application), "Documento selecionado: {0}").Should().Be("Documento selecionado: eDocumento_PIS_NIT");
+
+        "eComparer_Bigger".Localize(typeof(EficazFramework.Resources.Strings.DataDescriptions), null).Should().Be(EficazFramework.Resources.Strings.DataDescriptions.eComparer_Bigger);
+        "eComparer_Contains".Localize(typeof(EficazFramework.Resources.Strings.DataDescriptions), null).Should().Be(EficazFramework.Resources.Strings.DataDescriptions.eComparer_Contains);
+        "eComparer_Is".Localize(typeof(EficazFramework.Resources.Strings.DataDescriptions), null).Should().Be(EficazFramework.Resources.Strings.DataDescriptions.eComparer_Is);
+        "eComparer_IsNot".Localize(typeof(EficazFramework.Resources.Strings.DataDescriptions), null).Should().Be(EficazFramework.Resources.Strings.DataDescriptions.eComparer_IsNot);
+        "eComparer_Length".Localize(typeof(EficazFramework.Resources.Strings.DataDescriptions), null).Should().Be(EficazFramework.Resources.Strings.DataDescriptions.eComparer_Length);
+        "eComparer_LowerOrEqualThan".Localize(typeof(EficazFramework.Resources.Strings.DataDescriptions), null).Should().Be(EficazFramework.Resources.Strings.DataDescriptions.eComparer_LowerOrEqualThan);
+        "eComparer_StartsWith".Localize(typeof(EficazFramework.Resources.Strings.DataDescriptions), null).Should().Be(EficazFramework.Resources.Strings.DataDescriptions.eComparer_StartsWith);
+
+        "eUpdateValueMode_Expression".Localize(typeof(EficazFramework.Resources.Strings.DataDescriptions), null).Should().Be(EficazFramework.Resources.Strings.DataDescriptions.eUpdateValueMode_Expression);
+        "eUpdateValueMode_Fixed".Localize(typeof(EficazFramework.Resources.Strings.DataDescriptions), null).Should().Be(EficazFramework.Resources.Strings.DataDescriptions.eUpdateValueMode_Fixed);
     }
 }

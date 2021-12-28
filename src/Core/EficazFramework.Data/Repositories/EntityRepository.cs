@@ -70,15 +70,16 @@ public sealed class EntityRepository<TEntity> : Repositories.RepositoryBase<TEnt
             if (CustomFetch != null)
             {
                 PrepareDbContext();
+                cancellationToken.ThrowIfCancellationRequested();
                 return (await CustomFetch.Invoke()).ToAsyncObservableCollection();
             }
             var query = PrepareQuery();
             var result = await query.ToListAsync(cancellationToken);
             return result.ToAsyncObservableCollection();
         }
-        catch (TaskCanceledException tkex)
+        catch (OperationCanceledException tkex)
         {
-            Debug.WriteLine(tkex.ToString());
+            Console.WriteLine(tkex.ToString());
             return new System.Collections.ObjectModel.ObservableCollection<TEntity>();
         }
     }
