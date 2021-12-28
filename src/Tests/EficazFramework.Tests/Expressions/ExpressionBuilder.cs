@@ -114,6 +114,39 @@ public class ExpressionBuilderTests
             Enums.CompareMethod.BiggerThan
         }
     };
+    static readonly ExpressionProperty ChildIdProperty = new()
+    {
+        PropertyPath = "ID",
+        DisplayName = "(Filho) Código",
+        Editor = ExpressionEditor.Number,
+        DefaultOperator = Enums.CompareMethod.Equals,
+        DefaultValue1 = 2,
+        DefaultValue2 = 5,
+        CollectionName = "Children",
+        Operators = new()
+        {
+            Enums.CompareMethod.LowerThan,
+            Enums.CompareMethod.LowerOrEqualThan,
+            Enums.CompareMethod.Different,
+            Enums.CompareMethod.Equals,
+            Enums.CompareMethod.Between,
+            Enums.CompareMethod.BiggerOrEqualThan,
+            Enums.CompareMethod.BiggerThan
+        }
+    };
+    static readonly ExpressionProperty RelatedProperty = new()
+    {
+        PropertyPath = "Related",
+        DisplayName = "Relacionado",
+        Editor = ExpressionEditor.Findable,
+        DefaultOperator = Enums.CompareMethod.Equals,
+        Operators = new()
+        {
+            Enums.CompareMethod.Different,
+            Enums.CompareMethod.Equals
+        },
+    };
+
 
     private static ExpressionBuilder DefaultInstance()
     {
@@ -125,6 +158,9 @@ public class ExpressionBuilderTests
         builder.Properties.Add(TeamProperty);
         builder.Properties.Add(TeamLocalizedProperty);
         builder.Properties.Add(SalaryProperty);
+        builder.Properties.Add(ChildIdProperty);
+        builder.Properties.Add(RelatedProperty);
+        RelatedProperty.FindableRelationships.Add(new() { PrincipalKey = "ID", ForeignKey = "RelatedID" });
         return builder;
     }
 
@@ -133,7 +169,7 @@ public class ExpressionBuilderTests
     {
         ExpressionBuilder builder = DefaultInstance();
         builder.Items.Should().HaveCount(0);
-        builder.Properties.Should().HaveCount(7);
+        builder.Properties.Should().HaveCount(8);
 
         builder.AddNewItemCommand.Execute(null);
         builder.Items.Should().HaveCount(1);
@@ -151,6 +187,11 @@ public class ExpressionBuilderTests
         builder.Items.Should().HaveCount(1);
         builder.CurrentItem.Should().Be(builder.Items[0]);
 
+        builder.CanAddExpressions = false;
+        builder.DeleteItemCommand.Execute(null);
+        builder.Items.Should().HaveCount(1);
+
+        builder.CanAddExpressions = true;
         builder.DeleteItemCommand.Execute(null);
         builder.Items.Should().HaveCount(0);
         builder.CurrentItem.Should().BeNull();
@@ -238,11 +279,11 @@ public class ExpressionBuilderTests
         List<Validation.SampleObject> source = new()
         {
             new() { ID = 1, Name = "Item 1" },
-            new() { ID = 2, Name = "Item 2" },
-            new() { ID = 3, Name = "Item 3" },
-            new() { ID = 4, Name = "Item 4" },
-            new() { ID = 5, Name = "Item 5" },
-            new() { ID = 9, Name = "kkkkkk" }
+            new() { ID = 2, Name = "Item 2", Children = { new() { ParentID = 2, ID = 1, Name = "Child 1 of Item 2" }, new() { ParentID = 2, ID = 2, Name = "Child 2 of Item 2" } } },
+            new() { ID = 3, Name = "Item 3", Children = { new() { ParentID = 3, ID = 1, Name = "Child 1 of Item 3" }, new() { ParentID = 3, ID = 2, Name = "Child 2 of Item 3" }, new() { ParentID = 3, ID = 3, Name = "Child 2 of Item 3" } } },
+            new() { ID = 4, Name = "Item 4", Related = new() { ID = 55}, RelatedID = 55 },
+            new() { ID = 5, Name = "Item 5", Related = new() { ID = 55}, RelatedID = 55 },
+            new() { ID = 9, Name = "kkkkkk", Related = new() { ID = 99}, RelatedID = 99 }
         };
         ExpressionBuilder builder = DefaultInstance();
         builder.AddNewItemCommand.Execute(null);
@@ -339,6 +380,43 @@ public class ExpressionBuilderTests
         expression.Should().NotBeNull();
         expression.ReturnType.Should().Be(typeof(bool));
         source.Where(expression.Compile()).ToList().Should().HaveCount(1);
+
+        // Collections
+        builder.Items[0].SelectedProperty = builder.Properties[7];
+        builder.Items[0].SelectedProperty.DisplayName.Should().Be("(Filho) Código");
+        builder.Items[0].Operator.Should().Be(Enums.CompareMethod.Equals);
+        builder.Items[0].Value1.Should().Be(2);
+
+        expression = builder.GetExpression<Validation.SampleObject>();
+        expression.Should().NotBeNull();
+        expression.ReturnType.Should().Be(typeof(bool));
+        source.Where(expression.Compile()).ToList().Should().HaveCount(2);
+
+        builder.Items[0].Operator = Enums.CompareMethod.BiggerThan;
+        expression = builder.GetExpression<Validation.SampleObject>();
+        expression.Should().NotBeNull();
+        expression.ReturnType.Should().Be(typeof(bool));
+        source.Where(expression.Compile()).ToList().Should().HaveCount(1);
+
+        // Related Entities
+        builder.Items[0].SelectedProperty = builder.Properties[8];
+        builder.Items[0].SelectedProperty.DisplayName.Should().Be("Relacionado");
+        builder.Items[0].Operator.Should().Be(Enums.CompareMethod.Equals);
+        builder.Items[0].Value1.Should().BeNull();
+        builder.Items[0].Value1 = new Validation.SampleRelatedObject() { ID = 55 };
+
+        expression = builder.GetExpression<Validation.SampleObject>();
+        expression.Should().NotBeNull();
+        expression.ReturnType.Should().Be(typeof(bool));
+        source.Where(expression.Compile()).ToList().Should().HaveCount(2);
+
+        builder.Items[0].Operator = Enums.CompareMethod.Different;
+        expression = builder.GetExpression<Validation.SampleObject>();
+        expression.Should().NotBeNull();
+        expression.ReturnType.Should().Be(typeof(bool));
+        source.Where(expression.Compile()).ToList().Should().HaveCount(4);
+
+        builder.Dispose();
     }
 
 

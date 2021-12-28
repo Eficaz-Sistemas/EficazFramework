@@ -9,12 +9,14 @@ using System.Windows.Input;
 
 namespace EficazFramework.Expressions;
 
-public class ExpressionBuilder : INotifyPropertyChanged
+public class ExpressionBuilder : INotifyPropertyChanged, IDisposable
 {
     public ExpressionBuilder()
     {
-        ItemsInternal = new Collections.AsyncObservableCollection<ExpressionItem>();
-        FixeditemsInternal = new Collections.AsyncObservableCollection<ExpressionItem>();
+        _items = new Collections.AsyncObservableCollection<ExpressionItem>();
+        _items.CollectionChanged += ItemsCollectionsChanged;
+        _fixeditems = new Collections.AsyncObservableCollection<ExpressionItem>();
+        _fixeditems.CollectionChanged += ItemsCollectionsChanged;
         _addcommand = new Commands.CommandBase(AddItemCommand_Execute);
         _deletecommand = new Commands.CommandBase(DeleteItemCommand_Execute);
     }
@@ -34,52 +36,19 @@ public class ExpressionBuilder : INotifyPropertyChanged
     public Collections.AsyncObservableCollection<ExpressionProperty> Properties => _props;
 
 
-    private Collections.AsyncObservableCollection<ExpressionItem> _items;
-    private Collections.AsyncObservableCollection<ExpressionItem> ItemsInternal
+    private readonly Collections.AsyncObservableCollection<ExpressionItem> _items;
+    public Collections.AsyncObservableCollection<ExpressionItem> Items
     {
         [MethodImpl(MethodImplOptions.Synchronized)]
         get => _items;
-
-        [MethodImpl(MethodImplOptions.Synchronized)]
-        set
-        {
-            if (_items != null)
-                _items.CollectionChanged -= ItemsCollectionsChanged;
-
-            _items = value;
-            if (_items != null)
-                _items.CollectionChanged += ItemsCollectionsChanged;
-        }
     }
-    public Collections.AsyncObservableCollection<ExpressionItem> Items => ItemsInternal;
 
-
-    private Collections.AsyncObservableCollection<ExpressionItem> _fixeditems;
-    private Collections.AsyncObservableCollection<ExpressionItem> FixeditemsInternal
+    private readonly Collections.AsyncObservableCollection<ExpressionItem> _fixeditems;
+    public Collections.AsyncObservableCollection<ExpressionItem> FixedItems
     {
         [MethodImpl(MethodImplOptions.Synchronized)]
-        get
-        {
-            if (_fixeditems == null)
-            {
-                _fixeditems = new Collections.AsyncObservableCollection<ExpressionItem>();
-                _fixeditems.CollectionChanged += ItemsCollectionsChanged;
-            }
-            return _fixeditems;
-        }
-
-        [MethodImpl(MethodImplOptions.Synchronized)]
-        set
-        {
-            if (_fixeditems != null)
-                _fixeditems.CollectionChanged -= ItemsCollectionsChanged;
-
-            _fixeditems = value;
-            if (_fixeditems != null)
-                _fixeditems.CollectionChanged += ItemsCollectionsChanged;
-        }
+        get => _fixeditems;
     }
-    public Collections.AsyncObservableCollection<ExpressionItem> FixedItems => FixeditemsInternal;
 
     private ExpressionItem _currentItem;
     public ExpressionItem CurrentItem
@@ -351,6 +320,12 @@ public class ExpressionBuilder : INotifyPropertyChanged
     }
 
     internal void CallExpressionBuilding(object sender, Events.ExpressionEventArgs args) => ExpressionBuilding?.Invoke(sender, args);
+
+    public void Dispose()
+    {
+        _items.CollectionChanged -= ItemsCollectionsChanged;
+        _fixeditems.CollectionChanged -= ItemsCollectionsChanged;
+    }
 
     #endregion
 

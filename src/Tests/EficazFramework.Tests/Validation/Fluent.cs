@@ -1,6 +1,7 @@
 ﻿using FluentAssertions;
 using NUnit.Framework;
 using EficazFramework.Validation.Fluent.Rules;
+using System.Collections.Generic;
 
 namespace EficazFramework.Validation;
 
@@ -454,5 +455,22 @@ internal class SampleObject
     internal short Fim2 { get; set; }
     internal long Inicio3 { get; set; }
     internal long Fim3 { get; set; }
+    public List<SampleObjectChild> Children { get; set; } = new List<SampleObjectChild>();
 
+    public int RelatedID { get; set; }
+    public SampleRelatedObject Related { get; set; }
+
+}
+
+internal class SampleObjectChild
+{
+    internal int ParentID { get; set; }
+    internal SampleObject Parent { get; set; }
+    internal int ID { get; set; }
+    internal string Name { get; set; }
+}
+
+internal class SampleRelatedObject
+{
+    public int ID { get; set; }
 }
