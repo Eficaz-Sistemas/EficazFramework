@@ -287,15 +287,19 @@ public class ExpressionBuilderTests
             new() { ID = 9, Name = "kkkkkk", Related = new() { ID = 99}, RelatedID = 99 }
         };
         ExpressionBuilder builder = DefaultInstance();
-        builder.AddNewItemCommand.Execute(null);
+
+        // null items
+        var expression = builder.GetExpression<Validation.SampleObject>();
+        expression.Should().BeNull();
 
         // numbers, dates: 
+        builder.AddNewItemCommand.Execute(null);
         builder.Items[0].SelectedProperty = builder.Properties[0];
         builder.Items[0].SelectedProperty.DisplayName.Should().Be("Código");
         builder.Items[0].Operator.Should().Be(Enums.CompareMethod.Equals);
         builder.Items[0].Value1.Should().Be(1);
 
-        var expression = builder.GetExpression<Validation.SampleObject>();
+        expression = builder.GetExpression<Validation.SampleObject>();
         expression.Should().NotBeNull();
         expression.ReturnType.Should().Be(typeof(bool));
         source.Where(expression.Compile()).ToList().Should().HaveCount(1);

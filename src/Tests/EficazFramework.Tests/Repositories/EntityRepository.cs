@@ -18,21 +18,24 @@ public class EntityRepositoryTests
         var repository = new EntityRepository<Resources.Mocks.Classes.Blog>();
         repository.DbContextInstanceRequest += (s, e) => e.Instance = new Resources.Mocks.InMemoryDbContext();
         repository.DbContext.Should().BeNull();
-        var result = repository.FetchItems();
+        repository.PageSize = 10;
+        repository.Get();
         repository.DbContext.Should().NotBeNull();
-        result.Count.Should().Be(0);
+        repository.DataContext.Should().HaveCount(0);
         repository.OrderByDefinitions.Add(new Collections.SortDescription() { PropertyName = "Name", Direction = Enums.Collection.SortOrientation.Asceding });
-        result = await repository.FetchItemsAsync(default);
-        result.Count.Should().Be(0);
+        await repository.GetAsync(default);
+        repository.DataContext.Should().HaveCount(0);
+        repository.CurrentPage.Should().Be(1);
 
         repository.OrderByDefinitions.Clear();
         repository.CustomFetch = async () => (await repository.DbContext.Set<Resources.Mocks.Classes.Blog>().ToListAsync()).ToObservableCollection<Resources.Mocks.Classes.Blog>();
-        result = repository.FetchItems();
+        var result = repository.FetchItems();
         result.Count.Should().Be(0);
         result = await repository.FetchItemsAsync(default);
         result.Count.Should().Be(0);
 
         repository.DbContextInstanceRequest -= (s, e) => e.Instance = new Resources.Mocks.InMemoryDbContext();
+        repository.Dispose();
     }
 
     [Test, Order(2)]
@@ -69,11 +72,10 @@ public class EntityRepositoryTests
     public async Task InsertTest()
     {
         var repository = new EntityRepository<Resources.Mocks.Classes.Blog>();
-        repository.DbContextInstanceRequest += (s, e) => e.Instance = new Resources.Mocks.InMemoryDbContext();
-        //repository.PrepareDbContext();
         
         var newEntry = repository.Create();
         newEntry.Name = "My New Blog";
+        repository.DbContextInstanceRequest += (s, e) => e.Instance = new Resources.Mocks.InMemoryDbContext();
         repository.Add(newEntry, false);
         repository.DataContext.Should().HaveCount(1);
 
