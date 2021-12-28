@@ -126,11 +126,15 @@ public class ExpressionBuilder : INotifyPropertyChanged, IDisposable
         }
         if (e.Action == NotifyCollectionChangedAction.Reset)
         {
-            foreach (var it in e.NewItems)
+            if (e.NewItems != null)
             {
-                ((ExpressionItem)it)._tmpOwnerExpressionBuilder = this;
+                foreach (var it in e.NewItems)
+                {
+                    ((ExpressionItem)it)._tmpOwnerExpressionBuilder = this;
+                }
+                if (Items.Count > 0)
+                    SetCurrentItem(Items.LastOrDefault());
             }
-            SetCurrentItem(Items.LastOrDefault());
         }
     }
 

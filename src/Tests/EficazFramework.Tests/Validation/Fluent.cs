@@ -442,6 +442,7 @@ internal class SampleObject
 {
     internal int ID { get; set; }
     internal string Name { get; set; }
+    internal bool IsActive { get; set; }
     internal string Mail { get; set; }
     internal string Document { get; set; }
     internal decimal Total { get; set; }

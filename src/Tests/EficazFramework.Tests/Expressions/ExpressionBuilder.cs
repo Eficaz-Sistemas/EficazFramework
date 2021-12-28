@@ -65,6 +65,7 @@ public class ExpressionBuilderTests
         DisplayName = "Código",
         Editor = ExpressionEditor.BoolSelection,
         DefaultOperator = Enums.CompareMethod.Equals,
+        DefaultValue1 = true,
         Operators = new()
         {
             Enums.CompareMethod.Equals
@@ -169,7 +170,7 @@ public class ExpressionBuilderTests
     {
         ExpressionBuilder builder = DefaultInstance();
         builder.Items.Should().HaveCount(0);
-        builder.Properties.Should().HaveCount(8);
+        builder.Properties.Should().HaveCount(9);
 
         builder.AddNewItemCommand.Execute(null);
         builder.Items.Should().HaveCount(1);
@@ -380,6 +381,17 @@ public class ExpressionBuilderTests
         expression.Should().NotBeNull();
         expression.ReturnType.Should().Be(typeof(bool));
         source.Where(expression.Compile()).ToList().Should().HaveCount(1);
+
+        // FixedItems
+        builder.FixedItems.Add(new() { SelectedProperty = builder.Properties[3] });
+        expression = builder.GetExpression<Validation.SampleObject>();
+        expression.Should().NotBeNull();
+        expression.ReturnType.Should().Be(typeof(bool));
+        source.Where(expression.Compile()).ToList().Should().HaveCount(0);
+
+        source.Last().IsActive = true;
+        source.Where(expression.Compile()).ToList().Should().HaveCount(1);
+        builder.FixedItems.Clear();
 
         // Collections
         builder.Items[0].SelectedProperty = builder.Properties[7];
