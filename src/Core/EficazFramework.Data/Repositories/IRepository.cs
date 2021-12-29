@@ -133,40 +133,57 @@ public abstract class RepositoryBase<T> : INotifyPropertyChanged, IDisposable wh
     /// <summary>
     /// Efetua Validação da instância especsificada ou de todo o DataContext
     /// </summary>
-    public virtual EficazFramework.Validation.Fluent.ValidationResult Validate(T instance)
+    public EficazFramework.Validation.Fluent.ValidationResult Validate(T instance)
     {
         if (instance != null && _validator != null)
             return _validator.Validate(instance);
+
         var result = new EficazFramework.Validation.Fluent.ValidationResult();
         if (_validator is null)
             return result;
-        foreach (var item in DataContext)
-            result.AddRange(_validator.Validate(item));
+
+        if (instance == null)
+        {
+            foreach (var item in DataContext)
+                result.AddRange(_validator.Validate(item));
+        }
+        result.AddRange(OnValidate(instance));
+
         return result;
     }
 
     /// <summary>
     /// Efetua Validação da instância especificada ou de todo o DataContext
     /// </summary>
-    public virtual async Task<EficazFramework.Validation.Fluent.ValidationResult> ValidateAsync(T instance)
+    public async Task<EficazFramework.Validation.Fluent.ValidationResult> ValidateAsync(T instance)
     {
         if (instance != null && _validator != null)
             return await _validator.ValidateAsync(instance);
+
         var result = new EficazFramework.Validation.Fluent.ValidationResult();
         if (_validator is null)
             return result;
-        foreach (var item in DataContext)
-            result.AddRange(await _validator.ValidateAsync(item));
+
+
+        if (instance == null)
+        {
+            foreach (var item in DataContext)
+                result.AddRange(await _validator.ValidateAsync(item));
+        }
+        result.AddRange(await OnValidateAsync(instance));
+
         return result;
     }
 
+    public virtual EficazFramework.Validation.Fluent.ValidationResult OnValidate(T instance) => Validation.Fluent.ValidationResult.Empty;
+    public virtual async Task<EficazFramework.Validation.Fluent.ValidationResult> OnValidateAsync(T instance) => await Task.Run(() => Validation.Fluent.ValidationResult.Empty);
     #endregion
 
 
 
     #region Generic
 
-    /// <summary>
+    /// <summary>s
     /// Adiciona um item recém-criado à lista de items.
     /// </summary>
     public Exception Add(object item, bool commit)

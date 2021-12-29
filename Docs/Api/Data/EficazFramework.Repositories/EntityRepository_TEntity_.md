@@ -346,42 +346,6 @@ public System.Threading.Tasks.Task RunCommandAsync(string command);
 
 #### Returns
 [System.Threading.Tasks.Task](https://docs.microsoft.com/en-us/dotnet/api/System.Threading.Tasks.Task 'System.Threading.Tasks.Task')
-
-<a name='EficazFramework.Repositories.EntityRepository_TEntity_.Validate(TEntity)'></a>
-
-## EntityRepository<TEntity>.Validate(TEntity) Method
-
-Efetua Validação da instância especificada ou das entidades marcadas como alteradas no ChangeTracker do DbContext
-
-```csharp
-public override EficazFramework.Validation.Fluent.ValidationResult Validate(TEntity instance);
-```
-#### Parameters
-
-<a name='EficazFramework.Repositories.EntityRepository_TEntity_.Validate(TEntity).instance'></a>
-
-`instance` [TEntity](EficazFramework.Repositories/EntityRepository_TEntity_.md#EficazFramework.Repositories.EntityRepository_TEntity_.TEntity 'EficazFramework.Repositories.EntityRepository<TEntity>.TEntity')
-
-#### Returns
-[ValidationResult](EficazFramework.Validation.Fluent/ValidationResult.md 'EficazFramework.Validation.Fluent.ValidationResult')
-
-<a name='EficazFramework.Repositories.EntityRepository_TEntity_.ValidateAsync(TEntity)'></a>
-
-## EntityRepository<TEntity>.ValidateAsync(TEntity) Method
-
-Efetua Validação da instância especificada ou das entidades marcadas como alteradas no ChangeTracker do DbContext
-
-```csharp
-public override System.Threading.Tasks.Task<EficazFramework.Validation.Fluent.ValidationResult> ValidateAsync(TEntity instance);
-```
-#### Parameters
-
-<a name='EficazFramework.Repositories.EntityRepository_TEntity_.ValidateAsync(TEntity).instance'></a>
-
-`instance` [TEntity](EficazFramework.Repositories/EntityRepository_TEntity_.md#EficazFramework.Repositories.EntityRepository_TEntity_.TEntity 'EficazFramework.Repositories.EntityRepository<TEntity>.TEntity')
-
-#### Returns
-[System.Threading.Tasks.Task&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Threading.Tasks.Task-1 'System.Threading.Tasks.Task`1')[ValidationResult](EficazFramework.Validation.Fluent/ValidationResult.md 'EficazFramework.Validation.Fluent.ValidationResult')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Threading.Tasks.Task-1 'System.Threading.Tasks.Task`1')
 ### Events
 
 <a name='EficazFramework.Repositories.EntityRepository_TEntity_.DbContextInstanceRequest'></a>

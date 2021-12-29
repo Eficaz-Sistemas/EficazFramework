@@ -106,37 +106,6 @@ public sealed class EntityRepository<TEntity> : Repositories.RepositoryBase<TEnt
         return EficazFramework.Entities.EntityBase.Create<T2>();
     }
 
-
-    /// <summary>
-    /// Efetua Validação da instância especificada ou das entidades marcadas como alteradas no ChangeTracker do DbContext
-    /// </summary>
-    public override EficazFramework.Validation.Fluent.ValidationResult Validate(TEntity instance)
-    {
-        if (instance != null && Validator != null)
-            return Validator.Validate(instance);
-        var result = new EficazFramework.Validation.Fluent.ValidationResult();
-        if (Validator is null | DbContext is null)
-            return result;
-        foreach (var item in DbContext.ChangeTracker.Entries<TEntity>().Where(f => f.State == EntityState.Modified).Select(f => f.Entity).ToList())
-            result.AddRange(Validator.Validate(item));
-        return result;
-    }
-
-    /// <summary>
-    /// Efetua Validação da instância especificada ou das entidades marcadas como alteradas no ChangeTracker do DbContext
-    /// </summary>
-    public override async Task<EficazFramework.Validation.Fluent.ValidationResult> ValidateAsync(TEntity instance)
-    {
-        if (instance != null && Validator != null)
-            return await Validator.ValidateAsync(instance);
-        var result = new EficazFramework.Validation.Fluent.ValidationResult();
-        if (Validator is null | DbContext is null)
-            return result;
-        foreach (var item in DbContext.ChangeTracker.Entries<TEntity>().Where(f => f.State == EntityState.Modified).Select(f => f.Entity).ToList())
-            result.AddRange(await Validator.ValidateAsync(item));
-        return result;
-    }
-
     /// <summary>
     /// Adicina uma nova entidade às intruções INSERT do DbContext
     /// </summary>

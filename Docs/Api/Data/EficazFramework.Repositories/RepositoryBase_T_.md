@@ -108,7 +108,8 @@ public EficazFramework.Validation.Fluent.Validator<T> Validator { get; set; }
 
 ## RepositoryBase<T>.Add(object, bool) Method
 
-Adiciona um item recém-criado à lista de items.
+s  
+            Adiciona um item recém-criado à lista de items.
 
 ```csharp
 public System.Exception Add(object item, bool commit);
@@ -472,7 +473,7 @@ public bool PreviousPage();
 Efetua Validação da instância especsificada ou de todo o DataContext
 
 ```csharp
-public virtual EficazFramework.Validation.Fluent.ValidationResult Validate(T instance);
+public EficazFramework.Validation.Fluent.ValidationResult Validate(T instance);
 ```
 #### Parameters
 
@@ -490,7 +491,7 @@ public virtual EficazFramework.Validation.Fluent.ValidationResult Validate(T ins
 Efetua Validação da instância especificada ou de todo o DataContext
 
 ```csharp
-public virtual System.Threading.Tasks.Task<EficazFramework.Validation.Fluent.ValidationResult> ValidateAsync(T instance);
+public System.Threading.Tasks.Task<EficazFramework.Validation.Fluent.ValidationResult> ValidateAsync(T instance);
 ```
 #### Parameters
 
