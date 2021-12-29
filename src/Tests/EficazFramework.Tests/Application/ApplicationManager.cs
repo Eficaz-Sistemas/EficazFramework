@@ -118,6 +118,7 @@ public class Apps
         _appManager.RunningAplications.First().PropertyChanged -= PropertyChanged;
         _appManager.RunningAplications.First().NotifyContent.Should().Be("3 novos");
 
+        _appManager.RunningAplications.Last().Content = new EficazFramework.Repositories.EntityRepository<Resources.Mocks.Classes.Blog>();
         _appManager.RunningAplications.Last().Close();
         _appManager.RunningAplications.Count.Should().Be(1);
     }

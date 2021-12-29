@@ -44,6 +44,7 @@ public class TimeZoneData
     public string Status { get; set; }
     public string Formatted { get; set; }
 
+    [ExcludeFromCodeCoverage]
     [System.Text.Json.Serialization.JsonIgnore()]
     public DateTime FormattedDateTime
     {

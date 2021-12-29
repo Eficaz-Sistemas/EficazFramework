@@ -66,6 +66,10 @@ public class Text
         "16999712741".FormatFone().Should().Be("(16) 99971-2741");
         "551699712741".FormatFone().Should().Be("+55 (16) 9971-2741");
         "5516999712741".FormatFone().Should().Be("+55 (16) 99971-2741");
+        "55516999712741".FormatFone().Should().Be("55516999712741");
+
+        "08001234567".FormatFone().Should().Be("0800 123 4567");
+        "03001234567".FormatFone().Should().Be("0300 123 4567");
     }
 
     [Test]
@@ -82,7 +86,7 @@ public class Text
         "65791337833".FormatIE("MT").Should().Be("6579133783-3");
         "280574517".FormatIE("MS").Should().Be("28057451-7");
         "5128464487031".FormatIE("MG").Should().Be("512.846448.70-31");
-        //"154712086".FormatIE("PA").Should().Be("15.471208-6");
+        "154712086".FormatIE("PA").Should().Be("01.5471208-6");
         "464804507".FormatIE("PB").Should().Be("46480450-7");
         "9179443853".FormatIE("PR").Should().Be("917.94438-53");
         //"473164116".FormatIE("PE").Should().Be("4731641-16");
@@ -96,6 +100,11 @@ public class Text
         "827969970".FormatIE("SC").Should().Be("827.969.970");
         "028325281".FormatIE("SE").Should().Be("02832528-1");
         //"92036578081".FormatIE("TO").Should().Be("9203657808-1");
+        "ISENTO".FormatIE("BA").Should().Be("ISENTO");
+        "ISENTA".FormatIE("BA").Should().Be("ISENTA");
+        "Isento".FormatIE("BA").Should().Be("Isento");
+        "".FormatIE("BA").Should().Be("");
+        "abc".FormatIE("BA").Should().Be("abc");
     }
 
     [Test]
@@ -122,6 +131,11 @@ public class Text
     {
         "07731253619".FormatRFBDocument().Should().Be("077.312.536-19");
         "10608025000126".FormatRFBDocument().Should().Be("10.608.025/0001-26");
+        "10.608.025/0001-26".FormatRFBDocument().Should().Be("10.608.025/0001-26");
+        "10.608025000126".FormatRFBDocument().Should().Be("10.608025000126");
+        "110608025000126".FormatRFBDocument().Should().Be("110608025000126");
+        string nullString = null;
+        nullString.FormatRFBDocument().Should().BeNull();
     }
 
     [Test]
@@ -195,6 +209,7 @@ public class Text
         TextExtensions.ToTitleCase(null).Should().Be(null);
         "henrique clausing".ToTitleCase().Should().Be("Henrique Clausing");
         "HENRIQUE CLAUSING".ToTitleCase().Should().Be("Henrique Clausing");
+        "h".ToTitleCase().Should().Be("H");
     }
 
     [Test]
@@ -553,9 +568,15 @@ public class Text
     {
         "eDocumento_PIS_NIT".Localize(typeof(EficazFramework.Resources.Strings.TestStrings), "Documento selecionado: {0}").Should().Be($"Documento selecionado: {EficazFramework.Resources.Strings.TestStrings.eDocumento_PIS_NIT}");
         "eDocumento_PIS_NIT".Localize(typeof(EficazFramework.Resources.Strings.DataDescriptions), "Documento selecionado: {0}").Should().Be($"Documento selecionado: {EficazFramework.Resources.Strings.DataDescriptions.eDocumento_PIS_NIT}");
+        
+        // fails:
         "eDocumento_PIS_NIT".Localize(typeof(EficazFramework.Resources.Strings.Application), null).Should().Be("eDocumento_PIS_NIT");
         "eDocumento_PIS_NIT".Localize(typeof(EficazFramework.Resources.Strings.Application), "Documento selecionado: {0}").Should().Be("Documento selecionado: eDocumento_PIS_NIT");
 
+        "eDocumento_PIS_NIT".Localize(typeof(object), null).Should().Be("eDocumento_PIS_NIT");
+        "eDocumento_PIS_NIT".Localize(typeof(object), "Documento selecionado: {0}").Should().Be("Documento selecionado: eDocumento_PIS_NIT");
+
+        // enums
         "eComparer_Bigger".Localize(typeof(EficazFramework.Resources.Strings.DataDescriptions), null).Should().Be(EficazFramework.Resources.Strings.DataDescriptions.eComparer_Bigger);
         "eComparer_Contains".Localize(typeof(EficazFramework.Resources.Strings.DataDescriptions), null).Should().Be(EficazFramework.Resources.Strings.DataDescriptions.eComparer_Contains);
         "eComparer_Is".Localize(typeof(EficazFramework.Resources.Strings.DataDescriptions), null).Should().Be(EficazFramework.Resources.Strings.DataDescriptions.eComparer_Is);
@@ -567,6 +588,7 @@ public class Text
         "eUpdateValueMode_Expression".Localize(typeof(EficazFramework.Resources.Strings.DataDescriptions), null).Should().Be(EficazFramework.Resources.Strings.DataDescriptions.eUpdateValueMode_Expression);
         "eUpdateValueMode_Fixed".Localize(typeof(EficazFramework.Resources.Strings.DataDescriptions), null).Should().Be(EficazFramework.Resources.Strings.DataDescriptions.eUpdateValueMode_Fixed);
 
+        // bools
         EficazFramework.Resources.Strings.Descriptions.Culture = EficazFramework.Resources.Strings.Descriptions.Culture;
         true.GetBoolValue(BoolDescriptionType.YesNo).Should().Be(EficazFramework.Resources.Strings.Descriptions.BoolToYesNo_True);
         false.GetBoolValue(BoolDescriptionType.YesNo).Should().Be(EficazFramework.Resources.Strings.Descriptions.BoolToYesNo_False);

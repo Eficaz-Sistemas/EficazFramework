@@ -21,6 +21,7 @@ internal class InMemoryDbContext : Microsoft.EntityFrameworkCore.DbContext
         var blogmodel = modelBuilder.Entity<Classes.Blog>();
         blogmodel.HasKey(x => x.Id);
         blogmodel.HasMany(left => left.Posts).WithOne(right => right.Blog).HasForeignKey(pk => pk.BlogId);
+        blogmodel.Ignore(x => x.Owner);
         Entities.EntityMappingConfigurator.MapBaseClassProperties<Classes.Blog>(blogmodel);
 
         var postmodel = modelBuilder.Entity<Classes.Post>();

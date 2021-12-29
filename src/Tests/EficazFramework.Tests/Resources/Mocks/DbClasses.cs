@@ -13,6 +13,8 @@ internal class Blog : Entities.EntityBase
 
     public List<Post> Posts { get; set; }
 
+    public Owner Owner { get; set; }
+
 }
 
 internal class Post : Entities.EntityBase
@@ -22,4 +24,9 @@ internal class Post : Entities.EntityBase
     public System.Guid PostId { get; set; }
     public string Title { get; set; }
 
+}
+
+internal class Owner : Entities.EntityBase
+{
+    public string Name { get; set; }
 }

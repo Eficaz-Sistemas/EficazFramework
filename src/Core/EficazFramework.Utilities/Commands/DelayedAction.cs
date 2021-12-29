@@ -17,16 +17,9 @@ public partial class DelayedAction
     {
         await Task.Delay(miliseconds, cancellationtoken);
         if (cancellationtoken != default)
-        {
-            if (cancellationtoken.IsCancellationRequested == true)
-                return;
-        }
+            cancellationtoken.ThrowIfCancellationRequested();
 
-        try
-        {
-            await Task.Run(action, cancellationtoken);
-        }
-        catch { }
+        await Task.Run(action, cancellationtoken);
     }
 
 }

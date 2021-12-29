@@ -16,11 +16,13 @@ class ObjectTests
             Blog = new Resources.Mocks.Classes.Blog()
             {
                 Id = System.Guid.NewGuid(),
-                Name = "My Blog"
+                Name = "My Blog",
+                Owner = new Resources.Mocks.Classes.Owner() { Name = "Henrique"}
             },
             BlogId = System.Guid.NewGuid(),
             Title = "My First Post"
         };
+        
         object nullref = null;
 
         // single
@@ -44,5 +46,9 @@ class ObjectTests
         value2.Should().Be(value1);
         instance.SetPropertyValue("Blog.Name", "My Old Blog");
         instance.Blog.Name.Should().Be("My Old Blog");
+
+        var ownerName = instance.GetPropertyValue("Blog.Owner.Name");
+        ownerName.Should().Be(instance.Blog.Owner.Name);
+        ownerName.Should().Be("Henrique");
     }
 }

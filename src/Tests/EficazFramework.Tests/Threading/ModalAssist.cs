@@ -22,5 +22,10 @@ public class ModalAssistTests
         // Assert
         result.Should().Be(Events.MessageResult.OK);
 
+
+        // null task check
+        instance = new();
+        instance.Release(Events.MessageResult.OK);
+
     }
 }
