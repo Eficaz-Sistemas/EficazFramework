@@ -157,8 +157,6 @@ public class DbConfiguration : System.ComponentModel.INotifyPropertyChanged
 
     public static string GetConnection(string database, string username, string password)
     {
-        if (Instance is null)
-            throw new NullReferenceException(Resources.Strings.Validation.DbConfigurationNull);
         EficazFramework.Providers.IDataProvider provider = null;
         switch (Instance.Provider)
         {

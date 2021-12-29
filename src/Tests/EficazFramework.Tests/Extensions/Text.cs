@@ -86,7 +86,7 @@ public class Text
         "65791337833".FormatIE("MT").Should().Be("6579133783-3");
         "280574517".FormatIE("MS").Should().Be("28057451-7");
         "5128464487031".FormatIE("MG").Should().Be("512.846448.70-31");
-        "154712086".FormatIE("PA").Should().Be("01.5471208-6");
+        "154712086".FormatIE("PA").Should().Be("01.547120.8-6");
         "464804507".FormatIE("PB").Should().Be("46480450-7");
         "9179443853".FormatIE("PR").Should().Be("917.94438-53");
         //"473164116".FormatIE("PE").Should().Be("4731641-16");

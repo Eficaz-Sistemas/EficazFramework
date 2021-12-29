@@ -59,6 +59,9 @@ public class DbConfigurationTests
         DbConfiguration.Instance.InstanceName = "myinstance";
         DbConfiguration.Instance.Port = 1436;
         DbConfiguration.GetConnection("mydb", "myuser", "mypass").Should().Be(@"Data Source=myserver\myinstance,1436;Database=mydb;User ID=myuser;Password=mypass;Connect Timeout=30;Integrated Security=False;MultipleActiveResultSets=True;");
+        DbConfiguration.UseConnectionStringEncryption = true;
+        DbConfiguration.GetConnection("mydb", "myuser", "mypass").Should().NotContain("mypass");
+        DbConfiguration.UseConnectionStringEncryption = false;
     }
 
     [Test, Order(3)]
@@ -68,6 +71,9 @@ public class DbConfigurationTests
         DbConfiguration.UseConnectionStringEncryption = false;
         DbConfiguration.Instance.Provider = Providers.ConnectionProviders.SqlLite;
         DbConfiguration.GetConnection(@"C:\mydb.db", "myuser", "mypass").Should().Be(@"Data Source=C:\mydb.db;Password=mypass;");
+        DbConfiguration.UseConnectionStringEncryption = true;
+        DbConfiguration.GetConnection("mydb", "myuser", "mypass").Should().NotContain("mypass");
+        DbConfiguration.UseConnectionStringEncryption = false;
     }
 
     [Test, Order(3)]
@@ -79,6 +85,9 @@ public class DbConfigurationTests
         DbConfiguration.Instance.Port = 1436;
         DbConfiguration.Instance.Provider = Providers.ConnectionProviders.MySQL;
         DbConfiguration.GetConnection("mydb", "myuser", "mypass").Should().Be(@"Server=myserver;Port=1436;Database=mydb;Uid=myuser;Pwd=mypass;Connect Timeout=30;");
+        DbConfiguration.UseConnectionStringEncryption = true;
+        DbConfiguration.GetConnection("mydb", "myuser", "mypass").Should().NotContain("mypass");
+        DbConfiguration.UseConnectionStringEncryption = false;
     }
 
     public void ConnectionStringBuilderForOracle()
@@ -89,5 +98,8 @@ public class DbConfigurationTests
         DbConfiguration.Instance.Port = 1436;
         DbConfiguration.Instance.Provider = Providers.ConnectionProviders.Oracle;
         DbConfiguration.GetConnection("mydb", "myuser", "mypass").Should().Be(@"Data Source=myserver\myinstance,1436;Database=mydb;User ID=myuser;Password=mypass;Connect Timeout=30;Integrated Security=no;");
+        DbConfiguration.UseConnectionStringEncryption = true;
+        DbConfiguration.GetConnection("mydb", "myuser", "mypass").Should().NotContain("mypass");
+        DbConfiguration.UseConnectionStringEncryption = false;
     }
 }

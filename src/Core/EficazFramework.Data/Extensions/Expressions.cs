@@ -48,21 +48,6 @@ public static class Expressions
         return expr.Compile().Invoke(arg1);
     }
 
-    public static TResult Invoke<T1, T2, TResult>(this Expression<Func<T1, T2, TResult>> expr, T1 arg1, T2 arg2)
-    {
-        return expr.Compile().Invoke(arg1, arg2);
-    }
-
-    public static TResult Invoke<T1, T2, T3, TResult>(this Expression<Func<T1, T2, T3, TResult>> expr, T1 arg1, T2 arg2, T3 arg3)
-    {
-        return expr.Compile().Invoke(arg1, arg2, arg3);
-    }
-
-    public static TResult Invoke<T1, T2, T3, T4, TResult>(this Expression<Func<T1, T2, T3, T4, TResult>> expr, T1 arg1, T2 arg2, T3 arg3, T4 arg4)
-    {
-        return expr.Compile().Invoke(arg1, arg2, arg3, arg4);
-    }
-
     public static void ForEach<T>(this IEnumerable<T> source, Action<T> action)
     {
         foreach (T element in source)
@@ -72,23 +57,6 @@ public static class Expressions
     public static string GetName<TSource, TField>(this Expression<Func<TSource, TField>> Field)
     {
         return (Field.Body as MemberExpression ?? ((UnaryExpression)Field.Body).Operand as MemberExpression).Member.Name;
-    }
-
-    public static string GetDisplayName<TSource, TField>(this Expression<Func<TSource, TField>> Field)
-    {
-        MemberInfo member = (Field.Body as MemberExpression ?? ((UnaryExpression)Field.Body).Operand as MemberExpression).Member;
-        string basename = member.Name;
-        var att = member.CustomAttributes.Where(p => p.AttributeType == typeof(DisplayAttribute)).FirstOrDefault();
-        if (att == null)
-            return basename;
-        else
-        {
-            var resource = att.NamedArguments.Where(an => an.MemberName == "ResourceType").FirstOrDefault().TypedValue.Value;
-            if (resource == null)
-                return att.NamedArguments.Where(an => an.MemberName == "Name").FirstOrDefault().TypedValue.Value.ToString();
-            else
-                return LocalizationExtensions.Localize(basename, (Type)resource, null);
-        }
     }
 
 }

@@ -61,15 +61,6 @@ namespace EficazFramework.Resources.Strings {
         }
         
         /// <summary>
-        ///   Consulta uma cadeia de caracteres localizada semelhante a As configurações de acesso a dados do aplicativo não foram iniciadas..
-        /// </summary>
-        public static string DbConfigurationNull {
-            get {
-                return ResourceManager.GetString("DbConfigurationNull", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Consulta uma cadeia de caracteres localizada semelhante a Verifique os erros apontados na validação, a seguir: {0}{1}.
         /// </summary>
         public static string Dialog_Message {

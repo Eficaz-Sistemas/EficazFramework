@@ -36,9 +36,6 @@ internal class MsSqlServer : IDataProvider
 {
     public string CreateConnectionString(string database, string username, string password)
     {
-        if (Configuration.DbConfiguration.Instance is null)
-            throw new NullReferenceException(Resources.Strings.Validation.DbConfigurationNull);
-
         if (DbConfiguration.UseConnectionStringEncryption == true)
             return Security.Cryptography.Functions.Encript($"Data Source={EficazFramework.Configuration.DbConfiguration.Instance.ServerData};Database={database};User ID={username};Password={password};Connect Timeout={30};Integrated Security=False;MultipleActiveResultSets=True;", "#hd@cl$cb#");
 
@@ -50,9 +47,6 @@ internal class SqlLite : IDataProvider
 {
     public string CreateConnectionString(string database, string username, string password)
     {
-        if (EficazFramework.Configuration.DbConfiguration.Instance is null)
-            throw new NullReferenceException(Resources.Strings.Validation.DbConfigurationNull);
-
         if (DbConfiguration.UseConnectionStringEncryption == true)
         {
             if (!string.IsNullOrEmpty(password))
@@ -72,9 +66,6 @@ internal class MySQL : IDataProvider
 {
     public string CreateConnectionString(string database, string username, string password)
     {
-        if (EficazFramework.Configuration.DbConfiguration.Instance is null)
-            throw new NullReferenceException(Resources.Strings.Validation.DbConfigurationNull);
-
         if (DbConfiguration.UseConnectionStringEncryption == true)
             return Security.Cryptography.Functions.Encript($"Server={EficazFramework.Configuration.DbConfiguration.Instance.ServerName};Port={EficazFramework.Configuration.DbConfiguration.Instance.Port};Database={database};Uid={username};Pwd={password};Connect Timeout={30};", "#hd@cl$cb#");
 
@@ -86,9 +77,6 @@ internal class Oracle : IDataProvider
 {
     public string CreateConnectionString(string database, string username, string password)
     {
-        if (EficazFramework.Configuration.DbConfiguration.Instance is null)
-            throw new NullReferenceException(Resources.Strings.Validation.DbConfigurationNull);
-
         if (DbConfiguration.UseConnectionStringEncryption == true)
             return Security.Cryptography.Functions.Encript($"Data Source={EficazFramework.Configuration.DbConfiguration.Instance.ServerData};Database={database};User ID={username};Password={password};Connect Timeout={30};Integrated Security=no;", "#hd@cl$cb#");
 
