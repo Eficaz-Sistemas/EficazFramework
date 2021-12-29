@@ -24,6 +24,7 @@ public class EntityRepositoryTests
         repository.DbContext.Should().NotBeNull();
         repository.DataContext.Should().HaveCount(0);
         repository.OrderByDefinitions.Add(new Collections.SortDescription() { PropertyName = "Name", Direction = Enums.Collection.SortOrientation.Asceding });
+        repository.OrderByDefinitions.Add(new Collections.SortDescription() { PropertyName = "Id", Direction = Enums.Collection.SortOrientation.Asceding });
         await repository.GetAsync(default);
         repository.DataContext.Should().HaveCount(0);
         repository.CurrentPage.Should().Be(1);
@@ -48,6 +49,11 @@ public class EntityRepositoryTests
         repository.DbContextInstanceRequest -= (s, e) => tks.Cancel();
         repository.DbContextInstanceRequest -= (s, e) => e.Instance = new Resources.Mocks.InMemoryDbContext();
         repository.Dispose();
+
+
+        repository.Filter = (f) => f.Id == System.Guid.NewGuid();
+        await repository.GetAsync(default);
+
     }
 
     [Test, Order(2)]
@@ -238,6 +244,17 @@ public class EntityRepositoryTests
         newEntry.Name.Should().Be("My New Blog");
         repository.Detach(newEntry);
         repository.DbContext.Entry(newEntry).State.Should().Be(EntityState.Detached);
+    }
+
+    [Test, Order(7)]
+    public async Task RunCommandTest()
+    {
+        var repository = new EntityRepository<Resources.Mocks.Classes.Blog>();
+        try
+        {
+            await repository.RunCommandAsync("SELECT * FROM Blog"); //not possible inMemory
+        }
+        catch { }
     }
 
 }

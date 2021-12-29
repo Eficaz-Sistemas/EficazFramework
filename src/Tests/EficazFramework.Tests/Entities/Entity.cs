@@ -53,6 +53,11 @@ public class EntityTests
             ID = 0,
             Name = null,
             Mail = "testeerrado.com",
+            Document = "123",
+            CPF = "123",
+            CNPJ = "123",
+            IE = "111",
+            UF = "MG",
             Total = 5,
             ValidationMode = Enums.ValidationMode.Disabled
         };
@@ -62,6 +67,24 @@ public class EntityTests
 
         // datannotation
         instance.ValidationMode = Enums.ValidationMode.DataAnnotations;
+        instance.Validate(null).Count.Should().Be(6);
+
+        instance.Document = "07731253619";
+        instance.Validate(null).Count.Should().Be(5);
+
+        instance.IE = "isento";
+        instance.Validate(null).Count.Should().Be(4);
+
+        instance.Document = "10608025000126";
+        instance.Validate(null).Count.Should().Be(4);
+
+        instance.Mail = "testeerrado@gmail.com";
+        instance.Validate(null).Count.Should().Be(3);
+
+        instance.CPF = "07731253619";
+        instance.Validate(null).Count.Should().Be(2);
+
+        instance.CNPJ = "10608025000126";
         instance.Validate(null).Count.Should().Be(1);
     }
 
@@ -107,8 +130,26 @@ public class SampleClass : EntityBase
     public int ID { get; set; }
     [Required(AllowEmptyStrings = false, ErrorMessage = "droga não pode ficar em branco.")]
     public string Name { get; set; }
+
+    [Validation.DataAnnotations.EMail()]
     public string Mail { get; set; }
+
+    [Validation.DataAnnotations.DocumentoRFB(Enums.DocumentosRFB.Ambos)]
     public string Document { get; set; }
+
+    [Validation.DataAnnotations.DocumentoRFB(Enums.DocumentosRFB.CPF)]
+    public string CPF { get; set; }
+
+    [Validation.DataAnnotations.DocumentoRFB(Enums.DocumentosRFB.CNPJ)]
+    public string CNPJ { get; set; }
+
+
+    [Validation.DataAnnotations.IncricaoEstadual("UF")]
+    public string IE { get; set; }
+
+    public string UF { get; set; }
+
+
     public decimal Total { get; set; }
     public string Obs { get; set; }
     public System.DateTime CreatedIn { get; set; }
