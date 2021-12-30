@@ -8,6 +8,12 @@ public enum ConnectionProviders
 ```
 ### Fields
 
+<a name='EficazFramework.Providers.ConnectionProviders.InMemory'></a>
+
+`InMemory` 99
+
+In Memory Database
+
 <a name='EficazFramework.Providers.ConnectionProviders.MsSQL'></a>
 
 `MsSQL` 0

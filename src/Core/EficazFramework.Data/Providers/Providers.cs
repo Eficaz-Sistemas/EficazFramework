@@ -24,7 +24,12 @@ public enum ConnectionProviders
     /// <summary>
     /// Oracle SQL
     /// </summary>
-    Oracle = 3
+    Oracle = 3,
+
+    /// <summary>
+    /// In Memory Database
+    /// </summary>
+    InMemory = 99
 }
 
 internal interface IDataProvider

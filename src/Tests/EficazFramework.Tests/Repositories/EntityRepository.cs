@@ -17,7 +17,7 @@ public class EntityRepositoryTests
     public async Task SelectTest()
     {
         var repository = new EntityRepository<Resources.Mocks.Classes.Blog>();
-        repository.DbContextInstanceRequest += (s, e) => e.Instance = new Resources.Mocks.InMemoryDbContext();
+        repository.DbContextInstanceRequest += (s, e) => e.Instance = new Resources.Mocks.MockDbContext();
         repository.DbContext.Should().BeNull();
         repository.PageSize = 10;
         repository.Get();
@@ -47,7 +47,7 @@ public class EntityRepositoryTests
         repository.CustomFetch = null;
         await repository.FetchItemsAsync(tks.Token);
         repository.DbContextInstanceRequest -= (s, e) => tks.Cancel();
-        repository.DbContextInstanceRequest -= (s, e) => e.Instance = new Resources.Mocks.InMemoryDbContext();
+        repository.DbContextInstanceRequest -= (s, e) => e.Instance = new Resources.Mocks.MockDbContext();
         repository.Dispose();
 
 
@@ -87,7 +87,7 @@ public class EntityRepositoryTests
         repository.Validate(null).Should().HaveCount(0);
         (await repository.ValidateAsync(null)).Should().HaveCount(0);
 
-        repository.DbContextInstanceRequest += (s, e) => e.Instance = new Resources.Mocks.InMemoryDbContext();
+        repository.DbContextInstanceRequest += (s, e) => e.Instance = new Resources.Mocks.MockDbContext();
         newEntry.Name = "not null";
         repository.Validate(newEntry).Should().HaveCount(0);
         repository.Validate(null).Should().HaveCount(0);
@@ -98,7 +98,7 @@ public class EntityRepositoryTests
         (await repository.ValidateAsync(null)).Should().HaveCount(1);
         repository.Delete(newEntry, true);
 
-        repository.DbContextInstanceRequest -= (s, e) => e.Instance = new Resources.Mocks.InMemoryDbContext();
+        repository.DbContextInstanceRequest -= (s, e) => e.Instance = new Resources.Mocks.MockDbContext();
 
         repository.Validator = null;
         repository.Validate(newEntry).Should().HaveCount(0);
@@ -112,7 +112,7 @@ public class EntityRepositoryTests
         
         var newEntry = repository.Create();
         newEntry.Name = "My New Blog";
-        repository.DbContextInstanceRequest += (s, e) => e.Instance = new Resources.Mocks.InMemoryDbContext();
+        repository.DbContextInstanceRequest += (s, e) => e.Instance = new Resources.Mocks.MockDbContext();
         repository.Add(newEntry, false);
         repository.DataContext.Should().HaveCount(1);
 
@@ -141,14 +141,14 @@ public class EntityRepositoryTests
         repository.DataContext.Should().HaveCount(4);
         repository.DbContext.Set<Resources.Mocks.Classes.Blog>().ToList().Should().HaveCount(4);
 
-        repository.DbContextInstanceRequest -= (s, e) => e.Instance = new Resources.Mocks.InMemoryDbContext();
+        repository.DbContextInstanceRequest -= (s, e) => e.Instance = new Resources.Mocks.MockDbContext();
     }
 
     [Test, Order(5)]
     public async Task DeleteTest()
     {
         var repository = new EntityRepository<Resources.Mocks.Classes.Blog>();
-        repository.DbContextInstanceRequest += (s, e) => e.Instance = new Resources.Mocks.InMemoryDbContext();
+        repository.DbContextInstanceRequest += (s, e) => e.Instance = new Resources.Mocks.MockDbContext();
         repository.PrepareDbContext();
         //clear if running all tests.
         repository.DbContext.Set<Resources.Mocks.Classes.Blog>().RemoveRange(repository.DbContext.Set<Resources.Mocks.Classes.Blog>());
@@ -192,14 +192,14 @@ public class EntityRepositoryTests
         repository.DataContext.Should().HaveCount(0);
         repository.DbContext.Set<Resources.Mocks.Classes.Blog>().ToList().Should().HaveCount(0);
 
-        repository.DbContextInstanceRequest -= (s, e) => e.Instance = new Resources.Mocks.InMemoryDbContext();
+        repository.DbContextInstanceRequest -= (s, e) => e.Instance = new Resources.Mocks.MockDbContext();
     }
 
     [Test, Order(6)]
     public async Task UpdateTest()
     {
         var repository = new EntityRepository<Resources.Mocks.Classes.Blog>();
-        repository.DbContextInstanceRequest += (s, e) => e.Instance = new Resources.Mocks.InMemoryDbContext();
+        repository.DbContextInstanceRequest += (s, e) => e.Instance = new Resources.Mocks.MockDbContext();
         repository.PrepareDbContext();
         //clear if running all tests.
         repository.DbContext.Set<Resources.Mocks.Classes.Blog>().RemoveRange(repository.DbContext.Set<Resources.Mocks.Classes.Blog>());
@@ -228,7 +228,7 @@ public class EntityRepositoryTests
     public async Task CancelEditingTest()
     {
         var repository = new EntityRepository<Resources.Mocks.Classes.Blog>();
-        repository.DbContextInstanceRequest += (s, e) => e.Instance = new Resources.Mocks.InMemoryDbContext();
+        repository.DbContextInstanceRequest += (s, e) => e.Instance = new Resources.Mocks.MockDbContext();
         repository.PrepareDbContext();
 
         var newEntry = repository.Create();
@@ -257,19 +257,17 @@ public class EntityRepositoryTests
     public async Task RunCommandTest()
     {
         var repository = new EntityRepository<Resources.Mocks.Classes.Blog>();
-        try
-        {
-            await repository.RunCommandAsync("SELECT * FROM Blog"); //not possible inMemory
-        }
-        catch 
-        {
-            Events.MessageEventArgs args = new()
-            {
-                Content = Resources.Strings.Validation.Exception_DefaultContent,
-                Title = Resources.Strings.Validation.Exception_DefaultHeader
-            };
-            args.ModalAssist.Release(Events.MessageResult.Cancel);
-        }
+        repository.DbContextInstanceRequest += (s, e) => e.Instance = new Resources.Mocks.MockDbContext(Providers.ConnectionProviders.SqlLite);
+        repository.PrepareDbContext();
+
+        (await repository.DbContext.Database.EnsureCreatedAsync()).Should().BeTrue();
+        await repository.RunCommandAsync("UPDATE Blogs SET Name = 'no name'");
+        await repository.DbContext.Database.CloseConnectionAsync();
+        repository.DbContextInstanceRequest -= (s, e) => e.Instance = new Resources.Mocks.MockDbContext(Providers.ConnectionProviders.SqlLite);
+        repository.Dispose();
+
+        var dbcontext = new Resources.Mocks.MockDbContext(Providers.ConnectionProviders.SqlLite);
+        (await dbcontext.Database.EnsureDeletedAsync()).Should().BeTrue();
     }
 
 }

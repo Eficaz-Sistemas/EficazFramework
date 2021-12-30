@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.Threading.Tasks;
 
 namespace EficazFramework.Repositories.Services
@@ -15,6 +16,7 @@ namespace EficazFramework.Repositories.Services
         public Dictionary<string, Func<object>> Parameters { get; } = new Dictionary<string, Func<object>>();
     }
 
+    [ExcludeFromCodeCoverage]
     public class SampleQuery : QueryBase
     {
         public SampleQuery()

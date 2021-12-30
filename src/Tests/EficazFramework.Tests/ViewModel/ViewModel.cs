@@ -1,9 +1,6 @@
-﻿using FluentAssertions;
+﻿using EficazFramework.ViewModels.Services;
+using FluentAssertions;
 using NUnit.Framework;
-using EficazFramework.Validation.Fluent.Rules;
-using System.Collections.Generic;
-using System.Threading.Tasks;
-using EficazFramework.ViewModels.Services;
 using System;
 
 namespace EficazFramework.ViewModels;
@@ -99,5 +96,17 @@ public class ViewModel
 
         Vm.RemoveNavigationByIndex();
         Vm.Services.Should().HaveCount(0);
+
+        // invalid constructor
+        ex = null;
+        try
+        {
+            IndexViewNavigator<Resources.Mocks.Classes.Post> navigator1 = new(null);
+        }
+        catch (Exception constructorEx)
+        {
+            ex = constructorEx;
+        }
+        ex.Should().NotBeNull();
     }
 }

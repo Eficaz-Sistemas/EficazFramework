@@ -157,33 +157,17 @@ public class DbConfiguration : System.ComponentModel.INotifyPropertyChanged
 
     public static string GetConnection(string database, string username, string password)
     {
-        EficazFramework.Providers.IDataProvider provider = null;
-        switch (Instance.Provider)
+        EficazFramework.Providers.IDataProvider provider = Instance.Provider switch
         {
-            case EficazFramework.Providers.ConnectionProviders.MsSQL:
-                {
-                    provider = new EficazFramework.Providers.MsSqlServer();
-                    break;
-                }
+            EficazFramework.Providers.ConnectionProviders.MsSQL => new EficazFramework.Providers.MsSqlServer(),
+            EficazFramework.Providers.ConnectionProviders.SqlLite => new EficazFramework.Providers.SqlLite(),
+            EficazFramework.Providers.ConnectionProviders.MySQL => new EficazFramework.Providers.MySQL(),
+            EficazFramework.Providers.ConnectionProviders.Oracle => new EficazFramework.Providers.Oracle(),
+            _ => null
+        };
 
-            case EficazFramework.Providers.ConnectionProviders.SqlLite:
-                {
-                    provider = new EficazFramework.Providers.SqlLite();
-                    break;
-                }
-
-            case EficazFramework.Providers.ConnectionProviders.MySQL:
-                {
-                    provider = new EficazFramework.Providers.MySQL();
-                    break;
-                }
-
-            case EficazFramework.Providers.ConnectionProviders.Oracle:
-                {
-                    provider = new EficazFramework.Providers.Oracle();
-                    break;
-                }
-        }
+        if (provider is null)
+            return null;
 
         string result = provider.CreateConnectionString(database, username, password);
         return result;

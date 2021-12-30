@@ -181,8 +181,7 @@ public static class DateExtensions
             return BaseDate.DayOfWeek switch
             {
                 DayOfWeek.Saturday => NextDate ? BaseDate.AddDays(2) : BaseDate.AddDays(-1),
-                DayOfWeek.Sunday => NextDate ? BaseDate.AddDays(1) : (ConsiderSaturday ? BaseDate.AddDays(-1) : BaseDate.AddDays(-2)),
-                _ => BaseDate
+                _ => NextDate ? BaseDate.AddDays(1) : (ConsiderSaturday ? BaseDate.AddDays(-1) : BaseDate.AddDays(-2)),
             };
         }
     }

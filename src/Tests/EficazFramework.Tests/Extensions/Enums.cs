@@ -47,13 +47,14 @@ class Enum
         valuesComp2.Count().Should().Be(9);
         valuesComp2.ElementAt(4).Value.Should().Be(DocumentosTeste.PIS_NIT);
         valuesComp2.ElementAt(4).Description.Should().Be(EficazFramework.Resources.Strings.TestStrings.eDocumento_PIS_NIT);
-        valuesComp2.Count(c => c.Description == c.Value.ToString()).Should().Be(7);
+        valuesComp2.Count(c => c.Description == c.Value.ToString()).Should().Be(6);
 
         var valuesComp3 = Enums.GetLocalizedValues(typeof(DocumentosTeste), typeof(EficazFramework.Resources.Strings.TestStrings));
         valuesComp3.Count().Should().Be(9);
         valuesComp3.ElementAt(4).Value.Should().Be(DocumentosTeste.PIS_NIT);
         valuesComp3.ElementAt(4).Description.Should().Be(EficazFramework.Resources.Strings.TestStrings.eDocumento_PIS_NIT);
-        valuesComp3.Count(c => c.Description == c.Value.ToString()).Should().Be(7);
+        valuesComp3.ElementAt(6).Description.Should().Be("CPF do cara");
+        valuesComp3.Count(c => c.Description == c.Value.ToString()).Should().Be(6);
     }
 
     [Test, Order(3)]
@@ -129,6 +130,7 @@ class Enum
         [Attributes.DisplayName("eDocumento_PIS_NIT")]
         PIS_NIT = 4,
         CNPJ = 5,
+        [System.ComponentModel.Description("CPF do cara")]
         CPF = 6,
         [System.ComponentModel.Category("Contato")]
         [System.ComponentModel.Description("eDocumento_eMail")]

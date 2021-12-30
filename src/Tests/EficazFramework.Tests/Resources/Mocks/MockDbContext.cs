@@ -7,12 +7,28 @@ using System.Threading.Tasks;
 
 namespace EficazFramework.Resources.Mocks;
 
-internal class InMemoryDbContext : Microsoft.EntityFrameworkCore.DbContext
+internal class MockDbContext : Microsoft.EntityFrameworkCore.DbContext
 {
+    public MockDbContext(EficazFramework.Providers.ConnectionProviders provider = Providers.ConnectionProviders.InMemory) : base()
+    {
+        _provider = provider;
+    }
+    
+    private readonly EficazFramework.Providers.ConnectionProviders _provider ;
+    internal readonly string _sqlLitePath = @$"{Environment.CurrentDirectory}\MockDb.db";
+
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
         base.OnConfiguring(optionsBuilder);
-        optionsBuilder.UseInMemoryDatabase("mockDatabase");
+        EficazFramework.Configuration.DbConfiguration.SettingsPath = Environment.CurrentDirectory;
+        EficazFramework.Configuration.DbConfiguration.UseConnectionStringEncryption = false;
+        EficazFramework.Configuration.DbConfiguration.Instance.Provider = _provider;
+
+        if (_provider == Providers.ConnectionProviders.InMemory)
+            optionsBuilder.UseInMemoryDatabase("mockDatabase");
+
+        else if (_provider == Providers.ConnectionProviders.SqlLite)
+            optionsBuilder.UseSqlite(EficazFramework.Configuration.DbConfiguration.GetConnection(_sqlLitePath, "eficaz", null), (opt) => opt.CommandTimeout(int.MaxValue));
     }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)

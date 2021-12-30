@@ -162,21 +162,16 @@ public static class Enums
     {
         string result = value.ToString();
         var enumType = value.GetType();
-        try
+            
+        var att = enumType.GetMember(result)?.First().GetCustomAttributes(typeof(System.ComponentModel.DescriptionAttribute), true).FirstOrDefault();
+        if (att != null)
+            result = ((System.ComponentModel.DescriptionAttribute)att).Description;
+        else
         {
-            var att = enumType.GetMember(result)?.First().GetCustomAttributes(typeof(System.ComponentModel.DescriptionAttribute), true).FirstOrDefault();
+            att = enumType.GetField(value.ToString())?.GetCustomAttributes(typeof(EficazFramework.Attributes.DisplayNameAttribute), true).FirstOrDefault();
             if (att != null)
-                result = ((System.ComponentModel.DescriptionAttribute)att).Description;
-            else
-            {
-                att = enumType.GetField(value.ToString())?.GetCustomAttributes(typeof(EficazFramework.Attributes.DisplayNameAttribute), true).FirstOrDefault();
-                if (att != null)
-                    result = ((EficazFramework.Attributes.DisplayNameAttribute)att).DisplayName;
-
-            }
+                result = ((EficazFramework.Attributes.DisplayNameAttribute)att).DisplayName;
         }
-        catch { }
-
         return result;
     }
 
@@ -189,22 +184,19 @@ public static class Enums
         string result = value.ToString();
         Type resourceManager = default;
         var enumType = value.GetType();
-        try
+
+        var att = enumType.GetMember(result)?.First().GetCustomAttributes(typeof(System.ComponentModel.DescriptionAttribute), true).FirstOrDefault();
+        if (att != null)
+            result = ((System.ComponentModel.DescriptionAttribute)att).Description;
+        else
         {
-            var att = enumType.GetMember(result)?.First().GetCustomAttributes(typeof(System.ComponentModel.DescriptionAttribute), true).FirstOrDefault();
+            att = enumType.GetField(value.ToString())?.GetCustomAttributes(typeof(EficazFramework.Attributes.DisplayNameAttribute), true).FirstOrDefault();
             if (att != null)
-                result = ((System.ComponentModel.DescriptionAttribute)att).Description;
-            else
             {
-                att = enumType.GetField(value.ToString())?.GetCustomAttributes(typeof(EficazFramework.Attributes.DisplayNameAttribute), true).FirstOrDefault();
-                if (att != null)
-                {
-                    result = ((EficazFramework.Attributes.DisplayNameAttribute)att).DisplayName;
-                    resourceManager = ((EficazFramework.Attributes.DisplayNameAttribute)att).ResourceType;
-                }
+                result = ((EficazFramework.Attributes.DisplayNameAttribute)att).DisplayName;
+                resourceManager = ((EficazFramework.Attributes.DisplayNameAttribute)att).ResourceType;
             }
         }
-        catch { }
 
         return result.Localize(resourceManager, null);
     }
@@ -217,21 +209,18 @@ public static class Enums
     {
         string result = value.ToString();
         var enumType = value.GetType();
-        try
+
+        var att = enumType.GetMember(result)?.First().GetCustomAttributes(typeof(System.ComponentModel.DescriptionAttribute), true).FirstOrDefault();
+        if (att != null)
+            result = ((System.ComponentModel.DescriptionAttribute)att).Description;
+        else
         {
-            var att = enumType.GetMember(result)?.First().GetCustomAttributes(typeof(System.ComponentModel.DescriptionAttribute), true).FirstOrDefault();
+            att = enumType.GetField(value.ToString())?.GetCustomAttributes(typeof(EficazFramework.Attributes.DisplayNameAttribute), true).FirstOrDefault();
             if (att != null)
-                result = ((System.ComponentModel.DescriptionAttribute)att).Description;
-            else
             {
-                att = enumType.GetField(value.ToString())?.GetCustomAttributes(typeof(EficazFramework.Attributes.DisplayNameAttribute), true).FirstOrDefault();
-                if (att != null)
-                {
-                    result = ((EficazFramework.Attributes.DisplayNameAttribute)att).DisplayName;
-                }
+                result = ((EficazFramework.Attributes.DisplayNameAttribute)att).DisplayName;
             }
         }
-        catch { }
 
         return result.Localize(resourceType, null);
     }
@@ -244,13 +233,10 @@ public static class Enums
     {
         string result = "";
         var enumType = value.GetType();
-        try
-        {
-            var att = enumType.GetMember(value.ToString())?.First().GetCustomAttributes(typeof(CategoryAttribute), true).FirstOrDefault();
-            if (att != null)
-                result = ((CategoryAttribute)att).Category;
-        }
-        catch { }
+
+        var att = enumType.GetMember(value.ToString())?.First().GetCustomAttributes(typeof(CategoryAttribute), true).FirstOrDefault();
+        if (att != null)
+            result = ((CategoryAttribute)att).Category;
 
         return result;
     }
