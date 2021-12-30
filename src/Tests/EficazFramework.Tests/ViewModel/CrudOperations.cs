@@ -11,7 +11,6 @@ public class CrudOperations
 {
     private ViewModels.ViewModel<Resources.Mocks.Classes.Blog> Vm;
     string resultContext = null;
-    bool canContinue = false;
 
     [SetUp]
     public async Task Setup()
@@ -70,7 +69,7 @@ public class CrudOperations
     }
 
     [Test, Order(2)]
-    public void TabularValidationTest()
+    public async Task TabularValidationTest()
     {
         Vm.AddTabular();
         Vm.Repository.Validator = new();
@@ -85,24 +84,23 @@ public class CrudOperations
         Vm.Repository.Validate(null).Should().HaveCount(2);
 
         System.Console.WriteLine("Starting async void operations with TabularEdit<>");
-        // by saving
-        //resultContext = null;
-        //var service = Vm.GetTabularEdit();
-        //canContinue = false;
-        //Vm.Commands["Save"].Execute(null);
-        //while (!canContinue) { }
-        //resultContext.Should().Be(Resources.Strings.Validation.Dialog_Title);
 
-        //// by cancelling
-        //resultContext = null;
-        //canContinue = false;
-        //Vm.Commands["Cancel"].Execute(null);
-        //while (!canContinue) { }
-        //canContinue = false;
-        //Vm.Commands["Save"].Execute(null);
-        //while (!canContinue) { }
-        //resultContext.Should().BeNull();
-        //Vm.ViewModelAction -= VmActions_Validation;
+        //by saving
+        resultContext = null;
+        var service = Vm.GetTabularEdit();
+        Vm.Commands["Save"].Execute(null);
+        await Task.Delay(1000);
+        resultContext.Should().Be(Resources.Strings.Validation.Dialog_Title);
+
+        // by cancelling
+        resultContext = null;
+        Vm.Commands["Cancel"].Execute(null);
+        await Task.Delay(1000);
+        Vm.Commands["Save"].Execute(null);
+        await Task.Delay(1000);
+        resultContext.Should().BeNull();
+        Vm.ViewModelAction -= VmActions_Validation;
+
         System.Console.WriteLine("Finished async void operations with TabularEdit<>");
     }
 
@@ -113,14 +111,12 @@ public class CrudOperations
             case Enums.CRUD.Action.EntryValidationFailed:
                 {
                     resultContext = Resources.Strings.Validation.Dialog_Title;
-                    canContinue = true;
                     break;
                 }
             case Enums.CRUD.Action.Saved:
             case Enums.CRUD.Action.Canceled:
                 {
                     resultContext = null;
-                    canContinue = true;
                     break;
                 }
         }
