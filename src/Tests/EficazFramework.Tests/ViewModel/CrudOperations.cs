@@ -101,6 +101,9 @@ public class CrudOperations
         resultContext.Should().BeNull();
         Vm.ViewModelAction -= VmActions_Validation;
 
+        // just call cancel Save
+        Vm.GetTabularEdit().CancelSave();
+
         System.Console.WriteLine("Finished async void operations with TabularEdit<>");
     }
 

@@ -77,6 +77,7 @@
     <Compile Remove="Repositories\DataImportRepository.cs" />
     <Compile Remove="Repositories\Services\EntityRepository.cs" />
     <Compile Remove="Repositories\Services\IRepository.cs" />
+    <Compile Remove="ViewModels\VMServices\ViewNavigation\PagedViewNavigator .cs" />
   </ItemGroup>
 
   <ItemGroup>

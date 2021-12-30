@@ -52,15 +52,15 @@ public class IcpBrasil : X509Certificate2
         if (temp.Length >= 2)
             CNPJ_CPF = temp[1].ToString().FormatRFBDocument();
         if (data.Length >= 2)
-            AutoridadeCertificadora = data[1].Replace("OU=Autenticado por ", "");
+            AutoridadeCertificadora = data[1].Replace("OU=Autenticado por ", "").Trim();
         if (data.Length >= 3)
-            Tipo = data[2].Replace("OU=", "");
+            Tipo = data[2].Replace("OU=", "").Trim();
         DataEfetiva = Conversions.ToDate(GetEffectiveDateString());
         Validade = Conversions.ToDate(GetExpirationDateString());
         PrivateInstance = this;
     }
 
-    public IcpBrasil(byte[] rawdata, X509Certificate2 instance) : base(rawdata)
+    public IcpBrasil(byte[] rawdata, X509Certificate2 instance, string password = null) : base(rawdata, password)
     {
         var data = Subject.Split(",");
         var temp = data[0].Split(":");
@@ -69,9 +69,9 @@ public class IcpBrasil : X509Certificate2
         if (temp.Length >= 2)
             CNPJ_CPF = temp[1].ToString().FormatRFBDocument();
         if (data.Length >= 2)
-            AutoridadeCertificadora = data[1].Replace("OU=Autenticado por ", "");
+            AutoridadeCertificadora = data[1].Replace("OU=Autenticado por ", "").Trim();
         if (data.Length >= 3)
-            Tipo = data[2].Replace("OU=", "");
+            Tipo = data[2].Replace("OU=", "").Trim();
         DataEfetiva = Conversions.ToDate(GetEffectiveDateString());
         Validade = Conversions.ToDate(GetExpirationDateString());
         PrivateInstance = instance;

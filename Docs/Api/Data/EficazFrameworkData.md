@@ -119,7 +119,6 @@
 | Classes | |
 | :--- | :--- |
 | [IndexViewNavigator&lt;T&gt;](EficazFramework.ViewModels.Services/IndexViewNavigator_T_.md 'EficazFramework.ViewModels.Services.IndexViewNavigator<T>') | |
-| [PagedViewNavigator&lt;T&gt;](EficazFramework.ViewModels.Services/PagedViewNavigator_T_.md 'EficazFramework.ViewModels.Services.PagedViewNavigator<T>') | |
 | [ServiceUtils](EficazFramework.ViewModels.Services/ServiceUtils.md 'EficazFramework.ViewModels.Services.ServiceUtils') | |
 | [SingleEdit&lt;T&gt;](EficazFramework.ViewModels.Services/SingleEdit_T_.md 'EficazFramework.ViewModels.Services.SingleEdit<T>') | Serviço de gravação e/ou cancelamento de alterações para ViewModel |
 | [SingleEditDetail&lt;T,D&gt;](EficazFramework.ViewModels.Services/SingleEditDetail_T,D_.md 'EficazFramework.ViewModels.Services.SingleEditDetail<T,D>') | |
