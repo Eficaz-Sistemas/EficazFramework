@@ -91,17 +91,7 @@ public string ValuesStringFormatForMessage { get; set; }
 
 #### Property Value
 [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
-### Methods
 
-<a name='EficazFramework.Validation.Fluent.Rules.RangePeriod_T_.GetStartPropertyName()'></a>
-
-## RangePeriod<T>.GetStartPropertyName() Method
-
-Obtém o nome da propriedade a ser validada pela regra
-
-```csharp
-internal string GetStartPropertyName();
-```
-
-#### Returns
-[System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
+| Methods | |
+| :--- | :--- |
+| [GetStartPropertyName()](EficazFramework.Validation.Fluent.Rules/RangePeriod_T_/GetStartPropertyName().md 'EficazFramework.Validation.Fluent.Rules.RangePeriod<T>.GetStartPropertyName()') | Obtém o nome da propriedade a ser validada pela regra |

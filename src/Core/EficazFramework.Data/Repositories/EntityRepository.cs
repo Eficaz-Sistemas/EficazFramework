@@ -38,6 +38,9 @@ public sealed class EntityRepository<TEntity> : Repositories.RepositoryBase<TEnt
     /// <summary>
     /// Obtém ou define se o Repositório deve executar uma função customizada em FetchItems e FetchItemsAsync.
     /// </summary>
+    /// <example>
+    /// repository.CustomFetch = () => mySource.Take(5).ToList();
+    /// </example>
     public Func<Task<IEnumerable<TEntity>>> CustomFetch { get; set; }
 
 

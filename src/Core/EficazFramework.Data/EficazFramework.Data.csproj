@@ -25,7 +25,7 @@
 	<GenerateDocumentationFile>true</GenerateDocumentationFile>
 	<DefaultDocumentationFolder>..\..\..\Docs\Api\Data</DefaultDocumentationFolder>
 	<DefaultDocumentationAssemblyPageName>EficazFramework Data</DefaultDocumentationAssemblyPageName>
-	<DefaultDocumentationGeneratedPages>Assembly, Types</DefaultDocumentationGeneratedPages>
+	<DefaultDocumentationGeneratedPages>Assembly, Types, Methods</DefaultDocumentationGeneratedPages>
 	<DefaultDocumentationFileNameFactory>Folder</DefaultDocumentationFileNameFactory>
 	<DefaultDocumentationLogLevel>Trace</DefaultDocumentationLogLevel>
   </PropertyGroup>

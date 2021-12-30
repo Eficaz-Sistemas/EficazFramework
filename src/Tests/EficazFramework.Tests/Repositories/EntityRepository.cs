@@ -76,6 +76,13 @@ public class EntityRepositoryTests
 
         repository.Validate(newEntry).Should().HaveCount(1);
         (await repository.ValidateAsync(newEntry)).Should().HaveCount(1);
+        Events.MessageEventArgs args = new()
+        {
+            Content = Resources.Strings.Validation.Dialog_Message,
+            Title = Resources.Strings.Validation.Dialog_Title
+        };
+        args.ModalAssist.Release(Events.MessageResult.Cancel);
+
 
         repository.Validate(null).Should().HaveCount(0);
         (await repository.ValidateAsync(null)).Should().HaveCount(0);
@@ -254,7 +261,15 @@ public class EntityRepositoryTests
         {
             await repository.RunCommandAsync("SELECT * FROM Blog"); //not possible inMemory
         }
-        catch { }
+        catch 
+        {
+            Events.MessageEventArgs args = new()
+            {
+                Content = Resources.Strings.Validation.Exception_DefaultContent,
+                Title = Resources.Strings.Validation.Exception_DefaultHeader
+            };
+            args.ModalAssist.Release(Events.MessageResult.Cancel);
+        }
     }
 
 }
