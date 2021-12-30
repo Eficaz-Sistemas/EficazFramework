@@ -267,7 +267,7 @@ public class Role : EficazFramework.Entities.EntityBase // database Entity
         set
         {
             _key = value;
-            this.ReportPropertyChanged(nameof(Key));
+            ReportPropertyChanged(nameof(Key));
         }
     }
 
@@ -278,7 +278,7 @@ public class Role : EficazFramework.Entities.EntityBase // database Entity
         set
         {
             _order = value;
-            this.ReportPropertyChanged(nameof(Order));
+            ReportPropertyChanged(nameof(Order));
         }
     }
 
@@ -296,7 +296,7 @@ public class Role : EficazFramework.Entities.EntityBase // database Entity
         set
         {
             _group = value;
-            this.ReportPropertyChanged(nameof(Group));
+            ReportPropertyChanged(nameof(Group));
         }
     }
 
@@ -314,7 +314,7 @@ public class Role : EficazFramework.Entities.EntityBase // database Entity
         set
         {
             _entityName = value;
-            this.ReportPropertyChanged(nameof(EntityDisplayName));
+            ReportPropertyChanged(nameof(EntityDisplayName));
         }
     }
 
@@ -327,7 +327,7 @@ public class Role : EficazFramework.Entities.EntityBase // database Entity
         set
         {
             _entityType = value;
-            this.ReportPropertyChanged(nameof(Entity));
+            ReportPropertyChanged(nameof(Entity));
         }
     }
 
@@ -340,7 +340,7 @@ public class Role : EficazFramework.Entities.EntityBase // database Entity
         set
         {
             _role = value;
-            this.ReportPropertyChanged(nameof(RolAction));
+            ReportPropertyChanged(nameof(RolAction));
         }
     }
 
@@ -351,7 +351,7 @@ public class Role : EficazFramework.Entities.EntityBase // database Entity
         set
         {
             _members = value;
-            this.ReportPropertyChanged(nameof(Members));
+            ReportPropertyChanged(nameof(Members));
         }
     }
 
@@ -446,7 +446,7 @@ public class RoleMember : Entities.EntityBase // database Entity
         set
         {
             _id = value;
-            this.ReportPropertyChanged(nameof(ID));
+            ReportPropertyChanged(nameof(ID));
         }
     }
 
@@ -460,7 +460,7 @@ public class RoleMember : Entities.EntityBase // database Entity
         set
         {
             _roleKey = value;
-            this.ReportPropertyChanged(nameof(Role_FK));
+            ReportPropertyChanged(nameof(Role_FK));
         }
     }
 
@@ -474,7 +474,7 @@ public class RoleMember : Entities.EntityBase // database Entity
         set
         {
             _member_group = value;
-            this.ReportPropertyChanged(nameof(MemberOrGroup));
+            ReportPropertyChanged(nameof(MemberOrGroup));
         }
     }
 
@@ -488,7 +488,7 @@ public class RoleMember : Entities.EntityBase // database Entity
         set
         {
             _roleEntry = value;
-            this.ReportPropertyChanged(nameof(Role));
+            ReportPropertyChanged(nameof(Role));
         }
     }
 
@@ -571,7 +571,7 @@ public class RoleEditor : EficazFramework.Entities.EntityBase // NOT db entity, 
         set
         {
             _group = value;
-            this.ReportPropertyChanged(nameof(Group));
+            ReportPropertyChanged(nameof(Group));
         }
     }
 
@@ -589,7 +589,7 @@ public class RoleEditor : EficazFramework.Entities.EntityBase // NOT db entity, 
         set
         {
             _entityName = value;
-            this.ReportPropertyChanged(nameof(EntityDisplayName));
+            ReportPropertyChanged(nameof(EntityDisplayName));
         }
     }
 
@@ -601,7 +601,7 @@ public class RoleEditor : EficazFramework.Entities.EntityBase // NOT db entity, 
             _selectOrRead = value;
             if ((_selectOrRead is null & SelectChecked == true) == true)
                 SelectChecked = default;
-            this.ReportPropertyChanged(nameof(SelectRole));
+            ReportPropertyChanged(nameof(SelectRole));
         }
     }
 
@@ -611,7 +611,7 @@ public class RoleEditor : EficazFramework.Entities.EntityBase // NOT db entity, 
         set
         {
             _selectedChecked = value;
-            this.ReportPropertyChanged(nameof(SelectChecked));
+            ReportPropertyChanged(nameof(SelectChecked));
         }
     }
 
@@ -623,7 +623,7 @@ public class RoleEditor : EficazFramework.Entities.EntityBase // NOT db entity, 
             _insertRole = value;
             if ((_editRole is null & InsertChecked == true) == true)
                 InsertChecked = default;
-            this.ReportPropertyChanged(nameof(InsertRole));
+            ReportPropertyChanged(nameof(InsertRole));
         }
     }
 
@@ -633,7 +633,7 @@ public class RoleEditor : EficazFramework.Entities.EntityBase // NOT db entity, 
         set
         {
             _insertChecked = value;
-            this.ReportPropertyChanged(nameof(InsertChecked));
+            ReportPropertyChanged(nameof(InsertChecked));
         }
     }
 
@@ -645,7 +645,7 @@ public class RoleEditor : EficazFramework.Entities.EntityBase // NOT db entity, 
             _editRole = value;
             if ((_editRole is null & EditChecked == true) == true)
                 EditChecked = default;
-            this.ReportPropertyChanged(nameof(EditRole));
+            ReportPropertyChanged(nameof(EditRole));
         }
     }
 
@@ -655,7 +655,7 @@ public class RoleEditor : EficazFramework.Entities.EntityBase // NOT db entity, 
         set
         {
             _editChecked = value;
-            this.ReportPropertyChanged(nameof(EditChecked));
+            ReportPropertyChanged(nameof(EditChecked));
         }
     }
 
@@ -667,7 +667,7 @@ public class RoleEditor : EficazFramework.Entities.EntityBase // NOT db entity, 
             _deleteRole = value;
             if ((_deleteRole is null & DeleteChecked == true) == true)
                 DeleteChecked = default;
-            this.ReportPropertyChanged(nameof(DeleteRole));
+            ReportPropertyChanged(nameof(DeleteRole));
         }
     }
 
@@ -677,7 +677,7 @@ public class RoleEditor : EficazFramework.Entities.EntityBase // NOT db entity, 
         set
         {
             _deleteChecked = value;
-            this.ReportPropertyChanged(nameof(SelectChecked));
+            ReportPropertyChanged(nameof(SelectChecked));
         }
     }
 

@@ -38,10 +38,10 @@ internal class RequiredIf<T> : Rules.ValidationRule<T> where T : class
         {
             if (value is null)
             {
-                return string.Format(Resources.Strings.Validation.Required, this.GetPropertyName());
+                return string.Format(Resources.Strings.Validation.Required, GetPropertyName());
             }
             else if (string.IsNullOrEmpty(value.ToString()) & AllowEmpty == false)
-                return string.Format(Resources.Strings.Validation.Required, this.GetPropertyName());
+                return string.Format(Resources.Strings.Validation.Required, GetPropertyName());
         }
 
         return null;

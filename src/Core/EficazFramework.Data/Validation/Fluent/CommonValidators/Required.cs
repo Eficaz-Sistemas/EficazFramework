@@ -22,13 +22,13 @@ internal class Required<T> : Rules.ValidationRule<T> where T : class
 
     public override string Validate(T instance)
     {
-        var value = this.Property.Invoke(instance); // instance.GetPropertyValue(Me.PropertyName)
+        var value = Property.Invoke(instance); // instance.GetPropertyValue(Me.PropertyName)
         if (value is null)
         {
-            return string.Format(Resources.Strings.Validation.Required, this.GetPropertyName());
+            return string.Format(Resources.Strings.Validation.Required, GetPropertyName());
         }
         else if (string.IsNullOrEmpty(value.ToString()) & AllowEmpty == false)
-            return string.Format(Resources.Strings.Validation.Required, this.GetPropertyName());
+            return string.Format(Resources.Strings.Validation.Required, GetPropertyName());
 
         return null;
     }

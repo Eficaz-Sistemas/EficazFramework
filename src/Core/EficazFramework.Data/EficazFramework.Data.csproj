@@ -51,16 +51,30 @@
     <Compile Remove="Extensions\LinqKit\**" />
     <Compile Remove="Repositories\Services\API\**" />
     <Compile Remove="ViewModels\Entity\**" />
+    <Compile Remove="ViewModels\VMServices\Audit\**" />
+    <Compile Remove="ViewModels\VMServices\DataImport\**" />
+    <Compile Remove="ViewModels\VMServices\GPO\**" />
+    <Compile Remove="ViewModels\VMServices\RestApi\**" />
     <EmbeddedResource Remove="Extensions\LinqKit\**" />
     <EmbeddedResource Remove="Repositories\Services\API\**" />
     <EmbeddedResource Remove="ViewModels\Entity\**" />
+    <EmbeddedResource Remove="ViewModels\VMServices\Audit\**" />
+    <EmbeddedResource Remove="ViewModels\VMServices\DataImport\**" />
+    <EmbeddedResource Remove="ViewModels\VMServices\GPO\**" />
+    <EmbeddedResource Remove="ViewModels\VMServices\RestApi\**" />
     <None Remove="Extensions\LinqKit\**" />
     <None Remove="Repositories\Services\API\**" />
     <None Remove="ViewModels\Entity\**" />
+    <None Remove="ViewModels\VMServices\Audit\**" />
+    <None Remove="ViewModels\VMServices\DataImport\**" />
+    <None Remove="ViewModels\VMServices\GPO\**" />
+    <None Remove="ViewModels\VMServices\RestApi\**" />
   </ItemGroup>
 
   <ItemGroup>
     <Compile Remove="Events\FindRequestEventArgs.cs" />
+    <Compile Remove="Repositories\ApiRepository.cs" />
+    <Compile Remove="Repositories\DataImportRepository.cs" />
     <Compile Remove="Repositories\Services\EntityRepository.cs" />
     <Compile Remove="Repositories\Services\IRepository.cs" />
   </ItemGroup>
@@ -149,10 +163,6 @@
           <Pack>True</Pack>
           <PackagePath>\</PackagePath>
       </None>
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="ViewModels\VMServices\Audit\Model\" />
   </ItemGroup>
 
 </Project>

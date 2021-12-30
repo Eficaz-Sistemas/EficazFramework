@@ -61,8 +61,6 @@
 
 | Classes | |
 | :--- | :--- |
-| [ApiRepository&lt;TEntity&gt;](EficazFramework.Repositories/ApiRepository_TEntity_.md 'EficazFramework.Repositories.ApiRepository<TEntity>') | |
-| [DataImportRepository&lt;TSource,TCache&gt;](EficazFramework.Repositories/DataImportRepository_TSource,TCache_.md 'EficazFramework.Repositories.DataImportRepository<TSource,TCache>') | |
 | [EntityRepository&lt;TEntity&gt;](EficazFramework.Repositories/EntityRepository_TEntity_.md 'EficazFramework.Repositories.EntityRepository<TEntity>') | |
 | [RepositoryBase&lt;T&gt;](EficazFramework.Repositories/RepositoryBase_T_.md 'EficazFramework.Repositories.RepositoryBase<T>') | |
 
@@ -120,8 +118,6 @@
 
 | Classes | |
 | :--- | :--- |
-| [Audit&lt;T&gt;](EficazFramework.ViewModels.Services/Audit_T_.md 'EficazFramework.ViewModels.Services.Audit<T>') | |
-| [GPO&lt;T&gt;](EficazFramework.ViewModels.Services/GPO_T_.md 'EficazFramework.ViewModels.Services.GPO<T>') | |
 | [IndexViewNavigator&lt;T&gt;](EficazFramework.ViewModels.Services/IndexViewNavigator_T_.md 'EficazFramework.ViewModels.Services.IndexViewNavigator<T>') | |
 | [PagedViewNavigator&lt;T&gt;](EficazFramework.ViewModels.Services/PagedViewNavigator_T_.md 'EficazFramework.ViewModels.Services.PagedViewNavigator<T>') | |
 | [ServiceUtils](EficazFramework.ViewModels.Services/ServiceUtils.md 'EficazFramework.ViewModels.Services.ServiceUtils') | |

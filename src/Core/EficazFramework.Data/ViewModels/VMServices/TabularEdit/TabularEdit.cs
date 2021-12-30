@@ -2,6 +2,7 @@
 using EficazFramework.Extensions;
 using System;
 using System.ComponentModel;
+using System.Threading.Tasks;
 
 namespace EficazFramework.ViewModels.Services;
 
@@ -14,12 +15,11 @@ public class TabularEdit<T> : ViewModelService<T> where T : class
     {
         viewmodel.Commands.Add("Save", new Commands.CommandBase(SaveCommand_Executed));
         viewmodel.Commands.Add("Cancel", new Commands.CommandBase(CancelCommand_Executed));
-        viewmodel.StateChanged += this.OnStateChanged;
-        this.ViewModelInstance.ItemsFetching += this.OnItemsFetching;
-        this.ViewModelInstance.ItemsFetched += this.OnItemsFetched;
+        viewmodel.StateChanged += OnStateChanged;
+        ViewModelInstance.ItemsFetching += OnItemsFetching;
+        ViewModelInstance.ItemsFetched += OnItemsFetched;
     }
 
-    /* TODO ERROR: Skipped RegionDirectiveTrivia */
     /// <summary>
     /// Obtém ou define se o ViewModel deve solicitar a View para notificar o usuário pelo sucesso na gravação.
     /// </summary>
@@ -32,7 +32,7 @@ public class TabularEdit<T> : ViewModelService<T> where T : class
     {
         get
         {
-            return this.ViewModelInstance.State != Enums.CRUD.State.Bloqueado & this.ViewModelInstance.State != Enums.CRUD.State.Processando;
+            return ViewModelInstance.State != Enums.CRUD.State.Bloqueado & ViewModelInstance.State != Enums.CRUD.State.Processando;
         }
     }
 
@@ -41,9 +41,6 @@ public class TabularEdit<T> : ViewModelService<T> where T : class
     /// </summary>
     public bool CanCancelAsyncSave { get; private set; } = false;
 
-    /* TODO ERROR: Skipped EndRegionDirectiveTrivia */
-
-    /* TODO ERROR: Skipped RegionDirectiveTrivia */
     /// <summary>
     /// Ações do comando Salvar
     /// </summary>
@@ -54,8 +51,8 @@ public class TabularEdit<T> : ViewModelService<T> where T : class
 
 
         // Saving:
-        var args = new Events.CRUDEventArgs<T>(Enums.CRUD.Action.Saving, this.ViewModelInstance.State, null);
-        this.ViewModelInstance.RaiseViewModelEvent(args);
+        var args = new Events.CRUDEventArgs<T>(Enums.CRUD.Action.Saving, ViewModelInstance.State, null);
+        ViewModelInstance.RaiseViewModelEvent(args);
         if (args.Cancel == true)
         {
             CancelSave();
@@ -64,39 +61,43 @@ public class TabularEdit<T> : ViewModelService<T> where T : class
 
 
         // Start Async Actions
-        this.ViewModelInstance.SetState(Enums.CRUD.State.Processando, true, Resources.Strings.ViewModel.DefaultSavingMessage);
-        var tk = this.ViewModelInstance.CreatActionToken().Token;
+        ViewModelInstance.SetState(Enums.CRUD.State.Processando, true, Resources.Strings.ViewModel.DefaultSavingMessage);
+        var tk = ViewModelInstance.CreatActionToken().Token;
         var tokenregistration = tk.Register(CancelSave);
 
 
         // Validate:
-        var validation = await this.ViewModelInstance.Repository.ValidateAsync(null);
+        var validation = await ViewModelInstance.Repository.ValidateAsync(null);
         if (validation.Count > 0)
         {
-            this.ViewModelInstance.RaiseDialogMessage(new Events.MessageEventArgs()
+            ViewModelInstance.RaiseDialogMessage(new Events.MessageEventArgs()
             {
                 IconReference = Events.MessageIcon.Error,
                 Title = Resources.Strings.Validation.Dialog_Title,
                 Content = string.Format(Resources.Strings.Validation.Dialog_Title, Environment.NewLine, validation.ToString())
             });
+            var failArgs = new Events.CRUDEventArgs<T>(Enums.CRUD.Action.EntryValidationFailed, args.State, args.CurrentEntry);
+            failArgs.ValidationErrors.AddRange(validation);
+            ViewModelInstance.RaiseViewModelEvent(failArgs);
+            ViewModelInstance.SetState(args.State, false, null);
             return;
         }
 
 
         // Unlocking Async Cancel
         CanCancelAsyncSave = true;
-        this.RaisePropertyChanged(nameof(CanCancelAsyncSave));
-        var ex = await this.ViewModelInstance.Repository.CommitAsync(tk);
+        RaisePropertyChanged(nameof(CanCancelAsyncSave));
+        var ex = await ViewModelInstance.Repository.CommitAsync(tk);
         CanCancelAsyncSave = false;
-        this.RaisePropertyChanged(nameof(CanCancelAsyncSave));
+        RaisePropertyChanged(nameof(CanCancelAsyncSave));
 
         // Saved (or not):
-        this.ViewModelInstance.SetState(args.State, false, null);
+        ViewModelInstance.SetState(args.State, false, null);
         if (ex is null)
         {
             var savedargs = new Events.CRUDEventArgs<T>(Enums.CRUD.Action.Saved, args.State, null);
-            this.ViewModelInstance.RaiseViewModelEvent(savedargs);
-            this.ViewModelInstance.RaiseDialogMessage(new Events.MessageEventArgs()
+            ViewModelInstance.RaiseViewModelEvent(savedargs);
+            ViewModelInstance.RaiseDialogMessage(new Events.MessageEventArgs()
             {
                 Type = MessageType.SnackBar,
                 IconReference = Events.MessageIcon.Like,
@@ -107,7 +108,7 @@ public class TabularEdit<T> : ViewModelService<T> where T : class
         else
         {
             // todo: report message
-            this.ViewModelInstance.RaiseDialogMessage(new Events.MessageEventArgs()
+            ViewModelInstance.RaiseDialogMessage(new Events.MessageEventArgs()
             {
                 IconReference = Events.MessageIcon.Error,
                 Title = Resources.Strings.ViewModel.UnhandledError_Title,
@@ -125,16 +126,16 @@ public class TabularEdit<T> : ViewModelService<T> where T : class
     /// </summary>
     private async void CancelCommand_Executed(object sender, Events.ExecuteEventArgs e)
     {
-        var args = new Events.CRUDEventArgs<T>(Enums.CRUD.Action.Canceled, this.ViewModelInstance.State, null);
-        var ex = await this.ViewModelInstance.Repository.CancelAsync(null);
+        var args = new Events.CRUDEventArgs<T>(Enums.CRUD.Action.Canceled, ViewModelInstance.State, null);
+        var ex = await ViewModelInstance.Repository.CancelAsync(null);
         if (ex is null)
         {
-            this.ViewModelInstance.RaiseViewModelEvent(args);
+            ViewModelInstance.RaiseViewModelEvent(args);
         }
         else
         {
             // todo: report message
-            this.ViewModelInstance.RaiseDialogMessage(new Events.MessageEventArgs()
+            ViewModelInstance.RaiseDialogMessage(new Events.MessageEventArgs()
             {
                 IconReference = Events.MessageIcon.Error,
                 Title = Resources.Strings.ViewModel.UnhandledError_Title,
@@ -145,14 +146,12 @@ public class TabularEdit<T> : ViewModelService<T> where T : class
         }
     }
 
-    /* TODO ERROR: Skipped EndRegionDirectiveTrivia */
-    /* TODO ERROR: Skipped RegionDirectiveTrivia */
     /// <summary>
     /// Acão ao acionar o cancelamento da operação de gravação assíncrona
     /// </summary>
     public void CancelSave()
     {
-        this.ViewModelInstance.RaiseDialogMessage(new Events.MessageEventArgs()
+        ViewModelInstance.RaiseDialogMessage(new Events.MessageEventArgs()
         {
             IconReference = Events.MessageIcon.Warning,
             Title = Resources.Strings.ViewModel.OperationCanceled_Title,
@@ -160,14 +159,12 @@ public class TabularEdit<T> : ViewModelService<T> where T : class
         });
     }
 
-    /* TODO ERROR: Skipped EndRegionDirectiveTrivia */
-    /* TODO ERROR: Skipped RegionDirectiveTrivia */
     /// <summary>
     /// Atualiza o valor da Propriedade CanSave após a mudança de estado do ViewModel.
     /// </summary>
     private void OnStateChanged(object sender, EventArgs e)
     {
-        this.RaisePropertyChanged(nameof(CanSave));
+        RaisePropertyChanged(nameof(CanSave));
     }
 
     /// <summary>
@@ -178,9 +175,9 @@ public class TabularEdit<T> : ViewModelService<T> where T : class
     {
         if (!typeof(INotifyPropertyChanged).IsAssignableFrom(typeof(T)))
             return;
-        if (this.ViewModelInstance.Repository.DataContext is null)
+        if (ViewModelInstance.Repository.DataContext is null)
             return;
-        this.ViewModelInstance.Repository.DataContext.ForEach((entry) => ((INotifyPropertyChanged)entry).PropertyChanged -= this.ViewModelInstance.OnEntryPropertyChanged);
+        ViewModelInstance.Repository.DataContext.ForEach((entry) => ((INotifyPropertyChanged)entry).PropertyChanged -= ViewModelInstance.OnEntryPropertyChanged);
     }
 
     /// <summary>
@@ -190,25 +187,21 @@ public class TabularEdit<T> : ViewModelService<T> where T : class
     {
         if (!typeof(INotifyPropertyChanged).IsAssignableFrom(typeof(T)))
             return;
-        if (this.ViewModelInstance.Repository.DataContext is null)
+        if (ViewModelInstance.Repository.DataContext is null)
             return;
-        this.ViewModelInstance.Repository.DataContext.ForEach((entry) => ((INotifyPropertyChanged)entry).PropertyChanged += this.ViewModelInstance.OnEntryPropertyChanged);
+        ViewModelInstance.Repository.DataContext.ForEach((entry) => ((INotifyPropertyChanged)entry).PropertyChanged += ViewModelInstance.OnEntryPropertyChanged);
     }
 
-    /* TODO ERROR: Skipped EndRegionDirectiveTrivia */
-    /* TODO ERROR: Skipped RegionDirectiveTrivia */
     internal override void DisposeManagedCallerObjects()
     {
         base.DisposeManagedCallerObjects();
-        this.ViewModelInstance.StateChanged -= this.OnStateChanged;
-        this.ViewModelInstance.ItemsFetching -= this.OnItemsFetching;
-        this.ViewModelInstance.ItemsFetched -= this.OnItemsFetched;
-        this.ViewModelInstance.Commands.Remove("Save");
-        this.ViewModelInstance.Commands.Remove("Cancel");
-        this.ViewModelInstance.Services.Remove(ServiceUtils.KEY_TABULAREDIT);
+        ViewModelInstance.StateChanged -= OnStateChanged;
+        ViewModelInstance.ItemsFetching -= OnItemsFetching;
+        ViewModelInstance.ItemsFetched -= OnItemsFetched;
+        ViewModelInstance.Commands.Remove("Save");
+        ViewModelInstance.Commands.Remove("Cancel");
+        ViewModelInstance.Services.Remove(ServiceUtils.KEY_TABULAREDIT);
     }
-
-    /* TODO ERROR: Skipped EndRegionDirectiveTrivia */
 }
 
 public static partial class ServiceUtils
@@ -223,6 +216,12 @@ public static partial class ServiceUtils
         if (viewmodel.Services.ContainsKey(ServiceUtils.KEY_TABULAREDIT))
             throw new ArgumentException(string.Format(Resources.Strings.ViewModel.ServiceAlreadyAdded, ServiceUtils.KEY_TABULAREDIT));
         viewmodel._servicesInternal.Add(ServiceUtils.KEY_TABULAREDIT, service);
+        if (typeof(Repositories.IEntityRepository).IsAssignableFrom(viewmodel.Repository.GetType()))
+        {
+            Repositories.IEntityRepository repo = (Repositories.IEntityRepository)viewmodel.GetPropertyValue(nameof(viewmodel.Repository));
+            repo.AsNoTracking = false;
+        }
+
         return viewmodel;
     }
 
@@ -236,4 +235,10 @@ public static partial class ServiceUtils
         service.Dispose();
         return viewmodel;
     }
+
+    public static TabularEdit<T> GetTabularEdit<T>(this ViewModel<T> viewmodel) where T : class
+    {
+        return viewmodel.Services.ContainsKey(KEY_TABULAREDIT) == true ? (TabularEdit<T>)viewmodel.Services[ServiceUtils.KEY_TABULAREDIT] : null;
+    }
+
 }

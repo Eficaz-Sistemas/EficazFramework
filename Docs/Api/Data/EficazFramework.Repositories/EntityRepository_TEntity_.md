@@ -4,7 +4,8 @@
 ## EntityRepository<TEntity> Class
 
 ```csharp
-public sealed class EntityRepository<TEntity> : EficazFramework.Repositories.RepositoryBase<TEntity>
+public sealed class EntityRepository<TEntity> : EficazFramework.Repositories.RepositoryBase<TEntity>,
+EficazFramework.Repositories.IEntityRepository
     where TEntity : EficazFramework.Entities.EntityBase, EficazFramework.Entities.IEntity
 ```
 #### Type parameters
@@ -14,19 +15,23 @@ public sealed class EntityRepository<TEntity> : EficazFramework.Repositories.Rep
 `TEntity`
 
 Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.Object 'System.Object') &#129106; [EficazFramework.Repositories.RepositoryBase&lt;](EficazFramework.Repositories/RepositoryBase_T_.md 'EficazFramework.Repositories.RepositoryBase<T>')[TEntity](EficazFramework.Repositories/EntityRepository_TEntity_.md#EficazFramework.Repositories.EntityRepository_TEntity_.TEntity 'EficazFramework.Repositories.EntityRepository<TEntity>.TEntity')[&gt;](EficazFramework.Repositories/RepositoryBase_T_.md 'EficazFramework.Repositories.RepositoryBase<T>') &#129106; EntityRepository<TEntity>
+
+Implements [EficazFramework.Repositories.IEntityRepository](https://docs.microsoft.com/en-us/dotnet/api/EficazFramework.Repositories.IEntityRepository 'EficazFramework.Repositories.IEntityRepository')
 ### Properties
 
-<a name='EficazFramework.Repositories.EntityRepository_TEntity_.AsNoTrackking'></a>
+<a name='EficazFramework.Repositories.EntityRepository_TEntity_.AsNoTracking'></a>
 
-## EntityRepository<TEntity>.AsNoTrackking Property
+## EntityRepository<TEntity>.AsNoTracking Property
 
 Obtém ou define se as queries de FetchItems() e FetchItemsAsync() devem usar o sufixo .AsNoTracking()   
 para obter ganho de performance pelo não-monitoramento de alterações de valores nas entidades.  
 O valor inicial padrão é TRUE.
 
 ```csharp
-public bool AsNoTrackking { get; set; }
+public bool AsNoTracking { get; set; }
 ```
+
+Implements [AsNoTracking](https://docs.microsoft.com/en-us/dotnet/api/EficazFramework.Repositories.IEntityRepository.AsNoTracking 'EficazFramework.Repositories.IEntityRepository.AsNoTracking')
 
 #### Property Value
 [System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')

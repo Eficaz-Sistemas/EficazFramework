@@ -10,7 +10,12 @@ using System.Threading.Tasks;
 
 namespace EficazFramework.Repositories;
 
-public sealed class EntityRepository<TEntity> : Repositories.RepositoryBase<TEntity> where TEntity : EficazFramework.Entities.EntityBase, IEntity
+public interface IEntityRepository
+{
+    public bool AsNoTracking { get; set; }
+}
+
+public sealed class EntityRepository<TEntity> : Repositories.RepositoryBase<TEntity>, IEntityRepository where TEntity : EficazFramework.Entities.EntityBase, IEntity
 {
     /// <summary>
     /// Expressão IIncludable para JOINs
@@ -20,14 +25,14 @@ public sealed class EntityRepository<TEntity> : Repositories.RepositoryBase<TEnt
     /// <summary>
     /// Instância de DbContext do EntityFrameworkCore
     /// </summary>
-    public Microsoft.EntityFrameworkCore.DbContext DbContext { get; private set; } = null;
+    public Microsoft.EntityFrameworkCore.DbContext DbContext { get; internal set; } = null;
 
     /// <summary>
     /// Obtém ou define se as queries de FetchItems() e FetchItemsAsync() devem usar o sufixo .AsNoTracking() 
     /// para obter ganho de performance pelo não-monitoramento de alterações de valores nas entidades.
     /// O valor inicial padrão é TRUE.
     /// </summary>
-    public bool AsNoTrackking { get; set; } = true;
+    public bool AsNoTracking { get; set; } = true;
 
     /// <summary>
     /// Informa ao DbContext os tipo de entidades que não devem ser monitorados pelo ChangeTracker.
@@ -225,7 +230,7 @@ public sealed class EntityRepository<TEntity> : Repositories.RepositoryBase<TEnt
             }
             else
             {
-                foreach (var entry in DbContext.ChangeTracker.Entries().ToList())
+                foreach (var entry in DbContext.ChangeTracker.Entries().Where(s => s.State != EntityState.Unchanged).ToList())
                 {
                     var ex = Cancel(entry.Entity);
                     if (ex != null)
@@ -333,7 +338,7 @@ public sealed class EntityRepository<TEntity> : Repositories.RepositoryBase<TEnt
         if (PageSize > 0)
             query = query.Skip((CurrentPage - 1) * PageSize).Take(PageSize);
 
-        if (AsNoTrackking == true)
+        if (AsNoTracking == true)
             query = query.AsNoTracking();
 
         return query;

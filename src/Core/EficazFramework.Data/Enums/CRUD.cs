@@ -68,6 +68,7 @@ public enum Action
 
     EntryValidating = 19,
     EntryValidated = 20,
+    EntryValidationFailed = 21,
 
     DetailCanceled = 53,
     DetailSaving = 54,

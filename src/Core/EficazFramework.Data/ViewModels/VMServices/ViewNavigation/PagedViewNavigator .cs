@@ -10,7 +10,7 @@ public class PagedViewNavigator<T> : Services.ViewModelService<T>, IPagedViewNav
 {
     public PagedViewNavigator(ViewModels.ViewModel<T> viewmodel) : base(viewmodel)
     {
-        viewmodel.StateChanged += this.OnViewModel_StateChanged;
+        viewmodel.StateChanged += OnViewModel_StateChanged;
     }
 
     /* TODO ERROR: Skipped RegionDirectiveTrivia */
@@ -25,11 +25,11 @@ public class PagedViewNavigator<T> : Services.ViewModelService<T>, IPagedViewNav
         set
         {
             _entryListPage = value;
-            this.RaisePropertyChanged(nameof(EntriesPage));
+            RaisePropertyChanged(nameof(EntriesPage));
             if (SelectedPage is null)
             {
                 SelectedPage = EntriesPage;
-                this.RaisePropertyChanged(nameof(SelectedPage));
+                RaisePropertyChanged(nameof(SelectedPage));
             }
         }
     }
@@ -45,7 +45,7 @@ public class PagedViewNavigator<T> : Services.ViewModelService<T>, IPagedViewNav
         set
         {
             _formPage = value;
-            this.RaisePropertyChanged(nameof(FormPage));
+            RaisePropertyChanged(nameof(FormPage));
         }
     }
 
@@ -62,7 +62,7 @@ public class PagedViewNavigator<T> : Services.ViewModelService<T>, IPagedViewNav
         set
         {
             _currentDetail = value;
-            this.RaisePropertyChanged(nameof(CurrentDetail));
+            RaisePropertyChanged(nameof(CurrentDetail));
         }
     }
 
@@ -75,7 +75,7 @@ public class PagedViewNavigator<T> : Services.ViewModelService<T>, IPagedViewNav
     /// </summary>
     private void OnViewModel_StateChanged(object sender, EventArgs e)
     {
-        switch (this.ViewModelInstance.State)
+        switch (ViewModelInstance.State)
         {
             case Enums.CRUD.State.Bloqueado:
             case Enums.CRUD.State.Leitura:
@@ -83,7 +83,7 @@ public class PagedViewNavigator<T> : Services.ViewModelService<T>, IPagedViewNav
                     if (Conversions.ToBoolean(Operators.ConditionalCompareObjectNotEqual(SelectedPage, EntriesPage, false)))
                     {
                         SelectedPage = EntriesPage;
-                        this.RaisePropertyChanged(nameof(SelectedPage));
+                        RaisePropertyChanged(nameof(SelectedPage));
                     }
 
                     break;
@@ -95,7 +95,7 @@ public class PagedViewNavigator<T> : Services.ViewModelService<T>, IPagedViewNav
                     if (Conversions.ToBoolean(Operators.ConditionalCompareObjectNotEqual(SelectedPage, FormPage, false)))
                     {
                         SelectedPage = FormPage;
-                        this.RaisePropertyChanged(nameof(SelectedPage));
+                        RaisePropertyChanged(nameof(SelectedPage));
                     }
 
                     break;
@@ -109,7 +109,7 @@ public class PagedViewNavigator<T> : Services.ViewModelService<T>, IPagedViewNav
                     if (!ReferenceEquals(SelectedPage, DetailFormPages[CurrentDetail]))
                     {
                         SelectedPage = DetailFormPages[CurrentDetail];
-                        this.RaisePropertyChanged(nameof(SelectedPage));
+                        RaisePropertyChanged(nameof(SelectedPage));
                     }
 
                     break;
@@ -127,8 +127,8 @@ public class PagedViewNavigator<T> : Services.ViewModelService<T>, IPagedViewNav
     internal override void DisposeManagedCallerObjects()
     {
         base.DisposeManagedCallerObjects();
-        this.ViewModelInstance.StateChanged -= this.OnViewModel_StateChanged;
-        this.ViewModelInstance.Services.Remove(ServiceUtils.KEY_PAGEDVIEWNAVIGATOR);
+        ViewModelInstance.StateChanged -= OnViewModel_StateChanged;
+        ViewModelInstance.Services.Remove(ServiceUtils.KEY_PAGEDVIEWNAVIGATOR);
     }
 
     /* TODO ERROR: Skipped EndRegionDirectiveTrivia */

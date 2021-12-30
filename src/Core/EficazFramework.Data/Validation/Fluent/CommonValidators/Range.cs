@@ -105,7 +105,7 @@ internal class Range<T> : Rules.ValidationRule<T> where T : class
 
     public override string Validate(T instance)
     {
-        var value = this.Property.Invoke(instance); // instance.GetPropertyValue(Me.PropertyName)
+        var value = Property.Invoke(instance); // instance.GetPropertyValue(Me.PropertyName)
         if (value == null) return null; //not nulls must be handled by Required validator
 
         if (Mode == RangeMode.Numeric)

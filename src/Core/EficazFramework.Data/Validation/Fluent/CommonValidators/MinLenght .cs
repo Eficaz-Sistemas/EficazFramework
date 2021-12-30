@@ -22,7 +22,7 @@ internal class MinLenght<T> : Rules.ValidationRule<T> where T : class
 
     public override string Validate(T instance)
     {
-        var value = this.Property.Invoke(instance); // instance.GetPropertyValue(Me.PropertyName)
+        var value = Property.Invoke(instance); // instance.GetPropertyValue(Me.PropertyName)
         if (value == null) return null;
 
         if (value.ToString().Length < Lenght) return string.Format(Resources.Strings.Validation.MinLenght, GetPropertyName(), Lenght);

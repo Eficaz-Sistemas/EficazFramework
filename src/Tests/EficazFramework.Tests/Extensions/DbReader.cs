@@ -36,6 +36,7 @@ class DbReader
         // assert
         List<Resources.Mocks.Classes.Blog> list = new();
         var cmd = await query.CreateCommandAsync(dbContext);
+        query.CreateCommand(dbContext).Connection.ConnectionString.Should().Be(cmd.Connection.ConnectionString);
         cmd.CommandText = query.SqlLiteCommandText;
         await cmd.Connection.OpenAsync();
         var reader = await cmd.ExecuteReaderAsync();

@@ -162,9 +162,9 @@ public class ViewModel<T> : INotifyPropertyChanged, IDisposable where T : class
     /// </summary>
     public void Get()
     {
-        if (this.BeginGet().Cancel == true)
+        if (BeginGet().Cancel == true)
             return;
-        this.SetState(EficazFramework.Enums.CRUD.State.Processando, true, Resources.Strings.ViewModel.DefaultLoadingMessage);
+        SetState(EficazFramework.Enums.CRUD.State.Processando, true, Resources.Strings.ViewModel.DefaultLoadingMessage);
         Repository.Get();
         OnEntrySetup(null);
         EndGet();
@@ -176,11 +176,11 @@ public class ViewModel<T> : INotifyPropertyChanged, IDisposable where T : class
     /// <returns></returns>
     public async Task GetAsync()
     {
-        if (this.BeginGet().Cancel == true)
+        if (BeginGet().Cancel == true)
             return;
-        this.SetState(Enums.CRUD.State.Processando, true, Resources.Strings.ViewModel.CancelingCurrentAsyncMethod);
+        SetState(Enums.CRUD.State.Processando, true, Resources.Strings.ViewModel.CancelingCurrentAsyncMethod);
         CancelCurrentOperation();
-        this.SetState(Enums.CRUD.State.Processando, true, Resources.Strings.ViewModel.DefaultLoadingMessage);
+        SetState(Enums.CRUD.State.Processando, true, Resources.Strings.ViewModel.DefaultLoadingMessage);
         CreatActionToken();
         await Repository.GetAsync(_CancelationTokenSource.Token);
         await OnEntrySetup(null);
@@ -208,9 +208,9 @@ public class ViewModel<T> : INotifyPropertyChanged, IDisposable where T : class
     {
         FinishCurrentOperation();
         if (Repository.DataContext.Count > 0)
-            this.SetState(EficazFramework.Enums.CRUD.State.Leitura, false, null);
+            SetState(EficazFramework.Enums.CRUD.State.Leitura, false, null);
         else
-            this.SetState(EficazFramework.Enums.CRUD.State.Bloqueado, false, null);
+            SetState(EficazFramework.Enums.CRUD.State.Bloqueado, false, null);
         var args = new Events.CRUDEventArgs<T>(Enums.CRUD.Action.DataFetched, State, null);
         ItemsFetched?.Invoke(this, args);
     }
@@ -302,11 +302,11 @@ public class ViewModel<T> : INotifyPropertyChanged, IDisposable where T : class
                     CancelCurrentOperation();
                 if (Repository != null)
                     Repository.Dispose();
-                Commands.Clear();
                 var services = Services.ToList();
                 services.ForEach(s => s.Value.Dispose());
                 services = null;
                 _servicesInternal.Clear();
+                Commands.Clear();
                 DisposeManagedCallerObjects();
             }
 

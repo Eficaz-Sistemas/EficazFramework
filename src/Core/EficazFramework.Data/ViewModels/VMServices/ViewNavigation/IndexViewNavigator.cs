@@ -12,7 +12,7 @@ public class IndexViewNavigator<T> : ViewModelService<T>, IIndexViewNavigator wh
     public IndexViewNavigator(ViewModel<T> viewmodel) : base(viewmodel)
     {
         viewmodel.Commands.Add("GoToFindPage", new Commands.CommandBase(GoToFindPage_Executed));
-        viewmodel.StateChanged += this.OnViewModel_StateChanged;
+        viewmodel.StateChanged += OnViewModel_StateChanged;
     }
 
     private int _searchIndex = -1;
@@ -22,7 +22,7 @@ public class IndexViewNavigator<T> : ViewModelService<T>, IIndexViewNavigator wh
         set
         {
             _searchIndex = value;
-            this.RaisePropertyChanged(nameof(SearchIndex));
+            RaisePropertyChanged(nameof(SearchIndex));
         }
     }
 
@@ -37,7 +37,7 @@ public class IndexViewNavigator<T> : ViewModelService<T>, IIndexViewNavigator wh
         set
         {
             _entryListIndex = value;
-            this.RaisePropertyChanged(nameof(EntriesIndex));
+            RaisePropertyChanged(nameof(EntriesIndex));
         }
     }
 
@@ -52,7 +52,7 @@ public class IndexViewNavigator<T> : ViewModelService<T>, IIndexViewNavigator wh
         set
         {
             _formIndex = value;
-            this.RaisePropertyChanged(nameof(FormIndex));
+            RaisePropertyChanged(nameof(FormIndex));
         }
     }
 
@@ -69,7 +69,7 @@ public class IndexViewNavigator<T> : ViewModelService<T>, IIndexViewNavigator wh
         set
         {
             _currentDetail = value;
-            this.RaisePropertyChanged(nameof(CurrentDetail));
+            RaisePropertyChanged(nameof(CurrentDetail));
         }
     }
 
@@ -80,7 +80,7 @@ public class IndexViewNavigator<T> : ViewModelService<T>, IIndexViewNavigator wh
     /// </summary>
     private void OnViewModel_StateChanged(object sender, EventArgs e)
     {
-        switch (this.ViewModelInstance.State)
+        switch (ViewModelInstance.State)
         {
             case Enums.CRUD.State.Bloqueado:
                 {
@@ -89,7 +89,7 @@ public class IndexViewNavigator<T> : ViewModelService<T>, IIndexViewNavigator wh
                         if (SelectedIndex != SearchIndex)
                         {
                             SelectedIndex = SearchIndex;
-                            this.RaisePropertyChanged(nameof(SelectedIndex));
+                            RaisePropertyChanged(nameof(SelectedIndex));
                         }
                     }
                     else
@@ -97,7 +97,7 @@ public class IndexViewNavigator<T> : ViewModelService<T>, IIndexViewNavigator wh
                         if (SelectedIndex != EntriesIndex)
                         {
                             SelectedIndex = EntriesIndex;
-                            this.RaisePropertyChanged(nameof(SelectedIndex));
+                            RaisePropertyChanged(nameof(SelectedIndex));
                         }
                     }
 
@@ -108,7 +108,7 @@ public class IndexViewNavigator<T> : ViewModelService<T>, IIndexViewNavigator wh
                     if (SelectedIndex != EntriesIndex)
                     {
                         SelectedIndex = EntriesIndex;
-                        this.RaisePropertyChanged(nameof(SelectedIndex));
+                        RaisePropertyChanged(nameof(SelectedIndex));
                     }
 
                     break;
@@ -120,7 +120,7 @@ public class IndexViewNavigator<T> : ViewModelService<T>, IIndexViewNavigator wh
                     if (SelectedIndex != FormIndex)
                     {
                         SelectedIndex = FormIndex;
-                        this.RaisePropertyChanged(nameof(SelectedIndex));
+                        RaisePropertyChanged(nameof(SelectedIndex));
                     }
 
                     break;
@@ -134,7 +134,7 @@ public class IndexViewNavigator<T> : ViewModelService<T>, IIndexViewNavigator wh
                     if (SelectedIndex != DetailFormIndex[CurrentDetail])
                     {
                         SelectedIndex = DetailFormIndex[CurrentDetail];
-                        this.RaisePropertyChanged(nameof(SelectedIndex));
+                        RaisePropertyChanged(nameof(SelectedIndex));
                     }
 
                     break;
@@ -159,9 +159,9 @@ public class IndexViewNavigator<T> : ViewModelService<T>, IIndexViewNavigator wh
     internal override void DisposeManagedCallerObjects()
     {
         base.DisposeManagedCallerObjects();
-        this.ViewModelInstance.StateChanged -= this.OnViewModel_StateChanged;
-        this.ViewModelInstance.Commands.Remove("GoToFindPage");
-        this.ViewModelInstance.Services.Remove(ServiceUtils.KEY_INDEXVIEWNAVIGATOR);
+        ViewModelInstance.StateChanged -= OnViewModel_StateChanged;
+        ViewModelInstance.Commands.Remove("GoToFindPage");
+        ViewModelInstance.Services.Remove(ServiceUtils.KEY_INDEXVIEWNAVIGATOR);
 
     }
 

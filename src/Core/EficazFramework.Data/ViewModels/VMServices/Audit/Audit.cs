@@ -11,10 +11,6 @@ public class Audit<T> : ViewModelService<T> where T : class
         viewmodel.ViewModelAction += this.OnViewModelAction;
     }
 
-    /* TODO ERROR: Skipped RegionDirectiveTrivia */
-
-    /* TODO ERROR: Skipped EndRegionDirectiveTrivia */
-    /* TODO ERROR: Skipped RegionDirectiveTrivia */
     /// <summary>
     /// Monitora a mudança de estado do ViewModel.
     /// </summary>
@@ -50,25 +46,12 @@ public class Audit<T> : ViewModelService<T> where T : class
                 }
         }
     }
-
-    /* TODO ERROR: Skipped EndRegionDirectiveTrivia */
-    /* TODO ERROR: Skipped RegionDirectiveTrivia */
     internal override void DisposeManagedCallerObjects()
     {
         base.DisposeManagedCallerObjects();
         this.ViewModelInstance.ViewModelAction -= this.OnViewModelAction;
         this.ViewModelInstance.Services.Remove(ServiceUtils.KEY_AUDIT);
     }
-
-    /* TODO ERROR: Skipped EndRegionDirectiveTrivia */
-    /* TODO ERROR: Skipped RegionDirectiveTrivia */
-    // Private Async Function CommitAuditEntryAsync(entry As Object) As Task
-
-    // End Function
-
-
-    /* TODO ERROR: Skipped EndRegionDirectiveTrivia */
-
 }
 
 public static partial class ServiceUtils

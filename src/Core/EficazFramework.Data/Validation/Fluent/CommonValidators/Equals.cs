@@ -23,10 +23,10 @@ internal class Equals<T> : Rules.ValidationRule<T> where T : class
 
     public override string Validate(T instance)
     {
-        var value = this.Property.Invoke(instance); // instance.GetPropertyValue(Me.PropertyName)
+        var value = Property.Invoke(instance); // instance.GetPropertyValue(Me.PropertyName)
         if (value == null) return null;
 
-        var target_value = this.To.Invoke(instance); // instance.GetPropertyValue(Me.PropertyName)
+        var target_value = To.Invoke(instance); // instance.GetPropertyValue(Me.PropertyName)
         if (target_value == null) return null;
 
 

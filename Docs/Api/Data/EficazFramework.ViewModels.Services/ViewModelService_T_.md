@@ -18,8 +18,6 @@ System.ComponentModel.INotifyPropertyChanged
 Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.Object 'System.Object') &#129106; ViewModelService<T>
 
 Derived  
-&#8627; [Audit&lt;T&gt;](EficazFramework.ViewModels.Services/Audit_T_.md 'EficazFramework.ViewModels.Services.Audit<T>')  
-&#8627; [GPO&lt;T&gt;](EficazFramework.ViewModels.Services/GPO_T_.md 'EficazFramework.ViewModels.Services.GPO<T>')  
 &#8627; [IndexViewNavigator&lt;T&gt;](EficazFramework.ViewModels.Services/IndexViewNavigator_T_.md 'EficazFramework.ViewModels.Services.IndexViewNavigator<T>')  
 &#8627; [PagedViewNavigator&lt;T&gt;](EficazFramework.ViewModels.Services/PagedViewNavigator_T_.md 'EficazFramework.ViewModels.Services.PagedViewNavigator<T>')  
 &#8627; [SingleEdit&lt;T&gt;](EficazFramework.ViewModels.Services/SingleEdit_T_.md 'EficazFramework.ViewModels.Services.SingleEdit<T>')  
