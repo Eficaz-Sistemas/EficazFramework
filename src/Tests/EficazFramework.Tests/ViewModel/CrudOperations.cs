@@ -128,7 +128,7 @@ public class CrudOperations
         service.MoveToFirst();
         Vm.Repository.DataContext.IndexOf(service.CurrentEntry).Should().Be(0);
         service.MoveTo(Vm.Repository.DataContext.First(b => b.Name == "Blog 50"));
-        Vm.Repository.DataContext.IndexOf(service.CurrentEntry).Should().Be(49);
+        service.CurrentEntry.Name.Should().Be("Blog 50");
     }
 
     private bool _saveNotified = false;
