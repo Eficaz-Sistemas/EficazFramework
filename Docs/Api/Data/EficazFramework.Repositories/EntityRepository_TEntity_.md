@@ -62,6 +62,8 @@ Instância de DbContext do EntityFrameworkCore
 public Microsoft.EntityFrameworkCore.DbContext DbContext { get; set; }
 ```
 
+Implements [DbContext](https://docs.microsoft.com/en-us/dotnet/api/EficazFramework.Repositories.IEntityRepository.DbContext 'EficazFramework.Repositories.IEntityRepository.DbContext')
+
 #### Property Value
 [Microsoft.EntityFrameworkCore.DbContext](https://docs.microsoft.com/en-us/dotnet/api/Microsoft.EntityFrameworkCore.DbContext 'Microsoft.EntityFrameworkCore.DbContext')
 

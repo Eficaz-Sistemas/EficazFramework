@@ -4,6 +4,7 @@ using NUnit.Framework;
 using System.Threading.Tasks;
 using EficazFramework.Validation.Fluent.Rules;
 using System.Threading;
+using System.Linq;
 
 namespace EficazFramework.ViewModels;
 
@@ -65,10 +66,9 @@ public class CrudOperations
     {
         Vm.Commands["Get"].Execute(null);
         Vm.Repository.DataContext.Should().HaveCount(100);
-
     }
 
-    [Test, Order(2)]
+    [Test, Order(3)]
     public async Task TabularValidationTest()
     {
         Vm.AddTabular();
@@ -102,10 +102,166 @@ public class CrudOperations
         Vm.ViewModelAction -= VmActions_Validation;
 
         // just call cancel Save
-        Vm.GetTabularEdit().CancelSave();
+        service.CancelSave();
 
         System.Console.WriteLine("Finished async void operations with TabularEdit<>");
     }
+
+    [Test, Order(4)]
+    public void SingleEditTest_Navigation()
+    {
+        Vm.AddSingledEdit();
+        Vm.Commands["Get"].Execute(null);
+        Vm.Repository.OrderByDefinitions.Add(new Collections.SortDescription()
+        {
+            PropertyName = "Name",
+            Direction = Enums.Collection.SortOrientation.Asceding
+        });
+        var service = Vm.GetSingleEdit();
+        Vm.Repository.DataContext.IndexOf(service.CurrentEntry).Should().Be(0);
+        service.MoveNext();
+        Vm.Repository.DataContext.IndexOf(service.CurrentEntry).Should().Be(1);
+        service.MoveToLast();
+        Vm.Repository.DataContext.IndexOf(service.CurrentEntry).Should().Be(99);
+        service.MovePrevious();
+        Vm.Repository.DataContext.IndexOf(service.CurrentEntry).Should().Be(98);
+        service.MoveToFirst();
+        Vm.Repository.DataContext.IndexOf(service.CurrentEntry).Should().Be(0);
+        service.MoveTo(Vm.Repository.DataContext.First(b => b.Name == "Blog 50"));
+        Vm.Repository.DataContext.IndexOf(service.CurrentEntry).Should().Be(49);
+    }
+
+    private bool _saveNotified = false;
+    [Test, Order(5)]
+    public async Task SingleEditTest_Update()
+    {
+        Vm.AddSingledEdit();
+        Vm.Repository.Validator = new();
+        Vm.Repository.Validator.Required(n => n.Name);
+        Vm.ShowMessage += Vm_Dialog;
+        Vm.ViewModelAction += VmActions_Validation;
+
+        Vm.Commands["Get"].Execute(null);
+
+        resultContext = null;
+        var service = Vm.GetSingleEdit();
+        service.NotifyOnSave = true;
+        System.Console.WriteLine("Starting async void operations with SingleEdit<>");
+
+        var bkpName = service.CurrentEntry.Name;
+        Vm.Commands["Edit"].Execute(null);
+        await Task.Delay(100);
+        service.CurrentEntry.Name = null;
+
+        Vm.Commands["Save"].Execute(null);
+        await Task.Delay(100);
+        resultContext.Should().Be(Resources.Strings.Validation.Dialog_Title);
+
+        resultContext = null;
+        Vm.Commands["Cancel"].Execute(null);
+        await Task.Delay(100);
+        service.CurrentEntry.Name.Should().Be(bkpName);
+
+        Vm.Commands["Edit"].Execute(null);
+        await Task.Delay(100);
+        service.CurrentEntry.Name = "Updated Item";
+
+        Vm.Commands["Save"].Execute(null);
+        await Task.Delay(100);
+        resultContext.Should().BeNull();
+        _saveNotified.Should().BeTrue();
+
+        Vm.Repository.Filter = (e) => e.Name == "Updated Item";
+        Vm.Commands["Get"].Execute(null);
+        Vm.Repository.DataContext.Should().HaveCount(1);
+        Vm.Repository.DataContext[0].Name.Should().Be("Updated Item");
+
+
+        Vm.ViewModelAction -= VmActions_Validation;
+        Vm.ShowMessage -= Vm_Dialog;
+        System.Console.WriteLine("Finished async void operations with TabularEdit<>");
+    }
+
+    [Test, Order(6)]
+    public async Task SingleEditTest_Insert()
+    {
+        Vm.AddSingledEdit();
+        Vm.Repository.Validator = new();
+        Vm.Repository.Validator.Required(n => n.Name);
+        Vm.ViewModelAction += VmActions_Validation;
+
+        Vm.Commands["Get"].Execute(null);
+
+        resultContext = null;
+        var service = Vm.GetSingleEdit();
+        System.Console.WriteLine("Starting async void operations with SingleEdit<>");
+
+        var bkpName = service.CurrentEntry.Name;
+        Vm.Commands["New"].Execute(null);
+        await Task.Delay(100);
+        service.CurrentEntry.Id = System.Guid.NewGuid();
+        service.CurrentEntry.Name = null;
+
+        Vm.Commands["Save"].Execute(null);
+        await Task.Delay(100);
+        resultContext.Should().Be(Resources.Strings.Validation.Dialog_Title);
+
+        resultContext = null;
+        Vm.Commands["Cancel"].Execute(null);
+        await Task.Delay(100);
+        service.CurrentEntry.Name.Should().Be(bkpName);
+
+        resultContext = null;
+        Vm.Commands["New"].Execute(null);
+        await Task.Delay(100);
+        service.CurrentEntry.Id = System.Guid.NewGuid();
+        service.CurrentEntry.Name = "Added Item";
+
+        Vm.Commands["Save"].Execute(null);
+        await Task.Delay(100);
+        resultContext.Should().BeNull();
+
+        Vm.Commands["Get"].Execute(null);
+        Vm.Repository.DataContext.Should().HaveCount(101);
+
+
+        Vm.ViewModelAction -= VmActions_Validation;
+
+        System.Console.WriteLine("Finished async void operations with TabularEdit<>");
+    }
+
+    private bool _refuseDelete = true;
+    [Test, Order(7)]
+    public async Task SingleEditTest_Delete()
+    {
+        Vm.AddSingledEdit();
+        Vm.ShowMessage += Vm_Dialog;
+        Vm.ViewModelAction += VmActions_Validation;
+
+        Vm.Commands["Get"].Execute(null);
+
+        resultContext = null;
+        var service = Vm.GetSingleEdit();
+        System.Console.WriteLine("Starting async void operations with SingleEdit<>");
+
+        Vm.Commands["Delete"].Execute(Vm.Repository.DataContext.Last());
+        await Task.Delay(100);
+        resultContext.Should().BeNull();
+        Vm.Repository.DataContext.Should().HaveCount(100);
+
+        _refuseDelete = false;
+        Vm.Commands["Delete"].Execute(Vm.Repository.DataContext.Last());
+        await Task.Delay(100);
+        resultContext.Should().Be("ok");
+        Vm.Repository.DataContext.Should().HaveCount(99);
+
+        Vm.ViewModelAction -= VmActions_Validation;
+        Vm.ShowMessage -= Vm_Dialog;
+        System.Console.WriteLine("Finished async void operations with TabularEdit<>");
+    }
+
+
+
 
     void VmActions_Validation(object sender, EficazFramework.Events.CRUDEventArgs<Resources.Mocks.Classes.Blog> e)
     {
@@ -122,6 +278,25 @@ public class CrudOperations
                     resultContext = null;
                     break;
                 }
+            case Enums.CRUD.Action.EntryDeleted:
+                {
+                    resultContext = "ok";
+                    break;
+                }
         }
     }
+
+    void Vm_Dialog(object sender, Events.MessageEventArgs e)
+    {
+
+        if (e.Title == Resources.Strings.ViewModel.StoreService_DeleteConfirmation_Title)
+        {
+            e.ModalAssist.Release(!_refuseDelete ? Events.MessageResult.Yes : Events.MessageResult.No);
+        }
+        else if (e.Title == Resources.Strings.ViewModel.StoreService_SavedSucessfull_Title && e.Type == Events.MessageType.SnackBar)
+        {
+            _saveNotified = true;
+        }
+    }
+
 }

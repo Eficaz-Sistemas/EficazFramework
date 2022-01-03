@@ -1,5 +1,6 @@
 ﻿using EficazFramework.Entities;
 using EficazFramework.Events;
+using EficazFramework.Extensions;
 using EficazFramework.Repositories;
 using System;
 using System.ComponentModel;
@@ -426,11 +427,14 @@ public class SingleEdit<T> : ViewModelService<T> where T : class
             ifluent.Validator = ViewModelInstance.Repository.Validator;
         if (entry is EntityBase entity && entity.IsNew == false)
         {
-            var entityRepository = (dynamic)ViewModelInstance.Repository;
-            if (entityRepository.AsNoTrackking == true)
+            if (typeof(Repositories.IEntityRepository).IsAssignableFrom(ViewModelInstance.Repository.GetType()))
             {
-                entityRepository.DbContext.Attach(entry);
-                entityRepository.DbContext.Entry(entry).State = Microsoft.EntityFrameworkCore.EntityState.Unchanged;
+                Repositories.IEntityRepository repo = (Repositories.IEntityRepository)ViewModelInstance.GetPropertyValue(nameof(ViewModelInstance.Repository));
+                if (repo.AsNoTracking)
+                {
+                    repo.DbContext.Attach(entry);
+                    repo.DbContext.Entry(entry).State = Microsoft.EntityFrameworkCore.EntityState.Unchanged;
+                }
             }
         }
     }
@@ -447,11 +451,14 @@ public class SingleEdit<T> : ViewModelService<T> where T : class
             ifluent.Validator = null;
         if (entry is EntityBase)
         {
-            var entityRepository = (dynamic)ViewModelInstance.Repository;
-            if (entityRepository.AsNoTrackking == true)
+            if (typeof(Repositories.IEntityRepository).IsAssignableFrom(ViewModelInstance.Repository.GetType()))
             {
-                entityRepository.Detach(entry);
-                ViewModelInstance.RaiseViewModelEvent(new Events.CRUDEventArgs<T>(Enums.CRUD.Action.EntryDetached, ViewModelInstance.State, entry));
+                Repositories.IEntityRepository repo = (Repositories.IEntityRepository)ViewModelInstance.GetPropertyValue(nameof(ViewModelInstance.Repository));
+                if (repo.AsNoTracking)
+                {
+                    repo.Detach(entry);
+                    ViewModelInstance.RaiseViewModelEvent(new Events.CRUDEventArgs<T>(Enums.CRUD.Action.EntryDetached, ViewModelInstance.State, entry));
+                }
             }
         }
     }

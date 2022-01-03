@@ -13,6 +13,9 @@ namespace EficazFramework.Repositories;
 public interface IEntityRepository
 {
     public bool AsNoTracking { get; set; }
+    public Microsoft.EntityFrameworkCore.DbContext DbContext { get; }
+
+    public void Detach(object item);
 }
 
 public sealed class EntityRepository<TEntity> : Repositories.RepositoryBase<TEntity>, IEntityRepository where TEntity : EficazFramework.Entities.EntityBase, IEntity

@@ -170,7 +170,7 @@ public class IcpBrasil : X509Certificate2
         XML.XMLOperations.SignXml(xml, tag, id, (X509Certificate2)PrivateInstance, signAsSHA256, emptyURI);
     }
 
-    public void SignXml(XDocument xml, string tag, string id, bool signAsSHA256 = false, bool emptyURI = false)
+    public void SignXml(ref XDocument xml, string tag, string id, bool signAsSHA256 = false, bool emptyURI = false)
     {
         XML.XMLOperations.SignXml(ref xml, tag, id, (X509Certificate2)PrivateInstance, signAsSHA256, emptyURI);
     }

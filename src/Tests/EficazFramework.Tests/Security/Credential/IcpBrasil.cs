@@ -1,4 +1,7 @@
-﻿using FluentAssertions;
+﻿using EficazFramework.Serialization;
+using EficazFramework.Shared;
+using EficazFramework.XML;
+using FluentAssertions;
 using NUnit.Framework;
 using System;
 using System.Security.Cryptography;
@@ -59,6 +62,62 @@ public class IcpBrasilTests
 
         list = await Security.Credential.IcpBrasil.ListaCertificadosAsync(null, StoreLocation.CurrentUser);
         Console.WriteLine(list.Count);
+    }
+
+
+    [Test]
+    public void SignXmlDocument()
+    {
+        // Setup
+        MockClass mockClass = new() { Id = 1, Name = "Henrique" };
+        string target = $"{Environment.CurrentDirectory}/mockClass.xml";
+        SerializationOperations.ToXml(mockClass, target);
+        System.Xml.XmlDocument source = XMLOperations.ToXmlDocument(target);
+        System.IO.File.Delete(target);
+
+        target = $"{Environment.CurrentDirectory}/mockCertificate.pfxs";
+        EficazFramework.Security.Credential.IcpBrasil icp1 = new(target, "1234");
+
+        // null certificate
+        Exception ex = null;
+        try
+        {
+            icp1.SignXml(source, "Name", "MockClass", true, true);
+        }
+        catch (Exception e)
+        {
+            ex = e;
+        }
+        ex.Should().BeNull();
+        Console.WriteLine(source.OuterXml);
+    }
+
+    [Test]
+    public void SignXDocument()
+    {
+        // Setup
+        MockClass mockClass = new() { Id = 1, Name = "Henrique" };
+        string target = $"{Environment.CurrentDirectory}/mockClass.xml";
+        SerializationOperations.ToXml(mockClass, target);
+        System.Xml.XmlDocument source = XMLOperations.ToXmlDocument(target);
+        System.IO.File.Delete(target);
+        System.Xml.Linq.XDocument sourceX = XMLOperations.ToXDocument(source);
+
+        target = $"{Environment.CurrentDirectory}/mockCertificate.pfxs";
+        EficazFramework.Security.Credential.IcpBrasil icp1 = new(target, "1234");
+
+        // Error message
+        Exception ex = null;
+        try
+        {
+            icp1.SignXml(ref sourceX, "Id", "MockClass", true, true);
+        }
+        catch (Exception e)
+        {
+            ex = e;
+        }
+        ex.Should().BeNull();
+        Console.WriteLine(sourceX.ToString());
     }
 
 

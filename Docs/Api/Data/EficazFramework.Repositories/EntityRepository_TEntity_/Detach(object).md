@@ -14,3 +14,5 @@ public override void Detach(object item);
 <a name='EficazFramework.Repositories.EntityRepository_TEntity_.Detach(object).item'></a>
 
 `item` [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.Object 'System.Object')
+
+Implements [Detach(object)](https://docs.microsoft.com/en-us/dotnet/api/EficazFramework.Repositories.IEntityRepository.Detach#EficazFramework_Repositories_IEntityRepository_Detach_System_Object_ 'EficazFramework.Repositories.IEntityRepository.Detach(System.Object)')
