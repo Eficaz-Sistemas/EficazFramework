@@ -356,7 +356,7 @@ public abstract class RepositoryBase<T> : INotifyPropertyChanged, IDisposable wh
     /// <returns></returns>
     public bool NextPage()
     {
-        if (((DataContext?.Count) <= 0 || CurrentPage <= 1) == true)
+        if ((DataContext?.Count <= 0 || DataContext?.Count < PageSize) && CurrentPage > 1)
             return false;
         CurrentPage += 1;
         RaisePropertyChanged(nameof(CurrentPage));

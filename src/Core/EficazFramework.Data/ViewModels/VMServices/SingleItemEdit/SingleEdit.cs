@@ -206,6 +206,7 @@ public class SingleEdit<T> : ViewModelService<T> where T : class
             }
             else
             {
+                ViewModelInstance.SetState(EficazFramework.Enums.CRUD.State.Bloqueado, true, null);
                 ViewModelInstance.Commands["New"].Execute(null);
             }
         }

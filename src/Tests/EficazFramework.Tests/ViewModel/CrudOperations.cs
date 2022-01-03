@@ -66,6 +66,39 @@ public class CrudOperations
     {
         Vm.Commands["Get"].Execute(null);
         Vm.Repository.DataContext.Should().HaveCount(100);
+
+        Vm.Repository.PageSize = 45;
+
+        Vm.Repository.CurrentPage.Should().Be(1);
+        Vm.Commands["Get"].Execute(null);
+        Vm.Repository.DataContext.Should().HaveCount(45); // 1..45
+
+        Vm.Repository.NextPage().Should().BeTrue();
+        Vm.Repository.CurrentPage.Should().Be(2);
+        Vm.Commands["Get"].Execute(null);
+        Vm.Repository.DataContext.Should().HaveCount(45); // 46..90
+
+        Vm.Repository.NextPage().Should().BeTrue();
+        Vm.Repository.CurrentPage.Should().Be(3);
+        Vm.Commands["Get"].Execute(null);
+        Vm.Repository.DataContext.Should().HaveCount(10); // 91..100
+
+        Vm.Repository.NextPage().Should().BeFalse();
+        Vm.Repository.CurrentPage.Should().Be(3);
+
+        Vm.Repository.PreviousPage().Should().BeTrue();
+        Vm.Repository.CurrentPage.Should().Be(2);
+        Vm.Commands["Get"].Execute(null);
+        Vm.Repository.DataContext.Should().HaveCount(45); // 45..90
+
+        Vm.Repository.FirstPage().Should().BeTrue();
+        Vm.Repository.CurrentPage.Should().Be(1);
+        Vm.Commands["Get"].Execute(null);
+        Vm.Repository.DataContext.Should().HaveCount(45); // 1..45
+
+        Vm.Repository.PreviousPage().Should().BeFalse();
+        Vm.Repository.CurrentPage.Should().Be(1);
+
     }
 
     [Test, Order(3)]
@@ -162,7 +195,7 @@ public class CrudOperations
         await Task.Delay(100);
         service.CurrentEntry.Name.Should().Be(bkpName);
 
-        Vm.Commands["Edit"].Execute(null);
+        Vm.Commands["Edit"].Execute(service.CurrentEntry);
         await Task.Delay(100);
         service.CurrentEntry.Name = "Updated Item";
 
@@ -229,6 +262,47 @@ public class CrudOperations
 
         System.Console.WriteLine("Finished async void operations with TabularEdit<>");
     }
+
+    [Test, Order(6)]
+    public async Task SingleEditTest_BatchInsert()
+    {
+        Vm.AddSingledEdit();
+        Vm.Repository.Validator = new();
+        Vm.Repository.Validator.Required(n => n.Name);
+        Vm.ViewModelAction += VmActions_Validation;
+
+        Vm.Commands["Get"].Execute(null);
+
+        resultContext = null;
+        var service = Vm.GetSingleEdit();
+        service.BatchInsert = true;
+
+        System.Console.WriteLine("Starting async void operations with SingleEdit<>");
+
+        Vm.Commands["New"].Execute(null);
+        await Task.Delay(50);
+        service.CurrentEntry.Id = System.Guid.NewGuid();
+        service.CurrentEntry.Name = "Added Item";
+        Vm.Commands["Save"].Execute(null);
+        await Task.Delay(1000);
+        resultContext.Should().BeNull();
+
+        Vm.State.Should().Be(Enums.CRUD.State.Novo);
+
+        service.CurrentEntry.Id = System.Guid.NewGuid();
+        service.CurrentEntry.Name = "Added Item 2 ";
+        Vm.Commands["Save"].Execute(null);
+        await Task.Delay(1000);
+        resultContext.Should().BeNull();
+
+        Vm.State.Should().Be(Enums.CRUD.State.Novo);
+
+
+        Vm.ViewModelAction -= VmActions_Validation;
+
+        System.Console.WriteLine("Finished async void operations with TabularEdit<>");
+    }
+
 
     private bool _refuseDelete = true;
     [Test, Order(7)]
