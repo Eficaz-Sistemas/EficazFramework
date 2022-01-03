@@ -138,6 +138,7 @@ public class CrudOperations
         service.CancelSave();
 
         System.Console.WriteLine("Finished async void operations with TabularEdit<>");
+        Vm.RemoveTabular();
     }
 
     [Test, Order(4)]
@@ -299,7 +300,7 @@ public class CrudOperations
 
 
         Vm.ViewModelAction -= VmActions_Validation;
-
+        Vm.RemoveSingleEdit();
         System.Console.WriteLine("Finished async void operations with TabularEdit<>");
     }
 
