@@ -55,6 +55,7 @@ public class EfCore
         Vm.Commands.Should().HaveCount(1); // any Command is added. It's just set the repository by this service.
         Vm.Commands["Get"].Execute(null);
         Vm.Repository.DataContext.Should().HaveCount(100);
+        Vm.RemoveEntityFramework();
 
     }
 

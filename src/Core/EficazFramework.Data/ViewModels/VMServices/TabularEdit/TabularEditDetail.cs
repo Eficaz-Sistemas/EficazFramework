@@ -284,7 +284,7 @@ public class TabularEditDetail<T, D> : ViewModelService<T>
     /// <summary>
     /// Ações do comando Delete
     /// </summary>
-    private void DeleteDetailCommand_Executed(object sender, Events.ExecuteEventArgs e)
+    private async void DeleteDetailCommand_Executed(object sender, Events.ExecuteEventArgs e)
     {
         if (CanModifyOrDelete == false && e.Parameter as D == null)
             return;
@@ -299,6 +299,18 @@ public class TabularEditDetail<T, D> : ViewModelService<T>
         }
 
         // TODO: verify if operation is a BatchDelete...
+
+        // Confirming:
+        Events.MessageEventArgs deletMessageargs = new()
+        {
+            IconReference = Events.MessageIcon.Exclamation,
+            Title = Resources.Strings.ViewModel.StoreService_DeleteConfirmation_Title,
+            Buttons = Events.MessageButtons.YesNo,
+            Content = Resources.Strings.ViewModel.StoreService_DeleteConfirmation_Message,
+        };
+        ViewModelInstance.RaiseDialogMessage(deletMessageargs);
+        Events.MessageResult result = await deletMessageargs.ModalAssist.Push();
+        if (result != Events.MessageResult.Yes) return;
 
 
         // Deleting:
@@ -357,10 +369,8 @@ public class TabularEditDetail<T, D> : ViewModelService<T>
             CurrentEntry = DataContext.FirstOrDefault();
         else
         {
-            if (DataContext.Count > index - 1)
+            if (index > 0)
                 CurrentEntry = DataContext[index - 1];
-            else
-                CurrentEntry = null;
         }
     }
 

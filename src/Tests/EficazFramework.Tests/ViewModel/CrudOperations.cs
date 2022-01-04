@@ -382,6 +382,7 @@ public class CrudOperations
         var bkpName = service.CurrentEntry.Title;
         Vm.Commands["EditDetail_Posts"].Execute(null);
         await Task.Delay(100);
+        Vm.State.Should().Be(Enums.CRUD.State.EdicaoDeDelhe);
         service.CurrentEntry.Title = null;
 
         Vm.Commands["SaveDetail_Posts"].Execute(null);
@@ -392,19 +393,22 @@ public class CrudOperations
         Vm.Commands["CancelDetail_Posts"].Execute(null);
         await Task.Delay(100);
         service.CurrentEntry.Title.Should().Be(bkpName);
+        Vm.State.Should().Be(Enums.CRUD.State.Edicao);
 
         Vm.Commands["EditDetail_Posts"].Execute(null);
         await Task.Delay(100);
         service.CurrentEntry.Title = "Edited!";
+        Vm.State.Should().Be(Enums.CRUD.State.EdicaoDeDelhe);
 
         Vm.Commands["SaveDetail_Posts"].Execute(null);
         await Task.Delay(100);
         resultContext.Should().BeNull();
-
         Vm.State.Should().Be(Enums.CRUD.State.Edicao);
+
         Vm.Commands["Save"].Execute(null);
         await Task.Delay(100);
         resultContext.Should().BeNull();
+        Vm.State.Should().Be(Enums.CRUD.State.Leitura);
 
         Vm.Commands["Get"].Execute(null);
         Vm.Repository.DataContext.SelectMany(p => p.Posts).Where(p => p.Title.Contains("Edited!")).Should().HaveCount(1);
@@ -447,6 +451,7 @@ public class CrudOperations
         service.CurrentEntry.IsNew.Should().BeTrue();
         service.CurrentEntry.BlogId = serviceMain.CurrentEntry.Id;
         service.CurrentEntry.Title = null;
+        Vm.State.Should().Be(Enums.CRUD.State.NovoDetalhe);
 
         Vm.Commands["SaveDetail_Posts"].Execute(null);
         await Task.Delay(100);
@@ -456,12 +461,14 @@ public class CrudOperations
         Vm.Commands["CancelDetail_Posts"].Execute(null);
         await Task.Delay(100);
         serviceMain.CurrentEntry.Posts.Should().HaveCount(1);
+        Vm.State.Should().Be(Enums.CRUD.State.Edicao);
 
         Vm.Commands["NewDetail_Posts"].Execute(null);
         await Task.Delay(100);
         service.CurrentEntry.IsNew.Should().BeTrue();
         service.CurrentEntry.BlogId = serviceMain.CurrentEntry.Id;
         service.CurrentEntry.Title = "Postagem 2";
+        Vm.State.Should().Be(Enums.CRUD.State.NovoDetalhe);
 
         Vm.Commands["SaveDetail_Posts"].Execute(null);
         await Task.Delay(100);
@@ -494,7 +501,7 @@ public class CrudOperations
         Vm.ViewModelAction -= VmActions_Validation;
     }
 
-    [Test, Order(11)]
+    [Test, Order(12)]
     public async Task SingleEditDetailTest_Delete()
     {
         Vm.ShowMessage += Vm_Dialog;
@@ -565,6 +572,296 @@ public class CrudOperations
         Vm.Commands["Get"].Execute(null);
         Vm.Repository.DataContext.Count(b => b.Posts.Count == 0).Should().Be(1);
 
+        Vm.ShowMessage -= Vm_Dialog;
+        Vm.ViewModelAction -= VmActions_Validation;
+    }
+
+    [Test, Order(13)]
+    public async Task SingleEditDetailTest_DeleteWithAutoCommit()
+    {
+        Vm.ShowMessage += Vm_Dialog;
+        Vm.ViewModelAction += VmActions_Validation;
+        resultContext = null;
+
+        Vm.WithNavigationByIndex().AddSingledEdit().AddSingledEditDetail(dt => dt.Posts);
+        Vm.Repository.OrderByDefinitions.Add(new Collections.SortDescription()
+        {
+            PropertyName = "Name",
+            Direction = Enums.Collection.SortOrientation.Asceding
+        });
+        ((Repositories.EntityRepository<Resources.Mocks.Classes.Blog>)Vm.Repository).Includes.Add(i => i.Posts);
+        var serviceMain = Vm.GetSingleEdit();
+        SingleEditDetail<Resources.Mocks.Classes.Blog, Resources.Mocks.Classes.Post> service = Vm.GetSingleEditDetail<Resources.Mocks.Classes.Blog, Resources.Mocks.Classes.Post>();
+        service.DetailValidator = new();
+        service.DetailValidator.Required(p => p.Title);
+        service.CommitOnSave = true;
+
+        Vm.Commands["Get"].Execute(null);
+        await Task.Delay(200);
+        serviceMain.MoveTo(Vm.Repository.DataContext.Single(b => b.Name == "Blog 1"));
+
+        Vm.Commands["Edit"].Execute(null);
+        await Task.Delay(100);
+
+        service.MoveToFirst();
+        ReferenceEquals(service.CurrentEntry, serviceMain.CurrentEntry.Posts.First()).Should().BeTrue();
+
+        _refuseDelete = true;
+        Vm.Commands["DeleteDetail_Posts"].Execute(service.CurrentEntry);
+        await Task.Delay(100);
+        resultContext.Should().BeNull();
+        service.DataContext.Should().HaveCount(1);
+
+        _refuseDelete = false;
+        Vm.Commands["DeleteDetail_Posts"].Execute(service.CurrentEntry);
+        await Task.Delay(250);
+        resultContext.Should().Be("ok");
+        service.DataContext.Should().HaveCount(0);
+        serviceMain.CurrentEntry.Posts.Should().HaveCount(0);
+        service.DeleteDataContext.Should().HaveCount(0);
+
+        Vm.Commands["Get"].Execute(null);
+        Vm.Repository.DataContext.Count(b => b.Posts.Count == 0).Should().Be(1);
+
+        Vm.RemoveSingleEditDetail<Resources.Mocks.Classes.Blog, Resources.Mocks.Classes.Post>();
+        Vm.ShowMessage -= Vm_Dialog;
+        Vm.ViewModelAction -= VmActions_Validation;
+    }
+
+
+
+    [Test, Order(14)]
+    public async Task TabularEditDetailTest_NavigationProperties()
+    {
+        Vm.AddSingledEdit().AddTabularEditDetail(dt => dt.Posts);
+        Vm.Repository.OrderByDefinitions.Add(new Collections.SortDescription()
+        {
+            PropertyName = "Name",
+            Direction = Enums.Collection.SortOrientation.Asceding
+        });
+        ((Repositories.EntityRepository<Resources.Mocks.Classes.Blog>)Vm.Repository).Includes.Add(i => i.Posts);
+        var serviceMain = Vm.GetSingleEdit();
+        TabularEditDetail<Resources.Mocks.Classes.Blog, Resources.Mocks.Classes.Post> service = Vm.GetTabularEditDetail<Resources.Mocks.Classes.Blog, Resources.Mocks.Classes.Post>();
+
+        Vm.Commands["Get"].Execute(null);
+        await Task.Delay(200);
+        Vm.Repository.DataContext.Count(p => p.Posts.Count <= 0).Should().Be(0);
+    }
+
+    [Test, Order(15)]
+    public async Task TabularEditDetailTest_Update()
+    {
+        Vm.ShowMessage += Vm_Dialog;
+        Vm.ViewModelAction += VmActions_Validation;
+        resultContext = null;
+
+        Vm.WithNavigationByIndex().AddSingledEdit().AddTabularEditDetail(dt => dt.Posts);
+        Vm.Repository.OrderByDefinitions.Add(new Collections.SortDescription()
+        {
+            PropertyName = "Name",
+            Direction = Enums.Collection.SortOrientation.Asceding
+        });
+        ((Repositories.EntityRepository<Resources.Mocks.Classes.Blog>)Vm.Repository).Includes.Add(i => i.Posts);
+        var serviceMain = Vm.GetSingleEdit();
+        TabularEditDetail<Resources.Mocks.Classes.Blog, Resources.Mocks.Classes.Post> service = Vm.GetTabularEditDetail<Resources.Mocks.Classes.Blog, Resources.Mocks.Classes.Post>();
+        service.DetailValidator = new();
+        service.DetailValidator.Required(p => p.Title);
+
+        Vm.Commands["Get"].Execute(null);
+        await Task.Delay(200);
+
+        Vm.Commands["Edit"].Execute(null);
+        await Task.Delay(100);
+
+        service.MoveToFirst();
+        ReferenceEquals(service.CurrentEntry, serviceMain.CurrentEntry.Posts.First()).Should().BeTrue();
+
+        var bkpName = service.CurrentEntry.Title;
+        Vm.State.Should().Be(Enums.CRUD.State.Edicao);
+        service.CurrentEntry.Title = null;
+
+        Vm.Commands["Save"].Execute(null);
+        await Task.Delay(100);
+        resultContext.Should().Be(Resources.Strings.Validation.Dialog_Title);
+
+        resultContext = null;
+        Vm.Commands["Cancel"].Execute(null);
+        await Task.Delay(100);
+        service.CurrentEntry.Title.Should().Be(bkpName);
+        Vm.State.Should().Be(Enums.CRUD.State.Leitura);
+
+        Vm.Commands["Edit"].Execute(null);
+        await Task.Delay(100);
+
+        service.MoveToFirst();
+        service.CurrentEntry.Title = "Edited!";
+        Vm.State.Should().Be(Enums.CRUD.State.Edicao);
+
+        Vm.Commands["Save"].Execute(null);
+        await Task.Delay(100);
+        resultContext.Should().BeNull();
+        Vm.State.Should().Be(Enums.CRUD.State.Leitura);
+
+        Vm.Commands["Get"].Execute(null);
+        Vm.Repository.DataContext.SelectMany(p => p.Posts).Where(p => p.Title.Contains("Edited!")).Should().HaveCount(1);
+
+        Vm.ShowMessage -= Vm_Dialog;
+        Vm.ViewModelAction -= VmActions_Validation;
+    }
+
+    [Test, Order(16)]
+    public async Task TabularEditDetailTest_Insert()
+    {
+        Vm.ShowMessage += Vm_Dialog;
+        Vm.ViewModelAction += VmActions_Validation;
+        resultContext = null;
+
+        Vm.WithNavigationByIndex().AddSingledEdit().AddTabularEditDetail(dt => dt.Posts);
+        Vm.Repository.OrderByDefinitions.Add(new Collections.SortDescription()
+        {
+            PropertyName = "Name",
+            Direction = Enums.Collection.SortOrientation.Asceding
+        });
+        ((Repositories.EntityRepository<Resources.Mocks.Classes.Blog>)Vm.Repository).Includes.Add(i => i.Posts);
+        var serviceMain = Vm.GetSingleEdit();
+        TabularEditDetail<Resources.Mocks.Classes.Blog, Resources.Mocks.Classes.Post> service = Vm.GetTabularEditDetail<Resources.Mocks.Classes.Blog, Resources.Mocks.Classes.Post>();
+        service.DetailValidator = new();
+        service.DetailValidator.Required(p => p.Title);
+
+        Vm.Commands["Get"].Execute(null);
+        await Task.Delay(200);
+        serviceMain.MoveTo(Vm.Repository.DataContext.Single(b => b.Name == "Blog 1"));
+
+        Vm.Commands["Edit"].Execute(null);
+
+        await Task.Delay(100);
+        service.MoveToFirst();
+        ReferenceEquals(service.CurrentEntry, serviceMain.CurrentEntry.Posts.First()).Should().BeTrue();
+
+        Vm.Commands["NewDetail_Posts"].Execute(null);
+        await Task.Delay(100);
+        service.CurrentEntry.IsNew.Should().BeTrue();
+        service.CurrentEntry.BlogId = serviceMain.CurrentEntry.Id;
+        service.CurrentEntry.Title = null;
+        Vm.State.Should().Be(Enums.CRUD.State.Edicao);
+
+        Vm.Commands["Save"].Execute(null);
+        await Task.Delay(100);
+        resultContext.Should().Be(Resources.Strings.Validation.Dialog_Title);
+
+        resultContext = null;
+        Vm.Commands["Cancel"].Execute(null);
+        await Task.Delay(100);
+        Vm.State.Should().Be(Enums.CRUD.State.Leitura);
+
+        Vm.Commands["Edit"].Execute(null);
+        await Task.Delay(100);
+
+        Vm.Commands["NewDetail_Posts"].Execute(null);
+        await Task.Delay(100);
+        service.CurrentEntry.IsNew.Should().BeTrue();
+        service.CurrentEntry.BlogId = serviceMain.CurrentEntry.Id;
+        service.CurrentEntry.Title = "Postagem 2";
+        Vm.State.Should().Be(Enums.CRUD.State.Edicao);
+
+        service.MoveNext();
+        service.CurrentEntry.Title.Should().Be("Postagem 2");
+        service.MoveNext();
+        service.CurrentEntry.Title.Should().Be("Postagem 2");
+        service.MovePrevious();
+        service.CurrentEntry.Title.Should().Be("Post 1");
+        service.MovePrevious();
+        service.CurrentEntry.Title.Should().Be("Post 1");
+        service.MoveToFirst();
+        service.CurrentEntry.Title.Should().Be("Post 1");
+        service.MoveToLast();
+        service.CurrentEntry.Title.Should().Be("Postagem 2");
+        service.MoveTo(serviceMain.CurrentEntry.Posts[0]);
+        service.CurrentEntry.Title.Should().Be("Post 1");
+
+        Vm.Commands["Save"].Execute(null);
+        await Task.Delay(100);
+        resultContext.Should().BeNull();
+
+        Vm.Commands["Get"].Execute(null);
+        Vm.Repository.DataContext.Count(b => b.Posts.Count == 2).Should().Be(1);
+
+        Vm.ShowMessage -= Vm_Dialog;
+        Vm.ViewModelAction -= VmActions_Validation;
+    }
+
+    [Test, Order(17)]
+    public async Task TabularEditDetailTest_Delete()
+    {
+        Vm.ShowMessage += Vm_Dialog;
+        Vm.ViewModelAction += VmActions_Validation;
+        resultContext = null;
+
+        Vm.WithNavigationByIndex().AddSingledEdit().AddTabularEditDetail(dt => dt.Posts);
+        Vm.Repository.OrderByDefinitions.Add(new Collections.SortDescription()
+        {
+            PropertyName = "Name",
+            Direction = Enums.Collection.SortOrientation.Asceding
+        });
+        ((Repositories.EntityRepository<Resources.Mocks.Classes.Blog>)Vm.Repository).Includes.Add(i => i.Posts);
+        var serviceMain = Vm.GetSingleEdit();
+        TabularEditDetail<Resources.Mocks.Classes.Blog, Resources.Mocks.Classes.Post> service = Vm.GetTabularEditDetail<Resources.Mocks.Classes.Blog, Resources.Mocks.Classes.Post>();
+        service.DetailValidator = new();
+        service.DetailValidator.Required(p => p.Title);
+
+        Vm.Commands["Get"].Execute(null);
+        await Task.Delay(200);
+        serviceMain.MoveTo(Vm.Repository.DataContext.Single(b => b.Name == "Blog 1"));
+
+        Vm.Commands["Edit"].Execute(null);
+        await Task.Delay(100);
+
+        service.MoveToFirst();
+        ReferenceEquals(service.CurrentEntry, serviceMain.CurrentEntry.Posts.First()).Should().BeTrue();
+
+        _refuseDelete = true;
+        Vm.Commands["DeleteDetail_Posts"].Execute(service.CurrentEntry);
+        await Task.Delay(100);
+        resultContext.Should().BeNull();
+        service.DataContext.Should().HaveCount(1);
+
+        _refuseDelete = false;
+        Vm.Commands["DeleteDetail_Posts"].Execute(service.CurrentEntry);
+        await Task.Delay(100);
+        resultContext.Should().Be("ok");
+        service.DataContext.Should().HaveCount(0);
+        service.DeleteDataContext.Should().HaveCount(1);
+
+        resultContext = null;
+        Vm.Commands["Cancel"].Execute(null);
+        await Task.Delay(100);
+        service.DataContext.Should().HaveCount(0);
+        service.DeleteDataContext.Should().HaveCount(0);
+
+        Vm.Commands["Edit"].Execute(null);
+        await Task.Delay(100);
+
+        _refuseDelete = false;
+        resultContext = null;
+        service.MoveToFirst();
+        Vm.Commands["DeleteDetail_Posts"].Execute(service.CurrentEntry);
+        await Task.Delay(100);
+        resultContext.Should().Be("ok");
+        service.DataContext.Should().HaveCount(0);
+        service.DeleteDataContext.Should().HaveCount(1);
+
+        Vm.State.Should().Be(Enums.CRUD.State.Edicao);
+        Vm.Commands["Save"].Execute(null);
+        await Task.Delay(100);
+        resultContext.Should().BeNull();
+        serviceMain.CurrentEntry.Posts.Should().HaveCount(0);
+        service.DataContext.Should().HaveCount(0);
+        service.DeleteDataContext.Should().HaveCount(0);
+
+        Vm.Commands["Get"].Execute(null);
+        Vm.Repository.DataContext.Count(b => b.Posts.Count == 0).Should().Be(1);
+
+        Vm.RemoveTabularEditDetail<Resources.Mocks.Classes.Blog, Resources.Mocks.Classes.Post>();
         Vm.ShowMessage -= Vm_Dialog;
         Vm.ViewModelAction -= VmActions_Validation;
     }

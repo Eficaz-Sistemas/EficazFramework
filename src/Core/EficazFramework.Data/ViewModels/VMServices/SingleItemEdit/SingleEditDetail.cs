@@ -504,6 +504,9 @@ public class SingleEditDetail<T, D> : ViewModelService<T>
             // Deleted (or not):
             if (ex is null)
             {
+                DataContext.Remove(entry);
+                MovePrevious();
+
                 var deletedargs = new Events.CRUDEventArgs<T>(Enums.CRUD.Action.DetailEntryDeleted, args.State, args.CurrentEntry) { Tag = entry };
                 ViewModelInstance.RaiseViewModelEvent(deletedargs);
 
