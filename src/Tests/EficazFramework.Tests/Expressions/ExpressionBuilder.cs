@@ -42,9 +42,9 @@ public class ExpressionBuilderTests
             Enums.CompareMethod.StartsWith,
         }
     };
-    static readonly ExpressionProperty BirthProperty = new()
+    static readonly ExpressionProperty CreatedInProperty = new()
     {
-        PropertyPath = "Birth",
+        PropertyPath = "CreatedIn",
         DisplayName = "Aniversário",
         Editor = ExpressionEditor.Date,
         DefaultOperator = Enums.CompareMethod.Between,
@@ -154,7 +154,7 @@ public class ExpressionBuilderTests
         ExpressionBuilder builder = new ExpressionBuilder();
         builder.Properties.Add(IdProperty);
         builder.Properties.Add(NameProperty);
-        builder.Properties.Add(BirthProperty);
+        builder.Properties.Add(CreatedInProperty);
         builder.Properties.Add(IsActiveProperty);
         builder.Properties.Add(TeamProperty);
         builder.Properties.Add(TeamLocalizedProperty);
@@ -385,6 +385,19 @@ public class ExpressionBuilderTests
         expression.Should().NotBeNull();
         expression.ReturnType.Should().Be(typeof(bool));
         source.Where(expression.Compile()).ToList().Should().HaveCount(1);
+
+        // DateTime (and Coercion)
+        builder.AddNewItemCommand.Execute(null);
+        builder.Items[1].SelectedProperty = builder.Properties[2];
+        builder.Items[1].DateTimeValue1 = new DateTime(2021,06,01);
+        builder.Items[1].DateTimeValue2 = new DateTime(2021, 06, 30);
+        builder.Items[1].Value1.Should().Be(new DateTime(2021, 06, 01));
+        builder.Items[1].Value2.Should().Be(new DateTime(2021, 06, 30, 23, 59, 59));
+        builder.Items[1].SelectedProperty = null;
+        builder.Items[1].Value1.Should().BeNull();
+        builder.Items[1].Value2.Should().BeNull();
+        builder.Items[1].AvailableOperators.Should().BeNull();
+        builder.Items.Remove(builder.Items[1]);
 
         // FixedItems
         builder.FixedItems.Add(new() { SelectedProperty = builder.Properties[3] });

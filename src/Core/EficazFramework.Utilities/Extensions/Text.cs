@@ -203,11 +203,11 @@ public static class TextExtensions
             result[0] = "Rua";
             if (logradouro.Length > 45)
             {
-                result[1] = logradouro.Trim();
+                result[1] = logradouro[..Math.Min(45, logradouro.Length)].Trim();
             }
             else
             {
-                result[1] = logradouro[..45].Trim();
+                result[1] = logradouro.Trim();
             }
         }
 
@@ -215,7 +215,7 @@ public static class TextExtensions
         {
             if (result[0].Length > 15)
             {
-                result[0] = result[0][..14];
+                result[0] = result[0][..Math.Min(14, result[1].Length)];
             }
 
             if (ToTitleCase == true)
@@ -249,13 +249,13 @@ public static class TextExtensions
             return documento;
         }
 
+        if (documento.Contains('.') | documento.Contains('-'))
+            return documento;
+
         switch (documento.Trim().Length)
         {
             case 14:
                 {
-                    if (documento.Contains('.') | documento.Contains('-'))
-                        return documento;
-                    else
                         return FormatCNPJ(documento);
                 }
 

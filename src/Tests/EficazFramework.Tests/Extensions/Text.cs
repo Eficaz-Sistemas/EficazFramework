@@ -124,6 +124,23 @@ public class Text
         result.Should().HaveCount(2);
         result[0].Should().Be("Rua");
         result[1].Should().Be("tiradentes");
+
+        result = " tiradentes".FormatLogradouro();
+        result.Should().HaveCount(2);
+        result[0].Should().Be("Rua");
+        result[1].Should().Be("Tiradentes");
+
+        result = "rua tiradentes de todo mundo que se atrever a vir aqui".FormatLogradouro();
+        result.Should().HaveCount(2);
+        result[0].Should().Be("Rua");
+        result[1].Should().Be("Tiradentes De Todo Mundo Que Se Atrever A");
+        result[1].Length.Should().BeLessThanOrEqualTo(45);
+
+        result = " tiradentes de todo mundo que se atrever a vir aqui".FormatLogradouro();
+        result.Should().HaveCount(2);
+        result[0].Should().Be("Rua");
+        result[1].Should().Be("Tiradentes De Todo Mundo Que Se Atrever A Vi");
+        result[1].Length.Should().BeLessThanOrEqualTo(45);
     }
 
     [Test]

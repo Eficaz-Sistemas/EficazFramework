@@ -155,6 +155,7 @@ public class ExpressionItem : INotifyPropertyChanged
     }
 
     private bool _allowExpession = false;
+    [ExcludeFromCodeCoverage]
     public bool AllowExpression
     {
         get => _allowExpession;
@@ -208,7 +209,7 @@ public class ExpressionItem : INotifyPropertyChanged
 
         set
         {
-            Value2 = CoerceValueChanged(value);
+            Value2 = CoerceValueChanged(value, true);
         }
     }
 
