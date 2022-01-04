@@ -393,6 +393,9 @@ public class ExpressionBuilderTests
         builder.Items[1].DateTimeValue2 = new DateTime(2021, 06, 30);
         builder.Items[1].Value1.Should().Be(new DateTime(2021, 06, 01));
         builder.Items[1].Value2.Should().Be(new DateTime(2021, 06, 30, 23, 59, 59));
+        builder.Items[1].DateTimeValue1.Should().Be((DateTime?)builder.Items[1].Value1);
+        builder.Items[1].DateTimeValue2.Should().Be((DateTime?)builder.Items[1].Value2);
+        builder.Items[1].DateTimeValue2 = new DateTime(2021, 06, 30);
         builder.Items[1].SelectedProperty = null;
         builder.Items[1].Value1.Should().BeNull();
         builder.Items[1].Value2.Should().BeNull();
@@ -430,6 +433,7 @@ public class ExpressionBuilderTests
         // Related Entities
         builder.Items[0].SelectedProperty = builder.Properties[8];
         builder.Items[0].SelectedProperty.DisplayName.Should().Be("Relacionado");
+        builder.Items[0].SelectedPropertyPath.Should().Be("Related");
         builder.Items[0].Operator.Should().Be(Enums.CompareMethod.Equals);
         builder.Items[0].Value1.Should().BeNull();
         builder.Items[0].Value1 = new Validation.SampleRelatedObject() { ID = 55 };

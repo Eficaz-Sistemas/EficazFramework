@@ -484,6 +484,7 @@ public class Text
         "200408674".IsValidInscricaoEstadual("RN").Should().Be(true);
         "200761269".IsValidInscricaoEstadual("RN").Should().Be(true);
         "204952280".IsValidInscricaoEstadual("RN").Should().Be(true);
+        "0204952280".IsValidInscricaoEstadual("RN").Should().Be(false);
         "205062105".IsValidInscricaoEstadual("RN").Should().Be(true);
         "204076269".IsValidInscricaoEstadual("RN").Should().Be(true);
         "202202747".IsValidInscricaoEstadual("RN").Should().Be(true);
@@ -549,6 +550,7 @@ public class Text
         "310157067117".IsValidInscricaoEstadual("SP").Should().Be(true);
         "310512850112".IsValidInscricaoEstadual("SP").Should().Be(true);
         "401033839116".IsValidInscricaoEstadual("SP").Should().Be(true);
+        "P31043760911".IsValidInscricaoEstadual("SP").Should().Be(true);
         "293895741".IsValidInscricaoEstadual("TO").Should().Be(false);
         "293895740".IsValidInscricaoEstadual("TO").Should().Be(true);
         "290659000".IsValidInscricaoEstadual("TO").Should().Be(true);
