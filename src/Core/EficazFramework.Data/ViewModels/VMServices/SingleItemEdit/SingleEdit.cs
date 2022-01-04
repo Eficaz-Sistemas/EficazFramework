@@ -4,6 +4,7 @@ using EficazFramework.Extensions;
 using EficazFramework.Repositories;
 using System;
 using System.ComponentModel;
+using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 
 namespace EficazFramework.ViewModels.Services;
@@ -23,14 +24,17 @@ public class SingleEdit<T> : ViewModelService<T> where T : class
         viewmodel.StateChanged += OnStateChanged;
         viewmodel.ItemsFetching += OnItemsFetching;
         viewmodel.ItemsFetched += OnItemsFetched;
-        if (BatchInsert == true)
-            ViewModelInstance.Commands["New"].Execute(null);
     }
 
-    public static readonly Guid CommonGUIDs_ADDED = Guid.Parse("81961B4B-5ABE-4F67-BD02-5201095946F5");
-    public static readonly Guid CommonGUIDs_EDITING = Guid.Parse("8C4F51CF-1DF3-4D7A-8761-E95D16FBA920");
-    public static readonly Guid CommonGUIDs_SAVED = Guid.Parse("E6232EA7-6026-469D-869C-C65D220F75DF");
-    public static readonly Guid CommonGUIDs_DELETED = Guid.Parse("B1D6CD4A-805F-44E6-9F3D-66ACE19DCA98");
+    [ExcludeFromCodeCoverage]
+    public static Guid CommonGUIDs_ADDED => Guid.Parse("81961B4B-5ABE-4F67-BD02-5201095946F5");
+    [ExcludeFromCodeCoverage]
+    public static Guid CommonGUIDs_EDITING => Guid.Parse("8C4F51CF-1DF3-4D7A-8761-E95D16FBA920");
+    [ExcludeFromCodeCoverage]
+    public static Guid CommonGUIDs_SAVED => Guid.Parse("E6232EA7-6026-469D-869C-C65D220F75DF");
+    [ExcludeFromCodeCoverage]
+    public static Guid CommonGUIDs_DELETED => Guid.Parse("B1D6CD4A-805F-44E6-9F3D-66ACE19DCA98");
+
     private T _currentEntry = null;
     /// <summary>
     /// Obtém ou define a entidade atual em edição ou inserção.
@@ -280,11 +284,11 @@ public class SingleEdit<T> : ViewModelService<T> where T : class
         }
         var args = new Events.CRUDEventArgs<T>(Enums.CRUD.Action.EntryEditing, ViewModelInstance.State, entry);
 
-        ViewModelInstance.SetState(Enums.CRUD.State.Processando, true, null);
-
         ViewModelInstance.RaiseViewModelEvent(args);
         if (args.Cancel == true)
             return;
+
+        ViewModelInstance.SetState(Enums.CRUD.State.Processando, true, null);
 
         AttachValidatorAndINotifyPropertyChanges(entry);
         await ViewModelInstance.OnEntrySetup(entry);

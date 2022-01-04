@@ -12,6 +12,7 @@ public class CrudOperations
 {
     private ViewModels.ViewModel<Resources.Mocks.Classes.Blog> Vm;
     string resultContext = null;
+    bool shouldCancel = false;
 
     [SetUp]
     public async Task Setup()
@@ -150,15 +151,18 @@ public class CrudOperations
 
 
     [Test, Order(4)]
-    public void SingleEditTest_Navigation()
+    public async Task SingleEditTest_Navigation()
     {
+        Vm.ViewModelAction += VmActions_Validation;
+
         Vm.AddSingledEdit();
-        Vm.Commands["Get"].Execute(null);
         Vm.Repository.OrderByDefinitions.Add(new Collections.SortDescription()
         {
             PropertyName = "Name",
             Direction = Enums.Collection.SortOrientation.Asceding
         });
+        Vm.Commands["Get"].Execute(null);
+        Vm.Repository.DataContext.Should().HaveCount(100);
         var service = Vm.GetSingleEdit();
         Vm.Repository.DataContext.IndexOf(service.CurrentEntry).Should().Be(0);
         service.MoveNext();
@@ -171,6 +175,46 @@ public class CrudOperations
         Vm.Repository.DataContext.IndexOf(service.CurrentEntry).Should().Be(0);
         service.MoveTo(Vm.Repository.DataContext.First(b => b.Name == "Blog 50"));
         service.CurrentEntry.Name.Should().Be("Blog 50");
+
+        Vm.Commands["Edit"].Execute(null);
+        await Task.Delay(100);
+        Vm.State.Should().Be(Enums.CRUD.State.Edicao);
+        Vm.Commands["New"].Execute(null); // but VM will lock
+        await Task.Delay(100);
+        Vm.State.Should().NotBe(Enums.CRUD.State.Novo);
+        service.CurrentEntry?.IsNew.Should().BeFalse();
+        Vm.Commands["Cancel"].Execute(null); // but VM will lock
+        await Task.Delay(100);
+
+        shouldCancel = true;
+        Vm.Commands["New"].Execute(null); // but VM will lock
+        await Task.Delay(100);
+        Vm.State.Should().NotBe(Enums.CRUD.State.Novo);
+
+        Vm.Commands["Save"].Execute(null); // but VM will lock
+        await Task.Delay(100);
+        Vm.State.Should().Be(Enums.CRUD.State.Leitura);
+
+        Vm.Commands["Edit"].Execute(null); // but VM will lock
+        await Task.Delay(100);
+        Vm.State.Should().NotBe(Enums.CRUD.State.Edicao);
+
+        shouldCancel = false;
+        Vm.Commands["Edit"].Execute(null);
+        await Task.Delay(100);
+        Vm.State.Should().Be(Enums.CRUD.State.Edicao);
+        shouldCancel = true;
+
+        Vm.Commands["Save"].Execute(null); // but VM will lock (again)
+        await Task.Delay(100);
+        Vm.State.Should().Be(Enums.CRUD.State.Edicao);
+
+        Vm.Commands["Delete"].Execute(null); // but VM will lock (again)
+        await Task.Delay(100);
+        Vm.Repository.DataContext.Should().HaveCount(100);
+
+        shouldCancel = false;
+        Vm.ViewModelAction -= VmActions_Validation;
     }
 
     private bool _saveNotified = false;
@@ -889,6 +933,13 @@ public class CrudOperations
                     resultContext = "ok";
                     break;
                 }
+            case Enums.CRUD.Action.EntryAdding:
+            case Enums.CRUD.Action.Saving:
+            case Enums.CRUD.Action.EntryEditing:
+                if (shouldCancel == true)
+                    e.Cancel = true;
+
+                break;
         }
     }
 
