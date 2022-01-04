@@ -2,6 +2,7 @@
 using NUnit.Framework;
 using EficazFramework.Validation.Fluent.Rules;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace EficazFramework.Validation;
 
@@ -354,7 +355,7 @@ public class FluentTests
     }
 
     [Test]
-    public void Required()
+    public async Task Required()
     {
         EficazFramework.Validation.Fluent.Validator<SampleObject> validator = new EficazFramework.Validation.Fluent.Validator<SampleObject>().Required((e) => e.Name);
 
@@ -369,6 +370,9 @@ public class FluentTests
 
         instance.Name = "hello world!";
         validator.Validate(instance).Should().BeNullOrEmpty();
+
+        instance.Name = "hello world!";
+        (await validator.ValidateAsync(instance)).Should().BeNullOrEmpty();
     }
 
     [Test]

@@ -10,12 +10,10 @@ namespace EficazFramework.Application;
 
 public class SectionManager : INotifyPropertyChanged
 {
-    private SectionManager() { }
-
     internal SectionManager(ApplicationManager applicationManager) : base()
     {
         _appManager = applicationManager;
-        SectionsInternal.Add(new Section() { ID = 0, Name = "Public" });
+        SectionsInternal.Add(new Section(0) { Name = "Public" });
         CurrentSection = SectionsInternal[0];
         SectionsInternal.CollectionChanged += Sections_CollectionChanged;
     }
@@ -125,16 +123,13 @@ public class SectionManager : INotifyPropertyChanged
 
 public class Section : INotifyPropertyChanged
 {
-    private long _id;
-    public long ID
+    public Section(long Id)
     {
-        get => _id;
-        set
-        {
-            _id = value;
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(ID)));
-        }
+        _id = Id;
     }
+
+    private long _id;
+    public long ID => _id;
 
     public bool SectionIdLargerText
     {

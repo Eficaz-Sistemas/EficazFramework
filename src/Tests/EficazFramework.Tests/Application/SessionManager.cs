@@ -25,9 +25,8 @@ public class Sessions
     public void Create()
     {
         manager.ApplicationManager.Should().NotBeNull();
-        manager.ActivateSection(new EficazFramework.Application.Section()
+        manager.ActivateSection(new EficazFramework.Application.Section(1)
         {
-            ID = 1,
             Name = "Desktop 1",
             Icon = "<svg/>",
             ShowIdAsIcon = true,
@@ -41,6 +40,8 @@ public class Sessions
         manager.CurrentSection.ShowIdAsIcon.Should().BeTrue();
         manager.CurrentSection.Tag.Should().Be("My first app");
         manager.CurrentSection.ToString().Should().Be("1 - Desktop 1");
+        manager.CurrentSection.Name = "Old App";
+        manager.CurrentSection.ToString().Should().Be("1 - Old App");
         manager.CurrentSection.Icon.Should().NotBe("<svg/>");
         manager.CurrentSection.ID.Should().Be(1);
         manager.CurrentSection.Name = "new name";
@@ -52,9 +53,8 @@ public class Sessions
     public void Activate()
     {
         manager.CurrentSection.ID.Should().Be(1);
-        manager.ActivateSection(new EficazFramework.Application.Section()
+        manager.ActivateSection(new EficazFramework.Application.Section(2222)
         {
-            ID = 2222,
             Name = "Desktop 2222"
         });
         manager.CurrentSection.PropertyChanged += PropertyChanged;
@@ -79,9 +79,8 @@ public class Sessions
     [Test, Order(3)]
     public void AvoidDuplicated()
     {
-        manager.ActivateSection(new EficazFramework.Application.Section()
+        manager.ActivateSection(new EficazFramework.Application.Section(2222)
         {
-            ID = 2222,
             Name = "Desktop 3, Copy"
         }, true);
         _ = manager.Sections.GroupBy(i => i.ID).Count(gp => gp.Count() > 1).Should().Be(0);

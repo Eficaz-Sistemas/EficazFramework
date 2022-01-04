@@ -49,7 +49,8 @@ public class Apps
         EficazFramework.Application.ApplicationDefinition manuais = new()
         {
             Group = "Suporte",
-            Title = "Manuais"
+            Title = "Manuais",
+            Condition = "AppTitle = value1"
         };
         _appManager.AllAplications.Add(index);
         _appManager.AllAplications.Add(clientes);
@@ -121,6 +122,8 @@ public class Apps
         _appManager.RunningAplications.Last().Content = new EficazFramework.Repositories.EntityRepository<Resources.Mocks.Classes.Blog>();
         _appManager.RunningAplications.Last().Close();
         _appManager.RunningAplications.Count.Should().Be(1);
+
+        _appManager.AllAplications[6].Condition.Should().Be("AppTitle = value1");
     }
 
     [Test, Order(3)]

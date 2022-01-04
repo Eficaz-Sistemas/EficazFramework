@@ -55,6 +55,8 @@ class Enum
         valuesComp3.ElementAt(4).Description.Should().Be(EficazFramework.Resources.Strings.TestStrings.eDocumento_PIS_NIT);
         valuesComp3.ElementAt(6).Description.Should().Be("CPF do cara");
         valuesComp3.Count(c => c.Description == c.Value.ToString()).Should().Be(6);
+
+        DocumentosTeste.CPF.GetDescription().Should().Be("CPF do cara");
     }
 
     [Test, Order(3)]

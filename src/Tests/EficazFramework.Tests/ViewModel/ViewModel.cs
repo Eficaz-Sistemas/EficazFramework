@@ -43,6 +43,7 @@ public class ViewModel
         Vm.WithNavigationByIndex().Should().NotBeNull();
         Vm.GetIndexNavigator().Should().NotBeNull();
         var navigator = Vm.GetIndexNavigator();
+        object.ReferenceEquals(navigator, Vm.GetService<IndexViewNavigator<Resources.Mocks.Classes.Blog>, Resources.Mocks.Classes.Blog>()).Should().BeTrue();
         navigator.SelectedIndex.Should().Be(0);
 
         //avoid duplicate:
