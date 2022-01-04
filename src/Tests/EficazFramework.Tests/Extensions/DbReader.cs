@@ -31,13 +31,31 @@ class DbReader
 
         // query spces
         TestQuery query = new();
-
+        query.MsSqlCommandText.Should().Be("SELECT A");
+        query.OracleCommandText.Should().Be("SELECT C");
+        query.MySqlCommandText.Should().Be("SELECT B");
 
         // assert
         List<Resources.Mocks.Classes.Blog> list = new();
-        var cmd = await query.CreateCommandAsync(dbContext);
+        System.Data.Common.DbCommand cmd = null;
+
+        // mock
+        EficazFramework.Configuration.DbConfiguration.Instance.Provider = Providers.ConnectionProviders.MsSQL;
+        cmd = await query.CreateCommandAsync(dbContext);
+        cmd.CommandText.Should().Be(query.MsSqlCommandText);
+        EficazFramework.Configuration.DbConfiguration.Instance.Provider = Providers.ConnectionProviders.MySQL;
+        cmd = await query.CreateCommandAsync(dbContext);
+        cmd.CommandText.Should().Be(query.MySqlCommandText);
+        EficazFramework.Configuration.DbConfiguration.Instance.Provider = Providers.ConnectionProviders.Oracle;
+        cmd = await query.CreateCommandAsync(dbContext);
+        cmd.CommandText.Should().Be(query.OracleCommandText);
+
+        // real
+        EficazFramework.Configuration.DbConfiguration.Instance.Provider = Providers.ConnectionProviders.SqlLite;
+        cmd = await query.CreateCommandAsync(dbContext);
         query.CreateCommand(dbContext).Connection.ConnectionString.Should().Be(cmd.Connection.ConnectionString);
-        cmd.CommandText = query.SqlLiteCommandText;
+        cmd.CommandText.Should().Be(query.SqlLiteCommandText);
+
         await cmd.Connection.OpenAsync();
         var reader = await cmd.ExecuteReaderAsync();
         list.AddRange(reader.SelectFromReader((r) =>
@@ -107,13 +125,13 @@ class DbReader
 
 internal class TestQuery : EficazFramework.Repositories.Services.QueryBase
 {
-    public override string MsSqlCommandText => "SELECT * FROM Blogs WHERE Name = @name";
+    public override string MsSqlCommandText => "SELECT A";
 
     public override string SqlLiteCommandText => "SELECT * FROM Blogs WHERE Name = @name";
 
-    public override string MySqlCommandText => "SELECT * FROM Blogs WHERE Name = @name";
+    public override string MySqlCommandText => "SELECT B";
 
-    public override string OracleCommandText => "SELECT * FROM Blogs WHERE Name = @name";
+    public override string OracleCommandText => "SELECT C";
 
     public TestQuery()
     {
