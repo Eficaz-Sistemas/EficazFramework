@@ -1,8 +1,11 @@
 ﻿using Microsoft.AspNetCore.SignalR.Client;
 using System;
+using System.Diagnostics.CodeAnalysis;
 using System.Threading.Tasks;
 
 namespace EficazFramework.Services;
+
+[ExcludeFromCodeCoverage]
 public abstract class HubClient : IAsyncDisposable
 {
     private readonly string _hubUrl;

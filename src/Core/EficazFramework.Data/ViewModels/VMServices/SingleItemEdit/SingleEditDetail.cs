@@ -240,8 +240,6 @@ public class SingleEditDetail<T, D> : ViewModelService<T>
     }
 
 
-    /* TODO ERROR: Skipped EndRegionDirectiveTrivia */
-    /* TODO ERROR: Skipped RegionDirectiveTrivia */
     /// <summary>
     /// Atualiza o valor da Propriedade CanSave após a mudança de estado do ViewModel Mestre.
     /// </summary>
@@ -594,10 +592,8 @@ public class SingleEditDetail<T, D> : ViewModelService<T>
             CurrentEntry = DataContext.FirstOrDefault();
         else
         {
-            if (DataContext.Count > index - 1)
+            if (index > 0)
                 CurrentEntry = DataContext[index - 1];
-            else
-                CurrentEntry = null;
         }
     }
 
@@ -665,10 +661,6 @@ public class SingleEditDetail<T, D> : ViewModelService<T>
         if (entry is Validation.IFluentValidatableClass ifluent)
             ifluent.Validator = null;
     }
-
-
-
-    //
 
 
 
