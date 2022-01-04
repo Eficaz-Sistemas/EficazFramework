@@ -315,7 +315,6 @@ public class CrudOperations
 
         resultContext = null;
         var service = Vm.GetSingleEdit();
-        System.Console.WriteLine("Starting async void operations with SingleEdit<>");
 
         Vm.Commands["Delete"].Execute(Vm.Repository.DataContext.Last());
         await Task.Delay(100);
@@ -330,7 +329,6 @@ public class CrudOperations
 
         Vm.ViewModelAction -= VmActions_Validation;
         Vm.ShowMessage -= Vm_Dialog;
-        System.Console.WriteLine("Finished async void operations with TabularEdit<>");
     }
 
 
@@ -496,6 +494,82 @@ public class CrudOperations
         Vm.ViewModelAction -= VmActions_Validation;
     }
 
+    [Test, Order(11)]
+    public async Task SingleEditDetailTest_Delete()
+    {
+        Vm.ShowMessage += Vm_Dialog;
+        Vm.ViewModelAction += VmActions_Validation;
+        resultContext = null;
+
+        Vm.WithNavigationByIndex().AddSingledEdit().AddSingledEditDetail(dt => dt.Posts);
+        Vm.Repository.OrderByDefinitions.Add(new Collections.SortDescription()
+        {
+            PropertyName = "Name",
+            Direction = Enums.Collection.SortOrientation.Asceding
+        });
+        ((Repositories.EntityRepository<Resources.Mocks.Classes.Blog>)Vm.Repository).Includes.Add(i => i.Posts);
+        var serviceMain = Vm.GetSingleEdit();
+        SingleEditDetail<Resources.Mocks.Classes.Blog, Resources.Mocks.Classes.Post> service = Vm.GetSingleEditDetail<Resources.Mocks.Classes.Blog, Resources.Mocks.Classes.Post>();
+        service.DetailValidator = new();
+        service.DetailValidator.Required(p => p.Title);
+
+        Vm.Commands["Get"].Execute(null);
+        await Task.Delay(200);
+        serviceMain.MoveTo(Vm.Repository.DataContext.Single(b => b.Name == "Blog 1"));
+
+        Vm.Commands["Edit"].Execute(null);
+        await Task.Delay(100);
+
+        service.MoveToFirst();
+        ReferenceEquals(service.CurrentEntry, serviceMain.CurrentEntry.Posts.First()).Should().BeTrue();
+
+        _refuseDelete = true;
+        Vm.Commands["DeleteDetail_Posts"].Execute(service.CurrentEntry);
+        await Task.Delay(100);
+        resultContext.Should().BeNull();
+        service.DataContext.Should().HaveCount(1);
+
+        _refuseDelete = false;
+        Vm.Commands["DeleteDetail_Posts"].Execute(service.CurrentEntry);
+        await Task.Delay(100);
+        resultContext.Should().Be("ok");
+        service.DataContext.Should().HaveCount(0);
+        service.DeleteDataContext.Should().HaveCount(1);
+
+        resultContext = null;
+        Vm.Commands["Cancel"].Execute(null);
+        await Task.Delay(100);
+        service.DataContext.Should().HaveCount(0);
+        service.DeleteDataContext.Should().HaveCount(0);
+
+        Vm.Commands["Edit"].Execute(null);
+        await Task.Delay(100);
+
+        _refuseDelete = false;
+        resultContext = null;
+        service.MoveToFirst();
+        Vm.Commands["DeleteDetail_Posts"].Execute(service.CurrentEntry);
+        await Task.Delay(100);
+        resultContext.Should().Be("ok");
+        service.DataContext.Should().HaveCount(0);
+        service.DeleteDataContext.Should().HaveCount(1);
+
+        Vm.State.Should().Be(Enums.CRUD.State.Edicao);
+        Vm.Commands["Save"].Execute(null);
+        await Task.Delay(100);
+        resultContext.Should().BeNull();
+        serviceMain.CurrentEntry.Posts.Should().HaveCount(0);
+        service.DataContext.Should().HaveCount(0);
+        service.DeleteDataContext.Should().HaveCount(0);
+
+        Vm.Commands["Get"].Execute(null);
+        Vm.Repository.DataContext.Count(b => b.Posts.Count == 0).Should().Be(1);
+
+        Vm.ShowMessage -= Vm_Dialog;
+        Vm.ViewModelAction -= VmActions_Validation;
+    }
+
+
 
     void VmActions_Validation(object sender, EficazFramework.Events.CRUDEventArgs<Resources.Mocks.Classes.Blog> e)
     {
@@ -513,6 +587,7 @@ public class CrudOperations
                     break;
                 }
             case Enums.CRUD.Action.EntryDeleted:
+            case Enums.CRUD.Action.DetailEntryDeleted:
                 {
                     resultContext = "ok";
                     break;

@@ -122,6 +122,12 @@ public class EntityTests
         attr2.IsValid("teste@com.br").Should().BeTrue();
         attr2.IsValid("teste@teste.com.br").Should().BeTrue();
         attr2.IsValid("@teste.com.br").Should().BeFalse();
+        EficazFramework.Validation.DataAnnotations.EMail.ValidateAddress(null).Should().Be(ValidationResult.Success);
+        EficazFramework.Validation.DataAnnotations.EMail.ValidateAddress("teste").ErrorMessage.Should().NotBeNullOrEmpty();
+        EficazFramework.Validation.DataAnnotations.EMail.ValidateAddress("teste.com.br").ErrorMessage.Should().NotBeNullOrEmpty();
+        EficazFramework.Validation.DataAnnotations.EMail.ValidateAddress("teste@com.br").Should().Be(ValidationResult.Success);
+        EficazFramework.Validation.DataAnnotations.EMail.ValidateAddress("teste@teste.com.br").Should().Be(ValidationResult.Success);
+        EficazFramework.Validation.DataAnnotations.EMail.ValidateAddress("@teste.com.br").ErrorMessage.Should().NotBeNullOrEmpty();
 
         EficazFramework.Validation.DataAnnotations.IncricaoEstadual attr3 = new("MG");
         attr3.UFPropertyName.Should().Be("MG");
