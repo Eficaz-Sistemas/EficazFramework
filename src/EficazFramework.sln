@@ -32,6 +32,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EficazFramework.DocsApiPlug
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Samples", "Samples", "{42E6F1B1-3BC0-40A3-A68D-462906F326A9}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{8387DE17-3DAD-4ACF-935D-B14115F7932B}"
+	ProjectSection(SolutionItems) = preProject
+		SolutionScripts\Tests.psm1 = SolutionScripts\Tests.psm1
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
