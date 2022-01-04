@@ -90,11 +90,13 @@ public class DbConfigurationTests
         DbConfiguration.UseConnectionStringEncryption = false;
     }
 
+    [Test, Order(4)]
     public void ConnectionStringBuilderForOracle()
     {
         DbConfiguration.SettingsPath = $@"{Environment.CurrentDirectory}\";
         DbConfiguration.UseConnectionStringEncryption = false;
         DbConfiguration.Instance.ServerName = "myserver";
+        DbConfiguration.Instance.InstanceName = "myinstance";
         DbConfiguration.Instance.Port = 1436;
         DbConfiguration.Instance.Provider = Providers.ConnectionProviders.Oracle;
         DbConfiguration.GetConnection("mydb", "myuser", "mypass").Should().Be(@"Data Source=myserver\myinstance,1436;Database=mydb;User ID=myuser;Password=mypass;Connect Timeout=30;Integrated Security=no;");

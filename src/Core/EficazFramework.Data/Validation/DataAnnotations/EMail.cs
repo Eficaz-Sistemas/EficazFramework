@@ -17,7 +17,7 @@ public class EMail : ValidationAttribute
             }
             else
             {
-                return new ValidationResult(string.Format(Resources.Strings.Validation.InvalideMail, validationContext.DisplayName));
+                return new ValidationResult(string.Format(Resources.Strings.Validation.InvalideMail, validationContext?.DisplayName));
             }
         }
         else

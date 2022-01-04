@@ -69,6 +69,9 @@ public class EntityTests
         instance.ValidationMode = Enums.ValidationMode.DataAnnotations;
         instance.Validate(null).Count.Should().Be(6);
 
+        instance.Document = "07731253620";
+        instance.Validate(null).Count.Should().Be(6);
+
         instance.Document = "07731253619";
         instance.Validate(null).Count.Should().Be(5);
 
@@ -86,9 +89,49 @@ public class EntityTests
 
         instance.CNPJ = "10608025000126";
         instance.Validate(null).Count.Should().Be(1);
+
+        instance.CNPJ = "10608025000127";
+        instance.Validate(null).Count.Should().Be(2);
+
     }
 
     [Test, Order(2)]
+    public void DataAnnotationAttributeTest()
+    {
+        EficazFramework.Validation.DataAnnotations.DocumentoRFB attr1 = new(Enums.DocumentosRFB.Ambos);
+        attr1.IsValid(null).Should().BeTrue();
+        attr1.IsValid("07731253619").Should().BeTrue();
+        attr1.IsValid("07731253620").Should().BeFalse();
+        attr1.IsValid("10608025000126").Should().BeTrue();
+        attr1.IsValid("10608025000127").Should().BeFalse();
+        attr1.Tipo = Enums.DocumentosRFB.CPF;
+        attr1.IsValid("10608025000126").Should().BeFalse();
+        attr1.IsValid("10608025000127").Should().BeFalse();
+        attr1.IsValid("07731253619").Should().BeTrue();
+        attr1.IsValid("07731253620").Should().BeFalse();
+        attr1.Tipo = Enums.DocumentosRFB.CNPJ;
+        attr1.IsValid("07731253619").Should().BeFalse();
+        attr1.IsValid("07731253620").Should().BeFalse();
+        attr1.IsValid("10608025000126").Should().BeTrue();
+        attr1.IsValid("10608025000127").Should().BeFalse();
+
+        EficazFramework.Validation.DataAnnotations.EMail attr2 = new();
+        attr2.IsValid(null).Should().BeTrue();
+        attr2.IsValid("teste").Should().BeFalse();
+        attr2.IsValid("teste.com.br").Should().BeFalse();
+        attr2.IsValid("teste@com.br").Should().BeTrue();
+        attr2.IsValid("teste@teste.com.br").Should().BeTrue();
+        attr2.IsValid("@teste.com.br").Should().BeFalse();
+
+        EficazFramework.Validation.DataAnnotations.IncricaoEstadual attr3 = new("MG");
+        attr3.UFPropertyName.Should().Be("MG");
+        attr3.IsValid(null).Should().BeTrue();
+        attr3.IsValid("ISENTO").Should().BeTrue();
+        attr3.IsValid("isento").Should().BeTrue();
+
+    }
+
+    [Test, Order(3)]
     public void FluentValidationTest()
     {
         SampleClass instance = new()

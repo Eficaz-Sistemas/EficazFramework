@@ -34,9 +34,14 @@ public class IncricaoEstadual : ValidationAttribute
             if (_uf is null)
                 return new ValidationResult(Resources.Strings.Validation.InvalidIE_NoUF);
             string clearNumber = value.ToString();
-            string uf = Conversions.ToString(validationContext.ObjectInstance.GetPropertyValue(_uf));
-            if (string.IsNullOrEmpty(uf) | string.IsNullOrWhiteSpace(uf))
-                return new ValidationResult(Resources.Strings.Validation.InvalidIE_NoUF);
+            string uf = Conversions.ToString(validationContext?.ObjectInstance.GetPropertyValue(_uf));
+            if (string.IsNullOrEmpty(uf) || string.IsNullOrWhiteSpace(uf))
+            {
+                if (clearNumber.ToUpper().Contains("ISENTO"))
+                    return ValidationResult.Success;
+                else
+                    return new ValidationResult(Resources.Strings.Validation.InvalidIE_NoUF);
+            }
             bool result = clearNumber.IsValidInscricaoEstadual(uf);
             if (result == false)
                 return new ValidationResult(string.Format(Resources.Strings.Validation.InvalidIE, uf.ToUpper()));

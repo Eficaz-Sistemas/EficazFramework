@@ -325,6 +325,9 @@ public class SingleEditDetail<T, D> : ViewModelService<T>
                 Title = Resources.Strings.Validation.Dialog_Title,
                 Content = string.Format(Resources.Strings.Validation.Dialog_Message, Environment.NewLine, validation.ToString())
             });
+            var failArgs = new Events.CRUDEventArgs<T>(Enums.CRUD.Action.EntryValidationFailed, args.State, args.CurrentEntry);
+            failArgs.ValidationErrors.AddRange(validation);
+            ViewModelInstance.RaiseViewModelEvent(failArgs);
             ViewModelInstance.SetState(args.State, false, null);
             return;
         }

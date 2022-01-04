@@ -77,7 +77,7 @@ public class DocumentoRFB : ValidationAttribute
     public override bool IsValid(object value)
     {
         var result = IsValid(value, null);
-        if (ReferenceEquals(result, ValidationResult.Success))
+        if (result == ValidationResult.Success || result == null)
             return true;
         else
             return false;

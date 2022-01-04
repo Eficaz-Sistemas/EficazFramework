@@ -125,8 +125,6 @@ public class CrudOperations
         // manual valudation
         Vm.Repository.Validate(null).Should().HaveCount(2);
 
-        System.Console.WriteLine("Starting async void operations with TabularEdit<>");
-
         //by saving
         resultContext = null;
         var service = Vm.GetTabularEdit();
@@ -146,7 +144,6 @@ public class CrudOperations
         // just call cancel Save
         service.CancelSave();
 
-        System.Console.WriteLine("Finished async void operations with TabularEdit<>");
         Vm.RemoveTabular();
     }
 
@@ -191,7 +188,6 @@ public class CrudOperations
         resultContext = null;
         var service = Vm.GetSingleEdit();
         service.NotifyOnSave = true;
-        System.Console.WriteLine("Starting async void operations with SingleEdit<>");
 
         var bkpName = service.CurrentEntry.Name;
         Vm.Commands["Edit"].Execute(null);
@@ -224,7 +220,6 @@ public class CrudOperations
 
         Vm.ViewModelAction -= VmActions_Validation;
         Vm.ShowMessage -= Vm_Dialog;
-        System.Console.WriteLine("Finished async void operations with TabularEdit<>");
     }
 
     [Test, Order(6)]
@@ -239,7 +234,6 @@ public class CrudOperations
 
         resultContext = null;
         var service = Vm.GetSingleEdit();
-        System.Console.WriteLine("Starting async void operations with SingleEdit<>");
 
         var bkpName = service.CurrentEntry.Name;
         Vm.Commands["New"].Execute(null);
@@ -269,10 +263,7 @@ public class CrudOperations
         Vm.Commands["Get"].Execute(null);
         Vm.Repository.DataContext.Should().HaveCount(101);
 
-
         Vm.ViewModelAction -= VmActions_Validation;
-
-        System.Console.WriteLine("Finished async void operations with TabularEdit<>");
     }
 
     [Test, Order(6)]
@@ -288,8 +279,6 @@ public class CrudOperations
         resultContext = null;
         var service = Vm.GetSingleEdit();
         service.BatchInsert = true;
-
-        System.Console.WriteLine("Starting async void operations with SingleEdit<>");
 
         Vm.Commands["New"].Execute(null);
         await Task.Delay(50);
@@ -312,7 +301,6 @@ public class CrudOperations
 
         Vm.ViewModelAction -= VmActions_Validation;
         Vm.RemoveSingleEdit();
-        System.Console.WriteLine("Finished async void operations with TabularEdit<>");
     }
 
     private bool _refuseDelete = true;
@@ -364,6 +352,53 @@ public class CrudOperations
         await Task.Delay(200);
         Vm.Repository.DataContext.Count(p => p.Posts.Count <= 0).Should().Be(0);
     }
+
+    [Test, Order(8)]
+    public async Task SingleEditDetailTest_Update()
+    {
+        Vm.ShowMessage += Vm_Dialog;
+        Vm.ViewModelAction += VmActions_Validation;
+        resultContext = null;
+
+        Vm.WithNavigationByIndex().AddSingledEdit().AddSingledEditDetail(dt => dt.Posts);
+        Vm.Repository.OrderByDefinitions.Add(new Collections.SortDescription()
+        {
+            PropertyName = "Name",
+            Direction = Enums.Collection.SortOrientation.Asceding
+        });
+        ((Repositories.EntityRepository<Resources.Mocks.Classes.Blog>)Vm.Repository).Includes.Add(i => i.Posts);
+        var serviceMain = Vm.GetSingleEdit();
+        SingleEditDetail<Resources.Mocks.Classes.Blog, Resources.Mocks.Classes.Post> service = Vm.GetSingleEditDetail<Resources.Mocks.Classes.Blog, Resources.Mocks.Classes.Post>();
+        service.DetailValidator = new();
+        service.DetailValidator.Required(p => p.Title);
+
+        Vm.Commands["Get"].Execute(null);
+        await Task.Delay(200);
+
+        Vm.Commands["Edit"].Execute(null);
+        await Task.Delay(100);
+        service.MoveToFirst();
+        ReferenceEquals(service.CurrentEntry, serviceMain.CurrentEntry.Posts.First()).Should().BeTrue();
+        var bkpName = service.CurrentEntry.Title;
+        Vm.Commands["EditDetail_Posts"].Execute(null);
+        await Task.Delay(100);
+        service.CurrentEntry.Title = null;
+
+        Vm.Commands["SaveDetail_Posts"].Execute(null);
+        await Task.Delay(100);
+        resultContext.Should().Be(Resources.Strings.Validation.Dialog_Title);
+
+        resultContext = null;
+        Vm.Commands["CancelDetail_Posts"].Execute(null);
+        await Task.Delay(100);
+        service.CurrentEntry.Title.Should().Be(bkpName);
+
+
+
+        Vm.ShowMessage -= Vm_Dialog;
+        Vm.ViewModelAction -= VmActions_Validation;
+    }
+
 
 
 
