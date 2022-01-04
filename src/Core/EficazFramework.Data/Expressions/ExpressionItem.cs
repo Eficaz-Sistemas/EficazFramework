@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Linq.Expressions;
 using Microsoft.VisualBasic;
@@ -138,9 +139,11 @@ public class ExpressionItem : INotifyPropertyChanged
 
     #region UPDATE MODE
 
+    [ExcludeFromCodeCoverage]
     public bool UpdateMode { get; set; } = false;
 
     private object _valueToUpdate;
+    [ExcludeFromCodeCoverage]
     public object ValueToUpdate
     {
         get => _valueToUpdate;
@@ -163,6 +166,7 @@ public class ExpressionItem : INotifyPropertyChanged
     }
 
     private UpdateValueMode _updateValueType = UpdateValueMode.Fixed;
+    [ExcludeFromCodeCoverage]
     public UpdateValueMode UpdateValueType
     {
         get => _updateValueType;
@@ -691,7 +695,9 @@ public class ExpressionItem : INotifyPropertyChanged
 
     #region Events
 
+    [ExcludeFromCodeCoverage]
     public event EventHandler UpdateValueModeChanged;
+
     public event PropertyChangedEventHandler PropertyChanged;
 
     #endregion

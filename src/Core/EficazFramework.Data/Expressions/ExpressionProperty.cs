@@ -1,6 +1,7 @@
 ﻿using EficazFramework.Extensions;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 
 namespace EficazFramework.Expressions;
@@ -13,6 +14,7 @@ public class ExpressionProperty
     public string PropertyPath { get; set; }
   
     [Obsolete("Porting do componente ExpressionUpdate pendente.")]
+    [ExcludeFromCodeCoverage]
     public string UpdatePropertyPath { get; set; }
 
     public string DisplayName { get; set; }
@@ -41,6 +43,7 @@ public class ExpressionProperty
 
     public bool AllowExpressions { get; set; }
 
+    [ExcludeFromCodeCoverage]
     public string UpdateStringFormat { get; set; }
 
     #endregion

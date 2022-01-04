@@ -81,6 +81,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Remove="Expressions\ExpressionItem.cs~RF5ac44a4b.TMP" />
     <None Remove="Repositories\IRepository.cs~RF156ba4ed.TMP" />
     <None Remove="ViewModels\VMServices\SingleItemEdit\SingleEdit.cs~RF1f9be0b0.TMP" />
   </ItemGroup>

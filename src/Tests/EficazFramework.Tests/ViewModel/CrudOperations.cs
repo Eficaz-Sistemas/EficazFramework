@@ -31,10 +31,17 @@ public class CrudOperations
         (await dbContextRepo.DbContext.Database.EnsureCreatedAsync()).Should().BeTrue();
         for (int i = 0; i < 100; i++)
         {
+            var tmpId = System.Guid.NewGuid();
             dbContextRepo.DbContext.Add(new Resources.Mocks.Classes.Blog()
             {
-                Id = System.Guid.NewGuid(),
+                Id = tmpId,
                 Name = $"Blog {i}"
+            });
+            dbContextRepo.DbContext.Add(new Resources.Mocks.Classes.Post()
+            {
+                BlogId = tmpId,
+                PostId = System.Guid.NewGuid(),
+                Title = $"Post {i} Title"
             });
         }
         await dbContextRepo.DbContext.SaveChangesAsync();
@@ -53,15 +60,6 @@ public class CrudOperations
     }
 
     [Test, Order(1)]
-    public void TabularConstructorTest()
-    {
-        Vm.AddTabular();
-        Vm.Services.Should().HaveCount(2);
-        Vm.Commands.Should().HaveCount(3); // + Save && Cancel
-        ((Repositories.EntityRepository<Resources.Mocks.Classes.Blog>)Vm.Repository).AsNoTracking.Should().BeFalse();
-    }
-
-    [Test, Order(2)]
     public void SelectTest()
     {
         Vm.Commands["Get"].Execute(null);
@@ -99,6 +97,17 @@ public class CrudOperations
         Vm.Repository.PreviousPage().Should().BeFalse();
         Vm.Repository.CurrentPage.Should().Be(1);
 
+    }
+
+
+
+    [Test, Order(2)]
+    public void TabularConstructorTest()
+    {
+        Vm.AddTabular();
+        Vm.Services.Should().HaveCount(2);
+        Vm.Commands.Should().HaveCount(3); // + Save && Cancel
+        ((Repositories.EntityRepository<Resources.Mocks.Classes.Blog>)Vm.Repository).AsNoTracking.Should().BeFalse();
     }
 
     [Test, Order(3)]
@@ -140,6 +149,8 @@ public class CrudOperations
         System.Console.WriteLine("Finished async void operations with TabularEdit<>");
         Vm.RemoveTabular();
     }
+
+
 
     [Test, Order(4)]
     public void SingleEditTest_Navigation()
@@ -304,7 +315,6 @@ public class CrudOperations
         System.Console.WriteLine("Finished async void operations with TabularEdit<>");
     }
 
-
     private bool _refuseDelete = true;
     [Test, Order(7)]
     public async Task SingleEditTest_Delete()
@@ -335,6 +345,25 @@ public class CrudOperations
         System.Console.WriteLine("Finished async void operations with TabularEdit<>");
     }
 
+
+
+    [Test, Order(8)]
+    public async Task SingleEditDetailTest_NavigationProperties()
+    {
+        Vm.AddSingledEdit().AddSingledEditDetail(dt => dt.Posts);
+        Vm.Repository.OrderByDefinitions.Add(new Collections.SortDescription()
+        {
+            PropertyName = "Name",
+            Direction = Enums.Collection.SortOrientation.Asceding
+        });
+        ((Repositories.EntityRepository<Resources.Mocks.Classes.Blog>)Vm.Repository).Includes.Add(i => i.Posts);
+        var serviceMain = Vm.GetSingleEdit();
+        SingleEditDetail<Resources.Mocks.Classes.Blog, Resources.Mocks.Classes.Post> service = Vm.GetSingleEditDetail<Resources.Mocks.Classes.Blog, Resources.Mocks.Classes.Post>();
+
+        Vm.Commands["Get"].Execute(null);
+        await Task.Delay(200);
+        Vm.Repository.DataContext.Count(p => p.Posts.Count <= 0).Should().Be(0);
+    }
 
 
 
