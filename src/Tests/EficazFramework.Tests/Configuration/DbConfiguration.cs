@@ -17,6 +17,7 @@ public class DbConfigurationTests
         DbConfiguration.SettingsPath = $@"{Environment.CurrentDirectory}\";
         DbConfiguration.UseConnectionStringEncryption.Should().BeTrue();
         System.IO.File.Delete($"{DbConfiguration.SettingsPath}data_provider.json");
+        DbConfiguration.Load();
 
         DbConfiguration.Instance.Should().NotBeNull();
         DbConfiguration.Instance.ServerName.Should().Be(".");

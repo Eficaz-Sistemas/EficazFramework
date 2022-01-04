@@ -22,6 +22,7 @@ public class ObservableDictionary<TKey, TValue> : IDictionary<TKey, TValue>, INo
         m_Dictionary = new Dictionary<TKey, TValue>(dictionary);
     }
 
+    [ExcludeFromCodeCoverage]
     public ObservableDictionary(IEqualityComparer<TKey> comparer)
     {
         m_Dictionary = new Dictionary<TKey, TValue>(comparer);
@@ -32,11 +33,13 @@ public class ObservableDictionary<TKey, TValue> : IDictionary<TKey, TValue>, INo
         m_Dictionary = new Dictionary<TKey, TValue>(capacity);
     }
 
+    [ExcludeFromCodeCoverage]
     public ObservableDictionary(IDictionary<TKey, TValue> dictionary, IEqualityComparer<TKey> comparer)
     {
         m_Dictionary = new Dictionary<TKey, TValue>(dictionary, comparer);
     }
 
+    [ExcludeFromCodeCoverage]
     public ObservableDictionary(int capacity, IEqualityComparer<TKey> comparer)
     {
         m_Dictionary = new Dictionary<TKey, TValue>(capacity, comparer);

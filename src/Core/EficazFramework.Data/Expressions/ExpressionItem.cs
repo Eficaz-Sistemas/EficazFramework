@@ -261,6 +261,7 @@ public class ExpressionItem : INotifyPropertyChanged
         return resultDate;
     }
 
+    [ExcludeFromCodeCoverage]
     private object ValueType_Coercion(UpdateValueMode value)
     {
         if (AllowExpression == false & value == UpdateValueMode.Expression)
@@ -299,6 +300,7 @@ public class ExpressionItem : INotifyPropertyChanged
 
     private void OnValueType_Changed() => ValueToUpdate = null;
 
+    [ExcludeFromCodeCoverage]
     private void OnValue_Changed(PropertyChangedEventArgs e)
     {
         if (SelectedProperty is null)

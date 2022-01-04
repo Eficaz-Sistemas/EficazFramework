@@ -164,6 +164,7 @@ public class EntityTests
                                  .Mail(o => o.Mail)
                                  .CNPJouCPF(o => o.Document);
         instance.Validator.Should().NotBeNull();
+        instance.Validate("Name").Should().NotBeNull();
         ((Collections.StringCollection)instance.GetErrors(nameof(instance.Name))).Should().HaveCount(1);
         instance.HasErrors.Should().BeTrue();
         instance.ReportErrorsChanged(nameof(SampleClass.Name));

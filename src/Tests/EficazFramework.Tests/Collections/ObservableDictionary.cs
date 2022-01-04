@@ -241,6 +241,7 @@ public class ObservableDictionaryTests
             { 2, "def" }
         };
         var collection = new ObservableDictionary<object, string>(internalDictionary);
+        collection.IsReadOnly.Should().BeFalse();
 
         KeyValuePair<object, string>[] destinationCollection = { new(98, "zzz"), new(99, "zzz") };
         collection.CopyTo(destinationCollection, 0);
