@@ -70,6 +70,8 @@ public class ViewModel<T> : INotifyPropertyChanged, IDisposable where T : class
     internal Dictionary<string, Services.ViewModelService<T>> _servicesInternal = new();
     public Dictionary<string, Services.ViewModelService<T>> Services => _servicesInternal;
 
+    internal bool FailAssertion { get; set; } = false;
+
 
     /// <summary>
     /// Notifica às views que houve alteração em alguma propriedade do ViewModel

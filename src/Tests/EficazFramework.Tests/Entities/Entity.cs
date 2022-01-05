@@ -135,6 +135,12 @@ public class EntityTests
         attr3.IsValid("ISENTO").Should().BeTrue();
         attr3.IsValid("isento").Should().BeTrue();
 
+        attr3 = new(null);
+        attr3.IsValid(null).Should().BeTrue();
+        attr3.IsValid("ISENTO").Should().BeTrue();
+        attr3.IsValid("isento").Should().BeTrue();
+
+
     }
 
     [Test, Order(3)]

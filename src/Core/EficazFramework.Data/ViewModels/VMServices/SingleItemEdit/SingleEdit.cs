@@ -182,7 +182,7 @@ public class SingleEdit<T> : ViewModelService<T> where T : class
 
 
         // Saved (or not):
-        if (ex is null)
+        if (ex is null && !ViewModelInstance.FailAssertion)
         {
             var savedargs = new Events.CRUDEventArgs<T>(Enums.CRUD.Action.Saved, args.State, args.CurrentEntry);
             ViewModelInstance.RaiseViewModelEvent(savedargs);
@@ -221,8 +221,8 @@ public class SingleEdit<T> : ViewModelService<T> where T : class
             {
                 IconReference = Events.MessageIcon.Error,
                 Title = Resources.Strings.ViewModel.UnhandledError_Title,
-                Content = string.Format(Resources.Strings.ViewModel.UnhandledError_Message, ex.Message),
-                StackTrace = ex.ToString(),
+                Content = string.Format(Resources.Strings.ViewModel.UnhandledError_Message, ex?.Message),
+                StackTrace = ex?.ToString() ?? "Assertion Exception",
                 EnableReporting = true
             });
         }
@@ -235,10 +235,12 @@ public class SingleEdit<T> : ViewModelService<T> where T : class
     /// </summary>
     private async void CancelCommand_Executed(object sender, Events.ExecuteEventArgs e)
     {
+        if (CanCancelEntry == false) return;
+
         var args = new Events.CRUDEventArgs<T>(Enums.CRUD.Action.Canceled, ViewModelInstance.State, CurrentEntry);
         ViewModelInstance.SetState(Enums.CRUD.State.Processando, true, Resources.Strings.ViewModel.DefaultCancelingMessage);
         var ex = await ViewModelInstance.Repository.CancelAsync(CurrentEntry);
-        if (ex is null)
+        if (ex is null && !ViewModelInstance.FailAssertion)
         {
             ViewModelInstance.RaiseViewModelEvent(args);
             DetachValidatorAndINotifyPropertyChanges(args.CurrentEntry);
@@ -257,8 +259,8 @@ public class SingleEdit<T> : ViewModelService<T> where T : class
             {
                 IconReference = Events.MessageIcon.Error,
                 Title = Resources.Strings.ViewModel.UnhandledError_Title,
-                Content = string.Format(Resources.Strings.ViewModel.UnhandledError_Message, ex.Message),
-                StackTrace = ex.ToString(),
+                Content = string.Format(Resources.Strings.ViewModel.UnhandledError_Message, ex?.Message),
+                StackTrace = ex?.ToString() ?? "Assertion Exception",
                 EnableReporting = true
             });
         }
@@ -367,7 +369,7 @@ public class SingleEdit<T> : ViewModelService<T> where T : class
 
 
         // Deleted (or not):
-        if (ex == null)
+        if (ex is null && !ViewModelInstance.FailAssertion)
         {
             var deletedargs = new Events.CRUDEventArgs<T>(Enums.CRUD.Action.EntryDeleted, args.State, args.CurrentEntry);
             ViewModelInstance.RaiseViewModelEvent(deletedargs);
@@ -400,8 +402,8 @@ public class SingleEdit<T> : ViewModelService<T> where T : class
             {
                 IconReference = Events.MessageIcon.Error,
                 Title = Resources.Strings.ViewModel.UnhandledError_Title,
-                Content = string.Format(Resources.Strings.ViewModel.UnhandledError_Message, ex.Message),
-                StackTrace = ex.ToString(),
+                Content = string.Format(Resources.Strings.ViewModel.UnhandledError_Message, ex?.Message),
+                StackTrace = ex?.ToString() ?? "Assertion Exception",
                 EnableReporting = true
             });
         }

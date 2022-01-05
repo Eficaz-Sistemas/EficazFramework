@@ -449,6 +449,9 @@ public class ExpressionBuilderTests
         expression.ReturnType.Should().Be(typeof(bool));
         source.Where(expression.Compile()).ToList().Should().HaveCount(4);
 
+        builder.Items[0].SelectedProperty = null;
+        builder.Items[0].SelectedPropertyPath.Should().BeNull();
+
         builder.Dispose();
     }
 

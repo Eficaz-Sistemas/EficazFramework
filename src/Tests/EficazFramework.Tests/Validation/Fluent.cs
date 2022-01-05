@@ -329,6 +329,16 @@ public class FluentTests
 
         instance.CreatedIn = new System.DateTime(2020, 11, 6);
         validator.Validate(instance).Should().NotBeNullOrEmpty();
+
+        instance.CreatedIn = new System.DateTime(2020, 11, 3);
+        Validation.Fluent.Rules.Range<SampleObject> rule = (Validation.Fluent.Rules.Range<SampleObject>)validator.ValidationRules[0];
+        rule.MaximumDate = System.DateTime.MaxValue;
+        validator.Validate(instance).Should().BeNullOrEmpty();
+
+        rule.MaximumDate = new System.DateTime(2020, 11, 5);
+        rule.MinimumDate = System.DateTime.MinValue;
+        validator.Validate(instance).Should().BeNullOrEmpty();
+
     }
 
     [Test]

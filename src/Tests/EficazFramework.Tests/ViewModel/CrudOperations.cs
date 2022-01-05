@@ -161,9 +161,20 @@ public class CrudOperations
             PropertyName = "Name",
             Direction = Enums.Collection.SortOrientation.Asceding
         });
+        var service = Vm.GetSingleEdit();
+
+        service.CurrentEntry.Should().BeNull();
+        service.MoveToFirst();
+        service.CurrentEntry.Should().BeNull();
+        service.MoveNext();
+        service.CurrentEntry.Should().BeNull();
+        service.MovePrevious();
+        service.CurrentEntry.Should().BeNull();
+        service.MoveToLast();
+        service.CurrentEntry.Should().BeNull();
+
         Vm.Commands["Get"].Execute(null);
         Vm.Repository.DataContext.Should().HaveCount(100);
-        var service = Vm.GetSingleEdit();
         Vm.Repository.DataContext.IndexOf(service.CurrentEntry).Should().Be(0);
         service.MoveNext();
         Vm.Repository.DataContext.IndexOf(service.CurrentEntry).Should().Be(1);
@@ -175,6 +186,10 @@ public class CrudOperations
         Vm.Repository.DataContext.IndexOf(service.CurrentEntry).Should().Be(0);
         service.MoveTo(Vm.Repository.DataContext.First(b => b.Name == "Blog 50"));
         service.CurrentEntry.Name.Should().Be("Blog 50");
+
+        Vm.Commands["Cancel"].Execute(null); // but VM will lock
+        await Task.Delay(100);
+        Vm.State.Should().Be(Enums.CRUD.State.Leitura);
 
         Vm.Commands["Edit"].Execute(null);
         await Task.Delay(100);
@@ -252,7 +267,7 @@ public class CrudOperations
         service.CurrentEntry.Name = "Updated Item";
 
         Vm.Commands["Save"].Execute(null);
-        await Task.Delay(100);
+        await Task.Delay(150);
         resultContext.Should().BeNull();
         _saveNotified.Should().BeTrue();
 
@@ -375,9 +390,55 @@ public class CrudOperations
         Vm.ShowMessage -= Vm_Dialog;
     }
 
+    bool _exceptionRaised = false;
+    [Test, Order(14)]
+    public async Task SingleEdit_Exceptions()
+    {
+        Vm.ShowMessage += Vm_Dialog;
+        Vm.FailAssertion = true;
+        Vm.AddSingledEdit();
+        Vm.Repository.OrderByDefinitions.Add(new Collections.SortDescription()
+        {
+            PropertyName = "Name",
+            Direction = Enums.Collection.SortOrientation.Asceding
+        });
+        var service = Vm.GetSingleEdit();
+        Vm.Commands["Get"].Execute(null);
 
 
-    [Test, Order(9)]
+        Vm.Commands["Edit"].Execute(null);
+        await Task.Delay(100);
+
+        shouldCancel = false;
+        _exceptionRaised = false;
+        Vm.Commands["Save"].Execute(null);
+        await Task.Delay(250);
+        _exceptionRaised.Should().BeTrue();
+
+        _exceptionRaised = false;
+        Vm.Commands["Cancel"].Execute(null);
+        await Task.Delay(250);
+        _exceptionRaised.Should().BeTrue();
+
+
+        Vm.FailAssertion = false;
+        Vm.Commands["Cancel"].Execute(null);
+        await Task.Delay(250);
+
+        Vm.FailAssertion = true;
+        _refuseDelete = false;
+        shouldCancel = false;
+        _exceptionRaised = false;
+        Vm.Commands["Delete"].Execute(service.CurrentEntry);
+        await Task.Delay(250);
+        _exceptionRaised.Should().BeTrue();
+        _exceptionRaised = false;
+
+        Vm.ShowMessage -= Vm_Dialog;
+    }
+
+
+    [Test, Order(10)]
     public async Task SingleEditDetailTest_NavigationProperties()
     {
         Vm.AddSingledEdit().AddSingledEditDetail(dt => dt.Posts);
@@ -390,12 +451,31 @@ public class CrudOperations
         var serviceMain = Vm.GetSingleEdit();
         SingleEditDetail<Resources.Mocks.Classes.Blog, Resources.Mocks.Classes.Post> service = Vm.GetSingleEditDetail<Resources.Mocks.Classes.Blog, Resources.Mocks.Classes.Post>();
 
+        service.CurrentEntry.Should().BeNull();
+        service.MoveToFirst();
+        service.CurrentEntry.Should().BeNull();
+        service.MoveNext();
+        service.CurrentEntry.Should().BeNull();
+        service.MovePrevious();
+        service.CurrentEntry.Should().BeNull();
+        service.MoveToLast();
+        service.CurrentEntry.Should().BeNull();
+
         Vm.Commands["Get"].Execute(null);
         await Task.Delay(200);
         Vm.Repository.DataContext.Count(p => p.Posts.Count <= 0).Should().Be(0);
+
+        Vm.Commands["NewDetail_Posts"].Execute(null); // but VM will lock
+        await Task.Delay(100);
+        Vm.State.Should().Be(Enums.CRUD.State.Leitura);
+
+        Vm.Commands["DeleteDetail_Posts"].Execute(null); // but VM will lock
+        await Task.Delay(100);
+        Vm.State.Should().Be(Enums.CRUD.State.Leitura);
+
     }
 
-    [Test, Order(10)]
+    [Test, Order(11)]
     public async Task SingleEditDetailTest_Update()
     {
         Vm.ShowMessage += Vm_Dialog;
@@ -461,7 +541,7 @@ public class CrudOperations
         Vm.ViewModelAction -= VmActions_Validation;
     }
 
-    [Test, Order(11)]
+    [Test, Order(12)]
     public async Task SingleEditDetailTest_Insert()
     {
         Vm.ShowMessage += Vm_Dialog;
@@ -545,7 +625,7 @@ public class CrudOperations
         Vm.ViewModelAction -= VmActions_Validation;
     }
 
-    [Test, Order(12)]
+    [Test, Order(13)]
     public async Task SingleEditDetailTest_Delete()
     {
         Vm.ShowMessage += Vm_Dialog;
@@ -620,7 +700,7 @@ public class CrudOperations
         Vm.ViewModelAction -= VmActions_Validation;
     }
 
-    [Test, Order(13)]
+    [Test, Order(14)]
     public async Task SingleEditDetailTest_DeleteWithAutoCommit()
     {
         Vm.ShowMessage += Vm_Dialog;
@@ -672,9 +752,68 @@ public class CrudOperations
         Vm.ViewModelAction -= VmActions_Validation;
     }
 
+    [Test, Order(15)]
+    public async Task SingleEditDetail_Exceptions()
+    {
+        Vm.ShowMessage += Vm_Dialog;
+        Vm.FailAssertion = true;
+        Vm.WithNavigationByIndex().AddSingledEdit().AddSingledEditDetail(dt => dt.Posts);
+        Vm.Repository.OrderByDefinitions.Add(new Collections.SortDescription()
+        {
+            PropertyName = "Name",
+            Direction = Enums.Collection.SortOrientation.Asceding
+        });
+        ((Repositories.EntityRepository<Resources.Mocks.Classes.Blog>)Vm.Repository).Includes.Add(i => i.Posts);
+        var serviceMain = Vm.GetSingleEdit();
+        SingleEditDetail<Resources.Mocks.Classes.Blog, Resources.Mocks.Classes.Post> service = Vm.GetSingleEditDetail<Resources.Mocks.Classes.Blog, Resources.Mocks.Classes.Post>();
+        service.DetailValidator = new();
+        service.DetailValidator.Required(p => p.Title);
+        service.CommitOnSave = true;
+
+        Vm.Commands["Get"].Execute(null);
+        await Task.Delay(200);
+        serviceMain.MoveTo(Vm.Repository.DataContext.Single(b => b.Name == "Blog 1"));
+
+        Vm.Commands["Edit"].Execute(null);
+        await Task.Delay(100);
+
+        service.MoveToFirst();
+        Vm.Commands["EditDetail_Posts"].Execute(null);
+        await Task.Delay(100);
 
 
-    [Test, Order(14)]
+        shouldCancel = false;
+        _exceptionRaised = false;
+        Vm.Commands["SaveDetail_Posts"].Execute(null);
+        await Task.Delay(250);
+        _exceptionRaised.Should().BeTrue();
+
+        _exceptionRaised = false;
+        Vm.Commands["CancelDetail_Posts"].Execute(null);
+        await Task.Delay(250);
+        _exceptionRaised.Should().BeTrue();
+
+
+        Vm.FailAssertion = false;
+        Vm.Commands["CancelDetail_Posts"].Execute(null);
+        await Task.Delay(250);
+
+        Vm.FailAssertion = true;
+        _refuseDelete = false;
+        shouldCancel = false;
+        _exceptionRaised = false;
+        Vm.Commands["DeleteDetail_Posts"].Execute(service.CurrentEntry);
+        await Task.Delay(250);
+        _exceptionRaised.Should().BeTrue();
+        _exceptionRaised = false;
+
+        Vm.ShowMessage -= Vm_Dialog;
+
+    }
+
+
+
+    [Test, Order(16)]
     public async Task TabularEditDetailTest_NavigationProperties()
     {
         Vm.AddSingledEdit().AddTabularEditDetail(dt => dt.Posts);
@@ -692,7 +831,7 @@ public class CrudOperations
         Vm.Repository.DataContext.Count(p => p.Posts.Count <= 0).Should().Be(0);
     }
 
-    [Test, Order(15)]
+    [Test, Order(17)]
     public async Task TabularEditDetailTest_Update()
     {
         Vm.ShowMessage += Vm_Dialog;
@@ -753,7 +892,7 @@ public class CrudOperations
         Vm.ViewModelAction -= VmActions_Validation;
     }
 
-    [Test, Order(16)]
+    [Test, Order(18)]
     public async Task TabularEditDetailTest_Insert()
     {
         Vm.ShowMessage += Vm_Dialog;
@@ -834,7 +973,7 @@ public class CrudOperations
         Vm.ViewModelAction -= VmActions_Validation;
     }
 
-    [Test, Order(17)]
+    [Test, Order(19)]
     public async Task TabularEditDetailTest_Delete()
     {
         Vm.ShowMessage += Vm_Dialog;
@@ -954,6 +1093,9 @@ public class CrudOperations
         {
             _saveNotified = true;
         }
+
+        if (e.StackTrace != null)
+            _exceptionRaised = true;
     }
 
 }

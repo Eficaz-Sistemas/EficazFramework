@@ -298,6 +298,7 @@ public class ExpressionItem : INotifyPropertyChanged
         }
     }
 
+    [ExcludeFromCodeCoverage]
     private void OnValueType_Changed() => ValueToUpdate = null;
 
     [ExcludeFromCodeCoverage]

@@ -35,6 +35,9 @@ public class ExpressionPropertyTests
         operators.Should().HaveCount(7);
         operators.ElementAt(0).Description.Should().Be(Resources.Strings.DataDescriptions.eComparer_LowerThan);
         operators.ElementAt(4).Description.Should().Be(Resources.Strings.DataDescriptions.eComparer_Between);
+        expressionProperty.GetCollectionGenericType<object>().Should().BeNull();
+        expressionProperty.GetCollectionPropertyInfo<object>().Should().BeNull();
+        expressionProperty.GetEnumValues().Should().BeNull();
 
         // booleans
         ExpressionProperty boolProperty = new()
