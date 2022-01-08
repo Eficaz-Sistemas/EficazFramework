@@ -1,90 +1,70 @@
-﻿using EficazFramework.Configuration;
+﻿using EficazFramework.Repositories.Services;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.Extensions.DependencyInjection;
 using System;
 
 namespace EficazFramework.Providers;
 
-public enum ConnectionProviders
+
+public class DataProviderService : Microsoft.EntityFrameworkCore.Infrastructure.IDbContextOptionsExtension
 {
+    public DbContextOptionsExtensionInfo Info => null;
 
-    /// <summary>
-    /// Microsoft SQL Server
-    /// </summary>
-    MsSQL = 0,
-
-    /// <summary>
-    /// SQL Lite
-    /// </summary>
-    SqlLite = 1,
-
-    /// <summary>
-    /// MySQL
-    /// </summary>
-    MySQL = 2,
-
-    /// <summary>
-    /// Oracle SQL
-    /// </summary>
-    Oracle = 3,
-
-    /// <summary>
-    /// In Memory Database
-    /// </summary>
-    InMemory = 99
-}
-
-internal interface IDataProvider
-{
-    public string CreateConnectionString(string database, string username, string password);
-}
-
-internal class MsSqlServer : IDataProvider
-{
-    public string CreateConnectionString(string database, string username, string password)
+    public void ApplyServices(IServiceCollection services)
     {
-        if (DbConfiguration.UseConnectionStringEncryption == true)
-            return Security.Cryptography.Functions.Encript($"Data Source={EficazFramework.Configuration.DbConfiguration.Instance.ServerData};Database={database};User ID={username};Password={password};Connect Timeout={30};Integrated Security=False;MultipleActiveResultSets=True;", "#hd@cl$cb#");
+        services.AddScoped<Configuration.IDbConfig, Configuration.DbConfiguration>();
+    }
 
-        return $"Data Source={EficazFramework.Configuration.DbConfiguration.Instance.ServerData};Database={database};User ID={username};Password={password};Connect Timeout={30};Integrated Security=False;MultipleActiveResultSets=True;";
+    public void Validate(IDbContextOptions options)
+    {
     }
 }
 
-internal class SqlLite : IDataProvider
+public abstract class DataProviderBase
 {
-    public string CreateConnectionString(string database, string username, string password)
-    {
-        if (DbConfiguration.UseConnectionStringEncryption == true)
-        {
-            if (!string.IsNullOrEmpty(password))
-                return Security.Cryptography.Functions.Encript($"Data Source={database};Password={password};", "#hd@cl$cb#");
-            else
-                return Security.Cryptography.Functions.Encript($"Data Source={database};", "#hd@cl$cb#");
-        }
+    public abstract string GetCommandText(Repositories.Services.QueryBase queryBase);
 
-        if (!string.IsNullOrEmpty(password))
-            return $"Data Source={database};Password={password};";
-        else
-            return $"Data Source={database};";
-    }
+    public abstract void OnConfiguring(DbContextOptionsBuilder optionsBuilder, string database, string username, string password);
 }
 
-internal class MySQL : IDataProvider
-{
-    public string CreateConnectionString(string database, string username, string password)
-    {
-        if (DbConfiguration.UseConnectionStringEncryption == true)
-            return Security.Cryptography.Functions.Encript($"Server={EficazFramework.Configuration.DbConfiguration.Instance.ServerName};Port={EficazFramework.Configuration.DbConfiguration.Instance.Port};Database={database};Uid={username};Pwd={password};Connect Timeout={30};", "#hd@cl$cb#");
+//internal class SqlLite : DataProviderBase
+//{
+//    public string CreateConnectionString(string database, string username, string password)
+//    {
+//        if (DbConfiguration.UseConnectionStringEncryption == true)
+//        {
+//            if (!string.IsNullOrEmpty(password))
+//                return Security.Cryptography.Functions.Encript($"Data Source={database};Password={password};", "#hd@cl$cb#");
+//            else
+//                return Security.Cryptography.Functions.Encript($"Data Source={database};", "#hd@cl$cb#");
+//        }
 
-        return $"Server={EficazFramework.Configuration.DbConfiguration.Instance.ServerName};Port={EficazFramework.Configuration.DbConfiguration.Instance.Port};Database={database};Uid={username};Pwd={password};Connect Timeout={30};";
-    }
-}
+//        if (!string.IsNullOrEmpty(password))
+//            return $"Data Source={database};Password={password};";
+//        else
+//            return $"Data Source={database};";
+//    }
+//}
 
-internal class Oracle : IDataProvider
-{
-    public string CreateConnectionString(string database, string username, string password)
-    {
-        if (DbConfiguration.UseConnectionStringEncryption == true)
-            return Security.Cryptography.Functions.Encript($"Data Source={EficazFramework.Configuration.DbConfiguration.Instance.ServerData};Database={database};User ID={username};Password={password};Connect Timeout={30};Integrated Security=no;", "#hd@cl$cb#");
+//internal class MySQL : DataProviderBase
+//{
+//    public string CreateConnectionString(string database, string username, string password)
+//    {
+//        if (DbConfiguration.UseConnectionStringEncryption == true)
+//            return Security.Cryptography.Functions.Encript($"Server={EficazFramework.Configuration.DbConfiguration.Instance.ServerName};Port={EficazFramework.Configuration.DbConfiguration.Instance.Port};Database={database};Uid={username};Pwd={password};Connect Timeout={30};", "#hd@cl$cb#");
 
-        return $"Data Source={EficazFramework.Configuration.DbConfiguration.Instance.ServerData};Database={database};User ID={username};Password={password};Connect Timeout={30};Integrated Security=no;";
-    }
-}
+//        return $"Server={EficazFramework.Configuration.DbConfiguration.Instance.ServerName};Port={EficazFramework.Configuration.DbConfiguration.Instance.Port};Database={database};Uid={username};Pwd={password};Connect Timeout={30};";
+//    }
+//}
+
+//internal class Oracle : DataProviderBase
+//{
+//    public string CreateConnectionString(string database, string username, string password)
+//    {
+//        if (DbConfiguration.UseConnectionStringEncryption == true)
+//            return Security.Cryptography.Functions.Encript($"Data Source={EficazFramework.Configuration.DbConfiguration.Instance.ServerData};Database={database};User ID={username};Password={password};Connect Timeout={30};Integrated Security=no;", "#hd@cl$cb#");
+
+//        return $"Data Source={EficazFramework.Configuration.DbConfiguration.Instance.ServerData};Database={database};User ID={username};Password={password};Connect Timeout={30};Integrated Security=no;";
+//    }
+//}

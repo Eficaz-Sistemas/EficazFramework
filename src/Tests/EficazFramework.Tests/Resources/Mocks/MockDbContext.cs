@@ -8,27 +8,19 @@ using System.Threading.Tasks;
 namespace EficazFramework.Resources.Mocks;
 
 internal class MockDbContext : Microsoft.EntityFrameworkCore.DbContext
-{
-    public MockDbContext(EficazFramework.Providers.ConnectionProviders provider = Providers.ConnectionProviders.InMemory) : base()
-    {
-        _provider = provider;
-    }
-    
-    private readonly EficazFramework.Providers.ConnectionProviders _provider ;
-    internal readonly string _sqlLitePath = @$"{Environment.CurrentDirectory}\MockDb.db";
+{    
+    internal readonly static string MockDb = @$"{Environment.CurrentDirectory}\MockDb.db";
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
         base.OnConfiguring(optionsBuilder);
-        EficazFramework.Configuration.DbConfiguration.SettingsPath = Environment.CurrentDirectory;
-        EficazFramework.Configuration.DbConfiguration.UseConnectionStringEncryption = false;
-        EficazFramework.Configuration.DbConfiguration.Instance.Provider = _provider;
+        var svc = optionsBuilder.Options.FindExtension<Providers.DataProviderService>();
+        
 
-        if (_provider == Providers.ConnectionProviders.InMemory)
-            optionsBuilder.UseInMemoryDatabase("mockDatabase");
-
-        else if (_provider == Providers.ConnectionProviders.SqlLite)
-            optionsBuilder.UseSqlite(EficazFramework.Configuration.DbConfiguration.GetConnection(_sqlLitePath, "eficaz", null), (opt) => opt.CommandTimeout(int.MaxValue));
+        //EficazFramework.Configuration.DbConfiguration.SettingsPath = Environment.CurrentDirectory;
+        //EficazFramework.Configuration.DbConfiguration.UseConnectionStringEncryption = false;
+        //var provider = optionsBuilder.Options.GetExtension<Providers.IDataProviderService>();
+        //EficazFramework.Configuration.DbConfiguration.Instance.Provider?.OnConfiguring(optionsBuilder, MockDb, null, null);
     }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)

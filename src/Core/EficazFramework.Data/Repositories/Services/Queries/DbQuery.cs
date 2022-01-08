@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using System.Threading.Tasks;
+using EficazFramework.Providers;
 
 namespace EficazFramework.Repositories.Services
 {
@@ -49,14 +50,7 @@ namespace EficazFramework.Extensions
             if (cmd.Connection.State != System.Data.ConnectionState.Open) await cmd.Connection.OpenAsync();
             cmd.CommandTimeout = int.MaxValue;
 
-            cmd.CommandText = Configuration.DbConfiguration.Instance.Provider switch
-            {
-                Providers.ConnectionProviders.MsSQL => query.MsSqlCommandText,
-                Providers.ConnectionProviders.SqlLite => query.SqlLiteCommandText,
-                Providers.ConnectionProviders.MySQL => query.MySqlCommandText,
-                Providers.ConnectionProviders.Oracle => query.OracleCommandText,
-                _ => null
-            };
+            cmd.CommandText = Configuration.DbConfiguration.Instance.Provider?.GetCommandText(query);
 
             foreach (KeyValuePair<string, Func<object>> item in query.Parameters)
             {

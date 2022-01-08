@@ -47,14 +47,29 @@ public System.Nullable<int> Port { get; set; }
 
 ## DbConfiguration.Provider Property
 
-Retorna qual mecanismo de banco de dados será utilizado.
+Obtém a instância de provedor de dados para acesso a configurações, mapeamentos, etc
 
 ```csharp
-public EficazFramework.Providers.ConnectionProviders Provider { get; set; }
+public EficazFramework.Providers.DataProviderBase Provider { get; set; }
 ```
 
 #### Property Value
-[ConnectionProviders](EficazFramework.Providers/ConnectionProviders.md 'EficazFramework.Providers.ConnectionProviders')
+[EficazFramework.Providers.DataProviderBase](https://docs.microsoft.com/en-us/dotnet/api/EficazFramework.Providers.DataProviderBase 'EficazFramework.Providers.DataProviderBase')
+
+### Remarks
+
+<a name='EficazFramework.Configuration.DbConfiguration.ProviderId'></a>
+
+## DbConfiguration.ProviderId Property
+
+Retorna qual mecanismo de banco de dados será utilizado.
+
+```csharp
+public string ProviderId { get; set; }
+```
+
+#### Property Value
+[System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
 
 ### Remarks
 
