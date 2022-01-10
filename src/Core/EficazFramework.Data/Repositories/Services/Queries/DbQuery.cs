@@ -50,7 +50,7 @@ namespace EficazFramework.Extensions
             if (cmd.Connection.State != System.Data.ConnectionState.Open) await cmd.Connection.OpenAsync();
             cmd.CommandTimeout = int.MaxValue;
 
-            cmd.CommandText = Configuration.DbConfiguration.Instance.Provider?.GetCommandText(query);
+           // cmd.CommandText = Configuration.DbConfiguration.Instance.Provider?.GetCommandText(query);
 
             foreach (KeyValuePair<string, Func<object>> item in query.Parameters)
             {

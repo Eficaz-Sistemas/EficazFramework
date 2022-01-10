@@ -2,17 +2,46 @@
 using System.IO;
 using System.Xml.Serialization;
 using System.Text.Json.Serialization;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace EficazFramework.Configuration;
 
-public interface IDbConfig { }
+public interface IDbConfig 
+{
+    /// <summary>
+    /// Retorna o nome do Servidor
+    /// </summary>
+    /// <value></value>
+    /// <returns>String</returns>
+    /// <remarks></remarks>
+    public string ServerName { get; set; }
+
+    /// <summary>
+    /// Obtém a instância de provedor de dados para acesso a configurações, mapeamentos, etc
+    /// </summary>
+    /// <value></value>
+    /// <returns>String</returns>
+    /// <remarks></remarks>
+    [XmlIgnore()]
+    [JsonIgnore()]
+    public Providers.DataProviderBase Provider { get; set; }
+
+    /// <summary>
+    /// Informa ou define se as strings de conexão devem ser geradas de forma criptografada.
+    /// </summary>
+    public bool UseConnectionStringEncryption { get; set; }
+
+    public void Load();
+
+    public void Save();
+}
 
 public class DbConfiguration : IDbConfig, System.ComponentModel.INotifyPropertyChanged
 {
 
     private static readonly string _FILE = "data_provider.json";
 
-    public string SettingsPath { get; set; } = $@"{Environment.CurrentDirectory}\Settings\";
+    public static string SettingsPath { get; set; } = $@"{Environment.CurrentDirectory}\Settings\";
 
     private string _serverName = ".";
     /// <summary>
@@ -135,6 +164,19 @@ public class DbConfiguration : IDbConfig, System.ComponentModel.INotifyPropertyC
         CopyFrom(data);
     }
 
+    public static DbConfiguration Get()
+    {
+        DbConfiguration data = null;
+        if (!File.Exists(SettingsPath + _FILE))
+            data = new DbConfiguration();
+
+        if (data == null)
+            data = Serialization.SerializationOperations.FromJsonFile<DbConfiguration>(SettingsPath + _FILE);
+
+        return data;
+    }
+
+
     public void Save()
     {
         if (!Directory.Exists(SettingsPath))
@@ -154,4 +196,15 @@ public class DbConfiguration : IDbConfig, System.ComponentModel.INotifyPropertyC
     }
 
     public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+}
+
+public static class DbConfigurator
+{
+    public static IServiceCollection AddDbConfig(this IServiceCollection serviceCollection)
+    {
+        serviceCollection.AddScoped<IDbConfig, DbConfiguration>();
+        return serviceCollection;
+    }
+
+
 }

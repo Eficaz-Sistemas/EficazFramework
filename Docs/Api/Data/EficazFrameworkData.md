@@ -11,6 +11,10 @@
 | :--- | :--- |
 | [DbConfiguration](EficazFramework.Configuration/DbConfiguration.md 'EficazFramework.Configuration.DbConfiguration') | |
 
+| Interfaces | |
+| :--- | :--- |
+| [IDbConfig](EficazFramework.Configuration/IDbConfig.md 'EficazFramework.Configuration.IDbConfig') | |
+
 <a name='EficazFramework.Entities'></a>
 
 ## EficazFramework.Entities Namespace

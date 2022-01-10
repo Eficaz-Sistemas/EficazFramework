@@ -1,4 +1,5 @@
-﻿using EficazFramework.Repositories.Services;
+﻿using EficazFramework.Configuration;
+using EficazFramework.Repositories.Services;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.Extensions.DependencyInjection;
@@ -6,23 +7,18 @@ using System;
 
 namespace EficazFramework.Providers;
 
-
-public class DataProviderService : Microsoft.EntityFrameworkCore.Infrastructure.IDbContextOptionsExtension
-{
-    public DbContextOptionsExtensionInfo Info => null;
-
-    public void ApplyServices(IServiceCollection services)
-    {
-        services.AddScoped<Configuration.IDbConfig, Configuration.DbConfiguration>();
-    }
-
-    public void Validate(IDbContextOptions options)
-    {
-    }
-}
-
 public abstract class DataProviderBase
 {
+    public DataProviderBase(IDbConfig dbConfig)
+    {
+        _dbConfig = dbConfig;
+    }
+
+    readonly IDbConfig _dbConfig = null;
+    public IDbConfig DbConfig => _dbConfig;
+
+    public abstract string GetConnectionString(string database, string username, string password);
+
     public abstract string GetCommandText(Repositories.Services.QueryBase queryBase);
 
     public abstract void OnConfiguring(DbContextOptionsBuilder optionsBuilder, string database, string username, string password);
@@ -68,3 +64,12 @@ public abstract class DataProviderBase
 //        return $"Data Source={EficazFramework.Configuration.DbConfiguration.Instance.ServerData};Database={database};User ID={username};Password={password};Connect Timeout={30};Integrated Security=no;";
 //    }
 //}
+
+public static class Extension
+{
+    public static IServiceCollection AddDatabaseProvider<TDatabaseProvider>(this IServiceCollection serviceCollection) where TDatabaseProvider : DataProviderBase
+    {
+        serviceCollection.AddScoped<DataProviderBase, TDatabaseProvider>();
+        return serviceCollection;
+    }
+}

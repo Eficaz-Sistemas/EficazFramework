@@ -8,19 +8,22 @@ using System.Threading.Tasks;
 namespace EficazFramework.Resources.Mocks;
 
 internal class MockDbContext : Microsoft.EntityFrameworkCore.DbContext
-{    
+{
+    public MockDbContext(Configuration.IDbConfig dbConfig) : base()
+    {
+        _dbConfig = dbConfig;
+    }
+
+    Configuration.IDbConfig _dbConfig;
+
     internal readonly static string MockDb = @$"{Environment.CurrentDirectory}\MockDb.db";
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
-        base.OnConfiguring(optionsBuilder);
-        var svc = optionsBuilder.Options.FindExtension<Providers.DataProviderService>();
-        
+        if (!optionsBuilder.IsConfigured)
+            _dbConfig.Provider.OnConfiguring(optionsBuilder, null, null, null);
 
-        //EficazFramework.Configuration.DbConfiguration.SettingsPath = Environment.CurrentDirectory;
-        //EficazFramework.Configuration.DbConfiguration.UseConnectionStringEncryption = false;
-        //var provider = optionsBuilder.Options.GetExtension<Providers.IDataProviderService>();
-        //EficazFramework.Configuration.DbConfiguration.Instance.Provider?.OnConfiguring(optionsBuilder, MockDb, null, null);
+        base.OnConfiguring(optionsBuilder);
     }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
