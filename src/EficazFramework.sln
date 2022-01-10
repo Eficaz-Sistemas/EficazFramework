@@ -41,7 +41,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DataProviders", "DataProvid
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EficazFramework.Data.MsSqlServer", "DataProviders\EficazFramework.Data.MsSqlServer\EficazFramework.Data.MsSqlServer.csproj", "{6F4AF74B-1A50-4F8E-AFB0-F6BFCD7F5821}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EficazFramework.Data.InMemory", "DataProviders\EficazFramework.Data.InMemory\EficazFramework.Data.InMemory.csproj", "{611C370A-16DE-4EA3-B790-2B1E62DF605D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EficazFramework.Data.InMemory", "DataProviders\EficazFramework.Data.InMemory\EficazFramework.Data.InMemory.csproj", "{611C370A-16DE-4EA3-B790-2B1E62DF605D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EficazFramework.Data.SqlLite", "DataProviders\EficazFramework.Data.SqlLite\EficazFramework.Data.SqlLite.csproj", "{CC21D823-1563-46CB-9DDC-DE591C6A9342}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -104,6 +106,12 @@ Global
 		{611C370A-16DE-4EA3-B790-2B1E62DF605D}.Release|Any CPU.Build.0 = Release|Any CPU
 		{611C370A-16DE-4EA3-B790-2B1E62DF605D}.ReleaseDevOps|Any CPU.ActiveCfg = Release|Any CPU
 		{611C370A-16DE-4EA3-B790-2B1E62DF605D}.ReleaseDevOps|Any CPU.Build.0 = Release|Any CPU
+		{CC21D823-1563-46CB-9DDC-DE591C6A9342}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CC21D823-1563-46CB-9DDC-DE591C6A9342}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CC21D823-1563-46CB-9DDC-DE591C6A9342}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CC21D823-1563-46CB-9DDC-DE591C6A9342}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CC21D823-1563-46CB-9DDC-DE591C6A9342}.ReleaseDevOps|Any CPU.ActiveCfg = Release|Any CPU
+		{CC21D823-1563-46CB-9DDC-DE591C6A9342}.ReleaseDevOps|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -118,6 +126,7 @@ Global
 		{6733EC3A-A6E2-49DD-9ED1-9EEA3F0E9F73} = {2EF21EC5-D38B-49F2-AD36-5B871F378805}
 		{6F4AF74B-1A50-4F8E-AFB0-F6BFCD7F5821} = {0B99689E-69D3-4234-A3DA-D257FFF929B9}
 		{611C370A-16DE-4EA3-B790-2B1E62DF605D} = {0B99689E-69D3-4234-A3DA-D257FFF929B9}
+		{CC21D823-1563-46CB-9DDC-DE591C6A9342} = {0B99689E-69D3-4234-A3DA-D257FFF929B9}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {727FB557-A5D6-456A-81CB-C45F2F95FCEB}

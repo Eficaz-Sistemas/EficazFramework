@@ -10,31 +10,11 @@ public static class DbContext
 {
 
     /// <summary>
-    /// Verifica se a base de dados existe.
-    /// </summary>
-    public static bool Exists(this Microsoft.EntityFrameworkCore.DbContext context)
-    {
-        IDatabaseCreator creator = context.GetService<IDatabaseCreator>();
-        return creator.CanConnect();
-    }
-
-    /// <summary>
-    /// Verifica se a base de dados existe.
-    /// </summary>
-    public async static Task<bool> ExistsAsync(this Microsoft.EntityFrameworkCore.DbContext context)
-    {
-        IDatabaseCreator creator = context.GetService<IDatabaseCreator>();
-        return await creator.CanConnectAsync();
-    }
-
-    /// <summary>
     /// Verifica se todos os migrations foram devidamente aplicados
     /// </summary>
     public static bool AllMigrationsApplied(this Microsoft.EntityFrameworkCore.DbContext context)
     {
-        var applied = context.GetService<IHistoryRepository>().GetAppliedMigrations().Select(m => m.MigrationId);
-        var total = context.GetService<IMigrationsAssembly>().Migrations.Select(m => m.Key);
-        return !total.Except(applied).Any();
+        return context.AllMigrationsAppliedAsync().GetAwaiter().GetResult();
     }
 
     /// <summary>

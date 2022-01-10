@@ -40,3 +40,16 @@ string ServerName { get; set; }
 [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
 
 ### Remarks
+
+<a name='EficazFramework.Configuration.IDbConfig.UseConnectionStringEncryption'></a>
+
+## IDbConfig.UseConnectionStringEncryption Property
+
+Informa ou define se as strings de conexão devem ser geradas de forma criptografada.
+
+```csharp
+bool UseConnectionStringEncryption { get; set; }
+```
+
+#### Property Value
+[System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')

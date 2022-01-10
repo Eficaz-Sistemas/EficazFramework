@@ -17,6 +17,8 @@ public abstract class DataProviderBase
     readonly IDbConfig _dbConfig = null;
     public IDbConfig DbConfig => _dbConfig;
 
+    public abstract string Name { get; }
+
     public abstract string GetConnectionString(string database, string username, string password);
 
     public abstract string GetCommandText(Repositories.Services.QueryBase queryBase);

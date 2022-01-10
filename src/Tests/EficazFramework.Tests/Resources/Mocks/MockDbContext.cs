@@ -9,6 +9,8 @@ namespace EficazFramework.Resources.Mocks;
 
 internal class MockDbContext : Microsoft.EntityFrameworkCore.DbContext
 {
+    public MockDbContext() : base() { }
+
     public MockDbContext(Configuration.IDbConfig dbConfig) : base()
     {
         _dbConfig = dbConfig;
@@ -21,8 +23,16 @@ internal class MockDbContext : Microsoft.EntityFrameworkCore.DbContext
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
         if (!optionsBuilder.IsConfigured)
-            _dbConfig.Provider.OnConfiguring(optionsBuilder, null, null, null);
-
+        {
+            if (_dbConfig != null && _dbConfig.Provider != null)
+                _dbConfig.Provider.OnConfiguring(optionsBuilder, null, null, null);
+             else
+            {
+                _dbConfig = new Configuration.DbConfiguration() { UseConnectionStringEncryption = false};
+                Providers.SqlLite configurator = new(_dbConfig);
+                optionsBuilder.UseSqlite(configurator.GetConnectionString(MockDb, "myUser", null));
+            }
+        }
         base.OnConfiguring(optionsBuilder);
     }
 
