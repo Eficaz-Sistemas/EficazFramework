@@ -1,4 +1,4 @@
-# ![EficazFramework](../../Assets/GitHub-HeaderReadme.png)
+# <p align="center"> ![EficazFramework](../../Assets/GitHub-HeaderReadme.png)
 # Documentação
 ## Core
  - ### [EficazFramework.Data](Data/EficazFrameworkData.md)
