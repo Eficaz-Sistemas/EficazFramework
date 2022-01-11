@@ -3,7 +3,12 @@
 ## Core
  - ### [EficazFramework.Data](Data/EficazFrameworkData.md)
  - ### [EficazFramework.Utilities](Utilities/EficazFrameworkUtilities.md)
-
+ 
+## Provedores de Bancos de Dados (com EntityFrameworkCore)
+ - ### [EficazFramework.Data.InMemory](Data-Providers/InMemory/EficazFrameworkInMemoryDataProvider.md)
+ - ### [EficazFramework.Data.MsSqlServer](Data-Providers/MsSqlServer/EficazFrameworkMsSqlServerDataProvider.md)
+ - ### [EficazFramework.Data.SqlLite](Data-Providers/SqlLite/EficazFrameworkSqlLiteDataProvider.md)
+ 
 ## Específico por plataforma
  - ### [EficazFramework.Blazor](Web-Blazor/EficazFrameworkBlazor.md)
  - ### [EficazFramework.WPF](Desktop-WPF/EficazFrameworkWPF.md)

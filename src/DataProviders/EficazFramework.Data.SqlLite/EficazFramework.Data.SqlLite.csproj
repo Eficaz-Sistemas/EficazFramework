@@ -22,7 +22,7 @@
 		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
 		<ImplicitUsings>enable</ImplicitUsings>
 		<GenerateDocumentationFile>true</GenerateDocumentationFile>
-		<DefaultDocumentationFolder>..\..\..\Docs\Api\MsSqlServer</DefaultDocumentationFolder>
+		<DefaultDocumentationFolder>..\..\..\Docs\Api\Data-Providers\SqlLite</DefaultDocumentationFolder>
 		<DefaultDocumentationAssemblyPageName>EficazFramework MsSql Data Provider</DefaultDocumentationAssemblyPageName>
 		<DefaultDocumentationGeneratedPages>Assembly, Types, Methods</DefaultDocumentationGeneratedPages>
 		<DefaultDocumentationFileNameFactory>Folder</DefaultDocumentationFileNameFactory>
@@ -47,6 +47,14 @@
 	</ItemGroup>
 	
 	<ItemGroup>
+	  <PackageReference Include="DefaultDocumentation" Version="0.8.0-alpha2">
+	    <PrivateAssets>all</PrivateAssets>
+	    <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+	  </PackageReference>
+	  <PackageReference Include="EficazFramework.DocsApiPlugin" Version="1.0.1">
+	    <PrivateAssets>all</PrivateAssets>
+	    <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+	  </PackageReference>
 	  <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="6.0.1" />
 	</ItemGroup>
 	
