@@ -30,7 +30,7 @@ public class MsSqlServer : DataProviderBase
 public static class Extension
 {
     /// <summary>
-    /// Adiciona o provedor MsSqlServer ao contexto de Injeção de Depenência
+    /// Adiciona o provedor MsSqlServer ao contexto de Injeção de Dependência
     /// </summary>
     public static IServiceCollection AddSqlService(this IServiceCollection serviceCollection)
     {

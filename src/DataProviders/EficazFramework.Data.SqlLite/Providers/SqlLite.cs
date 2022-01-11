@@ -38,7 +38,7 @@ public class SqlLite : DataProviderBase
 public static class Extension
 {
     /// <summary>
-    /// Adiciona o provedor SqlLite ao contexto de Injeção de Depenência
+    /// Adiciona o provedor SqlLite ao contexto de Injeção de Dependência
     /// </summary>
     public static IServiceCollection AddSqlLiteService(this IServiceCollection serviceCollection)
     {

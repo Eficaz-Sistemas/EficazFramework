@@ -28,7 +28,7 @@ public class InMemory : DataProviderBase
 public static class Extension
 {
     /// <summary>
-    /// Adiciona o provedor InMemory ao contexto de Injeção de Depenência
+    /// Adiciona o provedor InMemory ao contexto de Injeção de Dependência
     /// </summary>
     public static IServiceCollection AddInMemoryService(this IServiceCollection serviceCollection)
     {
