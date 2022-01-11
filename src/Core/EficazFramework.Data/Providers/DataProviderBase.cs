@@ -21,29 +21,8 @@ public abstract class DataProviderBase
 
     public abstract string GetConnectionString(string database, string username, string password);
 
-    public abstract string GetCommandText(Repositories.Services.QueryBase queryBase);
-
     public abstract void OnConfiguring(DbContextOptionsBuilder optionsBuilder, string database, string username, string password);
 }
-
-//internal class SqlLite : DataProviderBase
-//{
-//    public string CreateConnectionString(string database, string username, string password)
-//    {
-//        if (DbConfiguration.UseConnectionStringEncryption == true)
-//        {
-//            if (!string.IsNullOrEmpty(password))
-//                return Security.Cryptography.Functions.Encript($"Data Source={database};Password={password};", "#hd@cl$cb#");
-//            else
-//                return Security.Cryptography.Functions.Encript($"Data Source={database};", "#hd@cl$cb#");
-//        }
-
-//        if (!string.IsNullOrEmpty(password))
-//            return $"Data Source={database};Password={password};";
-//        else
-//            return $"Data Source={database};";
-//    }
-//}
 
 //internal class MySQL : DataProviderBase
 //{

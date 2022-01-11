@@ -22,8 +22,6 @@ public class MsSqlServer : DataProviderBase
         return $"Data Source={((DbConfiguration)DbConfig).ServerData};Database={database};User ID={username};Password={password};Connect Timeout={30};Integrated Security=False;MultipleActiveResultSets=True;";
     }
 
-    public override string GetCommandText([NotNull] QueryBase queryBase) => queryBase.MsSqlCommandText;
-
     public override void OnConfiguring(DbContextOptionsBuilder optionsBuilder, string database, string username, string password) => optionsBuilder.UseSqlServer(GetConnectionString(database, username, password));
 }
 public static class Extension

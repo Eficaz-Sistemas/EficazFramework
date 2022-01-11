@@ -11,12 +11,12 @@ internal class MockDbContext : Microsoft.EntityFrameworkCore.DbContext
 {
     public MockDbContext() : base() { }
 
-    public MockDbContext(Configuration.IDbConfig dbConfig) : base()
+    public MockDbContext(Providers.DataProviderBase provider) : base()
     {
-        _dbConfig = dbConfig;
+        _provider = provider;
     }
 
-    Configuration.IDbConfig _dbConfig;
+    Providers.DataProviderBase _provider;
 
     internal readonly static string MockDb = @$"{Environment.CurrentDirectory}\MockDb.db";
 
@@ -24,12 +24,12 @@ internal class MockDbContext : Microsoft.EntityFrameworkCore.DbContext
     {
         if (!optionsBuilder.IsConfigured)
         {
-            if (_dbConfig != null && _dbConfig.Provider != null)
-                _dbConfig.Provider.OnConfiguring(optionsBuilder, null, null, null);
+            if (_provider != null && _provider.DbConfig != null)
+                _provider.OnConfiguring(optionsBuilder, MockDb, "myUser", null);
              else
             {
-                _dbConfig = new Configuration.DbConfiguration() { UseConnectionStringEncryption = false};
-                Providers.SqlLite configurator = new(_dbConfig);
+                var config = new Configuration.DbConfiguration() { UseConnectionStringEncryption = false};
+                Providers.SqlLite configurator = new(config);
                 optionsBuilder.UseSqlite(configurator.GetConnectionString(MockDb, "myUser", null));
             }
         }

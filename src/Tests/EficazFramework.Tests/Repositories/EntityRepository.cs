@@ -8,11 +8,43 @@ using Microsoft.EntityFrameworkCore;
 using EficazFramework.Extensions;
 using System.Collections.Generic;
 using System.Threading;
+using EficazFramework.Configuration;
+using Microsoft.Extensions.DependencyInjection;
+using EficazFramework.Providers;
 
 namespace EficazFramework.Repositories;
 
 public class EntityRepositoryTests
 {
+    [SetUp]
+    public void Setup()
+    {
+        DbConfiguration.SettingsPath = $@"{Environment.CurrentDirectory}\";
+        Resources.Mocks.MockDbContext dbContext = new();
+        dbContext.Database.EnsureCreated();
+
+        // seed
+        for (int i = 0; i < 100; i++)
+        {
+            dbContext.Add(new Resources.Mocks.Classes.Blog()
+            {
+                Id = System.Guid.NewGuid(),
+                Name = $"Blog {i}"
+            });
+        }
+        dbContext.SaveChanges();
+        dbContext.Dispose();
+    }
+
+    [TearDown]
+    public void TearDown()
+    {
+        Resources.Mocks.MockDbContext ctx = new();
+        ctx.Database.EnsureDeleted();
+        ctx.Dispose();
+        System.IO.File.Delete($"{DbConfiguration.SettingsPath}data_provider.json");
+    }
+
     [Test, Order(1)]
     public async Task SelectTest()
     {
@@ -22,23 +54,28 @@ public class EntityRepositoryTests
         repository.PageSize = 10;
         repository.Get();
         repository.DbContext.Should().NotBeNull();
-        repository.DataContext.Should().HaveCount(0);
+        repository.DataContext.Should().HaveCount(10);
         repository.OrderByDefinitions.Add(new Collections.SortDescription() { PropertyName = "Name", Direction = Enums.Collection.SortOrientation.Asceding });
         repository.OrderByDefinitions.Add(new Collections.SortDescription() { PropertyName = "Id", Direction = Enums.Collection.SortOrientation.Asceding });
+        repository.PageSize = 0;
         await repository.GetAsync(default);
-        repository.DataContext.Should().HaveCount(0);
+        repository.DataContext.Should().HaveCount(100);
         repository.CurrentPage.Should().Be(1);
         repository.OrderByDefinitions[0].Direction = Enums.Collection.SortOrientation.Descending;
         await repository.GetAsync(default);
-        repository.DataContext.Should().HaveCount(0);
+        repository.DataContext.Should().HaveCount(100);
         repository.CurrentPage.Should().Be(1);
 
         repository.OrderByDefinitions.Clear();
         repository.CustomFetch = async () => (await repository.DbContext.Set<Resources.Mocks.Classes.Blog>().ToListAsync()).ToObservableCollection<Resources.Mocks.Classes.Blog>();
         var result = repository.FetchItems();
-        result.Count.Should().Be(0);
+        result.Count.Should().Be(100);
         result = await repository.FetchItemsAsync(default);
-        result.Count.Should().Be(0);
+        result.Count.Should().Be(100);
+
+        System.Guid tmp = System.Guid.NewGuid();
+        repository.Filter = (f) => f.Id == tmp;
+        await repository.GetAsync(default);
 
         CancellationTokenSource tks = new();
         repository.DbContextInstanceRequest += (s, e) => tks.Cancel();
@@ -49,11 +86,6 @@ public class EntityRepositoryTests
         repository.DbContextInstanceRequest -= (s, e) => tks.Cancel();
         repository.DbContextInstanceRequest -= (s, e) => e.Instance = new Resources.Mocks.MockDbContext();
         repository.Dispose();
-
-
-        repository.Filter = (f) => f.Id == System.Guid.NewGuid();
-        await repository.GetAsync(default);
-
     }
 
     [Test, Order(2)]
@@ -116,30 +148,30 @@ public class EntityRepositoryTests
         repository.Add(newEntry, false);
         repository.DataContext.Should().HaveCount(1);
 
-        repository.DbContext.Set<Resources.Mocks.Classes.Blog>().ToList().Should().HaveCount(0);
+        repository.DbContext.Set<Resources.Mocks.Classes.Blog>().ToList().Should().HaveCount(100);
 
         var newEntry2 = repository.Create();
         newEntry2.Name = "My Second New Blog!";
         await repository.AddAsync(newEntry2, false, default);
         repository.DataContext.Should().HaveCount(2);
 
-        repository.DbContext.Set<Resources.Mocks.Classes.Blog>().ToList().Should().HaveCount(0);
+        repository.DbContext.Set<Resources.Mocks.Classes.Blog>().ToList().Should().HaveCount(100);
 
         var ex = await repository.CommitAsync(default);
         ex.Should().BeNull();
-        repository.DbContext.Set<Resources.Mocks.Classes.Blog>().ToList().Should().HaveCount(2);
+        repository.DbContext.Set<Resources.Mocks.Classes.Blog>().ToList().Should().HaveCount(102);
 
         var newEntry3 = repository.Create();
         newEntry3.Name = "Another New Blog";
         repository.Add(newEntry3, true);
         repository.DataContext.Should().HaveCount(3);
-        repository.DbContext.Set<Resources.Mocks.Classes.Blog>().ToList().Should().HaveCount(3);
+        repository.DbContext.Set<Resources.Mocks.Classes.Blog>().ToList().Should().HaveCount(103);
 
         var newEntry4 = repository.Create();
         newEntry4.Name = "The last blog";
         await repository.AddAsync(newEntry4, true, default);
         repository.DataContext.Should().HaveCount(4);
-        repository.DbContext.Set<Resources.Mocks.Classes.Blog>().ToList().Should().HaveCount(4);
+        repository.DbContext.Set<Resources.Mocks.Classes.Blog>().ToList().Should().HaveCount(104);
 
         repository.DbContextInstanceRequest -= (s, e) => e.Instance = new Resources.Mocks.MockDbContext();
     }
@@ -257,17 +289,14 @@ public class EntityRepositoryTests
     public async Task RunCommandTest()
     {
         var repository = new EntityRepository<Resources.Mocks.Classes.Blog>();
-        repository.DbContextInstanceRequest += (s, e) => e.Instance = new Resources.Mocks.MockDbContext(Providers.ConnectionProviders.SqlLite);
+        repository.DbContextInstanceRequest += (s, e) => e.Instance = new Resources.Mocks.MockDbContext();
         repository.PrepareDbContext();
 
-        (await repository.DbContext.Database.EnsureCreatedAsync()).Should().BeTrue();
+        await repository.DbContext.Database.EnsureCreatedAsync();
         await repository.RunCommandAsync("UPDATE Blogs SET Name = 'no name'");
         await repository.DbContext.Database.CloseConnectionAsync();
-        repository.DbContextInstanceRequest -= (s, e) => e.Instance = new Resources.Mocks.MockDbContext(Providers.ConnectionProviders.SqlLite);
+        repository.DbContextInstanceRequest -= (s, e) => e.Instance = new Resources.Mocks.MockDbContext();
         repository.Dispose();
-
-        var dbcontext = new Resources.Mocks.MockDbContext(Providers.ConnectionProviders.SqlLite);
-        (await dbcontext.Database.EnsureDeletedAsync()).Should().BeTrue();
     }
 
 }

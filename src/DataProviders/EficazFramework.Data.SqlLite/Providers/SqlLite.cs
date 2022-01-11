@@ -29,8 +29,6 @@ public class SqlLite : DataProviderBase
             return $"Data Source={database};";
     }
 
-    public override string GetCommandText([NotNull] QueryBase queryBase) => queryBase.MsSqlCommandText;
-
     public override void OnConfiguring(DbContextOptionsBuilder optionsBuilder, string database, string username, string password) => optionsBuilder.UseSqlite(GetConnectionString(database, username, password));
 }
 public static class Extension

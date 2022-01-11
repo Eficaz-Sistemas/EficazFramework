@@ -23,7 +23,7 @@ public class EfCore<TProvider> where TProvider : DataProviderBase
         // DI Setup
         DbConfiguration.SettingsPath = $@"{Environment.CurrentDirectory}\";
         _serviceCollection = new ServiceCollection();
-        _serviceCollection.AddScoped<IDbConfig, DbConfiguration>();
+        _serviceCollection.AddDbConfig(false);
         _serviceCollection.AddScoped<DataProviderBase, TProvider>();
         _provider = _serviceCollection.BuildServiceProvider();
 
@@ -31,11 +31,11 @@ public class EfCore<TProvider> where TProvider : DataProviderBase
         Vm = new ViewModel<Resources.Mocks.Classes.Blog>();
         Vm.AddEntityFramework();
         var dbContextRepo = (EficazFramework.Repositories.EntityRepository<Resources.Mocks.Classes.Blog>)Vm.Repository;
-        ((EficazFramework.Repositories.EntityRepository<Resources.Mocks.Classes.Blog>)Vm.Repository).DbContextInstanceRequest += (s, e) => e.Instance = new Resources.Mocks.MockDbContext(_provider.GetService<IDbConfig>());
+        ((EficazFramework.Repositories.EntityRepository<Resources.Mocks.Classes.Blog>)Vm.Repository).DbContextInstanceRequest += (s, e) => e.Instance = new Resources.Mocks.MockDbContext(_provider.GetService<DataProviderBase>());
 
         // seed
         dbContextRepo.PrepareDbContext();
-        (await dbContextRepo.DbContext.Database.EnsureCreatedAsync()).Should().BeTrue();
+        await dbContextRepo.DbContext.Database.EnsureCreatedAsync();
         for (int i = 0; i < 100; i++)
         {
             dbContextRepo.DbContext.Add(new Resources.Mocks.Classes.Blog()
@@ -52,11 +52,11 @@ public class EfCore<TProvider> where TProvider : DataProviderBase
     [TearDown]
     public async Task ReleaseTempData()
     {
-        ((EficazFramework.Repositories.EntityRepository<Resources.Mocks.Classes.Blog>)Vm.Repository).DbContextInstanceRequest -= (s, e) => e.Instance = new Resources.Mocks.MockDbContext(_provider.GetService<IDbConfig>());
+        ((EficazFramework.Repositories.EntityRepository<Resources.Mocks.Classes.Blog>)Vm.Repository).DbContextInstanceRequest -= (s, e) => e.Instance = new Resources.Mocks.MockDbContext(_provider.GetService<DataProviderBase>());
         Vm.Dispose();
 
-        var ctb = new Resources.Mocks.MockDbContext(_provider.GetService<IDbConfig>());
-        (await ctb.Database.EnsureDeletedAsync()).Should().BeTrue();
+        var ctb = new Resources.Mocks.MockDbContext(_provider.GetService<DataProviderBase>());
+        await ctb.Database.EnsureDeletedAsync();
     }
 
     [Test, Order(1)]

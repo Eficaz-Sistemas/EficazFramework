@@ -38,7 +38,6 @@ public interface IDbConfig
 
 public class DbConfiguration : IDbConfig, System.ComponentModel.INotifyPropertyChanged
 {
-
     private static readonly string _FILE = "data_provider.json";
 
     public static string SettingsPath { get; set; } = $@"{Environment.CurrentDirectory}\Settings\";
@@ -200,11 +199,16 @@ public class DbConfiguration : IDbConfig, System.ComponentModel.INotifyPropertyC
 
 public static class DbConfigurator
 {
-    public static IServiceCollection AddDbConfig(this IServiceCollection serviceCollection)
+    public static IServiceCollection AddDbConfig(this IServiceCollection serviceCollection, bool useEncription = false)
     {
-        serviceCollection.AddScoped<IDbConfig, DbConfiguration>();
+        serviceCollection.AddScoped<IDbConfig, DbConfiguration>(x =>
+        { 
+            var result = ActivatorUtilities.CreateInstance<DbConfiguration>(x);
+            result.UseConnectionStringEncryption = useEncription;
+            return result;
+        });
+
         return serviceCollection;
     }
-
 
 }

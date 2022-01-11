@@ -25,7 +25,7 @@ public class CrudOperations
         });
 
         var dbContextRepo = (EficazFramework.Repositories.EntityRepository<Resources.Mocks.Classes.Blog>)Vm.Repository;
-        ((EficazFramework.Repositories.EntityRepository<Resources.Mocks.Classes.Blog>)Vm.Repository).DbContextInstanceRequest += (s, e) => e.Instance = new Resources.Mocks.MockDbContext(Providers.ConnectionProviders.SqlLite);
+        ((EficazFramework.Repositories.EntityRepository<Resources.Mocks.Classes.Blog>)Vm.Repository).DbContextInstanceRequest += (s, e) => e.Instance = new Resources.Mocks.MockDbContext();
 
         // seed
         dbContextRepo.PrepareDbContext();
@@ -51,12 +51,12 @@ public class CrudOperations
     }
 
     [TearDown]
-    public async Task ReleaseTempData()
+    public async Task TearDown()
     {
-        ((EficazFramework.Repositories.EntityRepository<Resources.Mocks.Classes.Blog>)Vm.Repository).DbContextInstanceRequest -= (s, e) => e.Instance = new Resources.Mocks.MockDbContext(Providers.ConnectionProviders.SqlLite);
+        ((EficazFramework.Repositories.EntityRepository<Resources.Mocks.Classes.Blog>)Vm.Repository).DbContextInstanceRequest -= (s, e) => e.Instance = new Resources.Mocks.MockDbContext();
         Vm.Dispose();
 
-        var ctb = new Resources.Mocks.MockDbContext(Providers.ConnectionProviders.SqlLite);
+        var ctb = new Resources.Mocks.MockDbContext();
         (await ctb.Database.EnsureDeletedAsync()).Should().BeTrue();
     }
 
