@@ -13,5 +13,3 @@ Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.O
 | :--- | :--- |
 | [AllMigrationsApplied(this DbContext)](EficazFramework.Extensions/DbContext/AllMigrationsApplied(thisDbContext).md 'EficazFramework.Extensions.DbContext.AllMigrationsApplied(this Microsoft.EntityFrameworkCore.DbContext)') | Verifica se todos os migrations foram devidamente aplicados |
 | [AllMigrationsAppliedAsync(this DbContext)](EficazFramework.Extensions/DbContext/AllMigrationsAppliedAsync(thisDbContext).md 'EficazFramework.Extensions.DbContext.AllMigrationsAppliedAsync(this Microsoft.EntityFrameworkCore.DbContext)') | Verifica se todos os migrations foram devidamente aplicados |
-| [Exists(this DbContext)](EficazFramework.Extensions/DbContext/Exists(thisDbContext).md 'EficazFramework.Extensions.DbContext.Exists(this Microsoft.EntityFrameworkCore.DbContext)') | Verifica se a base de dados existe. |
-| [ExistsAsync(this DbContext)](EficazFramework.Extensions/DbContext/ExistsAsync(thisDbContext).md 'EficazFramework.Extensions.DbContext.ExistsAsync(this Microsoft.EntityFrameworkCore.DbContext)') | Verifica se a base de dados existe. |

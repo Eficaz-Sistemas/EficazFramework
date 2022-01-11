@@ -16,11 +16,6 @@ EficazFramework.Validation.IFluentValidatableClass
 
 Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.Object 'System.Object') &#129106; EntityBase
 
-Derived  
-&#8627; [Role](EficazFramework.Security/Role.md 'EficazFramework.Security.Role')  
-&#8627; [RoleEditor](EficazFramework.Security/RoleEditor.md 'EficazFramework.Security.RoleEditor')  
-&#8627; [RoleMember](EficazFramework.Security/RoleMember.md 'EficazFramework.Security.RoleMember')
-
 Implements [EficazFramework.Entities.IEntity](https://docs.microsoft.com/en-us/dotnet/api/EficazFramework.Entities.IEntity 'EficazFramework.Entities.IEntity'), [System.ComponentModel.INotifyPropertyChanged](https://docs.microsoft.com/en-us/dotnet/api/System.ComponentModel.INotifyPropertyChanged 'System.ComponentModel.INotifyPropertyChanged'), [System.ComponentModel.INotifyDataErrorInfo](https://docs.microsoft.com/en-us/dotnet/api/System.ComponentModel.INotifyDataErrorInfo 'System.ComponentModel.INotifyDataErrorInfo'), [EficazFramework.Validation.IFluentValidatableClass](https://docs.microsoft.com/en-us/dotnet/api/EficazFramework.Validation.IFluentValidatableClass 'EficazFramework.Validation.IFluentValidatableClass')
 
 ### Remarks

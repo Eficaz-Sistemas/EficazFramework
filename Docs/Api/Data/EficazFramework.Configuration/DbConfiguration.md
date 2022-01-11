@@ -5,12 +5,13 @@
 
 ```csharp
 public class DbConfiguration :
+EficazFramework.Configuration.IDbConfig,
 System.ComponentModel.INotifyPropertyChanged
 ```
 
 Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.Object 'System.Object') &#129106; DbConfiguration
 
-Implements [System.ComponentModel.INotifyPropertyChanged](https://docs.microsoft.com/en-us/dotnet/api/System.ComponentModel.INotifyPropertyChanged 'System.ComponentModel.INotifyPropertyChanged')
+Implements [IDbConfig](EficazFramework.Configuration/IDbConfig.md 'EficazFramework.Configuration.IDbConfig'), [System.ComponentModel.INotifyPropertyChanged](https://docs.microsoft.com/en-us/dotnet/api/System.ComponentModel.INotifyPropertyChanged 'System.ComponentModel.INotifyPropertyChanged')
 ### Properties
 
 <a name='EficazFramework.Configuration.DbConfiguration.InstanceName'></a>
@@ -47,14 +48,31 @@ public System.Nullable<int> Port { get; set; }
 
 ## DbConfiguration.Provider Property
 
+Obtém a instância de provedor de dados para acesso a configurações, mapeamentos, etc
+
+```csharp
+public EficazFramework.Providers.DataProviderBase Provider { get; set; }
+```
+
+Implements [Provider](EficazFramework.Configuration/IDbConfig.md#EficazFramework.Configuration.IDbConfig.Provider 'EficazFramework.Configuration.IDbConfig.Provider')
+
+#### Property Value
+[EficazFramework.Providers.DataProviderBase](https://docs.microsoft.com/en-us/dotnet/api/EficazFramework.Providers.DataProviderBase 'EficazFramework.Providers.DataProviderBase')
+
+### Remarks
+
+<a name='EficazFramework.Configuration.DbConfiguration.ProviderId'></a>
+
+## DbConfiguration.ProviderId Property
+
 Retorna qual mecanismo de banco de dados será utilizado.
 
 ```csharp
-public EficazFramework.Providers.ConnectionProviders Provider { get; set; }
+public string ProviderId { get; set; }
 ```
 
 #### Property Value
-[ConnectionProviders](EficazFramework.Providers/ConnectionProviders.md 'EficazFramework.Providers.ConnectionProviders')
+[System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
 
 ### Remarks
 
@@ -82,6 +100,8 @@ Retorna o nome do Servidor
 ```csharp
 public string ServerName { get; set; }
 ```
+
+Implements [ServerName](EficazFramework.Configuration/IDbConfig.md#EficazFramework.Configuration.IDbConfig.ServerName 'EficazFramework.Configuration.IDbConfig.ServerName')
 
 #### Property Value
 [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')

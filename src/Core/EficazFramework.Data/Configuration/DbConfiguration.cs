@@ -2,12 +2,42 @@
 using System.IO;
 using System.Xml.Serialization;
 using System.Text.Json.Serialization;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace EficazFramework.Configuration;
 
-public class DbConfiguration : System.ComponentModel.INotifyPropertyChanged
+public interface IDbConfig 
 {
+    /// <summary>
+    /// Retorna o nome do Servidor
+    /// </summary>
+    /// <value></value>
+    /// <returns>String</returns>
+    /// <remarks></remarks>
+    public string ServerName { get; set; }
 
+    /// <summary>
+    /// Obtém a instância de provedor de dados para acesso a configurações, mapeamentos, etc
+    /// </summary>
+    /// <value></value>
+    /// <returns>String</returns>
+    /// <remarks></remarks>
+    [XmlIgnore()]
+    [JsonIgnore()]
+    public Providers.DataProviderBase Provider { get; set; }
+
+    /// <summary>
+    /// Informa ou define se as strings de conexão devem ser geradas de forma criptografada.
+    /// </summary>
+    public bool UseConnectionStringEncryption { get; set; }
+
+    public void Load();
+
+    public void Save();
+}
+
+public class DbConfiguration : IDbConfig, System.ComponentModel.INotifyPropertyChanged
+{
     private static readonly string _FILE = "data_provider.json";
 
     public static string SettingsPath { get; set; } = $@"{Environment.CurrentDirectory}\Settings\";
@@ -21,11 +51,7 @@ public class DbConfiguration : System.ComponentModel.INotifyPropertyChanged
     /// <remarks></remarks>
     public string ServerName
     {
-        get
-        {
-            return _serverName;
-        }
-
+        get => _serverName;
         set
         {
             _serverName = value;
@@ -43,11 +69,7 @@ public class DbConfiguration : System.ComponentModel.INotifyPropertyChanged
     /// <remarks></remarks>
     public string InstanceName
     {
-        get
-        {
-            return _instanceName;
-        }
-
+        get => _instanceName;
         set
         {
             _instanceName = value;
@@ -69,37 +91,29 @@ public class DbConfiguration : System.ComponentModel.INotifyPropertyChanged
         get
         {
             if ((Port.HasValue == true && Port > 0) == true)
-            {
                 return $@"{_serverName}\{_instanceName},{_port}";
-            }
             else
-            {
                 return $@"{_serverName}\{_instanceName}";
-            }
         }
     }
 
-    private EficazFramework.Providers.ConnectionProviders _provider = EficazFramework.Providers.ConnectionProviders.MsSQL;
+    /// <summary>
+    /// Obtém a instância de provedor de dados para acesso a configurações, mapeamentos, etc
+    /// </summary>
+    /// <value></value>
+    /// <returns>String</returns>
+    /// <remarks></remarks>
+    [XmlIgnore()]
+    [JsonIgnore()]
+    public Providers.DataProviderBase Provider { get; set; }
+
     /// <summary>
     /// Retorna qual mecanismo de banco de dados será utilizado.
     /// </summary>
     /// <value></value>
     /// <returns>eConnectionProviders</returns>
     /// <remarks></remarks>
-    public EficazFramework.Providers.ConnectionProviders Provider
-    {
-        get
-        {
-            return _provider;
-        }
-
-        set
-        {
-            _provider = value;
-            PropertyChanged?.Invoke(this, new System.ComponentModel.PropertyChangedEventArgs(nameof(Provider)));
-            Save();
-        }
-    }
+    public string ProviderId { get; set; }
 
     private int? _port = default;
     /// <summary>
@@ -110,11 +124,7 @@ public class DbConfiguration : System.ComponentModel.INotifyPropertyChanged
     /// <remarks></remarks>
     public int? Port
     {
-        get
-        {
-            return _port;
-        }
-
+        get => _port;
         set
         {
             _port = value;
@@ -122,19 +132,12 @@ public class DbConfiguration : System.ComponentModel.INotifyPropertyChanged
             Save();
         }
     }
-    public bool ShouldSerializePort()
-    {
-        return Port.HasValue;
-    }
+    public bool ShouldSerializePort() => Port.HasValue;
 
     private bool _singleTennant = false;
     public bool SingleTennant
     {
-        get
-        {
-            return _singleTennant;
-        }
-
+        get => _singleTennant;
         set
         {
             _singleTennant = value;
@@ -143,64 +146,69 @@ public class DbConfiguration : System.ComponentModel.INotifyPropertyChanged
         }
     }
 
-    private static DbConfiguration _singleton = new();
-    public static DbConfiguration Instance
-    {
-        get
-        {
+    public bool UseConnectionStringEncryption { get; set; } = true;
 
-            return _singleton;
-        }
-    }
-
-    public static bool UseConnectionStringEncryption { get; set; } = true;
-
-    public static string GetConnection(string database, string username, string password)
-    {
-        EficazFramework.Providers.IDataProvider provider = Instance.Provider switch
-        {
-            EficazFramework.Providers.ConnectionProviders.MsSQL => new EficazFramework.Providers.MsSqlServer(),
-            EficazFramework.Providers.ConnectionProviders.SqlLite => new EficazFramework.Providers.SqlLite(),
-            EficazFramework.Providers.ConnectionProviders.MySQL => new EficazFramework.Providers.MySQL(),
-            EficazFramework.Providers.ConnectionProviders.Oracle => new EficazFramework.Providers.Oracle(),
-            _ => null
-        };
-
-        if (provider is null)
-            return null;
-
-        string result = provider.CreateConnectionString(database, username, password);
-        return result;
-    }
-    public static void Load()
+    public void Load()
     {
         DbConfiguration data = null;
         if (!File.Exists(SettingsPath + _FILE))
         {
-            if (!Directory.Exists(SettingsPath))
-                Directory.CreateDirectory(SettingsPath);
             data = new DbConfiguration();
-            Serialization.SerializationOperations.ToJsonFile(data, SettingsPath + _FILE);
+            Save();
         }
 
-        if (data != null)
-        {
-            _singleton = data;
-        }
-        else
-        {
+        if (data == null)
             data = Serialization.SerializationOperations.FromJsonFile<DbConfiguration>(SettingsPath + _FILE);
-        }
 
-        _singleton = data;
+        CopyFrom(data);
     }
 
-    public static void Save()
+    public static DbConfiguration Get()
     {
-        if (Instance is null)
-            return;
-        Serialization.SerializationOperations.ToJsonFile(Instance, SettingsPath + _FILE);
+        DbConfiguration data = null;
+        if (!File.Exists(SettingsPath + _FILE))
+            data = new DbConfiguration();
+
+        if (data == null)
+            data = Serialization.SerializationOperations.FromJsonFile<DbConfiguration>(SettingsPath + _FILE);
+
+        return data;
+    }
+
+
+    public void Save()
+    {
+        if (!Directory.Exists(SettingsPath))
+            Directory.CreateDirectory(SettingsPath);
+
+        Serialization.SerializationOperations.ToJsonFile(this, SettingsPath + _FILE);
+    }
+
+    private void CopyFrom(DbConfiguration source)
+    {
+        ServerName = source.ServerName;
+        InstanceName = source.InstanceName;
+        Port = source.Port;
+        ProviderId = source.ProviderId;
+        SingleTennant = source.SingleTennant;
+        UseConnectionStringEncryption = source.UseConnectionStringEncryption;
     }
 
     public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+}
+
+public static class DbConfigurator
+{
+    public static IServiceCollection AddDbConfig(this IServiceCollection serviceCollection, bool useEncription = false)
+    {
+        serviceCollection.AddScoped<IDbConfig, DbConfiguration>(x =>
+        { 
+            var result = ActivatorUtilities.CreateInstance<DbConfiguration>(x);
+            result.UseConnectionStringEncryption = useEncription;
+            return result;
+        });
+
+        return serviceCollection;
+    }
+
 }

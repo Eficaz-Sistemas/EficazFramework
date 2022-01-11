@@ -9,26 +9,31 @@ namespace EficazFramework.Resources.Mocks;
 
 internal class MockDbContext : Microsoft.EntityFrameworkCore.DbContext
 {
-    public MockDbContext(EficazFramework.Providers.ConnectionProviders provider = Providers.ConnectionProviders.InMemory) : base()
+    public MockDbContext() : base() { }
+
+    public MockDbContext(Providers.DataProviderBase provider) : base()
     {
         _provider = provider;
     }
-    
-    private readonly EficazFramework.Providers.ConnectionProviders _provider ;
-    internal readonly string _sqlLitePath = @$"{Environment.CurrentDirectory}\MockDb.db";
+
+    Providers.DataProviderBase _provider;
+
+    internal readonly static string MockDb = @$"{Environment.CurrentDirectory}\MockDb.db";
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
+        if (!optionsBuilder.IsConfigured)
+        {
+            if (_provider != null && _provider.DbConfig != null)
+                _provider.OnConfiguring(optionsBuilder, MockDb, "myUser", null);
+             else
+            {
+                var config = new Configuration.DbConfiguration() { UseConnectionStringEncryption = false};
+                Providers.SqlLite configurator = new(config);
+                optionsBuilder.UseSqlite(configurator.GetConnectionString(MockDb, "myUser", null));
+            }
+        }
         base.OnConfiguring(optionsBuilder);
-        EficazFramework.Configuration.DbConfiguration.SettingsPath = Environment.CurrentDirectory;
-        EficazFramework.Configuration.DbConfiguration.UseConnectionStringEncryption = false;
-        EficazFramework.Configuration.DbConfiguration.Instance.Provider = _provider;
-
-        if (_provider == Providers.ConnectionProviders.InMemory)
-            optionsBuilder.UseInMemoryDatabase("mockDatabase");
-
-        else if (_provider == Providers.ConnectionProviders.SqlLite)
-            optionsBuilder.UseSqlite(EficazFramework.Configuration.DbConfiguration.GetConnection(_sqlLitePath, "eficaz", null), (opt) => opt.CommandTimeout(int.MaxValue));
     }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)

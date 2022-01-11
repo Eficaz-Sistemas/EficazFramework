@@ -1,0 +1,57 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFramework>net6.0</TargetFramework>
+		<Version>6.0.0-preview001</Version>
+		<AssemblyVersion>6.0.0.0</AssemblyVersion>
+		<FileVersion>6.0.0.0</FileVersion>
+		<RootNamespace>EficazFramework</RootNamespace>
+		<SignAssembly>true</SignAssembly>
+		<AssemblyOriginatorKeyFile>EfCore.snk</AssemblyOriginatorKeyFile>
+		<DelaySign>false</DelaySign>
+		<Company>Eficaz Sistemas de Gestão e Inteligência Tributária</Company>
+		<Copyright>Copyright ©  2022. Eficaz Sistemas de Gestão e Inteligência Tributária Ltda.</Copyright>
+		<Description>Fornece funcionalidades específicas para trabalho com bases de dados Microsoft SQL Server.</Description>
+		<RepositoryUrl>https://github.com/Eficaz-Sistemas/EficazFramework</RepositoryUrl>
+		<RepositoryType>git</RepositoryType>
+		<PackageTags>data efcore entityframeworkcore persistência sqllite</PackageTags>
+		<NeutralLanguage>pt-BR</NeutralLanguage>
+		<Authors>Eficaz Sistemas</Authors>
+		<PackageIcon>logo.png</PackageIcon>
+		<PackageIconUrl>https://efsuporte.blob.core.windows.net/portal/EficazFramework.png</PackageIconUrl>
+		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<GenerateDocumentationFile>true</GenerateDocumentationFile>
+		<DefaultDocumentationFolder>..\..\..\Docs\Api\MsSqlServer</DefaultDocumentationFolder>
+		<DefaultDocumentationAssemblyPageName>EficazFramework MsSql Data Provider</DefaultDocumentationAssemblyPageName>
+		<DefaultDocumentationGeneratedPages>Assembly, Types, Methods</DefaultDocumentationGeneratedPages>
+		<DefaultDocumentationFileNameFactory>Folder</DefaultDocumentationFileNameFactory>
+		<DefaultDocumentationLogLevel>Trace</DefaultDocumentationLogLevel>
+		<Nullable>enable</Nullable>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+		<NoWarn>1573;1591;1701;1702</NoWarn>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+		<NoWarn>1573;1591;1701;1702</NoWarn>
+		<DisableDefaultDocumentation>true</DisableDefaultDocumentation>
+	</PropertyGroup>
+	
+	<ItemGroup>
+		<None Include="..\..\..\Assets\logo.png" Link="logo.png">
+			<PackagePath>\</PackagePath>
+			<Pack>True</Pack>
+		</None>
+	</ItemGroup>
+	
+	<ItemGroup>
+	  <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="6.0.1" />
+	</ItemGroup>
+	
+	<ItemGroup>
+	  <ProjectReference Include="..\..\Core\EficazFramework.Data\EficazFramework.Data.csproj" />
+	</ItemGroup>	
+	
+</Project>

@@ -1,108 +1,150 @@
 ﻿using FluentAssertions;
+using Microsoft.Extensions.DependencyInjection;
 using NUnit.Framework;
 using System;
-using System.Collections.Generic;
+using EficazFramework.Providers;
 using System.Linq;
-using System.Threading.Tasks;
 
 namespace EficazFramework.Configuration;
 
-public class DbConfigurationTests
+[TestFixture(typeof(Providers.InMemory))]
+[TestFixture(typeof(Providers.SqlLite))]
+[TestFixture(typeof(Providers.MsSqlServer))]
+public class DbConfigurationTests<TProvider> where TProvider : DataProviderBase
 {
+    IServiceCollection _serviceCollection = null;
+    IServiceProvider _provider = null;
 
+    [SetUp]
+    public void Setup()
+    {
+        DbConfiguration.SettingsPath = $@"{Environment.CurrentDirectory}\";
+        _serviceCollection = new ServiceCollection();
+        _serviceCollection.AddScoped<IDbConfig, DbConfiguration>();
+        _serviceCollection.AddScoped<DataProviderBase, TProvider>();
+        _provider = _serviceCollection.BuildServiceProvider();
+    }
+
+    [TearDown]
+    public void TearDown()
+    {
+        System.IO.File.Delete($"{DbConfiguration.SettingsPath}data_provider.json");
+    }
 
     [Test, Order(1)]
     public void ReadAndWriteSettings()
     {
-        DbConfiguration.SettingsPath = $@"{Environment.CurrentDirectory}\";
-        DbConfiguration.UseConnectionStringEncryption.Should().BeTrue();
-        System.IO.File.Delete($"{DbConfiguration.SettingsPath}data_provider.json");
-        DbConfiguration.Load();
+        var config = (DbConfiguration)_provider.GetService<IDbConfig>();
 
-        DbConfiguration.Instance.Should().NotBeNull();
-        DbConfiguration.Instance.ServerName.Should().Be(".");
-        DbConfiguration.Instance.InstanceName.Should().Be("EfSQLEXPRESS");
-        DbConfiguration.Instance.ServerData.Should().Be(@".\EfSQLEXPRESS");
-        DbConfiguration.Instance.SingleTennant.Should().BeFalse();
-        DbConfiguration.Instance.ShouldSerializePort().Should().BeFalse();
+        config.UseConnectionStringEncryption.Should().BeTrue();
 
-        DbConfiguration.Instance.ServerName = "myserver";
-        DbConfiguration.Instance.InstanceName = "myinstance";
-        DbConfiguration.Instance.Port = 1436;
-        DbConfiguration.Instance.SingleTennant = true;
-        DbConfiguration.Instance.ServerData.Should().Be(@"myserver\myinstance,1436");
-        DbConfiguration.Instance.ShouldSerializePort().Should().BeTrue();
-        DbConfiguration.Save();
+        config.Should().NotBeNull();
+        config.ServerName.Should().Be(".");
+        config.InstanceName.Should().Be("EfSQLEXPRESS");
+        config.ServerData.Should().Be(@".\EfSQLEXPRESS");
+        config.SingleTennant.Should().BeFalse();
+        config.ShouldSerializePort().Should().BeFalse();
+
+        config.ServerName = "myserver";
+        config.InstanceName = "myinstance";
+        config.Port = 1436;
+        config.SingleTennant = true;
+        config.ServerData.Should().Be(@"myserver\myinstance,1436");
+        config.ShouldSerializePort().Should().BeTrue();
+        config.Save();
         
-        DbConfiguration.Instance.ServerName = ".";
-        DbConfiguration.Instance.InstanceName = "myinstance2";
-        DbConfiguration.Instance.Port = 1437;
-        DbConfiguration.Instance.ServerData.Should().Be(@".\myinstance2,1437");
+        config.ServerName = ".";
+        config.InstanceName = "myinstance2";
+        config.Port = 1437;
+        config.ServerData.Should().Be(@".\myinstance2,1437");
 
-        DbConfiguration.Load();
-        DbConfiguration.Instance.ServerName = "myserver";
-        DbConfiguration.Instance.InstanceName = "myinstance";
-        DbConfiguration.Instance.Port = 1436;
-        DbConfiguration.Instance.SingleTennant = true;
-        DbConfiguration.Instance.ServerData.Should().Be(@"myserver\myinstance,1436");
-        DbConfiguration.Instance.ShouldSerializePort().Should().BeTrue();
-
-        System.IO.File.Delete($"{DbConfiguration.SettingsPath}data_provider.json");
+        config.Load();
+        config.ServerName = "myserver";
+        config.InstanceName = "myinstance";
+        config.Port = 1436;
+        config.SingleTennant = true;
+        config.ServerData.Should().Be(@"myserver\myinstance,1436");
+        config.ShouldSerializePort().Should().BeTrue();
     }
 
     [Test, Order(2)]
-    public void ConnectionStringBuilderForMsSql()
+    public void ConnectionStringBuilder()
     {
-        DbConfiguration.SettingsPath = $@"{Environment.CurrentDirectory}\";
-        DbConfiguration.UseConnectionStringEncryption = false;
-        DbConfiguration.Instance.Provider = Providers.ConnectionProviders.MsSQL;
-        DbConfiguration.Instance.ServerName = "myserver";
-        DbConfiguration.Instance.InstanceName = "myinstance";
-        DbConfiguration.Instance.Port = 1436;
-        DbConfiguration.GetConnection("mydb", "myuser", "mypass").Should().Be(@"Data Source=myserver\myinstance,1436;Database=mydb;User ID=myuser;Password=mypass;Connect Timeout=30;Integrated Security=False;MultipleActiveResultSets=True;");
-        DbConfiguration.UseConnectionStringEncryption = true;
-        DbConfiguration.GetConnection("mydb", "myuser", "mypass").Should().NotContain("mypass");
-        DbConfiguration.UseConnectionStringEncryption = false;
+        var dataBaseProvider = (TProvider)_provider.GetService<DataProviderBase>();
+        var config = (DbConfiguration)_provider.GetService<IDbConfig>();
+        dataBaseProvider.Should().NotBeNull();
+        _serviceCollection.Should().HaveCount(2);
+
+        config.UseConnectionStringEncryption = false;
+        config.ServerName = "myserver";
+        config.InstanceName = "myDbOrInstance";
+        config.Port = 1436;
+
+        string providerName = _provider.GetService<DataProviderBase>().Name;
+        Exception ex = null;
+        switch (providerName)
+        {
+            case "InMemory":
+                {
+                    dataBaseProvider.GetConnectionString("mydb", "myuser", "mypass").Should().Be("myserver");
+                    config.UseConnectionStringEncryption = true;
+                    dataBaseProvider.GetConnectionString("mydb", "myuser", "mypass").Should().NotContain("myserver");
+                    config.UseConnectionStringEncryption = false;
+                    break;
+                }
+
+            case "MsSqlServer":
+                {
+                    dataBaseProvider.GetConnectionString("mydb", "myuser", "mypass").Should().Be(@"Data Source=myserver\myDbOrInstance,1436;Database=mydb;User ID=myuser;Password=mypass;Connect Timeout=30;Integrated Security=False;MultipleActiveResultSets=True;");
+                    config.UseConnectionStringEncryption = true;
+                    dataBaseProvider.GetConnectionString("mydb", "myuser", "mypass").Should().NotContain("myDb");
+                    config.UseConnectionStringEncryption = false;
+                    break;
+                }
+
+            case "SqlLite":
+                {
+                    dataBaseProvider.GetConnectionString(@"C:\mydb.db", "myuser", "mypass").Should().Be(@"Data Source=C:\mydb.db;Password=mypass;");
+                    config.UseConnectionStringEncryption = true;
+                    dataBaseProvider.GetConnectionString("mydb", "myuser", "mypass").Should().NotContain("mypass");
+                    config.UseConnectionStringEncryption = false;
+                    break;
+                }
+
+            default:
+                {
+                    ex = new NotImplementedException("Provider not supported");
+                    break;
+                }
+        }
+        ex.Should().BeNull();
+
     }
 
-    [Test, Order(3)]
-    public void ConnectionStringBuilderForSqlLite()
-    {
-        DbConfiguration.SettingsPath = $@"{Environment.CurrentDirectory}\";
-        DbConfiguration.UseConnectionStringEncryption = false;
-        DbConfiguration.Instance.Provider = Providers.ConnectionProviders.SqlLite;
-        DbConfiguration.GetConnection(@"C:\mydb.db", "myuser", "mypass").Should().Be(@"Data Source=C:\mydb.db;Password=mypass;");
-        DbConfiguration.UseConnectionStringEncryption = true;
-        DbConfiguration.GetConnection("mydb", "myuser", "mypass").Should().NotContain("mypass");
-        DbConfiguration.UseConnectionStringEncryption = false;
-    }
+    //[Test, Order(3)]
+    //public void ConnectionStringBuilderForMySql()
+    //{
+    //    config.UseConnectionStringEncryption = false;
+    //    config.ServerName = "myserver";
+    //    config.Port = 1436;
+    //    config.Provider = Providers.ConnectionProviders.MySQL;
+    //    config.GetConnection("mydb", "myuser", "mypass").Should().Be(@"Server=myserver;Port=1436;Database=mydb;Uid=myuser;Pwd=mypass;Connect Timeout=30;");
+    //    config.UseConnectionStringEncryption = true;
+    //    config.GetConnection("mydb", "myuser", "mypass").Should().NotContain("mypass");
+    //    config.UseConnectionStringEncryption = false;
+    //}
 
-    [Test, Order(3)]
-    public void ConnectionStringBuilderForMySql()
-    {
-        DbConfiguration.SettingsPath = $@"{Environment.CurrentDirectory}\";
-        DbConfiguration.UseConnectionStringEncryption = false;
-        DbConfiguration.Instance.ServerName = "myserver";
-        DbConfiguration.Instance.Port = 1436;
-        DbConfiguration.Instance.Provider = Providers.ConnectionProviders.MySQL;
-        DbConfiguration.GetConnection("mydb", "myuser", "mypass").Should().Be(@"Server=myserver;Port=1436;Database=mydb;Uid=myuser;Pwd=mypass;Connect Timeout=30;");
-        DbConfiguration.UseConnectionStringEncryption = true;
-        DbConfiguration.GetConnection("mydb", "myuser", "mypass").Should().NotContain("mypass");
-        DbConfiguration.UseConnectionStringEncryption = false;
-    }
-
-    [Test, Order(4)]
-    public void ConnectionStringBuilderForOracle()
-    {
-        DbConfiguration.SettingsPath = $@"{Environment.CurrentDirectory}\";
-        DbConfiguration.UseConnectionStringEncryption = false;
-        DbConfiguration.Instance.ServerName = "myserver";
-        DbConfiguration.Instance.InstanceName = "myinstance";
-        DbConfiguration.Instance.Port = 1436;
-        DbConfiguration.Instance.Provider = Providers.ConnectionProviders.Oracle;
-        DbConfiguration.GetConnection("mydb", "myuser", "mypass").Should().Be(@"Data Source=myserver\myinstance,1436;Database=mydb;User ID=myuser;Password=mypass;Connect Timeout=30;Integrated Security=no;");
-        DbConfiguration.UseConnectionStringEncryption = true;
-        DbConfiguration.GetConnection("mydb", "myuser", "mypass").Should().NotContain("mypass");
-        DbConfiguration.UseConnectionStringEncryption = false;
-    }
+    //[Test, Order(4)]
+    //public void ConnectionStringBuilderForOracle()
+    //{
+    //    config.UseConnectionStringEncryption = false;
+    //    config.ServerName = "myserver";
+    //    config.InstanceName = "myinstance";
+    //    config.Port = 1436;
+    //    config.Provider = Providers.ConnectionProviders.Oracle;
+    //    config.GetConnection("mydb", "myuser", "mypass").Should().Be(@"Data Source=myserver\myinstance,1436;Database=mydb;User ID=myuser;Password=mypass;Connect Timeout=30;Integrated Security=no;");
+    //    config.UseConnectionStringEncryption = true;
+    //    config.GetConnection("mydb", "myuser", "mypass").Should().NotContain("mypass");
+    //    config.UseConnectionStringEncryption = false;
+    //}
 }

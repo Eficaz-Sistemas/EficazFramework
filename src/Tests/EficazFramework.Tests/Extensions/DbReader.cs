@@ -1,22 +1,31 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data.SqlClient;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using EficazFramework.Configuration;
+using EficazFramework.Providers;
 using FluentAssertions;
-using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
 using NUnit.Framework;
+using System;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace EficazFramework.Extensions;
 
-class DbReader
+[TestFixture(typeof(Providers.InMemory))]
+[TestFixture(typeof(Providers.SqlLite))]
+class DbReader<TProvider> where TProvider : DataProviderBase
 {
-    [Test]
-    public async Task ReadTest()
+    IServiceCollection _serviceCollection = null;
+    IServiceProvider _provider = null;
+
+    [SetUp]
+    public void Setup()
     {
-        Resources.Mocks.MockDbContext dbContext = new(Providers.ConnectionProviders.SqlLite);
-        dbContext.Database.EnsureCreated().Should().BeTrue();
+        DbConfiguration.SettingsPath = $@"{Environment.CurrentDirectory}\";
+        _serviceCollection = new ServiceCollection();
+        _serviceCollection.AddDbConfig();
+        _serviceCollection.AddScoped<DataProviderBase, TProvider>();
+        _provider = _serviceCollection.BuildServiceProvider();
+        Resources.Mocks.MockDbContext dbContext = new(_provider.GetService<DataProviderBase>());
+        dbContext.Database.EnsureCreated();
 
         // seed
         for (int i = 0; i < 100; i++)
@@ -27,34 +36,42 @@ class DbReader
                 Name = $"Blog {i}"
             });
         }
-        await dbContext.SaveChangesAsync();
+        dbContext.SaveChanges();
+        dbContext.Dispose();
+    }
+
+    [TearDown]  
+    public void TearDown()
+    {
+        Resources.Mocks.MockDbContext ctx = new();
+        ctx.Database.EnsureDeleted();
+        ctx.Dispose();
+        System.IO.File.Delete($"{DbConfiguration.SettingsPath}data_provider.json");
+    }
+
+    [Test]
+    public async Task ReadTest()
+    {
 
         // query spces
         TestQuery query = new();
-        query.MsSqlCommandText.Should().Be("SELECT A");
-        query.OracleCommandText.Should().Be("SELECT C");
-        query.MySqlCommandText.Should().Be("SELECT B");
 
-        // assert
+        // some aditional setup
+        Resources.Mocks.MockDbContext dbContext = new(_provider.GetService<DataProviderBase>());
         List<Resources.Mocks.Classes.Blog> list = new();
         System.Data.Common.DbCommand cmd = null;
+        DataProviderBase provider = _provider.GetService<DataProviderBase>();
 
-        // mock
-        EficazFramework.Configuration.DbConfiguration.Instance.Provider = Providers.ConnectionProviders.MsSQL;
-        cmd = await query.CreateCommandAsync(dbContext);
-        cmd.CommandText.Should().Be(query.MsSqlCommandText);
-        EficazFramework.Configuration.DbConfiguration.Instance.Provider = Providers.ConnectionProviders.MySQL;
-        cmd = await query.CreateCommandAsync(dbContext);
-        cmd.CommandText.Should().Be(query.MySqlCommandText);
-        EficazFramework.Configuration.DbConfiguration.Instance.Provider = Providers.ConnectionProviders.Oracle;
-        cmd = await query.CreateCommandAsync(dbContext);
-        cmd.CommandText.Should().Be(query.OracleCommandText);
+        // assert
+        if (provider.Name == "InMemory")
+        {
+            query.CommandText(provider).Should().Be("SELECT * FROM InMemory.Blogs");
+            return;
+        }
 
-        // real
-        EficazFramework.Configuration.DbConfiguration.Instance.Provider = Providers.ConnectionProviders.SqlLite;
-        cmd = await query.CreateCommandAsync(dbContext);
-        query.CreateCommand(dbContext).Connection.ConnectionString.Should().Be(cmd.Connection.ConnectionString);
-        cmd.CommandText.Should().Be(query.SqlLiteCommandText);
+        cmd =  query.CreateCommand(dbContext, provider);
+        cmd.CommandText.Should().Be($"SELECT * FROM Blogs WHERE Name = @name");
+
 
         await cmd.Connection.OpenAsync();
         var reader = await cmd.ExecuteReaderAsync();
@@ -66,41 +83,31 @@ class DbReader
                 Name = r.GetValue<string>("Name"),
             };
         }));
+        await cmd.Connection.CloseAsync();
         list.Should().HaveCount(1);
-
-        // delete
-        dbContext.Dispose();
-        dbContext = new Resources.Mocks.MockDbContext(Providers.ConnectionProviders.SqlLite);
-        (await dbContext.Database.EnsureDeletedAsync()).Should().BeTrue();
-
     }
 
     [Test]
     public async Task ReadTest2()
     {
-        Resources.Mocks.MockDbContext dbContext = new(Providers.ConnectionProviders.SqlLite);
-        dbContext.Database.EnsureCreated().Should().BeTrue();
-
-        // seed
-        for (int i = 0; i < 100; i++)
-        {
-            dbContext.Add(new Resources.Mocks.Classes.Blog()
-            {
-                Id = System.Guid.NewGuid(),
-                Name = $"Blog {i}"
-            });
-        }
-        await dbContext.SaveChangesAsync();
-
         // query spces
         TestQuery query = new();
+        query.Name = "Blog 1";
 
+        // some aditional setup
+        Resources.Mocks.MockDbContext dbContext = new(_provider.GetService<DataProviderBase>());
+        List<Resources.Mocks.Classes.Blog> list = new();
+        System.Data.Common.DbCommand cmd = null;
+        DataProviderBase provider = _provider.GetService<DataProviderBase>();
 
         // assert
-        List<Resources.Mocks.Classes.Blog> list = new();
-        var cmd = await query.CreateCommandAsync(dbContext);
-        query.CreateCommand(dbContext).Connection.ConnectionString.Should().Be(cmd.Connection.ConnectionString);
-        cmd.CommandText = query.SqlLiteCommandText;
+        if (provider.Name == "InMemory")
+        {
+            query.CommandText(provider).Should().Be("SELECT * FROM InMemory.Blogs");
+            return;
+        }
+
+        cmd = await query.CreateCommandAsync(dbContext, provider);
         await cmd.Connection.OpenAsync();
         var reader = await cmd.ExecuteReaderAsync();
         list.AddRange(reader.SelectFromReader((r) =>
@@ -111,13 +118,8 @@ class DbReader
                 Name = r.GetValue<string>(1),
             };
         }));
+        await cmd.Connection.CloseAsync();
         list.Should().HaveCount(1);
-
-        // delete
-        dbContext.Dispose();
-        dbContext = new Resources.Mocks.MockDbContext(Providers.ConnectionProviders.SqlLite);
-        (await dbContext.Database.EnsureDeletedAsync()).Should().BeTrue();
-
     }
 
 
@@ -125,18 +127,21 @@ class DbReader
 
 internal class TestQuery : EficazFramework.Repositories.Services.QueryBase
 {
-    public override string MsSqlCommandText => "SELECT A";
-
-    public override string SqlLiteCommandText => "SELECT * FROM Blogs WHERE Name = @name";
-
-    public override string MySqlCommandText => "SELECT B";
-
-    public override string OracleCommandText => "SELECT C";
-
     public TestQuery()
     {
         Parameters.Add("@name", () => Name);
     }
 
     public string Name { get; set; } = "Blog 1";
+
+    public override string CommandText(DataProviderBase provider)
+    {
+        return provider.Name switch
+        {
+            "InMemory" => "SELECT * FROM InMemory.Blogs",
+            "SqlLite" => "SELECT * FROM Blogs WHERE Name = @name",
+            "MsSqlServer" => "SELECT * FROM Blogs WHERE Name = @name",
+            _ => null
+        };
+    }
 }

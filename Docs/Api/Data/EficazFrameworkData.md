@@ -11,6 +11,10 @@
 | :--- | :--- |
 | [DbConfiguration](EficazFramework.Configuration/DbConfiguration.md 'EficazFramework.Configuration.DbConfiguration') | |
 
+| Interfaces | |
+| :--- | :--- |
+| [IDbConfig](EficazFramework.Configuration/IDbConfig.md 'EficazFramework.Configuration.IDbConfig') | |
+
 <a name='EficazFramework.Entities'></a>
 
 ## EficazFramework.Entities Namespace
@@ -47,14 +51,6 @@
 | [DbContext](EficazFramework.Extensions/DbContext.md 'EficazFramework.Extensions.DbContext') | |
 | [Expressions](EficazFramework.Extensions/Expressions.md 'EficazFramework.Extensions.Expressions') | Refer to http://www.albahari.com/nutshell/linqkit.html and<br/>http://tomasp.net/blog/linq-expand.aspx for more information.<br/><br/>This is a part of LinqKit Tool.<br/>See http://www.albahari.com/expressions for information and examples. |
 
-<a name='EficazFramework.Providers'></a>
-
-## EficazFramework.Providers Namespace
-
-| Enums | |
-| :--- | :--- |
-| [ConnectionProviders](EficazFramework.Providers/ConnectionProviders.md 'EficazFramework.Providers.ConnectionProviders') | |
-
 <a name='EficazFramework.Repositories'></a>
 
 ## EficazFramework.Repositories Namespace
@@ -63,16 +59,6 @@
 | :--- | :--- |
 | [EntityRepository&lt;TEntity&gt;](EficazFramework.Repositories/EntityRepository_TEntity_.md 'EficazFramework.Repositories.EntityRepository<TEntity>') | |
 | [RepositoryBase&lt;T&gt;](EficazFramework.Repositories/RepositoryBase_T_.md 'EficazFramework.Repositories.RepositoryBase<T>') | |
-
-<a name='EficazFramework.Security'></a>
-
-## EficazFramework.Security Namespace
-
-| Classes | |
-| :--- | :--- |
-| [Role](EficazFramework.Security/Role.md 'EficazFramework.Security.Role') | |
-| [RoleEditor](EficazFramework.Security/RoleEditor.md 'EficazFramework.Security.RoleEditor') | |
-| [RoleMember](EficazFramework.Security/RoleMember.md 'EficazFramework.Security.RoleMember') | |
 
 <a name='EficazFramework.Validation.Fluent'></a>
 
