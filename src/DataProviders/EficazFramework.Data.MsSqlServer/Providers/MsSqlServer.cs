@@ -7,9 +7,12 @@ using System.Diagnostics.CodeAnalysis;
 
 namespace EficazFramework.Providers;
 
+/// <summary>
+/// Implementa definições para trabalho com cache, utilizando
+/// o provedor EntityFrameworkCore.SqlServer
+/// </summary>
 public class MsSqlServer : DataProviderBase
 {
-
     public MsSqlServer(IDbConfig dbConfig) : base(dbConfig) { }
 
     public override string Name => "MsSqlServer";
@@ -26,6 +29,9 @@ public class MsSqlServer : DataProviderBase
 }
 public static class Extension
 {
+    /// <summary>
+    /// Adiciona o provedor MsSqlServer ao contexto de Injeção de Depenência
+    /// </summary>
     public static IServiceCollection AddSqlService(this IServiceCollection serviceCollection)
     {
         serviceCollection.AddScoped<DataProviderBase, MsSqlServer>();

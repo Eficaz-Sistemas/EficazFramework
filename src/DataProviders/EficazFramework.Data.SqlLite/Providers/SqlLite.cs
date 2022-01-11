@@ -7,12 +7,16 @@ using System.Diagnostics.CodeAnalysis;
 
 namespace EficazFramework.Providers;
 
+/// <summary>
+/// Implementa definições para trabalho com cache, utilizando
+/// o provedor EntityFrameworkCore.SqlLite
+/// </summary>
 public class SqlLite : DataProviderBase
 {
-
     public SqlLite(IDbConfig dbConfig) : base(dbConfig) { }
 
     public override string Name => "SqlLite";
+    
     public override string GetConnectionString(string database, string username, string password)
     {
         if (DbConfig.UseConnectionStringEncryption == true)
@@ -33,6 +37,9 @@ public class SqlLite : DataProviderBase
 }
 public static class Extension
 {
+    /// <summary>
+    /// Adiciona o provedor SqlLite ao contexto de Injeção de Depenência
+    /// </summary>
     public static IServiceCollection AddSqlLiteService(this IServiceCollection serviceCollection)
     {
         serviceCollection.AddScoped<DataProviderBase, SqlLite>();

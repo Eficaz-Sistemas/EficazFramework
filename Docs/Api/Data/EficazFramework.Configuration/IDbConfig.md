@@ -22,7 +22,7 @@ EficazFramework.Providers.DataProviderBase Provider { get; set; }
 ```
 
 #### Property Value
-[EficazFramework.Providers.DataProviderBase](https://docs.microsoft.com/en-us/dotnet/api/EficazFramework.Providers.DataProviderBase 'EficazFramework.Providers.DataProviderBase')
+[DataProviderBase](EficazFramework.Providers/DataProviderBase.md 'EficazFramework.Providers.DataProviderBase')
 
 ### Remarks
 

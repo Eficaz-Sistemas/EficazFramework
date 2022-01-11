@@ -51,6 +51,14 @@
 | [DbContext](EficazFramework.Extensions/DbContext.md 'EficazFramework.Extensions.DbContext') | |
 | [Expressions](EficazFramework.Extensions/Expressions.md 'EficazFramework.Extensions.Expressions') | Refer to http://www.albahari.com/nutshell/linqkit.html and<br/>http://tomasp.net/blog/linq-expand.aspx for more information.<br/><br/>This is a part of LinqKit Tool.<br/>See http://www.albahari.com/expressions for information and examples. |
 
+<a name='EficazFramework.Providers'></a>
+
+## EficazFramework.Providers Namespace
+
+| Classes | |
+| :--- | :--- |
+| [DataProviderBase](EficazFramework.Providers/DataProviderBase.md 'EficazFramework.Providers.DataProviderBase') | Definição abstrata de provedor de acesso à base. |
+
 <a name='EficazFramework.Repositories'></a>
 
 ## EficazFramework.Repositories Namespace

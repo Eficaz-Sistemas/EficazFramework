@@ -9,6 +9,10 @@ using System.Linq;
 
 namespace EficazFramework.Providers;
 
+/// <summary>
+/// Implementa definições para trabalho com cache, utilizando
+/// o provedor EntityFrameworkCore.InMemory
+/// </summary>
 public class InMemory : DataProviderBase
 {
     public InMemory(IDbConfig dbConfig) : base(dbConfig) { }
@@ -23,6 +27,9 @@ public class InMemory : DataProviderBase
 
 public static class Extension
 {
+    /// <summary>
+    /// Adiciona o provedor InMemory ao contexto de Injeção de Depenência
+    /// </summary>
     public static IServiceCollection AddInMemoryService(this IServiceCollection serviceCollection)
     {
         serviceCollection.AddScoped<DataProviderBase, InMemory>();
