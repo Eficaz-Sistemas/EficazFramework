@@ -45,12 +45,3 @@ public abstract class DataProviderBase
 //        return $"Data Source={EficazFramework.Configuration.DbConfiguration.Instance.ServerData};Database={database};User ID={username};Password={password};Connect Timeout={30};Integrated Security=no;";
 //    }
 //}
-
-public static class Extension
-{
-    public static IServiceCollection AddDatabaseProvider<TDatabaseProvider>(this IServiceCollection serviceCollection) where TDatabaseProvider : DataProviderBase
-    {
-        serviceCollection.AddScoped<DataProviderBase, TDatabaseProvider>();
-        return serviceCollection;
-    }
-}

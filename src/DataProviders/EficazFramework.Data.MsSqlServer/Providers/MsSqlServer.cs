@@ -26,7 +26,7 @@ public class MsSqlServer : DataProviderBase
 }
 public static class Extension
 {
-    public static IServiceCollection WithSqlService(this IServiceCollection serviceCollection)
+    public static IServiceCollection AddSqlService(this IServiceCollection serviceCollection)
     {
         serviceCollection.AddScoped<DataProviderBase, MsSqlServer>();
         return serviceCollection;

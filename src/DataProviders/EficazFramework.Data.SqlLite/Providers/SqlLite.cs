@@ -33,7 +33,7 @@ public class SqlLite : DataProviderBase
 }
 public static class Extension
 {
-    public static IServiceCollection WithSqlLiteService(this IServiceCollection serviceCollection)
+    public static IServiceCollection AddSqlLiteService(this IServiceCollection serviceCollection)
     {
         serviceCollection.AddScoped<DataProviderBase, SqlLite>();
         return serviceCollection;

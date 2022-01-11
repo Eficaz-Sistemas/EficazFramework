@@ -20,3 +20,12 @@ public class InMemory : DataProviderBase
     public override void OnConfiguring(DbContextOptionsBuilder optionsBuilder, string database, string username, string password) => optionsBuilder.UseInMemoryDatabase(!DbConfig.UseConnectionStringEncryption ? DbConfig.ServerName : Security.Cryptography.Functions.Encript(DbConfig.ServerName, "h##CCd*&LBf!M¨321"));
 
 }
+
+public static class Extension
+{
+    public static IServiceCollection AddInMemoryService(this IServiceCollection serviceCollection)
+    {
+        serviceCollection.AddScoped<DataProviderBase, InMemory>();
+        return serviceCollection;
+    }
+}
