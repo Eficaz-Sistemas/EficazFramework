@@ -6,7 +6,7 @@
  
 ## Provedores de Bancos de Dados (com EntityFrameworkCore)
  - ### [EficazFramework.Data.InMemory](Data-Providers/InMemory/EficazFrameworkInMemoryDataProvider.md)
- - ### [EficazFramework.Data.MsSqlServer](Data-Providers/MsSqlServer/EficazFrameworkMsSqlServerDataProvider.md)
+ - ### [EficazFramework.Data.MsSqlServer](Data-Providers/MsSqlServer/EficazFrameworkMsSqlDataProvider.md)
  - ### [EficazFramework.Data.SqlLite](Data-Providers/SqlLite/EficazFrameworkSqlLiteDataProvider.md)
  
 ## Específico por plataforma

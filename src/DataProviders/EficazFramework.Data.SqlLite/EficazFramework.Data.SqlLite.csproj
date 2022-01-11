@@ -23,7 +23,7 @@
 		<ImplicitUsings>enable</ImplicitUsings>
 		<GenerateDocumentationFile>true</GenerateDocumentationFile>
 		<DefaultDocumentationFolder>..\..\..\Docs\Api\Data-Providers\SqlLite</DefaultDocumentationFolder>
-		<DefaultDocumentationAssemblyPageName>EficazFramework MsSql Data Provider</DefaultDocumentationAssemblyPageName>
+		<DefaultDocumentationAssemblyPageName>EficazFramework SqlLite Data Provider</DefaultDocumentationAssemblyPageName>
 		<DefaultDocumentationGeneratedPages>Assembly, Types, Methods</DefaultDocumentationGeneratedPages>
 		<DefaultDocumentationFileNameFactory>Folder</DefaultDocumentationFileNameFactory>
 		<DefaultDocumentationLogLevel>Trace</DefaultDocumentationLogLevel>
