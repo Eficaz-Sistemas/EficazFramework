@@ -17,7 +17,7 @@ public string ErrorText(string propertyName);
 
 O nome da propriedade a ser validada. Utilize 'Nothing' para validar toda a Entity.
 
-Implements [ErrorText(string)](https://docs.microsoft.com/en-us/dotnet/api/EficazFramework.Entities.IEntity.ErrorText#EficazFramework_Entities_IEntity_ErrorText_System_String_ 'EficazFramework.Entities.IEntity.ErrorText(System.String)')
+Implements [ErrorText(string)](EficazFramework.Entities/IEntity/ErrorText(string).md 'EficazFramework.Entities.IEntity.ErrorText(string)')
 
 #### Returns
 [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')  

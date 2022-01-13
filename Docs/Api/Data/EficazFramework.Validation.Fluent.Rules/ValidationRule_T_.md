@@ -18,6 +18,7 @@ public abstract class ValidationRule<T>
 Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.Object 'System.Object') &#129106; ValidationRule<T>
 
 Derived  
+&#8627; [Contatos&lt;T&gt;](EficazFramework.Validation.Fluent.Rules/Contatos_T_.md 'EficazFramework.Validation.Fluent.Rules.Contatos<T>')  
 &#8627; [Documentos&lt;T&gt;](EficazFramework.Validation.Fluent.Rules/Documentos_T_.md 'EficazFramework.Validation.Fluent.Rules.Documentos<T>')  
 &#8627; [Equals&lt;T&gt;](EficazFramework.Validation.Fluent.Rules/Equals_T_.md 'EficazFramework.Validation.Fluent.Rules.Equals<T>')  
 &#8627; [MaxLenght&lt;T&gt;](EficazFramework.Validation.Fluent.Rules/MaxLenght_T_.md 'EficazFramework.Validation.Fluent.Rules.MaxLenght<T>')  
@@ -26,20 +27,14 @@ Derived
 &#8627; [RangePeriod&lt;T&gt;](EficazFramework.Validation.Fluent.Rules/RangePeriod_T_.md 'EficazFramework.Validation.Fluent.Rules.RangePeriod<T>')  
 &#8627; [Required&lt;T&gt;](EficazFramework.Validation.Fluent.Rules/Required_T_.md 'EficazFramework.Validation.Fluent.Rules.Required<T>')  
 &#8627; [RequiredIf&lt;T&gt;](EficazFramework.Validation.Fluent.Rules/RequiredIf_T_.md 'EficazFramework.Validation.Fluent.Rules.RequiredIf<T>')
-### Properties
 
-<a name='EficazFramework.Validation.Fluent.Rules.ValidationRule_T_.Property'></a>
+| Constructors | |
+| :--- | :--- |
+| [ValidationRule(Expression&lt;Func&lt;T,object&gt;&gt;)](EficazFramework.Validation.Fluent.Rules/ValidationRule_T_/ValidationRule(Expression_Func_T,object__).md 'EficazFramework.Validation.Fluent.Rules.ValidationRule<T>.ValidationRule(System.Linq.Expressions.Expression<System.Func<T,object>>)') | |
 
-## ValidationRule<T>.Property Property
-
-Expressão lambda para acesso à propriedade que deve ser validada
-
-```csharp
-public System.Linq.Expressions.Expression<System.Func<T,object>> Property { get; set; }
-```
-
-#### Property Value
-[System.Linq.Expressions.Expression&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Linq.Expressions.Expression-1 'System.Linq.Expressions.Expression`1')[System.Func&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-2 'System.Func`2')[T](EficazFramework.Validation.Fluent.Rules/ValidationRule_T_.md#EficazFramework.Validation.Fluent.Rules.ValidationRule_T_.T 'EficazFramework.Validation.Fluent.Rules.ValidationRule<T>.T')[,](https://docs.microsoft.com/en-us/dotnet/api/System.Func-2 'System.Func`2')[System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.Object 'System.Object')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-2 'System.Func`2')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Linq.Expressions.Expression-1 'System.Linq.Expressions.Expression`1')
+| Properties | |
+| :--- | :--- |
+| [Property](EficazFramework.Validation.Fluent.Rules/ValidationRule_T_/Property.md 'EficazFramework.Validation.Fluent.Rules.ValidationRule<T>.Property') | Expressão lambda para acesso à propriedade que deve ser validada |
 
 | Methods | |
 | :--- | :--- |

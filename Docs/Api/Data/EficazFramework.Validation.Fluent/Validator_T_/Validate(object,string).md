@@ -22,7 +22,7 @@ Instância a ser validade
 
 Nome da propriedade a ser validada
 
-Implements [Validate(object, string)](https://docs.microsoft.com/en-us/dotnet/api/EficazFramework.Validation.Fluent.IValidator.Validate#EficazFramework_Validation_Fluent_IValidator_Validate_System_Object,System_String_ 'EficazFramework.Validation.Fluent.IValidator.Validate(System.Object,System.String)')
+Implements [Validate(object, string)](EficazFramework.Validation.Fluent/IValidator/Validate(object,string).md 'EficazFramework.Validation.Fluent.IValidator.Validate(object, string)')
 
 #### Returns
 [ValidationResult](EficazFramework.Validation.Fluent/ValidationResult.md 'EficazFramework.Validation.Fluent.ValidationResult')

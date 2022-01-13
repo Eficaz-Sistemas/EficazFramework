@@ -16,7 +16,7 @@ public System.Threading.Tasks.Task<EficazFramework.Validation.Fluent.ValidationR
 
 Instância a ser validade
 
-Implements [ValidateAsync(object)](https://docs.microsoft.com/en-us/dotnet/api/EficazFramework.Validation.Fluent.IValidator.ValidateAsync#EficazFramework_Validation_Fluent_IValidator_ValidateAsync_System_Object_ 'EficazFramework.Validation.Fluent.IValidator.ValidateAsync(System.Object)')
+Implements [ValidateAsync(object)](EficazFramework.Validation.Fluent/IValidator/ValidateAsync(object).md 'EficazFramework.Validation.Fluent.IValidator.ValidateAsync(object)')
 
 #### Returns
 [System.Threading.Tasks.Task&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Threading.Tasks.Task-1 'System.Threading.Tasks.Task`1')[ValidationResult](EficazFramework.Validation.Fluent/ValidationResult.md 'EficazFramework.Validation.Fluent.ValidationResult')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Threading.Tasks.Task-1 'System.Threading.Tasks.Task`1')

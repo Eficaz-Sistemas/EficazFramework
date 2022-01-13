@@ -16,9 +16,9 @@ public EficazFramework.Collections.StringCollection Validate(string propertyName
 
 O nome da propriedade a ser validada. Utilize 'Nothing' para validar toda a Entity.
 
-Implements [Validate(string)](https://docs.microsoft.com/en-us/dotnet/api/EficazFramework.Entities.IEntity.Validate#EficazFramework_Entities_IEntity_Validate_System_String_ 'EficazFramework.Entities.IEntity.Validate(System.String)')
+Implements [Validate(string)](EficazFramework.Entities/IEntity/Validate(string).md 'EficazFramework.Entities.IEntity.Validate(string)')
 
 #### Returns
-[EficazFramework.Collections.StringCollection](https://docs.microsoft.com/en-us/dotnet/api/EficazFramework.Collections.StringCollection 'EficazFramework.Collections.StringCollection')
+[StringCollection](EficazFramework.Collections/StringCollection.md 'EficazFramework.Collections.StringCollection')
 
 ### Remarks

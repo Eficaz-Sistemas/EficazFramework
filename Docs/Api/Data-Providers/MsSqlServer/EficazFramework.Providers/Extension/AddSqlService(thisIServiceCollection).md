@@ -3,7 +3,7 @@
 
 ## Extension.AddSqlService(this IServiceCollection) Method
 
-Adiciona o provedor MsSqlServer ao contexto de Injeção de Depenência
+Adiciona o provedor MsSqlServer ao contexto de Injeção de Dependência
 
 ```csharp
 public static Microsoft.Extensions.DependencyInjection.IServiceCollection AddSqlService(this Microsoft.Extensions.DependencyInjection.IServiceCollection serviceCollection);

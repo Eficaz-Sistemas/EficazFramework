@@ -24,10 +24,10 @@
 	<GenerateDocumentationFile>true</GenerateDocumentationFile>
 	<DefaultDocumentationFolder>..\..\..\Docs\Api\Data-Providers\MsSqlServer</DefaultDocumentationFolder>
 	<DefaultDocumentationAssemblyPageName>EficazFramework MsSql Data Provider</DefaultDocumentationAssemblyPageName>
-	<DefaultDocumentationGeneratedPages>Assembly, Types, Methods</DefaultDocumentationGeneratedPages>
+	<DefaultDocumentationGeneratedPages>Assembly, Types, Members</DefaultDocumentationGeneratedPages>
 	<DefaultDocumentationFileNameFactory>Folder</DefaultDocumentationFileNameFactory>
-	<DefaultDocumentationLogLevel>Trace</DefaultDocumentationLogLevel>
-    <Nullable>enable</Nullable>
+	<DefaultDocumentationIncludeUndocumentedItems>true</DefaultDocumentationIncludeUndocumentedItems>
+	<Nullable>enable</Nullable>
   </PropertyGroup>
 
 	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">

@@ -18,7 +18,7 @@ Instância IQueryable principal, contendo instruções SELECT e WHERE (esta últ
 
 <a name='EficazFramework.Repositories.EntityRepository_TEntity_.GetIOrderedQueryable(System.Linq.IQueryable_TEntity_,EficazFramework.Collections.SortDescription,bool).orderbyDefinition'></a>
 
-`orderbyDefinition` [EficazFramework.Collections.SortDescription](https://docs.microsoft.com/en-us/dotnet/api/EficazFramework.Collections.SortDescription 'EficazFramework.Collections.SortDescription')
+`orderbyDefinition` [SortDescription](EficazFramework.Collections/SortDescription.md 'EficazFramework.Collections.SortDescription')
 
 Definições de ordenação (SortDescription).
 

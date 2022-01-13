@@ -16,7 +16,7 @@ public EficazFramework.Validation.Fluent.ValidationResult Validate(object instan
 
 Instância a ser validade
 
-Implements [Validate(object)](https://docs.microsoft.com/en-us/dotnet/api/EficazFramework.Validation.Fluent.IValidator.Validate#EficazFramework_Validation_Fluent_IValidator_Validate_System_Object_ 'EficazFramework.Validation.Fluent.IValidator.Validate(System.Object)')
+Implements [Validate(object)](EficazFramework.Validation.Fluent/IValidator/Validate(object).md 'EficazFramework.Validation.Fluent.IValidator.Validate(object)')
 
 #### Returns
 [ValidationResult](EficazFramework.Validation.Fluent/ValidationResult.md 'EficazFramework.Validation.Fluent.ValidationResult')

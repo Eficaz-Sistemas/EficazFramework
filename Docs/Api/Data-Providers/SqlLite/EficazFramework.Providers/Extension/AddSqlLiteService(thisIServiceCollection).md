@@ -3,7 +3,7 @@
 
 ## Extension.AddSqlLiteService(this IServiceCollection) Method
 
-Adiciona o provedor SqlLite ao contexto de Injeção de Depenência
+Adiciona o provedor SqlLite ao contexto de Injeção de Dependência
 
 ```csharp
 public static Microsoft.Extensions.DependencyInjection.IServiceCollection AddSqlLiteService(this Microsoft.Extensions.DependencyInjection.IServiceCollection serviceCollection);

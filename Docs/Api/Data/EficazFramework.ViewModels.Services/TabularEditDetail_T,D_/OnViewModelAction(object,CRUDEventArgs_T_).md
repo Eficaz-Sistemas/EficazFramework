@@ -17,4 +17,4 @@ private void OnViewModelAction(object sender, EficazFramework.Events.CRUDEventAr
 
 <a name='EficazFramework.ViewModels.Services.TabularEditDetail_T,D_.OnViewModelAction(object,EficazFramework.Events.CRUDEventArgs_T_).e'></a>
 
-`e` [EficazFramework.Events.CRUDEventArgs&lt;](https://docs.microsoft.com/en-us/dotnet/api/EficazFramework.Events.CRUDEventArgs-1 'EficazFramework.Events.CRUDEventArgs`1')[T](EficazFramework.ViewModels.Services/TabularEditDetail_T,D_.md#EficazFramework.ViewModels.Services.TabularEditDetail_T,D_.T 'EficazFramework.ViewModels.Services.TabularEditDetail<T,D>.T')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/EficazFramework.Events.CRUDEventArgs-1 'EficazFramework.Events.CRUDEventArgs`1')
+`e` [EficazFramework.Events.CRUDEventArgs&lt;](EficazFramework.Events/CRUDEventArgs_T_.md 'EficazFramework.Events.CRUDEventArgs<T>')[T](EficazFramework.ViewModels.Services/TabularEditDetail_T,D_.md#EficazFramework.ViewModels.Services.TabularEditDetail_T,D_.T 'EficazFramework.ViewModels.Services.TabularEditDetail<T,D>.T')[&gt;](EficazFramework.Events/CRUDEventArgs_T_.md 'EficazFramework.Events.CRUDEventArgs<T>')

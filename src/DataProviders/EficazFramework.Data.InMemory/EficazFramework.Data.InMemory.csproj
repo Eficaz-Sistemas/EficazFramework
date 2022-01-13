@@ -24,9 +24,9 @@
 	  <GenerateDocumentationFile>true</GenerateDocumentationFile>
 	  <DefaultDocumentationFolder>..\..\..\Docs\Api\Data-Providers\InMemory</DefaultDocumentationFolder>
 	  <DefaultDocumentationAssemblyPageName>EficazFramework InMemory Data Provider</DefaultDocumentationAssemblyPageName>
-	  <DefaultDocumentationGeneratedPages>Assembly, Types, Methods</DefaultDocumentationGeneratedPages>
+	  <DefaultDocumentationGeneratedPages>Assembly, Types, Members</DefaultDocumentationGeneratedPages>
 	  <DefaultDocumentationFileNameFactory>Folder</DefaultDocumentationFileNameFactory>
-	  <DefaultDocumentationLogLevel>Trace</DefaultDocumentationLogLevel>
+	  <DefaultDocumentationIncludeUndocumentedItems>true</DefaultDocumentationIncludeUndocumentedItems>
 	  <Nullable>enable</Nullable>
   </PropertyGroup>
 

@@ -14,37 +14,15 @@ internal class Required<T> : EficazFramework.Validation.Fluent.Rules.ValidationR
 `T`
 
 Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.Object 'System.Object') &#129106; [EficazFramework.Validation.Fluent.Rules.ValidationRule&lt;](EficazFramework.Validation.Fluent.Rules/ValidationRule_T_.md 'EficazFramework.Validation.Fluent.Rules.ValidationRule<T>')[T](EficazFramework.Validation.Fluent.Rules/Required_T_.md#EficazFramework.Validation.Fluent.Rules.Required_T_.T 'EficazFramework.Validation.Fluent.Rules.Required<T>.T')[&gt;](EficazFramework.Validation.Fluent.Rules/ValidationRule_T_.md 'EficazFramework.Validation.Fluent.Rules.ValidationRule<T>') &#129106; Required<T>
-### Constructors
 
-<a name='EficazFramework.Validation.Fluent.Rules.Required_T_.Required(System.Linq.Expressions.Expression_System.Func_T,object__,bool)'></a>
+| Constructors | |
+| :--- | :--- |
+| [Required(Expression&lt;Func&lt;T,object&gt;&gt;, bool)](EficazFramework.Validation.Fluent.Rules/Required_T_/Required(Expression_Func_T,object__,bool).md 'EficazFramework.Validation.Fluent.Rules.Required<T>.Required(System.Linq.Expressions.Expression<System.Func<T,object>>, bool)') | Regra de validação contra valores e/ou referências nulas ou vazias |
 
-## Required(Expression<Func<T,object>>, bool) Constructor
+| Properties | |
+| :--- | :--- |
+| [AllowEmpty](EficazFramework.Validation.Fluent.Rules/Required_T_/AllowEmpty.md 'EficazFramework.Validation.Fluent.Rules.Required<T>.AllowEmpty') | Obtém ou define se a constante String.Empty será permitida ou não |
 
-Regra de validação contra valores e/ou referências nulas ou vazias
-
-```csharp
-public Required(System.Linq.Expressions.Expression<System.Func<T,object>> propertyexpression, bool allowempty=false);
-```
-#### Parameters
-
-<a name='EficazFramework.Validation.Fluent.Rules.Required_T_.Required(System.Linq.Expressions.Expression_System.Func_T,object__,bool).propertyexpression'></a>
-
-`propertyexpression` [System.Linq.Expressions.Expression&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Linq.Expressions.Expression-1 'System.Linq.Expressions.Expression`1')[System.Func&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-2 'System.Func`2')[T](EficazFramework.Validation.Fluent.Rules/Required_T_.md#EficazFramework.Validation.Fluent.Rules.Required_T_.T 'EficazFramework.Validation.Fluent.Rules.Required<T>.T')[,](https://docs.microsoft.com/en-us/dotnet/api/System.Func-2 'System.Func`2')[System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.Object 'System.Object')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-2 'System.Func`2')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Linq.Expressions.Expression-1 'System.Linq.Expressions.Expression`1')
-
-<a name='EficazFramework.Validation.Fluent.Rules.Required_T_.Required(System.Linq.Expressions.Expression_System.Func_T,object__,bool).allowempty'></a>
-
-`allowempty` [System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')
-### Properties
-
-<a name='EficazFramework.Validation.Fluent.Rules.Required_T_.AllowEmpty'></a>
-
-## Required<T>.AllowEmpty Property
-
-Obtém ou define se a constante String.Empty será permitida ou não
-
-```csharp
-public bool AllowEmpty { get; set; }
-```
-
-#### Property Value
-[System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')
+| Methods | |
+| :--- | :--- |
+| [Validate(T)](EficazFramework.Validation.Fluent.Rules/Required_T_/Validate(T).md 'EficazFramework.Validation.Fluent.Rules.Required<T>.Validate(T)') | |

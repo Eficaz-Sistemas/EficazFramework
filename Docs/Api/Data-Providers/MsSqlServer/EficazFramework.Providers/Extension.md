@@ -11,4 +11,4 @@ Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.O
 
 | Methods | |
 | :--- | :--- |
-| [AddSqlService(this IServiceCollection)](EficazFramework.Providers/Extension/AddSqlService(thisIServiceCollection).md 'EficazFramework.Providers.Extension.AddSqlService(this Microsoft.Extensions.DependencyInjection.IServiceCollection)') | Adiciona o provedor MsSqlServer ao contexto de Injeção de Depenência |
+| [AddSqlService(this IServiceCollection)](EficazFramework.Providers/Extension/AddSqlService(thisIServiceCollection).md 'EficazFramework.Providers.Extension.AddSqlService(this Microsoft.Extensions.DependencyInjection.IServiceCollection)') | Adiciona o provedor MsSqlServer ao contexto de Injeção de Dependência |

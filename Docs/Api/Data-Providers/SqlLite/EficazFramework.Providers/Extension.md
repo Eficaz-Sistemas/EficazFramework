@@ -11,4 +11,4 @@ Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.O
 
 | Methods | |
 | :--- | :--- |
-| [AddSqlLiteService(this IServiceCollection)](EficazFramework.Providers/Extension/AddSqlLiteService(thisIServiceCollection).md 'EficazFramework.Providers.Extension.AddSqlLiteService(this Microsoft.Extensions.DependencyInjection.IServiceCollection)') | Adiciona o provedor SqlLite ao contexto de Injeção de Depenência |
+| [AddSqlLiteService(this IServiceCollection)](EficazFramework.Providers/Extension/AddSqlLiteService(thisIServiceCollection).md 'EficazFramework.Providers.Extension.AddSqlLiteService(this Microsoft.Extensions.DependencyInjection.IServiceCollection)') | Adiciona o provedor SqlLite ao contexto de Injeção de Dependência |

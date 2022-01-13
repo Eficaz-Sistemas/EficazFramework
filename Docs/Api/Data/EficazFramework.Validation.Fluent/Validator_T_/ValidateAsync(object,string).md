@@ -22,7 +22,7 @@ Instância a ser validade
 
 Nome da propriedade a ser validada
 
-Implements [ValidateAsync(object, string)](https://docs.microsoft.com/en-us/dotnet/api/EficazFramework.Validation.Fluent.IValidator.ValidateAsync#EficazFramework_Validation_Fluent_IValidator_ValidateAsync_System_Object,System_String_ 'EficazFramework.Validation.Fluent.IValidator.ValidateAsync(System.Object,System.String)')
+Implements [ValidateAsync(object, string)](EficazFramework.Validation.Fluent/IValidator/ValidateAsync(object,string).md 'EficazFramework.Validation.Fluent.IValidator.ValidateAsync(object, string)')
 
 #### Returns
 [System.Threading.Tasks.Task&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Threading.Tasks.Task-1 'System.Threading.Tasks.Task`1')[ValidationResult](EficazFramework.Validation.Fluent/ValidationResult.md 'EficazFramework.Validation.Fluent.ValidationResult')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Threading.Tasks.Task-1 'System.Threading.Tasks.Task`1')

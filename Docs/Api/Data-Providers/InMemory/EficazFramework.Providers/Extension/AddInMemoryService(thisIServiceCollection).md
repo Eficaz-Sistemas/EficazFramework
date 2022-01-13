@@ -3,7 +3,7 @@
 
 ## Extension.AddInMemoryService(this IServiceCollection) Method
 
-Adiciona o provedor InMemory ao contexto de Injeção de Depenência
+Adiciona o provedor InMemory ao contexto de Injeção de Dependência
 
 ```csharp
 public static Microsoft.Extensions.DependencyInjection.IServiceCollection AddInMemoryService(this Microsoft.Extensions.DependencyInjection.IServiceCollection serviceCollection);

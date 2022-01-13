@@ -14,20 +14,19 @@ public abstract class Documentos<T> : EficazFramework.Validation.Fluent.Rules.Va
 `T`
 
 Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.Object 'System.Object') &#129106; [EficazFramework.Validation.Fluent.Rules.ValidationRule&lt;](EficazFramework.Validation.Fluent.Rules/ValidationRule_T_.md 'EficazFramework.Validation.Fluent.Rules.ValidationRule<T>')[T](EficazFramework.Validation.Fluent.Rules/Documentos_T_.md#EficazFramework.Validation.Fluent.Rules.Documentos_T_.T 'EficazFramework.Validation.Fluent.Rules.Documentos<T>.T')[&gt;](EficazFramework.Validation.Fluent.Rules/ValidationRule_T_.md 'EficazFramework.Validation.Fluent.Rules.ValidationRule<T>') &#129106; Documentos<T>
-### Constructors
 
-<a name='EficazFramework.Validation.Fluent.Rules.Documentos_T_.Documentos(System.Linq.Expressions.Expression_System.Func_T,object__)'></a>
+Derived  
+&#8627; [CNPJ&lt;T&gt;](EficazFramework.Validation.Fluent.Rules/CNPJ_T_.md 'EficazFramework.Validation.Fluent.Rules.CNPJ<T>')  
+&#8627; [CNPJouCPF&lt;T&gt;](EficazFramework.Validation.Fluent.Rules/CNPJouCPF_T_.md 'EficazFramework.Validation.Fluent.Rules.CNPJouCPF<T>')  
+&#8627; [CPF&lt;T&gt;](EficazFramework.Validation.Fluent.Rules/CPF_T_.md 'EficazFramework.Validation.Fluent.Rules.CPF<T>')  
+&#8627; [InscrEstadual&lt;T&gt;](EficazFramework.Validation.Fluent.Rules/InscrEstadual_T_.md 'EficazFramework.Validation.Fluent.Rules.InscrEstadual<T>')  
+&#8627; [PIS&lt;T&gt;](EficazFramework.Validation.Fluent.Rules/PIS_T_.md 'EficazFramework.Validation.Fluent.Rules.PIS<T>')
 
-## Documentos(Expression<Func<T,object>>) Constructor
+| Constructors | |
+| :--- | :--- |
+| [Documentos(Expression&lt;Func&lt;T,object&gt;&gt;)](EficazFramework.Validation.Fluent.Rules/Documentos_T_/Documentos(Expression_Func_T,object__).md 'EficazFramework.Validation.Fluent.Rules.Documentos<T>.Documentos(System.Linq.Expressions.Expression<System.Func<T,object>>)') | s<br/>            Regra de validação contra valores e/ou referências nulas ou vazias |
 
-s  
-            Regra de validação contra valores e/ou referências nulas ou vazias
-
-```csharp
-internal Documentos(System.Linq.Expressions.Expression<System.Func<T,object>> propertyexpression);
-```
-#### Parameters
-
-<a name='EficazFramework.Validation.Fluent.Rules.Documentos_T_.Documentos(System.Linq.Expressions.Expression_System.Func_T,object__).propertyexpression'></a>
-
-`propertyexpression` [System.Linq.Expressions.Expression&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Linq.Expressions.Expression-1 'System.Linq.Expressions.Expression`1')[System.Func&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-2 'System.Func`2')[T](EficazFramework.Validation.Fluent.Rules/Documentos_T_.md#EficazFramework.Validation.Fluent.Rules.Documentos_T_.T 'EficazFramework.Validation.Fluent.Rules.Documentos<T>.T')[,](https://docs.microsoft.com/en-us/dotnet/api/System.Func-2 'System.Func`2')[System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.Object 'System.Object')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-2 'System.Func`2')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Linq.Expressions.Expression-1 'System.Linq.Expressions.Expression`1')
+| Methods | |
+| :--- | :--- |
+| [Validate(T)](EficazFramework.Validation.Fluent.Rules/Documentos_T_/Validate(T).md 'EficazFramework.Validation.Fluent.Rules.Documentos<T>.Validate(T)') | |
+| [ValidateDocumento(string, object[])](EficazFramework.Validation.Fluent.Rules/Documentos_T_/ValidateDocumento(string,object[]).md 'EficazFramework.Validation.Fluent.Rules.Documentos<T>.ValidateDocumento(string, object[])') | |

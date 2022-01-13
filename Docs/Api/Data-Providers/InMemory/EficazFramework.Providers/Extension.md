@@ -11,4 +11,4 @@ Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.O
 
 | Methods | |
 | :--- | :--- |
-| [AddInMemoryService(this IServiceCollection)](EficazFramework.Providers/Extension/AddInMemoryService(thisIServiceCollection).md 'EficazFramework.Providers.Extension.AddInMemoryService(this Microsoft.Extensions.DependencyInjection.IServiceCollection)') | Adiciona o provedor InMemory ao contexto de Injeção de Depenência |
+| [AddInMemoryService(this IServiceCollection)](EficazFramework.Providers/Extension/AddInMemoryService(thisIServiceCollection).md 'EficazFramework.Providers.Extension.AddInMemoryService(this Microsoft.Extensions.DependencyInjection.IServiceCollection)') | Adiciona o provedor InMemory ao contexto de Injeção de Dependência |

@@ -1,0 +1,11 @@
+#### [EficazFramework.Utilities](EficazFrameworkUtilities.md 'EficazFramework Utilities')
+### [EficazFramework.Extensions](EficazFrameworkUtilities.md#EficazFramework.Extensions 'EficazFramework.Extensions').[NumberExtensions](EficazFramework.Extensions/NumberExtensions.md 'EficazFramework.Extensions.NumberExtensions')
+
+## NumberExtensions.real_br Field
+
+```csharp
+private static readonly string[] real_br;
+```
+
+#### Field Value
+[System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')[[]](https://docs.microsoft.com/en-us/dotnet/api/System.Array 'System.Array')

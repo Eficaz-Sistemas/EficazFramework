@@ -52,6 +52,7 @@
     <ProjectReference Include="..\..\Core\EficazFramework.Utilities\EficazFramework.Utilities.csproj" />
     <ProjectReference Include="..\..\DataProviders\EficazFramework.Data.InMemory\EficazFramework.Data.InMemory.csproj" />
     <ProjectReference Include="..\..\DataProviders\EficazFramework.Data.MsSqlServer\EficazFramework.Data.MsSqlServer.csproj" />
+    <ProjectReference Include="..\..\DataProviders\EficazFramework.Data.MySql\EficazFramework.Data.MySql.csproj" />
     <ProjectReference Include="..\..\DataProviders\EficazFramework.Data.SqlLite\EficazFramework.Data.SqlLite.csproj" />
   </ItemGroup>
 

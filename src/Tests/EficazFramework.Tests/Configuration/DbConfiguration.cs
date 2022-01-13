@@ -10,6 +10,7 @@ namespace EficazFramework.Configuration;
 [TestFixture(typeof(Providers.InMemory))]
 [TestFixture(typeof(Providers.SqlLite))]
 [TestFixture(typeof(Providers.MsSqlServer))]
+[TestFixture(typeof(Providers.MySql))]
 public class DbConfigurationTests<TProvider> where TProvider : DataProviderBase
 {
     IServiceCollection _serviceCollection = null;
@@ -89,6 +90,15 @@ public class DbConfigurationTests<TProvider> where TProvider : DataProviderBase
                     dataBaseProvider.GetConnectionString("mydb", "myuser", "mypass").Should().Be("myserver");
                     config.UseConnectionStringEncryption = true;
                     dataBaseProvider.GetConnectionString("mydb", "myuser", "mypass").Should().NotContain("myserver");
+                    config.UseConnectionStringEncryption = false;
+                    break;
+                }
+
+            case "MySql":
+                {
+                    dataBaseProvider.GetConnectionString("mydb", "myuser", "mypass").Should().Be(@"Server=myserver;Port=1436;Database=mydb;Uid=myuser;Pwd=mypass;Connect Timeout=30;");
+                    config.UseConnectionStringEncryption = true;
+                    dataBaseProvider.GetConnectionString("mydb", "myuser", "mypass").Should().NotContain("myDb");
                     config.UseConnectionStringEncryption = false;
                     break;
                 }

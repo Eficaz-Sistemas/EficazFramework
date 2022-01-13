@@ -26,8 +26,9 @@
 	 <GenerateDocumentationFile>true</GenerateDocumentationFile>
 	 <DefaultDocumentationFolder>..\..\..\Docs\Api\Web-Blazor</DefaultDocumentationFolder>
 	 <DefaultDocumentationAssemblyPageName>EficazFramework Blazor</DefaultDocumentationAssemblyPageName>
-	 <DefaultDocumentationGeneratedPages>Assembly, Types</DefaultDocumentationGeneratedPages>
+	 <DefaultDocumentationGeneratedPages>Assembly, Types, Members</DefaultDocumentationGeneratedPages>
 	 <DefaultDocumentationFileNameFactory>Folder</DefaultDocumentationFileNameFactory>
+	 <DefaultDocumentationIncludeUndocumentedItems>false</DefaultDocumentationIncludeUndocumentedItems>
   </PropertyGroup>
 	
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">

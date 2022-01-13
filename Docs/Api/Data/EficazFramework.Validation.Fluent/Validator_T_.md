@@ -20,9 +20,14 @@ Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.O
 
 Implements [IValidator](EficazFramework.Validation.Fluent/IValidator.md 'EficazFramework.Validation.Fluent.IValidator')
 
+| Fields | |
+| :--- | :--- |
+| [ValidationRules](EficazFramework.Validation.Fluent/Validator_T_/ValidationRules.md 'EficazFramework.Validation.Fluent.Validator<T>.ValidationRules') | |
+
 | Methods | |
 | :--- | :--- |
 | [Validate(object)](EficazFramework.Validation.Fluent/Validator_T_/Validate(object).md 'EficazFramework.Validation.Fluent.Validator<T>.Validate(object)') | Executa a validação completa da instância |
 | [Validate(object, string)](EficazFramework.Validation.Fluent/Validator_T_/Validate(object,string).md 'EficazFramework.Validation.Fluent.Validator<T>.Validate(object, string)') | Executa a validação da propriedade argumentada da instância |
 | [ValidateAsync(object)](EficazFramework.Validation.Fluent/Validator_T_/ValidateAsync(object).md 'EficazFramework.Validation.Fluent.Validator<T>.ValidateAsync(object)') | Executa a validação completa da instância |
 | [ValidateAsync(object, string)](EficazFramework.Validation.Fluent/Validator_T_/ValidateAsync(object,string).md 'EficazFramework.Validation.Fluent.Validator<T>.ValidateAsync(object, string)') | Executa a validação da propriedade argumentada da instância |
+| [ValidateInternal(T, string)](EficazFramework.Validation.Fluent/Validator_T_/ValidateInternal(T,string).md 'EficazFramework.Validation.Fluent.Validator<T>.ValidateInternal(T, string)') | |

@@ -12,57 +12,10 @@ Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.O
 Derived  
 &#8627; [Animation](EficazFramework.Components/Animation.md 'EficazFramework.Components.Animation')  
 &#8627; [BaseItemsControl&lt;TChildComponent&gt;](EficazFramework.Components/BaseItemsControl_TChildComponent_.md 'EficazFramework.Components.BaseItemsControl<TChildComponent>')
-### Properties
 
-<a name='EficazFramework.Components.ComponentBase.Class'></a>
-
-## ComponentBase.Class Property
-
-User class names, separated by space
-
-```csharp
-public string Class { get; set; }
-```
-
-#### Property Value
-[System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
-
-<a name='EficazFramework.Components.ComponentBase.Style'></a>
-
-## ComponentBase.Style Property
-
-User styles, applied on top of the component's own classes and styles
-
-```csharp
-public string Style { get; set; }
-```
-
-#### Property Value
-[System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
-
-<a name='EficazFramework.Components.ComponentBase.Tag'></a>
-
-## ComponentBase.Tag Property
-
-Use Tag to attach any user data object to the component for your convenience.
-
-```csharp
-public object Tag { get; set; }
-```
-
-#### Property Value
-[System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.Object 'System.Object')
-
-<a name='EficazFramework.Components.ComponentBase.UserAttributes'></a>
-
-## ComponentBase.UserAttributes Property
-
-UserAttributes carries all attributes you add to the component that don't match any of its parameters.  
-They will be splatted onto the underlying HTML tag.
-
-```csharp
-public System.Collections.Generic.Dictionary<string,object> UserAttributes { get; set; }
-```
-
-#### Property Value
-[System.Collections.Generic.Dictionary&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.Generic.Dictionary-2 'System.Collections.Generic.Dictionary`2')[System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')[,](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.Generic.Dictionary-2 'System.Collections.Generic.Dictionary`2')[System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.Object 'System.Object')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.Generic.Dictionary-2 'System.Collections.Generic.Dictionary`2')
+| Properties | |
+| :--- | :--- |
+| [Class](EficazFramework.Components/ComponentBase/Class.md 'EficazFramework.Components.ComponentBase.Class') | User class names, separated by space |
+| [Style](EficazFramework.Components/ComponentBase/Style.md 'EficazFramework.Components.ComponentBase.Style') | User styles, applied on top of the component's own classes and styles |
+| [Tag](EficazFramework.Components/ComponentBase/Tag.md 'EficazFramework.Components.ComponentBase.Tag') | Use Tag to attach any user data object to the component for your convenience. |
+| [UserAttributes](EficazFramework.Components/ComponentBase/UserAttributes.md 'EficazFramework.Components.ComponentBase.UserAttributes') | UserAttributes carries all attributes you add to the component that don't match any of its parameters.<br/>They will be splatted onto the underlying HTML tag. |

@@ -10,33 +10,19 @@ public abstract class DataProviderBase
 ```
 
 Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.Object 'System.Object') &#129106; DataProviderBase
-### Properties
 
-<a name='EficazFramework.Providers.DataProviderBase.DbConfig'></a>
+| Constructors | |
+| :--- | :--- |
+| [DataProviderBase(IDbConfig)](EficazFramework.Providers/DataProviderBase/DataProviderBase(IDbConfig).md 'EficazFramework.Providers.DataProviderBase.DataProviderBase(EficazFramework.Configuration.IDbConfig)') | |
 
-## DataProviderBase.DbConfig Property
+| Fields | |
+| :--- | :--- |
+| [_dbConfig](EficazFramework.Providers/DataProviderBase/_dbConfig.md 'EficazFramework.Providers.DataProviderBase._dbConfig') | |
 
-Instância de configurações para acesso à fonte de dados.
-
-```csharp
-public EficazFramework.Configuration.IDbConfig DbConfig { get; }
-```
-
-#### Property Value
-[IDbConfig](EficazFramework.Configuration/IDbConfig.md 'EficazFramework.Configuration.IDbConfig')
-
-<a name='EficazFramework.Providers.DataProviderBase.Name'></a>
-
-## DataProviderBase.Name Property
-
-Nome amigável do provedor de dados.
-
-```csharp
-public abstract string Name { get; }
-```
-
-#### Property Value
-[System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
+| Properties | |
+| :--- | :--- |
+| [DbConfig](EficazFramework.Providers/DataProviderBase/DbConfig.md 'EficazFramework.Providers.DataProviderBase.DbConfig') | Instância de configurações para acesso à fonte de dados. |
+| [Name](EficazFramework.Providers/DataProviderBase/Name.md 'EficazFramework.Providers.DataProviderBase.Name') | Nome amigável do provedor de dados. |
 
 | Methods | |
 | :--- | :--- |

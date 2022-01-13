@@ -16,4 +16,4 @@ private void OnItemsFetching(object sender, EficazFramework.Events.CRUDEventArgs
 
 <a name='EficazFramework.ViewModels.Services.SingleEdit_T_.OnItemsFetching(object,EficazFramework.Events.CRUDEventArgs_T_).e'></a>
 
-`e` [EficazFramework.Events.CRUDEventArgs&lt;](https://docs.microsoft.com/en-us/dotnet/api/EficazFramework.Events.CRUDEventArgs-1 'EficazFramework.Events.CRUDEventArgs`1')[T](EficazFramework.ViewModels.Services/SingleEdit_T_.md#EficazFramework.ViewModels.Services.SingleEdit_T_.T 'EficazFramework.ViewModels.Services.SingleEdit<T>.T')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/EficazFramework.Events.CRUDEventArgs-1 'EficazFramework.Events.CRUDEventArgs`1')
+`e` [EficazFramework.Events.CRUDEventArgs&lt;](EficazFramework.Events/CRUDEventArgs_T_.md 'EficazFramework.Events.CRUDEventArgs<T>')[T](EficazFramework.ViewModels.Services/SingleEdit_T_.md#EficazFramework.ViewModels.Services.SingleEdit_T_.T 'EficazFramework.ViewModels.Services.SingleEdit<T>.T')[&gt;](EficazFramework.Events/CRUDEventArgs_T_.md 'EficazFramework.Events.CRUDEventArgs<T>')

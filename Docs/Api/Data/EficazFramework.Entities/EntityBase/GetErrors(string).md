@@ -17,7 +17,7 @@ public System.Collections.IEnumerable GetErrors(string propertyName);
 
 O nome da propriedade a ser validada. Utilize 'Nothing' para validar toda a Entity.
 
-Implements [GetErrors(string)](https://docs.microsoft.com/en-us/dotnet/api/System.ComponentModel.INotifyDataErrorInfo.GetErrors#System_ComponentModel_INotifyDataErrorInfo_GetErrors_System_String_ 'System.ComponentModel.INotifyDataErrorInfo.GetErrors(System.String)'), [GetErrors(string)](https://docs.microsoft.com/en-us/dotnet/api/EficazFramework.Entities.IEntity.GetErrors#EficazFramework_Entities_IEntity_GetErrors_System_String_ 'EficazFramework.Entities.IEntity.GetErrors(System.String)')
+Implements [GetErrors(string)](https://docs.microsoft.com/en-us/dotnet/api/System.ComponentModel.INotifyDataErrorInfo.GetErrors#System_ComponentModel_INotifyDataErrorInfo_GetErrors_System_String_ 'System.ComponentModel.INotifyDataErrorInfo.GetErrors(System.String)'), [GetErrors(string)](EficazFramework.Entities/IEntity/GetErrors(string).md 'EficazFramework.Entities.IEntity.GetErrors(string)')
 
 #### Returns
 [System.Collections.IEnumerable](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.IEnumerable 'System.Collections.IEnumerable')  

@@ -11,57 +11,33 @@ System.ComponentModel.INotifyPropertyChanged
 Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.Object 'System.Object') &#129106; SectionManager
 
 Implements [System.ComponentModel.INotifyPropertyChanged](https://docs.microsoft.com/en-us/dotnet/api/System.ComponentModel.INotifyPropertyChanged 'System.ComponentModel.INotifyPropertyChanged')
-### Fields
 
-<a name='EficazFramework.Application.SectionManager.SectionsIDs'></a>
+| Constructors | |
+| :--- | :--- |
+| [SectionManager(ApplicationManager)](EficazFramework.Application/SectionManager/SectionManager(ApplicationManager).md 'EficazFramework.Application.SectionManager.SectionManager(EficazFramework.Application.ApplicationManager)') | |
 
-## SectionManager.SectionsIDs Field
+| Fields | |
+| :--- | :--- |
+| [_appManager](EficazFramework.Application/SectionManager/_appManager.md 'EficazFramework.Application.SectionManager._appManager') | |
+| [_current](EficazFramework.Application/SectionManager/_current.md 'EficazFramework.Application.SectionManager._current') | |
+| [SectionsIDs](EficazFramework.Application/SectionManager/SectionsIDs.md 'EficazFramework.Application.SectionManager.SectionsIDs') | Dicionário das seções ativas, útil para evitar ativação em duplicidade. |
 
-Dicionário das seções ativas, útil para evitar ativação em duplicidade.
+| Properties | |
+| :--- | :--- |
+| [ApplicationManager](EficazFramework.Application/SectionManager/ApplicationManager.md 'EficazFramework.Application.SectionManager.ApplicationManager') | Instância de ApplicationManager para sincronização de aplicativos por área de trabalho |
+| [CurrentSection](EficazFramework.Application/SectionManager/CurrentSection.md 'EficazFramework.Application.SectionManager.CurrentSection') | Contém informações acerca da Seção Ativa. |
+| [Sections](EficazFramework.Application/SectionManager/Sections.md 'EficazFramework.Application.SectionManager.Sections') | Listagem de Seções Iniciadas (aka "Múltiplas áreas de trabalho") |
+| [SectionsInternal](EficazFramework.Application/SectionManager/SectionsInternal.md 'EficazFramework.Application.SectionManager.SectionsInternal') | |
 
-```csharp
-private readonly Dictionary<long,Section> SectionsIDs;
-```
+| Methods | |
+| :--- | :--- |
+| [ActivateSection(Section, bool)](EficazFramework.Application/SectionManager/ActivateSection(Section,bool).md 'EficazFramework.Application.SectionManager.ActivateSection(EficazFramework.Application.Section, bool)') | |
+| [ActivateSection(long)](EficazFramework.Application/SectionManager/ActivateSection(long).md 'EficazFramework.Application.SectionManager.ActivateSection(long)') | |
+| [DisposeSection(Section)](EficazFramework.Application/SectionManager/DisposeSection(Section).md 'EficazFramework.Application.SectionManager.DisposeSection(EficazFramework.Application.Section)') | |
+| [DisposeSection(long)](EficazFramework.Application/SectionManager/DisposeSection(long).md 'EficazFramework.Application.SectionManager.DisposeSection(long)') | |
+| [Sections_CollectionChanged(object, NotifyCollectionChangedEventArgs)](EficazFramework.Application/SectionManager/Sections_CollectionChanged(object,NotifyCollectionChangedEventArgs).md 'EficazFramework.Application.SectionManager.Sections_CollectionChanged(object, System.Collections.Specialized.NotifyCollectionChangedEventArgs)') | |
 
-#### Field Value
-[System.Collections.Generic.Dictionary&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.Generic.Dictionary-2 'System.Collections.Generic.Dictionary`2')[System.Int64](https://docs.microsoft.com/en-us/dotnet/api/System.Int64 'System.Int64')[,](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.Generic.Dictionary-2 'System.Collections.Generic.Dictionary`2')[EficazFramework.Application.Section](https://docs.microsoft.com/en-us/dotnet/api/EficazFramework.Application.Section 'EficazFramework.Application.Section')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.Generic.Dictionary-2 'System.Collections.Generic.Dictionary`2')
-### Properties
-
-<a name='EficazFramework.Application.SectionManager.ApplicationManager'></a>
-
-## SectionManager.ApplicationManager Property
-
-Instância de ApplicationManager para sincronização de aplicativos por área de trabalho
-
-```csharp
-public EficazFramework.Application.ApplicationManager ApplicationManager { get; }
-```
-
-#### Property Value
-[ApplicationManager](EficazFramework.Application/ApplicationManager.md 'EficazFramework.Application.ApplicationManager')
-
-<a name='EficazFramework.Application.SectionManager.CurrentSection'></a>
-
-## SectionManager.CurrentSection Property
-
-Contém informações acerca da Seção Ativa.
-
-```csharp
-public EficazFramework.Application.Section CurrentSection { get; set; }
-```
-
-#### Property Value
-[EficazFramework.Application.Section](https://docs.microsoft.com/en-us/dotnet/api/EficazFramework.Application.Section 'EficazFramework.Application.Section')
-
-<a name='EficazFramework.Application.SectionManager.Sections'></a>
-
-## SectionManager.Sections Property
-
-Listagem de Seções Iniciadas (aka "Múltiplas áreas de trabalho")
-
-```csharp
-public System.Collections.ObjectModel.ReadOnlyCollection<EficazFramework.Application.Section> Sections { get; }
-```
-
-#### Property Value
-[System.Collections.ObjectModel.ReadOnlyCollection&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.ObjectModel.ReadOnlyCollection-1 'System.Collections.ObjectModel.ReadOnlyCollection`1')[EficazFramework.Application.Section](https://docs.microsoft.com/en-us/dotnet/api/EficazFramework.Application.Section 'EficazFramework.Application.Section')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.ObjectModel.ReadOnlyCollection-1 'System.Collections.ObjectModel.ReadOnlyCollection`1')
+| Events | |
+| :--- | :--- |
+| [CurrentSectionChanged](EficazFramework.Application/SectionManager/CurrentSectionChanged.md 'EficazFramework.Application.SectionManager.CurrentSectionChanged') | |
+| [PropertyChanged](EficazFramework.Application/SectionManager/PropertyChanged.md 'EficazFramework.Application.SectionManager.PropertyChanged') | |

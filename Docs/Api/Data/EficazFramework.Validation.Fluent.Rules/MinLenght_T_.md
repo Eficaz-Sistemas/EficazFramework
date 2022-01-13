@@ -14,37 +14,15 @@ internal class MinLenght<T> : EficazFramework.Validation.Fluent.Rules.Validation
 `T`
 
 Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.Object 'System.Object') &#129106; [EficazFramework.Validation.Fluent.Rules.ValidationRule&lt;](EficazFramework.Validation.Fluent.Rules/ValidationRule_T_.md 'EficazFramework.Validation.Fluent.Rules.ValidationRule<T>')[T](EficazFramework.Validation.Fluent.Rules/MinLenght_T_.md#EficazFramework.Validation.Fluent.Rules.MinLenght_T_.T 'EficazFramework.Validation.Fluent.Rules.MinLenght<T>.T')[&gt;](EficazFramework.Validation.Fluent.Rules/ValidationRule_T_.md 'EficazFramework.Validation.Fluent.Rules.ValidationRule<T>') &#129106; MinLenght<T>
-### Constructors
 
-<a name='EficazFramework.Validation.Fluent.Rules.MinLenght_T_.MinLenght(System.Linq.Expressions.Expression_System.Func_T,object__,int)'></a>
+| Constructors | |
+| :--- | :--- |
+| [MinLenght(Expression&lt;Func&lt;T,object&gt;&gt;, int)](EficazFramework.Validation.Fluent.Rules/MinLenght_T_/MinLenght(Expression_Func_T,object__,int).md 'EficazFramework.Validation.Fluent.Rules.MinLenght<T>.MinLenght(System.Linq.Expressions.Expression<System.Func<T,object>>, int)') | Regra de validação contra valores e/ou referências nulas ou vazias |
 
-## MinLenght(Expression<Func<T,object>>, int) Constructor
+| Properties | |
+| :--- | :--- |
+| [Lenght](EficazFramework.Validation.Fluent.Rules/MinLenght_T_/Lenght.md 'EficazFramework.Validation.Fluent.Rules.MinLenght<T>.Lenght') | Limite de caracteres aceito. |
 
-Regra de validação contra valores e/ou referências nulas ou vazias
-
-```csharp
-public MinLenght(System.Linq.Expressions.Expression<System.Func<T,object>> propertyexpression, int lenght);
-```
-#### Parameters
-
-<a name='EficazFramework.Validation.Fluent.Rules.MinLenght_T_.MinLenght(System.Linq.Expressions.Expression_System.Func_T,object__,int).propertyexpression'></a>
-
-`propertyexpression` [System.Linq.Expressions.Expression&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Linq.Expressions.Expression-1 'System.Linq.Expressions.Expression`1')[System.Func&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-2 'System.Func`2')[T](EficazFramework.Validation.Fluent.Rules/MinLenght_T_.md#EficazFramework.Validation.Fluent.Rules.MinLenght_T_.T 'EficazFramework.Validation.Fluent.Rules.MinLenght<T>.T')[,](https://docs.microsoft.com/en-us/dotnet/api/System.Func-2 'System.Func`2')[System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.Object 'System.Object')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-2 'System.Func`2')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Linq.Expressions.Expression-1 'System.Linq.Expressions.Expression`1')
-
-<a name='EficazFramework.Validation.Fluent.Rules.MinLenght_T_.MinLenght(System.Linq.Expressions.Expression_System.Func_T,object__,int).lenght'></a>
-
-`lenght` [System.Int32](https://docs.microsoft.com/en-us/dotnet/api/System.Int32 'System.Int32')
-### Properties
-
-<a name='EficazFramework.Validation.Fluent.Rules.MinLenght_T_.Lenght'></a>
-
-## MinLenght<T>.Lenght Property
-
-Limite de caracteres aceito.
-
-```csharp
-public int Lenght { get; set; }
-```
-
-#### Property Value
-[System.Int32](https://docs.microsoft.com/en-us/dotnet/api/System.Int32 'System.Int32')
+| Methods | |
+| :--- | :--- |
+| [Validate(T)](EficazFramework.Validation.Fluent.Rules/MinLenght_T_/Validate(T).md 'EficazFramework.Validation.Fluent.Rules.MinLenght<T>.Validate(T)') | |

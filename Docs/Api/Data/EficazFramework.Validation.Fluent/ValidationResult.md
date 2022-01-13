@@ -9,21 +9,12 @@ Lista resultante dos métodos de Validação
 public class ValidationResult : EficazFramework.Collections.StringCollection
 ```
 
-Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.Object 'System.Object') &#129106; [System.Collections.Generic.List&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.Generic.List-1 'System.Collections.Generic.List`1')[System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.Generic.List-1 'System.Collections.Generic.List`1') &#129106; [EficazFramework.Collections.StringCollection](https://docs.microsoft.com/en-us/dotnet/api/EficazFramework.Collections.StringCollection 'EficazFramework.Collections.StringCollection') &#129106; ValidationResult
-### Properties
+Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.Object 'System.Object') &#129106; [System.Collections.Generic.List&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.Generic.List-1 'System.Collections.Generic.List`1')[System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.Generic.List-1 'System.Collections.Generic.List`1') &#129106; [StringCollection](EficazFramework.Collections/StringCollection.md 'EficazFramework.Collections.StringCollection') &#129106; ValidationResult
 
-<a name='EficazFramework.Validation.Fluent.ValidationResult.NullInstance'></a>
-
-## ValidationResult.NullInstance Property
-
-Obtém a mensagem de validação padrão para instâncias nulas.
-
-```csharp
-public static EficazFramework.Validation.Fluent.ValidationResult NullInstance { get; }
-```
-
-#### Property Value
-[ValidationResult](EficazFramework.Validation.Fluent/ValidationResult.md 'EficazFramework.Validation.Fluent.ValidationResult')
+| Properties | |
+| :--- | :--- |
+| [Empty](EficazFramework.Validation.Fluent/ValidationResult/Empty.md 'EficazFramework.Validation.Fluent.ValidationResult.Empty') | |
+| [NullInstance](EficazFramework.Validation.Fluent/ValidationResult/NullInstance.md 'EficazFramework.Validation.Fluent.ValidationResult.NullInstance') | Obtém a mensagem de validação padrão para instâncias nulas. |
 
 | Methods | |
 | :--- | :--- |

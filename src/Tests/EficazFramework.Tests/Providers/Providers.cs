@@ -42,6 +42,24 @@ public class ProviderTests
         svc.Should().NotBeNull();
         (svc as InMemory).Should().NotBeNull();
         (svc as MsSqlServer).Should().BeNull();
+        (svc as MySql).Should().BeNull();
+        (svc as SqlLite).Should().BeNull();
+    }
+
+    [Test]
+    public void TestMySql()
+    {
+        IServiceCollection serviceCollection = new ServiceCollection();
+        IServiceProvider provider = null;
+        serviceCollection.AddDbConfig(false);
+        serviceCollection.AddMySqlService();
+        provider = serviceCollection.BuildServiceProvider();
+
+        var svc = provider.GetService<DataProviderBase>();
+        svc.Should().NotBeNull();
+        (svc as InMemory).Should().BeNull();
+        (svc as MsSqlServer).Should().BeNull();
+        (svc as MySql).Should().NotBeNull();
         (svc as SqlLite).Should().BeNull();
     }
 
@@ -58,6 +76,7 @@ public class ProviderTests
         svc.Should().NotBeNull();
         (svc as InMemory).Should().BeNull();
         (svc as MsSqlServer).Should().NotBeNull();
+        (svc as MySql).Should().BeNull();
         (svc as SqlLite).Should().BeNull();
     }
 
@@ -74,6 +93,7 @@ public class ProviderTests
         svc.Should().NotBeNull();
         (svc as InMemory).Should().BeNull();
         (svc as MsSqlServer).Should().BeNull();
+        (svc as MySql).Should().BeNull();
         (svc as SqlLite).Should().NotBeNull();
     }
 

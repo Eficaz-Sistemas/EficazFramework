@@ -9,47 +9,14 @@ public interface IDbConfig
 
 Derived  
 &#8627; [DbConfiguration](EficazFramework.Configuration/DbConfiguration.md 'EficazFramework.Configuration.DbConfiguration')
-### Properties
 
-<a name='EficazFramework.Configuration.IDbConfig.Provider'></a>
+| Properties | |
+| :--- | :--- |
+| [Provider](EficazFramework.Configuration/IDbConfig/Provider.md 'EficazFramework.Configuration.IDbConfig.Provider') | Obtém a instância de provedor de dados para acesso a configurações, mapeamentos, etc |
+| [ServerName](EficazFramework.Configuration/IDbConfig/ServerName.md 'EficazFramework.Configuration.IDbConfig.ServerName') | Retorna o nome do Servidor |
+| [UseConnectionStringEncryption](EficazFramework.Configuration/IDbConfig/UseConnectionStringEncryption.md 'EficazFramework.Configuration.IDbConfig.UseConnectionStringEncryption') | Informa ou define se as strings de conexão devem ser geradas de forma criptografada. |
 
-## IDbConfig.Provider Property
-
-Obtém a instância de provedor de dados para acesso a configurações, mapeamentos, etc
-
-```csharp
-EficazFramework.Providers.DataProviderBase Provider { get; set; }
-```
-
-#### Property Value
-[DataProviderBase](EficazFramework.Providers/DataProviderBase.md 'EficazFramework.Providers.DataProviderBase')
-
-### Remarks
-
-<a name='EficazFramework.Configuration.IDbConfig.ServerName'></a>
-
-## IDbConfig.ServerName Property
-
-Retorna o nome do Servidor
-
-```csharp
-string ServerName { get; set; }
-```
-
-#### Property Value
-[System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
-
-### Remarks
-
-<a name='EficazFramework.Configuration.IDbConfig.UseConnectionStringEncryption'></a>
-
-## IDbConfig.UseConnectionStringEncryption Property
-
-Informa ou define se as strings de conexão devem ser geradas de forma criptografada.
-
-```csharp
-bool UseConnectionStringEncryption { get; set; }
-```
-
-#### Property Value
-[System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')
+| Methods | |
+| :--- | :--- |
+| [Load()](EficazFramework.Configuration/IDbConfig/Load().md 'EficazFramework.Configuration.IDbConfig.Load()') | |
+| [Save()](EficazFramework.Configuration/IDbConfig/Save().md 'EficazFramework.Configuration.IDbConfig.Save()') | |

@@ -8,20 +8,20 @@ public static class ServiceUtils
 ```
 
 Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.Object 'System.Object') &#129106; ServiceUtils
-### Fields
 
-<a name='EficazFramework.ViewModels.Services.ServiceUtils.KEY_AUDIT'></a>
-
-## ServiceUtils.KEY_AUDIT Field
-
-Known Services by EficazFramework.Data
-
-```csharp
-public const string KEY_AUDIT = Audit;
-```
-
-#### Field Value
-[System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
+| Fields | |
+| :--- | :--- |
+| [KEY_AUDIT](EficazFramework.ViewModels.Services/ServiceUtils/KEY_AUDIT.md 'EficazFramework.ViewModels.Services.ServiceUtils.KEY_AUDIT') | Known Services by EficazFramework.Data |
+| [KEY_DATAIMPORT](EficazFramework.ViewModels.Services/ServiceUtils/KEY_DATAIMPORT.md 'EficazFramework.ViewModels.Services.ServiceUtils.KEY_DATAIMPORT') | |
+| [KEY_EFCORE](EficazFramework.ViewModels.Services/ServiceUtils/KEY_EFCORE.md 'EficazFramework.ViewModels.Services.ServiceUtils.KEY_EFCORE') | |
+| [KEY_GPO](EficazFramework.ViewModels.Services/ServiceUtils/KEY_GPO.md 'EficazFramework.ViewModels.Services.ServiceUtils.KEY_GPO') | |
+| [KEY_INDEXVIEWNAVIGATOR](EficazFramework.ViewModels.Services/ServiceUtils/KEY_INDEXVIEWNAVIGATOR.md 'EficazFramework.ViewModels.Services.ServiceUtils.KEY_INDEXVIEWNAVIGATOR') | |
+| [KEY_PAGEDVIEWNAVIGATOR](EficazFramework.ViewModels.Services/ServiceUtils/KEY_PAGEDVIEWNAVIGATOR.md 'EficazFramework.ViewModels.Services.ServiceUtils.KEY_PAGEDVIEWNAVIGATOR') | |
+| [KEY_REST](EficazFramework.ViewModels.Services/ServiceUtils/KEY_REST.md 'EficazFramework.ViewModels.Services.ServiceUtils.KEY_REST') | |
+| [KEY_SINGLEEDIT](EficazFramework.ViewModels.Services/ServiceUtils/KEY_SINGLEEDIT.md 'EficazFramework.ViewModels.Services.ServiceUtils.KEY_SINGLEEDIT') | |
+| [KEY_SINGLEEDITDETAIL](EficazFramework.ViewModels.Services/ServiceUtils/KEY_SINGLEEDITDETAIL.md 'EficazFramework.ViewModels.Services.ServiceUtils.KEY_SINGLEEDITDETAIL') | |
+| [KEY_TABULAREDIT](EficazFramework.ViewModels.Services/ServiceUtils/KEY_TABULAREDIT.md 'EficazFramework.ViewModels.Services.ServiceUtils.KEY_TABULAREDIT') | |
+| [KEY_TABULAREDITDETAIL](EficazFramework.ViewModels.Services/ServiceUtils/KEY_TABULAREDITDETAIL.md 'EficazFramework.ViewModels.Services.ServiceUtils.KEY_TABULAREDITDETAIL') | |
 
 | Methods | |
 | :--- | :--- |
@@ -31,7 +31,12 @@ public const string KEY_AUDIT = Audit;
 | [AddSingledEditDetail&lt;T,D&gt;(this ViewModel&lt;T&gt;, Expression&lt;Func&lt;T,IList&lt;D&gt;&gt;&gt;)](EficazFramework.ViewModels.Services/ServiceUtils/AddSingledEditDetail_T,D_(thisViewModel_T_,Expression_Func_T,IList_D___).md 'EficazFramework.ViewModels.Services.ServiceUtils.AddSingledEditDetail<T,D>(this EficazFramework.ViewModels.ViewModel<T>, System.Linq.Expressions.Expression<System.Func<T,System.Collections.Generic.IList<D>>>)') | Adiciona funções Tracking, Validação e Persistêcia de Edição em Estados de Visualização para a instância ViewModel. |
 | [AddTabular&lt;T&gt;(this ViewModel&lt;T&gt;, bool)](EficazFramework.ViewModels.Services/ServiceUtils/AddTabular_T_(thisViewModel_T_,bool).md 'EficazFramework.ViewModels.Services.ServiceUtils.AddTabular<T>(this EficazFramework.ViewModels.ViewModel<T>, bool)') | Adiciona funções Tracking, Validação e Persistêcia Tabular para a instância ViewModel. |
 | [AddTabularEditDetail&lt;T,D&gt;(this ViewModel&lt;T&gt;, Expression&lt;Func&lt;T,IList&lt;D&gt;&gt;&gt;)](EficazFramework.ViewModels.Services/ServiceUtils/AddTabularEditDetail_T,D_(thisViewModel_T_,Expression_Func_T,IList_D___).md 'EficazFramework.ViewModels.Services.ServiceUtils.AddTabularEditDetail<T,D>(this EficazFramework.ViewModels.ViewModel<T>, System.Linq.Expressions.Expression<System.Func<T,System.Collections.Generic.IList<D>>>)') | Adiciona funções Tracking, Validação e Persistêcia de Edição em Estados de Visualização para a instância ViewModel. |
+| [GetIndexNavigator&lt;T&gt;(this ViewModel&lt;T&gt;)](EficazFramework.ViewModels.Services/ServiceUtils/GetIndexNavigator_T_(thisViewModel_T_).md 'EficazFramework.ViewModels.Services.ServiceUtils.GetIndexNavigator<T>(this EficazFramework.ViewModels.ViewModel<T>)') | |
 | [GetService&lt;S,T&gt;(this ViewModel&lt;T&gt;)](EficazFramework.ViewModels.Services/ServiceUtils/GetService_S,T_(thisViewModel_T_).md 'EficazFramework.ViewModels.Services.ServiceUtils.GetService<S,T>(this EficazFramework.ViewModels.ViewModel<T>)') | Retorna a instancia de serviço pelo tipo S especificado |
+| [GetSingleEdit&lt;T&gt;(this ViewModel&lt;T&gt;)](EficazFramework.ViewModels.Services/ServiceUtils/GetSingleEdit_T_(thisViewModel_T_).md 'EficazFramework.ViewModels.Services.ServiceUtils.GetSingleEdit<T>(this EficazFramework.ViewModels.ViewModel<T>)') | |
+| [GetSingleEditDetail&lt;T,D&gt;(this ViewModel&lt;T&gt;)](EficazFramework.ViewModels.Services/ServiceUtils/GetSingleEditDetail_T,D_(thisViewModel_T_).md 'EficazFramework.ViewModels.Services.ServiceUtils.GetSingleEditDetail<T,D>(this EficazFramework.ViewModels.ViewModel<T>)') | |
+| [GetTabularEdit&lt;T&gt;(this ViewModel&lt;T&gt;)](EficazFramework.ViewModels.Services/ServiceUtils/GetTabularEdit_T_(thisViewModel_T_).md 'EficazFramework.ViewModels.Services.ServiceUtils.GetTabularEdit<T>(this EficazFramework.ViewModels.ViewModel<T>)') | |
+| [GetTabularEditDetail&lt;T,D&gt;(this ViewModel&lt;T&gt;)](EficazFramework.ViewModels.Services/ServiceUtils/GetTabularEditDetail_T,D_(thisViewModel_T_).md 'EficazFramework.ViewModels.Services.ServiceUtils.GetTabularEditDetail<T,D>(this EficazFramework.ViewModels.ViewModel<T>)') | |
 | [RemoveCustom&lt;T&gt;(this ViewModel&lt;T&gt;, ViewModelService&lt;T&gt;, string[])](EficazFramework.ViewModels.Services/ServiceUtils/RemoveCustom_T_(thisViewModel_T_,ViewModelService_T_,string[]).md 'EficazFramework.ViewModels.Services.ServiceUtils.RemoveCustom<T>(this EficazFramework.ViewModels.ViewModel<T>, EficazFramework.ViewModels.Services.ViewModelService<T>, string[])') | Remove um serviço customizado, criado em ambientes externos. |
 | [RemoveEntityFramework&lt;T&gt;(this ViewModel&lt;T&gt;)](EficazFramework.ViewModels.Services/ServiceUtils/RemoveEntityFramework_T_(thisViewModel_T_).md 'EficazFramework.ViewModels.Services.ServiceUtils.RemoveEntityFramework<T>(this EficazFramework.ViewModels.ViewModel<T>)') | Remove os serviços de DbContext do Entity Framework Core para persistência de dados com bases relacionais. |
 | [RemoveNavigationByIndex&lt;T&gt;(this ViewModel&lt;T&gt;)](EficazFramework.ViewModels.Services/ServiceUtils/RemoveNavigationByIndex_T_(thisViewModel_T_).md 'EficazFramework.ViewModels.Services.ServiceUtils.RemoveNavigationByIndex<T>(this EficazFramework.ViewModels.ViewModel<T>)') | Remove o serviço de orientação de navegação da View por Índice de página. |

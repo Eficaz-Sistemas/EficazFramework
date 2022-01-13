@@ -16,124 +16,30 @@ public class SingleEdit<T> : EficazFramework.ViewModels.Services.ViewModelServic
 `T`
 
 Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.Object 'System.Object') &#129106; [EficazFramework.ViewModels.Services.ViewModelService&lt;](EficazFramework.ViewModels.Services/ViewModelService_T_.md 'EficazFramework.ViewModels.Services.ViewModelService<T>')[T](EficazFramework.ViewModels.Services/SingleEdit_T_.md#EficazFramework.ViewModels.Services.SingleEdit_T_.T 'EficazFramework.ViewModels.Services.SingleEdit<T>.T')[&gt;](EficazFramework.ViewModels.Services/ViewModelService_T_.md 'EficazFramework.ViewModels.Services.ViewModelService<T>') &#129106; SingleEdit<T>
-### Properties
 
-<a name='EficazFramework.ViewModels.Services.SingleEdit_T_.BatchInsert'></a>
+| Constructors | |
+| :--- | :--- |
+| [SingleEdit(ViewModel&lt;T&gt;)](EficazFramework.ViewModels.Services/SingleEdit_T_/SingleEdit(ViewModel_T_).md 'EficazFramework.ViewModels.Services.SingleEdit<T>.SingleEdit(EficazFramework.ViewModels.ViewModel<T>)') | |
 
-## SingleEdit<T>.BatchInsert Property
+| Fields | |
+| :--- | :--- |
+| [_currentEntry](EficazFramework.ViewModels.Services/SingleEdit_T_/_currentEntry.md 'EficazFramework.ViewModels.Services.SingleEdit<T>._currentEntry') | |
 
-Obtém ou define se o ViewModel deve iniciar em modo de inserção e iniciar novas inserções após o comando salvar.
-
-```csharp
-public bool BatchInsert { get; set; }
-```
-
-#### Property Value
-[System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')
-
-<a name='EficazFramework.ViewModels.Services.SingleEdit_T_.CanAdd'></a>
-
-## SingleEdit<T>.CanAdd Property
-
-Notifica a View se o comando Novo está habilitado.
-
-```csharp
-public bool CanAdd { get; }
-```
-
-#### Property Value
-[System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')
-
-<a name='EficazFramework.ViewModels.Services.SingleEdit_T_.CanCancelAsyncSave'></a>
-
-## SingleEdit<T>.CanCancelAsyncSave Property
-
-Notifica a View se o comando de cancelamento de gravação assíncrona está disponível.
-
-```csharp
-public bool CanCancelAsyncSave { get; set; }
-```
-
-#### Property Value
-[System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')
-
-<a name='EficazFramework.ViewModels.Services.SingleEdit_T_.CanCancelEntry'></a>
-
-## SingleEdit<T>.CanCancelEntry Property
-
-Notifica a View se o comando cancelar está disponível.
-
-```csharp
-public bool CanCancelEntry { get; }
-```
-
-#### Property Value
-[System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')
-
-<a name='EficazFramework.ViewModels.Services.SingleEdit_T_.CanDelete'></a>
-
-## SingleEdit<T>.CanDelete Property
-
-Notifica a View se o comando Excluir está habilitado.
-
-```csharp
-public bool CanDelete { get; }
-```
-
-#### Property Value
-[System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')
-
-<a name='EficazFramework.ViewModels.Services.SingleEdit_T_.CanEdit'></a>
-
-## SingleEdit<T>.CanEdit Property
-
-Notifica a View se o comando Editar está habilitado.
-
-```csharp
-public bool CanEdit { get; }
-```
-
-#### Property Value
-[System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')
-
-<a name='EficazFramework.ViewModels.Services.SingleEdit_T_.CanSave'></a>
-
-## SingleEdit<T>.CanSave Property
-
-Notifica a View se o comando salvar está habilitado.
-
-```csharp
-public bool CanSave { get; }
-```
-
-#### Property Value
-[System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')
-
-<a name='EficazFramework.ViewModels.Services.SingleEdit_T_.CurrentEntry'></a>
-
-## SingleEdit<T>.CurrentEntry Property
-
-Obtém ou define a entidade atual em edição ou inserção.
-
-```csharp
-public T CurrentEntry { get; set; }
-```
-
-#### Property Value
-[T](EficazFramework.ViewModels.Services/SingleEdit_T_.md#EficazFramework.ViewModels.Services.SingleEdit_T_.T 'EficazFramework.ViewModels.Services.SingleEdit<T>.T')
-
-<a name='EficazFramework.ViewModels.Services.SingleEdit_T_.NotifyOnSave'></a>
-
-## SingleEdit<T>.NotifyOnSave Property
-
-Obtém ou define se o ViewModel deve solicitar a View para notificar o usuário pelo sucesso na gravação.
-
-```csharp
-public bool NotifyOnSave { get; set; }
-```
-
-#### Property Value
-[System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')
+| Properties | |
+| :--- | :--- |
+| [BatchInsert](EficazFramework.ViewModels.Services/SingleEdit_T_/BatchInsert.md 'EficazFramework.ViewModels.Services.SingleEdit<T>.BatchInsert') | Obtém ou define se o ViewModel deve iniciar em modo de inserção e iniciar novas inserções após o comando salvar. |
+| [CanAdd](EficazFramework.ViewModels.Services/SingleEdit_T_/CanAdd.md 'EficazFramework.ViewModels.Services.SingleEdit<T>.CanAdd') | Notifica a View se o comando Novo está habilitado. |
+| [CanCancelAsyncSave](EficazFramework.ViewModels.Services/SingleEdit_T_/CanCancelAsyncSave.md 'EficazFramework.ViewModels.Services.SingleEdit<T>.CanCancelAsyncSave') | Notifica a View se o comando de cancelamento de gravação assíncrona está disponível. |
+| [CanCancelEntry](EficazFramework.ViewModels.Services/SingleEdit_T_/CanCancelEntry.md 'EficazFramework.ViewModels.Services.SingleEdit<T>.CanCancelEntry') | Notifica a View se o comando cancelar está disponível. |
+| [CanDelete](EficazFramework.ViewModels.Services/SingleEdit_T_/CanDelete.md 'EficazFramework.ViewModels.Services.SingleEdit<T>.CanDelete') | Notifica a View se o comando Excluir está habilitado. |
+| [CanEdit](EficazFramework.ViewModels.Services/SingleEdit_T_/CanEdit.md 'EficazFramework.ViewModels.Services.SingleEdit<T>.CanEdit') | Notifica a View se o comando Editar está habilitado. |
+| [CanSave](EficazFramework.ViewModels.Services/SingleEdit_T_/CanSave.md 'EficazFramework.ViewModels.Services.SingleEdit<T>.CanSave') | Notifica a View se o comando salvar está habilitado. |
+| [CommonGUIDs_ADDED](EficazFramework.ViewModels.Services/SingleEdit_T_/CommonGUIDs_ADDED.md 'EficazFramework.ViewModels.Services.SingleEdit<T>.CommonGUIDs_ADDED') | |
+| [CommonGUIDs_DELETED](EficazFramework.ViewModels.Services/SingleEdit_T_/CommonGUIDs_DELETED.md 'EficazFramework.ViewModels.Services.SingleEdit<T>.CommonGUIDs_DELETED') | |
+| [CommonGUIDs_EDITING](EficazFramework.ViewModels.Services/SingleEdit_T_/CommonGUIDs_EDITING.md 'EficazFramework.ViewModels.Services.SingleEdit<T>.CommonGUIDs_EDITING') | |
+| [CommonGUIDs_SAVED](EficazFramework.ViewModels.Services/SingleEdit_T_/CommonGUIDs_SAVED.md 'EficazFramework.ViewModels.Services.SingleEdit<T>.CommonGUIDs_SAVED') | |
+| [CurrentEntry](EficazFramework.ViewModels.Services/SingleEdit_T_/CurrentEntry.md 'EficazFramework.ViewModels.Services.SingleEdit<T>.CurrentEntry') | Obtém ou define a entidade atual em edição ou inserção. |
+| [NotifyOnSave](EficazFramework.ViewModels.Services/SingleEdit_T_/NotifyOnSave.md 'EficazFramework.ViewModels.Services.SingleEdit<T>.NotifyOnSave') | Obtém ou define se o ViewModel deve solicitar a View para notificar o usuário pelo sucesso na gravação. |
 
 | Methods | |
 | :--- | :--- |
@@ -142,6 +48,7 @@ public bool NotifyOnSave { get; set; }
 | [CancelSave()](EficazFramework.ViewModels.Services/SingleEdit_T_/CancelSave().md 'EficazFramework.ViewModels.Services.SingleEdit<T>.CancelSave()') | Acão ao acionar o cancelamento da operação de gravação assíncrona |
 | [DeleteCommand_Executed(object, ExecuteEventArgs)](EficazFramework.ViewModels.Services/SingleEdit_T_/DeleteCommand_Executed(object,ExecuteEventArgs).md 'EficazFramework.ViewModels.Services.SingleEdit<T>.DeleteCommand_Executed(object, EficazFramework.Events.ExecuteEventArgs)') | Ações do comando Delete |
 | [DetachValidatorAndINotifyPropertyChanges(T)](EficazFramework.ViewModels.Services/SingleEdit_T_/DetachValidatorAndINotifyPropertyChanges(T).md 'EficazFramework.ViewModels.Services.SingleEdit<T>.DetachValidatorAndINotifyPropertyChanges(T)') | Remove a instância de validação do repositório ao item especificado no parâmetro,<br/>além de finalizar a notificação de alteração pela interface INotifyPropertyChanged |
+| [DisposeManagedCallerObjects()](EficazFramework.ViewModels.Services/SingleEdit_T_/DisposeManagedCallerObjects().md 'EficazFramework.ViewModels.Services.SingleEdit<T>.DisposeManagedCallerObjects()') | |
 | [EditCommand_Executed(object, ExecuteEventArgs)](EficazFramework.ViewModels.Services/SingleEdit_T_/EditCommand_Executed(object,ExecuteEventArgs).md 'EficazFramework.ViewModels.Services.SingleEdit<T>.EditCommand_Executed(object, EficazFramework.Events.ExecuteEventArgs)') | Ações do comando Edit |
 | [GetCurrentEntryIndex()](EficazFramework.ViewModels.Services/SingleEdit_T_/GetCurrentEntryIndex().md 'EficazFramework.ViewModels.Services.SingleEdit<T>.GetCurrentEntryIndex()') | Obtém o índice de alocação do item selecionado para com o DataContext |
 | [MoveNext()](EficazFramework.ViewModels.Services/SingleEdit_T_/MoveNext().md 'EficazFramework.ViewModels.Services.SingleEdit<T>.MoveNext()') | Seleciona o próximo item do DataContext, baseado no item atualmente selecionado |
