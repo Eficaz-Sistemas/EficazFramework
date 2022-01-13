@@ -1,4 +1,5 @@
-﻿using System;
+﻿using EficazFramework.Resources.Mocks.Classes;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,6 +20,7 @@ namespace EficazFramework.Tests.WPF.Views.Behaviors;
 /// </summary>
 public partial class DataGridNavigation : UserControl
 {
+    private readonly List<Blog> itemsSource = new();
 
     public DataGridNavigation()
     {
@@ -28,16 +30,15 @@ public partial class DataGridNavigation : UserControl
 
     public void Setup()
     {
-        List<Resources.Mocks.Classes.Blog> source = new();
         for (int i = 0; i < 100; i++)
         {
             var tmpId = System.Guid.NewGuid();
-            source.Add(new Resources.Mocks.Classes.Blog()
+            ItemsSource.Add(new Resources.Mocks.Classes.Blog()
             {
                 Id = tmpId,
                 Name = $"Blog {i}"
             });
-            source.Last().Posts.Add(new Resources.Mocks.Classes.Post()
+            ItemsSource.Last().Posts.Add(new Resources.Mocks.Classes.Post()
             {
                 BlogId = tmpId,
                 PostId = System.Guid.NewGuid(),
@@ -46,7 +47,10 @@ public partial class DataGridNavigation : UserControl
         }
 
         //DataContext = source;
-        dGrid.ItemsSource = source;
+        dGrid.ItemsSource = ItemsSource;
     }
+
+    public List<Resources.Mocks.Classes.Blog> ItemsSource => itemsSource;
+    public DataGrid DataGridInstance => dGrid;
 
 }

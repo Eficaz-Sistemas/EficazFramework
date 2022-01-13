@@ -15,7 +15,7 @@ using EficazFramework.Extensions;
 
 namespace EficazFramework.XAML.Behaviors;
 
-public partial class DataGridAssist
+public static partial class DataGridAssist
 {
 
     // ### Enter Key Navigation ###
@@ -313,7 +313,7 @@ public partial class DataGridAssist
 
 
 
-    public static object GetRow(System.Windows.Controls.DataGrid sender, object dataitem)
+    public static object GetRow(this System.Windows.Controls.DataGrid sender, object dataitem)
     {
         if (sender is null | dataitem is null)
             return null;
@@ -328,7 +328,7 @@ public partial class DataGridAssist
         return row;
     }
 
-    public static object GetCell(System.Windows.Controls.DataGrid sender, DataGridRow row, int columnIndex = 0)
+    public static object GetCell(this System.Windows.Controls.DataGrid sender, DataGridRow row, int columnIndex = 0)
     {
         if (sender is null | row is null)
             return null;
@@ -354,7 +354,7 @@ public partial class DataGridAssist
         return null;
     }
 
-    public static object GetCell(System.Windows.Controls.DataGrid sender, object dataitem, int columnIndex = 0)
+    public static object GetCell(this System.Windows.Controls.DataGrid sender, object dataitem, int columnIndex = 0)
     {
         if (sender is null | dataitem is null)
             return null;
@@ -365,7 +365,7 @@ public partial class DataGridAssist
             return GetCell(sender, row, columnIndex);
     }
 
-    public static void SelectAndFocusCell(System.Windows.Controls.DataGrid dg, int columnIndex, DataGridRow row)
+    public static void SelectAndFocusCell(this System.Windows.Controls.DataGrid dg, int columnIndex, DataGridRow row)
     {
         if (row != null)
         {
@@ -375,7 +375,7 @@ public partial class DataGridAssist
         }
     }
 
-    public static void SelectAndFocusCell(System.Windows.Controls.DataGrid dg, int columnIndex, object dataitem)
+    public static void SelectAndFocusCell(this System.Windows.Controls.DataGrid dg, int columnIndex, object dataitem)
     {
         if (dg is null)
             return;
@@ -393,7 +393,7 @@ public partial class DataGridAssist
             SelectAndFocusCell(dg, columnIndex, row);
     }
 
-    public static void SelectAndFocusCell(System.Windows.Controls.DataGrid dg, DataGridCell cell)
+    public static void SelectAndFocusCell(this System.Windows.Controls.DataGrid dg, DataGridCell cell)
     {
         if (dg is null)
             return;

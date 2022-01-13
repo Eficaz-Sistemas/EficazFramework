@@ -18,6 +18,12 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Resources\**" />
+    <EmbeddedResource Remove="Resources\**" />
+    <None Remove="Resources\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Compile Remove="Template.cs" />
   </ItemGroup>
 
@@ -36,10 +42,6 @@
   <ItemGroup>
     <ProjectReference Include="..\..\..\Desktop\EficazFramework.WPF\EficazFramework.WPF.csproj" />
     <ProjectReference Include="..\EficazFramework.Tests.WPF.Views\EficazFramework.Tests.WPF.Views.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Resources\Mocks\" />
   </ItemGroup>
 
 </Project>

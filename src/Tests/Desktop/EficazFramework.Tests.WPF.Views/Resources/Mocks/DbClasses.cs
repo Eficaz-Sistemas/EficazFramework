@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace EficazFramework.Resources.Mocks.Classes;
 
-internal class Blog : Entities.EntityBase
+public class Blog : Entities.EntityBase
 {
     public System.Guid Id { get; set; } = Guid.NewGuid();
     public string Name { get; set; }
@@ -17,7 +17,7 @@ internal class Blog : Entities.EntityBase
 
 }
 
-internal class Post : Entities.EntityBase
+public class Post : Entities.EntityBase
 {
     public Blog Blog { get; set; }  
     public System.Guid BlogId { get; set; }
@@ -26,7 +26,7 @@ internal class Post : Entities.EntityBase
 
 }
 
-internal class Owner : Entities.EntityBase
+public class Owner : Entities.EntityBase
 {
     public string Name { get; set; }
 }

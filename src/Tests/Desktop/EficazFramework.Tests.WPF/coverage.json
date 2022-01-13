@@ -1,5 +1,53 @@
 {
   "EficazFramework.WPF.dll": {
+    "E:\\Henrique Clausing\\Repositorios\\Current\\EficazFramework\\src\\Desktop\\EficazFramework.WPF\\obj\\Debug\\net6.0-windows\\GeneratedInternalTypeHelper.g.cs": {
+      "XamlGeneratedNamespace.GeneratedInternalTypeHelper": {
+        "System.Object XamlGeneratedNamespace.GeneratedInternalTypeHelper::CreateInstance(System.Type,System.Globalization.CultureInfo)": {
+          "Lines": {
+            "25": 0,
+            "26": 0,
+            "27": 0,
+            "28": 0
+          },
+          "Branches": []
+        },
+        "System.Object XamlGeneratedNamespace.GeneratedInternalTypeHelper::GetPropertyValue(System.Reflection.PropertyInfo,System.Object,System.Globalization.CultureInfo)": {
+          "Lines": {
+            "33": 0,
+            "34": 0,
+            "35": 0
+          },
+          "Branches": []
+        },
+        "System.Void XamlGeneratedNamespace.GeneratedInternalTypeHelper::SetPropertyValue(System.Reflection.PropertyInfo,System.Object,System.Object,System.Globalization.CultureInfo)": {
+          "Lines": {
+            "40": 0,
+            "41": 0,
+            "42": 0
+          },
+          "Branches": []
+        },
+        "System.Delegate XamlGeneratedNamespace.GeneratedInternalTypeHelper::CreateDelegate(System.Type,System.Object,System.String)": {
+          "Lines": {
+            "47": 0,
+            "48": 0,
+            "49": 0,
+            "50": 0,
+            "51": 0,
+            "52": 0
+          },
+          "Branches": []
+        },
+        "System.Void XamlGeneratedNamespace.GeneratedInternalTypeHelper::AddEventHandler(System.Reflection.EventInfo,System.Object,System.Delegate)": {
+          "Lines": {
+            "57": 0,
+            "58": 0,
+            "59": 0
+          },
+          "Branches": []
+        }
+      }
+    },
     "E:\\Henrique Clausing\\Repositorios\\Current\\EficazFramework\\src\\Desktop\\EficazFramework.WPF\\Converters\\FloatingHintOffsetCalculationConverter.cs": {
       "MaterialDesignThemes.Wpf.Converters.FloatingHintOffsetCalculationConverter": {
         "System.Object MaterialDesignThemes.Wpf.Converters.FloatingHintOffsetCalculationConverter::Convert(System.Object[],System.Type,System.Object,System.Globalization.CultureInfo)": {
@@ -9589,18 +9637,18 @@
       "EficazFramework.XAML.Utilities.VisualTreeHelpers": {
         "T EficazFramework.XAML.Utilities.VisualTreeHelpers::FindAnchestor(System.Windows.DependencyObject)": {
           "Lines": {
-            "22": 0,
-            "23": 0,
+            "22": 1,
+            "23": 1,
             "24": 0,
-            "26": 0,
-            "27": 0,
-            "28": 0,
-            "29": 0,
-            "32": 0,
-            "33": 0,
-            "34": 0,
+            "26": 4,
+            "27": 4,
+            "28": 1,
+            "29": 1,
+            "32": 3,
+            "33": 3,
+            "34": 3,
             "35": 0,
-            "36": 0
+            "36": 1
           },
           "Branches": [
             {
@@ -9617,7 +9665,7 @@
               "EndOffset": 21,
               "Path": 1,
               "Ordinal": 1,
-              "Hits": 0
+              "Hits": 4
             },
             {
               "Line": 34,
@@ -9625,7 +9673,7 @@
               "EndOffset": 21,
               "Path": 1,
               "Ordinal": 5,
-              "Hits": 0
+              "Hits": 4
             },
             {
               "Line": 27,
@@ -9633,7 +9681,7 @@
               "EndOffset": 35,
               "Path": 0,
               "Ordinal": 2,
-              "Hits": 0
+              "Hits": 1
             },
             {
               "Line": 27,
@@ -9641,7 +9689,7 @@
               "EndOffset": 45,
               "Path": 1,
               "Ordinal": 3,
-              "Hits": 0
+              "Hits": 3
             },
             {
               "Line": 34,
@@ -9987,24 +10035,24 @@
         },
         "T EficazFramework.XAML.Utilities.VisualTreeHelpers::FindVisualChild(System.Windows.DependencyObject)": {
           "Lines": {
-            "150": 5,
-            "151": 5,
+            "150": 11,
+            "151": 11,
             "152": 0,
-            "153": 23,
-            "154": 4,
-            "155": 4,
-            "156": 4,
-            "157": 0,
-            "158": 0,
-            "161": 4,
-            "162": 4,
-            "163": 4,
-            "164": 0,
-            "165": 0,
+            "153": 41,
+            "154": 10,
+            "155": 10,
+            "156": 10,
+            "157": 2,
+            "158": 2,
+            "161": 8,
+            "162": 8,
+            "163": 8,
+            "164": 4,
+            "165": 4,
             "167": 4,
             "168": 4,
             "170": 5,
-            "171": 5
+            "171": 11
           },
           "Branches": [
             {
@@ -10021,7 +10069,7 @@
               "EndOffset": 21,
               "Path": 1,
               "Ordinal": 1,
-              "Hits": 5
+              "Hits": 11
             },
             {
               "Line": 153,
@@ -10029,7 +10077,7 @@
               "EndOffset": 35,
               "Path": 1,
               "Ordinal": 7,
-              "Hits": 4
+              "Hits": 10
             },
             {
               "Line": 156,
@@ -10037,7 +10085,7 @@
               "EndOffset": 61,
               "Path": 0,
               "Ordinal": 2,
-              "Hits": 0
+              "Hits": 2
             },
             {
               "Line": 156,
@@ -10045,7 +10093,7 @@
               "EndOffset": 77,
               "Path": 1,
               "Ordinal": 3,
-              "Hits": 4
+              "Hits": 8
             },
             {
               "Line": 163,
@@ -10053,7 +10101,7 @@
               "EndOffset": 103,
               "Path": 0,
               "Ordinal": 4,
-              "Hits": 0
+              "Hits": 4
             },
             {
               "Line": 163,
@@ -10267,13 +10315,13 @@
         },
         "System.Void EficazFramework.XAML.Behaviors.DataGridAssist::OnEnterKeyNavigationChanged(System.Object,System.Windows.DependencyPropertyChangedEventArgs)": {
           "Lines": {
-            "36": 0,
-            "37": 0,
+            "36": 1,
+            "37": 1,
             "38": 0,
-            "40": 0,
-            "41": 0,
+            "40": 1,
+            "41": 1,
             "43": 0,
-            "44": 0
+            "44": 1
           },
           "Branches": [
             {
@@ -10282,7 +10330,7 @@
               "EndOffset": 21,
               "Path": 1,
               "Ordinal": 1,
-              "Hits": 0
+              "Hits": 1
             },
             {
               "Line": 40,
@@ -10290,7 +10338,7 @@
               "EndOffset": 37,
               "Path": 0,
               "Ordinal": 2,
-              "Hits": 0
+              "Hits": 1
             },
             {
               "Line": 40,
@@ -10306,7 +10354,7 @@
               "EndOffset": 77,
               "Path": 0,
               "Ordinal": 0,
-              "Hits": 0
+              "Hits": 1
             }
           ]
         },
@@ -10447,25 +10495,25 @@
         },
         "System.Void EficazFramework.XAML.Behaviors.DataGridAssist::DataGrid_NavigationTemplate_PreviewKeyDown(System.Object,System.Windows.Input.KeyEventArgs)": {
           "Lines": {
-            "66": 0,
-            "67": 0,
-            "68": 0,
-            "69": 0,
-            "70": 0,
-            "71": 0,
+            "66": 1,
+            "67": 1,
+            "68": 1,
+            "69": 1,
+            "70": 1,
+            "71": 1,
             "72": 0,
             "73": 0,
             "74": 0,
-            "77": 0,
+            "77": 1,
             "78": 0,
             "79": 0,
             "80": 0,
             "81": 0,
-            "83": 0,
-            "84": 0,
-            "85": 0,
+            "83": 1,
+            "84": 1,
+            "85": 1,
             "87": 0,
-            "88": 0,
+            "88": 1,
             "89": 0,
             "90": 0,
             "91": 0,
@@ -10477,7 +10525,7 @@
             "97": 0,
             "98": 0,
             "99": 0,
-            "100": 0
+            "100": 1
           },
           "Branches": [
             {
@@ -10486,7 +10534,7 @@
               "EndOffset": 33,
               "Path": 0,
               "Ordinal": 0,
-              "Hits": 0
+              "Hits": 1
             },
             {
               "Line": 71,
@@ -10502,7 +10550,7 @@
               "EndOffset": 70,
               "Path": 1,
               "Ordinal": 3,
-              "Hits": 0
+              "Hits": 1
             },
             {
               "Line": 77,
@@ -10534,7 +10582,7 @@
               "EndOffset": 131,
               "Path": 1,
               "Ordinal": 5,
-              "Hits": 0
+              "Hits": 1
             },
             {
               "Line": 84,
@@ -10542,7 +10590,7 @@
               "EndOffset": 153,
               "Path": 0,
               "Ordinal": 8,
-              "Hits": 0
+              "Hits": 1
             },
             {
               "Line": 84,
@@ -10606,29 +10654,29 @@
               "EndOffset": 258,
               "Path": 1,
               "Ordinal": 11,
-              "Hits": 0
+              "Hits": 1
             }
           ]
         },
         "System.Void EficazFramework.XAML.Behaviors.DataGridAssist::DataGrid_CellTab(System.Windows.Controls.DataGrid,System.Windows.Input.KeyEventArgs)": {
           "Lines": {
-            "105": 0,
-            "106": 0,
-            "107": 0,
+            "105": 1,
+            "106": 1,
+            "107": 1,
             "108": 0,
             "109": 0,
             "110": 0,
-            "114": 0,
-            "115": 0,
-            "116": 0,
-            "117": 0,
-            "118": 0,
-            "119": 0,
-            "120": 0,
-            "130": 0,
-            "132": 0,
-            "133": 0,
-            "134": 0,
+            "114": 1,
+            "115": 1,
+            "116": 1,
+            "117": 1,
+            "118": 1,
+            "119": 1,
+            "120": 1,
+            "130": 1,
+            "132": 1,
+            "133": 1,
+            "134": 1,
             "135": 0,
             "136": 0,
             "137": 0,
@@ -10647,13 +10695,13 @@
             "154": 0,
             "155": 0,
             "156": 0,
-            "157": 0,
-            "158": 0,
-            "159": 0,
-            "160": 0,
-            "161": 0,
+            "157": 1,
+            "158": 1,
+            "159": 1,
+            "160": 1,
+            "161": 1,
             "163": 0,
-            "164": 0,
+            "164": 1,
             "166": 0,
             "167": 0,
             "168": 0,
@@ -10676,26 +10724,26 @@
             "190": 0,
             "191": 0,
             "193": 0,
-            "195": 0,
-            "196": 0,
+            "195": 1,
+            "196": 1,
             "197": 0,
-            "199": 0,
-            "200": 0,
+            "199": 1,
+            "200": 1,
             "201": 0,
-            "203": 0,
-            "204": 0,
-            "205": 0,
-            "206": 0,
-            "207": 0,
-            "208": 0,
-            "210": 0,
-            "211": 0,
+            "203": 1,
+            "204": 1,
+            "205": 1,
+            "206": 1,
+            "207": 1,
+            "208": 1,
+            "210": 1,
+            "211": 1,
             "212": 0,
             "213": 0,
             "214": 0,
             "215": 0,
-            "217": 0,
-            "218": 0
+            "217": 1,
+            "218": 1
           },
           "Branches": [
             {
@@ -10712,7 +10760,7 @@
               "EndOffset": 46,
               "Path": 1,
               "Ordinal": 1,
-              "Hits": 0
+              "Hits": 1
             },
             {
               "Line": 119,
@@ -10720,7 +10768,7 @@
               "EndOffset": 112,
               "Path": 0,
               "Ordinal": 2,
-              "Hits": 0
+              "Hits": 1
             },
             {
               "Line": 119,
@@ -10728,7 +10776,7 @@
               "EndOffset": 114,
               "Path": 1,
               "Ordinal": 3,
-              "Hits": 0
+              "Hits": 1
             },
             {
               "Line": 132,
@@ -10736,7 +10784,7 @@
               "EndOffset": 126,
               "Path": 0,
               "Ordinal": 4,
-              "Hits": 0
+              "Hits": 1
             },
             {
               "Line": 132,
@@ -10744,7 +10792,7 @@
               "EndOffset": 133,
               "Path": 1,
               "Ordinal": 5,
-              "Hits": 0
+              "Hits": 1
             },
             {
               "Line": 134,
@@ -10824,7 +10872,7 @@
               "EndOffset": 287,
               "Path": 1,
               "Ordinal": 7,
-              "Hits": 0
+              "Hits": 1
             },
             {
               "Line": 157,
@@ -10832,7 +10880,7 @@
               "EndOffset": 309,
               "Path": 0,
               "Ordinal": 16,
-              "Hits": 0
+              "Hits": 1
             },
             {
               "Line": 160,
@@ -10840,7 +10888,7 @@
               "EndOffset": 340,
               "Path": 0,
               "Ordinal": 18,
-              "Hits": 0
+              "Hits": 1
             },
             {
               "Line": 160,
@@ -10952,7 +11000,7 @@
               "EndOffset": 570,
               "Path": 1,
               "Ordinal": 31,
-              "Hits": 0
+              "Hits": 1
             },
             {
               "Line": 200,
@@ -10968,7 +11016,7 @@
               "EndOffset": 623,
               "Path": 1,
               "Ordinal": 33,
-              "Hits": 0
+              "Hits": 1
             },
             {
               "Line": 203,
@@ -10976,7 +11024,7 @@
               "EndOffset": 639,
               "Path": 0,
               "Ordinal": 34,
-              "Hits": 0
+              "Hits": 1
             },
             {
               "Line": 206,
@@ -10984,7 +11032,7 @@
               "EndOffset": 671,
               "Path": 0,
               "Ordinal": 36,
-              "Hits": 0
+              "Hits": 1
             },
             {
               "Line": 206,
@@ -10992,7 +11040,7 @@
               "EndOffset": 685,
               "Path": 1,
               "Ordinal": 37,
-              "Hits": 0
+              "Hits": 1
             },
             {
               "Line": 203,
@@ -11000,7 +11048,7 @@
               "EndOffset": 686,
               "Path": 1,
               "Ordinal": 35,
-              "Hits": 0
+              "Hits": 1
             }
           ]
         },
@@ -11362,26 +11410,26 @@
         },
         "System.Object EficazFramework.XAML.Behaviors.DataGridAssist::GetCell(System.Windows.Controls.DataGrid,System.Windows.Controls.DataGridRow,System.Int32)": {
           "Lines": {
-            "332": 0,
-            "333": 0,
+            "332": 1,
+            "333": 1,
             "334": 0,
-            "335": 0,
-            "336": 0,
+            "335": 1,
+            "336": 1,
             "337": 0,
             "338": 0,
             "339": 0,
             "340": 0,
-            "342": 0,
-            "343": 0,
-            "344": 0,
-            "345": 0,
+            "342": 1,
+            "343": 1,
+            "344": 1,
+            "345": 1,
             "346": 0,
             "347": 0,
             "348": 0,
             "349": 0,
-            "351": 0,
+            "351": 1,
             "354": 0,
-            "355": 0
+            "355": 1
           },
           "Branches": [
             {
@@ -11398,7 +11446,7 @@
               "EndOffset": 18,
               "Path": 1,
               "Ordinal": 1,
-              "Hits": 0
+              "Hits": 1
             },
             {
               "Line": 336,
@@ -11414,7 +11462,7 @@
               "EndOffset": 49,
               "Path": 1,
               "Ordinal": 3,
-              "Hits": 0
+              "Hits": 1
             },
             {
               "Line": 342,
@@ -11422,7 +11470,7 @@
               "EndOffset": 59,
               "Path": 0,
               "Ordinal": 4,
-              "Hits": 0
+              "Hits": 1
             },
             {
               "Line": 345,
@@ -11438,7 +11486,7 @@
               "EndOffset": 131,
               "Path": 1,
               "Ordinal": 7,
-              "Hits": 0
+              "Hits": 1
             },
             {
               "Line": 342,
@@ -11498,14 +11546,14 @@
         },
         "System.Void EficazFramework.XAML.Behaviors.DataGridAssist::SelectAndFocusCell(System.Windows.Controls.DataGrid,System.Int32,System.Windows.Controls.DataGridRow)": {
           "Lines": {
-            "369": 0,
-            "370": 0,
-            "371": 0,
-            "372": 0,
-            "373": 0,
-            "374": 0,
-            "375": 0,
-            "376": 0
+            "369": 1,
+            "370": 1,
+            "371": 1,
+            "372": 1,
+            "373": 1,
+            "374": 1,
+            "375": 1,
+            "376": 1
           },
           "Branches": [
             {
@@ -11514,7 +11562,7 @@
               "EndOffset": 9,
               "Path": 0,
               "Ordinal": 0,
-              "Hits": 0
+              "Hits": 1
             },
             {
               "Line": 373,
@@ -11522,7 +11570,7 @@
               "EndOffset": 32,
               "Path": 0,
               "Ordinal": 2,
-              "Hits": 0
+              "Hits": 1
             },
             {
               "Line": 373,
@@ -11530,7 +11578,7 @@
               "EndOffset": 40,
               "Path": 1,
               "Ordinal": 3,
-              "Hits": 0
+              "Hits": 1
             },
             {
               "Line": 370,
@@ -11538,27 +11586,27 @@
               "EndOffset": 41,
               "Path": 1,
               "Ordinal": 1,
-              "Hits": 0
+              "Hits": 1
             }
           ]
         },
         "System.Void EficazFramework.XAML.Behaviors.DataGridAssist::SelectAndFocusCell(System.Windows.Controls.DataGrid,System.Int32,System.Object)": {
           "Lines": {
-            "379": 0,
-            "380": 0,
+            "379": 1,
+            "380": 1,
             "381": 0,
-            "382": 0,
-            "383": 0,
-            "384": 0,
-            "385": 0,
-            "386": 0,
-            "387": 0,
-            "388": 0,
-            "389": 0,
-            "390": 0,
-            "392": 0,
-            "393": 0,
-            "394": 0
+            "382": 1,
+            "383": 1,
+            "384": 1,
+            "385": 1,
+            "386": 1,
+            "387": 1,
+            "388": 1,
+            "389": 1,
+            "390": 1,
+            "392": 1,
+            "393": 1,
+            "394": 1
           },
           "Branches": [
             {
@@ -11567,7 +11615,7 @@
               "EndOffset": 11,
               "Path": 1,
               "Ordinal": 1,
-              "Hits": 0
+              "Hits": 1
             },
             {
               "Line": 382,
@@ -11575,7 +11623,7 @@
               "EndOffset": 24,
               "Path": 0,
               "Ordinal": 2,
-              "Hits": 0
+              "Hits": 1
             },
             {
               "Line": 382,
@@ -11583,7 +11631,7 @@
               "EndOffset": 31,
               "Path": 1,
               "Ordinal": 3,
-              "Hits": 0
+              "Hits": 1
             },
             {
               "Line": 386,
@@ -11591,7 +11639,7 @@
               "EndOffset": 65,
               "Path": 0,
               "Ordinal": 4,
-              "Hits": 0
+              "Hits": 1
             },
             {
               "Line": 386,
@@ -11599,7 +11647,7 @@
               "EndOffset": 92,
               "Path": 1,
               "Ordinal": 5,
-              "Hits": 0
+              "Hits": 1
             },
             {
               "Line": 392,
@@ -11607,7 +11655,7 @@
               "EndOffset": 102,
               "Path": 0,
               "Ordinal": 6,
-              "Hits": 0
+              "Hits": 1
             },
             {
               "Line": 380,
@@ -11615,7 +11663,7 @@
               "EndOffset": 111,
               "Path": 0,
               "Ordinal": 0,
-              "Hits": 0
+              "Hits": 1
             },
             {
               "Line": 392,
@@ -11623,35 +11671,35 @@
               "EndOffset": 111,
               "Path": 1,
               "Ordinal": 7,
-              "Hits": 0
+              "Hits": 1
             }
           ]
         },
         "System.Void EficazFramework.XAML.Behaviors.DataGridAssist::SelectAndFocusCell(System.Windows.Controls.DataGrid,System.Windows.Controls.DataGridCell)": {
           "Lines": {
-            "397": 0,
-            "398": 0,
+            "397": 1,
+            "398": 1,
             "399": 0,
-            "400": 0,
+            "400": 1,
             "401": 0,
-            "402": 0,
-            "403": 0,
-            "404": 0,
-            "405": 0,
-            "406": 0,
-            "407": 0,
+            "402": 1,
+            "403": 1,
+            "404": 1,
+            "405": 1,
+            "406": 1,
+            "407": 1,
             "408": 0,
-            "409": 0,
-            "410": 0,
-            "411": 0,
-            "412": 0,
-            "413": 0,
-            "414": 0,
-            "415": 0,
-            "416": 0,
-            "418": 0,
-            "419": 0,
-            "420": 0
+            "409": 1,
+            "410": 1,
+            "411": 1,
+            "412": 1,
+            "413": 1,
+            "414": 1,
+            "415": 1,
+            "416": 1,
+            "418": 1,
+            "419": 1,
+            "420": 1
           },
           "Branches": [
             {
@@ -11660,7 +11708,7 @@
               "EndOffset": 14,
               "Path": 1,
               "Ordinal": 1,
-              "Hits": 0
+              "Hits": 1
             },
             {
               "Line": 400,
@@ -11668,7 +11716,7 @@
               "EndOffset": 27,
               "Path": 1,
               "Ordinal": 3,
-              "Hits": 0
+              "Hits": 1
             },
             {
               "Line": 402,
@@ -11676,7 +11724,7 @@
               "EndOffset": 40,
               "Path": 0,
               "Ordinal": 4,
-              "Hits": 0
+              "Hits": 1
             },
             {
               "Line": 402,
@@ -11684,7 +11732,7 @@
               "EndOffset": 47,
               "Path": 1,
               "Ordinal": 5,
-              "Hits": 0
+              "Hits": 1
             },
             {
               "Line": 404,
@@ -11692,7 +11740,7 @@
               "EndOffset": 55,
               "Path": 0,
               "Ordinal": 6,
-              "Hits": 0
+              "Hits": 1
             },
             {
               "Line": 407,
@@ -11708,7 +11756,7 @@
               "EndOffset": 89,
               "Path": 1,
               "Ordinal": 9,
-              "Hits": 0
+              "Hits": 1
             },
             {
               "Line": 409,
@@ -11716,7 +11764,7 @@
               "EndOffset": 104,
               "Path": 0,
               "Ordinal": 10,
-              "Hits": 0
+              "Hits": 1
             },
             {
               "Line": 412,
@@ -11724,7 +11772,7 @@
               "EndOffset": 135,
               "Path": 0,
               "Ordinal": 12,
-              "Hits": 0
+              "Hits": 1
             },
             {
               "Line": 412,
@@ -11732,7 +11780,7 @@
               "EndOffset": 150,
               "Path": 1,
               "Ordinal": 13,
-              "Hits": 0
+              "Hits": 1
             },
             {
               "Line": 409,
@@ -11740,7 +11788,7 @@
               "EndOffset": 151,
               "Path": 1,
               "Ordinal": 11,
-              "Hits": 0
+              "Hits": 1
             },
             {
               "Line": 398,
@@ -11748,7 +11796,7 @@
               "EndOffset": 159,
               "Path": 0,
               "Ordinal": 0,
-              "Hits": 0
+              "Hits": 1
             },
             {
               "Line": 400,
@@ -11756,7 +11804,7 @@
               "EndOffset": 159,
               "Path": 0,
               "Ordinal": 2,
-              "Hits": 0
+              "Hits": 1
             },
             {
               "Line": 404,
@@ -11764,7 +11812,7 @@
               "EndOffset": 159,
               "Path": 1,
               "Ordinal": 7,
-              "Hits": 0
+              "Hits": 1
             }
           ]
         },
@@ -11910,8 +11958,8 @@
         },
         "System.Void EficazFramework.XAML.Behaviors.DataGridAssist::.cctor()": {
           "Lines": {
-            "33": 0,
-            "464": 0
+            "33": 1,
+            "464": 1
           },
           "Branches": []
         }

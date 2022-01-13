@@ -4,6 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:EficazFramework.Tests.WPF.Views.Behaviors"
+             xmlns:efxamlbh="clr-namespace:EficazFramework.XAML.Behaviors;assembly=EficazFramework.WPF"
              mc:Ignorable="d" 
              xmlns:md="http://materialdesigninxaml.net/winfx/xaml/themes"
              d:DesignHeight="450" d:DesignWidth="800">
@@ -17,7 +18,7 @@
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </UserControl.Resources>
-    <DataGrid x:Name="dGrid" AutoGenerateColumns="True">
+    <DataGrid x:Name="dGrid" AutoGenerateColumns="True" efxamlbh:DataGridAssist.EnterKeyNavigation="true">
 
     </DataGrid>
 </UserControl>
