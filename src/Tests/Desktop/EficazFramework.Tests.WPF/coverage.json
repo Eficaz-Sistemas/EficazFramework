@@ -177,6 +177,190 @@
         }
       }
     },
+    "E:\\Henrique Clausing\\Repositorios\\Current\\EficazFramework\\src\\Desktop\\EficazFramework.WPF\\Resources\\Strings\\Controls.Designer.cs": {
+      "EficazFramework.Resources.Strings.Controls": {
+        "System.Resources.ResourceManager EficazFramework.Resources.Strings.Controls::get_ResourceManager()": {
+          "Lines": {
+            "40": 0,
+            "41": 0,
+            "42": 0,
+            "43": 0,
+            "44": 0,
+            "45": 0,
+            "46": 0
+          },
+          "Branches": [
+            {
+              "Line": 41,
+              "Offset": 11,
+              "EndOffset": 13,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            },
+            {
+              "Line": 41,
+              "Offset": 11,
+              "EndOffset": 47,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 0
+            }
+          ]
+        },
+        "System.Globalization.CultureInfo EficazFramework.Resources.Strings.Controls::get_Culture()": {
+          "Lines": {
+            "55": 0,
+            "56": 0,
+            "57": 0
+          },
+          "Branches": []
+        },
+        "System.Void EficazFramework.Resources.Strings.Controls::set_Culture(System.Globalization.CultureInfo)": {
+          "Lines": {
+            "58": 0,
+            "59": 0,
+            "60": 0
+          },
+          "Branches": []
+        },
+        "System.String EficazFramework.Resources.Strings.Controls::get_ExpressionBuilder_AddCommand()": {
+          "Lines": {
+            "67": 0,
+            "68": 0,
+            "69": 0
+          },
+          "Branches": []
+        },
+        "System.String EficazFramework.Resources.Strings.Controls::get_ExpressionBuilder_Between_Separator()": {
+          "Lines": {
+            "76": 0,
+            "77": 0,
+            "78": 0
+          },
+          "Branches": []
+        },
+        "System.String EficazFramework.Resources.Strings.Controls::get_ExpressionBuilder_CL_Field()": {
+          "Lines": {
+            "85": 0,
+            "86": 0,
+            "87": 0
+          },
+          "Branches": []
+        },
+        "System.String EficazFramework.Resources.Strings.Controls::get_ExpressionBuilder_CL_Operator()": {
+          "Lines": {
+            "94": 0,
+            "95": 0,
+            "96": 0
+          },
+          "Branches": []
+        },
+        "System.String EficazFramework.Resources.Strings.Controls::get_ExpressionBuilder_CL_Value()": {
+          "Lines": {
+            "103": 0,
+            "104": 0,
+            "105": 0
+          },
+          "Branches": []
+        },
+        "System.String EficazFramework.Resources.Strings.Controls::get_ExpressionBuilder_DeleteCommand()": {
+          "Lines": {
+            "112": 0,
+            "113": 0,
+            "114": 0
+          },
+          "Branches": []
+        },
+        "System.String EficazFramework.Resources.Strings.Controls::get_ExpressionBuilder_FindCommand()": {
+          "Lines": {
+            "121": 0,
+            "122": 0,
+            "123": 0
+          },
+          "Branches": []
+        },
+        "System.String EficazFramework.Resources.Strings.Controls::get_ExpressionBuilder_Header()": {
+          "Lines": {
+            "130": 0,
+            "131": 0,
+            "132": 0
+          },
+          "Branches": []
+        },
+        "System.String EficazFramework.Resources.Strings.Controls::get_SessionView_AddSessionLabel()": {
+          "Lines": {
+            "139": 0,
+            "140": 0,
+            "141": 0
+          },
+          "Branches": []
+        },
+        "System.String EficazFramework.Resources.Strings.Controls::get_StartMenu_AllApps()": {
+          "Lines": {
+            "148": 0,
+            "149": 0,
+            "150": 0
+          },
+          "Branches": []
+        },
+        "System.String EficazFramework.Resources.Strings.Controls::get_StartMenu_DefaultWelcomeText()": {
+          "Lines": {
+            "157": 0,
+            "158": 0,
+            "159": 0
+          },
+          "Branches": []
+        },
+        "System.String EficazFramework.Resources.Strings.Controls::get_StartMenu_GridApps()": {
+          "Lines": {
+            "166": 0,
+            "167": 0,
+            "168": 0
+          },
+          "Branches": []
+        },
+        "System.String EficazFramework.Resources.Strings.Controls::get_StartMenu_MainTab()": {
+          "Lines": {
+            "175": 0,
+            "176": 0,
+            "177": 0
+          },
+          "Branches": []
+        },
+        "System.String EficazFramework.Resources.Strings.Controls::get_StartMenu_MainTooltip()": {
+          "Lines": {
+            "184": 0,
+            "185": 0,
+            "186": 0
+          },
+          "Branches": []
+        },
+        "System.String EficazFramework.Resources.Strings.Controls::get_StartMenu_PinOffApp()": {
+          "Lines": {
+            "193": 0,
+            "194": 0,
+            "195": 0
+          },
+          "Branches": []
+        },
+        "System.String EficazFramework.Resources.Strings.Controls::get_StartMenu_SearchTB()": {
+          "Lines": {
+            "202": 0,
+            "203": 0,
+            "204": 0
+          },
+          "Branches": []
+        },
+        "System.Void EficazFramework.Resources.Strings.Controls::.ctor()": {
+          "Lines": {
+            "32": 0,
+            "33": 0
+          },
+          "Branches": []
+        }
+      }
+    },
     "E:\\Henrique Clausing\\Repositorios\\Current\\EficazFramework\\src\\Desktop\\EficazFramework.WPF\\Localization\\CultureAssist.cs": {
       "EficazFramework.Localization.CultureAssist": {
         "System.Void EficazFramework.Localization.CultureAssist::SetCulture(System.String)": {
