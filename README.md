@@ -46,6 +46,11 @@
    - NFS-e
 
 #### Biblioteca de extensão para Windows Presentation Foundation (WPF)
+
+![Azure DevOps builds (branch)](https://efshieldsio.azurewebsites.net:/azure-devops/build/eficazcs/EficazFramework/26/wpf?label=tests&logo=azuredevops&logoColor=white&style=flat-square)
+![Azure DevOps tests (compact)](https://efshieldsio.azurewebsites.net:/azure-devops/tests/eficazcs/EficazFramework/26?compact_message&logo=azuredevops&logoColor=white&style=flat-square)
+![Azure DevOps coverage](https://efshieldsio.azurewebsites.net:/azure-devops/coverage/eficazcs/EficazFramework/26?logo=codecov&logoColor=white&style=flat-square)
+   
    - Controles Visuais para melhor experiência de utilização pelo usuário
    - Extensões para XAML e Code-Behind
    - Interface de usuário MaterialDesign, utilizando a biblioteca OpenSource [MaterialDesignInXAML Toolkit](https://github.com/MaterialDesignInXAML/MaterialDesignInXamlToolkit)
