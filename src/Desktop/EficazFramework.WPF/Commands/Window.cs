@@ -38,7 +38,7 @@ public class Window
     private static void ShutDown_MaterialWindow_Execute(object sender, Events.ExecuteEventArgs e)
     {
         System.Windows.Window win = XAML.Utilities.VisualTreeHelpers.FindAnchestor<System.Windows.Window>((DependencyObject)e.Parameter);
-        Application.ApplicationEvents.RequestShutDown_Material(win);
+        Application.ApplicationEvents.RequestShutDown_Material(win, System.Windows.Application.Current);
     }
 
 

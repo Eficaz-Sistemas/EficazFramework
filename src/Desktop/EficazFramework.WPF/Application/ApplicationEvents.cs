@@ -11,22 +11,26 @@ public class ApplicationEvents
     public static string DialogTitle { get; set; } = EficazFramework.Resources.Strings.Commands.ShutDown_TItle;
     public static string DialogMessage { get; set; } = EficazFramework.Resources.Strings.Commands.ShutDown_Message;
 
-    public static async void RequestShutDown_Material(System.Windows.Window window)
+    public static async void RequestShutDown_Material(System.Windows.Window window, System.Windows.Application app)
     {
         MaterialDesignThemes.Wpf.DialogHost dialog = XAML.Utilities.VisualTreeHelpers.FindVisualChild<MaterialDesignThemes.Wpf.DialogHost>(window);
-        dialog.Identifier = new System.Guid().ToString();
-        var args = new Events.MessageEventArgs()
+        if (dialog != null)
         {
-            Title = DialogTitle,
-            Content = DialogMessage,
-            IconReference = Events.MessageIcon.Warning,
-            Buttons = Events.MessageButtons.YesNo
-        };
-        await Behaviors.ModalAssist.ShowMaterialDialog(args, dialog.Identifier.ToString(), null);
-        Events.MessageResult result = await args.ModalAssist.Push();
-        if (result != Events.MessageResult.Yes) return;
-        System.Windows.Application.Current.Shutdown();
-
+            var args = new Events.MessageEventArgs()
+            {
+                Title = DialogTitle,
+                Content = DialogMessage,
+                IconReference = Events.MessageIcon.Warning,
+                Buttons = Events.MessageButtons.YesNo,
+            };
+            await Behaviors.ModalAssist.ShowMaterialDialog(args, dialog.Identifier?.ToString() ?? new System.Guid().ToString(), null);
+            Events.MessageResult result = await args.ModalAssist.Push();
+            if (result != Events.MessageResult.Yes)
+                return;
+            else
+                app.Properties.Add("shutdown_requested_byDialog", true);
+        }
+        app.Properties.Add("shutdown_requested", true);
+        app.Shutdown();
     }
-
 }

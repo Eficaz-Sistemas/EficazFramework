@@ -16,4 +16,4 @@ Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.O
 
 | Methods | |
 | :--- | :--- |
-| [RequestShutDown_Material(Window)](EficazFramework.Application/ApplicationEvents/RequestShutDown_Material(Window).md 'EficazFramework.Application.ApplicationEvents.RequestShutDown_Material(System.Windows.Window)') | |
+| [RequestShutDown_Material(Window, Application)](EficazFramework.Application/ApplicationEvents/RequestShutDown_Material(Window,Application).md 'EficazFramework.Application.ApplicationEvents.RequestShutDown_Material(System.Windows.Window, System.Windows.Application)') | |
