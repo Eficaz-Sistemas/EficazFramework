@@ -89,7 +89,6 @@
 | Classes | |
 | :--- | :--- |
 | [DataGridAssist](EficazFramework.XAML.Behaviors/DataGridAssist.md 'EficazFramework.XAML.Behaviors.DataGridAssist') | |
-| [DataGridEnterKeyNavigation](EficazFramework.XAML.Behaviors/DataGridEnterKeyNavigation.md 'EficazFramework.XAML.Behaviors.DataGridEnterKeyNavigation') | |
 | [MDIWindowMoveThumb](EficazFramework.XAML.Behaviors/MDIWindowMoveThumb.md 'EficazFramework.XAML.Behaviors.MDIWindowMoveThumb') | |
 | [TextBox](EficazFramework.XAML.Behaviors/TextBox.md 'EficazFramework.XAML.Behaviors.TextBox') | |
 | [TextBoxInputMaskBehavior](EficazFramework.XAML.Behaviors/TextBoxInputMaskBehavior.md 'EficazFramework.XAML.Behaviors.TextBoxInputMaskBehavior') | InputMask for Textbox with 2 Properties: [InputMask](EficazFramework.XAML.Behaviors/TextBoxInputMaskBehavior/InputMask.md 'EficazFramework.XAML.Behaviors.TextBoxInputMaskBehavior.InputMask'), [PromptChar](EficazFramework.XAML.Behaviors/TextBoxInputMaskBehavior/PromptChar.md 'EficazFramework.XAML.Behaviors.TextBoxInputMaskBehavior.PromptChar'). |

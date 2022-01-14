@@ -20,9 +20,7 @@ Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.O
 
 | Methods | |
 | :--- | :--- |
-| [DataGrid_CanExecuteBeginEdit(object, CanExecuteRoutedEventArgs)](EficazFramework.XAML.Behaviors/DataGridAssist/DataGrid_CanExecuteBeginEdit(object,CanExecuteRoutedEventArgs).md 'EficazFramework.XAML.Behaviors.DataGridAssist.DataGrid_CanExecuteBeginEdit(object, System.Windows.Input.CanExecuteRoutedEventArgs)') | |
 | [DataGrid_CellTab(DataGrid, KeyEventArgs)](EficazFramework.XAML.Behaviors/DataGridAssist/DataGrid_CellTab(DataGrid,KeyEventArgs).md 'EficazFramework.XAML.Behaviors.DataGridAssist.DataGrid_CellTab(System.Windows.Controls.DataGrid, System.Windows.Input.KeyEventArgs)') | |
-| [DataGrid_GotFocus(object, RoutedEventArgs)](EficazFramework.XAML.Behaviors/DataGridAssist/DataGrid_GotFocus(object,RoutedEventArgs).md 'EficazFramework.XAML.Behaviors.DataGridAssist.DataGrid_GotFocus(object, System.Windows.RoutedEventArgs)') | |
 | [DataGrid_NavigationTemplate_PreviewKeyDown(object, KeyEventArgs)](EficazFramework.XAML.Behaviors/DataGridAssist/DataGrid_NavigationTemplate_PreviewKeyDown(object,KeyEventArgs).md 'EficazFramework.XAML.Behaviors.DataGridAssist.DataGrid_NavigationTemplate_PreviewKeyDown(object, System.Windows.Input.KeyEventArgs)') | |
 | [DataGridGrouping_CellTab(DataGrid, KeyEventArgs)](EficazFramework.XAML.Behaviors/DataGridAssist/DataGridGrouping_CellTab(DataGrid,KeyEventArgs).md 'EficazFramework.XAML.Behaviors.DataGridAssist.DataGridGrouping_CellTab(System.Windows.Controls.DataGrid, System.Windows.Input.KeyEventArgs)') | |
 | [GetCell(this DataGrid, object, int)](EficazFramework.XAML.Behaviors/DataGridAssist/GetCell(thisDataGrid,object,int).md 'EficazFramework.XAML.Behaviors.DataGridAssist.GetCell(this System.Windows.Controls.DataGrid, object, int)') | |

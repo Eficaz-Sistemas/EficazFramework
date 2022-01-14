@@ -4,5 +4,5 @@
 ## ApplicationInstance() Constructor
 
 ```csharp
-public ApplicationInstance();
+internal ApplicationInstance();
 ```

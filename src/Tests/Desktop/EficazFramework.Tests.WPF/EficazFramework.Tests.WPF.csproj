@@ -43,5 +43,12 @@
     <ProjectReference Include="..\..\..\Desktop\EficazFramework.WPF\EficazFramework.WPF.csproj" />
     <ProjectReference Include="..\EficazFramework.Tests.WPF.Views\EficazFramework.Tests.WPF.Views.csproj" />
   </ItemGroup>
+	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+		<NoWarn>IDE0044;1573;1591;1701;1702;CA2211</NoWarn>
+	</PropertyGroup>
 
+	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+		<NoWarn>IDE0044;1573;1591;1701;1702;CA2211</NoWarn>
+		<DisableDefaultDocumentation>true</DisableDefaultDocumentation>
+	</PropertyGroup>
 </Project>

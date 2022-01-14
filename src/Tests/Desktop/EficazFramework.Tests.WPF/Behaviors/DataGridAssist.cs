@@ -108,10 +108,4 @@ public class DataGridAssist
         DataGridCell cell2 = (DataGridCell)mock.DataGridInstance.GetCell(mock.ItemsSource[45], 0);
         cell2.DataContext.Should().Be(mock.ItemsSource[45]);
     }
-
-    [Test, Order(5)]
-    public void ColumnFilterTest()
-    {
-
-    }
 }

@@ -1,5 +1,6 @@
 ﻿using EficazFramework.Controls;
 using System.ComponentModel;
+using System.Diagnostics.CodeAnalysis;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
@@ -31,6 +32,7 @@ public sealed partial class MDIWindowMoveThumb : Thumb
 
     MDIWindow window = null;
 
+    [ExcludeFromCodeCoverage]
     public override void OnApplyTemplate()
     {
         base.OnApplyTemplate();

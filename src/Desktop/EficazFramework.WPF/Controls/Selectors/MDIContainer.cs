@@ -2,17 +2,11 @@
 using System.Collections;
 using System.ComponentModel;
 using System.Diagnostics;
-using System.IO.Enumeration;
-using System.Linq;
-using System.Runtime.CompilerServices;
-using System.Security.Cryptography;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
 using System.Windows.Data;
-using System.Windows.Media;
-using System.Xml.Schema;
 
 namespace EficazFramework.Controls;
 
@@ -21,10 +15,7 @@ public class MDIContainer : Selector
 {
 
     // Properties
-    public static Application.ApplicationInstance GetApplicationDefinition(DependencyObject obj)
-    {
-        return (Application.ApplicationInstance)obj.GetValue(ApplicationDefinitionProperty);
-    }
+    public static Application.ApplicationInstance GetApplicationDefinition(DependencyObject obj) => (Application.ApplicationInstance)obj.GetValue(ApplicationDefinitionProperty);
     public static void SetApplicationDefinition(DependencyObject obj, Application.ApplicationInstance value)
     {
         obj.SetValue(ApplicationDefinitionProperty, value);
@@ -34,8 +25,8 @@ public class MDIContainer : Selector
 
     public object CustomTaskBarLeftContent
     {
-        get { return (object)GetValue(CustomTaskBarLeftContentProperty); }
-        set { SetValue(CustomTaskBarLeftContentProperty, value); }
+        get => (object)GetValue(CustomTaskBarLeftContentProperty);
+        set => SetValue(CustomTaskBarLeftContentProperty, value);
     }
     public static readonly DependencyProperty CustomTaskBarLeftContentProperty =
         DependencyProperty.Register("CustomTaskBarLeftContent", typeof(object), typeof(MDIContainer), new PropertyMetadata(null));
@@ -308,7 +299,7 @@ public class MDIContainer : Selector
 
     private void SyncTaskBarItem(object item)
     {
-        ContentPresenter LinkedRadioPresenter = (ContentPresenter)_PART_TaskBarHost.ItemContainerGenerator.ContainerFromItem(item);
+        FrameworkElement LinkedRadioPresenter = (FrameworkElement)_PART_TaskBarHost.ItemContainerGenerator.ContainerFromItem(item);
         if (LinkedRadioPresenter != null)
         {
             LinkedRadioPresenter.UpdateLayout();

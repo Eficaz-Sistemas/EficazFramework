@@ -242,14 +242,6 @@
                             </DataTemplate>
 
                         </StackPanel.Resources>
-                        <!--<Path Width="16" Height="16"
-                              Margin="10,0,0,0" 
-                              Stretch="Uniform"
-                              VerticalAlignment="Center" HorizontalAlignment="Center"
-                              x:Name="PART_IconPresenter"
-                              RenderOptions.BitmapScalingMode="HighQuality"
-                              Data="{Binding Icon, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type efcore:MDIWindow}}}" 
-                              Fill="{Binding RelativeSource={RelativeSource Self}, Path=(TextBlock.Foreground)}"/>-->
                         <ContentPresenter x:Name="PART_IconPresenter"
                                           Content="{Binding Icon, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type efcore:MDIWindow}}}"
                                           Width="16" Height="16"  Margin="10,0,0,0" 

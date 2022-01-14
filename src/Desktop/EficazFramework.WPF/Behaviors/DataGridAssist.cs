@@ -22,7 +22,6 @@ public static partial class DataGridAssist
     // ### Enter Key Navigation ###
 
 
-
     public static bool GetEnterKeyNavigation(DependencyObject obj)
     {
         return (bool)obj.GetValue(EnterKeyNavigationProperty);
@@ -241,39 +240,6 @@ public static partial class DataGridAssist
                 e.Handled = true;
             }
         }
-    }
-
-    internal static void DataGrid_GotFocus(object sender, RoutedEventArgs e)
-    {
-        System.Windows.Controls.DataGrid dg = (System.Windows.Controls.DataGrid)sender;
-        if (dg.Items.Count > 0)
-            SelectAndFocusCell(dg, 0, dg.Items[0]);
-    }
-
-    internal static void DataGrid_CanExecuteBeginEdit(object sender, CanExecuteRoutedEventArgs e)
-    {
-        if (!object.ReferenceEquals(e.Command, System.Windows.Controls.DataGrid.BeginEditCommand))
-            return;
-        // e.CanExecute = True
-        // e.Handled = True
-        var dynMethod = sender.GetType().GetMethod("OnCanExecuteBeginEdit", BindingFlags.NonPublic | BindingFlags.Instance);
-        dynMethod.Invoke(sender, new object[] { e });
-        // sender.OnCanExecuteBeginEdit(e)
-
-        var bindingFlags = BindingFlags.FlattenHierarchy | BindingFlags.NonPublic | BindingFlags.Instance;
-        var cellError = sender.GetType().GetProperty("HasCellValidationError", bindingFlags);
-        var rowError = sender.GetType().GetProperty("HasRowValidationError", bindingFlags);
-        if (cellError != null)
-            cellError.SetValue(sender, false); // hasCellValidationError = CBool(cellError.GetValue(sender, Nothing))
-        if (rowError != null)
-            rowError.SetValue(sender, false); // hasRowValidationError = CBool(rowError.GetValue(sender, Nothing))
-
-
-        // If (Not hasCellValidationError) OrElse (Not hasRowValidationError) Then
-        e.CanExecute = true;
-        e.Handled = true;
-        // End If
-        Debug.WriteLine(e.CanExecute);
     }
 
 

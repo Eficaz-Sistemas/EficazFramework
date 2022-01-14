@@ -12,9 +12,6 @@ namespace EficazFramework.Controls;
 [TemplatePart(Name = "PART_MoveThumb", Type = typeof(XAML.Behaviors.MDIWindowMoveThumb))]
 public sealed partial class MDIWindow : HeaderedContentControl
 {
-
-
-    /* TODO ERROR: Skipped RegionDirectiveTrivia */
     static MDIWindow()
     {
         DefaultStyleKeyProperty.OverrideMetadata(typeof(MDIWindow), new FrameworkPropertyMetadata(typeof(MDIWindow)));
@@ -34,8 +31,7 @@ public sealed partial class MDIWindow : HeaderedContentControl
         topDescriptor.AddValueChanged(this, (_, __) => OnMove());
     }
 
-    /* TODO ERROR: Skipped EndRegionDirectiveTrivia */
-    /* TODO ERROR: Skipped RegionDirectiveTrivia */
+
     private Button _closeButton = null;
     private MDIContainer _container = null;
     internal static bool _lockCanvasUpdate = false;
@@ -49,72 +45,36 @@ public sealed partial class MDIWindow : HeaderedContentControl
     public static readonly RoutedEvent FocusChangedEvent = EventManager.RegisterRoutedEvent("FocusChanged", RoutingStrategy.Bubble, typeof(RoutedEventHandler), typeof(MDIWindow));
     public static readonly RoutedEvent WindowStateChangedEvent = EventManager.RegisterRoutedEvent("WindowStateChanged", RoutingStrategy.Bubble, typeof(WindowStateChangedRoutedEventHandler), typeof(MDIWindow));
 
-    /* TODO ERROR: Skipped EndRegionDirectiveTrivia */
-    /* TODO ERROR: Skipped RegionDirectiveTrivia */
+
 
     public bool IsSelected
     {
-        get
-        {
-            return (bool)GetValue(IsSelectedProperty);
-        }
-
-        set
-        {
-            SetValue(IsSelectedProperty, value);
-        }
+        get => (bool)GetValue(IsSelectedProperty);
+        set => SetValue(IsSelectedProperty, value);
     }
 
     public WindowState WindowState
     {
-        get
-        {
-            return (WindowState)GetValue(WindowStateProperty);
-        }
-
-        set
-        {
-            SetValue(WindowStateProperty, value);
-        }
+        get => (WindowState)GetValue(WindowStateProperty);
+        set => SetValue(WindowStateProperty, value);
     }
 
     public bool CanClose
     {
-        get
-        {
-            return (bool)GetValue(CanCloseProperty);
-        }
-
-        set
-        {
-            SetValue(CanCloseProperty, value);
-        }
+        get => (bool)GetValue(CanCloseProperty);
+        set => SetValue(CanCloseProperty, value);
     }
 
     public object Icon
     {
-        get
-        {
-            return GetValue(IconProperty);
-        }
-
-        set
-        {
-            SetValue(IconProperty, value);
-        }
+        get => GetValue(IconProperty);
+        set => SetValue(IconProperty, value);
     }
 
     public string Title
     {
-        get
-        {
-            return (string)GetValue(TitleProperty);
-        }
-
-        set
-        {
-            SetValue(TitleProperty, value);
-        }
+        get => (string)GetValue(TitleProperty);
+        set => SetValue(TitleProperty, value);
     }
 
     public Application.ApplicationInstance AppDefinition { get; internal set; } = null;
@@ -139,8 +99,7 @@ public sealed partial class MDIWindow : HeaderedContentControl
     }
 
 
-    /* TODO ERROR: Skipped EndRegionDirectiveTrivia */
-    /* TODO ERROR: Skipped RegionDirectiveTrivia */
+
     public override void OnApplyTemplate()
     {
         _closeButton = GetTemplateChild("PART_CloseButton") as Button;
@@ -205,8 +164,7 @@ public sealed partial class MDIWindow : HeaderedContentControl
         }
     }
 
-    /* TODO ERROR: Skipped EndRegionDirectiveTrivia */
-    /* TODO ERROR: Skipped RegionDirectiveTrivia */
+
     private void OnLoaded(object sender, RoutedEventArgs e)
     {
         MoveFocus(new TraversalRequest(FocusNavigationDirection.First));
@@ -340,8 +298,7 @@ public sealed partial class MDIWindow : HeaderedContentControl
         }
     }
 
-    /* TODO ERROR: Skipped EndRegionDirectiveTrivia */
-    /* TODO ERROR: Skipped RegionDirectiveTrivia */
+
     public event RoutedEventHandler FocusChanged
     {
         add
@@ -355,10 +312,7 @@ public sealed partial class MDIWindow : HeaderedContentControl
         }
     }
 
-    void OnFocusChanged(object sender, RoutedEventArgs e)
-    {
-        RaiseEvent(e);
-    }
+    void OnFocusChanged(object sender, RoutedEventArgs e) => RaiseEvent(e);
 
     public event WindowStateChangedRoutedEventHandler WindowStateChanged
     {
@@ -373,10 +327,7 @@ public sealed partial class MDIWindow : HeaderedContentControl
         }
     }
 
-    void OnWindowStateChanged(object sender, RoutedEventArgs e)
-    {
-        RaiseEvent(e);
-    }
+    void OnWindowStateChanged(object sender, RoutedEventArgs e) => RaiseEvent(e);
 
     public event RoutedEventHandler Closing
     {
@@ -391,10 +342,7 @@ public sealed partial class MDIWindow : HeaderedContentControl
         }
     }
 
-    void OnClosing(object sender, RoutedEventArgs e)
-    {
-        RaiseEvent(e);
-    }
+    void OnClosing(object sender, RoutedEventArgs e) => RaiseEvent(e);
 
     public event RoutedEventHandler Closed
     {
@@ -409,16 +357,12 @@ public sealed partial class MDIWindow : HeaderedContentControl
         }
     }
 
-    void OnClosed(object sender, RoutedEventArgs e)
-    {
-        RaiseEvent(e);
-    }
+    void OnClosed(object sender, RoutedEventArgs e) => RaiseEvent(e);
 
-    /* TODO ERROR: Skipped RegionDirectiveTrivia */
+
     public delegate void WindowStateChangedRoutedEventHandler(object sender, Events.WindowStateChangedEventArgs e);
 
-    /* TODO ERROR: Skipped EndRegionDirectiveTrivia */
-    /* TODO ERROR: Skipped EndRegionDirectiveTrivia */
+
 }
 
 // MDI Code-Base from Hammer UI KIT

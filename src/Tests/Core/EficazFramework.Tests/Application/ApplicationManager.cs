@@ -80,16 +80,6 @@ public class Apps
         }
         list.FirstOrDefault().FirstChar.Should().Be('I');
 
-        Exception appEx = null;
-        try
-        {
-            ApplicationInstance app = new();
-        }
-        catch (UnauthorizedAccessException ex)
-        {
-            appEx = ex;
-        }
-        appEx.Should().NotBeNull();
     }
 
     [Test, Order(2)]

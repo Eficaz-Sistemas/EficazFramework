@@ -145,9 +145,9 @@ public sealed class ApplicationInstance : ApplicationDefinition, INotifyProperty
 
     }
 
-    public ApplicationInstance()
+    internal ApplicationInstance()
     {
-        throw new UnauthorizedAccessException();
+        //throw new UnauthorizedAccessException();
     }
         
     public long SessionID { get; set; }
