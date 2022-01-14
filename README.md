@@ -53,12 +53,12 @@
    
    - Controles Visuais para melhor experiência de utilização pelo usuário
    - Extensões para XAML e Code-Behind
-   - Interface de usuário MaterialDesign, utilizando a biblioteca OpenSource [MaterialDesignInXAML Toolkit](https://github.com/MaterialDesignInXAML/MaterialDesignInXamlToolkit)
+   - UI baseada em MaterialDesign, utilizando a biblioteca OpenSource [MaterialDesignInXAML Toolkit](https://github.com/MaterialDesignInXAML/MaterialDesignInXamlToolkit)
    - Engine de geração e impressão de relatórios em XAML (XPS)
 
 #### Biblioteca de extensão para Blazor (Server-Side e WebAssembly)
    - Novos Componentes, Templates e Layouts para melhor padronização das aplicações, conforme sua natureza
-   - Interface de usuário MaterialDesign, utilizando a biblioteca OpenSource [MudBlazor](https://github.com/MudBlazor/MudBlazor)
+   - UI baseada em MaterialDesign, utilizando a biblioteca OpenSource [MudBlazor](https://github.com/MudBlazor/MudBlazor)
    
    
 #### Pré-Requisitos
