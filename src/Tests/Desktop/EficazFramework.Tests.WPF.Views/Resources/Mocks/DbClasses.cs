@@ -10,6 +10,7 @@ public class Blog : Entities.EntityBase
 {
     public System.Guid Id { get; set; } = Guid.NewGuid();
     public string Name { get; set; }
+    public string Group { get; set; }   
 
     public List<Post> Posts { get; set; } = new();
 

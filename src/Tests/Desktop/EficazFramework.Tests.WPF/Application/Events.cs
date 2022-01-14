@@ -10,28 +10,18 @@ namespace EficazFramework.Application;
 public class Events
 {
 
-    [SetUp, Apartment(System.Threading.ApartmentState.STA)]
-    public void Setup()
-    {
-        //EficazFramework.Tests.TestContext.MainWindows.WindowState = System.Windows.WindowState.Minimized; // this parameter didn't render the UI :(
-        Tests.TestContext.MainWindow.ShowInTaskbar = false;
-        Tests.TestContext.Application.MainWindow = EficazFramework.Tests.TestContext.MainWindow;
-        Task.Run(() => Tests.TestContext.Application.Run());
-    }
-
     [TearDown]
     public void TearDown()
     {
-        EficazFramework.Tests.TestContext.Application?.Properties.Remove("shutdown_requested");
+        EficazFramework.Tests.TestContext.Application?.Properties.Clear();
     }
 
-    [Test, Order(1), Apartment(System.Threading.ApartmentState.STA)]
+    [Test, Order(1)]
     public async Task ShutDown()
     {
         Tests.TestContext.MainWindow.Show();
-        ApplicationEvents.RequestShutDown_Material(EficazFramework.Tests.TestContext.Application?.MainWindow, EficazFramework.Tests.TestContext.Application);
-        await Task.Delay(250);
-        Tests.TestContext.Application?.Properties["shutdown_requested"].Should().Be(true);
+        bool exited = await ApplicationEvents.RequestShutDown_Material(EficazFramework.Tests.TestContext.Application?.MainWindow, EficazFramework.Tests.TestContext.Application);
+        exited.Should().BeTrue();
     }
 
     //[Test, Order(2), Apartment(System.Threading.ApartmentState.STA)]
@@ -44,7 +34,7 @@ public class Events
 
         Threading.ModalAssist modal = new();
 
-        ApplicationEvents.RequestShutDown_Material(Tests.TestContext.Application?.MainWindow, EficazFramework.Tests.TestContext.Application);
+        bool exited = await ApplicationEvents.RequestShutDown_Material(Tests.TestContext.Application?.MainWindow, EficazFramework.Tests.TestContext.Application);
         await Commands.DelayedAction.InvokeAsync(() =>
           {
               //EficazFramework.Tests.Utils.DispatcherUtil.DoEventsSync();
@@ -57,6 +47,6 @@ public class Events
           }, 1000);
         var result = await modal.Push();
         result.Should().Be(EficazFramework.Events.MessageResult.Yes);
-        Tests.TestContext.Application?.Properties["shutdown_requested_byDialog"].Should().Be(true);
+        exited.Should().BeTrue();
     }
 }

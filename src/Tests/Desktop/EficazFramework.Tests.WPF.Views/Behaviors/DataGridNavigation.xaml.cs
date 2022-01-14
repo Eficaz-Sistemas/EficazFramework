@@ -36,7 +36,8 @@ public partial class DataGridNavigation : UserControl
             ItemsSource.Add(new Resources.Mocks.Classes.Blog()
             {
                 Id = tmpId,
-                Name = $"Blog {i}"
+                Name = $"Blog {i}",
+                Group = i % 2 == 0 ? "A" : "B",
             });
             ItemsSource.Last().Posts.Add(new Resources.Mocks.Classes.Post()
             {

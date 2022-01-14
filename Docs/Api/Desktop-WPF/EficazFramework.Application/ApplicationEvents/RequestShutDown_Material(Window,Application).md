@@ -4,7 +4,7 @@
 ## ApplicationEvents.RequestShutDown_Material(Window, Application) Method
 
 ```csharp
-public static void RequestShutDown_Material(System.Windows.Window window, System.Windows.Application app);
+public static System.Threading.Tasks.Task<bool> RequestShutDown_Material(System.Windows.Window window, System.Windows.Application app);
 ```
 #### Parameters
 
@@ -15,3 +15,6 @@ public static void RequestShutDown_Material(System.Windows.Window window, System
 <a name='EficazFramework.Application.ApplicationEvents.RequestShutDown_Material(System.Windows.Window,System.Windows.Application).app'></a>
 
 `app` [System.Windows.Application](https://docs.microsoft.com/en-us/dotnet/api/System.Windows.Application 'System.Windows.Application')
+
+#### Returns
+[System.Threading.Tasks.Task&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Threading.Tasks.Task-1 'System.Threading.Tasks.Task`1')[System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Threading.Tasks.Task-1 'System.Threading.Tasks.Task`1')

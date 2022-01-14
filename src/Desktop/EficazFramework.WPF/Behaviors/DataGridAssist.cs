@@ -1,6 +1,7 @@
 ﻿using System;
 using System.ComponentModel;
 using System.Diagnostics;
+using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Reflection;
@@ -41,25 +42,6 @@ public static partial class DataGridAssist
             dg.PreviewKeyDown += DataGridAssist.DataGrid_NavigationTemplate_PreviewKeyDown;
         else
             dg.PreviewKeyDown -= DataGridAssist.DataGrid_NavigationTemplate_PreviewKeyDown;
-    }
-
-    internal static void DataGrid_NavigationTemplate_SelectionChanged(object sender, SelectedCellsChangedEventArgs e)
-    {
-        System.Windows.Controls.DataGrid dg = (System.Windows.Controls.DataGrid)sender;
-        if (dg.SelectionUnit == DataGridSelectionUnit.FullRow)
-            return;
-        if (e.AddedCells.Count <= 0)
-            return;
-        if (e.AddedCells.LastOrDefault().Item is null)
-            return;
-        if (!object.ReferenceEquals(dg.Items.CurrentItem, e.AddedCells.LastOrDefault().Item))
-            dg.Items.MoveCurrentTo(e.AddedCells.LastOrDefault().Item);
-        if (dg.Items.SourceCollection?.GetType().IsAssignableFrom(typeof(ICollectionView)) == true)
-        {
-            ICollectionView iview = (ICollectionView)dg.Items.SourceCollection;
-            if (!object.ReferenceEquals(iview.CurrentItem, e.AddedCells.LastOrDefault().Item))
-                iview.MoveCurrentTo(e.AddedCells.LastOrDefault().Item);
-        }
     }
 
     internal static void DataGrid_NavigationTemplate_PreviewKeyDown(object sender, KeyEventArgs e)
@@ -294,23 +276,6 @@ public static partial class DataGridAssist
         Debug.WriteLine(e.CanExecute);
     }
 
-    internal static void DataGrid_PreviewMouseDoubleClickMouseDoubleClick(object sender, MouseButtonEventArgs e)
-    {
-        System.Windows.Controls.DataGrid dg = (System.Windows.Controls.DataGrid)sender;
-        DataGridCell cell;
-        if (e.OriginalSource is not DataGridCell)
-            cell = Utilities.VisualTreeHelpers.FindAnchestor<DataGridCell>((DependencyObject)e.OriginalSource);
-        else
-            cell = (DataGridCell)e.OriginalSource;
-        if (cell is null)
-            return;
-        if (cell.IsReadOnly == false)
-        {
-            SelectAndFocusCell(dg, cell);
-            e.Handled = true;
-        }
-    }
-
 
 
     public static object GetRow(this System.Windows.Controls.DataGrid sender, object dataitem)
@@ -365,7 +330,7 @@ public static partial class DataGridAssist
             return GetCell(sender, row, columnIndex);
     }
 
-    public static void SelectAndFocusCell(this System.Windows.Controls.DataGrid dg, int columnIndex, DataGridRow row)
+    public static void SelectAndFocusCell([NotNull] this System.Windows.Controls.DataGrid dg, int columnIndex, [NotNull] DataGridRow row)
     {
         if (row != null)
         {
@@ -375,10 +340,8 @@ public static partial class DataGridAssist
         }
     }
 
-    public static void SelectAndFocusCell(this System.Windows.Controls.DataGrid dg, int columnIndex, object dataitem)
+    public static void SelectAndFocusCell([NotNull] this System.Windows.Controls.DataGrid dg, int columnIndex, object dataitem)
     {
-        if (dg is null)
-            return;
         if (!dg.IsKeyboardFocusWithin)
             dg.Focus();
         dg.ScrollIntoView(dataitem);
@@ -393,12 +356,8 @@ public static partial class DataGridAssist
             SelectAndFocusCell(dg, columnIndex, row);
     }
 
-    public static void SelectAndFocusCell(this System.Windows.Controls.DataGrid dg, DataGridCell cell)
+    public static void SelectAndFocusCell([NotNull] this System.Windows.Controls.DataGrid dg, [NotNull] DataGridCell cell)
     {
-        if (dg is null)
-            return;
-        if (cell is null)
-            return;
         if (!dg.IsKeyboardFocusWithin)
             dg.Focus();
         if (cell != null)
@@ -419,30 +378,11 @@ public static partial class DataGridAssist
         }
     }
 
-    public static DataGridColumnHeader GetDataGridColumnsHeader(DataGridColumn column, DependencyObject reference)
-    {
-        for (int i = 0, loopTo = VisualTreeHelper.GetChildrenCount(reference) - 1; i <= loopTo; i++)
-        {
-            DependencyObject child = VisualTreeHelper.GetChild(reference, i);
-            if (child is DataGridColumnHeader colHeader && object.ReferenceEquals(colHeader.Column, column))
-            {
-                return colHeader;
-            }
-
-            colHeader = GetDataGridColumnsHeader(column, child);
-            if (colHeader != null)
-            {
-                return colHeader;
-            }
-        }
-
-        return null;
-    }
-
 
 
     // ### SHOW FILTER ###
 
+    [Obsolete]
     public static bool GetShowFilter(DependencyObject element)
     {
         if (element is null)
@@ -452,6 +392,8 @@ public static partial class DataGridAssist
 
         return (bool)element.GetValue(ShowFilterProperty);
     }
+
+    [Obsolete]
     public static void SetShowFilter(DependencyObject element, bool value)
     {
         if (element is null)

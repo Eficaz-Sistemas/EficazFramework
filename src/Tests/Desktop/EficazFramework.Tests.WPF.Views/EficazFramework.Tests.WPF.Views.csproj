@@ -4,7 +4,17 @@
     <TargetFramework>net6.0-windows</TargetFramework>
     <Nullable>enable</Nullable>
     <UseWPF>true</UseWPF>
+	<AssemblyOriginatorKeyFile>EfCore.snk</AssemblyOriginatorKeyFile>
+	<SignAssembly>True</SignAssembly>
+	<PackageIcon>logo.png</PackageIcon>
   </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="..\..\..\..\Assets\logo.png" Link="logo.png">
+      <PackagePath>\</PackagePath>
+      <Pack>True</Pack>
+    </None>
+  </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\..\..\Desktop\EficazFramework.WPF\EficazFramework.WPF.csproj" />

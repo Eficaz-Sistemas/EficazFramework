@@ -18,7 +18,18 @@
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </UserControl.Resources>
-    <DataGrid x:Name="dGrid" AutoGenerateColumns="True" efxamlbh:DataGridAssist.EnterKeyNavigation="true">
-
+    <DataGrid x:Name="dGrid" 
+              AutoGenerateColumns="True" 
+              CanUserAddRows="False"
+              efxamlbh:DataGridAssist.EnterKeyNavigation="true">
+        <DataGrid.GroupStyle>
+            <GroupStyle>
+                <GroupStyle.HeaderTemplate>
+                    <DataTemplate>
+                        <TextBlock Text="Group" />
+                    </DataTemplate>
+                </GroupStyle.HeaderTemplate>
+            </GroupStyle>
+        </DataGrid.GroupStyle>
     </DataGrid>
 </UserControl>
