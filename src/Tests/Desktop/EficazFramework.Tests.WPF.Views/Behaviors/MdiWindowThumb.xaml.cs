@@ -22,25 +22,9 @@ public partial class MdiWindowThumb : UserControl
     public MdiWindowThumb()
     {
         InitializeComponent();
-        Setup();
     }
 
-    public void Setup()
-    {
-        for (int i = 0; i < 3; i++)
-        {
-            Application.ApplicationInstance app = new()
-            {
-                Title = $"Application {i}",
-                Icon = MaterialDesignThemes.Wpf.PackIconKind.Application,
-            };
-            ItemsSource.Add(app);
-        }
-        container.ItemsSource = ItemsSource;
-    }
-
-    public List<Application.ApplicationInstance> ItemsSource { get; set; } = new();
-
-    public Controls.MDIContainer Container => container;
+    public XAML.Behaviors.MDIWindowMoveThumb App1 => app1;
+    public XAML.Behaviors.MDIWindowMoveThumb App2 => app2;
 
 }

@@ -39,36 +39,20 @@ public sealed partial class MDIWindowMoveThumb : Thumb
         window = Utilities.VisualTreeHelpers.FindAnchestor<Controls.MDIWindow>(this);
     }
 
-    // Protected Overrides Sub OnMouseDoubleClick(e As MouseButtonEventArgs)
-    // Dim window = Utilities.VisualTreeHelpers.FindAnchestor(Of Controls.MDIWindow)(Me)
-    // If window IsNot Nothing AndAlso window.Container IsNot Nothing Then
-    // Select Case window.WindowState
-    // Case WindowState.Maximized
-    // window.Normalize()
-    // Exit Select
-    // Case WindowState.Normal
-    // window.Maximize()
-    // Exit Select
-    // Case WindowState.Minimized
-    // window.Normalize()
-    // Exit Select
-    // Case Else
-    // Throw New InvalidOperationException("Unsupported WindowsState mode")
-    // End Select
-    // End If
-
-    // e.Handled = True
-    // End Sub
-
     private void OnMoveThumbDragDelta(object sender, DragDeltaEventArgs e)
     {
+        bool canMove = true;
+        UIElement element = (UIElement)sender;
         if (window != null)
         {
-            if (window.WindowState != WindowState.Maximized)
-            {
-                Canvas.SetLeft(window, Canvas.GetLeft(window) + e.HorizontalChange);
-                Canvas.SetTop(window, Canvas.GetTop(window) + e.VerticalChange);
-            }
+            element = window;
+            if (window.WindowState == WindowState.Maximized)
+                canMove = false;
+        }
+        if (canMove)
+        {
+            Canvas.SetLeft(element, Canvas.GetLeft(element) + e.HorizontalChange);
+            Canvas.SetTop(element, Canvas.GetTop(element) + e.VerticalChange);
         }
     }
 }

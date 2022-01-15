@@ -30,18 +30,11 @@ public class MdiWindowMoveThumb
     [Test]  
     public void DragAppTest()
     {
-        Controls.MDIWindow? app1 = (Controls.MDIWindow)mock?.Container.ItemContainerGenerator.ContainerFromItem(mock?.ItemsSource[0]);
-        Canvas.GetLeft(app1).Should().Be(0);
-        Canvas.GetTop(app1).Should().Be(0);
-        app1?.UpdateLayout();
-        app1?.Header.Should().NotBeNull();
-        app1?.ApplyTemplate();
-
-        XAML.Behaviors.MDIWindowMoveThumb th = XAML.Utilities.VisualTreeHelpers.FindVisualChild<XAML.Behaviors.MDIWindowMoveThumb>(app1);
-        th.Should().NotBeNull();
-        th.RaiseEvent(new DragDeltaEventArgs(25, 30));
-        Canvas.GetLeft(app1).Should().Be(25);
-        Canvas.GetTop(app1).Should().Be(30);
+        Canvas.GetLeft(mock?.App1).Should().Be(50);
+        Canvas.GetTop(mock?.App1).Should().Be(50);
+        mock?.App1.RaiseEvent(new DragDeltaEventArgs(25, 30));
+        Canvas.GetLeft(mock?.App1).Should().Be(75);
+        Canvas.GetTop(mock?.App1).Should().Be(80);
     }
 }
 #pragma warning restore CS8600 // Conversão de literal nula ou possível valor nulo em tipo não anulável.

@@ -21,7 +21,6 @@ internal class TestContext
         //    return null;
         //};
         Application =  new EficazFramework.Tests.WPF.App();
-        Application.Run();
         //AppDomain.CurrentDomain.Load(System.Reflection.AssemblyName.GetAssemblyName(@$"{Environment.CurrentDirectory}\EficazFramework.WPF.dll"));
         //AppDomain.CurrentDomain.Load(System.Reflection.AssemblyName.GetAssemblyName(@$"{Environment.CurrentDirectory}\MaterialDesignThemes.Wpf.dll"));
         //AppDomain.CurrentDomain.Load(System.Reflection.AssemblyName.GetAssemblyName(@$"{Environment.CurrentDirectory}\MaterialDesignColors.dll"));
