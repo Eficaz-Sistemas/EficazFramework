@@ -44,8 +44,13 @@
    - GNRE
    - NF-e
    - NFS-e
-
-#### Biblioteca de extensão para Windows Presentation Foundation (WPF)
+   
+#### <img src="./Assets/blazor.svg" width="20" height="20" style="fill:#512BD4" /> Biblioteca de extensão para Blazor (Server-Side e WebAssembly) 
+   
+   - Novos Componentes, Templates e Layouts para melhor padronização das aplicações, conforme sua natureza
+   - UI baseada em MaterialDesign, utilizando a biblioteca OpenSource [MudBlazor](https://github.com/MudBlazor/MudBlazor)
+   
+#### <img src="./Assets/xaml.svg" width="20" height="20" style="fill:#512BD4" /> Biblioteca de extensão para Windows Presentation Foundation (WPF)
 
 ![Azure DevOps builds (branch)](https://efshieldsio.azurewebsites.net:/azure-devops/build/eficazcs/EficazFramework/26/wpf?label=tests&logo=azuredevops&logoColor=white&style=flat-square)
 ![Azure DevOps tests (compact)](https://efshieldsio.azurewebsites.net:/azure-devops/tests/eficazcs/EficazFramework/26?compact_message&logo=azuredevops&logoColor=white&style=flat-square)
@@ -54,12 +59,7 @@
    - Controles Visuais para melhor experiência de utilização pelo usuário
    - Extensões para XAML e Code-Behind
    - UI baseada em MaterialDesign, utilizando a biblioteca OpenSource [MaterialDesignInXAML Toolkit](https://github.com/MaterialDesignInXAML/MaterialDesignInXamlToolkit)
-   - Engine de geração e impressão de relatórios em XAML (XPS)
-
-#### Biblioteca de extensão para Blazor (Server-Side e WebAssembly)
-   - Novos Componentes, Templates e Layouts para melhor padronização das aplicações, conforme sua natureza
-   - UI baseada em MaterialDesign, utilizando a biblioteca OpenSource [MudBlazor](https://github.com/MudBlazor/MudBlazor)
-   
+   - Engine de geração e impressão de relatórios em XAML (XPS)   
    
 #### Pré-Requisitos
    - [.NET 6.0](https://dotnet.microsoft.com/download/dotnet/6.0), para versão mais recente da biblioteca (pode sofrer alterações sem aviso prévio).
