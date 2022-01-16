@@ -45,12 +45,12 @@
    - NF-e
    - NFS-e
    
-#### <img src="./Assets/blazor.svg" width="20" height="20" style="fill:#512BD4" /> Biblioteca de extensão para Blazor (Server-Side e WebAssembly) 
+#### <img src="./Assets/blazor.svg" width="24" height="24" style="fill:#512BD4" /> Biblioteca de extensão para Blazor (Server-Side e WebAssembly) 
    
    - Novos Componentes, Templates e Layouts para melhor padronização das aplicações, conforme sua natureza
    - UI baseada em MaterialDesign, utilizando a biblioteca OpenSource [MudBlazor](https://github.com/MudBlazor/MudBlazor)
    
-#### <img src="./Assets/xaml.svg" width="20" height="20" style="fill:#512BD4" /> Biblioteca de extensão para Windows Presentation Foundation (WPF)
+#### <img src="./Assets/xaml.svg" width="24" height="24" style="fill:#512BD4" /> Biblioteca de extensão para Windows Presentation Foundation (WPF)
 
 ![Azure DevOps builds (branch)](https://efshieldsio.azurewebsites.net:/azure-devops/build/eficazcs/EficazFramework/26/wpf?label=tests&logo=azuredevops&logoColor=white&style=flat-square)
 ![Azure DevOps tests (compact)](https://efshieldsio.azurewebsites.net:/azure-devops/tests/eficazcs/EficazFramework/26?compact_message&logo=azuredevops&logoColor=white&style=flat-square)
