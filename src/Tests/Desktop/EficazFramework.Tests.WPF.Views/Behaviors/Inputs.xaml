@@ -1,0 +1,49 @@
+﻿<UserControl x:Class="EficazFramework.Tests.WPF.Views.Behaviors.Inputs"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:efcontrols="clr-namespace:EficazFramework.Controls;assembly=EficazFramework.WPF"
+             xmlns:efxamlbh="clr-namespace:EficazFramework.XAML.Behaviors;assembly=EficazFramework.WPF"
+             xmlns:md="http://materialdesigninxaml.net/winfx/xaml/themes"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800"
+            TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+            TextElement.FontWeight="Regular"
+            TextElement.FontSize="13"
+            TextOptions.TextFormattingMode="Ideal"
+            TextOptions.TextRenderingMode="Auto">
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Defaults.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.DataGrid.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.PopupBox.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.ProgressBar.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.TextBlock.xaml" />
+
+                <!-- REQUIRED, NOT MATTER WHAT THEME IS CHOSEN:  -->
+                <ResourceDictionary Source="pack://application:,,,/EficazFramework.WPF;component/Themes/Generic.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/EficazFramework.WPF;component/Themes/Generic/Icons/App.xaml" />
+
+                <!-- THEME (AERO2, MATERIAL, ETC)  -->
+                <!--<ResourceDictionary Source="pack://application:,,,/EficazFrameworkCore.WPF;component/Themes/Aero2.xaml" />-->
+                <ResourceDictionary Source="pack://application:,,,/EficazFramework.WPF;component/Themes/MaterialDesign.xaml" />
+                <md:CustomColorTheme BaseTheme="Light" PrimaryColor="#0078d7" SecondaryColor="#003864"  />
+            </ResourceDictionary.MergedDictionaries>
+            <Style TargetType="{x:Type TextBlock}" x:Key="MaterialDesignSubtitle2TextBlock">
+                <Style.Resources>
+                    <Style TargetType="Hyperlink" BasedOn="{StaticResource MaterialDesignSubtitle2Hyperlink}" />
+                </Style.Resources>
+                <Setter Property="FontSize" Value="14" />
+                <Setter Property="FontWeight" Value="Medium" />
+            </Style>
+        </ResourceDictionary>
+    </UserControl.Resources>
+    <StackPanel TextBlock.FontWeight="Medium">
+        <TextBox x:Name="tb001" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Text="teste!" Margin="10"/>
+        <TextBox x:Name="tb002" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Text="teste!" Margin="10,0,10,10" efxamlbh:TextBox.SelectAllOnFocus="True"/>
+        <TextBox x:Name="tb003" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Text="teste!" Margin="10,0,10,10"/>
+        <TextBox x:Name="tb004" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Text="teste!" Margin="10,0,10,10"/>
+    </StackPanel>
+</UserControl>

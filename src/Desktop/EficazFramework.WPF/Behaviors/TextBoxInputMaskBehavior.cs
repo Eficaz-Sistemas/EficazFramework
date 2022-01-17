@@ -56,31 +56,30 @@ public class TextBoxInputMaskBehavior : Behavior<System.Windows.Controls.TextBox
     }
 
     /*
-    Mask Character  Accepts  Required?  
-    0  Digit (0-9)  Required  
-    9  Digit (0-9) or space  Optional  
-    #  Digit (0-9) or space  Required  
-    L  Letter (a-z, A-Z)  Required  
-    ?  Letter (a-z, A-Z)  Optional  
-    &  Any character  Required  
-    C  Any character  Optional  
-    A  Alphanumeric (0-9, a-z, A-Z)  Required  
-    a  Alphanumeric (0-9, a-z, A-Z)  Optional  
-       Space separator  Required 
-    .  Decimal separator  Required  
-    ,  Group (thousands) separator  Required  
-    :  Time separator  Required  
-    /  Date separator  Required  
-    $  Currency symbol  Required  
+    Mask Chr  Accepts                       Required?  
+    0         Digit (0-9)                   Required  
+    9         Digit (0-9) or space          Optional  
+    #         Digit (0-9) or space          Required  
+    L         Letter (a-z, A-Z)             Required  
+    ?         Letter (a-z, A-Z)             Optional  
+    &         Any character                 Required  
+    C         Any character                 Optional  
+    A         Alphanumeric (0-9, a-z, A-Z)  Required  
+    a         Alphanumeric (0-9, a-z, A-Z)  Optional  
+              Space separator               Required 
+    .         Decimal separator             Required  
+    ,         Group (thousands) separator   Required  
+    :         Time separator                Required  
+    /         Date separator                Required  
+    $         Currency symbol               Required  
 
     In addition, the following characters have special meaning:
 
-    Mask Character  Meaning  
-    <  All subsequent characters are converted to lower case  
-    >  All subsequent characters are converted to upper case  
-    |  Terminates a previous < or >  
-    \  Escape: treat the next character in the mask as literal text rather than a mask symbol  
-
+    Mask Chr  Meaning  
+    <         All subsequent characters are converted to lower case  
+    >         All subsequent characters are converted to upper case  
+    |         Terminates a previous < or >  
+    \         Escape: treat the next character in the mask as literal text rather than a mask symbol  
     */
 
     void AssociatedObjectLoaded(object sender, System.Windows.RoutedEventArgs e)

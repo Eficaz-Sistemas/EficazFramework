@@ -20,12 +20,16 @@
         </ResourceDictionary>
     </UserControl.Resources>
     <md:DialogHost Identifier="teste001">
+        <md:DialogHost.DialogContent>
+            <StackPanel Margin="25">
+                <Button x:Name="btYes" Command="{x:Static md:DialogHost.CloseDialogCommand}" CommandParameter="{x:Static ev:MessageResult.Yes}" Margin="0,0,0,10">Yes</Button>
+                <Button x:Name="btNo" Command="{x:Static md:DialogHost.CloseDialogCommand}" CommandParameter="{x:Static ev:MessageResult.No}" Margin="0,0,0,10">No</Button>
+            </StackPanel>
+        </md:DialogHost.DialogContent>
         <md:DialogHost.Content>
             <StackPanel Margin="25">
-                <Button x:Name="btNone4" Margin="0,0,0,10">OK</Button>
-                <Button x:Name="btNone5" Margin="0,0,0,10">OK</Button>
                 <Button x:Name="btShutdown"  Command="{x:Static md:DialogHost.CloseDialogCommand}" CommandParameter="{x:Static ev:MessageResult.OK}"  Margin="0,0,0,10">OK de verdade</Button>
-                <Button x:Name="btNone6" Margin="0,0,0,10">OK</Button>
+
             </StackPanel>
         </md:DialogHost.Content>
     </md:DialogHost>

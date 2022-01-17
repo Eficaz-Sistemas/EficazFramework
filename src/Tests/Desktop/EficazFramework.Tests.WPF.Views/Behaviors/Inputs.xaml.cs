@@ -13,20 +13,19 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace EficazFramework.Tests.WPF.Views.Events
+namespace EficazFramework.Tests.WPF.Views.Behaviors;
+/// <summary>
+/// Interação lógica para MdiWindowThmb.xam
+/// </summary>
+public partial class Inputs : UserControl
 {
-    /// <summary>
-    /// Interação lógica para DialogTest.xam
-    /// </summary>
-    public partial class DialogTest : UserControl
+    public Inputs()
     {
-        public DialogTest()
-        {
-            InitializeComponent();
-        }
-
-        public Button BtYes => btYes;
-
-        public Button BtNo => btNo;
+        InitializeComponent();
     }
+
+    public TextBox TextBox1 => tb001;
+    public TextBox TextBox2 => tb002;
+    public TextBox CNPJMaskedTextBox => tb003;
+    public TextBox DateMaskedTextBox => tb004;
 }
