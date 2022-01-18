@@ -52,7 +52,7 @@
    
 #### <img src="./Assets/xaml.svg" width="24" height="24" style="fill:#512BD4" /> Biblioteca de extensão para Windows Presentation Foundation (WPF)
 
-![Azure DevOps builds (branch)](https://efshieldsio.azurewebsites.net:/azure-devops/build/eficazcs/EficazFramework/26/wpf?label=tests&logo=azuredevops&logoColor=white&style=flat-square)
+![Azure DevOps builds (branch)](https://efshieldsio.azurewebsites.net:/azure-devops/build/eficazcs/EficazFramework/26/master?label=tests&logo=azuredevops&logoColor=white&style=flat-square)
 ![Azure DevOps tests (compact)](https://efshieldsio.azurewebsites.net:/azure-devops/tests/eficazcs/EficazFramework/26?compact_message&logo=azuredevops&logoColor=white&style=flat-square)
 ![Azure DevOps coverage](https://efshieldsio.azurewebsites.net:/azure-devops/coverage/eficazcs/EficazFramework/26?logo=codecov&logoColor=white&style=flat-square)
    
