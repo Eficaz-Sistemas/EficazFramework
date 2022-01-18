@@ -15,19 +15,18 @@ namespace EficazFramework.Behaviors;
 [Apartment(System.Threading.ApartmentState.STA)]
 public class TextBoxAssistTests
 {
-    EficazFramework.Tests.WPF.Views.Behaviors.Inputs mock = null;
+    EficazFramework.Tests.WPF.Views.Behaviors.Inputs mock = new();
 
 
     [SetUp]
     public void Setup()
     {
-        mock = new();
+        Tests.TestContext.NewWindow();
         Tests.TestContext.MainWindow.Content = mock;
-        Tests.TestContext.Application?.MainWindow.Show();
-        Tests.TestContext.Application?.MainWindow.UpdateLayout();
+        Tests.TestContext.MainWindow.Show();
     }
 
-    [Test]
+    [Test, Order(1)]
     public void SelectOnFocusTest()
     {
         mock.UpdateLayout();
@@ -62,4 +61,81 @@ public class TextBoxAssistTests
         mock.TextBox2.SelectionStart.Should().Be(0);
         mock.TextBox2.SelectionLength.Should().Be(6);
     }
+
+    [Test, Order(2)]
+    public void InputMaskTypingTest()
+    {
+        //full text test
+        var bh = (TextBoxInputMaskBehavior)Microsoft.Xaml.Behaviors.Interaction.GetBehaviors(mock.CNPJMaskedTextBox).First();
+        mock.MoveFocus(new TraversalRequest(FocusNavigationDirection.Next));
+        mock.CNPJMaskedTextBox.Text = "04486184000100";
+        mock.CNPJMaskedTextBox.Text.Should().Be("04.486.184/0001-00");
+
+        // clearing test
+        mock.CNPJMaskedTextBox.Text = "";
+        mock.CNPJMaskedTextBox.Text.Should().Be("__.___.___/____-__");
+
+        // user typing test
+        mock.CNPJMaskedTextBox.Text = "";
+        mock.CNPJMaskedTextBox.SelectionStart = 0;
+        mock.CNPJMaskedTextBox.SelectionLength = 0;
+        mock.CNPJMaskedTextBox.ScrollToHome();
+
+        // Key.A
+        TextCompositionEventArgs eventArgs = new(Keyboard.PrimaryDevice,
+                                                 new TextComposition(InputManager.Current,
+                                                                     mock.CNPJMaskedTextBox,
+                                                                     "A"));
+        eventArgs.RoutedEvent = System.Windows.Controls.TextBox.PreviewTextInputEvent;
+        mock.CNPJMaskedTextBox.RaiseEvent(eventArgs); // refuse
+        mock.CNPJMaskedTextBox.Text.Should().Be("__.___.___/____-__");
+
+        // Key.Number3
+        eventArgs = new(Keyboard.PrimaryDevice,
+                    new TextComposition(InputManager.Current,
+                                        mock.CNPJMaskedTextBox,
+                                        "3"));
+        eventArgs.RoutedEvent = System.Windows.Controls.TextBox.PreviewTextInputEvent;
+        mock.CNPJMaskedTextBox.RaiseEvent(eventArgs); // accept
+        mock.CNPJMaskedTextBox.Text.Should().Be("3_.___.___/____-__");
+
+        // Key.Number0
+        eventArgs = new(Keyboard.PrimaryDevice,
+                    new TextComposition(InputManager.Current,
+                                        mock.CNPJMaskedTextBox,
+                                        "0"));
+        eventArgs.RoutedEvent = System.Windows.Controls.TextBox.PreviewTextInputEvent;
+        mock.CNPJMaskedTextBox.RaiseEvent(eventArgs); // accept
+        mock.CNPJMaskedTextBox.Text.Should().Be("30.___.___/____-__");
+
+        // Key.dot
+        eventArgs = new(Keyboard.PrimaryDevice,
+                    new TextComposition(InputManager.Current,
+                                        mock.CNPJMaskedTextBox,
+                                        "."));
+        eventArgs.RoutedEvent = System.Windows.Controls.TextBox.PreviewTextInputEvent;
+        mock.CNPJMaskedTextBox.RaiseEvent(eventArgs); // no action
+        mock.CNPJMaskedTextBox.Text.Should().Be("30.___.___/____-__");
+
+        mock.CNPJMaskedTextBox.RaiseEvent(eventArgs); // again, no action
+        mock.CNPJMaskedTextBox.Text.Should().Be("30.___.___/____-__");
+
+    }
+
+    [Test, Order(3)]
+    public void InputMaskPastingTest()
+    {
+        //full text test
+        var bh = (TextBoxInputMaskBehavior)Microsoft.Xaml.Behaviors.Interaction.GetBehaviors(mock.CNPJMaskedTextBox).First();
+        mock.MoveFocus(new TraversalRequest(FocusNavigationDirection.Next));
+
+        DataObjectPastingEventArgs args = new(new DataObject("04486184000100"), false, DataFormats.Text) { RoutedEvent = DataObject.PastingEvent};
+        mock.CNPJMaskedTextBox.Text = "";
+        mock.CNPJMaskedTextBox.Text.Should().Be("__.___.___/____-__");
+        mock.CNPJMaskedTextBox.SelectionStart = 0;
+        mock.CNPJMaskedTextBox.SelectionLength = 0;
+        mock.CNPJMaskedTextBox.RaiseEvent(args);
+        mock.CNPJMaskedTextBox.Text.Should().Be("04.486.184/0001-00");
+    }
+
 }

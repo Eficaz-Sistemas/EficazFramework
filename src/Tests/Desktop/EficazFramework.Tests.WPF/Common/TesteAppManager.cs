@@ -55,4 +55,9 @@ internal class TestContext
 
     }
 
+    internal static void NewWindow()
+    {
+        System.Windows.Window MainWindow = new();
+    }
+
 }

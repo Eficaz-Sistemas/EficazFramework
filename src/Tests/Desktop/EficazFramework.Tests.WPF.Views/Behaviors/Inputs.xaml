@@ -5,6 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:efcontrols="clr-namespace:EficazFramework.Controls;assembly=EficazFramework.WPF"
              xmlns:efxamlbh="clr-namespace:EficazFramework.XAML.Behaviors;assembly=EficazFramework.WPF"
+             xmlns:bh="http://schemas.microsoft.com/xaml/behaviors"
              xmlns:md="http://materialdesigninxaml.net/winfx/xaml/themes"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800"
@@ -43,7 +44,15 @@
     <StackPanel TextBlock.FontWeight="Medium">
         <TextBox x:Name="tb001" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Text="teste!" Margin="10"/>
         <TextBox x:Name="tb002" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Text="teste!" Margin="10,0,10,10" efxamlbh:TextBox.SelectAllOnFocus="True"/>
-        <TextBox x:Name="tb003" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Text="teste!" Margin="10,0,10,10"/>
-        <TextBox x:Name="tb004" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Text="teste!" Margin="10,0,10,10"/>
+        <TextBox x:Name="tb003" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Text="" Margin="10,0,10,10">
+            <bh:Interaction.Behaviors>
+                <efxamlbh:TextBoxInputMaskBehavior InputMask="00\.000\.000\/0000\-00" />
+            </bh:Interaction.Behaviors>
+        </TextBox>
+        <TextBox x:Name="tb004" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Text="teste!" Margin="10,0,10,10">
+            <bh:Interaction.Behaviors>
+                <efxamlbh:TextBoxInputMaskBehavior InputMask="__/__/____" />
+            </bh:Interaction.Behaviors>
+        </TextBox>
     </StackPanel>
 </UserControl>
