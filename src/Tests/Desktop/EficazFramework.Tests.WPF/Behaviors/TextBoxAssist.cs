@@ -15,15 +15,22 @@ namespace EficazFramework.Behaviors;
 [Apartment(System.Threading.ApartmentState.STA)]
 public class TextBoxAssistTests
 {
+    System.Windows.Window win = new();
     EficazFramework.Tests.WPF.Views.Behaviors.Inputs mock = new();
 
 
     [SetUp]
     public void Setup()
     {
-        Tests.TestContext.NewWindow();
-        Tests.TestContext.MainWindow.Content = mock;
-        Tests.TestContext.MainWindow.Show();
+        win = new();
+        win.Content = mock;
+        win.Show();
+    }
+
+    [TearDown]
+    public void TearDown()
+    {
+        win.Close();
     }
 
     [Test, Order(1)]

@@ -1,53 +1,5 @@
 {
   "EficazFramework.WPF.dll": {
-    "E:\\Henrique Clausing\\Repositorios\\Current\\EficazFramework\\src\\Desktop\\EficazFramework.WPF\\obj\\Debug\\net6.0-windows\\GeneratedInternalTypeHelper.g.cs": {
-      "XamlGeneratedNamespace.GeneratedInternalTypeHelper": {
-        "System.Object XamlGeneratedNamespace.GeneratedInternalTypeHelper::CreateInstance(System.Type,System.Globalization.CultureInfo)": {
-          "Lines": {
-            "25": 0,
-            "26": 0,
-            "27": 0,
-            "28": 0
-          },
-          "Branches": []
-        },
-        "System.Object XamlGeneratedNamespace.GeneratedInternalTypeHelper::GetPropertyValue(System.Reflection.PropertyInfo,System.Object,System.Globalization.CultureInfo)": {
-          "Lines": {
-            "33": 0,
-            "34": 0,
-            "35": 0
-          },
-          "Branches": []
-        },
-        "System.Void XamlGeneratedNamespace.GeneratedInternalTypeHelper::SetPropertyValue(System.Reflection.PropertyInfo,System.Object,System.Object,System.Globalization.CultureInfo)": {
-          "Lines": {
-            "40": 0,
-            "41": 0,
-            "42": 0
-          },
-          "Branches": []
-        },
-        "System.Delegate XamlGeneratedNamespace.GeneratedInternalTypeHelper::CreateDelegate(System.Type,System.Object,System.String)": {
-          "Lines": {
-            "47": 0,
-            "48": 0,
-            "49": 0,
-            "50": 0,
-            "51": 0,
-            "52": 0
-          },
-          "Branches": []
-        },
-        "System.Void XamlGeneratedNamespace.GeneratedInternalTypeHelper::AddEventHandler(System.Reflection.EventInfo,System.Object,System.Delegate)": {
-          "Lines": {
-            "57": 0,
-            "58": 0,
-            "59": 0
-          },
-          "Branches": []
-        }
-      }
-    },
     "E:\\Henrique Clausing\\Repositorios\\Current\\EficazFramework\\src\\Desktop\\EficazFramework.WPF\\Converters\\FloatingHintOffsetCalculationConverter.cs": {
       "MaterialDesignThemes.Wpf.Converters.FloatingHintOffsetCalculationConverter": {
         "System.Object MaterialDesignThemes.Wpf.Converters.FloatingHintOffsetCalculationConverter::Convert(System.Object[],System.Type,System.Object,System.Globalization.CultureInfo)": {
@@ -9628,18 +9580,18 @@
       "EficazFramework.XAML.Utilities.VisualTreeHelpers": {
         "T EficazFramework.XAML.Utilities.VisualTreeHelpers::FindAnchestor(System.Windows.DependencyObject)": {
           "Lines": {
-            "22": 2,
-            "23": 2,
+            "22": 4,
+            "23": 4,
             "24": 0,
-            "26": 8,
-            "27": 8,
+            "26": 26,
+            "27": 26,
             "28": 2,
             "29": 2,
-            "32": 6,
-            "33": 6,
-            "34": 6,
-            "35": 0,
-            "36": 2
+            "32": 24,
+            "33": 24,
+            "34": 24,
+            "35": 2,
+            "36": 4
           },
           "Branches": [
             {
@@ -9656,7 +9608,7 @@
               "EndOffset": 21,
               "Path": 1,
               "Ordinal": 1,
-              "Hits": 8
+              "Hits": 26
             },
             {
               "Line": 34,
@@ -9664,7 +9616,7 @@
               "EndOffset": 21,
               "Path": 1,
               "Ordinal": 5,
-              "Hits": 8
+              "Hits": 26
             },
             {
               "Line": 27,
@@ -9680,7 +9632,7 @@
               "EndOffset": 45,
               "Path": 1,
               "Ordinal": 3,
-              "Hits": 6
+              "Hits": 24
             },
             {
               "Line": 34,
@@ -9688,7 +9640,7 @@
               "EndOffset": 64,
               "Path": 0,
               "Ordinal": 4,
-              "Hits": 0
+              "Hits": 2
             }
           ]
         },
@@ -11781,13 +11733,13 @@
         },
         "System.Void EficazFramework.XAML.Behaviors.TextBox::TextBox_GotKeyboardFocus(System.Object,System.EventArgs)": {
           "Lines": {
-            "45": 3,
-            "46": 3,
+            "45": 4,
+            "46": 4,
             "47": 0,
-            "49": 3,
-            "50": 3,
-            "51": 3,
-            "52": 3
+            "49": 4,
+            "50": 4,
+            "51": 4,
+            "52": 4
           },
           "Branches": [
             {
@@ -11796,7 +11748,7 @@
               "EndOffset": 21,
               "Path": 1,
               "Ordinal": 1,
-              "Hits": 3
+              "Hits": 4
             },
             {
               "Line": 46,
@@ -11804,7 +11756,7 @@
               "EndOffset": 54,
               "Path": 0,
               "Ordinal": 0,
-              "Hits": 3
+              "Hits": 4
             }
           ]
         },
@@ -11820,7 +11772,7 @@
       "EficazFramework.XAML.Behaviors.TextBoxInputMaskBehavior": {
         "System.String EficazFramework.XAML.Behaviors.TextBoxInputMaskBehavior::get_InputMask()": {
           "Lines": {
-            "22": 0
+            "22": 18
           },
           "Branches": []
         },
@@ -11832,7 +11784,7 @@
         },
         "System.Char EficazFramework.XAML.Behaviors.TextBoxInputMaskBehavior::get_PromptChar()": {
           "Lines": {
-            "30": 0
+            "30": 18
           },
           "Branches": []
         },
@@ -11844,19 +11796,19 @@
         },
         "System.ComponentModel.MaskedTextProvider EficazFramework.XAML.Behaviors.TextBoxInputMaskBehavior::get_Provider()": {
           "Lines": {
-            "36": 0
+            "36": 76
           },
           "Branches": []
         },
         "System.Void EficazFramework.XAML.Behaviors.TextBoxInputMaskBehavior::OnAttached()": {
           "Lines": {
-            "39": 0,
-            "40": 0,
-            "41": 0,
-            "42": 0,
-            "43": 0,
-            "45": 0,
-            "46": 0
+            "39": 2,
+            "40": 2,
+            "41": 2,
+            "42": 2,
+            "43": 2,
+            "45": 2,
+            "46": 2
           },
           "Branches": []
         },
@@ -11874,59 +11826,59 @@
         },
         "System.Void EficazFramework.XAML.Behaviors.TextBoxInputMaskBehavior::AssociatedObjectLoaded(System.Object,System.Windows.RoutedEventArgs)": {
           "Lines": {
-            "87": 0,
-            "88": 0,
-            "89": 0,
-            "90": 0,
-            "91": 0,
-            "94": 0,
-            "95": 0,
-            "96": 0,
-            "97": 0,
-            "98": 0,
-            "99": 0
+            "86": 6,
+            "87": 6,
+            "88": 6,
+            "89": 6,
+            "90": 6,
+            "93": 6,
+            "94": 6,
+            "95": 6,
+            "96": 31,
+            "97": 6,
+            "98": 6
           },
           "Branches": [
             {
-              "Line": 95,
+              "Line": 94,
               "Offset": 115,
               "EndOffset": 117,
               "Path": 0,
               "Ordinal": 0,
-              "Hits": 0
+              "Hits": 6
             },
             {
-              "Line": 95,
+              "Line": 94,
               "Offset": 115,
               "EndOffset": 144,
               "Path": 1,
               "Ordinal": 1,
-              "Hits": 0
+              "Hits": 6
             }
           ]
         },
         "System.Void EficazFramework.XAML.Behaviors.TextBoxInputMaskBehavior::AssociatedObjectPreviewTextInput(System.Object,System.Windows.Input.TextCompositionEventArgs)": {
           "Lines": {
-            "102": 0,
-            "103": 0,
-            "105": 0,
+            "101": 4,
+            "102": 4,
+            "104": 4,
+            "106": 4,
             "107": 0,
             "108": 0,
             "109": 0,
             "110": 0,
-            "111": 0,
-            "113": 0,
-            "114": 0,
-            "115": 0,
-            "116": 0,
-            "118": 0,
-            "120": 0,
-            "122": 0,
-            "123": 0
+            "112": 4,
+            "113": 4,
+            "114": 2,
+            "115": 4,
+            "117": 4,
+            "119": 4,
+            "121": 4,
+            "122": 4
           },
           "Branches": [
             {
-              "Line": 107,
+              "Line": 106,
               "Offset": 35,
               "EndOffset": 37,
               "Path": 0,
@@ -11934,7 +11886,7 @@
               "Hits": 0
             },
             {
-              "Line": 109,
+              "Line": 108,
               "Offset": 58,
               "EndOffset": 60,
               "Path": 0,
@@ -11942,7 +11894,7 @@
               "Hits": 0
             },
             {
-              "Line": 109,
+              "Line": 108,
               "Offset": 58,
               "EndOffset": 64,
               "Path": 1,
@@ -11950,78 +11902,78 @@
               "Hits": 0
             },
             {
-              "Line": 107,
+              "Line": 106,
               "Offset": 35,
               "EndOffset": 67,
               "Path": 1,
               "Ordinal": 1,
-              "Hits": 0
+              "Hits": 4
             },
             {
-              "Line": 114,
+              "Line": 113,
               "Offset": 88,
               "EndOffset": 90,
               "Path": 0,
               "Ordinal": 4,
-              "Hits": 0
+              "Hits": 2
             },
             {
-              "Line": 114,
+              "Line": 113,
               "Offset": 88,
               "EndOffset": 94,
               "Path": 1,
               "Ordinal": 5,
-              "Hits": 0
+              "Hits": 4
             }
           ]
         },
         "System.Void EficazFramework.XAML.Behaviors.TextBoxInputMaskBehavior::AssociatedObjectPreviewKeyDown(System.Object,System.Windows.Input.KeyEventArgs)": {
           "Lines": {
-            "126": 0,
+            "125": 0,
+            "127": 0,
             "128": 0,
             "129": 0,
-            "130": 0,
-            "132": 0,
+            "131": 0,
+            "133": 0,
             "134": 0,
-            "135": 0,
+            "136": 0,
             "137": 0,
-            "138": 0,
+            "139": 0,
             "140": 0,
             "141": 0,
             "142": 0,
             "143": 0,
             "144": 0,
-            "145": 0,
+            "146": 0,
             "147": 0,
             "148": 0,
             "149": 0,
             "150": 0,
             "151": 0,
             "152": 0,
-            "153": 0,
+            "154": 0,
             "155": 0,
-            "156": 0,
+            "157": 0,
             "158": 0,
-            "159": 0,
+            "160": 0,
             "161": 0,
             "162": 0,
             "163": 0,
-            "164": 0,
-            "166": 0,
+            "165": 0,
+            "167": 0,
             "168": 0,
-            "169": 0,
-            "171": 0,
+            "170": 0,
+            "172": 0,
             "173": 0,
-            "174": 0,
+            "175": 0,
             "176": 0,
             "177": 0,
             "178": 0,
-            "179": 0,
-            "181": 0
+            "180": 0
           },
           "Branches": [
             {
-              "Line": 128,
+              "Line": 127,
               "Offset": 13,
               "EndOffset": 15,
               "Path": 0,
@@ -12029,7 +11981,7 @@
               "Hits": 0
             },
             {
-              "Line": 134,
+              "Line": 133,
               "Offset": 60,
               "EndOffset": 62,
               "Path": 0,
@@ -12037,7 +11989,7 @@
               "Hits": 0
             },
             {
-              "Line": 134,
+              "Line": 133,
               "Offset": 60,
               "EndOffset": 70,
               "Path": 1,
@@ -12045,7 +11997,7 @@
               "Hits": 0
             },
             {
-              "Line": 128,
+              "Line": 127,
               "Offset": 13,
               "EndOffset": 79,
               "Path": 1,
@@ -12053,7 +12005,7 @@
               "Hits": 0
             },
             {
-              "Line": 140,
+              "Line": 139,
               "Offset": 90,
               "EndOffset": 92,
               "Path": 0,
@@ -12061,7 +12013,7 @@
               "Hits": 0
             },
             {
-              "Line": 142,
+              "Line": 141,
               "Offset": 103,
               "EndOffset": 105,
               "Path": 0,
@@ -12069,7 +12021,7 @@
               "Hits": 0
             },
             {
-              "Line": 142,
+              "Line": 141,
               "Offset": 103,
               "EndOffset": 127,
               "Path": 1,
@@ -12077,7 +12029,7 @@
               "Hits": 0
             },
             {
-              "Line": 148,
+              "Line": 147,
               "Offset": 146,
               "EndOffset": 148,
               "Path": 0,
@@ -12085,7 +12037,7 @@
               "Hits": 0
             },
             {
-              "Line": 150,
+              "Line": 149,
               "Offset": 177,
               "EndOffset": 179,
               "Path": 0,
@@ -12093,7 +12045,7 @@
               "Hits": 0
             },
             {
-              "Line": 150,
+              "Line": 149,
               "Offset": 177,
               "EndOffset": 199,
               "Path": 1,
@@ -12101,7 +12053,7 @@
               "Hits": 0
             },
             {
-              "Line": 148,
+              "Line": 147,
               "Offset": 146,
               "EndOffset": 200,
               "Path": 1,
@@ -12109,7 +12061,7 @@
               "Hits": 0
             },
             {
-              "Line": 140,
+              "Line": 139,
               "Offset": 90,
               "EndOffset": 210,
               "Path": 1,
@@ -12117,7 +12069,7 @@
               "Hits": 0
             },
             {
-              "Line": 158,
+              "Line": 157,
               "Offset": 224,
               "EndOffset": 226,
               "Path": 0,
@@ -12125,7 +12077,7 @@
               "Hits": 0
             },
             {
-              "Line": 161,
+              "Line": 160,
               "Offset": 237,
               "EndOffset": 239,
               "Path": 0,
@@ -12133,7 +12085,7 @@
               "Hits": 0
             },
             {
-              "Line": 161,
+              "Line": 160,
               "Offset": 237,
               "EndOffset": 261,
               "Path": 1,
@@ -12141,7 +12093,7 @@
               "Hits": 0
             },
             {
-              "Line": 168,
+              "Line": 167,
               "Offset": 288,
               "EndOffset": 290,
               "Path": 0,
@@ -12149,7 +12101,7 @@
               "Hits": 0
             },
             {
-              "Line": 168,
+              "Line": 167,
               "Offset": 288,
               "EndOffset": 308,
               "Path": 1,
@@ -12157,7 +12109,7 @@
               "Hits": 0
             },
             {
-              "Line": 158,
+              "Line": 157,
               "Offset": 224,
               "EndOffset": 318,
               "Path": 1,
@@ -12165,7 +12117,7 @@
               "Hits": 0
             },
             {
-              "Line": 176,
+              "Line": 175,
               "Offset": 331,
               "EndOffset": 333,
               "Path": 0,
@@ -12173,7 +12125,7 @@
               "Hits": 0
             },
             {
-              "Line": 176,
+              "Line": 175,
               "Offset": 331,
               "EndOffset": 343,
               "Path": 1,
@@ -12184,75 +12136,75 @@
         },
         "System.Void EficazFramework.XAML.Behaviors.TextBoxInputMaskBehavior::Pasting(System.Object,System.Windows.DataObjectPastingEventArgs)": {
           "Lines": {
-            "189": 0,
-            "190": 0,
-            "191": 0,
-            "192": 0,
-            "194": 0,
-            "196": 0,
-            "198": 0,
-            "199": 0,
-            "200": 0,
-            "201": 0,
-            "202": 0,
-            "204": 0,
-            "205": 0
+            "188": 1,
+            "189": 1,
+            "190": 1,
+            "191": 1,
+            "193": 1,
+            "195": 1,
+            "197": 1,
+            "198": 1,
+            "199": 1,
+            "200": 1,
+            "201": 1,
+            "203": 1,
+            "204": 1
           },
           "Branches": [
             {
-              "Line": 190,
+              "Line": 189,
               "Offset": 24,
               "EndOffset": 26,
               "Path": 0,
               "Ordinal": 0,
-              "Hits": 0
+              "Hits": 1
             },
             {
-              "Line": 198,
+              "Line": 197,
               "Offset": 94,
               "EndOffset": 96,
               "Path": 0,
               "Ordinal": 2,
-              "Hits": 0
+              "Hits": 1
             },
             {
-              "Line": 198,
+              "Line": 197,
               "Offset": 94,
               "EndOffset": 106,
               "Path": 1,
               "Ordinal": 3,
-              "Hits": 0
+              "Hits": 1
             },
             {
-              "Line": 190,
+              "Line": 189,
               "Offset": 24,
               "EndOffset": 107,
               "Path": 1,
               "Ordinal": 1,
-              "Hits": 0
+              "Hits": 1
             }
           ]
         },
         "System.Void EficazFramework.XAML.Behaviors.TextBoxInputMaskBehavior::UpdateText()": {
           "Lines": {
-            "208": 0,
-            "210": 0,
-            "211": 0,
-            "214": 0,
-            "217": 0,
-            "218": 0
+            "207": 25,
+            "209": 25,
+            "210": 21,
+            "213": 4,
+            "216": 4,
+            "217": 25
           },
           "Branches": [
             {
-              "Line": 210,
+              "Line": 209,
               "Offset": 30,
               "EndOffset": 34,
               "Path": 1,
               "Ordinal": 1,
-              "Hits": 0
+              "Hits": 4
             },
             {
-              "Line": 217,
+              "Line": 216,
               "Offset": 59,
               "EndOffset": 61,
               "Path": 0,
@@ -12260,36 +12212,36 @@
               "Hits": 0
             },
             {
-              "Line": 217,
+              "Line": 216,
               "Offset": 59,
               "EndOffset": 74,
               "Path": 1,
               "Ordinal": 3,
-              "Hits": 0
+              "Hits": 4
             },
             {
-              "Line": 210,
+              "Line": 209,
               "Offset": 30,
               "EndOffset": 91,
               "Path": 0,
               "Ordinal": 0,
-              "Hits": 0
+              "Hits": 25
             }
           ]
         },
         "System.Boolean EficazFramework.XAML.Behaviors.TextBoxInputMaskBehavior::TreatSelectedText()": {
           "Lines": {
-            "225": 0,
+            "224": 5,
+            "225": 5,
             "226": 0,
             "227": 0,
             "228": 0,
-            "229": 0,
-            "231": 0,
-            "232": 0
+            "230": 5,
+            "231": 5
           },
           "Branches": [
             {
-              "Line": 226,
+              "Line": 225,
               "Offset": 17,
               "EndOffset": 19,
               "Path": 0,
@@ -12297,41 +12249,41 @@
               "Hits": 0
             },
             {
-              "Line": 226,
+              "Line": 225,
               "Offset": 17,
               "EndOffset": 70,
               "Path": 1,
               "Ordinal": 1,
-              "Hits": 0
+              "Hits": 5
             }
           ]
         },
         "System.Void EficazFramework.XAML.Behaviors.TextBoxInputMaskBehavior::RefreshText(System.Int32)": {
           "Lines": {
-            "235": 0,
-            "236": 0,
-            "237": 0,
-            "238": 0
+            "234": 5,
+            "235": 5,
+            "236": 5,
+            "237": 5
           },
           "Branches": []
         },
         "System.Void EficazFramework.XAML.Behaviors.TextBoxInputMaskBehavior::SetText(System.String)": {
           "Lines": {
-            "241": 0,
-            "242": 0,
-            "243": 0
+            "240": 9,
+            "241": 9,
+            "242": 9
           },
           "Branches": [
             {
-              "Line": 242,
+              "Line": 241,
               "Offset": 13,
               "EndOffset": 15,
               "Path": 0,
               "Ordinal": 0,
-              "Hits": 0
+              "Hits": 9
             },
             {
-              "Line": 242,
+              "Line": 241,
               "Offset": 13,
               "EndOffset": 18,
               "Path": 1,
@@ -12342,16 +12294,16 @@
         },
         "System.Int32 EficazFramework.XAML.Behaviors.TextBoxInputMaskBehavior::GetNextCharacterPosition(System.Int32)": {
           "Lines": {
-            "246": 0,
-            "247": 0,
+            "245": 9,
+            "246": 9,
+            "248": 9,
             "249": 0,
-            "250": 0,
-            "252": 0,
-            "253": 0
+            "251": 9,
+            "252": 9
           },
           "Branches": [
             {
-              "Line": 249,
+              "Line": 248,
               "Offset": 21,
               "EndOffset": 23,
               "Path": 0,
@@ -12359,19 +12311,19 @@
               "Hits": 0
             },
             {
-              "Line": 249,
+              "Line": 248,
               "Offset": 21,
               "EndOffset": 27,
               "Path": 1,
               "Ordinal": 1,
-              "Hits": 0
+              "Hits": 9
             }
           ]
         },
         "System.Void EficazFramework.XAML.Behaviors.TextBoxInputMaskBehavior::.cctor()": {
           "Lines": {
-            "18": 0,
-            "26": 0
+            "18": 1,
+            "26": 1
           },
           "Branches": []
         }

@@ -32,13 +32,6 @@
                 <ResourceDictionary Source="pack://application:,,,/EficazFramework.WPF;component/Themes/MaterialDesign.xaml" />
                 <md:CustomColorTheme BaseTheme="Light" PrimaryColor="#0078d7" SecondaryColor="#003864"  />
             </ResourceDictionary.MergedDictionaries>
-            <Style TargetType="{x:Type TextBlock}" x:Key="MaterialDesignSubtitle2TextBlock">
-                <Style.Resources>
-                    <Style TargetType="Hyperlink" BasedOn="{StaticResource MaterialDesignSubtitle2Hyperlink}" />
-                </Style.Resources>
-                <Setter Property="FontSize" Value="14" />
-                <Setter Property="FontWeight" Value="Medium" />
-            </Style>
         </ResourceDictionary>
     </UserControl.Resources>
     <StackPanel TextBlock.FontWeight="Medium">
@@ -49,7 +42,7 @@
                 <efxamlbh:TextBoxInputMaskBehavior InputMask="00\.000\.000\/0000\-00" />
             </bh:Interaction.Behaviors>
         </TextBox>
-        <TextBox x:Name="tb004" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Text="teste!" Margin="10,0,10,10">
+        <TextBox x:Name="tb004" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="10,0,10,10">
             <bh:Interaction.Behaviors>
                 <efxamlbh:TextBoxInputMaskBehavior InputMask="__/__/____" />
             </bh:Interaction.Behaviors>

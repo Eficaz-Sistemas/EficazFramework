@@ -9,7 +9,7 @@ namespace EficazFramework.Tests;
 internal class TestContext
 {
     internal static System.Windows.Application? Application { get; }
-    internal static System.Windows.Window MainWindow { get; }
+    internal static System.Windows.Window MainWindow { get; private set; }
 
     static TestContext()
     {
@@ -57,7 +57,7 @@ internal class TestContext
 
     internal static void NewWindow()
     {
-        System.Windows.Window MainWindow = new();
+        MainWindow = new();
     }
 
 }
