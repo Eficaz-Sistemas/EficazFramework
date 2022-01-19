@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
 using System.Windows;
 using System.Windows.Data;
@@ -6,6 +7,7 @@ using System.Windows.Media;
 
 namespace MaterialDesignThemes.Wpf.Converters;
 
+[ExcludeFromCodeCoverage]
 public class FloatingHintOffsetCalculationConverter : IMultiValueConverter
 {
     public object Convert(object[] values, Type targetType, object parameter, CultureInfo culture)

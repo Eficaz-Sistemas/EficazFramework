@@ -19,7 +19,6 @@ public class LocalizeText : MarkupExtension
     [ConstructorArgument("key")]
     public string Key { get; set; } = null;
     public Type ResourceType { get; set; } = null;
-    public string Assembly { get; set; } = null;
     public string StringFormat { get; set; } = null;
 
     public override object ProvideValue(IServiceProvider serviceProvider)

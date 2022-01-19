@@ -9,6 +9,7 @@ using EficazFramework.XAML.Behaviors;
 using System.Windows;
 using System.Windows.Data;
 using System.Windows.Controls.Primitives;
+using System;
 
 namespace EficazFramework.Behaviors;
 
@@ -56,6 +57,7 @@ public class TextBoxAssistTests
         mock.DateMaskedTextBox.IsFocused.Should().BeFalse();
 
         mock.TextBox1.Focus();
+        EficazFramework.XAML.Behaviors.TextBox.GetSelectAllOnFocus(mock.TextBox2).Should().BeTrue();
         mock.TextBox2.SelectionLength = 0;
         EficazFramework.XAML.Behaviors.TextBox.SetSelectAllOnFocus(mock.TextBox2, false);
         mock.TextBox2.Focus();
@@ -67,6 +69,9 @@ public class TextBoxAssistTests
         mock.TextBox2.Focus();
         mock.TextBox2.SelectionStart.Should().Be(0);
         mock.TextBox2.SelectionLength.Should().Be(6);
+
+        //non TextBox usings:
+        Action setOnAnotherType = () => EficazFramework.XAML.Behaviors.TextBox.SetSelectAllOnFocus(mock, true);
     }
 
     [Test, Order(2)]

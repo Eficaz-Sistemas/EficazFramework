@@ -31,10 +31,7 @@ public partial class TextBox
         if (source is not System.Windows.Controls.TextBox tb)
             return;
 
-        var dpd = DependencyPropertyDescriptor.FromProperty(System.Windows.UIElement.IsKeyboardFocusedProperty, typeof(System.Windows.Controls.TextBox));
-        if (dpd is null)
-            return;
-  
+        var dpd = DependencyPropertyDescriptor.FromProperty(System.Windows.UIElement.IsKeyboardFocusedProperty, typeof(System.Windows.Controls.TextBox)); 
         if ((bool)e.NewValue == true)
             dpd.AddValueChanged(tb, TextBox_GotKeyboardFocus);
         else

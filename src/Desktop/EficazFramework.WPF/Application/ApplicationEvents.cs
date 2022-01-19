@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -8,7 +9,9 @@ namespace EficazFramework.Application;
 
 public class ApplicationEvents
 {
+    [ExcludeFromCodeCoverage]
     public static string DialogTitle { get; set; } = EficazFramework.Resources.Strings.Commands.ShutDown_TItle;
+    [ExcludeFromCodeCoverage]
     public static string DialogMessage { get; set; } = EficazFramework.Resources.Strings.Commands.ShutDown_Message;
 
     public static async Task<bool> RequestShutDown_Material(System.Windows.Window window, System.Windows.Application app)

@@ -1,177 +1,48 @@
 {
   "EficazFramework.WPF.dll": {
-    "E:\\Henrique Clausing\\Repositorios\\Current\\EficazFramework\\src\\Desktop\\EficazFramework.WPF\\Converters\\FloatingHintOffsetCalculationConverter.cs": {
-      "MaterialDesignThemes.Wpf.Converters.FloatingHintOffsetCalculationConverter": {
-        "System.Object MaterialDesignThemes.Wpf.Converters.FloatingHintOffsetCalculationConverter::Convert(System.Object[],System.Type,System.Object,System.Globalization.CultureInfo)": {
+    "E:\\Henrique Clausing\\Repositorios\\Current\\EficazFramework\\src\\Desktop\\EficazFramework.WPF\\obj\\Debug\\net6.0-windows\\GeneratedInternalTypeHelper.g.cs": {
+      "XamlGeneratedNamespace.GeneratedInternalTypeHelper": {
+        "System.Object XamlGeneratedNamespace.GeneratedInternalTypeHelper::CreateInstance(System.Type,System.Globalization.CultureInfo)": {
           "Lines": {
-            "12": 0,
-            "13": 0,
-            "14": 0,
-            "15": 0,
-            "17": 0,
-            "18": 0,
-            "20": 0,
-            "21": 0,
-            "22": 0,
-            "23": 0,
-            "24": 0,
             "25": 0,
+            "26": 0,
             "27": 0,
-            "28": 0,
-            "29": 0,
-            "32": 0,
-            "33": 0,
-            "34": 0,
-            "37": 0,
-            "38": 0
-          },
-          "Branches": [
-            {
-              "Line": 20,
-              "Offset": 46,
-              "EndOffset": 48,
-              "Path": 0,
-              "Ordinal": 0,
-              "Hits": 0
-            },
-            {
-              "Line": 20,
-              "Offset": 46,
-              "EndOffset": 51,
-              "Path": 1,
-              "Ordinal": 1,
-              "Hits": 0
-            },
-            {
-              "Line": 20,
-              "Offset": 67,
-              "EndOffset": 69,
-              "Path": 0,
-              "Ordinal": 2,
-              "Hits": 0
-            },
-            {
-              "Line": 20,
-              "Offset": 67,
-              "EndOffset": 80,
-              "Path": 1,
-              "Ordinal": 3,
-              "Hits": 0
-            },
-            {
-              "Line": 20,
-              "Offset": 87,
-              "EndOffset": 89,
-              "Path": 0,
-              "Ordinal": 4,
-              "Hits": 0
-            },
-            {
-              "Line": 20,
-              "Offset": 87,
-              "EndOffset": 149,
-              "Path": 1,
-              "Ordinal": 5,
-              "Hits": 0
-            },
-            {
-              "Line": 27,
-              "Offset": 173,
-              "EndOffset": 175,
-              "Path": 0,
-              "Ordinal": 6,
-              "Hits": 0
-            },
-            {
-              "Line": 27,
-              "Offset": 173,
-              "EndOffset": 202,
-              "Path": 1,
-              "Ordinal": 7,
-              "Hits": 0
-            },
-            {
-              "Line": 32,
-              "Offset": 212,
-              "EndOffset": 214,
-              "Path": 0,
-              "Ordinal": 8,
-              "Hits": 0
-            },
-            {
-              "Line": 32,
-              "Offset": 212,
-              "EndOffset": 258,
-              "Path": 1,
-              "Ordinal": 9,
-              "Hits": 0
-            }
-          ]
-        },
-        "System.Object[] MaterialDesignThemes.Wpf.Converters.FloatingHintOffsetCalculationConverter::ConvertBack(System.Object,System.Type[],System.Object,System.Globalization.CultureInfo)": {
-          "Lines": {
-            "40": 0
+            "28": 0
           },
           "Branches": []
         },
-        "System.Boolean MaterialDesignThemes.Wpf.Converters.FloatingHintOffsetCalculationConverter::IsType(System.Type)": {
+        "System.Object XamlGeneratedNamespace.GeneratedInternalTypeHelper::GetPropertyValue(System.Reflection.PropertyInfo,System.Object,System.Globalization.CultureInfo)": {
           "Lines": {
+            "33": 0,
+            "34": 0,
+            "35": 0
+          },
+          "Branches": []
+        },
+        "System.Void XamlGeneratedNamespace.GeneratedInternalTypeHelper::SetPropertyValue(System.Reflection.PropertyInfo,System.Object,System.Object,System.Globalization.CultureInfo)": {
+          "Lines": {
+            "40": 0,
+            "41": 0,
             "42": 0
           },
           "Branches": []
-        }
-      }
-    },
-    "E:\\Henrique Clausing\\Repositorios\\Current\\EficazFramework\\src\\Desktop\\EficazFramework.WPF\\Converters\\TextFieldClearButtonVisibilityConverter.cs": {
-      "MaterialDesignThemes.Wpf.Converters.TextFieldClearButtonVisibilityConverter": {
-        "System.Object MaterialDesignThemes.Wpf.Converters.TextFieldClearButtonVisibilityConverter::Convert(System.Object[],System.Type,System.Object,System.Globalization.CultureInfo)": {
-          "Lines": {
-            "11": 0,
-            "12": 0,
-            "13": 0,
-            "15": 0,
-            "16": 0,
-            "17": 0,
-            "18": 0
-          },
-          "Branches": [
-            {
-              "Line": 12,
-              "Offset": 14,
-              "EndOffset": 16,
-              "Path": 0,
-              "Ordinal": 0,
-              "Hits": 0
-            },
-            {
-              "Line": 12,
-              "Offset": 14,
-              "EndOffset": 25,
-              "Path": 1,
-              "Ordinal": 1,
-              "Hits": 0
-            },
-            {
-              "Line": 15,
-              "Offset": 33,
-              "EndOffset": 35,
-              "Path": 0,
-              "Ordinal": 2,
-              "Hits": 0
-            },
-            {
-              "Line": 15,
-              "Offset": 33,
-              "EndOffset": 38,
-              "Path": 1,
-              "Ordinal": 3,
-              "Hits": 0
-            }
-          ]
         },
-        "System.Object[] MaterialDesignThemes.Wpf.Converters.TextFieldClearButtonVisibilityConverter::ConvertBack(System.Object,System.Type[],System.Object,System.Globalization.CultureInfo)": {
+        "System.Delegate XamlGeneratedNamespace.GeneratedInternalTypeHelper::CreateDelegate(System.Type,System.Object,System.String)": {
           "Lines": {
-            "21": 0
+            "47": 0,
+            "48": 0,
+            "49": 0,
+            "50": 0,
+            "51": 0,
+            "52": 0
+          },
+          "Branches": []
+        },
+        "System.Void XamlGeneratedNamespace.GeneratedInternalTypeHelper::AddEventHandler(System.Reflection.EventInfo,System.Object,System.Delegate)": {
+          "Lines": {
+            "57": 0,
+            "58": 0,
+            "59": 0
           },
           "Branches": []
         }
@@ -11613,12 +11484,12 @@
       "EficazFramework.XAML.Behaviors.TextBox": {
         "System.Boolean EficazFramework.XAML.Behaviors.TextBox::GetSelectAllOnFocus(System.Windows.DependencyObject)": {
           "Lines": {
-            "12": 0,
-            "13": 0,
+            "12": 1,
+            "13": 1,
             "14": 0,
             "15": 0,
-            "17": 0,
-            "18": 0
+            "17": 1,
+            "18": 1
           },
           "Branches": [
             {
@@ -11635,7 +11506,7 @@
               "EndOffset": 21,
               "Path": 1,
               "Ordinal": 1,
-              "Hits": 0
+              "Hits": 1
             }
           ]
         },
@@ -11674,11 +11545,9 @@
             "32": 159,
             "34": 3,
             "35": 3,
-            "36": 0,
-            "38": 3,
-            "39": 2,
-            "41": 1,
-            "42": 162
+            "36": 2,
+            "38": 1,
+            "39": 162
           },
           "Branches": [
             {
@@ -11691,59 +11560,43 @@
             },
             {
               "Line": 35,
-              "Offset": 48,
-              "EndOffset": 52,
-              "Path": 1,
-              "Ordinal": 3,
-              "Hits": 3
-            },
-            {
-              "Line": 38,
-              "Offset": 68,
-              "EndOffset": 70,
+              "Offset": 56,
+              "EndOffset": 58,
               "Path": 0,
-              "Ordinal": 4,
+              "Ordinal": 2,
               "Hits": 2
             },
             {
-              "Line": 38,
-              "Offset": 68,
-              "EndOffset": 92,
+              "Line": 35,
+              "Offset": 56,
+              "EndOffset": 80,
               "Path": 1,
-              "Ordinal": 5,
+              "Ordinal": 3,
               "Hits": 1
             },
             {
               "Line": 31,
               "Offset": 17,
-              "EndOffset": 112,
+              "EndOffset": 100,
               "Path": 0,
               "Ordinal": 0,
-              "Hits": 162
-            },
-            {
-              "Line": 35,
-              "Offset": 48,
-              "EndOffset": 112,
-              "Path": 0,
-              "Ordinal": 2,
               "Hits": 162
             }
           ]
         },
         "System.Void EficazFramework.XAML.Behaviors.TextBox::TextBox_GotKeyboardFocus(System.Object,System.EventArgs)": {
           "Lines": {
-            "45": 4,
+            "42": 4,
+            "43": 4,
+            "44": 0,
             "46": 4,
-            "47": 0,
-            "49": 4,
-            "50": 4,
-            "51": 4,
-            "52": 4
+            "47": 4,
+            "48": 4,
+            "49": 4
           },
           "Branches": [
             {
-              "Line": 46,
+              "Line": 43,
               "Offset": 17,
               "EndOffset": 21,
               "Path": 1,
@@ -11751,7 +11604,7 @@
               "Hits": 4
             },
             {
-              "Line": 46,
+              "Line": 43,
               "Offset": 17,
               "EndOffset": 54,
               "Path": 0,
@@ -12331,15 +12184,10 @@
     },
     "E:\\Henrique Clausing\\Repositorios\\Current\\EficazFramework\\src\\Desktop\\EficazFramework.WPF\\Application\\ApplicationEvents.cs": {
       "EficazFramework.Application.ApplicationEvents": {
-        "System.String EficazFramework.Application.ApplicationEvents::get_DialogTitle()": {
+        "System.Void EficazFramework.Application.ApplicationEvents::.cctor()": {
           "Lines": {
-            "11": 0
-          },
-          "Branches": []
-        },
-        "System.String EficazFramework.Application.ApplicationEvents::get_DialogMessage()": {
-          "Lines": {
-            "12": 0
+            "13": 0,
+            "15": 0
           },
           "Branches": []
         }
@@ -12347,12 +12195,9 @@
       "EficazFramework.Application.ApplicationEvents/<RequestShutDown_Material>d__8": {
         "System.Void EficazFramework.Application.ApplicationEvents/<RequestShutDown_Material>d__8::MoveNext()": {
           "Lines": {
-            "15": 1,
-            "16": 1,
-            "17": 1,
-            "18": 0,
-            "19": 0,
-            "20": 0,
+            "18": 1,
+            "19": 1,
+            "20": 1,
             "21": 0,
             "22": 0,
             "23": 0,
@@ -12363,12 +12208,15 @@
             "28": 0,
             "29": 0,
             "30": 0,
-            "31": 1,
-            "32": 1
+            "31": 0,
+            "32": 0,
+            "33": 0,
+            "34": 1,
+            "35": 1
           },
           "Branches": [
             {
-              "Line": 17,
+              "Line": 20,
               "Offset": 57,
               "EndOffset": 62,
               "Path": 0,
@@ -12376,7 +12224,7 @@
               "Hits": 0
             },
             {
-              "Line": 26,
+              "Line": 29,
               "Offset": 132,
               "EndOffset": 134,
               "Path": 0,
@@ -12384,7 +12232,7 @@
               "Hits": 0
             },
             {
-              "Line": 26,
+              "Line": 29,
               "Offset": 132,
               "EndOffset": 138,
               "Path": 1,
@@ -12392,7 +12240,7 @@
               "Hits": 0
             },
             {
-              "Line": 26,
+              "Line": 29,
               "Offset": 144,
               "EndOffset": 146,
               "Path": 0,
@@ -12400,7 +12248,7 @@
               "Hits": 0
             },
             {
-              "Line": 26,
+              "Line": 29,
               "Offset": 144,
               "EndOffset": 167,
               "Path": 1,
@@ -12408,7 +12256,7 @@
               "Hits": 0
             },
             {
-              "Line": 28,
+              "Line": 31,
               "Offset": 407,
               "EndOffset": 409,
               "Path": 0,
@@ -12416,7 +12264,7 @@
               "Hits": 0
             },
             {
-              "Line": 28,
+              "Line": 31,
               "Offset": 407,
               "EndOffset": 413,
               "Path": 1,
@@ -12424,7 +12272,7 @@
               "Hits": 0
             },
             {
-              "Line": 17,
+              "Line": 20,
               "Offset": 57,
               "EndOffset": 421,
               "Path": 1,

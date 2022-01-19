@@ -109,3 +109,11 @@
 | :--- | :--- |
 | [FloatingHintOffsetCalculationConverter](MaterialDesignThemes.Wpf.Converters/FloatingHintOffsetCalculationConverter.md 'MaterialDesignThemes.Wpf.Converters.FloatingHintOffsetCalculationConverter') | |
 | [TextFieldClearButtonVisibilityConverter](MaterialDesignThemes.Wpf.Converters/TextFieldClearButtonVisibilityConverter.md 'MaterialDesignThemes.Wpf.Converters.TextFieldClearButtonVisibilityConverter') | |
+
+<a name='XamlGeneratedNamespace'></a>
+
+## XamlGeneratedNamespace Namespace
+
+| Classes | |
+| :--- | :--- |
+| [GeneratedInternalTypeHelper](XamlGeneratedNamespace/GeneratedInternalTypeHelper.md 'XamlGeneratedNamespace.GeneratedInternalTypeHelper') | GeneratedInternalTypeHelper |
