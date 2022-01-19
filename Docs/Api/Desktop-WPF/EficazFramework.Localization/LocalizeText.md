@@ -15,7 +15,6 @@ Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.O
 
 | Properties | |
 | :--- | :--- |
-| [Assembly](EficazFramework.Localization/LocalizeText/Assembly.md 'EficazFramework.Localization.LocalizeText.Assembly') | |
 | [Key](EficazFramework.Localization/LocalizeText/Key.md 'EficazFramework.Localization.LocalizeText.Key') | |
 | [ResourceType](EficazFramework.Localization/LocalizeText/ResourceType.md 'EficazFramework.Localization.LocalizeText.ResourceType') | |
 | [StringFormat](EficazFramework.Localization/LocalizeText/StringFormat.md 'EficazFramework.Localization.LocalizeText.StringFormat') | |

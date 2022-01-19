@@ -30,15 +30,13 @@
         <Setter Property="KeyboardNavigation.ControlTabNavigation" Value="Contained" />
         <Setter Property="TabStripPlacement" Value="Left" />
         <Setter Property="Padding" Value="20" />
-        <Setter Property="efcorelocale:ResourceManager.Assembly" Value="EficazFramework.WPF" />
-        <Setter Property="efcorelocale:ResourceManager.DictionaryName" Value="EficazFramework.Resources.Strings.Controls" />
         <Setter Property="DataContext" Value="{Binding RelativeSource={RelativeSource Mode=Self}}" />
         <Setter Property="ItemsSource">
             <Setter.Value>
                 <CompositeCollection>
                     <!--Start Menu Initial Tab-->
                     <TabItem x:Name="FixeStartItem"  
-                             ToolTip="{efcorelocale:LocalizeText StartMenu_MainTab, Assembly=EficazFramework.WPF, ResourceType=EficazFramework.Resources.Strings.Controls}"
+                             ToolTip="{efcorelocale:LocalizeText StartMenu_MainTab, ResourceType=EficazFramework.Resources.Strings.Controls}"
                              ToolTipService.Placement="Right"
                              Style="{StaticResource MaterialDesignNavigationRailTabItem}">
                         <TabItem.Header>
