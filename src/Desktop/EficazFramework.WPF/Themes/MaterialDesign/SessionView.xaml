@@ -3,6 +3,7 @@
                     xmlns:md="http://materialdesigninxaml.net/winfx/xaml/themes"
                     xmlns:efcore="clr-namespace:EficazFramework.Controls"
                     xmlns:efcoreapp="clr-namespace:EficazFramework.Application;assembly=EficazFramework.Utilities"
+                    xmlns:efcorestrings="clr-namespace:EficazFramework.Resources.Strings"
                     xmlns:efcorelocale="clr-namespace:EficazFramework.Localization">
 
     <Style TargetType="{x:Type efcore:SessionView}">
@@ -57,7 +58,7 @@
                                         </Grid.ColumnDefinitions>
                                         <Button Style="{StaticResource  MaterialDesignOutlinedButton}"
                                                 Width="128" Height="128" Margin="10"
-                                                ToolTip="{efcorelocale:LocalizeText SessionView_AddSessionLabel, ResourceType=EficazFramework.Resources.Strings.Controls}"
+                                                ToolTip="{efcorelocale:LocalizeText SessionView_AddSessionLabel, ResourceType={x:Type efcorestrings:Controls}}"
                                                 ToolTipService.Placement="Top"
                                                 Command="{TemplateBinding NewSessionRequestCommand}">
                                             <md:PackIcon Kind="Add" Width="64" Height="64"/>
@@ -82,7 +83,7 @@
                     <ControlTemplate.Triggers>
                         <DataTrigger Binding="{Binding Source={x:Static efcoreapp:ApplicationManager.Instance}, Path=SectionManager.CurrentSection.ID}" Value="0">
                             <Setter TargetName="PART_SessionButton" Property="ToolTip" Value="{efcorelocale:LocalizeText SessionZeroTooltip, 
-                                                                                                                         ResourceType=EficazFramework.Resources.Strings.Application}" />
+                                                                                                                         ResourceType={x:Type efcorestrings:Controls}}" />
                             <Setter TargetName="PART_SessionButton" Property="Width" Value="{x:Static efcore:MDIContainer.TaskIconSizeValue}" />
                         </DataTrigger>
                     </ControlTemplate.Triggers>

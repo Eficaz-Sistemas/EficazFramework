@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using System.Diagnostics.CodeAnalysis;
+using System.Windows;
 using System.Windows.Input;
 
 namespace EficazFramework.Commands;
@@ -28,13 +29,17 @@ public class Window
         win.WindowState = System.Windows.WindowState.Normal;
     }
 
+    [ExcludeFromCodeCoverage]
     public static ICommand ShutDown { get; private set; } = new EficazFramework.Commands.CommandBase(ShutDown_Execute);
+    [ExcludeFromCodeCoverage]
     private static void ShutDown_Execute(object sender, Events.ExecuteEventArgs e)
     {
         System.Windows.Application.Current.Shutdown();
     }
 
+    [ExcludeFromCodeCoverage]
     public static ICommand ShutDown_MaterialWindow { get; private set; } = new EficazFramework.Commands.CommandBase(ShutDown_MaterialWindow_Execute);
+    [ExcludeFromCodeCoverage]
     private static async void ShutDown_MaterialWindow_Execute(object sender, Events.ExecuteEventArgs e)
     {
         System.Windows.Window win = XAML.Utilities.VisualTreeHelpers.FindAnchestor<System.Windows.Window>((DependencyObject)e.Parameter);

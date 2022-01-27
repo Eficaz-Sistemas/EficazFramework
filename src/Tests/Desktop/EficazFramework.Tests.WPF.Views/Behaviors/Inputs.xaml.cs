@@ -28,4 +28,5 @@ public partial class Inputs : UserControl
     public TextBox TextBox2 => tb002;
     public TextBox CNPJMaskedTextBox => tb003;
     public TextBox DateMaskedTextBox => tb004;
+    public EficazFramework.Controls.ExpressionBuilder ExpressionBuilder => expr;
 }
