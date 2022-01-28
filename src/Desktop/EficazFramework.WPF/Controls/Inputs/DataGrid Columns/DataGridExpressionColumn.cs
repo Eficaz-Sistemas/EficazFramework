@@ -175,8 +175,8 @@ public class DataGridExpressionColumn : System.Windows.Controls.DataGridTextColu
 
     protected override FrameworkElement GenerateElement(DataGridCell cell, object dataItem)
     {
-        if (dataItem is not EficazFramework.Expressions.ExpressionItem)
-            throw new InvalidCastException("dataItem must be of type EficazFramework.Expressions.ExpressionItem.");
+        //if (dataItem is not EficazFramework.Expressions.ExpressionItem)
+        //    throw new InvalidCastException("dataItem must be of type EficazFramework.Expressions.ExpressionItem.");
 
         TextBlock element = (TextBlock)base.GenerateElement(cell, dataItem);
         element.SetBinding(TextBlock.TextProperty, new Binding("ValueToString") { FallbackValue = "..." });

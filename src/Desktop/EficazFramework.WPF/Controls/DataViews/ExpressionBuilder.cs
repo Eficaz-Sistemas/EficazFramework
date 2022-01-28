@@ -151,7 +151,7 @@ public class ExpressionBuilder : System.Windows.Controls.Control
                 ((DataGridTemplateColumn)part_datagrid.Columns[0]).Visibility = ViewModel.CanAddExpressions == true ? Visibility.Visible : Visibility.Collapsed;
         }
 
-        if (part_button_find != null) part_button_find.Command = SearchCommand;
+        //if (part_button_find != null) part_button_find.Command = SearchCommand;
     }
 
     #endregion

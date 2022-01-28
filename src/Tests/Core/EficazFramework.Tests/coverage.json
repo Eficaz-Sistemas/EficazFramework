@@ -17736,10 +17736,10 @@
           "Lines": {
             "129": 2,
             "130": 2,
-            "131": 90,
-            "132": 42,
-            "133": 42,
-            "134": 14,
+            "131": 94,
+            "132": 44,
+            "133": 44,
+            "134": 16,
             "135": 28,
             "136": 28,
             "138": 30,
@@ -17752,7 +17752,7 @@
               "EndOffset": 17,
               "Path": 1,
               "Ordinal": 3,
-              "Hits": 42
+              "Hits": 44
             },
             {
               "Line": 133,
@@ -17768,7 +17768,7 @@
               "EndOffset": 76,
               "Path": 0,
               "Ordinal": 0,
-              "Hits": 44
+              "Hits": 46
             },
             {
               "Line": 131,
@@ -31038,7 +31038,7 @@
         },
         "System.Boolean EficazFramework.Application.ApplicationDefinition::get_IsPublic()": {
           "Lines": {
-            "92": 21
+            "92": 20
           },
           "Branches": []
         },
@@ -31120,7 +31120,7 @@
         },
         "EficazFramework.Application.ApplicationAttributeCollection EficazFramework.Application.ApplicationDefinition::get_Attributes()": {
           "Lines": {
-            "104": 17
+            "104": 16
           },
           "Branches": []
         },
@@ -31234,7 +31234,7 @@
         },
         "EficazFramework.Application.ApplicationDefinition EficazFramework.Application.ApplicationInstance::get_Metadata()": {
           "Lines": {
-            "182": 9
+            "182": 8
           },
           "Branches": []
         },
@@ -31341,9 +31341,9 @@
             "143": 0,
             "144": 6,
             "146": 2,
-            "155": 4,
-            "167": 4,
-            "174": 4
+            "155": 3,
+            "167": 3,
+            "174": 3
           },
           "Branches": [
             {
@@ -31398,9 +31398,9 @@
         },
         "System.Void EficazFramework.Application.ApplicationInstance::.ctor()": {
           "Lines": {
-            "148": 1,
-            "149": 1,
-            "150": 1
+            "148": 0,
+            "149": 0,
+            "151": 0
           },
           "Branches": []
         }

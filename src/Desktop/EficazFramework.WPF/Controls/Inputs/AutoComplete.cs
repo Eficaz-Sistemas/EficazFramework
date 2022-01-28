@@ -44,151 +44,69 @@ public partial class AutoComplete : Primitives.InteractiveTextBox
     public static readonly DependencyProperty FindActionProperty = DependencyProperty.Register("FindAction", typeof(Action<object, Events.FindRequestEventArgs>), typeof(AutoComplete), new PropertyMetadata(null));
     public static readonly DependencyProperty SelectionChangedActionProperty = DependencyProperty.Register("SelectionChangedAction", typeof(Action<object, SelectionChangedEventArgs>), typeof(AutoComplete), new PropertyMetadata(null));
 
-    public bool IsLoading
-    {
-        get
-        {
-            return (bool)GetValue(IsLoadingProperty);
-        }
-    }
+    public bool IsLoading => (bool)GetValue(IsLoadingProperty);
 
     public bool FreeText
     {
-        get
-        {
-            return (bool)GetValue(FreeTextProperty);
-        }
-
-        set
-        {
-            SetValue(FreeTextProperty, value);
-        }
+        get => (bool)GetValue(FreeTextProperty);
+        set => SetValue(FreeTextProperty, value);
     }
 
     public object Value
     {
-        get
-        {
-            return GetValue(ValueProperty);
-        }
-
-        set
-        {
-            SetValue(ValueProperty, value);
-        }
+        get => GetValue(ValueProperty);
+        set => SetValue(ValueProperty, value);
     }
 
     public string ValuePath
     {
-        get
-        {
-            return (string)GetValue(ValuePathProperty);
-        }
-
-        set
-        {
-            SetValue(ValuePathProperty, value);
-        }
+        get => (string)GetValue(ValuePathProperty);
+        set => SetValue(ValuePathProperty, value);
     }
 
     public bool ValueIgnores
     {
-        get
-        {
-            return (bool)GetValue(ValueIgnoresProperty);
-        }
-
-        set
-        {
-            SetValue(ValueIgnoresProperty, value);
-        }
+        get => (bool)GetValue(ValueIgnoresProperty);
+        set => SetValue(ValueIgnoresProperty, value);
     }
 
     public object Content
     {
-        get
-        {
-            return GetValue(ContentProperty);
-        }
-
-        set
-        {
-            SetValue(ContentProperty, value);
-        }
+        get => GetValue(ContentProperty);
+        set => SetValue(ContentProperty, value);
     }
 
     public string ContentPath
     {
-        get
-        {
-            return (string)GetValue(ContentPathProperty);
-        }
-
-        set
-        {
-            SetValue(ContentPathProperty, value);
-        }
+        get => (string)GetValue(ContentPathProperty);
+        set => SetValue(ContentPathProperty, value);
     }
 
     public string ContentStringFormat
     {
-        get
-        {
-            return (string)GetValue(ContentStringFormatProperty);
-        }
-
-        set
-        {
-            SetValue(ContentStringFormatProperty, value);
-        }
+        get => (string)GetValue(ContentStringFormatProperty);
+        set => SetValue(ContentStringFormatProperty, value);
     }
 
     public object ItemsSource
     {
-        get
-        {
-            return GetValue(ItemsSourceProperty);
-        }
-
-        set
-        {
-            SetValue(ItemsSourceProperty, value);
-        }
+        get => GetValue(ItemsSourceProperty);
+        set => SetValue(ItemsSourceProperty, value);
     }
 
     public DataTemplate ItemTemplate
     {
-        get
-        {
-            return (DataTemplate)GetValue(ItemTemplateProperty);
-        }
-
-        set
-        {
-            SetValue(ItemTemplateProperty, value);
-        }
+        get => (DataTemplate)GetValue(ItemTemplateProperty);
+        set => SetValue(ItemTemplateProperty, value);
     }
 
     public ItemsPanelTemplate ItemsPanel
     {
-        get
-        {
-            return (ItemsPanelTemplate)GetValue(ItemsPanelProperty);
-        }
-
-        set
-        {
-            SetValue(ItemsPanelProperty, value);
-        }
+        get => (ItemsPanelTemplate)GetValue(ItemsPanelProperty);
+        set => SetValue(ItemsPanelProperty, value);
     }
 
-    public EficazFramework.Commands.CommandBase ClearCommand
-    {
-        get
-        {
-            return (Commands.CommandBase)GetValue(ClearCommandProperty);
-        }
-    }
+    public EficazFramework.Commands.CommandBase ClearCommand => (Commands.CommandBase)GetValue(ClearCommandProperty);
 
     private static void OnValueOrContentChanged(DependencyObject source, DependencyPropertyChangedEventArgs e)
     {
@@ -229,22 +147,24 @@ public partial class AutoComplete : Primitives.InteractiveTextBox
 
     public Action<object, Events.FindRequestEventArgs> FindAction
     {
-        get { return (Action<object, Events.FindRequestEventArgs>)GetValue(FindActionProperty); }
-        set { SetValue(FindActionProperty, value); }
+        get => (Action<object, Events.FindRequestEventArgs>)GetValue(FindActionProperty);
+        set => SetValue(FindActionProperty, value);
     }
 
     public Action<object, SelectionChangedEventArgs> SelectionChangedAction
     {
-        get { return (Action<object, SelectionChangedEventArgs>)GetValue(SelectionChangedActionProperty); }
-        set { SetValue(SelectionChangedActionProperty, value); }
+        get => (Action<object, SelectionChangedEventArgs>)GetValue(SelectionChangedActionProperty);
+        set => SetValue(SelectionChangedActionProperty, value);
     }
 
     private void SyncText()
     {
         if (FreeText == true)
             return;
+
         if (_lockSyncText == true)
             return;
+
         string valueString = null;
         string contentString = null;
         if (Content != null)
@@ -257,6 +177,7 @@ public partial class AutoComplete : Primitives.InteractiveTextBox
 
         if (Value != null)
             valueString = Convert.ToString(Value);
+
         string resultingText;
         if (string.IsNullOrEmpty(StringFormat) | string.IsNullOrEmpty(valueString))
             resultingText = contentString;
@@ -270,6 +191,7 @@ public partial class AutoComplete : Primitives.InteractiveTextBox
     {
         if (_cancellationTokenSource != null)
             _cancellationTokenSource.Cancel();
+
         await Task.Delay(100); // assegurando que a Task será cancelada a tempo...
         SetValue(ItemsSourceProperty, default);
         _cancellationTokenSource = new System.Threading.CancellationTokenSource();
@@ -283,16 +205,19 @@ public partial class AutoComplete : Primitives.InteractiveTextBox
             string literal = "";
             var r = await Dispatcher.InvokeAsync(() =>
             {
-                    // Me.CommandPopup.Execute(Nothing)
-                    if (IsLoading == false)
+                // Me.CommandPopup.Execute(Nothing)
+                if (IsLoading == false)
                     SetValue(IsLoadingPropertyKey, true);
+
                 if (_passliteral == true)
                     if (f12pressed == false) literal = Text;
+
                 return true;
             });
             System.Threading.CancellationToken tk = default;
             if (_cancellationTokenSource != null)
                 tk = _cancellationTokenSource.Token;
+
             var args = new Events.FindRequestEventArgs(literal, tk);
             if (_cancellationTokenSource != null)
             {
@@ -302,15 +227,18 @@ public partial class AutoComplete : Primitives.InteractiveTextBox
 
             if (_executed == true)
                 return;
+
             var rr = await Dispatcher.InvokeAsync(() =>
             {
                 _executed = true;
                 FindAction?.Invoke(this, args);
                 return true;
             });
+         
             // TODO: RaiseEvent for Find data...
             while (args.Completed == false)
                 await Task.Delay(1);
+
             if (_cancellationTokenSource != null)
             {
                 if (_cancellationTokenSource.Token.IsCancellationRequested == true)
@@ -369,16 +297,24 @@ public partial class AutoComplete : Primitives.InteractiveTextBox
     {
         base.OnApplyTemplate();
         if (double.IsNaN(PopupMaxWidth)) PopupMaxWidth = RenderSize.Width;
-        _PART_Popup.Opened += PopupOpened;
-        _PART_Popup.Closed += PopupClosed;
+        if (_PART_Popup != null)
+        {
+            _PART_Popup.Opened += PopupOpened;
+            _PART_Popup.Closed += PopupClosed;
+        }
+        if (_PART_ListBox != null)
+        {
+            _PART_ListBox = (ListBox)((Grid)((MaterialDesignThemes.Wpf.Card)PopupContent).Content).Children[0];
+            _PART_ListBox.SetBinding(ListBox.ItemsSourceProperty, new Binding("ItemsSource") { Source = this });
+            _PART_ListBox.SetBinding(ListBox.ItemTemplateProperty, new Binding("ItemTemplate") { Source = this });
+        }
 
-        _PART_ListBox = (ListBox)((Grid)((MaterialDesignThemes.Wpf.Card)PopupContent).Content).Children[0];
-        _PART_ListBox.SetBinding(ListBox.ItemsSourceProperty, new Binding("ItemsSource") { Source = this });
-        _PART_ListBox.SetBinding(ListBox.ItemTemplateProperty, new Binding("ItemTemplate") { Source = this });
-
-        var loader = (ProgressBar)((Grid)((MaterialDesignThemes.Wpf.Card)PopupContent).Content).Children[1];
-        var loader_binding = new Binding("IsLoading") { Source = this, Converter = (IValueConverter)FindResource("BooleanToVisibilityConverter") };
-        loader.SetBinding(ProgressBar.VisibilityProperty, loader_binding);
+        if (PopupContent != null)
+        {
+            var loader = (ProgressBar)((Grid)((MaterialDesignThemes.Wpf.Card)PopupContent).Content).Children[1];
+            var loader_binding = new Binding("IsLoading") { Source = this, Converter = (IValueConverter)FindResource("BooleanToVisibilityConverter") };
+            loader.SetBinding(ProgressBar.VisibilityProperty, loader_binding);
+        }
     }
 
     protected override Size MeasureOverride(Size constraint)
@@ -421,7 +357,12 @@ public partial class AutoComplete : Primitives.InteractiveTextBox
     protected override void OnPreviewLostKeyboardFocus(KeyboardFocusChangedEventArgs e)
     {
         base.OnPreviewLostKeyboardFocus(e);
-        if (_PART_Popup.IsKeyboardFocusWithin) return;
+        if (_PART_Popup == null)
+            return;
+
+        if (_PART_Popup.IsKeyboardFocusWithin)
+            return;
+
         if (FreeText == false)
         {
             if (string.IsNullOrEmpty(Text))

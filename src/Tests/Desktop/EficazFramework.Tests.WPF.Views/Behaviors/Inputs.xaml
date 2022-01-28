@@ -5,10 +5,12 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:efcontrols="clr-namespace:EficazFramework.Controls;assembly=EficazFramework.WPF"
              xmlns:efxamlbh="clr-namespace:EficazFramework.XAML.Behaviors;assembly=EficazFramework.WPF"
+             xmlns:efexpr="clr-namespace:EficazFramework.Expressions;assembly=EficazFramework.Data"
+             xmlns:efenums="clr-namespace:EficazFramework.Enums;assembly=EficazFramework.Data"
              xmlns:bh="http://schemas.microsoft.com/xaml/behaviors"
              xmlns:md="http://materialdesigninxaml.net/winfx/xaml/themes"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800"
+             d:DesignHeight="600" d:DesignWidth="800"
              d:Background="White"
             TextElement.Foreground="{DynamicResource MaterialDesignBody}"
             TextElement.FontWeight="Regular"
@@ -53,5 +55,31 @@
             </bh:Interaction.Behaviors>
         </TextBox>
         <efcontrols:ExpressionBuilder x:Name="expr" Margin="10,0,10,10" />
+        <efcontrols:ExpressionBuilder x:Name="expr2" Margin="10,0,10,10">
+            <efcontrols:ExpressionBuilder.ViewModel>
+                <efexpr:ExpressionBuilder>
+                    <efexpr:ExpressionBuilder.Items>
+                        <efexpr:ExpressionItem Operator="Equals" Value1="Fulano de Tal">
+                            <efexpr:ExpressionItem.SelectedProperty>
+                                <efexpr:ExpressionProperty DisplayName="Nome" PropertyPath="Nome">
+                                    <efexpr:ExpressionProperty.Operators>
+                                        <efenums:CompareMethod>Equals</efenums:CompareMethod>
+                                    </efexpr:ExpressionProperty.Operators>
+                                </efexpr:ExpressionProperty>
+                            </efexpr:ExpressionItem.SelectedProperty>
+                        </efexpr:ExpressionItem>
+                        <efexpr:ExpressionItem Operator="Equals" Value1="5600">
+                            <efexpr:ExpressionItem.SelectedProperty>
+                                <efexpr:ExpressionProperty DisplayName="Nome" PropertyPath="Nome">
+                                    <efexpr:ExpressionProperty.Operators>
+                                        <efenums:CompareMethod>Equals</efenums:CompareMethod>
+                                    </efexpr:ExpressionProperty.Operators>
+                                </efexpr:ExpressionProperty>
+                            </efexpr:ExpressionItem.SelectedProperty>
+                        </efexpr:ExpressionItem>
+                    </efexpr:ExpressionBuilder.Items>
+                </efexpr:ExpressionBuilder>
+            </efcontrols:ExpressionBuilder.ViewModel>
+        </efcontrols:ExpressionBuilder>
     </StackPanel>
 </UserControl>

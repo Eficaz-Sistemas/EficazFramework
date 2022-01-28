@@ -35,136 +35,74 @@ public abstract partial class InteractiveTextBox : TextBox
     [Category("Appearance")]
     public object CommandContent
     {
-        get
-        {
-            return GetValue(CommandContentProperty);
-        }
-
-        set
-        {
-            SetValue(CommandContentProperty, value);
-        }
+        get => GetValue(CommandContentProperty);
+        set => SetValue(CommandContentProperty, value);
     }
 
     [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
-    public EficazFramework.Commands.CommandBase CommandPopup
-    {
-        get
-        {
-            return (Commands.CommandBase)GetValue(CommandPopupProperty);
-        }
-    }
+    public EficazFramework.Commands.CommandBase CommandPopup => (Commands.CommandBase)GetValue(CommandPopupProperty);
 
     [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
     public bool IsPopupOpened
     {
-        get { return (bool)GetValue(IsPopupOpenedProperty); }
-        private set { SetValue(IsPopupOpenedPropertyKey, value); }
+        get => (bool)GetValue(IsPopupOpenedProperty);
+        private set => SetValue(IsPopupOpenedPropertyKey, value);
     }
 
     [Category("Data")]
     public string StringFormat
     {
-        get
-        {
-            return (string)GetValue(StringFormatProperty);
-        }
-
-        set
-        {
-            SetValue(StringFormatProperty, value);
-        }
+        get => (string)GetValue(StringFormatProperty);
+        set => SetValue(StringFormatProperty, value);
     }
 
     [Category("Appearance")]
     public Visibility FindButtonVisibility
     {
-        get
-        {
-            return (Visibility)GetValue(FindButtonVisibilityProperty);
-        }
-
-        set
-        {
-            SetValue(FindButtonVisibilityProperty, value);
-        }
+        get => (Visibility)GetValue(FindButtonVisibilityProperty);
+        set => SetValue(FindButtonVisibilityProperty, value);
     }
 
     public object PopupContent
     {
-        get { return (object)GetValue(PopupContentProperty); }
-        set { SetValue(PopupContentProperty, value); }
+        get => (object)GetValue(PopupContentProperty);
+        set => SetValue(PopupContentProperty, value);
     }
 
     public DataTemplate PopupContentTemplate
     {
-        get { return (DataTemplate)GetValue(PopupContentTemplateProperty); }
-        set { SetValue(PopupContentTemplateProperty, value); }
+        get => (DataTemplate)GetValue(PopupContentTemplateProperty);
+        set => SetValue(PopupContentTemplateProperty, value);
     }
 
     public HorizontalAlignment PopupHorizontalAlignment
     {
-        get
-        {
-            return (HorizontalAlignment)GetValue(PopupHorizontalAlignmentProperty);
-        }
-
-        set
-        {
-            SetValue(PopupHorizontalAlignmentProperty, value);
-        }
+        get => (HorizontalAlignment)GetValue(PopupHorizontalAlignmentProperty);
+        set => SetValue(PopupHorizontalAlignmentProperty, value);
     }
 
     public double PopupMinWidth
     {
-        get
-        {
-            return (double)GetValue(PopupMinWidthProperty);
-        }
-
-        set
-        {
-            SetValue(PopupMinWidthProperty, value);
-        }
+        get => (double)GetValue(PopupMinWidthProperty);
+        set => SetValue(PopupMinWidthProperty, value);
     }
 
     public double PopupMinHeight
     {
-        get
-        {
-            return (double)GetValue(PopupMinHeightProperty);
-        }
-
-        set
-        {
-            SetValue(PopupMinHeightProperty, value);
-        }
+        get => (double)GetValue(PopupMinHeightProperty);
+        set => SetValue(PopupMinHeightProperty, value);
     }
 
     public double PopupMaxWidth
     {
-        get
-        {
-            return (double)GetValue(PopupMaxWidthProperty);
-        }
-
-        set
-        {
-            SetValue(PopupMaxWidthProperty, value);
-        }
+        get => (double)GetValue(PopupMaxWidthProperty);
+        set => SetValue(PopupMaxWidthProperty, value);
     }
 
     public double PopupMaxHeight
     {
-        get
-        {
-            return (double)GetValue(PopupMaxHeightProperty);
-        }
-
-        set
-        {
-            SetValue(PopupMaxHeightProperty, value);
-        }
+        get => (double)GetValue(PopupMaxHeightProperty);
+        set => SetValue(PopupMaxHeightProperty, value);
     }
 
     private void PopupCommand_Executed(object sender, EficazFramework.Events.ExecuteEventArgs e)

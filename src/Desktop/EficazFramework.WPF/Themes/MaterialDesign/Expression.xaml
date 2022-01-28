@@ -44,6 +44,7 @@
                                               CanUserDeleteRows="False" 
                                               CanUserReorderColumns="False"
                                               CanUserSortColumns="False"
+                                              IsSynchronizedWithCurrentItem="True"
                                               DataContext="{TemplateBinding ViewModel}"
                                               ItemsSource="{Binding Items}">
                                         <DataGrid.Columns>
@@ -86,7 +87,9 @@
                                     </DataGrid>
 
 
-                                    <Button Style="{DynamicResource MaterialDesignFloatingActionButton}"
+                                    <Button x:Name="PART_ButtonFind" 
+                                            Command="{TemplateBinding SearchCommand}"
+                                            Style="{DynamicResource MaterialDesignFloatingActionButton}"
                                             ToolTip="{efcoreocale:LocalizeText ExpressionBuilder_FindCommand, 
                                                                                ResourceType={x:Type efcorestrings:Controls}}"
                                             Grid.Column="2"
