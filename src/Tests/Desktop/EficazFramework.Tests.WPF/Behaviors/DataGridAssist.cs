@@ -108,4 +108,13 @@ public class DataGridAssist
         DataGridCell cell2 = (DataGridCell)mock.DataGridInstance.GetCell(mock.ItemsSource[45], 0);
         cell2.DataContext.Should().Be(mock.ItemsSource[45]);
     }
+
+
+    [Test, Order(4)]
+    public void FakeElementTest()
+    {
+        Button element = new();
+        EficazFramework.XAML.Behaviors.DataGridAssist.GetEnterKeyNavigation(element).Should().BeFalse();
+        EficazFramework.XAML.Behaviors.DataGridAssist.SetEnterKeyNavigation(element, true);
+    }
 }

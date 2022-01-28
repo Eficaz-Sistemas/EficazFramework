@@ -722,7 +722,7 @@
         },
         "System.Boolean EficazFramework.Controls.AutoComplete::get_FreeText()": {
           "Lines": {
-            "51": 1
+            "51": 2
           },
           "Branches": []
         },
@@ -1274,30 +1274,30 @@
         },
         "System.Void EficazFramework.Controls.AutoComplete::OnTextInput(System.Windows.Input.TextCompositionEventArgs)": {
           "Lines": {
-            "328": 0,
-            "329": 0,
-            "330": 0,
-            "331": 0,
-            "332": 0,
-            "333": 0,
-            "334": 0,
-            "335": 0,
-            "336": 0,
-            "337": 0,
+            "328": 1,
+            "329": 1,
+            "330": 1,
+            "331": 1,
+            "332": 1,
+            "333": 1,
+            "334": 1,
+            "335": 1,
+            "336": 1,
+            "337": 1,
             "338": 0,
-            "340": 0,
-            "341": 0,
+            "340": 1,
+            "341": 1,
             "343": 0,
             "344": 0,
             "345": 0,
-            "346": 0,
+            "346": 1,
             "348": 0,
             "349": 0,
             "351": 0,
             "352": 0,
             "353": 0,
-            "354": 0,
-            "355": 0
+            "354": 1,
+            "355": 1
           },
           "Branches": [
             {
@@ -1306,7 +1306,7 @@
               "EndOffset": 44,
               "Path": 0,
               "Ordinal": 0,
-              "Hits": 0
+              "Hits": 1
             },
             {
               "Line": 333,
@@ -1314,7 +1314,7 @@
               "EndOffset": 63,
               "Path": 0,
               "Ordinal": 2,
-              "Hits": 0
+              "Hits": 1
             },
             {
               "Line": 335,
@@ -1322,28 +1322,44 @@
               "EndOffset": 77,
               "Path": 0,
               "Ordinal": 4,
-              "Hits": 0
+              "Hits": 1
             },
             {
               "Line": 337,
-              "Offset": 96,
-              "EndOffset": 98,
+              "Offset": 84,
+              "EndOffset": 86,
               "Path": 0,
               "Ordinal": 6,
               "Hits": 0
             },
             {
               "Line": 337,
-              "Offset": 96,
-              "EndOffset": 118,
+              "Offset": 84,
+              "EndOffset": 102,
               "Path": 1,
               "Ordinal": 7,
+              "Hits": 1
+            },
+            {
+              "Line": 337,
+              "Offset": 107,
+              "EndOffset": 109,
+              "Path": 0,
+              "Ordinal": 8,
               "Hits": 0
+            },
+            {
+              "Line": 337,
+              "Offset": 107,
+              "EndOffset": 129,
+              "Path": 1,
+              "Ordinal": 9,
+              "Hits": 1
             },
             {
               "Line": 335,
               "Offset": 75,
-              "EndOffset": 128,
+              "EndOffset": 139,
               "Path": 1,
               "Ordinal": 5,
               "Hits": 0
@@ -1351,7 +1367,7 @@
             {
               "Line": 333,
               "Offset": 61,
-              "EndOffset": 140,
+              "EndOffset": 151,
               "Path": 1,
               "Ordinal": 3,
               "Hits": 0
@@ -1359,19 +1375,19 @@
             {
               "Line": 331,
               "Offset": 39,
-              "EndOffset": 177,
+              "EndOffset": 188,
               "Path": 1,
               "Ordinal": 1,
-              "Hits": 0
+              "Hits": 1
             }
           ]
         },
         "System.Void EficazFramework.Controls.AutoComplete::OnPreviewLostKeyboardFocus(System.Windows.Input.KeyboardFocusChangedEventArgs)": {
           "Lines": {
-            "358": 1,
-            "359": 1,
-            "360": 1,
-            "361": 1,
+            "358": 0,
+            "359": 0,
+            "360": 0,
+            "361": 0,
             "363": 0,
             "364": 0,
             "366": 0,
@@ -1386,7 +1402,7 @@
             "375": 0,
             "377": 0,
             "378": 0,
-            "379": 1
+            "379": 0
           },
           "Branches": [
             {
@@ -1483,7 +1499,7 @@
               "EndOffset": 159,
               "Path": 0,
               "Ordinal": 0,
-              "Hits": 1
+              "Hits": 0
             },
             {
               "Line": 363,
@@ -1491,7 +1507,7 @@
               "EndOffset": 159,
               "Path": 0,
               "Ordinal": 2,
-              "Hits": 1
+              "Hits": 0
             },
             {
               "Line": 377,
@@ -1499,7 +1515,7 @@
               "EndOffset": 159,
               "Path": 1,
               "Ordinal": 13,
-              "Hits": 1
+              "Hits": 0
             }
           ]
         },
@@ -1533,10 +1549,10 @@
         },
         "System.Void EficazFramework.Controls.AutoComplete::OnPreviewKeyDown(System.Windows.Input.KeyEventArgs)": {
           "Lines": {
-            "390": 0,
-            "391": 0,
-            "392": 0,
-            "393": 0,
+            "390": 2,
+            "391": 2,
+            "392": 2,
+            "393": 2,
             "394": 0,
             "395": 0,
             "396": 0,
@@ -1556,8 +1572,8 @@
             "414": 0,
             "415": 0,
             "417": 0,
-            "420": 0,
-            "421": 0,
+            "420": 2,
+            "421": 2,
             "422": 0,
             "423": 0,
             "424": 0,
@@ -1585,7 +1601,7 @@
             "448": 0,
             "449": 0,
             "450": 0,
-            "451": 0
+            "451": 2
           },
           "Branches": [
             {
@@ -1650,7 +1666,7 @@
               "EndOffset": 167,
               "Path": 1,
               "Ordinal": 1,
-              "Hits": 0
+              "Hits": 2
             },
             {
               "Line": 420,
@@ -1770,7 +1786,7 @@
               "EndOffset": 453,
               "Path": 0,
               "Ordinal": 8,
-              "Hits": 0
+              "Hits": 2
             },
             {
               "Line": 422,
@@ -1778,7 +1794,7 @@
               "EndOffset": 453,
               "Path": 1,
               "Ordinal": 11,
-              "Hits": 0
+              "Hits": 2
             }
           ]
         },
@@ -2368,11 +2384,11 @@
       "EficazFramework.Controls.AutoComplete/<StartFind>d__67": {
         "System.Void EficazFramework.Controls.AutoComplete/<StartFind>d__67::MoveNext()": {
           "Lines": {
-            "191": 0,
-            "192": 0,
+            "191": 1,
+            "192": 1,
             "193": 0,
-            "195": 0,
-            "196": 0,
+            "195": 1,
+            "196": 1,
             "197": 0,
             "198": 0,
             "199": 0
@@ -2392,7 +2408,7 @@
               "EndOffset": 61,
               "Path": 1,
               "Ordinal": 1,
-              "Hits": 0
+              "Hits": 1
             }
           ]
         }
@@ -8281,7 +8297,7 @@
         },
         "System.Boolean EficazFramework.Controls.Primitives.InteractiveTextBox::get_IsPopupOpened()": {
           "Lines": {
-            "48": 0
+            "48": 4
           },
           "Branches": []
         },
@@ -9983,29 +9999,29 @@
       "EficazFramework.XAML.Behaviors.DataGridAssist": {
         "System.Boolean EficazFramework.XAML.Behaviors.DataGridAssist::GetEnterKeyNavigation(System.Windows.DependencyObject)": {
           "Lines": {
-            "26": 2,
-            "27": 2,
-            "28": 2
+            "26": 3,
+            "27": 3,
+            "28": 3
           },
           "Branches": []
         },
         "System.Void EficazFramework.XAML.Behaviors.DataGridAssist::SetEnterKeyNavigation(System.Windows.DependencyObject,System.Boolean)": {
           "Lines": {
-            "30": 1,
-            "31": 1,
-            "32": 1
+            "30": 2,
+            "31": 2,
+            "32": 2
           },
           "Branches": []
         },
         "System.Void EficazFramework.XAML.Behaviors.DataGridAssist::OnEnterKeyNavigationChanged(System.Object,System.Windows.DependencyPropertyChangedEventArgs)": {
           "Lines": {
-            "36": 4,
-            "37": 4,
-            "38": 0,
-            "40": 4,
-            "41": 3,
+            "36": 6,
+            "37": 6,
+            "38": 1,
+            "40": 5,
+            "41": 4,
             "43": 1,
-            "44": 4
+            "44": 6
           },
           "Branches": [
             {
@@ -10014,7 +10030,7 @@
               "EndOffset": 21,
               "Path": 1,
               "Ordinal": 1,
-              "Hits": 4
+              "Hits": 5
             },
             {
               "Line": 40,
@@ -10022,7 +10038,7 @@
               "EndOffset": 37,
               "Path": 0,
               "Ordinal": 2,
-              "Hits": 3
+              "Hits": 4
             },
             {
               "Line": 40,
@@ -10038,7 +10054,7 @@
               "EndOffset": 77,
               "Path": 0,
               "Ordinal": 0,
-              "Hits": 4
+              "Hits": 6
             }
           ]
         },

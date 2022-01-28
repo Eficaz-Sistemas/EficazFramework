@@ -199,6 +199,22 @@ public class ExpressionBuilderTests
         input?.FindAction.Should().NotBeNull();
         input?.FindAction.Invoke(null, null);
         _searched.Should().BeTrue();
+
+        // Some text to find...
+        TextCompositionEventArgs eventArgs = new(Keyboard.PrimaryDevice,
+                                                 new TextComposition(InputManager.Current,
+                                                                     input,
+                                                                     "A"));
+        eventArgs.RoutedEvent = AutoComplete.TextInputEvent;
+        input?.RaiseEvent(eventArgs);
+        input?.Text.Should().Be("A");
+        
+        input?.RaiseEvent(new System.Windows.Input.KeyEventArgs(Keyboard.PrimaryDevice, PresentationSource.FromVisual((System.Windows.Media.Visual)input), 0, Key.Enter) { RoutedEvent = AutoComplete.PreviewKeyDownEvent });
+        input?.IsPopupOpened.Should().BeFalse();
+
+        input?.RaiseEvent(eventArgs);
+        input?.RaiseEvent(new System.Windows.Input.KeyEventArgs(Keyboard.PrimaryDevice, PresentationSource.FromVisual((System.Windows.Media.Visual)input), 0, Key.Escape) { RoutedEvent = AutoComplete.PreviewKeyDownEvent });
+        input?.IsPopupOpened.Should().BeFalse();
     }
 
     private void Search_Executed(object sender, Events.ExecuteEventArgs e)

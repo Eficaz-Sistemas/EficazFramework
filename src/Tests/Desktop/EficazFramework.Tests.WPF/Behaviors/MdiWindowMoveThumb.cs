@@ -27,6 +27,18 @@ public class MdiWindowMoveThumb
         Tests.TestContext.Application.MainWindow.Show();
     }
 
+    [Test]
+    public void MouseDown()
+    {
+        mock?.Win1.IsKeyboardFocusWithin.Should().BeFalse();
+        MouseButtonEventArgs eventArg = new MouseButtonEventArgs(InputManager.Current.PrimaryMouseDevice, 1, MouseButton.Left);
+        eventArg.RoutedEvent = MDIWindowMoveThumb.MouseLeftButtonDownEvent;
+        mock?.Win1.RaiseEvent(eventArg);
+        //mock?.Win1.IsKeyboardFocusWithin.Should().BeTrue();
+
+    }
+
+
     [Test]  
     public void DragAppTest()
     {

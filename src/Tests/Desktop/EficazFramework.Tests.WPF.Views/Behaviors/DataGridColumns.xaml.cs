@@ -15,18 +15,12 @@ using System.Windows.Shapes;
 
 namespace EficazFramework.Tests.WPF.Views.Behaviors;
 /// <summary>
-/// Interação lógica para MdiWindowThmb.xam
+/// Interação lógica para DataGridColumns.xam
 /// </summary>
-public partial class MdiWindowThumb : UserControl
+public partial class DataGridColumns : UserControl
 {
-    public MdiWindowThumb()
+    public DataGridColumns()
     {
         InitializeComponent();
     }
-
-    public XAML.Behaviors.MDIWindowMoveThumb App1 => app1;
-    public XAML.Behaviors.MDIWindowMoveThumb App2 => app2;
-
-    public Controls.MDIWindow Win1 => win1;
-
 }

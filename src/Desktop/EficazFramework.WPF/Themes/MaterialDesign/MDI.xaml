@@ -191,9 +191,9 @@
                                                                  Kind="{Binding}"/>
                                                 </DataTemplate>
                                             </DataTemplate.Resources>
-                                            <RadioButton Style="{StaticResource MdiTaskBarRadioButton}"
+                                            <RadioButton Style="{DynamicResource MdiTaskBarRadioButton}"
                                                          Focusable="False" 
-                                                         Content="{Binding Icon, FallbackValue={StaticResource EfCore.Icons.App.Window}}"
+                                                         Content="{Binding Icon, FallbackValue={DynamicResource EfCore.Icons.App.Window}}"
                                                          VerticalContentAlignment="Center"
                                                          HorizontalContentAlignment="Center"
                                                          ToolTip="{Binding RelativeSource={RelativeSource Self}, Path=(efcore:MDIContainer.ApplicationDefinition).TooltipTilte}" />
@@ -249,7 +249,7 @@
                         <TextBlock x:Name="PART_Title" 
                                        Margin="10,1,0,0"
                                        VerticalAlignment="Center" 
-                                       Style="{StaticResource MaterialDesignSubtitle2TextBlock}"
+                                       Style="{DynamicResource MaterialDesignSubtitle2TextBlock}"
                                        Text="{Binding Title, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type efcore:MDIWindow}}}" />
                     </StackPanel>
                     <DataTemplate.Triggers>

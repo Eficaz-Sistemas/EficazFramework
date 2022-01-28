@@ -334,7 +334,7 @@ public partial class AutoComplete : Primitives.InteractiveTextBox
             {
                 if (FreeText == false)
                 {
-                    if (_PART_Popup.IsOpen == false)
+                    if (_PART_Popup != null && _PART_Popup.IsOpen == false)
                         CommandPopup.Execute(false);
                     else
                         StartFind();
