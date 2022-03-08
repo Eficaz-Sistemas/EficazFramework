@@ -1384,10 +1384,10 @@
         },
         "System.Void EficazFramework.Controls.AutoComplete::OnPreviewLostKeyboardFocus(System.Windows.Input.KeyboardFocusChangedEventArgs)": {
           "Lines": {
-            "358": 0,
-            "359": 0,
-            "360": 0,
-            "361": 0,
+            "358": 1,
+            "359": 1,
+            "360": 1,
+            "361": 1,
             "363": 0,
             "364": 0,
             "366": 0,
@@ -1402,7 +1402,7 @@
             "375": 0,
             "377": 0,
             "378": 0,
-            "379": 0
+            "379": 1
           },
           "Branches": [
             {
@@ -1499,7 +1499,7 @@
               "EndOffset": 159,
               "Path": 0,
               "Ordinal": 0,
-              "Hits": 0
+              "Hits": 1
             },
             {
               "Line": 363,
@@ -1507,7 +1507,7 @@
               "EndOffset": 159,
               "Path": 0,
               "Ordinal": 2,
-              "Hits": 0
+              "Hits": 1
             },
             {
               "Line": 377,
@@ -1515,7 +1515,7 @@
               "EndOffset": 159,
               "Path": 1,
               "Ordinal": 13,
-              "Hits": 0
+              "Hits": 1
             }
           ]
         },
@@ -6380,17 +6380,17 @@
         },
         "System.Void EficazFramework.Controls.MDIContainer::.cctor()": {
           "Lines": {
-            "23": 0,
-            "24": 0,
-            "31": 0,
-            "32": 0,
-            "40": 0,
-            "41": 0,
-            "48": 0,
-            "49": 0,
-            "57": 0,
-            "58": 0,
-            "63": 0
+            "23": 1,
+            "24": 1,
+            "31": 1,
+            "32": 1,
+            "40": 1,
+            "41": 1,
+            "48": 1,
+            "49": 1,
+            "57": 1,
+            "58": 1,
+            "63": 1
           },
           "Branches": []
         }
@@ -6476,7 +6476,7 @@
       "EficazFramework.Controls.MDIWindow": {
         "System.Boolean EficazFramework.Controls.MDIWindow::get_IsSelected()": {
           "Lines": {
-            "52": 0
+            "52": 1
           },
           "Branches": []
         },
@@ -6536,13 +6536,13 @@
         },
         "EficazFramework.Application.ApplicationInstance EficazFramework.Controls.MDIWindow::get_AppDefinition()": {
           "Lines": {
-            "80": 0
+            "80": 1
           },
           "Branches": []
         },
         "System.Boolean EficazFramework.Controls.MDIWindow::get_TabStopWithEnterKey()": {
           "Lines": {
-            "84": 0
+            "84": 1
           },
           "Branches": []
         },
@@ -6602,15 +6602,15 @@
         },
         "System.Void EficazFramework.Controls.MDIWindow::OnApplyTemplate()": {
           "Lines": {
-            "104": 0,
-            "105": 0,
-            "106": 0,
-            "107": 0,
-            "109": 0,
-            "110": 0,
+            "104": 1,
+            "105": 1,
+            "106": 1,
+            "107": 1,
+            "109": 1,
+            "110": 1,
             "111": 0,
-            "112": 0,
-            "113": 0
+            "112": 1,
+            "113": 1
           },
           "Branches": [
             {
@@ -6619,7 +6619,7 @@
               "EndOffset": 36,
               "Path": 0,
               "Ordinal": 0,
-              "Hits": 0
+              "Hits": 1
             },
             {
               "Line": 106,
@@ -6627,7 +6627,7 @@
               "EndOffset": 60,
               "Path": 1,
               "Ordinal": 1,
-              "Hits": 0
+              "Hits": 1
             },
             {
               "Line": 110,
@@ -6643,7 +6643,7 @@
               "EndOffset": 109,
               "Path": 1,
               "Ordinal": 3,
-              "Hits": 0
+              "Hits": 1
             }
           ]
         },
@@ -6889,9 +6889,9 @@
         },
         "System.Void EficazFramework.Controls.MDIWindow::OnLoaded(System.Object,System.Windows.RoutedEventArgs)": {
           "Lines": {
-            "169": 0,
-            "170": 0,
-            "171": 0
+            "169": 2,
+            "170": 2,
+            "171": 2
           },
           "Branches": []
         },
@@ -7181,9 +7181,9 @@
         },
         "System.Void EficazFramework.Controls.MDIWindow::OnMove()": {
           "Lines": {
-            "278": 0,
-            "279": 0,
-            "280": 0,
+            "278": 2,
+            "279": 2,
+            "280": 4,
             "282": 0,
             "283": 0,
             "284": 0,
@@ -7201,7 +7201,7 @@
             "296": 0,
             "297": 0,
             "298": 0,
-            "299": 0
+            "299": 2
           },
           "Branches": [
             {
@@ -7210,7 +7210,7 @@
               "EndOffset": 15,
               "Path": 1,
               "Ordinal": 1,
-              "Hits": 0
+              "Hits": 2
             },
             {
               "Line": 280,
@@ -7322,7 +7322,7 @@
               "EndOffset": 333,
               "Path": 0,
               "Ordinal": 0,
-              "Hits": 0
+              "Hits": 2
             },
             {
               "Line": 280,
@@ -7330,7 +7330,7 @@
               "EndOffset": 333,
               "Path": 0,
               "Ordinal": 2,
-              "Hits": 0
+              "Hits": 2
             },
             {
               "Line": 290,
@@ -7338,7 +7338,7 @@
               "EndOffset": 333,
               "Path": 1,
               "Ordinal": 11,
-              "Hits": 0
+              "Hits": 2
             },
             {
               "Line": 292,
@@ -7346,7 +7346,7 @@
               "EndOffset": 333,
               "Path": 0,
               "Ordinal": 12,
-              "Hits": 0
+              "Hits": 2
             }
           ]
         },
@@ -7440,52 +7440,52 @@
         },
         "System.Void EficazFramework.Controls.MDIWindow::<.ctor>b__1_0(System.Object,System.EventArgs)": {
           "Lines": {
-            "29": 0
+            "29": 2
           },
           "Branches": []
         },
         "System.Void EficazFramework.Controls.MDIWindow::<.ctor>b__1_1(System.Object,System.EventArgs)": {
           "Lines": {
-            "31": 0
+            "31": 2
           },
           "Branches": []
         },
         "System.Void EficazFramework.Controls.MDIWindow::.cctor()": {
           "Lines": {
-            "16": 0,
-            "17": 0,
-            "18": 0,
-            "37": 0,
-            "38": 0,
-            "39": 0,
-            "40": 0,
-            "41": 0,
-            "42": 0,
-            "43": 0,
-            "44": 0,
-            "45": 0,
-            "46": 0,
-            "85": 0
+            "16": 1,
+            "17": 1,
+            "18": 1,
+            "37": 1,
+            "38": 1,
+            "39": 1,
+            "40": 1,
+            "41": 1,
+            "42": 1,
+            "43": 1,
+            "44": 1,
+            "45": 1,
+            "46": 1,
+            "85": 1
           },
           "Branches": []
         },
         "System.Void EficazFramework.Controls.MDIWindow::.ctor()": {
           "Lines": {
-            "20": 0,
-            "21": 0,
-            "22": 0,
+            "20": 1,
+            "21": 1,
+            "22": 1,
             "23": 0,
-            "24": 0,
-            "25": 0,
-            "26": 0,
-            "27": 0,
-            "28": 0,
-            "30": 0,
-            "32": 0,
-            "35": 0,
-            "36": 0,
-            "130": 0,
-            "131": 0
+            "24": 1,
+            "25": 1,
+            "26": 1,
+            "27": 1,
+            "28": 1,
+            "30": 1,
+            "32": 1,
+            "35": 1,
+            "36": 1,
+            "130": 1,
+            "131": 1
           },
           "Branches": [
             {
@@ -7494,7 +7494,7 @@
               "EndOffset": 89,
               "Path": 1,
               "Ordinal": 1,
-              "Hits": 0
+              "Hits": 1
             },
             {
               "Line": 25,
@@ -7502,7 +7502,7 @@
               "EndOffset": 120,
               "Path": 0,
               "Ordinal": 2,
-              "Hits": 0
+              "Hits": 1
             },
             {
               "Line": 25,
@@ -7510,7 +7510,7 @@
               "EndOffset": 140,
               "Path": 1,
               "Ordinal": 3,
-              "Hits": 0
+              "Hits": 1
             },
             {
               "Line": 22,
@@ -7518,7 +7518,7 @@
               "EndOffset": 241,
               "Path": 0,
               "Ordinal": 0,
-              "Hits": 0
+              "Hits": 1
             }
           ]
         }
@@ -9337,18 +9337,18 @@
       "EficazFramework.XAML.Utilities.VisualTreeHelpers": {
         "T EficazFramework.XAML.Utilities.VisualTreeHelpers::FindAnchestor(System.Windows.DependencyObject)": {
           "Lines": {
-            "22": 11,
-            "23": 11,
+            "22": 13,
+            "23": 13,
             "24": 1,
-            "26": 77,
-            "27": 77,
-            "28": 8,
-            "29": 8,
-            "32": 69,
-            "33": 69,
-            "34": 69,
-            "35": 2,
-            "36": 11
+            "26": 94,
+            "27": 94,
+            "28": 9,
+            "29": 9,
+            "32": 85,
+            "33": 85,
+            "34": 85,
+            "35": 3,
+            "36": 13
           },
           "Branches": [
             {
@@ -9365,7 +9365,7 @@
               "EndOffset": 21,
               "Path": 1,
               "Ordinal": 1,
-              "Hits": 77
+              "Hits": 94
             },
             {
               "Line": 34,
@@ -9373,7 +9373,7 @@
               "EndOffset": 21,
               "Path": 1,
               "Ordinal": 5,
-              "Hits": 77
+              "Hits": 94
             },
             {
               "Line": 27,
@@ -9381,7 +9381,7 @@
               "EndOffset": 35,
               "Path": 0,
               "Ordinal": 2,
-              "Hits": 8
+              "Hits": 9
             },
             {
               "Line": 27,
@@ -9389,7 +9389,7 @@
               "EndOffset": 45,
               "Path": 1,
               "Ordinal": 3,
-              "Hits": 69
+              "Hits": 85
             },
             {
               "Line": 34,
@@ -9397,7 +9397,7 @@
               "EndOffset": 64,
               "Path": 0,
               "Ordinal": 4,
-              "Hits": 2
+              "Hits": 3
             }
           ]
         },
@@ -9735,24 +9735,24 @@
         },
         "T EficazFramework.XAML.Utilities.VisualTreeHelpers::FindVisualChild(System.Windows.DependencyObject)": {
           "Lines": {
-            "150": 475,
-            "151": 475,
+            "150": 496,
+            "151": 496,
             "152": 0,
-            "153": 2229,
-            "154": 473,
-            "155": 473,
-            "156": 473,
-            "157": 15,
-            "158": 15,
-            "161": 458,
-            "162": 458,
-            "163": 458,
-            "164": 56,
-            "165": 56,
-            "167": 402,
-            "168": 402,
-            "170": 404,
-            "171": 475
+            "153": 2320,
+            "154": 494,
+            "155": 494,
+            "156": 494,
+            "157": 16,
+            "158": 16,
+            "161": 478,
+            "162": 478,
+            "163": 478,
+            "164": 62,
+            "165": 62,
+            "167": 416,
+            "168": 416,
+            "170": 418,
+            "171": 496
           },
           "Branches": [
             {
@@ -9769,7 +9769,7 @@
               "EndOffset": 21,
               "Path": 1,
               "Ordinal": 1,
-              "Hits": 475
+              "Hits": 496
             },
             {
               "Line": 153,
@@ -9777,7 +9777,7 @@
               "EndOffset": 35,
               "Path": 1,
               "Ordinal": 7,
-              "Hits": 473
+              "Hits": 494
             },
             {
               "Line": 156,
@@ -9785,7 +9785,7 @@
               "EndOffset": 61,
               "Path": 0,
               "Ordinal": 2,
-              "Hits": 15
+              "Hits": 16
             },
             {
               "Line": 156,
@@ -9793,7 +9793,7 @@
               "EndOffset": 77,
               "Path": 1,
               "Ordinal": 3,
-              "Hits": 458
+              "Hits": 478
             },
             {
               "Line": 163,
@@ -9801,7 +9801,7 @@
               "EndOffset": 103,
               "Path": 0,
               "Ordinal": 4,
-              "Hits": 56
+              "Hits": 62
             },
             {
               "Line": 163,
@@ -9809,7 +9809,7 @@
               "EndOffset": 109,
               "Path": 1,
               "Ordinal": 5,
-              "Hits": 402
+              "Hits": 416
             },
             {
               "Line": 153,
@@ -9817,7 +9817,7 @@
               "EndOffset": 129,
               "Path": 0,
               "Ordinal": 6,
-              "Hits": 404
+              "Hits": 418
             }
           ]
         },
@@ -11337,13 +11337,13 @@
         },
         "System.Void EficazFramework.XAML.Behaviors.MDIWindowMoveThumb::.ctor()": {
           "Lines": {
-            "18": 2,
-            "19": 2,
-            "20": 2,
+            "18": 3,
+            "19": 3,
+            "20": 3,
             "21": 0,
-            "22": 2,
-            "23": 2,
-            "33": 2
+            "22": 3,
+            "23": 3,
+            "33": 3
           },
           "Branches": [
             {
@@ -11352,7 +11352,7 @@
               "EndOffset": 27,
               "Path": 1,
               "Ordinal": 1,
-              "Hits": 2
+              "Hits": 3
             },
             {
               "Line": 20,
@@ -11360,7 +11360,7 @@
               "EndOffset": 46,
               "Path": 0,
               "Ordinal": 0,
-              "Hits": 2
+              "Hits": 3
             }
           ]
         }
@@ -11372,72 +11372,32 @@
           "Lines": {
             "12": 1,
             "13": 1,
-            "14": 0,
-            "15": 0,
-            "17": 1,
-            "18": 1
+            "14": 1
           },
-          "Branches": [
-            {
-              "Line": 13,
-              "Offset": 7,
-              "EndOffset": 9,
-              "Path": 0,
-              "Ordinal": 0,
-              "Hits": 0
-            },
-            {
-              "Line": 13,
-              "Offset": 7,
-              "EndOffset": 21,
-              "Path": 1,
-              "Ordinal": 1,
-              "Hits": 1
-            }
-          ]
+          "Branches": []
         },
         "System.Void EficazFramework.XAML.Behaviors.TextBox::SetSelectAllOnFocus(System.Windows.DependencyObject,System.Boolean)": {
           "Lines": {
-            "20": 2,
-            "21": 2,
-            "22": 0,
-            "23": 0,
-            "25": 2,
-            "26": 2
+            "16": 2,
+            "17": 2,
+            "18": 2
           },
-          "Branches": [
-            {
-              "Line": 21,
-              "Offset": 7,
-              "EndOffset": 9,
-              "Path": 0,
-              "Ordinal": 0,
-              "Hits": 0
-            },
-            {
-              "Line": 21,
-              "Offset": 7,
-              "EndOffset": 21,
-              "Path": 1,
-              "Ordinal": 1,
-              "Hits": 2
-            }
-          ]
+          "Branches": []
         },
         "System.Void EficazFramework.XAML.Behaviors.TextBox::OnSelectAllOnFocusChanged(System.Object,System.Windows.DependencyPropertyChangedEventArgs)": {
           "Lines": {
-            "30": 270,
-            "31": 270,
-            "32": 265,
-            "34": 5,
-            "35": 5,
-            "36": 4,
-            "38": 1,
-            "39": 270
+            "22": 270,
+            "23": 270,
+            "24": 265,
+            "26": 5,
+            "27": 5,
+            "28": 4,
+            "30": 1,
+            "31": 270
           },
           "Branches": [
             {
-              "Line": 31,
+              "Line": 23,
               "Offset": 17,
               "EndOffset": 21,
               "Path": 1,
@@ -11445,7 +11405,7 @@
               "Hits": 5
             },
             {
-              "Line": 35,
+              "Line": 27,
               "Offset": 56,
               "EndOffset": 58,
               "Path": 0,
@@ -11453,7 +11413,7 @@
               "Hits": 4
             },
             {
-              "Line": 35,
+              "Line": 27,
               "Offset": 56,
               "EndOffset": 80,
               "Path": 1,
@@ -11461,7 +11421,7 @@
               "Hits": 1
             },
             {
-              "Line": 31,
+              "Line": 23,
               "Offset": 17,
               "EndOffset": 100,
               "Path": 0,
@@ -11472,36 +11432,18 @@
         },
         "System.Void EficazFramework.XAML.Behaviors.TextBox::TextBox_GotKeyboardFocus(System.Object,System.EventArgs)": {
           "Lines": {
-            "42": 4,
-            "43": 4,
-            "44": 0,
-            "46": 4,
-            "47": 4,
-            "48": 4,
-            "49": 4
+            "34": 4,
+            "35": 4,
+            "36": 4,
+            "37": 4,
+            "38": 4,
+            "39": 4
           },
-          "Branches": [
-            {
-              "Line": 43,
-              "Offset": 17,
-              "EndOffset": 21,
-              "Path": 1,
-              "Ordinal": 1,
-              "Hits": 4
-            },
-            {
-              "Line": 43,
-              "Offset": 17,
-              "EndOffset": 54,
-              "Path": 0,
-              "Ordinal": 0,
-              "Hits": 4
-            }
-          ]
+          "Branches": []
         },
         "System.Void EficazFramework.XAML.Behaviors.TextBox::.cctor()": {
           "Lines": {
-            "27": 1
+            "19": 1
           },
           "Branches": []
         }

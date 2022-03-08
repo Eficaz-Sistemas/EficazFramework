@@ -17,27 +17,34 @@ namespace EficazFramework.Behaviors;
 [Apartment(System.Threading.ApartmentState.STA)]
 public class MdiWindowMoveThumb
 {
-    Tests.WPF.Views.Behaviors.MdiWindowThumb? mock = null;
+    Tests.WPF.Views.Behaviors.MdiWindowThumb mock = new();
+    System.Windows.Window win = new();
 
     [SetUp]
     public void Setup()
     {
-        mock = new();
-        Tests.TestContext.Application.MainWindow.Content = mock;
-        Tests.TestContext.Application.MainWindow.Show();
+        win = new();
+        win.Content = mock;
+        win.Show();
+    }
+
+    [TearDown]
+    public void TearDown()
+    {
+        win.Close();
     }
 
     [Test]
     public void MouseDown()
     {
+        mock?.Win1.ApplyTemplate();
+        mock?.Win1.IsSelected.Should().BeFalse();
         mock?.Win1.IsKeyboardFocusWithin.Should().BeFalse();
-        MouseButtonEventArgs eventArg = new MouseButtonEventArgs(InputManager.Current.PrimaryMouseDevice, 1, MouseButton.Left);
+        MouseButtonEventArgs eventArg = new(InputManager.Current.PrimaryMouseDevice, 1, MouseButton.Left);
         eventArg.RoutedEvent = MDIWindowMoveThumb.MouseLeftButtonDownEvent;
-        mock?.Win1.RaiseEvent(eventArg);
-        //mock?.Win1.IsKeyboardFocusWithin.Should().BeTrue();
-
+        MDIWindowMoveThumb header = XAML.Utilities.VisualTreeHelpers.FindVisualChild<MDIWindowMoveThumb>(mock?.Win1);
+        header.RaiseEvent(eventArg);
     }
-
 
     [Test]  
     public void DragAppTest()

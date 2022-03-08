@@ -10,18 +10,10 @@ public partial class TextBox
 
     public static bool GetSelectAllOnFocus(DependencyObject element)
     {
-        if (element is null)
-        {
-            throw new ArgumentNullException(nameof(element));
-        }
         return (bool)element.GetValue(SelectAllOnFocusProperty);
     }
     public static void SetSelectAllOnFocus(DependencyObject element, bool value)
     {
-        if (element is null)
-        {
-            throw new ArgumentNullException(nameof(element));
-        }
         element.SetValue(SelectAllOnFocusProperty, value);
     }
     public static readonly DependencyProperty SelectAllOnFocusProperty = DependencyProperty.RegisterAttached("SelectAllOnFocus", typeof(bool), typeof(TextBox), new FrameworkPropertyMetadata(false, FrameworkPropertyMetadataOptions.Inherits, OnSelectAllOnFocusChanged));
@@ -40,9 +32,7 @@ public partial class TextBox
 
     private static void TextBox_GotKeyboardFocus(object sender, EventArgs e)
     {
-        if (sender is not System.Windows.Controls.TextBox tb)
-            return;
-
+        System.Windows.Controls.TextBox tb = (System.Windows.Controls.TextBox) sender;
         tb.SelectionStart = 0;
         tb.SelectionLength = tb.Text.Length;
         tb.ScrollToEnd();
