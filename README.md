@@ -2,6 +2,7 @@
 
 # EficazFramework
 
+![Azure DevOps builds](https://efshieldsio.azurewebsites.net:/azure-devops/build/eficazcs/EficazFramework/27?style=flat-square)
 ![Azure DevOps builds (branch)](https://efshieldsio.azurewebsites.net:/azure-devops/build/eficazcs/EficazFramework/18/master?label=tests&logo=azuredevops&logoColor=white&style=flat-square)
 ![Azure DevOps tests (compact)](https://efshieldsio.azurewebsites.net:/azure-devops/tests/eficazcs/EficazFramework/18?compact_message&logo=azuredevops&logoColor=white&style=flat-square)
 ![Azure DevOps coverage](https://efshieldsio.azurewebsites.net:/azure-devops/coverage/eficazcs/EficazFramework/18?logo=codecov&logoColor=white&style=flat-square)
