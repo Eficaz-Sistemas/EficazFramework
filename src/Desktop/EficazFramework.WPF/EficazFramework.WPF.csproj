@@ -3,14 +3,14 @@
   <PropertyGroup>
     <TargetFramework>net6.0-windows</TargetFramework>
     <UseWPF>true</UseWPF>
-    <Version>6.0.0-preview001</Version>
-    <AssemblyVersion>5.9.7.0</AssemblyVersion>
-    <FileVersion>5.9.7.0</FileVersion>
+    <Version>6.0.0-preview002</Version>
+    <AssemblyVersion>6.0.0.0</AssemblyVersion>
+    <FileVersion>6.0.0.0</FileVersion>
     <RootNamespace>EficazFramework</RootNamespace>
     <Authors>Eficaz Sistemas</Authors>
     <Company>Eficaz Sistemas de Gestão e Inteligência Tributária</Company>
     <Description>Controles, extensões e utulitários para implementação WPF.</Description>
-    <Copyright>Copyright ©  2021. Eficaz Sistemas de Gestão e Inteligência Tributária Ltda.</Copyright>
+    <Copyright>Copyright ©  2022. Eficaz Sistemas de Gestão e Inteligência Tributária Ltda.</Copyright>
     <SignAssembly>true</SignAssembly>
     <AssemblyOriginatorKeyFile>EfCore.snk</AssemblyOriginatorKeyFile>
     <PackageIcon>logo.png</PackageIcon>

@@ -3,17 +3,11 @@
   <PropertyGroup>
     <TargetFramework>net6.0-windows</TargetFramework>
     <Nullable>enable</Nullable>
-
     <IsPackable>false</IsPackable>
-	  
-	<Version>6.0.0-preview001</Version>
-
+	<Version>6.0.0-preview002</Version>
 	<Description>Biblioteca de testes para WPF da Eficaz Framework Core.</Description>
-
 	<RootNamespace>EficazFramework</RootNamespace>
-
 	<SignAssembly>True</SignAssembly>
-
 	<AssemblyOriginatorKeyFile>EfCore.snk</AssemblyOriginatorKeyFile>
   </PropertyGroup>
 
