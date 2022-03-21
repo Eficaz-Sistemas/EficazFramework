@@ -2,7 +2,6 @@
 
 <MudBlazor.MudDialog>
     <DialogContent>
-        @*@System.Text.Encodings.Web.HtmlEncoder.Default.Encode((Args?.Content != null ? Args.Content.ToString() : "").Replace(Environment.NewLine, "<br/>"))*@
         @((MarkupString)(Args?.Content?.ToString() ?? "").Replace(Environment.NewLine,"<br/>"))
     </DialogContent>
     <DialogActions>

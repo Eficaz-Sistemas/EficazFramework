@@ -15,18 +15,18 @@ public static class JsInterop
                             message);
     }
 
-    public static void AddClass(this IJSRuntime jsRuntime, string query, string className)
-    {
-        jsRuntime.InvokeVoidAsync(
-                        "efcoreJsFunctions.addclass",
-                        query, className);
-    }
-
     public static void AcceptCookie(this IJSRuntime jsRuntime, string cookieName)
     {
         jsRuntime.InvokeVoidAsync(
                     "efcoreJsFunctions.acceptCookieMessage",
                     cookieName);
+    }
+
+    public static void AddClass(this IJSRuntime jsRuntime, string query, string className)
+    {
+        jsRuntime.InvokeVoidAsync(
+                        "efcoreJsFunctions.addclass",
+                        query, className);
     }
 
     public static void ChangeUrl(this IJSRuntime jsRuntime, string url)
@@ -83,7 +83,6 @@ public static class JsInterop
         jsRuntime.InvokeVoidAsync(
             "efcoreJsFunctions.print");
     }
-
 
     public static void RemoveClass(this IJSRuntime jsRuntime, string query, string className)
     {
