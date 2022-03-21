@@ -81,7 +81,8 @@ public class ExpressionBuilderTests
         Operators = new()
         {
             Enums.CompareMethod.Different,
-            Enums.CompareMethod.Equals
+            Enums.CompareMethod.Equals,
+            Enums.CompareMethod.Length
         }
     };
     static readonly ExpressionProperty TeamLocalizedProperty = new()
@@ -284,7 +285,7 @@ public class ExpressionBuilderTests
             new() { ID = 3, Name = "Item 3", Children = { new() { ParentID = 3, ID = 1, Name = "Child 1 of Item 3" }, new() { ParentID = 3, ID = 2, Name = "Child 2 of Item 3" }, new() { ParentID = 3, ID = 3, Name = "Child 2 of Item 3" } } },
             new() { ID = 4, Name = "Item 4", Related = new() { ID = 55}, RelatedID = 55 },
             new() { ID = 5, Name = "Item 5", Related = new() { ID = 55}, RelatedID = 55 },
-            new() { ID = 9, Name = "kkkkkk", Related = new() { ID = 99}, RelatedID = 99 }
+            new() { ID = 9, Name = "kkkkkKk", Related = new() { ID = 99}, RelatedID = 99 }
         };
         ExpressionBuilder builder = DefaultInstance();
 
@@ -385,6 +386,20 @@ public class ExpressionBuilderTests
         expression.Should().NotBeNull();
         expression.ReturnType.Should().Be(typeof(bool));
         source.Where(expression.Compile()).ToList().Should().HaveCount(1);
+
+        builder.Items[0].Operator = Enums.CompareMethod.Length;
+        builder.Items[0].Value1 = 6;
+        expression = builder.GetExpression<Validation.SampleObject>();
+        expression.Should().NotBeNull();
+        expression.ReturnType.Should().Be(typeof(bool));
+        source.Where(expression.Compile()).ToList().Should().HaveCount(5);
+
+        builder.Items[0].Value1 = 7;
+        expression = builder.GetExpression<Validation.SampleObject>();
+        expression.Should().NotBeNull();
+        expression.ReturnType.Should().Be(typeof(bool));
+        source.Where(expression.Compile()).ToList().Should().HaveCount(1);
+
 
         // DateTime (and Coercion)
         builder.AddNewItemCommand.Execute(null);

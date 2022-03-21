@@ -21,12 +21,14 @@ public class TimeZone
             if (response.IsSuccessStatusCode)
             {
                 string response_string = await response.Content.ReadAsStringAsync();
-                if (response_string == "null")
-                    return DateTime.Now;
                 var result_data = JsonSerializer.Deserialize<TimeZoneData>(response_string);
                 DateTime dt = DateTime.Now;
                 if (result_data != null) { dt = result_data.FormattedDateTime; }
                 return dt;
+            }
+            else
+            {
+                throw new HttpRequestException(response.ReasonPhrase, null, response.StatusCode);
             }
         }
         catch (Exception ex)

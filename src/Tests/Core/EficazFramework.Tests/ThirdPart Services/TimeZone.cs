@@ -14,6 +14,14 @@ public class TimeZoneTests
         var result = await TimeZone.Now();
         (result as DateTime?).Should().NotBeNull();
 
+        result = await TimeZone.Now("no place...");
+        (result as DateTime?).Value.Date.Should().Be(DateTime.Now.Date);
+
+        result = await TimeZone.Now("");
+        (result as DateTime?).Value.Date.Should().Be(DateTime.Now.Date);
+
+        result = await TimeZone.Now(null);
+        (result as DateTime?).Value.Date.Should().Be(DateTime.Now.Date);
     }
 
 }

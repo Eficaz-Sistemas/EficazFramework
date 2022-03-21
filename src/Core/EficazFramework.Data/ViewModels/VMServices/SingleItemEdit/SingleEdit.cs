@@ -592,6 +592,7 @@ public class SingleEdit<T> : ViewModelService<T> where T : class
         ViewModelInstance.ItemsFetched -= OnItemsFetched;
         ViewModelInstance.Commands.Remove("New");
         ViewModelInstance.Commands.Remove("Save");
+        ViewModelInstance.Commands.Remove("Edit");
         ViewModelInstance.Commands.Remove("Cancel");
         ViewModelInstance.Commands.Remove("Delete");
         ViewModelInstance.Services.Remove(ServiceUtils.KEY_SINGLEEDIT);
