@@ -16,7 +16,7 @@ public class ViewModel<T> : INotifyPropertyChanged, IDisposable where T : class
 
     public ViewModel()
     {
-        SectionID = Application.ApplicationManager.Instance?.SectionManager.CurrentSection?.ID ?? 0;
+        SectionID = Application.IApplicationManager.Instance?.SectionManager.CurrentSection?.ID ?? 0;
         Commands.Add("Get", new EficazFramework.Commands.CommandBase(Get_Execute));
     }
 

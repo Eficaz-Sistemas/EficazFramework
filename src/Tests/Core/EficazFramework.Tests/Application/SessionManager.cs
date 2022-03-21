@@ -7,8 +7,8 @@ namespace EficazFramework.Application;
 
 public class Sessions
 {
-    EficazFramework.Application.ApplicationManager _appManager = new();
-    EficazFramework.Application.SectionManager manager;
+    EficazFramework.Application.IApplicationManager _appManager = EficazFramework.Application.IApplicationManager.Create();
+    EficazFramework.Application.ISectionManager manager;
 
     [Test, Order(0)]
     public void Init()

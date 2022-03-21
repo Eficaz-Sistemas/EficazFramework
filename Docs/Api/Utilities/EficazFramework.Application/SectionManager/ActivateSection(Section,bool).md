@@ -15,3 +15,5 @@ public void ActivateSection(EficazFramework.Application.Section section, bool up
 <a name='EficazFramework.Application.SectionManager.ActivateSection(EficazFramework.Application.Section,bool).update'></a>
 
 `update` [System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')
+
+Implements [ActivateSection(Section, bool)](EficazFramework.Application/ISectionManager/ActivateSection(Section,bool).md 'EficazFramework.Application.ISectionManager.ActivateSection(EficazFramework.Application.Section, bool)')

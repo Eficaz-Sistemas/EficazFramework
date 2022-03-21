@@ -10,8 +10,7 @@ public class ComponentBase : Microsoft.AspNetCore.Components.ComponentBase
 Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.Object 'System.Object') &#129106; [Microsoft.AspNetCore.Components.ComponentBase](https://docs.microsoft.com/en-us/dotnet/api/Microsoft.AspNetCore.Components.ComponentBase 'Microsoft.AspNetCore.Components.ComponentBase') &#129106; ComponentBase
 
 Derived  
-&#8627; [Animation](EficazFramework.Components/Animation.md 'EficazFramework.Components.Animation')  
-&#8627; [BaseItemsControl&lt;TChildComponent&gt;](EficazFramework.Components/BaseItemsControl_TChildComponent_.md 'EficazFramework.Components.BaseItemsControl<TChildComponent>')
+&#8627; [Animation](EficazFramework.Components/Animation.md 'EficazFramework.Components.Animation')
 
 | Properties | |
 | :--- | :--- |

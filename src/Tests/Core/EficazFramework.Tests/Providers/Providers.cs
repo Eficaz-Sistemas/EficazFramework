@@ -11,7 +11,6 @@ using System.Threading;
 using EficazFramework.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using EficazFramework.Providers;
-using FluentAssertions;
 
 namespace EficazFramework.Providers;
 

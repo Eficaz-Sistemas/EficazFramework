@@ -16,7 +16,7 @@ Implements [System.ComponentModel.INotifyPropertyChanged](https://docs.microsoft
 | Constructors | |
 | :--- | :--- |
 | [ApplicationInstance()](EficazFramework.Application/ApplicationInstance/ApplicationInstance().md 'EficazFramework.Application.ApplicationInstance.ApplicationInstance()') | |
-| [ApplicationInstance(ApplicationDefinition, SectionManager)](EficazFramework.Application/ApplicationInstance/ApplicationInstance(ApplicationDefinition,SectionManager).md 'EficazFramework.Application.ApplicationInstance.ApplicationInstance(EficazFramework.Application.ApplicationDefinition, EficazFramework.Application.SectionManager)') | |
+| [ApplicationInstance(ApplicationDefinition, ISectionManager)](EficazFramework.Application/ApplicationInstance/ApplicationInstance(ApplicationDefinition,ISectionManager).md 'EficazFramework.Application.ApplicationInstance.ApplicationInstance(EficazFramework.Application.ApplicationDefinition, EficazFramework.Application.ISectionManager)') | |
 
 | Fields | |
 | :--- | :--- |

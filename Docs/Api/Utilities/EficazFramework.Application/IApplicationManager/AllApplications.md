@@ -1,12 +1,12 @@
 #### [EficazFramework.Utilities](EficazFrameworkUtilities.md 'EficazFramework Utilities')
-### [EficazFramework.Application](EficazFrameworkUtilities.md#EficazFramework.Application 'EficazFramework.Application').[ApplicationManager](EficazFramework.Application/ApplicationManager.md 'EficazFramework.Application.ApplicationManager')
+### [EficazFramework.Application](EficazFrameworkUtilities.md#EficazFramework.Application 'EficazFramework.Application').[IApplicationManager](EficazFramework.Application/IApplicationManager.md 'EficazFramework.Application.IApplicationManager')
 
-## ApplicationManager.AllAplications Property
+## IApplicationManager.AllApplications Property
 
-Listagem de aplicações disponíveis para trabalho (pode ser utilizada como menu principal)
+Cache de aplicativos em execução
 
 ```csharp
-public System.Collections.ObjectModel.ObservableCollection<EficazFramework.Application.ApplicationDefinition> AllAplications { get; }
+System.Collections.ObjectModel.ObservableCollection<EficazFramework.Application.ApplicationDefinition> AllApplications { get; }
 ```
 
 #### Property Value

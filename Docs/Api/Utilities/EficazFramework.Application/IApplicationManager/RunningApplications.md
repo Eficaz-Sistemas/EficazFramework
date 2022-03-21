@@ -1,12 +1,12 @@
 #### [EficazFramework.Utilities](EficazFrameworkUtilities.md 'EficazFramework Utilities')
-### [EficazFramework.Application](EficazFrameworkUtilities.md#EficazFramework.Application 'EficazFramework.Application').[ApplicationManager](EficazFramework.Application/ApplicationManager.md 'EficazFramework.Application.ApplicationManager')
+### [EficazFramework.Application](EficazFrameworkUtilities.md#EficazFramework.Application 'EficazFramework.Application').[IApplicationManager](EficazFramework.Application/IApplicationManager.md 'EficazFramework.Application.IApplicationManager')
 
-## ApplicationManager.RunningAplications Property
+## IApplicationManager.RunningApplications Property
 
 Cache de aplicativos em execução
 
 ```csharp
-public System.Collections.ObjectModel.ObservableCollection<EficazFramework.Application.ApplicationInstance> RunningAplications { get; }
+System.Collections.ObjectModel.ObservableCollection<EficazFramework.Application.ApplicationInstance> RunningApplications { get; }
 ```
 
 #### Property Value

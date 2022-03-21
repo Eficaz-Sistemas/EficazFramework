@@ -7,35 +7,96 @@ using System.IO;
 using System.Linq;
 
 namespace EficazFramework.Application;
-public class ApplicationManager
+
+public interface IApplicationManager
 {
-    public ApplicationManager()
+    /// <summary>
+    /// Inicia e retorna uma nova instância de ApplicationManager.
+    /// </summary>
+    public static IApplicationManager Create()
     {
-        _sectionManager = new(this);
-        Instance = this;
+        return new ApplicationManager();
     }
 
     /// <summary>
     /// Retorna em padrão singleton a Última Instância de ApplicationManager instanciada.
     /// </summary>
-    public static ApplicationManager Instance { get; private set; }
-
-    private SectionManager _sectionManager;
+    public static IApplicationManager Instance { get; private set; }
 
     /// <summary>
     /// Instância de SectionManager para gestão de múltiplas área de trabalho.
     /// </summary>
-    public SectionManager SectionManager => _sectionManager;
-
-    /// <summary>
-    /// Listagem de aplicações disponíveis para trabalho (pode ser utilizada como menu principal)
-    /// </summary>
-    public ObservableCollection<ApplicationDefinition> AllAplications { get; } = new ObservableCollection<ApplicationDefinition>();
+    public ISectionManager SectionManager { get; }
 
     /// <summary>
     /// Cache de aplicativos em execução
     /// </summary>
-    public ObservableCollection<ApplicationInstance> RunningAplications { get; } = new ObservableCollection<ApplicationInstance>();
+    public ObservableCollection<ApplicationDefinition> AllApplications { get; }
+
+    /// <summary>
+    /// Cache de aplicativos em execução
+    /// </summary>
+    public ObservableCollection<ApplicationInstance> RunningApplications { get; }
+
+    /// <summary>
+    /// Retorna se um aplicativo está em execução atualmente.
+    /// </summary>
+    /// <param name="application">Instância de aplicativo a ser verificado.</param>
+    /// <returns></returns>
+    public bool IsRunning(ApplicationDefinition application);
+
+    /// <summary>
+    /// Ativa uma aplicação para trabalho. Caso ainda não esteja em execução, uma nova intância é criada.
+    /// </summary>
+    /// <param name="application">Manifesto de aplicativo a ser iniciado ou ativado.</param>
+    public void Activate(ApplicationDefinition application);
+
+    public event EventHandler ActiveAppChanged;
+}
+
+internal class ApplicationManager : IApplicationManager
+{
+    internal ApplicationManager()
+    {
+        _sectionManager = new SectionManager(this);
+        Instance = this;
+    }
+
+    private static IApplicationManager _instance = null;
+    /// <summary>
+    /// Retorna em padrão singleton a Última Instância de ApplicationManager instanciada.
+    /// </summary>
+    public static IApplicationManager Instance 
+    { 
+        get
+        {
+            if (_instance == null) 
+                _instance = new ApplicationManager();
+
+            return _instance;
+        }
+        private set
+        {
+            _instance = value;
+        }
+    }
+
+    private ISectionManager _sectionManager;
+
+    /// <summary>
+    /// Instância de SectionManager para gestão de múltiplas área de trabalho.
+    /// </summary>
+    public ISectionManager SectionManager => _sectionManager;
+
+    /// <summary>
+    /// Listagem de aplicações disponíveis para trabalho (pode ser utilizada como menu principal)
+    /// </summary>
+    public ObservableCollection<ApplicationDefinition> AllApplications { get; } = new ObservableCollection<ApplicationDefinition>();
+
+    /// <summary>
+    /// Cache de aplicativos em execução
+    /// </summary>
+    public ObservableCollection<ApplicationInstance> RunningApplications { get; } = new ObservableCollection<ApplicationInstance>();
 
     /// <summary>
     /// Retorna se um aplicativo está em execução atualmente.
@@ -44,7 +105,7 @@ public class ApplicationManager
     /// <returns></returns>
     public bool IsRunning(ApplicationDefinition application)
     {
-        return (RunningAplications.Where(app => app.Metadata == application && (app.SessionID == 0 | app.SessionID == _sectionManager.CurrentSection.ID)).Any());
+        return (RunningApplications.Where(app => app.Metadata == application && (app.SessionID == 0 | app.SessionID == _sectionManager.CurrentSection.ID)).Any());
     }
 
     /// <summary>
@@ -58,12 +119,12 @@ public class ApplicationManager
         if (!running)
         {
             instance = new ApplicationInstance(application, _sectionManager);
-            RunningAplications.Add(instance);
+            RunningApplications.Add(instance);
             instance.AppClosed += AppClosed;
         }
         else
         {
-            instance = RunningAplications.Where(app => app.Metadata == application && (app.SessionID == 0 | app.SessionID == _sectionManager.CurrentSection.ID)).FirstOrDefault();
+            instance = RunningApplications.Where(app => app.Metadata == application && (app.SessionID == 0 | app.SessionID == _sectionManager.CurrentSection.ID)).FirstOrDefault();
         }
         ActiveAppChanged?.Invoke(instance, EventArgs.Empty);
     }
@@ -74,7 +135,7 @@ public class ApplicationManager
         if (instance != null)
         {
             instance.AppClosed -= AppClosed;
-            RunningAplications.Remove(instance);
+            RunningApplications.Remove(instance);
         }
     }
 
@@ -120,7 +181,7 @@ public class ApplicationDefinition : INotifyPropertyChanged
 
 public sealed class ApplicationInstance : ApplicationDefinition, INotifyPropertyChanged, IDisposable
 {
-    internal ApplicationInstance(ApplicationDefinition fromDefinition, SectionManager sectionManager)
+    internal ApplicationInstance(ApplicationDefinition fromDefinition, ISectionManager sectionManager)
     {
         Metadata = fromDefinition;
         SplashScreen = fromDefinition.SplashScreen;

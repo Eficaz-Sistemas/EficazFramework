@@ -7,5 +7,7 @@
 public event EventHandler ActiveAppChanged;
 ```
 
+Implements [ActiveAppChanged](EficazFramework.Application/IApplicationManager/ActiveAppChanged.md 'EficazFramework.Application.IApplicationManager.ActiveAppChanged')
+
 #### Event Type
 [System.EventHandler](https://docs.microsoft.com/en-us/dotnet/api/System.EventHandler 'System.EventHandler')

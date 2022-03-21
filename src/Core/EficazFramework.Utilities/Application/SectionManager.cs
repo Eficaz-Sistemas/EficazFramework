@@ -8,9 +8,36 @@ using System.Linq;
 
 namespace EficazFramework.Application;
 
-public class SectionManager : INotifyPropertyChanged
+public interface ISectionManager
 {
-    internal SectionManager(ApplicationManager applicationManager) : base()
+    /// <summary>
+    /// Contém informações acerca da Seção Ativa.
+    /// </summary>
+    public Section CurrentSection { get; set; }
+
+    /// <summary>
+    /// Instância de ApplicationManager para sincronização de aplicativos por área de trabalho
+    /// </summary>
+    public IApplicationManager ApplicationManager { get; }
+
+    /// <summary>
+    /// Listagem de Seções Iniciadas (aka "Múltiplas áreas de trabalho")
+    /// 
+    /// </summary>
+    public ReadOnlyCollection<Section> Sections { get; }
+
+    public void ActivateSection(long ID);
+    public void ActivateSection(Section section, bool update = false);
+    public void DisposeSection(long ID);
+    public void DisposeSection(Section section);
+
+    public event PropertyChangedEventHandler PropertyChanged;
+    public event EventHandler CurrentSectionChanged;
+}
+
+internal class SectionManager : ISectionManager, INotifyPropertyChanged
+{
+    internal SectionManager(IApplicationManager applicationManager) : base()
     {
         _appManager = applicationManager;
         SectionsInternal.Add(new Section(0) { Name = "Public" });
@@ -18,11 +45,11 @@ public class SectionManager : INotifyPropertyChanged
         SectionsInternal.CollectionChanged += Sections_CollectionChanged;
     }
 
-    private ApplicationManager _appManager;
+    private IApplicationManager _appManager;
     /// <summary>
     /// Instância de ApplicationManager para sincronização de aplicativos por área de trabalho
     /// </summary>
-    public ApplicationManager ApplicationManager => _appManager;
+    public IApplicationManager ApplicationManager => _appManager;
 
     private Section _current;
     /// <summary>
@@ -70,11 +97,11 @@ public class SectionManager : INotifyPropertyChanged
 
             foreach (Section old in e.OldItems)
             {
-                var apps = _appManager.RunningAplications.Where((e) => e.SessionID == old.ID);
+                var apps = _appManager.RunningApplications.Where((e) => e.SessionID == old.ID);
                 foreach (ApplicationInstance app in apps)
                 {
                     app.Dispose();
-                    _appManager.RunningAplications.Remove(app);
+                    _appManager.RunningApplications.Remove(app);
                 }
                 SectionsIDs.Remove(old.ID);
             }

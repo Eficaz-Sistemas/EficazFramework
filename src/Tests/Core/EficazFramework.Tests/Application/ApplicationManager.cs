@@ -8,11 +8,11 @@ namespace EficazFramework.Application;
 
 public class Apps
 {
-    EficazFramework.Application.ApplicationManager _appManager = new();
+    EficazFramework.Application.IApplicationManager _appManager = EficazFramework.Application.IApplicationManager.Create();
 
     private void GenerateAppList()
     {
-        if (_appManager.AllAplications.Count > 0)
+        if (_appManager.AllApplications.Count > 0)
             return;
 
         EficazFramework.Application.ApplicationDefinition index = new()
@@ -52,27 +52,27 @@ public class Apps
             Title = "Manuais",
             Condition = "AppTitle = value1"
         };
-        _appManager.AllAplications.Add(index);
-        _appManager.AllAplications.Add(clientes);
-        _appManager.AllAplications.Add(produtos);
-        _appManager.AllAplications.Add(requisicoes);
-        _appManager.AllAplications.Add(cobranca);
-        _appManager.AllAplications.Add(suporte);
-        _appManager.AllAplications.Add(manuais);
+        _appManager.AllApplications.Add(index);
+        _appManager.AllApplications.Add(clientes);
+        _appManager.AllApplications.Add(produtos);
+        _appManager.AllApplications.Add(requisicoes);
+        _appManager.AllApplications.Add(cobranca);
+        _appManager.AllApplications.Add(suporte);
+        _appManager.AllApplications.Add(manuais);
     }
 
     [Test, Order(0)]
     public void Init()
     {
-        _appManager.AllAplications.Count.Should().Be(0);
-        _appManager.RunningAplications.Count.Should().Be(0);
+        _appManager.AllApplications.Count.Should().Be(0);
+        _appManager.RunningApplications.Count.Should().Be(0);
     }
 
     [Test, Order(1)]
     public void CreateList()
     {
         GenerateAppList();
-        var list = _appManager.AllAplications;
+        var list = _appManager.AllApplications;
         list.Count.Should().Be(7);
         foreach (var app in list)
         {
@@ -86,15 +86,15 @@ public class Apps
     public void ActivateAndClose()
     {
         GenerateAppList();
-        _appManager.AllAplications[1].Activate();
-        _appManager.RunningAplications.Count.Should().Be(1);
-        _appManager.RunningAplications[0].ToString().Should().Be("[0] - Clientes");
-        _appManager.AllAplications[5].Activate();
-        _appManager.RunningAplications.Count.Should().Be(2);
+        _appManager.AllApplications[1].Activate();
+        _appManager.RunningApplications.Count.Should().Be(1);
+        _appManager.RunningApplications[0].ToString().Should().Be("[0] - Clientes");
+        _appManager.AllApplications[5].Activate();
+        _appManager.RunningApplications.Count.Should().Be(2);
         try
         {
             Resources.Strings.Application.Culture = Resources.Strings.Application.Culture;
-            _appManager.AllAplications[4].Activate();
+            _appManager.AllApplications[4].Activate();
             throw new NullReferenceException("bad");
 
         }
@@ -102,26 +102,26 @@ public class Apps
         {
             ex.Message.Should().Be(Resources.Strings.Application.NoSessionForPrivateApp);
         }
-        _appManager.RunningAplications.First().Content.Should().BeNull();
-        _appManager.RunningAplications.First().NotifyContent.Should().BeNull();
-        _appManager.RunningAplications.First().PropertyChanged += PropertyChanged;
-        _appManager.RunningAplications.First().Content = "client app";
-        _appManager.RunningAplications.First().PropertyChanged -= PropertyChanged;
-        _appManager.RunningAplications.First().NotifyContent.Should().Be("3 novos");
+        _appManager.RunningApplications.First().Content.Should().BeNull();
+        _appManager.RunningApplications.First().NotifyContent.Should().BeNull();
+        _appManager.RunningApplications.First().PropertyChanged += PropertyChanged;
+        _appManager.RunningApplications.First().Content = "client app";
+        _appManager.RunningApplications.First().PropertyChanged -= PropertyChanged;
+        _appManager.RunningApplications.First().NotifyContent.Should().Be("3 novos");
 
-        _appManager.RunningAplications.Last().Content = new EficazFramework.Repositories.EntityRepository<Resources.Mocks.Classes.Blog>();
-        _appManager.RunningAplications.Last().Close();
-        _appManager.RunningAplications.Count.Should().Be(1);
+        _appManager.RunningApplications.Last().Content = new EficazFramework.Repositories.EntityRepository<Resources.Mocks.Classes.Blog>();
+        _appManager.RunningApplications.Last().Close();
+        _appManager.RunningApplications.Count.Should().Be(1);
 
-        _appManager.AllAplications[6].Condition.Should().Be("AppTitle = value1");
+        _appManager.AllApplications[6].Condition.Should().Be("AppTitle = value1");
     }
 
     [Test, Order(3)]
     public void AvoidDuplicated()
     {
         GenerateAppList();
-        _appManager.AllAplications[1].Activate();
-        _appManager.RunningAplications.Count.Should().Be(1);
+        _appManager.AllApplications[1].Activate();
+        _appManager.RunningApplications.Count.Should().Be(1);
     }
 
     private void PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)

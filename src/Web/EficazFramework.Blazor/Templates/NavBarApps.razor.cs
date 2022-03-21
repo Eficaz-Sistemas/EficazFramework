@@ -8,6 +8,7 @@ namespace EficazFramework.Templates;
 
 public partial class NavBarApps
 {
+    [Inject] public EficazFramework.Application.IApplicationManager AppManager { get; set; }
     [CascadingParameter] private EficazFramework.Layouts.MudAppBarDrawerLayout DrawerLayout { get; set; }
 
     //internal MudBlazor.MudTextField<string> searchTb;
@@ -39,7 +40,7 @@ public partial class NavBarApps
     {
         get
         {
-            return Application.ApplicationManager.Instance?.AllAplications.Where(eapp =>
+            return AppManager.AllApplications.Where(eapp =>
                 CultureInfo.InvariantCulture.CompareInfo.IndexOf(eapp.TooltipTilte, Search ?? "", CompareOptions.IgnoreNonSpace | CompareOptions.IgnoreCase) >= 0 ||
                 CultureInfo.InvariantCulture.CompareInfo.IndexOf(eapp.Group, Search ?? "", CompareOptions.IgnoreNonSpace | CompareOptions.IgnoreCase) >= 0).ToList();
         }

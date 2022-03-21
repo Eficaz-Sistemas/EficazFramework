@@ -4,17 +4,18 @@
 ## SectionManager Class
 
 ```csharp
-public class SectionManager :
+internal class SectionManager :
+EficazFramework.Application.ISectionManager,
 System.ComponentModel.INotifyPropertyChanged
 ```
 
 Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.Object 'System.Object') &#129106; SectionManager
 
-Implements [System.ComponentModel.INotifyPropertyChanged](https://docs.microsoft.com/en-us/dotnet/api/System.ComponentModel.INotifyPropertyChanged 'System.ComponentModel.INotifyPropertyChanged')
+Implements [ISectionManager](EficazFramework.Application/ISectionManager.md 'EficazFramework.Application.ISectionManager'), [System.ComponentModel.INotifyPropertyChanged](https://docs.microsoft.com/en-us/dotnet/api/System.ComponentModel.INotifyPropertyChanged 'System.ComponentModel.INotifyPropertyChanged')
 
 | Constructors | |
 | :--- | :--- |
-| [SectionManager(ApplicationManager)](EficazFramework.Application/SectionManager/SectionManager(ApplicationManager).md 'EficazFramework.Application.SectionManager.SectionManager(EficazFramework.Application.ApplicationManager)') | |
+| [SectionManager(IApplicationManager)](EficazFramework.Application/SectionManager/SectionManager(IApplicationManager).md 'EficazFramework.Application.SectionManager.SectionManager(EficazFramework.Application.IApplicationManager)') | |
 
 | Fields | |
 | :--- | :--- |
