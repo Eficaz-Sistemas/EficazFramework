@@ -91,17 +91,8 @@ public class Apps
         _appManager.RunningApplications[0].ToString().Should().Be("[0] - Clientes");
         _appManager.AllApplications[5].Activate();
         _appManager.RunningApplications.Count.Should().Be(2);
-        try
-        {
-            Resources.Strings.Application.Culture = Resources.Strings.Application.Culture;
-            _appManager.AllApplications[4].Activate();
-            throw new NullReferenceException("bad");
+        _appManager.Invoking(app => app.AllApplications[4].Activate()).Should().Throw<InvalidDataException>();
 
-        }
-        catch (InvalidDataException ex)
-        {
-            ex.Message.Should().Be(Resources.Strings.Application.NoSessionForPrivateApp);
-        }
         _appManager.RunningApplications.First().Content.Should().BeNull();
         _appManager.RunningApplications.First().NotifyContent.Should().BeNull();
         _appManager.RunningApplications.First().PropertyChanged += PropertyChanged;

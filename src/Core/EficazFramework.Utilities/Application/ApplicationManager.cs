@@ -183,6 +183,8 @@ public sealed class ApplicationInstance : ApplicationDefinition, INotifyProperty
 {
     internal ApplicationInstance(ApplicationDefinition fromDefinition, ISectionManager sectionManager)
     {
+        var sID = sectionManager.CurrentSection?.ID ?? 0;
+
         Metadata = fromDefinition;
         SplashScreen = fromDefinition.SplashScreen;
         Icon = fromDefinition.Icon;
@@ -198,7 +200,7 @@ public sealed class ApplicationInstance : ApplicationDefinition, INotifyProperty
         Attributes = fromDefinition.Attributes;
         IsLoading = true;
         if (!fromDefinition.IsPublic)
-            SessionID = sectionManager.CurrentSection?.ID ?? throw new InvalidDataException(Resources.Strings.Application.NoSessionForPrivateApp);
+            SessionID = sID != 0 ? sID : throw new InvalidDataException(Resources.Strings.Application.NoSessionForPrivateApp);
         else
             SessionID = 0;
     }
