@@ -198,12 +198,9 @@ public sealed class ApplicationInstance : ApplicationDefinition, INotifyProperty
         Attributes = fromDefinition.Attributes;
         IsLoading = true;
         if (!fromDefinition.IsPublic)
-        {
-            if  (sectionManager.CurrentSection?.ID == 0) throw new InvalidDataException(Resources.Strings.Application.NoSessionForPrivateApp);
-            //SessionID = sectionManager.CurrentSection?.ID ?? throw new InvalidDataException(Resources.Strings.Application.NoSessionForPrivateApp);
-        }
-        else { SessionID = 0; }
-
+            SessionID = sectionManager.CurrentSection?.ID ?? throw new InvalidDataException(Resources.Strings.Application.NoSessionForPrivateApp);
+        else
+            SessionID = 0;
     }
 
     internal ApplicationInstance()

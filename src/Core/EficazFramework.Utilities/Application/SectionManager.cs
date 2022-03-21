@@ -97,7 +97,7 @@ internal class SectionManager : ISectionManager, INotifyPropertyChanged
 
             foreach (Section old in e.OldItems)
             {
-                var apps = _appManager.RunningApplications.Where((e) => e.SessionID == old.ID);
+                var apps = _appManager.RunningApplications.Where((e) => e.SessionID == old.ID).ToList();
                 foreach (ApplicationInstance app in apps)
                 {
                     app.Dispose();
