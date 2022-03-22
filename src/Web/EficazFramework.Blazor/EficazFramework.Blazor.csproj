@@ -52,6 +52,14 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Remove="Templates\NavBarApps.razor.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Remove="Templates\NavBarApps.razor" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Remove="Components\Panels\l5t002mw.04g~" />
   </ItemGroup>
 
@@ -66,7 +74,6 @@
   	<None Include="Templates\Applications.razor" />
   	<None Include="Templates\CookieConsent.razor" />
   	<None Include="Templates\Footer.razor" />
-  	<None Include="Templates\NavBarApps.razor" />
   	<None Include="Templates\StartMenu.razor" />
   </ItemGroup>
 	
