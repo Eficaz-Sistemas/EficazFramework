@@ -78,6 +78,10 @@ public class EntityTests
         instance.IE = "isento";
         instance.Validate(null).Count.Should().Be(4);
 
+        instance.IE2 = "333";
+        instance.Validate("IE2").Count.Should().Be(1);
+        instance.IE2 = null;
+
         instance.Document = "10608025000126";
         instance.Validate(null).Count.Should().Be(4);
 
@@ -92,6 +96,11 @@ public class EntityTests
 
         instance.CNPJ = "10608025000127";
         instance.Validate(null).Count.Should().Be(2);
+
+        //non-existant property
+        instance.Invoking((v) => v.Validate("MyProperty")).Should().Throw<ArgumentNullException>();
+
+
 
     }
 
@@ -135,12 +144,17 @@ public class EntityTests
         attr3.IsValid("ISENTO").Should().BeTrue();
         attr3.IsValid("isento").Should().BeTrue();
 
-        attr3 = new(null);
-        attr3.IsValid(null).Should().BeTrue();
-        attr3.IsValid("ISENTO").Should().BeTrue();
-        attr3.IsValid("isento").Should().BeTrue();
+        EficazFramework.Validation.DataAnnotations.IncricaoEstadual attr4 = new(null);
+        attr4.IsValid(null).Should().BeTrue();
+        attr4.IsValid("333").Should().BeFalse();
+        attr4.IsValid("ISENTO").Should().BeTrue();
+        attr4.IsValid("isento").Should().BeTrue();
 
+        EficazFramework.Validation.DataAnnotations.IncricaoEstadual attr5 = new("");
+        attr5.IsValid("123").Should().BeFalse();
 
+        EficazFramework.Validation.DataAnnotations.IncricaoEstadual attr6 = new("  ");
+        attr6.IsValid("123").Should().BeFalse();
     }
 
     [Test, Order(3)]
@@ -176,6 +190,7 @@ public class EntityTests
         instance.ReportErrorsChanged(nameof(SampleClass.Name));
         instance.ErrorText(nameof(instance.Name)).Length.Should().BeGreaterThan(0);
         instance.Validate(null).Count.Should().Be(3);
+
     }
 
 }
@@ -202,6 +217,9 @@ public class SampleClass : EntityBase
 
     [Validation.DataAnnotations.IncricaoEstadual("UF")]
     public string IE { get; set; }
+
+    [Validation.DataAnnotations.IncricaoEstadual(null)]
+    public string IE2 { get; set; }
 
     public string UF { get; set; }
 

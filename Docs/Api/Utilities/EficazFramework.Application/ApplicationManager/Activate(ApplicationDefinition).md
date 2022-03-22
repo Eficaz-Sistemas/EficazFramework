@@ -15,3 +15,5 @@ public void Activate(EficazFramework.Application.ApplicationDefinition applicati
 `application` [ApplicationDefinition](EficazFramework.Application/ApplicationDefinition.md 'EficazFramework.Application.ApplicationDefinition')
 
 Manifesto de aplicativo a ser iniciado ou ativado.
+
+Implements [Activate(ApplicationDefinition)](EficazFramework.Application/IApplicationManager/Activate(ApplicationDefinition).md 'EficazFramework.Application.IApplicationManager.Activate(EficazFramework.Application.ApplicationDefinition)')

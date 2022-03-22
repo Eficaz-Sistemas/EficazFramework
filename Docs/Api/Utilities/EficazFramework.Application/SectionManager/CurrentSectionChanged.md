@@ -7,5 +7,7 @@
 public event EventHandler CurrentSectionChanged;
 ```
 
+Implements [CurrentSectionChanged](EficazFramework.Application/ISectionManager/CurrentSectionChanged.md 'EficazFramework.Application.ISectionManager.CurrentSectionChanged')
+
 #### Event Type
 [System.EventHandler](https://docs.microsoft.com/en-us/dotnet/api/System.EventHandler 'System.EventHandler')

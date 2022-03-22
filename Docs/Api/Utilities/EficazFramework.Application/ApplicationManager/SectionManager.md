@@ -6,8 +6,10 @@
 Instância de SectionManager para gestão de múltiplas área de trabalho.
 
 ```csharp
-public EficazFramework.Application.SectionManager SectionManager { get; }
+public EficazFramework.Application.ISectionManager SectionManager { get; }
 ```
 
+Implements [SectionManager](EficazFramework.Application/IApplicationManager/SectionManager.md 'EficazFramework.Application.IApplicationManager.SectionManager')
+
 #### Property Value
-[SectionManager](EficazFramework.Application/SectionManager.md 'EficazFramework.Application.SectionManager')
+[ISectionManager](EficazFramework.Application/ISectionManager.md 'EficazFramework.Application.ISectionManager')

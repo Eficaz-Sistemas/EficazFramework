@@ -2,12 +2,14 @@
 using FluentAssertions;
 using NUnit.Framework;
 using System;
+using System.Security.Policy;
 
 namespace EficazFramework.ViewModels;
 
 public class ViewModel
 {
     private ViewModels.ViewModel<Resources.Mocks.Classes.Blog> Vm;
+
     public void Setup(long? sectionID = null)
     {
         if (sectionID.HasValue)
@@ -109,5 +111,44 @@ public class ViewModel
             ex = constructorEx;
         }
         ex.Should().NotBeNull();
+    }
+
+    [Test, Order(3)]
+    public void ServiceUtilsTest()
+    {
+        Setup();
+        Vm.WithNavigationByIndex().Should().NotBeNull();
+        Vm.Invoking(y => y.WithNavigationByIndex()).Should().Throw<ArgumentException>();
+        Vm.RemoveNavigationByIndex();
+
+        Vm.AddEntityFramework();
+        Vm.Invoking(y => y.AddEntityFramework()).Should().Throw<ArgumentException>();
+        Vm.RemoveEntityFramework();
+
+        Vm.AddSingledEdit();
+        Vm.Invoking(y => y.AddSingledEdit()).Should().Throw<ArgumentException>();
+        Vm.RemoveSingleEdit();
+
+        Vm.Invoking(y => y.AddSingledEditDetail(p => p.Posts)).Should().Throw<PolicyException>();
+        Vm.AddSingledEdit();
+        Vm.AddSingledEditDetail(p => p.Posts);
+        Vm.Invoking(y => y.AddSingledEditDetail(p => p.Posts)).Should().Throw<ArgumentException>();
+        Vm.RemoveSingleEditDetail<Resources.Mocks.Classes.Blog, Resources.Mocks.Classes.Post>();
+        Vm.RemoveSingleEdit();
+
+        Vm.AddTabular();
+        Vm.Invoking(y => y.AddTabular()).Should().Throw<ArgumentException>();
+        Vm.RemoveTabular();
+
+        Vm.Invoking(y => y.AddTabularEditDetail(p => p.Posts)).Should().Throw<PolicyException>();
+        Vm.AddSingledEdit();
+        Vm.AddTabularEditDetail(p => p.Posts);
+        Vm.Invoking(y => y.AddTabularEditDetail(p => p.Posts)).Should().Throw<ArgumentException>();
+        Vm.Services.Clear();
+
+        Vm.AddCustom("customOne", new Resources.Mocks.Classes.CustomViewModelService<Resources.Mocks.Classes.Blog>(Vm));
+        Vm.RemoveCustom("customOne");
+
+        Vm.Invoking(p => Vm.RemoveCustom("customTwo")).Should().Throw<System.Collections.Generic.KeyNotFoundException>();
     }
 }

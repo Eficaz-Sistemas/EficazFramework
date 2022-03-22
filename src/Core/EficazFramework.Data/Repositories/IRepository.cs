@@ -215,9 +215,7 @@ public abstract class RepositoryBase<T> : INotifyPropertyChanged, IDisposable wh
     /// <summary>
     /// Informa à fonte de dados que o item T deve ser adicionado a unidade de persistência do repositório
     /// </summary>
-    internal virtual void ItemAdded(object item)
-    {
-    }
+    internal abstract void ItemAdded(object item);
 
 
     /// <summary>
@@ -255,10 +253,7 @@ public abstract class RepositoryBase<T> : INotifyPropertyChanged, IDisposable wh
     /// Informa à fonte de dados que o item T deve ser excluído a unidade de persistência do repositório
     /// </summary>
     /// <param name="item"></param>
-    internal virtual void ItemDeleted(object item)
-    {
-    }
-
+    internal abstract void ItemDeleted(object item);
 
 
     /// <summary>

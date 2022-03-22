@@ -127,13 +127,15 @@ public static partial class ServiceUtils
     /// <summary>
     /// Remove um serviço customizado, criado em ambientes externos.
     /// </summary>
-    public static ViewModel<T> RemoveCustom<T>(this ViewModel<T> viewmodel, ViewModelService<T> service, string[] removeCommandsByKeys) where T : class
+    public static ViewModel<T> RemoveCustom<T>(this ViewModel<T> viewmodel, string serviceKey, string[] removeCommandsByKeys = null) where T : class
     {
-        foreach (var cmdkey in removeCommandsByKeys)
-            viewmodel.Commands.Remove(cmdkey);
-        string entrykey = viewmodel.Services.Where(f => object.ReferenceEquals(f.GetType(), service.GetType())).FirstOrDefault().Key;
-        viewmodel._servicesInternal.Remove(entrykey);
-        service.Dispose();
+        if (removeCommandsByKeys != null)
+            foreach (var cmdkey in removeCommandsByKeys)
+                viewmodel.Commands.Remove(cmdkey);
+
+        var svc = viewmodel.Services[serviceKey];
+        viewmodel._servicesInternal.Remove(serviceKey);
+        svc.Dispose();
         return viewmodel;
     }
 }

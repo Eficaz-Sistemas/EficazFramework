@@ -372,4 +372,29 @@ public class ExpressionItemTests
         result.Should().BeNull();
 
     }
+
+    [Test]
+    public void NullSelectionTests()
+    {
+        // property
+        ExpressionProperty TeamProperty = new()
+        {
+            PropertyPath = "Team",
+            DisplayName = "Time",
+            Editor = ExpressionEditor.EnumSelection,
+            EnumType = typeof(Team),
+            DefaultOperator = Enums.CompareMethod.Different,
+            Operators = new()
+            {
+                Enums.CompareMethod.Different,
+                Enums.CompareMethod.Equals
+            }
+        };
+
+        // model
+        ExpressionItem item = new();
+        item.SelectedProperty.Should().BeNull();
+        item.EnumValues.Should().BeNull();
+
+    }
 }

@@ -28,7 +28,7 @@ class DbReader<TProvider> where TProvider : DataProviderBase
         dbContext.Database.EnsureCreated();
 
         // seed
-        for (int i = 0; i < 100; i++)
+        for (int i = 0; i < 99; i++)
         {
             dbContext.Add(new Resources.Mocks.Classes.Blog()
             {
@@ -36,6 +36,11 @@ class DbReader<TProvider> where TProvider : DataProviderBase
                 Name = $"Blog {i}"
             });
         }
+        dbContext.Add(new Resources.Mocks.Classes.Blog()
+        {
+            Id = System.Guid.NewGuid(),
+            Name = null
+        });
         dbContext.SaveChanges();
         dbContext.Dispose();
     }

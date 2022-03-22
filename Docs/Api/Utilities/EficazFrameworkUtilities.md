@@ -19,6 +19,11 @@
 | [Section](EficazFramework.Application/Section.md 'EficazFramework.Application.Section') | |
 | [SectionManager](EficazFramework.Application/SectionManager.md 'EficazFramework.Application.SectionManager') | |
 
+| Interfaces | |
+| :--- | :--- |
+| [IApplicationManager](EficazFramework.Application/IApplicationManager.md 'EficazFramework.Application.IApplicationManager') | |
+| [ISectionManager](EficazFramework.Application/ISectionManager.md 'EficazFramework.Application.ISectionManager') | |
+
 <a name='EficazFramework.Attributes'></a>
 
 ## EficazFramework.Attributes Namespace

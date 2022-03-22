@@ -11,3 +11,5 @@ public void DisposeSection(EficazFramework.Application.Section section);
 <a name='EficazFramework.Application.SectionManager.DisposeSection(EficazFramework.Application.Section).section'></a>
 
 `section` [Section](EficazFramework.Application/Section.md 'EficazFramework.Application.Section')
+
+Implements [DisposeSection(Section)](EficazFramework.Application/ISectionManager/DisposeSection(Section).md 'EficazFramework.Application.ISectionManager.DisposeSection(EficazFramework.Application.Section)')

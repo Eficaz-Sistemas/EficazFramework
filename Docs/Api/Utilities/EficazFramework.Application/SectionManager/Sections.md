@@ -9,5 +9,7 @@ Listagem de Seções Iniciadas (aka "Múltiplas áreas de trabalho")
 public System.Collections.ObjectModel.ReadOnlyCollection<EficazFramework.Application.Section> Sections { get; }
 ```
 
+Implements [Sections](EficazFramework.Application/ISectionManager/Sections.md 'EficazFramework.Application.ISectionManager.Sections')
+
 #### Property Value
 [System.Collections.ObjectModel.ReadOnlyCollection&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.ObjectModel.ReadOnlyCollection-1 'System.Collections.ObjectModel.ReadOnlyCollection`1')[Section](EficazFramework.Application/Section.md 'EficazFramework.Application.Section')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.ObjectModel.ReadOnlyCollection-1 'System.Collections.ObjectModel.ReadOnlyCollection`1')

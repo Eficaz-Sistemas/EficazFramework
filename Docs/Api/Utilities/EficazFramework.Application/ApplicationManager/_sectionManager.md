@@ -4,8 +4,8 @@
 ## ApplicationManager._sectionManager Field
 
 ```csharp
-private SectionManager _sectionManager;
+private ISectionManager _sectionManager;
 ```
 
 #### Field Value
-[SectionManager](EficazFramework.Application/SectionManager.md 'EficazFramework.Application.SectionManager')
+[ISectionManager](EficazFramework.Application/ISectionManager.md 'EficazFramework.Application.ISectionManager')

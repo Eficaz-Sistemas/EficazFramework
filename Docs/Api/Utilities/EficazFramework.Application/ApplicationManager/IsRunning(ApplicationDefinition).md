@@ -16,5 +16,7 @@ public bool IsRunning(EficazFramework.Application.ApplicationDefinition applicat
 
 Instância de aplicativo a ser verificado.
 
+Implements [IsRunning(ApplicationDefinition)](EficazFramework.Application/IApplicationManager/IsRunning(ApplicationDefinition).md 'EficazFramework.Application.IApplicationManager.IsRunning(EficazFramework.Application.ApplicationDefinition)')
+
 #### Returns
 [System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')

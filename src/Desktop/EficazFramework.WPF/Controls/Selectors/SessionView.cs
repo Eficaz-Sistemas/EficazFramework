@@ -12,25 +12,25 @@ public class SessionView : Control, IDisposable
 
     public SessionView()
     {
-        Applications = new ListCollectionView(Application.ApplicationManager.Instance.RunningAplications)
+        Applications = new ListCollectionView(Application.IApplicationManager.Instance.RunningApplications)
         {
             Filter = (e) =>
-                                    {
-                                        Application.ApplicationInstance app = e as Application.ApplicationInstance;
-                                        return (app.SessionID == 0 || app.SessionID == Application.ApplicationManager.Instance.SectionManager.CurrentSection.ID);
-                                    }
+            {
+                Application.ApplicationInstance app = e as Application.ApplicationInstance;
+                return (app.SessionID == 0 || app.SessionID == Application.IApplicationManager.Instance.SectionManager.CurrentSection.ID);
+            }
         };
-        Sessions = new ListCollectionView(Application.ApplicationManager.Instance.SectionManager.Sections)
+        Sessions = new ListCollectionView(Application.IApplicationManager.Instance.SectionManager.Sections)
         {
             Filter = (e) =>
-                                {
-                                    Application.Section s = e as Application.Section;
-                                    return s.ID != 0;
-                                }
+            {
+                Application.Section s = e as Application.Section;
+                return s.ID != 0;
+            }
         };
         SetValue(OpenSessionsCommandPropertyKey, new Commands.CommandBase(SessionsView_Executed));
         SetValue(NewSessionRequestCommandPropertyKey, new Commands.CommandBase(SessionRequest_Executed));
-        Application.ApplicationManager.Instance.SectionManager.CurrentSectionChanged += OnSessionChanged;
+        Application.IApplicationManager.Instance.SectionManager.CurrentSectionChanged += OnSessionChanged;
 
     }
 
@@ -156,7 +156,7 @@ public class SessionView : Control, IDisposable
 
     public void Dispose()
     {
-        Application.ApplicationManager.Instance.SectionManager.CurrentSectionChanged -= OnSessionChanged;
+        Application.IApplicationManager.Instance.SectionManager.CurrentSectionChanged -= OnSessionChanged;
         GC.SuppressFinalize(this);
     }
 

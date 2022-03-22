@@ -4,20 +4,24 @@
 ## ApplicationManager Class
 
 ```csharp
-public class ApplicationManager
+internal class ApplicationManager :
+EficazFramework.Application.IApplicationManager
 ```
 
 Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.Object 'System.Object') &#129106; ApplicationManager
 
+Implements [IApplicationManager](EficazFramework.Application/IApplicationManager.md 'EficazFramework.Application.IApplicationManager')
+
 | Fields | |
 | :--- | :--- |
+| [_instance](EficazFramework.Application/ApplicationManager/_instance.md 'EficazFramework.Application.ApplicationManager._instance') | |
 | [_sectionManager](EficazFramework.Application/ApplicationManager/_sectionManager.md 'EficazFramework.Application.ApplicationManager._sectionManager') | |
 
 | Properties | |
 | :--- | :--- |
-| [AllAplications](EficazFramework.Application/ApplicationManager/AllAplications.md 'EficazFramework.Application.ApplicationManager.AllAplications') | Listagem de aplicações disponíveis para trabalho (pode ser utilizada como menu principal) |
+| [AllApplications](EficazFramework.Application/ApplicationManager/AllApplications.md 'EficazFramework.Application.ApplicationManager.AllApplications') | Listagem de aplicações disponíveis para trabalho (pode ser utilizada como menu principal) |
 | [Instance](EficazFramework.Application/ApplicationManager/Instance.md 'EficazFramework.Application.ApplicationManager.Instance') | Retorna em padrão singleton a Última Instância de ApplicationManager instanciada. |
-| [RunningAplications](EficazFramework.Application/ApplicationManager/RunningAplications.md 'EficazFramework.Application.ApplicationManager.RunningAplications') | Cache de aplicativos em execução |
+| [RunningApplications](EficazFramework.Application/ApplicationManager/RunningApplications.md 'EficazFramework.Application.ApplicationManager.RunningApplications') | Cache de aplicativos em execução |
 | [SectionManager](EficazFramework.Application/ApplicationManager/SectionManager.md 'EficazFramework.Application.ApplicationManager.SectionManager') | Instância de SectionManager para gestão de múltiplas área de trabalho. |
 
 | Methods | |

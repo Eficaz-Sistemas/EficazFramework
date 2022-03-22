@@ -163,19 +163,6 @@ public class DbConfiguration : IDbConfig, System.ComponentModel.INotifyPropertyC
         CopyFrom(data);
     }
 
-    public static DbConfiguration Get()
-    {
-        DbConfiguration data = null;
-        if (!File.Exists(SettingsPath + _FILE))
-            data = new DbConfiguration();
-
-        if (data == null)
-            data = Serialization.SerializationOperations.FromJsonFile<DbConfiguration>(SettingsPath + _FILE);
-
-        return data;
-    }
-
-
     public void Save()
     {
         if (!Directory.Exists(SettingsPath))

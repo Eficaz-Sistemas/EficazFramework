@@ -6,7 +6,12 @@ using System.Threading.Tasks;
 
 namespace EficazFramework.Services;
 
-public class ThemeProvider
+public interface IThemeProvider
+{
+    public MudBlazor.MudTheme Theme { get; set; }
+}
+
+internal class ThemeProvider : IThemeProvider
 {
     public MudBlazor.MudTheme Theme { get; set; } = new MudBlazor.MudTheme()
     {

@@ -6,8 +6,10 @@
 Instância de ApplicationManager para sincronização de aplicativos por área de trabalho
 
 ```csharp
-public EficazFramework.Application.ApplicationManager ApplicationManager { get; }
+public EficazFramework.Application.IApplicationManager ApplicationManager { get; }
 ```
 
+Implements [ApplicationManager](EficazFramework.Application/ISectionManager/ApplicationManager.md 'EficazFramework.Application.ISectionManager.ApplicationManager')
+
 #### Property Value
-[ApplicationManager](EficazFramework.Application/ApplicationManager.md 'EficazFramework.Application.ApplicationManager')
+[IApplicationManager](EficazFramework.Application/IApplicationManager.md 'EficazFramework.Application.IApplicationManager')

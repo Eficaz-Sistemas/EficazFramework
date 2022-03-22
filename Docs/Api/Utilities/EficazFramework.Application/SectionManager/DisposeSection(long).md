@@ -11,3 +11,5 @@ public void DisposeSection(long ID);
 <a name='EficazFramework.Application.SectionManager.DisposeSection(long).ID'></a>
 
 `ID` [System.Int64](https://docs.microsoft.com/en-us/dotnet/api/System.Int64 'System.Int64')
+
+Implements [DisposeSection(long)](EficazFramework.Application/ISectionManager/DisposeSection(long).md 'EficazFramework.Application.ISectionManager.DisposeSection(long)')

@@ -7,6 +7,8 @@ namespace EficazFramework.Templates;
 
 public partial class Applications
 {
+    [Inject] public EficazFramework.Application.IApplicationManager AppManager { get; set; }
+
     [CascadingParameter] MudBlazor.MudDialogInstance MudDialog { get; set; }
     [CascadingParameter(Name = "MDIContainer")] Components.MDIContainer MDI { get; set; }
 
@@ -38,9 +40,9 @@ public partial class Applications
     {
         get
         {
-            return Application.ApplicationManager.Instance.AllAplications.Where(eapp =>
-                                                                            CultureInfo.InvariantCulture.CompareInfo.IndexOf(eapp.TooltipTilte, Search ?? "", CompareOptions.IgnoreNonSpace | CompareOptions.IgnoreCase) >= 0 ||
-                                                                            CultureInfo.InvariantCulture.CompareInfo.IndexOf(eapp.Group, Search ?? "", CompareOptions.IgnoreNonSpace | CompareOptions.IgnoreCase) >= 0).ToList();
+            return AppManager.AllApplications.Where(eapp =>
+                                                    CultureInfo.InvariantCulture.CompareInfo.IndexOf(eapp.TooltipTilte, Search ?? "", CompareOptions.IgnoreNonSpace | CompareOptions.IgnoreCase) >= 0 ||
+                                                    CultureInfo.InvariantCulture.CompareInfo.IndexOf(eapp.Group, Search ?? "", CompareOptions.IgnoreNonSpace | CompareOptions.IgnoreCase) >= 0).ToList();
         }
     }
 

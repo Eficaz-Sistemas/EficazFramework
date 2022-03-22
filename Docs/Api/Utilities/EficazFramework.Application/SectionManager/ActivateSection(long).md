@@ -11,3 +11,5 @@ public void ActivateSection(long ID);
 <a name='EficazFramework.Application.SectionManager.ActivateSection(long).ID'></a>
 
 `ID` [System.Int64](https://docs.microsoft.com/en-us/dotnet/api/System.Int64 'System.Int64')
+
+Implements [ActivateSection(long)](EficazFramework.Application/ISectionManager/ActivateSection(long).md 'EficazFramework.Application.ISectionManager.ActivateSection(long)')

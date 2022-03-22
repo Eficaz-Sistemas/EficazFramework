@@ -9,5 +9,7 @@ Contém informações acerca da Seção Ativa.
 public EficazFramework.Application.Section CurrentSection { get; set; }
 ```
 
+Implements [CurrentSection](EficazFramework.Application/ISectionManager/CurrentSection.md 'EficazFramework.Application.ISectionManager.CurrentSection')
+
 #### Property Value
 [Section](EficazFramework.Application/Section.md 'EficazFramework.Application.Section')

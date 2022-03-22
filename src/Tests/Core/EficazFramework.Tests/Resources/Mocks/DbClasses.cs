@@ -1,4 +1,5 @@
-﻿using System;
+﻿using EficazFramework.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -29,4 +30,11 @@ internal class Post : Entities.EntityBase
 internal class Owner : Entities.EntityBase
 {
     public string Name { get; set; }
+}
+
+internal class CustomViewModelService<T> : EficazFramework.ViewModels.Services.ViewModelService<T> where T : Entities.EntityBase, Entities.IEntity
+{
+    public CustomViewModelService(ViewModel<T> viewmodel) : base(viewmodel)
+    {
+    }
 }

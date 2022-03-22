@@ -10,7 +10,9 @@ namespace EficazFramework.Components;
 public partial class MDIContainer
 {
     private MudBlazor.MudTabs tabsmanager;
-    private string idtorender;
+    private string? idtorender;
+
+    [Inject] public EficazFramework.Application.IApplicationManager AppManager { get; set; }
 
     [Parameter] public RenderFragment Index { get; set; }
     [Parameter] public int Elevation { get; set; }
@@ -37,16 +39,16 @@ public partial class MDIContainer
     protected IEnumerable<EficazFramework.Application.ApplicationInstance> GetRunningApplications()
     {
 
-        return Application.ApplicationManager.Instance.RunningAplications.Where((e) =>
+        return AppManager.RunningApplications.Where((e) =>
                 {
                     Application.ApplicationInstance app = e as Application.ApplicationInstance;
-                    return (app.SessionID == 0 || app.SessionID == Application.ApplicationManager.Instance?.SectionManager.CurrentSection?.ID);
+                    return (app.SessionID == 0 || app.SessionID == AppManager?.SectionManager.CurrentSection?.ID);
                 }).ToList();
     }
 
     protected string GetTabID(EficazFramework.Application.ApplicationInstance app)
     {
-        return $"sc:{(app.IsPublic ? 0 : Application.ApplicationManager.Instance.SectionManager.CurrentSection.ID)}|app:{app.TooltipTilte}";
+        return $"sc:{(app.IsPublic ? 0 : AppManager.SectionManager.CurrentSection.ID)}|app:{app.TooltipTilte}";
     }
 
 
@@ -88,8 +90,8 @@ public partial class MDIContainer
             return;
         }
 
-        idtorender = $"sc:{(app.IsPublic ? 0 : Application.ApplicationManager.Instance.SectionManager.CurrentSection.ID)}|app:{app.TooltipTilte}";
-        Application.ApplicationManager.Instance.Activate(app);
+        idtorender = $"sc:{(app.IsPublic ? 0 : AppManager.SectionManager.CurrentSection.ID)}|app:{app.TooltipTilte}";
+        AppManager.Activate(app);
         StateHasChanged();
     }
 
@@ -100,7 +102,7 @@ public partial class MDIContainer
         if (instance != null)
         {
 
-            Application.ApplicationManager.Instance.RunningAplications.Remove(app);
+            AppManager.RunningApplications.Remove(app);
             idtorender = null;
             StateHasChanged();
         }

@@ -6,7 +6,7 @@
 Informa à fonte de dados que o item T deve ser excluído a unidade de persistência do repositório
 
 ```csharp
-internal virtual void ItemDeleted(object item);
+internal abstract void ItemDeleted(object item);
 ```
 #### Parameters
 

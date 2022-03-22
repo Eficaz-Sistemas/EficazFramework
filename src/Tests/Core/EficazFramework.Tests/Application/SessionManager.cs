@@ -7,8 +7,8 @@ namespace EficazFramework.Application;
 
 public class Sessions
 {
-    EficazFramework.Application.ApplicationManager _appManager = new();
-    EficazFramework.Application.SectionManager manager;
+    EficazFramework.Application.IApplicationManager _appManager = EficazFramework.Application.IApplicationManager.Create();
+    EficazFramework.Application.ISectionManager manager;
 
     [Test, Order(0)]
     public void Init()
@@ -92,7 +92,11 @@ public class Sessions
     {
         manager.DisposeSection(1);
         manager.CurrentSection.ID.Should().Be(2222);
+        manager.ApplicationManager.Activate(new ApplicationDefinition() { Title = "App001", IsPublic = false });
+        manager.ApplicationManager.Activate(new ApplicationDefinition() { Title = "App002", IsPublic = false });
+        manager.ApplicationManager.RunningApplications.Should().HaveCount(2);
         manager.DisposeSection(manager.CurrentSection);
+        manager.ApplicationManager.RunningApplications.Should().HaveCount(0);
         manager.CurrentSection.ID.Should().Be(0);
     }
 
