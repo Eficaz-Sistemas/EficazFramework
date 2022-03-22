@@ -46,7 +46,10 @@
    - NFS-e
    
 #### <img src="./Assets/blazor.svg" width="24" height="24" style="fill:#512BD4" /> Biblioteca de extensão para Blazor (Server-Side e WebAssembly) 
-   
+
+![Azure DevOps builds](https://efshieldsio.azurewebsites.net:/azure-devops/build/eficazcs/EficazFramework/29?&logo=azurepipelines&logoColor=white&style=flat-square)
+
+
    - Novos Componentes, Templates e Layouts para melhor padronização das aplicações, conforme sua natureza
    - UI baseada em MaterialDesign, utilizando a biblioteca OpenSource [MudBlazor](https://github.com/MudBlazor/MudBlazor)
    
