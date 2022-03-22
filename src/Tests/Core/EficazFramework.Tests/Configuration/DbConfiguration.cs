@@ -66,6 +66,13 @@ public class DbConfigurationTests<TProvider> where TProvider : DataProviderBase
         config.SingleTennant = true;
         config.ServerData.Should().Be(@"myserver\myinstance,1436");
         config.ShouldSerializePort().Should().BeTrue();
+
+        //custom path
+        DbConfiguration.SettingsPath = $@"{Environment.CurrentDirectory}\custom\";
+        config.Load();
+
+        //tear down custom path
+        DbConfiguration.SettingsPath = $@"{Environment.CurrentDirectory}\";
     }
 
     [Test, Order(2)]
@@ -130,31 +137,4 @@ public class DbConfigurationTests<TProvider> where TProvider : DataProviderBase
         ex.Should().BeNull();
 
     }
-
-    //[Test, Order(3)]
-    //public void ConnectionStringBuilderForMySql()
-    //{
-    //    config.UseConnectionStringEncryption = false;
-    //    config.ServerName = "myserver";
-    //    config.Port = 1436;
-    //    config.Provider = Providers.ConnectionProviders.MySQL;
-    //    config.GetConnection("mydb", "myuser", "mypass").Should().Be(@"Server=myserver;Port=1436;Database=mydb;Uid=myuser;Pwd=mypass;Connect Timeout=30;");
-    //    config.UseConnectionStringEncryption = true;
-    //    config.GetConnection("mydb", "myuser", "mypass").Should().NotContain("mypass");
-    //    config.UseConnectionStringEncryption = false;
-    //}
-
-    //[Test, Order(4)]
-    //public void ConnectionStringBuilderForOracle()
-    //{
-    //    config.UseConnectionStringEncryption = false;
-    //    config.ServerName = "myserver";
-    //    config.InstanceName = "myinstance";
-    //    config.Port = 1436;
-    //    config.Provider = Providers.ConnectionProviders.Oracle;
-    //    config.GetConnection("mydb", "myuser", "mypass").Should().Be(@"Data Source=myserver\myinstance,1436;Database=mydb;User ID=myuser;Password=mypass;Connect Timeout=30;Integrated Security=no;");
-    //    config.UseConnectionStringEncryption = true;
-    //    config.GetConnection("mydb", "myuser", "mypass").Should().NotContain("mypass");
-    //    config.UseConnectionStringEncryption = false;
-    //}
 }

@@ -9160,24 +9160,24 @@
         },
         "System.ComponentModel.DataAnnotations.ValidationResult EficazFramework.Validation.DataAnnotations.IncricaoEstadual::IsValid(System.Object,System.ComponentModel.DataAnnotations.ValidationContext)": {
           "Lines": {
-            "27": 15,
-            "28": 15,
-            "29": 2,
-            "30": 2,
-            "33": 13,
-            "34": 13,
-            "35": 13,
+            "27": 28,
+            "28": 28,
+            "29": 11,
+            "30": 11,
+            "33": 17,
+            "34": 17,
+            "35": 17,
             "36": 10,
-            "38": 3,
-            "39": 0,
-            "42": 3,
-            "43": 3,
-            "44": 0,
+            "38": 7,
+            "39": 2,
+            "42": 5,
+            "43": 5,
+            "44": 2,
             "46": 3,
             "47": 3,
             "48": 3,
             "50": 0,
-            "52": 15
+            "52": 28
           },
           "Branches": [
             {
@@ -9186,7 +9186,7 @@
               "EndOffset": 9,
               "Path": 0,
               "Ordinal": 0,
-              "Hits": 2
+              "Hits": 11
             },
             {
               "Line": 28,
@@ -9194,7 +9194,7 @@
               "EndOffset": 21,
               "Path": 1,
               "Ordinal": 1,
-              "Hits": 13
+              "Hits": 17
             },
             {
               "Line": 35,
@@ -9210,7 +9210,7 @@
               "EndOffset": 62,
               "Path": 1,
               "Ordinal": 3,
-              "Hits": 3
+              "Hits": 7
             },
             {
               "Line": 38,
@@ -9218,7 +9218,7 @@
               "EndOffset": 77,
               "Path": 0,
               "Ordinal": 4,
-              "Hits": 0
+              "Hits": 2
             },
             {
               "Line": 38,
@@ -9226,7 +9226,7 @@
               "EndOffset": 90,
               "Path": 1,
               "Ordinal": 5,
-              "Hits": 3
+              "Hits": 5
             },
             {
               "Line": 42,
@@ -9234,7 +9234,7 @@
               "EndOffset": 93,
               "Path": 0,
               "Ordinal": 6,
-              "Hits": 0
+              "Hits": 2
             },
             {
               "Line": 42,
@@ -9258,7 +9258,7 @@
               "EndOffset": 135,
               "Path": 1,
               "Ordinal": 9,
-              "Hits": 0
+              "Hits": 2
             },
             {
               "Line": 43,
@@ -9266,7 +9266,7 @@
               "EndOffset": 142,
               "Path": 0,
               "Ordinal": 10,
-              "Hits": 0
+              "Hits": 2
             },
             {
               "Line": 43,
@@ -9296,10 +9296,10 @@
         },
         "System.Void EficazFramework.Validation.DataAnnotations.IncricaoEstadual::.ctor(System.String)": {
           "Lines": {
-            "11": 3,
-            "12": 3,
-            "13": 3,
-            "14": 3
+            "11": 6,
+            "12": 6,
+            "13": 6,
+            "14": 6
           },
           "Branches": []
         }
@@ -10520,26 +10520,19 @@
             }
           ]
         },
-        "System.Void EficazFramework.Repositories.RepositoryBase`1::ItemAdded(System.Object)": {
-          "Lines": {
-            "219": 0,
-            "220": 0
-          },
-          "Branches": []
-        },
         "System.Exception EficazFramework.Repositories.RepositoryBase`1::Delete(System.Object,System.Boolean)": {
           "Lines": {
+            "225": 5,
+            "226": 5,
             "227": 5,
-            "228": 5,
+            "228": 7,
             "229": 5,
-            "230": 7,
-            "231": 5,
-            "232": 5,
-            "233": 5
+            "230": 5,
+            "231": 5
           },
           "Branches": [
             {
-              "Line": 230,
+              "Line": 228,
               "Offset": 14,
               "EndOffset": 16,
               "Path": 0,
@@ -10547,7 +10540,7 @@
               "Hits": 2
             },
             {
-              "Line": 230,
+              "Line": 228,
               "Offset": 14,
               "EndOffset": 23,
               "Path": 1,
@@ -10555,7 +10548,7 @@
               "Hits": 5
             },
             {
-              "Line": 231,
+              "Line": 229,
               "Offset": 24,
               "EndOffset": 26,
               "Path": 0,
@@ -10563,7 +10556,7 @@
               "Hits": 0
             },
             {
-              "Line": 231,
+              "Line": 229,
               "Offset": 24,
               "EndOffset": 49,
               "Path": 1,
@@ -10571,7 +10564,7 @@
               "Hits": 5
             },
             {
-              "Line": 231,
+              "Line": 229,
               "Offset": 52,
               "EndOffset": 54,
               "Path": 0,
@@ -10579,7 +10572,7 @@
               "Hits": 0
             },
             {
-              "Line": 231,
+              "Line": 229,
               "Offset": 52,
               "EndOffset": 67,
               "Path": 1,
@@ -10590,15 +10583,15 @@
         },
         "System.Void EficazFramework.Repositories.RepositoryBase`1::DeleteInternal(System.Object)": {
           "Lines": {
-            "248": 11,
+            "246": 11,
+            "247": 11,
+            "248": 7,
             "249": 11,
-            "250": 7,
-            "251": 11,
-            "252": 11
+            "250": 11
           },
           "Branches": [
             {
-              "Line": 249,
+              "Line": 247,
               "Offset": 19,
               "EndOffset": 21,
               "Path": 0,
@@ -10606,7 +10599,7 @@
               "Hits": 7
             },
             {
-              "Line": 249,
+              "Line": 247,
               "Offset": 19,
               "EndOffset": 35,
               "Path": 1,
@@ -10614,7 +10607,7 @@
               "Hits": 4
             },
             {
-              "Line": 249,
+              "Line": 247,
               "Offset": 38,
               "EndOffset": 40,
               "Path": 0,
@@ -10622,7 +10615,7 @@
               "Hits": 7
             },
             {
-              "Line": 249,
+              "Line": 247,
               "Offset": 38,
               "EndOffset": 53,
               "Path": 1,
@@ -10631,26 +10624,19 @@
             }
           ]
         },
-        "System.Void EficazFramework.Repositories.RepositoryBase`1::ItemDeleted(System.Object)": {
-          "Lines": {
-            "259": 0,
-            "260": 0
-          },
-          "Branches": []
-        },
         "System.Boolean EficazFramework.Repositories.RepositoryBase`1::FirstPage()": {
           "Lines": {
+            "327": 1,
+            "328": 1,
+            "329": 0,
+            "330": 1,
+            "331": 1,
             "332": 1,
-            "333": 1,
-            "334": 0,
-            "335": 1,
-            "336": 1,
-            "337": 1,
-            "338": 1
+            "333": 1
           },
           "Branches": [
             {
-              "Line": 333,
+              "Line": 328,
               "Offset": 8,
               "EndOffset": 10,
               "Path": 0,
@@ -10658,7 +10644,7 @@
               "Hits": 1
             },
             {
-              "Line": 333,
+              "Line": 328,
               "Offset": 8,
               "EndOffset": 21,
               "Path": 1,
@@ -10666,7 +10652,7 @@
               "Hits": 0
             },
             {
-              "Line": 333,
+              "Line": 328,
               "Offset": 24,
               "EndOffset": 26,
               "Path": 0,
@@ -10674,7 +10660,7 @@
               "Hits": 0
             },
             {
-              "Line": 333,
+              "Line": 328,
               "Offset": 24,
               "EndOffset": 30,
               "Path": 1,
@@ -10685,17 +10671,17 @@
         },
         "System.Boolean EficazFramework.Repositories.RepositoryBase`1::PreviousPage()": {
           "Lines": {
-            "345": 2,
-            "346": 2,
-            "347": 1,
-            "348": 1,
-            "349": 1,
-            "350": 1,
-            "351": 2
+            "340": 2,
+            "341": 2,
+            "342": 1,
+            "343": 1,
+            "344": 1,
+            "345": 1,
+            "346": 2
           },
           "Branches": [
             {
-              "Line": 346,
+              "Line": 341,
               "Offset": 15,
               "EndOffset": 17,
               "Path": 0,
@@ -10703,7 +10689,7 @@
               "Hits": 1
             },
             {
-              "Line": 346,
+              "Line": 341,
               "Offset": 15,
               "EndOffset": 21,
               "Path": 1,
@@ -10714,17 +10700,17 @@
         },
         "System.Boolean EficazFramework.Repositories.RepositoryBase`1::NextPage()": {
           "Lines": {
-            "358": 3,
-            "359": 3,
-            "360": 1,
-            "361": 2,
-            "362": 2,
-            "363": 2,
-            "364": 3
+            "353": 3,
+            "354": 3,
+            "355": 1,
+            "356": 2,
+            "357": 2,
+            "358": 2,
+            "359": 3
           },
           "Branches": [
             {
-              "Line": 359,
+              "Line": 354,
               "Offset": 8,
               "EndOffset": 10,
               "Path": 0,
@@ -10732,7 +10718,7 @@
               "Hits": 0
             },
             {
-              "Line": 359,
+              "Line": 354,
               "Offset": 8,
               "EndOffset": 14,
               "Path": 1,
@@ -10740,7 +10726,7 @@
               "Hits": 3
             },
             {
-              "Line": 359,
+              "Line": 354,
               "Offset": 25,
               "EndOffset": 27,
               "Path": 0,
@@ -10748,7 +10734,7 @@
               "Hits": 3
             },
             {
-              "Line": 359,
+              "Line": 354,
               "Offset": 34,
               "EndOffset": 36,
               "Path": 0,
@@ -10756,7 +10742,7 @@
               "Hits": 0
             },
             {
-              "Line": 359,
+              "Line": 354,
               "Offset": 34,
               "EndOffset": 48,
               "Path": 1,
@@ -10764,7 +10750,7 @@
               "Hits": 3
             },
             {
-              "Line": 359,
+              "Line": 354,
               "Offset": 25,
               "EndOffset": 86,
               "Path": 1,
@@ -10772,7 +10758,7 @@
               "Hits": 1
             },
             {
-              "Line": 359,
+              "Line": 354,
               "Offset": 84,
               "EndOffset": 86,
               "Path": 0,
@@ -10780,7 +10766,7 @@
               "Hits": 1
             },
             {
-              "Line": 359,
+              "Line": 354,
               "Offset": 84,
               "EndOffset": 97,
               "Path": 1,
@@ -10788,7 +10774,7 @@
               "Hits": 2
             },
             {
-              "Line": 359,
+              "Line": 354,
               "Offset": 100,
               "EndOffset": 102,
               "Path": 0,
@@ -10796,7 +10782,7 @@
               "Hits": 1
             },
             {
-              "Line": 359,
+              "Line": 354,
               "Offset": 100,
               "EndOffset": 107,
               "Path": 1,
@@ -10807,13 +10793,13 @@
         },
         "System.Void EficazFramework.Repositories.RepositoryBase`1::RaisePropertyChanged(System.String)": {
           "Lines": {
-            "373": 89,
-            "374": 89,
-            "375": 89
+            "368": 89,
+            "369": 89,
+            "370": 89
           },
           "Branches": [
             {
-              "Line": 374,
+              "Line": 369,
               "Offset": 8,
               "EndOffset": 10,
               "Path": 0,
@@ -10821,7 +10807,7 @@
               "Hits": 89
             },
             {
-              "Line": 374,
+              "Line": 369,
               "Offset": 8,
               "EndOffset": 13,
               "Path": 1,
@@ -10832,27 +10818,27 @@
         },
         "System.Void EficazFramework.Repositories.RepositoryBase`1::Dispose(System.Boolean)": {
           "Lines": {
-            "387": 26,
+            "382": 26,
+            "383": 26,
+            "384": 26,
+            "385": 26,
+            "386": 26,
             "388": 26,
             "389": 26,
             "390": 26,
             "391": 26,
-            "393": 26,
-            "394": 26,
-            "395": 26,
+            "392": 26,
             "396": 26,
             "397": 26,
+            "398": 26,
+            "399": 26,
+            "400": 26,
             "401": 26,
-            "402": 26,
-            "403": 26,
-            "404": 26,
-            "405": 26,
-            "406": 26,
-            "407": 26
+            "402": 26
           },
           "Branches": [
             {
-              "Line": 388,
+              "Line": 383,
               "Offset": 12,
               "EndOffset": 14,
               "Path": 0,
@@ -10860,7 +10846,7 @@
               "Hits": 26
             },
             {
-              "Line": 390,
+              "Line": 385,
               "Offset": 18,
               "EndOffset": 20,
               "Path": 0,
@@ -10868,7 +10854,7 @@
               "Hits": 26
             },
             {
-              "Line": 394,
+              "Line": 389,
               "Offset": 40,
               "EndOffset": 42,
               "Path": 0,
@@ -10876,7 +10862,7 @@
               "Hits": 26
             },
             {
-              "Line": 394,
+              "Line": 389,
               "Offset": 40,
               "EndOffset": 54,
               "Path": 1,
@@ -10884,7 +10870,7 @@
               "Hits": 26
             },
             {
-              "Line": 390,
+              "Line": 385,
               "Offset": 18,
               "EndOffset": 62,
               "Path": 1,
@@ -10892,7 +10878,7 @@
               "Hits": 26
             },
             {
-              "Line": 401,
+              "Line": 396,
               "Offset": 73,
               "EndOffset": 75,
               "Path": 0,
@@ -10900,7 +10886,7 @@
               "Hits": 26
             },
             {
-              "Line": 401,
+              "Line": 396,
               "Offset": 73,
               "EndOffset": 87,
               "Path": 1,
@@ -10908,7 +10894,7 @@
               "Hits": 26
             },
             {
-              "Line": 388,
+              "Line": 383,
               "Offset": 12,
               "EndOffset": 110,
               "Path": 1,
@@ -10919,24 +10905,24 @@
         },
         "System.Void EficazFramework.Repositories.RepositoryBase`1::Dispose()": {
           "Lines": {
-            "417": 26,
-            "419": 26,
-            "420": 26,
-            "421": 26
+            "412": 26,
+            "414": 26,
+            "415": 26,
+            "416": 26
           },
           "Branches": []
         },
         "System.Void EficazFramework.Repositories.RepositoryBase`1::DisposeManagedCallerObjects()": {
           "Lines": {
-            "427": 0,
-            "428": 0
+            "422": 0,
+            "423": 0
           },
           "Branches": []
         },
         "System.Void EficazFramework.Repositories.RepositoryBase`1::DisposeUnManagedCallerObjects()": {
           "Lines": {
-            "435": 26,
-            "436": 26
+            "430": 26,
+            "431": 26
           },
           "Branches": []
         },
@@ -10989,17 +10975,17 @@
       "EficazFramework.Repositories.RepositoryBase`1/<DeleteAsync>d__38": {
         "System.Void EficazFramework.Repositories.RepositoryBase`1/<DeleteAsync>d__38::MoveNext()": {
           "Lines": {
+            "237": 6,
+            "238": 6,
             "239": 6,
-            "240": 6,
+            "240": 11,
             "241": 6,
-            "242": 11,
-            "243": 6,
-            "244": 6,
-            "245": 6
+            "242": 6,
+            "243": 6
           },
           "Branches": [
             {
-              "Line": 242,
+              "Line": 240,
               "Offset": 48,
               "EndOffset": 53,
               "Path": 0,
@@ -11007,7 +10993,7 @@
               "Hits": 5
             },
             {
-              "Line": 242,
+              "Line": 240,
               "Offset": 48,
               "EndOffset": 185,
               "Path": 1,
@@ -11015,7 +11001,7 @@
               "Hits": 6
             },
             {
-              "Line": 243,
+              "Line": 241,
               "Offset": 191,
               "EndOffset": 193,
               "Path": 0,
@@ -11023,7 +11009,7 @@
               "Hits": 0
             },
             {
-              "Line": 243,
+              "Line": 241,
               "Offset": 191,
               "EndOffset": 231,
               "Path": 1,
@@ -11031,7 +11017,7 @@
               "Hits": 6
             },
             {
-              "Line": 243,
+              "Line": 241,
               "Offset": 236,
               "EndOffset": 238,
               "Path": 0,
@@ -11039,7 +11025,7 @@
               "Hits": 0
             },
             {
-              "Line": 243,
+              "Line": 241,
               "Offset": 236,
               "EndOffset": 261,
               "Path": 1,
@@ -11202,20 +11188,20 @@
       "EficazFramework.Repositories.RepositoryBase`1/<ValidateAsync>d__47`1": {
         "System.Void EficazFramework.Repositories.RepositoryBase`1/<ValidateAsync>d__47`1::MoveNext()": {
           "Lines": {
-            "310": 5,
-            "311": 5,
-            "312": 5,
+            "305": 5,
+            "306": 5,
+            "307": 5,
+            "308": 0,
+            "309": 0,
+            "310": 0,
+            "311": 0,
+            "312": 0,
             "313": 0,
-            "314": 0,
-            "315": 0,
-            "316": 0,
-            "317": 0,
-            "318": 0,
-            "319": 5
+            "314": 5
           },
           "Branches": [
             {
-              "Line": 311,
+              "Line": 306,
               "Offset": 37,
               "EndOffset": 39,
               "Path": 0,
@@ -11223,7 +11209,7 @@
               "Hits": 5
             },
             {
-              "Line": 311,
+              "Line": 306,
               "Offset": 37,
               "EndOffset": 50,
               "Path": 1,
@@ -11231,7 +11217,7 @@
               "Hits": 0
             },
             {
-              "Line": 311,
+              "Line": 306,
               "Offset": 53,
               "EndOffset": 58,
               "Path": 0,
@@ -11239,7 +11225,7 @@
               "Hits": 5
             },
             {
-              "Line": 311,
+              "Line": 306,
               "Offset": 53,
               "EndOffset": 188,
               "Path": 1,
@@ -11247,7 +11233,7 @@
               "Hits": 0
             },
             {
-              "Line": 314,
+              "Line": 309,
               "Offset": 212,
               "EndOffset": 214,
               "Path": 0,
@@ -11255,7 +11241,7 @@
               "Hits": 0
             },
             {
-              "Line": 314,
+              "Line": 309,
               "Offset": 212,
               "EndOffset": 226,
               "Path": 1,
@@ -11263,7 +11249,7 @@
               "Hits": 0
             },
             {
-              "Line": 316,
+              "Line": 311,
               "Offset": 468,
               "EndOffset": 263,
               "Path": 1,
@@ -11271,7 +11257,7 @@
               "Hits": 0
             },
             {
-              "Line": 316,
+              "Line": 311,
               "Offset": 468,
               "EndOffset": 473,
               "Path": 0,
@@ -11380,7 +11366,7 @@
       "EficazFramework.Providers.DataProviderBase": {
         "EficazFramework.Configuration.IDbConfig EficazFramework.Providers.DataProviderBase::get_DbConfig()": {
           "Lines": {
-            "20": 164
+            "20": 165
           },
           "Branches": []
         },
@@ -15299,7 +15285,7 @@
         },
         "EficazFramework.Enums.ValidationMode EficazFramework.Entities.EntityBase::get_ValidationMode()": {
           "Lines": {
-            "104": 25
+            "104": 27
           },
           "Branches": []
         },
@@ -15391,32 +15377,32 @@
         },
         "EficazFramework.Collections.StringCollection EficazFramework.Entities.EntityBase::Validate(System.String)": {
           "Lines": {
-            "167": 17,
-            "168": 17,
-            "169": 17,
-            "170": 9,
-            "171": 9,
-            "172": 9,
+            "167": 19,
+            "168": 19,
+            "169": 19,
+            "170": 11,
+            "171": 11,
+            "172": 11,
             "173": 9,
             "175": 9,
             "176": 9,
-            "178": 0,
-            "180": 0,
-            "181": 0,
-            "182": 0,
-            "183": 0,
-            "185": 0,
-            "186": 0,
-            "188": 93,
-            "189": 33,
-            "190": 9,
+            "178": 2,
+            "180": 2,
+            "181": 2,
+            "182": 1,
+            "183": 1,
+            "185": 1,
+            "186": 1,
+            "188": 98,
+            "189": 34,
+            "190": 10,
             "191": 8,
             "192": 6,
             "193": 6,
             "194": 5,
             "195": 1,
-            "197": 12,
-            "198": 17
+            "197": 13,
+            "198": 18
           },
           "Branches": [
             {
@@ -15425,7 +15411,7 @@
               "EndOffset": 23,
               "Path": 0,
               "Ordinal": 0,
-              "Hits": 9
+              "Hits": 11
             },
             {
               "Line": 172,
@@ -15441,7 +15427,7 @@
               "EndOffset": 66,
               "Path": 1,
               "Ordinal": 3,
-              "Hits": 0
+              "Hits": 2
             },
             {
               "Line": 181,
@@ -15449,7 +15435,7 @@
               "EndOffset": 92,
               "Path": 0,
               "Ordinal": 4,
-              "Hits": 0
+              "Hits": 1
             },
             {
               "Line": 181,
@@ -15457,7 +15443,7 @@
               "EndOffset": 121,
               "Path": 1,
               "Ordinal": 5,
-              "Hits": 0
+              "Hits": 1
             },
             {
               "Line": 188,
@@ -15465,7 +15451,7 @@
               "EndOffset": 163,
               "Path": 1,
               "Ordinal": 7,
-              "Hits": 33
+              "Hits": 34
             },
             {
               "Line": 188,
@@ -15473,7 +15459,7 @@
               "EndOffset": 200,
               "Path": 0,
               "Ordinal": 6,
-              "Hits": 9
+              "Hits": 10
             },
             {
               "Line": 169,
@@ -15513,7 +15499,7 @@
               "EndOffset": 269,
               "Path": 1,
               "Ordinal": 9,
-              "Hits": 12
+              "Hits": 13
             }
           ]
         },
@@ -15599,23 +15585,23 @@
       "EficazFramework.Configuration.DbConfiguration": {
         "System.String EficazFramework.Configuration.DbConfiguration::get_SettingsPath()": {
           "Lines": {
-            "43": 247
+            "43": 327
           },
           "Branches": []
         },
         "System.String EficazFramework.Configuration.DbConfiguration::get_ServerName()": {
           "Lines": {
-            "54": 111
+            "54": 147
           },
           "Branches": []
         },
         "System.Void EficazFramework.Configuration.DbConfiguration::set_ServerName(System.String)": {
           "Lines": {
-            "56": 24,
-            "57": 24,
-            "58": 24,
-            "59": 24,
-            "60": 24
+            "56": 32,
+            "57": 32,
+            "58": 32,
+            "59": 32,
+            "60": 32
           },
           "Branches": [
             {
@@ -15624,7 +15610,7 @@
               "EndOffset": 17,
               "Path": 0,
               "Ordinal": 0,
-              "Hits": 24
+              "Hits": 32
             },
             {
               "Line": 58,
@@ -15638,17 +15624,17 @@
         },
         "System.String EficazFramework.Configuration.DbConfiguration::get_InstanceName()": {
           "Lines": {
-            "72": 100
+            "72": 136
           },
           "Branches": []
         },
         "System.Void EficazFramework.Configuration.DbConfiguration::set_InstanceName(System.String)": {
           "Lines": {
-            "74": 24,
-            "75": 24,
-            "76": 24,
-            "77": 24,
-            "78": 24
+            "74": 32,
+            "75": 32,
+            "76": 32,
+            "77": 32,
+            "78": 32
           },
           "Branches": [
             {
@@ -15657,7 +15643,7 @@
               "EndOffset": 17,
               "Path": 0,
               "Ordinal": 0,
-              "Hits": 24
+              "Hits": 32
             },
             {
               "Line": 76,
@@ -15720,23 +15706,23 @@
         },
         "System.String EficazFramework.Configuration.DbConfiguration::get_ProviderId()": {
           "Lines": {
-            "116": 104
+            "116": 148
           },
           "Branches": []
         },
         "System.Nullable`1<System.Int32> EficazFramework.Configuration.DbConfiguration::get_Port()": {
           "Lines": {
-            "127": 142
+            "127": 178
           },
           "Branches": []
         },
         "System.Void EficazFramework.Configuration.DbConfiguration::set_Port(System.Nullable`1<System.Int32>)": {
           "Lines": {
-            "129": 24,
-            "130": 24,
-            "131": 24,
-            "132": 24,
-            "133": 24
+            "129": 32,
+            "130": 32,
+            "131": 32,
+            "132": 32,
+            "133": 32
           },
           "Branches": [
             {
@@ -15745,7 +15731,7 @@
               "EndOffset": 17,
               "Path": 0,
               "Ordinal": 0,
-              "Hits": 24
+              "Hits": 32
             },
             {
               "Line": 131,
@@ -15765,17 +15751,17 @@
         },
         "System.Boolean EficazFramework.Configuration.DbConfiguration::get_SingleTennant()": {
           "Lines": {
-            "140": 100
+            "140": 136
           },
           "Branches": []
         },
         "System.Void EficazFramework.Configuration.DbConfiguration::set_SingleTennant(System.Boolean)": {
           "Lines": {
-            "142": 16,
-            "143": 16,
-            "144": 16,
-            "145": 16,
-            "146": 16
+            "142": 24,
+            "143": 24,
+            "144": 24,
+            "145": 24,
+            "146": 24
           },
           "Branches": [
             {
@@ -15784,7 +15770,7 @@
               "EndOffset": 17,
               "Path": 0,
               "Ordinal": 0,
-              "Hits": 16
+              "Hits": 24
             },
             {
               "Line": 144,
@@ -15798,23 +15784,23 @@
         },
         "System.Boolean EficazFramework.Configuration.DbConfiguration::get_UseConnectionStringEncryption()": {
           "Lines": {
-            "149": 507
+            "149": 557
           },
           "Branches": []
         },
         "System.Void EficazFramework.Configuration.DbConfiguration::Load()": {
           "Lines": {
-            "152": 4,
-            "153": 4,
-            "154": 4,
+            "152": 8,
+            "153": 8,
+            "154": 8,
             "155": 0,
             "156": 0,
             "157": 0,
             "158": 0,
-            "160": 4,
-            "161": 4,
-            "163": 4,
-            "164": 4
+            "160": 8,
+            "161": 8,
+            "163": 8,
+            "164": 8
           },
           "Branches": [
             {
@@ -15831,7 +15817,7 @@
               "EndOffset": 45,
               "Path": 1,
               "Ordinal": 1,
-              "Hits": 4
+              "Hits": 8
             },
             {
               "Line": 160,
@@ -15839,7 +15825,7 @@
               "EndOffset": 53,
               "Path": 0,
               "Ordinal": 2,
-              "Hits": 4
+              "Hits": 8
             },
             {
               "Line": 160,
@@ -15847,67 +15833,21 @@
               "EndOffset": 74,
               "Path": 1,
               "Ordinal": 3,
-              "Hits": 4
-            }
-          ]
-        },
-        "EficazFramework.Configuration.DbConfiguration EficazFramework.Configuration.DbConfiguration::Get()": {
-          "Lines": {
-            "167": 0,
-            "168": 0,
-            "169": 0,
-            "170": 0,
-            "172": 0,
-            "173": 0,
-            "175": 0,
-            "176": 0
-          },
-          "Branches": [
-            {
-              "Line": 169,
-              "Offset": 28,
-              "EndOffset": 30,
-              "Path": 0,
-              "Ordinal": 0,
-              "Hits": 0
-            },
-            {
-              "Line": 169,
-              "Offset": 28,
-              "EndOffset": 36,
-              "Path": 1,
-              "Ordinal": 1,
-              "Hits": 0
-            },
-            {
-              "Line": 172,
-              "Offset": 42,
-              "EndOffset": 44,
-              "Path": 0,
-              "Ordinal": 2,
-              "Hits": 0
-            },
-            {
-              "Line": 172,
-              "Offset": 42,
-              "EndOffset": 65,
-              "Path": 1,
-              "Ordinal": 3,
-              "Hits": 0
+              "Hits": 8
             }
           ]
         },
         "System.Void EficazFramework.Configuration.DbConfiguration::Save()": {
           "Lines": {
-            "180": 92,
-            "181": 92,
-            "182": 0,
-            "184": 92,
-            "185": 92
+            "167": 124,
+            "168": 124,
+            "169": 0,
+            "171": 124,
+            "172": 124
           },
           "Branches": [
             {
-              "Line": 181,
+              "Line": 168,
               "Offset": 16,
               "EndOffset": 18,
               "Path": 0,
@@ -15915,34 +15855,34 @@
               "Hits": 0
             },
             {
-              "Line": 181,
+              "Line": 168,
               "Offset": 16,
               "EndOffset": 29,
               "Path": 1,
               "Ordinal": 1,
-              "Hits": 92
+              "Hits": 124
             }
           ]
         },
         "System.Void EficazFramework.Configuration.DbConfiguration::CopyFrom(EficazFramework.Configuration.DbConfiguration)": {
           "Lines": {
-            "188": 4,
-            "189": 4,
-            "190": 4,
-            "191": 4,
-            "192": 4,
-            "193": 4,
-            "194": 4,
-            "195": 4
+            "175": 8,
+            "176": 8,
+            "177": 8,
+            "178": 8,
+            "179": 8,
+            "180": 8,
+            "181": 8,
+            "182": 8
           },
           "Branches": []
         },
         "System.Void EficazFramework.Configuration.DbConfiguration::.ctor()": {
           "Lines": {
-            "45": 133,
-            "63": 133,
-            "118": 133,
-            "137": 133
+            "45": 137,
+            "63": 137,
+            "118": 137,
+            "137": 137
           },
           "Branches": []
         },
@@ -15956,15 +15896,15 @@
       "EficazFramework.Configuration.DbConfigurator": {
         "Microsoft.Extensions.DependencyInjection.IServiceCollection EficazFramework.Configuration.DbConfigurator::AddDbConfig(Microsoft.Extensions.DependencyInjection.IServiceCollection,System.Boolean)": {
           "Lines": {
-            "203": 12,
-            "204": 12,
-            "205": 12,
-            "206": 12,
-            "207": 12,
-            "208": 12,
-            "209": 24,
-            "211": 12,
-            "212": 12
+            "190": 12,
+            "191": 12,
+            "192": 12,
+            "193": 12,
+            "194": 12,
+            "195": 12,
+            "196": 24,
+            "198": 12,
+            "199": 12
           },
           "Branches": []
         }
@@ -16880,16 +16820,16 @@
         },
         "System.String EficazFramework.Providers.SqlLite::GetConnectionString(System.String,System.String,System.String)": {
           "Lines": {
-            "21": 120,
-            "22": 120,
-            "23": 1,
-            "24": 1,
+            "21": 121,
+            "22": 121,
+            "23": 2,
+            "24": 2,
             "25": 1,
-            "27": 0,
+            "27": 1,
             "30": 119,
             "31": 1,
             "33": 118,
-            "34": 120
+            "34": 121
           },
           "Branches": [
             {
@@ -16898,7 +16838,7 @@
               "EndOffset": 19,
               "Path": 0,
               "Ordinal": 0,
-              "Hits": 1
+              "Hits": 2
             },
             {
               "Line": 24,
@@ -16914,7 +16854,7 @@
               "EndOffset": 123,
               "Path": 1,
               "Ordinal": 3,
-              "Hits": 0
+              "Hits": 1
             },
             {
               "Line": 22,
@@ -17431,9 +17371,9 @@
         },
         "T EficazFramework.Serialization.SerializationOperations::FromJson(System.String)": {
           "Lines": {
-            "93": 6,
-            "94": 6,
-            "95": 6
+            "93": 10,
+            "94": 10,
+            "95": 10
           },
           "Branches": []
         },
@@ -17447,30 +17387,30 @@
         },
         "T EficazFramework.Serialization.SerializationOperations::FromJsonFile(System.String)": {
           "Lines": {
-            "103": 5,
-            "104": 5,
-            "105": 5,
-            "107": 5
+            "103": 9,
+            "104": 9,
+            "105": 9,
+            "107": 9
           },
           "Branches": []
         },
         "System.String EficazFramework.Serialization.SerializationOperations::ToJson(T)": {
           "Lines": {
-            "136": 95,
-            "137": 95,
-            "138": 95
+            "136": 127,
+            "137": 127,
+            "138": 127
           },
           "Branches": []
         },
         "System.Void EficazFramework.Serialization.SerializationOperations::ToJsonFile(T,System.String)": {
           "Lines": {
-            "141": 93,
-            "142": 93,
-            "143": 93,
-            "144": 93,
-            "145": 93,
-            "146": 93,
-            "147": 93
+            "141": 125,
+            "142": 125,
+            "143": 125,
+            "144": 125,
+            "145": 125,
+            "146": 125,
+            "147": 125
           },
           "Branches": []
         },
@@ -18010,19 +17950,19 @@
       "EficazFramework.Security.Cryptography.Functions": {
         "System.String EficazFramework.Security.Cryptography.Functions::Encript(System.String,System.String)": {
           "Lines": {
-            "16": 5,
-            "17": 5,
-            "18": 5
+            "16": 7,
+            "17": 7,
+            "18": 7
           },
           "Branches": []
         },
         "System.String EficazFramework.Security.Cryptography.Functions::Encript(System.String,System.Byte[])": {
           "Lines": {
-            "21": 5,
-            "22": 5,
-            "23": 5,
-            "24": 5,
-            "25": 5
+            "21": 7,
+            "22": 7,
+            "23": 7,
+            "24": 7,
+            "25": 7
           },
           "Branches": []
         },
@@ -18064,14 +18004,14 @@
         },
         "System.Security.Cryptography.TripleDES EficazFramework.Security.Cryptography.Functions::CreateDes(System.Byte[])": {
           "Lines": {
-            "41": 7,
-            "42": 7,
-            "43": 7,
-            "44": 7,
-            "45": 7,
-            "46": 7,
-            "47": 7,
-            "48": 7
+            "41": 9,
+            "42": 9,
+            "43": 9,
+            "44": 9,
+            "45": 9,
+            "46": 9,
+            "47": 9,
+            "48": 9
           },
           "Branches": []
         },
@@ -30919,15 +30859,15 @@
         },
         "System.Collections.ObjectModel.ObservableCollection`1<EficazFramework.Application.ApplicationInstance> EficazFramework.Application.ApplicationManager::get_RunningApplications()": {
           "Lines": {
-            "99": 33
+            "99": 41
           },
           "Branches": []
         },
         "System.Boolean EficazFramework.Application.ApplicationManager::IsRunning(EficazFramework.Application.ApplicationDefinition)": {
           "Lines": {
-            "107": 11,
-            "108": 15,
-            "109": 11
+            "107": 13,
+            "108": 18,
+            "109": 13
           },
           "Branches": [
             {
@@ -30944,26 +30884,26 @@
               "EndOffset": 56,
               "Path": 1,
               "Ordinal": 1,
-              "Hits": 3
+              "Hits": 4
             }
           ]
         },
         "System.Void EficazFramework.Application.ApplicationManager::Activate(EficazFramework.Application.ApplicationDefinition)": {
           "Lines": {
-            "116": 4,
-            "117": 4,
-            "118": 4,
-            "119": 4,
-            "120": 3,
-            "121": 3,
-            "122": 2,
-            "123": 2,
-            "124": 2,
+            "116": 6,
+            "117": 6,
+            "118": 6,
+            "119": 6,
+            "120": 5,
+            "121": 5,
+            "122": 4,
+            "123": 4,
+            "124": 4,
             "126": 1,
             "127": 2,
             "128": 1,
-            "129": 3,
-            "130": 3
+            "129": 5,
+            "130": 5
           },
           "Branches": [
             {
@@ -30972,7 +30912,7 @@
               "EndOffset": 44,
               "Path": 0,
               "Ordinal": 0,
-              "Hits": 3
+              "Hits": 5
             },
             {
               "Line": 119,
@@ -30988,7 +30928,7 @@
               "EndOffset": 138,
               "Path": 0,
               "Ordinal": 2,
-              "Hits": 3
+              "Hits": 5
             },
             {
               "Line": 129,
@@ -31060,19 +31000,19 @@
       "EficazFramework.Application.ApplicationDefinition": {
         "System.Object EficazFramework.Application.ApplicationDefinition::get_Icon()": {
           "Lines": {
-            "149": 6
+            "149": 10
           },
           "Branches": []
         },
         "System.String EficazFramework.Application.ApplicationDefinition::get_Title()": {
           "Lines": {
-            "150": 15
+            "150": 21
           },
           "Branches": []
         },
         "System.String EficazFramework.Application.ApplicationDefinition::get_LongTitle()": {
           "Lines": {
-            "151": 8
+            "151": 12
           },
           "Branches": []
         },
@@ -31084,7 +31024,7 @@
         },
         "System.Boolean EficazFramework.Application.ApplicationDefinition::get_IsPublic()": {
           "Lines": {
-            "153": 20
+            "153": 32
           },
           "Branches": []
         },
@@ -31136,13 +31076,13 @@
         },
         "System.Int32 EficazFramework.Application.ApplicationDefinition::get_GroupMenuPriority()": {
           "Lines": {
-            "158": 6
+            "158": 10
           },
           "Branches": []
         },
         "System.Int32 EficazFramework.Application.ApplicationDefinition::get_MenuPriority()": {
           "Lines": {
-            "159": 6
+            "159": 10
           },
           "Branches": []
         },
@@ -31154,45 +31094,45 @@
         },
         "System.Boolean EficazFramework.Application.ApplicationDefinition::get_IsEnabled()": {
           "Lines": {
-            "161": 3
+            "161": 5
           },
           "Branches": []
         },
         "System.Boolean EficazFramework.Application.ApplicationDefinition::get_IsChecked()": {
           "Lines": {
-            "162": 3
+            "162": 5
           },
           "Branches": []
         },
         "EficazFramework.Application.ApplicationAttributeCollection EficazFramework.Application.ApplicationDefinition::get_Attributes()": {
           "Lines": {
-            "165": 16
+            "165": 24
           },
           "Branches": []
         },
         "System.String EficazFramework.Application.ApplicationDefinition::get_StartupURI()": {
           "Lines": {
-            "168": 6
+            "168": 10
           },
           "Branches": []
         },
         "System.Object EficazFramework.Application.ApplicationDefinition::get_SplashScreen()": {
           "Lines": {
-            "169": 6
+            "169": 10
           },
           "Branches": []
         },
         "System.Object[] EficazFramework.Application.ApplicationDefinition::get_Arguments()": {
           "Lines": {
-            "171": 6
+            "171": 10
           },
           "Branches": []
         },
         "System.Void EficazFramework.Application.ApplicationDefinition::RaisePropertyChanged(System.String)": {
           "Lines": {
-            "177": 8,
-            "178": 8,
-            "179": 8
+            "177": 10,
+            "178": 10,
+            "179": 10
           },
           "Branches": [
             {
@@ -31201,7 +31141,7 @@
               "EndOffset": 10,
               "Path": 0,
               "Ordinal": 0,
-              "Hits": 5
+              "Hits": 7
             },
             {
               "Line": 178,
@@ -31217,27 +31157,27 @@
       "EficazFramework.Application.ApplicationInstance": {
         "System.Int64 EficazFramework.Application.ApplicationInstance::get_SessionID()": {
           "Lines": {
-            "214": 7
+            "213": 11
           },
           "Branches": []
         },
         "System.Object EficazFramework.Application.ApplicationInstance::get_Content()": {
           "Lines": {
-            "219": 4
+            "218": 6
           },
           "Branches": []
         },
         "System.Void EficazFramework.Application.ApplicationInstance::set_Content(System.Object)": {
           "Lines": {
+            "220": 2,
             "221": 2,
-            "222": 2,
-            "223": 4,
-            "224": 2,
-            "225": 2
+            "222": 4,
+            "223": 2,
+            "224": 2
           },
           "Branches": [
             {
-              "Line": 223,
+              "Line": 222,
               "Offset": 16,
               "EndOffset": 18,
               "Path": 0,
@@ -31245,7 +31185,7 @@
               "Hits": 2
             },
             {
-              "Line": 223,
+              "Line": 222,
               "Offset": 16,
               "EndOffset": 26,
               "Path": 1,
@@ -31256,52 +31196,52 @@
         },
         "System.Object EficazFramework.Application.ApplicationInstance::get_NotifyContent()": {
           "Lines": {
-            "231": 2
+            "230": 2
           },
           "Branches": []
         },
         "System.Void EficazFramework.Application.ApplicationInstance::set_NotifyContent(System.Object)": {
           "Lines": {
-            "232": 4
+            "231": 4
           },
           "Branches": []
         },
         "System.Boolean EficazFramework.Application.ApplicationInstance::get_IsLoading()": {
           "Lines": {
-            "238": 2
+            "237": 2
           },
           "Branches": []
         },
         "System.Void EficazFramework.Application.ApplicationInstance::set_IsLoading(System.Boolean)": {
           "Lines": {
-            "240": 20
+            "239": 28
           },
           "Branches": []
         },
         "EficazFramework.Application.ApplicationDefinition EficazFramework.Application.ApplicationInstance::get_Metadata()": {
           "Lines": {
-            "243": 8
+            "242": 11
           },
           "Branches": []
         },
         "System.String EficazFramework.Application.ApplicationInstance::ToString()": {
           "Lines": {
+            "246": 1,
             "247": 1,
-            "248": 1,
-            "249": 1
+            "248": 1
           },
           "Branches": []
         },
         "System.Void EficazFramework.Application.ApplicationInstance::Close()": {
           "Lines": {
+            "252": 1,
             "253": 1,
             "254": 1,
-            "255": 1,
-            "256": 1
+            "255": 1
           },
           "Branches": [
             {
-              "Line": 254,
+              "Line": 253,
               "Offset": 8,
               "EndOffset": 10,
               "Path": 0,
@@ -31309,7 +31249,7 @@
               "Hits": 0
             },
             {
-              "Line": 254,
+              "Line": 253,
               "Offset": 8,
               "EndOffset": 13,
               "Path": 1,
@@ -31320,17 +31260,17 @@
         },
         "System.Void EficazFramework.Application.ApplicationInstance::Dispose()": {
           "Lines": {
-            "259": 1,
+            "258": 3,
+            "259": 3,
             "260": 1,
             "261": 1,
             "262": 1,
             "263": 1,
-            "264": 1,
-            "266": 1
+            "265": 3
           },
           "Branches": [
             {
-              "Line": 260,
+              "Line": 259,
               "Offset": 7,
               "EndOffset": 9,
               "Path": 0,
@@ -31338,15 +31278,15 @@
               "Hits": 1
             },
             {
-              "Line": 260,
+              "Line": 259,
               "Offset": 7,
               "EndOffset": 37,
               "Path": 1,
               "Ordinal": 1,
-              "Hits": 0
+              "Hits": 2
             },
             {
-              "Line": 260,
+              "Line": 259,
               "Offset": 40,
               "EndOffset": 42,
               "Path": 0,
@@ -31354,99 +31294,98 @@
               "Hits": 1
             },
             {
-              "Line": 260,
+              "Line": 259,
               "Offset": 40,
               "EndOffset": 63,
               "Path": 1,
               "Ordinal": 3,
-              "Hits": 1
+              "Hits": 3
             }
           ]
         },
         "System.Void EficazFramework.Application.ApplicationInstance::.ctor(EficazFramework.Application.ApplicationDefinition,EficazFramework.Application.ISectionManager)": {
           "Lines": {
-            "184": 3,
-            "185": 3,
-            "186": 3,
-            "187": 3,
-            "188": 3,
-            "189": 3,
-            "190": 3,
-            "191": 3,
-            "192": 3,
-            "193": 3,
-            "194": 3,
-            "195": 3,
-            "196": 3,
-            "197": 3,
-            "198": 3,
-            "199": 3,
-            "200": 3,
-            "201": 1,
-            "202": 2,
-            "204": 0,
-            "205": 6,
-            "207": 2,
-            "216": 3,
-            "228": 3,
-            "235": 3
+            "184": 5,
+            "185": 5,
+            "186": 5,
+            "188": 5,
+            "189": 5,
+            "190": 5,
+            "191": 5,
+            "192": 5,
+            "193": 5,
+            "194": 5,
+            "195": 5,
+            "196": 5,
+            "197": 5,
+            "198": 5,
+            "199": 5,
+            "200": 5,
+            "201": 5,
+            "202": 5,
+            "203": 3,
+            "205": 2,
+            "206": 4,
+            "215": 5,
+            "227": 5,
+            "234": 5
           },
           "Branches": [
             {
-              "Line": 200,
-              "Offset": 208,
-              "EndOffset": 210,
+              "Line": 186,
+              "Offset": 43,
+              "EndOffset": 45,
               "Path": 0,
               "Ordinal": 0,
-              "Hits": 1
-            },
-            {
-              "Line": 202,
-              "Offset": 218,
-              "EndOffset": 220,
-              "Path": 0,
-              "Ordinal": 2,
               "Hits": 0
             },
             {
-              "Line": 202,
-              "Offset": 218,
-              "EndOffset": 224,
+              "Line": 186,
+              "Offset": 43,
+              "EndOffset": 50,
               "Path": 1,
-              "Ordinal": 3,
-              "Hits": 1
+              "Ordinal": 1,
+              "Hits": 5
             },
             {
               "Line": 202,
-              "Offset": 235,
-              "EndOffset": 237,
+              "Offset": 228,
+              "EndOffset": 230,
+              "Path": 0,
+              "Ordinal": 2,
+              "Hits": 3
+            },
+            {
+              "Line": 203,
+              "Offset": 232,
+              "EndOffset": 234,
               "Path": 0,
               "Ordinal": 4,
               "Hits": 1
             },
             {
-              "Line": 202,
-              "Offset": 235,
-              "EndOffset": 248,
+              "Line": 203,
+              "Offset": 232,
+              "EndOffset": 245,
               "Path": 1,
               "Ordinal": 5,
-              "Hits": 0
+              "Hits": 2
             },
             {
-              "Line": 200,
-              "Offset": 208,
-              "EndOffset": 251,
+              "Line": 202,
+              "Offset": 228,
+              "EndOffset": 254,
               "Path": 1,
-              "Ordinal": 1,
+              "Ordinal": 3,
               "Hits": 2
             }
           ]
         },
         "System.Void EficazFramework.Application.ApplicationInstance::.ctor()": {
           "Lines": {
+            "208": 0,
             "209": 0,
-            "210": 0,
-            "212": 0
+            "211": 0
           },
           "Branches": []
         }
@@ -31454,17 +31393,17 @@
       "EficazFramework.Application.ApplicationExtensions": {
         "System.Boolean EficazFramework.Application.ApplicationExtensions::IsRunning(EficazFramework.Application.ApplicationDefinition)": {
           "Lines": {
+            "296": 7,
             "297": 7,
-            "298": 7,
-            "299": 7
+            "298": 7
           },
           "Branches": []
         },
         "System.Void EficazFramework.Application.ApplicationExtensions::Activate(EficazFramework.Application.ApplicationDefinition)": {
           "Lines": {
+            "305": 4,
             "306": 4,
-            "307": 4,
-            "308": 3
+            "307": 3
           },
           "Branches": []
         }
@@ -31474,13 +31413,13 @@
       "EficazFramework.Application.SectionManager": {
         "EficazFramework.Application.IApplicationManager EficazFramework.Application.SectionManager::get_ApplicationManager()": {
           "Lines": {
-            "52": 1
+            "52": 5
           },
           "Branches": []
         },
         "EficazFramework.Application.Section EficazFramework.Application.SectionManager::get_CurrentSection()": {
           "Lines": {
-            "60": 33
+            "60": 37
           },
           "Branches": []
         },
@@ -31555,12 +31494,12 @@
             "96": 1,
             "98": 10,
             "99": 2,
-            "100": 2,
-            "101": 6,
-            "102": 0,
-            "103": 0,
-            "104": 0,
-            "105": 0,
+            "100": 4,
+            "101": 10,
+            "102": 2,
+            "103": 2,
+            "104": 2,
+            "105": 2,
             "106": 2,
             "107": 2,
             "108": 2,
@@ -31657,7 +31596,7 @@
             },
             {
               "Line": 98,
-              "Offset": 367,
+              "Offset": 374,
               "EndOffset": 203,
               "Path": 1,
               "Ordinal": 15,
@@ -31665,24 +31604,24 @@
             },
             {
               "Line": 101,
-              "Offset": 318,
-              "EndOffset": 273,
+              "Offset": 323,
+              "EndOffset": 278,
               "Path": 1,
               "Ordinal": 13,
-              "Hits": 0
+              "Hits": 2
             },
             {
               "Line": 101,
-              "Offset": 318,
-              "EndOffset": 320,
+              "Offset": 323,
+              "EndOffset": 325,
               "Path": 0,
               "Ordinal": 12,
               "Hits": 2
             },
             {
               "Line": 98,
-              "Offset": 367,
-              "EndOffset": 372,
+              "Offset": 374,
+              "EndOffset": 379,
               "Path": 0,
               "Ordinal": 14,
               "Hits": 2
@@ -31690,7 +31629,7 @@
             {
               "Line": 93,
               "Offset": 137,
-              "EndOffset": 394,
+              "EndOffset": 401,
               "Path": 1,
               "Ordinal": 9,
               "Hits": 4
@@ -31810,7 +31749,7 @@
       "EficazFramework.Application.Section": {
         "System.Int64 EficazFramework.Application.Section::get_ID()": {
           "Lines": {
-            "159": 40
+            "159": 46
           },
           "Branches": []
         },

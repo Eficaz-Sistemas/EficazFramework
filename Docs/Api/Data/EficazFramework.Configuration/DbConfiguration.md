@@ -36,7 +36,6 @@ Implements [IDbConfig](EficazFramework.Configuration/IDbConfig.md 'EficazFramewo
 | Methods | |
 | :--- | :--- |
 | [CopyFrom(DbConfiguration)](EficazFramework.Configuration/DbConfiguration/CopyFrom(DbConfiguration).md 'EficazFramework.Configuration.DbConfiguration.CopyFrom(EficazFramework.Configuration.DbConfiguration)') | |
-| [Get()](EficazFramework.Configuration/DbConfiguration/Get().md 'EficazFramework.Configuration.DbConfiguration.Get()') | |
 | [Load()](EficazFramework.Configuration/DbConfiguration/Load().md 'EficazFramework.Configuration.DbConfiguration.Load()') | |
 | [Save()](EficazFramework.Configuration/DbConfiguration/Save().md 'EficazFramework.Configuration.DbConfiguration.Save()') | |
 | [ShouldSerializePort()](EficazFramework.Configuration/DbConfiguration/ShouldSerializePort().md 'EficazFramework.Configuration.DbConfiguration.ShouldSerializePort()') | |

@@ -6,7 +6,7 @@
 Informa à fonte de dados que o item T deve ser adicionado a unidade de persistência do repositório
 
 ```csharp
-internal virtual void ItemAdded(object item);
+internal abstract void ItemAdded(object item);
 ```
 #### Parameters
 

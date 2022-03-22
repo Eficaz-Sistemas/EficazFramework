@@ -94,6 +94,10 @@ public class ProviderTests
         (svc as MsSqlServer).Should().BeNull();
         (svc as MySql).Should().BeNull();
         (svc as SqlLite).Should().NotBeNull();
+
+        var config = provider.GetService<IDbConfig>();
+        config.UseConnectionStringEncryption = true;
+        svc.GetConnectionString("test", "user", null).Should().Be(Security.Cryptography.Functions.Encript($"Data Source=test;", "#hd@cl$cb#"));
     }
 
 }
