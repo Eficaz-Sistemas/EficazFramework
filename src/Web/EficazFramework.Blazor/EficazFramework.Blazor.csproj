@@ -41,6 +41,17 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Layouts\**" />
+    <Compile Remove="wwwroot\projects\**" />
+    <Content Remove="Layouts\**" />
+    <Content Remove="wwwroot\projects\**" />
+    <EmbeddedResource Remove="Layouts\**" />
+    <EmbeddedResource Remove="wwwroot\projects\**" />
+    <None Remove="Layouts\**" />
+    <None Remove="wwwroot\projects\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Remove="Components\Panels\l5t002mw.04g~" />
   </ItemGroup>
 
@@ -51,10 +62,6 @@
   	</None>
   	<None Include="Components\Selectors\MDIApplication.razor" />
   	<None Include="Components\Selectors\MDIContainer.razor" />
-  	<None Include="Layouts\CleanLayout.razor" />
-  	<None Include="Layouts\LandingLayout.razor" />
-  	<None Include="Layouts\MdiLayout.razor" />
-  	<None Include="Layouts\MudAppBarDrawerLayout.razor" />
   	<None Include="Templates\ApplicationMVVMToolbar.razor" />
   	<None Include="Templates\Applications.razor" />
   	<None Include="Templates\CookieConsent.razor" />
