@@ -23,7 +23,7 @@ public partial class ExpressionBuilder
 
     [Parameter] public int Elevation { get; set; } = 0;
 
-    private EficazFramework.Expressions.ExpressionBuilder vm = null;
+    private EficazFramework.Expressions.ExpressionBuilder vm;
     [Parameter]
     public EficazFramework.Expressions.ExpressionBuilder ViewModel
     {

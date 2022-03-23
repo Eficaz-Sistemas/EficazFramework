@@ -1,0 +1,6018 @@
+{
+  "EficazFramework.Blazor.dll": {
+    "E:\\Henrique Clausing\\Repositorios\\Current\\EficazFramework\\src\\Web\\EficazFramework.Blazor\\Utilities\\JsInterop.cs": {
+      "EficazFramework.Utilities.JsInterop": {
+        "System.Threading.Tasks.ValueTask`1<System.String> EficazFramework.Utilities.JsInterop::Prompt(Microsoft.JSInterop.IJSRuntime,System.String)": {
+          "Lines": {
+            "12": 0,
+            "13": 0,
+            "14": 0,
+            "15": 0,
+            "16": 0
+          },
+          "Branches": []
+        },
+        "System.Void EficazFramework.Utilities.JsInterop::AcceptCookie(Microsoft.JSInterop.IJSRuntime,System.String)": {
+          "Lines": {
+            "19": 0,
+            "20": 0,
+            "21": 0,
+            "22": 0,
+            "23": 0
+          },
+          "Branches": []
+        },
+        "System.Void EficazFramework.Utilities.JsInterop::AddClass(Microsoft.JSInterop.IJSRuntime,System.String,System.String)": {
+          "Lines": {
+            "26": 0,
+            "27": 0,
+            "28": 0,
+            "29": 0,
+            "30": 0
+          },
+          "Branches": []
+        },
+        "System.Void EficazFramework.Utilities.JsInterop::ChangeUrl(Microsoft.JSInterop.IJSRuntime,System.String)": {
+          "Lines": {
+            "33": 0,
+            "34": 0,
+            "35": 0,
+            "36": 0,
+            "37": 0
+          },
+          "Branches": []
+        },
+        "System.Void EficazFramework.Utilities.JsInterop::Click(Microsoft.JSInterop.IJSRuntime,Microsoft.AspNetCore.Components.ElementReference)": {
+          "Lines": {
+            "40": 0,
+            "41": 0,
+            "42": 0,
+            "43": 0,
+            "44": 0
+          },
+          "Branches": []
+        },
+        "System.Void EficazFramework.Utilities.JsInterop::ClickByID(Microsoft.JSInterop.IJSRuntime,System.String)": {
+          "Lines": {
+            "47": 0,
+            "48": 0,
+            "49": 0,
+            "50": 0,
+            "51": 0
+          },
+          "Branches": []
+        },
+        "System.Void EficazFramework.Utilities.JsInterop::Focus(Microsoft.JSInterop.IJSRuntime,Microsoft.AspNetCore.Components.ElementReference)": {
+          "Lines": {
+            "54": 0,
+            "55": 0,
+            "56": 0,
+            "57": 0,
+            "58": 0
+          },
+          "Branches": []
+        },
+        "System.Void EficazFramework.Utilities.JsInterop::Focus(Microsoft.JSInterop.IJSRuntime,System.String)": {
+          "Lines": {
+            "61": 0,
+            "62": 0,
+            "63": 0,
+            "64": 0,
+            "65": 0
+          },
+          "Branches": []
+        },
+        "System.Void EficazFramework.Utilities.JsInterop::FocusChild(Microsoft.JSInterop.IJSRuntime,System.String)": {
+          "Lines": {
+            "68": 0,
+            "69": 0,
+            "70": 0,
+            "71": 0,
+            "72": 0
+          },
+          "Branches": []
+        },
+        "System.Void EficazFramework.Utilities.JsInterop::FocusChildOf(Microsoft.JSInterop.IJSRuntime,System.String,System.String)": {
+          "Lines": {
+            "75": 0,
+            "76": 0,
+            "77": 0,
+            "78": 0,
+            "79": 0
+          },
+          "Branches": []
+        },
+        "System.Void EficazFramework.Utilities.JsInterop::Print(Microsoft.JSInterop.IJSRuntime)": {
+          "Lines": {
+            "82": 0,
+            "83": 0,
+            "84": 0,
+            "85": 0
+          },
+          "Branches": []
+        },
+        "System.Void EficazFramework.Utilities.JsInterop::RemoveClass(Microsoft.JSInterop.IJSRuntime,System.String,System.String)": {
+          "Lines": {
+            "88": 0,
+            "89": 0,
+            "90": 0,
+            "91": 0,
+            "92": 0
+          },
+          "Branches": []
+        },
+        "System.Void EficazFramework.Utilities.JsInterop::ScrollToBottom(Microsoft.JSInterop.IJSRuntime,Microsoft.AspNetCore.Components.ElementReference)": {
+          "Lines": {
+            "95": 0,
+            "96": 0,
+            "97": 0,
+            "98": 0,
+            "99": 0
+          },
+          "Branches": []
+        },
+        "System.Void EficazFramework.Utilities.JsInterop::ScrollToBottomByID(Microsoft.JSInterop.IJSRuntime,System.String)": {
+          "Lines": {
+            "102": 0,
+            "103": 0,
+            "104": 0,
+            "105": 0,
+            "106": 0
+          },
+          "Branches": []
+        },
+        "System.Void EficazFramework.Utilities.JsInterop::ScrollToBottomBySelector(Microsoft.JSInterop.IJSRuntime,System.String)": {
+          "Lines": {
+            "109": 0,
+            "110": 0,
+            "111": 0,
+            "112": 0,
+            "113": 0
+          },
+          "Branches": []
+        },
+        "System.Void EficazFramework.Utilities.JsInterop::StartObserve(Microsoft.JSInterop.IJSRuntime,System.String,System.String,System.Boolean,System.String)": {
+          "Lines": {
+            "116": 0,
+            "117": 0,
+            "118": 0,
+            "119": 0,
+            "120": 0
+          },
+          "Branches": []
+        },
+        "System.Void EficazFramework.Utilities.JsInterop::StopObserve(Microsoft.JSInterop.IJSRuntime,System.String)": {
+          "Lines": {
+            "123": 0,
+            "124": 0,
+            "125": 0,
+            "126": 0,
+            "127": 0
+          },
+          "Branches": []
+        }
+      }
+    },
+    "E:\\Henrique Clausing\\Repositorios\\Current\\EficazFramework\\src\\Web\\EficazFramework.Blazor\\Templates\\ApplicationMVVMToolbar.razor.cs": {
+      "EficazFramework.Templates.ApplicationMVVMToolbar`1": {
+        "EficazFramework.Components.MDIApplication EficazFramework.Templates.ApplicationMVVMToolbar`1::get_Application()": {
+          "Lines": {
+            "14": 0
+          },
+          "Branches": []
+        },
+        "EficazFramework.ViewModels.ViewModel`1<T> EficazFramework.Templates.ApplicationMVVMToolbar`1::get_ViewModel()": {
+          "Lines": {
+            "15": 0
+          },
+          "Branches": []
+        },
+        "System.Boolean EficazFramework.Templates.ApplicationMVVMToolbar`1::get_Filter_Input()": {
+          "Lines": {
+            "17": 0
+          },
+          "Branches": []
+        },
+        "System.String EficazFramework.Templates.ApplicationMVVMToolbar`1::get_Filter_Text()": {
+          "Lines": {
+            "22": 0
+          },
+          "Branches": []
+        },
+        "System.Void EficazFramework.Templates.ApplicationMVVMToolbar`1::set_Filter_Text(System.String)": {
+          "Lines": {
+            "24": 0,
+            "25": 0,
+            "26": 0,
+            "27": 0
+          },
+          "Branches": []
+        },
+        "Microsoft.AspNetCore.Components.EventCallback`1<System.String> EficazFramework.Templates.ApplicationMVVMToolbar`1::get_Filter_TextChanged()": {
+          "Lines": {
+            "29": 0
+          },
+          "Branches": []
+        },
+        "System.Boolean EficazFramework.Templates.ApplicationMVVMToolbar`1::get_Command_Refresh()": {
+          "Lines": {
+            "33": 0
+          },
+          "Branches": []
+        },
+        "System.Boolean EficazFramework.Templates.ApplicationMVVMToolbar`1::get_Command_AddNew()": {
+          "Lines": {
+            "34": 0
+          },
+          "Branches": []
+        },
+        "System.Boolean EficazFramework.Templates.ApplicationMVVMToolbar`1::get_Command_Save()": {
+          "Lines": {
+            "36": 0
+          },
+          "Branches": []
+        },
+        "System.Boolean EficazFramework.Templates.ApplicationMVVMToolbar`1::get_Command_SaveAll()": {
+          "Lines": {
+            "37": 0
+          },
+          "Branches": []
+        },
+        "System.Boolean EficazFramework.Templates.ApplicationMVVMToolbar`1::get_Command_Cancel()": {
+          "Lines": {
+            "38": 0
+          },
+          "Branches": []
+        },
+        "Microsoft.AspNetCore.Components.RenderFragment EficazFramework.Templates.ApplicationMVVMToolbar`1::get_ChildContent()": {
+          "Lines": {
+            "40": 0
+          },
+          "Branches": []
+        },
+        "System.String EficazFramework.Templates.ApplicationMVVMToolbar`1::GetDetailName()": {
+          "Lines": {
+            "43": 0,
+            "44": 0,
+            "45": 0,
+            "46": 0,
+            "48": 0,
+            "49": 0
+          },
+          "Branches": [
+            {
+              "Line": 45,
+              "Offset": 19,
+              "EndOffset": 21,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            },
+            {
+              "Line": 45,
+              "Offset": 19,
+              "EndOffset": 29,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 0
+            }
+          ]
+        }
+      }
+    },
+    "E:\\Henrique Clausing\\Repositorios\\Current\\EficazFramework\\src\\Web\\EficazFramework.Blazor\\Templates\\ApplicationMVVMToolbar.razor": {
+      "EficazFramework.Templates.ApplicationMVVMToolbar`1": {
+        "System.Void EficazFramework.Templates.ApplicationMVVMToolbar`1::BuildRenderTree(Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder)": {
+          "Lines": {
+            "4": 0,
+            "5": 0,
+            "6": 0,
+            "8": 0,
+            "9": 0,
+            "13": 0,
+            "14": 0,
+            "15": 0,
+            "20": 0,
+            "21": 0,
+            "22": 0,
+            "26": 0,
+            "27": 0,
+            "28": 0,
+            "32": 0,
+            "34": 0,
+            "35": 0,
+            "46": 0,
+            "47": 0,
+            "48": 0,
+            "59": 0,
+            "61": 0,
+            "62": 0,
+            "73": 0,
+            "74": 0,
+            "75": 0,
+            "86": 0,
+            "90": 0
+          },
+          "Branches": [
+            {
+              "Line": 4,
+              "Offset": 7,
+              "EndOffset": 9,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            },
+            {
+              "Line": 4,
+              "Offset": 7,
+              "EndOffset": 25,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 0
+            },
+            {
+              "Line": 4,
+              "Offset": 28,
+              "EndOffset": 33,
+              "Path": 0,
+              "Ordinal": 2,
+              "Hits": 0
+            },
+            {
+              "Line": 8,
+              "Offset": 54,
+              "EndOffset": 56,
+              "Path": 0,
+              "Ordinal": 4,
+              "Hits": 0
+            },
+            {
+              "Line": 8,
+              "Offset": 68,
+              "EndOffset": 70,
+              "Path": 0,
+              "Ordinal": 6,
+              "Hits": 0
+            },
+            {
+              "Line": 8,
+              "Offset": 68,
+              "EndOffset": 86,
+              "Path": 1,
+              "Ordinal": 7,
+              "Hits": 0
+            },
+            {
+              "Line": 8,
+              "Offset": 54,
+              "EndOffset": 89,
+              "Path": 1,
+              "Ordinal": 5,
+              "Hits": 0
+            },
+            {
+              "Line": 8,
+              "Offset": 92,
+              "EndOffset": 94,
+              "Path": 0,
+              "Ordinal": 8,
+              "Hits": 0
+            },
+            {
+              "Line": 8,
+              "Offset": 92,
+              "EndOffset": 159,
+              "Path": 1,
+              "Ordinal": 9,
+              "Hits": 0
+            },
+            {
+              "Line": 14,
+              "Offset": 165,
+              "EndOffset": 167,
+              "Path": 0,
+              "Ordinal": 10,
+              "Hits": 0
+            },
+            {
+              "Line": 14,
+              "Offset": 179,
+              "EndOffset": 181,
+              "Path": 0,
+              "Ordinal": 12,
+              "Hits": 0
+            },
+            {
+              "Line": 14,
+              "Offset": 179,
+              "EndOffset": 197,
+              "Path": 1,
+              "Ordinal": 13,
+              "Hits": 0
+            },
+            {
+              "Line": 14,
+              "Offset": 165,
+              "EndOffset": 200,
+              "Path": 1,
+              "Ordinal": 11,
+              "Hits": 0
+            },
+            {
+              "Line": 14,
+              "Offset": 203,
+              "EndOffset": 205,
+              "Path": 0,
+              "Ordinal": 14,
+              "Hits": 0
+            },
+            {
+              "Line": 14,
+              "Offset": 203,
+              "EndOffset": 272,
+              "Path": 1,
+              "Ordinal": 15,
+              "Hits": 0
+            },
+            {
+              "Line": 21,
+              "Offset": 278,
+              "EndOffset": 280,
+              "Path": 0,
+              "Ordinal": 16,
+              "Hits": 0
+            },
+            {
+              "Line": 21,
+              "Offset": 292,
+              "EndOffset": 294,
+              "Path": 0,
+              "Ordinal": 18,
+              "Hits": 0
+            },
+            {
+              "Line": 21,
+              "Offset": 292,
+              "EndOffset": 310,
+              "Path": 1,
+              "Ordinal": 19,
+              "Hits": 0
+            },
+            {
+              "Line": 21,
+              "Offset": 278,
+              "EndOffset": 313,
+              "Path": 1,
+              "Ordinal": 17,
+              "Hits": 0
+            },
+            {
+              "Line": 21,
+              "Offset": 316,
+              "EndOffset": 318,
+              "Path": 0,
+              "Ordinal": 20,
+              "Hits": 0
+            },
+            {
+              "Line": 21,
+              "Offset": 316,
+              "EndOffset": 405,
+              "Path": 1,
+              "Ordinal": 21,
+              "Hits": 0
+            },
+            {
+              "Line": 27,
+              "Offset": 411,
+              "EndOffset": 413,
+              "Path": 0,
+              "Ordinal": 22,
+              "Hits": 0
+            },
+            {
+              "Line": 27,
+              "Offset": 411,
+              "EndOffset": 429,
+              "Path": 1,
+              "Ordinal": 23,
+              "Hits": 0
+            },
+            {
+              "Line": 27,
+              "Offset": 434,
+              "EndOffset": 436,
+              "Path": 0,
+              "Ordinal": 24,
+              "Hits": 0
+            },
+            {
+              "Line": 27,
+              "Offset": 434,
+              "EndOffset": 505,
+              "Path": 1,
+              "Ordinal": 25,
+              "Hits": 0
+            },
+            {
+              "Line": 34,
+              "Offset": 511,
+              "EndOffset": 513,
+              "Path": 0,
+              "Ordinal": 26,
+              "Hits": 0
+            },
+            {
+              "Line": 34,
+              "Offset": 524,
+              "EndOffset": 526,
+              "Path": 0,
+              "Ordinal": 28,
+              "Hits": 0
+            },
+            {
+              "Line": 34,
+              "Offset": 524,
+              "EndOffset": 542,
+              "Path": 1,
+              "Ordinal": 29,
+              "Hits": 0
+            },
+            {
+              "Line": 34,
+              "Offset": 511,
+              "EndOffset": 545,
+              "Path": 1,
+              "Ordinal": 27,
+              "Hits": 0
+            },
+            {
+              "Line": 34,
+              "Offset": 550,
+              "EndOffset": 555,
+              "Path": 0,
+              "Ordinal": 30,
+              "Hits": 0
+            },
+            {
+              "Line": 34,
+              "Offset": 550,
+              "EndOffset": 706,
+              "Path": 1,
+              "Ordinal": 31,
+              "Hits": 0
+            },
+            {
+              "Line": 47,
+              "Offset": 712,
+              "EndOffset": 714,
+              "Path": 0,
+              "Ordinal": 32,
+              "Hits": 0
+            },
+            {
+              "Line": 47,
+              "Offset": 725,
+              "EndOffset": 727,
+              "Path": 0,
+              "Ordinal": 34,
+              "Hits": 0
+            },
+            {
+              "Line": 47,
+              "Offset": 725,
+              "EndOffset": 743,
+              "Path": 1,
+              "Ordinal": 35,
+              "Hits": 0
+            },
+            {
+              "Line": 47,
+              "Offset": 712,
+              "EndOffset": 746,
+              "Path": 1,
+              "Ordinal": 33,
+              "Hits": 0
+            },
+            {
+              "Line": 47,
+              "Offset": 751,
+              "EndOffset": 756,
+              "Path": 0,
+              "Ordinal": 36,
+              "Hits": 0
+            },
+            {
+              "Line": 47,
+              "Offset": 751,
+              "EndOffset": 907,
+              "Path": 1,
+              "Ordinal": 37,
+              "Hits": 0
+            },
+            {
+              "Line": 61,
+              "Offset": 913,
+              "EndOffset": 915,
+              "Path": 0,
+              "Ordinal": 38,
+              "Hits": 0
+            },
+            {
+              "Line": 61,
+              "Offset": 927,
+              "EndOffset": 929,
+              "Path": 0,
+              "Ordinal": 40,
+              "Hits": 0
+            },
+            {
+              "Line": 61,
+              "Offset": 927,
+              "EndOffset": 945,
+              "Path": 1,
+              "Ordinal": 41,
+              "Hits": 0
+            },
+            {
+              "Line": 61,
+              "Offset": 913,
+              "EndOffset": 948,
+              "Path": 1,
+              "Ordinal": 39,
+              "Hits": 0
+            },
+            {
+              "Line": 61,
+              "Offset": 953,
+              "EndOffset": 958,
+              "Path": 0,
+              "Ordinal": 42,
+              "Hits": 0
+            },
+            {
+              "Line": 61,
+              "Offset": 953,
+              "EndOffset": 1109,
+              "Path": 1,
+              "Ordinal": 43,
+              "Hits": 0
+            },
+            {
+              "Line": 74,
+              "Offset": 1115,
+              "EndOffset": 1117,
+              "Path": 0,
+              "Ordinal": 44,
+              "Hits": 0
+            },
+            {
+              "Line": 74,
+              "Offset": 1129,
+              "EndOffset": 1131,
+              "Path": 0,
+              "Ordinal": 46,
+              "Hits": 0
+            },
+            {
+              "Line": 74,
+              "Offset": 1129,
+              "EndOffset": 1147,
+              "Path": 1,
+              "Ordinal": 47,
+              "Hits": 0
+            },
+            {
+              "Line": 74,
+              "Offset": 1115,
+              "EndOffset": 1150,
+              "Path": 1,
+              "Ordinal": 45,
+              "Hits": 0
+            },
+            {
+              "Line": 74,
+              "Offset": 1155,
+              "EndOffset": 1160,
+              "Path": 0,
+              "Ordinal": 48,
+              "Hits": 0
+            },
+            {
+              "Line": 74,
+              "Offset": 1155,
+              "EndOffset": 1311,
+              "Path": 1,
+              "Ordinal": 49,
+              "Hits": 0
+            },
+            {
+              "Line": 4,
+              "Offset": 28,
+              "EndOffset": 1343,
+              "Path": 1,
+              "Ordinal": 3,
+              "Hits": 0
+            }
+          ]
+        },
+        "System.Void EficazFramework.Templates.ApplicationMVVMToolbar`1::<BuildRenderTree>b__45_12()": {
+          "Lines": {
+            "11": 0
+          },
+          "Branches": []
+        },
+        "System.Void EficazFramework.Templates.ApplicationMVVMToolbar`1::<BuildRenderTree>b__45_13()": {
+          "Lines": {
+            "17": 0
+          },
+          "Branches": []
+        },
+        "System.Void EficazFramework.Templates.ApplicationMVVMToolbar`1::<BuildRenderTree>b__45_14()": {
+          "Lines": {
+            "24": 0
+          },
+          "Branches": []
+        },
+        "System.Void EficazFramework.Templates.ApplicationMVVMToolbar`1::<BuildRenderTree>b__45_16()": {
+          "Lines": {
+            "37": 0
+          },
+          "Branches": []
+        },
+        "System.Void EficazFramework.Templates.ApplicationMVVMToolbar`1::<BuildRenderTree>b__45_19()": {
+          "Lines": {
+            "43": 0
+          },
+          "Branches": []
+        },
+        "System.Void EficazFramework.Templates.ApplicationMVVMToolbar`1::<BuildRenderTree>b__45_20()": {
+          "Lines": {
+            "50": 0
+          },
+          "Branches": []
+        },
+        "System.Void EficazFramework.Templates.ApplicationMVVMToolbar`1::<BuildRenderTree>b__45_23()": {
+          "Lines": {
+            "56": 0
+          },
+          "Branches": []
+        },
+        "System.Void EficazFramework.Templates.ApplicationMVVMToolbar`1::<BuildRenderTree>b__45_24()": {
+          "Lines": {
+            "64": 0
+          },
+          "Branches": []
+        },
+        "System.Void EficazFramework.Templates.ApplicationMVVMToolbar`1::<BuildRenderTree>b__45_27()": {
+          "Lines": {
+            "70": 0
+          },
+          "Branches": []
+        },
+        "System.Void EficazFramework.Templates.ApplicationMVVMToolbar`1::<BuildRenderTree>b__45_28()": {
+          "Lines": {
+            "77": 0
+          },
+          "Branches": []
+        },
+        "System.Void EficazFramework.Templates.ApplicationMVVMToolbar`1::<BuildRenderTree>b__45_31()": {
+          "Lines": {
+            "83": 0
+          },
+          "Branches": []
+        }
+      },
+      "EficazFramework.Templates.ApplicationMVVMToolbar`1/<>c": {
+        "System.Void EficazFramework.Templates.ApplicationMVVMToolbar`1/<>c::<BuildRenderTree>b__45_17(Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder)": {
+          "Lines": {
+            "38": 0
+          },
+          "Branches": []
+        },
+        "System.Void EficazFramework.Templates.ApplicationMVVMToolbar`1/<>c::<BuildRenderTree>b__45_21(Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder)": {
+          "Lines": {
+            "51": 0
+          },
+          "Branches": []
+        },
+        "System.Void EficazFramework.Templates.ApplicationMVVMToolbar`1/<>c::<BuildRenderTree>b__45_25(Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder)": {
+          "Lines": {
+            "65": 0
+          },
+          "Branches": []
+        },
+        "System.Void EficazFramework.Templates.ApplicationMVVMToolbar`1/<>c::<BuildRenderTree>b__45_29(Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder)": {
+          "Lines": {
+            "78": 0
+          },
+          "Branches": []
+        }
+      }
+    },
+    "E:\\Henrique Clausing\\Repositorios\\Current\\EficazFramework\\src\\Web\\EficazFramework.Blazor\\Templates\\Applications.razor.cs": {
+      "EficazFramework.Templates.Applications": {
+        "EficazFramework.Application.IApplicationManager EficazFramework.Templates.Applications::get_AppManager()": {
+          "Lines": {
+            "10": 0
+          },
+          "Branches": []
+        },
+        "MudBlazor.MudDialogInstance EficazFramework.Templates.Applications::get_MudDialog()": {
+          "Lines": {
+            "12": 0
+          },
+          "Branches": []
+        },
+        "EficazFramework.Components.MDIContainer EficazFramework.Templates.Applications::get_MDI()": {
+          "Lines": {
+            "13": 0
+          },
+          "Branches": []
+        },
+        "System.String EficazFramework.Templates.Applications::get_Search()": {
+          "Lines": {
+            "19": 0
+          },
+          "Branches": []
+        },
+        "System.Void EficazFramework.Templates.Applications::set_Search(System.String)": {
+          "Lines": {
+            "21": 0,
+            "22": 0,
+            "23": 0,
+            "24": 0
+          },
+          "Branches": []
+        },
+        "System.Void EficazFramework.Templates.Applications::OnSearchChanged(System.String)": {
+          "Lines": {
+            "27": 0,
+            "28": 0,
+            "29": 0
+          },
+          "Branches": []
+        },
+        "System.Collections.Generic.IEnumerable`1<System.String> EficazFramework.Templates.Applications::get_AppGroups()": {
+          "Lines": {
+            "34": 0,
+            "35": 0,
+            "36": 0
+          },
+          "Branches": []
+        },
+        "System.Collections.Generic.IEnumerable`1<EficazFramework.Application.ApplicationDefinition> EficazFramework.Templates.Applications::get_FilteredApps()": {
+          "Lines": {
+            "42": 0,
+            "43": 0,
+            "44": 0,
+            "45": 0,
+            "46": 0
+          },
+          "Branches": []
+        },
+        "System.Void EficazFramework.Templates.Applications::OpenApp_Button_Click(EficazFramework.Application.ApplicationDefinition)": {
+          "Lines": {
+            "50": 0,
+            "51": 0,
+            "52": 0
+          },
+          "Branches": [
+            {
+              "Line": 51,
+              "Offset": 8,
+              "EndOffset": 10,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            },
+            {
+              "Line": 51,
+              "Offset": 8,
+              "EndOffset": 13,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 0
+            }
+          ]
+        },
+        "System.String EficazFramework.Templates.Applications::ResolvedIcon(EficazFramework.Application.ApplicationDefinition)": {
+          "Lines": {
+            "55": 0,
+            "56": 0,
+            "57": 0,
+            "59": 0,
+            "60": 0,
+            "61": 0,
+            "63": 0,
+            "64": 0
+          },
+          "Branches": [
+            {
+              "Line": 56,
+              "Offset": 7,
+              "EndOffset": 9,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            },
+            {
+              "Line": 56,
+              "Offset": 7,
+              "EndOffset": 17,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 0
+            },
+            {
+              "Line": 59,
+              "Offset": 65,
+              "EndOffset": 67,
+              "Path": 0,
+              "Ordinal": 2,
+              "Hits": 0
+            },
+            {
+              "Line": 59,
+              "Offset": 65,
+              "EndOffset": 71,
+              "Path": 1,
+              "Ordinal": 3,
+              "Hits": 0
+            },
+            {
+              "Line": 59,
+              "Offset": 77,
+              "EndOffset": 79,
+              "Path": 0,
+              "Ordinal": 4,
+              "Hits": 0
+            },
+            {
+              "Line": 59,
+              "Offset": 77,
+              "EndOffset": 85,
+              "Path": 1,
+              "Ordinal": 5,
+              "Hits": 0
+            },
+            {
+              "Line": 60,
+              "Offset": 99,
+              "EndOffset": 101,
+              "Path": 0,
+              "Ordinal": 6,
+              "Hits": 0
+            },
+            {
+              "Line": 61,
+              "Offset": 108,
+              "EndOffset": 110,
+              "Path": 0,
+              "Ordinal": 8,
+              "Hits": 0
+            },
+            {
+              "Line": 61,
+              "Offset": 108,
+              "EndOffset": 116,
+              "Path": 1,
+              "Ordinal": 9,
+              "Hits": 0
+            },
+            {
+              "Line": 60,
+              "Offset": 99,
+              "EndOffset": 122,
+              "Path": 1,
+              "Ordinal": 7,
+              "Hits": 0
+            }
+          ]
+        },
+        "System.Boolean EficazFramework.Templates.Applications::<get_FilteredApps>b__21_0(EficazFramework.Application.ApplicationDefinition)": {
+          "Lines": {},
+          "Branches": [
+            {
+              "Line": 44,
+              "Offset": 23,
+              "EndOffset": 25,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            },
+            {
+              "Line": 44,
+              "Offset": 23,
+              "EndOffset": 31,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 0
+            },
+            {
+              "Line": 44,
+              "Offset": 38,
+              "EndOffset": 40,
+              "Path": 0,
+              "Ordinal": 2,
+              "Hits": 0
+            },
+            {
+              "Line": 44,
+              "Offset": 63,
+              "EndOffset": 65,
+              "Path": 0,
+              "Ordinal": 4,
+              "Hits": 0
+            },
+            {
+              "Line": 44,
+              "Offset": 63,
+              "EndOffset": 71,
+              "Path": 1,
+              "Ordinal": 5,
+              "Hits": 0
+            },
+            {
+              "Line": 44,
+              "Offset": 38,
+              "EndOffset": 85,
+              "Path": 1,
+              "Ordinal": 3,
+              "Hits": 0
+            }
+          ]
+        }
+      }
+    },
+    "E:\\Henrique Clausing\\Repositorios\\Current\\EficazFramework\\src\\Web\\EficazFramework.Blazor\\Templates\\Applications.razor": {
+      "EficazFramework.Templates.Applications": {
+        "System.Void EficazFramework.Templates.Applications::BuildRenderTree(Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder)": {
+          "Lines": {
+            "9": 0,
+            "10": 0,
+            "43": 0
+          },
+          "Branches": [
+            {
+              "Line": 9,
+              "Offset": 482,
+              "EndOffset": 193,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 0
+            },
+            {
+              "Line": 9,
+              "Offset": 482,
+              "EndOffset": 487,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            }
+          ]
+        },
+        "System.Void EficazFramework.Templates.Applications::<BuildRenderTree>b__24_1(MudBlazor.MudTextField`1<System.String>)": {
+          "Lines": {
+            "5": 0
+          },
+          "Branches": []
+        }
+      },
+      "EficazFramework.Templates.Applications/<>c__DisplayClass24_0": {
+        "System.Void EficazFramework.Templates.Applications/<>c__DisplayClass24_0::<BuildRenderTree>b__2(Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder)": {
+          "Lines": {
+            "13": 0
+          },
+          "Branches": []
+        },
+        "System.Void EficazFramework.Templates.Applications/<>c__DisplayClass24_0::<BuildRenderTree>b__5(Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder)": {
+          "Lines": {
+            "21": 0,
+            "22": 0,
+            "29": 0
+          },
+          "Branches": [
+            {
+              "Line": 21,
+              "Offset": 53,
+              "EndOffset": 55,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            },
+            {
+              "Line": 21,
+              "Offset": 53,
+              "EndOffset": 77,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 0
+            },
+            {
+              "Line": 21,
+              "Offset": 285,
+              "EndOffset": 98,
+              "Path": 1,
+              "Ordinal": 3,
+              "Hits": 0
+            },
+            {
+              "Line": 21,
+              "Offset": 285,
+              "EndOffset": 290,
+              "Path": 0,
+              "Ordinal": 2,
+              "Hits": 0
+            }
+          ]
+        },
+        "System.Void EficazFramework.Templates.Applications/<>c__DisplayClass24_0::<BuildRenderTree>b__10(Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder)": {
+          "Lines": {
+            "37": 0,
+            "38": 0,
+            "40": 0
+          },
+          "Branches": [
+            {
+              "Line": 37,
+              "Offset": 20,
+              "EndOffset": 22,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            },
+            {
+              "Line": 37,
+              "Offset": 20,
+              "EndOffset": 44,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 0
+            },
+            {
+              "Line": 37,
+              "Offset": 229,
+              "EndOffset": 65,
+              "Path": 1,
+              "Ordinal": 3,
+              "Hits": 0
+            },
+            {
+              "Line": 37,
+              "Offset": 229,
+              "EndOffset": 234,
+              "Path": 0,
+              "Ordinal": 2,
+              "Hits": 0
+            }
+          ]
+        }
+      },
+      "EficazFramework.Templates.Applications/<>c__DisplayClass24_1": {
+        "System.Void EficazFramework.Templates.Applications/<>c__DisplayClass24_1::<BuildRenderTree>b__7()": {
+          "Lines": {
+            "23": 0
+          },
+          "Branches": []
+        },
+        "System.Void EficazFramework.Templates.Applications/<>c__DisplayClass24_1::<BuildRenderTree>b__9(Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder)": {
+          "Lines": {
+            "26": 0
+          },
+          "Branches": []
+        }
+      },
+      "EficazFramework.Templates.Applications/<>c__DisplayClass24_2": {
+        "System.Void EficazFramework.Templates.Applications/<>c__DisplayClass24_2::<BuildRenderTree>b__12()": {
+          "Lines": {
+            "39": 0
+          },
+          "Branches": []
+        }
+      }
+    },
+    "E:\\Henrique Clausing\\Repositorios\\Current\\EficazFramework\\src\\Web\\EficazFramework.Blazor\\Templates\\CookieConsent.razor.cs": {
+      "EficazFramework.Templates.CookieConsent": {
+        "Microsoft.JSInterop.IJSRuntime EficazFramework.Templates.CookieConsent::get_JSRuntime()": {
+          "Lines": {
+            "10": 0
+          },
+          "Branches": []
+        },
+        "MudBlazor.ISnackbar EficazFramework.Templates.CookieConsent::get_Snackbar()": {
+          "Lines": {
+            "11": 0
+          },
+          "Branches": []
+        },
+        "System.Boolean EficazFramework.Templates.CookieConsent::get_HasCookieConsent()": {
+          "Lines": {
+            "12": 0
+          },
+          "Branches": []
+        },
+        "System.String EficazFramework.Templates.CookieConsent::get_CookieConsentName()": {
+          "Lines": {
+            "13": 0
+          },
+          "Branches": []
+        },
+        "System.String EficazFramework.Templates.CookieConsent::RenderSnackBar()": {
+          "Lines": {
+            "16": 0,
+            "17": 0,
+            "18": 0,
+            "19": 0,
+            "20": 0,
+            "21": 0,
+            "22": 0,
+            "23": 0,
+            "24": 0,
+            "25": 0,
+            "26": 0,
+            "27": 0,
+            "28": 0,
+            "29": 0,
+            "30": 0,
+            "31": 0,
+            "32": 0,
+            "33": 0,
+            "34": 0
+          },
+          "Branches": []
+        }
+      }
+    },
+    "E:\\Henrique Clausing\\Repositorios\\Current\\EficazFramework\\src\\Web\\EficazFramework.Blazor\\Templates\\CookieConsent.razor": {
+      "EficazFramework.Templates.CookieConsent": {
+        "System.Void EficazFramework.Templates.CookieConsent::BuildRenderTree(Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder)": {
+          "Lines": {
+            "3": 0,
+            "4": 0,
+            "6": 0,
+            "8": 0
+          },
+          "Branches": [
+            {
+              "Line": 3,
+              "Offset": 12,
+              "EndOffset": 14,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            },
+            {
+              "Line": 3,
+              "Offset": 12,
+              "EndOffset": 99,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 0
+            }
+          ]
+        }
+      }
+    },
+    "E:\\Henrique Clausing\\Repositorios\\Current\\EficazFramework\\src\\Web\\EficazFramework.Blazor\\Templates\\Footer.razor.cs": {
+      "EficazFramework.Templates.Footer": {
+        "System.Boolean EficazFramework.Templates.Footer::get_Fixed()": {
+          "Lines": {
+            "9": 0
+          },
+          "Branches": []
+        },
+        "System.String EficazFramework.Templates.Footer::get_Classname()": {
+          "Lines": {
+            "12": 0,
+            "13": 0,
+            "14": 0,
+            "15": 0
+          },
+          "Branches": []
+        },
+        "System.String EficazFramework.Templates.Footer::get_Style()": {
+          "Lines": {
+            "20": 0
+          },
+          "Branches": []
+        }
+      }
+    },
+    "E:\\Henrique Clausing\\Repositorios\\Current\\EficazFramework\\src\\Web\\EficazFramework.Blazor\\Templates\\Footer.razor": {
+      "EficazFramework.Templates.Footer/<>c": {
+        "System.Void EficazFramework.Templates.Footer/<>c::<BuildRenderTree>b__10_0(Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder)": {
+          "Lines": {
+            "7": 0
+          },
+          "Branches": []
+        }
+      }
+    },
+    "E:\\Henrique Clausing\\Repositorios\\Current\\EficazFramework\\src\\Web\\EficazFramework.Blazor\\Templates\\StartMenu.razor.cs": {
+      "EficazFramework.Templates.StartMenu": {
+        "System.String EficazFramework.Templates.StartMenu::get_IndexPanelCss()": {
+          "Lines": {
+            "8": 0,
+            "9": 0,
+            "10": 0,
+            "11": 0,
+            "12": 0,
+            "13": 0
+          },
+          "Branches": []
+        },
+        "System.String EficazFramework.Templates.StartMenu::get_AppsTabIcon()": {
+          "Lines": {
+            "18": 0
+          },
+          "Branches": []
+        },
+        "Microsoft.AspNetCore.Components.RenderFragment EficazFramework.Templates.StartMenu::get_InitialTabsContent()": {
+          "Lines": {
+            "19": 0
+          },
+          "Branches": []
+        },
+        "Microsoft.AspNetCore.Components.RenderFragment EficazFramework.Templates.StartMenu::get_HeaderContent()": {
+          "Lines": {
+            "20": 0
+          },
+          "Branches": []
+        },
+        "Microsoft.AspNetCore.Components.RenderFragment EficazFramework.Templates.StartMenu::get_TabsContent()": {
+          "Lines": {
+            "21": 0
+          },
+          "Branches": []
+        },
+        "MudBlazor.MudDialogInstance EficazFramework.Templates.StartMenu::get_MudDialog()": {
+          "Lines": {
+            "23": 0
+          },
+          "Branches": []
+        },
+        "EficazFramework.Components.MDIContainer EficazFramework.Templates.StartMenu::get_MDI()": {
+          "Lines": {
+            "24": 0
+          },
+          "Branches": []
+        },
+        "System.Void EficazFramework.Templates.StartMenu::MoveTo(System.Int32)": {
+          "Lines": {
+            "27": 0,
+            "28": 0,
+            "29": 0
+          },
+          "Branches": []
+        },
+        "System.Void EficazFramework.Templates.StartMenu::OpenApp(EficazFramework.Application.ApplicationDefinition)": {
+          "Lines": {
+            "32": 0,
+            "33": 0,
+            "34": 0
+          },
+          "Branches": [
+            {
+              "Line": 33,
+              "Offset": 8,
+              "EndOffset": 10,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            },
+            {
+              "Line": 33,
+              "Offset": 8,
+              "EndOffset": 13,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 0
+            }
+          ]
+        }
+      }
+    },
+    "E:\\Henrique Clausing\\Repositorios\\Current\\EficazFramework\\src\\Web\\EficazFramework.Blazor\\Templates\\StartMenu.razor": {
+      "EficazFramework.Templates.StartMenu": {
+        "System.Void EficazFramework.Templates.StartMenu::<BuildRenderTree>b__30_0(Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder)": {
+          "Lines": {
+            "5": 0,
+            "18": 0
+          },
+          "Branches": []
+        },
+        "System.Void EficazFramework.Templates.StartMenu::<BuildRenderTree>b__30_3(Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder)": {
+          "Lines": {
+            "11": 0
+          },
+          "Branches": []
+        },
+        "System.Void EficazFramework.Templates.StartMenu::<BuildRenderTree>b__30_4(System.Object)": {
+          "Lines": {
+            "15": 0
+          },
+          "Branches": []
+        },
+        "System.Void EficazFramework.Templates.StartMenu::<BuildRenderTree>b__30_1(System.Object)": {
+          "Lines": {
+            "4": 0
+          },
+          "Branches": []
+        }
+      }
+    },
+    "E:\\Henrique Clausing\\Repositorios\\Current\\EficazFramework\\src\\Web\\EficazFramework.Blazor\\Services\\ServiceCollectionExtensions.cs": {
+      "EficazFramework.Services.ServiceCollectionExtensions": {
+        "Microsoft.Extensions.DependencyInjection.IServiceCollection EficazFramework.Services.ServiceCollectionExtensions::AddEficazFramework(Microsoft.Extensions.DependencyInjection.IServiceCollection,EficazFramework.Configuration.ServiceConfiguration)": {
+          "Lines": {
+            "12": 0,
+            "13": 0,
+            "14": 0,
+            "16": 0,
+            "17": 0,
+            "19": 0,
+            "20": 0
+          },
+          "Branches": [
+            {
+              "Line": 13,
+              "Offset": 3,
+              "EndOffset": 5,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            },
+            {
+              "Line": 13,
+              "Offset": 3,
+              "EndOffset": 8,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 0
+            },
+            {
+              "Line": 13,
+              "Offset": 20,
+              "EndOffset": 22,
+              "Path": 0,
+              "Ordinal": 2,
+              "Hits": 0
+            },
+            {
+              "Line": 13,
+              "Offset": 20,
+              "EndOffset": 25,
+              "Path": 1,
+              "Ordinal": 3,
+              "Hits": 0
+            },
+            {
+              "Line": 16,
+              "Offset": 38,
+              "EndOffset": 40,
+              "Path": 0,
+              "Ordinal": 4,
+              "Hits": 0
+            },
+            {
+              "Line": 16,
+              "Offset": 38,
+              "EndOffset": 43,
+              "Path": 1,
+              "Ordinal": 5,
+              "Hits": 0
+            },
+            {
+              "Line": 16,
+              "Offset": 51,
+              "EndOffset": 53,
+              "Path": 0,
+              "Ordinal": 6,
+              "Hits": 0
+            },
+            {
+              "Line": 16,
+              "Offset": 51,
+              "EndOffset": 60,
+              "Path": 1,
+              "Ordinal": 7,
+              "Hits": 0
+            }
+          ]
+        },
+        "Microsoft.Extensions.DependencyInjection.IServiceCollection EficazFramework.Services.ServiceCollectionExtensions::AddApplicationManager(Microsoft.Extensions.DependencyInjection.IServiceCollection)": {
+          "Lines": {
+            "23": 0,
+            "24": 0,
+            "25": 0
+          },
+          "Branches": []
+        },
+        "Microsoft.Extensions.DependencyInjection.IServiceCollection EficazFramework.Services.ServiceCollectionExtensions::AddThemeProvider(Microsoft.Extensions.DependencyInjection.IServiceCollection,MudBlazor.MudTheme)": {
+          "Lines": {
+            "28": 0,
+            "29": 0,
+            "30": 0
+          },
+          "Branches": []
+        }
+      }
+    },
+    "E:\\Henrique Clausing\\Repositorios\\Current\\EficazFramework\\src\\Web\\EficazFramework.Blazor\\Services\\ThemeProvider.cs": {
+      "EficazFramework.Services.ThemeProvider": {
+        "MudBlazor.MudTheme EficazFramework.Services.ThemeProvider::get_Theme()": {
+          "Lines": {
+            "24": 0
+          },
+          "Branches": []
+        },
+        "System.Void EficazFramework.Services.ThemeProvider::.ctor(MudBlazor.MudTheme)": {
+          "Lines": {
+            "16": 0,
+            "17": 0,
+            "19": 0,
+            "20": 0,
+            "22": 0,
+            "25": 0,
+            "26": 0,
+            "27": 0,
+            "28": 0,
+            "29": 0,
+            "30": 0,
+            "31": 0,
+            "32": 0,
+            "33": 0,
+            "34": 0
+          },
+          "Branches": [
+            {
+              "Line": 19,
+              "Offset": 105,
+              "EndOffset": 107,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            },
+            {
+              "Line": 19,
+              "Offset": 105,
+              "EndOffset": 115,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 0
+            }
+          ]
+        }
+      }
+    },
+    "E:\\Henrique Clausing\\Repositorios\\Current\\EficazFramework\\src\\Web\\EficazFramework.Blazor\\Resources\\Strings\\Components.Designer.cs": {
+      "EficazFramework.Resources.Strings.Components": {
+        "System.Resources.ResourceManager EficazFramework.Resources.Strings.Components::get_ResourceManager()": {
+          "Lines": {
+            "40": 9,
+            "41": 10,
+            "42": 1,
+            "43": 1,
+            "44": 1,
+            "45": 9,
+            "46": 9
+          },
+          "Branches": [
+            {
+              "Line": 41,
+              "Offset": 11,
+              "EndOffset": 13,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 1
+            },
+            {
+              "Line": 41,
+              "Offset": 11,
+              "EndOffset": 47,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 9
+            }
+          ]
+        },
+        "System.Globalization.CultureInfo EficazFramework.Resources.Strings.Components::get_Culture()": {
+          "Lines": {
+            "55": 0,
+            "56": 0,
+            "57": 0
+          },
+          "Branches": []
+        },
+        "System.Void EficazFramework.Resources.Strings.Components::set_Culture(System.Globalization.CultureInfo)": {
+          "Lines": {
+            "58": 0,
+            "59": 0,
+            "60": 0
+          },
+          "Branches": []
+        },
+        "System.String EficazFramework.Resources.Strings.Components::get_App_RouteNotFound()": {
+          "Lines": {
+            "67": 0,
+            "68": 0,
+            "69": 0
+          },
+          "Branches": []
+        },
+        "System.String EficazFramework.Resources.Strings.Components::get_AppException_Message_Development()": {
+          "Lines": {
+            "76": 0,
+            "77": 0,
+            "78": 0
+          },
+          "Branches": []
+        },
+        "System.String EficazFramework.Resources.Strings.Components::get_AppException_Message_Production()": {
+          "Lines": {
+            "85": 0,
+            "86": 0,
+            "87": 0
+          },
+          "Branches": []
+        },
+        "System.String EficazFramework.Resources.Strings.Components::get_AppException_Reload()": {
+          "Lines": {
+            "94": 0,
+            "95": 0,
+            "96": 0
+          },
+          "Branches": []
+        },
+        "System.String EficazFramework.Resources.Strings.Components::get_AppException_Title()": {
+          "Lines": {
+            "103": 0,
+            "104": 0,
+            "105": 0
+          },
+          "Branches": []
+        },
+        "System.String EficazFramework.Resources.Strings.Components::get_ExpressionBuilder_AddCommand()": {
+          "Lines": {
+            "112": 2,
+            "113": 2,
+            "114": 2
+          },
+          "Branches": []
+        },
+        "System.String EficazFramework.Resources.Strings.Components::get_ExpressionBuilder_Between_Separator()": {
+          "Lines": {
+            "121": 0,
+            "122": 0,
+            "123": 0
+          },
+          "Branches": []
+        },
+        "System.String EficazFramework.Resources.Strings.Components::get_ExpressionBuilder_CL_Field()": {
+          "Lines": {
+            "130": 2,
+            "131": 2,
+            "132": 2
+          },
+          "Branches": []
+        },
+        "System.String EficazFramework.Resources.Strings.Components::get_ExpressionBuilder_CL_Operator()": {
+          "Lines": {
+            "139": 2,
+            "140": 2,
+            "141": 2
+          },
+          "Branches": []
+        },
+        "System.String EficazFramework.Resources.Strings.Components::get_ExpressionBuilder_CL_Value()": {
+          "Lines": {
+            "148": 2,
+            "149": 2,
+            "150": 2
+          },
+          "Branches": []
+        },
+        "System.String EficazFramework.Resources.Strings.Components::get_ExpressionBuilder_DeleteCommand()": {
+          "Lines": {
+            "157": 0,
+            "158": 0,
+            "159": 0
+          },
+          "Branches": []
+        },
+        "System.String EficazFramework.Resources.Strings.Components::get_ExpressionBuilder_FindCommand()": {
+          "Lines": {
+            "166": 0,
+            "167": 0,
+            "168": 0
+          },
+          "Branches": []
+        },
+        "System.String EficazFramework.Resources.Strings.Components::get_ExpressionBuilder_Header()": {
+          "Lines": {
+            "175": 1,
+            "176": 1,
+            "177": 1
+          },
+          "Branches": []
+        },
+        "System.String EficazFramework.Resources.Strings.Components::get_MDIApplication_Close()": {
+          "Lines": {
+            "184": 0,
+            "185": 0,
+            "186": 0
+          },
+          "Branches": []
+        },
+        "System.String EficazFramework.Resources.Strings.Components::get_MDIContainer_StartTab()": {
+          "Lines": {
+            "193": 0,
+            "194": 0,
+            "195": 0
+          },
+          "Branches": []
+        },
+        "System.String EficazFramework.Resources.Strings.Components::get_StartMenu_AllApps()": {
+          "Lines": {
+            "202": 0,
+            "203": 0,
+            "204": 0
+          },
+          "Branches": []
+        },
+        "System.String EficazFramework.Resources.Strings.Components::get_StartMenu_DefaultWelcomeText()": {
+          "Lines": {
+            "211": 0,
+            "212": 0,
+            "213": 0
+          },
+          "Branches": []
+        },
+        "System.String EficazFramework.Resources.Strings.Components::get_StartMenu_GridApps()": {
+          "Lines": {
+            "220": 0,
+            "221": 0,
+            "222": 0
+          },
+          "Branches": []
+        },
+        "System.String EficazFramework.Resources.Strings.Components::get_StartMenu_MainTab()": {
+          "Lines": {
+            "229": 0,
+            "230": 0,
+            "231": 0
+          },
+          "Branches": []
+        },
+        "System.String EficazFramework.Resources.Strings.Components::get_StartMenu_MainTooltip()": {
+          "Lines": {
+            "238": 0,
+            "239": 0,
+            "240": 0
+          },
+          "Branches": []
+        },
+        "System.String EficazFramework.Resources.Strings.Components::get_StartMenu_PinOffApp()": {
+          "Lines": {
+            "247": 0,
+            "248": 0,
+            "249": 0
+          },
+          "Branches": []
+        },
+        "System.String EficazFramework.Resources.Strings.Components::get_StartMenu_SearchTB()": {
+          "Lines": {
+            "256": 0,
+            "257": 0,
+            "258": 0
+          },
+          "Branches": []
+        },
+        "System.Void EficazFramework.Resources.Strings.Components::.ctor()": {
+          "Lines": {
+            "32": 0,
+            "33": 0
+          },
+          "Branches": []
+        }
+      }
+    },
+    "E:\\Henrique Clausing\\Repositorios\\Current\\EficazFramework\\src\\Web\\EficazFramework.Blazor\\Resources\\Strings\\Layouts.Designer.cs": {
+      "EficazFramework.Resources.Strings.Layouts": {
+        "System.Resources.ResourceManager EficazFramework.Resources.Strings.Layouts::get_ResourceManager()": {
+          "Lines": {
+            "40": 0,
+            "41": 0,
+            "42": 0,
+            "43": 0,
+            "44": 0,
+            "45": 0,
+            "46": 0
+          },
+          "Branches": [
+            {
+              "Line": 41,
+              "Offset": 11,
+              "EndOffset": 13,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            },
+            {
+              "Line": 41,
+              "Offset": 11,
+              "EndOffset": 47,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 0
+            }
+          ]
+        },
+        "System.Globalization.CultureInfo EficazFramework.Resources.Strings.Layouts::get_Culture()": {
+          "Lines": {
+            "55": 0,
+            "56": 0,
+            "57": 0
+          },
+          "Branches": []
+        },
+        "System.Void EficazFramework.Resources.Strings.Layouts::set_Culture(System.Globalization.CultureInfo)": {
+          "Lines": {
+            "58": 0,
+            "59": 0,
+            "60": 0
+          },
+          "Branches": []
+        },
+        "System.String EficazFramework.Resources.Strings.Layouts::get_BlazorError_Development()": {
+          "Lines": {
+            "67": 0,
+            "68": 0,
+            "69": 0
+          },
+          "Branches": []
+        },
+        "System.String EficazFramework.Resources.Strings.Layouts::get_BlazorError_Production()": {
+          "Lines": {
+            "76": 0,
+            "77": 0,
+            "78": 0
+          },
+          "Branches": []
+        },
+        "System.String EficazFramework.Resources.Strings.Layouts::get_BlazorError_Reload()": {
+          "Lines": {
+            "85": 0,
+            "86": 0,
+            "87": 0
+          },
+          "Branches": []
+        },
+        "System.Void EficazFramework.Resources.Strings.Layouts::.ctor()": {
+          "Lines": {
+            "32": 0,
+            "33": 0
+          },
+          "Branches": []
+        }
+      }
+    },
+    "E:\\Henrique Clausing\\Repositorios\\Current\\EficazFramework\\src\\Web\\EficazFramework.Blazor\\Icons\\Brands.cs": {
+      "EficazFramework.Icons.Brands": {
+        "System.Void EficazFramework.Icons.Brands::.cctor()": {
+          "Lines": {
+            "5": 0
+          },
+          "Branches": []
+        }
+      }
+    },
+    "E:\\Henrique Clausing\\Repositorios\\Current\\EficazFramework\\src\\Web\\EficazFramework.Blazor\\Icons\\Security.cs": {
+      "EficazFramework.Icons.Security": {
+        "System.Void EficazFramework.Icons.Security::.cctor()": {
+          "Lines": {
+            "5": 0,
+            "6": 0,
+            "7": 0
+          },
+          "Branches": []
+        }
+      }
+    },
+    "E:\\Henrique Clausing\\Repositorios\\Current\\EficazFramework\\src\\Web\\EficazFramework.Blazor\\Converters\\DocumentConverter.cs": {
+      "EficazFramework.Converters.DocumentConverter`1": {
+        "EficazFramework.Enums.Documentos EficazFramework.Converters.DocumentConverter`1::get_DocumentType()": {
+          "Lines": {
+            "24": 0
+          },
+          "Branches": []
+        },
+        "System.String EficazFramework.Converters.DocumentConverter`1::get_UF()": {
+          "Lines": {
+            "25": 0
+          },
+          "Branches": []
+        },
+        "T EficazFramework.Converters.DocumentConverter`1::OnGet(System.String)": {
+          "Lines": {
+            "28": 0,
+            "30": 0,
+            "31": 0,
+            "32": 0,
+            "33": 0,
+            "34": 0,
+            "35": 0,
+            "37": 0,
+            "38": 0,
+            "39": 0,
+            "40": 0,
+            "42": 0
+          },
+          "Branches": [
+            {
+              "Line": 31,
+              "Offset": 15,
+              "EndOffset": 19,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 0
+            },
+            {
+              "Line": 31,
+              "Offset": 15,
+              "EndOffset": 28,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            }
+          ]
+        },
+        "System.String EficazFramework.Converters.DocumentConverter`1::OnSet(T)": {
+          "Lines": {
+            "45": 0,
+            "46": 0,
+            "47": 0,
+            "49": 0,
+            "50": 0,
+            "52": 0,
+            "53": 0,
+            "54": 0,
+            "55": 0,
+            "56": 0,
+            "57": 0,
+            "58": 0,
+            "59": 0,
+            "60": 0,
+            "61": 0
+          },
+          "Branches": [
+            {
+              "Line": 46,
+              "Offset": 12,
+              "EndOffset": 14,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            },
+            {
+              "Line": 46,
+              "Offset": 12,
+              "EndOffset": 21,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 0
+            },
+            {
+              "Line": 49,
+              "Offset": 46,
+              "EndOffset": 48,
+              "Path": 0,
+              "Ordinal": 2,
+              "Hits": 0
+            },
+            {
+              "Line": 49,
+              "Offset": 46,
+              "EndOffset": 59,
+              "Path": 1,
+              "Ordinal": 3,
+              "Hits": 0
+            },
+            {
+              "Line": 52,
+              "Offset": 73,
+              "EndOffset": 108,
+              "Path": 1,
+              "Ordinal": 5,
+              "Hits": 0
+            },
+            {
+              "Line": 52,
+              "Offset": 73,
+              "EndOffset": 108,
+              "Path": 6,
+              "Ordinal": 10,
+              "Hits": 0
+            },
+            {
+              "Line": 52,
+              "Offset": 73,
+              "EndOffset": 108,
+              "Path": 7,
+              "Ordinal": 11,
+              "Hits": 0
+            },
+            {
+              "Line": 52,
+              "Offset": 73,
+              "EndOffset": 130,
+              "Path": 2,
+              "Ordinal": 6,
+              "Hits": 0
+            },
+            {
+              "Line": 52,
+              "Offset": 73,
+              "EndOffset": 158,
+              "Path": 5,
+              "Ordinal": 9,
+              "Hits": 0
+            },
+            {
+              "Line": 52,
+              "Offset": 73,
+              "EndOffset": 180,
+              "Path": 3,
+              "Ordinal": 7,
+              "Hits": 0
+            },
+            {
+              "Line": 52,
+              "Offset": 73,
+              "EndOffset": 202,
+              "Path": 4,
+              "Ordinal": 8,
+              "Hits": 0
+            },
+            {
+              "Line": 52,
+              "Offset": 73,
+              "EndOffset": 224,
+              "Path": 0,
+              "Ordinal": 4,
+              "Hits": 0
+            }
+          ]
+        },
+        "System.Void EficazFramework.Converters.DocumentConverter`1::.ctor()": {
+          "Lines": {
+            "12": 0,
+            "13": 0,
+            "14": 0,
+            "15": 0,
+            "16": 0,
+            "17": 0,
+            "19": 0,
+            "20": 0,
+            "21": 0
+          },
+          "Branches": []
+        }
+      }
+    },
+    "E:\\Henrique Clausing\\Repositorios\\Current\\EficazFramework\\src\\Web\\EficazFramework.Blazor\\Converters\\NumberConverter.cs": {
+      "EficazFramework.Converters.NumberConverter`1": {
+        "System.Int32 EficazFramework.Converters.NumberConverter`1::get_DecimalPlaces()": {
+          "Lines": {
+            "29": 0
+          },
+          "Branches": []
+        },
+        "System.Void EficazFramework.Converters.NumberConverter`1::set_DecimalPlaces(System.Int32)": {
+          "Lines": {
+            "31": 0,
+            "32": 0,
+            "33": 0,
+            "34": 0
+          },
+          "Branches": []
+        },
+        "T EficazFramework.Converters.NumberConverter`1::OnGet(System.String)": {
+          "Lines": {
+            "39": 0,
+            "41": 0,
+            "42": 0,
+            "45": 0,
+            "46": 0,
+            "47": 0,
+            "48": 0,
+            "49": 0,
+            "50": 0,
+            "52": 0,
+            "53": 0,
+            "54": 0,
+            "55": 0,
+            "56": 0,
+            "57": 0,
+            "59": 0,
+            "60": 0,
+            "61": 0,
+            "62": 0,
+            "63": 0,
+            "64": 0,
+            "66": 0,
+            "67": 0,
+            "68": 0,
+            "69": 0,
+            "70": 0,
+            "71": 0,
+            "73": 0,
+            "74": 0,
+            "75": 0,
+            "76": 0,
+            "77": 0,
+            "78": 0,
+            "80": 0,
+            "81": 0,
+            "82": 0,
+            "83": 0,
+            "84": 0,
+            "85": 0,
+            "87": 0,
+            "88": 0,
+            "89": 0,
+            "90": 0,
+            "91": 0,
+            "92": 0,
+            "94": 0,
+            "95": 0,
+            "96": 0,
+            "97": 0,
+            "98": 0,
+            "99": 0,
+            "101": 0,
+            "102": 0,
+            "103": 0,
+            "104": 0,
+            "105": 0,
+            "106": 0,
+            "108": 0,
+            "109": 0,
+            "110": 0,
+            "111": 0,
+            "112": 0,
+            "113": 0,
+            "114": 0,
+            "117": 0,
+            "118": 0,
+            "120": 0,
+            "121": 0
+          },
+          "Branches": [
+            {
+              "Line": 41,
+              "Offset": 9,
+              "EndOffset": 11,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            },
+            {
+              "Line": 41,
+              "Offset": 9,
+              "EndOffset": 26,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 0
+            },
+            {
+              "Line": 45,
+              "Offset": 51,
+              "EndOffset": 53,
+              "Path": 0,
+              "Ordinal": 2,
+              "Hits": 0
+            },
+            {
+              "Line": 45,
+              "Offset": 51,
+              "EndOffset": 80,
+              "Path": 1,
+              "Ordinal": 3,
+              "Hits": 0
+            },
+            {
+              "Line": 45,
+              "Offset": 83,
+              "EndOffset": 85,
+              "Path": 0,
+              "Ordinal": 4,
+              "Hits": 0
+            },
+            {
+              "Line": 47,
+              "Offset": 104,
+              "EndOffset": 106,
+              "Path": 0,
+              "Ordinal": 6,
+              "Hits": 0
+            },
+            {
+              "Line": 47,
+              "Offset": 104,
+              "EndOffset": 124,
+              "Path": 1,
+              "Ordinal": 7,
+              "Hits": 0
+            },
+            {
+              "Line": 45,
+              "Offset": 83,
+              "EndOffset": 142,
+              "Path": 1,
+              "Ordinal": 5,
+              "Hits": 0
+            },
+            {
+              "Line": 52,
+              "Offset": 167,
+              "EndOffset": 169,
+              "Path": 0,
+              "Ordinal": 8,
+              "Hits": 0
+            },
+            {
+              "Line": 52,
+              "Offset": 167,
+              "EndOffset": 196,
+              "Path": 1,
+              "Ordinal": 9,
+              "Hits": 0
+            },
+            {
+              "Line": 52,
+              "Offset": 201,
+              "EndOffset": 203,
+              "Path": 0,
+              "Ordinal": 10,
+              "Hits": 0
+            },
+            {
+              "Line": 54,
+              "Offset": 222,
+              "EndOffset": 224,
+              "Path": 0,
+              "Ordinal": 12,
+              "Hits": 0
+            },
+            {
+              "Line": 54,
+              "Offset": 222,
+              "EndOffset": 242,
+              "Path": 1,
+              "Ordinal": 13,
+              "Hits": 0
+            },
+            {
+              "Line": 52,
+              "Offset": 201,
+              "EndOffset": 260,
+              "Path": 1,
+              "Ordinal": 11,
+              "Hits": 0
+            },
+            {
+              "Line": 59,
+              "Offset": 285,
+              "EndOffset": 287,
+              "Path": 0,
+              "Ordinal": 14,
+              "Hits": 0
+            },
+            {
+              "Line": 59,
+              "Offset": 285,
+              "EndOffset": 314,
+              "Path": 1,
+              "Ordinal": 15,
+              "Hits": 0
+            },
+            {
+              "Line": 59,
+              "Offset": 319,
+              "EndOffset": 321,
+              "Path": 0,
+              "Ordinal": 16,
+              "Hits": 0
+            },
+            {
+              "Line": 61,
+              "Offset": 340,
+              "EndOffset": 342,
+              "Path": 0,
+              "Ordinal": 18,
+              "Hits": 0
+            },
+            {
+              "Line": 61,
+              "Offset": 340,
+              "EndOffset": 360,
+              "Path": 1,
+              "Ordinal": 19,
+              "Hits": 0
+            },
+            {
+              "Line": 59,
+              "Offset": 319,
+              "EndOffset": 378,
+              "Path": 1,
+              "Ordinal": 17,
+              "Hits": 0
+            },
+            {
+              "Line": 66,
+              "Offset": 403,
+              "EndOffset": 405,
+              "Path": 0,
+              "Ordinal": 20,
+              "Hits": 0
+            },
+            {
+              "Line": 66,
+              "Offset": 403,
+              "EndOffset": 432,
+              "Path": 1,
+              "Ordinal": 21,
+              "Hits": 0
+            },
+            {
+              "Line": 66,
+              "Offset": 437,
+              "EndOffset": 439,
+              "Path": 0,
+              "Ordinal": 22,
+              "Hits": 0
+            },
+            {
+              "Line": 68,
+              "Offset": 458,
+              "EndOffset": 460,
+              "Path": 0,
+              "Ordinal": 24,
+              "Hits": 0
+            },
+            {
+              "Line": 68,
+              "Offset": 458,
+              "EndOffset": 478,
+              "Path": 1,
+              "Ordinal": 25,
+              "Hits": 0
+            },
+            {
+              "Line": 66,
+              "Offset": 437,
+              "EndOffset": 496,
+              "Path": 1,
+              "Ordinal": 23,
+              "Hits": 0
+            },
+            {
+              "Line": 73,
+              "Offset": 521,
+              "EndOffset": 523,
+              "Path": 0,
+              "Ordinal": 26,
+              "Hits": 0
+            },
+            {
+              "Line": 73,
+              "Offset": 521,
+              "EndOffset": 550,
+              "Path": 1,
+              "Ordinal": 27,
+              "Hits": 0
+            },
+            {
+              "Line": 73,
+              "Offset": 555,
+              "EndOffset": 557,
+              "Path": 0,
+              "Ordinal": 28,
+              "Hits": 0
+            },
+            {
+              "Line": 75,
+              "Offset": 576,
+              "EndOffset": 578,
+              "Path": 0,
+              "Ordinal": 30,
+              "Hits": 0
+            },
+            {
+              "Line": 75,
+              "Offset": 576,
+              "EndOffset": 596,
+              "Path": 1,
+              "Ordinal": 31,
+              "Hits": 0
+            },
+            {
+              "Line": 73,
+              "Offset": 555,
+              "EndOffset": 614,
+              "Path": 1,
+              "Ordinal": 29,
+              "Hits": 0
+            },
+            {
+              "Line": 80,
+              "Offset": 639,
+              "EndOffset": 641,
+              "Path": 0,
+              "Ordinal": 32,
+              "Hits": 0
+            },
+            {
+              "Line": 80,
+              "Offset": 639,
+              "EndOffset": 668,
+              "Path": 1,
+              "Ordinal": 33,
+              "Hits": 0
+            },
+            {
+              "Line": 80,
+              "Offset": 673,
+              "EndOffset": 675,
+              "Path": 0,
+              "Ordinal": 34,
+              "Hits": 0
+            },
+            {
+              "Line": 82,
+              "Offset": 694,
+              "EndOffset": 696,
+              "Path": 0,
+              "Ordinal": 36,
+              "Hits": 0
+            },
+            {
+              "Line": 82,
+              "Offset": 694,
+              "EndOffset": 714,
+              "Path": 1,
+              "Ordinal": 37,
+              "Hits": 0
+            },
+            {
+              "Line": 80,
+              "Offset": 673,
+              "EndOffset": 732,
+              "Path": 1,
+              "Ordinal": 35,
+              "Hits": 0
+            },
+            {
+              "Line": 87,
+              "Offset": 757,
+              "EndOffset": 759,
+              "Path": 0,
+              "Ordinal": 38,
+              "Hits": 0
+            },
+            {
+              "Line": 87,
+              "Offset": 757,
+              "EndOffset": 786,
+              "Path": 1,
+              "Ordinal": 39,
+              "Hits": 0
+            },
+            {
+              "Line": 87,
+              "Offset": 791,
+              "EndOffset": 793,
+              "Path": 0,
+              "Ordinal": 40,
+              "Hits": 0
+            },
+            {
+              "Line": 89,
+              "Offset": 816,
+              "EndOffset": 818,
+              "Path": 0,
+              "Ordinal": 42,
+              "Hits": 0
+            },
+            {
+              "Line": 89,
+              "Offset": 816,
+              "EndOffset": 848,
+              "Path": 1,
+              "Ordinal": 43,
+              "Hits": 0
+            },
+            {
+              "Line": 87,
+              "Offset": 791,
+              "EndOffset": 866,
+              "Path": 1,
+              "Ordinal": 41,
+              "Hits": 0
+            },
+            {
+              "Line": 94,
+              "Offset": 891,
+              "EndOffset": 893,
+              "Path": 0,
+              "Ordinal": 44,
+              "Hits": 0
+            },
+            {
+              "Line": 94,
+              "Offset": 891,
+              "EndOffset": 920,
+              "Path": 1,
+              "Ordinal": 45,
+              "Hits": 0
+            },
+            {
+              "Line": 94,
+              "Offset": 925,
+              "EndOffset": 927,
+              "Path": 0,
+              "Ordinal": 46,
+              "Hits": 0
+            },
+            {
+              "Line": 96,
+              "Offset": 950,
+              "EndOffset": 952,
+              "Path": 0,
+              "Ordinal": 48,
+              "Hits": 0
+            },
+            {
+              "Line": 96,
+              "Offset": 950,
+              "EndOffset": 981,
+              "Path": 1,
+              "Ordinal": 49,
+              "Hits": 0
+            },
+            {
+              "Line": 94,
+              "Offset": 925,
+              "EndOffset": 999,
+              "Path": 1,
+              "Ordinal": 47,
+              "Hits": 0
+            },
+            {
+              "Line": 101,
+              "Offset": 1024,
+              "EndOffset": 1026,
+              "Path": 0,
+              "Ordinal": 50,
+              "Hits": 0
+            },
+            {
+              "Line": 101,
+              "Offset": 1051,
+              "EndOffset": 1053,
+              "Path": 0,
+              "Ordinal": 52,
+              "Hits": 0
+            },
+            {
+              "Line": 101,
+              "Offset": 1024,
+              "EndOffset": 1080,
+              "Path": 1,
+              "Ordinal": 51,
+              "Hits": 0
+            },
+            {
+              "Line": 101,
+              "Offset": 1051,
+              "EndOffset": 1080,
+              "Path": 1,
+              "Ordinal": 53,
+              "Hits": 0
+            },
+            {
+              "Line": 101,
+              "Offset": 1085,
+              "EndOffset": 1087,
+              "Path": 0,
+              "Ordinal": 54,
+              "Hits": 0
+            },
+            {
+              "Line": 103,
+              "Offset": 1110,
+              "EndOffset": 1112,
+              "Path": 0,
+              "Ordinal": 56,
+              "Hits": 0
+            },
+            {
+              "Line": 103,
+              "Offset": 1110,
+              "EndOffset": 1141,
+              "Path": 1,
+              "Ordinal": 57,
+              "Hits": 0
+            },
+            {
+              "Line": 101,
+              "Offset": 1085,
+              "EndOffset": 1159,
+              "Path": 1,
+              "Ordinal": 55,
+              "Hits": 0
+            },
+            {
+              "Line": 108,
+              "Offset": 1188,
+              "EndOffset": 1190,
+              "Path": 0,
+              "Ordinal": 58,
+              "Hits": 0
+            },
+            {
+              "Line": 110,
+              "Offset": 1213,
+              "EndOffset": 1215,
+              "Path": 0,
+              "Ordinal": 60,
+              "Hits": 0
+            },
+            {
+              "Line": 110,
+              "Offset": 1213,
+              "EndOffset": 1292,
+              "Path": 1,
+              "Ordinal": 61,
+              "Hits": 0
+            },
+            {
+              "Line": 108,
+              "Offset": 1188,
+              "EndOffset": 1305,
+              "Path": 1,
+              "Ordinal": 59,
+              "Hits": 0
+            }
+          ]
+        },
+        "System.String EficazFramework.Converters.NumberConverter`1::OnSet(T)": {
+          "Lines": {
+            "124": 0,
+            "125": 0,
+            "126": 0,
+            "129": 0,
+            "130": 0,
+            "131": 0,
+            "132": 0,
+            "134": 0,
+            "135": 0,
+            "136": 0,
+            "137": 0,
+            "139": 0,
+            "140": 0,
+            "141": 0,
+            "142": 0,
+            "144": 0,
+            "145": 0,
+            "146": 0,
+            "147": 0,
+            "149": 0,
+            "150": 0,
+            "151": 0,
+            "152": 0,
+            "154": 0,
+            "155": 0,
+            "156": 0,
+            "157": 0,
+            "159": 0,
+            "160": 0,
+            "161": 0,
+            "162": 0,
+            "164": 0,
+            "165": 0,
+            "166": 0,
+            "167": 0,
+            "169": 0,
+            "170": 0,
+            "171": 0,
+            "172": 0,
+            "174": 0,
+            "175": 0,
+            "177": 0,
+            "178": 0
+          },
+          "Branches": [
+            {
+              "Line": 125,
+              "Offset": 12,
+              "EndOffset": 14,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            },
+            {
+              "Line": 125,
+              "Offset": 12,
+              "EndOffset": 21,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 0
+            },
+            {
+              "Line": 129,
+              "Offset": 48,
+              "EndOffset": 50,
+              "Path": 0,
+              "Ordinal": 2,
+              "Hits": 0
+            },
+            {
+              "Line": 129,
+              "Offset": 48,
+              "EndOffset": 87,
+              "Path": 1,
+              "Ordinal": 3,
+              "Hits": 0
+            },
+            {
+              "Line": 131,
+              "Offset": 116,
+              "EndOffset": 118,
+              "Path": 0,
+              "Ordinal": 4,
+              "Hits": 0
+            },
+            {
+              "Line": 131,
+              "Offset": 116,
+              "EndOffset": 164,
+              "Path": 1,
+              "Ordinal": 5,
+              "Hits": 0
+            },
+            {
+              "Line": 134,
+              "Offset": 193,
+              "EndOffset": 195,
+              "Path": 0,
+              "Ordinal": 6,
+              "Hits": 0
+            },
+            {
+              "Line": 134,
+              "Offset": 193,
+              "EndOffset": 233,
+              "Path": 1,
+              "Ordinal": 7,
+              "Hits": 0
+            },
+            {
+              "Line": 136,
+              "Offset": 262,
+              "EndOffset": 264,
+              "Path": 0,
+              "Ordinal": 8,
+              "Hits": 0
+            },
+            {
+              "Line": 136,
+              "Offset": 262,
+              "EndOffset": 311,
+              "Path": 1,
+              "Ordinal": 9,
+              "Hits": 0
+            },
+            {
+              "Line": 139,
+              "Offset": 340,
+              "EndOffset": 342,
+              "Path": 0,
+              "Ordinal": 10,
+              "Hits": 0
+            },
+            {
+              "Line": 139,
+              "Offset": 340,
+              "EndOffset": 380,
+              "Path": 1,
+              "Ordinal": 11,
+              "Hits": 0
+            },
+            {
+              "Line": 141,
+              "Offset": 409,
+              "EndOffset": 411,
+              "Path": 0,
+              "Ordinal": 12,
+              "Hits": 0
+            },
+            {
+              "Line": 141,
+              "Offset": 409,
+              "EndOffset": 458,
+              "Path": 1,
+              "Ordinal": 13,
+              "Hits": 0
+            },
+            {
+              "Line": 144,
+              "Offset": 487,
+              "EndOffset": 489,
+              "Path": 0,
+              "Ordinal": 14,
+              "Hits": 0
+            },
+            {
+              "Line": 144,
+              "Offset": 487,
+              "EndOffset": 527,
+              "Path": 1,
+              "Ordinal": 15,
+              "Hits": 0
+            },
+            {
+              "Line": 146,
+              "Offset": 556,
+              "EndOffset": 558,
+              "Path": 0,
+              "Ordinal": 16,
+              "Hits": 0
+            },
+            {
+              "Line": 146,
+              "Offset": 556,
+              "EndOffset": 605,
+              "Path": 1,
+              "Ordinal": 17,
+              "Hits": 0
+            },
+            {
+              "Line": 149,
+              "Offset": 634,
+              "EndOffset": 636,
+              "Path": 0,
+              "Ordinal": 18,
+              "Hits": 0
+            },
+            {
+              "Line": 149,
+              "Offset": 634,
+              "EndOffset": 674,
+              "Path": 1,
+              "Ordinal": 19,
+              "Hits": 0
+            },
+            {
+              "Line": 151,
+              "Offset": 703,
+              "EndOffset": 705,
+              "Path": 0,
+              "Ordinal": 20,
+              "Hits": 0
+            },
+            {
+              "Line": 151,
+              "Offset": 703,
+              "EndOffset": 752,
+              "Path": 1,
+              "Ordinal": 21,
+              "Hits": 0
+            },
+            {
+              "Line": 154,
+              "Offset": 781,
+              "EndOffset": 783,
+              "Path": 0,
+              "Ordinal": 22,
+              "Hits": 0
+            },
+            {
+              "Line": 154,
+              "Offset": 781,
+              "EndOffset": 821,
+              "Path": 1,
+              "Ordinal": 23,
+              "Hits": 0
+            },
+            {
+              "Line": 156,
+              "Offset": 850,
+              "EndOffset": 852,
+              "Path": 0,
+              "Ordinal": 24,
+              "Hits": 0
+            },
+            {
+              "Line": 156,
+              "Offset": 850,
+              "EndOffset": 899,
+              "Path": 1,
+              "Ordinal": 25,
+              "Hits": 0
+            },
+            {
+              "Line": 159,
+              "Offset": 928,
+              "EndOffset": 930,
+              "Path": 0,
+              "Ordinal": 26,
+              "Hits": 0
+            },
+            {
+              "Line": 159,
+              "Offset": 928,
+              "EndOffset": 968,
+              "Path": 1,
+              "Ordinal": 27,
+              "Hits": 0
+            },
+            {
+              "Line": 161,
+              "Offset": 997,
+              "EndOffset": 999,
+              "Path": 0,
+              "Ordinal": 28,
+              "Hits": 0
+            },
+            {
+              "Line": 161,
+              "Offset": 997,
+              "EndOffset": 1046,
+              "Path": 1,
+              "Ordinal": 29,
+              "Hits": 0
+            },
+            {
+              "Line": 164,
+              "Offset": 1075,
+              "EndOffset": 1077,
+              "Path": 0,
+              "Ordinal": 30,
+              "Hits": 0
+            },
+            {
+              "Line": 164,
+              "Offset": 1075,
+              "EndOffset": 1115,
+              "Path": 1,
+              "Ordinal": 31,
+              "Hits": 0
+            },
+            {
+              "Line": 166,
+              "Offset": 1144,
+              "EndOffset": 1146,
+              "Path": 0,
+              "Ordinal": 32,
+              "Hits": 0
+            },
+            {
+              "Line": 166,
+              "Offset": 1144,
+              "EndOffset": 1193,
+              "Path": 1,
+              "Ordinal": 33,
+              "Hits": 0
+            },
+            {
+              "Line": 169,
+              "Offset": 1222,
+              "EndOffset": 1224,
+              "Path": 0,
+              "Ordinal": 34,
+              "Hits": 0
+            },
+            {
+              "Line": 169,
+              "Offset": 1222,
+              "EndOffset": 1262,
+              "Path": 1,
+              "Ordinal": 35,
+              "Hits": 0
+            },
+            {
+              "Line": 171,
+              "Offset": 1291,
+              "EndOffset": 1293,
+              "Path": 0,
+              "Ordinal": 36,
+              "Hits": 0
+            },
+            {
+              "Line": 171,
+              "Offset": 1291,
+              "EndOffset": 1337,
+              "Path": 1,
+              "Ordinal": 37,
+              "Hits": 0
+            },
+            {
+              "Line": 174,
+              "Offset": 1366,
+              "EndOffset": 1368,
+              "Path": 0,
+              "Ordinal": 38,
+              "Hits": 0
+            },
+            {
+              "Line": 174,
+              "Offset": 1366,
+              "EndOffset": 1384,
+              "Path": 1,
+              "Ordinal": 39,
+              "Hits": 0
+            }
+          ]
+        },
+        "System.Void EficazFramework.Converters.NumberConverter`1::.ctor(System.Int32)": {
+          "Lines": {
+            "10": 0,
+            "11": 0,
+            "12": 0,
+            "13": 0,
+            "14": 0,
+            "15": 0,
+            "16": 0,
+            "18": 0,
+            "19": 0,
+            "21": 0,
+            "22": 0,
+            "23": 0,
+            "25": 0
+          },
+          "Branches": []
+        }
+      }
+    },
+    "E:\\Henrique Clausing\\Repositorios\\Current\\EficazFramework\\src\\Web\\EficazFramework.Blazor\\Converters\\ObjectToBoolConverter.cs": {
+      "EficazFramework.Converters.ObjectToBoolConverter": {
+        "System.Object EficazFramework.Converters.ObjectToBoolConverter::OnGet(System.Nullable`1<System.Boolean>)": {
+          "Lines": {
+            "17": 0
+          },
+          "Branches": []
+        },
+        "System.Nullable`1<System.Boolean> EficazFramework.Converters.ObjectToBoolConverter::OnSet(System.Object)": {
+          "Lines": {
+            "20": 0,
+            "21": 0,
+            "22": 0,
+            "24": 0,
+            "25": 0,
+            "26": 0,
+            "27": 0,
+            "28": 0,
+            "30": 0,
+            "31": 0,
+            "32": 0,
+            "35": 0,
+            "36": 0,
+            "37": 0,
+            "38": 0,
+            "40": 0
+          },
+          "Branches": [
+            {
+              "Line": 21,
+              "Offset": 7,
+              "EndOffset": 9,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            },
+            {
+              "Line": 21,
+              "Offset": 7,
+              "EndOffset": 21,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 0
+            },
+            {
+              "Line": 25,
+              "Offset": 34,
+              "EndOffset": 36,
+              "Path": 0,
+              "Ordinal": 2,
+              "Hits": 0
+            },
+            {
+              "Line": 25,
+              "Offset": 34,
+              "EndOffset": 50,
+              "Path": 1,
+              "Ordinal": 3,
+              "Hits": 0
+            },
+            {
+              "Line": 27,
+              "Offset": 63,
+              "EndOffset": 65,
+              "Path": 0,
+              "Ordinal": 4,
+              "Hits": 0
+            },
+            {
+              "Line": 27,
+              "Offset": 63,
+              "EndOffset": 74,
+              "Path": 1,
+              "Ordinal": 5,
+              "Hits": 0
+            }
+          ]
+        },
+        "System.Void EficazFramework.Converters.ObjectToBoolConverter::.ctor()": {
+          "Lines": {
+            "11": 0,
+            "12": 0,
+            "13": 0,
+            "14": 0,
+            "15": 0
+          },
+          "Branches": []
+        }
+      }
+    },
+    "E:\\Henrique Clausing\\Repositorios\\Current\\EficazFramework\\src\\Web\\EficazFramework.Blazor\\Configuration\\ServicesOptions.cs": {
+      "EficazFramework.Configuration.ServiceConfiguration": {
+        "MudBlazor.MudTheme EficazFramework.Configuration.ServiceConfiguration::get_Theme()": {
+          "Lines": {
+            "11": 0
+          },
+          "Branches": []
+        },
+        "System.Boolean EficazFramework.Configuration.ServiceConfiguration::get_UseApplicationManager()": {
+          "Lines": {
+            "29": 0
+          },
+          "Branches": []
+        },
+        "MudBlazor.Services.MudServicesConfiguration EficazFramework.Configuration.ServiceConfiguration::get_MudBlazorConfigurations()": {
+          "Lines": {
+            "31": 0
+          },
+          "Branches": []
+        },
+        "System.Void EficazFramework.Configuration.ServiceConfiguration::.ctor()": {
+          "Lines": {
+            "12": 0,
+            "13": 0,
+            "14": 0,
+            "15": 0,
+            "16": 0,
+            "17": 0,
+            "18": 0,
+            "19": 0,
+            "20": 0,
+            "21": 0,
+            "22": 0,
+            "23": 0,
+            "24": 0,
+            "25": 0,
+            "26": 0,
+            "27": 0
+          },
+          "Branches": []
+        }
+      }
+    },
+    "E:\\Henrique Clausing\\Repositorios\\Current\\EficazFramework\\src\\Web\\EficazFramework.Blazor\\Components\\ComponentBase.cs": {
+      "EficazFramework.Components.ComponentBase": {
+        "System.String EficazFramework.Components.ComponentBase::get_Class()": {
+          "Lines": {
+            "11": 0
+          },
+          "Branches": []
+        },
+        "System.String EficazFramework.Components.ComponentBase::get_Style()": {
+          "Lines": {
+            "16": 0
+          },
+          "Branches": []
+        },
+        "System.Object EficazFramework.Components.ComponentBase::get_Tag()": {
+          "Lines": {
+            "21": 0
+          },
+          "Branches": []
+        },
+        "System.Collections.Generic.Dictionary`2<System.String,System.Object> EficazFramework.Components.ComponentBase::get_UserAttributes()": {
+          "Lines": {
+            "28": 0
+          },
+          "Branches": []
+        }
+      }
+    },
+    "E:\\Henrique Clausing\\Repositorios\\Current\\EficazFramework\\src\\Web\\EficazFramework.Blazor\\Components\\DataViews\\ExpressionBuilder.razor.cs": {
+      "EficazFramework.Components.ExpressionBuilder": {
+        "System.String EficazFramework.Components.ExpressionBuilder::get_HostClassNames()": {
+          "Lines": {
+            "16": 0,
+            "17": 0,
+            "18": 0
+          },
+          "Branches": []
+        },
+        "System.Int32 EficazFramework.Components.ExpressionBuilder::get_Elevation()": {
+          "Lines": {
+            "24": 7
+          },
+          "Branches": []
+        },
+        "EficazFramework.Expressions.ExpressionBuilder EficazFramework.Components.ExpressionBuilder::get_ViewModel()": {
+          "Lines": {
+            "30": 1
+          },
+          "Branches": []
+        },
+        "System.Void EficazFramework.Components.ExpressionBuilder::set_ViewModel(EficazFramework.Expressions.ExpressionBuilder)": {
+          "Lines": {
+            "32": 1,
+            "33": 1,
+            "34": 1,
+            "35": 1,
+            "37": 1
+          },
+          "Branches": []
+        },
+        "System.Boolean EficazFramework.Components.ExpressionBuilder::get_IsExpanded()": {
+          "Lines": {
+            "40": 7
+          },
+          "Branches": []
+        },
+        "System.String EficazFramework.Components.ExpressionBuilder::get_Header()": {
+          "Lines": {
+            "42": 5
+          },
+          "Branches": []
+        },
+        "System.Action EficazFramework.Components.ExpressionBuilder::get_SearchAction()": {
+          "Lines": {
+            "44": 2
+          },
+          "Branches": []
+        },
+        "System.Action`2<System.Object,EficazFramework.Events.FindRequestEventArgs> EficazFramework.Components.ExpressionBuilder::get_SearchColumnFindRequest()": {
+          "Lines": {
+            "46": 0
+          },
+          "Branches": []
+        },
+        "System.Void EficazFramework.Components.ExpressionBuilder::OnViewModel_Changed(EficazFramework.Expressions.ExpressionBuilder,EficazFramework.Expressions.ExpressionBuilder)": {
+          "Lines": {
+            "49": 1,
+            "50": 1,
+            "52": 1,
+            "53": 0,
+            "56": 1,
+            "57": 1,
+            "58": 1
+          },
+          "Branches": [
+            {
+              "Line": 52,
+              "Offset": 17,
+              "EndOffset": 19,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            },
+            {
+              "Line": 52,
+              "Offset": 17,
+              "EndOffset": 38,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 1
+            },
+            {
+              "Line": 56,
+              "Offset": 44,
+              "EndOffset": 46,
+              "Path": 0,
+              "Ordinal": 2,
+              "Hits": 1
+            },
+            {
+              "Line": 56,
+              "Offset": 44,
+              "EndOffset": 65,
+              "Path": 1,
+              "Ordinal": 3,
+              "Hits": 1
+            }
+          ]
+        },
+        "System.Void EficazFramework.Components.ExpressionBuilder::OnViewModel_PropertyChanged(System.Object,System.ComponentModel.PropertyChangedEventArgs)": {
+          "Lines": {
+            "61": 0,
+            "62": 0,
+            "65": 0,
+            "66": 0,
+            "69": 0,
+            "70": 0,
+            "73": 0
+          },
+          "Branches": [
+            {
+              "Line": 62,
+              "Offset": 21,
+              "EndOffset": 23,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            },
+            {
+              "Line": 62,
+              "Offset": 21,
+              "EndOffset": 38,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 0
+            },
+            {
+              "Line": 62,
+              "Offset": 34,
+              "EndOffset": 50,
+              "Path": 1,
+              "Ordinal": 3,
+              "Hits": 0
+            },
+            {
+              "Line": 62,
+              "Offset": 34,
+              "EndOffset": 62,
+              "Path": 0,
+              "Ordinal": 2,
+              "Hits": 0
+            }
+          ]
+        },
+        "System.Void EficazFramework.Components.ExpressionBuilder::OnAddCommand()": {
+          "Lines": {
+            "76": 0,
+            "77": 0,
+            "78": 0,
+            "79": 0
+          },
+          "Branches": []
+        },
+        "System.Void EficazFramework.Components.ExpressionBuilder::OnDeleteCommand(System.Object)": {
+          "Lines": {
+            "82": 0,
+            "83": 0,
+            "84": 0,
+            "85": 0
+          },
+          "Branches": []
+        },
+        "System.Void EficazFramework.Components.ExpressionBuilder::SetupInstance(System.Boolean,System.Boolean,System.Boolean)": {
+          "Lines": {
+            "120": 1,
+            "122": 1,
+            "123": 1,
+            "125": 1,
+            "127": 1,
+            "128": 1,
+            "134": 1,
+            "136": 1,
+            "137": 1,
+            "140": 1,
+            "144": 1,
+            "145": 1
+          },
+          "Branches": [
+            {
+              "Line": 122,
+              "Offset": 4,
+              "EndOffset": 6,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 1
+            },
+            {
+              "Line": 122,
+              "Offset": 4,
+              "EndOffset": 8,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 1
+            },
+            {
+              "Line": 127,
+              "Offset": 11,
+              "EndOffset": 13,
+              "Path": 0,
+              "Ordinal": 2,
+              "Hits": 1
+            },
+            {
+              "Line": 127,
+              "Offset": 11,
+              "EndOffset": 15,
+              "Path": 1,
+              "Ordinal": 3,
+              "Hits": 1
+            },
+            {
+              "Line": 136,
+              "Offset": 18,
+              "EndOffset": 20,
+              "Path": 0,
+              "Ordinal": 4,
+              "Hits": 1
+            },
+            {
+              "Line": 136,
+              "Offset": 18,
+              "EndOffset": 22,
+              "Path": 1,
+              "Ordinal": 5,
+              "Hits": 1
+            }
+          ]
+        },
+        "System.Void EficazFramework.Components.ExpressionBuilder::.ctor()": {
+          "Lines": {
+            "20": 1
+          },
+          "Branches": []
+        }
+      },
+      "EficazFramework.Components.ExpressionBuilder/OperatorConverter": {
+        "System.Void EficazFramework.Components.ExpressionBuilder/OperatorConverter::.ctor()": {
+          "Lines": {
+            "149": 1,
+            "150": 1,
+            "151": 1,
+            "152": 1
+          },
+          "Branches": []
+        }
+      },
+      "EficazFramework.Components.ExpressionBuilder/DateTimeObjConverter": {
+        "System.String EficazFramework.Components.ExpressionBuilder/DateTimeObjConverter::<.ctor>b__0_0(System.Object)": {
+          "Lines": {
+            "161": 0,
+            "162": 0,
+            "163": 0,
+            "164": 0,
+            "165": 0,
+            "166": 0,
+            "167": 0,
+            "168": 0
+          },
+          "Branches": [
+            {
+              "Line": 162,
+              "Offset": 7,
+              "EndOffset": 9,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            },
+            {
+              "Line": 162,
+              "Offset": 7,
+              "EndOffset": 13,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 0
+            },
+            {
+              "Line": 165,
+              "Offset": 35,
+              "EndOffset": 37,
+              "Path": 0,
+              "Ordinal": 2,
+              "Hits": 0
+            },
+            {
+              "Line": 165,
+              "Offset": 35,
+              "EndOffset": 41,
+              "Path": 1,
+              "Ordinal": 3,
+              "Hits": 0
+            }
+          ]
+        },
+        "System.Object EficazFramework.Components.ExpressionBuilder/DateTimeObjConverter::<.ctor>b__0_1(System.String)": {
+          "Lines": {
+            "171": 0,
+            "172": 0,
+            "173": 0
+          },
+          "Branches": []
+        },
+        "System.Void EficazFramework.Components.ExpressionBuilder/DateTimeObjConverter::.ctor()": {
+          "Lines": {
+            "157": 0,
+            "158": 0,
+            "160": 0,
+            "170": 0,
+            "174": 0,
+            "176": 0
+          },
+          "Branches": []
+        }
+      },
+      "EficazFramework.Components.ExpressionBuilder/DecimalObjConverter": {
+        "System.String EficazFramework.Components.ExpressionBuilder/DecimalObjConverter::<.ctor>b__0_0(System.Object)": {
+          "Lines": {
+            "185": 0,
+            "186": 0,
+            "187": 0,
+            "188": 0,
+            "189": 0,
+            "190": 0,
+            "191": 0,
+            "192": 0
+          },
+          "Branches": [
+            {
+              "Line": 186,
+              "Offset": 7,
+              "EndOffset": 9,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            },
+            {
+              "Line": 186,
+              "Offset": 7,
+              "EndOffset": 13,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 0
+            },
+            {
+              "Line": 189,
+              "Offset": 35,
+              "EndOffset": 37,
+              "Path": 0,
+              "Ordinal": 2,
+              "Hits": 0
+            },
+            {
+              "Line": 189,
+              "Offset": 35,
+              "EndOffset": 41,
+              "Path": 1,
+              "Ordinal": 3,
+              "Hits": 0
+            }
+          ]
+        },
+        "System.Object EficazFramework.Components.ExpressionBuilder/DecimalObjConverter::<.ctor>b__0_1(System.String)": {
+          "Lines": {
+            "195": 0,
+            "196": 0,
+            "197": 0
+          },
+          "Branches": []
+        },
+        "System.Void EficazFramework.Components.ExpressionBuilder/DecimalObjConverter::.ctor()": {
+          "Lines": {
+            "181": 0,
+            "182": 0,
+            "184": 0,
+            "194": 0,
+            "198": 0,
+            "200": 0
+          },
+          "Branches": []
+        }
+      },
+      "EficazFramework.Components.ExpressionBuilder/StringObjConverter": {
+        "System.Void EficazFramework.Components.ExpressionBuilder/StringObjConverter::.ctor()": {
+          "Lines": {
+            "205": 0,
+            "206": 0,
+            "208": 0,
+            "209": 0,
+            "210": 0,
+            "211": 0,
+            "212": 0,
+            "213": 0,
+            "215": 0,
+            "216": 0,
+            "217": 0,
+            "218": 0,
+            "219": 0
+          },
+          "Branches": [
+            {
+              "Line": 210,
+              "Offset": 7,
+              "EndOffset": 9,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            },
+            {
+              "Line": 210,
+              "Offset": 7,
+              "EndOffset": 13,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 0
+            }
+          ]
+        }
+      },
+      "EficazFramework.Components.ExpressionBuilder/<OnAutoCompleteSearch>d__32": {
+        "System.Void EficazFramework.Components.ExpressionBuilder/<OnAutoCompleteSearch>d__32::MoveNext()": {
+          "Lines": {
+            "88": 0,
+            "89": 0,
+            "90": 0,
+            "91": 0,
+            "93": 0,
+            "94": 0,
+            "95": 0,
+            "97": 0,
+            "99": 0,
+            "100": 0,
+            "101": 0,
+            "102": 0,
+            "103": 0,
+            "105": 0,
+            "106": 0,
+            "107": 0,
+            "110": 0,
+            "111": 0,
+            "112": 0,
+            "113": 0,
+            "114": 0,
+            "116": 0,
+            "117": 0
+          },
+          "Branches": [
+            {
+              "Line": 89,
+              "Offset": 34,
+              "EndOffset": 36,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            },
+            {
+              "Line": 89,
+              "Offset": 34,
+              "EndOffset": 53,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 0
+            },
+            {
+              "Line": 94,
+              "Offset": 97,
+              "EndOffset": 99,
+              "Path": 0,
+              "Ordinal": 2,
+              "Hits": 0
+            },
+            {
+              "Line": 94,
+              "Offset": 97,
+              "EndOffset": 121,
+              "Path": 1,
+              "Ordinal": 3,
+              "Hits": 0
+            },
+            {
+              "Line": 99,
+              "Offset": 179,
+              "EndOffset": 181,
+              "Path": 0,
+              "Ordinal": 4,
+              "Hits": 0
+            },
+            {
+              "Line": 101,
+              "Offset": 211,
+              "EndOffset": 213,
+              "Path": 0,
+              "Ordinal": 6,
+              "Hits": 0
+            },
+            {
+              "Line": 101,
+              "Offset": 211,
+              "EndOffset": 239,
+              "Path": 1,
+              "Ordinal": 7,
+              "Hits": 0
+            },
+            {
+              "Line": 99,
+              "Offset": 179,
+              "EndOffset": 240,
+              "Path": 1,
+              "Ordinal": 5,
+              "Hits": 0
+            },
+            {
+              "Line": 105,
+              "Offset": 252,
+              "EndOffset": 254,
+              "Path": 0,
+              "Ordinal": 8,
+              "Hits": 0
+            },
+            {
+              "Line": 105,
+              "Offset": 252,
+              "EndOffset": 257,
+              "Path": 1,
+              "Ordinal": 9,
+              "Hits": 0
+            },
+            {
+              "Line": 106,
+              "Offset": 395,
+              "EndOffset": 277,
+              "Path": 1,
+              "Ordinal": 11,
+              "Hits": 0
+            },
+            {
+              "Line": 106,
+              "Offset": 395,
+              "EndOffset": 397,
+              "Path": 0,
+              "Ordinal": 10,
+              "Hits": 0
+            },
+            {
+              "Line": 110,
+              "Offset": 415,
+              "EndOffset": 417,
+              "Path": 0,
+              "Ordinal": 12,
+              "Hits": 0
+            },
+            {
+              "Line": 112,
+              "Offset": 447,
+              "EndOffset": 449,
+              "Path": 0,
+              "Ordinal": 14,
+              "Hits": 0
+            },
+            {
+              "Line": 112,
+              "Offset": 447,
+              "EndOffset": 475,
+              "Path": 1,
+              "Ordinal": 15,
+              "Hits": 0
+            },
+            {
+              "Line": 110,
+              "Offset": 415,
+              "EndOffset": 476,
+              "Path": 1,
+              "Ordinal": 13,
+              "Hits": 0
+            }
+          ]
+        }
+      }
+    },
+    "E:\\Henrique Clausing\\Repositorios\\Current\\EficazFramework\\src\\Web\\EficazFramework.Blazor\\Components\\DataViews\\ExpressionBuilder.razor": {
+      "EficazFramework.Components.ExpressionBuilder": {
+        "System.Void EficazFramework.Components.ExpressionBuilder::<BuildRenderTree>b__38_5(Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder)": {
+          "Lines": {
+            "9": 4
+          },
+          "Branches": []
+        },
+        "System.Void EficazFramework.Components.ExpressionBuilder::<BuildRenderTree>b__38_4(Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder)": {
+          "Lines": {
+            "14": 4,
+            "15": 2,
+            "177": 2,
+            "179": 2,
+            "180": 2
+          },
+          "Branches": [
+            {
+              "Line": 14,
+              "Offset": 59,
+              "EndOffset": 64,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 2
+            },
+            {
+              "Line": 14,
+              "Offset": 59,
+              "EndOffset": 338,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 4
+            }
+          ]
+        },
+        "System.Void EficazFramework.Components.ExpressionBuilder::<BuildRenderTree>b__38_6(Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder)": {
+          "Lines": {
+            "18": 2,
+            "19": 2,
+            "21": 2
+          },
+          "Branches": [
+            {
+              "Line": 18,
+              "Offset": 14,
+              "EndOffset": 16,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 2
+            },
+            {
+              "Line": 18,
+              "Offset": 14,
+              "EndOffset": 32,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 2
+            }
+          ]
+        },
+        "System.Void EficazFramework.Components.ExpressionBuilder::<BuildRenderTree>b__38_7(Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder)": {
+          "Lines": {
+            "27": 2,
+            "28": 2,
+            "34": 2
+          },
+          "Branches": [
+            {
+              "Line": 27,
+              "Offset": 14,
+              "EndOffset": 16,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 2
+            },
+            {
+              "Line": 27,
+              "Offset": 14,
+              "EndOffset": 79,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 2
+            }
+          ]
+        },
+        "System.Void EficazFramework.Components.ExpressionBuilder::<BuildRenderTree>b__38_14()": {
+          "Lines": {
+            "31": 0
+          },
+          "Branches": []
+        },
+        "System.Void EficazFramework.Components.ExpressionBuilder::<BuildRenderTree>b__38_23(Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder)": {
+          "Lines": {
+            "52": 0,
+            "53": 0,
+            "57": 0
+          },
+          "Branches": [
+            {
+              "Line": 52,
+              "Offset": 114,
+              "EndOffset": 21,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 0
+            },
+            {
+              "Line": 52,
+              "Offset": 114,
+              "EndOffset": 116,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            }
+          ]
+        }
+      },
+      "EficazFramework.Components.ExpressionBuilder/<>c": {
+        "System.Void EficazFramework.Components.ExpressionBuilder/<>c::<BuildRenderTree>b__38_10(Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder)": {
+          "Lines": {
+            "35": 2
+          },
+          "Branches": []
+        },
+        "System.Void EficazFramework.Components.ExpressionBuilder/<>c::<BuildRenderTree>b__38_11(Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder)": {
+          "Lines": {
+            "36": 2
+          },
+          "Branches": []
+        },
+        "System.Void EficazFramework.Components.ExpressionBuilder/<>c::<BuildRenderTree>b__38_12(Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder)": {
+          "Lines": {
+            "37": 2
+          },
+          "Branches": []
+        },
+        "System.String EficazFramework.Components.ExpressionBuilder/<>c::<BuildRenderTree>b__38_33(EficazFramework.Extensions.EnumMember)": {
+          "Lines": {
+            "91": 0
+          },
+          "Branches": [
+            {
+              "Line": 91,
+              "Offset": 22,
+              "EndOffset": 24,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            },
+            {
+              "Line": 91,
+              "Offset": 22,
+              "EndOffset": 46,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 0
+            }
+          ]
+        },
+        "System.Void EficazFramework.Components.ExpressionBuilder/<>c::<BuildRenderTree>b__38_36(Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder)": {
+          "Lines": {
+            "108": 0
+          },
+          "Branches": []
+        },
+        "System.Void EficazFramework.Components.ExpressionBuilder/<>c::<BuildRenderTree>b__38_39(Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder)": {
+          "Lines": {
+            "114": 0
+          },
+          "Branches": []
+        }
+      },
+      "EficazFramework.Components.ExpressionBuilder/<>c__DisplayClass38_1": {
+        "System.Void EficazFramework.Components.ExpressionBuilder/<>c__DisplayClass38_1::<BuildRenderTree>b__26(Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder)": {
+          "Lines": {
+            "55": 0
+          },
+          "Branches": []
+        }
+      },
+      "EficazFramework.Components.ExpressionBuilder/<>c__DisplayClass38_2": {
+        "System.Void EficazFramework.Components.ExpressionBuilder/<>c__DisplayClass38_2::<BuildRenderTree>b__31(Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder)": {
+          "Lines": {
+            "81": 0
+          },
+          "Branches": []
+        }
+      },
+      "EficazFramework.Components.ExpressionBuilder/<>c__DisplayClass38_3": {
+        "System.Void EficazFramework.Components.ExpressionBuilder/<>c__DisplayClass38_3::<BuildRenderTree>b__52(Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder)": {
+          "Lines": {
+            "143": 0
+          },
+          "Branches": []
+        }
+      },
+      "EficazFramework.Components.ExpressionBuilder/<>c__DisplayClass38_4": {
+        "System.Void EficazFramework.Components.ExpressionBuilder/<>c__DisplayClass38_4::<BuildRenderTree>b__53(Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder)": {
+          "Lines": {
+            "154": 0
+          },
+          "Branches": []
+        }
+      }
+    },
+    "E:\\Henrique Clausing\\Repositorios\\Current\\EficazFramework\\src\\Web\\EficazFramework.Blazor\\Components\\Input\\ChatInput.razor.cs": {
+      "EficazFramework.Components.ChatInput": {
+        "Microsoft.AspNetCore.Components.EventCallback`1<Microsoft.AspNetCore.Components.Web.ClipboardEventArgs> EficazFramework.Components.ChatInput::get_OnPaste()": {
+          "Lines": {
+            "16": 0
+          },
+          "Branches": []
+        },
+        "System.Void EficazFramework.Components.ChatInput::InvokePaste(Microsoft.AspNetCore.Components.Web.ClipboardEventArgs)": {
+          "Lines": {
+            "19": 0,
+            "20": 0,
+            "21": 0,
+            "22": 0
+          },
+          "Branches": []
+        }
+      }
+    },
+    "E:\\Henrique Clausing\\Repositorios\\Current\\EficazFramework\\src\\Web\\EficazFramework.Blazor\\Components\\Input\\ChatInput.razor": {
+      "EficazFramework.Components.ChatInput": {
+        "System.Void EficazFramework.Components.ChatInput::BuildRenderTree(Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder)": {
+          "Lines": {
+            "5": 0,
+            "6": 0,
+            "8": 0,
+            "13": 0,
+            "15": 0,
+            "16": 0,
+            "18": 0,
+            "20": 0,
+            "21": 0,
+            "23": 0,
+            "25": 0,
+            "26": 0,
+            "28": 0
+          },
+          "Branches": [
+            {
+              "Line": 5,
+              "Offset": 63,
+              "EndOffset": 68,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            },
+            {
+              "Line": 5,
+              "Offset": 63,
+              "EndOffset": 235,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 0
+            },
+            {
+              "Line": 15,
+              "Offset": 730,
+              "EndOffset": 732,
+              "Path": 0,
+              "Ordinal": 2,
+              "Hits": 0
+            },
+            {
+              "Line": 15,
+              "Offset": 730,
+              "EndOffset": 743,
+              "Path": 1,
+              "Ordinal": 3,
+              "Hits": 0
+            },
+            {
+              "Line": 15,
+              "Offset": 746,
+              "EndOffset": 751,
+              "Path": 0,
+              "Ordinal": 4,
+              "Hits": 0
+            },
+            {
+              "Line": 15,
+              "Offset": 746,
+              "EndOffset": 910,
+              "Path": 1,
+              "Ordinal": 5,
+              "Hits": 0
+            },
+            {
+              "Line": 20,
+              "Offset": 921,
+              "EndOffset": 926,
+              "Path": 0,
+              "Ordinal": 6,
+              "Hits": 0
+            },
+            {
+              "Line": 20,
+              "Offset": 921,
+              "EndOffset": 1099,
+              "Path": 1,
+              "Ordinal": 7,
+              "Hits": 0
+            },
+            {
+              "Line": 25,
+              "Offset": 1112,
+              "EndOffset": 1114,
+              "Path": 0,
+              "Ordinal": 8,
+              "Hits": 0
+            },
+            {
+              "Line": 25,
+              "Offset": 1112,
+              "EndOffset": 1130,
+              "Path": 1,
+              "Ordinal": 9,
+              "Hits": 0
+            }
+          ]
+        },
+        "System.Void EficazFramework.Components.ChatInput::<BuildRenderTree>b__6_0(Microsoft.AspNetCore.Components.ElementReference)": {
+          "Lines": {
+            "11": 0
+          },
+          "Branches": []
+        }
+      }
+    },
+    "E:\\Henrique Clausing\\Repositorios\\Current\\EficazFramework\\src\\Web\\EficazFramework.Blazor\\Components\\Input\\ChatMessageField.razor.cs": {
+      "EficazFramework.Components.ChatMessageField": {
+        "Microsoft.AspNetCore.Components.EventCallback`1<Microsoft.AspNetCore.Components.Web.ClipboardEventArgs> EficazFramework.Components.ChatMessageField::get_OnPaste()": {
+          "Lines": {
+            "11": 0
+          },
+          "Branches": []
+        },
+        "System.Void EficazFramework.Components.ChatMessageField::InvokePaste(Microsoft.AspNetCore.Components.Web.ClipboardEventArgs)": {
+          "Lines": {
+            "14": 0,
+            "15": 0,
+            "16": 0,
+            "17": 0
+          },
+          "Branches": []
+        }
+      }
+    },
+    "E:\\Henrique Clausing\\Repositorios\\Current\\EficazFramework\\src\\Web\\EficazFramework.Blazor\\Components\\Input\\ChatMessageField.razor": {
+      "EficazFramework.Components.ChatMessageField": {
+        "System.Threading.Tasks.Task EficazFramework.Components.ChatMessageField::<BuildRenderTree>b__6_2(System.String)": {
+          "Lines": {
+            "7": 0
+          },
+          "Branches": []
+        }
+      }
+    },
+    "E:\\Henrique Clausing\\Repositorios\\Current\\EficazFramework\\src\\Web\\EficazFramework.Blazor\\Components\\Input\\DocumentField.cs": {
+      "EficazFramework.Components.DocumentField`1": {
+        "EficazFramework.Enums.Documentos EficazFramework.Components.DocumentField`1::get_DocumentType()": {
+          "Lines": {
+            "21": 0
+          },
+          "Branches": []
+        },
+        "System.Void EficazFramework.Components.DocumentField`1::set_DocumentType(EficazFramework.Enums.Documentos)": {
+          "Lines": {
+            "23": 0,
+            "24": 0,
+            "25": 0,
+            "26": 0,
+            "32": 0
+          },
+          "Branches": []
+        },
+        "System.String EficazFramework.Components.DocumentField`1::get_UF()": {
+          "Lines": {
+            "39": 0
+          },
+          "Branches": []
+        },
+        "System.Void EficazFramework.Components.DocumentField`1::set_UF(System.String)": {
+          "Lines": {
+            "41": 0,
+            "42": 0,
+            "43": 0,
+            "44": 0
+          },
+          "Branches": []
+        },
+        "System.Void EficazFramework.Components.DocumentField`1::.ctor()": {
+          "Lines": {
+            "12": 0,
+            "13": 0,
+            "14": 0,
+            "15": 0,
+            "17": 0
+          },
+          "Branches": []
+        }
+      }
+    },
+    "E:\\Henrique Clausing\\Repositorios\\Current\\EficazFramework\\src\\Web\\EficazFramework.Blazor\\Components\\Input\\NumberField.cs": {
+      "EficazFramework.Components.NumberField`1": {
+        "System.Int32 EficazFramework.Components.NumberField`1::get_DecimalPlaces()": {
+          "Lines": {
+            "21": 0
+          },
+          "Branches": []
+        },
+        "System.Void EficazFramework.Components.NumberField`1::set_DecimalPlaces(System.Int32)": {
+          "Lines": {
+            "23": 0,
+            "24": 0,
+            "25": 0,
+            "26": 0,
+            "27": 0
+          },
+          "Branches": []
+        },
+        "System.Void EficazFramework.Components.NumberField`1::SetupAttributes()": {
+          "Lines": {
+            "31": 0,
+            "32": 0,
+            "33": 0,
+            "35": 0,
+            "36": 0
+          },
+          "Branches": [
+            {
+              "Line": 32,
+              "Offset": 12,
+              "EndOffset": 14,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            },
+            {
+              "Line": 32,
+              "Offset": 12,
+              "EndOffset": 61,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 0
+            }
+          ]
+        },
+        "System.Void EficazFramework.Components.NumberField`1::.ctor()": {
+          "Lines": {
+            "7": 0,
+            "8": 0,
+            "9": 0,
+            "10": 0,
+            "11": 0,
+            "12": 0,
+            "13": 0,
+            "15": 0,
+            "17": 0
+          },
+          "Branches": []
+        }
+      }
+    },
+    "E:\\Henrique Clausing\\Repositorios\\Current\\EficazFramework\\src\\Web\\EficazFramework.Blazor\\Components\\Panels\\Animation.razor.cs": {
+      "EficazFramework.Components.Animation": {
+        "System.String EficazFramework.Components.Animation::get_Classname()": {
+          "Lines": {
+            "12": 0,
+            "13": 0,
+            "14": 0
+          },
+          "Branches": []
+        },
+        "System.String EficazFramework.Components.Animation::get_StyleWithAnimation()": {
+          "Lines": {
+            "17": 0,
+            "18": 0,
+            "19": 0,
+            "20": 0
+          },
+          "Branches": []
+        },
+        "Microsoft.AspNetCore.Components.RenderFragment EficazFramework.Components.Animation::get_ChildContent()": {
+          "Lines": {
+            "29": 0
+          },
+          "Branches": []
+        },
+        "EficazFramework.Components.Animation EficazFramework.Components.Animation::get_Parent()": {
+          "Lines": {
+            "32": 0
+          },
+          "Branches": []
+        },
+        "System.Int32 EficazFramework.Components.Animation::get_Duration()": {
+          "Lines": {
+            "41": 0
+          },
+          "Branches": []
+        },
+        "System.Void EficazFramework.Components.Animation::set_Duration(System.Int32)": {
+          "Lines": {
+            "43": 0,
+            "44": 0,
+            "45": 0,
+            "46": 0,
+            "47": 0
+          },
+          "Branches": [
+            {
+              "Line": 45,
+              "Offset": 19,
+              "EndOffset": 21,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            },
+            {
+              "Line": 45,
+              "Offset": 19,
+              "EndOffset": 28,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 0
+            }
+          ]
+        },
+        "System.Int32 EficazFramework.Components.Animation::get_Delay()": {
+          "Lines": {
+            "57": 0
+          },
+          "Branches": []
+        },
+        "System.Void EficazFramework.Components.Animation::set_Delay(System.Int32)": {
+          "Lines": {
+            "59": 0,
+            "60": 0,
+            "61": 0,
+            "62": 0,
+            "63": 0
+          },
+          "Branches": [
+            {
+              "Line": 61,
+              "Offset": 19,
+              "EndOffset": 21,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            },
+            {
+              "Line": 61,
+              "Offset": 19,
+              "EndOffset": 28,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 0
+            }
+          ]
+        },
+        "EficazFramework.Enums.AnimationTimmingFunc EficazFramework.Components.Animation::get_TimmingFunction()": {
+          "Lines": {
+            "73": 0
+          },
+          "Branches": []
+        },
+        "System.Void EficazFramework.Components.Animation::set_TimmingFunction(EficazFramework.Enums.AnimationTimmingFunc)": {
+          "Lines": {
+            "75": 0,
+            "76": 0,
+            "77": 0,
+            "78": 0,
+            "79": 0
+          },
+          "Branches": [
+            {
+              "Line": 77,
+              "Offset": 19,
+              "EndOffset": 21,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            },
+            {
+              "Line": 77,
+              "Offset": 19,
+              "EndOffset": 28,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 0
+            }
+          ]
+        },
+        "System.String EficazFramework.Components.Animation::get_KeyFrameName()": {
+          "Lines": {
+            "90": 0
+          },
+          "Branches": []
+        },
+        "System.Void EficazFramework.Components.Animation::set_KeyFrameName(System.String)": {
+          "Lines": {
+            "92": 0,
+            "93": 0,
+            "94": 0,
+            "95": 0,
+            "96": 0
+          },
+          "Branches": [
+            {
+              "Line": 94,
+              "Offset": 19,
+              "EndOffset": 21,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            },
+            {
+              "Line": 94,
+              "Offset": 19,
+              "EndOffset": 28,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 0
+            }
+          ]
+        },
+        "EficazFramework.Enums.AnimationDirection EficazFramework.Components.Animation::get_Direction()": {
+          "Lines": {
+            "106": 0
+          },
+          "Branches": []
+        },
+        "System.Void EficazFramework.Components.Animation::set_Direction(EficazFramework.Enums.AnimationDirection)": {
+          "Lines": {
+            "108": 0,
+            "109": 0,
+            "110": 0,
+            "111": 0,
+            "112": 0
+          },
+          "Branches": [
+            {
+              "Line": 110,
+              "Offset": 19,
+              "EndOffset": 21,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            },
+            {
+              "Line": 110,
+              "Offset": 19,
+              "EndOffset": 28,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 0
+            }
+          ]
+        },
+        "EficazFramework.Enums.AnimationTrigger EficazFramework.Components.Animation::get_Trigger()": {
+          "Lines": {
+            "122": 0
+          },
+          "Branches": []
+        },
+        "System.Void EficazFramework.Components.Animation::set_Trigger(EficazFramework.Enums.AnimationTrigger)": {
+          "Lines": {
+            "124": 0,
+            "125": 0,
+            "126": 0,
+            "127": 0,
+            "128": 0
+          },
+          "Branches": [
+            {
+              "Line": 126,
+              "Offset": 19,
+              "EndOffset": 21,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            },
+            {
+              "Line": 126,
+              "Offset": 19,
+              "EndOffset": 28,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 0
+            }
+          ]
+        },
+        "System.Boolean EficazFramework.Components.Animation::get_Infinite()": {
+          "Lines": {
+            "138": 0
+          },
+          "Branches": []
+        },
+        "System.Void EficazFramework.Components.Animation::set_Infinite(System.Boolean)": {
+          "Lines": {
+            "140": 0,
+            "141": 0,
+            "142": 0,
+            "143": 0,
+            "144": 0
+          },
+          "Branches": [
+            {
+              "Line": 142,
+              "Offset": 19,
+              "EndOffset": 21,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            },
+            {
+              "Line": 142,
+              "Offset": 19,
+              "EndOffset": 28,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 0
+            }
+          ]
+        },
+        "System.Threading.Tasks.Task EficazFramework.Components.Animation::OnInitializedAsync()": {
+          "Lines": {
+            "149": 0,
+            "150": 0,
+            "151": 0,
+            "152": 0,
+            "153": 0
+          },
+          "Branches": [
+            {
+              "Line": 150,
+              "Offset": 12,
+              "EndOffset": 14,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            },
+            {
+              "Line": 150,
+              "Offset": 12,
+              "EndOffset": 21,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 0
+            }
+          ]
+        },
+        "System.Void EficazFramework.Components.Animation::TriggerAnimation()": {
+          "Lines": {
+            "168": 0,
+            "169": 0,
+            "170": 0,
+            "172": 0,
+            "173": 0,
+            "175": 0,
+            "176": 0
+          },
+          "Branches": [
+            {
+              "Line": 170,
+              "Offset": 212,
+              "EndOffset": 214,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            },
+            {
+              "Line": 170,
+              "Offset": 212,
+              "EndOffset": 221,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 0
+            },
+            {
+              "Line": 172,
+              "Offset": 292,
+              "EndOffset": 294,
+              "Path": 0,
+              "Ordinal": 2,
+              "Hits": 0
+            },
+            {
+              "Line": 172,
+              "Offset": 292,
+              "EndOffset": 306,
+              "Path": 1,
+              "Ordinal": 3,
+              "Hits": 0
+            }
+          ]
+        },
+        "System.Void EficazFramework.Components.Animation::RemoveAninmation()": {
+          "Lines": {
+            "179": 0,
+            "180": 0,
+            "181": 0,
+            "182": 0
+          },
+          "Branches": []
+        },
+        "System.Void EficazFramework.Components.Animation::.ctor()": {
+          "Lines": {
+            "34": 0,
+            "50": 0,
+            "66": 0,
+            "99": 0,
+            "115": 0,
+            "131": 0
+          },
+          "Branches": []
+        }
+      },
+      "EficazFramework.Components.Animation/<OnAfterRenderAsync>d__42": {
+        "System.Void EficazFramework.Components.Animation/<OnAfterRenderAsync>d__42::MoveNext()": {
+          "Lines": {
+            "156": 0,
+            "157": 0,
+            "158": 0,
+            "159": 0,
+            "160": 0,
+            "161": 0,
+            "162": 0
+          },
+          "Branches": [
+            {
+              "Line": 157,
+              "Offset": 26,
+              "EndOffset": 28,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            },
+            {
+              "Line": 157,
+              "Offset": 26,
+              "EndOffset": 44,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 0
+            },
+            {
+              "Line": 157,
+              "Offset": 47,
+              "EndOffset": 52,
+              "Path": 0,
+              "Ordinal": 2,
+              "Hits": 0
+            },
+            {
+              "Line": 157,
+              "Offset": 47,
+              "EndOffset": 184,
+              "Path": 1,
+              "Ordinal": 3,
+              "Hits": 0
+            }
+          ]
+        }
+      }
+    },
+    "E:\\Henrique Clausing\\Repositorios\\Current\\EficazFramework\\src\\Web\\EficazFramework.Blazor\\Components\\Panels\\Animation.razor": {
+      "EficazFramework.Components.Animation": {
+        "System.Void EficazFramework.Components.Animation::<BuildRenderTree>b__45_0(Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder)": {
+          "Lines": {
+            "6": 0
+          },
+          "Branches": []
+        }
+      }
+    },
+    "E:\\Henrique Clausing\\Repositorios\\Current\\EficazFramework\\src\\Web\\EficazFramework.Blazor\\Components\\Panels\\Navigator.razor.cs": {
+      "EficazFramework.Components.Navigator": {
+        "System.Int32 EficazFramework.Components.Navigator::get_SelectedIndex()": {
+          "Lines": {
+            "9": 0
+          },
+          "Branches": []
+        },
+        "Microsoft.AspNetCore.Components.EventCallback`1<System.Int32> EficazFramework.Components.Navigator::get_SelectedIndexChanged()": {
+          "Lines": {
+            "10": 0
+          },
+          "Branches": []
+        },
+        "Microsoft.AspNetCore.Components.RenderFragment EficazFramework.Components.Navigator::get_HeaderContent()": {
+          "Lines": {
+            "17": 0
+          },
+          "Branches": []
+        },
+        "Microsoft.AspNetCore.Components.RenderFragment EficazFramework.Components.Navigator::get_FooterContent()": {
+          "Lines": {
+            "20": 0
+          },
+          "Branches": []
+        },
+        "Microsoft.AspNetCore.Components.RenderFragment EficazFramework.Components.Navigator::get_ChildContent()": {
+          "Lines": {
+            "22": 0
+          },
+          "Branches": []
+        },
+        "System.Void EficazFramework.Components.Navigator::.ctor()": {
+          "Lines": {
+            "19": 0
+          },
+          "Branches": []
+        }
+      }
+    },
+    "E:\\Henrique Clausing\\Repositorios\\Current\\EficazFramework\\src\\Web\\EficazFramework.Blazor\\Components\\Panels\\Navigator.razor": {
+      "EficazFramework.Components.Navigator": {
+        "System.Void EficazFramework.Components.Navigator::<BuildRenderTree>b__21_0(Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder)": {
+          "Lines": {
+            "5": 0,
+            "6": 0,
+            "7": 0
+          },
+          "Branches": []
+        }
+      }
+    },
+    "E:\\Henrique Clausing\\Repositorios\\Current\\EficazFramework\\src\\Web\\EficazFramework.Blazor\\Components\\Panels\\NavigatorPage.razor.cs": {
+      "EficazFramework.Components.NavigatorPage": {
+        "System.String EficazFramework.Components.NavigatorPage::get_ClassNames()": {
+          "Lines": {
+            "9": 0,
+            "10": 0,
+            "11": 0,
+            "12": 0,
+            "13": 0,
+            "14": 0
+          },
+          "Branches": [
+            {
+              "Line": 9,
+              "Offset": 16,
+              "EndOffset": 18,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            },
+            {
+              "Line": 9,
+              "Offset": 16,
+              "EndOffset": 22,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 0
+            }
+          ]
+        },
+        "Microsoft.AspNetCore.Components.RenderFragment EficazFramework.Components.NavigatorPage::get_ChildContent()": {
+          "Lines": {
+            "16": 0
+          },
+          "Branches": []
+        },
+        "EficazFramework.Components.Navigator EficazFramework.Components.NavigatorPage::get_Parent()": {
+          "Lines": {
+            "17": 0
+          },
+          "Branches": []
+        },
+        "System.Boolean EficazFramework.Components.NavigatorPage::get_IsAnimated()": {
+          "Lines": {
+            "19": 0
+          },
+          "Branches": []
+        },
+        "System.Boolean EficazFramework.Components.NavigatorPage::get_Fit()": {
+          "Lines": {
+            "20": 0
+          },
+          "Branches": []
+        },
+        "System.Boolean EficazFramework.Components.NavigatorPage::get_IsVisible()": {
+          "Lines": {
+            "21": 0
+          },
+          "Branches": []
+        },
+        "System.Boolean EficazFramework.Components.NavigatorPage::get_WasVisible()": {
+          "Lines": {
+            "22": 0
+          },
+          "Branches": []
+        },
+        "System.Void EficazFramework.Components.NavigatorPage::OnInitialized()": {
+          "Lines": {
+            "25": 0,
+            "26": 0,
+            "27": 0
+          },
+          "Branches": []
+        },
+        "Microsoft.AspNetCore.Components.EventCallback`1<System.Boolean> EficazFramework.Components.NavigatorPage::get_PageRenderedAsync()": {
+          "Lines": {
+            "34": 0
+          },
+          "Branches": []
+        }
+      },
+      "EficazFramework.Components.NavigatorPage/<OnAfterRenderAsync>d__25": {
+        "System.Void EficazFramework.Components.NavigatorPage/<OnAfterRenderAsync>d__25::MoveNext()": {
+          "Lines": {
+            "30": 0,
+            "31": 0,
+            "32": 0
+          },
+          "Branches": []
+        }
+      }
+    },
+    "E:\\Henrique Clausing\\Repositorios\\Current\\EficazFramework\\src\\Web\\EficazFramework.Blazor\\Components\\Panels\\NavigatorPage.razor": {
+      "EficazFramework.Components.NavigatorPage": {
+        "System.Void EficazFramework.Components.NavigatorPage::BuildRenderTree(Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder)": {
+          "Lines": {
+            "4": 0,
+            "5": 0,
+            "7": 0,
+            "9": 0
+          },
+          "Branches": [
+            {
+              "Line": 4,
+              "Offset": 9,
+              "EndOffset": 11,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            },
+            {
+              "Line": 4,
+              "Offset": 9,
+              "EndOffset": 85,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 0
+            }
+          ]
+        }
+      }
+    },
+    "E:\\Henrique Clausing\\Repositorios\\Current\\EficazFramework\\src\\Web\\EficazFramework.Blazor\\Components\\Panels\\ObservableElement.razor.cs": {
+      "EficazFramework.Components.ObservableElement": {
+        "Microsoft.JSInterop.IJSRuntime EficazFramework.Components.ObservableElement::get_JSRuntime()": {
+          "Lines": {
+            "15": 0
+          },
+          "Branches": []
+        },
+        "Microsoft.AspNetCore.Components.RenderFragment EficazFramework.Components.ObservableElement::get_ChildContent()": {
+          "Lines": {
+            "16": 0
+          },
+          "Branches": []
+        },
+        "System.Boolean EficazFramework.Components.ObservableElement::get_Permanent()": {
+          "Lines": {
+            "17": 0
+          },
+          "Branches": []
+        },
+        "System.Boolean EficazFramework.Components.ObservableElement::get_AutoStart()": {
+          "Lines": {
+            "18": 0
+          },
+          "Branches": []
+        },
+        "System.String EficazFramework.Components.ObservableElement::get_ObserverQuery()": {
+          "Lines": {
+            "19": 0
+          },
+          "Branches": []
+        },
+        "System.String EficazFramework.Components.ObservableElement::get_Classname()": {
+          "Lines": {
+            "22": 0,
+            "23": 0,
+            "24": 0
+          },
+          "Branches": []
+        },
+        "System.String EficazFramework.Components.ObservableElement::get_ActiveClass()": {
+          "Lines": {
+            "29": 0
+          },
+          "Branches": []
+        },
+        "System.String EficazFramework.Components.ObservableElement::get_ActiveFunction()": {
+          "Lines": {
+            "30": 0
+          },
+          "Branches": []
+        },
+        "System.Threading.Tasks.Task EficazFramework.Components.ObservableElement::OnAfterRenderAsync(System.Boolean)": {
+          "Lines": {
+            "33": 0,
+            "34": 0,
+            "35": 0,
+            "36": 0,
+            "37": 0
+          },
+          "Branches": [
+            {
+              "Line": 34,
+              "Offset": 2,
+              "EndOffset": 4,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            },
+            {
+              "Line": 34,
+              "Offset": 2,
+              "EndOffset": 12,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 0
+            },
+            {
+              "Line": 34,
+              "Offset": 15,
+              "EndOffset": 17,
+              "Path": 0,
+              "Ordinal": 2,
+              "Hits": 0
+            },
+            {
+              "Line": 34,
+              "Offset": 15,
+              "EndOffset": 24,
+              "Path": 1,
+              "Ordinal": 3,
+              "Hits": 0
+            }
+          ]
+        },
+        "System.Void EficazFramework.Components.ObservableElement::StartObserve()": {
+          "Lines": {
+            "40": 0,
+            "41": 0,
+            "42": 0,
+            "43": 0,
+            "44": 0,
+            "45": 0
+          },
+          "Branches": [
+            {
+              "Line": 41,
+              "Offset": 9,
+              "EndOffset": 13,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 0
+            },
+            {
+              "Line": 41,
+              "Offset": 9,
+              "EndOffset": 50,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            }
+          ]
+        },
+        "System.Void EficazFramework.Components.ObservableElement::StopObserve()": {
+          "Lines": {
+            "48": 0,
+            "49": 0,
+            "50": 0,
+            "51": 0,
+            "53": 0
+          },
+          "Branches": [
+            {
+              "Line": 49,
+              "Offset": 12,
+              "EndOffset": 16,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 0
+            },
+            {
+              "Line": 49,
+              "Offset": 12,
+              "EndOffset": 23,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            }
+          ]
+        },
+        "System.Void EficazFramework.Components.ObservableElement::Dispose()": {
+          "Lines": {
+            "56": 0,
+            "57": 0,
+            "58": 0,
+            "60": 0
+          },
+          "Branches": [
+            {
+              "Line": 57,
+              "Offset": 12,
+              "EndOffset": 14,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            },
+            {
+              "Line": 57,
+              "Offset": 12,
+              "EndOffset": 21,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 0
+            }
+          ]
+        },
+        "System.Void EficazFramework.Components.ObservableElement::.ctor()": {
+          "Lines": {
+            "26": 0
+          },
+          "Branches": []
+        }
+      }
+    },
+    "E:\\Henrique Clausing\\Repositorios\\Current\\EficazFramework\\src\\Web\\EficazFramework.Blazor\\Components\\Panels\\ObservableElement.razor": {
+      "EficazFramework.Components.ObservableElement": {
+        "System.Void EficazFramework.Components.ObservableElement::BuildRenderTree(Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder)": {
+          "Lines": {
+            "5": 0
+          },
+          "Branches": []
+        },
+        "System.Void EficazFramework.Components.ObservableElement::<BuildRenderTree>b__36_0(Microsoft.AspNetCore.Components.ElementReference)": {
+          "Lines": {
+            "4": 0
+          },
+          "Branches": []
+        }
+      }
+    },
+    "E:\\Henrique Clausing\\Repositorios\\Current\\EficazFramework\\src\\Web\\EficazFramework.Blazor\\Components\\Selectors\\MDIApplication.razor.cs": {
+      "EficazFramework.Components.MDIApplication": {
+        "EficazFramework.Components.MDIContainer EficazFramework.Components.MDIApplication::get_Parent()": {
+          "Lines": {
+            "12": 0
+          },
+          "Branches": []
+        },
+        "EficazFramework.Application.ApplicationInstance EficazFramework.Components.MDIApplication::get_Application()": {
+          "Lines": {
+            "13": 0
+          },
+          "Branches": []
+        },
+        "MudBlazor.MudTabs EficazFramework.Components.MDIApplication::get_Tabs()": {
+          "Lines": {
+            "14": 0
+          },
+          "Branches": []
+        },
+        "Microsoft.AspNetCore.Components.RenderFragment EficazFramework.Components.MDIApplication::get_ChildContent()": {
+          "Lines": {
+            "16": 0
+          },
+          "Branches": []
+        },
+        "Microsoft.AspNetCore.Components.RenderFragment EficazFramework.Components.MDIApplication::get_CustomToolBarActions()": {
+          "Lines": {
+            "17": 0
+          },
+          "Branches": []
+        },
+        "System.String EficazFramework.Components.MDIApplication::ResolvedIcon()": {
+          "Lines": {
+            "20": 0,
+            "21": 0,
+            "22": 0,
+            "24": 0,
+            "25": 0,
+            "26": 0,
+            "28": 0,
+            "29": 0
+          },
+          "Branches": [
+            {
+              "Line": 21,
+              "Offset": 12,
+              "EndOffset": 14,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            },
+            {
+              "Line": 21,
+              "Offset": 12,
+              "EndOffset": 22,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 0
+            },
+            {
+              "Line": 24,
+              "Offset": 75,
+              "EndOffset": 77,
+              "Path": 0,
+              "Ordinal": 2,
+              "Hits": 0
+            },
+            {
+              "Line": 24,
+              "Offset": 75,
+              "EndOffset": 83,
+              "Path": 1,
+              "Ordinal": 3,
+              "Hits": 0
+            },
+            {
+              "Line": 25,
+              "Offset": 97,
+              "EndOffset": 99,
+              "Path": 0,
+              "Ordinal": 4,
+              "Hits": 0
+            },
+            {
+              "Line": 26,
+              "Offset": 111,
+              "EndOffset": 113,
+              "Path": 0,
+              "Ordinal": 6,
+              "Hits": 0
+            },
+            {
+              "Line": 26,
+              "Offset": 111,
+              "EndOffset": 119,
+              "Path": 1,
+              "Ordinal": 7,
+              "Hits": 0
+            },
+            {
+              "Line": 25,
+              "Offset": 97,
+              "EndOffset": 125,
+              "Path": 1,
+              "Ordinal": 5,
+              "Hits": 0
+            }
+          ]
+        },
+        "System.Void EficazFramework.Components.MDIApplication::Close()": {
+          "Lines": {
+            "32": 0,
+            "33": 0,
+            "34": 0
+          },
+          "Branches": [
+            {
+              "Line": 33,
+              "Offset": 8,
+              "EndOffset": 10,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            },
+            {
+              "Line": 33,
+              "Offset": 8,
+              "EndOffset": 13,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 0
+            }
+          ]
+        },
+        "System.Void EficazFramework.Components.MDIApplication::SetToolBarContent(Microsoft.AspNetCore.Components.RenderFragment)": {
+          "Lines": {
+            "37": 0,
+            "38": 0,
+            "39": 0
+          },
+          "Branches": []
+        },
+        "System.Void EficazFramework.Components.MDIApplication::UpdateState()": {
+          "Lines": {
+            "42": 0,
+            "43": 0,
+            "44": 0
+          },
+          "Branches": []
+        }
+      }
+    },
+    "E:\\Henrique Clausing\\Repositorios\\Current\\EficazFramework\\src\\Web\\EficazFramework.Blazor\\Components\\Selectors\\MDIApplication.razor": {
+      "EficazFramework.Components.MDIApplication": {
+        "System.Void EficazFramework.Components.MDIApplication::<BuildRenderTree>b__24_0(Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder)": {
+          "Lines": {
+            "17": 0
+          },
+          "Branches": []
+        },
+        "System.Void EficazFramework.Components.MDIApplication::<BuildRenderTree>b__24_1(Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder)": {
+          "Lines": {
+            "9": 0
+          },
+          "Branches": []
+        },
+        "System.Void EficazFramework.Components.MDIApplication::<BuildRenderTree>b__24_2(Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder)": {
+          "Lines": {
+            "6": 0
+          },
+          "Branches": []
+        }
+      }
+    },
+    "E:\\Henrique Clausing\\Repositorios\\Current\\EficazFramework\\src\\Web\\EficazFramework.Blazor\\Components\\Selectors\\MDIContainer.razor.cs": {
+      "EficazFramework.Components.MDIContainer": {
+        "EficazFramework.Application.IApplicationManager EficazFramework.Components.MDIContainer::get_AppManager()": {
+          "Lines": {
+            "15": 0
+          },
+          "Branches": []
+        },
+        "Microsoft.AspNetCore.Components.RenderFragment EficazFramework.Components.MDIContainer::get_Index()": {
+          "Lines": {
+            "17": 0
+          },
+          "Branches": []
+        },
+        "System.Int32 EficazFramework.Components.MDIContainer::get_Elevation()": {
+          "Lines": {
+            "18": 0
+          },
+          "Branches": []
+        },
+        "System.String EficazFramework.Components.MDIContainer::get_Class()": {
+          "Lines": {
+            "19": 0
+          },
+          "Branches": []
+        },
+        "System.Boolean EficazFramework.Components.MDIContainer::get_ScrollX()": {
+          "Lines": {
+            "21": 0
+          },
+          "Branches": []
+        },
+        "System.Boolean EficazFramework.Components.MDIContainer::get_ScrollY()": {
+          "Lines": {
+            "22": 0
+          },
+          "Branches": []
+        },
+        "System.Threading.Tasks.Task EficazFramework.Components.MDIContainer::OnAfterRenderAsync(System.Boolean)": {
+          "Lines": {
+            "25": 0,
+            "26": 0,
+            "27": 0,
+            "28": 0,
+            "29": 0,
+            "30": 0,
+            "31": 0,
+            "33": 0,
+            "34": 0,
+            "35": 0,
+            "36": 0,
+            "37": 0
+          },
+          "Branches": [
+            {
+              "Line": 26,
+              "Offset": 17,
+              "EndOffset": 19,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            },
+            {
+              "Line": 30,
+              "Offset": 62,
+              "EndOffset": 64,
+              "Path": 0,
+              "Ordinal": 2,
+              "Hits": 0
+            },
+            {
+              "Line": 30,
+              "Offset": 62,
+              "EndOffset": 86,
+              "Path": 1,
+              "Ordinal": 3,
+              "Hits": 0
+            },
+            {
+              "Line": 26,
+              "Offset": 17,
+              "EndOffset": 101,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 0
+            }
+          ]
+        },
+        "System.Collections.Generic.IEnumerable`1<EficazFramework.Application.ApplicationInstance> EficazFramework.Components.MDIContainer::GetRunningApplications()": {
+          "Lines": {
+            "40": 0,
+            "42": 0,
+            "43": 0,
+            "44": 0,
+            "45": 0,
+            "46": 0,
+            "47": 0
+          },
+          "Branches": []
+        },
+        "System.String EficazFramework.Components.MDIContainer::GetTabID(EficazFramework.Application.ApplicationInstance)": {
+          "Lines": {
+            "50": 0,
+            "51": 0,
+            "52": 0
+          },
+          "Branches": [
+            {
+              "Line": 51,
+              "Offset": 31,
+              "EndOffset": 33,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            },
+            {
+              "Line": 51,
+              "Offset": 31,
+              "EndOffset": 56,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 0
+            }
+          ]
+        },
+        "Microsoft.AspNetCore.Components.RenderFragment EficazFramework.Components.MDIContainer::RenderApplicationMetadata(EficazFramework.Application.ApplicationDefinition)": {
+          "Lines": {
+            "56": 0,
+            "57": 0,
+            "58": 0,
+            "59": 0,
+            "60": 0,
+            "61": 0,
+            "62": 0,
+            "64": 0,
+            "65": 0,
+            "66": 0,
+            "67": 0,
+            "68": 0,
+            "69": 0,
+            "70": 0,
+            "71": 0
+          },
+          "Branches": [
+            {
+              "Line": 58,
+              "Offset": 61,
+              "EndOffset": 63,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            },
+            {
+              "Line": 58,
+              "Offset": 61,
+              "EndOffset": 70,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 0
+            },
+            {
+              "Line": 61,
+              "Offset": 112,
+              "EndOffset": 114,
+              "Path": 0,
+              "Ordinal": 2,
+              "Hits": 0
+            },
+            {
+              "Line": 61,
+              "Offset": 112,
+              "EndOffset": 136,
+              "Path": 1,
+              "Ordinal": 3,
+              "Hits": 0
+            },
+            {
+              "Line": 68,
+              "Offset": 29,
+              "EndOffset": 31,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            },
+            {
+              "Line": 68,
+              "Offset": 29,
+              "EndOffset": 53,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 0
+            }
+          ]
+        },
+        "System.String EficazFramework.Components.MDIContainer::ResolvedIcon(EficazFramework.Application.ApplicationDefinition)": {
+          "Lines": {
+            "74": 0,
+            "75": 0,
+            "76": 0,
+            "78": 0,
+            "79": 0,
+            "80": 0,
+            "82": 0,
+            "83": 0
+          },
+          "Branches": [
+            {
+              "Line": 75,
+              "Offset": 7,
+              "EndOffset": 9,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            },
+            {
+              "Line": 75,
+              "Offset": 7,
+              "EndOffset": 17,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 0
+            },
+            {
+              "Line": 78,
+              "Offset": 65,
+              "EndOffset": 67,
+              "Path": 0,
+              "Ordinal": 2,
+              "Hits": 0
+            },
+            {
+              "Line": 78,
+              "Offset": 65,
+              "EndOffset": 71,
+              "Path": 1,
+              "Ordinal": 3,
+              "Hits": 0
+            },
+            {
+              "Line": 78,
+              "Offset": 77,
+              "EndOffset": 79,
+              "Path": 0,
+              "Ordinal": 4,
+              "Hits": 0
+            },
+            {
+              "Line": 78,
+              "Offset": 77,
+              "EndOffset": 85,
+              "Path": 1,
+              "Ordinal": 5,
+              "Hits": 0
+            },
+            {
+              "Line": 79,
+              "Offset": 99,
+              "EndOffset": 101,
+              "Path": 0,
+              "Ordinal": 6,
+              "Hits": 0
+            },
+            {
+              "Line": 80,
+              "Offset": 108,
+              "EndOffset": 110,
+              "Path": 0,
+              "Ordinal": 8,
+              "Hits": 0
+            },
+            {
+              "Line": 80,
+              "Offset": 108,
+              "EndOffset": 116,
+              "Path": 1,
+              "Ordinal": 9,
+              "Hits": 0
+            },
+            {
+              "Line": 79,
+              "Offset": 99,
+              "EndOffset": 122,
+              "Path": 1,
+              "Ordinal": 7,
+              "Hits": 0
+            }
+          ]
+        },
+        "System.Void EficazFramework.Components.MDIContainer::Activate(EficazFramework.Application.ApplicationDefinition)": {
+          "Lines": {
+            "86": 0,
+            "87": 0,
+            "88": 0,
+            "89": 0,
+            "90": 0,
+            "93": 0,
+            "94": 0,
+            "95": 0,
+            "96": 0
+          },
+          "Branches": [
+            {
+              "Line": 87,
+              "Offset": 7,
+              "EndOffset": 9,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            },
+            {
+              "Line": 87,
+              "Offset": 7,
+              "EndOffset": 26,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 0
+            },
+            {
+              "Line": 93,
+              "Offset": 57,
+              "EndOffset": 59,
+              "Path": 0,
+              "Ordinal": 2,
+              "Hits": 0
+            },
+            {
+              "Line": 93,
+              "Offset": 57,
+              "EndOffset": 82,
+              "Path": 1,
+              "Ordinal": 3,
+              "Hits": 0
+            }
+          ]
+        },
+        "System.Void EficazFramework.Components.MDIContainer::CloseApp(EficazFramework.Application.ApplicationInstance)": {
+          "Lines": {
+            "99": 0,
+            "100": 0,
+            "101": 0,
+            "102": 0,
+            "103": 0,
+            "105": 0,
+            "106": 0,
+            "107": 0,
+            "108": 0,
+            "109": 0
+          },
+          "Branches": [
+            {
+              "Line": 102,
+              "Offset": 63,
+              "EndOffset": 65,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            },
+            {
+              "Line": 102,
+              "Offset": 63,
+              "EndOffset": 104,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 0
+            }
+          ]
+        },
+        "System.String EficazFramework.Components.MDIContainer::StyleBuilder()": {
+          "Lines": {
+            "112": 0,
+            "113": 0,
+            "114": 0
+          },
+          "Branches": [
+            {
+              "Line": 113,
+              "Offset": 32,
+              "EndOffset": 34,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            },
+            {
+              "Line": 113,
+              "Offset": 32,
+              "EndOffset": 41,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 0
+            },
+            {
+              "Line": 113,
+              "Offset": 73,
+              "EndOffset": 75,
+              "Path": 0,
+              "Ordinal": 2,
+              "Hits": 0
+            },
+            {
+              "Line": 113,
+              "Offset": 73,
+              "EndOffset": 82,
+              "Path": 1,
+              "Ordinal": 3,
+              "Hits": 0
+            }
+          ]
+        },
+        "System.Boolean EficazFramework.Components.MDIContainer::<GetRunningApplications>b__27_0(EficazFramework.Application.ApplicationInstance)": {
+          "Lines": {},
+          "Branches": [
+            {
+              "Line": 45,
+              "Offset": 9,
+              "EndOffset": 11,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            },
+            {
+              "Line": 45,
+              "Offset": 24,
+              "EndOffset": 26,
+              "Path": 0,
+              "Ordinal": 2,
+              "Hits": 0
+            },
+            {
+              "Line": 45,
+              "Offset": 24,
+              "EndOffset": 38,
+              "Path": 1,
+              "Ordinal": 3,
+              "Hits": 0
+            },
+            {
+              "Line": 45,
+              "Offset": 49,
+              "EndOffset": 51,
+              "Path": 0,
+              "Ordinal": 4,
+              "Hits": 0
+            },
+            {
+              "Line": 45,
+              "Offset": 49,
+              "EndOffset": 63,
+              "Path": 1,
+              "Ordinal": 5,
+              "Hits": 0
+            },
+            {
+              "Line": 45,
+              "Offset": 9,
+              "EndOffset": 93,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 0
+            }
+          ]
+        }
+      }
+    },
+    "E:\\Henrique Clausing\\Repositorios\\Current\\EficazFramework\\src\\Web\\EficazFramework.Blazor\\Components\\Selectors\\MDIContainer.razor": {
+      "EficazFramework.Components.MDIContainer": {
+        "System.Void EficazFramework.Components.MDIContainer::<BuildRenderTree>b__34_1(Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder)": {
+          "Lines": {
+            "8": 0,
+            "9": 0,
+            "19": 0
+          },
+          "Branches": [
+            {
+              "Line": 8,
+              "Offset": 300,
+              "EndOffset": 133,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 0
+            },
+            {
+              "Line": 8,
+              "Offset": 300,
+              "EndOffset": 305,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            }
+          ]
+        },
+        "System.Void EficazFramework.Components.MDIContainer::<BuildRenderTree>b__34_3(Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder)": {
+          "Lines": {
+            "6": 0
+          },
+          "Branches": []
+        },
+        "System.Void EficazFramework.Components.MDIContainer::<BuildRenderTree>b__34_2(System.Object)": {
+          "Lines": {
+            "4": 0
+          },
+          "Branches": []
+        }
+      },
+      "EficazFramework.Components.MDIContainer/<>c__DisplayClass34_0": {
+        "System.Void EficazFramework.Components.MDIContainer/<>c__DisplayClass34_0::<BuildRenderTree>b__6(Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder)": {
+          "Lines": {
+            "14": 0
+          },
+          "Branches": []
+        }
+      }
+    },
+    "E:\\Henrique Clausing\\Repositorios\\Current\\EficazFramework\\src\\Web\\EficazFramework.Blazor\\Components\\Theme\\ThemeProvider.razor.cs": {
+      "EficazFramework.Components.ThemeProvider": {
+        "System.String EficazFramework.Components.ThemeProvider::BuildTheme()": {
+          "Lines": {
+            "15": 0,
+            "16": 0,
+            "17": 0,
+            "18": 0,
+            "19": 0,
+            "20": 0,
+            "21": 0,
+            "22": 0,
+            "23": 0,
+            "24": 0
+          },
+          "Branches": []
+        },
+        "System.Void EficazFramework.Components.ThemeProvider::GenerateTheme(System.Text.StringBuilder)": {
+          "Lines": {
+            "27": 0,
+            "29": 0,
+            "30": 0
+          },
+          "Branches": []
+        },
+        "System.Void EficazFramework.Components.ThemeProvider::.ctor()": {
+          "Lines": {
+            "12": 0
+          },
+          "Branches": []
+        }
+      }
+    },
+    "E:\\Henrique Clausing\\Repositorios\\Current\\EficazFramework\\src\\Web\\EficazFramework.Blazor\\Components\\Theme\\ThemeProvider.razor": {
+      "EficazFramework.Components.ThemeProvider": {
+        "System.Void EficazFramework.Components.ThemeProvider::BuildRenderTree(Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder)": {
+          "Lines": {
+            "2": 0
+          },
+          "Branches": []
+        }
+      }
+    },
+    "E:\\Henrique Clausing\\Repositorios\\Current\\EficazFramework\\src\\Web\\EficazFramework.Blazor\\Components\\Dialogs\\ViewModelDialog.razor.cs": {
+      "EficazFramework.Components.Dialogs.ViewModelDialog": {
+        "MudBlazor.MudDialogInstance EficazFramework.Components.Dialogs.ViewModelDialog::get_MudDialog()": {
+          "Lines": {
+            "7": 0
+          },
+          "Branches": []
+        },
+        "EficazFramework.Events.MessageEventArgs EficazFramework.Components.Dialogs.ViewModelDialog::get_Args()": {
+          "Lines": {
+            "8": 0
+          },
+          "Branches": []
+        }
+      }
+    },
+    "E:\\Henrique Clausing\\Repositorios\\Current\\EficazFramework\\src\\Web\\EficazFramework.Blazor\\Components\\Dialogs\\ViewModelDialog.razor": {
+      "EficazFramework.Components.Dialogs.ViewModelDialog": {
+        "System.Void EficazFramework.Components.Dialogs.ViewModelDialog::<BuildRenderTree>b__8_0(Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder)": {
+          "Lines": {
+            "5": 0
+          },
+          "Branches": [
+            {
+              "Line": 5,
+              "Offset": 10,
+              "EndOffset": 12,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            },
+            {
+              "Line": 5,
+              "Offset": 10,
+              "EndOffset": 16,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 0
+            },
+            {
+              "Line": 5,
+              "Offset": 22,
+              "EndOffset": 24,
+              "Path": 0,
+              "Ordinal": 2,
+              "Hits": 0
+            },
+            {
+              "Line": 5,
+              "Offset": 22,
+              "EndOffset": 28,
+              "Path": 1,
+              "Ordinal": 3,
+              "Hits": 0
+            },
+            {
+              "Line": 5,
+              "Offset": 34,
+              "EndOffset": 36,
+              "Path": 0,
+              "Ordinal": 4,
+              "Hits": 0
+            },
+            {
+              "Line": 5,
+              "Offset": 34,
+              "EndOffset": 42,
+              "Path": 1,
+              "Ordinal": 5,
+              "Hits": 0
+            }
+          ]
+        },
+        "System.Void EficazFramework.Components.Dialogs.ViewModelDialog::<BuildRenderTree>b__8_1(Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder)": {
+          "Lines": {
+            "8": 0,
+            "14": 0,
+            "22": 0,
+            "30": 0,
+            "41": 0
+          },
+          "Branches": [
+            {
+              "Line": 8,
+              "Offset": 16,
+              "EndOffset": 46,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 0
+            },
+            {
+              "Line": 8,
+              "Offset": 16,
+              "EndOffset": 175,
+              "Path": 2,
+              "Ordinal": 2,
+              "Hits": 0
+            },
+            {
+              "Line": 8,
+              "Offset": 16,
+              "EndOffset": 425,
+              "Path": 5,
+              "Ordinal": 5,
+              "Hits": 0
+            },
+            {
+              "Line": 8,
+              "Offset": 16,
+              "EndOffset": 675,
+              "Path": 4,
+              "Ordinal": 4,
+              "Hits": 0
+            },
+            {
+              "Line": 8,
+              "Offset": 16,
+              "EndOffset": 1039,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            },
+            {
+              "Line": 8,
+              "Offset": 16,
+              "EndOffset": 1039,
+              "Path": 3,
+              "Ordinal": 3,
+              "Hits": 0
+            }
+          ]
+        },
+        "System.Void EficazFramework.Components.Dialogs.ViewModelDialog::<BuildRenderTree>b__8_2()": {
+          "Lines": {
+            "11": 0
+          },
+          "Branches": []
+        },
+        "System.Void EficazFramework.Components.Dialogs.ViewModelDialog::<BuildRenderTree>b__8_4()": {
+          "Lines": {
+            "16": 0
+          },
+          "Branches": []
+        },
+        "System.Void EficazFramework.Components.Dialogs.ViewModelDialog::<BuildRenderTree>b__8_6()": {
+          "Lines": {
+            "19": 0
+          },
+          "Branches": []
+        },
+        "System.Void EficazFramework.Components.Dialogs.ViewModelDialog::<BuildRenderTree>b__8_8()": {
+          "Lines": {
+            "24": 0
+          },
+          "Branches": []
+        },
+        "System.Void EficazFramework.Components.Dialogs.ViewModelDialog::<BuildRenderTree>b__8_10()": {
+          "Lines": {
+            "27": 0
+          },
+          "Branches": []
+        },
+        "System.Void EficazFramework.Components.Dialogs.ViewModelDialog::<BuildRenderTree>b__8_12()": {
+          "Lines": {
+            "32": 0
+          },
+          "Branches": []
+        },
+        "System.Void EficazFramework.Components.Dialogs.ViewModelDialog::<BuildRenderTree>b__8_14()": {
+          "Lines": {
+            "35": 0
+          },
+          "Branches": []
+        },
+        "System.Void EficazFramework.Components.Dialogs.ViewModelDialog::<BuildRenderTree>b__8_16()": {
+          "Lines": {
+            "38": 0
+          },
+          "Branches": []
+        }
+      },
+      "EficazFramework.Components.Dialogs.ViewModelDialog/<>c": {
+        "System.Void EficazFramework.Components.Dialogs.ViewModelDialog/<>c::<BuildRenderTree>b__8_3(Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder)": {
+          "Lines": {
+            "12": 0
+          },
+          "Branches": []
+        },
+        "System.Void EficazFramework.Components.Dialogs.ViewModelDialog/<>c::<BuildRenderTree>b__8_5(Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder)": {
+          "Lines": {
+            "17": 0
+          },
+          "Branches": []
+        },
+        "System.Void EficazFramework.Components.Dialogs.ViewModelDialog/<>c::<BuildRenderTree>b__8_7(Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder)": {
+          "Lines": {
+            "20": 0
+          },
+          "Branches": []
+        },
+        "System.Void EficazFramework.Components.Dialogs.ViewModelDialog/<>c::<BuildRenderTree>b__8_9(Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder)": {
+          "Lines": {
+            "25": 0
+          },
+          "Branches": []
+        },
+        "System.Void EficazFramework.Components.Dialogs.ViewModelDialog/<>c::<BuildRenderTree>b__8_11(Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder)": {
+          "Lines": {
+            "28": 0
+          },
+          "Branches": []
+        },
+        "System.Void EficazFramework.Components.Dialogs.ViewModelDialog/<>c::<BuildRenderTree>b__8_13(Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder)": {
+          "Lines": {
+            "33": 0
+          },
+          "Branches": []
+        },
+        "System.Void EficazFramework.Components.Dialogs.ViewModelDialog/<>c::<BuildRenderTree>b__8_15(Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder)": {
+          "Lines": {
+            "36": 0
+          },
+          "Branches": []
+        },
+        "System.Void EficazFramework.Components.Dialogs.ViewModelDialog/<>c::<BuildRenderTree>b__8_17(Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder)": {
+          "Lines": {
+            "39": 0
+          },
+          "Branches": []
+        }
+      }
+    }
+  }
+}
