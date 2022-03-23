@@ -1,53 +1,5 @@
 {
   "EficazFramework.WPF.dll": {
-    "E:\\Henrique Clausing\\Repositorios\\Current\\EficazFramework\\src\\Desktop\\EficazFramework.WPF\\obj\\Debug\\net6.0-windows\\GeneratedInternalTypeHelper.g.cs": {
-      "XamlGeneratedNamespace.GeneratedInternalTypeHelper": {
-        "System.Object XamlGeneratedNamespace.GeneratedInternalTypeHelper::CreateInstance(System.Type,System.Globalization.CultureInfo)": {
-          "Lines": {
-            "25": 0,
-            "26": 0,
-            "27": 0,
-            "28": 0
-          },
-          "Branches": []
-        },
-        "System.Object XamlGeneratedNamespace.GeneratedInternalTypeHelper::GetPropertyValue(System.Reflection.PropertyInfo,System.Object,System.Globalization.CultureInfo)": {
-          "Lines": {
-            "33": 0,
-            "34": 0,
-            "35": 0
-          },
-          "Branches": []
-        },
-        "System.Void XamlGeneratedNamespace.GeneratedInternalTypeHelper::SetPropertyValue(System.Reflection.PropertyInfo,System.Object,System.Object,System.Globalization.CultureInfo)": {
-          "Lines": {
-            "40": 0,
-            "41": 0,
-            "42": 0
-          },
-          "Branches": []
-        },
-        "System.Delegate XamlGeneratedNamespace.GeneratedInternalTypeHelper::CreateDelegate(System.Type,System.Object,System.String)": {
-          "Lines": {
-            "47": 0,
-            "48": 0,
-            "49": 0,
-            "50": 0,
-            "51": 0,
-            "52": 0
-          },
-          "Branches": []
-        },
-        "System.Void XamlGeneratedNamespace.GeneratedInternalTypeHelper::AddEventHandler(System.Reflection.EventInfo,System.Object,System.Delegate)": {
-          "Lines": {
-            "57": 0,
-            "58": 0,
-            "59": 0
-          },
-          "Branches": []
-        }
-      }
-    },
     "E:\\Henrique Clausing\\Repositorios\\Current\\EficazFramework\\src\\Desktop\\EficazFramework.WPF\\Resources\\Strings\\Controls.Designer.cs": {
       "EficazFramework.Resources.Strings.Controls": {
         "System.Resources.ResourceManager EficazFramework.Resources.Strings.Controls::get_ResourceManager()": {

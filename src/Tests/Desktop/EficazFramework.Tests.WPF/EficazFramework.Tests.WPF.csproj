@@ -5,7 +5,7 @@
     <Nullable>enable</Nullable>
     <IsPackable>false</IsPackable>
 	<Version>6.0.0-preview002</Version>
-	<Description>Biblioteca de testes para WPF da Eficaz Framework Core.</Description>
+	<Description>Biblioteca de testes para WPF da Eficaz Framework.</Description>
 	<RootNamespace>EficazFramework</RootNamespace>
 	<SignAssembly>True</SignAssembly>
 	<AssemblyOriginatorKeyFile>EfCore.snk</AssemblyOriginatorKeyFile>

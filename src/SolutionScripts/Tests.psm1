@@ -8,13 +8,13 @@ Param (
 	Process {
 		if ($area -eq "wpf")
 		{
-			dotnet test ./Tests/Desktop/EficazFramework.Tests.WPF/EficazFramework.Tests.WPF.csproj  --no-build /p:CollectCoverage=true /p:Exclude=[*]EficazFramework.Resources.%2c[*]EficazFramework.Tests.*%2c[*.Utilities]*%2c[*.Data*]*%2c[*.Tests*]*
+			dotnet test ./Tests/Desktop/EficazFramework.Tests.WPF/EficazFramework.Tests.WPF.csproj  --no-build /p:CollectCoverage=true /p:Exclude=[*]EficazFramework.Resources.%2c[*]EficazFramework.Tests.*%2c[*.Utilities]*%2c[*.Data*]*%2c[*.Tests*]*%2c[*.Blazor*]*
 			return 
 		}
 
 		if ($area -eq "blazor")
 		{
-			dotnet test ./Tests/Web/EficazFramework.Tests.Blazor/EficazFramework.Tests.Blazor.csproj  --no-build /p:CollectCoverage=true /p:Exclude=[*]EficazFramework.Resources.%2c[*]EficazFramework.Tests.%2c[*.Utilities]*%2c[*.Data*]*%2c[*.Tests*]*
+			dotnet test ./Tests/Web/EficazFramework.Tests.Blazor/EficazFramework.Tests.Blazor.csproj  --no-build /p:CollectCoverage=true /p:Exclude=[*]EficazFramework.Resources.%2c[*]EficazFramework.Tests.%2c[*.Utilities]*%2c[*.Data*]*%2c[*.Tests*]*%2c[*.WPF*]*
 			return 
 		}
 
