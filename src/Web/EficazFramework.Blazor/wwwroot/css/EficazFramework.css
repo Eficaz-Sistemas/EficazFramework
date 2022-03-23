@@ -1,43 +1,4 @@
-﻿.ef-expr-between {
-  margin-bottom: -6px !important;
-}
-
-.mud-table-cell > .ef-expr-between > .mud-input-control > .mud-input-control-input-container > div.mud-input.mud-input-text {
-  color: var(--mud-theme-on-surface);
-  font-size: 0.875rem;
-  margin-top: -14px;
-  margin-bottom: -8px;
-}
-
-.mud-table-cell > .mud-input-control > .mud-input-control-input-container > div.mud-input.mud-input-text {
-  color: var(--mud-theme-on-surface);
-  font-size: 0.875rem;
-  margin-top: -14px;
-  margin-bottom: -8px;
-}
-
-.mud-table-cell > .ef-expr-between > .mud-picker > .mud-input-control > .mud-input-control-input-container > div.mud-input.mud-input-text {
-  color: var(--mud-theme-on-surface);
-  font-size: 0.875rem;
-  margin-top: -14px;
-  margin-bottom: -8px;
-}
-
-.mud-table-cell > .mud-picker > .mud-input-control > .mud-input-control-input-container > div.mud-input.mud-input-text {
-  color: var(--mud-theme-on-surface);
-  font-size: 0.875rem;
-  margin-top: -14px;
-  margin-bottom: -8px;
-}
-
-.mud-table-cell > .mud-select > .mud-input-control > .mud-input-control-input-container > div.mud-input.mud-input-text {
-  color: var(--mud-theme-on-surface);
-  font-size: 0.875rem;
-  margin-top: -14px;
-  margin-bottom: -8px;
-}
-
-.text-right > .mud-input-control-input-container > .mud-input > input.mud-input-root {
+﻿.text-right > .mud-input-control-input-container > .mud-input > input.mud-input-root {
   text-align: right;
 }
 
@@ -411,4 +372,4 @@ fadeIn.on-screen {
   }
 }
 
-/*# sourceMappingURL=data:application/json;charset=utf-8,%7B%22version%22:3,%22sourceRoot%22:%22%22,%22sources%22:%5B%22file:///E:/Henrique%2520Clausing/Repositorios/Current/EficazFramework/src/Web/EficazFramework.Blazor/Styles/Components/ExpressionBuilder.scss%22,%22file:///E:/Henrique%2520Clausing/Repositorios/Current/EficazFramework/src/Web/EficazFramework.Blazor/Styles/Components/Input.scss%22,%22file:///E:/Henrique%2520Clausing/Repositorios/Current/EficazFramework/src/Web/EficazFramework.Blazor/Styles/Components/MDIContainer.scss%22,%22file:///E:/Henrique%2520Clausing/Repositorios/Current/EficazFramework/src/Web/EficazFramework.Blazor/Styles/Components/Navigator.scss%22,%22file:///E:/Henrique%2520Clausing/Repositorios/Current/EficazFramework/src/Web/EficazFramework.Blazor/Styles/Components/Table.scss%22,%22file:///E:/Henrique%2520Clausing/Repositorios/Current/EficazFramework/src/Web/EficazFramework.Blazor/Styles/General/Icons.scss%22,%22file:///E:/Henrique%2520Clausing/Repositorios/Current/EficazFramework/src/Web/EficazFramework.Blazor/Styles/General/Layout.scss%22,%22file:///E:/Henrique%2520Clausing/Repositorios/Current/EficazFramework/src/Web/EficazFramework.Blazor/Styles/General/Text.scss%22,%22file:///E:/Henrique%2520Clausing/Repositorios/Current/EficazFramework/src/Web/EficazFramework.Blazor/Styles/General/Transitions.scss%22,%22file:///E:/Henrique%2520Clausing/Repositorios/Current/EficazFramework/src/Web/EficazFramework.Blazor/Styles/Templates/Applications.scss%22,%22file:///E:/Henrique%2520Clausing/Repositorios/Current/EficazFramework/src/Web/EficazFramework.Blazor/Styles/Templates/StartMenu.scss%22,%22file:///E:/Henrique%2520Clausing/Repositorios/Current/EficazFramework/src/Web/EficazFramework.Blazor/Styles/General/Print.scss%22%5D,%22names%22:%5B%5D,%22mappings%22:%22AAAC;EACG;;;AAGJ;EAKI;EACA;EACA;EACA;;;AAGJ;EAII;EACA;EACA;EACA;;;AAIJ;EAMI;EACA;EACA;EACA;;;AAIJ;EAKI;EACA;EACA;EACA;;;AAGJ;EAKI;EACA;EACA;EACA;;;AC1DH;EACG;;;AAGJ;EACI;;;AAGJ;EACI;;;AAGJ;EACI;;;AAGJ;EACI;;;ACjBH;EACG;EACA;EACA;AAAwB;EACxB;AAAgC;;;AAIpC;EACI;EACA;EACA;;;AAGJ;EACI;EACA;EACA;EACA;;;AAGJ;EACI;EACA;EACA;EACA;;;AAIA;EACI;;AAGJ;EACI;EACA;EACA;EACA;;AAEA;EACI;;AAIR;EACI;EACA;;;AAGR;AAAA;AAAA;AAAA;AAIA;EACI;IACI;IACA;IACA;;;ACzDP;EACG;;;AAIJ;EACI;;;AAGJ;EACI;EACA;AAAwB;EACxB;AAAgC;;;AAGpC;EACI;IACI;;EAGJ;IACI;;;AAIR;EACI;;;AC1BH;EACG;;;AAGJ;EACI;EACA;;;ACNH;EACG;EACA;EACA;EACA;EACA;EACA;EACA;;;AAGJ;EACI;EACA;EACA;;;ACbH;EACG;;;AAGJ;EACI;;;ACLH;EACG;;;AAGJ;EACI;;;AAGJ;EACI;;;AAGJ;EACI;EACA;EACA;;;AAGJ;EACI;;;AAGJ;EACI;EACA;EACA;;;ACzBH;EACG;EACA;EACA;EACA;;;AAGJ;EACI;EACA;EACA;EACA;;;AAGJ;EACI;EACA;EACA;EACA;;;AAGJ;EACI;EACA;EACA;EACA;;;AAGJ;EACI;EACA;EACA;EACA;;;AAGJ;EACI;EACA;EACA;EACA;;;AAGJ;EACI;EACA;EACA;EACA;;;AAGJ;EACI;EACA;EACA;EACA;;;AAGJ;EACI;EACA;;;AAGJ;EACI;;;AAIJ;EACI;;;AAGJ;EACI;EACA;;;AAKJ;EACI;EACA;;;AAGJ;EACI;EACA;;;AAGJ;EACI;EACA;;;AAGJ;EACI;;;AAGJ;EACI;;;AAGJ;EACI;IAAK;;EACL;IAAK;;EACL;IAAK;;EACL;IAAK;;EACL;IAAM;;EACN;IAAM;;EACN;IAAM;;EACN;IAAM;;EACN;IAAM;;EACN;IAAM;;EACN;IAAM;;EACN;IAAM;;EACN;IAAM;;EACN;IAAM;;EACN;IAAM;;EACN;IAAM;;EACN;IAAM;;EACN;IAAO;;;ACtHV;EACG;EACA;;;ACFH;EACG;;;AAIJ;EACI;EACA;EACA;;;AAGH;EACG;;;AAGJ;EACI;EACA;;;ACjBH;EACG;IACI;;;EAGJ;IACI;;;EAGJ;AAAA;AAAA;AAAA;IAII;;;EAGJ;IACI;IACA;;;EAGJ;IACI;IACA;IACA;IACA;IACA;IACA%22%7D */
+/*# sourceMappingURL=data:application/json;charset=utf-8,%7B%22version%22:3,%22sourceRoot%22:%22%22,%22sources%22:%5B%22file:///E:/Henrique%2520Clausing/Repositorios/Current/EficazFramework/src/Web/EficazFramework.Blazor/Styles/Components/Input.scss%22,%22file:///E:/Henrique%2520Clausing/Repositorios/Current/EficazFramework/src/Web/EficazFramework.Blazor/Styles/Components/MDIContainer.scss%22,%22file:///E:/Henrique%2520Clausing/Repositorios/Current/EficazFramework/src/Web/EficazFramework.Blazor/Styles/Components/Navigator.scss%22,%22file:///E:/Henrique%2520Clausing/Repositorios/Current/EficazFramework/src/Web/EficazFramework.Blazor/Styles/Components/Table.scss%22,%22file:///E:/Henrique%2520Clausing/Repositorios/Current/EficazFramework/src/Web/EficazFramework.Blazor/Styles/General/Icons.scss%22,%22file:///E:/Henrique%2520Clausing/Repositorios/Current/EficazFramework/src/Web/EficazFramework.Blazor/Styles/General/Layout.scss%22,%22file:///E:/Henrique%2520Clausing/Repositorios/Current/EficazFramework/src/Web/EficazFramework.Blazor/Styles/General/Text.scss%22,%22file:///E:/Henrique%2520Clausing/Repositorios/Current/EficazFramework/src/Web/EficazFramework.Blazor/Styles/General/Transitions.scss%22,%22file:///E:/Henrique%2520Clausing/Repositorios/Current/EficazFramework/src/Web/EficazFramework.Blazor/Styles/Templates/Applications.scss%22,%22file:///E:/Henrique%2520Clausing/Repositorios/Current/EficazFramework/src/Web/EficazFramework.Blazor/Styles/Templates/StartMenu.scss%22,%22file:///E:/Henrique%2520Clausing/Repositorios/Current/EficazFramework/src/Web/EficazFramework.Blazor/Styles/General/Print.scss%22%5D,%22names%22:%5B%5D,%22mappings%22:%22AAAC;EACG;;;AAGJ;EACI;;;AAGJ;EACI;;;AAGJ;EACI;;;AAGJ;EACI;;;ACjBH;EACG;EACA;EACA;AAAwB;EACxB;AAAgC;;;AAIpC;EACI;EACA;EACA;;;AAGJ;EACI;EACA;EACA;EACA;;;AAGJ;EACI;EACA;EACA;EACA;;;AAIA;EACI;;AAGJ;EACI;EACA;EACA;EACA;;AAEA;EACI;;AAIR;EACI;EACA;;;AAGR;AAAA;AAAA;AAAA;AAIA;EACI;IACI;IACA;IACA;;;ACzDP;EACG;;;AAIJ;EACI;;;AAGJ;EACI;EACA;AAAwB;EACxB;AAAgC;;;AAGpC;EACI;IACI;;EAGJ;IACI;;;AAIR;EACI;;;AC1BH;EACG;;;AAGJ;EACI;EACA;;;ACNH;EACG;EACA;EACA;EACA;EACA;EACA;EACA;;;AAGJ;EACI;EACA;EACA;;;ACbH;EACG;;;AAGJ;EACI;;;ACLH;EACG;;;AAGJ;EACI;;;AAGJ;EACI;;;AAGJ;EACI;EACA;EACA;;;AAGJ;EACI;;;AAGJ;EACI;EACA;EACA;;;ACzBH;EACG;EACA;EACA;EACA;;;AAGJ;EACI;EACA;EACA;EACA;;;AAGJ;EACI;EACA;EACA;EACA;;;AAGJ;EACI;EACA;EACA;EACA;;;AAGJ;EACI;EACA;EACA;EACA;;;AAGJ;EACI;EACA;EACA;EACA;;;AAGJ;EACI;EACA;EACA;EACA;;;AAGJ;EACI;EACA;EACA;EACA;;;AAGJ;EACI;EACA;;;AAGJ;EACI;;;AAIJ;EACI;;;AAGJ;EACI;EACA;;;AAKJ;EACI;EACA;;;AAGJ;EACI;EACA;;;AAGJ;EACI;EACA;;;AAGJ;EACI;;;AAGJ;EACI;;;AAGJ;EACI;IAAK;;EACL;IAAK;;EACL;IAAK;;EACL;IAAK;;EACL;IAAM;;EACN;IAAM;;EACN;IAAM;;EACN;IAAM;;EACN;IAAM;;EACN;IAAM;;EACN;IAAM;;EACN;IAAM;;EACN;IAAM;;EACN;IAAM;;EACN;IAAM;;EACN;IAAM;;EACN;IAAM;;EACN;IAAO;;;ACtHV;EACG;EACA;;;ACFH;EACG;;;AAIJ;EACI;EACA;EACA;;;AAGH;EACG;;;AAGJ;EACI;EACA;;;ACjBH;EACG;IACI;;;EAGJ;IACI;;;EAGJ;AAAA;AAAA;AAAA;IAII;;;EAGJ;IACI;IACA;;;EAGJ;IACI;IACA;IACA;IACA;IACA;IACA%22%7D */

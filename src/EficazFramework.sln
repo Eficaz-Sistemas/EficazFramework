@@ -57,7 +57,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EficazFramework.Tests.WPF.V
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Web", "Web", "{8CC8E7BE-3B66-4334-9CB7-F5DA16CC71B0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EficazFramework.Tests.Blazor.Views", "Tests\Web\EficazFramework.Tests.Blazor.Views\EficazFramework.Tests.Blazor.Views.csproj", "{55F8F0C2-27AD-4CAC-82D7-6445DD606708}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EficazFramework.Tests.Blazor.Views", "Tests\Web\EficazFramework.Tests.Blazor.Views\EficazFramework.Tests.Blazor.Views.csproj", "{55F8F0C2-27AD-4CAC-82D7-6445DD606708}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

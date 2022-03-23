@@ -2,177 +2,183 @@
 @using EficazFramework.Extensions;
 
 <MudBlazor.MudExpansionPanels @bind-Elevation="Elevation">
-    <MudBlazor.MudExpansionPanel @bind-Text="Header" @bind-IsExpanded="IsExpanded">
-        <div class="d-flex">
-            @if (vm != null)
-            {
-                if (vm.CanAddExpressions == true)
+    <MudBlazor.MudExpansionPanel @bind-IsExpanded="IsExpanded">
+        <TitleContent>
+                <div class="d-flex">
+                    <MudBlazor.MudIcon Icon="@MudBlazor.Icons.Material.Filled.FilterList"></MudBlazor.MudIcon>
+                    <MudBlazor.MudText Class="ml-4">@Header</MudBlazor.MudText>
+                </div>
+        </TitleContent>
+        <ChildContent>
+            <div class="d-flex">
+                @if (vm != null)
                 {
-                    <MudBlazor.MudTooltip Text="@EficazFramework.Resources.Strings.Components.ExpressionBuilder_AddCommand" Class="flex-grow-0 order-1" >
-                        <MudBlazor.MudIconButton Icon="@MudBlazor.Icons.Material.Filled.Add" Class="flex-grow-0 order-1  ma-0 mt-11" OnClick="() => OnAddCommand()" />
-                    </MudBlazor.MudTooltip>
-                }
-                <MudBlazor.MudTable Elevation="0" Items="@vm.Items" Class="flex-grow-1 order-2 ma-4" Dense>
-                    <ColGroup>
-                        @if (vm.CanAddExpressions)
-                        {
-                            <col style="width:1px;" />
-                        }
-                        <col style="width: 260px;" />
-                        <col style="width: 210px;" />
-                        <col style="width: auto" />
-                    </ColGroup>
-                    <HeaderContent>
-                        @if (vm.CanAddExpressions)
-                        {
-                            <MudBlazor.MudTh/>
-                        }
-                        <MudBlazor.MudTh>@(EficazFramework.Resources.Strings.Components.ExpressionBuilder_CL_Field):</MudBlazor.MudTh>
-                        <MudBlazor.MudTh>@(EficazFramework.Resources.Strings.Components.ExpressionBuilder_CL_Operator):</MudBlazor.MudTh>
-                        <MudBlazor.MudTh>@(EficazFramework.Resources.Strings.Components.ExpressionBuilder_CL_Value):</MudBlazor.MudTh>
-                    </HeaderContent>
-                    <RowTemplate>
-                        @if (vm.CanAddExpressions)
-                        {
-                            <MudBlazor.MudTd Style="padding-top:4px; padding-bottom:4px;">
-                                <MudBlazor.MudTooltip Text="@EficazFramework.Resources.Strings.Components.ExpressionBuilder_DeleteCommand">
-                                    <MudBlazor.MudIconButton Icon="@MudBlazor.Icons.Material.Filled.Delete" OnClick="() => OnDeleteCommand(context)" Class="ma-n4 mr-n8" />
-                                </MudBlazor.MudTooltip>
-                            </MudBlazor.MudTd>
-                        }
-                        <MudBlazor.MudTd>
-                            @if (vm.CanBuildCustomExpressions)
+                    <MudBlazor.MudTable Elevation="0" Items="@vm.Items" Class="flex-grow-1 order-2 ma-4">
+                        <ColGroup>
+                            @if (vm.CanAddExpressions)
                             {
-                            <MudBlazor.MudSelect T="@EficazFramework.Expressions.ExpressionProperty" @bind-Value="@context.SelectedProperty">
-                                @foreach (EficazFramework.Expressions.ExpressionProperty prop in vm.Properties)
-                                    {
-                                    <MudBlazor.MudSelectItem T="@EficazFramework.Expressions.ExpressionProperty" Value="@prop">
-                                        @prop.DisplayName
-                                    </MudBlazor.MudSelectItem>
-                                    }
-                            </MudBlazor.MudSelect>
+                                <col style="width: 1px;"/>
                             }
-                            else
+                            <col style="width: 1%" />
+                            <col style="width: 1%" />
+                            <col />
+                        </ColGroup>
+                        <HeaderContent>
+                            @if (vm.CanAddExpressions)
                             {
-                                if(context.SelectedProperty != null)
-                                {
-                                    <MudBlazor.MudText Typo="@MudBlazor.Typo.body2">@context.SelectedProperty?.DisplayName</MudBlazor.MudText>
-                                }
-                                else
-                                {
-                                    <MudBlazor.MudText Typo="@MudBlazor.Typo.body2">n/a</MudBlazor.MudText>
-                                }
+                                <MudBlazor.MudTh Class="ef-expression-table-cell">
+                                    <MudBlazor.MudTooltip Text="@EficazFramework.Resources.Strings.Components.ExpressionBuilder_AddCommand" Class="flex-grow-0 order-1" >
+                                        <MudBlazor.MudIconButton Icon="@MudBlazor.Icons.Material.Filled.Add" OnClick="() => OnAddCommand()" Size="MudBlazor.Size.Small"/>
+                                    </MudBlazor.MudTooltip>
+                                </MudBlazor.MudTh>
                             }
-                        </MudBlazor.MudTd>
-                        <MudBlazor.MudTd >
-                            @if (vm.CanBuildCustomExpressions)
+                            <MudBlazor.MudTh>@(EficazFramework.Resources.Strings.Components.ExpressionBuilder_CL_Field):</MudBlazor.MudTh>
+                            <MudBlazor.MudTh>@(EficazFramework.Resources.Strings.Components.ExpressionBuilder_CL_Operator):</MudBlazor.MudTh>
+                            <MudBlazor.MudTh>@(EficazFramework.Resources.Strings.Components.ExpressionBuilder_CL_Value):</MudBlazor.MudTh>
+                        </HeaderContent>
+                        <RowTemplate>
+                            @if (vm.CanAddExpressions)
                             {
-                                <MudBlazor.MudSelect T="@EficazFramework.Enums.CompareMethod" @bind-Value="@context.Operator" Converter="@converter">
-                                    @if(context.SelectedProperty != null)
-                                    {
-                                        @foreach (@EficazFramework.Extensions.EnumMember op in context.AvailableOperators)
+                                <MudBlazor.MudTd Class="ef-expression-table-cell">
+                                    <MudBlazor.MudTooltip Text="@EficazFramework.Resources.Strings.Components.ExpressionBuilder_DeleteCommand">
+                                        <MudBlazor.MudIconButton Icon="@MudBlazor.Icons.Material.Filled.Delete" OnClick="() => OnDeleteCommand(context)" Size="MudBlazor.Size.Small" />
+                                    </MudBlazor.MudTooltip>
+                                </MudBlazor.MudTd>
+                            }
+                            <MudBlazor.MudTd Class="ef-expression-table-cell">
+                                @if (vm.CanBuildCustomExpressions)
+                                {
+                                <MudBlazor.MudSelect T="@EficazFramework.Expressions.ExpressionProperty" @bind-Value="@context.SelectedProperty" Class="ef-expression-table-cell-property-item">
+                                    @foreach (EficazFramework.Expressions.ExpressionProperty prop in vm.Properties)
                                         {
-                                        <MudBlazor.MudSelectItem T="@EficazFramework.Enums.CompareMethod" Value="@((EficazFramework.Enums.CompareMethod)op.Value)">
-                                            @op.Description
+                                        <MudBlazor.MudSelectItem T="@EficazFramework.Expressions.ExpressionProperty" Value="@prop">
+                                            @prop.DisplayName
                                         </MudBlazor.MudSelectItem>
                                         }
-                                    }
                                 </MudBlazor.MudSelect>
-                            }
-                            else
-                            {
-                                @if(context.SelectedProperty != null)
-                                {
-                                    <MudBlazor.MudText Typo="@MudBlazor.Typo.body2">@context.AvailableOperators.Where((e) => (EficazFramework.Enums.CompareMethod)e.Value == context.Operator).Select((e) => e.Description).FirstOrDefault()</MudBlazor.MudText>
                                 }
                                 else
                                 {
-                                    <MudBlazor.MudText Typo="@MudBlazor.Typo.body2">n/a</MudBlazor.MudText>
-                                }
-                            }
-                        </MudBlazor.MudTd>
-                        <MudBlazor.MudTd>
-                            @if (context.Operator == EficazFramework.Enums.CompareMethod.Between)
-                                {
-                                <div class="d-flex ef-expr-between">
-
-                                    @switch (context.SelectedProperty.Editor)
-                                        {
-                                            case EficazFramework.Expressions.ExpressionEditor.Date:
-                                            <MudBlazor.MudDatePicker @bind-Date="context.DateTimeValue1" Class="flex-grow-1" DateFormat="d" AllowKeyboardInput Editable />
-                                            <MudBlazor.MudText Typo="@MudBlazor.Typo.body2" Class="flex-grow-0 mx-4 align-self-center">@($"  {EficazFramework.Resources.Strings.Components.ExpressionBuilder_Between_Separator}  ")</MudBlazor.MudText>
-                                            <MudBlazor.MudDatePicker @bind-Date="context.DateTimeValue2" Class="flex-grow-1" DateFormat="d" AllowKeyboardInput Editable />
-                                                break;
-
-                                            case EficazFramework.Expressions.ExpressionEditor.Number:
-                                            <EficazFramework.Components.NumberField @bind-Value="context.Value1" Class="flex-grow-1" DecimalPlaces="context.SelectedProperty?.DecimalPlaces ?? 8" />
-                                            <MudBlazor.MudText Typo="@MudBlazor.Typo.body2" Class="flex-grow-0 mx-4 align-self-center">@($"  {EficazFramework.Resources.Strings.Components.ExpressionBuilder_Between_Separator}  ")</MudBlazor.MudText>
-                                            <EficazFramework.Components.NumberField @bind-Value="context.Value2" Class="flex-grow-1" DecimalPlaces="context.SelectedProperty?.DecimalPlaces ?? 8" />
-                                                break;
-                                        }
-                                </div>
-                                }
-                                else
-                                {
-                                    if (context.SelectedProperty != null)
+                                    if(context.SelectedProperty != null)
                                     {
-                                        switch (context.SelectedProperty.Editor)
-                                        {
-                                            case EficazFramework.Expressions.ExpressionEditor.Date:
-                                            <MudBlazor.MudDatePicker @bind-Date="context.DateTimeValue1" Class="flex-grow-1" DateFormat="d" AllowKeyboardInput Editable />
-                                                break;
-
-                                            case EficazFramework.Expressions.ExpressionEditor.Number:
-                                            <EficazFramework.Components.NumberField @bind-Value="context.Value1" Class="flex-grow-1" FullWidth DecimalPlaces="context.SelectedProperty?.DecimalPlaces ?? 8" />
-                                                break;
-
-                                            case EficazFramework.Expressions.ExpressionEditor.BoolSelection:
-                                            <MudBlazor.MudCheckBox @bind-Checked="context.Value1" Converter="@(new EficazFramework.Converters.ObjectToBoolConverter())" Color="@MudBlazor.Color.Primary" Class="ma-n4"><span class="ml-2">@(((bool?)context.Value1)?.GetBoolValue()))</span></MudBlazor.MudCheckBox>
-                                                break;
-
-                                            case EficazFramework.Expressions.ExpressionEditor.EnumLocalizedSelection:
-                                            <MudBlazor.MudSelect @bind-Value="@context.Value1">
-                                                @foreach (EficazFramework.Extensions.EnumMember enummember in EficazFramework.Extensions.Enums.GetLocalizedValues(context.Value1.GetType()))
-                                                    {
-                                                    <MudBlazor.MudSelectItem Value="@enummember.Value">
-                                                        @enummember.Description
-                                                    </MudBlazor.MudSelectItem>
-                                                    }
-                                            </MudBlazor.MudSelect>
-                                                break;
-
-                                            case EficazFramework.Expressions.ExpressionEditor.EnumSelection:
-                                            <MudBlazor.MudSelect @bind-Value="@context.Value1">
-                                                @foreach (EficazFramework.Extensions.EnumMember enummember in EficazFramework.Extensions.Enums.GetValues(context.Value1.GetType()))
-                                                    {
-                                                    <MudBlazor.MudSelectItem Value="@enummember.Value">
-                                                        @enummember.Description
-                                                    </MudBlazor.MudSelectItem>
-                                                    }
-                                            </MudBlazor.MudSelect>
-                                                break;
-
-                                            case EficazFramework.Expressions.ExpressionEditor.Findable:
-                                            <MudBlazor.MudAutocomplete @bind-Value="context.Value1" SearchFunc="(text) => OnAutoCompleteSearch(text, context.SelectedPropertyPath)" CoerceText FullWidth Class="flex-grow-1" />
-                                                break;
-
-                                            default:
-                                            <MudBlazor.MudTextField @bind-Value="context.Value1" Converter="new StringObjConverter()" FullWidth Class="flex-grow-1" />
-                                                break;
-                                        }
+                                        <MudBlazor.MudText Typo="@MudBlazor.Typo.body2">@context.SelectedProperty?.DisplayName</MudBlazor.MudText>
                                     }
                                     else
                                     {
-                                    <MudBlazor.MudText Typo="@MudBlazor.Typo.body2">...</MudBlazor.MudText>
+                                        <MudBlazor.MudText Typo="@MudBlazor.Typo.body2">n/a</MudBlazor.MudText>
                                     }
                                 }
-                        </MudBlazor.MudTd>
-                    </RowTemplate>
-                </MudBlazor.MudTable>
-                {
-                    <MudBlazor.MudFab OnClick="SearchAction" Icon="@MudBlazor.Icons.Material.Filled.Search" Color="@MudBlazor.Color.Primary" Class="flex-grow-0 order-3 align-self-end" Style="min-width: 56px;"/>
+                            </MudBlazor.MudTd>
+                            <MudBlazor.MudTd Class="ef-expression-table-cell">
+                                @if (vm.CanBuildCustomExpressions)
+                                {
+                                    <MudBlazor.MudSelect T="@EficazFramework.Enums.CompareMethod" @bind-Value="@context.Operator" Converter="@converter"  Class="ef-expression-table-cell-property-item">
+                                        @if(context.SelectedProperty != null)
+                                        {
+                                            @foreach (@EficazFramework.Extensions.EnumMember op in context.AvailableOperators)
+                                            {
+                                            <MudBlazor.MudSelectItem T="@EficazFramework.Enums.CompareMethod" Value="@((EficazFramework.Enums.CompareMethod)op.Value)">
+                                                @op.Description
+                                            </MudBlazor.MudSelectItem>
+                                            }
+                                        }
+                                    </MudBlazor.MudSelect>
+                                }
+                                else
+                                {
+                                    @if(context.SelectedProperty != null)
+                                    {
+                                        <MudBlazor.MudText Typo="@MudBlazor.Typo.body2">@context.AvailableOperators.Where((e) => (EficazFramework.Enums.CompareMethod)e.Value == context.Operator).Select((e) => e.Description).FirstOrDefault()</MudBlazor.MudText>
+                                    }
+                                    else
+                                    {
+                                        <MudBlazor.MudText Typo="@MudBlazor.Typo.body2">n/a</MudBlazor.MudText> 
+                                    }
+                                }
+                            </MudBlazor.MudTd>
+                            <MudBlazor.MudTd Class="ef-expression-table-cell">
+                                @if (context.Operator == EficazFramework.Enums.CompareMethod.Between)
+                                    {
+                                    <div class="d-flex ef-expression-between">
+
+                                        @switch (context.SelectedProperty.Editor)
+                                            {
+                                                case EficazFramework.Expressions.ExpressionEditor.Date:
+                                                    <MudBlazor.MudDatePicker @bind-Date="context.DateTimeValue1" Class="flex-grow-1" DateFormat="d" AllowKeyboardInput Editable />
+                                                    <MudBlazor.MudText Typo="@MudBlazor.Typo.body2" Class="flex-grow-0 mx-4 align-self-center">@($"  {EficazFramework.Resources.Strings.Components.ExpressionBuilder_Between_Separator}  ")</MudBlazor.MudText>
+                                                    <MudBlazor.MudDatePicker @bind-Date="context.DateTimeValue2" Class="flex-grow-1" DateFormat="d" AllowKeyboardInput Editable />
+                                                    break;
+
+                                                case EficazFramework.Expressions.ExpressionEditor.Number:
+                                                    <EficazFramework.Components.NumberField @bind-Value="context.Value1" Class="flex-grow-1" DecimalPlaces="context.SelectedProperty?.DecimalPlaces ?? 8" />
+                                                    <MudBlazor.MudText Typo="@MudBlazor.Typo.body2" Class="flex-grow-0 mx-4 align-self-center">@($"  {EficazFramework.Resources.Strings.Components.ExpressionBuilder_Between_Separator}  ")</MudBlazor.MudText>
+                                                    <EficazFramework.Components.NumberField @bind-Value="context.Value2" Class="flex-grow-1" DecimalPlaces="context.SelectedProperty?.DecimalPlaces ?? 8" />
+                                                    break;
+                                            }
+                                    </div>
+                                    }
+                                    else
+                                    {
+                                        if (context.SelectedProperty != null)
+                                        {
+                                            switch (context.SelectedProperty.Editor)
+                                            {
+                                                case EficazFramework.Expressions.ExpressionEditor.Date:
+                                                    <MudBlazor.MudDatePicker @bind-Date="context.DateTimeValue1" Class="flex-grow-1" DateFormat="d" AllowKeyboardInput Editable />
+                                                    break;
+
+                                                case EficazFramework.Expressions.ExpressionEditor.Number:
+                                                    <EficazFramework.Components.NumberField @bind-Value="context.Value1" Class="flex-grow-1" FullWidth DecimalPlaces="context.SelectedProperty?.DecimalPlaces ?? 8" />
+                                                    break;
+
+                                                case EficazFramework.Expressions.ExpressionEditor.BoolSelection:
+                                                    <MudBlazor.MudCheckBox @bind-Checked="context.Value1" Converter="@(new EficazFramework.Converters.ObjectToBoolConverter())" Color="@MudBlazor.Color.Primary" Class="ma-n4"><span class="ml-2">@(((bool?)context.Value1)?.GetBoolValue())</span></MudBlazor.MudCheckBox>
+                                                    break;
+
+                                                case EficazFramework.Expressions.ExpressionEditor.EnumLocalizedSelection:
+                                                    <MudBlazor.MudSelect @bind-Value="@context.Value1">
+                                                        @foreach (EficazFramework.Extensions.EnumMember enummember in context.EnumValues)
+                                                            {
+                                                            <MudBlazor.MudSelectItem Value="@enummember.Value">
+                                                                @enummember.Description
+                                                            </MudBlazor.MudSelectItem>
+                                                            }
+                                                    </MudBlazor.MudSelect>
+                                                    break;
+
+                                                case EficazFramework.Expressions.ExpressionEditor.EnumSelection:
+                                                    <MudBlazor.MudSelect  @bind-Value="@context.Value1">
+                                                        @foreach (EficazFramework.Extensions.EnumMember enummember in context.EnumValues)
+                                                            {
+                                                            <MudBlazor.MudSelectItem Value="@enummember.Value">
+                                                                @enummember.Description
+                                                            </MudBlazor.MudSelectItem>
+                                                            }
+                                                    </MudBlazor.MudSelect>
+                                                    break;
+
+                                                case EficazFramework.Expressions.ExpressionEditor.Findable:
+                                                    <MudBlazor.MudAutocomplete @bind-Value="context.Value1" SearchFunc="(text) => OnAutoCompleteSearch(text, context.SelectedPropertyPath)" CoerceText FullWidth Class="flex-grow-1" />
+                                                    break;
+
+                                                default:
+                                                    <MudBlazor.MudTextField @bind-Value="context.Value1" Converter="new StringObjConverter()" FullWidth Class="flex-grow-1" />
+                                                    break;
+                                            }
+                                        }
+                                        else
+                                        {
+                                        <MudBlazor.MudText Typo="@MudBlazor.Typo.body2">...</MudBlazor.MudText>
+                                        }
+                                    }
+                            </MudBlazor.MudTd>
+                        </RowTemplate>
+                    </MudBlazor.MudTable>
+                    {
+                        <MudBlazor.MudIconButton OnClick="SearchAction" Icon="@MudBlazor.Icons.Material.Filled.Search" Variant="MudBlazor.Variant.Filled" Color="@MudBlazor.Color.Primary" Class="flex-grow-0 order-3 align-self-end" Size="MudBlazor.Size.Small"/>
+                    }
                 }
-            }
-        </div>
+            </div>
+        </ChildContent>
     </MudBlazor.MudExpansionPanel>
 </MudBlazor.MudExpansionPanels>

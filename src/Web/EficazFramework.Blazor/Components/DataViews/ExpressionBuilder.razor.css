@@ -1,3 +1,72 @@
 ﻿::deep .mud-table-container {
     overflow: visible;
 }
+
+::deep .ef-expression-table-cell {
+    padding: 0px 8px 0px 8px !important;
+}
+
+::deep .ef-expression-table-cell-property-item {
+    min-width: 260px;
+}
+
+::deep .ef-expression-between {
+    margin-bottom: 0px !important;
+}
+
+::deep .mud-table-cell >
+    .ef-expression-between >
+        .mud-input-control >
+            .mud-input-control-input-container >
+                div.mud-input.mud-input-text {
+    color: var(--mud-theme-on-surface);
+    font-size: .875rem;
+    margin-top: -10px;
+    margin-bottom: -2px;
+}
+
+::deep .mud-table-cell >
+    .mud-input-control >
+        .mud-input-control-input-container >
+            div.mud-input.mud-input-text {
+    color: var(--mud-theme-on-surface);
+    font-size: .875rem;
+    margin-top: -10px;
+    margin-bottom: -2px;
+}
+
+
+::deep .mud-table-cell >
+    .ef-expression-between >
+        .mud-picker >
+            .mud-input-control >
+                .mud-input-control-input-container >
+                    div.mud-input.mud-input-text {
+    color: var(--mud-theme-on-surface);
+    font-size: .875rem;
+    margin-top: -10px;
+    margin-bottom: -2px;
+}
+
+
+::deep .mud-table-cell >
+    .mud-picker >
+        .mud-input-control >
+            .mud-input-control-input-container >
+                div.mud-input.mud-input-text {
+    color: var(--mud-theme-on-surface);
+    font-size: .875rem;
+    margin-top: -10px;
+    margin-bottom: -2px;
+}
+
+::deep .mud-table-cell >
+    .mud-select >
+        .mud-input-control >
+            .mud-input-control-input-container >
+                div.mud-input.mud-input-text {
+    color: var(--mud-theme-on-surface);
+    font-size: .875rem;
+    margin-top: -10px;
+    margin-bottom: -2px;
+}
