@@ -2,7 +2,7 @@
 using Microsoft.Extensions.DependencyInjection;
 using MudBlazor.Services;
 
-namespace EficazFramework.Configuration;
+namespace EficazFramework.Services;
 
 public static class ServiceCollectionExtensions
 {

@@ -57,6 +57,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EficazFramework.Tests.WPF.V
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Web", "Web", "{8CC8E7BE-3B66-4334-9CB7-F5DA16CC71B0}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EficazFramework.Tests.Blazor.Views", "Tests\Web\EficazFramework.Tests.Blazor.Views\EficazFramework.Tests.Blazor.Views.csproj", "{55F8F0C2-27AD-4CAC-82D7-6445DD606708}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -142,6 +144,12 @@ Global
 		{7692E144-E6BE-4C95-970A-95BC940152E0}.Release|Any CPU.Build.0 = Release|Any CPU
 		{7692E144-E6BE-4C95-970A-95BC940152E0}.ReleaseDevOps|Any CPU.ActiveCfg = Release|Any CPU
 		{7692E144-E6BE-4C95-970A-95BC940152E0}.ReleaseDevOps|Any CPU.Build.0 = Release|Any CPU
+		{55F8F0C2-27AD-4CAC-82D7-6445DD606708}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{55F8F0C2-27AD-4CAC-82D7-6445DD606708}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{55F8F0C2-27AD-4CAC-82D7-6445DD606708}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{55F8F0C2-27AD-4CAC-82D7-6445DD606708}.Release|Any CPU.Build.0 = Release|Any CPU
+		{55F8F0C2-27AD-4CAC-82D7-6445DD606708}.ReleaseDevOps|Any CPU.ActiveCfg = Release|Any CPU
+		{55F8F0C2-27AD-4CAC-82D7-6445DD606708}.ReleaseDevOps|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -163,6 +171,7 @@ Global
 		{D3F5A13F-33CC-4EA8-BFE7-3F80293D5240} = {6DE03546-C8DE-4CC4-BB4A-DF4C337E51E7}
 		{7692E144-E6BE-4C95-970A-95BC940152E0} = {6DE03546-C8DE-4CC4-BB4A-DF4C337E51E7}
 		{8CC8E7BE-3B66-4334-9CB7-F5DA16CC71B0} = {72380FF4-05A9-40F5-8ABD-46B2A572F453}
+		{55F8F0C2-27AD-4CAC-82D7-6445DD606708} = {8CC8E7BE-3B66-4334-9CB7-F5DA16CC71B0}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {727FB557-A5D6-456A-81CB-C45F2F95FCEB}
