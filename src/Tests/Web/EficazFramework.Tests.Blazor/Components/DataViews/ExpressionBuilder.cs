@@ -61,6 +61,9 @@ namespace EficazFramework.Components.DataViews
             comp.FindAll("td.ef-expression-table-cell").Count.Should().Be(0); // no rows
             comp.FindAll("col").Count.Should().Be(3); // add command column not rendered
 
+            comp.FindAll("button").Should().HaveCount(1); // just find button
+            await comp.InvokeAsync(() => comp.Instance.ViewModel.AddNewItemCommand.Execute(null));
+            comp.FindAll("td.ef-expression-table-cell").Count.Should().Be(0); // no rows
         }
     }
 }
