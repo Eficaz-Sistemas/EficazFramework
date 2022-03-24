@@ -13,23 +13,10 @@ public interface IThemeProvider
 
 internal class ThemeProvider : IThemeProvider
 {
-    internal ThemeProvider(MudBlazor.MudTheme? theme)
+    internal ThemeProvider(MudBlazor.MudTheme theme)
     {
-#pragma warning disable CS8601 // Possível atribuição de referência nula.
-        if(theme != null)
-            Theme = theme;
-#pragma warning restore CS8601 // Possível atribuição de referência nula.
+        Theme = theme;
     }
 
-    public MudBlazor.MudTheme Theme { get; set; } = new MudBlazor.MudTheme()
-    {
-        Palette = new MudBlazor.Palette()
-        {
-
-            Primary = "#0078d7",
-            Secondary = "#003864",
-            AppbarBackground = "#0078d7",
-            AppbarText = "#fff",
-        },
-    };
+    public MudBlazor.MudTheme Theme { get; set; }
 }

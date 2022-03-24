@@ -7,13 +7,23 @@ namespace EficazFramework.Services;
 
 public static class ServiceCollectionExtensions
 {
-
-    public static IServiceCollection AddEficazFramework(this IServiceCollection serviceCollection, Configuration.ServiceConfiguration? options = null)
+    public static IServiceCollection AddEficazFramework(this IServiceCollection serviceCollection, Action<Configuration.ServiceConfiguration>? options = null)
     {
-        serviceCollection.AddThemeProvider(options?.Theme)
-                         .AddMudServices(options?.MudBlazorConfigurations);
+        if (serviceCollection == null)
+            throw new ArgumentNullException(nameof(serviceCollection));
 
-        if (options?.UseApplicationManager ?? false)
+        Configuration.ServiceConfiguration config = new();
+
+        if (options != null)
+        {
+            serviceCollection.Configure(options);
+            options.Invoke(config);
+        }
+
+        serviceCollection.AddThemeProvider(config.Theme)
+                         .AddMudServices(config.MudBlazorConfigurations);
+
+        if (config.UseApplicationManager)
             serviceCollection.AddApplicationManager();
 
         return serviceCollection;
@@ -21,12 +31,13 @@ public static class ServiceCollectionExtensions
 
     private static IServiceCollection AddApplicationManager(this IServiceCollection serviceCollection)
     {
-        return serviceCollection.AddScoped<EficazFramework.Application.IApplicationManager>(builder => EficazFramework.Application.IApplicationManager.Create());
+        return serviceCollection.AddScoped<EficazFramework.Application.IApplicationManager>(builder => Application.IApplicationManager.Create());
     }
 
-    private static IServiceCollection AddThemeProvider(this IServiceCollection serviceCollection, MudBlazor.MudTheme? theme)
+    private static IServiceCollection AddThemeProvider(this IServiceCollection serviceCollection, MudBlazor.MudTheme theme)
     {
-        return serviceCollection.AddScoped<EficazFramework.Services.IThemeProvider>(x => new EficazFramework.Services.ThemeProvider(theme));
+        return serviceCollection.AddScoped<IThemeProvider>(x => new ThemeProvider(theme));
     }
+
 
 }
