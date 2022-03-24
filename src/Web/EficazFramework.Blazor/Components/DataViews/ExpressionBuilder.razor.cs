@@ -7,14 +7,13 @@ using System.Threading.Tasks;
 
 namespace EficazFramework.Components;
 
-public partial class ExpressionBuilder
+public partial class ExpressionBuilder: ComponentBase
 {
     // in Memory of Laudo Ferreira da Silva and Francisco Luis de Sousa
     // † 2020
 
     protected string HostClassNames =>
-        new MudBlazor.Utilities.CssBuilder("mud-tabs-toolbar")
-        .AddClass($"mud-elevation-{Elevation}", Elevation != 0)
+        new MudBlazor.Utilities.CssBuilder(Class)
         .Build();
 
     private readonly OperatorConverter converter = new();
@@ -74,12 +73,18 @@ public partial class ExpressionBuilder
 
     private void OnAddCommand()
     {
+        if (!vm.CanAddExpressions)
+            return;
+
         vm.AddNewItemCommand.Execute(null);
         StateHasChanged();
     }
 
     private void OnDeleteCommand(object parameter)
     {
+        if (!vm.CanAddExpressions)
+            return;
+
         vm.DeleteItemCommand.Execute(parameter);
         StateHasChanged();
     }

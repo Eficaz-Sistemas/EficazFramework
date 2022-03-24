@@ -1,7 +1,8 @@
 ﻿@namespace EficazFramework.Components
 @using EficazFramework.Extensions;
+@inherits ComponentBase
 
-<MudBlazor.MudExpansionPanels @bind-Elevation="Elevation">
+<MudBlazor.MudExpansionPanels @bind-Elevation="Elevation" Class=@HostClassNames>
     <MudBlazor.MudExpansionPanel @bind-IsExpanded="IsExpanded">
         <TitleContent>
                 <div class="d-flex">
