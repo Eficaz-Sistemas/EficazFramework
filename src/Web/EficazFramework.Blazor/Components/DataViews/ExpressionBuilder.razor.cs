@@ -71,7 +71,7 @@ public partial class ExpressionBuilder: ComponentBase
         }
     }
 
-    private void OnAddCommand()
+    internal void OnAddCommand()
     {
         if (!vm.CanAddExpressions)
             return;
@@ -80,7 +80,7 @@ public partial class ExpressionBuilder: ComponentBase
         StateHasChanged();
     }
 
-    private void OnDeleteCommand(object parameter)
+    internal void OnDeleteCommand(object parameter)
     {
         if (!vm.CanAddExpressions)
             return;

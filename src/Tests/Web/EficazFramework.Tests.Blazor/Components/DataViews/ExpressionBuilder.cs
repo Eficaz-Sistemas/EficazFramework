@@ -64,6 +64,30 @@ namespace EficazFramework.Components.DataViews
             comp.FindAll("button").Should().HaveCount(1); // just find button
             await comp.InvokeAsync(() => comp.Instance.ViewModel.AddNewItemCommand.Execute(null));
             comp.FindAll("td.ef-expression-table-cell").Count.Should().Be(0); // no rows
+
+            await comp.InvokeAsync(() => comp.Instance.OnAddCommand());
+            comp.FindAll("td.ef-expression-table-cell").Count.Should().Be(0); // no rows
+
+            await comp.InvokeAsync(() => comp.Instance.OnDeleteCommand(new object()));
+            comp.FindAll("td.ef-expression-table-cell").Count.Should().Be(0); // no rows
+
+        }
+
+        [Test, Order(2)]
+        public async Task CrudTest()
+        {
+            var page = Context.RenderComponent<Tests.Blazor.Views.Pages.Components.DataViews.ExpressionBuilder>();
+            var comp = page.FindComponent<Components.ExpressionBuilder>();
+            comp.Should().NotBeNull();
+            comp.Instance.ViewModel.Items.Should().HaveCount(0);
+
+            var buttons = comp.FindAll("button");
+            await buttons[0].ClickAsync(new Microsoft.AspNetCore.Components.Web.MouseEventArgs()
+            {
+                Button = 0
+            });
+            comp.Instance.ViewModel.Items.Should().HaveCount(1);
+
         }
     }
 }
