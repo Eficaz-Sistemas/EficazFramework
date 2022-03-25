@@ -1,19 +1,19 @@
 ﻿using Microsoft.AspNetCore.Components;
-
 namespace EficazFramework.Components.Dialogs;
 
+[System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverage]
 public partial class ViewModelDialog
 {
     [CascadingParameter] MudBlazor.MudDialogInstance MudDialog { get; set; }
     [Parameter] public EficazFramework.Events.MessageEventArgs Args { get; set; }
 
-    public static async Task ShowAsync(MudBlazor.IDialogService dialogService,
-                                       Events.MessageEventArgs messageArgs, 
-                                       MudBlazor.DialogParameters? mudDialogParams = null,
-                                       MudBlazor.DialogOptions? mudDialogOptions = null)
+    public static async Task<Events.MessageResult> ShowAsync(MudBlazor.IDialogService dialogService,
+                                                             Events.MessageEventArgs messageArgs, 
+                                                             MudBlazor.DialogParameters? mudDialogParams = null,
+                                                             MudBlazor.DialogOptions? mudDialogOptions = null)
     {
         if (messageArgs.Type != Events.MessageType.Default)
-            return;
+            return Events.MessageResult.Cancel;
 
         if (mudDialogParams == null)
             mudDialogParams = new();
@@ -26,5 +26,6 @@ public partial class ViewModelDialog
 
         Events.MessageResult result = (Events.MessageResult)(await _dialog.Result).Data;
         messageArgs.ModalAssist.Release(result);
+        return result;
     }
 }

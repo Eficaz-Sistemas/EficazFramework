@@ -1,15 +1,13 @@
 ﻿#pragma warning disable BL0005 // Set parameter outside component
 
+using Bunit;
+using EficazFramework.Tests;
+using FluentAssertions;
+using NUnit.Framework;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
-using FluentAssertions;
-using Bunit;
-using NUnit.Framework;
-using EficazFramework.Tests;
-using Microsoft.AspNetCore.Components;
 
 namespace EficazFramework.Components.DataViews
 {
