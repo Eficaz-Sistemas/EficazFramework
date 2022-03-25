@@ -59,7 +59,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Web", "Web", "{8CC8E7BE-3B6
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EficazFramework.Tests.Blazor.Views", "Tests\Web\EficazFramework.Tests.Blazor.Views\EficazFramework.Tests.Blazor.Views.csproj", "{55F8F0C2-27AD-4CAC-82D7-6445DD606708}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EficazFramework.Tests.Blazor", "Tests\Web\EficazFramework.Tests.Blazor\EficazFramework.Tests.Blazor.csproj", "{A89B0AAC-F345-406C-8DB1-48D657825A31}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EficazFramework.Tests.Blazor", "Tests\Web\EficazFramework.Tests.Blazor\EficazFramework.Tests.Blazor.csproj", "{A89B0AAC-F345-406C-8DB1-48D657825A31}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

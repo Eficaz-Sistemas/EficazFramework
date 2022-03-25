@@ -19,8 +19,8 @@
             </MudNavGroup>
         </MudNavMenu>
     </MudDrawer>
-    <MudMainContent Class="ef-paper ef-vh-fit">
-        <MudContainer MaxWidth="MaxWidth.ExtraExtraLarge" Class="mt-4">
+    <MudMainContent Class="ef-paper ef-vh-fit d-flex">
+        <MudContainer MaxWidth="MaxWidth.ExtraExtraLarge" Class="mt-4 d-flex flex-column">
             <CascadingValue Name="UsePopoverProvider" Value="false"  IsFixed="true">
                 <h3 class="mb-4">@NavigationManager?.Uri.Substring((NavigationManager?.Uri.LastIndexOf("/") ?? 0) + 1)</h3>
                 @Body

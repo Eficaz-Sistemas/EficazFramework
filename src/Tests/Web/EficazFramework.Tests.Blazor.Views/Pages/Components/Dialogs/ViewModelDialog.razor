@@ -1,0 +1,19 @@
+﻿@page "/Components/Dialogs/ViewModelDialog"
+
+<MudContainer MaxWidth="MaxWidth.Small" Class="d-flex flex-column flex-grow-1 justify-center">
+    <div >
+        <MudTextField Label="Title" @bind-Value="_title"/>
+        <MudTextField Label="Content" @bind-Value="_content"/>
+        <MudSelect Label="Buttons" @bind-Value="_buttons">
+            <MudSelectItem Value="Events.MessageButtons.OK">OK</MudSelectItem>
+            <MudSelectItem Value="Events.MessageButtons.OKCancel">OK, Cancel</MudSelectItem>
+            <MudSelectItem Value="Events.MessageButtons.YesNo">Yes, No</MudSelectItem>
+            <MudSelectItem Value="Events.MessageButtons.YesNoCancel">Yes, No, Cacel</MudSelectItem>
+        </MudSelect>
+        <MudSelect Label="Mode" @bind-Value="_type">
+            <MudSelectItem Value="Events.MessageType.Default">Default</MudSelectItem>
+            <MudSelectItem Value="Events.MessageType.SnackBar">SnackBar (must not work)</MudSelectItem>
+        </MudSelect>
+        <MudButton Class="my-4" Variant="Variant.Filled" OnClick="ShowDialog">Show Dialog</MudButton>
+    </div>
+</MudContainer>
