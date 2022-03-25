@@ -46,6 +46,7 @@
                                     </MudBlazor.MudTooltip>
                                 </MudBlazor.MudTd>
                             }
+                            @*Property*@
                             <MudBlazor.MudTd Class="ef-expression-table-cell">
                                 @if (vm.CanBuildCustomExpressions)
                                 {
@@ -70,6 +71,7 @@
                                     }
                                 }
                             </MudBlazor.MudTd>
+                            @*Operator*@
                             <MudBlazor.MudTd Class="ef-expression-table-cell">
                                 @if (vm.CanBuildCustomExpressions)
                                 {
@@ -97,6 +99,7 @@
                                     }
                                 }
                             </MudBlazor.MudTd>
+                            @*Values*@
                             <MudBlazor.MudTd Class="ef-expression-table-cell">
                                 @if (context.Operator == EficazFramework.Enums.CompareMethod.Between)
                                     {

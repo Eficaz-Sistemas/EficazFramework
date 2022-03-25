@@ -11,7 +11,7 @@ Param (
 
 		if ($area -eq "wpf")
 		{
-			dotnet test ./Tests/Desktop/EficazFramework.Tests.WPF/EficazFramework.Tests.WPF.csproj  --no-build /p:CollectCoverage=true /p:CoverletOutputFormat=cobertura /p:CoverletOutput='./Coverage/' /p:Exclude=[*]EficazFramework.Resources.%2c[*]EficazFramework.Tests.*%2c[*.Utilities]*%2c[*.Data*]*%2c[*.Tests*]*%2c[*.Blazor*]*
+			dotnet test ./Tests/Desktop/EficazFramework.Tests.WPF/EficazFramework.Tests.WPF.csproj  --no-build /p:CollectCoverage=true /p:CoverletOutputFormat=cobertura /p:CoverletOutput='./Coverage/' /p:Exclude=[*]EficazFramework.Resources.*%2c[*]EficazFramework.Tests.*%2c[*.Utilities]*%2c[*.Data*]*%2c[*.Tests*]*%2c[*.Blazor*]*
 			
 			$relativepath = 'Tests\Desktop\EficazFramework.Tests.WPF\Coverage'
 			$source = '-reports:./' + $relativepath.replace('\','/') + '/coverage.cobertura.xml'
@@ -30,7 +30,7 @@ Param (
 		if ($area -eq "blazor")
 		{
 
-			dotnet test ./Tests/Web/EficazFramework.Tests.Blazor/EficazFramework.Tests.Blazor.csproj --no-build /p:CollectCoverage=true /p:CoverletOutputFormat=cobertura /p:CoverletOutput='./Coverage/' /p:Exclude=[*]EficazFramework.Resources.%2c[*]EficazFramework.Tests.%2c[*.Utilities]*%2c[*.Data*]*%2c[*.Tests*]*%2c[*.WPF*]*
+			dotnet test ./Tests/Web/EficazFramework.Tests.Blazor/EficazFramework.Tests.Blazor.csproj --no-build /p:CollectCoverage=true /p:CoverletOutputFormat=cobertura /p:CoverletOutput='./Coverage/' /p:Exclude=[*]EficazFramework.Resources.*%2c[*]EficazFramework.Tests.%2c[*.Utilities]*%2c[*.Data*]*%2c[*.Tests*]*%2c[*.WPF*]*
 			
 			$relativepath = 'Tests\Web\EficazFramework.Tests.Blazor\Coverage'
 			$source = '-reports:./' + $relativepath.replace('\','/') + '/coverage.cobertura.xml'

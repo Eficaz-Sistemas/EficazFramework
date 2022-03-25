@@ -157,54 +157,6 @@ public partial class ExpressionBuilder: ComponentBase
         }
     }
 
-    internal class DateTimeObjConverter : MudBlazor.Converter<Object>
-    {
-        internal DateTimeObjConverter()
-        {
-
-            SetFunc = (e) =>
-            {
-                if (e == null)
-                    return null;
-                bool cast = DateTime.TryParse(e.ToString(), out DateTime value);
-                if (cast == false)
-                    return null;
-                return dtconv.Set(value);
-            };
-
-            GetFunc = (e) =>
-            {
-                return (object)dtconv.Get(e);
-            };
-        }
-
-        private readonly MudBlazor.DateConverter dtconv = new(System.Globalization.CultureInfo.CurrentCulture.DateTimeFormat.ShortDatePattern);
-    }
-
-    internal class DecimalObjConverter : MudBlazor.Converter<Object>
-    {
-        internal DecimalObjConverter()
-        {
-
-            SetFunc = (e) =>
-            {
-                if (e == null)
-                    return null;
-                bool cast = double.TryParse(e.ToString(), out double value);
-                if (cast == false)
-                    return null;
-                return numconv.Set(value);
-            };
-
-            GetFunc = (e) =>
-            {
-                return (object)numconv.Get(e);
-            };
-        }
-
-        private readonly MudBlazor.DefaultConverter<double> numconv = new();
-    }
-
     internal class StringObjConverter : MudBlazor.Converter<object>
     {
         internal StringObjConverter()
