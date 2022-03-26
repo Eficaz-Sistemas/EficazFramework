@@ -70,6 +70,7 @@ public class Text
 
         "08001234567".FormatFone().Should().Be("0800 123 4567");
         "03001234567".FormatFone().Should().Be("0300 123 4567");
+        "30301234567".FormatFone().Should().Be("3030 123 4567");
     }
 
     [Test]

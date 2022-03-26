@@ -44,4 +44,10 @@ public class DocumentField<T> : MudBlazor.MudTextField<T>
         }
     }
 
+    protected override void OnBlurred(FocusEventArgs obj)
+    {
+        base.OnBlurred(obj);
+        SetTextAsync(Converter.Set(Value), false);
+    }
+
 }

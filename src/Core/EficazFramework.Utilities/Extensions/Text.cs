@@ -145,7 +145,7 @@ public static class TextExtensions
             case 11: // 0800 123 4567 ou (16) 99971-2741
                 {
                     string four_chars = @base[..4];
-                    if (four_chars == "0800" | four_chars == "0300")
+                    if (four_chars == "0800" | four_chars == "0300" | four_chars == "3030")
                         return string.Format("{0:0000 000 0000}", number);
                     else
                         return string.Format(@"{0:\(00\) 00000\-0000}", number);

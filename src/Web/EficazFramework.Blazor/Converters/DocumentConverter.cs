@@ -46,16 +46,18 @@ internal class DocumentConverter<T> : MudBlazor.DefaultConverter<T>
         if (value == null)
             return null;
 
-        if (!decimal.TryParse(value.ToString(), out decimal test))
-            return "";
+        string baseStr = value.ToString().RemoveTextMask();
+
+        if (!decimal.TryParse(baseStr, out decimal test))
+            return value.ToString();
 
         return DocumentType switch
         {
-            Enums.Documentos.CNPJ_CPF or Enums.Documentos.CNPJ or Enums.Documentos.CPF => test.ToString(_setCulture).FormatRFBDocument(),
-            Enums.Documentos.IE => test.ToString(_setCulture).FormatIE(UF),
-            Enums.Documentos.PIS_NIT => test.ToString(_setCulture).FormatPIS(),
-            Enums.Documentos.CEP => test.ToString(_setCulture).FormatCEP(),
-            Enums.Documentos.Fone => test.ToString(_setCulture).FormatFone(),
+            Enums.Documentos.CNPJ_CPF or Enums.Documentos.CNPJ or Enums.Documentos.CPF => baseStr.FormatRFBDocument(),
+            Enums.Documentos.IE => baseStr.FormatIE(UF),
+            Enums.Documentos.PIS_NIT => baseStr.FormatPIS(),
+            Enums.Documentos.CEP => baseStr.FormatCEP(),
+            Enums.Documentos.Fone => baseStr.FormatFone(),
             _ => "",
         };
     }
