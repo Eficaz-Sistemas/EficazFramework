@@ -3,7 +3,6 @@
 # EficazFramework
 
 ![Azure DevOps builds](https://efshieldsio.azurewebsites.net:/azure-devops/build/eficazcs/EficazFramework/27?&logo=azurepipelines&logoColor=white&style=flat-square)
-![Azure DevOps builds (branch)](https://efshieldsio.azurewebsites.net:/azure-devops/build/eficazcs/EficazFramework/18/master?label=tests&logo=azuredevops&logoColor=white&style=flat-square)
 ![Azure DevOps tests (compact)](https://efshieldsio.azurewebsites.net:/azure-devops/tests/eficazcs/EficazFramework/18?compact_message&logo=azuredevops&logoColor=white&style=flat-square)
 ![Azure DevOps coverage](https://efshieldsio.azurewebsites.net:/azure-devops/coverage/eficazcs/EficazFramework/18?logo=codecov&logoColor=white&style=flat-square)
 [![Discord](https://efshieldsio.azurewebsites.net:/discord/846078359498653706?color=purple&logo=discord&logoColor=white&style=flat-square)](https://discord.gg/ePvZEGBgaf)
