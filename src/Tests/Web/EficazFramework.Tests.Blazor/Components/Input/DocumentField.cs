@@ -1,16 +1,10 @@
 ﻿#pragma warning disable BL0005 // Set parameter outside component
-#pragma warning disable CS4014 // Como esta chamada não é esperada, a execução do método atual continua antes de a chamada ser concluída
+#pragma warning disable CS8625 // Não é possível converter um literal nulo em um tipo de referência não anulável.
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using FluentAssertions;
 using Bunit;
-using NUnit.Framework;
 using EficazFramework.Tests;
-using Microsoft.AspNetCore.Components;
+using FluentAssertions;
+using NUnit.Framework;
 
 namespace EficazFramework.Components.Input;
 
@@ -117,6 +111,15 @@ public class DocumentField : BunitTest
         comp.Instance.Text.Should().Be("10.608.025/0001-26");
         comp.Instance.Value.Should().Be("10608025000126");
 
+        //non-number test:
+        comp.InvokeAsync(() =>
+        {
+            comp.Instance.FocusAsync();
+            input.Change(null);
+            input.BlurAsync(new Microsoft.AspNetCore.Components.Web.FocusEventArgs());
+        });
+        comp.Instance.Text.Should().Be(null);
+        comp.Instance.Value.Should().Be(null);
     }
 
     [Test]

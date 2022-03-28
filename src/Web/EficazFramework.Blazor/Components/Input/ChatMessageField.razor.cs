@@ -1,9 +1,11 @@
 ﻿using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Web;
 using MudBlazor;
+using System.Diagnostics.CodeAnalysis;
 
 namespace EficazFramework.Components;
 
+[ExcludeFromCodeCoverage]
 public partial class ChatMessageField : MudTextField<string>
 {
     private ChatInput _elementReference;
