@@ -52,15 +52,30 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Remove="Components\Selectors\MDIApplication.razor.cs" />
+    <Compile Remove="Components\Selectors\MDIContainer.razor.cs" />
+    <Compile Remove="Templates\ApplicationMVVMToolbar.razor.cs" />
+    <Compile Remove="Templates\Applications.razor.cs" />
+    <Compile Remove="Templates\Footer.razor.cs" />
     <Compile Remove="Templates\NavBarApps.razor.cs" />
+    <Compile Remove="Templates\StartMenu.razor.cs" />
   </ItemGroup>
 
   <ItemGroup>
+    <Content Remove="Components\Selectors\MDIApplication.razor" />
+    <Content Remove="Components\Selectors\MDIContainer.razor" />
+    <Content Remove="Templates\ApplicationMVVMToolbar.razor" />
+    <Content Remove="Templates\Applications.razor" />
+    <Content Remove="Templates\Footer.razor" />
     <Content Remove="Templates\NavBarApps.razor" />
+    <Content Remove="Templates\StartMenu.razor" />
   </ItemGroup>
 
   <ItemGroup>
     <None Remove="Components\Panels\l5t002mw.04g~" />
+    <None Remove="Styles\Components\MDIContainer.scss" />
+    <None Remove="Styles\Templates\Applications.scss" />
+    <None Remove="Styles\Templates\StartMenu.scss" />
   </ItemGroup>
 
   <ItemGroup>
@@ -68,13 +83,7 @@
   		<Pack>True</Pack>
   		<PackagePath>\</PackagePath>
   	</None>
-  	<None Include="Components\Selectors\MDIApplication.razor" />
-  	<None Include="Components\Selectors\MDIContainer.razor" />
-  	<None Include="Templates\ApplicationMVVMToolbar.razor" />
-  	<None Include="Templates\Applications.razor" />
   	<None Include="Templates\CookieConsent.razor" />
-  	<None Include="Templates\Footer.razor" />
-  	<None Include="Templates\StartMenu.razor" />
   </ItemGroup>
 	
   <ItemGroup>
@@ -130,6 +139,11 @@
 				EficazFramework.Tests.Blazor, PublicKey=0024000004800000940000000602000000240000525341310004000001000100d16a73322f95949ad691901229d27abe5dd688e03aa2550ca2a551184e2554b8ddc5416bf8d52a88339e24dd8063cf74e0f5ecd12b5e2927ad604049e29acb4648db2675ac6cb1e31638767731dc1ae90a6432bac0178e5422b7297d946e6fded3fa4addd534d06e75ad983675cf5bae2e41c8915890ec122ed0baef5fc74aad
 			</_Parameter1>
 		</AssemblyAttribute>
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Folder Include="Components\Selectors\" />
+	  <Folder Include="Styles\Templates\" />
 	</ItemGroup>
 
 </Project>

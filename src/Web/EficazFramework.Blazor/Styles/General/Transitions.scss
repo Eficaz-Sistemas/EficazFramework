@@ -97,24 +97,3 @@ fadeIn.on-screen {
 .transition-delay-500 {
     transition-delay: 0.5s
 }
-
-@keyframes counter66 {
-    0% { counter-increment: count 0; }
-    3% { counter-increment: count 2; }
-    6% { counter-increment: count 4; }
-    9% { counter-increment: count 6; }
-    12% { counter-increment: count 8; }
-    18% { counter-increment: count 12; }
-    25% { counter-increment: count 16; }
-    37% { counter-increment: count 28; }
-    50% { counter-increment: count 33; }
-    63% { counter-increment: count 40; }
-    69% { counter-increment: count 45; }
-    75% { counter-increment: count 49; }
-    81% { counter-increment: count 53; }
-    87% { counter-increment: count 57; }
-    90% { counter-increment: count 59; }
-    95% { counter-increment: count 61; }
-    98% { counter-increment: count 63; }
-    100% { counter-increment: count 66; }
-}

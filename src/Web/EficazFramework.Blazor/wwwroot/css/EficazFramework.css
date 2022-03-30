@@ -18,63 +18,8 @@ div.text-match div, div.mud-input input {
   text-align: match-parent;
 }
 
-.mdicontainer {
-  min-width: 378px;
-  height: 100%;
-  height: -moz-available;
-  /* WebKit-based browsers will ignore this. */
-  height: -webkit-fill-available;
-  /* Mozilla-based browsers will ignore this. */
-}
-
-.mdicontainer-tabpanels {
-  min-width: unset;
-  width: 64px;
-  height: 64px;
-}
-
-.mdicontainer-panel {
-  flex-direction: column;
-  flex-grow: 1;
-  overflow-y: hidden;
-  overflow-x: hidden;
-}
-
-.mdi-application {
-  overflow-y: auto;
-  overflow-x: auto;
-  flex-grow: 1;
-  display: flex;
-}
-
-.mdi-application-search-bar .mud-input {
-  height: 42px;
-}
-.mdi-application-search-bar.mud-input-control {
-  background-color: rgba(255, 255, 255, 0.15);
-  margin-bottom: 5px;
-  height: 42px;
-  border-radius: var(--mud-default-borderradius);
-}
-.mdi-application-search-bar.mud-input-control .mud-input-root, .mdi-application-search-bar.mud-input-control .mud-icon-default {
-  color: #fafafa;
-}
-.mdi-application-search-bar .mud-input.mud-input-outlined .mud-input-outlined-border {
-  border: none;
-  border-radius: var(--mud-default-borderradius);
-}
-
-/*.mud-tabs-panels {
-    padding: 24px 24px 24px 24px !important;
-}
+/*@import 'Components/MDIContainer';
 */
-@media (max-width: 600px) {
-  .mdicontainer-tabpanels {
-    min-width: unset;
-    width: 48px;
-    height: 48px;
-  }
-}
 .mud-nav-link.active:not(.mud-nav-link-disabled) {
   border-right: 2px var(--mud-palette-primary) solid;
 }
@@ -261,86 +206,9 @@ fadeIn.on-screen {
   transition-delay: 0.5s;
 }
 
-@keyframes counter66 {
-  0% {
-    counter-increment: count 0;
-  }
-  3% {
-    counter-increment: count 2;
-  }
-  6% {
-    counter-increment: count 4;
-  }
-  9% {
-    counter-increment: count 6;
-  }
-  12% {
-    counter-increment: count 8;
-  }
-  18% {
-    counter-increment: count 12;
-  }
-  25% {
-    counter-increment: count 16;
-  }
-  37% {
-    counter-increment: count 28;
-  }
-  50% {
-    counter-increment: count 33;
-  }
-  63% {
-    counter-increment: count 40;
-  }
-  69% {
-    counter-increment: count 45;
-  }
-  75% {
-    counter-increment: count 49;
-  }
-  81% {
-    counter-increment: count 53;
-  }
-  87% {
-    counter-increment: count 57;
-  }
-  90% {
-    counter-increment: count 59;
-  }
-  95% {
-    counter-increment: count 61;
-  }
-  98% {
-    counter-increment: count 63;
-  }
-  100% {
-    counter-increment: count 66;
-  }
-}
-.app-list {
-  overflow-y: auto;
-  overflow-x: hidden;
-}
-
-.startmenu {
-  min-width: 378px;
-}
-
-.startmenu-tabpanels {
-  min-width: unset;
-  width: 72px;
-  height: 72px;
-}
-
-.mdicontainer-tabs-panel {
-  overflow-y: auto;
-}
-
-.startmenu-buttons {
-  width: 96px;
-  height: 96px;
-}
-
+/*@import 'Templates/Applications';
+*/
+/*@import 'Templates/StartMenu';*/
 @media print {
   * {
     overflow: visible !important;
@@ -372,4 +240,4 @@ fadeIn.on-screen {
   }
 }
 
-/*# sourceMappingURL=data:application/json;charset=utf-8,%7B%22version%22:3,%22sourceRoot%22:%22%22,%22sources%22:%5B%22file:///E:/Henrique%2520Clausing/Repositorios/Current/EficazFramework/src/Web/EficazFramework.Blazor/Styles/Components/Input.scss%22,%22file:///E:/Henrique%2520Clausing/Repositorios/Current/EficazFramework/src/Web/EficazFramework.Blazor/Styles/Components/MDIContainer.scss%22,%22file:///E:/Henrique%2520Clausing/Repositorios/Current/EficazFramework/src/Web/EficazFramework.Blazor/Styles/Components/Navigator.scss%22,%22file:///E:/Henrique%2520Clausing/Repositorios/Current/EficazFramework/src/Web/EficazFramework.Blazor/Styles/Components/Table.scss%22,%22file:///E:/Henrique%2520Clausing/Repositorios/Current/EficazFramework/src/Web/EficazFramework.Blazor/Styles/General/Icons.scss%22,%22file:///E:/Henrique%2520Clausing/Repositorios/Current/EficazFramework/src/Web/EficazFramework.Blazor/Styles/General/Layout.scss%22,%22file:///E:/Henrique%2520Clausing/Repositorios/Current/EficazFramework/src/Web/EficazFramework.Blazor/Styles/General/Text.scss%22,%22file:///E:/Henrique%2520Clausing/Repositorios/Current/EficazFramework/src/Web/EficazFramework.Blazor/Styles/General/Transitions.scss%22,%22file:///E:/Henrique%2520Clausing/Repositorios/Current/EficazFramework/src/Web/EficazFramework.Blazor/Styles/Templates/Applications.scss%22,%22file:///E:/Henrique%2520Clausing/Repositorios/Current/EficazFramework/src/Web/EficazFramework.Blazor/Styles/Templates/StartMenu.scss%22,%22file:///E:/Henrique%2520Clausing/Repositorios/Current/EficazFramework/src/Web/EficazFramework.Blazor/Styles/General/Print.scss%22%5D,%22names%22:%5B%5D,%22mappings%22:%22AAAC;EACG;;;AAGJ;EACI;;;AAGJ;EACI;;;AAGJ;EACI;;;AAGJ;EACI;;;ACjBH;EACG;EACA;EACA;AAAwB;EACxB;AAAgC;;;AAIpC;EACI;EACA;EACA;;;AAGJ;EACI;EACA;EACA;EACA;;;AAGJ;EACI;EACA;EACA;EACA;;;AAIA;EACI;;AAGJ;EACI;EACA;EACA;EACA;;AAEA;EACI;;AAIR;EACI;EACA;;;AAGR;AAAA;AAAA;AAAA;AAIA;EACI;IACI;IACA;IACA;;;ACzDP;EACG;;;AAIJ;EACI;;;AAGJ;EACI;EACA;AAAwB;EACxB;AAAgC;;;AAGpC;EACI;IACI;;EAGJ;IACI;;;AAIR;EACI;;;AC1BH;EACG;;;AAGJ;EACI;EACA;;;ACNH;EACG;EACA;EACA;EACA;EACA;EACA;EACA;;;AAGJ;EACI;EACA;EACA;;;ACbH;EACG;;;AAGJ;EACI;;;ACLH;EACG;;;AAGJ;EACI;;;AAGJ;EACI;;;AAGJ;EACI;EACA;EACA;;;AAGJ;EACI;;;AAGJ;EACI;EACA;EACA;;;ACzBH;EACG;EACA;EACA;EACA;;;AAGJ;EACI;EACA;EACA;EACA;;;AAGJ;EACI;EACA;EACA;EACA;;;AAGJ;EACI;EACA;EACA;EACA;;;AAGJ;EACI;EACA;EACA;EACA;;;AAGJ;EACI;EACA;EACA;EACA;;;AAGJ;EACI;EACA;EACA;EACA;;;AAGJ;EACI;EACA;EACA;EACA;;;AAGJ;EACI;EACA;;;AAGJ;EACI;;;AAIJ;EACI;;;AAGJ;EACI;EACA;;;AAKJ;EACI;EACA;;;AAGJ;EACI;EACA;;;AAGJ;EACI;EACA;;;AAGJ;EACI;;;AAGJ;EACI;;;AAGJ;EACI;IAAK;;EACL;IAAK;;EACL;IAAK;;EACL;IAAK;;EACL;IAAM;;EACN;IAAM;;EACN;IAAM;;EACN;IAAM;;EACN;IAAM;;EACN;IAAM;;EACN;IAAM;;EACN;IAAM;;EACN;IAAM;;EACN;IAAM;;EACN;IAAM;;EACN;IAAM;;EACN;IAAM;;EACN;IAAO;;;ACtHV;EACG;EACA;;;ACFH;EACG;;;AAIJ;EACI;EACA;EACA;;;AAGH;EACG;;;AAGJ;EACI;EACA;;;ACjBH;EACG;IACI;;;EAGJ;IACI;;;EAGJ;AAAA;AAAA;AAAA;IAII;;;EAGJ;IACI;IACA;;;EAGJ;IACI;IACA;IACA;IACA;IACA;IACA%22%7D */
+/*# sourceMappingURL=data:application/json;charset=utf-8,%7B%22version%22:3,%22sourceRoot%22:%22%22,%22sources%22:%5B%22file:///E:/Henrique%2520Clausing/Repositorios/Current/EficazFramework/src/Web/EficazFramework.Blazor/Styles/Components/Input.scss%22,%22file:///E:/Henrique%2520Clausing/Repositorios/Current/EficazFramework/src/Web/EficazFramework.Blazor/Styles/EfCore.scss%22,%22file:///E:/Henrique%2520Clausing/Repositorios/Current/EficazFramework/src/Web/EficazFramework.Blazor/Styles/Components/Navigator.scss%22,%22file:///E:/Henrique%2520Clausing/Repositorios/Current/EficazFramework/src/Web/EficazFramework.Blazor/Styles/Components/Table.scss%22,%22file:///E:/Henrique%2520Clausing/Repositorios/Current/EficazFramework/src/Web/EficazFramework.Blazor/Styles/General/Icons.scss%22,%22file:///E:/Henrique%2520Clausing/Repositorios/Current/EficazFramework/src/Web/EficazFramework.Blazor/Styles/General/Layout.scss%22,%22file:///E:/Henrique%2520Clausing/Repositorios/Current/EficazFramework/src/Web/EficazFramework.Blazor/Styles/General/Text.scss%22,%22file:///E:/Henrique%2520Clausing/Repositorios/Current/EficazFramework/src/Web/EficazFramework.Blazor/Styles/General/Transitions.scss%22,%22file:///E:/Henrique%2520Clausing/Repositorios/Current/EficazFramework/src/Web/EficazFramework.Blazor/Styles/General/Print.scss%22%5D,%22names%22:%5B%5D,%22mappings%22:%22AAAC;EACG;;;AAGJ;EACI;;;AAGJ;EACI;;;AAGJ;EACI;;;AAGJ;EACI;;;AChBJ;AAAA;ACDC;EACG;;;AAIJ;EACI;;;AAGJ;EACI;EACA;AAAwB;EACxB;AAAgC;;;AAGpC;EACI;IACI;;EAGJ;IACI;;;AAIR;EACI;;;AC1BH;EACG;;;AAGJ;EACI;EACA;;;ACNH;EACG;EACA;EACA;EACA;EACA;EACA;EACA;;;AAGJ;EACI;EACA;EACA;;;ACbH;EACG;;;AAGJ;EACI;;;ACLH;EACG;;;AAGJ;EACI;;;AAGJ;EACI;;;AAGJ;EACI;EACA;EACA;;;AAGJ;EACI;;;AAGJ;EACI;EACA;EACA;;;ACzBH;EACG;EACA;EACA;EACA;;;AAGJ;EACI;EACA;EACA;EACA;;;AAGJ;EACI;EACA;EACA;EACA;;;AAGJ;EACI;EACA;EACA;EACA;;;AAGJ;EACI;EACA;EACA;EACA;;;AAGJ;EACI;EACA;EACA;EACA;;;AAGJ;EACI;EACA;EACA;EACA;;;AAGJ;EACI;EACA;EACA;EACA;;;AAGJ;EACI;EACA;;;AAGJ;EACI;;;AAIJ;EACI;;;AAGJ;EACI;EACA;;;AAKJ;EACI;EACA;;;AAGJ;EACI;EACA;;;AAGJ;EACI;EACA;;;AAGJ;EACI;;;AAGJ;EACI;;;ANvFJ;AAAA;AACE;AOXD;EACG;IACI;;;EAGJ;IACI;;;EAGJ;AAAA;AAAA;AAAA;IAII;;;EAGJ;IACI;IACA;;;EAGJ;IACI;IACA;IACA;IACA;IACA;IACA%22%7D */
