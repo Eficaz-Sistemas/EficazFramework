@@ -3,12 +3,8 @@ using System.Collections.Generic;
 
 namespace EficazFramework.Components;
 
-public partial class Navigator : ComponentBase
+public partial class Navigator : MudBlazor.MudBaseItemsControl<NavigatorPage>
 {
-    //PROPERTIES:
-    [Parameter] public int SelectedIndex { get; set; } = -1;
-    [Parameter] public EventCallback<int> SelectedIndexChanged { get; set; }
-
     //HANDLERS:
 
 
@@ -18,9 +14,6 @@ public partial class Navigator : ComponentBase
 
     protected internal List<NavigatorPage> Pages = new();
     public RenderFragment FooterContent { get; set; }
-
-    [Parameter] public RenderFragment ChildContent { get; set; }
-
 
     //HELPERS:
 

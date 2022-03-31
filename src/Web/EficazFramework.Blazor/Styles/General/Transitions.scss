@@ -2,23 +2,23 @@
 
 @each $value in $animation-durations {
 
+    .fadeIn-#{$value} {
+        animation: fadeIn (($value / 1000)+s);
+    }
+
     .fadeInLeft-#{$value} {
-        opacity: 0;
         animation: fadeInLeft (($value / 1000)+s);
     }
 
     .fadeInRight-#{$value} {
-        opacity: 0;
         animation: fadeInRight (($value / 1000)+s);
     }
 
     .fadeInUp-#{$value} {
-        opacity: 0;
         animation: fadeInUp (($value / 1000)+s);
     }
 
     .fadeInDown-#{$value} {
-        opacity: 0;
         animation: fadeInDown (($value / 1000)+s);
     }
 

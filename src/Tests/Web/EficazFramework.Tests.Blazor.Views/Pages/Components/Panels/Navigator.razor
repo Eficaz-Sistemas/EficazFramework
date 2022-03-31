@@ -1,0 +1,25 @@
+﻿
+@page "/Components/Panels/Navigator"
+
+
+<EficazFramework.Components.Navigator @bind-SelectedIndex="index">
+
+    <EficazFramework.Components.NavigatorPage Class="align-center justify-center justify-center fadeIn-500 flex-column">
+        <MudText>Page A</MudText>
+        <MudButton OnClick="@(() => index = 1)" Variant="@Variant.Filled" Color="@Color.Secondary">Next</MudButton>
+    </EficazFramework.Components.NavigatorPage>
+
+    <EficazFramework.Components.NavigatorPage Class="align-center justify-center justify-center fadeIn-500 flex-column">
+        <MudText>Page B</MudText>
+        <MudButton OnClick="@(() => index = 0)" Variant="@Variant.Filled" Color="@Color.Secondary">Previous</MudButton>
+    </EficazFramework.Components.NavigatorPage>
+
+
+</EficazFramework.Components.Navigator>
+
+@code {
+    #pragma warning disable CS8616 // Non-nullable component
+
+    public int index = 0;
+
+}
