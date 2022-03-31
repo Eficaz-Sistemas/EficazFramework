@@ -354,7 +354,7 @@ public class NumberField : BunitTest
             input.Change(string.Join(comp.Instance.Culture.NumberFormat.NumberDecimalSeparator, "5", "7"));
             input.BlurAsync(new Microsoft.AspNetCore.Components.Web.FocusEventArgs());
         });
-        comp.Instance.Text.Should().Be("5,7");
+        comp.Instance.Text.Should().Be(string.Join(comp.Instance.Culture.NumberFormat.NumberDecimalSeparator, "5", "7"));
         comp.Instance.Value.Should().Be(5.7F);
 
         comp.InvokeAsync(() =>
@@ -363,7 +363,7 @@ public class NumberField : BunitTest
             input.Change(string.Join(comp.Instance.Culture.NumberFormat.NumberDecimalSeparator, "5", "77"));
             input.BlurAsync(new Microsoft.AspNetCore.Components.Web.FocusEventArgs());
         });
-        comp.Instance.Text.Should().Be("5,8");
+        comp.Instance.Text.Should().Be(string.Join(comp.Instance.Culture.NumberFormat.NumberDecimalSeparator, "5", "8"));
         comp.Instance.Value.Should().Be(5.8F);
 
         comp.InvokeAsync(() =>
@@ -372,7 +372,7 @@ public class NumberField : BunitTest
             input.Change(string.Join(comp.Instance.Culture.NumberFormat.NumberGroupSeparator, "5", "7"));
             input.BlurAsync(new Microsoft.AspNetCore.Components.Web.FocusEventArgs());
         });
-        comp.Instance.Text.Should().Be("57,0");
+        comp.Instance.Text.Should().Be(string.Join(comp.Instance.Culture.NumberFormat.NumberDecimalSeparator, "57", "0"));
         comp.Instance.Value.Should().Be(57F);
 
     }
@@ -414,7 +414,7 @@ public class NumberField : BunitTest
             input.Change(string.Join(comp.Instance.Culture.NumberFormat.NumberDecimalSeparator, "5", "7"));
             input.BlurAsync(new Microsoft.AspNetCore.Components.Web.FocusEventArgs());
         });
-        comp.Instance.Text.Should().Be("5,7");
+        comp.Instance.Text.Should().Be(string.Join(comp.Instance.Culture.NumberFormat.NumberDecimalSeparator, "5", "7"));
         comp.Instance.Value.Should().Be(5.7F);
 
         comp.InvokeAsync(() =>
@@ -423,7 +423,7 @@ public class NumberField : BunitTest
             input.Change(string.Join(comp.Instance.Culture.NumberFormat.NumberDecimalSeparator, "5", "77"));
             input.BlurAsync(new Microsoft.AspNetCore.Components.Web.FocusEventArgs());
         });
-        comp.Instance.Text.Should().Be("5,8");
+        comp.Instance.Text.Should().Be(string.Join(comp.Instance.Culture.NumberFormat.NumberDecimalSeparator, "5", "8"));
         comp.Instance.Value.Should().Be(5.8F);
 
         comp.InvokeAsync(() =>
@@ -432,7 +432,7 @@ public class NumberField : BunitTest
             input.Change(string.Join(comp.Instance.Culture.NumberFormat.NumberGroupSeparator, "5", "7"));
             input.BlurAsync(new Microsoft.AspNetCore.Components.Web.FocusEventArgs());
         });
-        comp.Instance.Text.Should().Be("57,0");
+        comp.Instance.Text.Should().Be(string.Join(comp.Instance.Culture.NumberFormat.NumberDecimalSeparator, "57", "0"));
         comp.Instance.Value.Should().Be(57F);
 
     }
@@ -474,7 +474,7 @@ public class NumberField : BunitTest
             input.Change(string.Join(comp.Instance.Culture.NumberFormat.NumberDecimalSeparator, "5", "7"));
             input.BlurAsync(new Microsoft.AspNetCore.Components.Web.FocusEventArgs());
         });
-        comp.Instance.Text.Should().Be("5,7");
+        comp.Instance.Text.Should().Be(string.Join(comp.Instance.Culture.NumberFormat.NumberDecimalSeparator, "5", "7"));
         comp.Instance.Value.Should().Be(5.7D);
 
         comp.InvokeAsync(() =>
@@ -483,7 +483,7 @@ public class NumberField : BunitTest
             input.Change(string.Join(comp.Instance.Culture.NumberFormat.NumberDecimalSeparator, "5", "77"));
             input.BlurAsync(new Microsoft.AspNetCore.Components.Web.FocusEventArgs());
         });
-        comp.Instance.Text.Should().Be("5,8");
+        comp.Instance.Text.Should().Be(string.Join(comp.Instance.Culture.NumberFormat.NumberDecimalSeparator, "5", "8"));
         comp.Instance.Value.Should().Be(5.8D);
 
         comp.InvokeAsync(() =>
@@ -492,7 +492,7 @@ public class NumberField : BunitTest
             input.Change(string.Join(comp.Instance.Culture.NumberFormat.NumberGroupSeparator, "5", "7"));
             input.BlurAsync(new Microsoft.AspNetCore.Components.Web.FocusEventArgs());
         });
-        comp.Instance.Text.Should().Be("57,0");
+        comp.Instance.Text.Should().Be(string.Join(comp.Instance.Culture.NumberFormat.NumberDecimalSeparator, "57", "0"));
         comp.Instance.Value.Should().Be(57D);
 
     }
@@ -534,7 +534,7 @@ public class NumberField : BunitTest
             input.Change(string.Join(comp.Instance.Culture.NumberFormat.NumberDecimalSeparator, "5", "7"));
             input.BlurAsync(new Microsoft.AspNetCore.Components.Web.FocusEventArgs());
         });
-        comp.Instance.Text.Should().Be("5,7");
+        comp.Instance.Text.Should().Be(string.Join(comp.Instance.Culture.NumberFormat.NumberDecimalSeparator, "5", "7"));
         comp.Instance.Value.Should().Be(5.7D);
 
         comp.InvokeAsync(() =>
@@ -543,7 +543,7 @@ public class NumberField : BunitTest
             input.Change(string.Join(comp.Instance.Culture.NumberFormat.NumberDecimalSeparator, "5", "77"));
             input.BlurAsync(new Microsoft.AspNetCore.Components.Web.FocusEventArgs());
         });
-        comp.Instance.Text.Should().Be("5,8");
+        comp.Instance.Text.Should().Be(string.Join(comp.Instance.Culture.NumberFormat.NumberDecimalSeparator, "5", "8"));
         comp.Instance.Value.Should().Be(5.8D);
 
         comp.InvokeAsync(() =>
@@ -552,7 +552,7 @@ public class NumberField : BunitTest
             input.Change(string.Join(comp.Instance.Culture.NumberFormat.NumberGroupSeparator, "5", "7"));
             input.BlurAsync(new Microsoft.AspNetCore.Components.Web.FocusEventArgs());
         });
-        comp.Instance.Text.Should().Be("57,0");
+        comp.Instance.Text.Should().Be(string.Join(comp.Instance.Culture.NumberFormat.NumberDecimalSeparator, "57", "0"));
         comp.Instance.Value.Should().Be(57D);
 
     }
@@ -594,7 +594,7 @@ public class NumberField : BunitTest
             input.Change(string.Join(comp.Instance.Culture.NumberFormat.NumberDecimalSeparator, "5", "7"));
             input.BlurAsync(new Microsoft.AspNetCore.Components.Web.FocusEventArgs());
         });
-        comp.Instance.Text.Should().Be("5,7");
+        comp.Instance.Text.Should().Be(string.Join(comp.Instance.Culture.NumberFormat.NumberDecimalSeparator, "5", "7"));
         comp.Instance.Value.Should().Be(5.7M);
 
         comp.InvokeAsync(() =>
@@ -603,7 +603,7 @@ public class NumberField : BunitTest
             input.Change(string.Join(comp.Instance.Culture.NumberFormat.NumberDecimalSeparator, "5", "77"));
             input.BlurAsync(new Microsoft.AspNetCore.Components.Web.FocusEventArgs());
         });
-        comp.Instance.Text.Should().Be("5,8");
+        comp.Instance.Text.Should().Be(string.Join(comp.Instance.Culture.NumberFormat.NumberDecimalSeparator, "5", "8"));
         comp.Instance.Value.Should().Be(5.8M);
 
         comp.InvokeAsync(() =>
@@ -612,7 +612,7 @@ public class NumberField : BunitTest
             input.Change(string.Join(comp.Instance.Culture.NumberFormat.NumberGroupSeparator, "5", "7"));
             input.BlurAsync(new Microsoft.AspNetCore.Components.Web.FocusEventArgs());
         });
-        comp.Instance.Text.Should().Be("57,0");
+        comp.Instance.Text.Should().Be(string.Join(comp.Instance.Culture.NumberFormat.NumberDecimalSeparator, "57", "0"));
         comp.Instance.Value.Should().Be(57M);
 
     }
@@ -654,7 +654,7 @@ public class NumberField : BunitTest
             input.Change(string.Join(comp.Instance.Culture.NumberFormat.NumberDecimalSeparator, "5", "7"));
             input.BlurAsync(new Microsoft.AspNetCore.Components.Web.FocusEventArgs());
         });
-        comp.Instance.Text.Should().Be("5,7");
+        comp.Instance.Text.Should().Be(string.Join(comp.Instance.Culture.NumberFormat.NumberDecimalSeparator, "5", "7"));
         comp.Instance.Value.Should().Be(5.7M);
 
         comp.InvokeAsync(() =>
@@ -663,7 +663,7 @@ public class NumberField : BunitTest
             input.Change(string.Join(comp.Instance.Culture.NumberFormat.NumberDecimalSeparator, "5", "77"));
             input.BlurAsync(new Microsoft.AspNetCore.Components.Web.FocusEventArgs());
         });
-        comp.Instance.Text.Should().Be("5,8");
+        comp.Instance.Text.Should().Be(string.Join(comp.Instance.Culture.NumberFormat.NumberDecimalSeparator, "5", "8"));
         comp.Instance.Value.Should().Be(5.8M);
 
         comp.InvokeAsync(() =>
@@ -672,7 +672,7 @@ public class NumberField : BunitTest
             input.Change(string.Join(comp.Instance.Culture.NumberFormat.NumberGroupSeparator, "5", "7"));
             input.BlurAsync(new Microsoft.AspNetCore.Components.Web.FocusEventArgs());
         });
-        comp.Instance.Text.Should().Be("57,0");
+        comp.Instance.Text.Should().Be(string.Join(comp.Instance.Culture.NumberFormat.NumberDecimalSeparator, "57", "0"));
         comp.Instance.Value.Should().Be(57M);
 
     }
