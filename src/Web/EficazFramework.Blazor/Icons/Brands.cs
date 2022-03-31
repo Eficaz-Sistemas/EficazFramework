@@ -1,5 +1,8 @@
-﻿namespace EficazFramework.Icons;
+﻿using System.Diagnostics.CodeAnalysis;
 
+namespace EficazFramework.Icons;
+
+[ExcludeFromCodeCoverage]
 public class Brands
 {
     public static string Eficaz = "<path d=\"M10.048 11.121v4.684l10.732-6.439v-4.684l-1.951 1.171-3.902-2.34v-3.513l-11.708 7.024v9.366l6.828 4.097v3.513l10.732-6.439v-4.682l-7.804 4.682-5.741-3.443v-4.819l4.766-2.859 2.926 1.755-4.88 2.926z\"/>";

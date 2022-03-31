@@ -1,6 +1,44 @@
 ﻿@page "/Components/Panels/Animation"
 
+<div class="d-flex">
+    <EficazFramework.Components.Animation KeyFrameName="fadeInLeft"
+                                          Delay="0" 
+                                          Duration="500"
+                                          Direction="@Enums.AnimationDirection.normal"
+                                          Class="obj001">
+        <MudIcon Icon="@EficazFramework.Icons.Brands.Eficaz" Size="@Size.Large" Style="height: 250px; width: 250px;" />
+    </EficazFramework.Components.Animation>
 
-<EficazFramework.Components.Animation>
-    <MudIcon Icon="@EficazFramework.Icons.Brands.Eficaz" Size="@Size.Large" Style="height: 250px; width: 250px;" />
-</EficazFramework.Components.Animation>
+    <EficazFramework.Components.Animation KeyFrameName="fadeIn"
+                                          Delay="0" 
+                                          Duration="1000"
+                                          Direction="@Enums.AnimationDirection.normal"
+                                          Class="obj002">
+        <MudIcon Icon="@EficazFramework.Icons.Brands.Eficaz" Size="@Size.Large" Style="height: 250px; width: 250px;" />
+    </EficazFramework.Components.Animation>
+
+    <EficazFramework.Components.Animation KeyFrameName="fadeInDown"
+                                          Delay="0" 
+                                          Duration="1500"
+                                          Direction="@Enums.AnimationDirection.normal"
+                                          Class="obj003">
+        <MudIcon Icon="@EficazFramework.Icons.Brands.Eficaz" Size="@Size.Large" Style="height: 250px; width: 250px;" />
+    </EficazFramework.Components.Animation>
+        <EficazFramework.Components.Animation KeyFrameName="fadeInUp"
+                                          Delay="0" 
+                                          Duration="2000"
+                                          Direction="@Enums.AnimationDirection.normal"
+                                          Class="obj004">
+        <MudIcon Icon="@EficazFramework.Icons.Brands.Eficaz" Size="@Size.Large" Style="height: 250px; width: 250px;" />
+    </EficazFramework.Components.Animation>
+</div>
+<div class="d-flex">
+    <EficazFramework.Components.Animation Trigger="@Enums.AnimationTrigger.Explicity" 
+                                          KeyFrameName="fadeInRight"
+                                          Delay="0" 
+                                          Duration="750"
+                                          Direction="@Enums.AnimationDirection.normal"
+                                          Class="obj005">
+        <MudIcon Icon="@EficazFramework.Icons.Brands.Eficaz_Title" Size="@Size.Large" Style="height: 250px; width: 500px;" />
+    </EficazFramework.Components.Animation>
+</div>

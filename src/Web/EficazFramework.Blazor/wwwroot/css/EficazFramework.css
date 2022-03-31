@@ -109,82 +109,114 @@ div.text-match div, div.mud-input input {
   text-overflow: ellipsis;
 }
 
-.fadeInLeft-500 {
+.fadeInLeft-125 {
   opacity: 0;
-  -webkit-transform: translateX(-20px);
-  -ms-transform: translateX(-20px);
-  transform: translateX(-20px);
+  animation: fadeInLeft 0.125s;
 }
 
-.fadeInLeft.on-screen {
-  opacity: 1;
-  -webkit-transform: translateX(0);
-  -ms-transform: translateX(0);
-  transform: translateX(0);
-}
-
-.fadeInRight {
+.fadeInRight-125 {
   opacity: 0;
-  -webkit-transform: translateX(20px);
-  -ms-transform: translateX(20px);
-  transform: translateX(20px);
+  animation: fadeInRight 0.125s;
 }
 
-.fadeInRight.on-screen {
-  opacity: 1;
-  -webkit-transform: translateX(0);
-  -ms-transform: translateX(0);
-  transform: translateX(0);
-}
-
-.fadeInUp {
+.fadeInUp-125 {
   opacity: 0;
-  -webkit-transform: translateY(-20px);
-  -ms-transform: translateY(-20px);
-  transform: translateY(-20px);
+  animation: fadeInUp 0.125s;
 }
 
-.fadeInUp.on-screen {
-  opacity: 1;
-  -webkit-transform: translateY(0);
-  -ms-transform: translateY(0);
-  transform: translateY(0);
-}
-
-.fadeInDown {
+.fadeInDown-125 {
   opacity: 0;
-  -webkit-transform: translateY(20px);
-  -ms-transform: translateY(20px);
-  transform: translateY(20px);
+  animation: fadeInDown 0.125s;
 }
 
-.fadeInDown.on-screen {
-  opacity: 1;
-  -webkit-transform: translateY(0);
-  -ms-transform: translateY(0);
-  transform: translateY(0);
+.transition-all-125 {
+  transition: all 0.125s;
+  transition-timing-function: ease-out;
 }
 
-fadeIn {
-  opacity: 0 px;
-  transition: all ease-in 0.25s;
+.transition-all-125 {
+  transition: all 0.125s;
+  transition-timing-function: ease-out;
 }
 
-fadeIn.on-screen {
-  opacity: 1 px;
+.transition-all-125 {
+  transition: all 0.125s;
+  transition-timing-function: ease-out;
 }
 
-.counter {
-  content: "0";
+.transition-delay-125 {
+  transition-delay: 0.125s;
 }
 
-.counter.on-screen::after {
-  animation: counter66 1s ease-out forwards;
-  content: counter(count);
+.transition-delay-125 {
+  transition-delay: 0.125s;
+}
+
+.fadeInLeft-250 {
+  opacity: 0;
+  animation: fadeInLeft 0.25s;
+}
+
+.fadeInRight-250 {
+  opacity: 0;
+  animation: fadeInRight 0.25s;
+}
+
+.fadeInUp-250 {
+  opacity: 0;
+  animation: fadeInUp 0.25s;
+}
+
+.fadeInDown-250 {
+  opacity: 0;
+  animation: fadeInDown 0.25s;
 }
 
 .transition-all-250 {
   transition: all 0.25s;
+  transition-timing-function: ease-out;
+}
+
+.transition-all-250 {
+  transition: all 0.25s;
+  transition-timing-function: ease-out;
+}
+
+.transition-all-250 {
+  transition: all 0.25s;
+  transition-timing-function: ease-out;
+}
+
+.transition-delay-250 {
+  transition-delay: 0.25s;
+}
+
+.transition-delay-250 {
+  transition-delay: 0.25s;
+}
+
+.fadeInLeft-500 {
+  opacity: 0;
+  animation: fadeInLeft 0.5s;
+}
+
+.fadeInRight-500 {
+  opacity: 0;
+  animation: fadeInRight 0.5s;
+}
+
+.fadeInUp-500 {
+  opacity: 0;
+  animation: fadeInUp 0.5s;
+}
+
+.fadeInDown-500 {
+  opacity: 0;
+  animation: fadeInDown 0.5s;
+}
+
+.transition-all-500 {
+  transition: all 0.5s;
   transition-timing-function: ease-out;
 }
 
@@ -193,19 +225,255 @@ fadeIn.on-screen {
   transition-timing-function: ease-out;
 }
 
-.transition-all-1000 {
-  transition: all 1s;
+.transition-all-500 {
+  transition: all 0.5s;
   transition-timing-function: ease-out;
-}
-
-.transition-delay-250 {
-  transition-delay: 0.25s;
 }
 
 .transition-delay-500 {
   transition-delay: 0.5s;
 }
 
+.transition-delay-500 {
+  transition-delay: 0.5s;
+}
+
+.fadeInLeft-1000 {
+  opacity: 0;
+  animation: fadeInLeft 1s;
+}
+
+.fadeInRight-1000 {
+  opacity: 0;
+  animation: fadeInRight 1s;
+}
+
+.fadeInUp-1000 {
+  opacity: 0;
+  animation: fadeInUp 1s;
+}
+
+.fadeInDown-1000 {
+  opacity: 0;
+  animation: fadeInDown 1s;
+}
+
+.transition-all-1000 {
+  transition: all 1s;
+  transition-timing-function: ease-out;
+}
+
+.transition-all-1000 {
+  transition: all 1s;
+  transition-timing-function: ease-out;
+}
+
+.transition-all-1000 {
+  transition: all 1s;
+  transition-timing-function: ease-out;
+}
+
+.transition-delay-1000 {
+  transition-delay: 1s;
+}
+
+.transition-delay-1000 {
+  transition-delay: 1s;
+}
+
+.fadeInLeft-1250 {
+  opacity: 0;
+  animation: fadeInLeft 1.25s;
+}
+
+.fadeInRight-1250 {
+  opacity: 0;
+  animation: fadeInRight 1.25s;
+}
+
+.fadeInUp-1250 {
+  opacity: 0;
+  animation: fadeInUp 1.25s;
+}
+
+.fadeInDown-1250 {
+  opacity: 0;
+  animation: fadeInDown 1.25s;
+}
+
+.transition-all-1250 {
+  transition: all 1.25s;
+  transition-timing-function: ease-out;
+}
+
+.transition-all-1250 {
+  transition: all 1.25s;
+  transition-timing-function: ease-out;
+}
+
+.transition-all-1250 {
+  transition: all 1.25s;
+  transition-timing-function: ease-out;
+}
+
+.transition-delay-1250 {
+  transition-delay: 1.25s;
+}
+
+.transition-delay-1250 {
+  transition-delay: 1.25s;
+}
+
+.fadeInLeft-1500 {
+  opacity: 0;
+  animation: fadeInLeft 1.5s;
+}
+
+.fadeInRight-1500 {
+  opacity: 0;
+  animation: fadeInRight 1.5s;
+}
+
+.fadeInUp-1500 {
+  opacity: 0;
+  animation: fadeInUp 1.5s;
+}
+
+.fadeInDown-1500 {
+  opacity: 0;
+  animation: fadeInDown 1.5s;
+}
+
+.transition-all-1500 {
+  transition: all 1.5s;
+  transition-timing-function: ease-out;
+}
+
+.transition-all-1500 {
+  transition: all 1.5s;
+  transition-timing-function: ease-out;
+}
+
+.transition-all-1500 {
+  transition: all 1.5s;
+  transition-timing-function: ease-out;
+}
+
+.transition-delay-1500 {
+  transition-delay: 1.5s;
+}
+
+.transition-delay-1500 {
+  transition-delay: 1.5s;
+}
+
+.fadeInLeft-2000 {
+  opacity: 0;
+  animation: fadeInLeft 2s;
+}
+
+.fadeInRight-2000 {
+  opacity: 0;
+  animation: fadeInRight 2s;
+}
+
+.fadeInUp-2000 {
+  opacity: 0;
+  animation: fadeInUp 2s;
+}
+
+.fadeInDown-2000 {
+  opacity: 0;
+  animation: fadeInDown 2s;
+}
+
+.transition-all-2000 {
+  transition: all 2s;
+  transition-timing-function: ease-out;
+}
+
+.transition-all-2000 {
+  transition: all 2s;
+  transition-timing-function: ease-out;
+}
+
+.transition-all-2000 {
+  transition: all 2s;
+  transition-timing-function: ease-out;
+}
+
+.transition-delay-2000 {
+  transition-delay: 2s;
+}
+
+.transition-delay-2000 {
+  transition-delay: 2s;
+}
+
+@keyframes fadeInLeft {
+  from {
+    opacity: 0;
+    -webkit-transform: translateX(-20px);
+    -ms-transform: translateX(-20px);
+    transform: translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    -webkit-transform: translateX(0px);
+    -ms-transform: translateX(0px);
+    transform: translateX(0px);
+  }
+}
+@keyframes fadeInRight {
+  from {
+    opacity: 0;
+    -webkit-transform: translateX(20px);
+    -ms-transform: translateX(20px);
+    transform: translateX(20px);
+  }
+  to {
+    opacity: 1;
+    -webkit-transform: translateX(0px);
+    -ms-transform: translateX(0px);
+    transform: translateX(0px);
+  }
+}
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    -webkit-transform: translateY(-20px);
+    -ms-transform: translateY(-20px);
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    -webkit-transform: translateX(0px);
+    -ms-transform: translateX(0px);
+    transform: translateX(0px);
+  }
+}
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    -webkit-transform: translateY(20px);
+    -ms-transform: translateY(20px);
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    -webkit-transform: translateX(0px);
+    -ms-transform: translateX(0px);
+    transform: translateX(0px);
+  }
+}
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
 /*@import 'Templates/Applications';
 */
 /*@import 'Templates/StartMenu';*/
@@ -240,4 +508,4 @@ fadeIn.on-screen {
   }
 }
 
-/*# sourceMappingURL=data:application/json;charset=utf-8,%7B%22version%22:3,%22sourceRoot%22:%22%22,%22sources%22:%5B%22file:///E:/Henrique%2520Clausing/Repositorios/Current/EficazFramework/src/Web/EficazFramework.Blazor/Styles/Components/Input.scss%22,%22file:///E:/Henrique%2520Clausing/Repositorios/Current/EficazFramework/src/Web/EficazFramework.Blazor/Styles/EfCore.scss%22,%22file:///E:/Henrique%2520Clausing/Repositorios/Current/EficazFramework/src/Web/EficazFramework.Blazor/Styles/Components/Navigator.scss%22,%22file:///E:/Henrique%2520Clausing/Repositorios/Current/EficazFramework/src/Web/EficazFramework.Blazor/Styles/Components/Table.scss%22,%22file:///E:/Henrique%2520Clausing/Repositorios/Current/EficazFramework/src/Web/EficazFramework.Blazor/Styles/General/Icons.scss%22,%22file:///E:/Henrique%2520Clausing/Repositorios/Current/EficazFramework/src/Web/EficazFramework.Blazor/Styles/General/Layout.scss%22,%22file:///E:/Henrique%2520Clausing/Repositorios/Current/EficazFramework/src/Web/EficazFramework.Blazor/Styles/General/Text.scss%22,%22file:///E:/Henrique%2520Clausing/Repositorios/Current/EficazFramework/src/Web/EficazFramework.Blazor/Styles/General/Transitions.scss%22,%22file:///E:/Henrique%2520Clausing/Repositorios/Current/EficazFramework/src/Web/EficazFramework.Blazor/Styles/General/Print.scss%22%5D,%22names%22:%5B%5D,%22mappings%22:%22AAAC;EACG;;;AAGJ;EACI;;;AAGJ;EACI;;;AAGJ;EACI;;;AAGJ;EACI;;;AChBJ;AAAA;ACDC;EACG;;;AAIJ;EACI;;;AAGJ;EACI;EACA;AAAwB;EACxB;AAAgC;;;AAGpC;EACI;IACI;;EAGJ;IACI;;;AAIR;EACI;;;AC1BH;EACG;;;AAGJ;EACI;EACA;;;ACNH;EACG;EACA;EACA;EACA;EACA;EACA;EACA;;;AAGJ;EACI;EACA;EACA;;;ACbH;EACG;;;AAGJ;EACI;;;ACLH;EACG;;;AAGJ;EACI;;;AAGJ;EACI;;;AAGJ;EACI;EACA;EACA;;;AAGJ;EACI;;;AAGJ;EACI;EACA;EACA;;;ACzBH;EACG;EACA;EACA;EACA;;;AAGJ;EACI;EACA;EACA;EACA;;;AAGJ;EACI;EACA;EACA;EACA;;;AAGJ;EACI;EACA;EACA;EACA;;;AAGJ;EACI;EACA;EACA;EACA;;;AAGJ;EACI;EACA;EACA;EACA;;;AAGJ;EACI;EACA;EACA;EACA;;;AAGJ;EACI;EACA;EACA;EACA;;;AAGJ;EACI;EACA;;;AAGJ;EACI;;;AAIJ;EACI;;;AAGJ;EACI;EACA;;;AAKJ;EACI;EACA;;;AAGJ;EACI;EACA;;;AAGJ;EACI;EACA;;;AAGJ;EACI;;;AAGJ;EACI;;;ANvFJ;AAAA;AACE;AOXD;EACG;IACI;;;EAGJ;IACI;;;EAGJ;AAAA;AAAA;AAAA;IAII;;;EAGJ;IACI;IACA;;;EAGJ;IACI;IACA;IACA;IACA;IACA;IACA%22%7D */
+/*# sourceMappingURL=data:application/json;charset=utf-8,%7B%22version%22:3,%22sourceRoot%22:%22%22,%22sources%22:%5B%22file:///E:/Henrique%2520Clausing/Repositorios/Current/EficazFramework/src/Web/EficazFramework.Blazor/Styles/Components/Input.scss%22,%22file:///E:/Henrique%2520Clausing/Repositorios/Current/EficazFramework/src/Web/EficazFramework.Blazor/Styles/EfCore.scss%22,%22file:///E:/Henrique%2520Clausing/Repositorios/Current/EficazFramework/src/Web/EficazFramework.Blazor/Styles/Components/Navigator.scss%22,%22file:///E:/Henrique%2520Clausing/Repositorios/Current/EficazFramework/src/Web/EficazFramework.Blazor/Styles/Components/Table.scss%22,%22file:///E:/Henrique%2520Clausing/Repositorios/Current/EficazFramework/src/Web/EficazFramework.Blazor/Styles/General/Icons.scss%22,%22file:///E:/Henrique%2520Clausing/Repositorios/Current/EficazFramework/src/Web/EficazFramework.Blazor/Styles/General/Layout.scss%22,%22file:///E:/Henrique%2520Clausing/Repositorios/Current/EficazFramework/src/Web/EficazFramework.Blazor/Styles/General/Text.scss%22,%22file:///E:/Henrique%2520Clausing/Repositorios/Current/EficazFramework/src/Web/EficazFramework.Blazor/Styles/General/Transitions.scss%22,%22file:///E:/Henrique%2520Clausing/Repositorios/Current/EficazFramework/src/Web/EficazFramework.Blazor/Styles/General/Print.scss%22%5D,%22names%22:%5B%5D,%22mappings%22:%22AAAC;EACG;;;AAGJ;EACI;;;AAGJ;EACI;;;AAGJ;EACI;;;AAGJ;EACI;;;AChBJ;AAAA;ACDC;EACG;;;AAIJ;EACI;;;AAGJ;EACI;EACA;AAAwB;EACxB;AAAgC;;;AAGpC;EACI;IACI;;EAGJ;IACI;;;AAIR;EACI;;;AC1BH;EACG;;;AAGJ;EACI;EACA;;;ACNH;EACG;EACA;EACA;EACA;EACA;EACA;EACA;;;AAGJ;EACI;EACA;EACA;;;ACbH;EACG;;;AAGJ;EACI;;;ACLH;EACG;;;AAGJ;EACI;;;AAGJ;EACI;;;AAGJ;EACI;EACA;EACA;;;AAGJ;EACI;;;AAGJ;EACI;EACA;EACA;;;ACrBA;EACI;EACA;;;AAGJ;EACI;EACA;;;AAGJ;EACI;EACA;;;AAGJ;EACI;EACA;;;AAGJ;EACI;EACA;;;AAGJ;EACI;EACA;;;AAGJ;EACI;EACA;;;AAGJ;EACI;;;AAGJ;EACI;;;AAxCJ;EACI;EACA;;;AAGJ;EACI;EACA;;;AAGJ;EACI;EACA;;;AAGJ;EACI;EACA;;;AAGJ;EACI;EACA;;;AAGJ;EACI;EACA;;;AAGJ;EACI;EACA;;;AAGJ;EACI;;;AAGJ;EACI;;;AAxCJ;EACI;EACA;;;AAGJ;EACI;EACA;;;AAGJ;EACI;EACA;;;AAGJ;EACI;EACA;;;AAGJ;EACI;EACA;;;AAGJ;EACI;EACA;;;AAGJ;EACI;EACA;;;AAGJ;EACI;;;AAGJ;EACI;;;AAxCJ;EACI;EACA;;;AAGJ;EACI;EACA;;;AAGJ;EACI;EACA;;;AAGJ;EACI;EACA;;;AAGJ;EACI;EACA;;;AAGJ;EACI;EACA;;;AAGJ;EACI;EACA;;;AAGJ;EACI;;;AAGJ;EACI;;;AAxCJ;EACI;EACA;;;AAGJ;EACI;EACA;;;AAGJ;EACI;EACA;;;AAGJ;EACI;EACA;;;AAGJ;EACI;EACA;;;AAGJ;EACI;EACA;;;AAGJ;EACI;EACA;;;AAGJ;EACI;;;AAGJ;EACI;;;AAxCJ;EACI;EACA;;;AAGJ;EACI;EACA;;;AAGJ;EACI;EACA;;;AAGJ;EACI;EACA;;;AAGJ;EACI;EACA;;;AAGJ;EACI;EACA;;;AAGJ;EACI;EACA;;;AAGJ;EACI;;;AAGJ;EACI;;;AAxCJ;EACI;EACA;;;AAGJ;EACI;EACA;;;AAGJ;EACI;EACA;;;AAGJ;EACI;EACA;;;AAGJ;EACI;EACA;;;AAGJ;EACI;EACA;;;AAGJ;EACI;EACA;;;AAGJ;EACI;;;AAGJ;EACI;;;AAKR;EACI;IACI;IACA;IACA;IACA;;EAGJ;IACI;IACA;IACA;IACA;;;AAIR;EACI;IACI;IACA;IACA;IACA;;EAGJ;IACI;IACA;IACA;IACA;;;AAIR;EACI;IACI;IACA;IACA;IACA;;EAGJ;IACI;IACA;IACA;IACA;;;AAIR;EACI;IACI;IACA;IACA;IACA;;EAGJ;IACI;IACA;IACA;IACA;;;AAIR;EACI;IACI;;EAGJ;IACI;;;AN7GR;AAAA;AACE;AOXD;EACG;IACI;;;EAGJ;IACI;;;EAGJ;AAAA;AAAA;AAAA;IAII;;;EAGJ;IACI;IACA;;;EAGJ;IACI;IACA;IACA;IACA;IACA;IACA%22%7D */

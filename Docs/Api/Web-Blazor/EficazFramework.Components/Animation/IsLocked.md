@@ -1,10 +1,13 @@
 #### [EficazFramework.Blazor](EficazFrameworkBlazor.md 'EficazFramework Blazor')
 ### [EficazFramework.Components](EficazFrameworkBlazor.md#EficazFramework.Components 'EficazFramework.Components').[Animation](EficazFramework.Components/Animation.md 'EficazFramework.Components.Animation')
 
-## Animation.TriggerAnimation() Method
+## Animation.IsLocked Property
 
-Execute the animation
+Defines if Animation is Locked (for parameters change)
 
 ```csharp
-public void TriggerAnimation();
+public bool IsLocked { get; set; }
 ```
+
+#### Property Value
+[System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')

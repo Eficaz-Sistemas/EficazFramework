@@ -15,10 +15,10 @@ public class ComponentBase : Microsoft.AspNetCore.Components.ComponentBase
     /// </summary>
     [Parameter] public string Style { get; set; }
 
-    /// <summary>
-    /// Use Tag to attach any user data object to the component for your convenience.
-    /// </summary>
-    [Parameter] public object Tag { get; set; }
+    ///// <summary>
+    ///// Use Tag to attach any user data object to the component for your convenience.
+    ///// </summary>
+    //[Parameter] public object Tag { get; set; }
 
     /// <summary>
     /// UserAttributes carries all attributes you add to the component that don't match any of its parameters.
