@@ -41,12 +41,16 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Components\Theme\**" />
     <Compile Remove="Layouts\**" />
     <Compile Remove="wwwroot\projects\**" />
+    <Content Remove="Components\Theme\**" />
     <Content Remove="Layouts\**" />
     <Content Remove="wwwroot\projects\**" />
+    <EmbeddedResource Remove="Components\Theme\**" />
     <EmbeddedResource Remove="Layouts\**" />
     <EmbeddedResource Remove="wwwroot\projects\**" />
+    <None Remove="Components\Theme\**" />
     <None Remove="Layouts\**" />
     <None Remove="wwwroot\projects\**" />
   </ItemGroup>

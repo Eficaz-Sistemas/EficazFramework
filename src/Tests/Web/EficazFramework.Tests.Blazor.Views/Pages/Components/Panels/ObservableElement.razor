@@ -1,0 +1,92 @@
+﻿@page "/Components/Panels/ObservableElement"
+@inject NavigationManager NavigationManager
+@inject IScrollSpy ScrollSpy
+
+<style>
+    .section {
+        height: 100vh;
+    }
+
+    .section.header {
+        margin-top: calc((var(--mud-appbar-height) * -1) + 0px);
+        background-color: var(--mud-palette-surface);
+        color: var(--mud-palette-primary-surface)
+    }
+
+    .section.primary {
+        background-color: var(--mud-palette-primary);
+        color: var(--mud-palette-primary-text)
+    }
+
+    .section.secondary {
+        background-color: var(--mud-palette-secondary);
+        color: var(--mud-palette-secondary-text)
+    }
+
+    .section.tertiary {
+        height: 100vh;
+        padding: var(--mud-appbar-height) 0px var(--mud-appbar-height) 0px;
+        background-color: var(--mud-palette-tertiary);
+        color: var(--mud-palette-tertiary-text)
+    }
+
+    .section.surface {
+        height: 100vh;
+        padding: var(--mud-appbar-height) 0px var(--mud-appbar-height) 0px;
+        background-color: var(--mud-palette-surface);
+        color: var(--mud-palette-surface-text)
+    }
+
+    #obj001.on-screen {
+        animation: fadeIn 1.5s;
+    }
+
+    #obj002.on-screen {
+        animation: fadeIn 2.5s;
+    }
+
+</style>
+
+<div id="scroller" class="d-block" onmousewheel="OnMouseWheel">
+    <section class="section header d-flex">
+        <MudBlazor.MudContainer Class="d-flex flex-column align-center justify-center">
+            <h1>Hello, world!</h1>
+            Welcome to your new app.
+                <MudButton OnClick="@(() => NavigateTo("obj001"))" Variant="@Variant.Filled" Color="@Color.Secondary">Next</MudButton>
+        </MudBlazor.MudContainer>
+    </section>
+    <section class="section primary d-flex">
+        <MudBlazor.MudContainer Class="d-flex flex-column align-center justify-center">
+            <EficazFramework.Components.ObservableElement AutoStart ObserverQuery="#obj001" Class="d-flex flex-column">
+                <h2 id="obj001">Fade In 1500</h2>
+                <MudButton OnClick="@(() => NavigateTo("obj002"))" Variant="@Variant.Filled" Color="@Color.Secondary">Next</MudButton>
+            </EficazFramework.Components.ObservableElement>
+        </MudBlazor.MudContainer>
+    </section>
+    <section class="section secondary d-flex">
+        <MudBlazor.MudContainer Class="d-flex flex-column align-center justify-center">
+            <EficazFramework.Components.ObservableElement AutoStart ObserverQuery="#obj002" Class="d-flex flex-column">
+                <h3 id="obj002">Fade In 2500</h3>
+                <MudButton OnClick="@(() => NavigateTo("#obj003"))" Variant="@Variant.Filled" Color="@Color.Tertiary">Next</MudButton>
+            </EficazFramework.Components.ObservableElement>
+        </MudBlazor.MudContainer>
+    </section>
+    <section class="section tertiary d-flex">
+        <MudBlazor.MudContainer Class="d-flex flex-column align-center justify-center">
+            <h1 id="obj003">Goodbye, world!</h1>
+            See you soon.
+        </MudBlazor.MudContainer>
+    </section>
+
+    <MudBlazor.MudScrollToTop>
+        <MudBlazor.MudFab Color="MudBlazor.Color.Tertiary" Icon="@MudBlazor.Icons.Filled.ArrowCircleUp" />
+    </MudBlazor.MudScrollToTop>
+</div>
+
+@code {
+
+    private void NavigateTo(string id)
+    {
+        ScrollSpy.ScrollToSection(id);
+    }
+}

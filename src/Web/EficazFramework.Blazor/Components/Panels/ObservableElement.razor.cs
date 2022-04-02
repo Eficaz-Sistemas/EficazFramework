@@ -27,7 +27,6 @@ public partial class ObservableElement : ComponentBase, IDisposable
     private ElementReference _elementReference;
 
     public static string ActiveClass { get; set; } = "on-screen";
-    public static string ActiveFunction { get; set; }
 
     protected override Task OnAfterRenderAsync(bool firstRender)
     {

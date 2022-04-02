@@ -58,7 +58,7 @@ public partial class ExpressionBuilder
     readonly ExpressionProperty IsActiveProperty = new()
     {
         PropertyPath = "IsActive",
-        DisplayName = "Código",
+        DisplayName = "Ativo",
         Editor = ExpressionEditor.BoolSelection,
         DefaultOperator = Enums.CompareMethod.Equals,
         DefaultValue1 = true,

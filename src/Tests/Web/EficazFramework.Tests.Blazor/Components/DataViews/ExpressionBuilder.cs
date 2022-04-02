@@ -195,6 +195,33 @@ namespace EficazFramework.Components.DataViews
             readonlyCells[0].Markup.Should().Contain("Relacionado");
             readonlyCells[1].Markup.Should().Contain(EficazFramework.Extensions.Enums.GetLocalizedDescription(viewModel.Items.First().Operator));
             readonlyCells[1].Markup.Should().Contain(EficazFramework.Extensions.Enums.GetLocalizedDescription(Enums.CompareMethod.Equals));
+
+
+            // select IsActive property:
+            await comp.InvokeAsync(() => viewModel.CanBuildCustomExpressions = true);
+            // property column
+            selector = entryRow.FindComponent<MudBlazor.MudSelect<Expressions.ExpressionProperty>>();
+            selector.Should().NotBeNull();
+            selector.Instance.SelectedValues.Should().HaveCount(0);
+
+            // operator column
+            selectorOp = entryRow.FindComponent<MudBlazor.MudSelect<Enums.CompareMethod>>();
+            selectorOp.Should().NotBeNull();
+            selectorOp.Instance.SelectedValues.Should().HaveCount(0);
+
+            // operator column
+            editorCl = entryRow.FindComponents<MudBlazor.MudTd>().Last();
+            editorCl.Should().NotBeNull();
+
+
+            await comp.InvokeAsync(() => selector.Instance.SelectOption(viewModel.Properties[3]));
+            editorCl.FindComponent<MudBlazor.MudCheckBox<object>>().Should().NotBeNull();
+            selector.Instance.Text.Should().Be("Ativo");
+            selector.Instance.Text.Should().Be(viewModel.Items.First().SelectedProperty.DisplayName); // 'Ativo'
+            viewModel.Items[0].Operator.Should().Be(viewModel.Properties[3].DefaultOperator);
+            viewModel.Items[0].Value1.Should().Be(viewModel.Properties[3].DefaultValue1);
+            viewModel.Items[0].Value2.Should().Be(viewModel.Properties[3].DefaultValue2);
+            viewModel.Items[0].Value1.Should().Be(true);
         }
     }
 }
