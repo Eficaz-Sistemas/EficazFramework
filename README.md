@@ -61,8 +61,7 @@
    
    - Controles Visuais para melhor experiência de utilização pelo usuário
    - Extensões para XAML e Code-Behind
-   - UI baseada em MaterialDesign, utilizando a biblioteca OpenSource [MaterialDesignInXAML Toolkit](https://github.com/MaterialDesignInXAML/MaterialDesignInXamlToolkit)
-   - Engine de geração e impressão de relatórios em XAML (XPS)   
+   - UI baseada em MaterialDesign, usufruindo do trabalho feito na versão 3.x desta framework, consolidada no mercado e em produção desde 2015;
    
 #### Pré-Requisitos
    - [.NET 6.0](https://dotnet.microsoft.com/download/dotnet/6.0), para versão mais recente da biblioteca (pode sofrer alterações sem aviso prévio).
