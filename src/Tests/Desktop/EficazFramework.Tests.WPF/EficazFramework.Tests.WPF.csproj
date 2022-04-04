@@ -4,7 +4,7 @@
     <TargetFramework>net6.0-windows</TargetFramework>
     <Nullable>enable</Nullable>
     <IsPackable>false</IsPackable>
-	<Version>6.0.0-preview002</Version>
+	<Version>6.0.0-preview003</Version>
 	<Description>Biblioteca de testes para WPF da Eficaz Framework.</Description>
 	<RootNamespace>EficazFramework</RootNamespace>
 	<SignAssembly>True</SignAssembly>

@@ -3,7 +3,7 @@
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
     <Nullable>enable</Nullable>
-	<Version>6.0.0-preview002</Version>
+	<Version>6.0.0-preview003</Version>
 	<Description>Biblioteca de testes para Blazor da Eficaz Framework.</Description>
 	<RootNamespace>EficazFramework</RootNamespace>
 	<SignAssembly>True</SignAssembly>
