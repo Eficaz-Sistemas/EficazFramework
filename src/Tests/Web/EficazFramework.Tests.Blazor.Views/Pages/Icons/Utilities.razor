@@ -1,0 +1,10 @@
+﻿@page "/Icons/Utilities"
+@inject EficazFramework.Services.IThemeProvider ThemeProvider
+
+<div class="d-flex flex-grow-1">
+    <div style="width: 15%; background-image: url('@(EficazFramework.Icons.Utilities.ToUri(EficazFramework.Icons.Brands.EficazGraphism, viewbox: "0 0 70 24"))');"></div>
+    <div style="width: 15%; background-image: url('@(EficazFramework.Icons.Utilities.ToUri(EficazFramework.Icons.Brands.EficazGraphism, "red", "0 0 70 24"))');"></div>
+    <div style="width: 15%; background-image: url('@(EficazFramework.Icons.Utilities.ToUri(EficazFramework.Icons.Brands.EficazGraphism, ThemeProvider.Theme.Palette.Primary.Value, "0 0 70 24"))');"></div>
+    <div style="width: 15%; background-image: url('@(EficazFramework.Icons.Utilities.ToUri(EficazFramework.Icons.Brands.EficazGraphism, ThemeProvider.Theme.Palette.Secondary.Value, "0 0 70 24"))');"></div>
+    <div style="width: 15%; background-image: url('@(EficazFramework.Icons.Utilities.ToUri(EficazFramework.Icons.Brands.EficazGraphism, ThemeProvider.Theme.Palette.Tertiary.Value, "0 0 70 24"))');"></div>
+</div>

@@ -19,14 +19,16 @@
                 <MudNavLink Icon="@Icons.Filled.Animation" Href="Components/Panels/Animation">Animation</MudNavLink>
                 <MudNavLink Icon="@Icons.Filled.LastPage" Href="Components/Panels/Navigator">Navigator</MudNavLink>
                 <MudNavLink Icon="@Icons.Filled.FindInPage" Href="Components/Panels/ObservableElement">ObservableElement</MudNavLink>
-                <MudNavLink Icon="@Icons.Filled.Cookie" Href="Components/Templates/CookieConsent">CookieConsent</MudNavLink>
+                <MudNavLink Icon="@Icons.Filled.Image" Href="Icons/Assets">Icons</MudNavLink>
+                <MudNavLink Icon="@Icons.Filled.ImageAspectRatio" Href="Icons/Utilities">Icons Utilities</MudNavLink>
+                <MudNavLink Icon="@Icons.Filled.Cookie" Href="Templates/CookieConsent">CookieConsent</MudNavLink>
             </MudNavGroup>
         </MudNavMenu>
     </MudDrawer>
-    <MudMainContent Class="ef-paper ef-vh-fit d-flex">
-        <MudContainer MaxWidth="MaxWidth.ExtraExtraLarge" Class="mt-4 d-flex flex-column">
+    <MudMainContent Class="ef-background d-flex" id="scroll_content">
+        <MudContainer MaxWidth="MaxWidth.ExtraExtraLarge" Class="d-flex flex-column">
             <CascadingValue Name="UsePopoverProvider" Value="false"  IsFixed="true">
-                <h3 class="mb-4">@NavigationManager?.Uri.Substring((NavigationManager?.Uri.LastIndexOf("/") ?? 0) + 1)</h3>
+                <h3 class="my-4">@NavigationManager?.Uri.Substring((NavigationManager?.Uri.LastIndexOf("/") ?? 0) + 1)</h3>
                 @Body
             </CascadingValue>
         </MudContainer>
