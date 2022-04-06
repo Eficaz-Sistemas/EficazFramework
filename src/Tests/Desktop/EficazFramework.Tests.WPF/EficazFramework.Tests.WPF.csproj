@@ -12,8 +12,23 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Application\**" />
+    <Compile Remove="Behaviors\**" />
+    <Compile Remove="Commands\**" />
+    <Compile Remove="Common\**" />
+    <Compile Remove="Controls\**" />
     <Compile Remove="Resources\**" />
+    <EmbeddedResource Remove="Application\**" />
+    <EmbeddedResource Remove="Behaviors\**" />
+    <EmbeddedResource Remove="Commands\**" />
+    <EmbeddedResource Remove="Common\**" />
+    <EmbeddedResource Remove="Controls\**" />
     <EmbeddedResource Remove="Resources\**" />
+    <None Remove="Application\**" />
+    <None Remove="Behaviors\**" />
+    <None Remove="Commands\**" />
+    <None Remove="Common\**" />
+    <None Remove="Controls\**" />
     <None Remove="Resources\**" />
   </ItemGroup>
 
@@ -38,7 +53,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\..\Desktop\EficazFramework.WPF\EficazFramework.WPF.csproj" />
-    <ProjectReference Include="..\EficazFramework.Tests.WPF.Views\EficazFramework.Tests.WPF.Views.csproj" />
   </ItemGroup>
 	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
 		<NoWarn>IDE0044;1573;1591;1701;1702;CA2211</NoWarn>

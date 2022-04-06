@@ -1,0 +1,16 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <!--Null Color: -->
+    <Color x:Key="Color.Null"></Color>
+
+    <!-- Grayscales: -->
+    <Color x:Key="Color.Darken">#26000000</Color>
+    <Color x:Key="Color.Dark">#FF000000</Color>
+    <Color x:Key="Color.Gray75">#FF404040</Color>
+    <Color x:Key="Color.Gray50">#FF808080</Color>
+    <Color x:Key="Color.Gray25">#FFC0C0C0</Color>
+    <Color x:Key="Color.Light">#FFFFFFFF</Color>
+    <Color x:Key="Color.Lighten">#26FFFFFF</Color>
+
+</ResourceDictionary>

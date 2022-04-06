@@ -40,10 +40,6 @@
   	<NoWarn>IDE0044;1573;1591;1701;1702;CA2211</NoWarn>
 	<DisableDefaultDocumentation>true</DisableDefaultDocumentation>
   </PropertyGroup>
-	
-  <ItemGroup>
-    <Compile Remove="Themes\Generic\Icons\PackIconDataFactory.cs" />
-  </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="DefaultDocumentation" Version="0.8.0-alpha2">
@@ -82,13 +78,17 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Page Update="Themes\Generic\Icons\Commerce.xaml">
+    <Page Update="Themes\Icons\MaterialDesign.xaml">
+      <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Themes\Icons\Commerce.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Themes\MaterialDesign.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="Themes\Generic\Icons\App.xaml">
+    <Page Update="Themes\Icons\App.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Themes\MaterialDesign\InteractiveTextBox.xaml">
@@ -103,6 +103,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Controls\Extensions\" />
     <Folder Include="Controls\Panels\" />
   </ItemGroup>
 

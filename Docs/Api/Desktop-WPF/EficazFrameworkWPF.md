@@ -81,6 +81,14 @@
 | [CultureAssist](EficazFramework.Localization/CultureAssist.md 'EficazFramework.Localization.CultureAssist') | |
 | [LocalizeText](EficazFramework.Localization/LocalizeText.md 'EficazFramework.Localization.LocalizeText') | |
 
+<a name='EficazFramework.Themes'></a>
+
+## EficazFramework.Themes Namespace
+
+| Classes | |
+| :--- | :--- |
+| [ColorDictionary](EficazFramework.Themes/ColorDictionary.md 'EficazFramework.Themes.ColorDictionary') | |
+
 <a name='EficazFramework.XAML.Behaviors'></a>
 
 ## EficazFramework.XAML.Behaviors Namespace
@@ -108,3 +116,11 @@
 | :--- | :--- |
 | [FloatingHintOffsetCalculationConverter](MaterialDesignThemes.Wpf.Converters/FloatingHintOffsetCalculationConverter.md 'MaterialDesignThemes.Wpf.Converters.FloatingHintOffsetCalculationConverter') | |
 | [TextFieldClearButtonVisibilityConverter](MaterialDesignThemes.Wpf.Converters/TextFieldClearButtonVisibilityConverter.md 'MaterialDesignThemes.Wpf.Converters.TextFieldClearButtonVisibilityConverter') | |
+
+<a name='XamlGeneratedNamespace'></a>
+
+## XamlGeneratedNamespace Namespace
+
+| Classes | |
+| :--- | :--- |
+| [GeneratedInternalTypeHelper](XamlGeneratedNamespace/GeneratedInternalTypeHelper.md 'XamlGeneratedNamespace.GeneratedInternalTypeHelper') | GeneratedInternalTypeHelper |

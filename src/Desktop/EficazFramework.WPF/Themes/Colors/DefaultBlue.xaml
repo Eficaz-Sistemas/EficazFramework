@@ -1,0 +1,37 @@
+﻿<themes:ColorDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:themes="clr-namespace:EficazFramework.Themes">
+
+    <!-- Color (edit here, and DO NOT CHANGE, REMOVE OR ADD KEYS...) -->
+
+    <Color x:Key="Color.Primary.Background.Darken">#00172b</Color>
+    <Color x:Key="Color.Primary.Background">#0060ad</Color>
+    <Color x:Key="Color.Primary.Background.Lighten">#008dff</Color>
+    <Color x:Key="Color.Primary.Foreground">#FFFFFFFF</Color>
+
+    <Color x:Key="Color.Secondary.Background.Darken">#008071</Color>
+    <Color x:Key="Color.Secondary.Background">#3cdbc0</Color>
+    <Color x:Key="Color.Secondary.Background.Lighten">#47ffe0</Color>
+    <Color x:Key="Color.Secondary.Foreground">#FFFFFFFF</Color>
+
+    <Color x:Key="Color.Tertiary.Background.Darken">#687e86</Color>
+    <Color x:Key="Color.Tertiary.Background">#869CAE</Color>
+    <Color x:Key="Color.Tertiary.Background.Lighten">#869CAE</Color>
+    <Color x:Key="Color.Tertiary.Foreground">#FF000000</Color>
+
+    <Color x:Key="Color.Error.Background">#FFff0000</Color>
+    <Color x:Key="Color.Error.Foreground">#FFFFFFFF</Color>
+
+    <Color x:Key="Color.Surface.Background">#002B49</Color>
+    <Color x:Key="Color.Surface.Border">#19FFFFFF</Color>
+    <Color x:Key="Color.Surface.Paper">#12000000</Color>
+    <Color x:Key="Color.Surface.Foreground">#FFFFFFFF</Color>
+
+    <Color x:Key="Color.SurfaceAlternate.Background">#FFFFFF</Color>
+    <Color x:Key="Color.SurfaceAlternate.Border">#19000000</Color>
+    <Color x:Key="Color.SurfaceAlternate.Foreground">#0060ad</Color>
+
+    <Color x:Key="Color.Disabled.Background">#FF808080</Color>
+    <Color x:Key="Color.Disabled.Foreground">#FF404040</Color>
+
+</themes:ColorDictionary>
