@@ -244,6 +244,175 @@
                 <Button Margin="3" EfAttachedProps:Control.Color="Primary" EfAttachedProps:Control.Elevation="4">4</Button>
             </UniformGrid>
         </TabItem>
+        <TabItem Header="Tabs" 
+                 EfAttachedProps:TabControl.Icon="{DynamicResource Icon.MaterialDesign.Tab}">
+            <UniformGrid Margin="15" Columns="3"
+                         EfAttachedProps:TabControl.IsExpanded="False">
+                <TabControl Margin="10"
+                            EfAttachedProps:TabControl.NavigationTemplate="True"
+                            EfAttachedProps:TabControl.NavigationTemplateShowTitle="True">
+                    <TabItem Header="Inherited - TabItem1"/>
+                    <TabItem Header="Inherited - TabItem2"/>
+                </TabControl>
+                <TabControl Margin="10"
+                            EfAttachedProps:Control.Color="Surface"
+                            EfAttachedProps:TabControl.NavigationTemplate="True"
+                            EfAttachedProps:TabControl.NavigationTemplateShowTitle="True">
+                    <TabItem Header="Surface - TabItem1"/>
+                    <TabItem Header="Surface - TabItem2"/>
+                </TabControl>
+                <TabControl Margin="10"
+                            EfAttachedProps:Control.Color="SurfaceAlternate"
+                            EfAttachedProps:TabControl.NavigationTemplate="True"
+                            EfAttachedProps:TabControl.NavigationTemplateShowTitle="True">
+                    <TabItem Header="Surface (Alt) - TabItem1"/>
+                    <TabItem Header="Surface (Alt) - TabItem2"/>
+                </TabControl>
+                <TabControl Margin="10"
+                            EfAttachedProps:Control.Color="Primary"
+                            EfAttachedProps:TabControl.NavigationTemplate="True"
+                            EfAttachedProps:TabControl.NavigationTemplateShowTitle="True">
+                    <TabItem Header="Primary - TabItem1"/>
+                    <TabItem Header="Primary - TabItem2"/>
+                </TabControl>
+                <TabControl Margin="10"
+                            EfAttachedProps:Control.Color="Secondary"
+                            EfAttachedProps:TabControl.NavigationTemplate="True"
+                            EfAttachedProps:TabControl.NavigationTemplateShowTitle="True">
+                    <TabItem Header="Secondary - TabItem1"/>
+                    <TabItem Header="Secondary - TabItem2"/>
+                </TabControl>
+                <TabControl Margin="10"
+                            EfAttachedProps:Control.Color="Tertiary"
+                            EfAttachedProps:TabControl.NavigationTemplate="True"
+                            EfAttachedProps:TabControl.NavigationTemplateShowTitle="True">
+                    <TabItem Header="Tertiary - TabItem1"/>
+                    <TabItem Header="Tertiary - TabItem2"/>
+                </TabControl>
+                <TabControl Margin="10" 
+                            EfAttachedProps:Control.Elevation="0"
+                            EfAttachedProps:TabControl.NavigationTemplate="True"
+                            EfAttachedProps:TabControl.NavigationTemplateShowTitle="True">
+                    <TabItem Header="Elevation 0 - TabItem1"/>
+                    <TabItem Header="Elevation 0 - TabItem2"/>
+                </TabControl>
+                <TabControl Margin="10" 
+                            EfAttachedProps:Control.Elevation="3"
+                            EfAttachedProps:TabControl.NavigationTemplate="True"
+                            EfAttachedProps:TabControl.NavigationTemplateShowTitle="True">
+                    <TabItem Header="Elevation 3 - TabItem1"/>
+                    <TabItem Header="Elevation 3 - TabItem2"/>
+                </TabControl>
+                <TabControl Margin="10" 
+                            EfAttachedProps:Control.Elevation="6"
+                            EfAttachedProps:TabControl.NavigationTemplate="True"
+                            EfAttachedProps:TabControl.NavigationTemplateShowTitle="True">
+                    <TabItem Header="Elevation 6 - TabItem1"/>
+                    <TabItem Header="Elevation 6 - TabItem2"/>
+                </TabControl>
 
+            </UniformGrid>
+        </TabItem>
+        <TabItem Header="Typography" 
+                 EfAttachedProps:TabControl.Icon="{DynamicResource Icon.MaterialDesign.FormatFont}">
+            <Grid Margin="15">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="1*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <StackPanel>
+                    <TextBlock Text="Styles" Style="{DynamicResource Style.TextBlock.Header}" Margin="0,0,0,20"/>
+                    <TextBlock Text="Default" />
+                    <TextBlock Text="Body" Style="{DynamicResource Style.TextBlock.Body}" />
+                    <TextBlock Text="Caption" Style="{DynamicResource Style.TextBlock.Caption}" />
+                    <TextBlock Text="Tip" Style="{DynamicResource Style.TextBlock.Tip}" />
+                    <TextBlock Text="DataGrid Header" Style="{DynamicResource Style.TextBlock.DataGridHeader}" />
+                    <TextBlock Text="Flyout Picker Title" Style="{DynamicResource Style.TextBlock.FlyoutPickerTitle}" />
+                    <TextBlock Text="Title" Style="{DynamicResource Style.TextBlock.Title}" />
+                    <TextBlock Text="SubHeader" Style="{DynamicResource Style.TextBlock.SubHeader}" />
+                    <TextBlock Text="Header" Style="{DynamicResource Style.TextBlock.Header}" />
+                </StackPanel>
+                <StackPanel Grid.Column="1">
+                    <TextBlock Text="States" Style="{DynamicResource Style.TextBlock.Header}" Margin="0,0,0,20"/>
+                    <TextBlock Text="Normal" Style="{DynamicResource Style.TextBlock.Title}" />
+                    <TextBlock Text="Disabled" IsEnabled="False" Style="{DynamicResource Style.TextBlock.Title}" />
+                </StackPanel>
+                <TextBlock Text="Colors" Style="{DynamicResource Style.TextBlock.Header}" TextAlignment="Center" Margin="0,20" Grid.Row="1" Grid.ColumnSpan="2"/>
+                <WrapPanel Orientation="Horizontal" Grid.Row="2" Grid.ColumnSpan="2">
+                    <TextBlock Text="Default" Style="{DynamicResource Style.TextBlock.Title}" Margin="10" />
+                    <TextBlock Text="|" Style="{DynamicResource Style.TextBlock.Title}" Margin="10" />
+                    <EfControls:ColorZone EfAttachedProps:Control.Color="Surface">
+                        <TextBlock Text="On Surface" 
+                                   Style="{DynamicResource Style.TextBlock.Title}" 
+                                   Margin="10" />
+                    </EfControls:ColorZone>
+                    <TextBlock Text="|" Style="{DynamicResource Style.TextBlock.Title}" Margin="10" />
+                    <EfControls:ColorZone EfAttachedProps:Control.Color="SurfaceAlternate">
+                        <TextBlock Text="On Surface (Alternate)" 
+                                   Style="{DynamicResource Style.TextBlock.Title}" 
+                                   Margin="10" />
+                    </EfControls:ColorZone>
+                    <TextBlock Text="|" Style="{DynamicResource Style.TextBlock.Title}" Margin="10" />
+                    <EfControls:ColorZone EfAttachedProps:Control.Color="Primary">
+                        <TextBlock Text="On Primary" 
+                                   Style="{DynamicResource Style.TextBlock.Title}" 
+                                   Margin="10" />
+                    </EfControls:ColorZone>
+                    <TextBlock Text="|" Style="{DynamicResource Style.TextBlock.Title}" Margin="10" />
+                    <EfControls:ColorZone EfAttachedProps:Control.Color="Secondary">
+                        <TextBlock Text="On Secondary" 
+                                   Style="{DynamicResource Style.TextBlock.Title}" 
+                                   Margin="10" />
+                    </EfControls:ColorZone>
+                    <TextBlock Text="|" Style="{DynamicResource Style.TextBlock.Title}" Margin="10" />
+                    <EfControls:ColorZone EfAttachedProps:Control.Color="Tertiary">
+                        <TextBlock Text="On Tertiary" 
+                                   Style="{DynamicResource Style.TextBlock.Title}" 
+                                   Margin="10" />
+                    </EfControls:ColorZone>
+                    <TextBlock Text="|" Style="{DynamicResource Style.TextBlock.Title}" Margin="10" />
+                    <EfControls:ColorZone EfAttachedProps:Control.Color="Surface">
+                        <TextBlock Text="On Surface (Disabled)" 
+                                   Style="{DynamicResource Style.TextBlock.Title}" 
+                                   IsEnabled="False"
+                                   Margin="10" />
+                    </EfControls:ColorZone>
+                    <TextBlock Text="|" Style="{DynamicResource Style.TextBlock.Title}" Margin="10" />
+                    <EfControls:ColorZone EfAttachedProps:Control.Color="SurfaceAlternate">
+                        <TextBlock Text="On Surface (Alternate; Disabled)" 
+                                   Style="{DynamicResource Style.TextBlock.Title}" 
+                                   IsEnabled="False"
+                                   Margin="10" />
+                    </EfControls:ColorZone>
+                    <TextBlock Text="|" Style="{DynamicResource Style.TextBlock.Title}" Margin="10" />
+                    <EfControls:ColorZone EfAttachedProps:Control.Color="Primary">
+                        <TextBlock Text="On Primary (Disabled)" 
+                                   Style="{DynamicResource Style.TextBlock.Title}" 
+                                   IsEnabled="False"
+                                   Margin="10" />
+                    </EfControls:ColorZone>
+                    <TextBlock Text="|" Style="{DynamicResource Style.TextBlock.Title}" Margin="10" />
+                    <EfControls:ColorZone EfAttachedProps:Control.Color="Secondary">
+                        <TextBlock Text="On Secondary (Disabled)" 
+                                   Style="{DynamicResource Style.TextBlock.Title}" 
+                                   IsEnabled="False"
+                                   Margin="10" />
+                    </EfControls:ColorZone>
+                    <TextBlock Text="|" Style="{DynamicResource Style.TextBlock.Title}" Margin="10" />
+                    <EfControls:ColorZone EfAttachedProps:Control.Color="Tertiary">
+                        <TextBlock Text="On Tertiary (Disabled)" 
+                                   Style="{DynamicResource Style.TextBlock.Title}" 
+                                   IsEnabled="False"
+                                   Margin="10" />
+                    </EfControls:ColorZone>
+
+                </WrapPanel>
+            </Grid>
+        </TabItem>
     </TabControl>
 </Window>
