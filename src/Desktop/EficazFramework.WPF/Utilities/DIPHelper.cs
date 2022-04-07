@@ -168,8 +168,8 @@ public sealed partial class DipHelper
     public static object FontSize_DefaultText =>
         PrimaryScreenResolutionTier switch
         {
-            1 => (object) conv.ConvertFrom(default, new CultureInfo("en-US"), "11.25"),
-            2 => (object) conv.ConvertFrom(default, new CultureInfo("en-US"), "11.25"),
+            1 => (object) conv.ConvertFrom(default, new CultureInfo("en-US"), "11.25pt"),
+            2 => (object) conv.ConvertFrom(default, new CultureInfo("en-US"), "11.25pt"),
             _ => (object) conv.ConvertFrom(default, new CultureInfo("en-US"), "11.75pt"),
         };
 }

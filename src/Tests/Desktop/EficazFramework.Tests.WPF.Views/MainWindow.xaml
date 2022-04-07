@@ -8,7 +8,7 @@
         xmlns:EfAttachedProps="clr-namespace:EficazFramework.Controls.AttachedProperties;assembly=EficazFramework.WPF"
         mc:Ignorable="d"
         Style="{DynamicResource Style.Window.Modern}"
-        Title="EficazFramework Wpf Preview" Height="730" Width="1020">
+        Title="EficazFramework Wpf Preview" Height="730" Width="1020" Icon="/logo.png">
     <Window.CommandBindings>
         <CommandBinding x:Name="ShutdownCmd" Command="{x:Static SystemCommands.CloseWindowCommand}" Executed="ShutdownCmd_Executed" />
         <CommandBinding x:Name="FullScreenCmd" Command="{x:Static SystemCommands.MaximizeWindowCommand}" Executed="FullScreenCmd_Executed" />
@@ -68,7 +68,7 @@
             </Grid>
         </TabItem>
         <TabItem Header="Buttons" 
-                 EfAttachedProps:TabControl.Icon="{DynamicResource Icon.Editing.Button}">
+                 EfAttachedProps:TabControl.Icon="{DynamicResource Icon.MaterialDesign.PlayCircle}">
             <UniformGrid Margin="15" Columns="5"
                          VerticalAlignment="Center"
                          HorizontalAlignment="Center">
@@ -77,13 +77,13 @@
                 <Button Margin="3" IsEnabled="False">Disabled</Button>
                 <Button Margin="3">
                     <StackPanel Orientation="Horizontal">
-                        <EfControls:Icon Width="20" Height="20" Data="{DynamicResource Icon.Application.Code}"/>
+                        <EfControls:Icon Width="20" Height="20" Data="{DynamicResource Icon.MaterialDesign.CodeBraces}"/>
                         <TextBlock Margin="6,0,0,0">w/ Icon</TextBlock>
                     </StackPanel>
                 </Button>
                 <Button Margin="3" IsEnabled="False">
                     <StackPanel Orientation="Horizontal">
-                        <EfControls:Icon Width="20" Height="20" Data="{DynamicResource Icon.Application.Code}"/>
+                        <EfControls:Icon Width="20" Height="20" Data="{DynamicResource Icon.MaterialDesign.CodeBraces}"/>
                         <TextBlock Margin="6,0,0,0">Disabled w/ Icon</TextBlock>
                     </StackPanel>
                 </Button>
@@ -93,13 +93,13 @@
                 <Button Margin="3" EfAttachedProps:Control.Color="Surface" IsEnabled="False">Disabled</Button>
                 <Button Margin="3" EfAttachedProps:Control.Color="Surface">
                     <StackPanel Orientation="Horizontal">
-                        <EfControls:Icon Width="20" Height="20" Data="{DynamicResource Icon.Application.Code}"/>
+                        <EfControls:Icon Width="20" Height="20" Data="{DynamicResource Icon.MaterialDesign.CodeBraces}"/>
                         <TextBlock Margin="6,0,0,0">w/ Icon</TextBlock>
                     </StackPanel>
                 </Button>
                 <Button Margin="3" IsEnabled="False" EfAttachedProps:Control.Color="Surface">
                     <StackPanel Orientation="Horizontal">
-                        <EfControls:Icon Width="20" Height="20" Data="{DynamicResource Icon.Application.Code}"/>
+                        <EfControls:Icon Width="20" Height="20" Data="{DynamicResource Icon.MaterialDesign.CodeBraces}"/>
                         <TextBlock Margin="6,0,0,0">Disabled w/ Icon</TextBlock>
                     </StackPanel>
                 </Button>
@@ -109,13 +109,13 @@
                 <Button Margin="3" EfAttachedProps:Control.Color="SurfaceAlternate" IsEnabled="False">Disabled</Button>
                 <Button Margin="3" EfAttachedProps:Control.Color="SurfaceAlternate">
                     <StackPanel Orientation="Horizontal">
-                        <EfControls:Icon Width="20" Height="20" Data="{DynamicResource Icon.Application.Code}"/>
+                        <EfControls:Icon Width="20" Height="20" Data="{DynamicResource Icon.MaterialDesign.CodeBraces}"/>
                         <TextBlock Margin="6,0,0,0">w/ Icon</TextBlock>
                     </StackPanel>
                 </Button>
                 <Button Margin="3" EfAttachedProps:Control.Color="SurfaceAlternate" IsEnabled="False">
                     <StackPanel Orientation="Horizontal">
-                        <EfControls:Icon Width="20" Height="20" Data="{DynamicResource Icon.Application.Code}"/>
+                        <EfControls:Icon Width="20" Height="20" Data="{DynamicResource Icon.MaterialDesign.CodeBraces}"/>
                         <TextBlock Margin="6,0,0,0">Disabled w/ Icon</TextBlock>
                     </StackPanel>
                 </Button>
@@ -125,13 +125,13 @@
                 <Button Margin="3" EfAttachedProps:Control.Color="Primary" IsEnabled="False">Disabled</Button>
                 <Button Margin="3" EfAttachedProps:Control.Color="Primary">
                     <StackPanel Orientation="Horizontal">
-                        <EfControls:Icon Width="20" Height="20" Data="{DynamicResource Icon.Application.Code}"/>
+                        <EfControls:Icon Width="20" Height="20" Data="{DynamicResource Icon.MaterialDesign.CodeBraces}"/>
                         <TextBlock Margin="6,0,0,0">w/ Icon</TextBlock>
                     </StackPanel>
                 </Button>
                 <Button Margin="3" EfAttachedProps:Control.Color="Primary" IsEnabled="False">
                     <StackPanel Orientation="Horizontal">
-                        <EfControls:Icon Width="20" Height="20" Data="{DynamicResource Icon.Application.Code}"/>
+                        <EfControls:Icon Width="20" Height="20" Data="{DynamicResource Icon.MaterialDesign.CodeBraces}"/>
                         <TextBlock Margin="6,0,0,0">Disabled w/ Icon</TextBlock>
                     </StackPanel>
                 </Button>
@@ -141,13 +141,13 @@
                 <Button Margin="3" EfAttachedProps:Control.Color="PrimaryDarken" IsEnabled="False">Disabled</Button>
                 <Button Margin="3" EfAttachedProps:Control.Color="PrimaryDarken">
                     <StackPanel Orientation="Horizontal">
-                        <EfControls:Icon Width="20" Height="20" Data="{DynamicResource Icon.Application.Code}"/>
+                        <EfControls:Icon Width="20" Height="20" Data="{DynamicResource Icon.MaterialDesign.CodeBraces}"/>
                         <TextBlock Margin="6,0,0,0">w/ Icon</TextBlock>
                     </StackPanel>
                 </Button>
                 <Button Margin="3" EfAttachedProps:Control.Color="PrimaryDarken" IsEnabled="False">
                     <StackPanel Orientation="Horizontal">
-                        <EfControls:Icon Width="20" Height="20" Data="{DynamicResource Icon.Application.Code}"/>
+                        <EfControls:Icon Width="20" Height="20" Data="{DynamicResource Icon.MaterialDesign.CodeBraces}"/>
                         <TextBlock Margin="6,0,0,0">Disabled w/ Icon</TextBlock>
                     </StackPanel>
                 </Button>
@@ -157,13 +157,13 @@
                 <Button Margin="3" EfAttachedProps:Control.Color="PrimaryLighten" IsEnabled="False">Disabled</Button>
                 <Button Margin="3" EfAttachedProps:Control.Color="PrimaryLighten">
                     <StackPanel Orientation="Horizontal">
-                        <EfControls:Icon Width="20" Height="20" Data="{DynamicResource Icon.Application.Code}"/>
+                        <EfControls:Icon Width="20" Height="20" Data="{DynamicResource Icon.MaterialDesign.CodeBraces}"/>
                         <TextBlock Margin="6,0,0,0">w/ Icon</TextBlock>
                     </StackPanel>
                 </Button>
                 <Button Margin="3" EfAttachedProps:Control.Color="PrimaryLighten" IsEnabled="False">
                     <StackPanel Orientation="Horizontal">
-                        <EfControls:Icon Width="20" Height="20" Data="{DynamicResource Icon.Application.Code}"/>
+                        <EfControls:Icon Width="20" Height="20" Data="{DynamicResource Icon.MaterialDesign.CodeBraces}"/>
                         <TextBlock Margin="6,0,0,0">Disabled w/ Icon</TextBlock>
                     </StackPanel>
                 </Button>
@@ -173,13 +173,13 @@
                 <Button Margin="3" EfAttachedProps:Control.Color="Secondary" IsEnabled="False">Disabled</Button>
                 <Button Margin="3" EfAttachedProps:Control.Color="Secondary">
                     <StackPanel Orientation="Horizontal">
-                        <EfControls:Icon Width="20" Height="20" Data="{DynamicResource Icon.Application.Code}"/>
+                        <EfControls:Icon Width="20" Height="20" Data="{DynamicResource Icon.MaterialDesign.CodeBraces}"/>
                         <TextBlock Margin="6,0,0,0">w/ Icon</TextBlock>
                     </StackPanel>
                 </Button>
                 <Button Margin="3" EfAttachedProps:Control.Color="Secondary" IsEnabled="False">
                     <StackPanel Orientation="Horizontal">
-                        <EfControls:Icon Width="20" Height="20" Data="{DynamicResource Icon.Application.Code}"/>
+                        <EfControls:Icon Width="20" Height="20" Data="{DynamicResource Icon.MaterialDesign.CodeBraces}"/>
                         <TextBlock Margin="6,0,0,0">Disabled w/ Icon</TextBlock>
                     </StackPanel>
                 </Button>
@@ -189,13 +189,13 @@
                 <Button Margin="3" EfAttachedProps:Control.Color="Tertiary" IsEnabled="False">Disabled</Button>
                 <Button Margin="3" EfAttachedProps:Control.Color="Tertiary">
                     <StackPanel Orientation="Horizontal">
-                        <EfControls:Icon Width="20" Height="20" Data="{DynamicResource Icon.Application.Code}"/>
+                        <EfControls:Icon Width="20" Height="20" Data="{DynamicResource Icon.MaterialDesign.CodeBraces}"/>
                         <TextBlock Margin="6,0,0,0">w/ Icon</TextBlock>
                     </StackPanel>
                 </Button>
                 <Button Margin="3" EfAttachedProps:Control.Color="Tertiary" IsEnabled="False">
                     <StackPanel Orientation="Horizontal">
-                        <EfControls:Icon Width="20" Height="20" Data="{DynamicResource Icon.Application.Code}"/>
+                        <EfControls:Icon Width="20" Height="20" Data="{DynamicResource Icon.MaterialDesign.CodeBraces}"/>
                         <TextBlock Margin="6,0,0,0">Disabled w/ Icon</TextBlock>
                     </StackPanel>
                 </Button>
@@ -205,13 +205,13 @@
                 <Button Margin="3" EfAttachedProps:Control.CornerRadius="15" EfAttachedProps:Control.Color="Primary" IsEnabled="False">Disabled</Button>
                 <Button Margin="3" EfAttachedProps:Control.CornerRadius="15" EfAttachedProps:Control.Color="Primary">
                     <StackPanel Orientation="Horizontal">
-                        <EfControls:Icon Width="20" Height="20" Data="{DynamicResource Icon.Application.Code}"/>
+                        <EfControls:Icon Width="20" Height="20" Data="{DynamicResource Icon.MaterialDesign.CodeBraces}"/>
                         <TextBlock Margin="6,0,0,0">w/ Icon</TextBlock>
                     </StackPanel>
                 </Button>
                 <Button Margin="3" EfAttachedProps:Control.CornerRadius="15" EfAttachedProps:Control.Color="Primary" IsEnabled="False">
                     <StackPanel Orientation="Horizontal">
-                        <EfControls:Icon Width="20" Height="20" Data="{DynamicResource Icon.Application.Code}"/>
+                        <EfControls:Icon Width="20" Height="20" Data="{DynamicResource Icon.MaterialDesign.CodeBraces}"/>
                         <TextBlock Margin="6,0,0,0">Disabled w/ Icon</TextBlock>
                     </StackPanel>
                 </Button>
@@ -225,17 +225,17 @@
                 <Button Margin="3" EfAttachedProps:Control.CornerRadius="22" HorizontalAlignment="Center" EfAttachedProps:Control.Color="Primary" Padding="18,8" IsEnabled="False">d</Button>
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
                     <Button Margin="3" EfAttachedProps:Control.CornerRadius="22" HorizontalAlignment="Center" EfAttachedProps:Control.Color="Primary" Padding="12">
-                        <EfControls:Icon Width="20" Height="20" Data="{DynamicResource Icon.Application.Code}"/>
+                        <EfControls:Icon Width="20" Height="20" Data="{DynamicResource Icon.MaterialDesign.CodeBraces}"/>
                     </Button>
                     <Button Margin="3" EfAttachedProps:Control.CornerRadius="22" HorizontalAlignment="Center" EfAttachedProps:Control.Color="Secondary" Padding="12">
-                        <EfControls:Icon Width="20" Height="20" Data="{DynamicResource Icon.Application.Code}"/>
+                        <EfControls:Icon Width="20" Height="20" Data="{DynamicResource Icon.MaterialDesign.CodeBraces}"/>
                     </Button>
                     <Button Margin="3" EfAttachedProps:Control.CornerRadius="22" HorizontalAlignment="Center" EfAttachedProps:Control.Color="Tertiary" Padding="12">
-                        <EfControls:Icon Width="20" Height="20" Data="{DynamicResource Icon.Application.Code}"/>
+                        <EfControls:Icon Width="20" Height="20" Data="{DynamicResource Icon.MaterialDesign.CodeBraces}"/>
                     </Button>
                 </StackPanel>
                 <Button Margin="3" EfAttachedProps:Control.CornerRadius="22" HorizontalAlignment="Center" EfAttachedProps:Control.Color="Primary" Padding="12" IsEnabled="False">
-                    <EfControls:Icon Width="20" Height="20" Data="{DynamicResource Icon.Application.Code}"/>
+                    <EfControls:Icon Width="20" Height="20" Data="{DynamicResource Icon.MaterialDesign.CodeBraces}"/>
                 </Button>
                 <TextBlock Text="Custom Elevation:" VerticalAlignment="Center" TextAlignment="Right"/>
                 <Button Margin="3" EfAttachedProps:Control.Color="Primary" EfAttachedProps:Control.Elevation="1">Default (1)</Button>

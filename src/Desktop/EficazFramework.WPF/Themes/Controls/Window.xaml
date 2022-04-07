@@ -56,8 +56,8 @@
                                         Focusable="False" 
                                         IsTabStop="False">
                                     <EfControls:Icon Height="{Binding Path=(EfAttachedProps:Button.IconSize), ElementName=PART_WinButtonBar_MinimizeButton}" 
-                                                   Width="{Binding Path=(EfAttachedProps:Button.IconSize), ElementName=PART_WinButtonBar_MinimizeButton}" 
-                                                   Data="{DynamicResource Icon.Navigation.Minimize}" />
+                                                     Width="{Binding Path=(EfAttachedProps:Button.IconSize), ElementName=PART_WinButtonBar_MinimizeButton}" 
+                                                     Data="{DynamicResource Icon.MaterialDesign.WindowMinimize}" />
                                 </Button>
                                 <Button Command="{Binding Source={x:Static SystemCommands.RestoreWindowCommand}}" 
                                         Visibility="Collapsed"
@@ -72,7 +72,7 @@
                                         IsTabStop="False">
                                     <EfControls:Icon Height="{Binding Path=(EfAttachedProps:Button.IconSize), ElementName=PART_WinButtonBar_RestoreButton}" 
                                                    Width="{Binding Path=(EfAttachedProps:Button.IconSize), ElementName=PART_WinButtonBar_RestoreButton}" 
-                                                   Data="{DynamicResource Icon.Navigation.Restore}" />
+                                                   Data="{DynamicResource Icon.MaterialDesign.WindowRestore}" />
                                 </Button>
                                 <Button Command="{Binding Source={x:Static SystemCommands.MaximizeWindowCommand}}"
                                         WindowChrome.IsHitTestVisibleInChrome="True" 
@@ -86,7 +86,7 @@
                                         IsTabStop="False">
                                     <EfControls:Icon Height="{Binding Path=(EfAttachedProps:Button.IconSize), ElementName=PART_WinButtonBar_MaximizeButton}" 
                                                    Width="{Binding Path=(EfAttachedProps:Button.IconSize), ElementName=PART_WinButtonBar_MaximizeButton}" 
-                                                   Data="{DynamicResource Icon.Navigation.Maximize}"/>
+                                                   Data="{DynamicResource Icon.MaterialDesign.WindowMaximize}"/>
                                 </Button>
                                 <Button Command="{Binding Source={x:Static SystemCommands.CloseWindowCommand}}" 
                                         WindowChrome.IsHitTestVisibleInChrome="True" 
@@ -103,7 +103,7 @@
                                         Foreground="{DynamicResource Brush.Error.Foreground}">
                                     <EfControls:Icon Height="{Binding Path=(EfAttachedProps:Button.IconSize), ElementName=PART_WinButtonBar_CloseButton}" 
                                                    Width="{Binding Path=(EfAttachedProps:Button.IconSize), ElementName=PART_WinButtonBar_CloseButton}" 
-                                                   Data="{DynamicResource Icon.Editing.Cancel}" />
+                                                   Data="{DynamicResource Icon.MaterialDesign.WindowClose}" />
                                 </Button>
                                 <ContentPresenter Margin="{TemplateBinding Margin}" Grid.Row="1" Grid.ColumnSpan="4"/>
                             </Grid>

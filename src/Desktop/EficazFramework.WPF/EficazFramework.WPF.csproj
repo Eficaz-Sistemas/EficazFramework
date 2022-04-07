@@ -105,11 +105,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\CodeGenerators\EficazFramework.Generators\EficazFramework.Generators.csproj" ReferenceOutputAssembly="false" OutputItemType="Analyzer" />
     <ProjectReference Include="..\..\Core\EficazFramework.Data\EficazFramework.Data.csproj" />
     <ProjectReference Include="..\..\Core\EficazFramework.Utilities\EficazFramework.Utilities.csproj" />
-    <ProjectReference Include="..\EficazFramework.WPF.MaterialIcons.Generator\EficazFramework.WPF.MaterialIcons.Generator.csproj" 
-					  ReferenceOutputAssembly="false" 
-                      OutputItemType="Analyzer" />
   </ItemGroup>
 
   <!--<Target Name="MovePackage" AfterTargets="Pack">

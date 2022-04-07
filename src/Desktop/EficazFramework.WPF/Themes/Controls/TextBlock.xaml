@@ -6,7 +6,7 @@
     <Style TargetType="TextElement">
         <Setter Property="FontFamily" Value="{DynamicResource Font.SourceSansPro}"/>
         <Setter Property="FontWeight" Value="Medium"/>
-        <Setter Property="FontSize" Value="10.1 pt"/>
+        <Setter Property="FontSize" Value="{Binding Source={x:Static EfUtilties:DipHelper.FontSize_DefaultText}}" />
         <Style.Triggers>
             <Trigger Property="IsEnabled" Value="False">
                 <Setter Property="Foreground" Value="{DynamicResource Brush.Disabled.Foreground}" />

@@ -5,9 +5,19 @@
     <TargetFramework>net6.0-windows</TargetFramework>
     <Nullable>enable</Nullable>
     <UseWPF>true</UseWPF>
+    <ApplicationIcon>framework.ico</ApplicationIcon>
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="logo.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="framework.ico" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="logo.png" />
     <Resource Include="Resources\grafismo.png" />
   </ItemGroup>
 

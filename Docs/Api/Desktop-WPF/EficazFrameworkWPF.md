@@ -106,6 +106,15 @@
 | :--- | :--- |
 | [WindowStateChangedEventArgs](EficazFramework.Events/WindowStateChangedEventArgs.md 'EficazFramework.Events.WindowStateChangedEventArgs') | |
 
+<a name='EficazFramework.Generators.XAML'></a>
+
+## EficazFramework.Generators.XAML Namespace
+
+| Classes | |
+| :--- | :--- |
+| [IconPackMemberAttribute](EficazFramework.Generators.XAML/IconPackMemberAttribute.md 'EficazFramework.Generators.XAML.IconPackMemberAttribute') | |
+| [IconSourceAttribute](EficazFramework.Generators.XAML/IconSourceAttribute.md 'EficazFramework.Generators.XAML.IconSourceAttribute') | |
+
 <a name='EficazFramework.Localization'></a>
 
 ## EficazFramework.Localization Namespace
@@ -159,10 +168,10 @@
 | :--- | :--- |
 | [VisualTreeHelpers](EficazFramework.XAML.Utilities/VisualTreeHelpers.md 'EficazFramework.XAML.Utilities.VisualTreeHelpers') | |
 
-<a name='Test'></a>
+<a name='XamlGeneratedNamespace'></a>
 
-## Test Namespace
+## XamlGeneratedNamespace Namespace
 
 | Classes | |
 | :--- | :--- |
-| [Hellooo](Test/Hellooo.md 'Test.Hellooo') | |
+| [GeneratedInternalTypeHelper](XamlGeneratedNamespace/GeneratedInternalTypeHelper.md 'XamlGeneratedNamespace.GeneratedInternalTypeHelper') | GeneratedInternalTypeHelper |
