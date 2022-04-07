@@ -1,5 +1,3 @@
-﻿using System.Windows;
-
-namespace EficazFramework.Themes;
+﻿namespace EficazFramework.Themes;
 
 public class ColorDictionary : ResourceDictionary { }

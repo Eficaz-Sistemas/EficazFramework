@@ -1,0 +1,157 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+                    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+                    xmlns:EfConverters="clr-namespace:EficazFramework.Converters"
+                    xmlns:EfAttachedProps="clr-namespace:EficazFramework.Controls.AttachedProperties"
+                    mc:Ignorable="d">
+
+    <EfConverters:ElevationEffectConverter x:Key="elevationConv"/>
+
+    <Style TargetType="{x:Type Button}">
+        <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
+        <Setter Property="EfAttachedProps:Button.MouseOver" Value="{x:Null}"/>
+        <Setter Property="EfAttachedProps:Control.Elevation" Value="1"/>
+        <Setter Property="EfAttachedProps:Control.CornerRadius" Value="3"/>
+        <Setter Property="BorderBrush" Value="{DynamicResource Brush.Surface.Border}"/>
+        <Setter Property="BorderThickness" Value="1"/>
+        <Setter Property="HorizontalContentAlignment" Value="Center"/>
+        <Setter Property="VerticalContentAlignment" Value="Center"/>
+        <Setter Property="Padding" Value="12,8"/>
+        <Setter Property="Typography.Capitals" Value="AllSmallCaps" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Grid>
+                        <VisualStateManager.VisualStateGroups>
+                            <VisualStateGroup x:Name="CommonStates">
+                                <VisualState x:Name="Normal"/>
+                                <VisualState x:Name="MouseOver">
+                                    <Storyboard>
+                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="MouseOverPresenter">
+                                            <DiscreteObjectKeyFrame KeyTime="0" Value="{x:Static Visibility.Visible}"/>
+                                        </ObjectAnimationUsingKeyFrames>
+                                    </Storyboard>
+                                </VisualState>
+                                <VisualState x:Name="Pressed">
+                                    <Storyboard>
+                                        <DoubleAnimation Storyboard.TargetName="PressedPresenter" Storyboard.TargetProperty="Opacity" From="0" To="1" Duration="0:0:0.3">
+                                            <DoubleAnimation.EasingFunction>
+                                                <SineEase EasingMode="EaseOut" />
+                                            </DoubleAnimation.EasingFunction>
+                                        </DoubleAnimation>
+                                    </Storyboard>
+                                </VisualState>
+                            </VisualStateGroup>
+                            <VisualStateGroup x:Name="FocusStates">
+                                <VisualState x:Name="Unfocused">
+                                    <Storyboard TargetName="FocusedPresenter">
+                                        <DoubleAnimation Storyboard.TargetProperty="Opacity" To="0" Duration="0" />
+                                    </Storyboard>
+                                </VisualState>
+                                <VisualState x:Name="Focused">
+                                    <Storyboard TargetName="FocusedPresenter">
+                                        <DoubleAnimation Storyboard.TargetProperty="Opacity" From="0" To="1" Duration="0:0:0.3">
+                                            <DoubleAnimation.EasingFunction>
+                                                <SineEase EasingMode="EaseOut" />
+                                            </DoubleAnimation.EasingFunction>
+                                        </DoubleAnimation>
+                                    </Storyboard>
+                                </VisualState>
+                            </VisualStateGroup>
+                        </VisualStateManager.VisualStateGroups>
+                        <Border x:Name="border" BorderBrush="{TemplateBinding BorderBrush}" 
+                                BorderThickness="{TemplateBinding BorderThickness}"
+                                Background="{TemplateBinding Background}"
+                                SnapsToDevicePixels="true" 
+                                CornerRadius="{Binding RelativeSource={RelativeSource TemplatedParent},Path=(EfAttachedProps:Control.CornerRadius)}"
+                                Effect="{Binding RelativeSource={RelativeSource TemplatedParent},Path=(EfAttachedProps:Control.Elevation), Converter={StaticResource elevationConv}}"/>
+                        <Border x:Name="MouseOverPresenter" 
+                                BorderThickness="0" 
+                                Background="{Binding RelativeSource={RelativeSource TemplatedParent},Path=(EfAttachedProps:Button.MouseOver)}"
+                                Visibility="Collapsed" 
+                                CornerRadius="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=(EfAttachedProps:Control.CornerRadius)}" />
+                        <ContentPresenter TextElement.Foreground="{TemplateBinding Foreground}"
+                                          x:Name="contentPresenter"
+                                          Focusable="False"
+                                          HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                          Margin="{TemplateBinding Padding}"
+                                          RecognizesAccessKey="True"
+                                          SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
+                                          VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                        <Border x:Name="FocusedPresenter" BorderThickness="1,1,1,2" BorderBrush="{TemplateBinding Foreground}" CornerRadius="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=(EfAttachedProps:Control.CornerRadius)}" RenderTransformOrigin="0.5,0.5"/>
+                        <Border x:Name="PressedPresenter" BorderThickness="0" Background="{DynamicResource Brush.Darken}" CornerRadius="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=(EfAttachedProps:Control.CornerRadius)}" RenderTransformOrigin="0.5,0.5" Opacity="0"/>
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="EfAttachedProps:Button.MouseOver" Value="{x:Null}">
+                            <Setter TargetName="MouseOverPresenter" Property="Background" Value="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=Foreground}"/>
+                            <Setter TargetName="MouseOverPresenter" Property="Opacity" Value="0.25"/>
+                        </Trigger>
+                        <Trigger Property="EfAttachedProps:Control.Color" Value="Primary">
+                            <Setter TargetName="FocusedPresenter" Property="BorderBrush" Value="{DynamicResource Brush.Primary.Foreground}"/>
+                        </Trigger>
+                        <Trigger Property="EfAttachedProps:Control.Color" Value="PrimaryDarken">
+                            <Setter TargetName="FocusedPresenter" Property="BorderBrush" Value="{DynamicResource Brush.Primary.Background.Lighten}"/>
+                        </Trigger>
+                        <Trigger Property="EfAttachedProps:Control.Color" Value="PrimaryLighten">
+                            <Setter TargetName="FocusedPresenter" Property="BorderBrush" Value="{DynamicResource Brush.Primary.Foreground}"/>
+                        </Trigger>
+                        <Trigger Property="EfAttachedProps:Control.Color" Value="Secondary">
+                            <Setter TargetName="FocusedPresenter" Property="BorderBrush" Value="{DynamicResource Brush.Primary.Foreground}"/>
+                        </Trigger>
+                        <Trigger Property="EfAttachedProps:Control.Color" Value="Tertiary">
+                            <Setter TargetName="FocusedPresenter" Property="BorderBrush" Value="{DynamicResource Brush.Primary.Background}"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="FontFamily" Value="{DynamicResource Font.SourceSansPro}"/>
+        <Setter Property="FontSize" Value="15"/>
+        <Setter Property="Cursor" Value="Hand" />
+        <Style.Triggers>
+            <Trigger Property="EfAttachedProps:Control.Color" Value="Surface">
+                <Setter Property="Background" Value="Transparent"/>
+                <Setter Property="BorderBrush" Value="Transparent"/>
+                <Setter Property="BorderThickness" Value="0"/>
+                <Setter Property="Foreground" Value="{DynamicResource Brush.Surface.Foreground}"/>
+                <Setter Property="EfAttachedProps:Control.Elevation" Value="0"/>
+                <Setter Property="EfAttachedProps:Control.CornerRadius" Value="0"/>
+            </Trigger>
+            <Trigger Property="EfAttachedProps:Control.Color" Value="SurfaceAlternate">
+                <Setter Property="Background" Value="Transparent"/>
+                <Setter Property="BorderBrush" Value="Transparent"/>
+                <Setter Property="BorderThickness" Value="0"/>
+                <Setter Property="Foreground" Value="{DynamicResource Brush.SurfaceAlternate.Foreground}"/>
+                <Setter Property="EfAttachedProps:Control.Elevation" Value="0"/>
+                <Setter Property="EfAttachedProps:Control.CornerRadius" Value="0"/>
+            </Trigger>
+            <Trigger Property="EfAttachedProps:Control.Color" Value="Primary">
+                <Setter Property="Background" Value="{DynamicResource Brush.Primary.Background}"/>
+                <Setter Property="Foreground" Value="{DynamicResource Brush.Primary.Foreground}"/>
+            </Trigger>
+            <Trigger Property="EfAttachedProps:Control.Color" Value="PrimaryDarken">
+                <Setter Property="Background" Value="{DynamicResource Brush.Primary.Background.Darken}"/>
+                <Setter Property="Foreground" Value="{DynamicResource Brush.Primary.Foreground}"/>
+            </Trigger>
+            <Trigger Property="EfAttachedProps:Control.Color" Value="PrimaryLighten">
+                <Setter Property="Background" Value="{DynamicResource Brush.Primary.Background.Lighten}"/>
+                <Setter Property="Foreground" Value="{DynamicResource Brush.Primary.Foreground}"/>
+            </Trigger>
+            <Trigger Property="EfAttachedProps:Control.Color" Value="Secondary">
+                <Setter Property="Background" Value="{DynamicResource Brush.Secondary.Background}"/>
+                <Setter Property="Foreground" Value="{DynamicResource Brush.Secondary.Foreground}"/>
+            </Trigger>
+            <Trigger Property="EfAttachedProps:Control.Color" Value="Tertiary">
+                <Setter Property="Background" Value="{DynamicResource Brush.Tertiary.Background}"/>
+                <Setter Property="Foreground" Value="{DynamicResource Brush.Tertiary.Foreground}"/>
+            </Trigger>
+            <Trigger Property="IsEnabled" Value="False">
+                <Setter Property="Background" Value="{DynamicResource Brush.Disabled.Background}"/>
+                <Setter Property="BorderBrush" Value="{DynamicResource Brush.Darken}"/>
+                <Setter Property="Foreground" Value="{DynamicResource Brush.Disabled.Foreground}"/>
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+    
+</ResourceDictionary>

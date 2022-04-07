@@ -91,19 +91,9 @@
     <Page Update="Themes\Icons\App.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="Themes\MaterialDesign\InteractiveTextBox.xaml">
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Update="Themes\MaterialDesign\MDI.xaml">
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Update="Themes\MaterialDesign\SessionView.xaml">
-      <SubType>Designer</SubType>
-    </Page>
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Controls\Extensions\" />
     <Folder Include="Controls\Panels\" />
   </ItemGroup>
 
@@ -117,6 +107,9 @@
   <ItemGroup>
     <ProjectReference Include="..\..\Core\EficazFramework.Data\EficazFramework.Data.csproj" />
     <ProjectReference Include="..\..\Core\EficazFramework.Utilities\EficazFramework.Utilities.csproj" />
+    <ProjectReference Include="..\EficazFramework.WPF.MaterialIcons.Generator\EficazFramework.WPF.MaterialIcons.Generator.csproj" 
+					  ReferenceOutputAssembly="false" 
+                      OutputItemType="Analyzer" />
   </ItemGroup>
 
   <!--<Target Name="MovePackage" AfterTargets="Pack">
