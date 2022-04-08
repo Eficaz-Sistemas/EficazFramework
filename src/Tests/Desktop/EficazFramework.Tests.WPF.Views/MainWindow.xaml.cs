@@ -42,4 +42,8 @@ public partial class MainWindow : Window
     private void Button_Click(object sender, RoutedEventArgs e)
     {
     }
+    private void animationck_Checked(object sender, RoutedEventArgs e)
+    {
+        EficazFramework.Configuration.Visual.Effects = ((CheckBox)sender).IsChecked ?? true;
+    }
 }

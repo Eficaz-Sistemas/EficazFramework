@@ -75,6 +75,7 @@
 | [Control](EficazFramework.Controls.AttachedProperties/Control.md 'EficazFramework.Controls.AttachedProperties.Control') | |
 | [DataGrid](EficazFramework.Controls.AttachedProperties/DataGrid.md 'EficazFramework.Controls.AttachedProperties.DataGrid') | |
 | [TabControl](EficazFramework.Controls.AttachedProperties/TabControl.md 'EficazFramework.Controls.AttachedProperties.TabControl') | |
+| [TextBox](EficazFramework.Controls.AttachedProperties/TextBox.md 'EficazFramework.Controls.AttachedProperties.TextBox') | |
 
 | Enums | |
 | :--- | :--- |

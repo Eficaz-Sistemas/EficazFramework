@@ -187,7 +187,7 @@
                                                            SnapsToDevicePixels="True" 
                                                            Panel.ZIndex="1"
                                                            UseLayoutRounding="True" 
-                                                           Data="{DynamicResource Icon.Navigation.Menu}"
+                                                           Data="{DynamicResource Icon.MaterialDesign.Menu}"
                                                            Width="20" 
                                                            Height="20" />
                                         </Border>
