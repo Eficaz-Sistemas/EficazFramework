@@ -188,15 +188,7 @@ public partial class AutoComplete : Primitives.InteractiveTextBox
 
         await Task.Delay(100); // assegurando que a Task será cancelada a tempo...
         _cancellationTokenSource = new System.Threading.CancellationTokenSource();
-        try
-        {
-            await EficazFramework.Commands.DelayedAction.InvokeAsync(Find, 125, _cancellationTokenSource.Token);
-        }
-        catch { }
-        //{
-        //    SetValue(ItemsSourceProperty, default);
-        //    SetValue(IsLoadingPropertyKey, false);
-        //}
+        await EficazFramework.Commands.DelayedAction.InvokeAsync(Find, 125, _cancellationTokenSource.Token);
     }
 
     private async void Find()
@@ -221,7 +213,7 @@ public partial class AutoComplete : Primitives.InteractiveTextBox
             if (_cancellationTokenSource != null)
             {
                 if (_cancellationTokenSource.Token.IsCancellationRequested == true)
-                    _cancellationTokenSource.Token.ThrowIfCancellationRequested();
+                    return;
             }
 
             if (_executed == true)
@@ -241,7 +233,7 @@ public partial class AutoComplete : Primitives.InteractiveTextBox
             if (_cancellationTokenSource != null)
             {
                 if (_cancellationTokenSource.Token.IsCancellationRequested == true)
-                    _cancellationTokenSource.Token.ThrowIfCancellationRequested();
+                    return;
             }
 
             Dispatcher.Invoke(() =>
