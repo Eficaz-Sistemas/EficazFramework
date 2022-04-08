@@ -188,13 +188,20 @@ public partial class AutoComplete : Primitives.InteractiveTextBox
 
         await Task.Delay(100); // assegurando que a Task será cancelada a tempo...
         _cancellationTokenSource = new System.Threading.CancellationTokenSource();
-        await EficazFramework.Commands.DelayedAction.InvokeAsync(Find, 125, _cancellationTokenSource.Token);
+        try
+        {
+            await EficazFramework.Commands.DelayedAction.InvokeAsync(Find, 125, _cancellationTokenSource.Token);
+        }
+        catch { }
     }
 
     private async void Find()
     {
-        if (_PART_ProgreessBar.Visibility == Visibility.Collapsed)
-            _PART_ProgreessBar.Visibility = Visibility.Visible;
+        Dispatcher.Invoke(() =>
+        {
+            if (_PART_ProgreessBar.Visibility == Visibility.Collapsed)
+                _PART_ProgreessBar.Visibility = Visibility.Visible;
+        });
 
         try
         {
@@ -210,11 +217,8 @@ public partial class AutoComplete : Primitives.InteractiveTextBox
                 tk = _cancellationTokenSource.Token;
 
             var args = new Events.FindRequestEventArgs(literal, tk);
-            if (_cancellationTokenSource != null)
-            {
-                if (_cancellationTokenSource.Token.IsCancellationRequested == true)
-                    return;
-            }
+            if (_cancellationTokenSource?.Token.IsCancellationRequested == true)
+                return;
 
             if (_executed == true)
                 return;
@@ -230,11 +234,8 @@ public partial class AutoComplete : Primitives.InteractiveTextBox
             while (args.Completed == false)
                 await Task.Delay(1);
 
-            if (_cancellationTokenSource != null)
-            {
-                if (_cancellationTokenSource.Token.IsCancellationRequested == true)
-                    return;
-            }
+            if (_cancellationTokenSource?.Token.IsCancellationRequested == true)
+                return;
 
             Dispatcher.Invoke(() =>
             {
