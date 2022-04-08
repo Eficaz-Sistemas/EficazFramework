@@ -15,7 +15,6 @@ public partial class DateInputBox : EficazFramework.Controls.Primitives.Interact
 {
     public DateInputBox() : base()
     {
-
         // # MASK BEHAVIOR:
         var behaviorsColl = Microsoft.Xaml.Behaviors.Interaction.GetBehaviors(this);
         _maskBehavior = new EficazFramework.XAML.Behaviors.TextBoxInputMaskBehavior();
@@ -25,12 +24,6 @@ public partial class DateInputBox : EficazFramework.Controls.Primitives.Interact
             return;
         dpd.AddValueChanged(this, (_, __) => SyncStringFormatAndMask());
         StringFormat = SetupDatePatternByCulture();
-
-        //teste:
-        var dpdt = DependencyPropertyDescriptor.FromProperty(DateInputBox.TextProperty, typeof(DateInputBox));
-        if (dpdt is null)
-            return;
-        dpdt.AddValueChanged(this, (_, __) => teste());
     }
 
     private char[] _dateMasks = new[] { '/', '-' };
@@ -39,15 +32,8 @@ public partial class DateInputBox : EficazFramework.Controls.Primitives.Interact
 
     public DateTime? Value
     {
-        get
-        {
-            return (DateTime?)GetValue(ValueProperty);
-        }
-
-        set
-        {
-            SetValue(ValueProperty, value);
-        }
+        get => (DateTime?)GetValue(ValueProperty);
+        set => SetValue(ValueProperty, value);
     }
 
     private static void OnValueChanged(DependencyObject source, DependencyPropertyChangedEventArgs e)
@@ -78,11 +64,6 @@ public partial class DateInputBox : EficazFramework.Controls.Primitives.Interact
 
         string finalStrMask = resultPattern.ToString();
         return finalStrMask;
-    }
-
-    private void teste()
-    {
-
     }
 
     private void SyncStringFormatAndMask()
@@ -197,7 +178,7 @@ public partial class DateInputBox : EficazFramework.Controls.Primitives.Interact
 
     internal override void CommitSelection()
     {
-        SetValue(ValueProperty, ((System.Windows.Controls.Calendar)((MaterialDesignThemes.Wpf.Card)PopupContent).Content).SelectedDate);
+        SetValue(ValueProperty, ((System.Windows.Controls.Calendar)PopupContent).SelectedDate);
         ClosePopup();
     }
 

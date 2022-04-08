@@ -1,11 +1,11 @@
 #### [EficazFramework.WPF](EficazFrameworkWPF.md 'EficazFramework WPF')
 ### [EficazFramework.Controls.Primitives](EficazFrameworkWPF.md#EficazFramework.Controls.Primitives 'EficazFramework.Controls.Primitives').[InteractiveTextBox](EficazFramework.Controls.Primitives/InteractiveTextBox.md 'EficazFramework.Controls.Primitives.InteractiveTextBox')
 
-## InteractiveTextBox.CommandContentProperty Field
+## InteractiveTextBox.CommandContentTemplate Property
 
 ```csharp
-internal static readonly DependencyProperty CommandContentProperty;
+public System.Windows.DataTemplate CommandContentTemplate { get; set; }
 ```
 
-#### Field Value
-[System.Windows.DependencyProperty](https://docs.microsoft.com/en-us/dotnet/api/System.Windows.DependencyProperty 'System.Windows.DependencyProperty')
+#### Property Value
+[System.Windows.DataTemplate](https://docs.microsoft.com/en-us/dotnet/api/System.Windows.DataTemplate 'System.Windows.DataTemplate')

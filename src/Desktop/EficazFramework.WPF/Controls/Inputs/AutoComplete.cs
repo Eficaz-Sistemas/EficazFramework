@@ -24,17 +24,15 @@ public partial class AutoComplete : Primitives.InteractiveTextBox
 
     private bool _passliteral = false;
     private System.Threading.CancellationTokenSource _cancellationTokenSource;
-    private ListBox _PART_ListBox = null;
+    private ListView _PART_ListView = null;
+    private ProgressBar _PART_ProgreessBar = null;
     private bool _lockSyncText = false;
     private bool _executed = false;
-    private static readonly DependencyPropertyKey IsLoadingPropertyKey = DependencyProperty.RegisterReadOnly("IsLoading", typeof(bool), typeof(AutoComplete), new PropertyMetadata(false));
-    public static readonly DependencyProperty IsLoadingProperty = IsLoadingPropertyKey.DependencyProperty;
     public static readonly DependencyProperty ValueProperty = DependencyProperty.Register("Value", typeof(object), typeof(AutoComplete), new FrameworkPropertyMetadata(null, FrameworkPropertyMetadataOptions.BindsTwoWayByDefault, OnValueOrContentChanged, null, true, UpdateSourceTrigger.PropertyChanged));
     public static readonly DependencyProperty ValuePathProperty = DependencyProperty.Register("ValuePath", typeof(string), typeof(AutoComplete), new PropertyMetadata(null));
     public static readonly DependencyProperty ContentProperty = DependencyProperty.Register("Content", typeof(object), typeof(AutoComplete), new FrameworkPropertyMetadata(null, FrameworkPropertyMetadataOptions.BindsTwoWayByDefault, OnValueOrContentChanged, null, true, UpdateSourceTrigger.PropertyChanged));
     public static readonly DependencyProperty ContentPathProperty = DependencyProperty.Register("ContentPath", typeof(string), typeof(AutoComplete), new PropertyMetadata(null));
     public static readonly DependencyProperty ContentStringFormatProperty = DependencyProperty.Register("ContentStringFormat", typeof(string), typeof(AutoComplete), new PropertyMetadata(null));
-    public static readonly DependencyProperty ItemsSourceProperty = DependencyProperty.Register("ItemsSource", typeof(object), typeof(AutoComplete), new PropertyMetadata(null));
     public static readonly DependencyProperty ItemTemplateProperty = DependencyProperty.Register("ItemTemplate", typeof(DataTemplate), typeof(AutoComplete), new PropertyMetadata(null));
     public static readonly DependencyProperty ItemsPanelProperty = DependencyProperty.Register("ItemsPanel", typeof(ItemsPanelTemplate), typeof(AutoComplete), new PropertyMetadata(null));
     private static readonly DependencyPropertyKey ClearCommandPropertyKey = DependencyProperty.RegisterReadOnly("ClearCommand", typeof(EficazFramework.Commands.CommandBase), typeof(AutoComplete), new PropertyMetadata(null));
@@ -43,8 +41,6 @@ public partial class AutoComplete : Primitives.InteractiveTextBox
     public static readonly DependencyProperty FreeTextProperty = DependencyProperty.Register("FreeText", typeof(bool), typeof(AutoComplete), new PropertyMetadata(false));
     public static readonly DependencyProperty FindActionProperty = DependencyProperty.Register("FindAction", typeof(Action<object, Events.FindRequestEventArgs>), typeof(AutoComplete), new PropertyMetadata(null));
     public static readonly DependencyProperty SelectionChangedActionProperty = DependencyProperty.Register("SelectionChangedAction", typeof(Action<object, SelectionChangedEventArgs>), typeof(AutoComplete), new PropertyMetadata(null));
-
-    public bool IsLoading => (bool)GetValue(IsLoadingProperty);
 
     public bool FreeText
     {
@@ -88,12 +84,6 @@ public partial class AutoComplete : Primitives.InteractiveTextBox
         set => SetValue(ContentStringFormatProperty, value);
     }
 
-    public object ItemsSource
-    {
-        get => GetValue(ItemsSourceProperty);
-        set => SetValue(ItemsSourceProperty, value);
-    }
-
     public DataTemplate ItemTemplate
     {
         get => (DataTemplate)GetValue(ItemTemplateProperty);
@@ -127,14 +117,18 @@ public partial class AutoComplete : Primitives.InteractiveTextBox
 
     private void PopupOpened(object sender, EventArgs e)
     {
+        _PART_ListView = ((Grid)((Border)PopupContent).Child).Children[1] as ListView;
+        _PART_ListView.ItemsSource = null;
+        _PART_ListView.ItemTemplate = ItemTemplate;
+
+        _PART_ProgreessBar = ((Grid)((Border)PopupContent).Child).Children[0] as ProgressBar;
+
         if (_PART_Popup != null)
             _PART_Popup.Width = Math.Max((Double.IsNaN(ActualWidth) ? 0 : ActualWidth), (Double.IsNaN(PopupMaxWidth) ? 0 : PopupMaxWidth));
 
-        if (IsLoading == false)
-        {
-            SetValue(IsLoadingPropertyKey, true);
-        }
-
+        if (_PART_ProgreessBar.Visibility == Visibility.Collapsed)
+            _PART_ProgreessBar.Visibility = Visibility.Visible;
+                
         if (DesignerProperties.GetIsInDesignMode(this) == false)
             StartFind();
     }
@@ -193,27 +187,32 @@ public partial class AutoComplete : Primitives.InteractiveTextBox
             _cancellationTokenSource.Cancel();
 
         await Task.Delay(100); // assegurando que a Task será cancelada a tempo...
-        SetValue(ItemsSourceProperty, default);
         _cancellationTokenSource = new System.Threading.CancellationTokenSource();
-        await EficazFramework.Commands.DelayedAction.InvokeAsync(Find, 125, _cancellationTokenSource.Token);
+        try
+        {
+            await EficazFramework.Commands.DelayedAction.InvokeAsync(Find, 125, _cancellationTokenSource.Token);
+        }
+        catch { }
+        //{
+        //    SetValue(ItemsSourceProperty, default);
+        //    SetValue(IsLoadingPropertyKey, false);
+        //}
     }
 
     private async void Find()
     {
+        if (_PART_ProgreessBar.Visibility == Visibility.Collapsed)
+            _PART_ProgreessBar.Visibility = Visibility.Visible;
+
         try
         {
             string literal = "";
-            var r = await Dispatcher.InvokeAsync(() =>
+            await Dispatcher.InvokeAsync(() =>
             {
-                // Me.CommandPopup.Execute(Nothing)
-                if (IsLoading == false)
-                    SetValue(IsLoadingPropertyKey, true);
-
                 if (_passliteral == true)
                     if (f12pressed == false) literal = Text;
-
-                return true;
             });
+            
             System.Threading.CancellationToken tk = default;
             if (_cancellationTokenSource != null)
                 tk = _cancellationTokenSource.Token;
@@ -247,10 +246,9 @@ public partial class AutoComplete : Primitives.InteractiveTextBox
 
             Dispatcher.Invoke(() =>
             {
-                SetValue(ItemsSourceProperty, args.Data);
-                SetValue(IsLoadingPropertyKey, false);
+                _PART_ListView.ItemsSource = (IEnumerable)args.Data;
+                _PART_ProgreessBar.Visibility = Visibility.Collapsed;
                 _executed = false;
-                    // Me.MoveFocus(New TraversalRequest(FocusNavigationDirection.First))
                 });
             _executed = false;
         }
@@ -270,11 +268,11 @@ public partial class AutoComplete : Primitives.InteractiveTextBox
         Dispatcher.Invoke(() =>
         {
             if (FreeText == true)
-                if (ItemsSource != null)
+                if (_PART_ListView.ItemsSource != null)
                 {
                     try
                     {
-                        if (((IList)ItemsSource).Count > 0)
+                        if (((IList)_PART_ListView.ItemsSource).Count > 0)
                             CommandPopup.Execute(false);
                         else
                             ClosePopup();
@@ -296,25 +294,27 @@ public partial class AutoComplete : Primitives.InteractiveTextBox
     public override void OnApplyTemplate()
     {
         base.OnApplyTemplate();
+        _PART_Popup = GetTemplateChild("PART_Popup") as System.Windows.Controls.Primitives.Popup;
+
         if (double.IsNaN(PopupMaxWidth)) PopupMaxWidth = RenderSize.Width;
         if (_PART_Popup != null)
         {
             _PART_Popup.Opened += PopupOpened;
             _PART_Popup.Closed += PopupClosed;
         }
-        if (_PART_ListBox != null)
-        {
-            _PART_ListBox = (ListBox)((Grid)((MaterialDesignThemes.Wpf.Card)PopupContent).Content).Children[0];
-            _PART_ListBox.SetBinding(ListBox.ItemsSourceProperty, new Binding("ItemsSource") { Source = this });
-            _PART_ListBox.SetBinding(ListBox.ItemTemplateProperty, new Binding("ItemTemplate") { Source = this });
-        }
+        //if (_PART_ListView != null)
+        //{
+        //    _PART_ListView = (ListView)((Grid)PopupContent).Children[0];
+        //    _PART_ListView.SetBinding(ListView.ItemsSourceProperty, new Binding("ItemsSource") { Source = this });
+        //    _PART_ListView.SetBinding(ListView.ItemTemplateProperty, new Binding("ItemTemplate") { Source = this });
+        //}
 
-        if (PopupContent != null)
-        {
-            var loader = (ProgressBar)((Grid)((MaterialDesignThemes.Wpf.Card)PopupContent).Content).Children[1];
-            var loader_binding = new Binding("IsLoading") { Source = this, Converter = (IValueConverter)FindResource("BooleanToVisibilityConverter") };
-            loader.SetBinding(ProgressBar.VisibilityProperty, loader_binding);
-        }
+        //if (PopupContent != null)
+        //{
+        //    var loader = (ProgressBar)((Grid)PopupContent).Children[1];
+        //    var loader_binding = new Binding("IsLoading") { Source = this, Converter = (IValueConverter)FindResource("BooleanToVisibilityConverter") };
+        //    loader.SetBinding(ProgressBar.VisibilityProperty, loader_binding);
+        //}
     }
 
     protected override Size MeasureOverride(Size constraint)
@@ -381,7 +381,7 @@ public partial class AutoComplete : Primitives.InteractiveTextBox
     protected override void OnMouseDoubleClick(MouseButtonEventArgs e)
     {
         base.OnMouseDoubleClick(e);
-        ListBoxItem it = EficazFramework.XAML.Utilities.VisualTreeHelpers.FindAnchestor<ListBoxItem>((DependencyObject)e.Source);
+        ListViewItem it = EficazFramework.XAML.Utilities.VisualTreeHelpers.FindAnchestor<ListViewItem>((DependencyObject)e.Source);
         if (it != null)
             CommitSelection();
     }
@@ -423,26 +423,26 @@ public partial class AutoComplete : Primitives.InteractiveTextBox
         {
             if (e.Key == Key.Up)
             {
-                if (_PART_ListBox.Items.CurrentPosition > 0)
-                    _PART_ListBox.Items.MoveCurrentToPrevious();
+                if (_PART_ListView.Items.CurrentPosition > 0)
+                    _PART_ListView.Items.MoveCurrentToPrevious();
             }
             else if (e.Key == Key.Down)
             {
-                if (_PART_ListBox.Items.CurrentPosition < _PART_ListBox.Items.Count - 1)
-                    _PART_ListBox.Items.MoveCurrentToNext();
+                if (_PART_ListView.Items.CurrentPosition < _PART_ListView.Items.Count - 1)
+                    _PART_ListView.Items.MoveCurrentToNext();
             }
             else if (e.Key == Key.Home)
             {
-                _PART_ListBox.Items.MoveCurrentToFirst();
+                _PART_ListView.Items.MoveCurrentToFirst();
             }
             else if (e.Key == Key.End)
             {
-                _PART_ListBox.Items.MoveCurrentToLast();
+                _PART_ListView.Items.MoveCurrentToLast();
             }
 
             try
             {
-                _PART_ListBox.ScrollIntoView(_PART_ListBox.SelectedItem);
+                _PART_ListView.ScrollIntoView(_PART_ListView.SelectedItem);
             }
             catch (Exception)
             {
@@ -454,11 +454,11 @@ public partial class AutoComplete : Primitives.InteractiveTextBox
     {
         // TODO: Get selected item from list...
         _lockSyncText = true;
-        if (_PART_ListBox.SelectedItem != null)
+        if (_PART_ListView.SelectedItem != null)
         {
             try
             {
-                object item = _PART_ListBox.SelectedItem;
+                object item = _PART_ListView.SelectedItem;
                 if (FreeText == false)
                 {
                     if (!string.IsNullOrEmpty(ValuePath))

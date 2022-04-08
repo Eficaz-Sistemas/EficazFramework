@@ -74,6 +74,7 @@
 | [Button](EficazFramework.Controls.AttachedProperties/Button.md 'EficazFramework.Controls.AttachedProperties.Button') | |
 | [Control](EficazFramework.Controls.AttachedProperties/Control.md 'EficazFramework.Controls.AttachedProperties.Control') | |
 | [DataGrid](EficazFramework.Controls.AttachedProperties/DataGrid.md 'EficazFramework.Controls.AttachedProperties.DataGrid') | |
+| [Selector](EficazFramework.Controls.AttachedProperties/Selector.md 'EficazFramework.Controls.AttachedProperties.Selector') | |
 | [TabControl](EficazFramework.Controls.AttachedProperties/TabControl.md 'EficazFramework.Controls.AttachedProperties.TabControl') | |
 | [TextBox](EficazFramework.Controls.AttachedProperties/TextBox.md 'EficazFramework.Controls.AttachedProperties.TextBox') | |
 
@@ -106,6 +107,14 @@
 | Classes | |
 | :--- | :--- |
 | [WindowStateChangedEventArgs](EficazFramework.Events/WindowStateChangedEventArgs.md 'EficazFramework.Events.WindowStateChangedEventArgs') | |
+
+<a name='EficazFramework.Extensions'></a>
+
+## EficazFramework.Extensions Namespace
+
+| Classes | |
+| :--- | :--- |
+| [ResourceExtension](EficazFramework.Extensions/ResourceExtension.md 'EficazFramework.Extensions.ResourceExtension') | |
 
 <a name='EficazFramework.Generators.XAML'></a>
 

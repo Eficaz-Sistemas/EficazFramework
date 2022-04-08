@@ -1,10 +1,10 @@
 #### [EficazFramework.WPF](EficazFrameworkWPF.md 'EficazFramework WPF')
 ### [EficazFramework.Controls.AttachedProperties](EficazFrameworkWPF.md#EficazFramework.Controls.AttachedProperties 'EficazFramework.Controls.AttachedProperties').[Control](EficazFramework.Controls.AttachedProperties/Control.md 'EficazFramework.Controls.AttachedProperties.Control')
 
-## Control.LabelProperty Field
+## Control.ShowLabelProperty Field
 
 ```csharp
-public static readonly DependencyProperty LabelProperty;
+public static readonly DependencyProperty ShowLabelProperty;
 ```
 
 #### Field Value

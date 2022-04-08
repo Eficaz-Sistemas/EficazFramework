@@ -1,10 +1,10 @@
 #### [EficazFramework.WPF](EficazFrameworkWPF.md 'EficazFramework WPF')
 ### [EficazFramework.Controls.Primitives](EficazFrameworkWPF.md#EficazFramework.Controls.Primitives 'EficazFramework.Controls.Primitives').[InteractiveTextBox](EficazFramework.Controls.Primitives/InteractiveTextBox.md 'EficazFramework.Controls.Primitives.InteractiveTextBox')
 
-## InteractiveTextBox.PopupContentProperty Field
+## InteractiveTextBox.IsEmptyAndNotFocusedProperty Field
 
 ```csharp
-public static readonly DependencyProperty PopupContentProperty;
+public static readonly DependencyProperty IsEmptyAndNotFocusedProperty;
 ```
 
 #### Field Value

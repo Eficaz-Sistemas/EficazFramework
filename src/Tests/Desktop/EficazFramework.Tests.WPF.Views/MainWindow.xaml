@@ -8,7 +8,7 @@
         xmlns:EfAttachedProps="clr-namespace:EficazFramework.Controls.AttachedProperties;assembly=EficazFramework.WPF"
         mc:Ignorable="d"
         Style="{DynamicResource Style.Window.Modern}"
-        Title="EficazFramework Wpf Preview" Height="730" Width="1020" Icon="/logo.png">
+        Title="EficazFramework Wpf Preview" Height="765" d:Height="1000" Width="1020" Icon="/logo.png">
     <Window.CommandBindings>
         <CommandBinding x:Name="ShutdownCmd" Command="{x:Static SystemCommands.CloseWindowCommand}" Executed="ShutdownCmd_Executed" />
         <CommandBinding x:Name="FullScreenCmd" Command="{x:Static SystemCommands.MaximizeWindowCommand}" Executed="FullScreenCmd_Executed" />
@@ -246,159 +246,186 @@
         </TabItem>
         <TabItem Header="Inputs (Typing / Selectors)"
                 EfAttachedProps:TabControl.Icon="{DynamicResource Icon.MaterialDesign.Pen}">
-            <StackPanel Margin="15">
-                <GroupBox Header="Input" Margin="10">
-                    <StackPanel>
-                        <GroupBox Margin="10" Header="Text:">
+            <ScrollViewer HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto">
+                <StackPanel Margin="15">
+                    <GroupBox Header="Inputs" Margin="10">
+                        <StackPanel>
+                            <GroupBox Margin="15,0,15,15" Header="Text:">
+                                <UniformGrid Columns="6">
+                                    <TextBox EfAttachedProps:Control.TipText="default" Margin="3"/>
+                                    <TextBox EfAttachedProps:Control.TipText="decorators" Margin="3">
+                                        <EfAttachedProps:TextBox.StartElement>
+                                            <EfControls:Icon Data="{DynamicResource Icon.MaterialDesign.Email}"/>
+                                        </EfAttachedProps:TextBox.StartElement>
+                                        <EfAttachedProps:TextBox.EndElement>
+                                            <EfControls:Icon Data="{DynamicResource Icon.MaterialDesign.Contacts}"/>
+                                        </EfAttachedProps:TextBox.EndElement>
+                                    </TextBox>
+                                    <TextBox IsReadOnly="True" EfAttachedProps:Control.TipText="read-only" Margin="3"/>
+                                    <TextBox IsEnabled="False" EfAttachedProps:Control.TipText="disabled" Margin="3"/>
+                                    <TextBox EfAttachedProps:Control.Color="Secondary" EfAttachedProps:Control.TipText="Secondary" Margin="3"/>
+                                    <TextBox EfAttachedProps:Control.Color="Tertiary" EfAttachedProps:Control.TipText="Tertiary" Margin="3"/>
+                                </UniformGrid>
+                            </GroupBox>
+                            <GroupBox Margin="15,0,15,15" Header="Password:">
+                                <UniformGrid Columns="6">
+                                    <PasswordBox EfAttachedProps:Control.TipText="default" Margin="3"/>
+                                    <PasswordBox EfAttachedProps:Control.TipText="decorators" Margin="3">
+                                        <EfAttachedProps:TextBox.StartElement>
+                                            <EfControls:Icon Data="{DynamicResource Icon.MaterialDesign.Account}"/>
+                                        </EfAttachedProps:TextBox.StartElement>
+                                        <EfAttachedProps:TextBox.EndElement>
+                                            <EfControls:Icon Data="{DynamicResource Icon.MaterialDesign.AccountBox}"/>
+                                        </EfAttachedProps:TextBox.EndElement>
+                                    </PasswordBox>
+                                    <PasswordBox IsEnabled="False" EfAttachedProps:Control.TipText="read-only (disabled)" Margin="3"/>
+                                    <PasswordBox IsEnabled="False" EfAttachedProps:Control.TipText="disabled" Margin="3"/>
+                                    <PasswordBox EfAttachedProps:Control.Color="Secondary" EfAttachedProps:Control.TipText="Secondary" Margin="3"/>
+                                    <PasswordBox EfAttachedProps:Control.Color="Tertiary" EfAttachedProps:Control.TipText="Tertiary" Margin="3"/>
+                                </UniformGrid>
+                            </GroupBox>
+                            <GroupBox Margin="15,0,15,15" Header="Documents:">
+                                <UniformGrid Columns="6">
+                                    <EfControls:DocumentoInputBox EfAttachedProps:Control.TipText="default" Margin="3"/>
+                                    <EfControls:DocumentoInputBox EfAttachedProps:Control.TipText="decorators" Margin="3">
+                                        <EfAttachedProps:TextBox.StartElement>
+                                            <EfControls:Icon Data="{DynamicResource Icon.MaterialDesign.FileDocument}"/>
+                                        </EfAttachedProps:TextBox.StartElement>
+                                        <EfAttachedProps:TextBox.EndElement>
+                                            <EfControls:Icon Data="{DynamicResource Icon.MaterialDesign.Database}"/>
+                                        </EfAttachedProps:TextBox.EndElement>
+                                    </EfControls:DocumentoInputBox>
+                                    <EfControls:DocumentoInputBox IsReadOnly="True" EfAttachedProps:Control.TipText="read-only" Margin="3"/>
+                                    <EfControls:DocumentoInputBox IsEnabled="False" EfAttachedProps:Control.TipText="disabled" Margin="3"/>
+                                    <EfControls:DocumentoInputBox EfAttachedProps:Control.Color="Secondary" EfAttachedProps:Control.TipText="Secondary" Margin="3"/>
+                                    <EfControls:DocumentoInputBox EfAttachedProps:Control.Color="Tertiary" EfAttachedProps:Control.TipText="Tertiary" Margin="3"/>
+                                </UniformGrid>
+                            </GroupBox>
+                            <GroupBox Margin="15,0,15,15" Header="Numbers:">
+                                <UniformGrid Columns="6">
+                                    <EfControls:NumberInputBox EfAttachedProps:Control.TipText="default" Margin="3"/>
+                                    <EfControls:NumberInputBox EfAttachedProps:Control.TipText="decorators" Margin="3">
+                                        <EfAttachedProps:TextBox.StartElement>
+                                            <EfControls:Icon Data="{DynamicResource Icon.MaterialDesign.FileDocument}"/>
+                                        </EfAttachedProps:TextBox.StartElement>
+                                        <EfAttachedProps:TextBox.EndElement>
+                                            <EfControls:Icon Data="{DynamicResource Icon.MaterialDesign.Database}"/>
+                                        </EfAttachedProps:TextBox.EndElement>
+                                    </EfControls:NumberInputBox>
+                                    <EfControls:NumberInputBox IsReadOnly="True" EfAttachedProps:Control.TipText="read-only" Margin="3"/>
+                                    <EfControls:NumberInputBox IsEnabled="False" EfAttachedProps:Control.TipText="disabled" Margin="3"/>
+                                    <EfControls:NumberInputBox EfAttachedProps:Control.Color="Secondary" EfAttachedProps:Control.TipText="Secondary" Margin="3"/>
+                                    <EfControls:NumberInputBox EfAttachedProps:Control.Color="Tertiary" EfAttachedProps:Control.TipText="Tertiary" Margin="3"/>
+                                </UniformGrid>
+                            </GroupBox>
+                            <GroupBox Margin="15,0,15,15" Header="Date:">
+                                <UniformGrid Columns="6">
+                                    <EfControls:DateInputBox EfAttachedProps:Control.TipText="default" Margin="3" />
+                                    <EfControls:DateInputBox EfAttachedProps:Control.TipText="decorators" Margin="3" >
+                                        <EfAttachedProps:TextBox.EndElement>
+                                            <EfControls:Icon Data="{DynamicResource Icon.MaterialDesign.Connection}"/>
+                                        </EfAttachedProps:TextBox.EndElement>
+                                    </EfControls:DateInputBox>
+                                    <EfControls:DateInputBox IsReadOnly="True" EfAttachedProps:Control.TipText="read-only" Margin="3" />
+                                    <EfControls:DateInputBox IsEnabled="False" EfAttachedProps:Control.TipText="disabled" Margin="3" />
+                                    <EfControls:DateInputBox EfAttachedProps:Control.Color="Secondary" EfAttachedProps:Control.TipText="Secondary" Margin="3"/>
+                                    <EfControls:DateInputBox EfAttachedProps:Control.Color="Tertiary" EfAttachedProps:Control.TipText="Tertiary" Margin="3"/>
+                                </UniformGrid>
+                            </GroupBox>
+
                             <UniformGrid Columns="6">
-                                <TextBox EfAttachedProps:Control.TipText="default" Margin="3"/>
-                                <TextBox EfAttachedProps:Control.TipText="decorators" Margin="3">
-                                    <EfAttachedProps:TextBox.StartElement>
-                                        <EfControls:Icon Data="{DynamicResource Icon.Application.Mail}"/>
-                                    </EfAttachedProps:TextBox.StartElement>
-                                    <EfAttachedProps:TextBox.EndElement>
-                                        <EfControls:Icon Data="{DynamicResource Icon.Financial.Coin}"/>
-                                    </EfAttachedProps:TextBox.EndElement>
-                                </TextBox>
-                                <EfControls:DocumentoInputBox IsReadOnly="True" EfAttachedProps:Control.TipText="read-only" Margin="3"/>
-                                <PasswordBox IsEnabled="False" EfAttachedProps:Control.TipText="disabled" Margin="3"/>
-                                <TextBox EfAttachedProps:Control.Color="Secondary" EfAttachedProps:Control.TipText="Secondary" Margin="3"/>
-                                <TextBox EfAttachedProps:Control.Color="Tertiary" EfAttachedProps:Control.TipText="Tertiary" Margin="3"/>
-                            </UniformGrid>
-                        </GroupBox>
-                        <UniformGrid Columns="6">
-                            <TextBlock VerticalAlignment="Bottom" TextAlignment="Center" Text="PasswordBox"/>
-                            <TextBlock VerticalAlignment="Bottom" TextAlignment="Center" Text="Documents (CPNJ, etc)"/>
-                            <TextBlock VerticalAlignment="Bottom" TextAlignment="Center" Text="Date"/>
-                            <TextBlock VerticalAlignment="Bottom" TextAlignment="Center" Text="Time"/>
-                            <TextBlock VerticalAlignment="Bottom" TextAlignment="Center" Text="Numbers"/>
-                            <TextBlock VerticalAlignment="Bottom" TextAlignment="Center" Text="Search"/>
 
-                            <!-- Default -->
-                            <PasswordBox EfAttachedProps:Control.TipText="default" Margin="3"/>
-                            <EfControls:DocumentoInputBox EfAttachedProps:Control.TipText="default" Margin="3"/>
-                            <EfControls:DateInputBox EfAttachedProps:Control.TipText="default" Margin="3" />
-                            <!--<EfControls:TimeInputBox EfAttachedProps:Control.TipText="default" Margin="3" />-->
-                            <EfControls:NumberInputBox EfAttachedProps:Control.TipText="default" Margin="3"/>
-                            <EfControls:AutoComplete  EfAttachedProps:Control.TipText="default" Margin="3"/>
+                                <!-- Default -->
+                                <!--<EfControls:TimeInputBox EfAttachedProps:Control.TipText="default" Margin="3" />-->
 
-                            <!-- Start and End Elements -->
-                            <PasswordBox EfAttachedProps:Control.TipText="decorators" Margin="3">
-                                <EfAttachedProps:TextBox.StartElement>
-                                    <EfControls:Icon Data="{DynamicResource Icon.Application.Identity}"/>
-                                </EfAttachedProps:TextBox.StartElement>
-                                <EfAttachedProps:TextBox.EndElement>
-                                    <EfControls:Icon Data="{DynamicResource Icon.Application.Devices.Gamepad}"/>
-                                </EfAttachedProps:TextBox.EndElement>
-                            </PasswordBox>
-                            <EfControls:DocumentoInputBox EfAttachedProps:Control.TipText="decorators" Margin="3">
-                                <EfAttachedProps:TextBox.StartElement>
-                                    <EfControls:Icon Data="{DynamicResource Icon.Editing.Documents}"/>
-                                </EfAttachedProps:TextBox.StartElement>
-                                <EfAttachedProps:TextBox.EndElement>
-                                    <EfControls:Icon Data="{DynamicResource Icon.Application.Server.Database}"/>
-                                </EfAttachedProps:TextBox.EndElement>
-                            </EfControls:DocumentoInputBox>
-                            <EfControls:DateInputBox EfAttachedProps:Control.TipText="decorators" Margin="3" >
-                                <EfAttachedProps:TextBox.EndElement>
-                                    <EfControls:Icon Data="{DynamicResource Icon.Application.Connection}"/>
-                                </EfAttachedProps:TextBox.EndElement>
-                            </EfControls:DateInputBox>
-                            <!--<EfControls:TimeInputBox EfAttachedProps:Control.TipText="decorators" Margin="3" >
+                                <!-- Start and End Elements -->
+                                <!--<EfControls:TimeInputBox EfAttachedProps:Control.TipText="decorators" Margin="3" >
                                 <EfAttachedProps:TextBox.EndElement>
                                     <EfControls:Icon Data="{DynamicResource Icon.Editing.Clipboard}"/>
                                 </EfAttachedProps:TextBox.EndElement>
                             </EfControls:TimeInputBox>-->
-                            <EfControls:NumberInputBox EfAttachedProps:Control.TipText="decorators" Margin="3">
-                                <EfAttachedProps:TextBox.StartElement>
-                                    <EfControls:Icon Data="{DynamicResource Icon.Application.Devices.Calculator}"/>
-                                </EfAttachedProps:TextBox.StartElement>
-                                <EfAttachedProps:TextBox.EndElement>
-                                    <EfControls:Icon Data="{DynamicResource Icon.Application.Devices.Battery.75Percent}"/>
-                                </EfAttachedProps:TextBox.EndElement>
-                            </EfControls:NumberInputBox>
-                            <EfControls:AutoComplete  EfAttachedProps:Control.TipText="n/a" Margin="3"/>
 
-                            <!-- Read Only -->
-                            <PasswordBox IsEnabled="False" EfAttachedProps:Control.TipText="read-only (disabled)" Margin="3"/>
-                            <EfControls:DocumentoInputBox IsReadOnly="True" EfAttachedProps:Control.TipText="read-only" Margin="3"/>
-                            <EfControls:DateInputBox IsReadOnly="True" EfAttachedProps:Control.TipText="read-only" Margin="3" />
-                            <!--<EfControls:TimeInputBox IsReadOnly="True" EfAttachedProps:Control.TipText="read-only" Margin="3" />-->
-                            <EfControls:NumberInputBox IsReadOnly="True" EfAttachedProps:Control.TipText="read-only" Margin="3"/>
-                            <EfControls:AutoComplete IsReadOnly="True"  EfAttachedProps:Control.TipText="read-only" Margin="3"/>
+                                <!-- Read Only -->
+                                <!--<EfControls:TimeInputBox IsReadOnly="True" EfAttachedProps:Control.TipText="read-only" Margin="3" />-->
 
-                            <!-- Disabled -->
-                            <PasswordBox IsEnabled="False" EfAttachedProps:Control.TipText="disabled" Margin="3"/>
-                            <EfControls:DocumentoInputBox IsEnabled="False" EfAttachedProps:Control.TipText="disabled" Margin="3"/>
-                            <EfControls:DateInputBox IsEnabled="False" EfAttachedProps:Control.TipText="disabled" Margin="3" />
-                            <!--<EfControls:TimeInputBox IsEnabled="False" EfAttachedProps:Control.TipText="disabled" Margin="3" />-->
-                            <EfControls:NumberInputBox IsEnabled="False" EfAttachedProps:Control.TipText="disabled" Margin="3"/>
-                            <EfControls:AutoComplete IsEnabled="False" EfAttachedProps:Control.TipText="disabled" Margin="3"/>
+                                <!-- Disabled -->
+                                <!--<EfControls:TimeInputBox IsEnabled="False" EfAttachedProps:Control.TipText="disabled" Margin="3" />-->
 
-                            <!--<TextBox Style="{DynamicResource Style.TextBox.DataGridCellEditor}" Margin="3" VerticalAlignment="Bottom"  EfAttachedProps:Control.TipText="dataGrid field"/>
-                    <TextBox Style="{DynamicResource Style.TextBox.DataGridCellFake}" Margin="3" VerticalAlignment="Bottom"  EfAttachedProps:Control.TipText="Fake Background Input"/>
-                    <TextBox Style="{DynamicResource Style.TextBox.DataGridCellFake}" Margin="3" VerticalAlignment="Bottom" IsReadOnly="True"  EfAttachedProps:Control.TipText="F. Background Input (read only)"  Text="read only text"/>
-                    <TextBox Style="{DynamicResource Style.TextBox.DataGridCellFake}" Margin="3" VerticalAlignment="Bottom" IsEnabled="False"  EfAttachedProps:Control.TipText="F. Background Input (disabled)"/>-->
+                            </UniformGrid>
+                        </StackPanel>
+                    </GroupBox>
+                    <GroupBox Header="Selectors" Margin="10">
+                        <StackPanel>
+                            <GroupBox Margin="15,0,15,15" Header="Combobox">
+                                <UniformGrid Columns="6">
+                                    <ComboBox EfAttachedProps:Control.TipText="default" Margin="3">
+                                        <System:String>Item 1</System:String>
+                                        <System:String>Item 2</System:String>
+                                        <System:String>Item 3</System:String>
+                                        <System:String>Item 4</System:String>
+                                        <System:String>Item 5</System:String>
+                                    </ComboBox>
+                                    <ComboBox EfAttachedProps:Control.TipText="default - value choosen" SelectedValue="Item 4" Margin="3">
+                                        <System:String>Item 1</System:String>
+                                        <System:String>Item 2</System:String>
+                                        <System:String>Item 3</System:String>
+                                        <System:String>Item 4</System:String>
+                                        <System:String>Item 5</System:String>
+                                    </ComboBox>
+                                    <ComboBox EfAttachedProps:Control.TipText="decorators" Margin="3">
+                                        <EfAttachedProps:TextBox.StartElement>
+                                            <EfControls:Icon Data="{DynamicResource Icon.Brand.Microsoft.Excel}"/>
+                                        </EfAttachedProps:TextBox.StartElement>
+                                        <System:String>Item 1</System:String>
+                                        <System:String>Item 2</System:String>
+                                        <System:String>Item 3</System:String>
+                                        <System:String>Item 4</System:String>
+                                        <System:String>Item 5</System:String>
+                                    </ComboBox>
+                                    <ComboBox EfAttachedProps:Control.TipText="editable" IsEditable="True" Margin="3">
+                                        <System:String>Item 1</System:String>
+                                        <System:String>Item 2</System:String>
+                                        <System:String>Item 3</System:String>
+                                        <System:String>Item 4</System:String>
+                                        <System:String>Item 5</System:String>
+                                    </ComboBox>
+                                    <ComboBox EfAttachedProps:Control.TipText="editable, read-only" IsEditable="True" IsReadOnly="True" Margin="3">
+                                        <System:String>Item 1</System:String>
+                                        <System:String>Item 2</System:String>
+                                        <System:String>Item 3</System:String>
+                                        <System:String>Item 4</System:String>
+                                        <System:String>Item 5</System:String>
+                                    </ComboBox>
+                                    <ComboBox EfAttachedProps:Control.TipText="disabled" IsEnabled="False" Margin="3">
+                                        <System:String>Item 1</System:String>
+                                        <System:String>Item 2</System:String>
+                                        <System:String>Item 3</System:String>
+                                        <System:String>Item 4</System:String>
+                                        <System:String>Item 5</System:String>
+                                    </ComboBox>
+                                </UniformGrid>
+                            </GroupBox>
+                            <GroupBox Margin="15,0,15,15" Header="AutoComplete">
+                                <UniformGrid Columns="6">
+                                    <EfControls:AutoComplete FindAction="autocomplete_Find" EfAttachedProps:Control.TipText="default" Margin="3"/>
+                                    <EfControls:AutoComplete EfAttachedProps:Control.TipText="n/a" Margin="3"/>
+                                    <EfControls:AutoComplete IsReadOnly="True"  EfAttachedProps:Control.TipText="read-only" Margin="3"/>
+                                    <EfControls:AutoComplete IsEnabled="False" EfAttachedProps:Control.TipText="disabled" Margin="3"/>
+                                    <EfControls:AutoComplete EfAttachedProps:Control.Color="Secondary" EfAttachedProps:Control.TipText="Secondary" Margin="3"/>
+                                    <EfControls:AutoComplete EfAttachedProps:Control.Color="Tertiary" EfAttachedProps:Control.TipText="Tertiary" Margin="3"/>
+                                </UniformGrid>
+                            </GroupBox>
+                        </StackPanel>
+                    </GroupBox>
+                    <GroupBox Header="Pickers" Margin="10">
+                        <UniformGrid Columns="2">
+                            <!--<EfControls:FilePicker EfAttachedProps:Control.TipText="file" Margin="3"/>
+                            <EfControls:FilePicker PickerMode="Folder" EfAttachedProps:Control.TipText="folder" Margin="3" />-->
                         </UniformGrid>
-                    </StackPanel>
-                </GroupBox>
-                <GroupBox Header="Selector" Margin="10">
-                    <UniformGrid Columns="6">
-                        <ComboBox EfAttachedProps:Control.TipText="default" Margin="3">
-                            <System:String>Item 1</System:String>
-                            <System:String>Item 2</System:String>
-                            <System:String>Item 3</System:String>
-                            <System:String>Item 4</System:String>
-                            <System:String>Item 5</System:String>
-                        </ComboBox>
-                        <ComboBox EfAttachedProps:Control.TipText="default - value choosen" SelectedValue="Item 4" Margin="3">
-                            <System:String>Item 1</System:String>
-                            <System:String>Item 2</System:String>
-                            <System:String>Item 3</System:String>
-                            <System:String>Item 4</System:String>
-                            <System:String>Item 5</System:String>
-                        </ComboBox>
-                        <ComboBox EfAttachedProps:Control.TipText="decorators" Margin="3">
-                            <EfAttachedProps:TextBox.StartElement>
-                                <EfControls:Icon Data="{DynamicResource Icon.Brand.Microsoft.Excel}"/>
-                            </EfAttachedProps:TextBox.StartElement>
-                            <System:String>Item 1</System:String>
-                            <System:String>Item 2</System:String>
-                            <System:String>Item 3</System:String>
-                            <System:String>Item 4</System:String>
-                            <System:String>Item 5</System:String>
-                        </ComboBox>
-                        <ComboBox EfAttachedProps:Control.TipText="editable" IsEditable="True" Margin="3">
-                            <System:String>Item 1</System:String>
-                            <System:String>Item 2</System:String>
-                            <System:String>Item 3</System:String>
-                            <System:String>Item 4</System:String>
-                            <System:String>Item 5</System:String>
-                        </ComboBox>
-                        <ComboBox EfAttachedProps:Control.TipText="editable, read-only" IsEditable="True" IsReadOnly="True" Margin="3">
-                            <System:String>Item 1</System:String>
-                            <System:String>Item 2</System:String>
-                            <System:String>Item 3</System:String>
-                            <System:String>Item 4</System:String>
-                            <System:String>Item 5</System:String>
-                        </ComboBox>
-                        <ComboBox EfAttachedProps:Control.TipText="disabled" IsEnabled="False" Margin="3">
-                            <System:String>Item 1</System:String>
-                            <System:String>Item 2</System:String>
-                            <System:String>Item 3</System:String>
-                            <System:String>Item 4</System:String>
-                            <System:String>Item 5</System:String>
-                        </ComboBox>
-                    </UniformGrid>
-                </GroupBox>
-                <GroupBox Header="Pickers" Margin="10">
-                    <UniformGrid Columns="2">
-                        <!--<EfControls:FilePicker EfAttachedProps:Control.TipText="file" Margin="3"/>
-                        <EfControls:FilePicker PickerMode="Folder" EfAttachedProps:Control.TipText="folder" Margin="3" />-->
-                    </UniformGrid>
-                </GroupBox>
+                    </GroupBox>
 
-            </StackPanel>
+                </StackPanel>
+            </ScrollViewer>
         </TabItem>
         <TabItem Header="Inputs (Toggles / Checks / Sliders)" 
                  EfAttachedProps:TabControl.Icon="{DynamicResource Icon.MaterialDesign.CheckboxMarked}">
@@ -668,7 +695,7 @@
                         <TextBlock Text="Hello World"/>
                     </Expander>
                 </StackPanel>
-                <CheckBox x:Name="animationck" Checked="animationck_Checked" Unchecked="animationck_Checked" VerticalAlignment="Bottom" HorizontalAlignment="Left" Margin="25" Style="{DynamicResource Style.Checkbox.Modern}">
+                <CheckBox x:Name="animationck" Checked="animationck_Checked" Unchecked="animationck_Checked" VerticalAlignment="Bottom" HorizontalAlignment="Left" Margin="25" IsChecked="True" Style="{DynamicResource Style.Checkbox.Modern}">
                     <TextBlock Margin="5,0,0,0">Efeitos Visuais</TextBlock>
                 </CheckBox>
             </Grid>

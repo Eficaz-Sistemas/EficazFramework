@@ -40,6 +40,11 @@
   	<NoWarn>IDE0044;1573;1591;1701;1702;CA2211</NoWarn>
 	<DisableDefaultDocumentation>true</DisableDefaultDocumentation>
   </PropertyGroup>
+  
+  <ItemGroup>
+    <None Remove="MarkupExtensions\Binding.vb" />
+    <None Remove="MarkupExtensions\TextGeometry.vb" />
+  </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="DefaultDocumentation" Version="0.8.0-alpha2">
@@ -78,6 +83,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Page Update="Themes\Controls\InteractiveTextBox.xaml">
+      <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="Themes\Icons\MaterialDesign.xaml">
       <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
       <SubType>Designer</SubType>

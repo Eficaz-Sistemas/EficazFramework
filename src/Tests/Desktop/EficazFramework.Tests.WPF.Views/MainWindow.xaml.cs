@@ -46,4 +46,10 @@ public partial class MainWindow : Window
     {
         EficazFramework.Configuration.Visual.Effects = ((CheckBox)sender).IsChecked ?? true;
     }
+
+    string[] itemsToFind = { "Audi", "Aston Martin", "BMW", "Ferrari", "Mercedes", "Porsche", "Volkswagen" };
+    private void autocomplete_Find(object sender, Events.FindRequestEventArgs e)
+    {
+        e.Data = itemsToFind.Where(x => x.Contains(e.Literal, StringComparison.InvariantCultureIgnoreCase)).ToList();
+    }
 }

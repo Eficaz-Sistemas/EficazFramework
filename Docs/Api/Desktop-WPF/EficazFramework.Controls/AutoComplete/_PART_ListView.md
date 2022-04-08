@@ -1,11 +1,11 @@
 #### [EficazFramework.WPF](EficazFrameworkWPF.md 'EficazFramework WPF')
 ### [EficazFramework.Controls](EficazFrameworkWPF.md#EficazFramework.Controls 'EficazFramework.Controls').[AutoComplete](EficazFramework.Controls/AutoComplete.md 'EficazFramework.Controls.AutoComplete')
 
-## AutoComplete.IsLoadingProperty Field
+## AutoComplete._PART_ListView Field
 
 ```csharp
-public static readonly DependencyProperty IsLoadingProperty;
+private ListView _PART_ListView;
 ```
 
 #### Field Value
-[System.Windows.DependencyProperty](https://docs.microsoft.com/en-us/dotnet/api/System.Windows.DependencyProperty 'System.Windows.DependencyProperty')
+[System.Windows.Controls.ListView](https://docs.microsoft.com/en-us/dotnet/api/System.Windows.Controls.ListView 'System.Windows.Controls.ListView')

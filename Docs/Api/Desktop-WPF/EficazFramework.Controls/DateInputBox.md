@@ -28,4 +28,3 @@ Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.O
 | [OnValueChanged(DependencyObject, DependencyPropertyChangedEventArgs)](EficazFramework.Controls/DateInputBox/OnValueChanged(DependencyObject,DependencyPropertyChangedEventArgs).md 'EficazFramework.Controls.DateInputBox.OnValueChanged(System.Windows.DependencyObject, System.Windows.DependencyPropertyChangedEventArgs)') | |
 | [SetupDatePatternByCulture()](EficazFramework.Controls/DateInputBox/SetupDatePatternByCulture().md 'EficazFramework.Controls.DateInputBox.SetupDatePatternByCulture()') | |
 | [SyncStringFormatAndMask()](EficazFramework.Controls/DateInputBox/SyncStringFormatAndMask().md 'EficazFramework.Controls.DateInputBox.SyncStringFormatAndMask()') | |
-| [teste()](EficazFramework.Controls/DateInputBox/teste().md 'EficazFramework.Controls.DateInputBox.teste()') | |

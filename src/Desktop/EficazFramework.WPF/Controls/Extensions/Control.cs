@@ -33,12 +33,12 @@ public partial class Control
     #region Show Label
 
     public static bool GetShowLabel([DisallowNull] DependencyObject element) =>
-        (bool)element.GetValue(LabelProperty);
+        (bool)element.GetValue(ShowLabelProperty);
 
     public static void SetShowLabel([DisallowNull] DependencyObject element, bool value) =>
-        element.SetValue(LabelProperty, value);
+        element.SetValue(ShowLabelProperty, value);
 
-    public static readonly DependencyProperty LabelProperty = DependencyProperty.RegisterAttached("ShowLabel", typeof(bool), typeof(Control), new PropertyMetadata(true));
+    public static readonly DependencyProperty ShowLabelProperty = DependencyProperty.RegisterAttached("ShowLabel", typeof(bool), typeof(Control), new PropertyMetadata(true));
 
     #endregion
 

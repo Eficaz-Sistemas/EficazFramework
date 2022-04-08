@@ -4,7 +4,7 @@
 ## InteractiveTextBox.IsPopupOpened Property
 
 ```csharp
-public bool IsPopupOpened { get; set; }
+public bool IsPopupOpened { get; }
 ```
 
 #### Property Value

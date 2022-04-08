@@ -5,6 +5,7 @@
 
     <Style TargetType="{x:Type Window}" x:Key="Style.Window.Modern">
         <Setter Property="EfAttachedProps:Control.Color" Value="Primary"/>
+        <Setter Property="EfAttachedProps:TextBox.SelectAllOnFocus" Value="True"/>
         <Setter Property="Background" Value="{DynamicResource  Brush.Surface.Background}" />
         <Setter Property="Foreground" Value="{DynamicResource Brush.Surface.Foreground}"/>
         <Setter Property="TextElement.Foreground" Value="{DynamicResource Brush.Surface.Foreground}"/>

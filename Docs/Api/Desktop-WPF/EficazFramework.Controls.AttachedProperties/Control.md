@@ -16,7 +16,7 @@ Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.O
 | [CornerRadiusProperty](EficazFramework.Controls.AttachedProperties/Control/CornerRadiusProperty.md 'EficazFramework.Controls.AttachedProperties.Control.CornerRadiusProperty') | |
 | [ElevationProperty](EficazFramework.Controls.AttachedProperties/Control/ElevationProperty.md 'EficazFramework.Controls.AttachedProperties.Control.ElevationProperty') | |
 | [IsEmptyProperty](EficazFramework.Controls.AttachedProperties/Control/IsEmptyProperty.md 'EficazFramework.Controls.AttachedProperties.Control.IsEmptyProperty') | |
-| [LabelProperty](EficazFramework.Controls.AttachedProperties/Control/LabelProperty.md 'EficazFramework.Controls.AttachedProperties.Control.LabelProperty') | |
+| [ShowLabelProperty](EficazFramework.Controls.AttachedProperties/Control/ShowLabelProperty.md 'EficazFramework.Controls.AttachedProperties.Control.ShowLabelProperty') | |
 | [TipTextProperty](EficazFramework.Controls.AttachedProperties/Control/TipTextProperty.md 'EficazFramework.Controls.AttachedProperties.Control.TipTextProperty') | |
 
 | Methods | |
