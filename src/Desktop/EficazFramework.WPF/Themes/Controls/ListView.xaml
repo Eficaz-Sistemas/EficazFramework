@@ -219,4 +219,8 @@
 
     </Style>
 
+    <Style x:Key="Style.ListViewItem.AutoCompleteEditor" TargetType="{x:Type ListViewItem}" BasedOn="{StaticResource {x:Type ListViewItem}}">
+        <Setter Property="Padding" Value="10"/>
+    </Style>
+
 </ResourceDictionary>

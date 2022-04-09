@@ -354,6 +354,7 @@
                                       IsSynchronizedWithCurrentItem="True"
                                       Validation.ErrorTemplate="{x:Null}"
                                       x:Name="_PART_ListView"
+                                      ItemContainerStyle="{DynamicResource Style.ListViewItem.AutoCompleteEditor}"
                                       EfAttachedProps:Selector.AllowInactiveSelection="False">
                             </ListView>
                         </Grid>
