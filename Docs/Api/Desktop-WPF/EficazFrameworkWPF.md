@@ -72,6 +72,7 @@
 | Classes | |
 | :--- | :--- |
 | [Button](EficazFramework.Controls.AttachedProperties/Button.md 'EficazFramework.Controls.AttachedProperties.Button') | |
+| [ComboBox](EficazFramework.Controls.AttachedProperties/ComboBox.md 'EficazFramework.Controls.AttachedProperties.ComboBox') | |
 | [Control](EficazFramework.Controls.AttachedProperties/Control.md 'EficazFramework.Controls.AttachedProperties.Control') | |
 | [DataGrid](EficazFramework.Controls.AttachedProperties/DataGrid.md 'EficazFramework.Controls.AttachedProperties.DataGrid') | |
 | [Selector](EficazFramework.Controls.AttachedProperties/Selector.md 'EficazFramework.Controls.AttachedProperties.Selector') | |

@@ -20,10 +20,12 @@
         <ResourceDictionary Source="pack://application:,,,/EficazFramework.WPF;component/Themes/Controls/Calendar.xaml" />
         <ResourceDictionary Source="pack://application:,,,/EficazFramework.WPF;component/Themes/Controls/CheckBox.xaml" />
         <ResourceDictionary Source="pack://application:,,,/EficazFramework.WPF;component/Themes/Controls/ColorZone.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/EficazFramework.WPF;component/Themes/Controls/ComboBox.xaml" />
         <ResourceDictionary Source="pack://application:,,,/EficazFramework.WPF;component/Themes/Controls/GroupBox.xaml" />
         <ResourceDictionary Source="pack://application:,,,/EficazFramework.WPF;component/Themes/Controls/Icon.xaml" />
         <ResourceDictionary Source="pack://application:,,,/EficazFramework.WPF;component/Themes/Controls/InteractiveTextBox.xaml" />
         <ResourceDictionary Source="pack://application:,,,/EficazFramework.WPF;component/Themes/Controls/ListView.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/EficazFramework.WPF;component/Themes/Controls/PasswordBox.xaml" />
         <ResourceDictionary Source="pack://application:,,,/EficazFramework.WPF;component/Themes/Controls/ProgressBar.xaml" />
         <ResourceDictionary Source="pack://application:,,,/EficazFramework.WPF;component/Themes/Controls/RadioButton.xaml" />
         <ResourceDictionary Source="pack://application:,,,/EficazFramework.WPF;component/Themes/Controls/ScrollBar.xaml" />

@@ -133,11 +133,8 @@ public partial class AutoComplete : Primitives.InteractiveTextBox
             StartFind();
     }
 
-    private void PopupClosed(object sender, EventArgs e)
-    {
-        Debug.WriteLine("Popup Closed (from SearchBox)");
+    private void PopupClosed(object sender, EventArgs e) =>
         _passliteral = false;
-    }
 
     public Action<object, Events.FindRequestEventArgs> FindAction
     {
@@ -192,7 +189,10 @@ public partial class AutoComplete : Primitives.InteractiveTextBox
         {
             await EficazFramework.Commands.DelayedAction.InvokeAsync(Find, 125, _cancellationTokenSource.Token);
         }
-        catch { }
+        catch (OperationCanceledException)
+        {
+            _executed = false;
+        }
     }
 
     private async void Find()

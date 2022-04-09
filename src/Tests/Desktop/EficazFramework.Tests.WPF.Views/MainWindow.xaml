@@ -306,10 +306,10 @@
                                     <EfControls:NumberInputBox EfAttachedProps:Control.TipText="default" Margin="3"/>
                                     <EfControls:NumberInputBox EfAttachedProps:Control.TipText="decorators" Margin="3">
                                         <EfAttachedProps:TextBox.StartElement>
-                                            <EfControls:Icon Data="{DynamicResource Icon.MaterialDesign.FileDocument}"/>
+                                            <EfControls:Icon Data="{DynamicResource Icon.MaterialDesign.CurrencyBrl}"/>
                                         </EfAttachedProps:TextBox.StartElement>
                                         <EfAttachedProps:TextBox.EndElement>
-                                            <EfControls:Icon Data="{DynamicResource Icon.MaterialDesign.Database}"/>
+                                            <EfControls:Icon Data="{DynamicResource Icon.MaterialDesign.Numeric}"/>
                                         </EfAttachedProps:TextBox.EndElement>
                                     </EfControls:NumberInputBox>
                                     <EfControls:NumberInputBox IsReadOnly="True" EfAttachedProps:Control.TipText="read-only" Margin="3"/>
@@ -374,7 +374,7 @@
                                     </ComboBox>
                                     <ComboBox EfAttachedProps:Control.TipText="decorators" Margin="3">
                                         <EfAttachedProps:TextBox.StartElement>
-                                            <EfControls:Icon Data="{DynamicResource Icon.Brand.Microsoft.Excel}"/>
+                                            <EfControls:Icon Data="{DynamicResource Icon.MaterialDesign.MicrosoftExcel}"/>
                                         </EfAttachedProps:TextBox.StartElement>
                                         <System:String>Item 1</System:String>
                                         <System:String>Item 2</System:String>

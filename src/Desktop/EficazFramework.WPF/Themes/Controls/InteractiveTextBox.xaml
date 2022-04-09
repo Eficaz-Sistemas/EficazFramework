@@ -389,8 +389,8 @@
             <Setter.Value>
                 <DataTemplate>
                     <Calendar EfAttachedProps:Control.Elevation="3" 
-                          Margin="10"
-                          Effect="{Binding RelativeSource={RelativeSource Mode=Self}, Path=(EfAttachedProps:Control.Elevation), Converter={StaticResource elevator}}"  />
+                              Margin="10"
+                              Effect="{Binding RelativeSource={RelativeSource Mode=Self}, Path=(EfAttachedProps:Control.Elevation), Converter={StaticResource elevator}}"  />
                 </DataTemplate>
             </Setter.Value>
         </Setter>

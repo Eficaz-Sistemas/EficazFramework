@@ -118,6 +118,7 @@ public abstract partial class InteractiveTextBox : TextBox
         {
             if (IsReadOnly == false & IsEnabled == true & IsPopupOpened == false & _PART_Popup != null)  // Open
             {
+                f12pressed = true;
                 OpenPopup((e.Parameter as bool?) ?? false);
             }
         }
@@ -152,8 +153,6 @@ public abstract partial class InteractiveTextBox : TextBox
         if (focused is not TextBox)
             if (movefocus) MoveFocus(new TraversalRequest(FocusNavigationDirection.First));
 
-        Debug.WriteLine("Popup Closed (from InteractiveTextBox)");
-
     }
 
     internal abstract void CommitSelection();
@@ -167,9 +166,6 @@ public abstract partial class InteractiveTextBox : TextBox
         f12pressed = false;
         if (e.KeyboardDevice.Modifiers == ModifierKeys.None)
         {
-            Debug.WriteLine($"Key: {e.Key} | Popup: {IsPopupOpened}");
-
-
             if (e.Key == Key.F12 & IsReadOnly == false & IsEnabled == true & IsPopupOpened == false & _PART_Popup != null)  // Open
             {
                 f12pressed = true;
