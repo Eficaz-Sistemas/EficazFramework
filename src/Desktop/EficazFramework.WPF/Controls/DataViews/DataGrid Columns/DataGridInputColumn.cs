@@ -8,158 +8,90 @@ namespace EficazFramework.Controls;
 public partial class DataGridInputColumn : System.Windows.Controls.DataGridTextColumn
 {
 
-    public DataGridInputColumn()
-    {
+    public DataGridInputColumn() =>
         DateStringFormat = DateInputBox.SetupDatePatternByCulture();
-    }
 
 
     public int MaxLength
     {
-        get
-        {
-            return Convert.ToInt32(GetValue(MaxLengthProperty));
-        }
-
-        set
-        {
-            SetValue(MaxLengthProperty, value);
-        }
+        get => Convert.ToInt32(GetValue(MaxLengthProperty));
+        set => SetValue(MaxLengthProperty, value);
     }
     public static readonly DependencyProperty MaxLengthProperty = DependencyProperty.Register("MaxLength", typeof(int), typeof(DataGridInputColumn), new PropertyMetadata(int.MaxValue));
 
     public TextAlignment Alignment
     {
-        get
-        {
-            return (TextAlignment)GetValue(AlignmentProperty);
-        }
-
-        set
-        {
-            SetValue(AlignmentProperty, value);
-        }
+        get => (TextAlignment)GetValue(AlignmentProperty);
+        set => SetValue(AlignmentProperty, value);
     }
     public static readonly DependencyProperty AlignmentProperty = DependencyProperty.Register("Alignment", typeof(TextAlignment), typeof(DataGridInputColumn), new PropertyMetadata(TextAlignment.Justify));
 
     public bool Multiline
     {
-        get
-        {
-            return Convert.ToBoolean(GetValue(MultilineProperty));
-        }
-
-        set
-        {
-            SetValue(MultilineProperty, value);
-        }
+        get => Convert.ToBoolean(GetValue(MultilineProperty));
+        set => SetValue(MultilineProperty, value);
     }
     public static readonly DependencyProperty MultilineProperty = DependencyProperty.Register("Multiline", typeof(bool), typeof(DataGridInputColumn), new PropertyMetadata(false));
 
     public InputMode InputMode
     {
-        get { return (InputMode)GetValue(InputModeProperty); }
-        set { SetValue(InputModeProperty, value); }
+        get => (InputMode)GetValue(InputModeProperty);
+        set => SetValue(InputModeProperty, value);
     }
     public static readonly DependencyProperty InputModeProperty = DependencyProperty.Register("InputMode", typeof(InputMode), typeof(DataGridInputColumn), new PropertyMetadata(InputMode.Default));
-
 
 
     #region NumberInput
 
     public int NumberDecimalPlaces
     {
-        get
-        {
-            return Convert.ToInt32(GetValue(NumberDecimalPlacesProperty));
-        }
-
-        set
-        {
-            SetValue(NumberDecimalPlacesProperty, value);
-        }
+        get => Convert.ToInt32(GetValue(NumberDecimalPlacesProperty));
+        set => SetValue(NumberDecimalPlacesProperty, value);
     }
     public static readonly DependencyProperty NumberDecimalPlacesProperty = DependencyProperty.Register("NumberDecimalPlaces", typeof(int), typeof(DataGridInputColumn), new PropertyMetadata(0));
 
     public double NumberMinimum
     {
-        get
-        {
-            return Convert.ToDouble(GetValue(NumberMinimumProperty));
-        }
-
-        set
-        {
-            SetValue(NumberMinimumProperty, value);
-        }
+        get => Convert.ToDouble(GetValue(NumberMinimumProperty));
+        set => SetValue(NumberMinimumProperty, value);
     }
     public static readonly DependencyProperty NumberMinimumProperty = DependencyProperty.Register("NumberMinimum", typeof(double), typeof(DataGridInputColumn), new PropertyMetadata(double.NaN));
 
     public double NumberMaximum
     {
-        get
-        {
-            return Convert.ToDouble(GetValue(NumberMaximumProperty));
-        }
-
-        set
-        {
-            SetValue(NumberMaximumProperty, value);
-        }
+        get => Convert.ToDouble(GetValue(NumberMaximumProperty));
+        set => SetValue(NumberMaximumProperty, value);
     }
     public static readonly DependencyProperty NumberMaximumProperty = DependencyProperty.Register("NumberMaximum", typeof(double), typeof(DataGridInputColumn), new PropertyMetadata(double.MaxValue));
 
     #endregion
 
 
-
     #region DateTimeInput
 
     public string DateStringFormat
     {
-        get
-        {
-            return Convert.ToString(GetValue(DateStringFormatStringFormatProperty));
-        }
-
-        set
-        {
-            SetValue(DateStringFormatStringFormatProperty, value);
-        }
+        get => Convert.ToString(GetValue(DateStringFormatStringFormatProperty));
+        set => SetValue(DateStringFormatStringFormatProperty, value);
     }
     public static readonly DependencyProperty DateStringFormatStringFormatProperty = DependencyProperty.Register("DateStringFormat", typeof(string), typeof(DataGridInputColumn), new PropertyMetadata("dd/MM/yyyy"));
 
     #endregion
 
 
-
     #region Documento
 
     public EDocumentos Documento
     {
-        get
-        {
-            return (EDocumentos)GetValue(DocumentoProperty);
-        }
-
-        set
-        {
-            SetValue(DocumentoProperty, value);
-        }
+        get => (EDocumentos)GetValue(DocumentoProperty);
+        set => SetValue(DocumentoProperty, value);
     }
     public static readonly DependencyProperty DocumentoProperty = DependencyProperty.Register("Documento", typeof(EDocumentos), typeof(DataGridInputColumn), new PropertyMetadata(EDocumentos.Custom));
 
     public string DocumentoUF
     {
-        get
-        {
-            return Convert.ToString(GetValue(UFProperty));
-        }
-
-        set
-        {
-            SetValue(UFProperty, value);
-        }
+        get => Convert.ToString(GetValue(UFProperty));
+        set => SetValue(UFProperty, value);
     }
     public static readonly DependencyProperty UFProperty = DependencyProperty.Register("DocumentoUF", typeof(string), typeof(DataGridInputColumn), new PropertyMetadata(null));
 

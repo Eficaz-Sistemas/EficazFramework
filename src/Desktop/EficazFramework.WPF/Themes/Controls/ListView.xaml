@@ -37,7 +37,7 @@
     <!--LISTVIEW ITEM-->
 
     <Style TargetType="{x:Type ListViewItem}">
-        <Setter Property="Padding" Value="2" />
+        <Setter Property="Padding" Value="4,2" />
         <Setter Property="EfAttachedProps:Control.CornerRadius" Value="3"/>
         <Setter Property="Template">
             <Setter.Value>
@@ -93,10 +93,10 @@
                                 CornerRadius="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=(EfAttachedProps:Control.CornerRadius)}" 
                                 RenderTransformOrigin="0.5,0.5"/>
                         <ContentPresenter Margin="{TemplateBinding Padding}"
-                                              TextElement.Foreground="{TemplateBinding Foreground}"
-                                              TextBlock.Foreground="{TemplateBinding Foreground}"
-                                              HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
-                                              VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                                          TextElement.Foreground="{TemplateBinding Foreground}"
+                                          TextBlock.Foreground="{TemplateBinding Foreground}"
+                                          HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                          VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
                     </Grid>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsMouseOver" Value="True">

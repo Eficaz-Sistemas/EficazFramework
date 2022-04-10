@@ -120,6 +120,9 @@
   <data name="AutoComplete_Tooltip" xml:space="preserve">
     <value>Pesquisar...</value>
   </data>
+  <data name="DataGridExpressionColumn_SelectedProperty_Null" xml:space="preserve">
+    <value>Selecione o campo para pesquisa na coluna 1...</value>
+  </data>
   <data name="DateInputBox_Tooltip" xml:space="preserve">
     <value>Clique para selecionar uma data...</value>
   </data>

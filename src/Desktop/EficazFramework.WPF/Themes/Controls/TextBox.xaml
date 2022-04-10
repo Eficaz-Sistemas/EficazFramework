@@ -258,22 +258,6 @@
         </Style.Triggers>
     </Style>
 
-    <Style x:Key="Style.TextBox.Summary" TargetType="{x:Type TextBox}" BasedOn="{StaticResource {x:Type TextBox}}">
-        <Setter Property="IsReadOnly" Value="True"/>
-        <Setter Property="TextAlignment" Value="Right"/>
-        <Setter Property="EfAttachedProps:Control.ShowLabel" Value="False"/>
-        <Style.Triggers>
-            <Trigger Property="IsReadOnly" Value="True">
-                <Setter Property="Foreground" Value="{DynamicResource Brush.InputElement}"/>
-            </Trigger>
-        </Style.Triggers>
-	</Style>
-
-    <Style x:Key="Style.TextBox.DataGridCellFake" TargetType="{x:Type TextBox}" BasedOn="{StaticResource {x:Type TextBox}}">
-        <Setter Property="FontSize" Value="10 pt"/>
-        <Setter Property="EfAttachedProps:Control.ShowLabel" Value="False"/>
-	</Style>
-
     <Style x:Key="Style.TextBox.DataGridCellEditor" TargetType="{x:Type TextBox}" BasedOn="{StaticResource {x:Type TextBox}}">
         <Setter Property="FontSize" Value="{Binding Source={x:Static EFUtilties:DipHelper.FontSize_DataGridColumnText}}" />
         <Setter Property="SelectionBrush" Value="{DynamicResource Brush.Surface.Foreground}"/>
@@ -313,9 +297,11 @@
         </Style.Triggers>
     </Style>
 
+    
     <Style TargetType="{x:Type EfControls:DocumentoInputBox}" BasedOn="{StaticResource {x:Type TextBox}}"/>
+    <Style x:Key="Style.DocumentoInputBox.DataGridCellEditor" TargetType="{x:Type EfControls:DocumentoInputBox}" BasedOn="{StaticResource Style.TextBox.DataGridCellEditor}"/>
+
 
     <Style TargetType="{x:Type EfControls:NumberInputBox}" BasedOn="{StaticResource {x:Type TextBox}}"/>
-
-
+    <Style x:Key="Style.NumberInputBox.DataGridCellEditor" TargetType="{x:Type EfControls:NumberInputBox}" BasedOn="{StaticResource Style.TextBox.DataGridCellEditor}"/>
 </ResourceDictionary>

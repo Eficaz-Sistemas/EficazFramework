@@ -3,6 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:EficazFramework.Tests.WPF.Views"
         xmlns:System="clr-namespace:System;assembly=mscorlib"  
         xmlns:EfControls="clr-namespace:EficazFramework.Controls;assembly=EficazFramework.WPF"
         xmlns:EfAttachedProps="clr-namespace:EficazFramework.Controls.AttachedProperties;assembly=EficazFramework.WPF"
@@ -243,6 +244,81 @@
                 <Button Margin="3" EfAttachedProps:Control.Color="Primary" EfAttachedProps:Control.Elevation="3">3</Button>
                 <Button Margin="3" EfAttachedProps:Control.Color="Primary" EfAttachedProps:Control.Elevation="4">4</Button>
             </UniformGrid>
+        </TabItem>
+        <TabItem Header="Grids / Lists" 
+                 EfAttachedProps:TabControl.Icon="{DynamicResource Icon.MaterialDesign.Table}">
+            <TabItem.DataContext>
+                <local:TesteList/>
+            </TabItem.DataContext>
+            <StackPanel Margin="15">
+                <GroupBox Header="DataGrid" Margin="10">
+                    <UniformGrid Margin="15" Columns="3">
+                        <DataGrid Margin="3" 
+                                  VerticalAlignment="Top"
+                                  ItemsSource="{Binding}"
+                                  HeadersVisibility="All">
+                            <DataGrid.Columns>
+                                <EfControls:DataGridInputColumn EfAttachedProps:DataGrid.ShowFilter="True" Binding="{Binding Nome}" Header="Nome" Width="Auto" />
+                                <EfControls:DataGridInputColumn EfAttachedProps:DataGrid.ShowFilter="True" Binding="{Binding BC, StringFormat=\{0:c2\}}" Header="BC" Width="Auto" />
+                                <EfControls:DataGridInputColumn EfAttachedProps:DataGrid.ShowFilter="True" Binding="{Binding Aliquota, StringFormat=\{0:c2\}}" Header="Alíquota"  Width="Auto"/>
+                                <EfControls:DataGridInputColumn Binding="{Binding Valor, StringFormat=\{0:c2\}}" Header="Valor"  Width="*"/>
+                            </DataGrid.Columns>
+                        </DataGrid>
+                        <DataGrid Margin="3" 
+                                  VerticalAlignment="Top"
+                                  ItemsSource="{Binding}"
+                                  x:Name="grid2"
+                                  EfAttachedProps:Control.Color="Secondary"
+                                  HeadersVisibility="All">
+                            <DataGrid.Columns>
+                                <EfControls:DataGridInputColumn EfAttachedProps:DataGrid.ShowFilter="True" Binding="{Binding Nome}" Header="Nome" Width="Auto" />
+                                <EfControls:DataGridInputColumn EfAttachedProps:DataGrid.ShowFilter="True" Binding="{Binding BC, StringFormat=\{0:c2\}}" Header="BC" Width="Auto" />
+                                <EfControls:DataGridInputColumn EfAttachedProps:DataGrid.ShowFilter="True" Binding="{Binding Aliquota, StringFormat=\{0:c2\}}" Header="Alíquota"  Width="Auto"/>
+                                <EfControls:DataGridInputColumn Binding="{Binding Valor, StringFormat=\{0:c2\}}" Header="Valor"  Width="*"/>
+                            </DataGrid.Columns>
+                        </DataGrid>
+                        <DataGrid Margin="3" 
+                                  VerticalAlignment="Top"
+                                  ItemsSource="{Binding}"
+                                  x:Name="grid3"
+                                  EfAttachedProps:Control.Color="Tertiary"
+                                  HeadersVisibility="All">
+                            <DataGrid.Columns>
+                                <EfControls:DataGridInputColumn EfAttachedProps:DataGrid.ShowFilter="True" Binding="{Binding Nome}" Header="Nome" Width="Auto" />
+                                <EfControls:DataGridInputColumn EfAttachedProps:DataGrid.ShowFilter="True" Binding="{Binding BC, StringFormat=\{0:c2\}}" Header="BC" Width="Auto" />
+                                <EfControls:DataGridInputColumn EfAttachedProps:DataGrid.ShowFilter="True" Binding="{Binding Aliquota, StringFormat=\{0:c2\}}" Header="Alíquota"  Width="Auto"/>
+                                <EfControls:DataGridInputColumn Binding="{Binding Valor, StringFormat=\{0:c2\}}" Header="Valor"  Width="*"/>
+                            </DataGrid.Columns>
+                        </DataGrid>
+                    </UniformGrid>
+                </GroupBox>
+                <GroupBox Header="ListView / TreeVuew" Margin="10">
+                    <UniformGrid Margin="15" Columns="6">
+                        <ListView Margin="3"
+                                  ItemsSource="{Binding}">
+                        </ListView>
+                        <ListView Margin="3"
+                                  EfAttachedProps:Control.Color="Secondary"
+                                  ItemsSource="{Binding}">
+                        </ListView>
+                        <ListView Margin="3"
+                                  EfAttachedProps:Control.Color="Tertiary"
+                                  ItemsSource="{Binding}">
+                        </ListView>
+                        <TreeView Margin="3"
+                                  ItemsSource="{Binding}">
+                        </TreeView>
+                        <TreeView Margin="3"
+                                  EfAttachedProps:Control.Color="Secondary"
+                                  ItemsSource="{Binding}">
+                        </TreeView>
+                        <TreeView Margin="3"
+                                  EfAttachedProps:Control.Color="Tertiary"
+                                  ItemsSource="{Binding}">
+                        </TreeView>
+                    </UniformGrid>
+                </GroupBox>
+            </StackPanel>
         </TabItem>
         <TabItem Header="Inputs (Typing / Selectors)"
                 EfAttachedProps:TabControl.Icon="{DynamicResource Icon.MaterialDesign.Pen}">

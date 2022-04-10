@@ -84,23 +84,20 @@
     </Style>
 
     <!-- DataGrid -->
-    <Style x:Key="Style.TextBlock.DataGridHeader" TargetType="TextBlock" BasedOn="{StaticResource {x:Type TextBlock}}">
-        <!--<Setter Property="FontSize" Value="10 pt"/>-->
+    <Style x:Key="Style.TextElement.DataGrid" TargetType="TextElement" BasedOn="{StaticResource {x:Type TextElement}}">
+        <Setter Property="FontSize" Value="{Binding Source={x:Static EfUtilties:DipHelper.FontSize_DataGridColumnText}}" />
+    </Style>
+
+    <Style x:Key="Style.TextBlock.DataGrid" TargetType="TextBlock" BasedOn="{StaticResource {x:Type TextBlock}}">
         <Setter Property="FontSize" Value="{Binding Source={x:Static EfUtilties:DipHelper.FontSize_DataGridColumnText}}" />
         <Setter Property="TextTrimming" Value="CharacterEllipsis"/>
         <Setter Property="TextWrapping" Value="NoWrap"/>
     </Style>
 
     <Style x:Key="Style.TextBlock.DataGridHeader.MultiLine" TargetType="TextBlock" BasedOn="{StaticResource {x:Type TextBlock}}">
-        <!--<Setter Property="FontSize" Value="10 pt"/>-->
         <Setter Property="FontSize" Value="{Binding Source={x:Static EfUtilties:DipHelper.FontSize_DataGridColumnText}}" />
         <Setter Property="TextTrimming" Value="None"/>
         <Setter Property="TextWrapping" Value="Wrap"/>
     </Style>
-
-    <Style x:Key="Style.TextElement.DataGridHeader" TargetType="TextElement" BasedOn="{StaticResource {x:Type TextElement}}">
-        <Setter Property="FontSize" Value="{Binding Source={x:Static EfUtilties:DipHelper.FontSize_DataGridColumnText}}" />
-    </Style>
-
 
 </ResourceDictionary>

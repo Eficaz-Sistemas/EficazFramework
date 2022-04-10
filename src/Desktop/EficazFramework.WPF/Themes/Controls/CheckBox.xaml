@@ -238,7 +238,7 @@
                                    Opacity="0"  />
                         <ContentPresenter x:Name="contentPresenter" 
                                           Grid.Column="1" 
-                                          Margin="0,1,0,0"
+                                          Margin="5,1,0,0"
                                           Focusable="False" 
                                           RecognizesAccessKey="True"
                                           VerticalAlignment="{TemplateBinding VerticalContentAlignment}"

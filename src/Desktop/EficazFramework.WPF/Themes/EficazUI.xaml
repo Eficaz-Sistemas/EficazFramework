@@ -21,6 +21,8 @@
         <ResourceDictionary Source="pack://application:,,,/EficazFramework.WPF;component/Themes/Controls/CheckBox.xaml" />
         <ResourceDictionary Source="pack://application:,,,/EficazFramework.WPF;component/Themes/Controls/ColorZone.xaml" />
         <ResourceDictionary Source="pack://application:,,,/EficazFramework.WPF;component/Themes/Controls/ComboBox.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/EficazFramework.WPF;component/Themes/Controls/ContextMenu.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/EficazFramework.WPF;component/Themes/Controls/DataGrid.xaml" />
         <ResourceDictionary Source="pack://application:,,,/EficazFramework.WPF;component/Themes/Controls/GroupBox.xaml" />
         <ResourceDictionary Source="pack://application:,,,/EficazFramework.WPF;component/Themes/Controls/Icon.xaml" />
         <ResourceDictionary Source="pack://application:,,,/EficazFramework.WPF;component/Themes/Controls/InteractiveTextBox.xaml" />

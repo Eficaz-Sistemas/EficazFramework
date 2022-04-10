@@ -99,6 +99,7 @@
 | Classes | |
 | :--- | :--- |
 | [BlurEffectConverter](EficazFramework.Converters/BlurEffectConverter.md 'EficazFramework.Converters.BlurEffectConverter') | |
+| [DataGridColumnHeaderConverter](EficazFramework.Converters/DataGridColumnHeaderConverter.md 'EficazFramework.Converters.DataGridColumnHeaderConverter') | |
 | [ElevationEffectConverter](EficazFramework.Converters/ElevationEffectConverter.md 'EficazFramework.Converters.ElevationEffectConverter') | |
 
 <a name='EficazFramework.Events'></a>

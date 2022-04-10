@@ -5,6 +5,7 @@
                     xmlns:EfConverters="clr-namespace:EficazFramework.Converters"
                     xmlns:EfAttachedProps="clr-namespace:EficazFramework.Controls.AttachedProperties"
                     xmlns:EfControlsResources="clr-namespace:EficazFramework.Resources.Strings"
+                    xmlns:EFUtilties="clr-namespace:EficazFramework.Utilities"
                     xmlns:EfExtensions="clr-namespace:EficazFramework.Extensions">
 
     <EfConverters:ElevationEffectConverter x:Key="elevator"/>
@@ -327,6 +328,7 @@
             </Trigger>
         </Style.Triggers>
     </Style>
+    
 
     <Style TargetType="{x:Type EfControls:AutoComplete}" BasedOn="{StaticResource {x:Type EfControlsPrimitives:InteractiveTextBox}}">
         <Setter Property="EfAttachedProps:Control.TipText" Value="{EfExtensions:Resource AutoComplete_Tooltip, ResourceManager={x:Type EfControlsResources:Controls}}"/>
@@ -375,6 +377,47 @@
         </Setter>
     </Style>
 
+    <Style x:Key="Style.AutoComplete.DataGridCellEditor" TargetType="{x:Type EfControls:AutoComplete}" BasedOn="{StaticResource {x:Type EfControls:AutoComplete}}">
+        <Setter Property="FontSize" Value="{Binding Source={x:Static EFUtilties:DipHelper.FontSize_DataGridColumnText}}" />
+        <Setter Property="SelectionBrush" Value="{DynamicResource Brush.Surface.Foreground}"/>
+        <Setter Property="CaretBrush" Value="{DynamicResource Brush.Surface.Foreground}"/>
+        <Setter Property="Padding" Value="2"/>
+        <Setter Property="Margin" Value="-1"/>
+        <Setter Property="EfAttachedProps:Control.ShowLabel" Value="False"/>
+        <Setter Property="FindButtonVisibility" Value="Collapsed"/>
+        <Style.Triggers>
+            <Trigger Property="EfAttachedProps:Control.Color" Value="Surface">
+                <Setter Property="CaretBrush" Value="{DynamicResource Brush.Surface.Foreground}"/>
+                <Setter Property="SelectionBrush" Value="{DynamicResource Brush.Surface.Foreground}"/>
+            </Trigger>
+            <Trigger Property="EfAttachedProps:Control.Color" Value="SurfaceAlternate">
+                <Setter Property="CaretBrush" Value="{DynamicResource Brush.SurfaceAlternate.Foreground}"/>
+                <Setter Property="SelectionBrush" Value="{DynamicResource Brush.SurfaceAlternate.Foreground}"/>
+            </Trigger>
+            <Trigger Property="EfAttachedProps:Control.Color" Value="Primary">
+                <Setter Property="CaretBrush" Value="{DynamicResource Brush.Surface.Foreground}"/>
+                <Setter Property="SelectionBrush" Value="{DynamicResource Brush.Surface.Foreground}"/>
+            </Trigger>
+            <Trigger Property="EfAttachedProps:Control.Color" Value="PrimaryDarken">
+                <Setter Property="CaretBrush" Value="{DynamicResource Brush.Surface.Foreground}"/>
+                <Setter Property="SelectionBrush" Value="{DynamicResource Brush.Surface.Foreground}"/>
+            </Trigger>
+            <Trigger Property="EfAttachedProps:Control.Color" Value="PrimaryLighten">
+                <Setter Property="CaretBrush" Value="{DynamicResource Brush.Surface.Foreground}"/>
+                <Setter Property="SelectionBrush" Value="{DynamicResource Brush.Surface.Foreground}"/>
+            </Trigger>
+            <Trigger Property="EfAttachedProps:Control.Color" Value="Secondary">
+                <Setter Property="CaretBrush" Value="{DynamicResource Brush.Surface.Foreground}"/>
+                <Setter Property="SelectionBrush" Value="{DynamicResource Brush.Surface.Foreground}"/>
+            </Trigger>
+            <Trigger Property="EfAttachedProps:Control.Color" Value="Tertiary">
+                <Setter Property="CaretBrush" Value="{DynamicResource Brush.Surface.Foreground}"/>
+                <Setter Property="SelectionBrush" Value="{DynamicResource Brush.Surface.Foreground}"/>
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
+
     <Style TargetType="{x:Type EfControls:DateInputBox}" BasedOn="{StaticResource {x:Type EfControlsPrimitives:InteractiveTextBox}}">
         <Setter Property="EfAttachedProps:Control.TipText" Value="{EfExtensions:Resource DateInputBox_Tooltip, ResourceManager={x:Type EfControlsResources:Controls}}"/>
         <Setter Property="TextAlignment" Value="Center"/>
@@ -396,5 +439,46 @@
             </Setter.Value>
         </Setter>
     </Style>
+
+    <Style x:Key="Style.DateInputBox.DataGridCellEditor" TargetType="{x:Type EfControls:DateInputBox}" BasedOn="{StaticResource {x:Type EfControls:DateInputBox}}">
+        <Setter Property="FontSize" Value="{Binding Source={x:Static EFUtilties:DipHelper.FontSize_DataGridColumnText}}" />
+        <Setter Property="SelectionBrush" Value="{DynamicResource Brush.Surface.Foreground}"/>
+        <Setter Property="CaretBrush" Value="{DynamicResource Brush.Surface.Foreground}"/>
+        <Setter Property="Padding" Value="2"/>
+        <Setter Property="Margin" Value="-1"/>
+        <Setter Property="EfAttachedProps:Control.ShowLabel" Value="False"/>
+        <Setter Property="FindButtonVisibility" Value="Collapsed"/>
+        <Style.Triggers>
+            <Trigger Property="EfAttachedProps:Control.Color" Value="Surface">
+                <Setter Property="CaretBrush" Value="{DynamicResource Brush.Surface.Foreground}"/>
+                <Setter Property="SelectionBrush" Value="{DynamicResource Brush.Surface.Foreground}"/>
+            </Trigger>
+            <Trigger Property="EfAttachedProps:Control.Color" Value="SurfaceAlternate">
+                <Setter Property="CaretBrush" Value="{DynamicResource Brush.SurfaceAlternate.Foreground}"/>
+                <Setter Property="SelectionBrush" Value="{DynamicResource Brush.SurfaceAlternate.Foreground}"/>
+            </Trigger>
+            <Trigger Property="EfAttachedProps:Control.Color" Value="Primary">
+                <Setter Property="CaretBrush" Value="{DynamicResource Brush.Surface.Foreground}"/>
+                <Setter Property="SelectionBrush" Value="{DynamicResource Brush.Surface.Foreground}"/>
+            </Trigger>
+            <Trigger Property="EfAttachedProps:Control.Color" Value="PrimaryDarken">
+                <Setter Property="CaretBrush" Value="{DynamicResource Brush.Surface.Foreground}"/>
+                <Setter Property="SelectionBrush" Value="{DynamicResource Brush.Surface.Foreground}"/>
+            </Trigger>
+            <Trigger Property="EfAttachedProps:Control.Color" Value="PrimaryLighten">
+                <Setter Property="CaretBrush" Value="{DynamicResource Brush.Surface.Foreground}"/>
+                <Setter Property="SelectionBrush" Value="{DynamicResource Brush.Surface.Foreground}"/>
+            </Trigger>
+            <Trigger Property="EfAttachedProps:Control.Color" Value="Secondary">
+                <Setter Property="CaretBrush" Value="{DynamicResource Brush.Surface.Foreground}"/>
+                <Setter Property="SelectionBrush" Value="{DynamicResource Brush.Surface.Foreground}"/>
+            </Trigger>
+            <Trigger Property="EfAttachedProps:Control.Color" Value="Tertiary">
+                <Setter Property="CaretBrush" Value="{DynamicResource Brush.Surface.Foreground}"/>
+                <Setter Property="SelectionBrush" Value="{DynamicResource Brush.Surface.Foreground}"/>
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
 
 </ResourceDictionary>

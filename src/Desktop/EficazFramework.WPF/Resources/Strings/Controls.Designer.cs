@@ -70,6 +70,15 @@ namespace EficazFramework.Resources.Strings {
         }
         
         /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Selecione o campo para pesquisa na coluna 1....
+        /// </summary>
+        public static string DataGridExpressionColumn_SelectedProperty_Null {
+            get {
+                return ResourceManager.GetString("DataGridExpressionColumn_SelectedProperty_Null", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Consulta uma cadeia de caracteres localizada semelhante a Clique para selecionar uma data....
         /// </summary>
         public static string DateInputBox_Tooltip {

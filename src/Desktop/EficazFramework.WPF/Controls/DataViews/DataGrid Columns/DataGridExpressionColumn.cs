@@ -12,16 +12,15 @@ public class DataGridExpressionColumn : System.Windows.Controls.DataGridTextColu
 
     protected override FrameworkElement GenerateEditingElement(DataGridCell cell, object dataItem)
     {
+        if (System.ComponentModel.DesignerProperties.GetIsInDesignMode(this))
+            return GenerateTextBlock(cell, dataItem, "editor de pesquisa...");
+
         clcell = cell;
         if (dataItem is not EficazFramework.Expressions.ExpressionItem expr)
             throw new InvalidCastException("dataItem must be of type EficazFramework.Expressions.ExpressionItem.");
 
         if (expr.SelectedProperty == null)
-        {
-            TextBlock invalidelement = new();
-            invalidelement.SetResourceReference(TextBlock.StyleProperty, "MaterialDesignDataGridTextColumnStyle");
-            return invalidelement;
-        }
+            return GenerateTextBlock(cell, dataItem, EficazFramework.Resources.Strings.Controls.DataGridExpressionColumn_SelectedProperty_Null);
 
         FrameworkElement element = null;
 
@@ -29,7 +28,7 @@ public class DataGridExpressionColumn : System.Windows.Controls.DataGridTextColu
         {
             element = new TextBox() { DataContext = expr };
             element.SetBinding(TextBox.TextProperty, new Binding("ValueToUpdate") { TargetNullValue = string.Empty, UpdateSourceTrigger = UpdateSourceTrigger.LostFocus });
-            element.SetResourceReference(TextBox.StyleProperty, "MaterialDesignDataGridTextColumnEditingStyle");
+            element.SetResourceReference(TextBox.StyleProperty, "Style.TextBox.DataGridCellEditor");
         }
         else
         {
@@ -40,39 +39,42 @@ public class DataGridExpressionColumn : System.Windows.Controls.DataGridTextColu
                 switch (expr.SelectedProperty.Editor)
                 {
                     case Expressions.ExpressionEditor.Date:
-                        element1 = new DateInputBox() { DataContext = expr };
-                        element1.SetBinding(DateInputBox.TextProperty, new Binding(!UpdateMode ? "Value1" : "ValueToUpdate")
+                        element1 = new DateInputBox() { DataContext = expr, Width = 140D, Name = "PART_expression_v1" };
+                        element1.SetBinding(DateInputBox.ValueProperty, new Binding(!UpdateMode ? "Value1" : "ValueToUpdate")
                         {
                             TargetNullValue = string.Empty,
                             StringFormat = string.IsNullOrEmpty(expr.Value1StringFormat) ? null : expr.Value1StringFormat
                         });
-                        element1.SetResourceReference(DateInputBox.StyleProperty, "MaterialDesignDataGridTextColumnEditingStyle");
-                        //============
-                        element2 = new DateInputBox() { DataContext = expr };
-                        element2.SetBinding(DateInputBox.TextProperty, new Binding("Value2")
+                        element1.SetResourceReference(DateInputBox.StyleProperty, "Style.DateInputBox.DataGridCellEditor");
+
+
+                        element2 = new DateInputBox() { DataContext = expr, Width = 140D, Name = "PART_expression_v2" };
+                        element2.SetBinding(DateInputBox.ValueProperty, new Binding("Value2")
                         {
                             TargetNullValue = string.Empty,
                             StringFormat = string.IsNullOrEmpty(expr.Value2StringFormat) ? null : expr.Value2StringFormat
                         });
-                        element2.SetResourceReference(DateInputBox.StyleProperty, "MaterialDesignDataGridTextColumnEditingStyle");
+                        element2.SetResourceReference(DateInputBox.StyleProperty, "Style.DateInputBox.DataGridCellEditor");
                         break;
 
+                        
                     case Expressions.ExpressionEditor.Number:
-                        element1 = new NumberInputBox() { DataContext = expr, DecimalPlaces = expr.SelectedProperty.DecimalPlaces ?? 0 };
+                        element1 = new NumberInputBox() { DataContext = expr, DecimalPlaces = expr.SelectedProperty.DecimalPlaces ?? 0, Width = 140D, Name = "PART_expression_v1" };
                         element1.SetBinding(NumberInputBox.TextProperty, new Binding(!UpdateMode ? "Value1" : "ValueToUpdate")
                         {
                             TargetNullValue = string.Empty,
                             StringFormat = string.IsNullOrEmpty(expr.Value1StringFormat) ? null : expr.Value1StringFormat
                         });
-                        element1.SetResourceReference(NumberInputBox.StyleProperty, "MaterialDesignDataGridTextColumnEditingStyle");
-                        //============
-                        element2 = new NumberInputBox() { DataContext = expr, DecimalPlaces = expr.SelectedProperty.DecimalPlaces ?? 0 };
+                        element1.SetResourceReference(NumberInputBox.StyleProperty, "Style.NumberInputBox.DataGridCellEditor");
+
+
+                        element2 = new NumberInputBox() { DataContext = expr, DecimalPlaces = expr.SelectedProperty.DecimalPlaces ?? 0, Width = 140D, Name = "PART_expression_v2" };
                         element2.SetBinding(NumberInputBox.TextProperty, new Binding("Value2")
                         {
                             TargetNullValue = string.Empty,
                             StringFormat = string.IsNullOrEmpty(expr.Value2StringFormat) ? null : expr.Value2StringFormat
                         });
-                        element2.SetResourceReference(NumberInputBox.StyleProperty, "MaterialDesignDataGridTextColumnEditingStyle");
+                        element2.SetResourceReference(NumberInputBox.StyleProperty, "Style.NumberInputBox.DataGridCellEditor");
                         break;
 
                     default:
@@ -80,11 +82,9 @@ public class DataGridExpressionColumn : System.Windows.Controls.DataGridTextColu
                 }
                 //============
                 Grid grd = new();
-                TextBlock tb = new()
-                {
-                    Text = EficazFramework.Resources.Strings.Controls.ExpressionBuilder_Between_Separator,
-                    Margin = new Thickness(16, 0, 16, 0)
-                };
+                TextBlock tb = GenerateTextBlock(cell, dataItem, EficazFramework.Resources.Strings.Controls.ExpressionBuilder_Between_Separator);
+                tb.Margin = new Thickness(16, 0, 16, 0);
+                
                 Grid.SetColumn(tb, 1);
                 Grid.SetColumn(element2, 2);
                 grd.ColumnDefinitions.Add(new ColumnDefinition() { Width = new GridLength(1, GridUnitType.Auto) });
@@ -102,13 +102,13 @@ public class DataGridExpressionColumn : System.Windows.Controls.DataGridTextColu
                 {
                     case Expressions.ExpressionEditor.Date:
                         element = new DateInputBox() { DataContext = expr };
-                        element.SetBinding(DateInputBox.TextProperty, new Binding(!UpdateMode ? "Value1" : "ValueToUpdate")
+                        element.SetBinding(DateInputBox.ValueProperty, new Binding(!UpdateMode ? "Value1" : "ValueToUpdate")
                         {
                             TargetNullValue = string.Empty,
                             UpdateSourceTrigger = UpdateSourceTrigger.LostFocus,
                             StringFormat = string.IsNullOrEmpty(expr.Value1StringFormat) ? null : expr.Value1StringFormat
                         });
-                        element.SetResourceReference(DateInputBox.StyleProperty, "MaterialDesignDataGridTextColumnEditingStyle");
+                        element.SetResourceReference(DateInputBox.StyleProperty, "Style.DateInputBox.DataGridCellEditor");
                         break;
 
 
@@ -120,7 +120,7 @@ public class DataGridExpressionColumn : System.Windows.Controls.DataGridTextColu
                             UpdateSourceTrigger = UpdateSourceTrigger.LostFocus,
                             StringFormat = string.IsNullOrEmpty(expr.Value1StringFormat) ? null : expr.Value1StringFormat
                         });
-                        element.SetResourceReference(NumberInputBox.StyleProperty, "MaterialDesignDataGridTextColumnEditingStyle");
+                        element.SetResourceReference(NumberInputBox.StyleProperty, "Style.NumberInputBox.DataGridCellEditor");
                         break;
 
 
@@ -138,7 +138,7 @@ public class DataGridExpressionColumn : System.Windows.Controls.DataGridTextColu
                             UpdateSourceTrigger = UpdateSourceTrigger.PropertyChanged,
                             StringFormat = string.IsNullOrEmpty(expr.Value1StringFormat) ? null : expr.Value1StringFormat
                         });
-                        element.SetResourceReference(AutoComplete.StyleProperty, "MaterialDesignDataGridTextColumnEditingStyle");
+                        element.SetResourceReference(AutoComplete.StyleProperty, "Style.AutoComplete.DataGridCellEditor");
                         clcell = cell;
                         element_searchbox = (AutoComplete)element;
                         element_searchbox.FindAction = FindableEditor_FindRequest;
@@ -159,25 +159,19 @@ public class DataGridExpressionColumn : System.Windows.Controls.DataGridTextColu
                             UpdateSourceTrigger = UpdateSourceTrigger.LostFocus,
                             StringFormat = string.IsNullOrEmpty(expr.Value1StringFormat) ? null : expr.Value1StringFormat
                         });
-                        element.SetResourceReference(TextBox.StyleProperty, "MaterialDesignDataGridTextColumnEditingStyle");
+                        element.SetResourceReference(TextBox.StyleProperty, "Style.TextBox.DataGridCellEditor");
                         break;
                 }
             }
         }
 
         if (element != null)
-        {
-            MaterialDesignThemes.Wpf.HintAssist.SetHint(element, MaterialDesignThemes.Wpf.HintAssist.GetHint(this));
             element.Language = System.Windows.Markup.XmlLanguage.GetLanguage(System.Threading.Thread.CurrentThread.CurrentUICulture.IetfLanguageTag);
-        }
         return element;
     }
 
     protected override FrameworkElement GenerateElement(DataGridCell cell, object dataItem)
     {
-        //if (dataItem is not EficazFramework.Expressions.ExpressionItem)
-        //    throw new InvalidCastException("dataItem must be of type EficazFramework.Expressions.ExpressionItem.");
-
         TextBlock element = (TextBlock)base.GenerateElement(cell, dataItem);
         element.SetBinding(TextBlock.TextProperty, new Binding("ValueToString") { FallbackValue = "..." });
         return element;
@@ -186,16 +180,14 @@ public class DataGridExpressionColumn : System.Windows.Controls.DataGridTextColu
 
     private DataGridCell clcell;
     private AutoComplete element_searchbox;
-    protected override void CancelCellEdit(FrameworkElement editingElement, object uneditedValue)
-    {
+    protected override void CancelCellEdit(FrameworkElement editingElement, object uneditedValue) =>
         base.CancelCellEdit(editingElement, uneditedValue);
-    }
 
-    protected override bool CommitCellEdit(FrameworkElement editingElement)
-    {
-        return base.CommitCellEdit(editingElement);
-    }
+    
+    protected override bool CommitCellEdit(FrameworkElement editingElement) =>
+        base.CommitCellEdit(editingElement);
 
+    
     private void FindableEditor_FindRequest(object sender, EficazFramework.Events.FindRequestEventArgs e)
     {
         if (!UpdateMode)
@@ -208,6 +200,13 @@ public class DataGridExpressionColumn : System.Windows.Controls.DataGridTextColu
         {
 
         }
+    }
+
+    private TextBlock GenerateTextBlock(DataGridCell cell, object dataItem, string text)
+    {
+        TextBlock tb = (TextBlock)base.GenerateElement(cell, dataItem);
+        tb.Text = text;
+        return tb;
     }
 
 }
