@@ -162,7 +162,7 @@ public sealed partial class DipHelper
         {
             1 => (object)conv.ConvertFrom(default, new CultureInfo("en-US"), "9pt"),
             2 => (object)conv.ConvertFrom(default, new CultureInfo("en-US"), "10pt"),
-            _ => (object)conv.ConvertFrom(default, new CultureInfo("en-US"), "11pt"),
+            _ => (object)conv.ConvertFrom(default, new CultureInfo("en-US"), "10pt"),
         };
 
     public static object FontSize_DefaultText =>

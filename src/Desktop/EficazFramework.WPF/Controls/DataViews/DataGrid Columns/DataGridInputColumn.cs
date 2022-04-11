@@ -112,10 +112,10 @@ public partial class DataGridInputColumn : System.Windows.Controls.DataGridTextC
             case InputMode.Default:
             default:
                 TextBox tb = base.GenerateEditingElement(cell, dataItem) as TextBox;
+                tb.SetResourceReference(TextBox.StyleProperty, "Style.TextBox.DataGridCellEditor");    
                 tb.Language = System.Windows.Markup.XmlLanguage.GetLanguage(System.Threading.Thread.CurrentThread.CurrentUICulture.IetfLanguageTag);
                 tb.MaxLength = MaxLength;
                 tb.TextAlignment = Alignment;
-                tb.Style = EditingElementStyle;
                 if (Multiline)
                 {
                     tb.AcceptsReturn = true;
@@ -127,12 +127,12 @@ public partial class DataGridInputColumn : System.Windows.Controls.DataGridTextC
                 {
                     Language = System.Windows.Markup.XmlLanguage.GetLanguage(System.Threading.Thread.CurrentThread.CurrentUICulture.IetfLanguageTag)
                 };
+                numtb.SetResourceReference(NumberInputBox.StyleProperty, "Style.NumberInputBox.DataGridCellEditor");
                 numtb.SetBinding(NumberInputBox.TextProperty, Binding);
                 numtb.DecimalPlaces = NumberDecimalPlaces;
                 numtb.TextAlignment = Alignment;
                 numtb.Maximum = NumberMaximum;
                 numtb.Minimum = NumberMinimum;
-                numtb.Style = EditingElementStyle;
 
                 return numtb;
 
@@ -142,10 +142,10 @@ public partial class DataGridInputColumn : System.Windows.Controls.DataGridTextC
                     Language = System.Windows.Markup.XmlLanguage.GetLanguage(System.Threading.Thread.CurrentThread.CurrentUICulture.IetfLanguageTag)
                 };
                 BindingOperations.ClearBinding(dtbox, DateInputBox.TextProperty);
+                dtbox.SetResourceReference(TextBox.StyleProperty, "Style.DateInputBox.DataGridCellEditor");
                 dtbox.SetBinding(DateInputBox.ValueProperty, Binding);
                 dtbox.TextAlignment = Alignment;
                 dtbox.StringFormat = DateStringFormat;
-                dtbox.Style = EditingElementStyle;
                 return dtbox;
 
 
@@ -157,11 +157,11 @@ public partial class DataGridInputColumn : System.Windows.Controls.DataGridTextC
                 {
                     Language = System.Windows.Markup.XmlLanguage.GetLanguage(System.Threading.Thread.CurrentThread.CurrentUICulture.IetfLanguageTag)
                 };
+                doctb.SetResourceReference(DocumentoInputBox.StyleProperty, "Style.TextBox.DataGridCellEditor");
                 doctb.SetBinding(DocumentoInputBox.ValueProperty, Binding);
                 doctb.TextAlignment = Alignment;
                 doctb.Documento = Documento;
                 doctb.UF = DocumentoUF;
-                doctb.Style = EditingElementStyle;
                 return doctb;
 
         }

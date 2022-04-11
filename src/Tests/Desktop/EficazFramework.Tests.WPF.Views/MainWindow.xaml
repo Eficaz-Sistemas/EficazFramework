@@ -259,8 +259,8 @@
                                   HeadersVisibility="All">
                             <DataGrid.Columns>
                                 <EfControls:DataGridInputColumn EfAttachedProps:DataGrid.ShowFilter="True" Binding="{Binding Nome}" Header="Nome" Width="Auto" />
-                                <EfControls:DataGridInputColumn EfAttachedProps:DataGrid.ShowFilter="True" Binding="{Binding BC, StringFormat=\{0:c2\}}" Header="BC" Width="Auto" />
-                                <EfControls:DataGridInputColumn EfAttachedProps:DataGrid.ShowFilter="True" Binding="{Binding Aliquota, StringFormat=\{0:c2\}}" Header="Alíquota"  Width="Auto"/>
+                                <EfControls:DataGridInputColumn EfAttachedProps:DataGrid.ShowFilter="True" Binding="{Binding BC, StringFormat=\{0:c2\}}" Header="BC" Width="Auto" InputMode="Number" NumberDecimalPlaces="2" Alignment="Right" />
+                                <EfControls:DataGridInputColumn EfAttachedProps:DataGrid.ShowFilter="True" Binding="{Binding Aliquota, StringFormat=\{0:c2\}}" Header="Alíquota"  Width="Auto"  Alignment="Right"/>
                                 <EfControls:DataGridInputColumn Binding="{Binding Valor, StringFormat=\{0:c2\}}" Header="Valor"  Width="*"/>
                             </DataGrid.Columns>
                         </DataGrid>

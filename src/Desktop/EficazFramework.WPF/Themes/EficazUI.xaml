@@ -27,6 +27,7 @@
         <ResourceDictionary Source="pack://application:,,,/EficazFramework.WPF;component/Themes/Controls/Icon.xaml" />
         <ResourceDictionary Source="pack://application:,,,/EficazFramework.WPF;component/Themes/Controls/InteractiveTextBox.xaml" />
         <ResourceDictionary Source="pack://application:,,,/EficazFramework.WPF;component/Themes/Controls/ListView.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/EficazFramework.WPF;component/Themes/Controls/MenuItem.xaml" />
         <ResourceDictionary Source="pack://application:,,,/EficazFramework.WPF;component/Themes/Controls/PasswordBox.xaml" />
         <ResourceDictionary Source="pack://application:,,,/EficazFramework.WPF;component/Themes/Controls/ProgressBar.xaml" />
         <ResourceDictionary Source="pack://application:,,,/EficazFramework.WPF;component/Themes/Controls/RadioButton.xaml" />

@@ -1,12 +1,9 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
                     xmlns:EfControls="clr-namespace:EficazFramework.Controls"
-                    xmlns:EfControlsPrimitives="clr-namespace:EficazFramework.Controls.Primitives"
                     xmlns:EfConverters="clr-namespace:EficazFramework.Converters"
                     xmlns:EfAttachedProps="clr-namespace:EficazFramework.Controls.AttachedProperties"
-                    xmlns:EFUtilties="clr-namespace:EficazFramework.Utilities"
-                    xmlns:EfControlsResources="clr-namespace:EficazFramework.Resources.Strings"
-                    xmlns:EfExtensions="clr-namespace:EficazFramework.Extensions">
+                    xmlns:EFUtilties="clr-namespace:EficazFramework.Utilities">
 
     <EfConverters:ElevationEffectConverter x:Key="elevator"/>
 
@@ -262,8 +259,8 @@
         <Setter Property="FontSize" Value="{Binding Source={x:Static EFUtilties:DipHelper.FontSize_DataGridColumnText}}" />
         <Setter Property="SelectionBrush" Value="{DynamicResource Brush.Surface.Foreground}"/>
         <Setter Property="CaretBrush" Value="{DynamicResource Brush.Surface.Foreground}"/>
-        <Setter Property="Padding" Value="2"/>
-        <Setter Property="Margin" Value="-1"/>
+        <Setter Property="Padding" Value="0"/>
+        <Setter Property="Margin" Value="0"/>
         <Setter Property="EfAttachedProps:Control.ShowLabel" Value="False"/>
         <Style.Triggers>
             <Trigger Property="EfAttachedProps:Control.Color" Value="Surface">

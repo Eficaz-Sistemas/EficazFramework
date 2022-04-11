@@ -381,8 +381,8 @@
         <Setter Property="FontSize" Value="{Binding Source={x:Static EFUtilties:DipHelper.FontSize_DataGridColumnText}}" />
         <Setter Property="SelectionBrush" Value="{DynamicResource Brush.Surface.Foreground}"/>
         <Setter Property="CaretBrush" Value="{DynamicResource Brush.Surface.Foreground}"/>
-        <Setter Property="Padding" Value="2"/>
-        <Setter Property="Margin" Value="-1"/>
+        <Setter Property="Padding" Value="0"/>
+        <Setter Property="Margin" Value="0"/>
         <Setter Property="EfAttachedProps:Control.ShowLabel" Value="False"/>
         <Setter Property="FindButtonVisibility" Value="Collapsed"/>
         <Style.Triggers>
@@ -444,8 +444,8 @@
         <Setter Property="FontSize" Value="{Binding Source={x:Static EFUtilties:DipHelper.FontSize_DataGridColumnText}}" />
         <Setter Property="SelectionBrush" Value="{DynamicResource Brush.Surface.Foreground}"/>
         <Setter Property="CaretBrush" Value="{DynamicResource Brush.Surface.Foreground}"/>
-        <Setter Property="Padding" Value="2"/>
-        <Setter Property="Margin" Value="-1"/>
+        <Setter Property="Padding" Value="0"/>
+        <Setter Property="Margin" Value="0"/>
         <Setter Property="EfAttachedProps:Control.ShowLabel" Value="False"/>
         <Setter Property="FindButtonVisibility" Value="Collapsed"/>
         <Style.Triggers>
