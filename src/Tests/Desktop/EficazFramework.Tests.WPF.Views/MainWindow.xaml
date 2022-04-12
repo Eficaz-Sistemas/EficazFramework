@@ -5,6 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:EficazFramework.Tests.WPF.Views"
         xmlns:System="clr-namespace:System;assembly=mscorlib"  
+        xmlns:EfExpr="clr-namespace:EficazFramework.Expressions;assembly=EficazFramework.Data"
         xmlns:EfControls="clr-namespace:EficazFramework.Controls;assembly=EficazFramework.WPF"
         xmlns:EfAttachedProps="clr-namespace:EficazFramework.Controls.AttachedProperties;assembly=EficazFramework.WPF"
         mc:Ignorable="d"
@@ -247,13 +248,17 @@
         </TabItem>
         <TabItem Header="Grids / Lists" 
                  EfAttachedProps:TabControl.Icon="{DynamicResource Icon.MaterialDesign.Table}">
+            <TabItem.Resources>
+                <EfExpr:ExpressionBuilder x:Key="filters"/>
+            </TabItem.Resources>
             <TabItem.DataContext>
                 <local:TesteList/>
             </TabItem.DataContext>
             <StackPanel Margin="15">
                 <GroupBox Header="DataGrid" Margin="10">
-                    <UniformGrid Margin="15" Columns="3">
+                    <UniformGrid Margin="15" Columns="2">
                         <DataGrid Margin="3" 
+                                  EfAttachedProps:DataGrid.FilterViewModel="{StaticResource filters}"
                                   VerticalAlignment="Top"
                                   ItemsSource="{Binding}"
                                   HeadersVisibility="All">

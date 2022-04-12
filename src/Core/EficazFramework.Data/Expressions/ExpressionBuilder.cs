@@ -24,8 +24,8 @@ public class ExpressionBuilder : INotifyPropertyChanged, IDisposable
     #region Properties / Fields
     internal System.Linq.Expressions.ParameterExpression _MP = null;
     internal Dictionary<Type, System.Linq.Expressions.ParameterExpression> _MP_new = new(); // = Nothing
-  
-    
+
+
     private string _errors = null;
     public bool HasErrors => !(string.IsNullOrEmpty(_errors) && string.IsNullOrWhiteSpace(_errors));
 

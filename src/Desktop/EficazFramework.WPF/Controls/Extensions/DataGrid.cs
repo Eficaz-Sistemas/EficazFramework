@@ -453,12 +453,25 @@ public partial class DataGrid
 
     #endregion
 
-    
+
     #region Columns Filter
 
     #region Attached Properties
 
-    // ### SHOW FILTER ###
+    #region ViewModel
+
+    public static EficazFramework.Expressions.ExpressionBuilder GetFilterViewModel(DependencyObject obj) =>
+        (EficazFramework.Expressions.ExpressionBuilder)obj.GetValue(FilterViewModelProperty);
+
+    public static void SetFilterViewModel(DependencyObject obj, EficazFramework.Expressions.ExpressionBuilder value)
+        => obj.SetValue(FilterViewModelProperty, value);
+
+    // Using a DependencyProperty as the backing store for FilterViewModel.  This enables animation, styling, binding, etc...
+    public static readonly DependencyProperty FilterViewModelProperty = DependencyProperty.RegisterAttached("FilterViewModel", typeof(EficazFramework.Expressions.ExpressionBuilder), typeof(DataGrid), new FrameworkPropertyMetadata(null, FrameworkPropertyMetadataOptions.Inherits));
+    #endregion
+
+    
+    #region Show Filter
 
     public static bool GetShowFilter(DependencyObject element) =>
         (bool)element.GetValue(ShowFilterProperty);
@@ -468,25 +481,22 @@ public partial class DataGrid
 
     public static readonly DependencyProperty ShowFilterProperty = DependencyProperty.RegisterAttached("ShowFilter", typeof(bool), typeof(DataGrid), new PropertyMetadata(false)); // , AddressOf OnShowFiltereChanged))
 
+    #endregion
 
-    // ### FILTER TEXT ###
-
+    
+    #region Filter Text
     public static string GetFilterText(DependencyObject element) =>
         (string)element.GetValue(FilterTextProperty);
 
     public static void SetFilterText(DependencyObject element, string value) =>
         element.SetValue(FilterTextProperty, value);
 
-    public static readonly DependencyProperty FilterTextProperty = DependencyProperty.RegisterAttached("FilterText", typeof(string), typeof(DataGrid), new PropertyMetadata(null, FilterTextChanged));
+    public static readonly DependencyProperty FilterTextProperty = DependencyProperty.RegisterAttached("FilterText", typeof(string), typeof(DataGrid), new PropertyMetadata(null));
 
-    private static void FilterTextChanged(object source, DependencyPropertyChangedEventArgs e)
-    {
-        if (source is not DataGridColumnHeader)
-            return;
-        
-        SetFilterText(((DataGridColumnHeader)source).Column, (string)e.NewValue);
-    }
-
+    //private static void FilterTextChanged(object source, DependencyPropertyChangedEventArgs e) =>
+    //    SetFilterText(((DataGridColumnHeader)source).Column, (string)e.NewValue);
+    
+    #endregion
 
     #endregion
 
@@ -516,29 +526,72 @@ public partial class DataGrid
         bt.ContextMenu.MoveFocus(new TraversalRequest(FocusNavigationDirection.First));
     }
 
-    private static EficazFramework.Commands.CommandBase _applyfilterCommand = new EficazFramework.Commands.CommandBase(new EficazFramework.Events.ExecuteEventHandler(ChangeFilterCommand_Execute));
+    private static EficazFramework.Commands.CommandBase _applyfilterCommand = new EficazFramework.Commands.CommandBase(new EficazFramework.Events.ExecuteEventHandler(ApplyCommand_Execute));
     
     /// <summary>
     /// Aplica o filtro pela edição da textobox da coluna
     /// </summary>
     public static EficazFramework.Commands.CommandBase ApplyFilterCommand => _applyfilterCommand;
 
-    public static void ChangeFilterCommand_Execute(object sender, EficazFramework.Events.ExecuteEventArgs e)
+    public static void ApplyCommand_Execute(object sender, EficazFramework.Events.ExecuteEventArgs e)
     {
         System.Windows.Controls.Button context = (System.Windows.Controls.Button)e.Parameter;
-        DataGridColumnHeader cl = (DataGridColumnHeader)context.DataContext; // DirectCast(context.DataContext, FrameworkElement).TemplatedParent
-        string value = GetFilterText(cl);
+        DataGridColumnHeader cl = (DataGridColumnHeader)context.DataContext;
+        object value = (GetFilterText(cl) ?? "").ToLower();
         System.Windows.Controls.DataGrid dg = XAML.Utilities.VisualTreeHelpers.FindAnchestor<System.Windows.Controls.DataGrid>(cl);
-        UpdateFilter(dg);
-        System.Windows.Controls.Button removebt = XAML.Utilities.VisualTreeHelpers.FindVisualChildByName<System.Windows.Controls.Button>(cl, "PART_RemoveCommand");
-        if (string.IsNullOrEmpty(value))
-            removebt.Visibility = Visibility.Collapsed;
+        var vm = GetFilterViewModel(dg);
+        if (vm is null)
+            return;
+
+        Type collectionType = CollectionType(dg);
+        object firstitem = null;
+        try
+        {
+            firstitem = dg.Items.SourceCollection.Cast<object>().ElementAtOrDefault(0);
+        }
+        catch { }
+
+        if (string.IsNullOrEmpty((string)value))
+        {
+            Binding b = (Binding)((DataGridBoundColumn)cl.Column).Binding;
+            var it = vm.Items.Where(it => it.SelectedProperty.PropertyPath == b.Path.Path).FirstOrDefault();
+            vm.Items.Remove(it);
+        }
         else
-            removebt.Visibility = Visibility.Visible;
+        {
+            Binding b = (Binding)((DataGridBoundColumn)cl.Column).Binding;
+            var it = vm.Items.Where(it => it.SelectedProperty.PropertyPath == b.Path.Path).FirstOrDefault();
+            if (it is null)
+            {
+                it = new EficazFramework.Expressions.ExpressionItem()
+                {
+                    SelectedProperty = new EficazFramework.Expressions.ExpressionProperty() { PropertyPath = b.Path.Path },
+                    Value1 = value
+                };
+                vm.Items.Add(it);
+            }
+            else
+                it.SelectedProperty = new EficazFramework.Expressions.ExpressionProperty() { PropertyPath = b.Path.Path };
+
+            object outInfo = null;
+            Type prop = firstitem.GetPropertyInfo(b.Path.Path, ref outInfo).PropertyType;
+            it.ConversionTargetType = firstitem.GetType();
+            it.Operator = prop == typeof(string) ? Enums.CompareMethod.Contains : Enums.CompareMethod.Equals;
+            it.ToLowerString = prop == typeof(string);
+            it.NullCheck = prop == typeof(string);
+            it.Value1 = Conversion.CTypeDynamic(value, prop) ;
+            
+        }
+
+        UpdateFilter(dg, vm, collectionType);
         
         ContextMenu ctxmenu = XAML.Utilities.VisualTreeHelpers.FindAnchestor<ContextMenu>(context);
         if (ctxmenu != null)
             ctxmenu.IsOpen = false;
+        System.Windows.Controls.Button filterbt = XAML.Utilities.VisualTreeHelpers.FindVisualChildByName<System.Windows.Controls.Button>(cl, "PART_AddCommand");
+        System.Windows.Controls.Button removebt = XAML.Utilities.VisualTreeHelpers.FindVisualChildByName<System.Windows.Controls.Button>(cl, "PART_RemoveCommand");
+        filterbt.Visibility = string.IsNullOrEmpty((string)value) ? Visibility.Visible : Visibility.Collapsed;
+        removebt.Visibility = string.IsNullOrEmpty((string)value) ? Visibility.Collapsed : Visibility.Visible;
     }
 
     private static EficazFramework.Commands.CommandBase _clearfilterCommand = new EficazFramework.Commands.CommandBase(new EficazFramework.Events.ExecuteEventHandler(ClearFilterCommand_Execute));
@@ -551,126 +604,53 @@ public partial class DataGrid
     public static void ClearFilterCommand_Execute(object sender, EficazFramework.Events.ExecuteEventArgs e)
     {
         DataGridColumnHeader cl = (DataGridColumnHeader)((FrameworkElement)e.Parameter).TemplatedParent;
-        System.Windows.Controls.DataGrid dg = XAML.Utilities.VisualTreeHelpers.FindAnchestor<System.Windows.Controls.DataGrid>((FrameworkElement)e.Parameter);
         SetFilterText(cl, default);
-        UpdateFilter(dg);
+
+        System.Windows.Controls.DataGrid dg = XAML.Utilities.VisualTreeHelpers.FindAnchestor<System.Windows.Controls.DataGrid>((FrameworkElement)e.Parameter);
+        var vm = GetFilterViewModel(dg);
+        if (vm is null)
+            return;
+
+        Binding b = (Binding)((DataGridBoundColumn)cl.Column).Binding;
+        var it = vm.Items.Where(it => it.SelectedProperty.PropertyPath == b.Path.Path).FirstOrDefault();
+        vm.Items.Remove(it);
+        UpdateFilter(dg, vm, CollectionType(dg));
+
+        System.Windows.Controls.Button filterbt = XAML.Utilities.VisualTreeHelpers.FindVisualChildByName<System.Windows.Controls.Button>(cl, "PART_AddCommand");
         System.Windows.Controls.Button removebt = XAML.Utilities.VisualTreeHelpers.FindVisualChildByName<System.Windows.Controls.Button>(cl, "PART_RemoveCommand");
+        filterbt.Visibility = Visibility.Visible;
         removebt.Visibility = Visibility.Collapsed;
     }
 
 
     #region Command Helpers
 
-    public static void UpdateFilter(System.Windows.Controls.DataGrid dg)
+    private static Type CollectionType(System.Windows.Controls.DataGrid dg)
     {
-        if (dg is null)
-            return;
-        
-        if (dg.Items is null)
-            return;
-        
-        if (dg.Items.SourceCollection is null)
-            return;
-        
-        object firstitem = null;
+        object firstitem;
         try
         {
             firstitem = dg.Items.SourceCollection.Cast<object>().ElementAtOrDefault(0);
         }
         catch // empty_ex As Exception
         {
-            ClearFilter(dg);
+            dg.Items.Filter = null;
+            return null;
         }
+        return firstitem.GetType();
+    }
 
-        if (firstitem is null)
-            return;
-        
-        var firstitemType = firstitem.GetType(); // dg.Items(0).GetType
-        Type lambdaType = typeof(Func<,>).MakeGenericType(firstitemType, typeof(bool)); ;
-        
-        var _MP = System.Linq.Expressions.Expression.Parameter(firstitemType, "ft");
-        System.Linq.Expressions.LambdaExpression resultExpression = null; // As Linq.Expressions.Expression(Of Func(Of Object, Boolean)) = Nothing
-        foreach (var dgc in dg.Columns)
-        {
-            // Debug.WriteLine(GetFilterText(dgc))
-            if (GetShowFilter(dgc) == false)
-                continue;
-            
-            string filtertext = GetFilterText(dgc);
-            if (string.IsNullOrEmpty(filtertext) | string.IsNullOrWhiteSpace(filtertext))
-                continue;
-            
-            if (dgc is not DataGridBoundColumn)
-                continue;
-            
-            Binding b = (Binding)((DataGridBoundColumn)dgc).Binding;
-            var p = b.Path.Path;
-            if (resultExpression != null)
-                resultExpression = EficazFramework.Extensions.Expressions.And((dynamic)resultExpression, BuildExpressionItem(_MP, p, GetFilterText(dgc)));
-            else
-                resultExpression = (LambdaExpression)BuildExpressionItem(_MP, p, GetFilterText(dgc));
-        }
-
-        var pred = resultExpression.Compile(); //System.Linq.Expressions.Expression.Lambda(lambdaType, resultExpression, _MP).Compile();
-        if (pred is null)
+    public static void UpdateFilter(System.Windows.Controls.DataGrid dg, EficazFramework.Expressions.ExpressionBuilder vm, Type collectionType)
+    {      
+        if (vm.Items.Count <= 0)
         {
             dg.Items.Filter = null;
             return;
         }
-        dg.Items.Filter = c => (bool)System.Linq.Expressions.Expression.Lambda(lambdaType, resultExpression, null).Compile().DynamicInvoke(c);
-    }
-
-    private static System.Linq.Expressions.Expression BuildExpressionItem(ParameterExpression mainex, string prop, object value) // As Expression
-    {
-        var path = prop.Split('.');
-        System.Linq.Expressions.Expression propExpression = null;
-        bool i = false;
-        foreach (var access in path)
-        {
-            if (i == false)
-                propExpression = System.Linq.Expressions.Expression.Property(mainex, access);
-            else
-                propExpression = System.Linq.Expressions.Expression.Property(propExpression, access);
-            i = true;
-        }
-
-
-        System.Linq.Expressions.ConstantExpression c = null;
-        if (propExpression.Type == typeof(string))
-        {
-        }
         
-        System.Linq.Expressions.Expression b;
-        if (propExpression.Type == typeof(string))
-        {
-            if (!string.IsNullOrEmpty((string)value))
-                c = System.Linq.Expressions.Expression.Constant(value.ToString().ToLower(), propExpression.Type);
-
-            b = System.Linq.Expressions.Expression.Call(null, EficazFramework.Expressions.ExpressionItem.NullToEmptyMethod, propExpression);
-            b = System.Linq.Expressions.Expression.Call(b, EficazFramework.Expressions.ExpressionItem.ToLowerMethod);
-            b = System.Linq.Expressions.Expression.Call(b, EficazFramework.Expressions.ExpressionItem.ContainsMethod, c);
-        }
-        else
-        {
-            c = System.Linq.Expressions.Expression.Constant(Conversion.CTypeDynamic(value, propExpression.Type), propExpression.Type);
-            b = System.Linq.Expressions.Expression.Equal((System.Linq.Expressions.Expression)propExpression, c);
-        }
-
-        return System.Linq.Expressions.Expression.Lambda(b, mainex);
-    }
-
-    public static void ClearFilter(System.Windows.Controls.DataGrid dg)
-    {
-        if (dg is null)
-            return;
-        
-        foreach (var dgc in dg.Columns)
-            // SetFilterText(dgc, Nothing)
-            SetFilterText(GetDataGridColumnsHeader(dgc, dg), default);
-        if (dg.Items is null)
-            return;
-        
-        dg.Items.Filter = null;
+        var methodExpr = vm.GetExpression<object>();
+        dg.Items.Filter = o => methodExpr.Invoke(o);
+        //dg.Items.Filter = o => func.Invoke(Conversion.CTypeDynamic(o, collectionType));
     }
 
     #endregion

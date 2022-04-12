@@ -15,10 +15,13 @@ Implements [System.ComponentModel.INotifyPropertyChanged](https://docs.microsoft
 | Fields | |
 | :--- | :--- |
 | [_allowExpession](EficazFramework.Expressions/ExpressionItem/_allowExpession.md 'EficazFramework.Expressions.ExpressionItem._allowExpession') | |
+| [_conversionTargetType](EficazFramework.Expressions/ExpressionItem/_conversionTargetType.md 'EficazFramework.Expressions.ExpressionItem._conversionTargetType') | |
+| [_nullCheck](EficazFramework.Expressions/ExpressionItem/_nullCheck.md 'EficazFramework.Expressions.ExpressionItem._nullCheck') | |
 | [_operator](EficazFramework.Expressions/ExpressionItem/_operator.md 'EficazFramework.Expressions.ExpressionItem._operator') | |
 | [_selectedProperty](EficazFramework.Expressions/ExpressionItem/_selectedProperty.md 'EficazFramework.Expressions.ExpressionItem._selectedProperty') | |
 | [_tmpOwnerExpressionBuilder](EficazFramework.Expressions/ExpressionItem/_tmpOwnerExpressionBuilder.md 'EficazFramework.Expressions.ExpressionItem._tmpOwnerExpressionBuilder') | |
 | [_tmpOwnerExpressionUpdater](EficazFramework.Expressions/ExpressionItem/_tmpOwnerExpressionUpdater.md 'EficazFramework.Expressions.ExpressionItem._tmpOwnerExpressionUpdater') | |
+| [_toLowerString](EficazFramework.Expressions/ExpressionItem/_toLowerString.md 'EficazFramework.Expressions.ExpressionItem._toLowerString') | |
 | [_updateValueType](EficazFramework.Expressions/ExpressionItem/_updateValueType.md 'EficazFramework.Expressions.ExpressionItem._updateValueType') | |
 | [_value1](EficazFramework.Expressions/ExpressionItem/_value1.md 'EficazFramework.Expressions.ExpressionItem._value1') | |
 | [_value1StringFormat](EficazFramework.Expressions/ExpressionItem/_value1StringFormat.md 'EficazFramework.Expressions.ExpressionItem._value1StringFormat') | |
@@ -35,12 +38,15 @@ Implements [System.ComponentModel.INotifyPropertyChanged](https://docs.microsoft
 | :--- | :--- |
 | [AllowExpression](EficazFramework.Expressions/ExpressionItem/AllowExpression.md 'EficazFramework.Expressions.ExpressionItem.AllowExpression') | |
 | [AvailableOperators](EficazFramework.Expressions/ExpressionItem/AvailableOperators.md 'EficazFramework.Expressions.ExpressionItem.AvailableOperators') | |
+| [ConversionTargetType](EficazFramework.Expressions/ExpressionItem/ConversionTargetType.md 'EficazFramework.Expressions.ExpressionItem.ConversionTargetType') | |
 | [DateTimeValue1](EficazFramework.Expressions/ExpressionItem/DateTimeValue1.md 'EficazFramework.Expressions.ExpressionItem.DateTimeValue1') | |
 | [DateTimeValue2](EficazFramework.Expressions/ExpressionItem/DateTimeValue2.md 'EficazFramework.Expressions.ExpressionItem.DateTimeValue2') | |
 | [EnumValues](EficazFramework.Expressions/ExpressionItem/EnumValues.md 'EficazFramework.Expressions.ExpressionItem.EnumValues') | |
+| [NullCheck](EficazFramework.Expressions/ExpressionItem/NullCheck.md 'EficazFramework.Expressions.ExpressionItem.NullCheck') | |
 | [Operator](EficazFramework.Expressions/ExpressionItem/Operator.md 'EficazFramework.Expressions.ExpressionItem.Operator') | |
 | [SelectedProperty](EficazFramework.Expressions/ExpressionItem/SelectedProperty.md 'EficazFramework.Expressions.ExpressionItem.SelectedProperty') | |
 | [SelectedPropertyPath](EficazFramework.Expressions/ExpressionItem/SelectedPropertyPath.md 'EficazFramework.Expressions.ExpressionItem.SelectedPropertyPath') | |
+| [ToLowerString](EficazFramework.Expressions/ExpressionItem/ToLowerString.md 'EficazFramework.Expressions.ExpressionItem.ToLowerString') | |
 | [UpdateMode](EficazFramework.Expressions/ExpressionItem/UpdateMode.md 'EficazFramework.Expressions.ExpressionItem.UpdateMode') | |
 | [UpdateValueType](EficazFramework.Expressions/ExpressionItem/UpdateValueType.md 'EficazFramework.Expressions.ExpressionItem.UpdateValueType') | |
 | [Value1](EficazFramework.Expressions/ExpressionItem/Value1.md 'EficazFramework.Expressions.ExpressionItem.Value1') | |

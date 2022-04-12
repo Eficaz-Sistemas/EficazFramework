@@ -243,7 +243,7 @@
                                         Opacity="0.25"
                                         Margin="3"
                                         CornerRadius="3" />
-                                <StackPanel Grid.Column="1" Margin="2,0" Orientation="Horizontal" x:Name="PART_headerFilterActions" Visibility="Collapsed">
+                                <StackPanel Grid.Column="1" Margin="2,0" Orientation="Horizontal" x:Name="PART_headerFilterActions" Visibility="Visible">
                                     <Button IsTabStop="False" Name="PART_AddCommand" 
                                             Padding="0,4"
                                             Width="20"
@@ -288,13 +288,13 @@
                                             Width="20"
                                             Margin="0,3,6,3"
                                             BorderThickness="0"
-                                            EfAttachedProps:Control.Elevation="3"
-                                            EfAttachedProps:Control.CornerRadius="0"
+                                            EfAttachedProps:Control.Elevation="0"
+                                            EfAttachedProps:Control.CornerRadius="3"
                                             ToolTip="Remover Filtro"
                                             Command="{Binding ClearFilterCommand, Source={StaticResource datagridhelpers}}"
                                             CommandParameter="{Binding ElementName=clheaderootelement}" 
                                             Visibility="Collapsed">
-                                        <EfControls:Icon Height="11" Width="11" Data="{DynamicResource Icon.Editing.Cancel}"/>
+                                        <EfControls:Icon Height="11" Width="11" Data="{DynamicResource Icon.MaterialDesign.Close}"/>
                                     </Button>
                                 </StackPanel>
                             </Grid>
@@ -358,9 +358,16 @@
                             </MultiTrigger.Conditions>
                             <Setter TargetName="MouseOverPresenter" Property="Visibility" Value="Visible" />
                         </MultiTrigger>
-                        <DataTrigger Binding="{Binding Column, RelativeSource={RelativeSource Self}, Converter={StaticResource clheaderconverter}, ConverterParameter=show_filter}" Value="True">
-                            <Setter TargetName="PART_headerFilterActions" Property="Visibility" Value="Visible" />
-                        </DataTrigger>
+                        <Trigger Property="EfAttachedProps:DataGrid.FilterViewModel" Value="{x:Null}">
+                            <Setter TargetName="PART_headerFilterActions" Property="Visibility" Value="Collapsed" />
+                        </Trigger>
+                        <MultiDataTrigger>
+                            <MultiDataTrigger.Conditions>
+                                <Condition Binding="{Binding RelativeSource={RelativeSource Self}, Path=(EfAttachedProps:DataGrid.FilterViewModel)}" Value="{x:Null}"/>
+                                <Condition Binding="{Binding Column, RelativeSource={RelativeSource Self}, Converter={StaticResource clheaderconverter}, ConverterParameter=show_filter}" Value="False"/>
+                            </MultiDataTrigger.Conditions>
+                            <Setter TargetName="PART_headerFilterActions" Property="Visibility" Value="Collapsed" />
+                        </MultiDataTrigger>
                         <Trigger SourceName="PART_AddCommand" Property="IsMouseOver" Value="True">
                             <Setter TargetName="MouseOverPresenter" Property="Visibility" Value="Collapsed"/>
                         </Trigger>

@@ -111,9 +111,50 @@ public class ExpressionItem : INotifyPropertyChanged
             RaisePropertyChanged("Value2StringFormat");
         }
     }
-
+    
     // RESULTING STRING VALUE:
     public string ValueToString => Conversions.ToString(ParseValueToString());
+
+
+    #region Advanced Parameters
+    
+    private Type _conversionTargetType = null;
+    public Type ConversionTargetType
+    {
+        get => _conversionTargetType;
+        set
+        {
+            _conversionTargetType = value;
+            RaisePropertyChanged("ConversionTargetType");
+        }
+    }
+
+
+    private bool _nullCheck = false;
+    public bool NullCheck
+    {
+        get => _nullCheck;
+        set
+        {
+            _nullCheck = value;
+            RaisePropertyChanged("NullCheck");
+        }
+    }
+
+
+    private bool _toLowerString = false;
+    public bool ToLowerString
+    {
+        get => _toLowerString;
+        set
+        {
+            _toLowerString = value;
+            RaisePropertyChanged("ToLowerString");
+        }
+    }
+
+    #endregion
+
 
     #region Blazor Helper
 
@@ -493,9 +534,15 @@ public class ExpressionItem : INotifyPropertyChanged
         // Dim m As Expression = ExpressionBuilder._MP
         if (!_tmpOwnerExpressionBuilder._MP_new.ContainsKey(typeof(TElement)))
             _tmpOwnerExpressionBuilder._MP_new.Add(typeof(TElement), Expression.Parameter(typeof(TElement), "f"));
+        
         Expression m = _tmpOwnerExpressionBuilder._MP_new[typeof(TElement)];
+
+        if (ConversionTargetType != null)
+            m = Expression.Convert(m, ConversionTargetType);
+        
         var args = new Events.ExpressionEventArgs(SelectedProperty.DisplayName, SelectedProperty.PropertyPath, Operator, value, typeof(TElement), this);
         _tmpOwnerExpressionBuilder.CallExpressionBuilding(_tmpOwnerExpressionBuilder, args);
+        
         var path = args.PropertyPath.Split("."); // Me.SelectedProperty.PropertyPath.Split(".")
         foreach (var access in path)
             m = Expression.Property(m, access);
@@ -533,73 +580,80 @@ public class ExpressionItem : INotifyPropertyChanged
             }
         }
 
-        Expression b;
+        Expression b = null;
+
+        if (NullCheck)
+            b = Expression.Call(null, NullToEmptyMethod, m);
+
+        if (ToLowerString)
+            b = Expression.Call(b ?? m, ToLowerMethod);
+
         switch (args.Operator)
         {
             case EficazFramework.Enums.CompareMethod.BiggerThan:
                 {
-                    b = Expression.GreaterThan(m, (Expression)c);
+                    b = Expression.GreaterThan(b ?? m, (Expression)c);
                     break;
                 }
 
             case EficazFramework.Enums.CompareMethod.BiggerOrEqualThan:
                 {
-                    b = Expression.GreaterThanOrEqual(m, (Expression)c);
+                    b = Expression.GreaterThanOrEqual(b ?? m, (Expression)c);
                     break;
                 }
 
             case EficazFramework.Enums.CompareMethod.Equals:
                 {
-                    b = Expression.Equal(m, (Expression)c);
+                    b = Expression.Equal(b ?? m, (Expression)c);
                     break;
                 }
 
             case EficazFramework.Enums.CompareMethod.Different:
                 {
-                    b = Expression.NotEqual(m, (Expression)c);
+                    b = Expression.NotEqual(b ?? m, (Expression)c);
                     break;
                 }
 
             case EficazFramework.Enums.CompareMethod.Contains:
                 {
-                    b = Expression.Call(m, ContainsMethod, (Expression)c);
+                    b = Expression.Call(b ?? m, ContainsMethod, (Expression)c);
                     break;
                 }
 
             case EficazFramework.Enums.CompareMethod.StartsWith:
                 {
-                    b = Expression.Call(m, StartsWithMethod, (Expression)c);
+                    b = Expression.Call(b ?? m, StartsWithMethod, (Expression)c);
                     break;
                 }
 
             case EficazFramework.Enums.CompareMethod.Length:
                 {
-                    m = Expression.Property(m, "Length");
-                    b = Expression.Equal(m, Expression.Constant(args.ValueTyped, typeof(int)));
+                    b = Expression.Property(b ?? m, "Length");
+                    b = Expression.Equal(b, Expression.Constant(args.ValueTyped, typeof(int)));
                     break;
                 }
 
             case EficazFramework.Enums.CompareMethod.Between:
                 {
-                    b = Expression.And(Expression.GreaterThanOrEqual(m, (Expression)c), Expression.LessThanOrEqual(m, (Expression)c2));
+                    b = Expression.And(Expression.GreaterThanOrEqual(b ?? m, (Expression)c), Expression.LessThanOrEqual(b ?? m, (Expression)c2));
                     break;
                 }
 
             case EficazFramework.Enums.CompareMethod.LowerOrEqualThan:
                 {
-                    b = Expression.LessThanOrEqual(m, (Expression)c);
+                    b = Expression.LessThanOrEqual(b ?? m, (Expression)c);
                     break;
                 }
 
             case EficazFramework.Enums.CompareMethod.LowerThan:
                 {
-                    b = Expression.LessThan(m, (Expression)c);
+                    b = Expression.LessThan(b ?? m, (Expression)c);
                     break;
                 }
 
             default:
                 {
-                    b = Expression.Equal(m, (Expression)c);
+                    b = Expression.Equal(b ?? m, (Expression)c);
                     break;
                 }
         }
