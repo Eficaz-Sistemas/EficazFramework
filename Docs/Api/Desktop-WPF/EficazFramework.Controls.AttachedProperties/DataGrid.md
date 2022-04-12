@@ -25,7 +25,7 @@ Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.O
 
 | Methods | |
 | :--- | :--- |
-| [BuildExpressionItem(ParameterExpression, string, object, object)](EficazFramework.Controls.AttachedProperties/DataGrid/BuildExpressionItem(ParameterExpression,string,object,object).md 'EficazFramework.Controls.AttachedProperties.DataGrid.BuildExpressionItem(System.Linq.Expressions.ParameterExpression, string, object, object)') | |
+| [BuildExpressionItem(ParameterExpression, string, object)](EficazFramework.Controls.AttachedProperties/DataGrid/BuildExpressionItem(ParameterExpression,string,object).md 'EficazFramework.Controls.AttachedProperties.DataGrid.BuildExpressionItem(System.Linq.Expressions.ParameterExpression, string, object)') | |
 | [ChangeFilterCommand_Execute(object, ExecuteEventArgs)](EficazFramework.Controls.AttachedProperties/DataGrid/ChangeFilterCommand_Execute(object,ExecuteEventArgs).md 'EficazFramework.Controls.AttachedProperties.DataGrid.ChangeFilterCommand_Execute(object, EficazFramework.Events.ExecuteEventArgs)') | |
 | [ClearFilter(DataGrid)](EficazFramework.Controls.AttachedProperties/DataGrid/ClearFilter(DataGrid).md 'EficazFramework.Controls.AttachedProperties.DataGrid.ClearFilter(System.Windows.Controls.DataGrid)') | |
 | [ClearFilterCommand_Execute(object, ExecuteEventArgs)](EficazFramework.Controls.AttachedProperties/DataGrid/ClearFilterCommand_Execute(object,ExecuteEventArgs).md 'EficazFramework.Controls.AttachedProperties.DataGrid.ClearFilterCommand_Execute(object, EficazFramework.Events.ExecuteEventArgs)') | |

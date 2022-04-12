@@ -592,6 +592,10 @@ public static class TextExtensions
         }
     }
 
+
+    public static string NullToEmpty(this string text) =>
+        text ?? string.Empty;
+
     /// <summary>
     /// Verifica a veracidade do número de CNPJ informado.
     /// </summary>

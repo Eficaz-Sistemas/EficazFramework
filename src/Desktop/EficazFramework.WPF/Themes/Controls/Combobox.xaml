@@ -733,18 +733,20 @@
         <Setter Property="Padding" Value="2"/>
         <Setter Property="Margin" Value="-1"/>
         <Setter Property="EfAttachedProps:Control.ShowLabel" Value="False"/>
+        <Setter Property="ItemContainerStyle" Value="{DynamicResource Style.ComboboxItem.DataGridCellEditor}" />
     </Style>
 
-    <Style x:Key="{x:Type ComboBoxItem}" TargetType="ComboBoxItem">
+    <Style TargetType="{x:Type ComboBoxItem}">
         <Setter Property="SnapsToDevicePixels" Value="true"/>
         <Setter Property="OverridesDefaultStyle" Value="true"/>
         <Setter Property="Foreground" Value="{DynamicResource Brush.TextElement}"/>
         <Setter Property="TextElement.Foreground" Value="{DynamicResource Brush.TextElement}"/>
+        <Setter Property="Padding" Value="10"/>
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="ComboBoxItem">
                     <Border Name="Border"
-                            Padding="10"
+                            Padding="{TemplateBinding Padding}"
                             SnapsToDevicePixels="true"
                             Background="{TemplateBinding Background}">
                         <ContentPresenter />
@@ -847,4 +849,10 @@
         </Style.Triggers>
 
     </Style>
+
+    <Style x:Key="Style.ComboboxItem.DataGridCellEditor" TargetType="{x:Type ComboBoxItem}" BasedOn="{StaticResource {x:Type ComboBoxItem}}">
+        <Setter Property="FontSize" Value="{Binding Source={x:Static EfUtilties:DipHelper.FontSize_DataGridColumnText}}" />
+        <Setter Property="Padding" Value="5"/>
+    </Style>
+
 </ResourceDictionary>

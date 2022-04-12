@@ -584,9 +584,12 @@ public partial class DataGrid
 
         if (firstitem is null)
             return;
+        
         var firstitemType = firstitem.GetType(); // dg.Items(0).GetType
+        Type lambdaType = typeof(Func<,>).MakeGenericType(firstitemType, typeof(bool)); ;
+        
         var _MP = System.Linq.Expressions.Expression.Parameter(firstitemType, "ft");
-        object resultExpression = null; // As Linq.Expressions.Expression(Of Func(Of Object, Boolean)) = Nothing
+        System.Linq.Expressions.LambdaExpression resultExpression = null; // As Linq.Expressions.Expression(Of Func(Of Object, Boolean)) = Nothing
         foreach (var dgc in dg.Columns)
         {
             // Debug.WriteLine(GetFilterText(dgc))
@@ -603,24 +606,22 @@ public partial class DataGrid
             Binding b = (Binding)((DataGridBoundColumn)dgc).Binding;
             var p = b.Path.Path;
             if (resultExpression != null)
-                resultExpression = EficazFramework.Extensions.Expressions.And((dynamic)resultExpression, BuildExpressionItem(_MP, p, GetFilterText(dgc), firstitem));
+                resultExpression = EficazFramework.Extensions.Expressions.And((dynamic)resultExpression, BuildExpressionItem(_MP, p, GetFilterText(dgc)));
             else
-                resultExpression = BuildExpressionItem(_MP, p, GetFilterText(dgc), firstitem);
+                resultExpression = (LambdaExpression)BuildExpressionItem(_MP, p, GetFilterText(dgc));
         }
 
-        var pred = ((dynamic)resultExpression)?.Compile();
+        var pred = resultExpression.Compile(); //System.Linq.Expressions.Expression.Lambda(lambdaType, resultExpression, _MP).Compile();
         if (pred is null)
         {
             dg.Items.Filter = null;
             return;
         }
-
-        dg.Items.Filter = c => pred == null || (bool)pred.Invoke(c);
+        dg.Items.Filter = c => (bool)System.Linq.Expressions.Expression.Lambda(lambdaType, resultExpression, null).Compile().DynamicInvoke(c);
     }
 
-    private static System.Linq.Expressions.Expression BuildExpressionItem(ParameterExpression mainex, string prop, object value, object firstItem) // As Expression
+    private static System.Linq.Expressions.Expression BuildExpressionItem(ParameterExpression mainex, string prop, object value) // As Expression
     {
-        bool isString = false;
         var path = prop.Split('.');
         System.Linq.Expressions.Expression propExpression = null;
         bool i = false;
@@ -633,33 +634,25 @@ public partial class DataGrid
             i = true;
         }
 
-        object outvalue = null;
-        var resolvedValueType = EficazFramework.Extensions.ObjectExtensions.GetPropertyInfo(firstItem, prop, ref outvalue).PropertyType;
-        var resolvedValue = Conversion.CTypeDynamic(value, resolvedValueType);
-        if (ReferenceEquals(EficazFramework.Extensions.ObjectExtensions.GetPropertyInfo(firstItem, prop, ref outvalue).PropertyType, typeof(string)))
-        {
-            isString = true;
-        }
 
-        var c = System.Linq.Expressions.Expression.Constant(resolvedValue, resolvedValueType);
-        if (isString == true)
+        System.Linq.Expressions.ConstantExpression c = null;
+        if (propExpression.Type == typeof(string))
         {
-            if (!string.IsNullOrEmpty((string)resolvedValue))
-                c = System.Linq.Expressions.Expression.Constant(resolvedValue.ToString().ToLower(), resolvedValueType);
         }
-        // Dim nullType = Nullable.GetUnderlyingType(resolvedValueType)
-        // If nullType Is Nothing Then c = Expression.Constant(resolvedValue) Else c = Expression.Convert(Expression.Constant(resolvedValue, resolvedValueType), nullType)
-
+        
         System.Linq.Expressions.Expression b;
-        if (isString)
+        if (propExpression.Type == typeof(string))
         {
-            var resultExpressionString = System.Linq.Expressions.Expression.Call(System.Linq.Expressions.Expression.Call(default, EficazFramework.Expressions.ExpressionItem.NullToEmptyMethod, propExpression), EficazFramework.Expressions.ExpressionItem.ToLowerMethod);
-            if (resolvedValue != null)
-                resolvedValue = resolvedValue?.ToString().ToLower();
-            b = System.Linq.Expressions.Expression.Call(resultExpressionString, EficazFramework.Expressions.ExpressionItem.ContainsMethod, c);
+            if (!string.IsNullOrEmpty((string)value))
+                c = System.Linq.Expressions.Expression.Constant(value.ToString().ToLower(), propExpression.Type);
+
+            b = System.Linq.Expressions.Expression.Call(null, EficazFramework.Expressions.ExpressionItem.NullToEmptyMethod, propExpression);
+            b = System.Linq.Expressions.Expression.Call(b, EficazFramework.Expressions.ExpressionItem.ToLowerMethod);
+            b = System.Linq.Expressions.Expression.Call(b, EficazFramework.Expressions.ExpressionItem.ContainsMethod, c);
         }
         else
         {
+            c = System.Linq.Expressions.Expression.Constant(Conversion.CTypeDynamic(value, propExpression.Type), propExpression.Type);
             b = System.Linq.Expressions.Expression.Equal((System.Linq.Expressions.Expression)propExpression, c);
         }
 

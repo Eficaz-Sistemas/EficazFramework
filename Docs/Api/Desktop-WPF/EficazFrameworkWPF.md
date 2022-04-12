@@ -3,6 +3,23 @@
 ## EficazFramework.WPF Assembly
 ### Namespaces
 
+<a name='Controls'></a>
+
+## Controls Namespace
+
+| Classes | |
+| :--- | :--- |
+| [DataGridComboBoxColumn](Controls/DataGridComboBoxColumn.md 'Controls.DataGridComboBoxColumn') | |
+| [DataGridEnumComboboxColumn](Controls/DataGridEnumComboboxColumn.md 'Controls.DataGridEnumComboboxColumn') | |
+
+<a name='Converters'></a>
+
+## Converters Namespace
+
+| Classes | |
+| :--- | :--- |
+| [EnumDescriptionConverter](Converters/EnumDescriptionConverter.md 'Converters.EnumDescriptionConverter') | |
+
 <a name='EficazFramework.Application'></a>
 
 ## EficazFramework.Application Namespace
