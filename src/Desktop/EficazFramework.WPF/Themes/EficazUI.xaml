@@ -13,6 +13,7 @@
         <ResourceDictionary Source="pack://application:,,,/EficazFramework.WPF;component/Themes/Icons/App.xaml" />
         <ResourceDictionary Source="pack://application:,,,/EficazFramework.WPF;component/Themes/Icons/Brands.xaml" />
         <ResourceDictionary Source="pack://application:,,,/EficazFramework.WPF;component/Themes/Icons/Commerce.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/EficazFramework.WPF;component/Themes/Icons/FluentFilled.xaml" />
         <ResourceDictionary Source="pack://application:,,,/EficazFramework.WPF;component/Themes/Icons/MaterialDesign.xaml" />
         
         <!-- Controls: -->

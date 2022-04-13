@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "Debug Generators": {
+      "commandName": "DebugRoslynComponent",
+      "targetProject": "..\\..\\Desktop\\EficazFramework.WPF\\EficazFramework.WPF.csproj"
+    }
+  }
+}

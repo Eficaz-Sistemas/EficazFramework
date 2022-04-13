@@ -11,41 +11,41 @@
         <Setter Property="BorderThickness" Value="1"/>
         <Setter Property="Background" Value="{DynamicResource Brush.Surface.Paper}"/>
         <Setter Property="BorderBrush" Value="{DynamicResource Brush.Surface.Border}" />
-        <Setter Property="Padding" Value="5" />
+        <Setter Property="Padding" Value="5,3" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type GroupBox}">
-                    <Grid SnapsToDevicePixels="True">
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="Auto"/>
-                            <RowDefinition Height="*"/>
-                        </Grid.RowDefinitions>
+                    <Grid SnapsToDevicePixels="True"  >
                         <Border Background="{TemplateBinding Background}" 
                                 BorderThickness="{TemplateBinding BorderThickness}"
                                 BorderBrush="{TemplateBinding BorderBrush}"
-                                Grid.RowSpan="2"
                                 CornerRadius="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=(EfAttachedProps:Control.CornerRadius)}"  
                                 Effect="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=(EfAttachedProps:Control.Elevation), Converter={StaticResource elevationConverter}}"/>
-                        <ContentPresenter ContentTemplate="{TemplateBinding HeaderTemplate}" 
+                        <Grid Margin="{TemplateBinding Padding}">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
+                            <ContentPresenter ContentTemplate="{TemplateBinding HeaderTemplate}" 
                                           Content="{TemplateBinding Header}" 
                                           ContentStringFormat="{TemplateBinding HeaderStringFormat}" 
                                           ContentSource="Header" 
-                                          Margin="{TemplateBinding Padding}"
                                           RecognizesAccessKey="True" 
                                           SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}">
-                            <ContentPresenter.Resources>
-                                <Style TargetType="{x:Type TextBlock}">
-                                    <Setter Property="FontWeight" Value="Medium"/>
-                                    <Setter Property="FontSize" Value="9 pt"/>
-                                </Style>
-                            </ContentPresenter.Resources>
-                        </ContentPresenter>
-                        <ContentPresenter ContentTemplate="{TemplateBinding ContentTemplate}" 
-                                          Content="{TemplateBinding Content}" 
-                                          ContentStringFormat="{TemplateBinding ContentStringFormat}" 
-                                          Grid.Row="1" 
-                                          Margin="{TemplateBinding Padding}"
-                                          SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"/>
+                                <ContentPresenter.Resources>
+                                    <Style TargetType="{x:Type TextBlock}">
+                                        <Setter Property="FontWeight" Value="Medium"/>
+                                        <Setter Property="FontSize" Value="9 pt"/>
+                                    </Style>
+                                </ContentPresenter.Resources>
+                            </ContentPresenter>
+                            <ContentPresenter ContentTemplate="{TemplateBinding ContentTemplate}" 
+                                        Content="{TemplateBinding Content}" 
+                                        ContentStringFormat="{TemplateBinding ContentStringFormat}" 
+                                        Grid.Row="1" 
+                                        Margin="5,8"
+                                        SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"/>
+                        </Grid>
                     </Grid>
                 </ControlTemplate>
             </Setter.Value>

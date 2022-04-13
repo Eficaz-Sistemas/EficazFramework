@@ -1,6 +1,6 @@
 namespace EficazFramework.Tests;
 
-public abstract class BaseTest<TSourceGeneraator> where TSourceGeneraator : ISourceGenerator
+public abstract class BaseTest<TSourceGenerator> where TSourceGenerator : ISourceGenerator
 {
     private readonly OutputKind outputKind;
 
@@ -47,7 +47,7 @@ public abstract class BaseTest<TSourceGeneraator> where TSourceGeneraator : ISou
                                                    references,
                                                    new CSharpCompilationOptions(outputKind));
 
-        var generator = new EficazFramework.Generators.XAML.XamlIconsGenerator();
+        ISourceGenerator generator = Activator.CreateInstance<TSourceGenerator>();
         
         var driver = CSharpGeneratorDriver.Create(generator);
         driver.RunGeneratorsAndUpdateCompilation(compilation, out var outputCompilation, out var generateDiagnostics);

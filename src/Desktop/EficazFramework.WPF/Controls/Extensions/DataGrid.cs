@@ -479,7 +479,7 @@ public partial class DataGrid
     public static void SetShowFilter(DependencyObject element, bool value) =>
         element.SetValue(ShowFilterProperty, value);
 
-    public static readonly DependencyProperty ShowFilterProperty = DependencyProperty.RegisterAttached("ShowFilter", typeof(bool), typeof(DataGrid), new PropertyMetadata(false)); // , AddressOf OnShowFiltereChanged))
+    public static readonly DependencyProperty ShowFilterProperty = DependencyProperty.RegisterAttached("ShowFilter", typeof(bool), typeof(DataGrid), new FrameworkPropertyMetadata(false, FrameworkPropertyMetadataOptions.AffectsRender)); // , AddressOf OnShowFiltereChanged))
 
     #endregion
 
@@ -499,7 +499,8 @@ public partial class DataGrid
     #endregion
 
     #endregion
-
+    
+    
     #region Commands
 
     private static EficazFramework.Commands.CommandBase _filterCommand = new EficazFramework.Commands.CommandBase(new EficazFramework.Events.ExecuteEventHandler(FilterCommand_Execute));
@@ -525,6 +526,8 @@ public partial class DataGrid
         bt.ContextMenu.IsOpen = true;
         bt.ContextMenu.MoveFocus(new TraversalRequest(FocusNavigationDirection.First));
     }
+
+
 
     private static EficazFramework.Commands.CommandBase _applyfilterCommand = new EficazFramework.Commands.CommandBase(new EficazFramework.Events.ExecuteEventHandler(ApplyCommand_Execute));
     
@@ -580,7 +583,6 @@ public partial class DataGrid
             it.ToLowerString = prop == typeof(string);
             it.NullCheck = prop == typeof(string);
             it.Value1 = Conversion.CTypeDynamic(value, prop) ;
-            
         }
 
         UpdateFilter(dg, vm, collectionType);
@@ -594,6 +596,8 @@ public partial class DataGrid
         removebt.Visibility = string.IsNullOrEmpty((string)value) ? Visibility.Collapsed : Visibility.Visible;
     }
 
+
+    
     private static EficazFramework.Commands.CommandBase _clearfilterCommand = new EficazFramework.Commands.CommandBase(new EficazFramework.Events.ExecuteEventHandler(ClearFilterCommand_Execute));
 
     /// <summary>
@@ -623,6 +627,7 @@ public partial class DataGrid
     }
 
 
+    
     #region Command Helpers
 
     private static Type CollectionType(System.Windows.Controls.DataGrid dg)
@@ -647,10 +652,8 @@ public partial class DataGrid
             dg.Items.Filter = null;
             return;
         }
-        
         var methodExpr = vm.GetExpression<object>();
         dg.Items.Filter = o => methodExpr.Invoke(o);
-        //dg.Items.Filter = o => func.Invoke(Conversion.CTypeDynamic(o, collectionType));
     }
 
     #endregion

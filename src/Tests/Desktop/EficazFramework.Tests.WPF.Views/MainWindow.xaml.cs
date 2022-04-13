@@ -24,6 +24,14 @@ public partial class MainWindow : Window
     {
         InitializeComponent();
     }
+
+    private void Button_Click(object sender, RoutedEventArgs e)
+    {
+    }
+
+    
+    #region WindowCommands
+
     private void ShutdownCmd_Executed(object sender, ExecutedRoutedEventArgs e)
     {
         SystemCommands.CloseWindow(this);
@@ -39,17 +47,44 @@ public partial class MainWindow : Window
     private void MininizeCms_Executed(object sender, ExecutedRoutedEventArgs e) =>
         SystemCommands.MinimizeWindow(this);
 
-    private void Button_Click(object sender, RoutedEventArgs e)
-    {
-    }
+    #endregion
+
+
+    #region Configurations
+
     private void animationck_Checked(object sender, RoutedEventArgs e)
     {
         EficazFramework.Configuration.Visual.Effects = ((CheckBox)sender).IsChecked ?? true;
     }
+
+    #endregion
+
+    
+    #region Inputs
 
     string[] itemsToFind = { "Audi", "Aston Martin", "BMW", "Ferrari", "Mercedes", "Porsche", "Volkswagen" };
     private void autocomplete_Find(object sender, Events.FindRequestEventArgs e)
     {
         e.Data = itemsToFind.Where(x => x.Contains(e.Literal, StringComparison.InvariantCultureIgnoreCase)).ToList();
     }
+
+    #endregion
+
+
+    #region DataGrid
+
+    private void nomeCl_CheckChanged(object sender, RoutedEventArgs e)
+    {
+        EficazFramework.Controls.AttachedProperties.DataGrid.SetShowFilter(nomeCl, (((CheckBox)sender).IsChecked ?? true));
+        dgMain.InvalidateVisual();
+    }
+
+    private void ufCl_CheckChanged(object sender, RoutedEventArgs e)
+    {        
+        EficazFramework.Controls.AttachedProperties.DataGrid.SetShowFilter(nomeCl, (((CheckBox)sender).IsChecked ?? true));
+        dgMain.InvalidateVisual();
+    }
+
+    #endregion
+
 }
