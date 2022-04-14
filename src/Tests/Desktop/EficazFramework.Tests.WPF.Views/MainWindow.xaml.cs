@@ -25,11 +25,10 @@ public partial class MainWindow : Window
         InitializeComponent();
     }
 
-    private void Button_Click(object sender, RoutedEventArgs e)
-    {
-    }
+    private void Button_Click(object sender, RoutedEventArgs e) =>
+        maintab.SelectedIndex = 1;
 
-    
+
     #region WindowCommands
 
     private void ShutdownCmd_Executed(object sender, ExecutedRoutedEventArgs e)

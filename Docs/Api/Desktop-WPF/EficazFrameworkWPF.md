@@ -10,15 +10,6 @@
 | Classes | |
 | :--- | :--- |
 | [DataGridComboBoxColumn](Controls/DataGridComboBoxColumn.md 'Controls.DataGridComboBoxColumn') | |
-| [DataGridEnumComboboxColumn](Controls/DataGridEnumComboboxColumn.md 'Controls.DataGridEnumComboboxColumn') | |
-
-<a name='Converters'></a>
-
-## Converters Namespace
-
-| Classes | |
-| :--- | :--- |
-| [EnumDescriptionConverter](Converters/EnumDescriptionConverter.md 'Converters.EnumDescriptionConverter') | |
 
 <a name='EficazFramework.Application'></a>
 
@@ -61,6 +52,7 @@
 | [AutoComplete](EficazFramework.Controls/AutoComplete.md 'EficazFramework.Controls.AutoComplete') | |
 | [ColorZone](EficazFramework.Controls/ColorZone.md 'EficazFramework.Controls.ColorZone') | |
 | [DataGridAutoCompleteColumn](EficazFramework.Controls/DataGridAutoCompleteColumn.md 'EficazFramework.Controls.DataGridAutoCompleteColumn') | |
+| [DataGridEnumComboboxColumn](EficazFramework.Controls/DataGridEnumComboboxColumn.md 'EficazFramework.Controls.DataGridEnumComboboxColumn') | |
 | [DataGridExpressionColumn](EficazFramework.Controls/DataGridExpressionColumn.md 'EficazFramework.Controls.DataGridExpressionColumn') | |
 | [DataGridInputColumn](EficazFramework.Controls/DataGridInputColumn.md 'EficazFramework.Controls.DataGridInputColumn') | |
 | [DateInputBox](EficazFramework.Controls/DateInputBox.md 'EficazFramework.Controls.DateInputBox') | |
@@ -118,6 +110,7 @@
 | [BlurEffectConverter](EficazFramework.Converters/BlurEffectConverter.md 'EficazFramework.Converters.BlurEffectConverter') | |
 | [DataGridColumnHeaderConverter](EficazFramework.Converters/DataGridColumnHeaderConverter.md 'EficazFramework.Converters.DataGridColumnHeaderConverter') | |
 | [ElevationEffectConverter](EficazFramework.Converters/ElevationEffectConverter.md 'EficazFramework.Converters.ElevationEffectConverter') | |
+| [EnumDescriptionConverter](EficazFramework.Converters/EnumDescriptionConverter.md 'EficazFramework.Converters.EnumDescriptionConverter') | |
 
 <a name='EficazFramework.Events'></a>
 

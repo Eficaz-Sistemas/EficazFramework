@@ -1,5 +1,5 @@
 #### [EficazFramework.WPF](EficazFrameworkWPF.md 'EficazFramework WPF')
-### [Converters](EficazFrameworkWPF.md#Converters 'Converters').[EnumDescriptionConverter](Converters/EnumDescriptionConverter.md 'Converters.EnumDescriptionConverter')
+### [EficazFramework.Converters](EficazFrameworkWPF.md#EficazFramework.Converters 'EficazFramework.Converters').[EnumDescriptionConverter](EficazFramework.Converters/EnumDescriptionConverter.md 'EficazFramework.Converters.EnumDescriptionConverter')
 
 ## EnumDescriptionConverter.Convert(object, Type, object, CultureInfo) Method
 
@@ -8,19 +8,19 @@ public object Convert(object value, System.Type targetType, object parameter, Sy
 ```
 #### Parameters
 
-<a name='Converters.EnumDescriptionConverter.Convert(object,System.Type,object,System.Globalization.CultureInfo).value'></a>
+<a name='EficazFramework.Converters.EnumDescriptionConverter.Convert(object,System.Type,object,System.Globalization.CultureInfo).value'></a>
 
 `value` [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.Object 'System.Object')
 
-<a name='Converters.EnumDescriptionConverter.Convert(object,System.Type,object,System.Globalization.CultureInfo).targetType'></a>
+<a name='EficazFramework.Converters.EnumDescriptionConverter.Convert(object,System.Type,object,System.Globalization.CultureInfo).targetType'></a>
 
 `targetType` [System.Type](https://docs.microsoft.com/en-us/dotnet/api/System.Type 'System.Type')
 
-<a name='Converters.EnumDescriptionConverter.Convert(object,System.Type,object,System.Globalization.CultureInfo).parameter'></a>
+<a name='EficazFramework.Converters.EnumDescriptionConverter.Convert(object,System.Type,object,System.Globalization.CultureInfo).parameter'></a>
 
 `parameter` [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.Object 'System.Object')
 
-<a name='Converters.EnumDescriptionConverter.Convert(object,System.Type,object,System.Globalization.CultureInfo).culture'></a>
+<a name='EficazFramework.Converters.EnumDescriptionConverter.Convert(object,System.Type,object,System.Globalization.CultureInfo).culture'></a>
 
 `culture` [System.Globalization.CultureInfo](https://docs.microsoft.com/en-us/dotnet/api/System.Globalization.CultureInfo 'System.Globalization.CultureInfo')
 

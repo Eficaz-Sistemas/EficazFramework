@@ -274,7 +274,7 @@
                                   HeadersVisibility="All">
                             <DataGrid.Columns>
                                 <EfControls:DataGridInputColumn EfAttachedProps:DataGrid.ShowFilter="True"  Binding="{Binding Nome}" Header="Nome" Width="Auto" x:Name="nomeCl" />
-                                <DataGridComboBoxColumn EfAttachedProps:DataGrid.ShowFilter="True" ItemsSource="{Binding ElementName=sampleData, Path=UfSource}" DisplayMemberPath="Description" SelectedValuePath="Value" SelectedValueBinding="{Binding Estado}" Header="Estado (adv)" x:Name="ufAdvCl" Width="*" />
+                                <EfControls:DataGridEnumComboboxColumn EfAttachedProps:DataGrid.ShowFilter="True" ItemsSource="{Binding ElementName=sampleData, Path=UfSource}" DisplayMemberPath="Description" SelectedValuePath="Value" SelectedValueBinding="{Binding Estado}" Header="Estado (adv)" x:Name="ufAdvCl" Width="*" />
                                 <EfControls:DataGridInputColumn EfAttachedProps:DataGrid.ShowFilter="True" Binding="{Binding BC, StringFormat=\{0:c2\}}" Header="BC" Width="Auto" InputMode="Number" NumberDecimalPlaces="2" Alignment="Right"  x:Name="bcCl"/>
                                 <EfControls:DataGridInputColumn EfAttachedProps:DataGrid.ShowFilter="True" Binding="{Binding Aliquota, StringFormat=\{0:c2\}}" Header="Alíquota" InputMode="Number"  Width="Auto"  Alignment="Right"/>
                                 <EfControls:DataGridInputColumn EfAttachedProps:DataGrid.ShowFilter="True" Binding="{Binding Valor, StringFormat=\{0:c2\}}" Header="Valor" InputMode="Number" Width="Auto"/>
@@ -304,6 +304,19 @@
                         </ListView>
                         <TreeView Margin="3"
                                   ItemsSource="{Binding}">
+                            <TreeView.Resources>
+                                <HierarchicalDataTemplate DataType="{x:Type local:TesteUpdate}" ItemsSource="{Binding Children}">
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock Text="{Binding Nome}" Margin="3,0,0,0"/>
+                                        <TextBlock Text="{Binding Estado}" Margin="3,0,0,0"/>
+                                    </StackPanel>
+                                </HierarchicalDataTemplate>
+                            </TreeView.Resources>
+                            <TreeView.ItemContainerStyle>
+                                <Style TargetType="{x:Type TreeViewItem}" BasedOn="{StaticResource {x:Type TreeViewItem}}">
+                                    <Setter Property="IsExpanded" Value="True" />
+                                </Style>
+                            </TreeView.ItemContainerStyle>
                         </TreeView>
                     </UniformGrid>
                 </GroupBox>

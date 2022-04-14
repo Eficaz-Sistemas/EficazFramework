@@ -1,5 +1,5 @@
 #### [EficazFramework.WPF](EficazFrameworkWPF.md 'EficazFramework WPF')
-### [Converters](EficazFrameworkWPF.md#Converters 'Converters').[EnumDescriptionConverter](Converters/EnumDescriptionConverter.md 'Converters.EnumDescriptionConverter')
+### [EficazFramework.Converters](EficazFrameworkWPF.md#EficazFramework.Converters 'EficazFramework.Converters').[EnumDescriptionConverter](EficazFramework.Converters/EnumDescriptionConverter.md 'EficazFramework.Converters.EnumDescriptionConverter')
 
 ## EnumDescriptionConverter.LocalizationResourceType Property
 

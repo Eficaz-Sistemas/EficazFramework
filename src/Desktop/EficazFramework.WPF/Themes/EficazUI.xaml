@@ -37,6 +37,7 @@
         <ResourceDictionary Source="pack://application:,,,/EficazFramework.WPF;component/Themes/Controls/TextBlock.xaml" />
         <ResourceDictionary Source="pack://application:,,,/EficazFramework.WPF;component/Themes/Controls/TextBox.xaml" />
         <ResourceDictionary Source="pack://application:,,,/EficazFramework.WPF;component/Themes/Controls/Tooltip.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/EficazFramework.WPF;component/Themes/Controls/TreeView.xaml" />
         <ResourceDictionary Source="pack://application:,,,/EficazFramework.WPF;component/Themes/Controls/Window.xaml" />
 
     </ResourceDictionary.MergedDictionaries>

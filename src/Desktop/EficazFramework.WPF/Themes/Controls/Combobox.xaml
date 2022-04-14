@@ -730,8 +730,8 @@
 
     <Style x:Key="Style.Combobox.DataGridCellEditor" TargetType="{x:Type ComboBox}" BasedOn="{StaticResource {x:Type ComboBox}}">
         <Setter Property="FontSize" Value="{Binding Source={x:Static EfUtilties:DipHelper.FontSize_DataGridColumnText}}" />
-        <Setter Property="Padding" Value="2"/>
-        <Setter Property="Margin" Value="-1"/>
+        <Setter Property="Padding" Value="0"/>
+        <Setter Property="Margin" Value="0"/>
         <Setter Property="EfAttachedProps:Control.ShowLabel" Value="False"/>
         <Setter Property="ItemContainerStyle" Value="{DynamicResource Style.ComboboxItem.DataGridCellEditor}" />
     </Style>

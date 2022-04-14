@@ -31,6 +31,8 @@ public partial class TesteUpdate : DependencyObject
 
     public Estado Estado { get; set; }
 
+    public List<TesteUpdate> Children { get; set; } = new();
+
     public 
 
     override string ToString()
@@ -43,8 +45,18 @@ public partial class TesteList : List<TesteUpdate>
 {
     public TesteList()
     {
-        Add(new TesteUpdate() { BC = 1000.0d, Aliquota = 18d, Nome = "Item A", Estado = Estado.MG });
-        Add(new TesteUpdate() { BC = 1000.0d, Aliquota = 12d, Nome = "Item B", Estado =  Estado.SP });
+        Add(new TesteUpdate() { BC = 1000.0d, Aliquota = 18d, Nome = "Item A", Estado = Estado.MG, Children = new List<TesteUpdate>()
+        {
+            new TesteUpdate() { BC = 1000.0d, Aliquota = 18d, Nome = "Item A.1", Estado = Estado.MG },
+            new TesteUpdate() { BC = 1000.0d, Aliquota = 18d, Nome = "Item A.2", Estado = Estado.MG },
+            new TesteUpdate() { BC = 1000.0d, Aliquota = 18d, Nome = "Item A.3", Estado = Estado.MG }
+        } });
+        Add(new TesteUpdate() { BC = 1000.0d, Aliquota = 12d, Nome = "Item B", Estado =  Estado.SP, Children = new List<TesteUpdate>()
+        {
+            new TesteUpdate() { BC = 1000.0d, Aliquota = 12d, Nome = "Item B.1", Estado = Estado.SP },
+            new TesteUpdate() { BC = 1000.0d, Aliquota = 12d, Nome = "Item B.2", Estado = Estado.SP },
+            new TesteUpdate() { BC = 1000.0d, Aliquota = 12d, Nome = "Item B.3", Estado = Estado.SP }
+        } });
         Add(new TesteUpdate() { BC = default, Aliquota = 12d, Nome = "Item C", Estado = Estado.SP });
         Add(new TesteUpdate() { BC = 1000.0d, Aliquota = default, Estado = Estado.SC });
         Add(new TesteUpdate() { BC = 500.0d, Aliquota = 18d, Nome = "Item D", Estado = Estado.MG });

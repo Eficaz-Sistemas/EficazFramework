@@ -1,4 +1,4 @@
-﻿namespace Controls;
+﻿namespace EficazFramework.Controls;
 
 public partial class DataGridEnumComboboxColumn : System.Windows.Controls.DataGridComboBoxColumn
 {
@@ -9,8 +9,9 @@ public partial class DataGridEnumComboboxColumn : System.Windows.Controls.DataGr
 
     protected override FrameworkElement GenerateElement(DataGridCell cell, object dataItem)
     {
-        TextBlock tb = (TextBlock)base.GenerateElement(cell, dataItem);
-        if (SelectedValueBinding is object)
+        TextBlock tb = new() { DataContext = dataItem };
+        tb.SetResourceReference(TextBlock.StyleProperty, "Style.TextBlock.DataGrid");
+        if (SelectedValueBinding != null)
         {
             var b = new Binding();
             Binding vlBinding = (Binding)SelectedValueBinding;
