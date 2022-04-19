@@ -33,6 +33,7 @@
         <ResourceDictionary Source="pack://application:,,,/EficazFramework.WPF;component/Themes/Controls/ProgressBar.xaml" />
         <ResourceDictionary Source="pack://application:,,,/EficazFramework.WPF;component/Themes/Controls/RadioButton.xaml" />
         <ResourceDictionary Source="pack://application:,,,/EficazFramework.WPF;component/Themes/Controls/ScrollBar.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/EficazFramework.WPF;component/Themes/Controls/Slider.xaml" />
         <ResourceDictionary Source="pack://application:,,,/EficazFramework.WPF;component/Themes/Controls/TabControl.xaml" />
         <ResourceDictionary Source="pack://application:,,,/EficazFramework.WPF;component/Themes/Controls/TextBlock.xaml" />
         <ResourceDictionary Source="pack://application:,,,/EficazFramework.WPF;component/Themes/Controls/TextBox.xaml" />
