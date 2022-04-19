@@ -122,8 +122,8 @@
                                   SnapsToDevicePixels="true" 
                                   KeyboardNavigation.TabNavigation="Local">
                                 <Grid.RowDefinitions>
-                                    <RowDefinition Height="Auto"/>
-                                    <RowDefinition Height="1*"/>
+                                    <RowDefinition Height="Auto" x:Name="mainRow0"/>
+                                    <RowDefinition Height="1*" x:Name="mainRow1"/>
                                 </Grid.RowDefinitions>
                                 <!--CONTENT-->
                                 <Border x:Name="contentPanel"
@@ -158,7 +158,9 @@
                                 </EfControls:ColorZone>
 
                                 <!--TABPANEL-->
-                                <EfControls:ColorZone Grid.Row="1" x:Name="panelColorZone" HorizontalAlignment="Left">
+                                <EfControls:ColorZone Grid.Row="1"
+                                                      x:Name="panelColorZone"
+                                                      HorizontalAlignment="Left">
                                     <Grid x:Name="sideMenuPanel">
                                         <Border x:Name="tabpanelBorder"
                                                 Background="{Binding Background, ElementName=panelColorZone}"
@@ -172,9 +174,12 @@
                                 
                                 <!--TITLE-->
                                 <EfControls:ColorZone x:Name="titleColorZone">
-                                    <StackPanel x:Name="titlestackpanel_tab"
-                                                    Background="{Binding ElementName=panelColorZone, Path=Background}"
-                                                    Orientation="Horizontal">
+                                    <Grid x:Name="titlestackpanel_tab"
+                                          Background="{Binding ElementName=panelColorZone, Path=Background}">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="Auto" x:Name="cl_Title_0"/>
+                                            <ColumnDefinition Width="*" x:Name="cl_Title_1" />
+                                        </Grid.ColumnDefinitions>
                                         <Border x:Name="menuButton" 
                                                     Background="{Binding ElementName=titleColorZone, Path=Background}"
                                                     HorizontalAlignment="Left"
@@ -193,10 +198,12 @@
                                         </Border>
 
                                         <TextBlock Margin="3"
-                                               Text="{Binding SelectedItem.Header, RelativeSource={RelativeSource TemplatedParent}}" 
-                                               Style="{DynamicResource Style.TextBlock.Title}" 
-                                               VerticalAlignment="Center" />
-                                    </StackPanel>
+                                                   x:Name="pTitle"
+                                                   Grid.Column="1"
+                                                   Text="{Binding SelectedItem.Header, RelativeSource={RelativeSource TemplatedParent}}" 
+                                                   Style="{DynamicResource Style.TextBlock.Title}" 
+                                                   VerticalAlignment="Center" />
+                                    </Grid>
                                 </EfControls:ColorZone>
                             </Grid>
                             <ControlTemplate.Triggers>
@@ -263,6 +270,35 @@
                                     <Setter TargetName="headerPanel" Property="Background" Value="{DynamicResource Brush.Tertiary.Background}"/>
                                     <Setter TargetName="headerPanel" Property="TextBlock.Foreground" Value="{DynamicResource Brush.Tertiary.Foreground}"/>
                                     <Setter TargetName="headerPanel" Property="TextElement.Foreground" Value="{DynamicResource Brush.Tertiary.Foreground}"/>
+                                </Trigger>
+                                <Trigger Property="TabStripPlacement" Value="Right">
+                                    <Setter TargetName="contentPanel" Property="Margin" Value="0,0,48,0"/>
+                                    <Setter TargetName="panelColorZone" Property="HorizontalAlignment" Value="Right"/>
+                                    <Setter TargetName="cl_Title_0" Property="Width" Value="*"/>
+                                    <Setter TargetName="cl_Title_1" Property="Width" Value="Auto"/>
+                                    <Setter TargetName="menuButton" Property="Grid.Column" Value="1"/>
+                                    <Setter TargetName="pTitle" Property="Grid.Column" Value="0"/>
+                                </Trigger>
+                                <Trigger Property="TabStripPlacement" Value="Top">
+                                    <Setter TargetName="titleColorZone" Property="Visibility" Value="Collapsed"/>
+                                    <Setter TargetName="panelColorZone" Property="HorizontalAlignment" Value="Stretch"/>
+                                    <Setter TargetName="panelColorZone" Property="Grid.Row" Value="0"/>
+                                    <Setter TargetName="panelColorZone" Property="Height" Value="48"/>
+                                    <Setter TargetName="contentPanel" Property="Grid.Row" Value="1"/>
+                                    <Setter Property="EfAttachedProps:TabControl.IsExpanded" Value="True"/>
+                                    <Setter TargetName="contentPanel" Property="Margin" Value="0"/>
+                                </Trigger>
+                                <Trigger Property="TabStripPlacement" Value="Bottom">
+                                    <Setter TargetName="titleColorZone" Property="Visibility" Value="Collapsed"/>
+                                    <Setter TargetName="panelColorZone" Property="HorizontalAlignment" Value="Stretch"/>
+                                    <Setter TargetName="panelColorZone" Property="Grid.Row" Value="1"/>
+                                    <Setter TargetName="appBarColorZone" Property="Grid.Row" Value="1"/>
+                                    <Setter TargetName="panelColorZone" Property="Height" Value="48"/>
+                                    <Setter TargetName="contentPanel" Property="Grid.Row" Value="0"/>
+                                    <Setter Property="EfAttachedProps:TabControl.IsExpanded" Value="True"/>
+                                    <Setter TargetName="contentPanel" Property="Margin" Value="0"/>
+                                    <Setter TargetName="mainRow0" Property="Height" Value="*"/>
+                                    <Setter TargetName="mainRow1" Property="Height" Value="Auto"/>
                                 </Trigger>
                             </ControlTemplate.Triggers>
                         </ControlTemplate>
@@ -412,7 +448,7 @@
                                             BorderThickness="0"
                                             Width="2" 
                                             Visibility="Collapsed"
-                                            HorizontalAlignment="Left" Margin="6,15,5,15" CornerRadius="1"/>
+                                            HorizontalAlignment="Left" Margin="6,15,15,15" CornerRadius="1"/>
 
                                     <StackPanel x:Name="PART_ContentTab" 
                                                 Orientation="Horizontal" 
@@ -498,6 +534,24 @@
                                 <Trigger SourceName="templateRoot" Property="IsMouseOver" Value="True">
                                     <Setter TargetName="MouseOverTabItemPresenter" Property="Visibility" Value="Visible" />
                                 </Trigger>
+                                <DataTrigger Binding="{Binding Path=TabStripPlacement, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=TabControl, AncestorLevel=1}}" Value="Right">
+                                    <Setter TargetName="selectionBorder" Property="HorizontalAlignment" Value="Right"/>
+                                    <Setter TargetName="selectionBorder" Property="Margin" Value="15,15,6,15"/>
+                                </DataTrigger>
+                                <DataTrigger Binding="{Binding Path=TabStripPlacement, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=TabControl, AncestorLevel=1}}" Value="Top">
+                                    <Setter TargetName="selectionBorder" Property="HorizontalAlignment" Value="Stretch"/>
+                                    <Setter TargetName="selectionBorder" Property="VerticalAlignment" Value="Bottom"/>
+                                    <Setter TargetName="selectionBorder" Property="Width" Value="Auto"/>
+                                    <Setter TargetName="selectionBorder" Property="Height" Value="2"/>
+                                    <Setter TargetName="selectionBorder" Property="Margin" Value="15,15,15,6"/>
+                                </DataTrigger>
+                                <DataTrigger Binding="{Binding Path=TabStripPlacement, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=TabControl, AncestorLevel=1}}" Value="Bottom">
+                                    <Setter TargetName="selectionBorder" Property="HorizontalAlignment" Value="Stretch"/>
+                                    <Setter TargetName="selectionBorder" Property="VerticalAlignment" Value="Top"/>
+                                    <Setter TargetName="selectionBorder" Property="Width" Value="Auto"/>
+                                    <Setter TargetName="selectionBorder" Property="Height" Value="2"/>
+                                    <Setter TargetName="selectionBorder" Property="Margin" Value="15,6,15,15"/>
+                                </DataTrigger>
                             </ControlTemplate.Triggers>
                         </ControlTemplate>
                     </Setter.Value>

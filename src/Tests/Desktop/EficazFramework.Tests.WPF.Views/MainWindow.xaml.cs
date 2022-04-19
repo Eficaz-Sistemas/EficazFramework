@@ -31,9 +31,11 @@ public partial class MainWindow : Window
     #region "Global"
     public static IEnumerable<Extensions.EnumMember> Colors => EficazFramework.Extensions.Enums.GetLocalizedValues<EficazFramework.Controls.AttachedProperties.Color>();
 
+    public static IEnumerable<Extensions.EnumMember> TabsOrientation => EficazFramework.Extensions.Enums.GetLocalizedValues<System.Windows.Controls.Dock>();
+
     #endregion
 
-    
+
     #region WindowCommands
 
     private void ShutdownCmd_Executed(object sender, ExecutedRoutedEventArgs e)

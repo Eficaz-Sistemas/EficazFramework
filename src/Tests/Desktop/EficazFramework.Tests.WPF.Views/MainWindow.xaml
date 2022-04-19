@@ -294,9 +294,6 @@
                         </DataGrid>
                         <GroupBox Grid.Column="1" Margin="15,0,0,0" Header="Options">
                             <StackPanel >
-                                <CheckBox IsChecked="True" Checked="nomeCl_CheckChanged" Unchecked="nomeCl_CheckChanged" Content="Filtro: Nome" Style="{DynamicResource Style.Checkbox.Modern}"/>
-                                <CheckBox IsChecked="True" Checked="ufCl_CheckChanged" Unchecked="ufCl_CheckChanged" Content="Filtro: Estado" Style="{DynamicResource Style.Checkbox.Modern}" Margin="0,5,0,0"/>
-                                <CheckBox IsChecked="True" Content="Filtro: BC" Style="{DynamicResource Style.Checkbox.Modern}" Margin="0,5,0,0"/>
                                 <ComboBox EfAttachedProps:Control.TipText="Color"
                                           ItemsSource="{x:Static local:MainWindow.Colors}"
                                           DisplayMemberPath="Value"
@@ -622,72 +619,44 @@
         </TabItem>
         <TabItem Header="Tabs" 
                  EfAttachedProps:TabControl.Icon="{DynamicResource Icon.MaterialDesign.Tab}">
-            <UniformGrid Margin="15" Columns="3"
-                         EfAttachedProps:TabControl.IsExpanded="False">
+            <Grid Margin="15"  EfAttachedProps:TabControl.IsExpanded="False">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="220"/>
+                </Grid.ColumnDefinitions>
                 <TabControl Margin="10"
+                            x:Name="tabsMain"
                             EfAttachedProps:TabControl.NavigationTemplate="True"
                             EfAttachedProps:TabControl.NavigationTemplateShowTitle="True">
-                    <TabItem Header="Inherited - TabItem1"/>
-                    <TabItem Header="Inherited - TabItem2"/>
+                    <TabItem Header="TabItem1"
+                             EfAttachedProps:TabControl.Icon="{DynamicResource Icon.MaterialDesign.AbTesting}">
+                        <TextBlock Margin="10">Hello World, Page 01</TextBlock>
+                    </TabItem>
+                    <TabItem Header="TabItem2"
+                             EfAttachedProps:TabControl.Icon="{DynamicResource Icon.MaterialDesign.Compare}">
+                        <TextBlock Margin="10">Hello World, Page 02</TextBlock>
+                    </TabItem>
                 </TabControl>
-                <TabControl Margin="10"
-                            EfAttachedProps:Control.Color="Surface"
-                            EfAttachedProps:TabControl.NavigationTemplate="True"
-                            EfAttachedProps:TabControl.NavigationTemplateShowTitle="True">
-                    <TabItem Header="Surface - TabItem1"/>
-                    <TabItem Header="Surface - TabItem2"/>
-                </TabControl>
-                <TabControl Margin="10"
-                            EfAttachedProps:Control.Color="SurfaceAlternate"
-                            EfAttachedProps:TabControl.NavigationTemplate="True"
-                            EfAttachedProps:TabControl.NavigationTemplateShowTitle="True">
-                    <TabItem Header="Surface (Alt) - TabItem1"/>
-                    <TabItem Header="Surface (Alt) - TabItem2"/>
-                </TabControl>
-                <TabControl Margin="10"
-                            EfAttachedProps:Control.Color="Primary"
-                            EfAttachedProps:TabControl.NavigationTemplate="True"
-                            EfAttachedProps:TabControl.NavigationTemplateShowTitle="True">
-                    <TabItem Header="Primary - TabItem1"/>
-                    <TabItem Header="Primary - TabItem2"/>
-                </TabControl>
-                <TabControl Margin="10"
-                            EfAttachedProps:Control.Color="Secondary"
-                            EfAttachedProps:TabControl.NavigationTemplate="True"
-                            EfAttachedProps:TabControl.NavigationTemplateShowTitle="True">
-                    <TabItem Header="Secondary - TabItem1"/>
-                    <TabItem Header="Secondary - TabItem2"/>
-                </TabControl>
-                <TabControl Margin="10"
-                            EfAttachedProps:Control.Color="Tertiary"
-                            EfAttachedProps:TabControl.NavigationTemplate="True"
-                            EfAttachedProps:TabControl.NavigationTemplateShowTitle="True">
-                    <TabItem Header="Tertiary - TabItem1"/>
-                    <TabItem Header="Tertiary - TabItem2"/>
-                </TabControl>
-                <TabControl Margin="10" 
-                            EfAttachedProps:Control.Elevation="0"
-                            EfAttachedProps:TabControl.NavigationTemplate="True"
-                            EfAttachedProps:TabControl.NavigationTemplateShowTitle="True">
-                    <TabItem Header="Elevation 0 - TabItem1"/>
-                    <TabItem Header="Elevation 0 - TabItem2"/>
-                </TabControl>
-                <TabControl Margin="10" 
-                            EfAttachedProps:Control.Elevation="3"
-                            EfAttachedProps:TabControl.NavigationTemplate="True"
-                            EfAttachedProps:TabControl.NavigationTemplateShowTitle="True">
-                    <TabItem Header="Elevation 3 - TabItem1"/>
-                    <TabItem Header="Elevation 3 - TabItem2"/>
-                </TabControl>
-                <TabControl Margin="10" 
-                            EfAttachedProps:Control.Elevation="6"
-                            EfAttachedProps:TabControl.NavigationTemplate="True"
-                            EfAttachedProps:TabControl.NavigationTemplateShowTitle="True">
-                    <TabItem Header="Elevation 6 - TabItem1"/>
-                    <TabItem Header="Elevation 6 - TabItem2"/>
-                </TabControl>
-
-            </UniformGrid>
+                <GroupBox Grid.Column="1" Margin="15,0,0,0" Header="Options">
+                    <StackPanel >
+                        <TextBlock Text="Elevation" Style="{DynamicResource  TextBlock.MaterialDesign.Caption}"/>
+                        <Slider Minimum="0" Maximum="4" 
+                                Value="{Binding ElementName=tabsMain, Path=(EfAttachedProps:Control.Elevation), UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"/>
+                        <ComboBox EfAttachedProps:Control.TipText="Color"
+                                  ItemsSource="{x:Static local:MainWindow.Colors}"
+                                  DisplayMemberPath="Value"
+                                  SelectedValuePath="Value"
+                                  SelectedValue="{Binding ElementName=tabsMain, Path=(EfAttachedProps:Control.Color), UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
+                                  Margin="0,5,0,0"/>
+                        <ComboBox EfAttachedProps:Control.TipText="Orientation"
+                                  ItemsSource="{x:Static local:MainWindow.TabsOrientation}"
+                                  DisplayMemberPath="Value"
+                                  SelectedValuePath="Value"
+                                  SelectedValue="{Binding ElementName=tabsMain, Path=TabStripPlacement, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
+                                  Margin="0,5,0,0"/>
+                    </StackPanel>
+                </GroupBox>
+            </Grid>
         </TabItem>
         <TabItem Header="Typography" 
                  EfAttachedProps:TabControl.Icon="{DynamicResource Icon.MaterialDesign.FormatFont}">
