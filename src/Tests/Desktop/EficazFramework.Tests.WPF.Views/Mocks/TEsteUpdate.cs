@@ -33,7 +33,10 @@ public partial class TesteUpdate : DependencyObject
 
     public List<TesteUpdate> Children { get; set; } = new();
 
-    public 
+    public IEnumerable<Extensions.EnumMember> UfSource => EficazFramework.Extensions.Enums.GetLocalizedValues<Estado>();
+
+
+    public
 
     override string ToString()
     {
@@ -66,7 +69,7 @@ public partial class TesteList : List<TesteUpdate>
         Add(new TesteUpdate() { BC = 750.0d, Aliquota = 7d, Nome = "Item H", Estado = Estado.SP });
     }
 
-    public IEnumerable<Extensions.EnumMember> UfSource => EficazFramework.Extensions.Enums.GetLocalizedValues<Estado>();
+    public static IEnumerable<Extensions.EnumMember> UfSource => EficazFramework.Extensions.Enums.GetLocalizedValues<Estado>();
 }
 
 public enum Estado

@@ -146,7 +146,6 @@
             <MultiTrigger>
                 <MultiTrigger.Conditions>
                     <Condition Property="IsSelected" Value="True"/>
-                    <Condition Property="IsFocused" Value="True"/>
                     <Condition Property="EfAttachedProps:Control.Color" Value="Surface"/>
                 </MultiTrigger.Conditions>
                 <Setter Property="Background" Value="{DynamicResource Brush.Surface.Border}"/>
@@ -155,7 +154,6 @@
             <MultiTrigger>
                 <MultiTrigger.Conditions>
                     <Condition Property="IsSelected" Value="True"/>
-                    <Condition Property="IsFocused" Value="True"/>
                     <Condition Property="EfAttachedProps:Control.Color" Value="SurfaceAlternate"/>
                 </MultiTrigger.Conditions>
                 <Setter Property="Background" Value="{DynamicResource Brush.Surface.Border}"/>
@@ -164,7 +162,6 @@
             <MultiTrigger>
                 <MultiTrigger.Conditions>
                     <Condition Property="IsSelected" Value="True"/>
-                    <Condition Property="IsFocused" Value="True"/>
                     <Condition Property="EfAttachedProps:Control.Color" Value="Primary"/>
                 </MultiTrigger.Conditions>
                 <Setter Property="Background" Value="{DynamicResource Brush.Primary.Background}"/>
@@ -173,7 +170,6 @@
             <MultiTrigger>
                 <MultiTrigger.Conditions>
                     <Condition Property="IsSelected" Value="True"/>
-                    <Condition Property="IsFocused" Value="True"/>
                     <Condition Property="EfAttachedProps:Control.Color" Value="PrimaryDarken"/>
                 </MultiTrigger.Conditions>
                 <Setter Property="Background" Value="{DynamicResource Brush.Primary.Background.Darken}"/>
@@ -182,7 +178,6 @@
             <MultiTrigger>
                 <MultiTrigger.Conditions>
                     <Condition Property="IsSelected" Value="True"/>
-                    <Condition Property="IsFocused" Value="True"/>
                     <Condition Property="EfAttachedProps:Control.Color" Value="PrimaryLighten"/>
                 </MultiTrigger.Conditions>
                 <Setter Property="Background" Value="{DynamicResource Brush.Primary.Background.Lighten}"/>
@@ -191,7 +186,6 @@
             <MultiTrigger>
                 <MultiTrigger.Conditions>
                     <Condition Property="IsSelected" Value="True"/>
-                    <Condition Property="IsFocused" Value="True"/>
                     <Condition Property="EfAttachedProps:Control.Color" Value="Secondary"/>
                 </MultiTrigger.Conditions>
                 <Setter Property="Background" Value="{DynamicResource Brush.Secondary.Background}"/>
@@ -200,7 +194,6 @@
             <MultiTrigger>
                 <MultiTrigger.Conditions>
                     <Condition Property="IsSelected" Value="True"/>
-                    <Condition Property="IsFocused" Value="True"/>
                     <Condition Property="EfAttachedProps:Control.Color" Value="Tertiary"/>
                 </MultiTrigger.Conditions>
                 <Setter Property="Background" Value="{DynamicResource Brush.Tertiary.Background}"/>
@@ -210,6 +203,7 @@
                 <MultiTrigger.Conditions>
                     <Condition Property="IsSelected" Value="True"/>
                     <Condition Property="IsFocused" Value="false"/>
+                    <Condition Property="EfAttachedProps:Selector.AllowInactiveSelection" Value="true"/>
                 </MultiTrigger.Conditions>
                 <Setter Property="Background" Value="{DynamicResource Brush.Disabled.Background}"/>
                 <Setter Property="Foreground" Value="{DynamicResource Brush.Disabled.Foreground}"/>

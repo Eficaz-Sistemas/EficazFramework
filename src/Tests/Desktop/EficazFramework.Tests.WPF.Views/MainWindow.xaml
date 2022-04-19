@@ -8,6 +8,7 @@
         xmlns:EfExpr="clr-namespace:EficazFramework.Expressions;assembly=EficazFramework.Data"
         xmlns:EfControls="clr-namespace:EficazFramework.Controls;assembly=EficazFramework.WPF"
         xmlns:EfAttachedProps="clr-namespace:EficazFramework.Controls.AttachedProperties;assembly=EficazFramework.WPF"
+        xmlns:Resources="clr-namespace:EficazFramework.Tests.WPF.Views.Resources"
         mc:Ignorable="d"
         d:Background="{DynamicResource Brush.Surface.Background}"
         Style="{DynamicResource Style.Window.Modern}"
@@ -248,6 +249,7 @@
             </UniformGrid>
         </TabItem>
         <TabItem Header="Grids / Lists" 
+                 x:Name="GridPage"
                  EfAttachedProps:TabControl.Icon="{DynamicResource Icon.MaterialDesign.Table}">
             <TabItem.Resources>
                 <EfExpr:ExpressionBuilder x:Key="filters"/>
@@ -264,7 +266,7 @@
                     <Grid Margin="10">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="1*"/>
-                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="220"/>
                         </Grid.ColumnDefinitions>
                         <DataGrid Margin="3" 
                                   x:Name="dgMain"
@@ -274,7 +276,17 @@
                                   HeadersVisibility="All">
                             <DataGrid.Columns>
                                 <EfControls:DataGridInputColumn EfAttachedProps:DataGrid.ShowFilter="True"  Binding="{Binding Nome}" Header="Nome" Width="Auto" x:Name="nomeCl" />
-                                <EfControls:DataGridEnumComboboxColumn EfAttachedProps:DataGrid.ShowFilter="True" ItemsSource="{Binding ElementName=sampleData, Path=UfSource}" DisplayMemberPath="Description" SelectedValuePath="Value" SelectedValueBinding="{Binding Estado}" Header="Estado (adv)" x:Name="ufAdvCl" Width="*" />
+                                <EfControls:DataGridEnumComboboxColumn ItemsSource="{x:Static local:TesteList.UfSource}"
+                                                                       DisplayMemberPath="Description" 
+                                                                       SelectedValuePath="Value" 
+                                                                       LocalizationResourceType="{x:Type Resources:Strings}"
+                                                                       SelectedValueBinding="{Binding Estado}" 
+                                                                       Header="Estado (adv)" x:Name="ufAdvCl" Width="*"  />
+                                <EfControls:DataGridEnumComboboxColumn ItemsSource="{x:Static local:TesteList.UfSource}"
+                                                                       DisplayMemberPath="Value" 
+                                                                       SelectedValuePath="Value" 
+                                                                       SelectedValueBinding="{Binding Estado}" 
+                                                                       Header="Estado" x:Name="ufCl" Width="80"  />
                                 <EfControls:DataGridInputColumn EfAttachedProps:DataGrid.ShowFilter="True" Binding="{Binding BC, StringFormat=\{0:c2\}}" Header="BC" Width="Auto" InputMode="Number" NumberDecimalPlaces="2" Alignment="Right"  x:Name="bcCl"/>
                                 <EfControls:DataGridInputColumn EfAttachedProps:DataGrid.ShowFilter="True" Binding="{Binding Aliquota, StringFormat=\{0:c2\}}" Header="Alíquota" InputMode="Number"  Width="Auto"  Alignment="Right"/>
                                 <EfControls:DataGridInputColumn EfAttachedProps:DataGrid.ShowFilter="True" Binding="{Binding Valor, StringFormat=\{0:c2\}}" Header="Valor" InputMode="Number" Width="Auto"/>
@@ -285,40 +297,63 @@
                                 <CheckBox IsChecked="True" Checked="nomeCl_CheckChanged" Unchecked="nomeCl_CheckChanged" Content="Filtro: Nome" Style="{DynamicResource Style.Checkbox.Modern}"/>
                                 <CheckBox IsChecked="True" Checked="ufCl_CheckChanged" Unchecked="ufCl_CheckChanged" Content="Filtro: Estado" Style="{DynamicResource Style.Checkbox.Modern}" Margin="0,5,0,0"/>
                                 <CheckBox IsChecked="True" Content="Filtro: BC" Style="{DynamicResource Style.Checkbox.Modern}" Margin="0,5,0,0"/>
+                                <ComboBox EfAttachedProps:Control.TipText="Color"
+                                          ItemsSource="{x:Static local:MainWindow.Colors}"
+                                          DisplayMemberPath="Value"
+                                          SelectedValuePath="Value"
+                                          SelectedValue="{Binding ElementName=dgMain, Path=(EfAttachedProps:Control.Color), UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
+                                          Margin="0,5,0,0"/>
                             </StackPanel>
                         </GroupBox>
                     </Grid>
                 </GroupBox>
                 <GroupBox Header="ListView / TreeVuew" Margin="10" Grid.Row="1">
-                    <UniformGrid Margin="10" Columns="4">
-                        <ListView Margin="3"
-                                  ItemsSource="{Binding}">
-                        </ListView>
-                        <ListView Margin="3"
-                                  EfAttachedProps:Control.Color="Secondary"
-                                  ItemsSource="{Binding}">
-                        </ListView>
-                        <ListView Margin="3"
-                                  EfAttachedProps:Control.Color="Tertiary"
-                                  ItemsSource="{Binding}">
-                        </ListView>
-                        <TreeView Margin="3"
-                                  ItemsSource="{Binding}">
-                            <TreeView.Resources>
-                                <HierarchicalDataTemplate DataType="{x:Type local:TesteUpdate}" ItemsSource="{Binding Children}">
-                                    <StackPanel Orientation="Horizontal">
-                                        <TextBlock Text="{Binding Nome}" Margin="3,0,0,0"/>
-                                        <TextBlock Text="{Binding Estado}" Margin="3,0,0,0"/>
-                                    </StackPanel>
-                                </HierarchicalDataTemplate>
-                            </TreeView.Resources>
-                            <TreeView.ItemContainerStyle>
-                                <Style TargetType="{x:Type TreeViewItem}" BasedOn="{StaticResource {x:Type TreeViewItem}}">
-                                    <Setter Property="IsExpanded" Value="True" />
-                                </Style>
-                            </TreeView.ItemContainerStyle>
-                        </TreeView>
-                    </UniformGrid>
+                    <Grid Margin="10">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="1*"/>
+                            <ColumnDefinition Width="220"/>
+                        </Grid.ColumnDefinitions>
+                        <UniformGrid Margin="3" 
+                                     Columns="2">
+                            <ListView Margin="3" 
+                                      x:Name="lstView"
+                                      EfAttachedProps:Selector.AllowInactiveSelection="False"
+                                      ItemsSource="{Binding}">
+                            </ListView>
+                            <TreeView Margin="3"
+                                      EfAttachedProps:Control.Color="{Binding ElementName=lstView, Path=(EfAttachedProps:Control.Color), UpdateSourceTrigger=PropertyChanged}"
+                                      EfAttachedProps:Selector.AllowInactiveSelection="{Binding ElementName=lstView, Path=(EfAttachedProps:Selector.AllowInactiveSelection), UpdateSourceTrigger=PropertyChanged}"
+                                      ItemsSource="{Binding}">
+                                <TreeView.Resources>
+                                    <HierarchicalDataTemplate DataType="{x:Type local:TesteUpdate}" ItemsSource="{Binding Children}">
+                                        <StackPanel Orientation="Horizontal">
+                                            <TextBlock Text="{Binding Nome}" Margin="3,0,0,0"/>
+                                            <TextBlock Text="{Binding Estado}" Margin="3,0,0,0"/>
+                                        </StackPanel>
+                                    </HierarchicalDataTemplate>
+                                </TreeView.Resources>
+                                <TreeView.ItemContainerStyle>
+                                    <Style TargetType="{x:Type TreeViewItem}" BasedOn="{StaticResource {x:Type TreeViewItem}}">
+                                        <Setter Property="IsExpanded" Value="True" />
+                                    </Style>
+                                </TreeView.ItemContainerStyle>
+                            </TreeView>
+                        </UniformGrid>
+                        <GroupBox Grid.Column="1" Margin="15,0,0,0" Header="Options">
+                            <StackPanel >
+                                <CheckBox IsChecked="{Binding ElementName=lstView, Path=(EfAttachedProps:Selector.AllowInactiveSelection), Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
+                                          Content="Inactive Selection" 
+                                          Style="{DynamicResource Style.Checkbox.Modern}"/>
+                                <ComboBox EfAttachedProps:Control.TipText="Color"
+                                          ItemsSource="{x:Static local:MainWindow.Colors}"
+                                          DisplayMemberPath="Value"
+                                          SelectedValuePath="Value"
+                                          SelectedValue="{Binding ElementName=lstView, Path=(EfAttachedProps:Control.Color), UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
+                                          Margin="0,5,0,0"/>
+                            </StackPanel>
+                        </GroupBox>
+                    </Grid>
+
                 </GroupBox>
             </Grid>
         </TabItem>

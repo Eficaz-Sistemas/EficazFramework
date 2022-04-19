@@ -28,7 +28,12 @@ public partial class MainWindow : Window
     private void Button_Click(object sender, RoutedEventArgs e) =>
         maintab.SelectedIndex = 1;
 
+    #region "Global"
+    public static IEnumerable<Extensions.EnumMember> Colors => EficazFramework.Extensions.Enums.GetLocalizedValues<EficazFramework.Controls.AttachedProperties.Color>();
 
+    #endregion
+
+    
     #region WindowCommands
 
     private void ShutdownCmd_Executed(object sender, ExecutedRoutedEventArgs e)
@@ -75,7 +80,10 @@ public partial class MainWindow : Window
     private void nomeCl_CheckChanged(object sender, RoutedEventArgs e)
     {
         EficazFramework.Controls.AttachedProperties.DataGrid.SetShowFilter(nomeCl, (((CheckBox)sender).IsChecked ?? true));
-        dgMain.InvalidateVisual();
+        var value = EficazFramework.Controls.AttachedProperties.DataGrid.GetShowFilter(nomeCl);
+        //dgMain.Columns[0].Visibility = Visibility.Collapsed;
+        //dgMain.Dispatcher.Invoke(() => dgMain.Columns[0].Visibility = Visibility.Visible);
+        //dgMain.ApplyTemplate();
     }
 
     private void ufCl_CheckChanged(object sender, RoutedEventArgs e)
