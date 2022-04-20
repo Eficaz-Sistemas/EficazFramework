@@ -11,14 +11,6 @@
 | :--- | :--- |
 | [DataGridComboBoxColumn](Controls/DataGridComboBoxColumn.md 'Controls.DataGridComboBoxColumn') | |
 
-<a name='EficazFramework.Application'></a>
-
-## EficazFramework.Application Namespace
-
-| Classes | |
-| :--- | :--- |
-| [ApplicationEvents](EficazFramework.Application/ApplicationEvents.md 'EficazFramework.Application.ApplicationEvents') | |
-
 <a name='EficazFramework.Behaviors'></a>
 
 ## EficazFramework.Behaviors Namespace
@@ -146,14 +138,6 @@
 | [CultureAssist](EficazFramework.Localization/CultureAssist.md 'EficazFramework.Localization.CultureAssist') | |
 | [LocalizeText](EficazFramework.Localization/LocalizeText.md 'EficazFramework.Localization.LocalizeText') | |
 
-<a name='EficazFramework.Resources.Icons.Packages'></a>
-
-## EficazFramework.Resources.Icons.Packages Namespace
-
-| Classes | |
-| :--- | :--- |
-| [MaterialDesign](EficazFramework.Resources.Icons.Packages/MaterialDesign.md 'EficazFramework.Resources.Icons.Packages.MaterialDesign') | |
-
 <a name='EficazFramework.Themes'></a>
 
 ## EficazFramework.Themes Namespace
@@ -189,11 +173,3 @@
 | Classes | |
 | :--- | :--- |
 | [VisualTreeHelpers](EficazFramework.XAML.Utilities/VisualTreeHelpers.md 'EficazFramework.XAML.Utilities.VisualTreeHelpers') | |
-
-<a name='XamlGeneratedNamespace'></a>
-
-## XamlGeneratedNamespace Namespace
-
-| Classes | |
-| :--- | :--- |
-| [GeneratedInternalTypeHelper](XamlGeneratedNamespace/GeneratedInternalTypeHelper.md 'XamlGeneratedNamespace.GeneratedInternalTypeHelper') | GeneratedInternalTypeHelper |

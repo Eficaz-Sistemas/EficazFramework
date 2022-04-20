@@ -37,18 +37,4 @@ public class Window
         System.Windows.Application.Current.Shutdown();
     }
 
-    [ExcludeFromCodeCoverage]
-    public static ICommand ShutDown_MaterialWindow { get; private set; } = new EficazFramework.Commands.CommandBase(ShutDown_MaterialWindow_Execute);
-    [ExcludeFromCodeCoverage]
-    private static async void ShutDown_MaterialWindow_Execute(object sender, Events.ExecuteEventArgs e)
-    {
-        System.Windows.Window win = XAML.Utilities.VisualTreeHelpers.FindAnchestor<System.Windows.Window>((DependencyObject)e.Parameter);
-        bool result = await Application.ApplicationEvents.RequestShutDown_Material(win, System.Windows.Application.Current);
-        if (result)
-            System.Windows.Application.Current.Shutdown();
-    }
-
-
-
-
 }

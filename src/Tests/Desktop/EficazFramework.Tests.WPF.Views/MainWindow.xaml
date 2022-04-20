@@ -12,7 +12,8 @@
         mc:Ignorable="d"
         d:Background="{DynamicResource Brush.Surface.Background}"
         Style="{DynamicResource Style.Window.Modern}"
-        Title="EficazFramework Wpf Preview" Height="765" d:Height="1000" Width="1020" Icon="/logo.png">
+        Title="EficazFramework Wpf Preview" Height="765" d:Height="1000" Width="1020" 
+        Icon="/EficazFramework.Tests.WPF.Views;component/logo.png">
     <Window.CommandBindings>
         <CommandBinding x:Name="ShutdownCmd" Command="{x:Static SystemCommands.CloseWindowCommand}" Executed="ShutdownCmd_Executed" />
         <CommandBinding x:Name="FullScreenCmd" Command="{x:Static SystemCommands.MaximizeWindowCommand}" Executed="FullScreenCmd_Executed" />
@@ -64,7 +65,7 @@
                                 </TransformGroup>
                             </ImageBrush.RelativeTransform>
                             <ImageBrush.ImageSource>
-                                <BitmapImage CacheOption="OnLoad" CreateOptions="IgnoreImageCache" UriSource="/Resources/grafismo.png"/>
+                                <BitmapImage CacheOption="OnLoad" CreateOptions="IgnoreImageCache" UriSource="/EficazFramework.Tests.WPF.Views;component/Resources/grafismo.png"/>
                             </ImageBrush.ImageSource>
                         </ImageBrush>
                     </Rectangle.Fill>

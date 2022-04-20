@@ -10,27 +10,13 @@
 	<SignAssembly>True</SignAssembly>
 	<AssemblyOriginatorKeyFile>EfCore.snk</AssemblyOriginatorKeyFile>
   </PropertyGroup>
-
+	
   <ItemGroup>
-    <Compile Remove="Resources\**" />
-    <EmbeddedResource Remove="Resources\**" />
-    <None Remove="Resources\**" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Compile Remove="Application\Events.cs" />
-    <Compile Remove="Behaviors\DataGridAssist.cs" />
     <Compile Remove="Behaviors\MdiWindowMoveThumb.cs" />
     <Compile Remove="Behaviors\ModalAssist.cs" />
     <Compile Remove="Behaviors\TextBoxAssist.cs" />
-    <Compile Remove="Commands\Window.cs" />
-    <Compile Remove="Common\TesteAppManager.cs" />
     <Compile Remove="Controls\ExpressionBuilder.cs" />
     <Compile Remove="Template.cs" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <None Remove="Factories\PackIconDataFactory.cs~RF2dc85a85.TMP" />
   </ItemGroup>
 
   <ItemGroup>
@@ -53,19 +39,4 @@
     <ProjectReference Include="..\EficazFramework.Tests.WPF.Views\EficazFramework.Tests.WPF.Views.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Application\" />
-    <Folder Include="Behaviors\" />
-    <Folder Include="Commands\" />
-    <Folder Include="Common\" />
-    <Folder Include="Controls\" />
-  </ItemGroup>
-	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-		<NoWarn>IDE0044;1573;1591;1701;1702;CA2211</NoWarn>
-	</PropertyGroup>
-
-	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
-		<NoWarn>IDE0044;1573;1591;1701;1702;CA2211</NoWarn>
-		<DisableDefaultDocumentation>true</DisableDefaultDocumentation>
-	</PropertyGroup>
 </Project>

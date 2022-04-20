@@ -11,28 +11,12 @@ using System.Windows.Data;
 using System.Windows.Controls.Primitives;
 using System;
 
-namespace EficazFramework.Commands;
+namespace EficazFramework.Tests.Commands;
 
 [Apartment(System.Threading.ApartmentState.STA)]
-public class WindowCommandsTests
+public class WindowCommandsTests : BaseTest
 {
-    System.Windows.Window win = new();
-    EficazFramework.Tests.WPF.Views.Behaviors.Inputs mock = new();
 
-
-    [SetUp]
-    public void Setup()
-    {
-        win = new();
-        win.Content = mock;
-        win.Show();
-    }
-
-    [TearDown]
-    public void TearDown()
-    {
-        win.Close();
-    }
 
     [Test]
     public void EnsureParameterIsNeeded()
@@ -45,7 +29,7 @@ public class WindowCommandsTests
 
         Action maximize2 = () =>
         {
-            EficazFramework.Commands.Window.Maximize.Execute(mock);
+            EficazFramework.Commands.Window.Maximize.Execute(MainWindow?.Content);
         };
         maximize2.Should().NotThrow<Exception>();
 
@@ -54,27 +38,28 @@ public class WindowCommandsTests
     [Test]
     public void Minimize()
     {
-        win.WindowState.Should().Be(WindowState.Normal);
-        EficazFramework.Commands.Window.Minimize.Execute(mock);
-        win.WindowState.Should().Be(WindowState.Minimized);
+        EficazFramework.Commands.Window.Restore.Execute(MainWindow?.Content);
+        MainWindow?.WindowState.Should().NotBe(WindowState.Minimized);
+        EficazFramework.Commands.Window.Minimize.Execute(MainWindow?.Content);
+        MainWindow?.WindowState.Should().Be(WindowState.Minimized);
     }
 
     [Test]
     public void Maximize()
     {
-        win.WindowState.Should().Be(WindowState.Normal);
-        EficazFramework.Commands.Window.Maximize.Execute(mock);
-        win.WindowState.Should().Be(WindowState.Maximized);
+        EficazFramework.Commands.Window.Restore.Execute(MainWindow?.Content);
+        MainWindow?.WindowState.Should().NotBe(WindowState.Maximized);
+        EficazFramework.Commands.Window.Maximize.Execute(MainWindow?.Content);
+        MainWindow?.WindowState.Should().Be(WindowState.Maximized);
     }
 
     [Test]
     public void Restore()
     {
-        win.WindowState.Should().Be(WindowState.Normal);
-        EficazFramework.Commands.Window.Maximize.Execute(mock);
-        win.WindowState.Should().Be(WindowState.Maximized);
-        EficazFramework.Commands.Window.Restore.Execute(mock);
-        win.WindowState.Should().Be(WindowState.Normal);
+        EficazFramework.Commands.Window.Maximize.Execute(MainWindow?.Content);
+        MainWindow?.WindowState.Should().NotBe(WindowState.Normal);
+        EficazFramework.Commands.Window.Restore.Execute(MainWindow?.Content);
+        MainWindow?.WindowState.Should().Be(WindowState.Normal);
     }
 
 }
