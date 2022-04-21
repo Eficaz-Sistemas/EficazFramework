@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 namespace EficazFramework.Tests
 {
     [Apartment(System.Threading.ApartmentState.STA)]
-    public class DIP : BaseTest
+    public class Resources : BaseTest
     {
        
         [Test, Order(0)]

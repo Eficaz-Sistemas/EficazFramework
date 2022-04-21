@@ -1,5 +1,5 @@
 #### [EficazFramework.WPF](EficazFrameworkWPF.md 'EficazFramework WPF')
-### [Controls](EficazFrameworkWPF.md#Controls 'Controls')
+### [EficazFramework.Controls](EficazFrameworkWPF.md#EficazFramework.Controls 'EficazFramework.Controls')
 
 ## DataGridComboBoxColumn Class
 
@@ -11,4 +11,4 @@ Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.O
 
 | Methods | |
 | :--- | :--- |
-| [GenerateElement(DataGridCell, object)](Controls/DataGridComboBoxColumn/GenerateElement(DataGridCell,object).md 'Controls.DataGridComboBoxColumn.GenerateElement(System.Windows.Controls.DataGridCell, object)') | |
+| [GenerateElement(DataGridCell, object)](EficazFramework.Controls/DataGridComboBoxColumn/GenerateElement(DataGridCell,object).md 'EficazFramework.Controls.DataGridComboBoxColumn.GenerateElement(System.Windows.Controls.DataGridCell, object)') | |

@@ -12,48 +12,27 @@ using System.Windows.Controls.Primitives;
 
 #pragma warning disable CS8600 // Conversão de literal nula ou possível valor nulo em tipo não anulável.
 
-namespace EficazFramework.Behaviors;
+namespace EficazFramework.Tests.Behaviors;
 
 [Apartment(System.Threading.ApartmentState.STA)]
 public class MdiWindowMoveThumb
 {
-    Tests.WPF.Views.Behaviors.MdiWindowThumb mock = new();
-    System.Windows.Window win = new();
 
-    [SetUp]
-    public void Setup()
+    [TestCase(25, 30)]
+    [TestCase(-15, -12)]
+    [TestCase(250, 249)]
+    [TestCase(3, 6)]
+    public void DragAppTest(double left, double top)
     {
-        win = new();
-        win.Content = mock;
-        win.Show();
-    }
-
-    [TearDown]
-    public void TearDown()
-    {
-        win.Close();
-    }
-
-    [Test]
-    public void MouseDown()
-    {
-        mock?.Win1.ApplyTemplate();
-        mock?.Win1.IsSelected.Should().BeFalse();
-        mock?.Win1.IsKeyboardFocusWithin.Should().BeFalse();
-        MouseButtonEventArgs eventArg = new(InputManager.Current.PrimaryMouseDevice, 1, MouseButton.Left);
-        eventArg.RoutedEvent = MDIWindowMoveThumb.MouseLeftButtonDownEvent;
-        MDIWindowMoveThumb header = XAML.Utilities.VisualTreeHelpers.FindVisualChild<MDIWindowMoveThumb>(mock?.Win1);
-        header.RaiseEvent(eventArg);
-    }
-
-    [Test]  
-    public void DragAppTest()
-    {
-        Canvas.GetLeft(mock?.App1).Should().Be(50);
-        Canvas.GetTop(mock?.App1).Should().Be(50);
-        mock?.App1.RaiseEvent(new DragDeltaEventArgs(25, 30));
-        Canvas.GetLeft(mock?.App1).Should().Be(75);
-        Canvas.GetTop(mock?.App1).Should().Be(80);
+        MDIWindowMoveThumb mock = new();
+        
+        Canvas.SetLeft(mock, 0.0);
+        Canvas.SetTop(mock, 0.0);
+        Canvas.GetLeft(mock).Should().Be(0);
+        Canvas.GetTop(mock).Should().Be(0);
+        mock.RaiseEvent(new DragDeltaEventArgs(left, top));
+        Canvas.GetLeft(mock).Should().Be(left);
+        Canvas.GetTop(mock).Should().Be(top);
     }
 }
 #pragma warning restore CS8600 // Conversão de literal nula ou possível valor nulo em tipo não anulável.

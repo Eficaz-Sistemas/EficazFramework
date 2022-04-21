@@ -1,5 +1,5 @@
 #### [EficazFramework.WPF](EficazFrameworkWPF.md 'EficazFramework WPF')
-### [Controls](EficazFrameworkWPF.md#Controls 'Controls').[DataGridComboBoxColumn](Controls/DataGridComboBoxColumn.md 'Controls.DataGridComboBoxColumn')
+### [EficazFramework.Controls](EficazFrameworkWPF.md#EficazFramework.Controls 'EficazFramework.Controls').[DataGridComboBoxColumn](EficazFramework.Controls/DataGridComboBoxColumn.md 'EficazFramework.Controls.DataGridComboBoxColumn')
 
 ## DataGridComboBoxColumn.GenerateElement(DataGridCell, object) Method
 
@@ -8,11 +8,11 @@ protected override System.Windows.FrameworkElement GenerateElement(System.Window
 ```
 #### Parameters
 
-<a name='Controls.DataGridComboBoxColumn.GenerateElement(System.Windows.Controls.DataGridCell,object).cell'></a>
+<a name='EficazFramework.Controls.DataGridComboBoxColumn.GenerateElement(System.Windows.Controls.DataGridCell,object).cell'></a>
 
 `cell` [System.Windows.Controls.DataGridCell](https://docs.microsoft.com/en-us/dotnet/api/System.Windows.Controls.DataGridCell 'System.Windows.Controls.DataGridCell')
 
-<a name='Controls.DataGridComboBoxColumn.GenerateElement(System.Windows.Controls.DataGridCell,object).dataItem'></a>
+<a name='EficazFramework.Controls.DataGridComboBoxColumn.GenerateElement(System.Windows.Controls.DataGridCell,object).dataItem'></a>
 
 `dataItem` [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.Object 'System.Object')
 

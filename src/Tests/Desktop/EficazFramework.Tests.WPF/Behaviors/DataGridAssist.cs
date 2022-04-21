@@ -11,7 +11,7 @@ using System.Windows.Data;
 namespace EficazFramework.Tests.Behaviors;
 
 [Apartment(System.Threading.ApartmentState.STA)]
-public class DataGridAssist : BaseTest
+public class DataGridAssist : EficazFramework.Tests.BaseTest
 {
     
     //[Test]

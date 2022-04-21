@@ -12,10 +12,8 @@
   </PropertyGroup>
 	
   <ItemGroup>
-    <Compile Remove="Behaviors\MdiWindowMoveThumb.cs" />
     <Compile Remove="Behaviors\ModalAssist.cs" />
     <Compile Remove="Behaviors\TextBoxAssist.cs" />
-    <Compile Remove="Controls\ExpressionBuilder.cs" />
     <Compile Remove="Template.cs" />
   </ItemGroup>
 
