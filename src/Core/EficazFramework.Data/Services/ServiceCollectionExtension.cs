@@ -21,8 +21,8 @@ public static class ServiceCollectionExtension
         {
             AsNoTracking = config.AsNoTracking,
             CustomFetch = config.CustomFetch,
-            DbContext = config.DbContext,
             Validator = config.Validator,
+            DbContextRequest = config.DbContextRequest
         };
         config.Includes.ForEach(i => instance.Includes.Add(i));
 

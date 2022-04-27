@@ -31,7 +31,7 @@ public class EfCore<TProvider> where TProvider : DataProviderBase
         Vm = new ViewModel<Resources.Mocks.Classes.Blog>();
         Vm.AddEntityFramework();
         var dbContextRepo = (EficazFramework.Repositories.EntityRepository<Resources.Mocks.Classes.Blog>)Vm.Repository;
-        ((EficazFramework.Repositories.EntityRepository<Resources.Mocks.Classes.Blog>)Vm.Repository).DbContextInstanceRequest += (s, e) => e.Instance = new Resources.Mocks.MockDbContext(_provider.GetService<DataProviderBase>());
+        ((EficazFramework.Repositories.EntityRepository<Resources.Mocks.Classes.Blog>)Vm.Repository).DbContextRequest = () => new Resources.Mocks.MockDbContext(_provider.GetService<DataProviderBase>());
 
         // seed
         dbContextRepo.PrepareDbContext();
@@ -52,7 +52,7 @@ public class EfCore<TProvider> where TProvider : DataProviderBase
     [TearDown]
     public async Task ReleaseTempData()
     {
-        ((EficazFramework.Repositories.EntityRepository<Resources.Mocks.Classes.Blog>)Vm.Repository).DbContextInstanceRequest -= (s, e) => e.Instance = new Resources.Mocks.MockDbContext(_provider.GetService<DataProviderBase>());
+        ((EficazFramework.Repositories.EntityRepository<Resources.Mocks.Classes.Blog>)Vm.Repository).DbContextRequest = () => new Resources.Mocks.MockDbContext(_provider.GetService<DataProviderBase>());
         Vm.Dispose();
 
         var ctb = new Resources.Mocks.MockDbContext(_provider.GetService<DataProviderBase>());

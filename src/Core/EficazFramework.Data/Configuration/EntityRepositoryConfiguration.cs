@@ -10,7 +10,7 @@ public class EntityRepositoryConfiguration<TEntity> where TEntity : EficazFramew
 {
     public bool AsNoTracking { get; set; }
     public Validation.Fluent.Validator<TEntity> Validator { get; set; }
-    public Microsoft.EntityFrameworkCore.DbContext DbContext { get; internal set; } = null;
     public Func<Task<IEnumerable<TEntity>>> CustomFetch { get; set; }
     public List<System.Linq.Expressions.Expression<Func<TEntity, object>>> Includes { get; private set; } = new();
+    public Func<Microsoft.EntityFrameworkCore.DbContext> DbContextRequest { get; set; } = null;
 }
