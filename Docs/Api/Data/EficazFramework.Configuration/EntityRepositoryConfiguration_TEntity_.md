@@ -19,6 +19,6 @@ Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.O
 | :--- | :--- |
 | [AsNoTracking](EficazFramework.Configuration/EntityRepositoryConfiguration_TEntity_/AsNoTracking.md 'EficazFramework.Configuration.EntityRepositoryConfiguration<TEntity>.AsNoTracking') | |
 | [CustomFetch](EficazFramework.Configuration/EntityRepositoryConfiguration_TEntity_/CustomFetch.md 'EficazFramework.Configuration.EntityRepositoryConfiguration<TEntity>.CustomFetch') | |
-| [DbContext](EficazFramework.Configuration/EntityRepositoryConfiguration_TEntity_/DbContext.md 'EficazFramework.Configuration.EntityRepositoryConfiguration<TEntity>.DbContext') | |
+| [DbContextRequest](EficazFramework.Configuration/EntityRepositoryConfiguration_TEntity_/DbContextRequest.md 'EficazFramework.Configuration.EntityRepositoryConfiguration<TEntity>.DbContextRequest') | |
 | [Includes](EficazFramework.Configuration/EntityRepositoryConfiguration_TEntity_/Includes.md 'EficazFramework.Configuration.EntityRepositoryConfiguration<TEntity>.Includes') | |
 | [Validator](EficazFramework.Configuration/EntityRepositoryConfiguration_TEntity_/Validator.md 'EficazFramework.Configuration.EntityRepositoryConfiguration<TEntity>.Validator') | |

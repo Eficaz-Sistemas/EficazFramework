@@ -282,14 +282,10 @@ public sealed class EntityRepository<TEntity> : Repositories.RepositoryBase<TEnt
     }
 
     /// <summary>
-    /// Aciona o evento DbContextInstanceRequest possibilitando a passagem de uma instância de DbContext ao repositório
+    /// Aciona <see cref="DbContextRequest"/> possibilitando a passagem de uma instância de DbContext ao repositório
     /// </summary>
-    public void PrepareDbContext()
-    {
-        var args = new Events.DbContextInstanceCreatingEventArgs();
-        DbContextInstanceRequest?.Invoke(this, args);
-        DbContext = args.Instance;
-    }
+    public void PrepareDbContext() =>
+        DbContext = DbContextRequest?.Invoke();
 
     /// <summary>
     /// Obtém uma instância de query ordenável (instrução ORDER BY em T-SQL) do tipo IOrderedQueryable.
@@ -367,5 +363,5 @@ public sealed class EntityRepository<TEntity> : Repositories.RepositoryBase<TEnt
     /// <summary>
     /// Evento disparado quando o Repositório precisa de uma nova instância de DbContext.
     /// </summary>
-    public event Events.DbContextInstanceCreatingEventHandler DbContextInstanceRequest;
+    public Func<Microsoft.EntityFrameworkCore.DbContext> DbContextRequest { get; set; } = null;
 }

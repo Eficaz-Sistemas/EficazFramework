@@ -3,7 +3,7 @@
 
 ## EntityRepository<TEntity>.PrepareDbContext() Method
 
-Aciona o evento DbContextInstanceRequest possibilitando a passagem de uma instância de DbContext ao repositório
+Aciona [DbContextRequest](EficazFramework.Repositories/EntityRepository_TEntity_/DbContextRequest.md 'EficazFramework.Repositories.EntityRepository<TEntity>.DbContextRequest') possibilitando a passagem de uma instância de DbContext ao repositório
 
 ```csharp
 public void PrepareDbContext();
