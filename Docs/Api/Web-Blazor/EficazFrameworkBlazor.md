@@ -11,3 +11,12 @@
 | :--- | :--- |
 | [Animation](EficazFramework.Components/Animation.md 'EficazFramework.Components.Animation') | |
 | [ComponentBase](EficazFramework.Components/ComponentBase.md 'EficazFramework.Components.ComponentBase') | |
+
+<a name='EficazFramework.Icons'></a>
+
+## EficazFramework.Icons Namespace
+
+| Classes | |
+| :--- | :--- |
+| [Brands](EficazFramework.Icons/Brands.md 'EficazFramework.Icons.Brands') | |
+| [Products](EficazFramework.Icons/Products.md 'EficazFramework.Icons.Products') | |

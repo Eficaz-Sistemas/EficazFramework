@@ -17,6 +17,7 @@ public partial class ObservableElement : ComponentBase, IDisposable
     [Parameter] public bool Permanent { get; set; } = false;
     [Parameter] public bool AutoStart { get; set; } = false;
     [Parameter] public string ObserverQuery { get; set; }
+    [Parameter] public string? TargetQuery { get; set; }
 
     protected string Classname =>
                 new CssBuilder()
@@ -27,7 +28,6 @@ public partial class ObservableElement : ComponentBase, IDisposable
     private ElementReference _elementReference;
 
     public static string ActiveClass { get; set; } = "on-screen";
-    public static string ActiveFunction { get; set; }
 
     protected override Task OnAfterRenderAsync(bool firstRender)
     {
@@ -41,7 +41,7 @@ public partial class ObservableElement : ComponentBase, IDisposable
         if (_started == true)
             return;
         _started = true;
-        JSRuntime.StartObserve(ObserverQuery, ActiveClass, Permanent);
+        JSRuntime.StartObserve(ObserverQuery, ActiveClass, Permanent, null, TargetQuery);
     }
 
     public void StopObserve()

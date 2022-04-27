@@ -1,6 +1,6 @@
 ﻿[
   {
-    "outputFile": "wwwroot/css/efcore-styles.css",
+    "outputFile": "wwwroot/css/EficazFramework.css",
     "inputFile": "Styles/EfCore.scss"
   }
 ]

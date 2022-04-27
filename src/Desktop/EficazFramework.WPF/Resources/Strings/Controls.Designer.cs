@@ -19,7 +19,7 @@ namespace EficazFramework.Resources.Strings {
     // através de uma ferramenta como ResGen ou Visual Studio.
     // Para adicionar ou remover um associado, edite o arquivo .ResX e execute ResGen novamente
     // com a opção /str, ou recrie o projeto do VS.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "17.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     public class Controls {
@@ -57,6 +57,33 @@ namespace EficazFramework.Resources.Strings {
             }
             set {
                 resourceCulture = value;
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Pesquisar....
+        /// </summary>
+        public static string AutoComplete_Tooltip {
+            get {
+                return ResourceManager.GetString("AutoComplete_Tooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Selecione o campo para pesquisa na coluna 1....
+        /// </summary>
+        public static string DataGridExpressionColumn_SelectedProperty_Null {
+            get {
+                return ResourceManager.GetString("DataGridExpressionColumn_SelectedProperty_Null", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Clique para selecionar uma data....
+        /// </summary>
+        public static string DateInputBox_Tooltip {
+            get {
+                return ResourceManager.GetString("DateInputBox_Tooltip", resourceCulture);
             }
         }
         

@@ -1,0 +1,170 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:EfControls="clr-namespace:EficazFramework.Controls"
+                    xmlns:EfAttachedProps="clr-namespace:EficazFramework.Controls.AttachedProperties"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <Style TargetType="{x:Type Window}" x:Key="Style.Window.Modern">
+        <Setter Property="EfAttachedProps:Control.Color" Value="Primary"/>
+        <Setter Property="EfAttachedProps:TextBox.SelectAllOnFocus" Value="True"/>
+        <Setter Property="Background" Value="{DynamicResource  Brush.Surface.Background}" />
+        <Setter Property="Foreground" Value="{DynamicResource Brush.Surface.Foreground}"/>
+        <Setter Property="TextElement.Foreground" Value="{DynamicResource Brush.Surface.Foreground}"/>
+        <Setter Property="TextBlock.Foreground" Value="{DynamicResource Brush.Surface.Foreground}"/>
+        <Setter Property="BorderThickness" Value="1"/>
+        <Setter Property="WindowChrome.WindowChrome">
+            <Setter.Value>
+                <WindowChrome CornerRadius="0" CaptionHeight="30" GlassFrameThickness="0" UseAeroCaptionButtons="False" />
+            </Setter.Value>
+        </Setter>
+        <Setter Property="SnapsToDevicePixels" Value="true"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Window}">
+                    <Grid>
+                        <Border x:Name="BaseBorder"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                Panel.ZIndex="1"
+                                BorderThickness="{TemplateBinding BorderThickness}"/>
+                        <Border x:Name="BaseBackground" 
+                                Background="{TemplateBinding Background}" 
+                                BorderThickness="0"
+                                BorderBrush="{x:Null}"/>
+                        <AdornerDecorator Margin="0" Name="winAdorner">
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="30"/>
+                                    <RowDefinition Height="1*"/>
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="1*"/>
+                                    <ColumnDefinition Width="30"/>
+                                    <ColumnDefinition Width="30"/>
+                                    <ColumnDefinition Width="30"/>
+                                </Grid.ColumnDefinitions>
+                                <Border Background="{DynamicResource Brush.Darken}" Grid.ColumnSpan="4"/>
+                                <StackPanel Orientation="Horizontal">
+                                    <Image RenderOptions.BitmapScalingMode="HighQuality" Margin="6,1,0,0" x:Name="PART_winIcon" Stretch="Uniform" Width="18" Height="18" VerticalAlignment="Center" HorizontalAlignment="Left" Source="{TemplateBinding Icon}"/>
+                                    <TextBlock Margin="6,2,0,0" x:Name="PART_wintitle" VerticalAlignment="Center" Style="{DynamicResource Style.TextBlock.Caption}" Text="{TemplateBinding Title}" Foreground="{DynamicResource Brush.Window.Foreground.Header}" />
+                                </StackPanel>
+                                <Button Command="{Binding Source={x:Static SystemCommands.MinimizeWindowCommand}}" 
+                                        WindowChrome.IsHitTestVisibleInChrome="True" 
+                                        Grid.Column="1"
+                                        EfAttachedProps:Control.Color="Surface"
+                                        EfAttachedProps:Button.IconSize="10"
+                                        x:Name="PART_WinButtonBar_MinimizeButton"
+                                        Width="30" 
+                                        Padding="0" 
+                                        Focusable="False" 
+                                        IsTabStop="False">
+                                    <EfControls:Icon Height="{Binding Path=(EfAttachedProps:Button.IconSize), ElementName=PART_WinButtonBar_MinimizeButton}" 
+                                                     Width="{Binding Path=(EfAttachedProps:Button.IconSize), ElementName=PART_WinButtonBar_MinimizeButton}" 
+                                                     Data="{DynamicResource Icon.MaterialDesign.WindowMinimize}" />
+                                </Button>
+                                <Button Command="{Binding Source={x:Static SystemCommands.RestoreWindowCommand}}" 
+                                        Visibility="Collapsed"
+                                        EfAttachedProps:Control.Color="Surface"
+                                        EfAttachedProps:Button.IconSize="10"
+                                        WindowChrome.IsHitTestVisibleInChrome="True" 
+                                        Grid.Column="2"
+                                        x:Name="PART_WinButtonBar_RestoreButton"
+                                        Width="30" 
+                                        Padding="0"
+                                        Focusable="False"
+                                        IsTabStop="False">
+                                    <EfControls:Icon Height="{Binding Path=(EfAttachedProps:Button.IconSize), ElementName=PART_WinButtonBar_RestoreButton}" 
+                                                   Width="{Binding Path=(EfAttachedProps:Button.IconSize), ElementName=PART_WinButtonBar_RestoreButton}" 
+                                                   Data="{DynamicResource Icon.MaterialDesign.WindowRestore}" />
+                                </Button>
+                                <Button Command="{Binding Source={x:Static SystemCommands.MaximizeWindowCommand}}"
+                                        WindowChrome.IsHitTestVisibleInChrome="True" 
+                                        EfAttachedProps:Control.Color="Surface"
+                                        EfAttachedProps:Button.IconSize="10"
+                                        Grid.Column="2" 
+                                        x:Name="PART_WinButtonBar_MaximizeButton"
+                                        Width="30" 
+                                        Padding="0"
+                                        Focusable="False"
+                                        IsTabStop="False">
+                                    <EfControls:Icon Height="{Binding Path=(EfAttachedProps:Button.IconSize), ElementName=PART_WinButtonBar_MaximizeButton}" 
+                                                   Width="{Binding Path=(EfAttachedProps:Button.IconSize), ElementName=PART_WinButtonBar_MaximizeButton}" 
+                                                   Data="{DynamicResource Icon.MaterialDesign.WindowMaximize}"/>
+                                </Button>
+                                <Button Command="{Binding Source={x:Static SystemCommands.CloseWindowCommand}}" 
+                                        WindowChrome.IsHitTestVisibleInChrome="True" 
+                                        EfAttachedProps:Control.Color="Surface"
+                                        EfAttachedProps:Button.IconSize="10"
+                                        Grid.Column="3" 
+                                        x:Name="PART_WinButtonBar_CloseButton"
+                                        Width="30" 
+                                        Padding="0"
+                                        Focusable="False" 
+                                        IsTabStop="False"
+                                        Style="{DynamicResource Style.Button.Caption}"
+                                        EfAttachedProps:Button.MouseOver="{DynamicResource Brush.Error.Background}"
+                                        Foreground="{DynamicResource Brush.Error.Foreground}">
+                                    <EfControls:Icon Height="{Binding Path=(EfAttachedProps:Button.IconSize), ElementName=PART_WinButtonBar_CloseButton}" 
+                                                   Width="{Binding Path=(EfAttachedProps:Button.IconSize), ElementName=PART_WinButtonBar_CloseButton}" 
+                                                   Data="{DynamicResource Icon.MaterialDesign.WindowClose}" />
+                                </Button>
+                                <ContentPresenter Margin="{TemplateBinding Margin}" Grid.Row="1" Grid.ColumnSpan="4"/>
+                            </Grid>
+                        </AdornerDecorator>
+                        <ResizeGrip x:Name="WindowResizeGrip" HorizontalAlignment="Right" VerticalAlignment="Bottom" Visibility="Collapsed" IsTabStop="false"/>
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="ResizeMode" Value="CanResizeWithGrip">
+                            <Setter TargetName="WindowResizeGrip" Property="Visibility" Value="Visible"/>
+                        </Trigger>
+                        <Trigger Property="Icon" Value="{x:Null}">
+                            <Setter TargetName="PART_winIcon" Property="Margin" Value="0" />
+                            <Setter TargetName="PART_winIcon" Property="Width" Value="3" />
+                            <Setter TargetName="PART_winIcon" Property="Height" Value="0" />
+                        </Trigger>
+                        <Trigger Property="WindowState" Value="Maximized">
+                            <Setter TargetName="winAdorner" Property="Margin" Value="8,8,8,7"/>
+                            <Setter TargetName="PART_WinButtonBar_RestoreButton" Property="Visibility" Value="Visible"/>
+                            <Setter TargetName="PART_WinButtonBar_MaximizeButton" Property="Visibility" Value="Collapsed"/>
+                        </Trigger>
+                        <Trigger Property="WindowStyle" Value="ToolWindow">
+                            <Setter TargetName="PART_WinButtonBar_MinimizeButton" Property="Visibility" Value="Collapsed"/>
+                            <Setter TargetName="PART_WinButtonBar_RestoreButton" Property="Visibility" Value="Collapsed"/>
+                            <Setter TargetName="PART_WinButtonBar_MaximizeButton" Property="Visibility" Value="Collapsed"/>
+                        </Trigger>
+                        <Trigger Property="IsActive" Value="False">
+                            <Setter Property="BorderBrush" Value="{DynamicResource Brush.Disabled.Background}"/>
+                            <Setter TargetName="PART_wintitle" Property="Foreground" Value="{DynamicResource Brush.Disabled.Foreground}"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <Style.Triggers>
+            <Trigger Property="EfAttachedProps:Control.Color" Value="Surface">
+                <Setter Property="BorderBrush" Value="{DynamicResource Brush.Primary.Background}" />
+            </Trigger>
+            <Trigger Property="EfAttachedProps:Control.Color" Value="SurfaceAlternate">
+                <Setter Property="Foreground" Value="{DynamicResource Brush.SurfaceAlternate.Foreground}"/>
+                <Setter Property="TextElement.Foreground" Value="{DynamicResource Brush.SurfaceAlternate.Foreground}"/>
+                <Setter Property="TextBlock.Foreground" Value="{DynamicResource Brush.SurfaceAlternate.Foreground}"/>
+                <Setter Property="BorderBrush" Value="{DynamicResource Brush.Primary.Background}" />
+                <Setter Property="Background" Value="{DynamicResource Brush.SurfaceAlternate.Background}" />
+            </Trigger>
+            <Trigger Property="EfAttachedProps:Control.Color" Value="Primary">
+                <Setter Property="BorderBrush" Value="{DynamicResource Brush.Primary.Background}" />
+            </Trigger>
+            <Trigger Property="EfAttachedProps:Control.Color" Value="PrimaryDarken">
+                <Setter Property="BorderBrush" Value="{DynamicResource Brush.Primary.Background.Darken}" />
+            </Trigger>
+            <Trigger Property="EfAttachedProps:Control.Color" Value="PrimaryLighten">
+                <Setter Property="BorderBrush" Value="{DynamicResource Brush.Primary.Background.Lighten}" />
+            </Trigger>
+            <Trigger Property="EfAttachedProps:Control.Color" Value="Secondary">
+                <Setter Property="BorderBrush" Value="{DynamicResource Brush.Secondary.Background}" />
+            </Trigger>
+            <Trigger Property="EfAttachedProps:Control.Color" Value="Tertiary">
+                <Setter Property="BorderBrush" Value="{DynamicResource Brush.Tertiary.Background}" />
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
+</ResourceDictionary>

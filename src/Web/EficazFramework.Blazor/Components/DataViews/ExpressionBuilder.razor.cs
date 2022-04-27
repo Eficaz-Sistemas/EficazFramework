@@ -7,14 +7,13 @@ using System.Threading.Tasks;
 
 namespace EficazFramework.Components;
 
-public partial class ExpressionBuilder
+public partial class ExpressionBuilder: ComponentBase
 {
     // in Memory of Laudo Ferreira da Silva and Francisco Luis de Sousa
     // † 2020
 
     protected string HostClassNames =>
-        new MudBlazor.Utilities.CssBuilder("mud-tabs-toolbar")
-        .AddClass($"mud-elevation-{Elevation}", Elevation != 0)
+        new MudBlazor.Utilities.CssBuilder(Class)
         .Build();
 
     private readonly OperatorConverter converter = new();
@@ -23,7 +22,7 @@ public partial class ExpressionBuilder
 
     [Parameter] public int Elevation { get; set; } = 0;
 
-    private EficazFramework.Expressions.ExpressionBuilder vm = null;
+    private EficazFramework.Expressions.ExpressionBuilder vm;
     [Parameter]
     public EficazFramework.Expressions.ExpressionBuilder ViewModel
     {
@@ -72,14 +71,20 @@ public partial class ExpressionBuilder
         }
     }
 
-    private void OnAddCommand()
+    internal void OnAddCommand()
     {
+        if (!vm.CanAddExpressions)
+            return;
+
         vm.AddNewItemCommand.Execute(null);
         StateHasChanged();
     }
 
-    private void OnDeleteCommand(object parameter)
+    internal void OnDeleteCommand(object parameter)
     {
+        if (!vm.CanAddExpressions)
+            return;
+
         vm.DeleteItemCommand.Execute(parameter);
         StateHasChanged();
     }
@@ -150,54 +155,6 @@ public partial class ExpressionBuilder
         {
             SetFunc = (e) => e.GetLocalizedDescription(typeof(EficazFramework.Resources.Strings.DataDescriptions));
         }
-    }
-
-    internal class DateTimeObjConverter : MudBlazor.Converter<Object>
-    {
-        internal DateTimeObjConverter()
-        {
-
-            SetFunc = (e) =>
-            {
-                if (e == null)
-                    return null;
-                bool cast = DateTime.TryParse(e.ToString(), out DateTime value);
-                if (cast == false)
-                    return null;
-                return dtconv.Set(value);
-            };
-
-            GetFunc = (e) =>
-            {
-                return (object)dtconv.Get(e);
-            };
-        }
-
-        private readonly MudBlazor.DateConverter dtconv = new(System.Globalization.CultureInfo.CurrentCulture.DateTimeFormat.ShortDatePattern);
-    }
-
-    internal class DecimalObjConverter : MudBlazor.Converter<Object>
-    {
-        internal DecimalObjConverter()
-        {
-
-            SetFunc = (e) =>
-            {
-                if (e == null)
-                    return null;
-                bool cast = double.TryParse(e.ToString(), out double value);
-                if (cast == false)
-                    return null;
-                return numconv.Set(value);
-            };
-
-            GetFunc = (e) =>
-            {
-                return (object)numconv.Get(e);
-            };
-        }
-
-        private readonly MudBlazor.DefaultConverter<double> numconv = new();
     }
 
     internal class StringObjConverter : MudBlazor.Converter<object>

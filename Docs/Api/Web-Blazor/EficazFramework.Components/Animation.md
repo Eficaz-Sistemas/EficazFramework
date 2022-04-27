@@ -16,10 +16,11 @@ Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.O
 | [Direction](EficazFramework.Components/Animation/Direction.md 'EficazFramework.Components.Animation.Direction') | animation-direction: normal|reverse|alternate|alternate-reverse; |
 | [Duration](EficazFramework.Components/Animation/Duration.md 'EficazFramework.Components.Animation.Duration') | The Animation Duration, int miliseconds |
 | [Infinite](EficazFramework.Components/Animation/Infinite.md 'EficazFramework.Components.Animation.Infinite') | The Animation Duration, on CSS format (ex: 1s, 0.25s, etc) |
+| [IsLocked](EficazFramework.Components/Animation/IsLocked.md 'EficazFramework.Components.Animation.IsLocked') | Defines if Animation is Locked (for parameters change) |
 | [KeyFrameName](EficazFramework.Components/Animation/KeyFrameName.md 'EficazFramework.Components.Animation.KeyFrameName') | Keyframe Name. See MudBlazor.Animations class for built-in ones.<br/>Some of then could require aditional values with String.Format or string interpolation |
 | [TimmingFunction](EficazFramework.Components/Animation/TimmingFunction.md 'EficazFramework.Components.Animation.TimmingFunction') | The timming effect function to be applied to element |
 | [Trigger](EficazFramework.Components/Animation/Trigger.md 'EficazFramework.Components.Animation.Trigger') | animation-direction: normal|reverse|alternate|alternate-reverse; |
 
 | Methods | |
 | :--- | :--- |
-| [TriggerAnimation()](EficazFramework.Components/Animation/TriggerAnimation().md 'EficazFramework.Components.Animation.TriggerAnimation()') | Execute the animation |
+| [TriggerAnimation(bool)](EficazFramework.Components/Animation/TriggerAnimation(bool).md 'EficazFramework.Components.Animation.TriggerAnimation(bool)') | Execute the animation |

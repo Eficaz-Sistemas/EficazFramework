@@ -14,7 +14,8 @@ Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.O
 | [_cancellationTokenSource](EficazFramework.Controls/AutoComplete/_cancellationTokenSource.md 'EficazFramework.Controls.AutoComplete._cancellationTokenSource') | |
 | [_executed](EficazFramework.Controls/AutoComplete/_executed.md 'EficazFramework.Controls.AutoComplete._executed') | |
 | [_lockSyncText](EficazFramework.Controls/AutoComplete/_lockSyncText.md 'EficazFramework.Controls.AutoComplete._lockSyncText') | |
-| [_PART_ListBox](EficazFramework.Controls/AutoComplete/_PART_ListBox.md 'EficazFramework.Controls.AutoComplete._PART_ListBox') | |
+| [_PART_ListView](EficazFramework.Controls/AutoComplete/_PART_ListView.md 'EficazFramework.Controls.AutoComplete._PART_ListView') | |
+| [_PART_ProgreessBar](EficazFramework.Controls/AutoComplete/_PART_ProgreessBar.md 'EficazFramework.Controls.AutoComplete._PART_ProgreessBar') | |
 | [_passliteral](EficazFramework.Controls/AutoComplete/_passliteral.md 'EficazFramework.Controls.AutoComplete._passliteral') | |
 | [ClearCommandProperty](EficazFramework.Controls/AutoComplete/ClearCommandProperty.md 'EficazFramework.Controls.AutoComplete.ClearCommandProperty') | |
 | [ClearCommandPropertyKey](EficazFramework.Controls/AutoComplete/ClearCommandPropertyKey.md 'EficazFramework.Controls.AutoComplete.ClearCommandPropertyKey') | |
@@ -23,10 +24,7 @@ Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.O
 | [ContentStringFormatProperty](EficazFramework.Controls/AutoComplete/ContentStringFormatProperty.md 'EficazFramework.Controls.AutoComplete.ContentStringFormatProperty') | |
 | [FindActionProperty](EficazFramework.Controls/AutoComplete/FindActionProperty.md 'EficazFramework.Controls.AutoComplete.FindActionProperty') | |
 | [FreeTextProperty](EficazFramework.Controls/AutoComplete/FreeTextProperty.md 'EficazFramework.Controls.AutoComplete.FreeTextProperty') | |
-| [IsLoadingProperty](EficazFramework.Controls/AutoComplete/IsLoadingProperty.md 'EficazFramework.Controls.AutoComplete.IsLoadingProperty') | |
-| [IsLoadingPropertyKey](EficazFramework.Controls/AutoComplete/IsLoadingPropertyKey.md 'EficazFramework.Controls.AutoComplete.IsLoadingPropertyKey') | |
 | [ItemsPanelProperty](EficazFramework.Controls/AutoComplete/ItemsPanelProperty.md 'EficazFramework.Controls.AutoComplete.ItemsPanelProperty') | |
-| [ItemsSourceProperty](EficazFramework.Controls/AutoComplete/ItemsSourceProperty.md 'EficazFramework.Controls.AutoComplete.ItemsSourceProperty') | |
 | [ItemTemplateProperty](EficazFramework.Controls/AutoComplete/ItemTemplateProperty.md 'EficazFramework.Controls.AutoComplete.ItemTemplateProperty') | |
 | [SelectionChangedActionProperty](EficazFramework.Controls/AutoComplete/SelectionChangedActionProperty.md 'EficazFramework.Controls.AutoComplete.SelectionChangedActionProperty') | |
 | [ValueIgnoresProperty](EficazFramework.Controls/AutoComplete/ValueIgnoresProperty.md 'EficazFramework.Controls.AutoComplete.ValueIgnoresProperty') | |
@@ -41,9 +39,7 @@ Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.O
 | [ContentStringFormat](EficazFramework.Controls/AutoComplete/ContentStringFormat.md 'EficazFramework.Controls.AutoComplete.ContentStringFormat') | |
 | [FindAction](EficazFramework.Controls/AutoComplete/FindAction.md 'EficazFramework.Controls.AutoComplete.FindAction') | |
 | [FreeText](EficazFramework.Controls/AutoComplete/FreeText.md 'EficazFramework.Controls.AutoComplete.FreeText') | |
-| [IsLoading](EficazFramework.Controls/AutoComplete/IsLoading.md 'EficazFramework.Controls.AutoComplete.IsLoading') | |
 | [ItemsPanel](EficazFramework.Controls/AutoComplete/ItemsPanel.md 'EficazFramework.Controls.AutoComplete.ItemsPanel') | |
-| [ItemsSource](EficazFramework.Controls/AutoComplete/ItemsSource.md 'EficazFramework.Controls.AutoComplete.ItemsSource') | |
 | [ItemTemplate](EficazFramework.Controls/AutoComplete/ItemTemplate.md 'EficazFramework.Controls.AutoComplete.ItemTemplate') | |
 | [SelectionChangedAction](EficazFramework.Controls/AutoComplete/SelectionChangedAction.md 'EficazFramework.Controls.AutoComplete.SelectionChangedAction') | |
 | [Value](EficazFramework.Controls/AutoComplete/Value.md 'EficazFramework.Controls.AutoComplete.Value') | |

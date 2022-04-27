@@ -16,14 +16,13 @@ Derived
 | Fields | |
 | :--- | :--- |
 | [_PART_Popup](EficazFramework.Controls.Primitives/InteractiveTextBox/_PART_Popup.md 'EficazFramework.Controls.Primitives.InteractiveTextBox._PART_Popup') | |
-| [CommandContentProperty](EficazFramework.Controls.Primitives/InteractiveTextBox/CommandContentProperty.md 'EficazFramework.Controls.Primitives.InteractiveTextBox.CommandContentProperty') | |
+| [CommandContentTemplateProperty](EficazFramework.Controls.Primitives/InteractiveTextBox/CommandContentTemplateProperty.md 'EficazFramework.Controls.Primitives.InteractiveTextBox.CommandContentTemplateProperty') | |
 | [CommandPopupProperty](EficazFramework.Controls.Primitives/InteractiveTextBox/CommandPopupProperty.md 'EficazFramework.Controls.Primitives.InteractiveTextBox.CommandPopupProperty') | |
 | [CommandPopupPropertyKey](EficazFramework.Controls.Primitives/InteractiveTextBox/CommandPopupPropertyKey.md 'EficazFramework.Controls.Primitives.InteractiveTextBox.CommandPopupPropertyKey') | |
 | [f12pressed](EficazFramework.Controls.Primitives/InteractiveTextBox/f12pressed.md 'EficazFramework.Controls.Primitives.InteractiveTextBox.f12pressed') | |
 | [FindButtonVisibilityProperty](EficazFramework.Controls.Primitives/InteractiveTextBox/FindButtonVisibilityProperty.md 'EficazFramework.Controls.Primitives.InteractiveTextBox.FindButtonVisibilityProperty') | |
-| [IsPopupOpenedProperty](EficazFramework.Controls.Primitives/InteractiveTextBox/IsPopupOpenedProperty.md 'EficazFramework.Controls.Primitives.InteractiveTextBox.IsPopupOpenedProperty') | |
-| [IsPopupOpenedPropertyKey](EficazFramework.Controls.Primitives/InteractiveTextBox/IsPopupOpenedPropertyKey.md 'EficazFramework.Controls.Primitives.InteractiveTextBox.IsPopupOpenedPropertyKey') | |
-| [PopupContentProperty](EficazFramework.Controls.Primitives/InteractiveTextBox/PopupContentProperty.md 'EficazFramework.Controls.Primitives.InteractiveTextBox.PopupContentProperty') | |
+| [IsEmptyAndNotFocusedProperty](EficazFramework.Controls.Primitives/InteractiveTextBox/IsEmptyAndNotFocusedProperty.md 'EficazFramework.Controls.Primitives.InteractiveTextBox.IsEmptyAndNotFocusedProperty') | |
+| [IsEmptyAndNotFocusedPropertyKey](EficazFramework.Controls.Primitives/InteractiveTextBox/IsEmptyAndNotFocusedPropertyKey.md 'EficazFramework.Controls.Primitives.InteractiveTextBox.IsEmptyAndNotFocusedPropertyKey') | |
 | [PopupContentTemplateProperty](EficazFramework.Controls.Primitives/InteractiveTextBox/PopupContentTemplateProperty.md 'EficazFramework.Controls.Primitives.InteractiveTextBox.PopupContentTemplateProperty') | |
 | [PopupHorizontalAlignmentProperty](EficazFramework.Controls.Primitives/InteractiveTextBox/PopupHorizontalAlignmentProperty.md 'EficazFramework.Controls.Primitives.InteractiveTextBox.PopupHorizontalAlignmentProperty') | |
 | [PopupMaxHeightProperty](EficazFramework.Controls.Primitives/InteractiveTextBox/PopupMaxHeightProperty.md 'EficazFramework.Controls.Primitives.InteractiveTextBox.PopupMaxHeightProperty') | |
@@ -34,9 +33,10 @@ Derived
 
 | Properties | |
 | :--- | :--- |
-| [CommandContent](EficazFramework.Controls.Primitives/InteractiveTextBox/CommandContent.md 'EficazFramework.Controls.Primitives.InteractiveTextBox.CommandContent') | |
+| [CommandContentTemplate](EficazFramework.Controls.Primitives/InteractiveTextBox/CommandContentTemplate.md 'EficazFramework.Controls.Primitives.InteractiveTextBox.CommandContentTemplate') | |
 | [CommandPopup](EficazFramework.Controls.Primitives/InteractiveTextBox/CommandPopup.md 'EficazFramework.Controls.Primitives.InteractiveTextBox.CommandPopup') | |
 | [FindButtonVisibility](EficazFramework.Controls.Primitives/InteractiveTextBox/FindButtonVisibility.md 'EficazFramework.Controls.Primitives.InteractiveTextBox.FindButtonVisibility') | |
+| [IsEmptyAndNotFocused](EficazFramework.Controls.Primitives/InteractiveTextBox/IsEmptyAndNotFocused.md 'EficazFramework.Controls.Primitives.InteractiveTextBox.IsEmptyAndNotFocused') | |
 | [IsPopupOpened](EficazFramework.Controls.Primitives/InteractiveTextBox/IsPopupOpened.md 'EficazFramework.Controls.Primitives.InteractiveTextBox.IsPopupOpened') | |
 | [PopupContent](EficazFramework.Controls.Primitives/InteractiveTextBox/PopupContent.md 'EficazFramework.Controls.Primitives.InteractiveTextBox.PopupContent') | |
 | [PopupContentTemplate](EficazFramework.Controls.Primitives/InteractiveTextBox/PopupContentTemplate.md 'EficazFramework.Controls.Primitives.InteractiveTextBox.PopupContentTemplate') | |
@@ -52,7 +52,12 @@ Derived
 | [ClosePopup(bool)](EficazFramework.Controls.Primitives/InteractiveTextBox/ClosePopup(bool).md 'EficazFramework.Controls.Primitives.InteractiveTextBox.ClosePopup(bool)') | |
 | [CommitSelection()](EficazFramework.Controls.Primitives/InteractiveTextBox/CommitSelection().md 'EficazFramework.Controls.Primitives.InteractiveTextBox.CommitSelection()') | |
 | [OnApplyTemplate()](EficazFramework.Controls.Primitives/InteractiveTextBox/OnApplyTemplate().md 'EficazFramework.Controls.Primitives.InteractiveTextBox.OnApplyTemplate()') | |
+| [OnGotFocus(RoutedEventArgs)](EficazFramework.Controls.Primitives/InteractiveTextBox/OnGotFocus(RoutedEventArgs).md 'EficazFramework.Controls.Primitives.InteractiveTextBox.OnGotFocus(System.Windows.RoutedEventArgs)') | |
+| [OnLostFocus(RoutedEventArgs)](EficazFramework.Controls.Primitives/InteractiveTextBox/OnLostFocus(RoutedEventArgs).md 'EficazFramework.Controls.Primitives.InteractiveTextBox.OnLostFocus(System.Windows.RoutedEventArgs)') | |
 | [OnLostKeyboardFocus(KeyboardFocusChangedEventArgs)](EficazFramework.Controls.Primitives/InteractiveTextBox/OnLostKeyboardFocus(KeyboardFocusChangedEventArgs).md 'EficazFramework.Controls.Primitives.InteractiveTextBox.OnLostKeyboardFocus(System.Windows.Input.KeyboardFocusChangedEventArgs)') | |
 | [OnPreviewKeyUp(KeyEventArgs)](EficazFramework.Controls.Primitives/InteractiveTextBox/OnPreviewKeyUp(KeyEventArgs).md 'EficazFramework.Controls.Primitives.InteractiveTextBox.OnPreviewKeyUp(System.Windows.Input.KeyEventArgs)') | |
+| [OnTextChanged(TextChangedEventArgs)](EficazFramework.Controls.Primitives/InteractiveTextBox/OnTextChanged(TextChangedEventArgs).md 'EficazFramework.Controls.Primitives.InteractiveTextBox.OnTextChanged(System.Windows.Controls.TextChangedEventArgs)') | |
+| [OnTextInput(TextCompositionEventArgs)](EficazFramework.Controls.Primitives/InteractiveTextBox/OnTextInput(TextCompositionEventArgs).md 'EficazFramework.Controls.Primitives.InteractiveTextBox.OnTextInput(System.Windows.Input.TextCompositionEventArgs)') | |
 | [OpenPopup(Nullable&lt;bool&gt;)](EficazFramework.Controls.Primitives/InteractiveTextBox/OpenPopup(Nullable_bool_).md 'EficazFramework.Controls.Primitives.InteractiveTextBox.OpenPopup(System.Nullable<bool>)') | |
 | [PopupCommand_Executed(object, ExecuteEventArgs)](EficazFramework.Controls.Primitives/InteractiveTextBox/PopupCommand_Executed(object,ExecuteEventArgs).md 'EficazFramework.Controls.Primitives.InteractiveTextBox.PopupCommand_Executed(object, EficazFramework.Events.ExecuteEventArgs)') | |
+| [UpdateIsEmpty()](EficazFramework.Controls.Primitives/InteractiveTextBox/UpdateIsEmpty().md 'EficazFramework.Controls.Primitives.InteractiveTextBox.UpdateIsEmpty()') | |

@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Components;
+using Microsoft.AspNetCore.Components.Web;
 
 namespace EficazFramework.Components;
 
@@ -34,4 +35,11 @@ public class NumberField<T> : MudBlazor.MudTextField<T>
         else
             attributes["step"] = (object)"1";
     }
+
+    protected override void OnBlurred(FocusEventArgs obj)
+    {
+        base.OnBlurred(obj);
+        SetTextAsync(Converter.Set(Value), false);
+    }
+
 }

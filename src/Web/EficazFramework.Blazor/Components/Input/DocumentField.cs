@@ -1,9 +1,5 @@
 ﻿using Microsoft.AspNetCore.Components;
-using System;
-using System.Collections.Generic;
-using EficazFramework.Extensions;
 using Microsoft.AspNetCore.Components.Web;
-using System.Threading.Tasks;
 
 namespace EficazFramework.Components;
 
@@ -42,6 +38,12 @@ public class DocumentField<T> : MudBlazor.MudTextField<T>
             _uf = value;
             ((Converters.DocumentConverter<T>)Converter).UF = UF;
         }
+    }
+
+    protected override void OnBlurred(FocusEventArgs obj)
+    {
+        base.OnBlurred(obj);
+        SetTextAsync(Converter.Set(Value), false);
     }
 
 }

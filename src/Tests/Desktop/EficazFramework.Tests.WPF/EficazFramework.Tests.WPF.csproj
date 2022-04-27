@@ -4,20 +4,18 @@
     <TargetFramework>net6.0-windows</TargetFramework>
     <Nullable>enable</Nullable>
     <IsPackable>false</IsPackable>
-	<Version>6.0.0-preview002</Version>
-	<Description>Biblioteca de testes para WPF da Eficaz Framework Core.</Description>
+	<Version>6.0.0-preview003</Version>
+	<Description>Biblioteca de testes para WPF da Eficaz Framework.</Description>
 	<RootNamespace>EficazFramework</RootNamespace>
 	<SignAssembly>True</SignAssembly>
 	<AssemblyOriginatorKeyFile>EfCore.snk</AssemblyOriginatorKeyFile>
   </PropertyGroup>
-
+	
   <ItemGroup>
-    <Compile Remove="Resources\**" />
-    <EmbeddedResource Remove="Resources\**" />
-    <None Remove="Resources\**" />
-  </ItemGroup>
-
-  <ItemGroup>
+    <Compile Remove="Behaviors\ModalAssist.cs" />
+    <Compile Remove="Behaviors\TextBoxAssist.cs" />
+    <Compile Remove="Commands\Window.cs" />
+    <Compile Remove="Controls\ExpressionBuilder.cs" />
     <Compile Remove="Template.cs" />
   </ItemGroup>
 
@@ -26,7 +24,7 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
-    <PackageReference Include="FluentAssertions" Version="6.5.1" />
+    <PackageReference Include="FluentAssertions" Version="6.6.0" />
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.1.0" />
     <PackageReference Include="NUnit" Version="3.13.3" />
     <PackageReference Include="NUnit3TestAdapter" Version="4.2.1" />
@@ -34,18 +32,16 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
+    <PackageReference Include="XAMLTest" Version="3.0.0" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\..\..\Desktop\EficazFramework.WPF\EficazFramework.WPF.csproj" />
     <ProjectReference Include="..\EficazFramework.Tests.WPF.Views\EficazFramework.Tests.WPF.Views.csproj" />
   </ItemGroup>
-	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-		<NoWarn>IDE0044;1573;1591;1701;1702;CA2211</NoWarn>
-	</PropertyGroup>
 
-	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
-		<NoWarn>IDE0044;1573;1591;1701;1702;CA2211</NoWarn>
-		<DisableDefaultDocumentation>true</DisableDefaultDocumentation>
-	</PropertyGroup>
+  <ItemGroup>
+    <Folder Include="Commands\" />
+  </ItemGroup>
+
 </Project>

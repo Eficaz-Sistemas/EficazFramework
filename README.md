@@ -3,7 +3,6 @@
 # EficazFramework
 
 ![Azure DevOps builds](https://efshieldsio.azurewebsites.net:/azure-devops/build/eficazcs/EficazFramework/27?&logo=azurepipelines&logoColor=white&style=flat-square)
-![Azure DevOps builds (branch)](https://efshieldsio.azurewebsites.net:/azure-devops/build/eficazcs/EficazFramework/18/master?label=tests&logo=azuredevops&logoColor=white&style=flat-square)
 ![Azure DevOps tests (compact)](https://efshieldsio.azurewebsites.net:/azure-devops/tests/eficazcs/EficazFramework/18?compact_message&logo=azuredevops&logoColor=white&style=flat-square)
 ![Azure DevOps coverage](https://efshieldsio.azurewebsites.net:/azure-devops/coverage/eficazcs/EficazFramework/18?logo=codecov&logoColor=white&style=flat-square)
 [![Discord](https://efshieldsio.azurewebsites.net:/discord/846078359498653706?color=purple&logo=discord&logoColor=white&style=flat-square)](https://discord.gg/ePvZEGBgaf)
@@ -48,7 +47,8 @@
 #### <img src="./Assets/blazor.svg" width="24" height="24" style="fill:#512BD4" /> Biblioteca de extensão para Blazor (Server-Side e WebAssembly) 
 
 ![Azure DevOps builds](https://efshieldsio.azurewebsites.net:/azure-devops/build/eficazcs/EficazFramework/29?&logo=azurepipelines&logoColor=white&style=flat-square)
-
+![Azure DevOps tests (compact)](https://efshieldsio.azurewebsites.net:/azure-devops/tests/eficazcs/EficazFramework/30?compact_message&logo=azuredevops&logoColor=white&style=flat-square)
+![Azure DevOps coverage](https://efshieldsio.azurewebsites.net:/azure-devops/coverage/eficazcs/EficazFramework/30?logo=codecov&logoColor=white&style=flat-square)
 
    - Novos Componentes, Templates e Layouts para melhor padronização das aplicações, conforme sua natureza
    - UI baseada em MaterialDesign, utilizando a biblioteca OpenSource [MudBlazor](https://github.com/MudBlazor/MudBlazor)
@@ -61,8 +61,7 @@
    
    - Controles Visuais para melhor experiência de utilização pelo usuário
    - Extensões para XAML e Code-Behind
-   - UI baseada em MaterialDesign, utilizando a biblioteca OpenSource [MaterialDesignInXAML Toolkit](https://github.com/MaterialDesignInXAML/MaterialDesignInXamlToolkit)
-   - Engine de geração e impressão de relatórios em XAML (XPS)   
+   - UI baseada em MaterialDesign, usufruindo do trabalho feito na versão 3.x desta framework, consolidada no mercado e em produção desde 2015;
    
 #### Pré-Requisitos
    - [.NET 6.0](https://dotnet.microsoft.com/download/dotnet/6.0), para versão mais recente da biblioteca (pode sofrer alterações sem aviso prévio).

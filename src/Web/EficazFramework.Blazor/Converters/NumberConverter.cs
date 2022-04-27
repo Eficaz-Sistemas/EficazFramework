@@ -9,10 +9,6 @@ public class NumberConverter<T> : MudBlazor.DefaultConverter<T>
 {
     public NumberConverter(int decimals = 0)
     {
-        _setCulture = (CultureInfo)CultureInfo.InvariantCulture.Clone();
-        _setCulture.NumberFormat.PercentGroupSeparator = "";
-        _setCulture.NumberFormat.CurrencyGroupSeparator = "";
-        _setCulture.NumberFormat.NumberGroupSeparator = "";
         DecimalPlaces = decimals;
 
         OnGetBase = base.GetFunc;
@@ -23,7 +19,6 @@ public class NumberConverter<T> : MudBlazor.DefaultConverter<T>
     }
 
     private int _decimals = 0;
-    private readonly CultureInfo _setCulture;
     public int DecimalPlaces
     {
         get => _decimals;
@@ -41,80 +36,47 @@ public class NumberConverter<T> : MudBlazor.DefaultConverter<T>
         if (string.IsNullOrEmpty(value))
             return default;
 
-        // short
-        else if (typeof(T) == typeof(short) || typeof(T) == typeof(short?))
+        try
         {
-            if (short.TryParse(value, NumberStyles.Integer, CultureInfo.InvariantCulture, out var parsedValue))
-                return (T)(object)parsedValue;
-            UpdateGetError("Not a valid number");
-        }
-        // ushort
-        else if (typeof(T) == typeof(ushort) || typeof(T) == typeof(ushort?))
-        {
-            if (ushort.TryParse(value, NumberStyles.Integer, CultureInfo.InvariantCulture, out var parsedValue))
-                return (T)(object)parsedValue;
-            UpdateGetError("Not a valid number");
-        }
-        // int
-        else if (typeof(T) == typeof(int) || typeof(T) == typeof(int?))
-        {
-            if (int.TryParse(value, NumberStyles.Integer, CultureInfo.InvariantCulture, out var parsedValue))
-                return (T)(object)parsedValue;
-            UpdateGetError("Not a valid number");
-        }
-        // uint
-        else if (typeof(T) == typeof(uint) || typeof(T) == typeof(uint?))
-        {
-            if (uint.TryParse(value, NumberStyles.Integer, CultureInfo.InvariantCulture, out var parsedValue))
-                return (T)(object)parsedValue;
-            UpdateGetError("Not a valid number");
-        }
-        // long
-        else if (typeof(T) == typeof(long) || typeof(T) == typeof(long?))
-        {
-            if (long.TryParse(value, NumberStyles.Integer, CultureInfo.InvariantCulture, out var parsedValue))
-                return (T)(object)parsedValue;
-            UpdateGetError("Not a valid number");
-        }
-        // ulong
-        else if (typeof(T) == typeof(ulong) || typeof(T) == typeof(ulong?))
-        {
-            if (ulong.TryParse(value, NumberStyles.Integer, CultureInfo.InvariantCulture, out var parsedValue))
-                return (T)(object)parsedValue;
-            UpdateGetError("Not a valid number");
-        }
-        // float
-        else if (typeof(T) == typeof(float) || typeof(T) == typeof(float?))
-        {
-            if (float.TryParse(value, NumberStyles.Any, CultureInfo.InvariantCulture, out var parsedValue))
-                return (T)(object)System.Math.Round(parsedValue, DecimalPlaces);
-            UpdateGetError("Not a valid number");
-        }
-        // double
-        else if (typeof(T) == typeof(double) || typeof(T) == typeof(double?))
-        {
-            if (double.TryParse(value, NumberStyles.Any, CultureInfo.InvariantCulture, out var parsedValue))
-                return (T)(object)System.Math.Round(parsedValue, DecimalPlaces);
-            UpdateGetError("Not a valid number");
-        }
-        // decimal
-        else if (typeof(T) == typeof(decimal) || typeof(T) == typeof(decimal?) || typeof(T) == typeof(object))
-        {
-            if (decimal.TryParse(value, NumberStyles.Any, CultureInfo.InvariantCulture, out var parsedValue))
-                return (T)(object)System.Math.Round(parsedValue, DecimalPlaces);
-            UpdateGetError("Not a valid number");
-        }
-        // object
-        else if (typeof(T) == typeof(object))
-        {
-            if (decimal.TryParse(value, NumberStyles.Any, CultureInfo.InvariantCulture, out var parsedValue))
-            {
-                var final = (T)(object)System.Math.Round(parsedValue, DecimalPlaces);
-                Console.WriteLine($"OnGet T: {final}");
-                return final;
-            }
 
-            UpdateGetError("Not a valid number");
+            // short
+            if (typeof(T) == typeof(short) || typeof(T) == typeof(short?))
+                return (T)(object)Convert.ToInt16(Math.Round(double.Parse(value)), Culture);
+            // ushort
+            else if (typeof(T) == typeof(ushort) || typeof(T) == typeof(ushort?))
+                return (T)(object)Convert.ToUInt16(Math.Round(double.Parse(value)), Culture);
+            // int
+            else if (typeof(T) == typeof(int) || typeof(T) == typeof(int?))
+                return (T)(object)Convert.ToInt32(Math.Round(double.Parse(value)), Culture);
+            // uint
+            else if (typeof(T) == typeof(uint) || typeof(T) == typeof(uint?))
+                return (T)(object)Convert.ToUInt32(Math.Round(double.Parse(value)), Culture);
+            // long
+            else if (typeof(T) == typeof(long) || typeof(T) == typeof(long?))
+                return (T)(object)Convert.ToInt64(Math.Round(double.Parse(value)), Culture);
+            // ulong
+            else if (typeof(T) == typeof(ulong) || typeof(T) == typeof(ulong?))
+                return (T)(object)Convert.ToUInt64(Math.Round(double.Parse(value)), Culture);
+            // float or Single
+            else if (typeof(T) == typeof(float) || typeof(T) == typeof(float?) || typeof(T) == typeof(Single) || typeof(T) == typeof(Single?))
+                return DecimalPlaces != 0 ? (T)(object)Convert.ToSingle(Math.Round(double.Parse(value), DecimalPlaces), Culture) : 
+                                            (T)(object)Convert.ToSingle(Math.Round(double.Parse(value)), Culture);
+            // double
+            else if (typeof(T) == typeof(double) || typeof(T) == typeof(double?))
+                return DecimalPlaces != 0 ? (T)(object)Convert.ToDouble(Math.Round(double.Parse(value), DecimalPlaces), Culture) :
+                                            (T)(object)Convert.ToDouble(Math.Round(double.Parse(value)), Culture);
+            // decimal
+            else if (typeof(T) == typeof(decimal) || typeof(T) == typeof(decimal?))
+                return DecimalPlaces != 0 ? (T)(object)Convert.ToDecimal(Math.Round(double.Parse(value), DecimalPlaces), Culture) :
+                                            (T)(object)Convert.ToDecimal(Math.Round(double.Parse(value)), Culture);
+            // object
+            else if (typeof(T) == typeof(object))
+                return DecimalPlaces != 0 ? (T)(object)Convert.ToDecimal(Math.Round(double.Parse(value), DecimalPlaces), Culture) :
+                                            (T)(object)Convert.ToDecimal(Math.Round(double.Parse(value)), Culture);
+        }
+        catch
+        {
+            UpdateGetError($"Conversion to type {typeof(T)} not implemented");
         }
 
         return OnGetBase(value);
@@ -127,49 +89,49 @@ public class NumberConverter<T> : MudBlazor.DefaultConverter<T>
 
         // short
         if (typeof(T) == typeof(short))
-            return ((short)(object)arg).ToString(Format, _setCulture);
+            return ((short)(object)arg).ToString(Format, Culture);
         if (typeof(T) == typeof(short?))
-            return ((short?)(object)arg).Value.ToString(Format, _setCulture);
+            return ((short?)(object)arg).Value.ToString(Format, Culture);
         // ushort
         if (typeof(T) == typeof(ushort))
-            return ((ushort)(object)arg).ToString(Format, _setCulture);
+            return ((ushort)(object)arg).ToString(Format, Culture);
         if (typeof(T) == typeof(ushort?))
-            return ((ushort?)(object)arg).Value.ToString(Format, _setCulture);
+            return ((ushort?)(object)arg).Value.ToString(Format, Culture);
         // int
         else if (typeof(T) == typeof(int))
-            return ((int)(object)arg).ToString(Format, _setCulture);
+            return ((int)(object)arg).ToString(Format, Culture);
         else if (typeof(T) == typeof(int?))
-            return ((int?)(object)arg).Value.ToString(Format, _setCulture);
+            return ((int?)(object)arg).Value.ToString(Format, Culture);
         // uint
         else if (typeof(T) == typeof(uint))
-            return ((uint)(object)arg).ToString(Format, _setCulture);
+            return ((uint)(object)arg).ToString(Format, Culture);
         else if (typeof(T) == typeof(uint?))
-            return ((uint?)(object)arg).Value.ToString(Format, _setCulture);
+            return ((uint?)(object)arg).Value.ToString(Format, Culture);
         // long
         else if (typeof(T) == typeof(long))
-            return ((long)(object)arg).ToString(Format, _setCulture);
+            return ((long)(object)arg).ToString(Format, Culture);
         else if (typeof(T) == typeof(long?))
-            return ((long?)(object)arg).Value.ToString(Format, _setCulture);
+            return ((long?)(object)arg).Value.ToString(Format, Culture);
         // ulong
         else if (typeof(T) == typeof(ulong))
-            return ((ulong)(object)arg).ToString(Format, _setCulture);
+            return ((ulong)(object)arg).ToString(Format, Culture);
         else if (typeof(T) == typeof(ulong?))
-            return ((ulong?)(object)arg).Value.ToString(Format, _setCulture);
+            return ((ulong?)(object)arg).Value.ToString(Format, Culture);
         // float
         if (typeof(T) == typeof(float))
-            return ((float)(object)arg).ToString(Format, _setCulture);
+            return ((float)(object)arg).ToString(Format, Culture);
         else if (typeof(T) == typeof(float?))
-            return ((float?)(object)arg).Value.ToString(Format, _setCulture);
+            return ((float?)(object)arg).Value.ToString(Format, Culture);
         // double
         else if (typeof(T) == typeof(double))
-            return ((double)(object)arg).ToString(Format, _setCulture);
+            return ((double)(object)arg).ToString(Format, Culture);
         else if (typeof(T) == typeof(double?))
-            return ((double?)(object)arg).Value.ToString(Format, _setCulture);
+            return ((double?)(object)arg).Value.ToString(Format, Culture);
         // decimal
         else if (typeof(T) == typeof(decimal))
-            return ((decimal)(object)arg).ToString(Format, _setCulture);
+            return ((decimal)(object)arg).ToString(Format, Culture);
         else if (typeof(T) == typeof(decimal?))
-            return ((decimal?)(object)arg).Value.ToString(Format, _setCulture);
+            return ((decimal?)(object)arg).Value.ToString(Format, Culture);
         //object (yeah, it can happen)
         else if (typeof(T) == typeof(object))
             return arg.ToString();

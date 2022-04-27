@@ -4,8 +4,8 @@
 ## InteractiveTextBox.PopupContent Property
 
 ```csharp
-public object PopupContent { get; set; }
+public System.Windows.FrameworkElement PopupContent { get; }
 ```
 
 #### Property Value
-[System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.Object 'System.Object')
+[System.Windows.FrameworkElement](https://docs.microsoft.com/en-us/dotnet/api/System.Windows.FrameworkElement 'System.Windows.FrameworkElement')

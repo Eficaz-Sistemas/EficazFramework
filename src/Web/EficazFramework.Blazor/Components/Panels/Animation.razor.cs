@@ -16,20 +16,31 @@ public partial class Animation : ComponentBase
     protected string StyleWithAnimation =>
                 new StyleBuilder()
                     .AddStyle(Style)
-                    .AddStyle("animation", _animation, _animation != null)
+                    .AddStyle("animation", _animationString, !IsLocked && _paramtersSet && !string.IsNullOrEmpty(_animationString))
                     .Build();
 
+    string _animationString = "";
+    bool _paramtersSet = false;
 
-    string _animation;
+    private bool _isLocked = false;
+    /// <summary>
+    /// Defines if Animation is Locked (for parameters change)
+    /// </summary>
+    [Parameter] public bool IsLocked
+    {
+        get => _isLocked;
+        set
+        {
+            _isLocked = value;
+            TriggerAnimation(_trigger == AnimationTrigger.OnRender);
+        }
+    }
 
     /// <summary>
     /// Child content of the component.
     /// </summary>
     [Parameter]
     public RenderFragment ChildContent { get; set; }
-
-    [CascadingParameter]
-    public Animation Parent { get; set; }
 
     private int _duration = 500;
     /// <summary>
@@ -42,8 +53,7 @@ public partial class Animation : ComponentBase
         set
         {
             _duration = value;
-            if (_trigger == AnimationTrigger.OnRender)
-                TriggerAnimation();
+            TriggerAnimation(_trigger == AnimationTrigger.OnRender);
         }
     }
 
@@ -58,8 +68,7 @@ public partial class Animation : ComponentBase
         set
         {
             _delay = value;
-            if (_trigger == AnimationTrigger.OnRender)
-                TriggerAnimation();
+            TriggerAnimation(_trigger == AnimationTrigger.OnRender);
         }
     }
 
@@ -74,8 +83,7 @@ public partial class Animation : ComponentBase
         set
         {
             _effect = value;
-            if (_trigger == AnimationTrigger.OnRender)
-                TriggerAnimation();
+            TriggerAnimation(_trigger == AnimationTrigger.OnRender);
         }
     }
 
@@ -91,8 +99,7 @@ public partial class Animation : ComponentBase
         set
         {
             _keyframe = value;
-            if (_trigger == AnimationTrigger.OnRender)
-                TriggerAnimation();
+            TriggerAnimation(_trigger == AnimationTrigger.OnRender);
         }
     }
 
@@ -107,12 +114,11 @@ public partial class Animation : ComponentBase
         set
         {
             _direction = value;
-            if (_trigger == AnimationTrigger.OnRender)
-                TriggerAnimation();
+            TriggerAnimation(_trigger == AnimationTrigger.OnRender);
         }
     }
 
-    private AnimationTrigger _trigger = AnimationTrigger.Explicity;
+    private AnimationTrigger _trigger = AnimationTrigger.OnRender;
     /// <summary>
     /// animation-direction: normal|reverse|alternate|alternate-reverse;
     /// </summary>
@@ -123,8 +129,7 @@ public partial class Animation : ComponentBase
         set
         {
             _trigger = value;
-            if (_trigger == AnimationTrigger.OnRender)
-                TriggerAnimation();
+            TriggerAnimation(_trigger == AnimationTrigger.OnRender);
         }
     }
 
@@ -139,45 +144,40 @@ public partial class Animation : ComponentBase
         set
         {
             _infinite = value;
-            if (_trigger == AnimationTrigger.OnRender)
-                TriggerAnimation();
+            TriggerAnimation(_trigger == AnimationTrigger.OnRender);
         }
     }
-
 
     protected override Task OnInitializedAsync()
     {
-        if (Trigger == AnimationTrigger.OnRender)
-            TriggerAnimation();
+        TriggerAnimation(_trigger == AnimationTrigger.OnRender);
         return base.OnInitializedAsync();
     }
 
-    protected override async Task OnAfterRenderAsync(bool firstRender)
+    protected override Task OnParametersSetAsync()
     {
-        if (_animation != null && Infinite == false)
-        {
-            await Task.Delay(Duration + Delay + 100);
-            RemoveAninmation();
-        }
+        _paramtersSet = true;
+        TriggerAnimation(_trigger == AnimationTrigger.OnRender);
+        return base.OnParametersSetAsync();
     }
+
+    public void Animate() =>
+        TriggerAnimation(true);
+
 
     /// <summary>
     /// Execute the animation
     /// </summary>
-    public void TriggerAnimation()
+    public string TriggerAnimation(bool triggered = false)
     {
-        RemoveAninmation();
-        _animation = $"{KeyFrameName} {((double)Duration / 1000).ToString().Replace(",", ".")}s {TimmingFunction.GetDescription()} {((double)Delay / 1000).ToString().Replace(",", ".")}s {(Infinite == true ? "infinite" : "")} {Direction.GetDescription()}";
+        if (_paramtersSet && triggered)
+        {
+            _animationString = $"{KeyFrameName} {((double)Duration / 1000).ToString().Replace(",", ".")}s {TimmingFunction.GetDescription()} {((double)Delay / 1000).ToString().Replace(",", ".")}s {(Infinite == true ? "infinite " : "")}{Direction.GetDescription()}";
+            StateHasChanged();
+        }
+        else
+            _animationString = string.Empty;
 
-        if (Parent != null)
-            Parent.TriggerAnimation();
-
-        StateHasChanged();
-    }
-
-    private void RemoveAninmation()
-    {
-        _animation = null;
-        StateHasChanged();
+        return _animationString;
     }
 }

@@ -13,15 +13,10 @@ public interface IThemeProvider
 
 internal class ThemeProvider : IThemeProvider
 {
-    public MudBlazor.MudTheme Theme { get; set; } = new MudBlazor.MudTheme()
+    internal ThemeProvider(MudBlazor.MudTheme theme)
     {
-        Palette = new MudBlazor.Palette()
-        {
+        Theme = theme;
+    }
 
-            Primary = "#0078d7",
-            Secondary = "#003864",
-            AppbarBackground = "#0078d7",
-            AppbarText = "#fff",
-        },
-    };
+    public MudBlazor.MudTheme Theme { get; set; }
 }

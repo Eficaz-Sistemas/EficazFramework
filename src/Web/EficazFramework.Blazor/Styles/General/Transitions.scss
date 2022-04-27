@@ -1,120 +1,123 @@
-﻿.fadeInLeft-500 {
-    opacity: 0;
-    -webkit-transform: translateX(-20px);
-    -ms-transform: translateX(-20px);
-    transform: translateX(-20px);
+﻿$animation-durations: 125, 250, 500, 1000, 1250, 1500, 2000;
+
+@each $value in $animation-durations {
+
+    .fadeIn-#{$value} {
+        animation: fadeIn (($value / 1000)+s);
+    }
+
+    .fadeInLeft-#{$value} {
+        animation: fadeInLeft (($value / 1000)+s);
+    }
+
+    .fadeInRight-#{$value} {
+        animation: fadeInRight (($value / 1000)+s);
+    }
+
+    .fadeInUp-#{$value} {
+        animation: fadeInUp (($value / 1000)+s);
+    }
+
+    .fadeInDown-#{$value} {
+        animation: fadeInDown (($value / 1000)+s);
+    }
+
+    .transition-all-#{$value} {
+        transition: all (($value / 1000)+s);
+        transition-timing-function: ease-out;
+    }
+
+    .transition-all-#{$value} {
+        transition: all (($value / 1000)+s);
+        transition-timing-function: ease-out;
+    }
+
+    .transition-all-#{$value} {
+        transition: all (($value / 1000)+s);
+        transition-timing-function: ease-out;
+    }
+
+    .transition-delay-#{$value} {
+        transition-delay: (($value / 1000)+s);
+    }
+
+    .transition-delay-#{$value} {
+        transition-delay: (($value / 1000)+s);
+    }
+
 }
 
-.fadeInLeft.on-screen {
-    opacity: 1;
-    -webkit-transform: translateX(0);
-    -ms-transform: translateX(0);
-    transform: translateX(0)
+@keyframes fadeInLeft {
+    from {
+        opacity: 0;
+        -webkit-transform: translateX(-20px);
+        -ms-transform: translateX(-20px);
+        transform: translateX(-20px);
+    }
+
+    to {
+        opacity: 1;
+        -webkit-transform: translateX(0px);
+        -ms-transform: translateX(0px);
+        transform: translateX(0px);
+    }
 }
 
-.fadeInRight {
-    opacity: 0;
-    -webkit-transform: translateX(+20px);
-    -ms-transform: translateX(+20px);
-    transform: translateX(+20px);
+@keyframes fadeInRight {
+    from {
+        opacity: 0;
+        -webkit-transform: translateX(+20px);
+        -ms-transform: translateX(+20px);
+        transform: translateX(+20px);
+    }
+
+    to {
+        opacity: 1;
+        -webkit-transform: translateX(0px);
+        -ms-transform: translateX(0px);
+        transform: translateX(0px);
+    }
 }
 
-.fadeInRight.on-screen {
-    opacity: 1;
-    -webkit-transform: translateX(0);
-    -ms-transform: translateX(0);
-    transform: translateX(0)
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        -webkit-transform: translateY(-20px);
+        -ms-transform: translateY(-20px);
+        transform: translateY(-20px);
+    }
+
+    to {
+        opacity: 1;
+        -webkit-transform: translateX(0px);
+        -ms-transform: translateX(0px);
+        transform: translateX(0px);
+    }
 }
 
-.fadeInUp {
-    opacity: 0;
-    -webkit-transform: translateY(-20px);
-    -ms-transform: translateY(-20px);
-    transform: translateY(-20px);
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        -webkit-transform: translateY(+20px);
+        -ms-transform: translateY(+20px);
+        transform: translateY(+20px);
+    }
+
+    to {
+        opacity: 1;
+        -webkit-transform: translateX(0px);
+        -ms-transform: translateX(0px);
+        transform: translateX(0px);
+    }
 }
 
-.fadeInUp.on-screen {
-    opacity: 1;
-    -webkit-transform: translateY(0);
-    -ms-transform: translateY(0);
-    transform: translateY(0)
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
 }
 
-.fadeInDown {
-    opacity: 0;
-    -webkit-transform: translateY(+20px);
-    -ms-transform: translateY(+20px);
-    transform: translateY(+20px);
-}
-
-.fadeInDown.on-screen {
-    opacity: 1;
-    -webkit-transform: translateY(0);
-    -ms-transform: translateY(0);
-    transform: translateY(0)
-}
-
-fadeIn {
-    opacity:0 px;
-    transition: all ease-in 0.25s;
-}
-
-fadeIn.on-screen {
-    opacity: 1 px;
-}
-
-
-.counter {
-    content: '0';
-}
-
-.counter.on-screen::after {
-    animation: counter66 1s ease-out forwards;
-    content: counter(count);
-}
-
-
-
-.transition-all-250 {
-    transition: all 0.25s;
-    transition-timing-function: ease-out;
-}
-
-.transition-all-500 {
-    transition: all 0.5s; 
-    transition-timing-function: ease-out;
-}
-
-.transition-all-1000 {
-    transition: all 1s;
-    transition-timing-function: ease-out;
-}
-
-.transition-delay-250 {
-    transition-delay: 0.25s
-}
-
-.transition-delay-500 {
-    transition-delay: 0.5s
-}
-
-@keyframes counter66 {
-    0% { counter-increment: count 0; }
-    3% { counter-increment: count 2; }
-    6% { counter-increment: count 4; }
-    9% { counter-increment: count 6; }
-    12% { counter-increment: count 8; }
-    18% { counter-increment: count 12; }
-    25% { counter-increment: count 16; }
-    37% { counter-increment: count 28; }
-    50% { counter-increment: count 33; }
-    63% { counter-increment: count 40; }
-    69% { counter-increment: count 45; }
-    75% { counter-increment: count 49; }
-    81% { counter-increment: count 53; }
-    87% { counter-increment: count 57; }
-    90% { counter-increment: count 59; }
-    95% { counter-increment: count 61; }
-    98% { counter-increment: count 63; }
-    100% { counter-increment: count 66; }
-}

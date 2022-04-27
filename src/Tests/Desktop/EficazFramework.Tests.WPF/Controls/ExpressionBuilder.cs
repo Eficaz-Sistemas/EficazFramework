@@ -12,13 +12,11 @@ using System.Windows.Controls.Primitives;
 using System;
 using EficazFramework.Expressions;
 
-namespace EficazFramework.Controls;
+namespace EficazFramework.Tests.Controls;
 
 [Apartment(System.Threading.ApartmentState.STA)]
 public class ExpressionBuilderTests
 {
-    System.Windows.Window win = new();
-    EficazFramework.Tests.WPF.Views.Behaviors.Inputs mock = new();
 
     private bool _searched = false;
     //properties
@@ -192,7 +190,7 @@ public class ExpressionBuilderTests
         DataGridCell cell = (DataGridCell)dg.GetCell(row, 3);
         cell.DataContext.Should().Be(mock.ExpressionBuilder.ViewModel.Items.First());
         dg.SelectAndFocusCell(cell);
-        var input = cell.Content as AutoComplete;
+        var input = cell.Content as EficazFramework.Controls.AutoComplete;
         input.Should().NotBeNull();
 
         _searched = false;
@@ -205,15 +203,15 @@ public class ExpressionBuilderTests
                                                  new TextComposition(InputManager.Current,
                                                                      input,
                                                                      "A"));
-        eventArgs.RoutedEvent = AutoComplete.TextInputEvent;
+        eventArgs.RoutedEvent = EficazFramework.Controls.AutoComplete.TextInputEvent;
         input?.RaiseEvent(eventArgs);
         input?.Text.Should().Be("A");
         
-        input?.RaiseEvent(new System.Windows.Input.KeyEventArgs(Keyboard.PrimaryDevice, PresentationSource.FromVisual((System.Windows.Media.Visual)input), 0, Key.Enter) { RoutedEvent = AutoComplete.PreviewKeyDownEvent });
+        input?.RaiseEvent(new System.Windows.Input.KeyEventArgs(Keyboard.PrimaryDevice, PresentationSource.FromVisual((System.Windows.Media.Visual)input), 0, Key.Enter) { RoutedEvent = EficazFramework.Controls.AutoComplete.PreviewKeyDownEvent });
         input?.IsPopupOpened.Should().BeFalse();
 
         input?.RaiseEvent(eventArgs);
-        input?.RaiseEvent(new System.Windows.Input.KeyEventArgs(Keyboard.PrimaryDevice, PresentationSource.FromVisual((System.Windows.Media.Visual)input), 0, Key.Escape) { RoutedEvent = AutoComplete.PreviewKeyDownEvent });
+        input?.RaiseEvent(new System.Windows.Input.KeyEventArgs(Keyboard.PrimaryDevice, PresentationSource.FromVisual((System.Windows.Media.Visual)input), 0, Key.Escape) { RoutedEvent = EficazFramework.Controls.AutoComplete.PreviewKeyDownEvent });
         input?.IsPopupOpened.Should().BeFalse();
     }
 

@@ -3,7 +3,7 @@
   <PropertyGroup>
     <TargetFramework>net6.0-windows</TargetFramework>
     <UseWPF>true</UseWPF>
-    <Version>6.0.0-preview002</Version>
+    <Version>6.0.0-preview003</Version>
     <AssemblyVersion>6.0.0.0</AssemblyVersion>
     <FileVersion>6.0.0.0</FileVersion>
     <RootNamespace>EficazFramework</RootNamespace>
@@ -40,9 +40,10 @@
   	<NoWarn>IDE0044;1573;1591;1701;1702;CA2211</NoWarn>
 	<DisableDefaultDocumentation>true</DisableDefaultDocumentation>
   </PropertyGroup>
-	
+  
   <ItemGroup>
-    <Compile Remove="Themes\Generic\Icons\PackIconDataFactory.cs" />
+    <None Remove="MarkupExtensions\Binding.vb" />
+    <None Remove="MarkupExtensions\TextGeometry.vb" />
   </ItemGroup>
 
   <ItemGroup>
@@ -82,22 +83,21 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Page Update="Themes\Generic\Icons\Commerce.xaml">
+    <Page Update="Themes\Controls\InteractiveTextBox.xaml">
+      <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Themes\Icons\MaterialDesign.xaml">
+      <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Themes\Icons\Commerce.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Themes\MaterialDesign.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="Themes\Generic\Icons\App.xaml">
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Update="Themes\MaterialDesign\InteractiveTextBox.xaml">
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Update="Themes\MaterialDesign\MDI.xaml">
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Update="Themes\MaterialDesign\SessionView.xaml">
+    <Page Update="Themes\Icons\App.xaml">
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>
@@ -114,6 +114,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <!--<ProjectReference Include="..\..\CodeGenerators\EficazFramework.Generators\EficazFramework.Generators.csproj" ReferenceOutputAssembly="false" OutputItemType="Analyzer" />-->
     <ProjectReference Include="..\..\Core\EficazFramework.Data\EficazFramework.Data.csproj" />
     <ProjectReference Include="..\..\Core\EficazFramework.Utilities\EficazFramework.Utilities.csproj" />
   </ItemGroup>

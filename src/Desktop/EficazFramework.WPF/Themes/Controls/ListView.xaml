@@ -1,0 +1,226 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:EfControls="clr-namespace:EficazFramework.Controls"
+                    xmlns:EfAttachedProps="clr-namespace:EficazFramework.Controls.AttachedProperties">
+    
+    <Style TargetType="{x:Type ListView}">
+        <Setter Property="Background" Value="{x:Null}" />
+        <Setter Property="BorderBrush" Value="{x:Null}" />
+        <Setter Property="AlternationCount" Value="3" />
+        <Setter Property="IsSynchronizedWithCurrentItem" Value="True"/>
+        <Setter Property="IsTabStop" Value="False" />
+        <Setter Property="Focusable" Value="False" />
+        <Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Disabled"/>
+        <Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Auto"/>
+        <Setter Property="VirtualizingPanel.IsVirtualizing" Value="True" />
+        <Setter Property="VirtualizingPanel.IsVirtualizingWhenGrouping" Value="True" />
+        <Setter Property="VirtualizingPanel.VirtualizationMode" Value="Recycling" />
+        <Setter Property="VirtualizingPanel.ScrollUnit" Value="Pixel" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type ListView}">
+                    <Border Name="Border" BorderThickness="{TemplateBinding BorderThickness}" BorderBrush="{TemplateBinding BorderBrush}" Background="{TemplateBinding Background}">
+                        <ScrollViewer Foreground="{TemplateBinding Foreground}">
+                            <ItemsPresenter />
+                        </ScrollViewer>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsGrouping" Value="true">
+                            <Setter Property="ScrollViewer.CanContentScroll" Value="False" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!--LISTVIEW ITEM-->
+
+    <Style TargetType="{x:Type ListViewItem}">
+        <Setter Property="Padding" Value="4,2" />
+        <Setter Property="EfAttachedProps:Control.CornerRadius" Value="3"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type ListViewItem}">
+                    <Grid>
+                        <VisualStateManager.VisualStateGroups>
+                            <VisualStateGroup x:Name="CommonStates">
+                                <VisualState x:Name="MouseOver"/>
+                                <VisualState x:Name="Disabled"/>
+                            </VisualStateGroup>
+                            <VisualStateGroup x:Name="SelectionStates">
+                                <VisualState x:Name="Selected"/>
+                                <VisualState x:Name="SelectedUnfocused"/>
+                            </VisualStateGroup>
+                            <VisualStateGroup x:Name="FocusStates">
+                                <VisualState x:Name="Unfocused">
+                                    <Storyboard TargetName="FocusedPresenter">
+                                        <DoubleAnimation Storyboard.TargetProperty="Opacity" To="0" Duration="0" />
+                                    </Storyboard>
+                                </VisualState>
+                                <VisualState x:Name="Focused">
+                                    <Storyboard TargetName="FocusedPresenter">
+                                        <DoubleAnimation Storyboard.TargetProperty="Opacity" From="0" To="1" Duration="0:0:0.3">
+                                            <DoubleAnimation.EasingFunction>
+                                                <SineEase EasingMode="EaseOut" />
+                                            </DoubleAnimation.EasingFunction>
+                                        </DoubleAnimation>
+                                    </Storyboard>
+                                </VisualState>
+                            </VisualStateGroup>
+                            <VisualStateGroup x:Name="ValidationStates">
+                                <VisualState x:Name="InvalidFocused"/>
+                                <VisualState x:Name="InvalidUnfocused"/>
+                            </VisualStateGroup>
+                        </VisualStateManager.VisualStateGroups>
+                        <EfControls:ColorZone x:Name="SelectionBorder" 
+                                        EfAttachedProps:Control.CornerRadius="{TemplateBinding EfAttachedProps:Control.CornerRadius}"
+                                        Background="{TemplateBinding Background}" 
+                                        BorderThickness="{TemplateBinding BorderThickness}" 
+                                        BorderBrush="{TemplateBinding BorderBrush}"/>
+                        <Border x:Name="MouseOverPresenter" 
+                                BorderThickness="0" 
+                                Margin="0"
+                                Background="{TemplateBinding Foreground}"
+                                Opacity="0.25"
+                                Visibility="Collapsed" 
+                                CornerRadius="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=(EfAttachedProps:Control.CornerRadius)}" />
+                        <Border x:Name="FocusedPresenter" 
+                                BorderThickness="1,1,1,2"
+                                Visibility="Collapsed" 
+                                Margin="0"
+                                BorderBrush="{TemplateBinding Foreground}" 
+                                CornerRadius="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=(EfAttachedProps:Control.CornerRadius)}" 
+                                RenderTransformOrigin="0.5,0.5"/>
+                        <ContentPresenter Margin="{TemplateBinding Padding}"
+                                          TextElement.Foreground="{TemplateBinding Foreground}"
+                                          TextBlock.Foreground="{TemplateBinding Foreground}"
+                                          HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                          VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="MouseOverPresenter" Property="Visibility" Value="Visible"/>
+                        </Trigger>
+                        <Trigger Property="IsFocused" Value="True">
+                            <Setter TargetName="FocusedPresenter" Property="Visibility" Value="Visible"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+        <Setter Property="VerticalContentAlignment" Value="Stretch"/>
+        <Setter Property="FocusVisualStyle" Value="{x:Null}" />
+        <Setter Property="Background" Value="{Binding RelativeSource={RelativeSource Mode=Self}, Path=(EfAttachedProps:Selector.ContainerBackground)}" />
+        <Setter Property="BorderBrush" Value="{Binding RelativeSource={RelativeSource Mode=Self}, Path=(EfAttachedProps:Selector.ContainerBorderBrush)}" />
+        <Setter Property="BorderThickness" Value="{Binding RelativeSource={RelativeSource Mode=Self}, Path=(EfAttachedProps:Selector.ContainerBorderThickness)}" />
+        <Setter Property="Margin" Value="1" />
+        <Setter Property="Validation.ErrorTemplate" Value="{x:Null}"/>
+        <Style.Triggers>
+            <Trigger Property="EfAttachedProps:Control.Color" Value="Surface">
+                <Setter Property="Foreground" Value="{DynamicResource Brush.Surface.Foreground}"/>
+            </Trigger>
+            <Trigger Property="EfAttachedProps:Control.Color" Value="SurfaceAlternate">
+                <Setter Property="Foreground" Value="{DynamicResource Brush.SurfaceAlternate.Foreground}"/>
+            </Trigger>
+            <Trigger Property="EfAttachedProps:Control.Color" Value="Primary">
+                <Setter Property="Foreground" Value="{DynamicResource Brush.Surface.Foreground}"/>
+            </Trigger>
+            <Trigger Property="EfAttachedProps:Control.Color" Value="PrimaryDarken">
+                <Setter Property="Foreground" Value="{DynamicResource Brush.Surface.Foreground}"/>
+            </Trigger>
+            <Trigger Property="EfAttachedProps:Control.Color" Value="PrimaryLighten">
+                <Setter Property="Foreground" Value="{DynamicResource Brush.Surface.Foreground}"/>
+            </Trigger>
+            <Trigger Property="EfAttachedProps:Control.Color" Value="Secondary">
+                <Setter Property="Foreground" Value="{DynamicResource Brush.Surface.Foreground}"/>
+            </Trigger>
+            <Trigger Property="EfAttachedProps:Control.Color" Value="Tertiary">
+                <Setter Property="Foreground" Value="{DynamicResource Brush.Surface.Foreground}"/>
+            </Trigger>
+            <Trigger Property="IsEnabled" Value="False">
+                <Setter Property="Foreground" Value="{DynamicResource Brush.Disabled.Foreground}"/>
+            </Trigger>
+            <MultiTrigger>
+                <MultiTrigger.Conditions>
+                    <Condition Property="Selector.IsSelected" Value="True"/>
+                    <Condition Property="EfAttachedProps:Control.Color" Value="Surface"/>
+                    <Condition Property="EfAttachedProps:Selector.HideSelection" Value="false"/>
+                </MultiTrigger.Conditions>
+                <Setter Property="Background" Value="{DynamicResource Brush.Surface.Border}"/>
+                <Setter Property="Foreground" Value="{DynamicResource Brush.Surface.Foreground}"/>
+            </MultiTrigger>
+            <MultiTrigger>
+                <MultiTrigger.Conditions>
+                    <Condition Property="Selector.IsSelected" Value="True"/>
+                    <Condition Property="EfAttachedProps:Control.Color" Value="SurfaceAlternate"/>
+                    <Condition Property="EfAttachedProps:Selector.HideSelection" Value="false"/>
+                </MultiTrigger.Conditions>
+                <Setter Property="Background" Value="{DynamicResource Brush.Surface.Border}"/>
+                <Setter Property="Foreground" Value="{DynamicResource Brush.SurfaceAlternate.Foreground}"/>
+            </MultiTrigger>
+            <MultiTrigger>
+                <MultiTrigger.Conditions>
+                    <Condition Property="Selector.IsSelected" Value="True"/>
+                    <Condition Property="EfAttachedProps:Control.Color" Value="Primary"/>
+                    <Condition Property="EfAttachedProps:Selector.HideSelection" Value="false"/>
+                </MultiTrigger.Conditions>
+                <Setter Property="Background" Value="{DynamicResource Brush.Primary.Background}"/>
+                <Setter Property="Foreground" Value="{DynamicResource Brush.Primary.Foreground}"/>
+            </MultiTrigger>
+            <MultiTrigger>
+                <MultiTrigger.Conditions>
+                    <Condition Property="Selector.IsSelected" Value="True"/>
+                    <Condition Property="EfAttachedProps:Control.Color" Value="PrimaryDarken"/>
+                    <Condition Property="EfAttachedProps:Selector.HideSelection" Value="false"/>
+                </MultiTrigger.Conditions>
+                <Setter Property="Background" Value="{DynamicResource Brush.Primary.Background.Darken}"/>
+                <Setter Property="Foreground" Value="{DynamicResource Brush.Primary.Foreground}"/>
+            </MultiTrigger>
+            <MultiTrigger>
+                <MultiTrigger.Conditions>
+                    <Condition Property="Selector.IsSelected" Value="True"/>
+                    <Condition Property="EfAttachedProps:Control.Color" Value="PrimaryLighten"/>
+                    <Condition Property="EfAttachedProps:Selector.HideSelection" Value="false"/>
+                </MultiTrigger.Conditions>
+                <Setter Property="Background" Value="{DynamicResource Brush.Primary.Background.Lighten}"/>
+                <Setter Property="Foreground" Value="{DynamicResource Brush.Primary.Foreground}"/>
+            </MultiTrigger>
+            <MultiTrigger>
+                <MultiTrigger.Conditions>
+                    <Condition Property="Selector.IsSelected" Value="True"/>
+                    <Condition Property="EfAttachedProps:Control.Color" Value="Secondary"/>
+                    <Condition Property="EfAttachedProps:Selector.HideSelection" Value="false"/>
+                </MultiTrigger.Conditions>
+                <Setter Property="Background" Value="{DynamicResource Brush.Secondary.Background}"/>
+                <Setter Property="Foreground" Value="{DynamicResource Brush.Secondary.Foreground}"/>
+            </MultiTrigger>
+            <MultiTrigger>
+                <MultiTrigger.Conditions>
+                    <Condition Property="Selector.IsSelected" Value="True"/>
+                    <Condition Property="EfAttachedProps:Control.Color" Value="Tertiary"/>
+                    <Condition Property="EfAttachedProps:Selector.HideSelection" Value="false"/>
+                </MultiTrigger.Conditions>
+                <Setter Property="Background" Value="{DynamicResource Brush.Tertiary.Background}"/>
+                <Setter Property="Foreground" Value="{DynamicResource Brush.Tertiary.Foreground}"/>
+            </MultiTrigger>
+            <MultiTrigger>
+                <MultiTrigger.Conditions>
+                    <Condition Property="Selector.IsSelected" Value="True"/>
+                    <Condition Property="IsFocused" Value="false"/>
+                    <Condition Property="EfAttachedProps:Selector.AllowInactiveSelection" Value="true"/>
+                    <Condition Property="EfAttachedProps:Selector.HideSelection" Value="false"/>
+                </MultiTrigger.Conditions>
+                <Setter Property="Background" Value="{DynamicResource Brush.Disabled.Background}"/>
+                <Setter Property="Foreground" Value="{DynamicResource Brush.Disabled.Foreground}"/>
+            </MultiTrigger>
+        </Style.Triggers>
+
+    </Style>
+
+    <Style x:Key="Style.ListViewItem.AutoCompleteEditor" TargetType="{x:Type ListViewItem}" BasedOn="{StaticResource {x:Type ListViewItem}}">
+        <Setter Property="Padding" Value="10"/>
+    </Style>
+
+</ResourceDictionary>

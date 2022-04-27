@@ -1,0 +1,489 @@
+﻿.text-right > .mud-input-control-input-container > .mud-input > input.mud-input-root {
+  text-align: right;
+}
+
+.text-center > .mud-input-control-input-container > .mud-input > input.mud-input-root {
+  text-align: center;
+}
+
+.text-justify > .mud-input-control-input-container > .mud-input > input.mud-input-root {
+  text-align: justify;
+}
+
+div.text-match div, div.mud-input input {
+  text-align: match-parent;
+}
+
+.text-match > .mud-input > input.mud-input-root, div.mud-input-slot.mud-input-root {
+  text-align: match-parent;
+}
+
+/*@import 'Components/MDIContainer';
+*/
+.mud-nav-link.active:not(.mud-nav-link-disabled) {
+  border-right: 2px var(--mud-palette-primary) solid;
+}
+
+.mud-nav-link.active:not(.mud-nav-link-disabled) .mud-icon-root {
+  color: var(--mud-palette-primary);
+}
+
+.ef-table-scroll {
+  overflow-x: scroll;
+}
+
+.ef-table-scroll table td:first-child {
+  position: sticky;
+  left: 0;
+}
+
+.brand {
+  font-size: 1.5rem;
+  font-weight: 400;
+  letter-spacing: 0.1rem;
+  line-height: 1.7;
+  color: var(--mud-theme-on-appbar);
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.brand:hover {
+  cursor: pointer;
+  background-color: var(--mud-theme-default-hover);
+  transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms, box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms, border 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+}
+
+.ef-background {
+  background-color: var(--mud-palette-background-grey);
+  height: 100vh;
+  overflow: auto;
+}
+
+.text-right {
+  text-align: right;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.text-justify {
+  text-align: justify;
+}
+
+.text-trim {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.text-nowrap {
+  white-space: nowrap;
+}
+
+.text-truncate {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.fadeIn-125 {
+  animation: fadeIn 0.125s;
+}
+
+.fadeInLeft-125 {
+  animation: fadeInLeft 0.125s;
+}
+
+.fadeInRight-125 {
+  animation: fadeInRight 0.125s;
+}
+
+.fadeInUp-125 {
+  animation: fadeInUp 0.125s;
+}
+
+.fadeInDown-125 {
+  animation: fadeInDown 0.125s;
+}
+
+.transition-all-125 {
+  transition: all 0.125s;
+  transition-timing-function: ease-out;
+}
+
+.transition-all-125 {
+  transition: all 0.125s;
+  transition-timing-function: ease-out;
+}
+
+.transition-all-125 {
+  transition: all 0.125s;
+  transition-timing-function: ease-out;
+}
+
+.transition-delay-125 {
+  transition-delay: 0.125s;
+}
+
+.transition-delay-125 {
+  transition-delay: 0.125s;
+}
+
+.fadeIn-250 {
+  animation: fadeIn 0.25s;
+}
+
+.fadeInLeft-250 {
+  animation: fadeInLeft 0.25s;
+}
+
+.fadeInRight-250 {
+  animation: fadeInRight 0.25s;
+}
+
+.fadeInUp-250 {
+  animation: fadeInUp 0.25s;
+}
+
+.fadeInDown-250 {
+  animation: fadeInDown 0.25s;
+}
+
+.transition-all-250 {
+  transition: all 0.25s;
+  transition-timing-function: ease-out;
+}
+
+.transition-all-250 {
+  transition: all 0.25s;
+  transition-timing-function: ease-out;
+}
+
+.transition-all-250 {
+  transition: all 0.25s;
+  transition-timing-function: ease-out;
+}
+
+.transition-delay-250 {
+  transition-delay: 0.25s;
+}
+
+.transition-delay-250 {
+  transition-delay: 0.25s;
+}
+
+.fadeIn-500 {
+  animation: fadeIn 0.5s;
+}
+
+.fadeInLeft-500 {
+  animation: fadeInLeft 0.5s;
+}
+
+.fadeInRight-500 {
+  animation: fadeInRight 0.5s;
+}
+
+.fadeInUp-500 {
+  animation: fadeInUp 0.5s;
+}
+
+.fadeInDown-500 {
+  animation: fadeInDown 0.5s;
+}
+
+.transition-all-500 {
+  transition: all 0.5s;
+  transition-timing-function: ease-out;
+}
+
+.transition-all-500 {
+  transition: all 0.5s;
+  transition-timing-function: ease-out;
+}
+
+.transition-all-500 {
+  transition: all 0.5s;
+  transition-timing-function: ease-out;
+}
+
+.transition-delay-500 {
+  transition-delay: 0.5s;
+}
+
+.transition-delay-500 {
+  transition-delay: 0.5s;
+}
+
+.fadeIn-1000 {
+  animation: fadeIn 1s;
+}
+
+.fadeInLeft-1000 {
+  animation: fadeInLeft 1s;
+}
+
+.fadeInRight-1000 {
+  animation: fadeInRight 1s;
+}
+
+.fadeInUp-1000 {
+  animation: fadeInUp 1s;
+}
+
+.fadeInDown-1000 {
+  animation: fadeInDown 1s;
+}
+
+.transition-all-1000 {
+  transition: all 1s;
+  transition-timing-function: ease-out;
+}
+
+.transition-all-1000 {
+  transition: all 1s;
+  transition-timing-function: ease-out;
+}
+
+.transition-all-1000 {
+  transition: all 1s;
+  transition-timing-function: ease-out;
+}
+
+.transition-delay-1000 {
+  transition-delay: 1s;
+}
+
+.transition-delay-1000 {
+  transition-delay: 1s;
+}
+
+.fadeIn-1250 {
+  animation: fadeIn 1.25s;
+}
+
+.fadeInLeft-1250 {
+  animation: fadeInLeft 1.25s;
+}
+
+.fadeInRight-1250 {
+  animation: fadeInRight 1.25s;
+}
+
+.fadeInUp-1250 {
+  animation: fadeInUp 1.25s;
+}
+
+.fadeInDown-1250 {
+  animation: fadeInDown 1.25s;
+}
+
+.transition-all-1250 {
+  transition: all 1.25s;
+  transition-timing-function: ease-out;
+}
+
+.transition-all-1250 {
+  transition: all 1.25s;
+  transition-timing-function: ease-out;
+}
+
+.transition-all-1250 {
+  transition: all 1.25s;
+  transition-timing-function: ease-out;
+}
+
+.transition-delay-1250 {
+  transition-delay: 1.25s;
+}
+
+.transition-delay-1250 {
+  transition-delay: 1.25s;
+}
+
+.fadeIn-1500 {
+  animation: fadeIn 1.5s;
+}
+
+.fadeInLeft-1500 {
+  animation: fadeInLeft 1.5s;
+}
+
+.fadeInRight-1500 {
+  animation: fadeInRight 1.5s;
+}
+
+.fadeInUp-1500 {
+  animation: fadeInUp 1.5s;
+}
+
+.fadeInDown-1500 {
+  animation: fadeInDown 1.5s;
+}
+
+.transition-all-1500 {
+  transition: all 1.5s;
+  transition-timing-function: ease-out;
+}
+
+.transition-all-1500 {
+  transition: all 1.5s;
+  transition-timing-function: ease-out;
+}
+
+.transition-all-1500 {
+  transition: all 1.5s;
+  transition-timing-function: ease-out;
+}
+
+.transition-delay-1500 {
+  transition-delay: 1.5s;
+}
+
+.transition-delay-1500 {
+  transition-delay: 1.5s;
+}
+
+.fadeIn-2000 {
+  animation: fadeIn 2s;
+}
+
+.fadeInLeft-2000 {
+  animation: fadeInLeft 2s;
+}
+
+.fadeInRight-2000 {
+  animation: fadeInRight 2s;
+}
+
+.fadeInUp-2000 {
+  animation: fadeInUp 2s;
+}
+
+.fadeInDown-2000 {
+  animation: fadeInDown 2s;
+}
+
+.transition-all-2000 {
+  transition: all 2s;
+  transition-timing-function: ease-out;
+}
+
+.transition-all-2000 {
+  transition: all 2s;
+  transition-timing-function: ease-out;
+}
+
+.transition-all-2000 {
+  transition: all 2s;
+  transition-timing-function: ease-out;
+}
+
+.transition-delay-2000 {
+  transition-delay: 2s;
+}
+
+.transition-delay-2000 {
+  transition-delay: 2s;
+}
+
+@keyframes fadeInLeft {
+  from {
+    opacity: 0;
+    -webkit-transform: translateX(-20px);
+    -ms-transform: translateX(-20px);
+    transform: translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    -webkit-transform: translateX(0px);
+    -ms-transform: translateX(0px);
+    transform: translateX(0px);
+  }
+}
+@keyframes fadeInRight {
+  from {
+    opacity: 0;
+    -webkit-transform: translateX(20px);
+    -ms-transform: translateX(20px);
+    transform: translateX(20px);
+  }
+  to {
+    opacity: 1;
+    -webkit-transform: translateX(0px);
+    -ms-transform: translateX(0px);
+    transform: translateX(0px);
+  }
+}
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    -webkit-transform: translateY(-20px);
+    -ms-transform: translateY(-20px);
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    -webkit-transform: translateX(0px);
+    -ms-transform: translateX(0px);
+    transform: translateX(0px);
+  }
+}
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    -webkit-transform: translateY(20px);
+    -ms-transform: translateY(20px);
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    -webkit-transform: translateX(0px);
+    -ms-transform: translateX(0px);
+    transform: translateX(0px);
+  }
+}
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+/*@import 'Templates/Applications';
+*/
+/*@import 'Templates/StartMenu';*/
+@media print {
+  * {
+    overflow: visible !important;
+  }
+
+  .page {
+    page-break-after: always;
+  }
+
+  .aside, .header,
+.mud-toolbar,
+.mud-appbar,
+.mud-drawer {
+    display: none;
+  }
+
+  .content {
+    margin-top: auto;
+    height: auto;
+  }
+
+  .footer {
+    position: fixed;
+    bottom: 0px;
+    background-color: #fff;
+    border: 1px solid transparent;
+    padding: 0rem 1.25rem 0rem 1.25rem;
+    box-shadow: 0px 0px 0px 0px rgba(0, 0, 0, 0.25);
+  }
+}
+
+/*# sourceMappingURL=data:application/json;charset=utf-8,%7B%22version%22:3,%22sourceRoot%22:%22%22,%22sources%22:%5B%22file:///E:/Henrique%2520Clausing/Repositorios/Current/EficazFramework/src/Web/EficazFramework.Blazor/Styles/Components/Input.scss%22,%22file:///E:/Henrique%2520Clausing/Repositorios/Current/EficazFramework/src/Web/EficazFramework.Blazor/Styles/EfCore.scss%22,%22file:///E:/Henrique%2520Clausing/Repositorios/Current/EficazFramework/src/Web/EficazFramework.Blazor/Styles/Components/Navigator.scss%22,%22file:///E:/Henrique%2520Clausing/Repositorios/Current/EficazFramework/src/Web/EficazFramework.Blazor/Styles/Components/Table.scss%22,%22file:///E:/Henrique%2520Clausing/Repositorios/Current/EficazFramework/src/Web/EficazFramework.Blazor/Styles/General/Icons.scss%22,%22file:///E:/Henrique%2520Clausing/Repositorios/Current/EficazFramework/src/Web/EficazFramework.Blazor/Styles/General/Layout.scss%22,%22file:///E:/Henrique%2520Clausing/Repositorios/Current/EficazFramework/src/Web/EficazFramework.Blazor/Styles/General/Text.scss%22,%22file:///E:/Henrique%2520Clausing/Repositorios/Current/EficazFramework/src/Web/EficazFramework.Blazor/Styles/General/Transitions.scss%22,%22file:///E:/Henrique%2520Clausing/Repositorios/Current/EficazFramework/src/Web/EficazFramework.Blazor/Styles/General/Print.scss%22%5D,%22names%22:%5B%5D,%22mappings%22:%22AAAC;EACG;;;AAGJ;EACI;;;AAGJ;EACI;;;AAGJ;EACI;;;AAGJ;EACI;;;AChBJ;AAAA;ACDC;EACG;;;AAIJ;EACI;;;ACNH;EACG;;;AAGJ;EACI;EACA;;;ACNH;EACG;EACA;EACA;EACA;EACA;EACA;EACA;;;AAGJ;EACI;EACA;EACA;;;ACbH;EACG;EACA;EACA;;;ACHH;EACG;;;AAGJ;EACI;;;AAGJ;EACI;;;AAGJ;EACI;EACA;EACA;;;AAGJ;EACI;;;AAGJ;EACI;EACA;EACA;;;ACrBA;EACI;;;AAGJ;EACI;;;AAGJ;EACI;;;AAGJ;EACI;;;AAGJ;EACI;;;AAGJ;EACI;EACA;;;AAGJ;EACI;EACA;;;AAGJ;EACI;EACA;;;AAGJ;EACI;;;AAGJ;EACI;;;AAxCJ;EACI;;;AAGJ;EACI;;;AAGJ;EACI;;;AAGJ;EACI;;;AAGJ;EACI;;;AAGJ;EACI;EACA;;;AAGJ;EACI;EACA;;;AAGJ;EACI;EACA;;;AAGJ;EACI;;;AAGJ;EACI;;;AAxCJ;EACI;;;AAGJ;EACI;;;AAGJ;EACI;;;AAGJ;EACI;;;AAGJ;EACI;;;AAGJ;EACI;EACA;;;AAGJ;EACI;EACA;;;AAGJ;EACI;EACA;;;AAGJ;EACI;;;AAGJ;EACI;;;AAxCJ;EACI;;;AAGJ;EACI;;;AAGJ;EACI;;;AAGJ;EACI;;;AAGJ;EACI;;;AAGJ;EACI;EACA;;;AAGJ;EACI;EACA;;;AAGJ;EACI;EACA;;;AAGJ;EACI;;;AAGJ;EACI;;;AAxCJ;EACI;;;AAGJ;EACI;;;AAGJ;EACI;;;AAGJ;EACI;;;AAGJ;EACI;;;AAGJ;EACI;EACA;;;AAGJ;EACI;EACA;;;AAGJ;EACI;EACA;;;AAGJ;EACI;;;AAGJ;EACI;;;AAxCJ;EACI;;;AAGJ;EACI;;;AAGJ;EACI;;;AAGJ;EACI;;;AAGJ;EACI;;;AAGJ;EACI;EACA;;;AAGJ;EACI;EACA;;;AAGJ;EACI;EACA;;;AAGJ;EACI;;;AAGJ;EACI;;;AAxCJ;EACI;;;AAGJ;EACI;;;AAGJ;EACI;;;AAGJ;EACI;;;AAGJ;EACI;;;AAGJ;EACI;EACA;;;AAGJ;EACI;EACA;;;AAGJ;EACI;EACA;;;AAGJ;EACI;;;AAGJ;EACI;;;AAKR;EACI;IACI;IACA;IACA;IACA;;EAGJ;IACI;IACA;IACA;IACA;;;AAIR;EACI;IACI;IACA;IACA;IACA;;EAGJ;IACI;IACA;IACA;IACA;;;AAIR;EACI;IACI;IACA;IACA;IACA;;EAGJ;IACI;IACA;IACA;IACA;;;AAIR;EACI;IACI;IACA;IACA;IACA;;EAGJ;IACI;IACA;IACA;IACA;;;AAIR;EACI;IACI;;EAGJ;IACI;;;AN7GR;AAAA;AACE;AOXD;EACG;IACI;;;EAGJ;IACI;;;EAGJ;AAAA;AAAA;AAAA;IAII;;;EAGJ;IACI;IACA;;;EAGJ;IACI;IACA;IACA;IACA;IACA;IACA%22%7D */

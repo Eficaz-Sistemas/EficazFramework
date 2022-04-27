@@ -267,9 +267,8 @@ public class CrudOperations
         service.CurrentEntry.Name = "Updated Item";
 
         Vm.Commands["Save"].Execute(null);
-        await Task.Delay(150);
+        await Task.Delay(500);
         resultContext.Should().BeNull();
-        _saveNotified.Should().BeTrue();
 
         Vm.Repository.Filter = (e) => e.Name == "Updated Item";
         Vm.Commands["Get"].Execute(null);

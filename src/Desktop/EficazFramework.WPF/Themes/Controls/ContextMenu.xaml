@@ -1,0 +1,66 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:EfAttachedProps="clr-namespace:EficazFramework.Controls.AttachedProperties"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    
+    <Style TargetType="{x:Type ContextMenu}">
+        <Setter Property="FontSize" Value="10pt" />
+        <Setter Property="BorderThickness" Value="2" />
+        <Setter Property="SnapsToDevicePixels" Value="True"/>
+        <Setter Property="OverridesDefaultStyle" Value="True"/>
+        <Setter Property="Grid.IsSharedSizeScope" Value="true"/>
+        <Setter Property="HasDropShadow" Value="True"/>
+        <Setter Property="Padding" Value="1,3"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="ContextMenu">
+                    <Border Name="Border" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="5" >
+                        <StackPanel IsItemsHost="True" KeyboardNavigation.DirectionalNavigation="Cycle"/>
+                    </Border>
+                    <!--<ControlTemplate.Triggers>
+                        <Trigger Property="HasDropShadow" Value="true">
+                            <Setter TargetName="Border" Property="Padding" Value="0,0,3,3"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>-->
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <Style.Triggers>
+            <Trigger Property="EfAttachedProps:Control.Color" Value="Surface">
+                <Setter Property="Foreground" Value="{DynamicResource Brush.Surface.Foreground}"/>
+                <Setter Property="BorderBrush" Value="{DynamicResource Brush.SurfaceAlternate.Foreground}"/>
+                <Setter Property="Background" Value="{DynamicResource Brush.Surface.Background}"/>
+            </Trigger>
+            <Trigger Property="EfAttachedProps:Control.Color" Value="SurfaceAlternate">
+                <Setter Property="Foreground" Value="{DynamicResource Brush.SurfaceAlternate.Foreground}"/>
+                <Setter Property="BorderBrush" Value="{DynamicResource Brush.SurfaceAlternate.Foreground}"/>
+                <Setter Property="Background" Value="{DynamicResource Brush.SurfaceAlternate.Background}"/>
+            </Trigger>
+            <Trigger Property="EfAttachedProps:Control.Color" Value="Primary">
+                <Setter Property="Foreground" Value="{DynamicResource Brush.Surface.Foreground}"/>
+                <Setter Property="BorderBrush" Value="{DynamicResource Brush.SurfaceAlternate.Foreground}"/>
+                <Setter Property="Background" Value="{DynamicResource Brush.Surface.Background}"/>
+            </Trigger>
+            <Trigger Property="EfAttachedProps:Control.Color" Value="PrimaryDarken">
+                <Setter Property="Foreground" Value="{DynamicResource Brush.Surface.Foreground}"/>
+                <Setter Property="BorderBrush" Value="{DynamicResource Brush.SurfaceAlternate.Foreground}"/>
+                <Setter Property="Background" Value="{DynamicResource Brush.Surface.Background}"/>
+            </Trigger>
+            <Trigger Property="EfAttachedProps:Control.Color" Value="PrimaryLighten">
+                <Setter Property="Foreground" Value="{DynamicResource Brush.Surface.Foreground}"/>
+                <Setter Property="BorderBrush" Value="{DynamicResource Brush.SurfaceAlternate.Foreground}"/>
+                <Setter Property="Background" Value="{DynamicResource Brush.Surface.Background}"/>
+            </Trigger>
+            <Trigger Property="EfAttachedProps:Control.Color" Value="Secondary">
+                <Setter Property="Foreground" Value="{DynamicResource Brush.Secondary.Foreground}"/>
+                <Setter Property="BorderBrush" Value="{DynamicResource Brush.Surface.Background}"/>
+                <Setter Property="Background" Value="{DynamicResource Brush.Secondary.Background}"/>
+            </Trigger>
+            <Trigger Property="EfAttachedProps:Control.Color" Value="Tertiary">
+                <Setter Property="Foreground" Value="{DynamicResource Brush.Tertiary.Foreground}"/>
+                <Setter Property="BorderBrush" Value="{DynamicResource Brush.Surface.Background}"/>
+                <Setter Property="Background" Value="{DynamicResource Brush.Tertiary.Background}"/>
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+    
+</ResourceDictionary>

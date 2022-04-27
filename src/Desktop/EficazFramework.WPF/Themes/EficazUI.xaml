@@ -1,0 +1,96 @@
+<themes:ThemeDictionary
+    xmlns:themes="clr-namespace:EficazFramework.Themes"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <ResourceDictionary.MergedDictionaries>
+
+        <!-- Color Scheme: -->
+        <ResourceDictionary Source="Colors/BaseColors.xaml"/>
+        <themes:ColorDictionary Source="Colors/DefaultBlue.xaml"/>
+
+        <!-- Icons: -->
+        <ResourceDictionary Source="pack://application:,,,/EficazFramework.WPF;component/Themes/Icons/App.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/EficazFramework.WPF;component/Themes/Icons/Brands.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/EficazFramework.WPF;component/Themes/Icons/Commerce.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/EficazFramework.WPF;component/Themes/Icons/FluentFilled.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/EficazFramework.WPF;component/Themes/Icons/MaterialDesign.xaml" />
+        
+        <!-- Controls: -->
+        <ResourceDictionary Source="pack://application:,,,/EficazFramework.WPF;component/Themes/Controls/Button.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/EficazFramework.WPF;component/Themes/Controls/Calendar.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/EficazFramework.WPF;component/Themes/Controls/CheckBox.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/EficazFramework.WPF;component/Themes/Controls/ColorZone.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/EficazFramework.WPF;component/Themes/Controls/ComboBox.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/EficazFramework.WPF;component/Themes/Controls/ContextMenu.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/EficazFramework.WPF;component/Themes/Controls/DataGrid.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/EficazFramework.WPF;component/Themes/Controls/GroupBox.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/EficazFramework.WPF;component/Themes/Controls/Icon.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/EficazFramework.WPF;component/Themes/Controls/InteractiveTextBox.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/EficazFramework.WPF;component/Themes/Controls/ListView.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/EficazFramework.WPF;component/Themes/Controls/MenuItem.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/EficazFramework.WPF;component/Themes/Controls/PasswordBox.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/EficazFramework.WPF;component/Themes/Controls/ProgressBar.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/EficazFramework.WPF;component/Themes/Controls/RadioButton.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/EficazFramework.WPF;component/Themes/Controls/ScrollBar.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/EficazFramework.WPF;component/Themes/Controls/Slider.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/EficazFramework.WPF;component/Themes/Controls/TabControl.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/EficazFramework.WPF;component/Themes/Controls/TextBlock.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/EficazFramework.WPF;component/Themes/Controls/TextBox.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/EficazFramework.WPF;component/Themes/Controls/Tooltip.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/EficazFramework.WPF;component/Themes/Controls/TreeView.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/EficazFramework.WPF;component/Themes/Controls/Window.xaml" />
+
+    </ResourceDictionary.MergedDictionaries>
+
+    <!-- Fonts: -->
+    <FontFamily x:Key="Font.SourceSansPro">/Themes/Fonts/SourceSansPro-Regular.ttf#Source Sans Pro</FontFamily>
+
+    <!--  Color Scheme, Global: -->
+    <SolidColorBrush x:Key="Brush.Darken" Color="{DynamicResource Color.Darken}"/>
+    <SolidColorBrush x:Key="Brush.Dark" Color="{DynamicResource Color.Dark}"/>
+    <SolidColorBrush x:Key="Brush.Gray75" Color="{DynamicResource Color.Gray75}"/>
+    <SolidColorBrush x:Key="Brush.Gray50" Color="{DynamicResource Color.Gray50}"/>
+    <SolidColorBrush x:Key="Brush.Gray25" Color="{DynamicResource Color.Gray25}"/>
+    <SolidColorBrush x:Key="Brush.Light" Color="{DynamicResource Color.Light}"/>
+    <SolidColorBrush x:Key="Brush.Lighten" Color="{DynamicResource Color.Lighten}"/>
+
+    <!--  Color Scheme, Errors: -->
+    <SolidColorBrush x:Key="Brush.Error.Background" Color="{DynamicResource Color.Error.Background}"/>
+    <SolidColorBrush x:Key="Brush.Error.Foreground" Color="{DynamicResource Color.Error.Foreground}"/>
+
+    <!--  Color Scheme, Surface: -->
+    <SolidColorBrush x:Key="Brush.Surface.Background" Color="{DynamicResource Color.Surface.Background}"/>
+    <SolidColorBrush x:Key="Brush.Surface.Border" Color="{DynamicResource Color.Surface.Border}"/>
+    <SolidColorBrush x:Key="Brush.Surface.Paper" Color="{DynamicResource Color.Surface.Paper}"/>
+    <SolidColorBrush x:Key="Brush.Surface.Foreground" Color="{DynamicResource Color.Surface.Foreground}"/>
+
+    <!--  Color Scheme, Surface Alternate: -->
+    <SolidColorBrush x:Key="Brush.SurfaceAlternate.Background" Color="{DynamicResource Color.SurfaceAlternate.Background}"/>
+    <SolidColorBrush x:Key="Brush.SurfaceAlternate.Border" Color="{DynamicResource Color.SurfaceAlternate.Border}"/>
+    <SolidColorBrush x:Key="Brush.SurfaceAlternate.Pap  " Color="{DynamicResource Color.SurfaceAlternate.Paper}"/>
+    <SolidColorBrush x:Key="Brush.SurfaceAlternate.Foreground" Color="{DynamicResource Color.SurfaceAlternate.Foreground}"/>
+
+    <!--  Color Scheme, Primary: -->
+    <SolidColorBrush x:Key="Brush.Primary.Background.Darken" Color="{DynamicResource Color.Primary.Background.Darken}"/>
+    <SolidColorBrush x:Key="Brush.Primary.Background" Color="{DynamicResource Color.Primary.Background}"/>
+    <SolidColorBrush x:Key="Brush.Primary.Background.Lighten" Color="{DynamicResource Color.Primary.Background.Lighten}"/>
+    <SolidColorBrush x:Key="Brush.Primary.Foreground" Color="{DynamicResource Color.Primary.Foreground}"/>
+
+    <!--  Color Scheme, Secondary: -->
+    <SolidColorBrush x:Key="Brush.Secondary.Background.Darken" Color="{DynamicResource Color.Secondary.Background.Darken}"/>
+    <SolidColorBrush x:Key="Brush.Secondary.Background" Color="{DynamicResource Color.Secondary.Background}"/>
+    <SolidColorBrush x:Key="Brush.Secondary.Background.Lighten" Color="{DynamicResource Color.Secondary.Background.Lighten}"/>
+    <SolidColorBrush x:Key="Brush.Secondary.Foreground" Color="{DynamicResource Color.Secondary.Foreground}"/>
+
+    <!--  Color Scheme, Tertiary: -->
+    <SolidColorBrush x:Key="Brush.Tertiary.Background.Darken" Color="{DynamicResource Color.Tertiary.Background.Darken}"/>
+    <SolidColorBrush x:Key="Brush.Tertiary.Background" Color="{DynamicResource Color.Tertiary.Background}"/>
+    <SolidColorBrush x:Key="Brush.Tertiary.Background.Lighten" Color="{DynamicResource Color.Tertiary.Background.Lighten}"/>
+    <SolidColorBrush x:Key="Brush.Tertiary.Foreground" Color="{DynamicResource Color.Tertiary.Foreground}"/>
+
+    <!--  Color Scheme, Errors: -->
+    <SolidColorBrush x:Key="Brush.Disabled.Background" Color="{DynamicResource Color.Disabled.Background}"/>
+    <SolidColorBrush x:Key="Brush.Disabled.Foreground" Color="{DynamicResource Color.Disabled.Foreground}"/>
+
+</themes:ThemeDictionary>

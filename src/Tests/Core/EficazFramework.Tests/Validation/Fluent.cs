@@ -3,6 +3,9 @@ using NUnit.Framework;
 using EficazFramework.Validation.Fluent.Rules;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using EficazFramework.Configuration;
+using System;
+using System.Linq;
 
 namespace EficazFramework.Validation;
 
@@ -416,6 +419,75 @@ public class FluentTests
 
         instance.Name = " ";
         validator.Validate(instance).Should().BeNullOrEmpty();
+    }
+
+    [Test]
+    public void UniqueWhenInsert()
+    {
+        //SETUP
+        DbConfiguration.SettingsPath = $@"{Environment.CurrentDirectory}\";
+        Resources.Mocks.MockDbContext dbContext = new();
+        dbContext.Database.EnsureCreated();
+
+        var testId = System.Guid.NewGuid();
+        dbContext.Add(new Resources.Mocks.Classes.Blog()
+        {
+            Id = testId,
+            Name = $"Blog 1"
+        });
+        dbContext.SaveChanges();
+
+
+        //TEST
+        EficazFramework.Validation.Fluent.Validator<Resources.Mocks.Classes.Blog> validator = new EficazFramework.Validation.Fluent.Validator<Resources.Mocks.Classes.Blog>().Unique(e => e.Id, dbContext.Blogs);
+        var newEntry = Entities.EntityBase.Create<Resources.Mocks.Classes.Blog>();
+        newEntry.Id = testId;
+        newEntry.Name = $"New Blog";
+        var result = validator.Validate(newEntry);
+        result.Should().HaveCount(1);
+        result[0].Should().Be(string.Format(EficazFramework.Resources.Strings.Validation.NotUnique, testId));
+
+        newEntry.Id = System.Guid.NewGuid();
+        result = validator.Validate(newEntry);
+        result.Should().HaveCount(0);
+
+        //TEAR DOWN
+        dbContext.Database.EnsureDeleted();
+        dbContext.Dispose();
+        System.IO.File.Delete($"{DbConfiguration.SettingsPath}data_provider.json");
+    }
+
+    [Test]
+    public void UniqueWhenUpdate()
+    {
+        //SETUP
+        DbConfiguration.SettingsPath = $@"{Environment.CurrentDirectory}\";
+        Resources.Mocks.MockDbContext dbContext = new();
+        dbContext.Database.EnsureCreated();
+
+        var testId = System.Guid.NewGuid();
+        dbContext.Add(new Resources.Mocks.Classes.Blog()
+        {
+            Id = testId,
+            Name = $"Blog 1"
+        });
+        dbContext.SaveChanges();
+
+
+        //TEST
+        EficazFramework.Validation.Fluent.Validator<Resources.Mocks.Classes.Blog> validator = new EficazFramework.Validation.Fluent.Validator<Resources.Mocks.Classes.Blog>().Unique(e => e.Id, dbContext.Blogs);
+        var entry = dbContext.Blogs.FirstOrDefault();
+        var result = validator.Validate(entry);
+        result.Should().HaveCount(0);
+
+        entry.Id = System.Guid.NewGuid();
+        result = validator.Validate(entry);
+        result.Should().HaveCount(0);
+
+        //TEAR DOWN
+        dbContext.Database.EnsureDeleted();
+        dbContext.Dispose();
+        System.IO.File.Delete($"{DbConfiguration.SettingsPath}data_provider.json");
     }
 
 

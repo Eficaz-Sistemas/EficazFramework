@@ -341,3 +341,6 @@ healthchecksdb
 /SDK
 /Azure/Assets
 /Web
+/src/Tests/Core/EficazFramework.Tests/Coverage
+/src/Tests/Desktop/EficazFramework.Tests.WPF/Coverage
+/src/Tests/Web/EficazFramework.Tests.Blazor/Coverage

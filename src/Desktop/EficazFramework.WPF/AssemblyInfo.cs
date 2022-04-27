@@ -1,4 +1,12 @@
-using System.Windows;
+global using System;
+global using System.Collections.Generic;
+global using System.Diagnostics.CodeAnalysis;
+global using System.Windows;
+global using System.Windows.Controls;
+global using System.Windows.Data;
+global using System.Windows.Input;
+global using System.Windows.Media;
+global using System.Windows.Media.Effects;
 
 [assembly: ThemeInfo(
     ResourceDictionaryLocation.None, //where theme specific resource dictionaries are located
