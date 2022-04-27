@@ -1,7 +1,7 @@
 // This file is to show how a library package may provide JavaScript interop features
 // wrapped in a .NET API
 
-window.efcoreJsFunctions = {
+window.EfJsFunctions = {
 
     //just a sample function that return a message
     showPrompt: function (message) {
@@ -88,7 +88,7 @@ window.efcoreJsFunctions = {
 
 
 
-    startObserve: function (query, intersectingClassName, permanent, func) {
+    startObserve: function (query, intersectingClassName, permanent, func, targetQuery) {
         const found = document.querySelectorAll(query);
         const config = {
             root: null, // use the document's viewport as the container
@@ -99,13 +99,21 @@ window.efcoreJsFunctions = {
         let observer = new IntersectionObserver(function (entries) {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
-                    entry.target.classList.add(intersectingClassName);
+                    if (targetQuery !== null)
+                        document.querySelectorAll(targetQuery).item(0).classList.add(intersectingClassName);
+                    else
+                        entry.target.classList.add(intersectingClassName);
+
                     if (func !== null) {
                         this[func]();
                     }
                 } else {
                     if (!permanent) {
-                        entry.target.classList.remove(intersectingClassName);	
+                        if (targetQuery !== null)
+                            document.querySelectorAll(targetQuery).item(0).classList.remove(intersectingClassName);
+                        else
+                            entry.target.classList.remove(intersectingClassName);	
+
                         observer.unobserve(entry);
                     }
                 }

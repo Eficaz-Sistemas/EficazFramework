@@ -21,7 +21,7 @@ namespace EficazFramework.Tests.Utilties
         [Test]
         public void PleaseHelpMe()
         {
-            EficazFramework.Controls.ColorZone colorZone = new Controls.ColorZone();
+            EficazFramework.Controls.ColorZone colorZone = new EficazFramework.Controls.ColorZone();
             colorZone.IsVisible.Should().BeFalse();
         }
     }

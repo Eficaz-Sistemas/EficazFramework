@@ -241,6 +241,15 @@ namespace EficazFramework.Resources.Strings {
         }
         
         /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a O valor {0} já está sendo utilizado.
+        /// </summary>
+        public static string NotUnique {
+            get {
+                return ResourceManager.GetString("NotUnique", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Consulta uma cadeia de caracteres localizada semelhante a Nenhuma entidade foi submetida para execução da validação..
         /// </summary>
         public static string NullInstance {

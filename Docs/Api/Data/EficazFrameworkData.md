@@ -44,6 +44,7 @@
 | :--- | :--- |
 | [DbConfiguration](EficazFramework.Configuration/DbConfiguration.md 'EficazFramework.Configuration.DbConfiguration') | |
 | [DbConfigurator](EficazFramework.Configuration/DbConfigurator.md 'EficazFramework.Configuration.DbConfigurator') | |
+| [EntityRepositoryConfiguration&lt;TEntity&gt;](EficazFramework.Configuration/EntityRepositoryConfiguration_TEntity_.md 'EficazFramework.Configuration.EntityRepositoryConfiguration<TEntity>') | |
 
 | Interfaces | |
 | :--- | :--- |
@@ -180,6 +181,14 @@
 | :--- | :--- |
 | [AuditModel](EficazFramework.Security/AuditModel.md 'EficazFramework.Security.AuditModel') | |
 
+<a name='EficazFramework.Services'></a>
+
+## EficazFramework.Services Namespace
+
+| Classes | |
+| :--- | :--- |
+| [ServiceCollectionExtension](EficazFramework.Services/ServiceCollectionExtension.md 'EficazFramework.Services.ServiceCollectionExtension') | |
+
 <a name='EficazFramework.Validation'></a>
 
 ## EficazFramework.Validation Namespace
@@ -236,6 +245,7 @@
 | [RangePeriod&lt;T&gt;](EficazFramework.Validation.Fluent.Rules/RangePeriod_T_.md 'EficazFramework.Validation.Fluent.Rules.RangePeriod<T>') | |
 | [Required&lt;T&gt;](EficazFramework.Validation.Fluent.Rules/Required_T_.md 'EficazFramework.Validation.Fluent.Rules.Required<T>') | |
 | [RequiredIf&lt;T&gt;](EficazFramework.Validation.Fluent.Rules/RequiredIf_T_.md 'EficazFramework.Validation.Fluent.Rules.RequiredIf<T>') | |
+| [Unique&lt;T&gt;](EficazFramework.Validation.Fluent.Rules/Unique_T_.md 'EficazFramework.Validation.Fluent.Rules.Unique<T>') | |
 | [ValidationRule&lt;T&gt;](EficazFramework.Validation.Fluent.Rules/ValidationRule_T_.md 'EficazFramework.Validation.Fluent.Rules.ValidationRule<T>') | Classa padrão de regra de validação. Deve ser herdada. |
 | [ValidatorUtils](EficazFramework.Validation.Fluent.Rules/ValidatorUtils.md 'EficazFramework.Validation.Fluent.Rules.ValidatorUtils') | Conunto de métodos auxiliares para composição das regras de validação in-built |
 

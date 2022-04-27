@@ -44,10 +44,14 @@
     #obj002.on-screen {
         animation: fadeIn 2.5s;
     }
+    
+    #targetElementToAnimate.on-screen {
+        background-color: red;
+    }
 
 </style>
 
-<div id="scroller" class="d-block" onmousewheel="OnMouseWheel">
+<div id="scroller" class="d-block">
     <section class="section header d-flex">
         <MudBlazor.MudContainer Class="d-flex flex-column align-center justify-center">
             <h1>Hello, world!</h1>
@@ -73,8 +77,10 @@
     </section>
     <section class="section tertiary d-flex">
         <MudBlazor.MudContainer Class="d-flex flex-column align-center justify-center">
-            <h1 id="obj003">Goodbye, world!</h1>
-            See you soon.
+            <EficazFramework.Components.ObservableElement AutoStart ObserverQuery="#obj003" TargetQuery="#targetElementToAnimate" Class="d-flex flex-column">
+                <h1 id="obj003">Goodbye, world!</h1>
+                <h3 id="targetElementToAnimate">See you soon.</h3>
+            </EficazFramework.Components.ObservableElement>
         </MudBlazor.MudContainer>
     </section>
 

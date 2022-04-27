@@ -78,7 +78,7 @@
                          VerticalAlignment="Center"
                          HorizontalAlignment="Center">
                 <TextBlock Text="Inherited from Parent:" VerticalAlignment="Center" TextAlignment="Right"/>
-                <Button Margin="3">Normal</Button>
+                <Button Margin="3" x:Name="TEST_Button_0">Normal</Button>
                 <Button Margin="3" IsEnabled="False">Disabled</Button>
                 <Button Margin="3">
                     <StackPanel Orientation="Horizontal">

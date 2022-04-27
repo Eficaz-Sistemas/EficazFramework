@@ -186,4 +186,7 @@
   <data name="EqualsTo" xml:space="preserve">
     <value>Os valores informados nos campos {0} e {1} devem ser idênticos.</value>
   </data>
+  <data name="NotUnique" xml:space="preserve">
+    <value>O valor {0} já está sendo utilizado</value>
+  </data>
 </root>
