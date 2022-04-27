@@ -81,7 +81,7 @@ public class EntityRepositoryTests
         repository.DbContextRequest = () =>
         {
             tks.Cancel();
-            return null; 
+            return new Resources.Mocks.MockDbContext();
         };
         await repository.FetchItemsAsync(tks.Token);
         tks = new();
@@ -90,7 +90,7 @@ public class EntityRepositoryTests
         repository.DbContextRequest = () =>
         {
             tks.Cancel();
-            return null;
+            return new Resources.Mocks.MockDbContext();
         };
         repository.DbContextRequest = () => new Resources.Mocks.MockDbContext();
         repository.Dispose();
