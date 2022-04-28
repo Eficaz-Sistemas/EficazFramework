@@ -395,7 +395,6 @@ public abstract class RepositoryBase<T> : INotifyPropertyChanged, IDisposable wh
             // Tarefa pendente: definir campos grandes como nulos
             if (DataContext != null)
                 DataContext.Clear();
-            DataContext = null;
             DisposeUnManagedCallerObjects();
             disposedValue = true;
         }
