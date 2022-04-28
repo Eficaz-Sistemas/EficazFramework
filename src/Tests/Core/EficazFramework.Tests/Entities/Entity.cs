@@ -29,6 +29,8 @@ public class EntityTests
         instance2.PostProcessed.Should().BeFalse();
         instance2.UnSetNew();
         instance2.IsNew.Should().BeFalse();
+        instance2.MarkAsNew();
+        instance2.IsNew.Should().BeTrue();
         instance2.IsSelected = true;
         instance2.IsSelected.Should().BeTrue();
 
