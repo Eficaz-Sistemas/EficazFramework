@@ -439,7 +439,7 @@ public class FluentTests
 
 
         //TEST
-        EficazFramework.Validation.Fluent.Validator<Resources.Mocks.Classes.Blog> validator = new EficazFramework.Validation.Fluent.Validator<Resources.Mocks.Classes.Blog>().Unique(e => e.Id, dbContext.Blogs);
+        EficazFramework.Validation.Fluent.Validator<Resources.Mocks.Classes.Blog> validator = new EficazFramework.Validation.Fluent.Validator<Resources.Mocks.Classes.Blog>().Unique(e => e.Id, () => dbContext.Blogs);
         var newEntry = Entities.EntityBase.Create<Resources.Mocks.Classes.Blog>();
         newEntry.Id = testId;
         newEntry.Name = $"New Blog";
@@ -475,7 +475,7 @@ public class FluentTests
 
 
         //TEST
-        EficazFramework.Validation.Fluent.Validator<Resources.Mocks.Classes.Blog> validator = new EficazFramework.Validation.Fluent.Validator<Resources.Mocks.Classes.Blog>().Unique(e => e.Id, dbContext.Blogs);
+        EficazFramework.Validation.Fluent.Validator<Resources.Mocks.Classes.Blog> validator = new EficazFramework.Validation.Fluent.Validator<Resources.Mocks.Classes.Blog>().Unique(e => e.Id, () => dbContext.Blogs);
         var entry = dbContext.Blogs.FirstOrDefault();
         var result = validator.Validate(entry);
         result.Should().HaveCount(0);

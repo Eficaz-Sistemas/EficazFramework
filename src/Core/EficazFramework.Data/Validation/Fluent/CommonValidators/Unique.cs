@@ -11,12 +11,12 @@ internal class Unique<T> : Rules.ValidationRule<T> where T : Entities.EntityBase
     /// <summary>
     /// Instância de DbSet para DbContext
     /// </summary>
-    public Microsoft.EntityFrameworkCore.DbSet<T> DbContextDbSet { get; }
+    public Func<Microsoft.EntityFrameworkCore.DbSet<T>> DbContextDbSet { get; }
 
     /// <summary>
     /// Regra de validação contra valores e/ou referências nulas ou vazias
     /// </summary>
-    public Unique(System.Linq.Expressions.Expression<Func<T, object>> propertyexpression, Microsoft.EntityFrameworkCore.DbSet<T> dbContextDbSet) : base(propertyexpression)
+    public Unique(System.Linq.Expressions.Expression<Func<T, object>> propertyexpression, Func<Microsoft.EntityFrameworkCore.DbSet<T>> dbContextDbSet) : base(propertyexpression)
     {
         DbContextDbSet = dbContextDbSet;
     }
@@ -43,8 +43,9 @@ internal class Unique<T> : Rules.ValidationRule<T> where T : Entities.EntityBase
         };
         builder.Items.Add(exprItem);
         var expr = builder.GetExpression<T>();
-        
-        if (DbContextDbSet.Count(expr) > 0)
+
+        var dbSet = DbContextDbSet?.Invoke();
+        if (dbSet?.Count(expr) > 0)
             return String.Format(Resources.Strings.Validation.NotUnique, value);
 
         return null;
@@ -60,7 +61,7 @@ public static partial class ValidatorUtils
     /// <summary>
     /// Adiciona uma regração de validação que recusa valores e/ou referências nulos ou vazios
     /// </summary>
-    public static Validator<T> Unique<T>(this Validator<T> validator, System.Linq.Expressions.Expression<Func<T, object>> propertyexpression, Microsoft.EntityFrameworkCore.DbSet<T> dbContextDbSet) where T : Entities.EntityBase
+    public static Validator<T> Unique<T>(this Validator<T> validator, System.Linq.Expressions.Expression<Func<T, object>> propertyexpression, Func<Microsoft.EntityFrameworkCore.DbSet<T>> dbContextDbSet) where T : Entities.EntityBase
     {
         validator.ValidationRules.Add(new Unique<T>(propertyexpression, dbContextDbSet));
         return validator;

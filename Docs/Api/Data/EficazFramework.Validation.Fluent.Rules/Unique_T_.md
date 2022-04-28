@@ -17,7 +17,7 @@ Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.O
 
 | Constructors | |
 | :--- | :--- |
-| [Unique(Expression&lt;Func&lt;T,object&gt;&gt;, DbSet&lt;T&gt;)](EficazFramework.Validation.Fluent.Rules/Unique_T_/Unique(Expression_Func_T,object__,DbSet_T_).md 'EficazFramework.Validation.Fluent.Rules.Unique<T>.Unique(System.Linq.Expressions.Expression<System.Func<T,object>>, Microsoft.EntityFrameworkCore.DbSet<T>)') | Regra de validação contra valores e/ou referências nulas ou vazias |
+| [Unique(Expression&lt;Func&lt;T,object&gt;&gt;, Func&lt;DbSet&lt;T&gt;&gt;)](EficazFramework.Validation.Fluent.Rules/Unique_T_/Unique(Expression_Func_T,object__,Func_DbSet_T__).md 'EficazFramework.Validation.Fluent.Rules.Unique<T>.Unique(System.Linq.Expressions.Expression<System.Func<T,object>>, System.Func<Microsoft.EntityFrameworkCore.DbSet<T>>)') | Regra de validação contra valores e/ou referências nulas ou vazias |
 
 | Properties | |
 | :--- | :--- |
