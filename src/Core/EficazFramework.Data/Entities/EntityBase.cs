@@ -213,6 +213,12 @@ public abstract class EntityBase : IEntity, INotifyPropertyChanged, INotifyDataE
         ReportPropertyChanged(nameof(IsLoaded));
     }
 
+    public void MarkAsNew()
+    {
+        _isNew = true;
+        ReportPropertyChanged(nameof(IsNew));
+    }
+
     public void Unload()
     {
         _isLoaded = false;
