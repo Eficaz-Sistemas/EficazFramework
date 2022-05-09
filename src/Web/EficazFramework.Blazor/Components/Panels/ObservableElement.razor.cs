@@ -18,6 +18,7 @@ public partial class ObservableElement : ComponentBase, IDisposable
     [Parameter] public bool AutoStart { get; set; } = false;
     [Parameter] public string ObserverQuery { get; set; }
     [Parameter] public string? TargetQuery { get; set; }
+    [Parameter] public static string ActiveClass { get; set; } = "on-screen";
 
     protected string Classname =>
                 new CssBuilder()
@@ -27,7 +28,6 @@ public partial class ObservableElement : ComponentBase, IDisposable
     private bool _started = false;
     private ElementReference _elementReference;
 
-    public static string ActiveClass { get; set; } = "on-screen";
 
     protected override Task OnAfterRenderAsync(bool firstRender)
     {
