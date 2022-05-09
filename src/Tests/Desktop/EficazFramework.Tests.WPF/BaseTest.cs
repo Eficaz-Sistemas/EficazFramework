@@ -15,8 +15,8 @@ namespace EficazFramework.Tests
 
         public BaseTest()
         {
-            //if (Application == null)
-            //    Application = XamlTest.App.StartRemote<EficazFramework.Tests.WPF.Views.App>();
+            if (Application == null)
+                Application = XamlTest.App.StartRemote<EficazFramework.Tests.WPF.Views.App>();
         }
 
         [OneTimeSetUp]
