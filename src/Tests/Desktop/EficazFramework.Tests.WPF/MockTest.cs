@@ -19,10 +19,10 @@ namespace EficazFramework.Tests
         [TestCase("Brush.Primary.Background")]
         [TestCase("Icon.MaterialDesign.AccessPointPlus")]
         [Test, Order(0)]
-        public void ResourcesTest(string resourceName)
+        public async Task ResourcesTest(string resourceName)
         {
-            Application.GetResource(resourceName).Should().NotBeNull();
-            MainWindow.GetResource(resourceName).Should().NotBeNull();
+            (await Application.GetResource(resourceName)).Should().NotBeNull();
+            (await MainWindow.GetResource(resourceName)).Should().NotBeNull();
         }
 
 
