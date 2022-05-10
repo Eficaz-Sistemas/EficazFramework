@@ -76,7 +76,7 @@ internal class SectionManager : ISectionManager, INotifyPropertyChanged
     /// <summary>
     /// Listagem de Seções Iniciadas (aka "Múltiplas áreas de trabalho")
     /// </summary>
-    public ReadOnlyCollection<Section> Sections 
+    public ReadOnlyCollection<Section> Sections
     {
         get => SectionsInternal.ToReadOnlyCollection<Section>();
     }

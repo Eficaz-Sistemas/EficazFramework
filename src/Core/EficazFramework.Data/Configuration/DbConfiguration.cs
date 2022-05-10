@@ -1,12 +1,12 @@
-﻿using System;
+﻿using Microsoft.Extensions.DependencyInjection;
+using System;
 using System.IO;
-using System.Xml.Serialization;
 using System.Text.Json.Serialization;
-using Microsoft.Extensions.DependencyInjection;
+using System.Xml.Serialization;
 
 namespace EficazFramework.Configuration;
 
-public interface IDbConfig 
+public interface IDbConfig
 {
     /// <summary>
     /// Retorna o nome do Servidor
@@ -189,7 +189,7 @@ public static class DbConfigurator
     public static IServiceCollection AddDbConfig(this IServiceCollection serviceCollection, bool useEncription = false)
     {
         serviceCollection.AddScoped<IDbConfig, DbConfiguration>(x =>
-        { 
+        {
             var result = ActivatorUtilities.CreateInstance<DbConfiguration>(x);
             result.UseConnectionStringEncryption = useEncription;
             return result;

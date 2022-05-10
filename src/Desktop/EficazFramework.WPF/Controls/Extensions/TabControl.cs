@@ -9,6 +9,7 @@ public partial class TabControl
 
     #region Navigator Template
 
+    [ExcludeFromCodeCoverage]
     public static bool GetNavigationTemplate([DisallowNull] DependencyObject element) =>
         (bool)element.GetValue(NavigationTemplateProperty);
 
@@ -69,11 +70,11 @@ public partial class TabControl
         System.Windows.Controls.TabControl tab = source as System.Windows.Controls.TabControl;
         if (tab is null)
             return;
-        
+
         var dpd = DependencyPropertyDescriptor.FromProperty(System.Windows.Controls.TabControl.SelectedContentProperty, typeof(System.Windows.Controls.TabControl));
         if (dpd is null)
             return;
-        
+
         if ((bool)e.NewValue == true)
         {
             dpd.AddValueChanged(tab, TabControl_SelectionChanged);
@@ -165,12 +166,14 @@ public partial class TabControl
 
     #endregion
 
-    
+
     #region Navigation Template - Show Title
 
+    [ExcludeFromCodeCoverage]
     public static bool GetNavigationTemplateShowTitle([DisallowNull] DependencyObject element) =>
-        (bool) element.GetValue(NavigationTemplateShowTitleProperty);
+        (bool)element.GetValue(NavigationTemplateShowTitleProperty);
 
+    [ExcludeFromCodeCoverage]
     public static void SetNavigationTemplateShowTitle([DisallowNull] DependencyObject element, bool value) =>
         element.SetValue(NavigationTemplateShowTitleProperty, value);
 
@@ -178,13 +181,13 @@ public partial class TabControl
 
     #endregion
 
-    
+
     #region Navigator Handlers
 
     private static EficazFramework.Commands.CommandBase _expandCommand = new EficazFramework.Commands.CommandBase(ExpandCommand_Executed);
 
     public static EficazFramework.Commands.CommandBase ExpandCommand => _expandCommand;
-    
+
     private static void ExpandCommand_Executed(object sender, EficazFramework.Events.ExecuteEventArgs e)
     {
         try
@@ -192,7 +195,7 @@ public partial class TabControl
             // If DesignerProperties.GetIsInDesignMode(sender) Then Exit Sub
             if (e.Parameter is null)
                 return;
-            
+
             if (e.Parameter is not System.Windows.Controls.TabControl)
                 return;
 
@@ -206,12 +209,14 @@ public partial class TabControl
 
     #endregion
 
-    
+
     #region IsExpanded
 
-    public static bool GetIsExpanded([DisallowNull] DependencyObject element) => 
+    [ExcludeFromCodeCoverage]
+    public static bool GetIsExpanded([DisallowNull] DependencyObject element) =>
         (bool)element.GetValue(IsExpandedProperty);
 
+    [ExcludeFromCodeCoverage]
     public static void SetIsExpanded([DisallowNull] DependencyObject element, bool value)
     {
         element.SetValue(IsExpandedProperty, value);
@@ -226,12 +231,14 @@ public partial class TabControl
 
     #endregion
 
-    
+
     #region TabItemIcon
 
+    [ExcludeFromCodeCoverage]
     public static Geometry GetIcon([DisallowNull] DependencyObject element) =>
-        (Geometry) element.GetValue(IconProperty);
-    
+        (Geometry)element.GetValue(IconProperty);
+
+    [ExcludeFromCodeCoverage]
     public static void SetIcon([DisallowNull] DependencyObject element, Geometry value) =>
         element.SetValue(IconProperty, value);
 
@@ -240,19 +247,24 @@ public partial class TabControl
 
     #endregion
 
-    
+
     #region TabFocusNavigator
 
+    [ExcludeFromCodeCoverage]
     public static int? GetNextTab([DisallowNull] DependencyObject element) =>
         (int?)element.GetValue(NextTabProperty);
+
+    [ExcludeFromCodeCoverage]
     public static void SetNextTab([DisallowNull] DependencyObject element, int? value) =>
         element.SetValue(NextTabProperty, value);
-    
+
     public static readonly DependencyProperty NextTabProperty = DependencyProperty.RegisterAttached("NextTab", typeof(int?), typeof(TabControl), new PropertyMetadata(null, NextOrPreviousTabPropertyChanged));
 
+    [ExcludeFromCodeCoverage]
     public static int? GetPreviousTab([DisallowNull] DependencyObject element) =>
         (int?)element.GetValue(PreviousTabProperty);
 
+    [ExcludeFromCodeCoverage]
     public static void SetPreviousTab([DisallowNull] DependencyObject element, int? value) =>
         element.SetValue(PreviousTabProperty, value);
 
@@ -262,13 +274,13 @@ public partial class TabControl
     {
         if (DesignerProperties.GetIsInDesignMode((System.Windows.DependencyObject)sender))
             return;
-        
+
         ((UIElement)sender).RemoveHandler(UIElement.LostKeyboardFocusEvent, new KeyboardFocusChangedEventHandler(SelectTabItemFromFocusChanged));
         ((UIElement)sender).RemoveHandler(UIElement.PreviewKeyDownEvent, new KeyEventHandler(TabItemChildPreviewKeyDown));
-        
+
         if (((int?)e.NewValue).HasValue == true)
             ((UIElement)sender).AddHandler(UIElement.LostKeyboardFocusEvent, new KeyboardFocusChangedEventHandler(SelectTabItemFromFocusChanged));
-        
+
         if (((int?)e.NewValue).HasValue == true)
             ((UIElement)sender).AddHandler(UIElement.PreviewKeyDownEvent, new KeyEventHandler(TabItemChildPreviewKeyDown));
     }
@@ -289,24 +301,24 @@ public partial class TabControl
             return;
         UIElement element = (UIElement)sender;
         System.Windows.Controls.TabControl tabcontrol = null;
-        
+
         int? index = default;
         if (e.KeyboardDevice.Modifiers == ModifierKeys.None)
             index = GetNextTab(element);
-        
+
         else if (e.KeyboardDevice.Modifiers == ModifierKeys.Shift)
             index = GetPreviousTab(element);
 
         if (index.HasValue == false)
             return;
-        
+
         tabcontrol = EficazFramework.XAML.Utilities.VisualTreeHelpers.FindAnchestor<System.Windows.Controls.TabControl>(element);
         if (tabcontrol is null)
             return;
-        
+
         if (index.Value > tabcontrol.Items.Count - 1)
             return;
-        
+
         tabcontrol.SelectedIndex = index.Value;
     }
 

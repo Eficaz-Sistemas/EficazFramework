@@ -11,14 +11,6 @@
 | :--- | :--- |
 | [ModalAssist](EficazFramework.Behaviors/ModalAssist.md 'EficazFramework.Behaviors.ModalAssist') | |
 
-<a name='EficazFramework.Commands'></a>
-
-## EficazFramework.Commands Namespace
-
-| Classes | |
-| :--- | :--- |
-| [Window](EficazFramework.Commands/Window.md 'EficazFramework.Commands.Window') | |
-
 <a name='EficazFramework.Configuration'></a>
 
 ## EficazFramework.Configuration Namespace
@@ -157,11 +149,3 @@
 | Classes | |
 | :--- | :--- |
 | [VisualTreeHelpers](EficazFramework.XAML.Utilities/VisualTreeHelpers.md 'EficazFramework.XAML.Utilities.VisualTreeHelpers') | |
-
-<a name='XamlGeneratedNamespace'></a>
-
-## XamlGeneratedNamespace Namespace
-
-| Classes | |
-| :--- | :--- |
-| [GeneratedInternalTypeHelper](XamlGeneratedNamespace/GeneratedInternalTypeHelper.md 'XamlGeneratedNamespace.GeneratedInternalTypeHelper') | GeneratedInternalTypeHelper |

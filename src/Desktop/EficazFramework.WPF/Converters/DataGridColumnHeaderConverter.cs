@@ -1,5 +1,4 @@
-﻿using System;
-using System.Globalization;
+﻿using System.Globalization;
 
 namespace EficazFramework.Converters;
 
@@ -16,7 +15,7 @@ public partial class DataGridColumnHeaderConverter : IValueConverter
             return parameter switch
             {
                 "show_filter" => Controls.AttachedProperties.DataGrid.GetShowFilter((DependencyObject)value),
-                
+
                 "show_filter_clear" => string.IsNullOrEmpty(Controls.AttachedProperties.DataGrid.GetFilterText((DependencyObject)value).ToString()) ? Visibility.Collapsed : Visibility.Visible,
 
                 "filter_text" => value as Grid != null ? Controls.AttachedProperties.DataGrid.GetFilterText(((System.Windows.Controls.Primitives.DataGridColumnHeader)((FrameworkElement)value).TemplatedParent).Column) : null,
@@ -31,5 +30,5 @@ public partial class DataGridColumnHeaderConverter : IValueConverter
     }
 
     public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture) =>
-        value; 
+        value;
 }

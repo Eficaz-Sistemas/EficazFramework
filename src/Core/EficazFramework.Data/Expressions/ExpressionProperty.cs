@@ -12,7 +12,7 @@ public class ExpressionProperty
     #region Properties
 
     public string PropertyPath { get; set; }
-  
+
     [Obsolete("Porting do componente ExpressionUpdate pendente.")]
     [ExcludeFromCodeCoverage]
     public string UpdatePropertyPath { get; set; }

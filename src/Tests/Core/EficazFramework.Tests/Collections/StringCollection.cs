@@ -1,9 +1,7 @@
 ﻿using FluentAssertions;
 using NUnit.Framework;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 
 namespace EficazFramework.Collections;
 
@@ -12,14 +10,14 @@ public class StringCollectionTests
     [Test, Order(1)]
     public void Constructor()
     {
-        var collection0 = new StringCollection() { "", ""};
+        var collection0 = new StringCollection() { "", "" };
         collection0.Count().Should().Be(2);
 
         var collection = new StringCollection();
         collection.Count().Should().Be(0);
     }
 
-    [Test, Order(2)]    
+    [Test, Order(2)]
     public void IterateWithin()
     {
         var collection = new StringCollection();

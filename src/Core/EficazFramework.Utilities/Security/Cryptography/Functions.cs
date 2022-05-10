@@ -1,10 +1,6 @@
-﻿using Microsoft.VisualBasic.CompilerServices;
-using System;
-using System.Diagnostics.CodeAnalysis;
-using System.IO;
+﻿using System;
 using System.Security.Cryptography;
 using System.Text;
-using System.Text.RegularExpressions;
 
 namespace EficazFramework.Security.Cryptography;
 
@@ -19,9 +15,9 @@ public class Functions
 
     private static string Encript(string text, byte[] key)
     {
-            var input = Encoding.UTF8.GetBytes(text);
-            var output = CreateDes(key).CreateEncryptor().TransformFinalBlock(input, 0, input.Length);
-            return Convert.ToBase64String(output);
+        var input = Encoding.UTF8.GetBytes(text);
+        var output = CreateDes(key).CreateEncryptor().TransformFinalBlock(input, 0, input.Length);
+        return Convert.ToBase64String(output);
     }
 
     public static string Decript(string text, string key)
@@ -32,9 +28,9 @@ public class Functions
 
     private static string Decript(string text, byte[] key)
     {
-            var input = Convert.FromBase64String(text);
-            var output = CreateDes(key).CreateDecryptor().TransformFinalBlock(input, 0, input.Length);
-            return (Encoding.UTF8.GetString(output) ?? "").Replace("\u0000", "");
+        var input = Convert.FromBase64String(text);
+        var output = CreateDes(key).CreateDecryptor().TransformFinalBlock(input, 0, input.Length);
+        return (Encoding.UTF8.GetString(output) ?? "").Replace("\u0000", "");
     }
 
     private static TripleDES CreateDes(byte[] key)

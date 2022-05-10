@@ -1,7 +1,7 @@
-﻿using System;
-using System.ComponentModel.DataAnnotations;
-using EficazFramework.Extensions;
+﻿using EficazFramework.Extensions;
 using Microsoft.VisualBasic.CompilerServices;
+using System;
+using System.ComponentModel.DataAnnotations;
 
 namespace EficazFramework.Validation.DataAnnotations;
 

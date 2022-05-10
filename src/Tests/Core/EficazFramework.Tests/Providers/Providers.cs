@@ -1,16 +1,8 @@
-﻿using FluentAssertions;
+﻿using EficazFramework.Configuration;
+using FluentAssertions;
+using Microsoft.Extensions.DependencyInjection;
 using NUnit.Framework;
 using System;
-using System.Linq;
-using EficazFramework.Validation.Fluent.Rules;
-using System.Threading.Tasks;
-using Microsoft.EntityFrameworkCore;
-using EficazFramework.Extensions;
-using System.Collections.Generic;
-using System.Threading;
-using EficazFramework.Configuration;
-using Microsoft.Extensions.DependencyInjection;
-using EficazFramework.Providers;
 
 namespace EficazFramework.Providers;
 

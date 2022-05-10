@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Reflection;
-using System.Windows.Markup;
+﻿using System.Windows.Markup;
 
 namespace EficazFramework.Extensions
 {
@@ -31,7 +27,7 @@ namespace EficazFramework.Extensions
         public override object ProvideValue(IServiceProvider serviceProvider) =>
             ProvideValueExtension();
 
-        public object ProvideValueExtension() => 
+        public object ProvideValueExtension() =>
             ResourceKey.Localize(ResourceManager, StringFormat);
     }
 }

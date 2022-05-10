@@ -1,11 +1,11 @@
-﻿using FluentAssertions;
-using NUnit.Framework;
+﻿using EficazFramework.Configuration;
 using EficazFramework.Validation.Fluent.Rules;
-using System.Collections.Generic;
-using System.Threading.Tasks;
-using EficazFramework.Configuration;
+using FluentAssertions;
+using NUnit.Framework;
 using System;
+using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace EficazFramework.Validation;
 

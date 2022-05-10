@@ -1,9 +1,5 @@
 ﻿using System.ComponentModel;
-using System.Diagnostics;
-using System.Windows;
-using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
-using System.Windows.Input;
 
 namespace EficazFramework.Controls.Primitives;
 
@@ -23,10 +19,10 @@ public abstract partial class InteractiveTextBox : TextBox
     private static readonly DependencyPropertyKey CommandPopupPropertyKey = DependencyProperty.RegisterReadOnly("CommandPopup", typeof(EficazFramework.Commands.CommandBase), typeof(InteractiveTextBox), new PropertyMetadata(null));
     public static readonly DependencyProperty CommandPopupProperty = CommandPopupPropertyKey.DependencyProperty;
     public static readonly DependencyProperty FindButtonVisibilityProperty = DependencyProperty.Register("FindButtonVisibility", typeof(Visibility), typeof(InteractiveTextBox), new PropertyMetadata(Visibility.Visible));
-    
+
     public static readonly DependencyProperty PopupContentTemplateProperty = DependencyProperty.Register("PopupContentTemplate", typeof(DataTemplate), typeof(InteractiveTextBox), new PropertyMetadata(null));
 
-    internal Popup _PART_Popup = null;   
+    internal Popup _PART_Popup = null;
     public static readonly DependencyProperty PopupHorizontalAlignmentProperty = DependencyProperty.Register("PopupHorizontalAlignment", typeof(HorizontalAlignment), typeof(InteractiveTextBox), new PropertyMetadata(HorizontalAlignment.Left));
     public static readonly DependencyProperty PopupMaxWidthProperty = DependencyProperty.Register("PopupMaxWidth", typeof(double), typeof(InteractiveTextBox), new PropertyMetadata(double.NaN));
     public static readonly DependencyProperty PopupMaxHeightProperty = DependencyProperty.Register("PopupMaxHeight", typeof(double), typeof(InteractiveTextBox), new PropertyMetadata(double.NaN));
@@ -115,13 +111,13 @@ public abstract partial class InteractiveTextBox : TextBox
     }
 
     private void PopupCommand_Executed(object sender, EficazFramework.Events.ExecuteEventArgs e)
+    {
+        if (IsReadOnly == false & IsEnabled == true & IsPopupOpened == false & _PART_Popup != null)  // Open
         {
-            if (IsReadOnly == false & IsEnabled == true & IsPopupOpened == false & _PART_Popup != null)  // Open
-            {
-                f12pressed = true;
-                OpenPopup((e.Parameter as bool?) ?? false);
-            }
+            f12pressed = true;
+            OpenPopup((e.Parameter as bool?) ?? false);
         }
+    }
 
     public override void OnApplyTemplate()
     {

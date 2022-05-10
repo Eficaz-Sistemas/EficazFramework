@@ -1,8 +1,4 @@
-﻿using MaterialDesignThemes.Wpf;
-using System.Threading.Tasks;
-using System.Windows.Threading;
-
-namespace EficazFramework.Behaviors;
+﻿namespace EficazFramework.Behaviors;
 
 public class ModalAssist
 {

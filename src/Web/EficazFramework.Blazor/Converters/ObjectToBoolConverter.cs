@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace EficazFramework.Converters;
+﻿namespace EficazFramework.Converters;
 
 public class ObjectToBoolConverter : MudBlazor.BoolConverter<object>
 {

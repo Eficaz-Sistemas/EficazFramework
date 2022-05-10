@@ -1,12 +1,11 @@
-﻿using System;
-using System.Globalization;
+﻿using System.Globalization;
 
 namespace EficazFramework.Converters;
 
 public partial class ElevationEffectConverter : IValueConverter
 {
     public int Direction { get; set; } = 258;
-    
+
     public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
     {
         if (int.TryParse(value.ToString(), out int result))

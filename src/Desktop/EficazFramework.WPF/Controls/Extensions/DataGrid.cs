@@ -1,12 +1,10 @@
-﻿using System;
+﻿using EficazFramework.Extensions;
+using Microsoft.VisualBasic;
 using System.ComponentModel;
 using System.Diagnostics;
 using System.Linq;
-using System.Linq.Expressions;
 using System.Reflection;
 using System.Windows.Controls.Primitives;
-using EficazFramework.Extensions;
-using Microsoft.VisualBasic;
 
 namespace EficazFramework.Controls.AttachedProperties;
 
@@ -20,17 +18,17 @@ public partial class DataGrid
         System.Windows.Controls.DataGrid dg = (System.Windows.Controls.DataGrid)sender;
         if (dg.SelectionUnit == DataGridSelectionUnit.FullRow)
             return;
-        
+
         // dg.CommitEdit()
         if (e.AddedCells.Count <= 0)
             return;
-        
+
         if (e.AddedCells.LastOrDefault().Item is null)
             return;
-        
+
         if (!ReferenceEquals(dg.Items.CurrentItem, e.AddedCells.LastOrDefault().Item))
             dg.Items.MoveCurrentTo(e.AddedCells.LastOrDefault().Item);
-        
+
         if (dg.Items.SourceCollection?.GetType().IsAssignableFrom(typeof(ICollectionView)) == true)
         {
             ICollectionView iview = (ICollectionView)dg.Items.SourceCollection;
@@ -42,7 +40,7 @@ public partial class DataGrid
 
     #endregion
 
-    
+
     #region Enter Key Navigation
 
     internal static void DataGrid_NavigationTemplate_PreviewKeyDown(object sender, KeyEventArgs e)
@@ -134,7 +132,7 @@ public partial class DataGrid
 
                     if (newcell is not DataGridCell)
                         newcell = XAML.Utilities.VisualTreeHelpers.FindAnchestor<DataGridCell>(newcell);
-                        
+
                 }
             }
             else if (dg.Columns.Count - 1 > clindex)
@@ -156,15 +154,15 @@ public partial class DataGrid
 
                 if (newcell is not DataGridCell)
                     newcell = XAML.Utilities.VisualTreeHelpers.FindAnchestor<DataGridCell>(newcell);
-                    
-                
+
+
                 if (newcell != null)
                 {
                     for (int i = clindex; i >= 1; i -= 1)
                     {
                         newcell = ((DataGridCell)newcell).PredictFocus(FocusNavigationDirection.Left);
                         if (newcell is not DataGridCell)
-                            newcell = XAML.Utilities.VisualTreeHelpers.FindAnchestor<DataGridCell>(newcell);                           
+                            newcell = XAML.Utilities.VisualTreeHelpers.FindAnchestor<DataGridCell>(newcell);
                     }
 
                     cell = (DataGridCell)newcell;
@@ -179,17 +177,17 @@ public partial class DataGrid
             oldcell.IsEditing = false;
             if (dg.SelectionUnit != DataGridSelectionUnit.FullRow)
                 oldcell.IsSelected = false;
-            
+
             dg.CurrentCell = new DataGridCellInfo(cell.DataContext, cell.Column);
             if (dg.SelectionUnit != DataGridSelectionUnit.FullRow)
                 cell.IsSelected = true;
-            
+
             if (cell.IsReadOnly == false)
             {
                 DataGridRow newrow = (DataGridRow)DataGrid.GetRow(dg, cell.DataContext);
                 if (dg.SelectionUnit == DataGridSelectionUnit.FullRow && newrow != null)
                     newrow.IsSelected = true;
-                
+
                 dg.BeginEdit();
                 if (!(cell.Content is TextBlock))
                     cell.MoveFocus(new TraversalRequest(FocusNavigationDirection.Next));
@@ -210,7 +208,7 @@ public partial class DataGrid
         int currentIndex = -1;
         if (dg.CurrentColumn != null)
             currentIndex = dg.CurrentColumn.DisplayIndex;
-                
+
         if (e.KeyboardDevice.Modifiers == ModifierKeys.Shift)
         {
             if (currentIndex > 0)
@@ -274,7 +272,7 @@ public partial class DataGrid
         var rowError = sender.GetType().GetProperty("HasRowValidationError", bindingFlags);
         if (cellError != null)
             cellError.SetValue(sender, false); // hasCellValidationError = CBool(cellError.GetValue(sender, Nothing))
-        
+
         if (rowError != null)
             rowError.SetValue(sender, false); // hasRowValidationError = CBool(rowError.GetValue(sender, Nothing))
 
@@ -291,10 +289,10 @@ public partial class DataGrid
 
         if (e.OriginalSource is not DataGridCell cell)
             cell = XAML.Utilities.VisualTreeHelpers.FindAnchestor<DataGridCell>((DependencyObject)e.OriginalSource);
-        
+
         if (cell is null)
             return;
-        
+
         if (cell.IsReadOnly == false && cell.IsEditing == false)
         {
             SelectAndFocusCell(dg, cell);
@@ -308,14 +306,14 @@ public partial class DataGrid
 
     #endregion
 
-    
+
     #region Public Helpers
 
     public static object GetRow(System.Windows.Controls.DataGrid sender, object dataitem)
     {
         if (sender is null | dataitem is null)
             return null;
-        
+
         sender.ScrollIntoView(dataitem);
         DataGridRow row = (DataGridRow)sender.ItemContainerGenerator.ContainerFromItem(dataitem);
         if (row is null)
@@ -331,7 +329,7 @@ public partial class DataGrid
     {
         if (sender is null | row is null)
             return null;
-        
+
         DataGridCellsPresenter presenter = XAML.Utilities.VisualTreeHelpers.FindVisualChild<DataGridCellsPresenter>(row);
         if (presenter is null)
         {
@@ -358,7 +356,7 @@ public partial class DataGrid
     {
         if (sender is null | dataitem is null)
             return null;
-        
+
         DataGridRow row = (DataGridRow)GetRow(sender, dataitem);
         if (row is null)
             return null;
@@ -380,10 +378,10 @@ public partial class DataGrid
     {
         if (dg is null)
             return;
-        
+
         if (!dg.IsKeyboardFocusWithin)
             dg.Focus();
-        
+
         dg.ScrollIntoView(dataitem);
         DataGridRow row = (DataGridRow)dg.ItemContainerGenerator.ContainerFromItem(dataitem);
         if (row is null)
@@ -402,13 +400,13 @@ public partial class DataGrid
     {
         if (dg is null)
             return;
-        
+
         if (cell is null)
             return;
 
         if (!dg.IsKeyboardFocusWithin)
             dg.Focus();
-        
+
         if (cell != null)
         {
             cell.Focus();
@@ -460,9 +458,11 @@ public partial class DataGrid
 
     #region ViewModel
 
+    [ExcludeFromCodeCoverage]
     public static EficazFramework.Expressions.ExpressionBuilder GetFilterViewModel(DependencyObject obj) =>
         (EficazFramework.Expressions.ExpressionBuilder)obj.GetValue(FilterViewModelProperty);
 
+    [ExcludeFromCodeCoverage]
     public static void SetFilterViewModel(DependencyObject obj, EficazFramework.Expressions.ExpressionBuilder value)
         => obj.SetValue(FilterViewModelProperty, value);
 
@@ -470,12 +470,14 @@ public partial class DataGrid
     public static readonly DependencyProperty FilterViewModelProperty = DependencyProperty.RegisterAttached("FilterViewModel", typeof(EficazFramework.Expressions.ExpressionBuilder), typeof(DataGrid), new FrameworkPropertyMetadata(null, FrameworkPropertyMetadataOptions.Inherits));
     #endregion
 
-    
+
     #region Show Filter
 
+    [ExcludeFromCodeCoverage]
     public static bool GetShowFilter(DependencyObject element) =>
         (bool)element.GetValue(ShowFilterProperty);
 
+    [ExcludeFromCodeCoverage]
     public static void SetShowFilter(DependencyObject element, bool value) =>
         element.SetValue(ShowFilterProperty, value);
 
@@ -483,11 +485,14 @@ public partial class DataGrid
 
     #endregion
 
-    
+
     #region Filter Text
+
+    [ExcludeFromCodeCoverage]
     public static string GetFilterText(DependencyObject element) =>
         (string)element.GetValue(FilterTextProperty);
 
+    [ExcludeFromCodeCoverage]
     public static void SetFilterText(DependencyObject element, string value) =>
         element.SetValue(FilterTextProperty, value);
 
@@ -495,12 +500,12 @@ public partial class DataGrid
 
     //private static void FilterTextChanged(object source, DependencyPropertyChangedEventArgs e) =>
     //    SetFilterText(((DataGridColumnHeader)source).Column, (string)e.NewValue);
-    
+
     #endregion
 
     #endregion
-    
-    
+
+
     #region Commands
 
     private static EficazFramework.Commands.CommandBase _filterCommand = new EficazFramework.Commands.CommandBase(new EficazFramework.Events.ExecuteEventHandler(FilterCommand_Execute));
@@ -508,17 +513,17 @@ public partial class DataGrid
     /// Abre o popup
     /// </summary>
     public static EficazFramework.Commands.CommandBase FilterCommand => _filterCommand;
-        
+
     private static void FilterCommand_Execute(object sender, EficazFramework.Events.ExecuteEventArgs e)
     {
         if (e.Parameter is not System.Windows.Controls.Button)
             return;
-        
+
         System.Windows.Controls.Button bt = (System.Windows.Controls.Button)e.Parameter;
-        
+
         if (bt.ContextMenu is null)
             return;
-        
+
         bt.ContextMenu.DataContext = bt.DataContext;
         bt.ContextMenu.PlacementTarget = bt;
         bt.ContextMenu.StaysOpen = false;
@@ -530,7 +535,7 @@ public partial class DataGrid
 
 
     private static EficazFramework.Commands.CommandBase _applyfilterCommand = new EficazFramework.Commands.CommandBase(new EficazFramework.Events.ExecuteEventHandler(ApplyCommand_Execute));
-    
+
     /// <summary>
     /// Aplica o filtro pela edição da textobox da coluna
     /// </summary>
@@ -582,11 +587,11 @@ public partial class DataGrid
             it.Operator = prop == typeof(string) ? Enums.CompareMethod.Contains : Enums.CompareMethod.Equals;
             it.ToLowerString = prop == typeof(string);
             it.NullCheck = prop == typeof(string);
-            it.Value1 = Conversion.CTypeDynamic(value, prop) ;
+            it.Value1 = Conversion.CTypeDynamic(value, prop);
         }
 
         UpdateFilter(dg, vm, collectionType);
-        
+
         ContextMenu ctxmenu = XAML.Utilities.VisualTreeHelpers.FindAnchestor<ContextMenu>(context);
         if (ctxmenu != null)
             ctxmenu.IsOpen = false;
@@ -597,7 +602,7 @@ public partial class DataGrid
     }
 
 
-    
+
     private static EficazFramework.Commands.CommandBase _clearfilterCommand = new EficazFramework.Commands.CommandBase(new EficazFramework.Events.ExecuteEventHandler(ClearFilterCommand_Execute));
 
     /// <summary>
@@ -627,7 +632,7 @@ public partial class DataGrid
     }
 
 
-    
+
     #region Command Helpers
 
     private static Type CollectionType(System.Windows.Controls.DataGrid dg)
@@ -646,7 +651,7 @@ public partial class DataGrid
     }
 
     public static void UpdateFilter(System.Windows.Controls.DataGrid dg, EficazFramework.Expressions.ExpressionBuilder vm, Type collectionType)
-    {      
+    {
         if (vm.Items.Count <= 0)
         {
             dg.Items.Filter = null;

@@ -20,7 +20,7 @@ public class CommandBase : ICommand
     /// </summary>
     public bool IsEnabled
     {
-        get => _canexecute; 
+        get => _canexecute;
         set
         {
             _canexecute = value;

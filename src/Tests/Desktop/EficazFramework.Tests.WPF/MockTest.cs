@@ -1,12 +1,8 @@
-﻿using NUnit.Framework;
-using FluentAssertions;
-using System.Threading.Tasks;
-
-namespace EficazFramework.Tests
+﻿namespace EficazFramework.Tests
 {
     public class Resources : BaseTest
     {
-       
+
         [Test, Order(0)]
         public void InitialTest()
         {

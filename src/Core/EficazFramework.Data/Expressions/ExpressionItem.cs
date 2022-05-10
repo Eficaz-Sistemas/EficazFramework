@@ -1,11 +1,11 @@
-﻿using System;
+﻿using Microsoft.VisualBasic;
+using Microsoft.VisualBasic.CompilerServices;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Linq.Expressions;
-using Microsoft.VisualBasic;
-using Microsoft.VisualBasic.CompilerServices;
 
 namespace EficazFramework.Expressions;
 
@@ -111,13 +111,13 @@ public class ExpressionItem : INotifyPropertyChanged
             RaisePropertyChanged("Value2StringFormat");
         }
     }
-    
+
     // RESULTING STRING VALUE:
     public string ValueToString => Conversions.ToString(ParseValueToString());
 
 
     #region Advanced Parameters
-    
+
     private Type _conversionTargetType = null;
     public Type ConversionTargetType
     {
@@ -534,15 +534,15 @@ public class ExpressionItem : INotifyPropertyChanged
         // Dim m As Expression = ExpressionBuilder._MP
         if (!_tmpOwnerExpressionBuilder._MP_new.ContainsKey(typeof(TElement)))
             _tmpOwnerExpressionBuilder._MP_new.Add(typeof(TElement), Expression.Parameter(typeof(TElement), "f"));
-        
+
         Expression m = _tmpOwnerExpressionBuilder._MP_new[typeof(TElement)];
 
         if (ConversionTargetType != null)
             m = Expression.Convert(m, ConversionTargetType);
-        
+
         var args = new Events.ExpressionEventArgs(SelectedProperty.DisplayName, SelectedProperty.PropertyPath, Operator, value, typeof(TElement), this);
         _tmpOwnerExpressionBuilder.CallExpressionBuilding(_tmpOwnerExpressionBuilder, args);
-        
+
         var path = args.PropertyPath.Split("."); // Me.SelectedProperty.PropertyPath.Split(".")
         foreach (var access in path)
             m = Expression.Property(m, access);

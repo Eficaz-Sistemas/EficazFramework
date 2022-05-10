@@ -1,9 +1,4 @@
-﻿using System;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-
-namespace EficazFramework.Controls;
+﻿namespace EficazFramework.Controls;
 
 public partial class DataGridInputColumn : System.Windows.Controls.DataGridTextColumn
 {
@@ -112,7 +107,7 @@ public partial class DataGridInputColumn : System.Windows.Controls.DataGridTextC
             case InputMode.Default:
             default:
                 TextBox tb = base.GenerateEditingElement(cell, dataItem) as TextBox;
-                tb.SetResourceReference(TextBox.StyleProperty, "Style.TextBox.DataGridCellEditor");    
+                tb.SetResourceReference(TextBox.StyleProperty, "Style.TextBox.DataGridCellEditor");
                 tb.Language = System.Windows.Markup.XmlLanguage.GetLanguage(System.Threading.Thread.CurrentThread.CurrentUICulture.IetfLanguageTag);
                 tb.MaxLength = MaxLength;
                 tb.TextAlignment = Alignment;

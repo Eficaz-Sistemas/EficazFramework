@@ -162,7 +162,7 @@ public static class Enums
     {
         string result = value.ToString();
         var enumType = value.GetType();
-            
+
         var att = enumType.GetMember(result)?.First().GetCustomAttributes(typeof(System.ComponentModel.DescriptionAttribute), true).FirstOrDefault();
         if (att != null)
             result = ((System.ComponentModel.DescriptionAttribute)att).Description;

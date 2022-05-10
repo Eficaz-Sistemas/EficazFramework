@@ -2,7 +2,6 @@
 using EficazFramework.Extensions;
 using Microsoft.AspNetCore.Components;
 using MudBlazor.Utilities;
-using System.Threading.Tasks;
 
 namespace EficazFramework.Components;
 
@@ -26,7 +25,8 @@ public partial class Animation : ComponentBase
     /// <summary>
     /// Defines if Animation is Locked (for parameters change)
     /// </summary>
-    [Parameter] public bool IsLocked
+    [Parameter]
+    public bool IsLocked
     {
         get => _isLocked;
         set

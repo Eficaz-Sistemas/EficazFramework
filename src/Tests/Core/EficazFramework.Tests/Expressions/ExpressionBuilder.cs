@@ -204,7 +204,7 @@ public class ExpressionBuilderTests
     {
         ExpressionBuilder builder = DefaultInstance();
         builder.AllowNulls = false;
-        
+
         // ignored because there isn't any property selected
         builder.AddNewItemCommand.Execute(null);
         builder.Validate();
@@ -283,9 +283,9 @@ public class ExpressionBuilderTests
             new() { ID = 1, Name = "Item 1" },
             new() { ID = 2, Name = "Item 2", Children = { new() { ParentID = 2, ID = 1, Name = "Child 1 of Item 2" }, new() { ParentID = 2, ID = 2, Name = "Child 2 of Item 2" } } },
             new() { ID = 3, Name = "Item 3", Children = { new() { ParentID = 3, ID = 1, Name = "Child 1 of Item 3" }, new() { ParentID = 3, ID = 2, Name = "Child 2 of Item 3" }, new() { ParentID = 3, ID = 3, Name = "Child 2 of Item 3" } } },
-            new() { ID = 4, Name = "Item 4", Related = new() { ID = 55}, RelatedID = 55 },
-            new() { ID = 5, Name = "Item 5", Related = new() { ID = 55}, RelatedID = 55 },
-            new() { ID = 9, Name = "kkkkkKk", Related = new() { ID = 99}, RelatedID = 99 }
+            new() { ID = 4, Name = "Item 4", Related = new() { ID = 55 }, RelatedID = 55 },
+            new() { ID = 5, Name = "Item 5", Related = new() { ID = 55 }, RelatedID = 55 },
+            new() { ID = 9, Name = "kkkkkKk", Related = new() { ID = 99 }, RelatedID = 99 }
         };
         ExpressionBuilder builder = DefaultInstance();
 
@@ -332,7 +332,7 @@ public class ExpressionBuilderTests
 
         builder.Items[0].Operator = Enums.CompareMethod.Between;
         builder.Items[0].Value1 = 2;
-        builder.Items[0].Value2 = 4 ;
+        builder.Items[0].Value2 = 4;
         expression = builder.GetExpression<Validation.SampleObject>();
         expression.Should().NotBeNull();
         expression.ReturnType.Should().Be(typeof(bool));
@@ -404,7 +404,7 @@ public class ExpressionBuilderTests
         // DateTime (and Coercion)
         builder.AddNewItemCommand.Execute(null);
         builder.Items[1].SelectedProperty = builder.Properties[2];
-        builder.Items[1].DateTimeValue1 = new DateTime(2021,06,01);
+        builder.Items[1].DateTimeValue1 = new DateTime(2021, 06, 01);
         builder.Items[1].DateTimeValue2 = new DateTime(2021, 06, 30);
         builder.Items[1].Value1.Should().Be(new DateTime(2021, 06, 01));
         builder.Items[1].Value2.Should().Be(new DateTime(2021, 06, 30, 23, 59, 59));

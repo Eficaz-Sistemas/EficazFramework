@@ -1,10 +1,8 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using EficazFramework.Providers;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
-using System.Diagnostics.CodeAnalysis;
 using System.Threading.Tasks;
-using EficazFramework.Providers;
-using System.Collections.ObjectModel;
 
 namespace EficazFramework.Repositories.Services
 {

@@ -1,7 +1,6 @@
-﻿using System;
+﻿using EficazFramework.Extensions;
+using System;
 using System.Linq;
-using EficazFramework.Extensions;
-using Microsoft.VisualBasic.CompilerServices;
 
 namespace EficazFramework.Validation.Fluent.Rules;
 
@@ -20,7 +19,7 @@ internal class Unique<T> : Rules.ValidationRule<T> where T : Entities.EntityBase
     {
         DbContextDbSet = dbContextDbSet;
     }
-    
+
     public override string Validate(T instance)
     {
         var value = Property.Invoke(instance); // instance.GetPropertyValue(Me.PropertyName)

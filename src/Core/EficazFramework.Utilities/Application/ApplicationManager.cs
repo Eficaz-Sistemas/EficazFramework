@@ -66,11 +66,11 @@ internal class ApplicationManager : IApplicationManager
     /// <summary>
     /// Retorna em padrão singleton a Última Instância de ApplicationManager instanciada.
     /// </summary>
-    public static IApplicationManager Instance 
-    { 
+    public static IApplicationManager Instance
+    {
         get
         {
-            if (_instance == null) 
+            if (_instance == null)
                 _instance = new ApplicationManager();
 
             return _instance;
@@ -144,7 +144,7 @@ internal class ApplicationManager : IApplicationManager
 
 public class ApplicationDefinition : INotifyPropertyChanged
 {
-        
+
     // Metadata
     public object Icon { get; set; }
     public string Title { get; set; }
@@ -175,7 +175,7 @@ public class ApplicationDefinition : INotifyPropertyChanged
 
     public void RaisePropertyChanged(string propertyname)
     {
-        PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyname)) ;
+        PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyname));
     }
 }
 
@@ -209,7 +209,7 @@ public sealed class ApplicationInstance : ApplicationDefinition, INotifyProperty
     {
         //throw new UnauthorizedAccessException();
     }
-        
+
     public long SessionID { get; set; }
 
     private object _content = null;

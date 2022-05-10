@@ -1,16 +1,13 @@
-﻿using FluentAssertions;
+﻿using EficazFramework.Configuration;
+using EficazFramework.Extensions;
+using EficazFramework.Validation.Fluent.Rules;
+using FluentAssertions;
+using Microsoft.EntityFrameworkCore;
 using NUnit.Framework;
 using System;
 using System.Linq;
-using EficazFramework.Validation.Fluent.Rules;
-using System.Threading.Tasks;
-using Microsoft.EntityFrameworkCore;
-using EficazFramework.Extensions;
-using System.Collections.Generic;
 using System.Threading;
-using EficazFramework.Configuration;
-using Microsoft.Extensions.DependencyInjection;
-using EficazFramework.Providers;
+using System.Threading.Tasks;
 
 namespace EficazFramework.Repositories;
 
@@ -149,7 +146,7 @@ public class EntityRepositoryTests
     public async Task InsertTest()
     {
         var repository = new EntityRepository<Resources.Mocks.Classes.Blog>();
-        
+
         var newEntry = repository.Create();
         newEntry.Name = "My New Blog";
         repository.DbContextRequest = () => new Resources.Mocks.MockDbContext();

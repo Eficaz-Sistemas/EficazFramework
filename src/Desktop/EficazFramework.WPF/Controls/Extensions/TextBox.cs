@@ -1,5 +1,4 @@
-﻿using System;
-using System.ComponentModel;
+﻿using System.ComponentModel;
 
 namespace EficazFramework.Controls.AttachedProperties;
 public partial class TextBox
@@ -7,9 +6,11 @@ public partial class TextBox
 
     #region SelectAllOnFocus
 
+    [ExcludeFromCodeCoverage]
     public static bool GetSelectAllOnFocus([DisallowNull] DependencyObject element) =>
         (bool)element.GetValue(SelectAllOnFocusProperty);
 
+    [ExcludeFromCodeCoverage]
     public static void SetSelectAllOnFocus([DisallowNull] DependencyObject element, bool value) =>
         element.SetValue(SelectAllOnFocusProperty, value);
 
@@ -19,15 +20,15 @@ public partial class TextBox
     {
         if (!(source is System.Windows.Controls.TextBox))
             return;
-            
+
         System.Windows.Controls.TextBox tb = source as System.Windows.Controls.TextBox;
         if (tb is null)
             return;
-            
+
         var dpd = DependencyPropertyDescriptor.FromProperty(System.Windows.UIElement.IsKeyboardFocusedProperty, typeof(System.Windows.Controls.TextBox));
         if (dpd is null)
             return;
-            
+
         if ((bool)e.NewValue == true)
             dpd.AddValueChanged(tb, TextBox_GotKeyboardFocus);
         else
@@ -78,22 +79,26 @@ public partial class TextBox
 
     #region Start Element
 
+    [ExcludeFromCodeCoverage]
     public static object GetStartElement([DisallowNull] DependencyObject element) =>
         element.GetValue(StartElementProperty);
 
+    [ExcludeFromCodeCoverage]
     public static void SetStartElement([DisallowNull] DependencyObject element, object value) =>
         element.SetValue(StartElementProperty, value);
 
     public static readonly DependencyProperty StartElementProperty = DependencyProperty.RegisterAttached("StartElement", typeof(object), typeof(TextBox), new PropertyMetadata(null));
 
     #endregion
-        
-        
+
+
     #region End Element
 
+    [ExcludeFromCodeCoverage]
     public static object GetEndElement([DisallowNull] DependencyObject element) =>
     element.GetValue(EndElementProperty);
 
+    [ExcludeFromCodeCoverage]
     public static void SetEndElement([DisallowNull] DependencyObject element, object value) =>
         element.SetValue(EndElementProperty, value);
 

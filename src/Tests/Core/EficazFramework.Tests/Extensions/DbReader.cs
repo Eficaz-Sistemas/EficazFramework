@@ -45,7 +45,7 @@ class DbReader<TProvider> where TProvider : DataProviderBase
         dbContext.Dispose();
     }
 
-    [TearDown]  
+    [TearDown]
     public void TearDown()
     {
         Resources.Mocks.MockDbContext ctx = new();
@@ -74,7 +74,7 @@ class DbReader<TProvider> where TProvider : DataProviderBase
             return;
         }
 
-        cmd =  query.CreateCommand(dbContext, provider);
+        cmd = query.CreateCommand(dbContext, provider);
         cmd.CommandText.Should().Be($"SELECT * FROM Blogs WHERE Name = @name");
 
 

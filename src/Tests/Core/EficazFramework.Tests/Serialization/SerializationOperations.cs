@@ -13,8 +13,8 @@ public class Xml
     public void XmlStream()
     {
         // Setup
-        MockClass mockClass = new() { Id = 1, Name = "Henrique"};
-        System.IO.MemoryStream ms = new ();
+        MockClass mockClass = new() { Id = 1, Name = "Henrique" };
+        System.IO.MemoryStream ms = new();
 
         // To Xml
         SerializationOperations.ToXml(mockClass, ms);
@@ -139,7 +139,7 @@ public class Json
         // From Json (string)
         var assert = SerializationOperations.FromJson<MockClass>(result);
         assert.Id.Should().Be(2);
-        assert.Name.Should().Be("Miguel");  
+        assert.Name.Should().Be("Miguel");
     }
 
     [Test]
@@ -199,7 +199,7 @@ public class Json
         System.IO.MemoryStream ms = new();
         string plain = SerializationOperations.ToJson(mockClass);
         Console.WriteLine(plain);
-        System.IO.StreamWriter sw = new(ms) { AutoFlush = true};
+        System.IO.StreamWriter sw = new(ms) { AutoFlush = true };
         sw.Write(plain);
         ms.Position = 0;
 

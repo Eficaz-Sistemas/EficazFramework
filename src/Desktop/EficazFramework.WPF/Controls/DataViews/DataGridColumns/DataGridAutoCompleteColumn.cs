@@ -1,10 +1,4 @@
-﻿using EficazFramework.Events;
-using System;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-
-namespace EficazFramework.Controls;
+﻿namespace EficazFramework.Controls;
 
 public partial class DataGridAutoCompleteColumn : System.Windows.Controls.DataGridTextColumn
 {

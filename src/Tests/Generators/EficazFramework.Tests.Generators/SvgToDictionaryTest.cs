@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace EficazFramework.Tests.Generators;
+﻿namespace EficazFramework.Tests.Generators;
 
 [TestFixture]
 public class SvgToDictionary : BaseTest<EficazFramework.Generators.Svg.SvgToDictionary>

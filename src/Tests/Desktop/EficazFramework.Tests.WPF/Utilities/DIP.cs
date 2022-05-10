@@ -1,13 +1,9 @@
-﻿using NUnit.Framework;
-using FluentAssertions;
-using System.Threading.Tasks;
-
-namespace EficazFramework.Tests.Utilties
+﻿namespace EficazFramework.Tests.Utilties
 {
     [Apartment(System.Threading.ApartmentState.STA)]
     public class DIPTest : EficazFramework.Tests.BaseTest
     {
-        
+
         [TestCase(10.0d, 37.795d)]
         [TestCase(100.0d, 377.953d)]
         [TestCase(20.0d, 75.591d)]

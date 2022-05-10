@@ -1,7 +1,4 @@
-﻿using System;
-using System.ComponentModel;
-using System.Windows;
-using Microsoft.VisualBasic.CompilerServices; // Install-Package Microsoft.VisualBasic
+﻿using System.ComponentModel;
 
 namespace EficazFramework.XAML.Behaviors;
 
@@ -23,7 +20,7 @@ public partial class TextBox
         if (source is not System.Windows.Controls.TextBox tb)
             return;
 
-        var dpd = DependencyPropertyDescriptor.FromProperty(System.Windows.UIElement.IsKeyboardFocusedProperty, typeof(System.Windows.Controls.TextBox)); 
+        var dpd = DependencyPropertyDescriptor.FromProperty(System.Windows.UIElement.IsKeyboardFocusedProperty, typeof(System.Windows.Controls.TextBox));
         if ((bool)e.NewValue == true)
             dpd.AddValueChanged(tb, TextBox_GotKeyboardFocus);
         else
@@ -32,7 +29,7 @@ public partial class TextBox
 
     private static void TextBox_GotKeyboardFocus(object sender, EventArgs e)
     {
-        System.Windows.Controls.TextBox tb = (System.Windows.Controls.TextBox) sender;
+        System.Windows.Controls.TextBox tb = (System.Windows.Controls.TextBox)sender;
         tb.SelectionStart = 0;
         tb.SelectionLength = tb.Text.Length;
         tb.ScrollToEnd();

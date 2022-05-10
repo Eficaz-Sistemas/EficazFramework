@@ -8,7 +8,7 @@ public abstract class BaseTest<TSourceGenerator> where TSourceGenerator : ISourc
     {
         this.outputKind = outputKind;
     }
-    
+
     protected (string, string) GetGeneratedOutput(string source)
     {
         var outputCompilation = CreateCompilation(source);
@@ -48,7 +48,7 @@ public abstract class BaseTest<TSourceGenerator> where TSourceGenerator : ISourc
                                                    new CSharpCompilationOptions(outputKind));
 
         ISourceGenerator generator = Activator.CreateInstance<TSourceGenerator>();
-        
+
         var driver = CSharpGeneratorDriver.Create(generator);
         driver.RunGeneratorsAndUpdateCompilation(compilation, out var outputCompilation, out var generateDiagnostics);
 
@@ -56,10 +56,10 @@ public abstract class BaseTest<TSourceGenerator> where TSourceGenerator : ISourc
 
         if (!isResource)
             compileDiagnostics.Any(d => d.Severity == DiagnosticSeverity.Error).Should().BeFalse("Failed: " + compileDiagnostics.FirstOrDefault()?.GetMessage());
-        
+
         if (!isResource)
             generateDiagnostics.Any(d => d.Severity == DiagnosticSeverity.Error).Should().BeFalse("Failed: " + generateDiagnostics.FirstOrDefault()?.GetMessage());
-        
+
         return outputCompilation;
     }
 }

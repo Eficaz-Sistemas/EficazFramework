@@ -194,11 +194,11 @@ public class Text
         var result = "henrique".SplitByLength(1);
         result.Should().HaveCount(8);
         result.Where(r => r.Length > 1).Count().Should().BeLessThanOrEqualTo(0);
-        
+
         result = "henrique".SplitByLength(2);
         result.Should().HaveCount(4);
         result.Where(r => r.Length > 2).Count().Should().BeLessThanOrEqualTo(0);
-        
+
         result = "henrique".SplitByLength(3);
         result.Should().HaveCount(3);
         result.Where(r => r.Length > 3).Count().Should().BeLessThanOrEqualTo(0);
@@ -588,7 +588,7 @@ public class Text
     {
         "eDocumento_PIS_NIT".Localize(typeof(EficazFramework.Resources.Strings.TestStrings), "Documento selecionado: {0}").Should().Be($"Documento selecionado: {EficazFramework.Resources.Strings.TestStrings.eDocumento_PIS_NIT}");
         "eDocumento_PIS_NIT".Localize(typeof(EficazFramework.Resources.Strings.DataDescriptions), "Documento selecionado: {0}").Should().Be($"Documento selecionado: {EficazFramework.Resources.Strings.DataDescriptions.eDocumento_PIS_NIT}");
-        
+
         // fails:
         "eDocumento_PIS_NIT".Localize(typeof(EficazFramework.Resources.Strings.Application), null).Should().Be("eDocumento_PIS_NIT");
         "eDocumento_PIS_NIT".Localize(typeof(EficazFramework.Resources.Strings.Application), "Documento selecionado: {0}").Should().Be("Documento selecionado: eDocumento_PIS_NIT");

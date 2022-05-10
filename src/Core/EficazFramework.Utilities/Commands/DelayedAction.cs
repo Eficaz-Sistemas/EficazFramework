@@ -16,7 +16,7 @@ public partial class DelayedAction
     public static async Task InvokeAsync(Action action, int miliseconds, System.Threading.CancellationToken cancellationtoken = default)
     {
         await Task.Delay(miliseconds, cancellationtoken);
-        
+
         if (cancellationtoken != default)
         {
             if (cancellationtoken.IsCancellationRequested == true)

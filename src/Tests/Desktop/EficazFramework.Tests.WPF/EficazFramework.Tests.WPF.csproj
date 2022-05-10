@@ -14,7 +14,6 @@
   <ItemGroup>
     <Compile Remove="Behaviors\ModalAssist.cs" />
     <Compile Remove="Behaviors\TextBoxAssist.cs" />
-    <Compile Remove="Commands\Window.cs" />
     <Compile Remove="Controls\ExpressionBuilder.cs" />
     <Compile Remove="Template.cs" />
   </ItemGroup>
@@ -32,16 +31,12 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
-    <PackageReference Include="XAMLTest" Version="1.0.0-ci242" />
+    <PackageReference Include="XAMLTest" Version="1.0.0-ci244" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\..\..\Desktop\EficazFramework.WPF\EficazFramework.WPF.csproj" />
     <ProjectReference Include="..\EficazFramework.Tests.WPF.Views\EficazFramework.Tests.WPF.Views.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Commands\" />
   </ItemGroup>
 
 </Project>

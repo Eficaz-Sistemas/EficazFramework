@@ -33,7 +33,7 @@ public class ExpressionBuilder : BunitTest
 
         // add expression execute
         var buttons = comp.FindAll("button");
-        await buttons[0].ClickAsync(new Microsoft.AspNetCore.Components.Web.MouseEventArgs() 
+        await buttons[0].ClickAsync(new Microsoft.AspNetCore.Components.Web.MouseEventArgs()
         {
             Button = 0
         });

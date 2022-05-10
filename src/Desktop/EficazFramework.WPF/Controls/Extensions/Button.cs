@@ -4,9 +4,12 @@ public partial class Button
 {
 
     #region Icon Size
-    
+
+    [ExcludeFromCodeCoverage]
     public static double GetIconSize([DisallowNull] DependencyObject element) =>
         (double)element.GetValue(IconSizeProperty);
+
+    [ExcludeFromCodeCoverage]
     public static void SetIconSize(DependencyObject element, double value) =>
         element.SetValue(IconSizeProperty, value);
 
@@ -14,12 +17,14 @@ public partial class Button
 
     #endregion
 
-    
+
     #region Mouse Over Color
 
+    [ExcludeFromCodeCoverage]
     public static Brush GetMouseOver([DisallowNull] DependencyObject element) =>
         (Brush)element.GetValue(MouseOverProperty);
 
+    [ExcludeFromCodeCoverage]
     public static void SetMouseOver([DisallowNull] DependencyObject element, Brush value) =>
         element.SetValue(MouseOverProperty, value);
 

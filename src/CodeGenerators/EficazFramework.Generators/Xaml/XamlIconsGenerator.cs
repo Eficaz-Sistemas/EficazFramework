@@ -77,7 +77,7 @@ namespace EficazFramework.Generators.XAML
             code.AppendLine("");
             code.AppendLine("</ResourceDictionary>");
             context.AddSource($"{className}.Generated.xaml", SourceText.From(code.ToString(), Encoding.UTF8));
-            
+
             Console.WriteLine(code.ToString());
             Console.WriteLine($"Resource for {className} generated successful");
             Console.WriteLine("==============================");

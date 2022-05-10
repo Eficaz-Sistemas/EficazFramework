@@ -8,7 +8,7 @@ public partial class ViewModelDialog
     [Parameter] public EficazFramework.Events.MessageEventArgs Args { get; set; }
 
     public static async Task<Events.MessageResult> ShowAsync(MudBlazor.IDialogService dialogService,
-                                                             Events.MessageEventArgs messageArgs, 
+                                                             Events.MessageEventArgs messageArgs,
                                                              MudBlazor.DialogParameters? mudDialogParams = null,
                                                              MudBlazor.DialogOptions? mudDialogOptions = null)
     {
@@ -20,7 +20,7 @@ public partial class ViewModelDialog
 
         mudDialogParams?.Add("Args", messageArgs);
 
-        MudBlazor.IDialogReference _dialog = dialogService.Show<ViewModelDialog>(messageArgs.Title, 
+        MudBlazor.IDialogReference _dialog = dialogService.Show<ViewModelDialog>(messageArgs.Title,
                                                                                  mudDialogParams,
                                                                                  mudDialogOptions);
 

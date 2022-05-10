@@ -1,6 +1,5 @@
 ﻿using FluentAssertions;
 using NUnit.Framework;
-using System;
 using System.Threading.Tasks;
 
 namespace EficazFramework.Threading;
@@ -11,7 +10,7 @@ public class ModalAssistTests
     public async Task ReturnOK()
     {
         // Setup
-        ModalAssist instance = new ();
+        ModalAssist instance = new();
         Events.MessageResult result = Events.MessageResult.NotSet;
         var push = instance.Push();
 

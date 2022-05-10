@@ -4,6 +4,7 @@
 global using FluentAssertions;
 global using NUnit.Framework;
 global using System;
+global using System.Text;
 global using System.Threading;
 global using System.Threading.Tasks;
 global using System.Windows;
@@ -25,11 +26,16 @@ namespace EficazFramework.Tests
         public BaseTest()
         {
             if (Application == null)
-                Application = XamlTest.App.StartRemote<EficazFramework.Tests.WPF.Views.App>();
+            {
+                StringBuilder sb = new StringBuilder();
+                Action<string> logMessage = (message) => sb.AppendLine(message);
+                Application = XamlTest.App.StartRemote<EficazFramework.Tests.WPF.Views.App>(logMessage: logMessage);
+                Console.WriteLine(sb.ToString());
+            }
         }
-        
+
         [OneTimeSetUp]
-        public async Task Setup()
+        public async Task OneTimeSetup()
         {
             if (MainWindow == null)
                 MainWindow = await Application.GetMainWindow() ?? throw new System.Exception("Fail on get Main Window");

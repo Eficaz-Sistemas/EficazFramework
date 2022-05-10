@@ -6,7 +6,6 @@ using NUnit.Framework;
 using System;
 using System.Security.Cryptography;
 using System.Security.Cryptography.X509Certificates;
-using System.Threading.Tasks;
 
 namespace EficazFramework.Security.Credential;
 

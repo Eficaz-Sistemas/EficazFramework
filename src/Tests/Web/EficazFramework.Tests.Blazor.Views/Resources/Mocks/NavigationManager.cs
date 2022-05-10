@@ -1,6 +1,4 @@
-﻿using Microsoft.AspNetCore.Components;
-
-namespace EficazFramework.Tests.Blazor.Views.Resources.Mocks;
+﻿namespace EficazFramework.Tests.Blazor.Views.Resources.Mocks;
 
 public class NavigationManager : Microsoft.AspNetCore.Components.NavigationManager
 {

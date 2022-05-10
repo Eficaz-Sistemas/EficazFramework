@@ -4,8 +4,8 @@ namespace EficazFramework.Tests.Blazor.Views.Pages.Components.Dialogs;
 
 public partial class ViewModelDialog
 {
-    [Inject] MudBlazor.IDialogService DialogService {get; set;}
-    [Inject] MudBlazor.ISnackbar Snackbar { get; set;}
+    [Inject] MudBlazor.IDialogService DialogService { get; set; }
+    [Inject] MudBlazor.ISnackbar Snackbar { get; set; }
 
 
     public string _title = "MessageBox Title";
@@ -24,5 +24,5 @@ public partial class ViewModelDialog
         };
         var result = await EficazFramework.Components.Dialogs.ViewModelDialog.ShowAsync(DialogService, e);
         Snackbar.Add(result.ToString());
-   }
+    }
 }

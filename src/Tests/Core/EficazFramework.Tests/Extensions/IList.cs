@@ -1,8 +1,6 @@
 ﻿using FluentAssertions;
 using NUnit.Framework;
-using System;
 using System.Collections.Generic;
-using System.Linq;
 
 namespace EficazFramework.Extensions;
 
@@ -20,7 +18,7 @@ class IList
     public void Split()
     {
         var collection = new List<string>() { "abc", "def", "ghi", "ghi" };
-        
+
         var half = collection.Split(2);
         half.Should().HaveCount(2);
         half[0].Should().HaveCount(2);

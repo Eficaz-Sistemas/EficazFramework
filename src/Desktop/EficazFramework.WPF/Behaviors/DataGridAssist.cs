@@ -1,18 +1,6 @@
-﻿using System;
-using System.ComponentModel;
+﻿using EficazFramework.Controls;
 using System.Diagnostics;
-using System.Diagnostics.CodeAnalysis;
-using System.Linq;
-using System.Linq.Expressions;
-using System.Reflection;
-using System.Windows;
-using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
-using System.Windows.Data;
-using System.Windows.Input;
-using System.Windows.Media;
-using EficazFramework.Controls;
-using EficazFramework.Extensions;
 
 namespace EficazFramework.XAML.Behaviors;
 

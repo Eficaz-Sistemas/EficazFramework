@@ -1,9 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace EficazFramework.Resources.Mocks;
 
@@ -26,9 +22,9 @@ internal class MockDbContext : Microsoft.EntityFrameworkCore.DbContext
         {
             if (_provider != null && _provider.DbConfig != null)
                 _provider.OnConfiguring(optionsBuilder, MockDb, "myUser", null);
-             else
+            else
             {
-                var config = new Configuration.DbConfiguration() { UseConnectionStringEncryption = false};
+                var config = new Configuration.DbConfiguration() { UseConnectionStringEncryption = false };
                 Providers.SqlLite configurator = new(config);
                 optionsBuilder.UseSqlite(configurator.GetConnectionString(MockDb, "myUser", null));
             }

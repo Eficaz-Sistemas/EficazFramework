@@ -1,6 +1,5 @@
 ﻿using Microsoft.VisualBasic.CompilerServices;
 using System;
-using System.Text.RegularExpressions;
 
 namespace EficazFramework.Extensions;
 
@@ -255,150 +254,150 @@ public static class NumberExtensions
         switch (inteiros.ToString().Trim().Length)
         {
             case var @case when @case <= 3: // centenas
-            {
-                if (inteiros != 1)
                 {
-                    numstr = GetNumberStringArray(inteiros, genero);
-                    pluralIndex = 1;
-                }
-                else
-                    numstr = GetNumberStringArray(inteiros, genero);
+                    if (inteiros != 1)
+                    {
+                        numstr = GetNumberStringArray(inteiros, genero);
+                        pluralIndex = 1;
+                    }
+                    else
+                        numstr = GetNumberStringArray(inteiros, genero);
 
-                if (moeda == true)
-                    numstr += $" {currency[pluralIndex]}"; // " Real[0] - Reais[1]"
-                else
-                    numstr += $" {generoNaturais[pluralIndex]}"; // " Inteiro/a[0] - Inteiros/as[1]"
-                break;
-            }
+                    if (moeda == true)
+                        numstr += $" {currency[pluralIndex]}"; // " Real[0] - Reais[1]"
+                    else
+                        numstr += $" {generoNaturais[pluralIndex]}"; // " Inteiro/a[0] - Inteiros/as[1]"
+                    break;
+                }
 
             case var case1 when case1 <= 6: // milhares
-            {
-                int centenas, milhares;
-                decimal tmp = (decimal)(inteiros / (double)1000);
-                milhares = Conversions.ToInteger(tmp);
-                centenas = inteiros - milhares * 1000;
-                numstr = GetNumberStringArray(milhares, genero) + " Mil";
-                if (centenas < 101)
                 {
-                    if (centenas > 0)
+                    int centenas, milhares;
+                    decimal tmp = (decimal)(inteiros / (double)1000);
+                    milhares = Conversions.ToInteger(tmp);
+                    centenas = inteiros - milhares * 1000;
+                    numstr = GetNumberStringArray(milhares, genero) + " Mil";
+                    if (centenas < 101)
+                    {
+                        if (centenas > 0)
+                            numstr = numstr + " e " + GetNumberStringArray(centenas, genero);
+                    }
+                    else if (centenas == 100 | centenas == 200 | centenas == 300 | centenas == 400 | centenas == 500 | centenas == 600 | centenas == 700 | centenas == 800 | centenas == 900)
                         numstr = numstr + " e " + GetNumberStringArray(centenas, genero);
-                }
-                else if (centenas == 100 | centenas == 200 | centenas == 300 | centenas == 400 | centenas == 500 | centenas == 600 | centenas == 700 | centenas == 800 | centenas == 900)
-                    numstr = numstr + " e " + GetNumberStringArray(centenas, genero);
-                else
-                    numstr = numstr + ", " + GetNumberStringArray(centenas, genero);
+                    else
+                        numstr = numstr + ", " + GetNumberStringArray(centenas, genero);
 
-                if (moeda == true)
-                    numstr += $" {currency[1]}"; // " Reais"
-                else
-                    numstr += $" {generoNaturais[1]}"; // " Inteiros"
-                break;
-            }
+                    if (moeda == true)
+                        numstr += $" {currency[1]}"; // " Reais"
+                    else
+                        numstr += $" {generoNaturais[1]}"; // " Inteiros"
+                    break;
+                }
 
             case var case2 when case2 <= 9: // milhões
-            {
-                int centenas, milhares, milhoes;
-                decimal tmp = (decimal)(inteiros / (double)1000000);
-                milhoes = Conversions.ToInteger(tmp);
-                tmp = (decimal)((inteiros - milhoes * 1000000) / (double)1000);
-                milhares = Conversions.ToInteger(tmp);
-                centenas = Conversions.ToInteger((tmp - milhares) * 1000);
-                if (milhoes == 1)
                 {
-                    if (milhares == 0 & centenas == 0)
+                    int centenas, milhares, milhoes;
+                    decimal tmp = (decimal)(inteiros / (double)1000000);
+                    milhoes = Conversions.ToInteger(tmp);
+                    tmp = (decimal)((inteiros - milhoes * 1000000) / (double)1000);
+                    milhares = Conversions.ToInteger(tmp);
+                    centenas = Conversions.ToInteger((tmp - milhares) * 1000);
+                    if (milhoes == 1)
                     {
-                        numstr = GetNumberStringArray(milhoes, Gender.Masculino) + " Milhão";
-                        if (moeda == true)
-                            numstr += " de";
-                    }
-                    else if (milhares > 0 & centenas == 0)
-                    {
-                        if (milhares < 100)
-                            numstr = GetNumberStringArray(milhoes, Gender.Masculino) + " Milhão e ";
-                        else if (milhares == 100 | milhares == 200 | milhares == 300 | milhares == 400 | milhares == 500 | milhares == 600 | milhares == 700 | milhares == 800 | milhares == 900)
-                            numstr = GetNumberStringArray(milhoes, Gender.Masculino) + " Milhão e ";
-                        else
+                        if (milhares == 0 & centenas == 0)
+                        {
+                            numstr = GetNumberStringArray(milhoes, Gender.Masculino) + " Milhão";
+                            if (moeda == true)
+                                numstr += " de";
+                        }
+                        else if (milhares > 0 & centenas == 0)
+                        {
+                            if (milhares < 100)
+                                numstr = GetNumberStringArray(milhoes, Gender.Masculino) + " Milhão e ";
+                            else if (milhares == 100 | milhares == 200 | milhares == 300 | milhares == 400 | milhares == 500 | milhares == 600 | milhares == 700 | milhares == 800 | milhares == 900)
+                                numstr = GetNumberStringArray(milhoes, Gender.Masculino) + " Milhão e ";
+                            else
+                                numstr = GetNumberStringArray(milhoes, Gender.Masculino) + " Milhão, ";
+                        }
+                        else if (milhares == 0 & centenas > 0)
+                        {
+                            if (centenas < 100)
+                                numstr = GetNumberStringArray(milhoes, Gender.Masculino) + " Milhão";
+                            else if (centenas == 100 | centenas == 200 | centenas == 300 | centenas == 400 | centenas == 500 | centenas == 600 | centenas == 700 | centenas == 800 | centenas == 900)
+                                numstr = GetNumberStringArray(milhoes, Gender.Masculino) + " Milhão e ";
+                            else
+                                numstr = GetNumberStringArray(milhoes, Gender.Masculino) + " Milhão";
+                        }
+                        else if (milhares > 0 & centenas > 0)
                             numstr = GetNumberStringArray(milhoes, Gender.Masculino) + " Milhão, ";
                     }
-                    else if (milhares == 0 & centenas > 0)
+                    else if (milhoes > 1)
                     {
-                        if (centenas < 100)
-                            numstr = GetNumberStringArray(milhoes, Gender.Masculino) + " Milhão";
-                        else if (centenas == 100 | centenas == 200 | centenas == 300 | centenas == 400 | centenas == 500 | centenas == 600 | centenas == 700 | centenas == 800 | centenas == 900)
-                            numstr = GetNumberStringArray(milhoes, Gender.Masculino) + " Milhão e ";
-                        else
-                            numstr = GetNumberStringArray(milhoes, Gender.Masculino) + " Milhão";
-                    }
-                    else if (milhares > 0 & centenas > 0)
-                        numstr = GetNumberStringArray(milhoes, Gender.Masculino) + " Milhão, ";
-                }
-                else if (milhoes > 1)
-                {
-                    if (milhares == 0 & centenas == 0)
-                    {
-                        numstr = GetNumberStringArray(milhoes, genero) + " Milhões";
-                        if (moeda == true)
+                        if (milhares == 0 & centenas == 0)
                         {
-                            numstr += " de";
+                            numstr = GetNumberStringArray(milhoes, genero) + " Milhões";
+                            if (moeda == true)
+                            {
+                                numstr += " de";
+                            }
                         }
-                    }
-                    else if (milhares > 0 & centenas == 0)
-                    {
-                        if (milhares < 100)
-                            numstr = GetNumberStringArray(milhoes, genero) + " Milhões e ";
-                        else if (milhares == 100 | milhares == 200 | milhares == 300 | milhares == 400 | milhares == 500 | milhares == 600 | milhares == 700 | milhares == 800 | milhares == 900)
-                            numstr = GetNumberStringArray(milhoes, genero) + " Milhões e ";
-                        else
+                        else if (milhares > 0 & centenas == 0)
+                        {
+                            if (milhares < 100)
+                                numstr = GetNumberStringArray(milhoes, genero) + " Milhões e ";
+                            else if (milhares == 100 | milhares == 200 | milhares == 300 | milhares == 400 | milhares == 500 | milhares == 600 | milhares == 700 | milhares == 800 | milhares == 900)
+                                numstr = GetNumberStringArray(milhoes, genero) + " Milhões e ";
+                            else
+                                numstr = GetNumberStringArray(milhoes, genero) + " Milhões, ";
+                        }
+                        else if (milhares == 0 & centenas > 0)
+                        {
+                            if (centenas < 100)
+                                numstr = GetNumberStringArray(milhoes, genero) + " Milhões";
+                            else if (centenas == 100 | centenas == 200 | centenas == 300 | centenas == 400 | centenas == 500 | centenas == 600 | centenas == 700 | centenas == 800 | centenas == 900)
+                                numstr = GetNumberStringArray(milhoes, genero) + " Milhões e ";
+                            else
+                                numstr = GetNumberStringArray(milhoes, genero) + " Milhões";
+                        }
+                        else if (milhares > 0 & centenas > 0)
                             numstr = GetNumberStringArray(milhoes, genero) + " Milhões, ";
                     }
-                    else if (milhares == 0 & centenas > 0)
-                    {
-                        if (centenas < 100)
-                            numstr = GetNumberStringArray(milhoes, genero) + " Milhões";
-                        else if (centenas == 100 | centenas == 200 | centenas == 300 | centenas == 400 | centenas == 500 | centenas == 600 | centenas == 700 | centenas == 800 | centenas == 900)
-                            numstr = GetNumberStringArray(milhoes, genero) + " Milhões e ";
-                        else
-                            numstr = GetNumberStringArray(milhoes, genero) + " Milhões";
-                    }
-                    else if (milhares > 0 & centenas > 0)
-                        numstr = GetNumberStringArray(milhoes, genero) + " Milhões, ";
-                }
 
-                if (milhares > 0)
-                    numstr = numstr + GetNumberStringArray(milhares, genero) + " Mil";
+                    if (milhares > 0)
+                        numstr = numstr + GetNumberStringArray(milhares, genero) + " Mil";
 
-                if (centenas < 101)
-                {
-                    if (centenas > 0)
-                        numstr = numstr + " e " + GetNumberStringArray(centenas, genero);
-                }
-                else
-                {
-                    if (!(centenas % 100 == 0))
+                    if (centenas < 101)
                     {
-                        numstr = numstr + ", ";
+                        if (centenas > 0)
+                            numstr = numstr + " e " + GetNumberStringArray(centenas, genero);
                     }
-                    numstr = numstr + GetNumberStringArray(centenas, genero);
+                    else
+                    {
+                        if (!(centenas % 100 == 0))
+                        {
+                            numstr = numstr + ", ";
+                        }
+                        numstr = numstr + GetNumberStringArray(centenas, genero);
                     }
 
                     if (moeda == true)
-                    numstr += $" {currency[1]}"; // " Reais"
-                else
-                    numstr += $" {generoNaturais[1]}"; // " Inteiros"
-                break;
-            }
+                        numstr += $" {currency[1]}"; // " Reais"
+                    else
+                        numstr += $" {generoNaturais[1]}"; // " Inteiros"
+                    break;
+                }
 
             case var case3 when case3 <= 12: // bilhões
-            {
-                numstr = "zzz...";
-                break;
-            }
+                {
+                    numstr = "zzz...";
+                    break;
+                }
 
             case var case4 when case4 <= 15: // trilhões
-            {
-                numstr = "chega né?...";
-                break;
-            }
+                {
+                    numstr = "chega né?...";
+                    break;
+                }
         }
         if (fracao == 0)
             numstr = numstr.Replace(generoNaturais[1], "").Replace(generoNaturais[0], "").Trim();

@@ -103,7 +103,7 @@ public class SerializationOperations
     {
         string filecontent = System.IO.File.ReadAllText(sourcePath);
         return FromJson<T>(filecontent);
-        
+
     }
 
     public static async Task<T> FromJsonAsync<T>(string source)

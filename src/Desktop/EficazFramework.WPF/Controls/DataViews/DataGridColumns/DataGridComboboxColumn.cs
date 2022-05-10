@@ -1,6 +1,4 @@
-﻿using Microsoft.VisualBasic.CompilerServices; // Install-Package Microsoft.VisualBasic
-
-namespace EficazFramework.Controls;
+﻿namespace EficazFramework.Controls;
 
 public partial class DataGridComboBoxColumn : System.Windows.Controls.DataGridComboBoxColumn
 {
@@ -15,7 +13,7 @@ public partial class DataGridComboBoxColumn : System.Windows.Controls.DataGridCo
             tb.SetBinding(TextBlock.TextProperty, SelectedItemBinding);
         else
             tb.SetBinding(TextBlock.TextProperty, SelectedValueBinding);
-            
+
         return tb;
     }
 }

@@ -1,9 +1,8 @@
-﻿using FluentAssertions;
+﻿using EficazFramework.Providers;
+using FluentAssertions;
 using Microsoft.Extensions.DependencyInjection;
 using NUnit.Framework;
 using System;
-using EficazFramework.Providers;
-using System.Linq;
 
 namespace EficazFramework.Configuration;
 
@@ -53,7 +52,7 @@ public class DbConfigurationTests<TProvider> where TProvider : DataProviderBase
         config.ServerData.Should().Be(@"myserver\myinstance,1436");
         config.ShouldSerializePort().Should().BeTrue();
         config.Save();
-        
+
         config.ServerName = ".";
         config.InstanceName = "myinstance2";
         config.Port = 1437;

@@ -1,6 +1,5 @@
 ﻿using FluentAssertions;
 using NUnit.Framework;
-using EficazFramework.Extensions;
 using System;
 using System.Linq;
 

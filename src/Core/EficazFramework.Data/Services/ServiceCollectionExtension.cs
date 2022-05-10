@@ -1,14 +1,12 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Diagnostics.CodeAnalysis;
 namespace EficazFramework.Services;
 
 public static class ServiceCollectionExtension
 {
 
+    [ExcludeFromCodeCoverage]
     public static IServiceCollection AddEntityRepository<TEntity>(this IServiceCollection services, Action<Configuration.EntityRepositoryConfiguration<TEntity>> options = null) where TEntity : EficazFramework.Entities.EntityBase
     {
         Configuration.EntityRepositoryConfiguration<TEntity> config = new();

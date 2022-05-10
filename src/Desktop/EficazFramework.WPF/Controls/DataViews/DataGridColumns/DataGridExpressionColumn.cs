@@ -1,9 +1,4 @@
-﻿using System;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-
-namespace EficazFramework.Controls;
+﻿namespace EficazFramework.Controls;
 
 public class DataGridExpressionColumn : System.Windows.Controls.DataGridTextColumn
 {
@@ -57,7 +52,7 @@ public class DataGridExpressionColumn : System.Windows.Controls.DataGridTextColu
                         element2.SetResourceReference(DateInputBox.StyleProperty, "Style.DateInputBox.DataGridCellEditor");
                         break;
 
-                        
+
                     case Expressions.ExpressionEditor.Number:
                         element1 = new NumberInputBox() { DataContext = expr, DecimalPlaces = expr.SelectedProperty.DecimalPlaces ?? 0, Width = 140D, Name = "PART_expression_v1" };
                         element1.SetBinding(NumberInputBox.TextProperty, new Binding(!UpdateMode ? "Value1" : "ValueToUpdate")
@@ -84,7 +79,7 @@ public class DataGridExpressionColumn : System.Windows.Controls.DataGridTextColu
                 Grid grd = new();
                 TextBlock tb = GenerateTextBlock(cell, dataItem, EficazFramework.Resources.Strings.Controls.ExpressionBuilder_Between_Separator);
                 tb.Margin = new Thickness(16, 0, 16, 0);
-                
+
                 Grid.SetColumn(tb, 1);
                 Grid.SetColumn(element2, 2);
                 grd.ColumnDefinitions.Add(new ColumnDefinition() { Width = new GridLength(1, GridUnitType.Auto) });
@@ -183,11 +178,11 @@ public class DataGridExpressionColumn : System.Windows.Controls.DataGridTextColu
     protected override void CancelCellEdit(FrameworkElement editingElement, object uneditedValue) =>
         base.CancelCellEdit(editingElement, uneditedValue);
 
-    
+
     protected override bool CommitCellEdit(FrameworkElement editingElement) =>
         base.CommitCellEdit(editingElement);
 
-    
+
     private void FindableEditor_FindRequest(object sender, EficazFramework.Events.FindRequestEventArgs e)
     {
         if (!UpdateMode)
