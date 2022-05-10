@@ -1,14 +1,5 @@
-﻿using NUnit.Framework;
-using FluentAssertions;
-using System.Windows.Controls;
-using System.Windows.Media;
-using System.Threading.Tasks;
-using System.Windows.Automation.Peers;
-using System.Windows.Input;
-using System.Threading;
-using XamlTest;
+﻿namespace EficazFramework.Tests.Controls.Extensions;
 
-namespace EficazFramework.Tests.Controls.Extensions;
 public class ButtonExtensionsTests : BaseTest
 {
     [Test]
@@ -32,9 +23,20 @@ public class ButtonExtensionsTests : BaseTest
         button.Should().NotBeNull();
         (await button.GetProperty<string>("Name")).Should().Be("TEST_Button_0");
 
-        var primary = (await MainWindow.GetResource("Color.Primary.Background")).GetAs<Color?>() ?? throw new System.Exception($"Failed to convert resource 'Color.Primary.Background' to color");
-        (await button.GetEffectiveBackground()).Should().Be(primary);
-      
+        (await button.GetEffectiveBackground()).Should().Be(ThemeColorPrimary);
 
+        await button.SetProperty(EficazFramework.Controls.AttachedProperties.Control.ColorProperty, EficazFramework.Controls.AttachedProperties.Color.Secondary);
+        (await button.GetEffectiveBackground()).Should().Be(ThemeColorSecondary);
+        await button.SetProperty(EficazFramework.Controls.AttachedProperties.Control.ColorProperty, EficazFramework.Controls.AttachedProperties.Color.Tertiary);
+        (await button.GetEffectiveBackground()).Should().Be(ThemeColorTertiary);
+        await button.SetProperty(EficazFramework.Controls.AttachedProperties.Control.ColorProperty, EficazFramework.Controls.AttachedProperties.Color.Surface);
+        (await button.GetEffectiveBackground()).Should().Be(ThemeColorSurface);
+
+        var mouseOverElement = await button.GetElement<Border>("MouseOverPresenter");
+        mouseOverElement.Should().NotBeNull();
+        (await mouseOverElement.GetProperty<Visibility>("Visibility")).Should().Be(Visibility.Collapsed);
+        await button.MoveCursorTo();
+        await Task.Delay(250);
+        (await mouseOverElement.GetProperty<Visibility>("Visibility")).Should().Be(Visibility.Visible);
     }
 }
