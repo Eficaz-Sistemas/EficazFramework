@@ -45,7 +45,7 @@ public partial class TabControl
             {
                 if ((bool)e.NewValue == true)
                 {
-                    if (dg.IsSynchronizedWithCurrentItem == true == true)
+                    if (dg.IsSynchronizedWithCurrentItem == true)
                         dg.IsSynchronizedWithCurrentItem = false;
 
                     dg.SelectedCellsChanged += DataGrid.DataGrid_NavigationTemplate_SelectionChanged;

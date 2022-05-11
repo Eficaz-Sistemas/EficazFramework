@@ -3,10 +3,12 @@ namespace EficazFramework.Tests;
 public abstract class BaseTest<TSourceGenerator> where TSourceGenerator : ISourceGenerator
 {
     private readonly OutputKind outputKind;
+    private readonly bool isResource;
 
-    public BaseTest(OutputKind outputKind)
+    public BaseTest(OutputKind outputKind, bool isResource = false)
     {
         this.outputKind = outputKind;
+        this.isResource = isResource;
     }
 
     protected (string, string) GetGeneratedOutput(string source)
@@ -33,7 +35,7 @@ public abstract class BaseTest<TSourceGenerator> where TSourceGenerator : ISourc
         return trees.Select(t => t.ToString()).ToList();
     }
 
-    protected Compilation CreateCompilation(string source, bool isResource = false)
+    protected Compilation CreateCompilation(string source)
     {
         var syntaxTree = CSharpSyntaxTree.ParseText(source);
 

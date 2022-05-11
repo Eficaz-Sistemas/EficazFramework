@@ -1,11 +1,11 @@
 ﻿namespace EficazFramework.Tests.Generators;
 
-[TestFixture]
+//[TestFixture]
 public class SvgToDictionary : BaseTest<EficazFramework.Generators.Svg.SvgToDictionary>
 {
     public SvgToDictionary() : base(OutputKind.DynamicallyLinkedLibrary) { }
 
-    [Test]
+    //[Test]
     public void ImplementedClassTest()
     {
         var source = @"<?xml version=""1.0"" standalone=""no""?>;

@@ -25,20 +25,26 @@ namespace EficazFramework.Tests
 
         public BaseTest()
         {
-            if (Application == null)
-            {
-                StringBuilder sb = new StringBuilder();
-                Action<string> logMessage = (message) => sb.AppendLine(message);
-                Application = XamlTest.App.StartRemote<EficazFramework.Tests.WPF.Views.App>(logMessage: logMessage);
-                Console.WriteLine(sb.ToString());
-            }
         }
 
         [OneTimeSetUp]
         public async Task OneTimeSetup()
         {
-            if (MainWindow == null)
-                MainWindow = await Application.GetMainWindow() ?? throw new System.Exception("Fail on get Main Window");
+            if (Application == null)
+            {
+                StringBuilder sb = new StringBuilder();
+                Action<string> logMessage = (message) => sb.AppendLine(message);
+                try
+                {
+                    Application = XamlTest.App.StartRemote<EficazFramework.Tests.WPF.Views.App>(logMessage: logMessage);
+                    MainWindow = await Application.GetMainWindow() ?? throw new System.Exception("Fail on get Main Window");
+                }
+                catch
+                {
+                    Console.WriteLine(sb.ToString());
+                    return;
+                }
+            }
 
             ThemeColorPrimary = (await MainWindow.GetResource("Color.Primary.Background")).GetAs<System.Windows.Media.Color?>() ?? throw new System.Exception($"Failed to convert resource 'Color.Primary.Background' to color");
             ThemeColorSecondary = (await MainWindow.GetResource("Color.Secondary.Background")).GetAs<System.Windows.Media.Color?>() ?? throw new System.Exception($"Failed to convert resource 'Color.Secondary.Background' to color");
