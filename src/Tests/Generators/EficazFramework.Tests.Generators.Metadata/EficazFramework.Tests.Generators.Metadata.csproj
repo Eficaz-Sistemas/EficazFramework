@@ -1,0 +1,54 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+	
+	<ItemGroup>
+		<AdditionalFiles Include="$(ProjectDir)*.efmodel" />
+		<AdditionalFiles Include="$(ProjectDir)**\*.efmodel" />
+	</ItemGroup>
+	
+	<ItemGroup>
+	  <None Remove="AnotherModelFolder\Product.efmodel" />
+	  <None Remove="Person.efmodel" />
+	</ItemGroup>
+	
+	<ItemGroup>
+	  <AdditionalFiles Include="AnotherModelFolder\Product.efmodel">
+	    <Generator>EfModelClassGenerator</Generator>
+	    <LastGenOutput>Product.Designer.efmodel.cs</LastGenOutput>
+	  </AdditionalFiles>
+	  <AdditionalFiles Include="Person.efmodel">
+	    <Generator>EfModelClassGenerator</Generator>
+	    <LastGenOutput>Person.Designer.efmodel.cs</LastGenOutput>
+	  </AdditionalFiles>
+	</ItemGroup>
+	
+	<ItemGroup>
+	  <ProjectReference Include="..\..\..\CodeGenerators\EficazFramework.Generators\EficazFramework.Generators.csproj" ReferenceOutputAssembly="false" OutputItemType="Analyzer" />
+	  <ProjectReference Include="..\..\..\Core\EficazFramework.Data\EficazFramework.Data.csproj" />
+	  <ProjectReference Include="..\..\..\DataProviders\EficazFramework.Data.MsSqlServer\EficazFramework.Data.MsSqlServer.csproj" />
+	</ItemGroup>
+	
+	<ItemGroup>
+	  <Compile Update="AnotherModelFolder\Product.Designer.efmodel.cs">
+	    <DependentUpon>Product.efmodel</DependentUpon>
+	    <DesignTime>True</DesignTime>
+	    <AutoGen>True</AutoGen>
+	  </Compile>
+	  <Compile Update="AnotherModelFolder\Product.efmodel.cs">
+		  <DependentUpon>Product.efmodel</DependentUpon>
+	  </Compile>
+	  <Compile Update="Person.Designer.efmodel.cs">
+	    <DependentUpon>Person.efmodel</DependentUpon>
+	    <DesignTime>True</DesignTime>
+	    <AutoGen>True</AutoGen>
+	  </Compile>
+	  <Compile Update="Person.efmodel.cs">
+		  <DependentUpon>Person.efmodel</DependentUpon>
+	  </Compile>
+	</ItemGroup>
+</Project>

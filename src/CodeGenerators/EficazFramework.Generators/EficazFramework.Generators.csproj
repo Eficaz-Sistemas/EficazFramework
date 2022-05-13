@@ -4,7 +4,28 @@
     <TargetFramework>netstandard2.0</TargetFramework>
 	<LangVersion>latest</LangVersion>
 	<IsRoslynComponent>true</IsRoslynComponent>
+	<GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+	<AssemblyVersion>6.0.0.0</AssemblyVersion>
+	<FileVersion>6.0.0.0</FileVersion>
+	<NeutralLanguage>pt-BR</NeutralLanguage>
+	<RepositoryUrl>https://github.com/Eficaz-Sistemas/EficazFramework</RepositoryUrl>
+	<RepositoryType>git</RepositoryType>
+	<PackageIcon>logo.png</PackageIcon>
+	<PackageIconUrl>https://efsuporte.blob.core.windows.net/portal/EficazFramework.png</PackageIconUrl>
+	<Copyright>Copyright ©  2022. Eficaz Sistemas de Gestão e Inteligência Tributária Ltda.</Copyright>
+	<Description>Roslyn code generators for EficazFramework.</Description>
+	<Company>Eficaz Sistemas de Gestão e Inteligência Tributária</Company>
+	<Version>6.0.0-preview004</Version>
+	<SignAssembly>True</SignAssembly>
+	<AssemblyOriginatorKeyFile>EfCore.snk</AssemblyOriginatorKeyFile>
   </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="..\..\..\Assets\logo.png">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
+  </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="Microsoft.CodeAnalysis.Analyzers" Version="3.3.3">

@@ -5,7 +5,15 @@ namespace EficazFramework.Generators.EntityFrameworkCore;
 [Generator]
 public class ModelBuilder : ISourceGenerator
 {
-    void ISourceGenerator.Initialize(GeneratorInitializationContext context) { }
+    void ISourceGenerator.Initialize(GeneratorInitializationContext context) 
+    {
+#if DEBUG
+        if (!Debugger.IsAttached)
+        {
+            Debugger.Launch();
+        }
+#endif         
+    }
 
     void ISourceGenerator.Execute(GeneratorExecutionContext context)
     {
@@ -87,7 +95,7 @@ public class ModelBuilder : ISourceGenerator
                 continue;
             }
             System.Text.StringBuilder builder = new System.Text.StringBuilder();
-            builder.Append($"entry.Property((e) => e.{prop.Name})");
+            builder.Append($"            entry.Property((e) => e.{prop.Name})");
 
             if (prop.Key & (!string.IsNullOrEmpty(prop.ValueGenerated)))
                 builder.Append($".ValueGenerated{prop.ValueGenerated}()");
