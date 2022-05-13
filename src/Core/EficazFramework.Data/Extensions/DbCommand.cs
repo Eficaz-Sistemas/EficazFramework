@@ -1,7 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Infrastructure;
-using System.Data.Common;
-using System.Threading.Tasks;
+﻿using System.Data.Common;
 
 namespace EficazFramework.Extensions;
 

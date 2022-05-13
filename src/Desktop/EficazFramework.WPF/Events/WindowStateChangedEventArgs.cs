@@ -1,6 +1,4 @@
-﻿using System.Windows;
-
-namespace EficazFramework.Events;
+﻿namespace EficazFramework.Events;
 
 public sealed partial class WindowStateChangedEventArgs : RoutedEventArgs
 {

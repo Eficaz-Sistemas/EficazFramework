@@ -1,6 +1,6 @@
-﻿using System;
+﻿using EficazFramework.Tests.Extensions;
 using NUnit.Framework;
-using EficazFramework.Tests.Extensions;
+using System;
 
 namespace EficazFramework.Tests;
 

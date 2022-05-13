@@ -1,8 +1,8 @@
-﻿using System;
+﻿using EficazFramework.Extensions;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using EficazFramework.Extensions;
 
 namespace EficazFramework.Validation.Fluent
 {

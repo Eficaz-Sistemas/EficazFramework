@@ -13,7 +13,7 @@ internal class XamlIconServicesReceiver : ISyntaxContextReceiver
             var testClass = (INamedTypeSymbol)context.SemanticModel.GetDeclaredSymbol(context.Node)!;
             Console.WriteLine($"Inspecting class {testClass.Name}");
 
-            var member = cds.Members.Where(p => p.GetType() == typeof(PropertyDeclarationSyntax) && 
+            var member = cds.Members.Where(p => p.GetType() == typeof(PropertyDeclarationSyntax) &&
                                            p.AttributeLists.Any(a => a.ToString().Contains("IconPackMember"))).FirstOrDefault();
             if (member != null)
             {

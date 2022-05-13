@@ -1,13 +1,8 @@
-﻿using System;
+﻿using EficazFramework.Extensions;
 using System.ComponentModel;
-using System.Globalization;
 using System.Linq;
 using System.Text;
-using System.Windows;
 using System.Windows.Controls.Primitives;
-using System.Windows.Data;
-using System.Windows.Input;
-using EficazFramework.Extensions;
 
 namespace EficazFramework.Controls;
 

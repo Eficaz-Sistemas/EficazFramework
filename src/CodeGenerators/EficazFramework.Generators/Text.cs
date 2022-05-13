@@ -1,11 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Reflection;
-using System.Reflection.Emit;
-using System.Security.AccessControl;
-using System.Text;
-using System.Text.RegularExpressions;
+﻿using System.Text.RegularExpressions;
 
 namespace EficazFramework.Extensions;
 
@@ -75,7 +68,7 @@ public static class TextExtensions
         name = name.Trim();
         if (splitChars is null)
         {
-            splitChars = new string[] {""};
+            splitChars = new string[] { "" };
         }
 
         var array = name.ToLower().ToCharArray();

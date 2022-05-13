@@ -1,10 +1,9 @@
-﻿using EficazFramework.ViewModels.Services;
+﻿using EficazFramework.Validation.Fluent.Rules;
+using EficazFramework.ViewModels.Services;
 using FluentAssertions;
 using NUnit.Framework;
-using System.Threading.Tasks;
-using EficazFramework.Validation.Fluent.Rules;
-using System.Threading;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace EficazFramework.ViewModels;
 
@@ -498,10 +497,10 @@ public class CrudOperations
 
         Vm.Commands["Edit"].Execute(null);
         await Task.Delay(100);
-        
+
         service.MoveToFirst();
         ReferenceEquals(service.CurrentEntry, serviceMain.CurrentEntry.Posts.First()).Should().BeTrue();
-        
+
         var bkpName = service.CurrentEntry.Title;
         Vm.Commands["EditDetail_Posts"].Execute(null);
         await Task.Delay(100);
@@ -564,7 +563,7 @@ public class CrudOperations
         serviceMain.MoveTo(Vm.Repository.DataContext.Single(b => b.Name == "Blog 1"));
 
         Vm.Commands["Edit"].Execute(null);
-        
+
         await Task.Delay(100);
         service.MoveToFirst();
         ReferenceEquals(service.CurrentEntry, serviceMain.CurrentEntry.Posts.First()).Should().BeTrue();

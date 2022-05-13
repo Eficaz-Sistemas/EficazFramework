@@ -1,8 +1,8 @@
-﻿using FluentAssertions;
+﻿using EficazFramework.Extensions;
+using FluentAssertions;
 using NUnit.Framework;
 using System;
 using System.Linq;
-using EficazFramework.Extensions;
 
 namespace EficazFramework.Expressions;
 

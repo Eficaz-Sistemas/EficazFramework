@@ -114,7 +114,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <!--<ProjectReference Include="..\..\CodeGenerators\EficazFramework.Generators\EficazFramework.Generators.csproj" ReferenceOutputAssembly="false" OutputItemType="Analyzer" />-->
+    <ProjectReference Include="..\..\CodeGenerators\EficazFramework.Generators\EficazFramework.Generators.csproj" ReferenceOutputAssembly="false" OutputItemType="Analyzer" />
     <ProjectReference Include="..\..\Core\EficazFramework.Data\EficazFramework.Data.csproj" />
     <ProjectReference Include="..\..\Core\EficazFramework.Utilities\EficazFramework.Utilities.csproj" />
   </ItemGroup>
@@ -122,5 +122,13 @@
   <!--<Target Name="MovePackage" AfterTargets="Pack">
     <Move SourceFiles="$(OutputPath)..\$(PackageId).$(PackageVersion).nupkg" DestinationFolder="$(SolutionDir)Publish\Packages" />
   </Target>-->
+
+
+	<!--<ItemGroup>
+		<AdditionalFiles Include="$(ProjectDir)Generated\*.txt" />
+		<AdditionalFiles Include="$(ProjectDir)Generated\**\*.txt" />
+	</ItemGroup>-->
+
+
 
 </Project>

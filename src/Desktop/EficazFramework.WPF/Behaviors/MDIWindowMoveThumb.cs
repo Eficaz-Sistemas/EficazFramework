@@ -1,10 +1,6 @@
 ﻿using EficazFramework.Controls;
 using System.ComponentModel;
-using System.Diagnostics.CodeAnalysis;
-using System.Windows;
-using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
-using System.Windows.Input;
 
 namespace EficazFramework.XAML.Behaviors;
 

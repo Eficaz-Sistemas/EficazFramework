@@ -1,9 +1,6 @@
 ﻿using EficazFramework.Configuration;
-using EficazFramework.Repositories.Services;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
-using System;
-using System.Diagnostics.CodeAnalysis;
 
 namespace EficazFramework.Providers;
 
@@ -16,7 +13,7 @@ public class SqlLite : DataProviderBase
     public SqlLite(IDbConfig dbConfig) : base(dbConfig) { }
 
     public override string Name => "SqlLite";
-    
+
     public override string GetConnectionString(string database, string username, string password)
     {
         if (DbConfig.UseConnectionStringEncryption == true)

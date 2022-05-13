@@ -18,10 +18,10 @@ public partial class DataGridEnumComboboxColumn : System.Windows.Controls.DataGr
             b.Path = vlBinding.Path;
             b.UpdateSourceTrigger = vlBinding.UpdateSourceTrigger;
             b.Mode = BindingMode.OneWay;
-            
+
             if (LocalizationResourceType != null)
                 b.Converter = new Converters.EnumDescriptionConverter() { LocalizationResourceType = LocalizationResourceType };
-            
+
             tb.SetBinding(TextBlock.TextProperty, b);
         }
 

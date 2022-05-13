@@ -1,9 +1,6 @@
-﻿using System;
+﻿using EficazFramework.Navigation;
+using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Xml.Linq;
-using EficazFramework.Navigation;
-using Microsoft.EntityFrameworkCore.Internal;
 
 namespace EficazFramework.ViewModels.Services;
 

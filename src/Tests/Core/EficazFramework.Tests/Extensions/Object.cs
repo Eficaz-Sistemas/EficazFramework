@@ -1,8 +1,5 @@
 ﻿using FluentAssertions;
 using NUnit.Framework;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 
 namespace EficazFramework.Extensions;
 
@@ -17,12 +14,12 @@ class ObjectTests
             {
                 Id = System.Guid.NewGuid(),
                 Name = "My Blog",
-                Owner = new Resources.Mocks.Classes.Owner() { Name = "Henrique"}
+                Owner = new Resources.Mocks.Classes.Owner() { Name = "Henrique" }
             },
             BlogId = System.Guid.NewGuid(),
             Title = "My First Post"
         };
-        
+
         object nullref = null;
 
         // single

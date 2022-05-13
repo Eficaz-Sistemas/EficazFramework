@@ -1,6 +1,6 @@
-﻿using System;
+﻿using EficazFramework.Extensions;
+using System;
 using System.ComponentModel.DataAnnotations;
-using EficazFramework.Extensions;
 
 namespace EficazFramework.Validation.DataAnnotations;
 

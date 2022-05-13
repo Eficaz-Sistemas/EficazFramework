@@ -1,7 +1,5 @@
 ﻿using EficazFramework.Extensions;
 using System.Text.RegularExpressions;
-using System.Windows;
-using System.Windows.Controls;
 
 namespace EficazFramework.Controls;
 

@@ -11,7 +11,7 @@ namespace EficazFramework.Components.Panels;
 [TestFixture]
 public class Navigator : BunitTest
 {
-    [Test]  
+    [Test]
     public async Task NavigationTest()
     {
         var comp = Context.RenderComponent<Tests.Blazor.Views.Pages.Components.Panels.Navigator>();

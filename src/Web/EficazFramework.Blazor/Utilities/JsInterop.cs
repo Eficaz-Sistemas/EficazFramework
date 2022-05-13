@@ -1,7 +1,6 @@
 using Microsoft.AspNetCore.Components;
 using Microsoft.JSInterop;
 using System.Diagnostics.CodeAnalysis;
-using System.Threading.Tasks;
 
 #pragma warning disable CA2012 // Usar ValueTasks corretamente
 

@@ -4,9 +4,9 @@ using FluentAssertions;
 using NUnit.Framework;
 using System;
 using System.Linq;
-using System.Threading.Tasks;
-using System.Security.Cryptography.X509Certificates;
 using System.Security.Cryptography;
+using System.Security.Cryptography.X509Certificates;
+using System.Threading.Tasks;
 
 namespace EficazFramework.XML;
 
@@ -77,7 +77,7 @@ public class OperationTests
         {
             XMLOperations.SignXml(ref sourceX, "IDd", "MockClassSS", cert, true, true);
         }
-        catch (Exception e) 
+        catch (Exception e)
         {
             ex = e;
         }
@@ -169,12 +169,12 @@ public class OperationTests
         System.Xml.XmlDocument source = XMLOperations.ToXmlDocument(target);
         System.IO.File.Delete(target);
         source.Should().NotBeNull();
-      
+
         // Assert
         System.Xml.Linq.XElement test1 = XMLOperations.ToXElement((System.Xml.XmlElement)source.DocumentElement.ChildNodes[0]);
         test1.Name.ToString().Should().Be("Id");
         test1.Value.Should().Be("1");
-      
+
         System.Xml.Linq.XElement test2 = XMLOperations.ToXElement((System.Xml.XmlElement)source.DocumentElement.ChildNodes[1]);
         test2.Name.ToString().Should().Be("Name");
         test2.Value.Should().Be("Henrique");

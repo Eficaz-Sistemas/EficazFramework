@@ -11,7 +11,6 @@ Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.O
 
 | Fields | |
 | :--- | :--- |
-| [_expandCommand](EficazFramework.Controls.AttachedProperties/TabControl/_expandCommand.md 'EficazFramework.Controls.AttachedProperties.TabControl._expandCommand') | |
 | [_supress](EficazFramework.Controls.AttachedProperties/TabControl/_supress.md 'EficazFramework.Controls.AttachedProperties.TabControl._supress') | |
 | [IconProperty](EficazFramework.Controls.AttachedProperties/TabControl/IconProperty.md 'EficazFramework.Controls.AttachedProperties.TabControl.IconProperty') | |
 | [IsExpandedProperty](EficazFramework.Controls.AttachedProperties/TabControl/IsExpandedProperty.md 'EficazFramework.Controls.AttachedProperties.TabControl.IsExpandedProperty') | |
@@ -20,13 +19,8 @@ Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.O
 | [NextTabProperty](EficazFramework.Controls.AttachedProperties/TabControl/NextTabProperty.md 'EficazFramework.Controls.AttachedProperties.TabControl.NextTabProperty') | |
 | [PreviousTabProperty](EficazFramework.Controls.AttachedProperties/TabControl/PreviousTabProperty.md 'EficazFramework.Controls.AttachedProperties.TabControl.PreviousTabProperty') | |
 
-| Properties | |
-| :--- | :--- |
-| [ExpandCommand](EficazFramework.Controls.AttachedProperties/TabControl/ExpandCommand.md 'EficazFramework.Controls.AttachedProperties.TabControl.ExpandCommand') | |
-
 | Methods | |
 | :--- | :--- |
-| [ExpandCommand_Executed(object, ExecuteEventArgs)](EficazFramework.Controls.AttachedProperties/TabControl/ExpandCommand_Executed(object,ExecuteEventArgs).md 'EficazFramework.Controls.AttachedProperties.TabControl.ExpandCommand_Executed(object, EficazFramework.Events.ExecuteEventArgs)') | |
 | [GetIcon(DependencyObject)](EficazFramework.Controls.AttachedProperties/TabControl/GetIcon(DependencyObject).md 'EficazFramework.Controls.AttachedProperties.TabControl.GetIcon(System.Windows.DependencyObject)') | |
 | [GetIsExpanded(DependencyObject)](EficazFramework.Controls.AttachedProperties/TabControl/GetIsExpanded(DependencyObject).md 'EficazFramework.Controls.AttachedProperties.TabControl.GetIsExpanded(System.Windows.DependencyObject)') | |
 | [GetNavigationTemplate(DependencyObject)](EficazFramework.Controls.AttachedProperties/TabControl/GetNavigationTemplate(DependencyObject).md 'EficazFramework.Controls.AttachedProperties.TabControl.GetNavigationTemplate(System.Windows.DependencyObject)') | |

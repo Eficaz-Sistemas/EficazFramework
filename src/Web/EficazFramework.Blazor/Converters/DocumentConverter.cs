@@ -1,7 +1,5 @@
-﻿using System;
-using System.Diagnostics;
+﻿using EficazFramework.Extensions;
 using System.Globalization;
-using EficazFramework.Extensions;
 
 #pragma warning disable CS8603 // Possível retorno de referência nula.
 

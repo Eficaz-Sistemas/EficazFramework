@@ -1,8 +1,4 @@
 ﻿using EficazFramework.Extensions;
-using System;
-using System.Reflection;
-using System.Windows;
-using System.Windows.Controls;
 using System.Windows.Markup;
 
 namespace EficazFramework.Localization;

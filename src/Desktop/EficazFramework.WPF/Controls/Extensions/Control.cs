@@ -5,9 +5,11 @@ public partial class Control
 
     #region Tip Text
 
+    [ExcludeFromCodeCoverage]
     public static string GetTipText([DisallowNull] DependencyObject element) =>
         (string)element.GetValue(TipTextProperty);
 
+    [ExcludeFromCodeCoverage]
     public static void SetTipText([DisallowNull] DependencyObject element, string value) =>
         element.SetValue(TipTextProperty, value);
 
@@ -29,12 +31,14 @@ public partial class Control
 
     #endregion
 
-    
+
     #region Show Label
 
+    [ExcludeFromCodeCoverage]
     public static bool GetShowLabel([DisallowNull] DependencyObject element) =>
         (bool)element.GetValue(ShowLabelProperty);
 
+    [ExcludeFromCodeCoverage]
     public static void SetShowLabel([DisallowNull] DependencyObject element, bool value) =>
         element.SetValue(ShowLabelProperty, value);
 
@@ -42,12 +46,14 @@ public partial class Control
 
     #endregion
 
-    
+
     #region CornerRadius
 
+    [ExcludeFromCodeCoverage]
     public static CornerRadius GetCornerRadius([DisallowNull] DependencyObject element) =>
         (CornerRadius)element.GetValue(CornerRadiusProperty);
 
+    [ExcludeFromCodeCoverage]
     public static void SetCornerRadius([DisallowNull] DependencyObject element, CornerRadius value) =>
         element.SetValue(CornerRadiusProperty, value);
 
@@ -55,12 +61,14 @@ public partial class Control
 
     #endregion
 
-    
+
     #region Elevation
 
+    [ExcludeFromCodeCoverage]
     public static int GetElevation([DisallowNull] DependencyObject element) =>
         (int)element.GetValue(ElevationProperty);
 
+    [ExcludeFromCodeCoverage]
     public static void SetElevation([DisallowNull] DependencyObject element, int value) =>
         element.SetValue(ElevationProperty, value);
 
@@ -68,12 +76,14 @@ public partial class Control
 
     #endregion
 
-    
+
     #region Blur
 
+    [ExcludeFromCodeCoverage]
     public static bool GetBlur([DisallowNull] DependencyObject element) =>
         (bool)element.GetValue(BlurProperty);
 
+    [ExcludeFromCodeCoverage]
     public static void SetBlurBlur([DisallowNull] DependencyObject element, bool value) =>
         element.SetValue(BlurProperty, value);
 
@@ -81,12 +91,14 @@ public partial class Control
 
     #endregion
 
-    
+
     #region PassowordBox IsEmpty
 
+    [ExcludeFromCodeCoverage]
     public static bool GetIsEmpty([DisallowNull] DependencyObject element) =>
         (bool)element.GetValue(IsEmptyProperty);
 
+    [ExcludeFromCodeCoverage]
     public static void SetIsEmpty([DisallowNull] DependencyObject element, bool value) =>
         element.SetValue(IsEmptyProperty, value);
 
@@ -94,12 +106,14 @@ public partial class Control
 
     #endregion
 
-    
+
     #region Color Zone
 
+    [ExcludeFromCodeCoverage]
     public static Color GetColor([DisallowNull] DependencyObject element) =>
         (Color)element.GetValue(ColorProperty);
 
+    [ExcludeFromCodeCoverage]
     public static void SetColor([DisallowNull] DependencyObject element, Color value) =>
         element.SetValue(ColorProperty, value);
 

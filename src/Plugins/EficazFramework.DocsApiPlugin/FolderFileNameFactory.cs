@@ -1,12 +1,12 @@
-﻿using System;
+﻿using DefaultDocumentation;
+using DefaultDocumentation.Api;
+using DefaultDocumentation.Models;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using System.IO;
 using System.Linq;
 using System.Threading;
-using DefaultDocumentation;
-using DefaultDocumentation.Api;
-using DefaultDocumentation.Models;
 
 namespace EficazFramework.DocsApiPlugin
 {

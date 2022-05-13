@@ -1,6 +1,4 @@
-﻿using System.Diagnostics.CodeAnalysis;
-
-namespace EficazFramework.Collections;
+﻿namespace EficazFramework.Collections;
 
 public class SortDescription
 {

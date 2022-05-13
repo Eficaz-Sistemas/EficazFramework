@@ -1,15 +1,9 @@
-﻿using System;
+﻿using EficazFramework.Extensions;
 using System.Collections;
 using System.ComponentModel;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Input;
-using System.Windows.Media;
-using EficazFramework.Extensions;
 
 namespace EficazFramework.Controls;
 
@@ -128,7 +122,7 @@ public partial class AutoComplete : Primitives.InteractiveTextBox
 
         if (_PART_ProgreessBar.Visibility == Visibility.Collapsed)
             _PART_ProgreessBar.Visibility = Visibility.Visible;
-                
+
         if (DesignerProperties.GetIsInDesignMode(this) == false)
             StartFind();
     }
@@ -211,7 +205,7 @@ public partial class AutoComplete : Primitives.InteractiveTextBox
                 if (_passliteral == true)
                     if (f12pressed == false) literal = Text;
             });
-            
+
             System.Threading.CancellationToken tk = default;
             if (_cancellationTokenSource != null)
                 tk = _cancellationTokenSource.Token;
@@ -229,7 +223,7 @@ public partial class AutoComplete : Primitives.InteractiveTextBox
                 FindAction?.Invoke(this, args);
                 return true;
             });
-         
+
             // TODO: RaiseEvent for Find data...
             while (args.Completed == false)
                 await Task.Delay(1);
@@ -242,7 +236,7 @@ public partial class AutoComplete : Primitives.InteractiveTextBox
                 _PART_ListView.ItemsSource = (IEnumerable)args.Data;
                 _PART_ProgreessBar.Visibility = Visibility.Collapsed;
                 _executed = false;
-                });
+            });
             _executed = false;
         }
         catch (OperationCanceledException)

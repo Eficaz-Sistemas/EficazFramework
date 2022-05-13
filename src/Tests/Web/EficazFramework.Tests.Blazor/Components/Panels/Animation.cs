@@ -11,7 +11,7 @@ namespace EficazFramework.Components.Panels;
 [TestFixture]
 public class Animation : BunitTest
 {
-    [Test]  
+    [Test]
     public void AnimateOnRenderTest()
     {
         var comp = Context.RenderComponent<Tests.Blazor.Views.Pages.Components.Panels.Animation>();
@@ -27,7 +27,7 @@ public class Animation : BunitTest
         var comp = Context.RenderComponent<Tests.Blazor.Views.Pages.Components.Panels.Animation>();
         comp.Find("div.obj005")?.Attributes["style"]?.Value.Should().Be(string.Empty);
         var obj005 = comp.FindComponents<EficazFramework.Components.Animation>()[4];
-        obj005.Instance.Trigger.Should().Be( Enums.AnimationTrigger.Explicity);
+        obj005.Instance.Trigger.Should().Be(Enums.AnimationTrigger.Explicity);
         await comp.InvokeAsync(() => obj005.Instance.Animate());
         comp.Find("div.obj005")?.Attributes["style"]?.Value.Should().Contain("animation:fadeInRight 0.75s linear 0s normal");
 

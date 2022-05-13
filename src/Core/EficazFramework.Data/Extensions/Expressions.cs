@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Reflection;
@@ -32,7 +31,7 @@ public static class Expressions
     {
         var m = Expression.Property(expr1.Parameters[0], info);
         var b = Expression.Call(typeof(Enumerable), "Any", new Type[] { info.PropertyType.GenericTypeArguments[0] }, m, innerExpression);
-        return Expression.Lambda<Func<T, bool>>(b, expr1.Parameters[0]); 
+        return Expression.Lambda<Func<T, bool>>(b, expr1.Parameters[0]);
         // vapo...
         // Dim b = Expression.Call(anymethod, Expression.PropertyOrField(e, info.Name), innerExpression)
         // Return Expression.Lambda(Of Func(Of T, Boolean))(b, e) 'b

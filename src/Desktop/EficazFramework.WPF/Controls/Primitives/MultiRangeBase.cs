@@ -1,9 +1,6 @@
-﻿using System;
+﻿using Microsoft.VisualBasic.CompilerServices; // Install-Package Microsoft.VisualBasic
 using System.ComponentModel;
-using System.Windows;
-using System.Windows.Controls;
 using System.Windows.Threading;
-using Microsoft.VisualBasic.CompilerServices; // Install-Package Microsoft.VisualBasic
 
 namespace EficazFramework.Controls.Primitives;
 

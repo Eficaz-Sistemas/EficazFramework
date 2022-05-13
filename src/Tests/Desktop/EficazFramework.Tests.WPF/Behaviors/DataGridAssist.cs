@@ -1,29 +1,19 @@
-using NUnit.Framework;
-using FluentAssertions;
-using System.Threading.Tasks;
-using System.Windows.Controls;
-using System.Windows.Input;
-using System.Linq;
-using EficazFramework.XAML.Behaviors;
-using System.Windows;
-using System.Windows.Data;
-
 namespace EficazFramework.Tests.Behaviors;
 
 [Apartment(System.Threading.ApartmentState.STA)]
 public class DataGridAssist : EficazFramework.Tests.BaseTest
 {
-    
+
     //[Test]
     //public void NavigationTemplateTest()
     //{
 
     //    EficazFramework.XAML.Behaviors.DataGridAssist.GetEnterKeyNavigation(mock.DataGridInstance).Should().BeTrue();
     //    mock.DataGridInstance.Items.Count.Should().Be(mock.DataGridInstance.Items.Count);
-        
+
     //    mock.DataGridInstance.SelectAndFocusCell(0, mock.ItemsSource.Single(e => e.Name == "Blog 2"));
     //    mock.DataGridInstance.IsKeyboardFocusWithin.Should().BeTrue();
-        
+
     //    mock.ItemsSource.IndexOf((Resources.Mocks.Classes.Blog)mock.DataGridInstance.CurrentCell.Item).Should().Be(2);
     //    mock.DataGridInstance.CurrentCell.Item.Should().Be(mock.ItemsSource[2]);
     //    mock.DataGridInstance.CurrentCell.Column.DisplayIndex.Should().Be(0);

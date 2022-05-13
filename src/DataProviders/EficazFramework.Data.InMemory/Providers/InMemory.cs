@@ -1,11 +1,6 @@
 ﻿using EficazFramework.Configuration;
-using EficazFramework.Repositories.Services;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.Extensions.DependencyInjection;
-using System;
-using System.Diagnostics.CodeAnalysis;
-using System.Linq;
 
 namespace EficazFramework.Providers;
 

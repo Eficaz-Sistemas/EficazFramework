@@ -1,7 +1,4 @@
-﻿using System;
-using System.Globalization;
-
-#pragma warning disable CS8603 // Possível retorno de referência nula.
+﻿#pragma warning disable CS8603 // Possível retorno de referência nula.
 
 namespace EficazFramework.Converters;
 
@@ -59,7 +56,7 @@ public class NumberConverter<T> : MudBlazor.DefaultConverter<T>
                 return (T)(object)Convert.ToUInt64(Math.Round(double.Parse(value)), Culture);
             // float or Single
             else if (typeof(T) == typeof(float) || typeof(T) == typeof(float?) || typeof(T) == typeof(Single) || typeof(T) == typeof(Single?))
-                return DecimalPlaces != 0 ? (T)(object)Convert.ToSingle(Math.Round(double.Parse(value), DecimalPlaces), Culture) : 
+                return DecimalPlaces != 0 ? (T)(object)Convert.ToSingle(Math.Round(double.Parse(value), DecimalPlaces), Culture) :
                                             (T)(object)Convert.ToSingle(Math.Round(double.Parse(value)), Culture);
             // double
             else if (typeof(T) == typeof(double) || typeof(T) == typeof(double?))

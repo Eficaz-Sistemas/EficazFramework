@@ -1,8 +1,8 @@
-﻿using NUnit.Framework;
+﻿using FluentAssertions;
+using NUnit.Framework;
 using System;
-using System.Linq.Expressions;
-using FluentAssertions;
 using System.Collections.Generic;
+using System.Linq.Expressions;
 
 namespace EficazFramework.Extensions;
 
@@ -14,7 +14,7 @@ class Expressions
         // string representation
         Expression<Func<string, bool>> leftExpression = (str) => str == "I'm the left";
         leftExpression.Body.ToString().Should().Be("(str == \"I'm the left\")");
-        Expression <Func<string, bool>> rightExpression = (str) => str == "I'm the right";
+        Expression<Func<string, bool>> rightExpression = (str) => str == "I'm the right";
         var andExpression = leftExpression.And(rightExpression);
         andExpression.Body.ToString().Should().Be("((str == \"I'm the left\") And (str == \"I'm the right\"))");
 

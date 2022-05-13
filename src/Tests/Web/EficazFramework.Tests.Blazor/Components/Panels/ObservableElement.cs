@@ -11,7 +11,7 @@ namespace EficazFramework.Components.Panels;
 [TestFixture]
 public class ObservableElement : BunitTest
 {
-    [Test]  
+    [Test]
     public async Task ObserveTest()
     {
         var comp = Context.RenderComponent<Tests.Blazor.Views.Pages.Components.Panels.ObservableElement>();

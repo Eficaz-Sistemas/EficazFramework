@@ -1,13 +1,9 @@
-﻿using Microsoft.VisualStudio.DesignTools.Extensibility;
-using Microsoft.VisualStudio.DesignTools.Extensibility.Interaction;
+﻿using Microsoft.VisualStudio.DesignTools.Extensibility.Interaction;
 using Microsoft.VisualStudio.DesignTools.Extensibility.Metadata;
 using Microsoft.VisualStudio.DesignTools.Extensibility.Model;
 using Microsoft.VisualStudio.DesignTools.Extensibility.Services;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 
 namespace EficazFramework.designtools.PrimarySelectionAdorners

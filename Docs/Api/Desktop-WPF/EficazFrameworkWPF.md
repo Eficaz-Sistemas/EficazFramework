@@ -11,14 +11,6 @@
 | :--- | :--- |
 | [ModalAssist](EficazFramework.Behaviors/ModalAssist.md 'EficazFramework.Behaviors.ModalAssist') | |
 
-<a name='EficazFramework.Commands'></a>
-
-## EficazFramework.Commands Namespace
-
-| Classes | |
-| :--- | :--- |
-| [Window](EficazFramework.Commands/Window.md 'EficazFramework.Commands.Window') | |
-
 <a name='EficazFramework.Configuration'></a>
 
 ## EficazFramework.Configuration Namespace
@@ -66,7 +58,6 @@
 | Classes | |
 | :--- | :--- |
 | [Button](EficazFramework.Controls.AttachedProperties/Button.md 'EficazFramework.Controls.AttachedProperties.Button') | |
-| [ComboBox](EficazFramework.Controls.AttachedProperties/ComboBox.md 'EficazFramework.Controls.AttachedProperties.ComboBox') | |
 | [Control](EficazFramework.Controls.AttachedProperties/Control.md 'EficazFramework.Controls.AttachedProperties.Control') | |
 | [DataGrid](EficazFramework.Controls.AttachedProperties/DataGrid.md 'EficazFramework.Controls.AttachedProperties.DataGrid') | |
 | [Selector](EficazFramework.Controls.AttachedProperties/Selector.md 'EficazFramework.Controls.AttachedProperties.Selector') | |
@@ -112,6 +103,15 @@
 | Classes | |
 | :--- | :--- |
 | [ResourceExtension](EficazFramework.Extensions/ResourceExtension.md 'EficazFramework.Extensions.ResourceExtension') | |
+
+<a name='EficazFramework.Generators.XAML'></a>
+
+## EficazFramework.Generators.XAML Namespace
+
+| Classes | |
+| :--- | :--- |
+| [IconPackMemberAttribute](EficazFramework.Generators.XAML/IconPackMemberAttribute.md 'EficazFramework.Generators.XAML.IconPackMemberAttribute') | |
+| [IconSourceAttribute](EficazFramework.Generators.XAML/IconSourceAttribute.md 'EficazFramework.Generators.XAML.IconSourceAttribute') | |
 
 <a name='EficazFramework.Localization'></a>
 

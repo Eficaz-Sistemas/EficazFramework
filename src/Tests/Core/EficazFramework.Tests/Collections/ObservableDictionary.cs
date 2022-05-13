@@ -1,10 +1,7 @@
 ﻿using FluentAssertions;
 using NUnit.Framework;
 using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace EficazFramework.Collections;
 
@@ -29,7 +26,7 @@ public class ObservableDictionaryTests
         collection2.Add(3, "ghi");
     }
 
-    [Test, Order(2)]    
+    [Test, Order(2)]
     public void IterateWithin()
     {
         var internalDictionary = new Dictionary<int, string>

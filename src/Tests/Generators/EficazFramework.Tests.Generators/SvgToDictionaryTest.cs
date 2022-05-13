@@ -1,17 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿namespace EficazFramework.Tests.Generators;
 
-namespace EficazFramework.Tests.Generators;
-
-[TestFixture]
-public class SvgToDictionary : BaseTest<EficazFramework.Generators.Svg.SvgToDictionary>
+//[TestFixture]
+public class SvgToDictionary : BaseTest<EficazFramework.Generators.Svg.ModelBuilder>
 {
     public SvgToDictionary() : base(OutputKind.DynamicallyLinkedLibrary) { }
 
-    [Test]
+    //[Test]
     public void ImplementedClassTest()
     {
         var source = @"<?xml version=""1.0"" standalone=""no""?>;

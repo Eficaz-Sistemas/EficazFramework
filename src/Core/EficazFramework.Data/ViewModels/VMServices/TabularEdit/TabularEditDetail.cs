@@ -1,12 +1,10 @@
 ﻿using EficazFramework.Entities;
 using EficazFramework.Extensions;
-using EficazFramework.Repositories;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
 using System.Security.Policy;
-using System.Threading;
 
 namespace EficazFramework.ViewModels.Services;
 

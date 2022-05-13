@@ -4,7 +4,6 @@ using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Globalization;
-using System.Linq;
 using System.Reflection;
 
 namespace EficazFramework.Entities;
@@ -74,7 +73,7 @@ public abstract class EntityBase : IEntity, INotifyPropertyChanged, INotifyDataE
 
     private bool _isNew = false;
     [Attributes.UIEditor.EditorGeneration.IgnoreAttribute()]
-    public bool IsNew => _isNew;    
+    public bool IsNew => _isNew;
 
     private bool _selected;
     public bool IsSelected

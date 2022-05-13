@@ -1,6 +1,5 @@
 ﻿using FluentAssertions;
 using NUnit.Framework;
-using System;
 
 namespace EficazFramework.Extensions;
 
@@ -118,9 +117,9 @@ class Number
 
         double? number = null;
         number.ToSignificantDigits(5).Replace(System.Globalization.CultureInfo.CurrentCulture.NumberFormat.NumberDecimalSeparator, ".").Should().Be("0.00000");
-   
+
         4.53M.ToSignificantDigits(5).Replace(System.Globalization.CultureInfo.CurrentCulture.NumberFormat.NumberDecimalSeparator, ".").Should().Be("4.5300");
-        
+
         decimal? numberDec = null;
         numberDec.ToSignificantDigits(5).Replace(System.Globalization.CultureInfo.CurrentCulture.NumberFormat.NumberDecimalSeparator, ".").Should().Be("0.00000");
 

@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace EficazFramework.Icons;
+﻿namespace EficazFramework.Icons;
 public static class Utilities
 {
     //converts SVG element to base64 URI:

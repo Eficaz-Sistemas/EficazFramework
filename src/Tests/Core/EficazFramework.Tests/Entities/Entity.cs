@@ -1,8 +1,8 @@
-﻿using FluentAssertions;
+﻿using EficazFramework.Validation.Fluent.Rules;
+using FluentAssertions;
 using NUnit.Framework;
-using EficazFramework.Validation.Fluent.Rules;
-using System.ComponentModel.DataAnnotations;
 using System;
+using System.ComponentModel.DataAnnotations;
 
 namespace EficazFramework.Entities;
 

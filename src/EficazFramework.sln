@@ -67,7 +67,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "CodeGenerators", "CodeGener
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Generators", "Generators", "{6D40AE2F-A37E-4FFE-B3A1-EF932E7B3CB6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EficazFramework.Tests.Generators", "Tests\Generators\EficazFramework.Tests.Generators\EficazFramework.Tests.Generators.csproj", "{1B5C7F84-AEBC-4A23-BAE2-09A98F4519CD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EficazFramework.Tests.Generators", "Tests\Generators\EficazFramework.Tests.Generators\EficazFramework.Tests.Generators.csproj", "{1B5C7F84-AEBC-4A23-BAE2-09A98F4519CD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EficazFramework.Tests.Generators.Metadata", "Tests\Generators\EficazFramework.Tests.Generators.Metadata\EficazFramework.Tests.Generators.Metadata.csproj", "{6D37DC80-844D-493C-B470-49C4A5F7F024}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -178,6 +180,12 @@ Global
 		{1B5C7F84-AEBC-4A23-BAE2-09A98F4519CD}.Release|Any CPU.Build.0 = Release|Any CPU
 		{1B5C7F84-AEBC-4A23-BAE2-09A98F4519CD}.ReleaseDevOps|Any CPU.ActiveCfg = Release|Any CPU
 		{1B5C7F84-AEBC-4A23-BAE2-09A98F4519CD}.ReleaseDevOps|Any CPU.Build.0 = Release|Any CPU
+		{6D37DC80-844D-493C-B470-49C4A5F7F024}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6D37DC80-844D-493C-B470-49C4A5F7F024}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6D37DC80-844D-493C-B470-49C4A5F7F024}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6D37DC80-844D-493C-B470-49C4A5F7F024}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6D37DC80-844D-493C-B470-49C4A5F7F024}.ReleaseDevOps|Any CPU.ActiveCfg = Release|Any CPU
+		{6D37DC80-844D-493C-B470-49C4A5F7F024}.ReleaseDevOps|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -204,6 +212,7 @@ Global
 		{41F7C165-4152-487D-81DC-36ECD66DC5F1} = {C103CAB5-89D7-4F9A-8AED-3CF8BC3C0642}
 		{6D40AE2F-A37E-4FFE-B3A1-EF932E7B3CB6} = {72380FF4-05A9-40F5-8ABD-46B2A572F453}
 		{1B5C7F84-AEBC-4A23-BAE2-09A98F4519CD} = {6D40AE2F-A37E-4FFE-B3A1-EF932E7B3CB6}
+		{6D37DC80-844D-493C-B470-49C4A5F7F024} = {6D40AE2F-A37E-4FFE-B3A1-EF932E7B3CB6}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {727FB557-A5D6-456A-81CB-C45F2F95FCEB}

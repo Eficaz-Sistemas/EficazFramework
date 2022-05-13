@@ -24,7 +24,7 @@ public class ViewModel
         Setup();
         Vm.SectionID.Should().Be(0);
         Vm.Commands.Should().HaveCount(1);
-        Vm.Commands.ContainsKey("Get").Should().BeTrue();   
+        Vm.Commands.ContainsKey("Get").Should().BeTrue();
 
         Setup(1);
         Vm.SectionID.Should().Be(1);

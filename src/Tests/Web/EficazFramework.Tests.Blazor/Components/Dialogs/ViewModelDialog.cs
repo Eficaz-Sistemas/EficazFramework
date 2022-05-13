@@ -1,22 +1,17 @@
 ﻿#pragma warning disable BL0005 // Set parameter outside component
 #pragma warning disable CS4014 // Como esta chamada não é esperada, a execução do método atual continua antes de a chamada ser concluída
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using FluentAssertions;
 using Bunit;
-using NUnit.Framework;
 using EficazFramework.Tests;
-using Microsoft.AspNetCore.Components;
+using FluentAssertions;
+using NUnit.Framework;
+using System.Threading.Tasks;
 
 namespace EficazFramework.Components.Dialogs;
 [TestFixture]
 public class ViewModelDialog : BunitTest
 {
-    [Test]  
+    [Test]
     public async Task TestDialog()
     {
         var comp = Context.RenderComponent<Tests.Blazor.Views.Pages.Components.Dialogs.ViewModelDialog>();
@@ -31,7 +26,7 @@ public class ViewModelDialog : BunitTest
         {
             return true;
         });
-        
+
         var buttons = comp.FindAll("button");
         comp.Instance.ShowDialog();
         await Task.Delay(5000);

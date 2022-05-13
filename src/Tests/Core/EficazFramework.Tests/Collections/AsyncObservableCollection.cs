@@ -1,9 +1,7 @@
 ﻿using FluentAssertions;
 using NUnit.Framework;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 
 namespace EficazFramework.Collections;
 
@@ -12,11 +10,11 @@ public class AsyncObservableCollectionTests
     [Test, Order(1)]
     public void Constructor()
     {
-        var collection = new AsyncObservableCollection<string>(new List<string> { "abc", "def"});
+        var collection = new AsyncObservableCollection<string>(new List<string> { "abc", "def" });
         collection.Count().Should().Be(2);
     }
 
-    [Test, Order(2)]    
+    [Test, Order(2)]
     public void IterateWithin()
     {
         var collection = new AsyncObservableCollection<string>();

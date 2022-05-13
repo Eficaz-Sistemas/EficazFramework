@@ -1,7 +1,5 @@
-﻿using Microsoft.VisualStudio.DesignTools.Extensibility.Metadata;
-using Microsoft.VisualStudio.DesignTools.Extensibility.Features;
-using Microsoft.VisualStudio.DesignTools.Extensibility.Model;
-using System.ComponentModel;
+﻿using Microsoft.VisualStudio.DesignTools.Extensibility.Features;
+using Microsoft.VisualStudio.DesignTools.Extensibility.Metadata;
 
 [assembly: ProvideMetadata(typeof(Metadata))]
 

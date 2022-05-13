@@ -1,7 +1,5 @@
-﻿using EficazFramework.Extensions;
-using Microsoft.AspNetCore.Components;
+﻿using Microsoft.AspNetCore.Components;
 using Microsoft.JSInterop;
-using System.Threading.Tasks;
 
 namespace EficazFramework.Templates;
 
