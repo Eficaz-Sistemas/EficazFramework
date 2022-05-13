@@ -4,6 +4,7 @@
 global using FluentAssertions;
 global using NUnit.Framework;
 global using System;
+global using System.Collections.Generic;
 global using System.Text;
 global using System.Threading;
 global using System.Threading.Tasks;
@@ -39,8 +40,9 @@ namespace EficazFramework.Tests
                     Application = XamlTest.App.StartRemote<EficazFramework.Tests.WPF.Views.App>(logMessage: logMessage);
                     MainWindow = await Application.GetMainWindow() ?? throw new System.Exception("Fail on get Main Window");
                 }
-                catch
+                catch (Exception ex)
                 {
+                    sb.AppendLine(ex.Message);
                     Console.WriteLine(sb.ToString());
                     return;
                 }

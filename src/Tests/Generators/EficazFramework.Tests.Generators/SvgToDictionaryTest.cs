@@ -1,7 +1,7 @@
 ﻿namespace EficazFramework.Tests.Generators;
 
 //[TestFixture]
-public class SvgToDictionary : BaseTest<EficazFramework.Generators.Svg.SvgToDictionary>
+public class SvgToDictionary : BaseTest<EficazFramework.Generators.Svg.ModelBuilder>
 {
     public SvgToDictionary() : base(OutputKind.DynamicallyLinkedLibrary) { }
 

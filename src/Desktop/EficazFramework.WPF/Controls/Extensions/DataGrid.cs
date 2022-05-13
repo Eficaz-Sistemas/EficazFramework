@@ -45,7 +45,7 @@ public partial class DataGrid
 
     internal static void DataGrid_NavigationTemplate_PreviewKeyDown(object sender, KeyEventArgs e)
     {
-        var focused = Keyboard.FocusedElement;
+    var focused = Keyboard.FocusedElement;
         if (e.Key == Key.Enter | e.Key == Key.Tab)
         {
             DataGridCell cell = EficazFramework.XAML.Utilities.VisualTreeHelpers.FindAnchestor<DataGridCell>((DependencyObject)focused);

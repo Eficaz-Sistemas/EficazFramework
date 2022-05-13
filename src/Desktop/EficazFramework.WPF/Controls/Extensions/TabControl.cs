@@ -182,34 +182,6 @@ public partial class TabControl
     #endregion
 
 
-    #region Navigator Handlers
-
-    private static EficazFramework.Commands.CommandBase _expandCommand = new EficazFramework.Commands.CommandBase(ExpandCommand_Executed);
-
-    public static EficazFramework.Commands.CommandBase ExpandCommand => _expandCommand;
-
-    private static void ExpandCommand_Executed(object sender, EficazFramework.Events.ExecuteEventArgs e)
-    {
-        try
-        {
-            // If DesignerProperties.GetIsInDesignMode(sender) Then Exit Sub
-            if (e.Parameter is null)
-                return;
-
-            if (e.Parameter is not System.Windows.Controls.TabControl)
-                return;
-
-            SetIsExpanded((DependencyObject)e.Parameter, !GetIsExpanded((DependencyObject)e.Parameter));
-        }
-        catch (Exception exCommDesigner)
-        {
-            Debug.WriteLine(exCommDesigner.ToString());
-        }
-    }
-
-    #endregion
-
-
     #region IsExpanded
 
     [ExcludeFromCodeCoverage]

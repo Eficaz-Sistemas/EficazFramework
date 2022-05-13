@@ -3,7 +3,7 @@
 namespace EficazFramework.Generators.Svg;
 
 [Generator]
-public class SvgToDictionary : ISourceGenerator
+public class ModelBuilder : ISourceGenerator
 {
     void ISourceGenerator.Initialize(GeneratorInitializationContext context) { }
 
