@@ -1,6 +1,4 @@
-﻿using EficazFramework.Extensions;
-
-namespace EficazFramework.Generators.Svg;
+﻿namespace EficazFramework.Generators.Svg;
 
 [Generator]
 public class ModelBuilder : ISourceGenerator
