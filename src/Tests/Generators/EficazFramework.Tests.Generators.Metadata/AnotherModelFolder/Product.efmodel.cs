@@ -1,4 +1,4 @@
-﻿namespace EficazFramework.Tests.Generators.Metadata.AnotherModelFolder
+﻿namespace EficazFramework.Tests.Generators.Metadata.AnotherModelFolder;
 
 public partial class Product
 {

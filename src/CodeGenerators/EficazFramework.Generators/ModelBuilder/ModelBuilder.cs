@@ -25,11 +25,21 @@ public class ModelBuilder : ISourceGenerator
 
         if (!shouldGenerate)
             return;
+        else
+            context.AddSource($"MappingsLog.Providers.txt", "Any Data Provider was specified.");
+
+        if (context.AdditionalFiles.Count() <= 0)
+            context.AddSource($"MappingsLog.Files.txt", "Any AditionalFile is found in the project.");
+        else
+            context.AddSource($"MappingsLog.Files.txt", $"Files:{Environment.NewLine}{string.Join(Environment.NewLine, context.AdditionalFiles.Select(f => f.Path))}");
+
 
         // find anything that matches .efmodel
         var myFiles = context.AdditionalFiles.Where(at => at.Path.EndsWith(".efmodel"));
+        int counter = 0;
         foreach (var file in myFiles)
-        { 
+        {
+            counter += 1;
             Models.EfModel.ModelClass model = null;
             try
             {
@@ -41,31 +51,43 @@ public class ModelBuilder : ISourceGenerator
             }
             catch
             {
+                context.AddSource($"MappingsLog.EfModelLog.txt", "Can't read efmodel file.");
                 continue;
             }
             if (model is null)
+            {
+                context.AddSource($"MappingsLog.EfModelLog.txt", "Can't read efmodel file.");
                 continue;
+            }
 
-            StringBuilder code = new();
-            code.AppendLine("using EficazFramework.Entities;");
-            code.AppendLine("using EficazFramework.Extensions;");
-            code.AppendLine("using Microsoft.EntityFrameworkCore;");
-            code.AppendLine("using Microsoft.EntityFrameworkCore.Metadata.Builders;");
+            try
+            {
+                StringBuilder code = new();
+                code.AppendLine("using EficazFramework.Entities;");
+                code.AppendLine("using EficazFramework.Extensions;");
+                code.AppendLine("using Microsoft.EntityFrameworkCore;");
+                code.AppendLine("using Microsoft.EntityFrameworkCore.Metadata.Builders;");
 
-            code.AppendLine($"namespace {model.Namespace}");
-            code.AppendLine("{");
-            code.AppendLine($"    public partial class {model.Name}" + $"{(!string.IsNullOrEmpty(model.BaseClass) ? $" : {model.BaseClass}" : string.Empty)}");
-            code.AppendLine("    {");
-            code.AppendLine("        ");
-            
-            if (useSqlServer)
-                GenerateForMsSqlServer(code, model);
-            
-            code.AppendLine("    }");
-            code.AppendLine("}");
-                    
+                code.AppendLine($"namespace {model.Namespace}");
+                code.AppendLine("{");
+                code.AppendLine($"    public partial class {model.Name}" + $"{(!string.IsNullOrEmpty(model.BaseClass) ? $" : {model.BaseClass}" : string.Empty)}");
+                code.AppendLine("    {");
+                code.AppendLine("        ");
 
-            context.AddSource($"{model.Name}.Map.g.cs", code.ToString());
+                if (useSqlServer)
+                    GenerateForMsSqlServer(code, model);
+
+                code.AppendLine("    }");
+                code.AppendLine("}");
+
+
+                context.AddSource($"{model.Name}.Map.g.cs", code.ToString());
+            }
+            catch (Exception mainEx)
+            {
+                context.AddSource($"MappingsLog.File{counter}.txt", mainEx.ToString());
+            }
+
         }
     }
 
