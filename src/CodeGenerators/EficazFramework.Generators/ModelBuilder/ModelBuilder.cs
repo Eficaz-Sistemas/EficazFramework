@@ -5,12 +5,12 @@ public class ModelBuilder : ISourceGenerator
 {
     void ISourceGenerator.Initialize(GeneratorInitializationContext context) 
     {
-//#if DEBUG
-//        if (!Debugger.IsAttached)
-//        {
-//            Debugger.Launch();
-//        }
-//#endif         
+#if DEBUG
+        if (!Debugger.IsAttached)
+        {
+            Debugger.Launch();
+        }
+#endif         
     }
 
     void ISourceGenerator.Execute(GeneratorExecutionContext context)
