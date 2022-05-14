@@ -1,6 +1,6 @@
 ﻿using System.Text.RegularExpressions;
 
-namespace EficazFramework.Extensions;
+namespace EficazFramework.Generators.Extensions;
 
 public static class TextExtensions
 {
