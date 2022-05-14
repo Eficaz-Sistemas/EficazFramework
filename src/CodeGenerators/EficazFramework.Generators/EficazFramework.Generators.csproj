@@ -5,6 +5,7 @@
 	<LangVersion>latest</LangVersion>
 	<IsRoslynComponent>true</IsRoslynComponent>
 	<GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+	<IncludeBuildOutput>false</IncludeBuildOutput>
 	<AssemblyVersion>6.0.0.0</AssemblyVersion>
 	<FileVersion>6.0.0.0</FileVersion>
 	<NeutralLanguage>pt-BR</NeutralLanguage>
@@ -15,7 +16,7 @@
 	<Copyright>Copyright ©  2022. Eficaz Sistemas de Gestão e Inteligência Tributária Ltda.</Copyright>
 	<Description>Roslyn code generators for EficazFramework.</Description>
 	<Company>Eficaz Sistemas de Gestão e Inteligência Tributária</Company>
-	<Version>6.0.0-preview004-fix001</Version>
+	<Version>6.0.0-preview004-fix002</Version>
 	<SignAssembly>True</SignAssembly>
 	<AssemblyOriginatorKeyFile>EfCore.snk</AssemblyOriginatorKeyFile>
   </PropertyGroup>
@@ -35,4 +36,10 @@
     <PackageReference Include="Microsoft.CodeAnalysis.CSharp" Version="4.1.0" />
     <PackageReference Include="Microsoft.CodeAnalysis.CSharp.Workspaces" Version="4.1.0" />
   </ItemGroup>
+
+  <ItemGroup>
+  	<!-- Package the generator in the analyzer directory of the nuget package -->
+  	<None Include="$(OutputPath)\$(AssemblyName).dll" Pack="true" PackagePath="analyzers/dotnet/cs" Visible="false" />
+  </ItemGroup>
+	
 </Project>
