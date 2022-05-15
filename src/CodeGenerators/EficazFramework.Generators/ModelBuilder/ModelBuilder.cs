@@ -5,12 +5,12 @@ public class ModelBuilder : ISourceGenerator
 {
     void ISourceGenerator.Initialize(GeneratorInitializationContext context) 
     {
-#if DEBUG
-        if (!Debugger.IsAttached)
-        {
-            Debugger.Launch();
-        }
-#endif         
+//#if DEBUG
+//        if (!Debugger.IsAttached)
+//        {
+//            Debugger.Launch();
+//        }
+//#endif         
     }
 
     void ISourceGenerator.Execute(GeneratorExecutionContext context)
@@ -133,6 +133,7 @@ public class ModelBuilder : ISourceGenerator
             if ((!string.IsNullOrEmpty(prop.DefaultValue)) & prop.ComputedValue == true)
                 builder.Append($".HasComputedColumnSql(\"{prop.DefaultValue}\")");
 
+            builder.Append(";");
             string result = builder.ToString();
             builder = null;
             if (!string.IsNullOrEmpty(result))
