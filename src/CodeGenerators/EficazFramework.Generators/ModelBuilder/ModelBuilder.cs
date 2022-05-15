@@ -24,13 +24,13 @@ public class ModelBuilder : ISourceGenerator
         bool shouldGenerate = useSqlServer || useMySql || usePostgreSql || useOracleSql || useSqlite || useInMemory;
 
         if (!shouldGenerate)
-            return;
-        else
+        {
             context.ReportDiagnostic(Diagnostic.Create(new DiagnosticDescriptor("EfMB001", "No data providers available", "Any EficazFramework.Data provider is referenced by the project.", "EficazFramework Model Builder", DiagnosticSeverity.Warning, true), Location.None));
+            return;
+        }
 
         if (context.AdditionalFiles.Count() <= 0)
             context.ReportDiagnostic(Diagnostic.Create(new DiagnosticDescriptor("EfMB002", "No additional files.", "Any AdditionalFiles is found on the project.", "EficazFramework Model Builder", DiagnosticSeverity.Warning, true), Location.None));
-
         
         // find anything that matches .efmodel
         var myFiles = context.AdditionalFiles.Where(at => at.Path.EndsWith(".efmodel"));
@@ -93,16 +93,18 @@ public class ModelBuilder : ISourceGenerator
     {
         code.AppendLine("        #region Ms SQL Server Entity Mapping");
         code.AppendLine("        ");
-        code.AppendLine($"        public EntityTypeBuilder<{model.Name}> MapForMsSqlServer(EntityTypeBuilder<{model.Name}> builder. string overrideTableSchema)");
+        code.AppendLine($"        public EntityTypeBuilder<{model.Name}> MapForMsSqlServer(EntityTypeBuilder<{model.Name}> builder, string overrideTableSchema)");
         code.AppendLine("        {");
         
         code.AppendLine("            // Table Mapping");
         code.AppendLine($"            builder.ToTable(\"{model.TableName}\"{(!string.IsNullOrEmpty(model.TableSchema) ? $", {model.TableSchema}" : string.Empty)});");
 
-        code.AppendLine("            // Primary Keys");
         var pks = model.Properties.Where(f => f.Key == true).Select(f => string.Format("e.{0}", f.Name)).ToArray();
         if (pks.Count() > 0)
+        {
+            code.AppendLine("            // Primary Keys");
             code.AppendLine($"            builder.HasKey(pk => new {{ {string.Join(",", pks)} }});");
+        }
 
         code.AppendLine("            // Column Mapping");
         foreach (var prop in model.Properties.Where(f => f.NotMap == false && (f.IsRequired | f.IsReadOnly | f.Ignore | (!string.IsNullOrEmpty(f.DefaultValue)) | f.Lenght.HasValue | f.Identity | (!string.IsNullOrEmpty(f.ValueGenerated)))).ToList())
@@ -112,7 +114,7 @@ public class ModelBuilder : ISourceGenerator
                 code.AppendLine($"            builder.Ignore(e => e.{prop.Name});");
                 continue;
             }
-            System.Text.StringBuilder builder = new System.Text.StringBuilder();
+            System.Text.StringBuilder builder = new();
             builder.Append($"            entry.Property((e) => e.{prop.Name})");
 
             if (prop.Key & (!string.IsNullOrEmpty(prop.ValueGenerated)))
@@ -141,8 +143,11 @@ public class ModelBuilder : ISourceGenerator
         }
         code.AppendLine($"            EntityMappingConfigurator.MapBaseClassProperties(builder);");
 
-        code.AppendLine("            // RelationShips");
-        GenerateRelationShips(code, model);
+        if (model.Relationships.Count > 0)
+        {
+            code.AppendLine("            // Relationships");
+            GenerateRelationShips(code, model);
+        }
 
         code.AppendLine("            ");
         code.AppendLine("            return builder;");
@@ -164,7 +169,7 @@ public class ModelBuilder : ISourceGenerator
             string[] righfkprops = (rel.RightFkExpression ?? "").Replace(" ", "").Split(';').Where(p => !string.IsNullOrEmpty(p)).ToArray();
             string[] leftfkprops = (rel.LeftFkExpression ?? "").Replace(" ", "").Split(';').Where(p => !string.IsNullOrEmpty(p)).ToArray();
 
-            System.Text.StringBuilder builder = new System.Text.StringBuilder();
+            System.Text.StringBuilder builder = new();
             builder.Append("builder");
             builder.Append($".{rel.Left}((left) => ");
 
