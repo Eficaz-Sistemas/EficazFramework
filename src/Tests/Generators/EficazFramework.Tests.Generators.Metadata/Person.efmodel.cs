@@ -1,11 +1,9 @@
-﻿namespace EficazFramework.Tests.Generators.Metadata
+﻿namespace EficazFramework.Tests.Generators.Metadata;
+
+public partial class Person
 {
 
-    public partial class Person
-    {
-
-        //Dev Team custom code goes here:
-
-    }
+    //Dev Team custom code goes here:
 
 }
+

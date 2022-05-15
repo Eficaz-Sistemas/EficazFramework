@@ -68,7 +68,7 @@ public class ModelBuilder : ISourceGenerator
 
                 code.AppendLine($"namespace {model.Namespace}");
                 code.AppendLine("{");
-                code.AppendLine($"    public partial class {model.Name}");
+                code.AppendLine($"    public static class {model.Name}Builder");
                 code.AppendLine("    {");
                 code.AppendLine("        ");
 
@@ -93,7 +93,7 @@ public class ModelBuilder : ISourceGenerator
     {
         code.AppendLine("        #region Ms SQL Server Entity Mapping");
         code.AppendLine("        ");
-        code.AppendLine($"        public EntityTypeBuilder<{model.Name}> MapForMsSqlServer(EntityTypeBuilder<{model.Name}> builder, string overrideTableSchema)");
+        code.AppendLine($"        public static EntityTypeBuilder<{model.Name}> MapForMsSqlServer(EntityTypeBuilder<{model.Name}> builder, string overrideTableSchema)");
         code.AppendLine("        {");
         
         code.AppendLine("            // Table Mapping");
@@ -149,7 +149,7 @@ public class ModelBuilder : ISourceGenerator
             GenerateRelationShips(code, model);
         }
 
-        code.AppendLine("            ");
+        code.AppendLine("            // Finish");
         code.AppendLine("            return builder;");
         code.AppendLine("        }");
         code.AppendLine("        ");

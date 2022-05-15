@@ -68,7 +68,7 @@
         </ModelProperty>
         <ModelProperty>
             <Key>false</Key>
-            <Name>Instancee</Name>
+            <Name>Instance</Name>
             <DataType>System.Object</DataType>
             <Lenght xsi:nil="true" />
             <IsRequired>false</IsRequired>
