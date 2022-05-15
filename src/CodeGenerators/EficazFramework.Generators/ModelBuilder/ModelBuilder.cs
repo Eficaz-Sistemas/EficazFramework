@@ -115,7 +115,7 @@ public class ModelBuilder : ISourceGenerator
                 continue;
             }
             System.Text.StringBuilder builder = new();
-            builder.Append($"            entry.Property(e => e.{prop.Name})");
+            builder.Append($"            builder.Property(e => e.{prop.Name})");
 
             if (prop.Key & (!string.IsNullOrEmpty(prop.ValueGenerated)))
                 builder.Append($".ValueGenerated{prop.ValueGenerated}()");
