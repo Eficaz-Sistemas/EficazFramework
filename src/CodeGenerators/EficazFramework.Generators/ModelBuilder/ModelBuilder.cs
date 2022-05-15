@@ -97,9 +97,9 @@ public class ModelBuilder : ISourceGenerator
         code.AppendLine("        {");
         
         code.AppendLine("            // Table Mapping");
-        code.AppendLine($"            builder.ToTable(\"{model.TableName}\"{(!string.IsNullOrEmpty(model.TableSchema) ? $", {model.TableSchema}" : string.Empty)});");
+        code.AppendLine($"            builder.ToTable(\"{model.TableName}\"{(!string.IsNullOrEmpty(model.TableSchema) ? $", \"{model.TableSchema}\"" : string.Empty)});");
 
-        var pks = model.Properties.Where(f => f.Key == true).Select(f => string.Format("e.{0}", f.Name)).ToArray();
+        var pks = model.Properties.Where(f => f.Key == true).Select(f => string.Format("pk.{0}", f.Name)).ToArray();
         if (pks.Count() > 0)
         {
             code.AppendLine("            // Primary Keys");
@@ -115,7 +115,7 @@ public class ModelBuilder : ISourceGenerator
                 continue;
             }
             System.Text.StringBuilder builder = new();
-            builder.Append($"            entry.Property((e) => e.{prop.Name})");
+            builder.Append($"            entry.Property(e => e.{prop.Name})");
 
             if (prop.Key & (!string.IsNullOrEmpty(prop.ValueGenerated)))
                 builder.Append($".ValueGenerated{prop.ValueGenerated}()");
@@ -171,7 +171,7 @@ public class ModelBuilder : ISourceGenerator
 
             System.Text.StringBuilder builder = new();
             builder.Append("builder");
-            builder.Append($".{rel.Left}((left) => ");
+            builder.Append($".{rel.Left}(left => ");
 
             if (leftprops.Count() > 1)
                 builder.Append("new {");
@@ -190,9 +190,9 @@ public class ModelBuilder : ISourceGenerator
                 else
                 {
                     if (righprops.Count() > 1)
-                        builder.Append("((right) => new {");
+                        builder.Append("(right => new {");
                     else
-                        builder.Append("((right) => ");
+                        builder.Append("(right => ");
                     builder.Append(string.Join(", ", righprops.Select(right => $"right.{right}").ToList()));
                 }
                 if (righprops.Count() > 1)
@@ -208,7 +208,7 @@ public class ModelBuilder : ISourceGenerator
                 if (rel.Left == "HasOne" && rel.Right == "WithOne" && string.IsNullOrEmpty(rel.RightExpression))
                     builder.Append($"<{model.Properties.Where(f => f.Name == rel.LeftExpression).Select(f => f.DataType).FirstOrDefault()}>");
 
-                builder.Append("((pk) => ");
+                builder.Append("(pk => ");
                 if (leftfkprops.Count() > 1)
                     builder.Append("new {");
 
@@ -224,7 +224,7 @@ public class ModelBuilder : ISourceGenerator
                 if (rel.Left == "HasOne" && rel.Right == "WithOne" && string.IsNullOrEmpty(rel.RightExpression))
                     builder.Append($"<{model.Name}>");
 
-                builder.Append("((fk) => ");
+                builder.Append("(fk => ");
                 if (righfkprops.Count() > 1)
                     builder.Append("new {");
 
