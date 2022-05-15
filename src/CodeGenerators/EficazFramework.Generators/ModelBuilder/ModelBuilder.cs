@@ -233,6 +233,7 @@ public class ModelBuilder : ISourceGenerator
             if (rel.DeleteBehavior != "NoAction")
                 builder.Append($".OnDelete(DeleteBehavior.{rel.DeleteBehavior})");
 
+            builder.Append(";");
             string resultstr = builder.ToString();
             builder = null;
 
