@@ -15,25 +15,23 @@ public class ModelBuilder : ISourceGenerator
 
     void ISourceGenerator.Execute(GeneratorExecutionContext context)
     {
-        bool useSqlServer = context.Compilation.References.Any(r => r.Display == "EficazFramework.Data.MsSqlServer");
-        bool useMySql = context.Compilation.References.Any(r => r.Display == "EficazFramework.Data.MySql");
-        bool usePostgreSql = context.Compilation.References.Any(r => r.Display == "EficazFramework.Data.PostgreSql");
-        bool useOracleSql = context.Compilation.References.Any(r => r.Display == "EficazFramework.Data.OracleSql");
-        bool useSqlite = context.Compilation.References.Any(r => r.Display == "EficazFramework.Data.SqlLite");
-        bool useInMemory = context.Compilation.References.Any(r => r.Display == "EficazFramework.Data.InMemory");
+        bool useSqlServer = context.Compilation.References.Any(r => (r.Display ?? "").Contains("EficazFramework.Data.MsSqlServer"));
+        bool useMySql = context.Compilation.References.Any(r => (r.Display ?? "").Contains("EficazFramework.Data.MySql"));
+        bool usePostgreSql = context.Compilation.References.Any(r => (r.Display ?? "").Contains("EficazFramework.Data.PostgreSql"));
+        bool useOracleSql = context.Compilation.References.Any(r => (r.Display ?? "").Contains("EficazFramework.Data.OracleSql"));
+        bool useSqlite = context.Compilation.References.Any(r => (r.Display ?? "").Contains("EficazFramework.Data.SqlLite"));
+        bool useInMemory = context.Compilation.References.Any(r => (r.Display ?? "").Contains("EficazFramework.Data.InMemory"));
         bool shouldGenerate = useSqlServer || useMySql || usePostgreSql || useOracleSql || useSqlite || useInMemory;
 
         if (!shouldGenerate)
             return;
         else
-            context.AddSource($"MappingsLog.Providers.txt", "Any Data Provider was specified.");
+            context.ReportDiagnostic(Diagnostic.Create(new DiagnosticDescriptor("EfMB001", "No data providers available", "Any EficazFramework.Data provider is referenced by the project.", "EficazFramework Model Builder", DiagnosticSeverity.Warning, true), Location.None));
 
         if (context.AdditionalFiles.Count() <= 0)
-            context.AddSource($"MappingsLog.Files.txt", "Any AditionalFile is found in the project.");
-        else
-            context.AddSource($"MappingsLog.Files.txt", $"Files:{Environment.NewLine}{string.Join(Environment.NewLine, context.AdditionalFiles.Select(f => f.Path))}");
+            context.ReportDiagnostic(Diagnostic.Create(new DiagnosticDescriptor("EfMB002", "No additional files.", "Any AdditionalFiles is found on the project.", "EficazFramework Model Builder", DiagnosticSeverity.Warning, true), Location.None));
 
-
+        
         // find anything that matches .efmodel
         var myFiles = context.AdditionalFiles.Where(at => at.Path.EndsWith(".efmodel"));
         int counter = 0;
@@ -51,12 +49,12 @@ public class ModelBuilder : ISourceGenerator
             }
             catch
             {
-                context.AddSource($"MappingsLog.EfModelLog.txt", "Can't read efmodel file.");
+                context.ReportDiagnostic(Diagnostic.Create(new DiagnosticDescriptor("EfMB003", "Invalid efmodel", "Can't read efmodel file.", "EficazFramework Model Builder", DiagnosticSeverity.Error, true), Location.None));
                 continue;
             }
             if (model is null)
             {
-                context.AddSource($"MappingsLog.EfModelLog.txt", "Can't read efmodel file.");
+                context.ReportDiagnostic(Diagnostic.Create(new DiagnosticDescriptor("EfMB003", "Invalid efmodel", "Can't read efmodel file.", "EficazFramework Model Builder", DiagnosticSeverity.Error, true), Location.None));
                 continue;
             }
 
@@ -85,7 +83,7 @@ public class ModelBuilder : ISourceGenerator
             }
             catch (Exception mainEx)
             {
-                context.AddSource($"MappingsLog.File{counter}.txt", mainEx.ToString());
+                context.ReportDiagnostic(Diagnostic.Create(new DiagnosticDescriptor("EfMB003", "Model Builder Exception", mainEx.ToString(), "EficazFramework Model Builder", DiagnosticSeverity.Error, true), Location.None));
             }
 
         }
