@@ -68,7 +68,7 @@ public class ModelBuilder : ISourceGenerator
 
                 code.AppendLine($"namespace {model.Namespace}");
                 code.AppendLine("{");
-                code.AppendLine($"    public partial class {model.Name}" + $"{(!string.IsNullOrEmpty(model.BaseClass) ? $" : {model.BaseClass}" : string.Empty)}");
+                code.AppendLine($"    public partial class {model.Name}");
                 code.AppendLine("    {");
                 code.AppendLine("        ");
 
