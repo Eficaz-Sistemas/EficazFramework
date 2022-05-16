@@ -26,6 +26,8 @@ public class ServiceConfiguration
         },
         PaletteDark = new MudBlazor.Palette()
         {
+            TextDisabled = "#404040ff",
+
             PrimaryDarken = "#00172b",
             Primary = "#0060ad",
             PrimaryLighten = "#008dff",
@@ -49,23 +51,25 @@ public class ServiceConfiguration
 
             AppbarText = "#c8c8d7",
             AppbarBackground = "#00223a",
+
+            DrawerIcon = "#c8c8d7",
+            DrawerText = "#c8c8d7",
             DrawerBackground = "#002844",
             
-            ActionDefault = "#74718e",
+            ActionDefault = "#fff",
             ActionDisabled = "#99994d99",
             ActionDisabledBackground = "#808080ff",
-            TextDisabled = "#404040ff",
             
-            DrawerIcon = "#92929f",
-            DrawerText = "#92929f",
+            LinesDefault = "#163c56",
+            TableLines = "#163c56",
+
+
             GrayLight = "#2a2833",
             GrayLighter = "#1e1e2d",
             Info = "#4a86ff",
             Success = "#3dcb6c",
             Warning = "#ffb545",
             Error = "#ff3f5f",
-            LinesDefault = "#33323e",
-            TableLines = "#33323e",
             Divider = "#292838",
             OverlayLight = "#1e1e2d80"
         },

@@ -25,3 +25,11 @@
     overflow: hidden;
     text-overflow: ellipsis;
 }
+
+.mud-nav-link {
+    font-weight: 500;
+}
+
+.mud-nav-group > .mud-nav-link > .mud-nav-link-text {
+    font-weight: 600;
+}
