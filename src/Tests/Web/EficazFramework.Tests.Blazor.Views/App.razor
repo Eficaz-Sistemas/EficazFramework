@@ -1,6 +1,6 @@
 ﻿@inject EficazFramework.Services.IThemeProvider themeProvider
 
-<MudBlazor.MudThemeProvider Theme=@themeProvider.Theme/>
+<MudBlazor.MudThemeProvider Theme=themeProvider.Theme IsDarkMode="themeProvider.IsDarkMode"/>
 <MudBlazor.MudDialogProvider/>
 <MudBlazor.MudSnackbarProvider/>
 

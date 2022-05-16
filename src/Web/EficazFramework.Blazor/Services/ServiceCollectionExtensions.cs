@@ -18,7 +18,7 @@ public static class ServiceCollectionExtensions
             options.Invoke(config);
         }
 
-        serviceCollection.AddThemeProvider(config.Theme)
+        serviceCollection.AddThemeProvider(config.Theme, config.ThemeIsDarkMode)
                          .AddMudServices(config.MudBlazorConfigurations);
 
         if (config.UseApplicationManager)
@@ -32,9 +32,9 @@ public static class ServiceCollectionExtensions
         return serviceCollection.AddScoped<EficazFramework.Application.IApplicationManager>(builder => Application.IApplicationManager.Create());
     }
 
-    private static IServiceCollection AddThemeProvider(this IServiceCollection serviceCollection, MudBlazor.MudTheme theme)
+    private static IServiceCollection AddThemeProvider(this IServiceCollection serviceCollection, MudBlazor.MudTheme theme, bool darkMode)
     {
-        return serviceCollection.AddScoped<IThemeProvider>(x => new ThemeProvider(theme));
+        return serviceCollection.AddScoped<IThemeProvider>(x => new ThemeProvider(theme) { IsDarkMode = darkMode });
     }
 
 

@@ -3,6 +3,7 @@
 public interface IThemeProvider
 {
     public MudBlazor.MudTheme Theme { get; set; }
+    public bool IsDarkMode { get; set; }
 }
 
 internal class ThemeProvider : IThemeProvider
@@ -13,4 +14,6 @@ internal class ThemeProvider : IThemeProvider
     }
 
     public MudBlazor.MudTheme Theme { get; set; }
+    public bool IsDarkMode { get; set; } = false;
+
 }
