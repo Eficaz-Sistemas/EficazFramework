@@ -69,7 +69,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Generators", "Generators", 
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EficazFramework.Tests.Generators", "Tests\Generators\EficazFramework.Tests.Generators\EficazFramework.Tests.Generators.csproj", "{1B5C7F84-AEBC-4A23-BAE2-09A98F4519CD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EficazFramework.Tests.Generators.Metadata", "Tests\Generators\EficazFramework.Tests.Generators.Metadata\EficazFramework.Tests.Generators.Metadata.csproj", "{6D37DC80-844D-493C-B470-49C4A5F7F024}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EficazFramework.Tests.Generators.Metadata", "Tests\Generators\EficazFramework.Tests.Generators.Metadata\EficazFramework.Tests.Generators.Metadata.csproj", "{6D37DC80-844D-493C-B470-49C4A5F7F024}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

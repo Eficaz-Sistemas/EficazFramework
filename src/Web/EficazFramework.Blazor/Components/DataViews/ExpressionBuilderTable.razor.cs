@@ -2,19 +2,18 @@
 using EficazFramework.Extensions;
 using Microsoft.AspNetCore.Components;
 
-namespace EficazFramework.Components;
+namespace EficazFramework.Components.Primitives;
 
-public partial class ExpressionBuilder : ComponentBase
+public partial class ExpressionBuilderTable : EficazFramework.Components.ComponentBase
 {
     // in Memory of Laudo Ferreira da Silva and Francisco Luis de Sousa
     // † 2020
 
-    protected string HostClassNames =>
-        new MudBlazor.Utilities.CssBuilder(Class)
-        .Build();
+    private readonly OperatorConverter converter = new();
 
-    [Parameter] public int Elevation { get; set; } = 0;
+    private System.Threading.CancellationTokenSource _cancellationTokenSource;
 
+    
     private EficazFramework.Expressions.ExpressionBuilder vm;
     [Parameter]
     public EficazFramework.Expressions.ExpressionBuilder ViewModel
@@ -29,9 +28,6 @@ public partial class ExpressionBuilder : ComponentBase
         }
     }
 
-    [Parameter] public bool IsExpanded { get; set; } = true;
-
-    [Parameter] public string Header { get; set; } = EficazFramework.Resources.Strings.Components.ExpressionBuilder_Header;
 
     [Parameter] public Action SearchAction { get; set; }
 
@@ -82,6 +78,38 @@ public partial class ExpressionBuilder : ComponentBase
         StateHasChanged();
     }
 
+    private async Task<IEnumerable<object>> OnAutoCompleteSearch(string literal, string tag)
+    {
+        if (_cancellationTokenSource != null)
+            _cancellationTokenSource.Cancel();
+        _cancellationTokenSource = new System.Threading.CancellationTokenSource();
+
+        System.Threading.CancellationToken tk = default;
+        if (_cancellationTokenSource != null)
+            tk = _cancellationTokenSource.Token;
+
+        var args = new FindRequestEventArgs(literal, default) { Tag = tag };
+
+        if (_cancellationTokenSource != null)
+        {
+            if (_cancellationTokenSource.Token.IsCancellationRequested == true)
+                _cancellationTokenSource.Token.ThrowIfCancellationRequested();
+        }
+
+        SearchColumnFindRequest?.Invoke(this, args);
+        while (args.Completed == false)
+            await Task.Delay(1);
+
+
+        if (_cancellationTokenSource != null)
+        {
+            if (_cancellationTokenSource.Token.IsCancellationRequested == true)
+                _cancellationTokenSource.Token.ThrowIfCancellationRequested();
+        }
+
+        return (IEnumerable<object>)args.Data;
+    }
+
     void SetupInstance(bool set_vm, bool set_isreadonly, bool set_collectionEdit)
     {
         //bool stateChanged = false;
@@ -110,5 +138,31 @@ public partial class ExpressionBuilder : ComponentBase
         StateHasChanged();
     }
 
+}
 
+internal class OperatorConverter : MudBlazor.DefaultConverter<EficazFramework.Enums.CompareMethod>
+{
+    internal OperatorConverter()
+    {
+        SetFunc = (e) => e.GetLocalizedDescription(typeof(EficazFramework.Resources.Strings.DataDescriptions));
+    }
+}
+
+internal class StringObjConverter : MudBlazor.Converter<object>
+{
+    internal StringObjConverter()
+    {
+
+        SetFunc = (e) =>
+        {
+            if (e == null)
+                return null;
+            return e.ToString();
+        };
+
+        GetFunc = (e) =>
+        {
+            return (object)e;
+        };
+    }
 }
