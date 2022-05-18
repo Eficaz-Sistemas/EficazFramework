@@ -1,0 +1,27 @@
+﻿@page "/Components/Panels/Mdi"
+
+<div class="d-flex flex-grow-1">
+    <MdiHost>
+         <MdiWindow Title="App#01" Size="(new System.Drawing.Size(250,250))">
+             <GroupPanel Title="Form#01">
+                    <MudTextField Label="some field" T="string" Text="some text..." />
+             </GroupPanel>
+            <GroupPanel Title="Form#02">
+                    <MudTextField Label="some field" T="string" Text="another text..." Class="mt-1" />
+             </GroupPanel>
+         </MdiWindow>
+
+         <MdiWindow Title="App#02" Size="(new System.Drawing.Size(250,250))">
+            <GroupPanel Title="Form#01">
+                  <MudText>Hello world!</MudText>
+             </GroupPanel>
+       </MdiWindow>
+    </MdiHost>
+    <GroupPanel Title="Playground">
+        <MudToolBar>
+            <MudTooltip Text="Start new App">
+                <MudFab Color="Color.Primary" Icon="@MudBlazor.Icons.Filled.Add" />
+            </MudTooltip>
+        </MudToolBar>
+    </GroupPanel>
+</div>

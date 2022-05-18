@@ -2,7 +2,9 @@
 @inherits MudBlazor.MudBaseItemsControl<EficazFramework.Components.NavigatorPage>
 
 <CascadingValue Value="this">
-    @HeaderContent
-    @ChildContent
-    @FooterContent
+    <div class="@Class" style="@Style">
+        @HeaderContent
+        @ChildContent
+        @FooterContent
+    </div>
 </CascadingValue>

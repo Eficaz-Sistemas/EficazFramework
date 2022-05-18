@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Components;
 
 namespace EficazFramework.Components.Primitives;
 
-public partial class ExpressionBuilderTable : EficazFramework.Components.ComponentBase
+public partial class ExpressionBuilderTable : MudBlazor.MudComponentBase
 {
     // in Memory of Laudo Ferreira da Silva and Francisco Luis de Sousa
     // † 2020

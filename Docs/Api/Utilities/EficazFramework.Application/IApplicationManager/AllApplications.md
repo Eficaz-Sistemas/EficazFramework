@@ -3,7 +3,7 @@
 
 ## IApplicationManager.AllApplications Property
 
-Cache de aplicativos em execução
+Listagem de aplicações disponíveis para trabalho (pode ser utilizada como menu principal)
 
 ```csharp
 System.Collections.ObjectModel.ObservableCollection<EficazFramework.Application.ApplicationDefinition> AllApplications { get; }

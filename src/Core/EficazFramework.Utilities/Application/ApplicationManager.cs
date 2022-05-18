@@ -29,7 +29,7 @@ public interface IApplicationManager
     public ISectionManager SectionManager { get; }
 
     /// <summary>
-    /// Cache de aplicativos em execução
+    /// Listagem de aplicações disponíveis para trabalho (pode ser utilizada como menu principal)
     /// </summary>
     public ObservableCollection<ApplicationDefinition> AllApplications { get; }
 

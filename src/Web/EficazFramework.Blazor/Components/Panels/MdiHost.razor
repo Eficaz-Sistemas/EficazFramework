@@ -1,0 +1,10 @@
+﻿@using Microsoft.AspNetCore.Components.Web
+@using EficazFramework.Application
+@namespace EficazFramework.Components
+@inherits MudBlazor.MudBaseItemsControl<MdiWindow>
+
+<CascadingValue Value="this">
+    <div class="@Classname" style="@StyleName">
+        @ChildContent
+    </div>
+</CascadingValue>

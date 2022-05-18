@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Components;
 
 namespace EficazFramework.Components;
 
-public partial class ExpressionBuilder : ComponentBase
+public partial class ExpressionBuilder : MudBlazor.MudComponentBase
 {
     // in Memory of Laudo Ferreira da Silva and Francisco Luis de Sousa
     // † 2020

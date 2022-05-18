@@ -5,7 +5,7 @@ using MudBlazor.Utilities;
 
 namespace EficazFramework.Components;
 
-public partial class ObservableElement : ComponentBase, IDisposable
+public partial class ObservableElement : MudBlazor.MudComponentBase, IDisposable
 {
     [Inject] public IJSRuntime JSRuntime { get; set; }
     [Parameter] public RenderFragment ChildContent { get; set; }

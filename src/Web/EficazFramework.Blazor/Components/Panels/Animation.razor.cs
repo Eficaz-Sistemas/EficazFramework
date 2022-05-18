@@ -5,7 +5,7 @@ using MudBlazor.Utilities;
 
 namespace EficazFramework.Components;
 
-public partial class Animation : ComponentBase
+public partial class Animation : MudBlazor.MudComponentBase
 {
     protected string Classname =>
                         new CssBuilder()
