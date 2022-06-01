@@ -1,7 +1,7 @@
 #### [EficazFramework.Utilities](EficazFrameworkUtilities.md 'EficazFramework Utilities')
-### [EficazFramework.Application](EficazFrameworkUtilities.md#EficazFramework.Application 'EficazFramework.Application').[ApplicationDefinition](EficazFramework.Application/ApplicationDefinition.md 'EficazFramework.Application.ApplicationDefinition')
+### [EficazFramework.Application](EficazFrameworkUtilities.md#EficazFramework.Application 'EficazFramework.Application').[ApplicationInstance](EficazFramework.Application/ApplicationInstance.md 'EficazFramework.Application.ApplicationInstance')
 
-## ApplicationDefinition.PropertyChanged Event
+## ApplicationInstance.PropertyChanged Event
 
 ```csharp
 public event PropertyChangedEventHandler PropertyChanged;

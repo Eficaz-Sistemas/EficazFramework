@@ -3,9 +3,11 @@ using MudBlazor.Utilities;
 using EficazFramework.Application;
 
 namespace EficazFramework.Components;
-public partial class MdiHost : MudBlazor.MudBaseItemsControl<MdiWindow>
+public partial class MdiHost<TData> : MudBlazor.MudBaseBindableItemsControl<MdiWindow, ApplicationInstance>
 {
-    [Inject] public EficazFramework.Application.IApplicationManager ApplicationManager { get; set; }
+    //[Inject] public EficazFramework.Application.IApplicationManager ApplicationManager { get; set; }
+
+    [Parameter] public long CurrentSection { get; set; } = 0;
 
     protected string Classname =>
                 new CssBuilder()
@@ -27,6 +29,6 @@ public partial class MdiHost : MudBlazor.MudBaseItemsControl<MdiWindow>
     }
 
     private IEnumerable<ApplicationInstance> RunningApplications() =>
-        ApplicationManager.RunningApplications.Where(app => app.SessionID == 0 | app.SessionID == ApplicationManager.SectionManager.CurrentSection.ID).ToList();
-    
+        ItemsSource.Where(app => app.SessionID == 0 || app.SessionID == CurrentSection).ToList();
+
 }

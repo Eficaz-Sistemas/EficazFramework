@@ -1,6 +1,7 @@
 ﻿using System.Collections.ObjectModel;
 using System.Collections.Specialized;
 using System.Globalization;
+using System.Linq;
 using System.Windows.Controls.Primitives;
 
 namespace EficazFramework.Controls;
@@ -22,7 +23,7 @@ public class StartMenu : TabControl
         PinnedApplications.Filter = (app) =>
         {
             Application.ApplicationDefinition eapp = app as Application.ApplicationDefinition;
-            return !ExcludedUris.Contains(eapp.StartupURI);
+            return !ExcludedUris.Contains(eapp.Targets.FirstOrDefault(t => t.Target == "WPF").StartupUriOrType.ToString());
         };
 
         SetValue(OpenMenuCommandPropertyKey, new Commands.CommandBase(OpenPopupMenu_Executed));
@@ -202,7 +203,7 @@ public class StartMenu : TabControl
             instance.PinnedApplications.Filter = (app) =>
             {
                 Application.ApplicationDefinition eapp = app as Application.ApplicationDefinition;
-                return !instance.ExcludedUris.Contains(eapp.StartupURI);
+                return !instance.ExcludedUris.Contains(eapp.Targets.FirstOrDefault(t => t.Target == "WPF").StartupUriOrType.ToString());
             };
             return;
         }
@@ -219,7 +220,7 @@ public class StartMenu : TabControl
         instance.PinnedApplications.Filter = (app) =>
         {
             Application.ApplicationDefinition eapp = app as Application.ApplicationDefinition;
-            return (!instance.ExcludedUris.Contains(eapp.StartupURI)) &&
+            return (!instance.ExcludedUris.Contains(eapp.Targets.FirstOrDefault(t => t.Target == "WPF").StartupUriOrType.ToString())) &&
                    CultureInfo.InvariantCulture.CompareInfo.IndexOf(eapp.TooltipTilte, (string)e.NewValue,
                                                                     CompareOptions.IgnoreNonSpace |
                                                                     CompareOptions.IgnoreCase) >= 0 ||
@@ -262,9 +263,9 @@ public class StartMenu : TabControl
     {
         if ((e.Parameter as Application.ApplicationDefinition) == null) return;
         Application.ApplicationDefinition app = (Application.ApplicationDefinition)e.Parameter;
-        ExcludedUris.Add(app.StartupURI);
+        ExcludedUris.Add(app.Targets.FirstOrDefault(t => t.Target == "WPF").StartupUriOrType.ToString());
         RefreshPinnedApps();
-        ApplicationPinnedOff?.Invoke(this, new NotifyCollectionChangedEventArgs(NotifyCollectionChangedAction.Remove, app.StartupURI));
+        ApplicationPinnedOff?.Invoke(this, new NotifyCollectionChangedEventArgs(NotifyCollectionChangedAction.Remove, app.Targets.FirstOrDefault(t => t.Target == "WPF").StartupUriOrType.ToString()));
     }
 
     private void ChangeAppsViewMode_Executed(object sender, Events.ExecuteEventArgs e)

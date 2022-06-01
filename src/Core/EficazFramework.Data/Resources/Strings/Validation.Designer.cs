@@ -106,6 +106,15 @@ namespace EficazFramework.Resources.Strings {
         }
         
         /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Falha na validação do item..
+        /// </summary>
+        public static string Expression_DefaultErrorMessage {
+            get {
+                return ResourceManager.GetString("Expression_DefaultErrorMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Consulta uma cadeia de caracteres localizada semelhante a O CNPJ informado não é válido..
         /// </summary>
         public static string InvalidCNPJ {

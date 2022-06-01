@@ -9,13 +9,11 @@
 
 | Classes | |
 | :--- | :--- |
-| [ApplicationAttribute](EficazFramework.Application/ApplicationAttribute.md 'EficazFramework.Application.ApplicationAttribute') | |
-| [ApplicationAttributeCollection](EficazFramework.Application/ApplicationAttributeCollection.md 'EficazFramework.Application.ApplicationAttributeCollection') | |
 | [ApplicationDefinition](EficazFramework.Application/ApplicationDefinition.md 'EficazFramework.Application.ApplicationDefinition') | |
-| [ApplicationDefinitions](EficazFramework.Application/ApplicationDefinitions.md 'EficazFramework.Application.ApplicationDefinitions') | |
 | [ApplicationExtensions](EficazFramework.Application/ApplicationExtensions.md 'EficazFramework.Application.ApplicationExtensions') | |
 | [ApplicationInstance](EficazFramework.Application/ApplicationInstance.md 'EficazFramework.Application.ApplicationInstance') | |
 | [ApplicationManager](EficazFramework.Application/ApplicationManager.md 'EficazFramework.Application.ApplicationManager') | |
+| [ApplicationTarget](EficazFramework.Application/ApplicationTarget.md 'EficazFramework.Application.ApplicationTarget') | |
 | [Section](EficazFramework.Application/Section.md 'EficazFramework.Application.Section') | |
 | [SectionManager](EficazFramework.Application/SectionManager.md 'EficazFramework.Application.SectionManager') | |
 

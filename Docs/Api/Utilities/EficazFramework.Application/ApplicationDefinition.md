@@ -4,8 +4,7 @@
 ## ApplicationDefinition Class
 
 ```csharp
-public class ApplicationDefinition :
-System.ComponentModel.INotifyPropertyChanged
+public class ApplicationDefinition
 ```
 
 Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.Object 'System.Object') &#129106; ApplicationDefinition
@@ -13,12 +12,13 @@ Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.O
 Derived  
 &#8627; [ApplicationInstance](EficazFramework.Application/ApplicationInstance.md 'EficazFramework.Application.ApplicationInstance')
 
-Implements [System.ComponentModel.INotifyPropertyChanged](https://docs.microsoft.com/en-us/dotnet/api/System.ComponentModel.INotifyPropertyChanged 'System.ComponentModel.INotifyPropertyChanged')
+| Fields | |
+| :--- | :--- |
+| [STARTWINDOWSTATE](EficazFramework.Application/ApplicationDefinition/STARTWINDOWSTATE.md 'EficazFramework.Application.ApplicationDefinition.STARTWINDOWSTATE') | |
 
 | Properties | |
 | :--- | :--- |
 | [Arguments](EficazFramework.Application/ApplicationDefinition/Arguments.md 'EficazFramework.Application.ApplicationDefinition.Arguments') | |
-| [Attributes](EficazFramework.Application/ApplicationDefinition/Attributes.md 'EficazFramework.Application.ApplicationDefinition.Attributes') | |
 | [Condition](EficazFramework.Application/ApplicationDefinition/Condition.md 'EficazFramework.Application.ApplicationDefinition.Condition') | |
 | [FirstChar](EficazFramework.Application/ApplicationDefinition/FirstChar.md 'EficazFramework.Application.ApplicationDefinition.FirstChar') | |
 | [Group](EficazFramework.Application/ApplicationDefinition/Group.md 'EficazFramework.Application.ApplicationDefinition.Group') | |
@@ -29,15 +29,6 @@ Implements [System.ComponentModel.INotifyPropertyChanged](https://docs.microsoft
 | [IsPublic](EficazFramework.Application/ApplicationDefinition/IsPublic.md 'EficazFramework.Application.ApplicationDefinition.IsPublic') | |
 | [LongTitle](EficazFramework.Application/ApplicationDefinition/LongTitle.md 'EficazFramework.Application.ApplicationDefinition.LongTitle') | |
 | [MenuPriority](EficazFramework.Application/ApplicationDefinition/MenuPriority.md 'EficazFramework.Application.ApplicationDefinition.MenuPriority') | |
-| [SplashScreen](EficazFramework.Application/ApplicationDefinition/SplashScreen.md 'EficazFramework.Application.ApplicationDefinition.SplashScreen') | |
-| [StartupURI](EficazFramework.Application/ApplicationDefinition/StartupURI.md 'EficazFramework.Application.ApplicationDefinition.StartupURI') | |
+| [Targets](EficazFramework.Application/ApplicationDefinition/Targets.md 'EficazFramework.Application.ApplicationDefinition.Targets') | |
 | [Title](EficazFramework.Application/ApplicationDefinition/Title.md 'EficazFramework.Application.ApplicationDefinition.Title') | |
 | [TooltipTilte](EficazFramework.Application/ApplicationDefinition/TooltipTilte.md 'EficazFramework.Application.ApplicationDefinition.TooltipTilte') | |
-
-| Methods | |
-| :--- | :--- |
-| [RaisePropertyChanged(string)](EficazFramework.Application/ApplicationDefinition/RaisePropertyChanged(string).md 'EficazFramework.Application.ApplicationDefinition.RaisePropertyChanged(string)') | |
-
-| Events | |
-| :--- | :--- |
-| [PropertyChanged](EficazFramework.Application/ApplicationDefinition/PropertyChanged.md 'EficazFramework.Application.ApplicationDefinition.PropertyChanged') | |
