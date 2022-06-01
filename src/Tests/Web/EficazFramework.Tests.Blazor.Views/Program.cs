@@ -9,7 +9,8 @@ builder.Services.AddEficazFramework(options =>
 {
     //options.Theme.Palette.Primary = new MudBlazor.Utilities.MudColor("#cacaca");
     //options.Theme.Palette.AppbarBackground = new MudBlazor.Utilities.MudColor("#00ffff");
-    //options.UseApplicationManager = true;
+    options.UseApplicationManager = true;
+    options.ThemeIsDarkMode = true;
 });
 
 var app = builder.Build();

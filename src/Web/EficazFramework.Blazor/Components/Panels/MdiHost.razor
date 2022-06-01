@@ -1,0 +1,28 @@
+﻿@using Microsoft.AspNetCore.Components.Web
+@using EficazFramework.Application
+@namespace EficazFramework.Components
+@typeparam TData
+@inherits MudBlazor.MudBaseBindableItemsControl<MdiWindow, ApplicationInstance>
+
+<CascadingValue Value="this">
+    <div class="@Classname" style="@StyleName">
+        @*Selected Content*@
+        @if (ItemsSource == null)
+        {
+            @ChildContent
+        }
+        else
+        {
+            foreach (var item in RunningApplications())
+            {
+                <MdiWindow Application="item" 
+                           Title="@item.Title"
+                           Icon="@(item.Targets.FirstOrDefault(t => t.Target == "Blazor")?.Icon.ToString())">
+                    @ItemTemplate(item)
+                </MdiWindow>
+                }
+            }
+        }
+    </div>
+</CascadingValue>
+

@@ -12,7 +12,7 @@ Derived
 
 | Properties | |
 | :--- | :--- |
-| [AllApplications](EficazFramework.Application/IApplicationManager/AllApplications.md 'EficazFramework.Application.IApplicationManager.AllApplications') | Cache de aplicativos em execução |
+| [AllApplications](EficazFramework.Application/IApplicationManager/AllApplications.md 'EficazFramework.Application.IApplicationManager.AllApplications') | Listagem de aplicações disponíveis para trabalho (pode ser utilizada como menu principal) |
 | [Instance](EficazFramework.Application/IApplicationManager/Instance.md 'EficazFramework.Application.IApplicationManager.Instance') | Retorna em padrão singleton a Última Instância de ApplicationManager instanciada. |
 | [RunningApplications](EficazFramework.Application/IApplicationManager/RunningApplications.md 'EficazFramework.Application.IApplicationManager.RunningApplications') | Cache de aplicativos em execução |
 | [SectionManager](EficazFramework.Application/IApplicationManager/SectionManager.md 'EficazFramework.Application.IApplicationManager.SectionManager') | Instância de SectionManager para gestão de múltiplas área de trabalho. |

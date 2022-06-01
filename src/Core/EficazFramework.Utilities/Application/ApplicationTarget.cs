@@ -1,0 +1,35 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace EficazFramework.Application;
+public class ApplicationTarget
+{
+    /// <summary>
+    /// Nome da Plataforma dos metadados
+    /// </summary>
+    public string Target { get; set; }
+
+    /// <summary>
+    /// Informações de inicialização da aplicação
+    /// </summary>
+    public object StartupUriOrType { get; set; }
+
+    /// <summary>
+    /// Ícone da Aplicação
+    /// </summary>
+    public object Icon { get; set; }
+
+    /// <summary>
+    /// Ativo Visual de inicialização/carregamento do aplicativo
+    /// </summary>
+    public object SplashScreen { get; set; }
+
+    /// <summary>
+    /// Atributos ou propriedades adicionais da plataforma
+    /// </summary>
+    public Dictionary<string, object> Properties { get; } = new();
+
+}

@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.ComponentModel;
 using System.Diagnostics;
+using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Controls.Primitives;
 
@@ -121,8 +122,8 @@ public class MDIContainer : Selector
                     window.AppDefinition = appinfo;
                     window.Icon = appinfo.Icon;
                     window.Title = appinfo.LongTitle ?? appinfo.Title;
-                    window.WindowState = (WindowState)(appinfo.Attributes.Item($"WPF:{Application.ApplicationDefinitions.STARTWINDOWSTATE}") ?? WindowState.Normal);
-                    target = (UIElement)(appinfo.Content ?? appinfo.SplashScreen);
+                    window.WindowState = (WindowState)(appinfo.Targets.FirstOrDefault(t => t.Target == "WPF").Properties[Application.ApplicationDefinition.STARTWINDOWSTATE] ?? WindowState.Normal);
+                    target = (UIElement)(appinfo.Content ?? appinfo.Targets.FirstOrDefault(t => t.Target == "WPF").SplashScreen);
                 }
                 else
                 {
@@ -319,7 +320,7 @@ public class MDIContainer : Selector
         try
         {
             await Task.Delay(1000);
-            UIElement app = await System.Windows.Application.Current.Dispatcher.InvokeAsync(() => System.Windows.Application.LoadComponent(new Uri(item.StartupURI, UriKind.RelativeOrAbsolute)) as UIElement);
+            UIElement app = await System.Windows.Application.Current.Dispatcher.InvokeAsync(() => System.Windows.Application.LoadComponent(new Uri(item.Targets.FirstOrDefault(t => t.Target == "WPF").StartupUriOrType.ToString(), UriKind.RelativeOrAbsolute)) as UIElement);
             if (app != null) item.Content = app;
             item.IsLoading = false;
         }

@@ -34,10 +34,13 @@ Implements [System.ComponentModel.INotifyPropertyChanged](https://docs.microsoft
 
 | Methods | |
 | :--- | :--- |
+| [AddTargets(IEnumerable&lt;ApplicationTarget&gt;)](EficazFramework.Application/ApplicationInstance/AddTargets(IEnumerable_ApplicationTarget_).md 'EficazFramework.Application.ApplicationInstance.AddTargets(System.Collections.Generic.IEnumerable<EficazFramework.Application.ApplicationTarget>)') | |
 | [Close()](EficazFramework.Application/ApplicationInstance/Close().md 'EficazFramework.Application.ApplicationInstance.Close()') | |
 | [Dispose()](EficazFramework.Application/ApplicationInstance/Dispose().md 'EficazFramework.Application.ApplicationInstance.Dispose()') | |
+| [RaisePropertyChanged(string)](EficazFramework.Application/ApplicationInstance/RaisePropertyChanged(string).md 'EficazFramework.Application.ApplicationInstance.RaisePropertyChanged(string)') | |
 | [ToString()](EficazFramework.Application/ApplicationInstance/ToString().md 'EficazFramework.Application.ApplicationInstance.ToString()') | |
 
 | Events | |
 | :--- | :--- |
 | [AppClosed](EficazFramework.Application/ApplicationInstance/AppClosed.md 'EficazFramework.Application.ApplicationInstance.AppClosed') | |
+| [PropertyChanged](EficazFramework.Application/ApplicationInstance/PropertyChanged.md 'EficazFramework.Application.ApplicationInstance.PropertyChanged') | |

@@ -19,6 +19,7 @@ Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.O
 
 Derived  
 &#8627; [Contatos&lt;T&gt;](EficazFramework.Validation.Fluent.Rules/Contatos_T_.md 'EficazFramework.Validation.Fluent.Rules.Contatos<T>')  
+&#8627; [CustomExpression&lt;T&gt;](EficazFramework.Validation.Fluent.Rules/CustomExpression_T_.md 'EficazFramework.Validation.Fluent.Rules.CustomExpression<T>')  
 &#8627; [Documentos&lt;T&gt;](EficazFramework.Validation.Fluent.Rules/Documentos_T_.md 'EficazFramework.Validation.Fluent.Rules.Documentos<T>')  
 &#8627; [Equals&lt;T&gt;](EficazFramework.Validation.Fluent.Rules/Equals_T_.md 'EficazFramework.Validation.Fluent.Rules.Equals<T>')  
 &#8627; [MaxLenght&lt;T&gt;](EficazFramework.Validation.Fluent.Rules/MaxLenght_T_.md 'EficazFramework.Validation.Fluent.Rules.MaxLenght<T>')  

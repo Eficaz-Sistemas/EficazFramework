@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Components;
 
 namespace EficazFramework.Components;
 
-public partial class ExpressionBuilder : ComponentBase
+public partial class ExpressionBuilder : MudBlazor.MudComponentBase
 {
     // in Memory of Laudo Ferreira da Silva and Francisco Luis de Sousa
     // † 2020
@@ -12,10 +12,6 @@ public partial class ExpressionBuilder : ComponentBase
     protected string HostClassNames =>
         new MudBlazor.Utilities.CssBuilder(Class)
         .Build();
-
-    private readonly OperatorConverter converter = new();
-
-    private System.Threading.CancellationTokenSource _cancellationTokenSource;
 
     [Parameter] public int Elevation { get; set; } = 0;
 
@@ -86,38 +82,6 @@ public partial class ExpressionBuilder : ComponentBase
         StateHasChanged();
     }
 
-    private async Task<IEnumerable<object>> OnAutoCompleteSearch(string literal, string tag)
-    {
-        if (_cancellationTokenSource != null)
-            _cancellationTokenSource.Cancel();
-        _cancellationTokenSource = new System.Threading.CancellationTokenSource();
-
-        System.Threading.CancellationToken tk = default;
-        if (_cancellationTokenSource != null)
-            tk = _cancellationTokenSource.Token;
-
-        var args = new FindRequestEventArgs(literal, default) { Tag = tag };
-
-        if (_cancellationTokenSource != null)
-        {
-            if (_cancellationTokenSource.Token.IsCancellationRequested == true)
-                _cancellationTokenSource.Token.ThrowIfCancellationRequested();
-        }
-
-        SearchColumnFindRequest?.Invoke(this, args);
-        while (args.Completed == false)
-            await Task.Delay(1);
-
-
-        if (_cancellationTokenSource != null)
-        {
-            if (_cancellationTokenSource.Token.IsCancellationRequested == true)
-                _cancellationTokenSource.Token.ThrowIfCancellationRequested();
-        }
-
-        return (IEnumerable<object>)args.Data;
-    }
-
     void SetupInstance(bool set_vm, bool set_isreadonly, bool set_collectionEdit)
     {
         //bool stateChanged = false;
@@ -146,31 +110,5 @@ public partial class ExpressionBuilder : ComponentBase
         StateHasChanged();
     }
 
-    internal class OperatorConverter : MudBlazor.DefaultConverter<EficazFramework.Enums.CompareMethod>
-    {
-        internal OperatorConverter()
-        {
-            SetFunc = (e) => e.GetLocalizedDescription(typeof(EficazFramework.Resources.Strings.DataDescriptions));
-        }
-    }
-
-    internal class StringObjConverter : MudBlazor.Converter<object>
-    {
-        internal StringObjConverter()
-        {
-
-            SetFunc = (e) =>
-            {
-                if (e == null)
-                    return null;
-                return e.ToString();
-            };
-
-            GetFunc = (e) =>
-            {
-                return (object)e;
-            };
-        }
-    }
 
 }

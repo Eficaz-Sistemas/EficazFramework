@@ -189,4 +189,7 @@
   <data name="NotUnique" xml:space="preserve">
     <value>O valor {0} já está sendo utilizado</value>
   </data>
+  <data name="Expression_DefaultErrorMessage" xml:space="preserve">
+    <value>Falha na validação do item.</value>
+  </data>
 </root>

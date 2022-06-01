@@ -10,7 +10,6 @@
 | Classes | |
 | :--- | :--- |
 | [Animation](EficazFramework.Components/Animation.md 'EficazFramework.Components.Animation') | |
-| [ComponentBase](EficazFramework.Components/ComponentBase.md 'EficazFramework.Components.ComponentBase') | |
 
 <a name='EficazFramework.Icons'></a>
 

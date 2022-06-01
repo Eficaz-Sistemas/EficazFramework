@@ -1,5 +1,9 @@
 ﻿.ef-background {
-    background-color: var(--mud-palette-background-grey);
     height: 100vh;
     overflow: auto;
+}
+
+.mud-dialog {
+    border-width: thin;
+    border: 1px solid var(--mud-palette-primary);
 }

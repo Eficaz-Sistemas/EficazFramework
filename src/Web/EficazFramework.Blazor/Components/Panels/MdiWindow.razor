@@ -1,0 +1,25 @@
+﻿@using Microsoft.AspNetCore.Components.Web
+@namespace EficazFramework.Components
+@inherits MudBlazor.MudComponentBase
+
+<MudBlazor.MudPaper Elevation="5" 
+                    Outlined 
+                    Class="@Classname" 
+                    draggable="true"
+                    @onclick="OnClick"
+                    @ondragstart="OnDragStart" 
+                    @ondragend="OnDragEnd" 
+                    Style="@StyleName">
+    <!--HEADER-->
+    <div class="d-flex" style="@($"cursor: {(isDragging ? "grabbing" : "grab")};")">
+        <MudBlazor.MudIcon Icon="@Icon" Class="ma-2" Style="width: 14px; height: 14px;" />
+        <MudBlazor.MudText Typo="MudBlazor.Typo.caption" Class="mr-2 mt-1 flex-grow-1">@(Application != null ? Application.Title : Title)</MudBlazor.MudText>
+        <MudBlazor.MudIconButton Icon="@MudBlazor.Icons.Filled.Close" DisableElevation Variant="MudBlazor.Variant.Filled" Size="MudBlazor.Size.Small"/>
+    </div>
+    <!--CONTENT-->
+    <div style="cursor:initial" draggable="true" @ondragstart:preventDefault="true" @ondragstart:stopPropagation="true">
+        <MudBlazor.MudFocusTrap>
+            @ChildContent
+        </MudBlazor.MudFocusTrap>
+    </div>
+</MudBlazor.MudPaper>

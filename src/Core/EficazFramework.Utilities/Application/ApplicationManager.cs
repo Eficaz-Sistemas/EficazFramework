@@ -1,10 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
-using System.Diagnostics.CodeAnalysis;
 using System.IO;
 using System.Linq;
+using System.Collections.Generic;
 
 namespace EficazFramework.Application;
 
@@ -29,7 +28,7 @@ public interface IApplicationManager
     public ISectionManager SectionManager { get; }
 
     /// <summary>
-    /// Cache de aplicativos em execução
+    /// Listagem de aplicações disponíveis para trabalho (pode ser utilizada como menu principal)
     /// </summary>
     public ObservableCollection<ApplicationDefinition> AllApplications { get; }
 
@@ -142,43 +141,6 @@ internal class ApplicationManager : IApplicationManager
     public event EventHandler ActiveAppChanged;
 }
 
-public class ApplicationDefinition : INotifyPropertyChanged
-{
-
-    // Metadata
-    public object Icon { get; set; }
-    public string Title { get; set; }
-    public string LongTitle { get; set; }
-    public string Group { get; set; }
-    public bool IsPublic { get; set; } = true;
-    public string TooltipTilte => LongTitle ?? Title;
-    public char FirstChar => (TooltipTilte ?? "#").First();
-
-    // Menu metadata
-    public int GroupMenuPriority { get; set; }
-    public int MenuPriority { get; set; }
-    public string Condition { get; set; }
-    public bool IsEnabled { get; set; }
-    public bool IsChecked { get; set; }
-
-    // Per-Platform Attributes (Ex: WPF Desktop Window Size, etc)
-    public ApplicationAttributeCollection Attributes { get; set; } = new ApplicationAttributeCollection();
-
-    // Initialization
-    public string StartupURI { get; set; }
-    public object SplashScreen { get; set; }
-
-    public object[] Arguments { get; set; }
-
-    // INotifyPropertyChanged
-    public event PropertyChangedEventHandler PropertyChanged;
-
-    public void RaisePropertyChanged(string propertyname)
-    {
-        PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyname));
-    }
-}
-
 public sealed class ApplicationInstance : ApplicationDefinition, INotifyPropertyChanged, IDisposable
 {
     internal ApplicationInstance(ApplicationDefinition fromDefinition, ISectionManager sectionManager)
@@ -186,7 +148,6 @@ public sealed class ApplicationInstance : ApplicationDefinition, INotifyProperty
         var sID = sectionManager.CurrentSection?.ID ?? 0;
 
         Metadata = fromDefinition;
-        SplashScreen = fromDefinition.SplashScreen;
         Icon = fromDefinition.Icon;
         Title = fromDefinition.Title;
         LongTitle = fromDefinition.LongTitle;
@@ -195,9 +156,8 @@ public sealed class ApplicationInstance : ApplicationDefinition, INotifyProperty
         MenuPriority = fromDefinition.MenuPriority;
         IsEnabled = true;
         IsChecked = false;
+        AddTargets(fromDefinition.Targets);
         Arguments = fromDefinition.Arguments;
-        StartupURI = fromDefinition.StartupURI;
-        Attributes = fromDefinition.Attributes;
         IsLoading = true;
         if (!fromDefinition.IsPublic)
             SessionID = sID != 0 ? sID : throw new InvalidDataException(Resources.Strings.Application.NoSessionForPrivateApp);
@@ -242,12 +202,13 @@ public sealed class ApplicationInstance : ApplicationDefinition, INotifyProperty
     public ApplicationDefinition Metadata { get; } = null;
 
     // Overrides
-    public override string ToString()
-    {
-        return string.Format("[{0}] - {1}", SessionID, TooltipTilte);
-    }
+    public override string ToString() =>
+        $"[{SessionID}] - {TooltipTilte}";
 
     //Methods
+    private void AddTargets(IEnumerable<ApplicationTarget> source) =>
+        ((List<ApplicationTarget>) Targets).AddRange(source);
+
     public void Close()
     {
         AppClosed?.Invoke(this, EventArgs.Empty);
@@ -264,46 +225,12 @@ public sealed class ApplicationInstance : ApplicationDefinition, INotifyProperty
 
     }
 
+    // INotifyPropertyChanged
+    public event PropertyChangedEventHandler PropertyChanged;
+    public void RaisePropertyChanged(string propertyname) =>
+        PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyname));
+
     // Events
     public event EventHandler AppClosed;
-
-}
-
-[ExcludeFromCodeCoverage]
-public sealed class ApplicationAttribute
-{
-    public string Key { get; set; }
-    public object Value { get; set; }
-}
-
-[ExcludeFromCodeCoverage]
-public sealed class ApplicationAttributeCollection : List<ApplicationAttribute>
-{
-    public object Item(string key)
-    {
-        return this.Where(it => it.Key == key).Select(it => it.Value).FirstOrDefault();
-    }
-}
-
-public static class ApplicationExtensions
-{
-    /// <summary>
-    /// Retorna se um aplicativo está em execução atualmente.
-    /// </summary>
-    /// <param name="application">Instância de aplicativo a ser verificado.</param>
-    /// <returns></returns>
-    public static bool IsRunning(this ApplicationDefinition application)
-    {
-        return ApplicationManager.Instance.IsRunning(application);
-    }
-
-    /// <summary>
-    /// Ativa uma aplicação para trabalho. Caso ainda não esteja em execução, uma nova intância é criada.
-    /// </summary>
-    /// <param name="application">Manifesto de aplicativo a ser iniciado ou ativado.</param>
-    public static void Activate(this ApplicationDefinition application)
-    {
-        ApplicationManager.Instance.Activate(application);
-    }
 
 }

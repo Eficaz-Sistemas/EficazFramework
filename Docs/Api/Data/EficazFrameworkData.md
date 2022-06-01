@@ -234,6 +234,7 @@
 | [CNPJouCPF&lt;T&gt;](EficazFramework.Validation.Fluent.Rules/CNPJouCPF_T_.md 'EficazFramework.Validation.Fluent.Rules.CNPJouCPF<T>') | |
 | [Contatos&lt;T&gt;](EficazFramework.Validation.Fluent.Rules/Contatos_T_.md 'EficazFramework.Validation.Fluent.Rules.Contatos<T>') | |
 | [CPF&lt;T&gt;](EficazFramework.Validation.Fluent.Rules/CPF_T_.md 'EficazFramework.Validation.Fluent.Rules.CPF<T>') | |
+| [CustomExpression&lt;T&gt;](EficazFramework.Validation.Fluent.Rules/CustomExpression_T_.md 'EficazFramework.Validation.Fluent.Rules.CustomExpression<T>') | |
 | [Documentos&lt;T&gt;](EficazFramework.Validation.Fluent.Rules/Documentos_T_.md 'EficazFramework.Validation.Fluent.Rules.Documentos<T>') | |
 | [EMail&lt;T&gt;](EficazFramework.Validation.Fluent.Rules/EMail_T_.md 'EficazFramework.Validation.Fluent.Rules.EMail<T>') | |
 | [Equals&lt;T&gt;](EficazFramework.Validation.Fluent.Rules/Equals_T_.md 'EficazFramework.Validation.Fluent.Rules.Equals<T>') | |

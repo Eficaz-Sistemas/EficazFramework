@@ -18,6 +18,9 @@ public partial class ViewModelDialog
         if (mudDialogParams == null)
             mudDialogParams = new();
 
+        if (mudDialogOptions == null)
+            mudDialogOptions = new() { DisableBackdropClick = true};
+
         mudDialogParams?.Add("Args", messageArgs);
 
         MudBlazor.IDialogReference _dialog = dialogService.Show<ViewModelDialog>(messageArgs.Title,

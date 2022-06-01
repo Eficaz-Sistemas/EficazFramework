@@ -1,13 +1,12 @@
-#### [EficazFramework.Blazor](EficazFrameworkBlazor.md 'EficazFramework Blazor')
-### [EficazFramework.Components](EficazFrameworkBlazor.md#EficazFramework.Components 'EficazFramework.Components').[ComponentBase](EficazFramework.Components/ComponentBase.md 'EficazFramework.Components.ComponentBase')
+#### [EficazFramework.Utilities](EficazFrameworkUtilities.md 'EficazFramework Utilities')
+### [EficazFramework.Application](EficazFrameworkUtilities.md#EficazFramework.Application 'EficazFramework.Application').[ApplicationTarget](EficazFramework.Application/ApplicationTarget.md 'EficazFramework.Application.ApplicationTarget')
 
-## ComponentBase.UserAttributes Property
+## ApplicationTarget.Properties Property
 
-UserAttributes carries all attributes you add to the component that don't match any of its parameters.  
-They will be splatted onto the underlying HTML tag.
+Atributos ou propriedades adicionais da plataforma
 
 ```csharp
-public System.Collections.Generic.Dictionary<string,object> UserAttributes { get; set; }
+public System.Collections.Generic.Dictionary<string,object> Properties { get; }
 ```
 
 #### Property Value
