@@ -157,12 +157,9 @@ public class ExpressionBuilder : BunitTest
         comp.WaitForAssertion(() => textFieldStr.Instance.Value.Should().Be("Miguel"));
         viewModel.Items[0].Value1.Should().Be("Miguel");
 
-        bool flag = false;
-        comp.Instance.SearchColumnFindRequest = (o, e) =>
-        {
-            e.Data = new List<string> { "Find A", "Find B", "Find C" };
-            flag = true;
-        };
+        var table = comp.FindComponent<EficazFramework.Components.Primitives.ExpressionBuilderTable>();
+        table.Should().NotBeNull();
+        table.Instance.SearchColumnFindRequest.Should().Be(comp.Instance.SearchColumnFindRequest);
 
         // select Related property:
         await comp.InvokeAsync(() => selector.Instance.SelectOption(viewModel.Properties[8]));
@@ -176,10 +173,7 @@ public class ExpressionBuilder : BunitTest
         var autoCompl = editorCl.FindComponent<MudBlazor.MudAutocomplete<object>>();
         autoCompl.Should().NotBeNull();
         autoCompl.Instance.Value.Should().Be((string)viewModel.Items[0].Value1);
-        await autoCompl.Instance.SearchFunc.Invoke("Find");
-        autoCompl.WaitForAssertion(() => flag.Should().BeTrue());
-
-
+        await comp.InvokeAsync(() => autoCompl.Instance.FocusAsync());
 
         // disable custom expressions
         await comp.InvokeAsync(() => viewModel.CanBuildCustomExpressions = false);

@@ -29,9 +29,7 @@ public partial class ExpressionBuilderTable : MudBlazor.MudComponentBase
     }
 
 
-    [Parameter] public Action SearchAction { get; set; }
-
-    [Parameter] public Action<object, Events.FindRequestEventArgs> SearchColumnFindRequest { get; set; }
+    [Parameter] public Action<Events.FindRequestEventArgs> SearchColumnFindRequest { get; set; }
 
     private void OnViewModel_Changed(EficazFramework.Expressions.ExpressionBuilder OldValue, EficazFramework.Expressions.ExpressionBuilder NewValue)
     {
@@ -96,7 +94,11 @@ public partial class ExpressionBuilderTable : MudBlazor.MudComponentBase
                 _cancellationTokenSource.Token.ThrowIfCancellationRequested();
         }
 
-        SearchColumnFindRequest?.Invoke(this, args);
+        if (SearchColumnFindRequest != null)
+            SearchColumnFindRequest.Invoke(args);
+        else
+            args.Data = null;
+
         while (args.Completed == false)
             await Task.Delay(1);
 
@@ -107,7 +109,7 @@ public partial class ExpressionBuilderTable : MudBlazor.MudComponentBase
                 _cancellationTokenSource.Token.ThrowIfCancellationRequested();
         }
 
-        return (IEnumerable<object>)args.Data;
+        return (IEnumerable<object>)args.Data!;
     }
 
     void SetupInstance(bool set_vm, bool set_isreadonly, bool set_collectionEdit)

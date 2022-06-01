@@ -35,7 +35,7 @@ public partial class ExpressionBuilder : MudBlazor.MudComponentBase
 
     [Parameter] public Action SearchAction { get; set; }
 
-    [Parameter] public Action<object, Events.FindRequestEventArgs> SearchColumnFindRequest { get; set; }
+    [Parameter] public Action<Events.FindRequestEventArgs> SearchColumnFindRequest { get; set; }
 
     private void OnViewModel_Changed(EficazFramework.Expressions.ExpressionBuilder OldValue, EficazFramework.Expressions.ExpressionBuilder NewValue)
     {
