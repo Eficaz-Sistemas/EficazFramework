@@ -2,11 +2,11 @@
 
 # EficazFramework
 
-![Azure DevOps builds](https://efshieldsio.azurewebsites.net:/azure-devops/build/eficazcs/EficazFramework/27?&logo=azurepipelines&logoColor=white&style=flat-square)
-![Azure DevOps tests (compact)](https://efshieldsio.azurewebsites.net:/azure-devops/tests/eficazcs/EficazFramework/18?compact_message&logo=azuredevops&logoColor=white&style=flat-square)
-![Azure DevOps coverage](https://efshieldsio.azurewebsites.net:/azure-devops/coverage/eficazcs/EficazFramework/18?logo=codecov&logoColor=white&style=flat-square)
-[![Discord](https://efshieldsio.azurewebsites.net:/discord/846078359498653706?color=purple&logo=discord&logoColor=white&style=flat-square)](https://discord.gg/ePvZEGBgaf)
-[![Twitter Follow](https://efshieldsio.azurewebsites.net:/twitter/follow/EficazCS?color=blue&label=twitter&logo=twitter&logoColor=white&style=flat-square)](https://twitter.com/EficazCS)
+![Azure DevOps builds](https://eficazshields.azurewebsites.net/azure-devops/build/eficazcs/EficazFramework/27?&logo=azurepipelines&logoColor=white&style=flat-square)
+![Azure DevOps tests (compact)](https://eficazshields.azurewebsites.net/azure-devops/tests/eficazcs/EficazFramework/18?compact_message&logo=azuredevops&logoColor=white&style=flat-square)
+![Azure DevOps coverage](https://eficazshields.azurewebsites.net/azure-devops/coverage/eficazcs/EficazFramework/18?logo=codecov&logoColor=white&style=flat-square)
+[![Discord](https://eficazshields.azurewebsites.net/discord/846078359498653706?color=purple&logo=discord&logoColor=white&style=flat-square)](https://discord.gg/ePvZEGBgaf)
+[![Twitter Follow](https://eficazshields.azurewebsites.net/twitter/follow/EficazCS?color=blue&label=twitter&logo=twitter&logoColor=white&style=flat-square)](https://twitter.com/EficazCS)
 
    Bem vindo à EficazFramework, biblioteca de extensões, componentes e utilitários para aplicações .NET em geral.
    
@@ -46,18 +46,18 @@
    
 #### <img src="./Assets/blazor.svg" width="24" height="24" style="fill:#512BD4" /> Biblioteca de extensão para Blazor (Server-Side e WebAssembly) 
 
-![Azure DevOps builds](https://efshieldsio.azurewebsites.net:/azure-devops/build/eficazcs/EficazFramework/29?&logo=azurepipelines&logoColor=white&style=flat-square)
-![Azure DevOps tests (compact)](https://efshieldsio.azurewebsites.net:/azure-devops/tests/eficazcs/EficazFramework/30?compact_message&logo=azuredevops&logoColor=white&style=flat-square)
-![Azure DevOps coverage](https://efshieldsio.azurewebsites.net:/azure-devops/coverage/eficazcs/EficazFramework/30?logo=codecov&logoColor=white&style=flat-square)
+![Azure DevOps builds](https://eficazshields.azurewebsites.net/azure-devops/build/eficazcs/EficazFramework/29?&logo=azurepipelines&logoColor=white&style=flat-square)
+![Azure DevOps tests (compact)](https://eficazshields.azurewebsites.net/azure-devops/tests/eficazcs/EficazFramework/30?compact_message&logo=azuredevops&logoColor=white&style=flat-square)
+![Azure DevOps coverage](https://eficazshields.azurewebsites.net/azure-devops/coverage/eficazcs/EficazFramework/30?logo=codecov&logoColor=white&style=flat-square)
 
    - Novos Componentes, Templates e Layouts para melhor padronização das aplicações, conforme sua natureza
    - UI baseada em MaterialDesign, utilizando a biblioteca OpenSource [MudBlazor](https://github.com/MudBlazor/MudBlazor)
    
 #### <img src="./Assets/xaml.svg" width="24" height="24" style="fill:#512BD4" /> Biblioteca de extensão para Windows Presentation Foundation (WPF)
 
-![Azure DevOps builds (branch)](https://efshieldsio.azurewebsites.net:/azure-devops/build/eficazcs/EficazFramework/26/master?label=tests&logo=azuredevops&logoColor=white&style=flat-square)
-![Azure DevOps tests (compact)](https://efshieldsio.azurewebsites.net:/azure-devops/tests/eficazcs/EficazFramework/26?compact_message&logo=azuredevops&logoColor=white&style=flat-square)
-![Azure DevOps coverage](https://efshieldsio.azurewebsites.net:/azure-devops/coverage/eficazcs/EficazFramework/26?logo=codecov&logoColor=white&style=flat-square)
+![Azure DevOps builds (branch)](https://eficazshields.azurewebsites.net/azure-devops/build/eficazcs/EficazFramework/26/master?label=tests&logo=azuredevops&logoColor=white&style=flat-square)
+![Azure DevOps tests (compact)](https://eficazshields.azurewebsites.net/azure-devops/tests/eficazcs/EficazFramework/26?compact_message&logo=azuredevops&logoColor=white&style=flat-square)
+![Azure DevOps coverage](https://eficazshields.azurewebsites.net/azure-devops/coverage/eficazcs/EficazFramework/26?logo=codecov&logoColor=white&style=flat-square)
    
    - Controles Visuais para melhor experiência de utilização pelo usuário
    - Extensões para XAML e Code-Behind
