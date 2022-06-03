@@ -6,7 +6,6 @@
 
 <CascadingValue Value="this">
     <div class="@Classname" style="@StyleName">
-        @*Selected Content*@
         @if (ItemsSource == null)
         {
             @ChildContent
@@ -20,7 +19,6 @@
                            Icon="@(item.Targets.FirstOrDefault(t => t.Target == "Blazor")?.Icon.ToString())">
                     @ItemTemplate(item)
                 </MdiWindow>
-                }
             }
         }
     </div>

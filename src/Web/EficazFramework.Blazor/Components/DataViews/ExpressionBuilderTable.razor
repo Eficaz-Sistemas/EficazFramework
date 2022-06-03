@@ -189,7 +189,7 @@
                             case EficazFramework.Expressions.ExpressionEditor.Findable:
                                 <MudBlazor.MudAutocomplete Margin="@MudBlazor.Margin.Dense"
                                                             @bind-Value="context.Value1"
-                                                            SearchFunc="(text) => OnAutoCompleteSearch(text, context.SelectedPropertyPath)" 
+                                                            SearchFunc="async (text) => await OnAutoCompleteSearch(text, context.SelectedPropertyPath)" 
                                                             CoerceText 
                                                             FullWidth 
                                                             Class="ef-expression-table-cell" />
