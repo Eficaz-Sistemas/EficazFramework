@@ -1,5 +1,5 @@
-#### [EficazFramework.WPF](EficazFrameworkWPF.md 'EficazFramework WPF')
-### [EficazFramework.Controls.Primitives](EficazFrameworkWPF.md#EficazFramework.Controls.Primitives 'EficazFramework.Controls.Primitives')
+#### [EficazFramework.WPF](EficazFramework WPF.md 'EficazFramework WPF')
+### [EficazFramework.Controls.Primitives](EficazFramework WPF.md#EficazFramework.Controls.Primitives 'EficazFramework.Controls.Primitives')
 
 ## MultiRangeBase Class
 
@@ -33,20 +33,6 @@ Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.O
 
 | Methods | |
 | :--- | :--- |
-| [CoerceMaximum(DependencyObject, object)](EficazFramework.Controls.Primitives/MultiRangeBase/CoerceMaximum(DependencyObject,object).md 'EficazFramework.Controls.Primitives.MultiRangeBase.CoerceMaximum(System.Windows.DependencyObject, object)') | |
-| [CoerceToRange(DependencyObject, object)](EficazFramework.Controls.Primitives/MultiRangeBase/CoerceToRange(DependencyObject,object).md 'EficazFramework.Controls.Primitives.MultiRangeBase.CoerceToRange(System.Windows.DependencyObject, object)') | |
-| [IsValidChange(object)](EficazFramework.Controls.Primitives/MultiRangeBase/IsValidChange(object).md 'EficazFramework.Controls.Primitives.MultiRangeBase.IsValidChange(object)') | |
-| [IsValidDoubleValue(object)](EficazFramework.Controls.Primitives/MultiRangeBase/IsValidDoubleValue(object).md 'EficazFramework.Controls.Primitives.MultiRangeBase.IsValidDoubleValue(object)') | |
-| [OnEndValueChanged(double, double)](EficazFramework.Controls.Primitives/MultiRangeBase/OnEndValueChanged(double,double).md 'EficazFramework.Controls.Primitives.MultiRangeBase.OnEndValueChanged(double, double)') | |
-| [OnEndValueChanged(object, RoutedPropertyChangedEventArgs&lt;double&gt;)](EficazFramework.Controls.Primitives/MultiRangeBase/OnEndValueChanged(object,RoutedPropertyChangedEventArgs_double_).md 'EficazFramework.Controls.Primitives.MultiRangeBase.OnEndValueChanged(object, System.Windows.RoutedPropertyChangedEventArgs<double>)') | |
-| [OnEndValueChanged(DependencyObject, DependencyPropertyChangedEventArgs)](EficazFramework.Controls.Primitives/MultiRangeBase/OnEndValueChanged(DependencyObject,DependencyPropertyChangedEventArgs).md 'EficazFramework.Controls.Primitives.MultiRangeBase.OnEndValueChanged(System.Windows.DependencyObject, System.Windows.DependencyPropertyChangedEventArgs)') | |
-| [OnMaximumChanged(double, double)](EficazFramework.Controls.Primitives/MultiRangeBase/OnMaximumChanged(double,double).md 'EficazFramework.Controls.Primitives.MultiRangeBase.OnMaximumChanged(double, double)') | |
-| [OnMaximumChanged(DependencyObject, DependencyPropertyChangedEventArgs)](EficazFramework.Controls.Primitives/MultiRangeBase/OnMaximumChanged(DependencyObject,DependencyPropertyChangedEventArgs).md 'EficazFramework.Controls.Primitives.MultiRangeBase.OnMaximumChanged(System.Windows.DependencyObject, System.Windows.DependencyPropertyChangedEventArgs)') | |
-| [OnMinimumChanged(double, double)](EficazFramework.Controls.Primitives/MultiRangeBase/OnMinimumChanged(double,double).md 'EficazFramework.Controls.Primitives.MultiRangeBase.OnMinimumChanged(double, double)') | |
-| [OnMinimumChanged(DependencyObject, DependencyPropertyChangedEventArgs)](EficazFramework.Controls.Primitives/MultiRangeBase/OnMinimumChanged(DependencyObject,DependencyPropertyChangedEventArgs).md 'EficazFramework.Controls.Primitives.MultiRangeBase.OnMinimumChanged(System.Windows.DependencyObject, System.Windows.DependencyPropertyChangedEventArgs)') | |
-| [OnStartValueChanged(double, double)](EficazFramework.Controls.Primitives/MultiRangeBase/OnStartValueChanged(double,double).md 'EficazFramework.Controls.Primitives.MultiRangeBase.OnStartValueChanged(double, double)') | |
-| [OnStartValueChanged(object, RoutedPropertyChangedEventArgs&lt;double&gt;)](EficazFramework.Controls.Primitives/MultiRangeBase/OnStartValueChanged(object,RoutedPropertyChangedEventArgs_double_).md 'EficazFramework.Controls.Primitives.MultiRangeBase.OnStartValueChanged(object, System.Windows.RoutedPropertyChangedEventArgs<double>)') | |
-| [OnStartValueChanged(DependencyObject, DependencyPropertyChangedEventArgs)](EficazFramework.Controls.Primitives/MultiRangeBase/OnStartValueChanged(DependencyObject,DependencyPropertyChangedEventArgs).md 'EficazFramework.Controls.Primitives.MultiRangeBase.OnStartValueChanged(System.Windows.DependencyObject, System.Windows.DependencyPropertyChangedEventArgs)') | |
 | [ToString()](EficazFramework.Controls.Primitives/MultiRangeBase/ToString().md 'EficazFramework.Controls.Primitives.MultiRangeBase.ToString()') | |
 
 | Events | |

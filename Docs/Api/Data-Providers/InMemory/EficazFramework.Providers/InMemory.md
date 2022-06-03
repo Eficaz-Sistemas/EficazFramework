@@ -1,5 +1,5 @@
-#### [EficazFramework.Data.InMemory](EficazFrameworkInMemoryDataProvider.md 'EficazFramework InMemory Data Provider')
-### [EficazFramework.Providers](EficazFrameworkInMemoryDataProvider.md#EficazFramework.Providers 'EficazFramework.Providers')
+#### [EficazFramework.Data.InMemory](EficazFramework InMemory Data Provider.md 'EficazFramework InMemory Data Provider')
+### [EficazFramework.Providers](EficazFramework InMemory Data Provider.md#EficazFramework.Providers 'EficazFramework.Providers')
 
 ## InMemory Class
 
@@ -22,5 +22,5 @@ Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.O
 
 | Methods | |
 | :--- | :--- |
-| [GetConnectionString(string, string, string)](EficazFramework.Providers/InMemory/GetConnectionString(string,string,string).md 'EficazFramework.Providers.InMemory.GetConnectionString(string, string, string)') | |
-| [OnConfiguring(DbContextOptionsBuilder, string, string, string)](EficazFramework.Providers/InMemory/OnConfiguring(DbContextOptionsBuilder,string,string,string).md 'EficazFramework.Providers.InMemory.OnConfiguring(Microsoft.EntityFrameworkCore.DbContextOptionsBuilder, string, string, string)') | |
+| [GetConnectionString(string, string, string)](EficazFramework.Providers/InMemory/GetConnectionString(string, string, string).md 'EficazFramework.Providers.InMemory.GetConnectionString(string, string, string)') | |
+| [OnConfiguring(DbContextOptionsBuilder, string, string, string)](EficazFramework.Providers/InMemory/OnConfiguring(DbContextOptionsBuilder, string, string, string).md 'EficazFramework.Providers.InMemory.OnConfiguring(Microsoft.EntityFrameworkCore.DbContextOptionsBuilder, string, string, string)') | |

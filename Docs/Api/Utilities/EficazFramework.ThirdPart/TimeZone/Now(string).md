@@ -1,5 +1,5 @@
-#### [EficazFramework.Utilities](EficazFrameworkUtilities.md 'EficazFramework Utilities')
-### [EficazFramework.ThirdPart](EficazFrameworkUtilities.md#EficazFramework.ThirdPart 'EficazFramework.ThirdPart').[TimeZone](EficazFramework.ThirdPart/TimeZone.md 'EficazFramework.ThirdPart.TimeZone')
+#### [EficazFramework.Utilities](EficazFramework Utilities.md 'EficazFramework Utilities')
+### [EficazFramework.ThirdPart](EficazFramework Utilities.md#EficazFramework.ThirdPart 'EficazFramework.ThirdPart').[TimeZone](EficazFramework.ThirdPart/TimeZone.md 'EficazFramework.ThirdPart.TimeZone')
 
 ## TimeZone.Now(string) Method
 

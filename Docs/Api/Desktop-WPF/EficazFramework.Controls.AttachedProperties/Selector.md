@@ -1,5 +1,5 @@
-#### [EficazFramework.WPF](EficazFrameworkWPF.md 'EficazFramework WPF')
-### [EficazFramework.Controls.AttachedProperties](EficazFrameworkWPF.md#EficazFramework.Controls.AttachedProperties 'EficazFramework.Controls.AttachedProperties')
+#### [EficazFramework.WPF](EficazFramework WPF.md 'EficazFramework WPF')
+### [EficazFramework.Controls.AttachedProperties](EficazFramework WPF.md#EficazFramework.Controls.AttachedProperties 'EficazFramework.Controls.AttachedProperties')
 
 ## Selector Class
 
@@ -24,8 +24,8 @@ Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.O
 | [GetContainerBorderBrush(DependencyObject)](EficazFramework.Controls.AttachedProperties/Selector/GetContainerBorderBrush(DependencyObject).md 'EficazFramework.Controls.AttachedProperties.Selector.GetContainerBorderBrush(System.Windows.DependencyObject)') | |
 | [GetContainerBorderThickness(DependencyObject)](EficazFramework.Controls.AttachedProperties/Selector/GetContainerBorderThickness(DependencyObject).md 'EficazFramework.Controls.AttachedProperties.Selector.GetContainerBorderThickness(System.Windows.DependencyObject)') | |
 | [GetHideSelection(DependencyObject)](EficazFramework.Controls.AttachedProperties/Selector/GetHideSelection(DependencyObject).md 'EficazFramework.Controls.AttachedProperties.Selector.GetHideSelection(System.Windows.DependencyObject)') | |
-| [SetAllowInactiveSelection(DependencyObject, bool)](EficazFramework.Controls.AttachedProperties/Selector/SetAllowInactiveSelection(DependencyObject,bool).md 'EficazFramework.Controls.AttachedProperties.Selector.SetAllowInactiveSelection(System.Windows.DependencyObject, bool)') | |
-| [SetContainerBackground(DependencyObject, Brush)](EficazFramework.Controls.AttachedProperties/Selector/SetContainerBackground(DependencyObject,Brush).md 'EficazFramework.Controls.AttachedProperties.Selector.SetContainerBackground(System.Windows.DependencyObject, System.Windows.Media.Brush)') | |
-| [SetContainerBorderBrush(DependencyObject, Brush)](EficazFramework.Controls.AttachedProperties/Selector/SetContainerBorderBrush(DependencyObject,Brush).md 'EficazFramework.Controls.AttachedProperties.Selector.SetContainerBorderBrush(System.Windows.DependencyObject, System.Windows.Media.Brush)') | |
-| [SetContainerBorderThickness(DependencyObject, Thickness)](EficazFramework.Controls.AttachedProperties/Selector/SetContainerBorderThickness(DependencyObject,Thickness).md 'EficazFramework.Controls.AttachedProperties.Selector.SetContainerBorderThickness(System.Windows.DependencyObject, System.Windows.Thickness)') | |
-| [SetHideSelection(DependencyObject, bool)](EficazFramework.Controls.AttachedProperties/Selector/SetHideSelection(DependencyObject,bool).md 'EficazFramework.Controls.AttachedProperties.Selector.SetHideSelection(System.Windows.DependencyObject, bool)') | |
+| [SetAllowInactiveSelection(DependencyObject, bool)](EficazFramework.Controls.AttachedProperties/Selector/SetAllowInactiveSelection(DependencyObject, bool).md 'EficazFramework.Controls.AttachedProperties.Selector.SetAllowInactiveSelection(System.Windows.DependencyObject, bool)') | |
+| [SetContainerBackground(DependencyObject, Brush)](EficazFramework.Controls.AttachedProperties/Selector/SetContainerBackground(DependencyObject, Brush).md 'EficazFramework.Controls.AttachedProperties.Selector.SetContainerBackground(System.Windows.DependencyObject, System.Windows.Media.Brush)') | |
+| [SetContainerBorderBrush(DependencyObject, Brush)](EficazFramework.Controls.AttachedProperties/Selector/SetContainerBorderBrush(DependencyObject, Brush).md 'EficazFramework.Controls.AttachedProperties.Selector.SetContainerBorderBrush(System.Windows.DependencyObject, System.Windows.Media.Brush)') | |
+| [SetContainerBorderThickness(DependencyObject, Thickness)](EficazFramework.Controls.AttachedProperties/Selector/SetContainerBorderThickness(DependencyObject, Thickness).md 'EficazFramework.Controls.AttachedProperties.Selector.SetContainerBorderThickness(System.Windows.DependencyObject, System.Windows.Thickness)') | |
+| [SetHideSelection(DependencyObject, bool)](EficazFramework.Controls.AttachedProperties/Selector/SetHideSelection(DependencyObject, bool).md 'EficazFramework.Controls.AttachedProperties.Selector.SetHideSelection(System.Windows.DependencyObject, bool)') | |

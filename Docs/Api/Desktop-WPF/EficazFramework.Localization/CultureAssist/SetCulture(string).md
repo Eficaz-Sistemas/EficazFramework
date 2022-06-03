@@ -1,5 +1,5 @@
-#### [EficazFramework.WPF](EficazFrameworkWPF.md 'EficazFramework WPF')
-### [EficazFramework.Localization](EficazFrameworkWPF.md#EficazFramework.Localization 'EficazFramework.Localization').[CultureAssist](EficazFramework.Localization/CultureAssist.md 'EficazFramework.Localization.CultureAssist')
+#### [EficazFramework.WPF](EficazFramework WPF.md 'EficazFramework WPF')
+### [EficazFramework.Localization](EficazFramework WPF.md#EficazFramework.Localization 'EficazFramework.Localization').[CultureAssist](EficazFramework.Localization/CultureAssist.md 'EficazFramework.Localization.CultureAssist')
 
 ## CultureAssist.SetCulture(string) Method
 

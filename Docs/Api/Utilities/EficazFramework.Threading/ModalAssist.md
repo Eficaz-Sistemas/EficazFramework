@@ -1,5 +1,5 @@
-#### [EficazFramework.Utilities](EficazFrameworkUtilities.md 'EficazFramework Utilities')
-### [EficazFramework.Threading](EficazFrameworkUtilities.md#EficazFramework.Threading 'EficazFramework.Threading')
+#### [EficazFramework.Utilities](EficazFramework Utilities.md 'EficazFramework Utilities')
+### [EficazFramework.Threading](EficazFramework Utilities.md#EficazFramework.Threading 'EficazFramework.Threading')
 
 ## ModalAssist Class
 
@@ -8,10 +8,6 @@ public class ModalAssist
 ```
 
 Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.Object 'System.Object') &#129106; ModalAssist
-
-| Fields | |
-| :--- | :--- |
-| [task](EficazFramework.Threading/ModalAssist/task.md 'EficazFramework.Threading.ModalAssist.task') | |
 
 | Methods | |
 | :--- | :--- |

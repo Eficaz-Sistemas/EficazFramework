@@ -1,5 +1,5 @@
-#### [EficazFramework.WPF](EficazFrameworkWPF.md 'EficazFramework WPF')
-### [EficazFramework.Converters](EficazFrameworkWPF.md#EficazFramework.Converters 'EficazFramework.Converters').[DataGridColumnHeaderConverter](EficazFramework.Converters/DataGridColumnHeaderConverter.md 'EficazFramework.Converters.DataGridColumnHeaderConverter')
+#### [EficazFramework.WPF](EficazFramework WPF.md 'EficazFramework WPF')
+### [EficazFramework.Converters](EficazFramework WPF.md#EficazFramework.Converters 'EficazFramework.Converters').[DataGridColumnHeaderConverter](EficazFramework.Converters/DataGridColumnHeaderConverter.md 'EficazFramework.Converters.DataGridColumnHeaderConverter')
 
 ## DataGridColumnHeaderConverter.Operacao Property
 

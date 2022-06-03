@@ -1,5 +1,5 @@
-#### [EficazFramework.WPF](EficazFrameworkWPF.md 'EficazFramework WPF')
-### [EficazFramework.Controls](EficazFrameworkWPF.md#EficazFramework.Controls 'EficazFramework.Controls')
+#### [EficazFramework.WPF](EficazFramework WPF.md 'EficazFramework WPF')
+### [EficazFramework.Controls](EficazFramework WPF.md#EficazFramework.Controls 'EficazFramework.Controls')
 
 ## DateInputBox Class
 
@@ -11,20 +11,8 @@ Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.O
 
 | Fields | |
 | :--- | :--- |
-| [_dateMasks](EficazFramework.Controls/DateInputBox/_dateMasks.md 'EficazFramework.Controls.DateInputBox._dateMasks') | |
-| [_maskBehavior](EficazFramework.Controls/DateInputBox/_maskBehavior.md 'EficazFramework.Controls.DateInputBox._maskBehavior') | |
 | [ValueProperty](EficazFramework.Controls/DateInputBox/ValueProperty.md 'EficazFramework.Controls.DateInputBox.ValueProperty') | |
 
 | Properties | |
 | :--- | :--- |
 | [Value](EficazFramework.Controls/DateInputBox/Value.md 'EficazFramework.Controls.DateInputBox.Value') | |
-
-| Methods | |
-| :--- | :--- |
-| [CommitSelection()](EficazFramework.Controls/DateInputBox/CommitSelection().md 'EficazFramework.Controls.DateInputBox.CommitSelection()') | |
-| [OnLostFocus(RoutedEventArgs)](EficazFramework.Controls/DateInputBox/OnLostFocus(RoutedEventArgs).md 'EficazFramework.Controls.DateInputBox.OnLostFocus(System.Windows.RoutedEventArgs)') | |
-| [OnMouseDoubleClick(MouseButtonEventArgs)](EficazFramework.Controls/DateInputBox/OnMouseDoubleClick(MouseButtonEventArgs).md 'EficazFramework.Controls.DateInputBox.OnMouseDoubleClick(System.Windows.Input.MouseButtonEventArgs)') | |
-| [OnPreviewKeyDown(KeyEventArgs)](EficazFramework.Controls/DateInputBox/OnPreviewKeyDown(KeyEventArgs).md 'EficazFramework.Controls.DateInputBox.OnPreviewKeyDown(System.Windows.Input.KeyEventArgs)') | |
-| [OnValueChanged(DependencyObject, DependencyPropertyChangedEventArgs)](EficazFramework.Controls/DateInputBox/OnValueChanged(DependencyObject,DependencyPropertyChangedEventArgs).md 'EficazFramework.Controls.DateInputBox.OnValueChanged(System.Windows.DependencyObject, System.Windows.DependencyPropertyChangedEventArgs)') | |
-| [SetupDatePatternByCulture()](EficazFramework.Controls/DateInputBox/SetupDatePatternByCulture().md 'EficazFramework.Controls.DateInputBox.SetupDatePatternByCulture()') | |
-| [SyncStringFormatAndMask()](EficazFramework.Controls/DateInputBox/SyncStringFormatAndMask().md 'EficazFramework.Controls.DateInputBox.SyncStringFormatAndMask()') | |

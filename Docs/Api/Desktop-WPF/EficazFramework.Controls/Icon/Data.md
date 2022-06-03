@@ -1,5 +1,5 @@
-#### [EficazFramework.WPF](EficazFrameworkWPF.md 'EficazFramework WPF')
-### [EficazFramework.Controls](EficazFrameworkWPF.md#EficazFramework.Controls 'EficazFramework.Controls').[Icon](EficazFramework.Controls/Icon.md 'EficazFramework.Controls.Icon')
+#### [EficazFramework.WPF](EficazFramework WPF.md 'EficazFramework WPF')
+### [EficazFramework.Controls](EficazFramework WPF.md#EficazFramework.Controls 'EficazFramework.Controls').[Icon](EficazFramework.Controls/Icon.md 'EficazFramework.Controls.Icon')
 
 ## Icon.Data Property
 

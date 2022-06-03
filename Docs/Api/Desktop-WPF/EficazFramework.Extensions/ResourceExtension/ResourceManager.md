@@ -1,5 +1,5 @@
-#### [EficazFramework.WPF](EficazFrameworkWPF.md 'EficazFramework WPF')
-### [EficazFramework.Extensions](EficazFrameworkWPF.md#EficazFramework.Extensions 'EficazFramework.Extensions').[ResourceExtension](EficazFramework.Extensions/ResourceExtension.md 'EficazFramework.Extensions.ResourceExtension')
+#### [EficazFramework.WPF](EficazFramework WPF.md 'EficazFramework WPF')
+### [EficazFramework.Extensions](EficazFramework WPF.md#EficazFramework.Extensions 'EficazFramework.Extensions').[ResourceExtension](EficazFramework.Extensions/ResourceExtension.md 'EficazFramework.Extensions.ResourceExtension')
 
 ## ResourceExtension.ResourceManager Property
 

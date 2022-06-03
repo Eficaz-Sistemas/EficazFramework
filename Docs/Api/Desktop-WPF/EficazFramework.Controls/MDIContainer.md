@@ -1,5 +1,5 @@
-#### [EficazFramework.WPF](EficazFrameworkWPF.md 'EficazFramework WPF')
-### [EficazFramework.Controls](EficazFrameworkWPF.md#EficazFramework.Controls 'EficazFramework.Controls')
+#### [EficazFramework.WPF](EficazFramework WPF.md 'EficazFramework WPF')
+### [EficazFramework.Controls](EficazFramework WPF.md#EficazFramework.Controls 'EficazFramework.Controls')
 
 ## MDIContainer Class
 
@@ -11,14 +11,11 @@ Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.O
 
 | Fields | |
 | :--- | :--- |
-| [_PART_TaskBarHost](EficazFramework.Controls/MDIContainer/_PART_TaskBarHost.md 'EficazFramework.Controls.MDIContainer._PART_TaskBarHost') | |
-| [_refreshAll](EficazFramework.Controls/MDIContainer/_refreshAll.md 'EficazFramework.Controls.MDIContainer._refreshAll') | |
 | [ApplicationDefinitionProperty](EficazFramework.Controls/MDIContainer/ApplicationDefinitionProperty.md 'EficazFramework.Controls.MDIContainer.ApplicationDefinitionProperty') | |
 | [CustomTaskBarLeftContentProperty](EficazFramework.Controls/MDIContainer/CustomTaskBarLeftContentProperty.md 'EficazFramework.Controls.MDIContainer.CustomTaskBarLeftContentProperty') | |
 | [CustomTaskBarLeftContentTemplateProperty](EficazFramework.Controls/MDIContainer/CustomTaskBarLeftContentTemplateProperty.md 'EficazFramework.Controls.MDIContainer.CustomTaskBarLeftContentTemplateProperty') | |
 | [CustomTaskBarRightContentProperty](EficazFramework.Controls/MDIContainer/CustomTaskBarRightContentProperty.md 'EficazFramework.Controls.MDIContainer.CustomTaskBarRightContentProperty') | |
 | [CustomTaskBarRightContentTemplateProperty](EficazFramework.Controls/MDIContainer/CustomTaskBarRightContentTemplateProperty.md 'EficazFramework.Controls.MDIContainer.CustomTaskBarRightContentTemplateProperty') | |
-| [MyInstanceID](EficazFramework.Controls/MDIContainer/MyInstanceID.md 'EficazFramework.Controls.MDIContainer.MyInstanceID') | |
 | [TaskIconSizeValue](EficazFramework.Controls/MDIContainer/TaskIconSizeValue.md 'EficazFramework.Controls.MDIContainer.TaskIconSizeValue') | |
 | [TaskIconSizeValueRow](EficazFramework.Controls/MDIContainer/TaskIconSizeValueRow.md 'EficazFramework.Controls.MDIContainer.TaskIconSizeValueRow') | |
 
@@ -32,15 +29,6 @@ Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.O
 | Methods | |
 | :--- | :--- |
 | [GetApplicationDefinition(DependencyObject)](EficazFramework.Controls/MDIContainer/GetApplicationDefinition(DependencyObject).md 'EficazFramework.Controls.MDIContainer.GetApplicationDefinition(System.Windows.DependencyObject)') | |
-| [GetContainerForItemOverride()](EficazFramework.Controls/MDIContainer/GetContainerForItemOverride().md 'EficazFramework.Controls.MDIContainer.GetContainerForItemOverride()') | |
-| [IsItemItsOwnContainerOverride(object)](EficazFramework.Controls/MDIContainer/IsItemItsOwnContainerOverride(object).md 'EficazFramework.Controls.MDIContainer.IsItemItsOwnContainerOverride(object)') | |
 | [LoadApplication(ApplicationInstance)](EficazFramework.Controls/MDIContainer/LoadApplication(ApplicationInstance).md 'EficazFramework.Controls.MDIContainer.LoadApplication(EficazFramework.Application.ApplicationInstance)') | |
 | [OnApplyTemplate()](EficazFramework.Controls/MDIContainer/OnApplyTemplate().md 'EficazFramework.Controls.MDIContainer.OnApplyTemplate()') | |
-| [OnSelectionChanged(SelectionChangedEventArgs)](EficazFramework.Controls/MDIContainer/OnSelectionChanged(SelectionChangedEventArgs).md 'EficazFramework.Controls.MDIContainer.OnSelectionChanged(System.Windows.Controls.SelectionChangedEventArgs)') | |
-| [OnTaskBarStatusChanged(object, EventArgs)](EficazFramework.Controls/MDIContainer/OnTaskBarStatusChanged(object,EventArgs).md 'EficazFramework.Controls.MDIContainer.OnTaskBarStatusChanged(object, System.EventArgs)') | |
-| [OnWindowClosed(object, RoutedEventArgs)](EficazFramework.Controls/MDIContainer/OnWindowClosed(object,RoutedEventArgs).md 'EficazFramework.Controls.MDIContainer.OnWindowClosed(object, System.Windows.RoutedEventArgs)') | |
-| [OnWindowFocusChanged(object, RoutedEventArgs)](EficazFramework.Controls/MDIContainer/OnWindowFocusChanged(object,RoutedEventArgs).md 'EficazFramework.Controls.MDIContainer.OnWindowFocusChanged(object, System.Windows.RoutedEventArgs)') | |
-| [PrepareContainerForItemOverride(DependencyObject, object)](EficazFramework.Controls/MDIContainer/PrepareContainerForItemOverride(DependencyObject,object).md 'EficazFramework.Controls.MDIContainer.PrepareContainerForItemOverride(System.Windows.DependencyObject, object)') | |
-| [SetApplicationDefinition(DependencyObject, ApplicationInstance)](EficazFramework.Controls/MDIContainer/SetApplicationDefinition(DependencyObject,ApplicationInstance).md 'EficazFramework.Controls.MDIContainer.SetApplicationDefinition(System.Windows.DependencyObject, EficazFramework.Application.ApplicationInstance)') | |
-| [SyncTabZIndex(object)](EficazFramework.Controls/MDIContainer/SyncTabZIndex(object).md 'EficazFramework.Controls.MDIContainer.SyncTabZIndex(object)') | |
-| [SyncTaskBarItem(object)](EficazFramework.Controls/MDIContainer/SyncTaskBarItem(object).md 'EficazFramework.Controls.MDIContainer.SyncTaskBarItem(object)') | |
+| [SetApplicationDefinition(DependencyObject, ApplicationInstance)](EficazFramework.Controls/MDIContainer/SetApplicationDefinition(DependencyObject, ApplicationInstance).md 'EficazFramework.Controls.MDIContainer.SetApplicationDefinition(System.Windows.DependencyObject, EficazFramework.Application.ApplicationInstance)') | |

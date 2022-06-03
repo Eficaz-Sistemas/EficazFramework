@@ -1,5 +1,5 @@
-#### [EficazFramework.WPF](EficazFrameworkWPF.md 'EficazFramework WPF')
-### [EficazFramework.Utilities](EficazFrameworkWPF.md#EficazFramework.Utilities 'EficazFramework.Utilities')
+#### [EficazFramework.WPF](EficazFramework WPF.md 'EficazFramework WPF')
+### [EficazFramework.Utilities](EficazFramework WPF.md#EficazFramework.Utilities 'EficazFramework.Utilities')
 
 ## DipHelper Class
 
@@ -10,12 +10,6 @@ public sealed class DipHelper
 ```
 
 Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.Object 'System.Object') &#129106; DipHelper
-
-| Fields | |
-| :--- | :--- |
-| [conv](EficazFramework.Utilities/DipHelper/conv.md 'EficazFramework.Utilities.DipHelper.conv') | |
-| [DpiBase](EficazFramework.Utilities/DipHelper/DpiBase.md 'EficazFramework.Utilities.DipHelper.DpiBase') | |
-| [tier](EficazFramework.Utilities/DipHelper/tier.md 'EficazFramework.Utilities.DipHelper.tier') | |
 
 | Properties | |
 | :--- | :--- |
@@ -33,7 +27,6 @@ Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.O
 | [GetPhysicalDpi(double)](EficazFramework.Utilities/DipHelper/GetPhysicalDpi(double).md 'EficazFramework.Utilities.DipHelper.GetPhysicalDpi(double)') | Gets the physical pixel density (DPI) of the screen. |
 | [GetScreenIndependentScaleFactor(double)](EficazFramework.Utilities/DipHelper/GetScreenIndependentScaleFactor(double).md 'EficazFramework.Utilities.DipHelper.GetScreenIndependentScaleFactor(double)') | Gets the scale factor to apply to a WPF application<br/>so that 96 DIP always equals 1 inch on the screen (whatever the system DPI). |
 | [GetSystemDpi()](EficazFramework.Utilities/DipHelper/GetSystemDpi().md 'EficazFramework.Utilities.DipHelper.GetSystemDpi()') | Gets the system configured DPI. |
-| [GetSystemDpiFactor()](EficazFramework.Utilities/DipHelper/GetSystemDpiFactor().md 'EficazFramework.Utilities.DipHelper.GetSystemDpiFactor()') | Gets the system DPI scale factor (compared to 96 dpi).<br/>From http://blogs.msdn.com/jaimer/archive/2007/03/07/getting-system-dpi-in-wpf-app.aspx<br/>Should not be called before the Loaded event (else XamlException mat throw) |
 | [InchToDip(double)](EficazFramework.Utilities/DipHelper/InchToDip(double).md 'EficazFramework.Utilities.DipHelper.InchToDip(double)') | Converts inches to DIP (Device Independant Pixels). |
 | [MmToDip(double)](EficazFramework.Utilities/DipHelper/MmToDip(double).md 'EficazFramework.Utilities.DipHelper.MmToDip(double)') | Converts millimeters to DIP (Device Independant Pixels). |
 | [PtToDip(double)](EficazFramework.Utilities/DipHelper/PtToDip(double).md 'EficazFramework.Utilities.DipHelper.PtToDip(double)') | Converts font points to DIP (Device Independant Pixels). |

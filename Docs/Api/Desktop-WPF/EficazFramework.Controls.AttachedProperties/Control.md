@@ -1,5 +1,5 @@
-#### [EficazFramework.WPF](EficazFrameworkWPF.md 'EficazFramework WPF')
-### [EficazFramework.Controls.AttachedProperties](EficazFrameworkWPF.md#EficazFramework.Controls.AttachedProperties 'EficazFramework.Controls.AttachedProperties')
+#### [EficazFramework.WPF](EficazFramework WPF.md 'EficazFramework WPF')
+### [EficazFramework.Controls.AttachedProperties](EficazFramework WPF.md#EficazFramework.Controls.AttachedProperties 'EficazFramework.Controls.AttachedProperties')
 
 ## Control Class
 
@@ -28,12 +28,10 @@ Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.O
 | [GetIsEmpty(DependencyObject)](EficazFramework.Controls.AttachedProperties/Control/GetIsEmpty(DependencyObject).md 'EficazFramework.Controls.AttachedProperties.Control.GetIsEmpty(System.Windows.DependencyObject)') | |
 | [GetShowLabel(DependencyObject)](EficazFramework.Controls.AttachedProperties/Control/GetShowLabel(DependencyObject).md 'EficazFramework.Controls.AttachedProperties.Control.GetShowLabel(System.Windows.DependencyObject)') | |
 | [GetTipText(DependencyObject)](EficazFramework.Controls.AttachedProperties/Control/GetTipText(DependencyObject).md 'EficazFramework.Controls.AttachedProperties.Control.GetTipText(System.Windows.DependencyObject)') | |
-| [OnPasswordChanged(object, RoutedEventArgs)](EficazFramework.Controls.AttachedProperties/Control/OnPasswordChanged(object,RoutedEventArgs).md 'EficazFramework.Controls.AttachedProperties.Control.OnPasswordChanged(object, System.Windows.RoutedEventArgs)') | |
-| [OnTipTextChanged(DependencyObject, DependencyPropertyChangedEventArgs)](EficazFramework.Controls.AttachedProperties/Control/OnTipTextChanged(DependencyObject,DependencyPropertyChangedEventArgs).md 'EficazFramework.Controls.AttachedProperties.Control.OnTipTextChanged(System.Windows.DependencyObject, System.Windows.DependencyPropertyChangedEventArgs)') | |
-| [SetBlurBlur(DependencyObject, bool)](EficazFramework.Controls.AttachedProperties/Control/SetBlurBlur(DependencyObject,bool).md 'EficazFramework.Controls.AttachedProperties.Control.SetBlurBlur(System.Windows.DependencyObject, bool)') | |
-| [SetColor(DependencyObject, Color)](EficazFramework.Controls.AttachedProperties/Control/SetColor(DependencyObject,Color).md 'EficazFramework.Controls.AttachedProperties.Control.SetColor(System.Windows.DependencyObject, EficazFramework.Controls.AttachedProperties.Color)') | |
-| [SetCornerRadius(DependencyObject, CornerRadius)](EficazFramework.Controls.AttachedProperties/Control/SetCornerRadius(DependencyObject,CornerRadius).md 'EficazFramework.Controls.AttachedProperties.Control.SetCornerRadius(System.Windows.DependencyObject, System.Windows.CornerRadius)') | |
-| [SetElevation(DependencyObject, int)](EficazFramework.Controls.AttachedProperties/Control/SetElevation(DependencyObject,int).md 'EficazFramework.Controls.AttachedProperties.Control.SetElevation(System.Windows.DependencyObject, int)') | |
-| [SetIsEmpty(DependencyObject, bool)](EficazFramework.Controls.AttachedProperties/Control/SetIsEmpty(DependencyObject,bool).md 'EficazFramework.Controls.AttachedProperties.Control.SetIsEmpty(System.Windows.DependencyObject, bool)') | |
-| [SetShowLabel(DependencyObject, bool)](EficazFramework.Controls.AttachedProperties/Control/SetShowLabel(DependencyObject,bool).md 'EficazFramework.Controls.AttachedProperties.Control.SetShowLabel(System.Windows.DependencyObject, bool)') | |
-| [SetTipText(DependencyObject, string)](EficazFramework.Controls.AttachedProperties/Control/SetTipText(DependencyObject,string).md 'EficazFramework.Controls.AttachedProperties.Control.SetTipText(System.Windows.DependencyObject, string)') | |
+| [SetBlurBlur(DependencyObject, bool)](EficazFramework.Controls.AttachedProperties/Control/SetBlurBlur(DependencyObject, bool).md 'EficazFramework.Controls.AttachedProperties.Control.SetBlurBlur(System.Windows.DependencyObject, bool)') | |
+| [SetColor(DependencyObject, Color)](EficazFramework.Controls.AttachedProperties/Control/SetColor(DependencyObject, Color).md 'EficazFramework.Controls.AttachedProperties.Control.SetColor(System.Windows.DependencyObject, EficazFramework.Controls.AttachedProperties.Color)') | |
+| [SetCornerRadius(DependencyObject, CornerRadius)](EficazFramework.Controls.AttachedProperties/Control/SetCornerRadius(DependencyObject, CornerRadius).md 'EficazFramework.Controls.AttachedProperties.Control.SetCornerRadius(System.Windows.DependencyObject, System.Windows.CornerRadius)') | |
+| [SetElevation(DependencyObject, int)](EficazFramework.Controls.AttachedProperties/Control/SetElevation(DependencyObject, int).md 'EficazFramework.Controls.AttachedProperties.Control.SetElevation(System.Windows.DependencyObject, int)') | |
+| [SetIsEmpty(DependencyObject, bool)](EficazFramework.Controls.AttachedProperties/Control/SetIsEmpty(DependencyObject, bool).md 'EficazFramework.Controls.AttachedProperties.Control.SetIsEmpty(System.Windows.DependencyObject, bool)') | |
+| [SetShowLabel(DependencyObject, bool)](EficazFramework.Controls.AttachedProperties/Control/SetShowLabel(DependencyObject, bool).md 'EficazFramework.Controls.AttachedProperties.Control.SetShowLabel(System.Windows.DependencyObject, bool)') | |
+| [SetTipText(DependencyObject, string)](EficazFramework.Controls.AttachedProperties/Control/SetTipText(DependencyObject, string).md 'EficazFramework.Controls.AttachedProperties.Control.SetTipText(System.Windows.DependencyObject, string)') | |

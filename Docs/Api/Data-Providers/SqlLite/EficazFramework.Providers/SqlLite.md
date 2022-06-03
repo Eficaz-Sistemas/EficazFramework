@@ -1,5 +1,5 @@
-#### [EficazFramework.Data.SqlLite](EficazFrameworkSqlLiteDataProvider.md 'EficazFramework SqlLite Data Provider')
-### [EficazFramework.Providers](EficazFrameworkSqlLiteDataProvider.md#EficazFramework.Providers 'EficazFramework.Providers')
+#### [EficazFramework.Data.SqlLite](EficazFramework SqlLite Data Provider.md 'EficazFramework SqlLite Data Provider')
+### [EficazFramework.Providers](EficazFramework SqlLite Data Provider.md#EficazFramework.Providers 'EficazFramework.Providers')
 
 ## SqlLite Class
 
@@ -22,5 +22,5 @@ Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.O
 
 | Methods | |
 | :--- | :--- |
-| [GetConnectionString(string, string, string)](EficazFramework.Providers/SqlLite/GetConnectionString(string,string,string).md 'EficazFramework.Providers.SqlLite.GetConnectionString(string, string, string)') | |
-| [OnConfiguring(DbContextOptionsBuilder, string, string, string)](EficazFramework.Providers/SqlLite/OnConfiguring(DbContextOptionsBuilder,string,string,string).md 'EficazFramework.Providers.SqlLite.OnConfiguring(Microsoft.EntityFrameworkCore.DbContextOptionsBuilder, string, string, string)') | |
+| [GetConnectionString(string, string, string)](EficazFramework.Providers/SqlLite/GetConnectionString(string, string, string).md 'EficazFramework.Providers.SqlLite.GetConnectionString(string, string, string)') | |
+| [OnConfiguring(DbContextOptionsBuilder, string, string, string)](EficazFramework.Providers/SqlLite/OnConfiguring(DbContextOptionsBuilder, string, string, string).md 'EficazFramework.Providers.SqlLite.OnConfiguring(Microsoft.EntityFrameworkCore.DbContextOptionsBuilder, string, string, string)') | |

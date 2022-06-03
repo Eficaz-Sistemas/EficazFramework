@@ -1,5 +1,5 @@
-#### [EficazFramework.Utilities](EficazFrameworkUtilities.md 'EficazFramework Utilities')
-### [EficazFramework.Services](EficazFrameworkUtilities.md#EficazFramework.Services 'EficazFramework.Services')
+#### [EficazFramework.Utilities](EficazFramework Utilities.md 'EficazFramework Utilities')
+### [EficazFramework.Services](EficazFramework Utilities.md#EficazFramework.Services 'EficazFramework.Services')
 
 ## HubsList Class
 

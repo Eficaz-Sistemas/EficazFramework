@@ -1,5 +1,5 @@
-#### [EficazFramework.WPF](EficazFrameworkWPF.md 'EficazFramework WPF')
-### [EficazFramework.Themes](EficazFrameworkWPF.md#EficazFramework.Themes 'EficazFramework.Themes')
+#### [EficazFramework.WPF](EficazFramework WPF.md 'EficazFramework WPF')
+### [EficazFramework.Themes](EficazFramework WPF.md#EficazFramework.Themes 'EficazFramework.Themes')
 
 ## ColorDictionary Class
 

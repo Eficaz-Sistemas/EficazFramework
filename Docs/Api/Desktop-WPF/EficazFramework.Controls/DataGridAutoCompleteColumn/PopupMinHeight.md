@@ -1,5 +1,5 @@
-#### [EficazFramework.WPF](EficazFrameworkWPF.md 'EficazFramework WPF')
-### [EficazFramework.Controls](EficazFrameworkWPF.md#EficazFramework.Controls 'EficazFramework.Controls').[DataGridAutoCompleteColumn](EficazFramework.Controls/DataGridAutoCompleteColumn.md 'EficazFramework.Controls.DataGridAutoCompleteColumn')
+#### [EficazFramework.WPF](EficazFramework WPF.md 'EficazFramework WPF')
+### [EficazFramework.Controls](EficazFramework WPF.md#EficazFramework.Controls 'EficazFramework.Controls').[DataGridAutoCompleteColumn](EficazFramework.Controls/DataGridAutoCompleteColumn.md 'EficazFramework.Controls.DataGridAutoCompleteColumn')
 
 ## DataGridAutoCompleteColumn.PopupMinHeight Property
 

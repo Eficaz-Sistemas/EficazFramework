@@ -1,5 +1,5 @@
-#### [EficazFramework.WPF](EficazFrameworkWPF.md 'EficazFramework WPF')
-### [EficazFramework.Controls.Primitives](EficazFrameworkWPF.md#EficazFramework.Controls.Primitives 'EficazFramework.Controls.Primitives').[MultiRangeBase](EficazFramework.Controls.Primitives/MultiRangeBase.md 'EficazFramework.Controls.Primitives.MultiRangeBase')
+#### [EficazFramework.WPF](EficazFramework WPF.md 'EficazFramework WPF')
+### [EficazFramework.Controls.Primitives](EficazFramework WPF.md#EficazFramework.Controls.Primitives 'EficazFramework.Controls.Primitives').[MultiRangeBase](EficazFramework.Controls.Primitives/MultiRangeBase.md 'EficazFramework.Controls.Primitives.MultiRangeBase')
 
 ## MultiRangeBase.MaximumProperty Field
 

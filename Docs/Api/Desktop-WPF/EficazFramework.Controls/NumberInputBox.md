@@ -1,5 +1,5 @@
-#### [EficazFramework.WPF](EficazFrameworkWPF.md 'EficazFramework WPF')
-### [EficazFramework.Controls](EficazFrameworkWPF.md#EficazFramework.Controls 'EficazFramework.Controls')
+#### [EficazFramework.WPF](EficazFramework WPF.md 'EficazFramework WPF')
+### [EficazFramework.Controls](EficazFramework WPF.md#EficazFramework.Controls 'EficazFramework.Controls')
 
 ## NumberInputBox Class
 
@@ -14,7 +14,6 @@ Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.O
 | [DecimalPlacesProperty](EficazFramework.Controls/NumberInputBox/DecimalPlacesProperty.md 'EficazFramework.Controls.NumberInputBox.DecimalPlacesProperty') | |
 | [MaximumProperty](EficazFramework.Controls/NumberInputBox/MaximumProperty.md 'EficazFramework.Controls.NumberInputBox.MaximumProperty') | |
 | [MinimumProperty](EficazFramework.Controls/NumberInputBox/MinimumProperty.md 'EficazFramework.Controls.NumberInputBox.MinimumProperty') | |
-| [validchars](EficazFramework.Controls/NumberInputBox/validchars.md 'EficazFramework.Controls.NumberInputBox.validchars') | |
 
 | Properties | |
 | :--- | :--- |
@@ -22,8 +21,3 @@ Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.O
 | [Maximum](EficazFramework.Controls/NumberInputBox/Maximum.md 'EficazFramework.Controls.NumberInputBox.Maximum') | |
 | [Minimum](EficazFramework.Controls/NumberInputBox/Minimum.md 'EficazFramework.Controls.NumberInputBox.Minimum') | |
 | [Value](EficazFramework.Controls/NumberInputBox/Value.md 'EficazFramework.Controls.NumberInputBox.Value') | |
-
-| Methods | |
-| :--- | :--- |
-| [OnPreviewTextInput(TextCompositionEventArgs)](EficazFramework.Controls/NumberInputBox/OnPreviewTextInput(TextCompositionEventArgs).md 'EficazFramework.Controls.NumberInputBox.OnPreviewTextInput(System.Windows.Input.TextCompositionEventArgs)') | |
-| [Pasting(object, DataObjectPastingEventArgs)](EficazFramework.Controls/NumberInputBox/Pasting(object,DataObjectPastingEventArgs).md 'EficazFramework.Controls.NumberInputBox.Pasting(object, System.Windows.DataObjectPastingEventArgs)') | |

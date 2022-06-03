@@ -1,5 +1,5 @@
-#### [EficazFramework.WPF](EficazFrameworkWPF.md 'EficazFramework WPF')
-### [EficazFramework.Controls](EficazFrameworkWPF.md#EficazFramework.Controls 'EficazFramework.Controls')
+#### [EficazFramework.WPF](EficazFramework WPF.md 'EficazFramework WPF')
+### [EficazFramework.Controls](EficazFramework WPF.md#EficazFramework.Controls 'EficazFramework.Controls')
 
 ## StartMenu Class
 
@@ -13,22 +13,16 @@ Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.O
 | :--- | :--- |
 | [AllAppsListProperty](EficazFramework.Controls/StartMenu/AllAppsListProperty.md 'EficazFramework.Controls.StartMenu.AllAppsListProperty') | |
 | [ApplicationsProperty](EficazFramework.Controls/StartMenu/ApplicationsProperty.md 'EficazFramework.Controls.StartMenu.ApplicationsProperty') | |
-| [ApplicationsPropertyKey](EficazFramework.Controls/StartMenu/ApplicationsPropertyKey.md 'EficazFramework.Controls.StartMenu.ApplicationsPropertyKey') | |
 | [AppsViewModeCommandProperty](EficazFramework.Controls/StartMenu/AppsViewModeCommandProperty.md 'EficazFramework.Controls.StartMenu.AppsViewModeCommandProperty') | |
-| [AppsViewModeCommandPropertyKey](EficazFramework.Controls/StartMenu/AppsViewModeCommandPropertyKey.md 'EficazFramework.Controls.StartMenu.AppsViewModeCommandPropertyKey') | |
 | [CustomTabsProperty](EficazFramework.Controls/StartMenu/CustomTabsProperty.md 'EficazFramework.Controls.StartMenu.CustomTabsProperty') | |
 | [ExcludedUrisProperty](EficazFramework.Controls/StartMenu/ExcludedUrisProperty.md 'EficazFramework.Controls.StartMenu.ExcludedUrisProperty') | |
 | [IsPopupOpenedProperty](EficazFramework.Controls/StartMenu/IsPopupOpenedProperty.md 'EficazFramework.Controls.StartMenu.IsPopupOpenedProperty') | |
 | [MainPageTopRightContentProperty](EficazFramework.Controls/StartMenu/MainPageTopRightContentProperty.md 'EficazFramework.Controls.StartMenu.MainPageTopRightContentProperty') | |
 | [OpenApplicationCommandProperty](EficazFramework.Controls/StartMenu/OpenApplicationCommandProperty.md 'EficazFramework.Controls.StartMenu.OpenApplicationCommandProperty') | |
-| [OpenApplicationCommandPropertyKey](EficazFramework.Controls/StartMenu/OpenApplicationCommandPropertyKey.md 'EficazFramework.Controls.StartMenu.OpenApplicationCommandPropertyKey') | |
 | [OpenMenuCommandProperty](EficazFramework.Controls/StartMenu/OpenMenuCommandProperty.md 'EficazFramework.Controls.StartMenu.OpenMenuCommandProperty') | |
-| [OpenMenuCommandPropertyKey](EficazFramework.Controls/StartMenu/OpenMenuCommandPropertyKey.md 'EficazFramework.Controls.StartMenu.OpenMenuCommandPropertyKey') | |
 | [PinnedApplicationsProperty](EficazFramework.Controls/StartMenu/PinnedApplicationsProperty.md 'EficazFramework.Controls.StartMenu.PinnedApplicationsProperty') | |
-| [PinnedApplicationsPropertyKey](EficazFramework.Controls/StartMenu/PinnedApplicationsPropertyKey.md 'EficazFramework.Controls.StartMenu.PinnedApplicationsPropertyKey') | |
 | [PinnedApplicationTemplateProperty](EficazFramework.Controls/StartMenu/PinnedApplicationTemplateProperty.md 'EficazFramework.Controls.StartMenu.PinnedApplicationTemplateProperty') | |
 | [PinOffApplicationCommandProperty](EficazFramework.Controls/StartMenu/PinOffApplicationCommandProperty.md 'EficazFramework.Controls.StartMenu.PinOffApplicationCommandProperty') | |
-| [PinOffApplicationCommandPropertyKey](EficazFramework.Controls/StartMenu/PinOffApplicationCommandPropertyKey.md 'EficazFramework.Controls.StartMenu.PinOffApplicationCommandPropertyKey') | |
 | [PopupPlacementProperty](EficazFramework.Controls/StartMenu/PopupPlacementProperty.md 'EficazFramework.Controls.StartMenu.PopupPlacementProperty') | |
 | [SearchAppLiteralProperty](EficazFramework.Controls/StartMenu/SearchAppLiteralProperty.md 'EficazFramework.Controls.StartMenu.SearchAppLiteralProperty') | |
 | [WelcomeTextProperty](EficazFramework.Controls/StartMenu/WelcomeTextProperty.md 'EficazFramework.Controls.StartMenu.WelcomeTextProperty') | |
@@ -53,13 +47,7 @@ Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.O
 
 | Methods | |
 | :--- | :--- |
-| [ChangeAppsViewMode_Executed(object, ExecuteEventArgs)](EficazFramework.Controls/StartMenu/ChangeAppsViewMode_Executed(object,ExecuteEventArgs).md 'EficazFramework.Controls.StartMenu.ChangeAppsViewMode_Executed(object, EficazFramework.Events.ExecuteEventArgs)') | |
 | [OnApplyTemplate()](EficazFramework.Controls/StartMenu/OnApplyTemplate().md 'EficazFramework.Controls.StartMenu.OnApplyTemplate()') | |
-| [OnIsOpen_Changed(DependencyObject, DependencyPropertyChangedEventArgs)](EficazFramework.Controls/StartMenu/OnIsOpen_Changed(DependencyObject,DependencyPropertyChangedEventArgs).md 'EficazFramework.Controls.StartMenu.OnIsOpen_Changed(System.Windows.DependencyObject, System.Windows.DependencyPropertyChangedEventArgs)') | |
-| [OnSearchLiteral_Changed(DependencyObject, DependencyPropertyChangedEventArgs)](EficazFramework.Controls/StartMenu/OnSearchLiteral_Changed(DependencyObject,DependencyPropertyChangedEventArgs).md 'EficazFramework.Controls.StartMenu.OnSearchLiteral_Changed(System.Windows.DependencyObject, System.Windows.DependencyPropertyChangedEventArgs)') | |
-| [OpenApplication_Executed(object, ExecuteEventArgs)](EficazFramework.Controls/StartMenu/OpenApplication_Executed(object,ExecuteEventArgs).md 'EficazFramework.Controls.StartMenu.OpenApplication_Executed(object, EficazFramework.Events.ExecuteEventArgs)') | |
-| [OpenPopupMenu_Executed(object, ExecuteEventArgs)](EficazFramework.Controls/StartMenu/OpenPopupMenu_Executed(object,ExecuteEventArgs).md 'EficazFramework.Controls.StartMenu.OpenPopupMenu_Executed(object, EficazFramework.Events.ExecuteEventArgs)') | |
-| [PinOffApplication_Executed(object, ExecuteEventArgs)](EficazFramework.Controls/StartMenu/PinOffApplication_Executed(object,ExecuteEventArgs).md 'EficazFramework.Controls.StartMenu.PinOffApplication_Executed(object, EficazFramework.Events.ExecuteEventArgs)') | |
 | [RefreshPinnedApps()](EficazFramework.Controls/StartMenu/RefreshPinnedApps().md 'EficazFramework.Controls.StartMenu.RefreshPinnedApps()') | |
 
 | Events | |

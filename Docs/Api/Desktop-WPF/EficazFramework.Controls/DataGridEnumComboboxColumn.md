@@ -1,5 +1,5 @@
-#### [EficazFramework.WPF](EficazFrameworkWPF.md 'EficazFramework WPF')
-### [EficazFramework.Controls](EficazFrameworkWPF.md#EficazFramework.Controls 'EficazFramework.Controls')
+#### [EficazFramework.WPF](EficazFramework WPF.md 'EficazFramework WPF')
+### [EficazFramework.Controls](EficazFramework WPF.md#EficazFramework.Controls 'EficazFramework.Controls')
 
 ## DataGridEnumComboboxColumn Class
 
@@ -12,7 +12,3 @@ Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.O
 | Properties | |
 | :--- | :--- |
 | [LocalizationResourceType](EficazFramework.Controls/DataGridEnumComboboxColumn/LocalizationResourceType.md 'EficazFramework.Controls.DataGridEnumComboboxColumn.LocalizationResourceType') | |
-
-| Methods | |
-| :--- | :--- |
-| [GenerateElement(DataGridCell, object)](EficazFramework.Controls/DataGridEnumComboboxColumn/GenerateElement(DataGridCell,object).md 'EficazFramework.Controls.DataGridEnumComboboxColumn.GenerateElement(System.Windows.Controls.DataGridCell, object)') | |

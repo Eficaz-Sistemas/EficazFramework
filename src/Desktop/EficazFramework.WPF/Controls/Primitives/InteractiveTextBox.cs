@@ -129,6 +129,7 @@ public abstract partial class InteractiveTextBox : TextBox
 
     internal bool f12pressed = false;
 
+    /// <exclude/>
     private void OpenPopup(bool? movefocus = true)
     {
         _PART_Popup.IsOpen = true;

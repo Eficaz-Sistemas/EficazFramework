@@ -1,5 +1,5 @@
-#### [EficazFramework.WPF](EficazFrameworkWPF.md 'EficazFramework WPF')
-### [EficazFramework.Localization](EficazFrameworkWPF.md#EficazFramework.Localization 'EficazFramework.Localization')
+#### [EficazFramework.WPF](EficazFramework WPF.md 'EficazFramework WPF')
+### [EficazFramework.Localization](EficazFramework WPF.md#EficazFramework.Localization 'EficazFramework.Localization')
 
 ## LocalizeText Class
 
