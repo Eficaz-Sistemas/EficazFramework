@@ -95,7 +95,7 @@
   </ItemGroup>
 	
   <ItemGroup>
-    <PackageReference Include="DefaultDocumentation" Version="0.8.0-alpha2">
+    <PackageReference Include="DefaultDocumentation" Version="0.8.1">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
@@ -103,7 +103,7 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
-    <PackageReference Include="MudBlazor" Version="6.0.9" />
+    <PackageReference Include="MudBlazor" Version="6.0.10" />
   </ItemGroup>
 	
   <ItemGroup>
