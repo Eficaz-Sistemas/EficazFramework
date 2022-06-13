@@ -55,7 +55,7 @@ namespace EficazFramework.DocsApiPlugin
 
         public string GetFileName(IGeneralContext context, DocItem item)
         {
-            return (item is AssemblyDocItem ? item.FullName : string.Join("/", item.GetParents().Skip(1).Select(p => p.Name).Concat(Enumerable.Repeat(item.Name, 1)))) + ".md";
+            return PathCleaner.Clean(item is AssemblyDocItem ? item.FullName : string.Join("/", item.GetParents().Skip(1).Select(p => p.Name).Concat(Enumerable.Repeat(item.Name, 1))), PathCleaner.GetInvalidCharReplacement(context)) + ".md";
         }
     }
 }
