@@ -96,7 +96,7 @@
   </ItemGroup>
 	
   <ItemGroup>
-    <PackageReference Include="DefaultDocumentation" Version="0.8.1">
+    <PackageReference Include="DefaultDocumentation" Version="0.8.2">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
