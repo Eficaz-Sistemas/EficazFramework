@@ -1,5 +1,5 @@
-#### [EficazFramework.WPF](EficazFramework WPF.md 'EficazFramework WPF')
-### [EficazFramework.Controls](EficazFramework WPF.md#EficazFramework.Controls 'EficazFramework.Controls')
+#### [EficazFramework.WPF](EficazFrameworkWPF.md 'EficazFramework WPF')
+### [EficazFramework.Controls](EficazFrameworkWPF.md#EficazFramework.Controls 'EficazFramework.Controls')
 
 ## MDIWindow Class
 
@@ -34,10 +34,10 @@ Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.O
 
 | Methods | |
 | :--- | :--- |
-| [CloseWindow(object, RoutedEventArgs)](EficazFramework.Controls/MDIWindow/CloseWindow(object, RoutedEventArgs).md 'EficazFramework.Controls.MDIWindow.CloseWindow(object, System.Windows.RoutedEventArgs)') | |
+| [CloseWindow(object, RoutedEventArgs)](EficazFramework.Controls/MDIWindow/CloseWindow(object,RoutedEventArgs).md 'EficazFramework.Controls.MDIWindow.CloseWindow(object, System.Windows.RoutedEventArgs)') | |
 | [GetAcceptEnterKeyNavigation(DependencyObject)](EficazFramework.Controls/MDIWindow/GetAcceptEnterKeyNavigation(DependencyObject).md 'EficazFramework.Controls.MDIWindow.GetAcceptEnterKeyNavigation(System.Windows.DependencyObject)') | |
 | [OnApplyTemplate()](EficazFramework.Controls/MDIWindow/OnApplyTemplate().md 'EficazFramework.Controls.MDIWindow.OnApplyTemplate()') | |
-| [SetAcceptEnterKeyNavigation(DependencyObject, bool)](EficazFramework.Controls/MDIWindow/SetAcceptEnterKeyNavigation(DependencyObject, bool).md 'EficazFramework.Controls.MDIWindow.SetAcceptEnterKeyNavigation(System.Windows.DependencyObject, bool)') | |
+| [SetAcceptEnterKeyNavigation(DependencyObject, bool)](EficazFramework.Controls/MDIWindow/SetAcceptEnterKeyNavigation(DependencyObject,bool).md 'EficazFramework.Controls.MDIWindow.SetAcceptEnterKeyNavigation(System.Windows.DependencyObject, bool)') | |
 
 | Events | |
 | :--- | :--- |

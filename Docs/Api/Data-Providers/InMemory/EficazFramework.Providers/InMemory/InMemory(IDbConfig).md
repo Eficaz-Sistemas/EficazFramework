@@ -1,5 +1,5 @@
-#### [EficazFramework.Data.InMemory](EficazFramework InMemory Data Provider.md 'EficazFramework InMemory Data Provider')
-### [EficazFramework.Providers](EficazFramework InMemory Data Provider.md#EficazFramework.Providers 'EficazFramework.Providers').[InMemory](EficazFramework.Providers/InMemory.md 'EficazFramework.Providers.InMemory')
+#### [EficazFramework.Data.InMemory](EficazFrameworkInMemoryDataProvider.md 'EficazFramework InMemory Data Provider')
+### [EficazFramework.Providers](EficazFrameworkInMemoryDataProvider.md#EficazFramework.Providers 'EficazFramework.Providers').[InMemory](EficazFramework.Providers/InMemory.md 'EficazFramework.Providers.InMemory')
 
 ## InMemory(IDbConfig) Constructor
 

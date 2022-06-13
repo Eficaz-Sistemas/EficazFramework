@@ -1,5 +1,5 @@
-#### [EficazFramework.Data.InMemory](EficazFramework InMemory Data Provider.md 'EficazFramework InMemory Data Provider')
-### [EficazFramework.Providers](EficazFramework InMemory Data Provider.md#EficazFramework.Providers 'EficazFramework.Providers')
+#### [EficazFramework.Data.InMemory](EficazFrameworkInMemoryDataProvider.md 'EficazFramework InMemory Data Provider')
+### [EficazFramework.Providers](EficazFrameworkInMemoryDataProvider.md#EficazFramework.Providers 'EficazFramework.Providers')
 
 ## Extension Class
 
@@ -11,4 +11,4 @@ Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.O
 
 | Methods | |
 | :--- | :--- |
-| [AddInMemoryService(this IServiceCollection)](EficazFramework.Providers/Extension/AddInMemoryService(this IServiceCollection).md 'EficazFramework.Providers.Extension.AddInMemoryService(this Microsoft.Extensions.DependencyInjection.IServiceCollection)') | Adiciona o provedor InMemory ao contexto de Injeção de Dependência |
+| [AddInMemoryService(this IServiceCollection)](EficazFramework.Providers/Extension/AddInMemoryService(thisIServiceCollection).md 'EficazFramework.Providers.Extension.AddInMemoryService(this Microsoft.Extensions.DependencyInjection.IServiceCollection)') | Adiciona o provedor InMemory ao contexto de Injeção de Dependência |

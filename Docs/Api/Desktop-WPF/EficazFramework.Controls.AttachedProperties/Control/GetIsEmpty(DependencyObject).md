@@ -1,5 +1,5 @@
-#### [EficazFramework.WPF](EficazFramework WPF.md 'EficazFramework WPF')
-### [EficazFramework.Controls.AttachedProperties](EficazFramework WPF.md#EficazFramework.Controls.AttachedProperties 'EficazFramework.Controls.AttachedProperties').[Control](EficazFramework.Controls.AttachedProperties/Control.md 'EficazFramework.Controls.AttachedProperties.Control')
+#### [EficazFramework.WPF](EficazFrameworkWPF.md 'EficazFramework WPF')
+### [EficazFramework.Controls.AttachedProperties](EficazFrameworkWPF.md#EficazFramework.Controls.AttachedProperties 'EficazFramework.Controls.AttachedProperties').[Control](EficazFramework.Controls.AttachedProperties/Control.md 'EficazFramework.Controls.AttachedProperties.Control')
 
 ## Control.GetIsEmpty(DependencyObject) Method
 

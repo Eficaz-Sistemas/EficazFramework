@@ -1,5 +1,5 @@
-#### [EficazFramework.WPF](EficazFramework WPF.md 'EficazFramework WPF')
-### [EficazFramework.Controls.AttachedProperties](EficazFramework WPF.md#EficazFramework.Controls.AttachedProperties 'EficazFramework.Controls.AttachedProperties').[DataGrid](EficazFramework.Controls.AttachedProperties/DataGrid.md 'EficazFramework.Controls.AttachedProperties.DataGrid')
+#### [EficazFramework.WPF](EficazFrameworkWPF.md 'EficazFramework WPF')
+### [EficazFramework.Controls.AttachedProperties](EficazFrameworkWPF.md#EficazFramework.Controls.AttachedProperties 'EficazFramework.Controls.AttachedProperties').[DataGrid](EficazFramework.Controls.AttachedProperties/DataGrid.md 'EficazFramework.Controls.AttachedProperties.DataGrid')
 
 ## DataGrid.FilterTextProperty Field
 

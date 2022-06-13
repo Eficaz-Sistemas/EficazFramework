@@ -1,5 +1,5 @@
-#### [EficazFramework.Data.MySql](EficazFramework MySql Data Provider.md 'EficazFramework MySql Data Provider')
-### [EficazFramework.Providers](EficazFramework MySql Data Provider.md#EficazFramework.Providers 'EficazFramework.Providers')
+#### [EficazFramework.Data.MySql](EficazFrameworkMySqlDataProvider.md 'EficazFramework MySql Data Provider')
+### [EficazFramework.Providers](EficazFrameworkMySqlDataProvider.md#EficazFramework.Providers 'EficazFramework.Providers')
 
 ## Extension Class
 
@@ -11,4 +11,4 @@ Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.O
 
 | Methods | |
 | :--- | :--- |
-| [AddMySqlService(this IServiceCollection)](EficazFramework.Providers/Extension/AddMySqlService(this IServiceCollection).md 'EficazFramework.Providers.Extension.AddMySqlService(this Microsoft.Extensions.DependencyInjection.IServiceCollection)') | Adiciona o provedor MsSqlServer ao contexto de Injeção de Dependência |
+| [AddMySqlService(this IServiceCollection)](EficazFramework.Providers/Extension/AddMySqlService(thisIServiceCollection).md 'EficazFramework.Providers.Extension.AddMySqlService(this Microsoft.Extensions.DependencyInjection.IServiceCollection)') | Adiciona o provedor MsSqlServer ao contexto de Injeção de Dependência |

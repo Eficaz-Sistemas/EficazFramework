@@ -1,5 +1,5 @@
-#### [EficazFramework.Utilities](EficazFramework Utilities.md 'EficazFramework Utilities')
-### [EficazFramework.ThirdPart](EficazFramework Utilities.md#EficazFramework.ThirdPart 'EficazFramework.ThirdPart').[TimeZoneData](EficazFramework.ThirdPart/TimeZoneData.md 'EficazFramework.ThirdPart.TimeZoneData')
+#### [EficazFramework.Utilities](EficazFrameworkUtilities.md 'EficazFramework Utilities')
+### [EficazFramework.ThirdPart](EficazFrameworkUtilities.md#EficazFramework.ThirdPart 'EficazFramework.ThirdPart').[TimeZoneData](EficazFramework.ThirdPart/TimeZoneData.md 'EficazFramework.ThirdPart.TimeZoneData')
 
 ## TimeZoneData.Formatted Property
 

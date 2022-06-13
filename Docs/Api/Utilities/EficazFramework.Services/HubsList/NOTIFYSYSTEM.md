@@ -1,5 +1,5 @@
-#### [EficazFramework.Utilities](EficazFramework Utilities.md 'EficazFramework Utilities')
-### [EficazFramework.Services](EficazFramework Utilities.md#EficazFramework.Services 'EficazFramework.Services').[HubsList](EficazFramework.Services/HubsList.md 'EficazFramework.Services.HubsList')
+#### [EficazFramework.Utilities](EficazFrameworkUtilities.md 'EficazFramework Utilities')
+### [EficazFramework.Services](EficazFrameworkUtilities.md#EficazFramework.Services 'EficazFramework.Services').[HubsList](EficazFramework.Services/HubsList.md 'EficazFramework.Services.HubsList')
 
 ## HubsList.NOTIFYSYSTEM Field
 

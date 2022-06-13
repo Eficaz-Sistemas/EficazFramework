@@ -1,5 +1,5 @@
-#### [EficazFramework.Data.MsSqlServer](EficazFramework MsSql Data Provider.md 'EficazFramework MsSql Data Provider')
-### [EficazFramework.Providers](EficazFramework MsSql Data Provider.md#EficazFramework.Providers 'EficazFramework.Providers').[MsSqlServer](EficazFramework.Providers/MsSqlServer.md 'EficazFramework.Providers.MsSqlServer')
+#### [EficazFramework.Data.MsSqlServer](EficazFrameworkMsSqlDataProvider.md 'EficazFramework MsSql Data Provider')
+### [EficazFramework.Providers](EficazFrameworkMsSqlDataProvider.md#EficazFramework.Providers 'EficazFramework.Providers').[MsSqlServer](EficazFramework.Providers/MsSqlServer.md 'EficazFramework.Providers.MsSqlServer')
 
 ## MsSqlServer(IDbConfig) Constructor
 

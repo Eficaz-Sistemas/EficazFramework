@@ -1,5 +1,5 @@
-#### [EficazFramework.Data.MsSqlServer](EficazFramework MsSql Data Provider.md 'EficazFramework MsSql Data Provider')
-### [EficazFramework.Providers](EficazFramework MsSql Data Provider.md#EficazFramework.Providers 'EficazFramework.Providers')
+#### [EficazFramework.Data.MsSqlServer](EficazFrameworkMsSqlDataProvider.md 'EficazFramework MsSql Data Provider')
+### [EficazFramework.Providers](EficazFrameworkMsSqlDataProvider.md#EficazFramework.Providers 'EficazFramework.Providers')
 
 ## MsSqlServer Class
 
@@ -22,5 +22,5 @@ Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.O
 
 | Methods | |
 | :--- | :--- |
-| [GetConnectionString(string, string, string)](EficazFramework.Providers/MsSqlServer/GetConnectionString(string, string, string).md 'EficazFramework.Providers.MsSqlServer.GetConnectionString(string, string, string)') | |
-| [OnConfiguring(DbContextOptionsBuilder, string, string, string)](EficazFramework.Providers/MsSqlServer/OnConfiguring(DbContextOptionsBuilder, string, string, string).md 'EficazFramework.Providers.MsSqlServer.OnConfiguring(Microsoft.EntityFrameworkCore.DbContextOptionsBuilder, string, string, string)') | |
+| [GetConnectionString(string, string, string)](EficazFramework.Providers/MsSqlServer/GetConnectionString(string,string,string).md 'EficazFramework.Providers.MsSqlServer.GetConnectionString(string, string, string)') | |
+| [OnConfiguring(DbContextOptionsBuilder, string, string, string)](EficazFramework.Providers/MsSqlServer/OnConfiguring(DbContextOptionsBuilder,string,string,string).md 'EficazFramework.Providers.MsSqlServer.OnConfiguring(Microsoft.EntityFrameworkCore.DbContextOptionsBuilder, string, string, string)') | |

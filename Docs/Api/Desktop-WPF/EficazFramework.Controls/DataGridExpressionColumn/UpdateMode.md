@@ -1,5 +1,5 @@
-#### [EficazFramework.WPF](EficazFramework WPF.md 'EficazFramework WPF')
-### [EficazFramework.Controls](EficazFramework WPF.md#EficazFramework.Controls 'EficazFramework.Controls').[DataGridExpressionColumn](EficazFramework.Controls/DataGridExpressionColumn.md 'EficazFramework.Controls.DataGridExpressionColumn')
+#### [EficazFramework.WPF](EficazFrameworkWPF.md 'EficazFramework WPF')
+### [EficazFramework.Controls](EficazFrameworkWPF.md#EficazFramework.Controls 'EficazFramework.Controls').[DataGridExpressionColumn](EficazFramework.Controls/DataGridExpressionColumn.md 'EficazFramework.Controls.DataGridExpressionColumn')
 
 ## DataGridExpressionColumn.UpdateMode Property
 

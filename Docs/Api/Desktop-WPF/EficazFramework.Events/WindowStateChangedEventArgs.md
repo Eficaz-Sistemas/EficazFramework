@@ -1,5 +1,5 @@
-#### [EficazFramework.WPF](EficazFramework WPF.md 'EficazFramework WPF')
-### [EficazFramework.Events](EficazFramework WPF.md#EficazFramework.Events 'EficazFramework.Events')
+#### [EficazFramework.WPF](EficazFrameworkWPF.md 'EficazFramework WPF')
+### [EficazFramework.Events](EficazFrameworkWPF.md#EficazFramework.Events 'EficazFramework.Events')
 
 ## WindowStateChangedEventArgs Class
 
@@ -11,7 +11,7 @@ Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.O
 
 | Constructors | |
 | :--- | :--- |
-| [WindowStateChangedEventArgs(RoutedEvent, WindowState, WindowState)](EficazFramework.Events/WindowStateChangedEventArgs/WindowStateChangedEventArgs(RoutedEvent, WindowState, WindowState).md 'EficazFramework.Events.WindowStateChangedEventArgs.WindowStateChangedEventArgs(System.Windows.RoutedEvent, System.Windows.WindowState, System.Windows.WindowState)') | |
+| [WindowStateChangedEventArgs(RoutedEvent, WindowState, WindowState)](EficazFramework.Events/WindowStateChangedEventArgs/WindowStateChangedEventArgs(RoutedEvent,WindowState,WindowState).md 'EficazFramework.Events.WindowStateChangedEventArgs.WindowStateChangedEventArgs(System.Windows.RoutedEvent, System.Windows.WindowState, System.Windows.WindowState)') | |
 
 | Properties | |
 | :--- | :--- |

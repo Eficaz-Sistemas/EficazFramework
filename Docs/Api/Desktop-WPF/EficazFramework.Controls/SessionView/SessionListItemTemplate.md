@@ -1,5 +1,5 @@
-#### [EficazFramework.WPF](EficazFramework WPF.md 'EficazFramework WPF')
-### [EficazFramework.Controls](EficazFramework WPF.md#EficazFramework.Controls 'EficazFramework.Controls').[SessionView](EficazFramework.Controls/SessionView.md 'EficazFramework.Controls.SessionView')
+#### [EficazFramework.WPF](EficazFrameworkWPF.md 'EficazFramework WPF')
+### [EficazFramework.Controls](EficazFrameworkWPF.md#EficazFramework.Controls 'EficazFramework.Controls').[SessionView](EficazFramework.Controls/SessionView.md 'EficazFramework.Controls.SessionView')
 
 ## SessionView.SessionListItemTemplate Property
 

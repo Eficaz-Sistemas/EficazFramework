@@ -1,5 +1,5 @@
-#### [EficazFramework.Utilities](EficazFramework Utilities.md 'EficazFramework Utilities')
-### [EficazFramework.Serialization](EficazFramework Utilities.md#EficazFramework.Serialization 'EficazFramework.Serialization').[SerializationOperations](EficazFramework.Serialization/SerializationOperations.md 'EficazFramework.Serialization.SerializationOperations')
+#### [EficazFramework.Utilities](EficazFrameworkUtilities.md 'EficazFramework Utilities')
+### [EficazFramework.Serialization](EficazFrameworkUtilities.md#EficazFramework.Serialization 'EficazFramework.Serialization').[SerializationOperations](EficazFramework.Serialization/SerializationOperations.md 'EficazFramework.Serialization.SerializationOperations')
 
 ## SerializationOperations.JsonSerializerOptions Field
 

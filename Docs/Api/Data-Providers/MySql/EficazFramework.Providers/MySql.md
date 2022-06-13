@@ -1,5 +1,5 @@
-#### [EficazFramework.Data.MySql](EficazFramework MySql Data Provider.md 'EficazFramework MySql Data Provider')
-### [EficazFramework.Providers](EficazFramework MySql Data Provider.md#EficazFramework.Providers 'EficazFramework.Providers')
+#### [EficazFramework.Data.MySql](EficazFrameworkMySqlDataProvider.md 'EficazFramework MySql Data Provider')
+### [EficazFramework.Providers](EficazFrameworkMySqlDataProvider.md#EficazFramework.Providers 'EficazFramework.Providers')
 
 ## MySql Class
 
@@ -22,5 +22,5 @@ Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.O
 
 | Methods | |
 | :--- | :--- |
-| [GetConnectionString(string, string, string)](EficazFramework.Providers/MySql/GetConnectionString(string, string, string).md 'EficazFramework.Providers.MySql.GetConnectionString(string, string, string)') | |
-| [OnConfiguring(DbContextOptionsBuilder, string, string, string)](EficazFramework.Providers/MySql/OnConfiguring(DbContextOptionsBuilder, string, string, string).md 'EficazFramework.Providers.MySql.OnConfiguring(Microsoft.EntityFrameworkCore.DbContextOptionsBuilder, string, string, string)') | |
+| [GetConnectionString(string, string, string)](EficazFramework.Providers/MySql/GetConnectionString(string,string,string).md 'EficazFramework.Providers.MySql.GetConnectionString(string, string, string)') | |
+| [OnConfiguring(DbContextOptionsBuilder, string, string, string)](EficazFramework.Providers/MySql/OnConfiguring(DbContextOptionsBuilder,string,string,string).md 'EficazFramework.Providers.MySql.OnConfiguring(Microsoft.EntityFrameworkCore.DbContextOptionsBuilder, string, string, string)') | |

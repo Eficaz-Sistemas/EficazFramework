@@ -26,9 +26,6 @@ public class ExpressionBuilder : BunitTest
         comp.Render();
         Console.WriteLine(comp.Markup);
         comp.FindAll("th").Count.Should().Be(4);
-        comp.FindAll("th.mud-table-cell").Count.Should().Be(4);
-        comp.FindAll("th.ef-expression-table-cell").Count.Should().Be(1);
-        comp.FindAll("td.ef-expression-table-cell").Count.Should().Be(0); // no rows
         comp.FindAll("td").Count.Should().Be(0); // no rows
 
         // add expression execute
@@ -37,9 +34,8 @@ public class ExpressionBuilder : BunitTest
         {
             Button = 0
         });
-        comp.FindAll("th.ef-expression-table-cell").Count.Should().Be(1);
-        comp.FindAll("td.ef-expression-table-cell").Count.Should().Be(4); // single row
-        comp.FindAll("td").Count.Should().Be(4); // no rows
+        comp.FindAll("th").Count.Should().Be(4);
+        comp.FindAll("td").Count.Should().Be(4); // single row
         comp.Instance.ViewModel.Items.Should().HaveCount(1);
 
         // remove expression execute
@@ -48,25 +44,23 @@ public class ExpressionBuilder : BunitTest
         {
             Button = 0
         });
-        comp.FindAll("th.ef-expression-table-cell").Count.Should().Be(1);
+        comp.FindAll("th").Count.Should().Be(4);
         comp.FindAll("td").Count.Should().Be(0); // no rows
         comp.Instance.ViewModel.Items.Should().HaveCount(0);
 
 
         // lock new expressions
         await comp.InvokeAsync(() => comp.Instance.ViewModel.CanAddExpressions = false);
-        comp.FindAll("th.ef-expression-table-cell").Count.Should().Be(0); // add command column not rendered
-        comp.FindAll("td.ef-expression-table-cell").Count.Should().Be(0); // no rows
-
+        comp.FindAll("td").Count.Should().Be(0); // no rows
         comp.FindAll("button").Should().HaveCount(1); // just find button
         await comp.InvokeAsync(() => comp.Instance.ViewModel.AddNewItemCommand.Execute(null));
-        comp.FindAll("td.ef-expression-table-cell").Count.Should().Be(0); // no rows
+        comp.FindAll("td").Count.Should().Be(0); // no rows after addnew attempt
 
         await comp.InvokeAsync(() => comp.Instance.OnAddCommand());
-        comp.FindAll("td.ef-expression-table-cell").Count.Should().Be(0); // no rows
+        comp.FindAll("td").Count.Should().Be(0); // no rows after another addnew attempt
 
         await comp.InvokeAsync(() => comp.Instance.OnDeleteCommand(new object()));
-        comp.FindAll("td.ef-expression-table-cell").Count.Should().Be(0); // no rows
+        comp.FindAll("td").Count.Should().Be(0); // no rows
 
     }
 

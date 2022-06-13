@@ -1,5 +1,5 @@
-#### [EficazFramework.WPF](EficazFramework WPF.md 'EficazFramework WPF')
-### [EficazFramework.Controls](EficazFramework WPF.md#EficazFramework.Controls 'EficazFramework.Controls')
+#### [EficazFramework.WPF](EficazFrameworkWPF.md 'EficazFramework WPF')
+### [EficazFramework.Controls](EficazFrameworkWPF.md#EficazFramework.Controls 'EficazFramework.Controls')
 
 ## MDIContainer Class
 
@@ -31,4 +31,4 @@ Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.O
 | [GetApplicationDefinition(DependencyObject)](EficazFramework.Controls/MDIContainer/GetApplicationDefinition(DependencyObject).md 'EficazFramework.Controls.MDIContainer.GetApplicationDefinition(System.Windows.DependencyObject)') | |
 | [LoadApplication(ApplicationInstance)](EficazFramework.Controls/MDIContainer/LoadApplication(ApplicationInstance).md 'EficazFramework.Controls.MDIContainer.LoadApplication(EficazFramework.Application.ApplicationInstance)') | |
 | [OnApplyTemplate()](EficazFramework.Controls/MDIContainer/OnApplyTemplate().md 'EficazFramework.Controls.MDIContainer.OnApplyTemplate()') | |
-| [SetApplicationDefinition(DependencyObject, ApplicationInstance)](EficazFramework.Controls/MDIContainer/SetApplicationDefinition(DependencyObject, ApplicationInstance).md 'EficazFramework.Controls.MDIContainer.SetApplicationDefinition(System.Windows.DependencyObject, EficazFramework.Application.ApplicationInstance)') | |
+| [SetApplicationDefinition(DependencyObject, ApplicationInstance)](EficazFramework.Controls/MDIContainer/SetApplicationDefinition(DependencyObject,ApplicationInstance).md 'EficazFramework.Controls.MDIContainer.SetApplicationDefinition(System.Windows.DependencyObject, EficazFramework.Application.ApplicationInstance)') | |

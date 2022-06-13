@@ -1,5 +1,5 @@
-#### [EficazFramework.WPF](EficazFramework WPF.md 'EficazFramework WPF')
-### [EficazFramework.Controls](EficazFramework WPF.md#EficazFramework.Controls 'EficazFramework.Controls').[DateInputBox](EficazFramework.Controls/DateInputBox.md 'EficazFramework.Controls.DateInputBox')
+#### [EficazFramework.WPF](EficazFrameworkWPF.md 'EficazFramework WPF')
+### [EficazFramework.Controls](EficazFrameworkWPF.md#EficazFramework.Controls 'EficazFramework.Controls').[DateInputBox](EficazFramework.Controls/DateInputBox.md 'EficazFramework.Controls.DateInputBox')
 
 ## DateInputBox.Value Property
 

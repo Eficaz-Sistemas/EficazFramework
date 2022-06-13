@@ -1,5 +1,5 @@
-#### [EficazFramework.WPF](EficazFramework WPF.md 'EficazFramework WPF')
-### [EficazFramework.Controls.AttachedProperties](EficazFramework WPF.md#EficazFramework.Controls.AttachedProperties 'EficazFramework.Controls.AttachedProperties').[TabControl](EficazFramework.Controls.AttachedProperties/TabControl.md 'EficazFramework.Controls.AttachedProperties.TabControl')
+#### [EficazFramework.WPF](EficazFrameworkWPF.md 'EficazFramework WPF')
+### [EficazFramework.Controls.AttachedProperties](EficazFrameworkWPF.md#EficazFramework.Controls.AttachedProperties 'EficazFramework.Controls.AttachedProperties').[TabControl](EficazFramework.Controls.AttachedProperties/TabControl.md 'EficazFramework.Controls.AttachedProperties.TabControl')
 
 ## TabControl.GetIsExpanded(DependencyObject) Method
 

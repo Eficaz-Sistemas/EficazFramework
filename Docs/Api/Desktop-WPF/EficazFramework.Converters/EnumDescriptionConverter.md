@@ -1,5 +1,5 @@
-#### [EficazFramework.WPF](EficazFramework WPF.md 'EficazFramework WPF')
-### [EficazFramework.Converters](EficazFramework WPF.md#EficazFramework.Converters 'EficazFramework.Converters')
+#### [EficazFramework.WPF](EficazFrameworkWPF.md 'EficazFramework WPF')
+### [EficazFramework.Converters](EficazFrameworkWPF.md#EficazFramework.Converters 'EficazFramework.Converters')
 
 ## EnumDescriptionConverter Class
 
@@ -18,5 +18,5 @@ Implements [System.Windows.Data.IValueConverter](https://docs.microsoft.com/en-u
 
 | Methods | |
 | :--- | :--- |
-| [Convert(object, Type, object, CultureInfo)](EficazFramework.Converters/EnumDescriptionConverter/Convert(object, Type, object, CultureInfo).md 'EficazFramework.Converters.EnumDescriptionConverter.Convert(object, System.Type, object, System.Globalization.CultureInfo)') | |
-| [ConvertBack(object, Type, object, CultureInfo)](EficazFramework.Converters/EnumDescriptionConverter/ConvertBack(object, Type, object, CultureInfo).md 'EficazFramework.Converters.EnumDescriptionConverter.ConvertBack(object, System.Type, object, System.Globalization.CultureInfo)') | |
+| [Convert(object, Type, object, CultureInfo)](EficazFramework.Converters/EnumDescriptionConverter/Convert(object,Type,object,CultureInfo).md 'EficazFramework.Converters.EnumDescriptionConverter.Convert(object, System.Type, object, System.Globalization.CultureInfo)') | |
+| [ConvertBack(object, Type, object, CultureInfo)](EficazFramework.Converters/EnumDescriptionConverter/ConvertBack(object,Type,object,CultureInfo).md 'EficazFramework.Converters.EnumDescriptionConverter.ConvertBack(object, System.Type, object, System.Globalization.CultureInfo)') | |

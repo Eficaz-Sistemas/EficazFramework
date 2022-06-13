@@ -1,5 +1,5 @@
-#### [EficazFramework.Data.MySql](EficazFramework MySql Data Provider.md 'EficazFramework MySql Data Provider')
-### [EficazFramework.Providers](EficazFramework MySql Data Provider.md#EficazFramework.Providers 'EficazFramework.Providers').[MySql](EficazFramework.Providers/MySql.md 'EficazFramework.Providers.MySql')
+#### [EficazFramework.Data.MySql](EficazFrameworkMySqlDataProvider.md 'EficazFramework MySql Data Provider')
+### [EficazFramework.Providers](EficazFrameworkMySqlDataProvider.md#EficazFramework.Providers 'EficazFramework.Providers').[MySql](EficazFramework.Providers/MySql.md 'EficazFramework.Providers.MySql')
 
 ## MySql(IDbConfig) Constructor
 

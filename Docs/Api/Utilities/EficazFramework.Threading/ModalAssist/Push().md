@@ -1,5 +1,5 @@
-#### [EficazFramework.Utilities](EficazFramework Utilities.md 'EficazFramework Utilities')
-### [EficazFramework.Threading](EficazFramework Utilities.md#EficazFramework.Threading 'EficazFramework.Threading').[ModalAssist](EficazFramework.Threading/ModalAssist.md 'EficazFramework.Threading.ModalAssist')
+#### [EficazFramework.Utilities](EficazFrameworkUtilities.md 'EficazFramework Utilities')
+### [EficazFramework.Threading](EficazFrameworkUtilities.md#EficazFramework.Threading 'EficazFramework.Threading').[ModalAssist](EficazFramework.Threading/ModalAssist.md 'EficazFramework.Threading.ModalAssist')
 
 ## ModalAssist.Push() Method
 

@@ -1,5 +1,5 @@
-#### [EficazFramework.Utilities](EficazFramework Utilities.md 'EficazFramework Utilities')
-### [EficazFramework.Threading](EficazFramework Utilities.md#EficazFramework.Threading 'EficazFramework.Threading').[Thread](EficazFramework.Threading/Thread.md 'EficazFramework.Threading.Thread')
+#### [EficazFramework.Utilities](EficazFrameworkUtilities.md 'EficazFramework Utilities')
+### [EficazFramework.Threading](EficazFrameworkUtilities.md#EficazFramework.Threading 'EficazFramework.Threading').[Thread](EficazFramework.Threading/Thread.md 'EficazFramework.Threading.Thread')
 
 ## Thread.SynchronizationContext Property
 

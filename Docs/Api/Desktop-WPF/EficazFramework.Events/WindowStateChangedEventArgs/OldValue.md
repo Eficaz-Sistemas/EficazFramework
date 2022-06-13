@@ -1,5 +1,5 @@
-#### [EficazFramework.WPF](EficazFramework WPF.md 'EficazFramework WPF')
-### [EficazFramework.Events](EficazFramework WPF.md#EficazFramework.Events 'EficazFramework.Events').[WindowStateChangedEventArgs](EficazFramework.Events/WindowStateChangedEventArgs.md 'EficazFramework.Events.WindowStateChangedEventArgs')
+#### [EficazFramework.WPF](EficazFrameworkWPF.md 'EficazFramework WPF')
+### [EficazFramework.Events](EficazFrameworkWPF.md#EficazFramework.Events 'EficazFramework.Events').[WindowStateChangedEventArgs](EficazFramework.Events/WindowStateChangedEventArgs.md 'EficazFramework.Events.WindowStateChangedEventArgs')
 
 ## WindowStateChangedEventArgs.OldValue Property
 

@@ -1,5 +1,5 @@
-#### [EficazFramework.WPF](EficazFramework WPF.md 'EficazFramework WPF')
-### [EficazFramework.Controls](EficazFramework WPF.md#EficazFramework.Controls 'EficazFramework.Controls').[DataGridEnumComboboxColumn](EficazFramework.Controls/DataGridEnumComboboxColumn.md 'EficazFramework.Controls.DataGridEnumComboboxColumn')
+#### [EficazFramework.WPF](EficazFrameworkWPF.md 'EficazFramework WPF')
+### [EficazFramework.Controls](EficazFrameworkWPF.md#EficazFramework.Controls 'EficazFramework.Controls').[DataGridEnumComboboxColumn](EficazFramework.Controls/DataGridEnumComboboxColumn.md 'EficazFramework.Controls.DataGridEnumComboboxColumn')
 
 ## DataGridEnumComboboxColumn.LocalizationResourceType Property
 

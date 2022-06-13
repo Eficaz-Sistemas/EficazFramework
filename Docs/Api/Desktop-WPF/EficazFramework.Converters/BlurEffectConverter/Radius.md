@@ -1,5 +1,5 @@
-#### [EficazFramework.WPF](EficazFramework WPF.md 'EficazFramework WPF')
-### [EficazFramework.Converters](EficazFramework WPF.md#EficazFramework.Converters 'EficazFramework.Converters').[BlurEffectConverter](EficazFramework.Converters/BlurEffectConverter.md 'EficazFramework.Converters.BlurEffectConverter')
+#### [EficazFramework.WPF](EficazFrameworkWPF.md 'EficazFramework WPF')
+### [EficazFramework.Converters](EficazFrameworkWPF.md#EficazFramework.Converters 'EficazFramework.Converters').[BlurEffectConverter](EficazFramework.Converters/BlurEffectConverter.md 'EficazFramework.Converters.BlurEffectConverter')
 
 ## BlurEffectConverter.Radius Property
 

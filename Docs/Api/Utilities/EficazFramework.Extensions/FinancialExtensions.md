@@ -1,0 +1,17 @@
+#### [EficazFramework.Utilities](EficazFrameworkUtilities.md 'EficazFramework Utilities')
+### [EficazFramework.Extensions](EficazFrameworkUtilities.md#EficazFramework.Extensions 'EficazFramework.Extensions')
+
+## FinancialExtensions Class
+
+```csharp
+public static class FinancialExtensions
+```
+
+Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.Object 'System.Object') &#129106; FinancialExtensions
+
+| Methods | |
+| :--- | :--- |
+| [CalculaJuros(this double, double, int, ReturnType, Capitalizacao, int)](EficazFramework.Extensions/FinancialExtensions/CalculaJuros(thisdouble,double,int,ReturnType,Capitalizacao,int).md 'EficazFramework.Extensions.FinancialExtensions.CalculaJuros(this double, double, int, EficazFramework.Extensions.FinancialExtensions.ReturnType, EficazFramework.Extensions.FinancialExtensions.Capitalizacao, int)') | Calcula os juros sobre um capital, a uma taxa e período desejado.<br/>NOTA: periodo e taxa devem estar na mesma unidade de tempo (ao dia, ao mês, etc). |
+| [CalculaJuros(this Nullable&lt;double&gt;, double, int, ReturnType, Capitalizacao, int)](EficazFramework.Extensions/FinancialExtensions/CalculaJuros(thisNullable_double_,double,int,ReturnType,Capitalizacao,int).md 'EficazFramework.Extensions.FinancialExtensions.CalculaJuros(this System.Nullable<double>, double, int, EficazFramework.Extensions.FinancialExtensions.ReturnType, EficazFramework.Extensions.FinancialExtensions.Capitalizacao, int)') | Calcula os juros sobre um capital, a uma taxa e período desejado.<br/>NOTA: periodo e taxa devem estar na mesma unidade de tempo (ao dia, ao mês, etc). |
+| [CalculaTaxa(this double, double, int, Capitalizacao, int)](EficazFramework.Extensions/FinancialExtensions/CalculaTaxa(thisdouble,double,int,Capitalizacao,int).md 'EficazFramework.Extensions.FinancialExtensions.CalculaTaxa(this double, double, int, EficazFramework.Extensions.FinancialExtensions.Capitalizacao, int)') | Calcula a taxa de juros de uma operação com base no capital aplicado em um período desejado.<br/>NOTA: A taxa retornada será referente à unidade de tempo do período (ao dia, ao mês, etc). |
+| [CalculaTaxa(this Nullable&lt;double&gt;, double, int, Capitalizacao, int)](EficazFramework.Extensions/FinancialExtensions/CalculaTaxa(thisNullable_double_,double,int,Capitalizacao,int).md 'EficazFramework.Extensions.FinancialExtensions.CalculaTaxa(this System.Nullable<double>, double, int, EficazFramework.Extensions.FinancialExtensions.Capitalizacao, int)') | Calcula a taxa de juros de uma operação com base no capital aplicado em um período desejado.<br/>NOTA: A taxa retornada será referente à unidade de tempo do período (ao dia, ao mês, etc). |

@@ -1,5 +1,5 @@
-#### [EficazFramework.Data.SqlLite](EficazFramework SqlLite Data Provider.md 'EficazFramework SqlLite Data Provider')
-### [EficazFramework.Providers](EficazFramework SqlLite Data Provider.md#EficazFramework.Providers 'EficazFramework.Providers')
+#### [EficazFramework.Data.SqlLite](EficazFrameworkSqlLiteDataProvider.md 'EficazFramework SqlLite Data Provider')
+### [EficazFramework.Providers](EficazFrameworkSqlLiteDataProvider.md#EficazFramework.Providers 'EficazFramework.Providers')
 
 ## Extension Class
 
@@ -11,4 +11,4 @@ Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.O
 
 | Methods | |
 | :--- | :--- |
-| [AddSqlLiteService(this IServiceCollection)](EficazFramework.Providers/Extension/AddSqlLiteService(this IServiceCollection).md 'EficazFramework.Providers.Extension.AddSqlLiteService(this Microsoft.Extensions.DependencyInjection.IServiceCollection)') | Adiciona o provedor SqlLite ao contexto de Injeção de Dependência |
+| [AddSqlLiteService(this IServiceCollection)](EficazFramework.Providers/Extension/AddSqlLiteService(thisIServiceCollection).md 'EficazFramework.Providers.Extension.AddSqlLiteService(this Microsoft.Extensions.DependencyInjection.IServiceCollection)') | Adiciona o provedor SqlLite ao contexto de Injeção de Dependência |

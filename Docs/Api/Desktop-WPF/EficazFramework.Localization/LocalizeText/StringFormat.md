@@ -1,5 +1,5 @@
-#### [EficazFramework.WPF](EficazFramework WPF.md 'EficazFramework WPF')
-### [EficazFramework.Localization](EficazFramework WPF.md#EficazFramework.Localization 'EficazFramework.Localization').[LocalizeText](EficazFramework.Localization/LocalizeText.md 'EficazFramework.Localization.LocalizeText')
+#### [EficazFramework.WPF](EficazFrameworkWPF.md 'EficazFramework WPF')
+### [EficazFramework.Localization](EficazFrameworkWPF.md#EficazFramework.Localization 'EficazFramework.Localization').[LocalizeText](EficazFramework.Localization/LocalizeText.md 'EficazFramework.Localization.LocalizeText')
 
 ## LocalizeText.StringFormat Property
 

@@ -1,5 +1,5 @@
-#### [EficazFramework.WPF](EficazFramework WPF.md 'EficazFramework WPF')
-### [EficazFramework.Utilities](EficazFramework WPF.md#EficazFramework.Utilities 'EficazFramework.Utilities')
+#### [EficazFramework.WPF](EficazFrameworkWPF.md 'EficazFramework WPF')
+### [EficazFramework.Utilities](EficazFrameworkWPF.md#EficazFramework.Utilities 'EficazFramework.Utilities')
 
 ## DipHelper Class
 

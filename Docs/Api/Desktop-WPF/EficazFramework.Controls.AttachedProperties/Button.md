@@ -1,5 +1,5 @@
-#### [EficazFramework.WPF](EficazFramework WPF.md 'EficazFramework WPF')
-### [EficazFramework.Controls.AttachedProperties](EficazFramework WPF.md#EficazFramework.Controls.AttachedProperties 'EficazFramework.Controls.AttachedProperties')
+#### [EficazFramework.WPF](EficazFrameworkWPF.md 'EficazFramework WPF')
+### [EficazFramework.Controls.AttachedProperties](EficazFrameworkWPF.md#EficazFramework.Controls.AttachedProperties 'EficazFramework.Controls.AttachedProperties')
 
 ## Button Class
 
@@ -18,5 +18,5 @@ Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.O
 | :--- | :--- |
 | [GetIconSize(DependencyObject)](EficazFramework.Controls.AttachedProperties/Button/GetIconSize(DependencyObject).md 'EficazFramework.Controls.AttachedProperties.Button.GetIconSize(System.Windows.DependencyObject)') | |
 | [GetMouseOver(DependencyObject)](EficazFramework.Controls.AttachedProperties/Button/GetMouseOver(DependencyObject).md 'EficazFramework.Controls.AttachedProperties.Button.GetMouseOver(System.Windows.DependencyObject)') | |
-| [SetIconSize(DependencyObject, double)](EficazFramework.Controls.AttachedProperties/Button/SetIconSize(DependencyObject, double).md 'EficazFramework.Controls.AttachedProperties.Button.SetIconSize(System.Windows.DependencyObject, double)') | |
-| [SetMouseOver(DependencyObject, Brush)](EficazFramework.Controls.AttachedProperties/Button/SetMouseOver(DependencyObject, Brush).md 'EficazFramework.Controls.AttachedProperties.Button.SetMouseOver(System.Windows.DependencyObject, System.Windows.Media.Brush)') | |
+| [SetIconSize(DependencyObject, double)](EficazFramework.Controls.AttachedProperties/Button/SetIconSize(DependencyObject,double).md 'EficazFramework.Controls.AttachedProperties.Button.SetIconSize(System.Windows.DependencyObject, double)') | |
+| [SetMouseOver(DependencyObject, Brush)](EficazFramework.Controls.AttachedProperties/Button/SetMouseOver(DependencyObject,Brush).md 'EficazFramework.Controls.AttachedProperties.Button.SetMouseOver(System.Windows.DependencyObject, System.Windows.Media.Brush)') | |
