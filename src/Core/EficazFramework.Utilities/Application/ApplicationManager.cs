@@ -148,7 +148,6 @@ public sealed class ApplicationInstance : ApplicationDefinition, INotifyProperty
         var sID = sectionManager.CurrentSection?.ID ?? 0;
 
         Metadata = fromDefinition;
-        Icon = fromDefinition.Icon;
         Title = fromDefinition.Title;
         LongTitle = fromDefinition.LongTitle;
         IsPublic = fromDefinition.IsPublic;
@@ -206,8 +205,13 @@ public sealed class ApplicationInstance : ApplicationDefinition, INotifyProperty
         $"[{SessionID}] - {TooltipTilte}";
 
     //Methods
-    private void AddTargets(IEnumerable<ApplicationTarget> source) =>
-        ((List<ApplicationTarget>) Targets).AddRange(source);
+    private void AddTargets(IDictionary<string, ApplicationTarget> source)
+    {
+        foreach (var item in source)
+        {
+            Targets.Add(item);
+        }
+    }
 
     public void Close()
     {

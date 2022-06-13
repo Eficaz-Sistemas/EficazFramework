@@ -1,7 +1,6 @@
 ﻿@using Microsoft.AspNetCore.Components.Web
 @using EficazFramework.Application
 @namespace EficazFramework.Components
-@typeparam TData
 @inherits MudBlazor.MudBaseBindableItemsControl<MdiWindow, ApplicationInstance>
 
 <CascadingValue Value="this">
@@ -16,8 +15,9 @@
             {
                 <MdiWindow Application="item" 
                            Title="@item.Title"
-                           Icon="@(item.Targets.FirstOrDefault(t => t.Target == "Blazor")?.Icon.ToString())">
-                    @ItemTemplate(item)
+                           Size="new(200,125)"
+                           Icon="@(item.Targets["Blazor"]?.Icon.ToString())">
+                    <DynamicComponent Type="@((Type)item.Targets["Blazor"].StartupUriOrType)" />
                 </MdiWindow>
             }
         }

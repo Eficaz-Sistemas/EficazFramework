@@ -1,13 +1,17 @@
 ﻿@page "/Components/Panels/Mdi"
 
 <div class="d-flex flex-grow-1">
-    <MdiHost TData="EficazFramework.Application.ApplicationDefinition">
+    <MdiHost @ref="_mdi" ItemsSource="ApplicationManager.RunningApplications" />
 
-    </MdiHost>
     <GroupPanel Title="Playground">
         <MudToolBar>
-            <MudTooltip Text="Start new App">
-                <MudFab Color="Color.Primary" Icon="@MudBlazor.Icons.Filled.Add" />
+            <MudTooltip Text="Start App1">
+                <MudFab Color="Color.Primary" Icon="@EficazFramework.Icons.Brands.Eficaz" OnClick="OnFab1Click" />
+            </MudTooltip>
+        </MudToolBar>
+        <MudToolBar>
+            <MudTooltip Text="Start App1">
+                <MudFab Color="Color.Primary" Icon="@EficazFramework.Icons.Brands.EficazLegacy" OnClick="OnFab2Click" />
             </MudTooltip>
         </MudToolBar>
     </GroupPanel>

@@ -8,11 +8,6 @@ namespace EficazFramework.Application;
 public class ApplicationTarget
 {
     /// <summary>
-    /// Nome da Plataforma dos metadados
-    /// </summary>
-    public string Target { get; set; }
-
-    /// <summary>
     /// Informações de inicialização da aplicação
     /// </summary>
     public object StartupUriOrType { get; set; }

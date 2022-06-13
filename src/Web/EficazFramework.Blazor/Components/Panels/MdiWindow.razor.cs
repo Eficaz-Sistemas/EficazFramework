@@ -18,7 +18,7 @@ public partial class MdiWindow: MudBlazor.MudComponentBase, IDisposable
 
     [Parameter] public ApplicationDefinition Application { get; set; }
 
-    [CascadingParameter] public MdiHost<ApplicationDefinition> MdiHost { get; set; }
+    [CascadingParameter] public MdiHost MdiHost { get; set; }
 
     protected string Classname =>
                     new CssBuilder()

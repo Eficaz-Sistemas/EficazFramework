@@ -3,7 +3,7 @@ using MudBlazor.Utilities;
 using EficazFramework.Application;
 
 namespace EficazFramework.Components;
-public partial class MdiHost<TData> : MudBlazor.MudBaseBindableItemsControl<MdiWindow, ApplicationInstance>
+public partial class MdiHost : MudBlazor.MudBaseBindableItemsControl<MdiWindow, ApplicationInstance>
 {
     //[Inject] public EficazFramework.Application.IApplicationManager ApplicationManager { get; set; }
 
