@@ -5,22 +5,37 @@
 
 <CascadingValue Value="this">
     <div class="@Classname" style="@StyleName">
-        @if (ItemsSource == null)
-        {
-            @ChildContent
-        }
-        else
-        {
-            foreach (var item in RunningApplications())
+        <div class="flex-grow-1">
+            @if (ItemsSource == null)
             {
-                <MdiWindow Application="item" 
-                           Title="@item.Title"
-                           Size="new(200,125)"
-                           Icon="@(item.Targets["Blazor"]?.Icon.ToString())">
-                    <DynamicComponent Type="@((Type)item.Targets["Blazor"].StartupUriOrType)" />
-                </MdiWindow>
+                @ChildContent
             }
-        }
+            else
+            {
+                foreach (var item in RunningApplications())
+                {
+                    <MdiWindow ApplicationInstance="item"
+                                Title="@item.Title"
+                                Size="new(200,125)"
+                                Icon="@(item.Targets["Blazor"]?.Icon.ToString())">
+                        <DynamicComponent Type="@((Type)item.Targets["Blazor"].StartupUriOrType)" />
+                    </MdiWindow>
+                }
+            }
+        </div>
+        <div class="d-flex" style="background-color: var(--mud-palette-background-grey)">
+            @foreach (var frame in Items)
+            {
+                <MudBlazor.MudTooltip Text="@frame.Title">
+                    <MudBlazor.MudIconButton Variant="@MudBlazor.Variant.Filled"
+                                             Color="@MudBlazor.Color.Transparent"
+                                             Icon="@frame.Icon"
+                                             Size="@MudBlazor.Size.Large"
+                                             DisableElevation
+                                             Style="@TaskBarButtonStyle(frame)"/>
+                </MudBlazor.MudTooltip>
+            }
+        </div>
     </div>
 </CascadingValue>
 

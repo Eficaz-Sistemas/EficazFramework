@@ -48,7 +48,7 @@ public interface IApplicationManager
     /// Ativa uma aplicação para trabalho. Caso ainda não esteja em execução, uma nova intância é criada.
     /// </summary>
     /// <param name="application">Manifesto de aplicativo a ser iniciado ou ativado.</param>
-    public void Activate(ApplicationDefinition application);
+    public ApplicationInstance Activate(ApplicationDefinition application);
 
     public event EventHandler ActiveAppChanged;
 }
@@ -111,7 +111,7 @@ internal class ApplicationManager : IApplicationManager
     /// Ativa uma aplicação para trabalho. Caso ainda não esteja em execução, uma nova intância é criada.
     /// </summary>
     /// <param name="application">Manifesto de aplicativo a ser iniciado ou ativado.</param>
-    public void Activate(ApplicationDefinition application)
+    public ApplicationInstance Activate(ApplicationDefinition application)
     {
         bool running = IsRunning(application);
         ApplicationInstance instance = null;
@@ -126,6 +126,7 @@ internal class ApplicationManager : IApplicationManager
             instance = RunningApplications.Where(app => app.Metadata == application && (app.SessionID == 0 | app.SessionID == _sectionManager.CurrentSection.ID)).FirstOrDefault();
         }
         ActiveAppChanged?.Invoke(instance, EventArgs.Empty);
+        return instance;
     }
 
     private void AppClosed(object sender, System.EventArgs e)

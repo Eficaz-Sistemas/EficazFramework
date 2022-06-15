@@ -16,7 +16,9 @@ public partial class MdiWindow: MudBlazor.MudComponentBase, IDisposable
     
     [Parameter] public Size Size { get; set; }
 
-    [Parameter] public ApplicationDefinition Application { get; set; }
+    [Parameter] public Size StartupPosition { get; set; } = new(0, 0);
+    
+    [Parameter] public ApplicationInstance ApplicationInstance { get; set; }
 
     [CascadingParameter] public MdiHost MdiHost { get; set; }
 
@@ -42,6 +44,16 @@ public partial class MdiWindow: MudBlazor.MudComponentBase, IDisposable
     {
         MdiHost.AddItem(this);
         base.OnInitialized();
+    }
+
+    protected override void OnAfterRender(bool firstRender)
+    {
+        base.OnAfterRender(firstRender);
+        if (firstRender)
+        {
+            offsetX = StartupPosition.Width;
+            offsetY = StartupPosition.Height;
+        }
     }
 
     private double startX, startY, offsetX, offsetY;

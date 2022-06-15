@@ -34,20 +34,38 @@ public partial class Mdi
             StartupUriOrType = typeof(EficazFramework.Tests.Blazor.Views.Pages.Components.Panels.MdiApps.MdiAnotherApp)
         });
 
+        appPerSection = new()
+        {
+            LongTitle = $"My Scoped App",
+            IsPublic = false,
+            Title = $"My Scoped App",
+        };
+        appPerSection.Targets.Add("Blazor", new()
+        {
+            Icon = MudBlazor.Icons.Custom.Brands.GitHub,
+            StartupUriOrType = typeof(EficazFramework.Tests.Blazor.Views.Pages.Components.Panels.MdiApps.MdiPerSectionApp)
+        });
+
     }
 
     void OnFab1Click()
     {
-        ApplicationManager.Activate(appHello);
+        _mdi!.LoadApplication(appHello!);
     }
 
     void OnFab2Click()
     {
-        ApplicationManager.Activate(appAnother);
+        _mdi!.LoadApplication(appAnother!);
+    }
+
+    void OnFab3Click()
+    {
+        _mdi!.LoadApplication(appPerSection!);
     }
 
     private EficazFramework.Application.ApplicationDefinition? appHello;
     private EficazFramework.Application.ApplicationDefinition? appAnother;
+    private EficazFramework.Application.ApplicationDefinition? appPerSection;
 
     private EficazFramework.Components.MdiHost? _mdi;
 
