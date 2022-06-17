@@ -22,6 +22,21 @@ public partial class MdiHost : MudBlazor.MudBaseBindableItemsControl<MdiWindow, 
                     .AddStyle(Style)
                     .Build();
 
+    private string StartMenuButtonStyle() =>
+            new StyleBuilder()
+                .AddStyle("padding", "8px")
+                .AddStyle("padding-left", "12px")
+                .AddStyle("padding-right", "12px")
+                .AddStyle("border-radius", "0px")
+                .AddStyle("border", "solid 3px transparent")
+                .Build();
+
+    private string StartApplicationMenuButtonStyle() =>
+        new StyleBuilder()
+            .AddStyle("margin", "8px")
+            .Build();
+
+
     private string TaskBarButtonStyle(MdiWindow item) =>
                 new StyleBuilder()
                     .AddStyle("padding", "8px")
@@ -33,6 +48,13 @@ public partial class MdiHost : MudBlazor.MudBaseBindableItemsControl<MdiWindow, 
                     .AddStyle("border-top", "solid 3px var(--mud-palette-primary)", SelectedContainer == item)
                     .Build();
 
+    private bool _startMenuIsOpen = false;
+    public void ToggleStartMenuOpen()
+    {
+        _startMenuIsOpen = !_startMenuIsOpen;
+        StateHasChanged();
+    }
+
     public override void AddItem(MdiWindow item)
     {
         if (!Items.Contains(item))
@@ -42,8 +64,12 @@ public partial class MdiHost : MudBlazor.MudBaseBindableItemsControl<MdiWindow, 
         }
     }
 
+    private IEnumerable<ApplicationDefinition> FilteredApplications() =>
+        ApplicationManager!.AllApplications; //TODO: consider filter...
+
     private IEnumerable<ApplicationInstance> RunningApplications() =>
-        ItemsSource.Where(app => app.SessionID == 0 || app.SessionID == CurrentSection).ToList();
+    ItemsSource.Where(app => app.SessionID == 0 || app.SessionID == CurrentSection).ToList();
+
 
     public void LoadApplication(ApplicationDefinition app)
     {

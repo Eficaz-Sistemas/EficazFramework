@@ -18,7 +18,7 @@ public partial class Mdi
         };
         appHello.Targets.Add("Blazor", new()
         {
-            Icon = EficazFramework.Icons.Brands.Eficaz,
+            Icon = MudBlazor.Icons.Custom.Brands.WhatsApp,
             StartupUriOrType = typeof(EficazFramework.Tests.Blazor.Views.Pages.Components.Panels.MdiApps.MdiAppHelloWorld) 
         });
 
@@ -30,7 +30,7 @@ public partial class Mdi
         };
         appAnother.Targets.Add("Blazor", new()
         {
-            Icon = EficazFramework.Icons.Brands.EficazLegacy,
+            Icon = MudBlazor.Icons.Custom.Brands.Facebook,
             StartupUriOrType = typeof(EficazFramework.Tests.Blazor.Views.Pages.Components.Panels.MdiApps.MdiAnotherApp)
         });
 
@@ -46,6 +46,9 @@ public partial class Mdi
             StartupUriOrType = typeof(EficazFramework.Tests.Blazor.Views.Pages.Components.Panels.MdiApps.MdiPerSectionApp)
         });
 
+        ApplicationManager.AllApplications.Add(appHello);
+        ApplicationManager.AllApplications.Add(appAnother);
+        ApplicationManager.AllApplications.Add(appPerSection);
     }
 
     void OnFab1Click()

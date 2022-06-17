@@ -24,6 +24,38 @@
             }
         </div>
         <div class="d-flex" style="background-color: var(--mud-palette-background-grey)">
+            <MudBlazor.MudTooltip Text="Iniciar">
+                <MudBlazor.MudIconButton Variant="@MudBlazor.Variant.Filled"
+                                            Color="@MudBlazor.Color.Transparent"
+                                            Icon="@EficazFramework.Icons.Brands.Eficaz"
+                                            Size="@MudBlazor.Size.Large"
+                                            Style="@StartMenuButtonStyle()"
+                                            DisableElevation
+                                            OnClick="ToggleStartMenuOpen"/>
+                <MudBlazor.MudPopover Open="_startMenuIsOpen" 
+                                      Class="ml-4 mb-4"
+                                      AnchorOrigin="MudBlazor.Origin.TopLeft"
+                                      TransformOrigin="MudBlazor.Origin.BottomLeft">
+                    <div class="d-flex flex-column px-4 pt-0 pb-4"
+                         style="border: solid 1px var(--mud-palette-primary); border-radius: 10px;">
+                        <MudBlazor.MudTextField T="string" Class="mt-n1 mx-2" Placeholder="pesquisar..."/>
+                        <MudBlazor.MudGrid Class="flex-grow-1 mx-1 mt-4 mb-2" Spacing="1">
+                            @foreach (var app in FilteredApplications())
+                            {
+                                <MudBlazor.MudItem>
+                                    <MudBlazor.MudIconButton Variant="@MudBlazor.Variant.Filled"
+                                                             Color="@MudBlazor.Color.Primary"
+                                                             Icon="@(app.Targets["Blazor"].Icon?.ToString())"
+                                                             Size="@MudBlazor.Size.Large"
+                                                             DisableElevation
+                                                             OnClick="() => LoadApplication(app)"/>
+                                </MudBlazor.MudItem>
+                            }
+                        </MudBlazor.MudGrid>
+                    </div>
+                </MudBlazor.MudPopover>
+            </MudBlazor.MudTooltip>
+
             @foreach (var frame in Items)
             {
                 <MudBlazor.MudTooltip Text="@frame.Title">
@@ -32,7 +64,8 @@
                                              Icon="@frame.Icon"
                                              Size="@MudBlazor.Size.Large"
                                              DisableElevation
-                                             Style="@TaskBarButtonStyle(frame)"/>
+                                             Style="@TaskBarButtonStyle(frame)"
+                                             OnClick="() => LoadApplication(app)"/>
                 </MudBlazor.MudTooltip>
             }
         </div>
