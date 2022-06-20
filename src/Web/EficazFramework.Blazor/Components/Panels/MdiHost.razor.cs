@@ -25,8 +25,8 @@ public partial class MdiHost : MudBlazor.MudBaseBindableItemsControl<MdiWindow, 
     private string StartMenuButtonStyle() =>
             new StyleBuilder()
                 .AddStyle("padding", "8px")
-                .AddStyle("padding-left", "12px")
-                .AddStyle("padding-right", "12px")
+                .AddStyle("padding-left", "9px")
+                .AddStyle("padding-right", "9px")
                 .AddStyle("border-radius", "0px")
                 .AddStyle("border", "solid 3px transparent")
                 .Build();
@@ -49,9 +49,13 @@ public partial class MdiHost : MudBlazor.MudBaseBindableItemsControl<MdiWindow, 
                     .Build();
 
     private bool _startMenuIsOpen = false;
-    public void ToggleStartMenuOpen()
+    public void ToggleStartMenuOpen(bool onlyClose = false)
     {
-        _startMenuIsOpen = !_startMenuIsOpen;
+        if (onlyClose)
+            _startMenuIsOpen = false;
+        else
+            _startMenuIsOpen = !_startMenuIsOpen;
+        
         StateHasChanged();
     }
 
@@ -83,6 +87,8 @@ public partial class MdiHost : MudBlazor.MudBaseBindableItemsControl<MdiWindow, 
             if (container != null)
                 MoveTo(Items.IndexOf(container));
         }
+
+        ToggleStartMenuOpen(true);
     }
 
 }

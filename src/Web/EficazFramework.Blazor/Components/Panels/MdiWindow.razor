@@ -17,7 +17,7 @@
         <MudBlazor.MudIconButton Icon="@MudBlazor.Icons.Filled.Close" DisableElevation Variant="MudBlazor.Variant.Filled" Size="MudBlazor.Size.Small"/>
     </div>
     <!--CONTENT-->
-    <div style="cursor:initial" @ondragstart:preventDefault="true" @ondragstart:stopPropagation="true">
+    <div style="cursor:initial" draggable="true" @ondragstart:preventDefault="true" @ondragstart:stopPropagation="true">
         <MudBlazor.MudFocusTrap>
             @ChildContent
         </MudBlazor.MudFocusTrap>

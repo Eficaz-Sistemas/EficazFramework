@@ -46,8 +46,13 @@ public partial class Mdi
             StartupUriOrType = typeof(EficazFramework.Tests.Blazor.Views.Pages.Components.Panels.MdiApps.MdiPerSectionApp)
         });
 
-        ApplicationManager.AllApplications.Add(appHello);
+        if (!ApplicationManager.AllApplications.Contains(appHello))
+            ApplicationManager.AllApplications.Add(appHello);
+
+        if (!ApplicationManager.AllApplications.Contains(appAnother))
         ApplicationManager.AllApplications.Add(appAnother);
+
+        if (!ApplicationManager.AllApplications.Contains(appPerSection))
         ApplicationManager.AllApplications.Add(appPerSection);
     }
 
