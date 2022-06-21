@@ -9,6 +9,10 @@ public partial class MdiHost : MudBlazor.MudBaseBindableItemsControl<MdiWindow, 
 
     [Parameter] public long CurrentSection { get; set; } = 0;
 
+
+    
+    #region Classes And Styles
+
     protected string Classname =>
                 new CssBuilder()
                     .AddClass(Class)
@@ -36,7 +40,6 @@ public partial class MdiHost : MudBlazor.MudBaseBindableItemsControl<MdiWindow, 
             .AddStyle("margin", "8px")
             .Build();
 
-
     private string TaskBarButtonStyle(MdiWindow item) =>
                 new StyleBuilder()
                     .AddStyle("padding", "8px")
@@ -48,6 +51,12 @@ public partial class MdiHost : MudBlazor.MudBaseBindableItemsControl<MdiWindow, 
                     .AddStyle("border-top", "solid 3px var(--mud-palette-primary)", SelectedContainer == item)
                     .Build();
 
+    #endregion
+
+    
+    
+    #region Start Menu
+
     private bool _startMenuIsOpen = false;
     public void ToggleStartMenuOpen(bool onlyClose = false)
     {
@@ -55,9 +64,23 @@ public partial class MdiHost : MudBlazor.MudBaseBindableItemsControl<MdiWindow, 
             _startMenuIsOpen = false;
         else
             _startMenuIsOpen = !_startMenuIsOpen;
-        
+
         StateHasChanged();
     }
+
+    
+    private bool _startMenuIsCompact = false;
+    public void ToggleStartMenuView()
+    {
+        _startMenuIsCompact = !_startMenuIsCompact;
+        StateHasChanged();
+    }
+
+    #endregion
+
+
+    
+    #region Applications
 
     public override void AddItem(MdiWindow item)
     {
@@ -68,12 +91,23 @@ public partial class MdiHost : MudBlazor.MudBaseBindableItemsControl<MdiWindow, 
         }
     }
 
-    private IEnumerable<ApplicationDefinition> FilteredApplications() =>
-        ApplicationManager!.AllApplications; //TODO: consider filter...
+    private string _appSearchFilter = "";
+
+    private string AppSearchFilter
+    {
+        get => _appSearchFilter;
+        set
+        {
+            _appSearchFilter = value;
+            StateHasChanged();
+        }
+    }
+
+    private IEnumerable<IGrouping<string, ApplicationDefinition>> FilteredApplications() =>
+        ApplicationManager!.AllApplications.Where(app => (app.Title ?? "").ToLower().Contains((_appSearchFilter ?? "").ToString().ToLower())).GroupBy(app => app.Group).ToList();
 
     private IEnumerable<ApplicationInstance> RunningApplications() =>
     ItemsSource.Where(app => app.SessionID == 0 || app.SessionID == CurrentSection).ToList();
-
 
     public void LoadApplication(ApplicationDefinition app)
     {
@@ -90,5 +124,7 @@ public partial class MdiHost : MudBlazor.MudBaseBindableItemsControl<MdiWindow, 
 
         ToggleStartMenuOpen(true);
     }
+
+    #endregion
 
 }

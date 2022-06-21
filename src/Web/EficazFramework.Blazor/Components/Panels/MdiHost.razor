@@ -43,31 +43,54 @@
                                       Style="background-color:unset">
                     <MudBlazor.MudPaper Elevation="8" 
                                         Class="d-flex flex-column px-4 pt-0 pb-4 ma-8"
-                                        Style="border: solid 1px var(--mud-palette-primary); border-radius: 10px; max-width:450px">
-                        <MudBlazor.MudTextField T="string" 
-                                                Class="mt-2 mx-2" 
-                                                Placeholder="pesquisar..."/>
-                        <MudBlazor.MudGrid Class="flex-grow-1 mx-1 mt-4 mb-2 pr-6" Spacing="1">
-                            @foreach (var app in FilteredApplications())
-                            {
-                                <MudBlazor.MudItem>
-                                    <MudBlazor.MudButton Variant="@MudBlazor.Variant.Filled"
-                                                         Color="@MudBlazor.Color.Primary"
-                                                         Size="@MudBlazor.Size.Large"
-                                                         Class="py-6"
-                                                         Style="width:96px; height:96px;"
-                                                         OnClick="() => LoadApplication(app)">
-                                        <div class="d-flex flex-column">
-                                            <MudBlazor.MudIcon Icon="@(app.Targets["Blazor"].Icon?.ToString())"
-                                                               Style="font-size:3rem !important"/>
-                                            <MudBlazor.MudText Typo="MudBlazor.Typo.caption" Align="MudBlazor.Align.Center">
-                                                @app.Title
-                                            </MudBlazor.MudText>
-                                        </div>
-                                    </MudBlazor.MudButton>
-                                </MudBlazor.MudItem>
-                            }
-                        </MudBlazor.MudGrid>
+                                        Style="border: solid 1px var(--mud-palette-primary); border-radius: 10px; max-width:466px">
+                                        
+                        <div class="d-flex mt-2 mx-2 align-center">
+                            <MudBlazor.MudTextField @bind-Value="AppSearchFilter"
+                                                    Class="flex-grow1" 
+                                                    Placeholder="pesquisar..."
+                                                    Adornment="MudBlazor.Adornment.Start"
+                                                    AdornmentIcon="@MudBlazor.Icons.Filled.Search"
+                                                    Immediate/>
+                            <MudBlazor.MudTooltip Text="aff">
+                                <MudBlazor.MudIconButton Variant="@MudBlazor.Variant.Filled"
+                                                         Color="@MudBlazor.Color.Transparent"
+                                                         Icon="@MudBlazor.Icons.Filled.GridView"
+                                                         Size="@MudBlazor.Size.Small"
+                                                         DisableElevation
+                                                         Class="mt-6 ml-4"
+                                                         OnClick="ToggleStartMenuView"/>
+                            </MudBlazor.MudTooltip>
+                        </div>
+
+                        @foreach (var group in FilteredApplications())
+                        {
+                            <MudBlazor.MudText Typo="MudBlazor.Typo.body2"
+                                               Class="mx-1 mt-4 mb-n4 px-2">
+                                @group.Key
+                            </MudBlazor.MudText>
+                            <MudBlazor.MudGrid Class="flex-grow-1 mx-1 mt-4 mb-2 pr-6" Spacing="1">
+                                @foreach (var app in group)
+                                {
+                                    <MudBlazor.MudItem>
+                                        <MudBlazor.MudButton Variant="@MudBlazor.Variant.Filled"
+                                                                Color="@MudBlazor.Color.Primary"
+                                                                Size="@MudBlazor.Size.Large"
+                                                                Class="py-6"
+                                                                Style="width:96px; height:96px;"
+                                                                OnClick="() => LoadApplication(app)">
+                                            <div class="d-flex flex-column">
+                                                <MudBlazor.MudIcon Icon="@(app.Targets["Blazor"].Icon?.ToString())"
+                                                                    Style="font-size:3rem !important"/>
+                                                <MudBlazor.MudText Typo="MudBlazor.Typo.caption" Align="MudBlazor.Align.Center">
+                                                    @app.Title
+                                                </MudBlazor.MudText>
+                                            </div>
+                                        </MudBlazor.MudButton>
+                                    </MudBlazor.MudItem>
+                                }                              
+                            </MudBlazor.MudGrid>
+                        }
                     </MudBlazor.MudPaper>
                 </MudBlazor.MudPopover>
             </MudBlazor.MudTooltip>

@@ -47,3 +47,10 @@ div.text-match div, div.mud-input input {
     padding-top: 8px !important;
     padding-bottom: 8px !important;
 }
+
+.mud-input-adornment-start {
+    margin-right: 8px;
+    margin-inline-end: 0px;
+    margin-inline-start: unset;
+    margin-left: 12px;
+}
