@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Components.Web;
 using MudBlazor.Utilities;
 using System.Drawing;
 using EficazFramework.Application;
+using Microsoft.JSInterop;
 
 namespace EficazFramework.Components;
 
@@ -22,6 +23,10 @@ public partial class MdiWindow: MudBlazor.MudComponentBase, IDisposable
 
     [CascadingParameter] public MdiHost MdiHost { get; set; }
 
+    [Inject] IJSRuntime JsRutinme { get; set; }
+
+    private object myRef;
+    
     protected string Classname =>
                     new CssBuilder()
                         .AddClass(Class)
@@ -38,6 +43,7 @@ public partial class MdiWindow: MudBlazor.MudComponentBase, IDisposable
                     .AddStyle("left", $"{offsetX}px")
                     .AddStyle("width", $"{Size.Width}px", Size.Width != int.MaxValue)
                     .AddStyle("height", $"{Size.Height}px", Size.Height != int.MaxValue)
+                    .AddStyle("z-index", "2", MdiHost.SelectedContainer == this)
                     .Build();
 
     protected override void OnInitialized()
@@ -66,12 +72,11 @@ public partial class MdiWindow: MudBlazor.MudComponentBase, IDisposable
 
     private void OnDragStart(DragEventArgs args)
     {
+        //Utilities.JsInterop.SetDragImage(JsRutinme, args);
         MdiHost.MoveTo(MdiHost.Items.IndexOf(this));
         isDragging = true;
         startX = args.ClientX;
         startY = args.ClientY;
-        args.DataTransfer.EffectAllowed = "move";
-        args.DataTransfer.DropEffect = "move";
     }
 
     private void OnDragEnd(DragEventArgs args)

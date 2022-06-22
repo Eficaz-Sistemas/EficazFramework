@@ -82,10 +82,19 @@ public partial class MdiHost : MudBlazor.MudBaseBindableItemsControl<MdiWindow, 
 
     private MudBlazor.MudTabs _tabsHost;
 
+    [Parameter] public string StartMenuAppsHostHeight { get; set; } = "calc(100vh - 428px)";
+
+    private string StartMenuAppsHostStyle() =>
+        new StyleBuilder()
+            .AddStyle("overflow-y", "auto")
+            .AddStyle("overflow-x", "hidden")
+            .AddStyle("height", StartMenuAppsHostHeight)
+            .Build();
+
     #endregion
 
 
-    
+
     #region Applications
 
     public override void AddItem(MdiWindow item)

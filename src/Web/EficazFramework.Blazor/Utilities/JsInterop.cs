@@ -92,6 +92,13 @@ public static class JsInterop
                         query, className);
     }
 
+    public static void SetDragImage(this IJSRuntime jsRuntime, object evt)
+    {
+        jsRuntime.InvokeVoidAsync(
+                    "EfJsFunctions.setDragImage",
+                    evt);
+    }
+
     public static void ScrollToBottom(this IJSRuntime jsRuntime, ElementReference element)
     {
         jsRuntime.InvokeVoidAsync(

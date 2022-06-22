@@ -4,9 +4,13 @@
 @inherits MudBlazor.MudBaseBindableItemsControl<MdiWindow, ApplicationInstance>
 
 <CascadingValue Value="this">
-    <div class="@Classname" style="@StyleName" @onclick="() => ToggleStartMenuOpen(true)">
+    <div class="@Classname" 
+         style="@StyleName" 
+         @onclick="() => ToggleStartMenuOpen(true)">
         @*MDI AREA*@
-        <div class="flex-grow-1">
+        <div class="flex-grow-1"
+             ondragover="event.preventDefault();"
+             ondragstart="event.dataTransfer.setData('', event.target.id);">
             @if (ItemsSource == null)
             {
                 @ChildContent
@@ -47,8 +51,9 @@
                             
                             @*HEADER*@
                             <div class="ef-mdi-start-header">
-                                <MudBlazor.MudText Class="mx-4 my-2" 
-                                                   Typo="@MudBlazor.Typo.h6">
+                                <MudBlazor.MudIcon Icon="@MudBlazor.Icons.Filled.Menu"
+                                                   Class="mr-5"/>
+                                <MudBlazor.MudText Typo="@MudBlazor.Typo.h6">
                                     @(_tabsHost?.ActivePanel?.Tag?.ToString() ?? "")
                                 </MudBlazor.MudText>
                             </div>
@@ -79,7 +84,7 @@
                                         </MudBlazor.MudTooltip>
                                     </div>
 
-                                    <div class="mt-4" style="overflow-y:auto; overflow-x: hidden; height: calc(100vh - 428px);">
+                                    <div class="mt-4" style="@StartMenuAppsHostStyle()">
                                         @if (!_startMenuIsCompact)
                                         {
                                             @foreach (var group in FilteredApplications())

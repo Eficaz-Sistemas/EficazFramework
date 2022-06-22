@@ -9,3 +9,16 @@
 ::deep .mud-tabs-toolbar {
     background-color: var(--mud-palette-background-grey);
 }
+
+::deep .mud-tab-slider.mud-tab-slider-vertical {
+    width: 48px;
+    right: 0px;
+    left: 8px;
+}
+
+::deep .mud-tab-slider {
+    background: unset;
+    border: solid 2px var(--mud-palette-primary);
+    border-radius: 5px;
+    opacity: 0.35;
+}

@@ -17,7 +17,12 @@
 </head>
 <body>
     @RenderBody()
-
+    <style>
+        ::-webkit-scrollbar-thumb {
+            background: #c4c4c4;
+            border-radius: 4px;
+        }
+    </style>
     <div id="blazor-error-ui">
         <environment include="Staging,Production">
             An error has occurred. This application may no longer respond until reloaded.
