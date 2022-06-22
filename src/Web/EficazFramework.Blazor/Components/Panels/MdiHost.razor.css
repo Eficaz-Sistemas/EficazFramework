@@ -1,0 +1,11 @@
+﻿
+::deep .mud-tab {
+    min-width: 64px;
+    width: 64px;
+    height: auto;
+}
+
+
+::deep .mud-tabs-toolbar {
+    background-color: var(--mud-palette-background-grey);
+}

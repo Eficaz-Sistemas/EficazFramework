@@ -13,3 +13,34 @@
     box-shadow: var(--mud-elevation-10);
     border-color: var(--mud-palette-primary)
 }
+
+.ef-mdi-start-menu {
+    border: solid 1px var(--mud-palette-primary);
+    border-radius: 10px;
+    max-width: 746px;
+    height: calc(100vh - 226px);
+}
+
+.ef-mdi-start-header {
+    border-radius: 10px 10px 0px 0px;
+    background-color: var(--mud-palette-background-grey);
+    margin-left: -16px !important;
+    margin-top: -16px !important;
+    margin-right: -16px !important;
+    padding-left: 72px !important;
+    padding-top: 4px !important;
+    padding-right: 24px !important;
+    padding-bottom: 4px !important;
+}
+
+.ef-mdi-start-footer {
+    border-radius: 0px 0px 10px 10px;
+    background-color: var(--mud-palette-background-grey);
+    margin-left: -16px !important;
+    margin-bottom: -16px !important;
+    margin-right: -16px !important;
+    padding-top: 12px !important;
+    padding-left: 68px !important;
+    padding-bottom: 12px !important;
+    padding-right: 24px !important;
+}

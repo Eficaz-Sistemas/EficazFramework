@@ -1,5 +1,21 @@
 ﻿@page "/Components/Panels/Mdi"
 
 <div class="d-flex flex-grow-1" style="margin-left:-24px;margin-right:-24px">
-    <MdiHost @ref="_mdi" ItemsSource="ApplicationManager.RunningApplications" />
+    <MdiHost @ref="_mdi" ItemsSource="ApplicationManager.RunningApplications" >
+        <Footer>
+            <MudBlazor.MudText Typo="@MudBlazor.Typo.body1">
+                footer here...
+            </MudBlazor.MudText>
+        </Footer>
+        <Tabs>
+            <MudTabPanel Tag="@("Help")"
+                         Icon="@MudBlazor.Icons.Filled.Help">
+                there are nothing to show here... sorry 
+            </MudTabPanel>
+            <MudTabPanel Tag="@("Under Constructionressos")"
+                         Icon="@MudBlazor.Icons.Filled.Workspaces">
+                neither here
+            </MudTabPanel>
+        </Tabs>
+    </MdiHost>
 </div>

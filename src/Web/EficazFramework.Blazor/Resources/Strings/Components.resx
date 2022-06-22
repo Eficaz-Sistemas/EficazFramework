@@ -159,6 +159,18 @@
   <data name="MDIApplication_Close" xml:space="preserve">
     <value>Fechar</value>
   </data>
+  <data name="MDIApplication_FindPlaceholder" xml:space="preserve">
+    <value>pesquisar...</value>
+  </data>
+  <data name="MDIApplication_TabApps_Header" xml:space="preserve">
+    <value>Aplicativos</value>
+  </data>
+  <data name="MDIApplication_ToggleApp_GridView" xml:space="preserve">
+    <value>Exibição em blocos</value>
+  </data>
+  <data name="MDIApplication_ToggleApp_ListView" xml:space="preserve">
+    <value>Exibição em Lista</value>
+  </data>
   <data name="MDIContainer_StartTab" xml:space="preserve">
     <value>Iniciar</value>
   </data>

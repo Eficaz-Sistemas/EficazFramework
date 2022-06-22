@@ -76,36 +76,17 @@ public partial class Mdi
         });
 
 
-        if (!ApplicationManager.AllApplications.Contains(appHello))
-            ApplicationManager.AllApplications.Add(appHello);
-
-        if (!ApplicationManager.AllApplications.Contains(appAnother))
+        ApplicationManager.AllApplications.Add(appHello);
         ApplicationManager.AllApplications.Add(appAnother);
-
-        if (!ApplicationManager.AllApplications.Contains(appPerSection))
         ApplicationManager.AllApplications.Add(appPerSection);
+        ApplicationManager.AllApplications.Add(appHello2);
+        ApplicationManager.AllApplications.Add(appAnother2);
+        ApplicationManager.AllApplications.Add(appHello);
+        ApplicationManager.AllApplications.Add(appAnother);
+        ApplicationManager.AllApplications.Add(appPerSection);
+        ApplicationManager.AllApplications.Add(appHello2);
+        ApplicationManager.AllApplications.Add(appAnother2);
 
-        if (!ApplicationManager.AllApplications.Contains(appHello2))
-            ApplicationManager.AllApplications.Add(appHello2);
-
-        if (!ApplicationManager.AllApplications.Contains(appAnother2))
-            ApplicationManager.AllApplications.Add(appAnother2);
-
-    }
-
-    void OnFab1Click()
-    {
-        _mdi!.LoadApplication(appHello!);
-    }
-
-    void OnFab2Click()
-    {
-        _mdi!.LoadApplication(appAnother!);
-    }
-
-    void OnFab3Click()
-    {
-        _mdi!.LoadApplication(appPerSection!);
     }
 
     private EficazFramework.Application.ApplicationDefinition? appHello;

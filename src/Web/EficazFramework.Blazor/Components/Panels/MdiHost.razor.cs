@@ -9,8 +9,10 @@ public partial class MdiHost : MudBlazor.MudBaseBindableItemsControl<MdiWindow, 
 
     [Parameter] public long CurrentSection { get; set; } = 0;
 
+    [Parameter] public RenderFragment Footer { get; set; }
+    [Parameter] public RenderFragment Tabs { get; set; }
 
-    
+
     #region Classes And Styles
 
     protected string Classname =>
@@ -65,6 +67,8 @@ public partial class MdiHost : MudBlazor.MudBaseBindableItemsControl<MdiWindow, 
         else
             _startMenuIsOpen = !_startMenuIsOpen;
 
+        AppSearchFilter = "";
+        _tabsHost?.ActivatePanel(0, false);
         StateHasChanged();
     }
 
@@ -75,6 +79,8 @@ public partial class MdiHost : MudBlazor.MudBaseBindableItemsControl<MdiWindow, 
         _startMenuIsCompact = !_startMenuIsCompact;
         StateHasChanged();
     }
+
+    private MudBlazor.MudTabs _tabsHost;
 
     #endregion
 
@@ -108,6 +114,9 @@ public partial class MdiHost : MudBlazor.MudBaseBindableItemsControl<MdiWindow, 
 
     private IEnumerable<ApplicationInstance> RunningApplications() =>
     ItemsSource.Where(app => app.SessionID == 0 || app.SessionID == CurrentSection).ToList();
+    
+    private IEnumerable<MdiWindow> TaskBarItems() =>
+        Items.Where(app => app.ApplicationInstance.SessionID == 0 || app.ApplicationInstance.SessionID == CurrentSection).ToList();
 
     public void LoadApplication(ApplicationDefinition app)
     {
