@@ -59,7 +59,7 @@ public partial class Mdi
         appHello2.Targets.Add("Blazor", new()
         {
             Icon = MudBlazor.Icons.Custom.Brands.Microsoft,
-            StartupUriOrType = typeof(EficazFramework.Tests.Blazor.Views.Pages.Components.Panels.MdiApps.MdiAppHelloWorld)
+            StartupUriOrType = typeof(EficazFramework.Tests.Blazor.Views.Pages.Components.Panels.MdiApps.MdiIconApp)
         });
 
         appAnother2 = new()
@@ -72,7 +72,7 @@ public partial class Mdi
         appAnother2.Targets.Add("Blazor", new()
         {
             Icon = MudBlazor.Icons.Custom.Brands.Google,
-            StartupUriOrType = typeof(EficazFramework.Tests.Blazor.Views.Pages.Components.Panels.MdiApps.MdiAnotherApp)
+            StartupUriOrType = typeof(EficazFramework.Tests.Blazor.Views.Pages.Components.Panels.MdiApps.AnotherCoolApp)
         });
 
 

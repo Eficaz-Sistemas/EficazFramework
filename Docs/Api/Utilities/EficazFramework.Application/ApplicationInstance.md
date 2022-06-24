@@ -19,11 +19,14 @@ Implements [System.ComponentModel.INotifyPropertyChanged](https://docs.microsoft
 | [IsLoading](EficazFramework.Application/ApplicationInstance/IsLoading.md 'EficazFramework.Application.ApplicationInstance.IsLoading') | |
 | [Metadata](EficazFramework.Application/ApplicationInstance/Metadata.md 'EficazFramework.Application.ApplicationInstance.Metadata') | |
 | [NotifyContent](EficazFramework.Application/ApplicationInstance/NotifyContent.md 'EficazFramework.Application.ApplicationInstance.NotifyContent') | |
+| [Services](EficazFramework.Application/ApplicationInstance/Services.md 'EficazFramework.Application.ApplicationInstance.Services') | |
 | [SessionID](EficazFramework.Application/ApplicationInstance/SessionID.md 'EficazFramework.Application.ApplicationInstance.SessionID') | |
 
 | Methods | |
 | :--- | :--- |
 | [Close()](EficazFramework.Application/ApplicationInstance/Close().md 'EficazFramework.Application.ApplicationInstance.Close()') | |
+| [Create(ApplicationDefinition)](EficazFramework.Application/ApplicationInstance/Create(ApplicationDefinition).md 'EficazFramework.Application.ApplicationInstance.Create(EficazFramework.Application.ApplicationDefinition)') | |
+| [Create(ApplicationDefinition, long)](EficazFramework.Application/ApplicationInstance/Create(ApplicationDefinition,long).md 'EficazFramework.Application.ApplicationInstance.Create(EficazFramework.Application.ApplicationDefinition, long)') | |
 | [Dispose()](EficazFramework.Application/ApplicationInstance/Dispose().md 'EficazFramework.Application.ApplicationInstance.Dispose()') | |
 | [RaisePropertyChanged(string)](EficazFramework.Application/ApplicationInstance/RaisePropertyChanged(string).md 'EficazFramework.Application.ApplicationInstance.RaisePropertyChanged(string)') | |
 | [ToString()](EficazFramework.Application/ApplicationInstance/ToString().md 'EficazFramework.Application.ApplicationInstance.ToString()') | |

@@ -169,8 +169,14 @@ public sealed class ApplicationInstance : ApplicationDefinition, INotifyProperty
     {
         //throw new UnauthorizedAccessException();
     }
+    
+    public static ApplicationInstance Create(ApplicationDefinition fromDefinition) =>
+        new ApplicationInstance(fromDefinition, null);
 
-    public long SessionID { get; set; }
+    public static ApplicationInstance Create(ApplicationDefinition fromDefinition, long section) =>
+        new ApplicationInstance(fromDefinition, null) { SessionID = section };
+
+    public long SessionID { get; internal set; }
 
     private object _content = null;
     public object Content
@@ -200,6 +206,8 @@ public sealed class ApplicationInstance : ApplicationDefinition, INotifyProperty
     }
 
     public ApplicationDefinition Metadata { get; } = null;
+
+    public IDictionary<string, object> Services { get; } = new Dictionary<string, object>();
 
     // Overrides
     public override string ToString() =>

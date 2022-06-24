@@ -1,13 +1,14 @@
-﻿ - @page "/Components/Panels/Mdi"
+﻿@page "/Components/Panels/Mdi"
 
 <div class="d-flex flex-grow-1" style="margin-left:-24px;margin-right:-24px">
     <MdiHost @ref="_mdi" ItemsSource="ApplicationManager.RunningApplications" >
-        <Footer>
+        <StartMenuFooter>
             <MudBlazor.MudText Typo="@MudBlazor.Typo.body1">
                 footer here...
             </MudBlazor.MudText>
-        </Footer>
-        <Tabs>
+        </StartMenuFooter>
+        <StartMenuTabs>
+            @*MAIN APPLICATION TABS IS INBUILT, JUST ADD YOUR ADITIONAL TABS...*@
             <MudTabPanel Tag="@("Help")"
                          Icon="@MudBlazor.Icons.Filled.Help">
                 there are nothing to show here... sorry 
@@ -16,6 +17,6 @@
                          Icon="@MudBlazor.Icons.Filled.Workspaces">
                 neither here
             </MudTabPanel>
-        </Tabs>
+        </StartMenuTabs>
     </MdiHost>
 </div>

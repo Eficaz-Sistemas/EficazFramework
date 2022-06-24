@@ -1,5 +1,6 @@
 ﻿@using Microsoft.AspNetCore.Components.Web
 @using EficazFramework.Application
+@using System.Drawing
 @namespace EficazFramework.Components
 @inherits MudBlazor.MudBaseBindableItemsControl<MdiWindow, ApplicationInstance>
 
@@ -8,33 +9,48 @@
          style="@StyleName" 
          @onclick="() => ToggleStartMenuOpen(true)">
         @*MDI AREA*@
-        <div class="flex-grow-1"
-             ondragover="event.preventDefault();"
-             ondragstart="event.dataTransfer.setData('', event.target.id);">
-            @if (ItemsSource == null)
-            {
-                @ChildContent
-            }
-            else
-            {
-                foreach (var item in RunningApplications())
+        <MudBlazor.MudHidden Breakpoint="@Breakpoint" >
+            <div class="flex-grow-1"
+                 ondragover="event.preventDefault();"
+                 ondragstart="event.dataTransfer.setData('', event.target.id);">
+                @if (ItemsSource == null)
                 {
-                    <MdiWindow ApplicationInstance="item"
-                               Title="@item.Title"
-                               Size="new(200,125)"
-                               Icon="@(item.Targets["Blazor"]?.Icon.ToString())">
-                        <DynamicComponent Type="@((Type)item.Targets["Blazor"].StartupUriOrType)" />
-                    </MdiWindow>
+                    @ChildContent
                 }
-            }
-        </div>
+                else
+                {
+                    foreach (var item in RunningApplications())
+                    {
+                        <MdiWindow ApplicationInstance="item"
+                                   Title="@item.Title"
+                                   Icon="@(item.Targets["Blazor"]?.Icon.ToString())">
+                            <DynamicComponent Type="@((Type)item.Targets["Blazor"].StartupUriOrType)" />
+                        </MdiWindow>
+                    }
+                }
+            </div>
+        </MudBlazor.MudHidden>
+        @*SELECTED CONTENT AREA (FOR RESPONSIVE DESIGN)*@
+        <MudBlazor.MudHidden Invert
+                             Breakpoint="@Breakpoint">
+             <div class="flex-grow-1 overflow-hidden">
+                @if (_selectedApp != null)
+                 {
+                     <DynamicComponent Type="@((Type)_selectedApp!.Targets["Blazor"].StartupUriOrType)" />
+                 }
+                 else
+                 {                 
+                    @ChildContent
+                 }
+             </div>
+        </MudBlazor.MudHidden>
         <div class="d-flex" style="background-color: var(--mud-palette-background-grey);z-index:2">
             @*TASKBAR*@            
             <MudBlazor.MudTooltip Text="Iniciar">
                 @*START MENU BUTTON*@            
                 <MudBlazor.MudIconButton Variant="@MudBlazor.Variant.Filled"
                                             Color="@MudBlazor.Color.Transparent"
-                                            Icon="@EficazFramework.Icons.Brands.Eficaz"
+                                            Icon="@StartMenuIcon"
                                             Size="@MudBlazor.Size.Large"
                                             Style="@StartMenuButtonStyle()"
                                             DisableElevation
@@ -141,12 +157,12 @@
 
                                     </div>
                                 </MudBlazor.MudTabPanel>
-                                @Tabs
+                                @StartMenuTabs
                             </MudBlazor.MudTabs>
                             
                             @*Footer*@
                             <div class="ef-mdi-start-footer ">
-                                @Footer
+                                @StartMenuFooter
                             </div>
 
                         </div>
@@ -155,19 +171,19 @@
             </MudBlazor.MudTooltip>
 
             @*OPENED APPS*@
-            @foreach (var frame in TaskBarItems())
+            @foreach (var item in RunningApplications())
             {
-                <MudBlazor.MudTooltip Text="@frame.Title">
+                <MudBlazor.MudTooltip Text="@item.Title">
                     <MudBlazor.MudIconButton Variant="@MudBlazor.Variant.Filled"
                                              Color="@MudBlazor.Color.Transparent"
-                                             Icon="@(frame.Icon)"
+                                             Icon="@(item.Targets["Blazor"]?.Icon.ToString())"
                                              Size="@MudBlazor.Size.Large"
                                              DisableElevation
-                                             Style="@TaskBarButtonStyle(frame)"
-                                             OnClick="() => LoadApplication(frame.ApplicationInstance.Metadata)"/>
+                                             Style="@TaskBarButtonStyle(item)"
+                                             OnClick="() => LoadApplication(item.Metadata)"/>
                 </MudBlazor.MudTooltip>
             }
+           
         </div>
     </div>
 </CascadingValue>
-
