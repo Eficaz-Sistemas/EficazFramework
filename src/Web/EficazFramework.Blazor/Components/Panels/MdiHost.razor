@@ -46,15 +46,15 @@
         </MudBlazor.MudHidden>
         <div class="d-flex" style="background-color: var(--mud-palette-background-grey);z-index:2">
             @*TASKBAR*@            
-            <MudBlazor.MudTooltip Text="Iniciar">
+            <MudBlazor.MudTooltip Text="@Resources.Strings.Components.MDIContainer_StartTab">
                 @*START MENU BUTTON*@            
                 <MudBlazor.MudIconButton Variant="@MudBlazor.Variant.Filled"
-                                            Color="@MudBlazor.Color.Transparent"
-                                            Icon="@StartMenuIcon"
-                                            Size="@MudBlazor.Size.Large"
-                                            Style="@StartMenuButtonStyle()"
-                                            DisableElevation
-                                            OnClick="() => ToggleStartMenuOpen()"/>
+                                         Color="@MudBlazor.Color.Transparent"
+                                         Icon="@StartMenuIcon"
+                                         Size="@MudBlazor.Size.Large"
+                                         Style="@StartMenuButtonStyle()"
+                                         DisableElevation
+                                         OnClick="() => ToggleStartMenuOpen()"/>
                 @*START MENU FRAME*@            
                 <MudBlazor.MudPopover Open="_startMenuIsOpen" 
                                       Elevation="0"
@@ -161,7 +161,7 @@
                             </MudBlazor.MudTabs>
                             
                             @*Footer*@
-                            <div class="ef-mdi-start-footer ">
+                            <div class="ef-mdi-start-footer">
                                 @StartMenuFooter
                             </div>
 

@@ -118,6 +118,8 @@ public partial class MdiHost : MudBlazor.MudBaseBindableItemsControl<MdiWindow, 
     #region Start Menu
 
     private bool _startMenuIsOpen = false;
+    public bool StartMenuIsOpen => _startMenuIsOpen;
+    
     /// <summary>
     /// Toggle the Start Menu on Open and Closed states.
     /// </summary>
