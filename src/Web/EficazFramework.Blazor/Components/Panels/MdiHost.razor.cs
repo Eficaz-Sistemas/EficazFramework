@@ -91,17 +91,9 @@ public partial class MdiHost : MudBlazor.MudBaseBindableItemsControl<MdiWindow, 
                 .Build();
 
     /// <summary>
-    /// Style builder for the Start Menu Applications' Tiles
-    /// </summary>
-    private string StartApplicationMenuButtonStyle() =>
-        new StyleBuilder()
-            .AddStyle("margin", "8px")
-            .Build();
-
-    /// <summary>
     /// Style builder for the TaskBar Applications' Tiles
     /// </summary>
-    private string TaskBarButtonStyle(ApplicationInstance item) =>
+    private string TaskBarAppInstanceButtonStyle(ApplicationInstance item) =>
                 new StyleBuilder()
                     .AddStyle("padding", "8px")
                     .AddStyle("padding-left", "12px")

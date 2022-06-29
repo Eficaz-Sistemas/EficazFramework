@@ -179,7 +179,7 @@
                                              Icon="@(item.Targets["Blazor"]?.Icon.ToString())"
                                              Size="@MudBlazor.Size.Large"
                                              DisableElevation
-                                             Style="@TaskBarButtonStyle(item)"
+                                             Style="@TaskBarAppInstanceButtonStyle(item)"
                                              OnClick="() => LoadApplication(item.Metadata)"/>
                 </MudBlazor.MudTooltip>
             }

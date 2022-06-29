@@ -13,7 +13,7 @@ namespace EficazFramework.Components.Panels;
 public class Mdi : BunitTest
 {
     [Test]
-    public async Task BaseTest()
+    public void BaseTest()
     {
         var comp = Context.RenderComponent<Tests.Blazor.Views.Pages.Components.Panels.Mdi>();
         comp.Find("div.ef-mdi-host").Should().NotBeNull();
@@ -40,17 +40,40 @@ public class Mdi : BunitTest
         comp.InvokeAsync(() =>
         {
             searchTb.Instance.FocusAsync();
-            innerInput.Change("new");
+            innerInput.Input("new");
             innerInput.BlurAsync(new Microsoft.AspNetCore.Components.Web.FocusEventArgs());
         });
-        ////host.AppSearchFilter.Should().Be("new");
-        ////comp.FindAll("div.mud-grid-item").Should().HaveCount(4);
+        host.AppSearchFilter.Should().Be("new");
+        comp.FindAll("div.mud-grid-item").Should().HaveCount(4);
 
-        //comp.Find("h3").ToMarkup().Should().NotContain("on-screen");
+        //Try StartMenu compact mode
+        comp.FindAll("div.mud-list-item").Should().HaveCount(0);
+        comp.InvokeAsync(() => host.ToggleStartMenuView());
+        comp.FindAll("div.mud-grid-item").Should().HaveCount(0);
+        comp.FindAll("div.mud-list-item").Should().HaveCount(5); //4 apps + 1 group (with nested list)
+        
+        //Clear search (in compact mode)
+        comp.InvokeAsync(() =>
+        {
+            searchTb.Instance.FocusAsync();
+            innerInput.Input("");
+            innerInput.BlurAsync(new Microsoft.AspNetCore.Components.Web.FocusEventArgs());
+        });
+        host.AppSearchFilter.Should().Be("");
+        comp.FindAll("div.mud-grid-item").Should().HaveCount(0);
+        comp.FindAll("div.mud-list-item").Should().HaveCount(12); //10 apps + 2 groups
 
-        //var buttons = comp.FindAll("button");
-        //buttons.Should().HaveCount(4); //should include mudFab inside MudScrollToTop
+        //Close the start menu clicking outside it
+        comp.InvokeAsync(() => host.ToggleStartMenuOpen(true));
+        host.StartMenuIsOpen.Should().BeFalse();
+    }
 
-        //await comp.InvokeAsync(() => buttons[0].Click());
+    [Test]
+    public void RunPublicApplicationTest()
+    {
+        var comp = Context.RenderComponent<Tests.Blazor.Views.Pages.Components.Panels.Mdi>();
+        var host = comp.FindComponent<EficazFramework.Components.MdiHost>().Instance;
+
+        
     }
 }
