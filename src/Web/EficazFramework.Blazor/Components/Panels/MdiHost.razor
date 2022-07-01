@@ -7,7 +7,7 @@
 <CascadingValue Value="this">
     <div class="@Classname" 
          style="@StyleName" 
-         @onclick="() => ToggleStartMenuOpen(true)">
+         @onclick="CloseMenus">
         @*MDI AREA*@
         <MudBlazor.MudHidden Breakpoint="@Breakpoint" >
             <div class="flex-grow-1"
@@ -45,9 +45,10 @@
              </div>
         </MudBlazor.MudHidden>
         <div class="d-flex" style="background-color: var(--mud-palette-background-grey);z-index:2">
-            @*TASKBAR*@            
+            @*TASKBAR*@         
+            
+            @*START MENU BUTTON*@            
             <MudBlazor.MudTooltip Text="@Resources.Strings.Components.MDIContainer_StartTab">
-                @*START MENU BUTTON*@            
                 <MudBlazor.MudIconButton Variant="@MudBlazor.Variant.Filled"
                                          Color="@MudBlazor.Color.Transparent"
                                          Icon="@StartMenuIcon"
@@ -170,6 +171,41 @@
                 </MudBlazor.MudPopover>
             </MudBlazor.MudTooltip>
 
+            @*CURRENT SECTION BLICK*@            
+            <MudBlazor.MudTooltip Text="@Resources.Strings.Components.MDIContainer_Sections">
+                <MudBlazor.MudIconButton Variant="@MudBlazor.Variant.Filled"
+                                         Color="@MudBlazor.Color.Transparent"
+                                         Size="@MudBlazor.Size.Large"
+                                         Style="@StartMenuButtonStyle()"
+                                         DisableElevation
+                                         OnClick="() => ToggleSectionsMenuOpen()">
+                    <div class="ef-mdi-sections-current">
+                        @if (CurrentSectionTemplate != null)
+                        {
+                            @CurrentSectionTemplate
+                        }
+                        else
+                        {
+                            @CurrentSection
+                        }
+                    </div>
+                </MudBlazor.MudIconButton>
+                @*START MENU FRAME*@            
+                <MudBlazor.MudPopover Open="_sectionsMenuIsOpen" 
+                                      Elevation="0"
+                                      AnchorOrigin="MudBlazor.Origin.TopLeft"
+                                      TransformOrigin="MudBlazor.Origin.BottomLeft"
+                                      Style="background-color:unset; left: 0px !important">
+                    <MudBlazor.MudPaper Elevation="8" 
+                                        Class="ef-mdi-sections-menu d-flex flex-column pa-4 ma-8">
+                        <div class="d-flex flex-column" style="height:inherit">
+                            
+
+                        </div>
+                    </MudBlazor.MudPaper>
+                </MudBlazor.MudPopover>
+            </MudBlazor.MudTooltip>
+            
             @*OPENED APPS*@
             @foreach (var item in RunningApplications())
             {

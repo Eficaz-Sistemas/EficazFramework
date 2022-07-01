@@ -56,6 +56,12 @@ public partial class MdiHost : MudBlazor.MudBaseBindableItemsControl<MdiWindow, 
         }
     }
 
+    /// <summary>
+    /// The template for Current Section representation on StartMenu's right
+    /// </summary>
+    [Parameter] public RenderFragment CurrentSectionTemplate { get; set; }
+
+
 
     #region Classes And Styles
 
@@ -107,6 +113,7 @@ public partial class MdiHost : MudBlazor.MudBaseBindableItemsControl<MdiWindow, 
     #endregion
     
 
+
     #region Start Menu
 
     private bool _startMenuIsOpen = false;
@@ -118,10 +125,14 @@ public partial class MdiHost : MudBlazor.MudBaseBindableItemsControl<MdiWindow, 
     /// <param name="onlyClose">Just act as closing the menu</param>
     public void ToggleStartMenuOpen(bool onlyClose = false)
     {
+
         if (onlyClose)
             _startMenuIsOpen = false;
         else
+        {
             _startMenuIsOpen = !_startMenuIsOpen;
+            ToggleSectionsMenuOpen(true);
+        }
 
         AppSearchFilter = "";
         _tabsHost?.ActivatePanel(0, false);
@@ -149,6 +160,33 @@ public partial class MdiHost : MudBlazor.MudBaseBindableItemsControl<MdiWindow, 
             .AddStyle("overflow-x", "hidden")
             .AddStyle("height", StartMenuAppsHostHeight)
             .Build();
+
+    #endregion
+
+
+
+    #region Section Area
+
+    private bool _sectionsMenuIsOpen = false;
+    public bool SectionsMenuIsOpen => _sectionsMenuIsOpen;
+
+    /// <summary>
+    /// Toggle the Sections Menu on Open and Closed states.
+    /// </summary>
+    /// <param name="onlyClose">Just act as closing the menu</param>
+    public void ToggleSectionsMenuOpen(bool onlyClose = false)
+    {
+
+        if (onlyClose)
+            _sectionsMenuIsOpen = false;
+        else
+        {
+            _sectionsMenuIsOpen = !_sectionsMenuIsOpen;
+            ToggleStartMenuOpen(true);
+        }
+
+        StateHasChanged();
+    }
 
     #endregion
 
@@ -249,5 +287,13 @@ public partial class MdiHost : MudBlazor.MudBaseBindableItemsControl<MdiWindow, 
     }
 
     #endregion
+
+
+
+    private void CloseMenus()
+    {
+        ToggleStartMenuOpen(true);
+        ToggleSectionsMenuOpen(true);
+    }
 
 }

@@ -223,6 +223,15 @@ namespace EficazFramework.Resources.Strings {
         }
         
         /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Seções.
+        /// </summary>
+        public static string MDIContainer_Sections {
+            get {
+                return ResourceManager.GetString("MDIContainer_Sections", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Consulta uma cadeia de caracteres localizada semelhante a Iniciar.
         /// </summary>
         public static string MDIContainer_StartTab {

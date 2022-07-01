@@ -171,6 +171,9 @@
   <data name="MDIApplication_ToggleApp_ListView" xml:space="preserve">
     <value>Exibição em Lista</value>
   </data>
+  <data name="MDIContainer_Sections" xml:space="preserve">
+    <value>Seções</value>
+  </data>
   <data name="MDIContainer_StartTab" xml:space="preserve">
     <value>Iniciar</value>
   </data>
