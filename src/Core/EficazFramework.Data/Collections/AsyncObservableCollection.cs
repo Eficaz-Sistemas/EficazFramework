@@ -7,7 +7,13 @@ namespace EficazFramework.Collections;
 
 public class AsyncObservableCollection<T> : ObservableCollection<T>
 {
-    public AsyncObservableCollection(IEnumerable<T> list) : base(list) { }
+    public AsyncObservableCollection()
+    {
+    }
+
+    public AsyncObservableCollection(IEnumerable<T> list) : base(list)
+    {
+    }
 
     private static void ExecuteOnSyncContext(Action action)
     {

@@ -55,7 +55,6 @@
 	</ItemGroup>
 	
   <ItemGroup>
-    <Compile Remove="Attributes\EditorGeneration\**" />
     <Compile Remove="Extensions\LinqKit\**" />
     <Compile Remove="Repositories\Services\API\**" />
     <Compile Remove="ViewModels\Entity\**" />
@@ -63,7 +62,6 @@
     <Compile Remove="ViewModels\VMServices\DataImport\**" />
     <Compile Remove="ViewModels\VMServices\GPO\**" />
     <Compile Remove="ViewModels\VMServices\RestApi\**" />
-    <EmbeddedResource Remove="Attributes\EditorGeneration\**" />
     <EmbeddedResource Remove="Extensions\LinqKit\**" />
     <EmbeddedResource Remove="Repositories\Services\API\**" />
     <EmbeddedResource Remove="ViewModels\Entity\**" />
@@ -71,7 +69,6 @@
     <EmbeddedResource Remove="ViewModels\VMServices\DataImport\**" />
     <EmbeddedResource Remove="ViewModels\VMServices\GPO\**" />
     <EmbeddedResource Remove="ViewModels\VMServices\RestApi\**" />
-    <None Remove="Attributes\EditorGeneration\**" />
     <None Remove="Extensions\LinqKit\**" />
     <None Remove="Repositories\Services\API\**" />
     <None Remove="ViewModels\Entity\**" />
@@ -95,14 +92,6 @@
     <None Remove="Expressions\ExpressionItem.cs~RF5ac44a4b.TMP" />
     <None Remove="Repositories\IRepository.cs~RF156ba4ed.TMP" />
     <None Remove="ViewModels\VMServices\SingleItemEdit\SingleEdit.cs~RF1f9be0b0.TMP" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Compile Include="Attributes\EditorGeneration\CategoryAttribute.cs" />
-    <Compile Include="Attributes\EditorGeneration\DocumentoAttribute.cs" />
-    <Compile Include="Attributes\EditorGeneration\FixedHeightAttribute.cs" />
-    <Compile Include="Attributes\EditorGeneration\IgnoreAttribute.cs" />
-    <Compile Include="Attributes\EditorGeneration\MaxLength.cs" />
   </ItemGroup>
 
   <ItemGroup>
