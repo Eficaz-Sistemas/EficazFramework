@@ -3,6 +3,8 @@
 
 ## ExpressionBuilder.Items Property
 
+Itens que formam o filtro desejado.
+
 ```csharp
 public EficazFramework.Collections.AsyncObservableCollection<EficazFramework.Expressions.ExpressionItem> Items { get; }
 ```

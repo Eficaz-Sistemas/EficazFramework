@@ -3,6 +3,8 @@
 
 ## ExpressionBuilder.Properties Property
 
+Campos disponíveis para escolha no editor.
+
 ```csharp
 public EficazFramework.Collections.AsyncObservableCollection<EficazFramework.Expressions.ExpressionProperty> Properties { get; }
 ```

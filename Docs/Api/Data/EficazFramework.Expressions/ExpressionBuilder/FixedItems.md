@@ -3,6 +3,8 @@
 
 ## ExpressionBuilder.FixedItems Property
 
+Listagem de condições para pesquisa que deve ser fixas para toda e qualquer consulta.
+
 ```csharp
 public EficazFramework.Collections.AsyncObservableCollection<EficazFramework.Expressions.ExpressionItem> FixedItems { get; }
 ```

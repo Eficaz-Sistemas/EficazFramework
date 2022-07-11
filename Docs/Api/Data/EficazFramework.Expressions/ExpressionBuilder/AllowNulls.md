@@ -3,6 +3,8 @@
 
 ## ExpressionBuilder.AllowNulls Property
 
+Obtém ou define se o construtor de expressões deve permitir que algum item possa ter valor nulo.
+
 ```csharp
 public bool AllowNulls { get; set; }
 ```

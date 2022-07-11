@@ -3,6 +3,8 @@
 
 ## ExpressionBuilder.GetExpression<TElement>() Method
 
+Constrói a [System.Linq.Expressions.Expression](https://docs.microsoft.com/en-us/dotnet/api/System.Linq.Expressions.Expression 'System.Linq.Expressions.Expression') para a query que será executada.
+
 ```csharp
 public System.Linq.Expressions.Expression<System.Func<TElement,bool>> GetExpression<TElement>();
 ```
