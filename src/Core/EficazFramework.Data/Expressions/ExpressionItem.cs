@@ -734,6 +734,47 @@ public class ExpressionItem : INotifyPropertyChanged
 
     #endregion
 
+    #region ExpressionObjectQueryTranslation
+
+    public IEnumerable<ExpressionObjectQuery> ToExpressionObjectQuery()
+    {
+        var translation = new List<ExpressionObjectQuery>();
+        if (SelectedProperty == null)
+            return translation;
+
+        if (SelectedProperty.FindableRelationships.Count == 0)
+        {
+            translation.Add(new ExpressionObjectQuery()
+            {
+                FieldName = SelectedProperty.PropertyPath,
+                Operator = Operator,
+                CollectionName = SelectedProperty.CollectionName,
+                ConversionTargetType = ConversionTargetType,
+                Value = Value1,
+                Value2 = Value2
+            });
+        }
+        else
+        {
+            foreach (var mp in SelectedProperty.FindableRelationships)
+            {
+                translation.Add(new ExpressionObjectQuery()
+                {
+                    FieldName = mp.ForeignKey,
+                    Operator = Operator,
+                    CollectionName = SelectedProperty.CollectionName,
+                    ConversionTargetType = ConversionTargetType,
+                    Value = Value1,
+                    Value2 = Value2
+                });
+            }
+        }
+
+        return translation;
+    }
+
+    #endregion
+
     public override string ToString()
     {
         if (UpdateMode == false)

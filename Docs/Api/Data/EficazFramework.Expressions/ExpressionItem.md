@@ -37,6 +37,7 @@ Implements [System.ComponentModel.INotifyPropertyChanged](https://docs.microsoft
 | Methods | |
 | :--- | :--- |
 | [Build&lt;TElement&gt;(ExpressionBuilder)](EficazFramework.Expressions/ExpressionItem/Build_TElement_(ExpressionBuilder).md 'EficazFramework.Expressions.ExpressionItem.Build<TElement>(EficazFramework.Expressions.ExpressionBuilder)') | |
+| [ToExpressionObjectQuery()](EficazFramework.Expressions/ExpressionItem/ToExpressionObjectQuery().md 'EficazFramework.Expressions.ExpressionItem.ToExpressionObjectQuery()') | |
 | [ToString()](EficazFramework.Expressions/ExpressionItem/ToString().md 'EficazFramework.Expressions.ExpressionItem.ToString()') | |
 
 | Events | |

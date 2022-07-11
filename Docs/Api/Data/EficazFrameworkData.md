@@ -121,7 +121,9 @@
 | :--- | :--- |
 | [ExpressionBuilder](EficazFramework.Expressions/ExpressionBuilder.md 'EficazFramework.Expressions.ExpressionBuilder') | |
 | [ExpressionItem](EficazFramework.Expressions/ExpressionItem.md 'EficazFramework.Expressions.ExpressionItem') | |
+| [ExpressionObjectQuery](EficazFramework.Expressions/ExpressionObjectQuery.md 'EficazFramework.Expressions.ExpressionObjectQuery') | Representa a tradução da query originada de uma instância de [ExpressionItem](EficazFramework.Expressions/ExpressionItem.md 'EficazFramework.Expressions.ExpressionItem'). <br/><br/>Esta classe pode ser utilizada para traduzir a query montada por um [ExpressionBuilder](EficazFramework.Expressions/ExpressionBuilder.md 'EficazFramework.Expressions.ExpressionBuilder')<br/>no intuito de ser passada como argumento (Body) para alguma API Rest, por exemplo, uma vez que<br/>não é possível utilizar [System.Linq.Expressions.Expression](https://docs.microsoft.com/en-us/dotnet/api/System.Linq.Expressions.Expression 'System.Linq.Expressions.Expression') diretamente como parametro. |
 | [ExpressionProperty](EficazFramework.Expressions/ExpressionProperty.md 'EficazFramework.Expressions.ExpressionProperty') | |
+| [ExpressionQuery](EficazFramework.Expressions/ExpressionQuery.md 'EficazFramework.Expressions.ExpressionQuery') | |
 | [ExpressionUpdater](EficazFramework.Expressions/ExpressionUpdater.md 'EficazFramework.Expressions.ExpressionUpdater') | |
 | [RelationshipConfig](EficazFramework.Expressions/RelationshipConfig.md 'EficazFramework.Expressions.RelationshipConfig') | |
 

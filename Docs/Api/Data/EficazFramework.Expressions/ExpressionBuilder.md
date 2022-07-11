@@ -31,6 +31,7 @@ Implements [System.ComponentModel.INotifyPropertyChanged](https://docs.microsoft
 | :--- | :--- |
 | [Dispose()](EficazFramework.Expressions/ExpressionBuilder/Dispose().md 'EficazFramework.Expressions.ExpressionBuilder.Dispose()') | |
 | [GetExpression&lt;TElement&gt;()](EficazFramework.Expressions/ExpressionBuilder/GetExpression_TElement_().md 'EficazFramework.Expressions.ExpressionBuilder.GetExpression<TElement>()') | |
+| [ToExpressionObjectQuery()](EficazFramework.Expressions/ExpressionBuilder/ToExpressionObjectQuery().md 'EficazFramework.Expressions.ExpressionBuilder.ToExpressionObjectQuery()') | |
 | [Validate()](EficazFramework.Expressions/ExpressionBuilder/Validate().md 'EficazFramework.Expressions.ExpressionBuilder.Validate()') | |
 
 | Events | |

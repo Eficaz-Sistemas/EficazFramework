@@ -325,6 +325,35 @@ public class ExpressionBuilder : INotifyPropertyChanged, IDisposable
 
     internal void CallExpressionBuilding(object sender, Events.ExpressionEventArgs args) => ExpressionBuilding?.Invoke(sender, args);
 
+    public IEnumerable<ExpressionObjectQuery> ToExpressionObjectQuery()
+    {
+        var result = new List<ExpressionObjectQuery>();
+        var erros = new System.Text.StringBuilder();
+
+        foreach (var item in Items)
+        {
+            if (item.SelectedProperty is null)
+                continue;
+            
+            bool ignore = false;
+            
+            string validationResult = item.Validate(ref ignore);
+            
+            if (ignore == true)
+                continue;
+            
+            erros.AppendLine(validationResult);
+            
+            if (HasErrors == false)
+                result.AddRange(item.ToExpressionObjectQuery());
+        }
+
+        if (HasErrors == true)
+            return new List<ExpressionObjectQuery>();
+
+        return result;
+    }
+
     public void Dispose()
     {
         _items.CollectionChanged -= ItemsCollectionsChanged;
