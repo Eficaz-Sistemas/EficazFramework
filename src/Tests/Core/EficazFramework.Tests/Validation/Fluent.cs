@@ -565,6 +565,7 @@ internal class SampleObject
     internal string Document { get; set; }
     internal decimal Total { get; set; }
     internal double Total2 { get; set; }
+    internal decimal? NullableTotal { get; set; }
     internal string Obs { get; set; }
     internal System.DateTime CreatedIn { get; set; }
     internal string State { get; set; }

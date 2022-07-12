@@ -361,15 +361,15 @@ public class ExpressionObjectQueryTests
             DefaultValue2 = 5,
             CollectionName = "Children",
             Operators = new()
-        {
-            Enums.CompareMethod.LowerThan,
-            Enums.CompareMethod.LowerOrEqualThan,
-            Enums.CompareMethod.Different,
-            Enums.CompareMethod.Equals,
-            Enums.CompareMethod.Between,
-            Enums.CompareMethod.BiggerOrEqualThan,
-            Enums.CompareMethod.BiggerThan
-        }
+            {
+                Enums.CompareMethod.LowerThan,
+                Enums.CompareMethod.LowerOrEqualThan,
+                Enums.CompareMethod.Different,
+                Enums.CompareMethod.Equals,
+                Enums.CompareMethod.Between,
+                Enums.CompareMethod.BiggerOrEqualThan,
+                Enums.CompareMethod.BiggerThan
+            }
         };
         ExpressionProperty RelatedProperty = new()
         {
@@ -409,7 +409,7 @@ public class ExpressionObjectQueryTests
             new() { ID = 3, Name = "Item 3", Children = { new() { ParentID = 3, ID = 1, Name = "Child 1 of Item 3" }, new() { ParentID = 3, ID = 2, Name = "Child 2 of Item 3" }, new() { ParentID = 3, ID = 3, Name = "Child 2 of Item 3" } } },
             new() { ID = 4, Name = "Item 4", Related = new() { ID = 55 }, RelatedID = 55 },
             new() { ID = 5, Name = "Item 5", Related = new() { ID = 55 }, RelatedID = 55 },
-            new() { ID = 9, Name = "kkkkkKk", Related = new() { ID = 99 }, RelatedID = 99 }
+            new() { ID = 9, Name = "kkkkkKk", Related = new() { ID = 99 }, RelatedID = 99, NullableTotal = 5 }
         };
 
         ExpressionBuilder builder = DefaultInstance();
@@ -445,6 +445,75 @@ public class ExpressionObjectQueryTests
         dataresult.Should().HaveCount(5);
         dataresult.First().ID.Should().Be(2);
         dataresult.Where(f => f.ID == 1).ToList().Should().HaveCount(0);
+
+        // simple filter: ID between 2 and 4
+        builder.Items.First().Operator = Enums.CompareMethod.Between;
+        builder.Items.First().Value1 = 2;
+        builder.Items.First().Value2 = 4;
+        querySource = builder.ToExpressionObjectQuery();
+        querySource.Should().HaveCount(1);
+        expression = EficazFramework.Expressions.ExpressionObjectQuery.GetExpression<Validation.SampleObject>(querySource);
+        expression.Should().NotBeNull();
+        expression.ReturnType.Should().Be(typeof(bool));
+        dataresult = dataSource.Where(expression.Compile()).ToList();
+        dataresult.Should().HaveCount(3);
+        dataresult.First().ID.Should().Be(2);
+        dataresult.Last().ID.Should().Be(4);
+        dataresult.Where(f => f.ID == 1).ToList().Should().HaveCount(0);
+
+        // simple filter: NullableTotal IS NULL
+        builder.Items.First().SelectedProperty = new ExpressionProperty()
+        {
+            PropertyPath = "NullableTotal",
+        };
+        builder.Items.First().Operator = Enums.CompareMethod.Equals;
+        builder.Items.First().Value1 = null;
+        querySource = builder.ToExpressionObjectQuery();
+        querySource.Should().HaveCount(1);
+        expression = EficazFramework.Expressions.ExpressionObjectQuery.GetExpression<Validation.SampleObject>(querySource);
+        expression.Should().NotBeNull();
+        expression.ReturnType.Should().Be(typeof(bool));
+        dataresult = dataSource.Where(expression.Compile()).ToList();
+        dataresult.Should().HaveCount(5);
+        dataresult.First().ID.Should().Be(1);
+        dataresult.Last().ID.Should().Be(5);
+
+        // simple filter: NullableTotal equals 5
+        builder.Items.First().Value1 = 5;
+        querySource = builder.ToExpressionObjectQuery();
+        querySource.Should().HaveCount(1);
+        expression = EficazFramework.Expressions.ExpressionObjectQuery.GetExpression<Validation.SampleObject>(querySource);
+        expression.Should().NotBeNull();
+        expression.ReturnType.Should().Be(typeof(bool));
+        dataresult = dataSource.Where(expression.Compile()).ToList();
+        dataresult.Should().HaveCount(1);
+        dataresult.First().ID.Should().Be(9);
+
+
+        // simple filter: NullableTotal between 2 and 4
+        builder.Items.First().Operator = Enums.CompareMethod.Between;
+        builder.Items.First().Value1 = 2;
+        builder.Items.First().Value2 = 4;
+        querySource = builder.ToExpressionObjectQuery();
+        querySource.Should().HaveCount(1);
+        expression = EficazFramework.Expressions.ExpressionObjectQuery.GetExpression<Validation.SampleObject>(querySource);
+        expression.Should().NotBeNull();
+        expression.ReturnType.Should().Be(typeof(bool));
+        dataresult = dataSource.Where(expression.Compile()).ToList();
+        dataresult.Should().BeEmpty();
+
+        // simple filter: NullableTotal between 2 and 5
+        builder.Items.First().Operator = Enums.CompareMethod.Between;
+        builder.Items.First().Value1 = 2;
+        builder.Items.First().Value2 = 5;
+        querySource = builder.ToExpressionObjectQuery();
+        querySource.Should().HaveCount(1);
+        expression = EficazFramework.Expressions.ExpressionObjectQuery.GetExpression<Validation.SampleObject>(querySource);
+        expression.Should().NotBeNull();
+        expression.ReturnType.Should().Be(typeof(bool));
+        dataresult = dataSource.Where(expression.Compile()).ToList();
+        dataresult.Should().HaveCount(1);
+
     }
 
     [Test]
@@ -483,7 +552,7 @@ public class ExpressionObjectQueryTests
         dataresult.Should().HaveCount(2);
         dataresult.First().ID.Should().Be(4);
 
-        // simple filter: ID bigger than 1
+        // simple filter: RelatedID different 55
         builder.Items.First().Operator = Enums.CompareMethod.Different;
         querySource = builder.ToExpressionObjectQuery();
         querySource.Should().HaveCount(1);
@@ -492,6 +561,341 @@ public class ExpressionObjectQueryTests
         expression.ReturnType.Should().Be(typeof(bool));
         dataresult = dataSource.Where(expression.Compile()).ToList();
         dataresult.Should().HaveCount(4);
+
+        // simple filter: RelatedID is NULL
+        builder.Items.First().Operator = Enums.CompareMethod.Equals;
+        builder.Items.First().Value1 = null;
+        querySource = builder.ToExpressionObjectQuery();
+        querySource.Should().HaveCount(1);
+        expression = EficazFramework.Expressions.ExpressionObjectQuery.GetExpression<Validation.SampleObject>(querySource);
+        expression.Should().NotBeNull();
+        expression.ReturnType.Should().Be(typeof(bool));
+        dataresult = dataSource.Where(expression.Compile()).ToList();
+        dataresult.Should().HaveCount(3);
+
     }
 
+    [Test]
+    public void InnerExpressionTest()
+    {
+        List<Validation.SampleObject> dataSource = new()
+        {
+            new() { ID = 1, Name = "Item 1" },
+            new() { ID = 2, Name = "Item 2", Children = { new() { ParentID = 2, ID = 1, Name = "Child 1 of Item 2" }, new() { ParentID = 2, ID = 2, Name = "Child 2 of Item 2" } } },
+            new() { ID = 3, Name = "Item 3", Children = { new() { ParentID = 3, ID = 1, Name = "Child 1 of Item 3" }, new() { ParentID = 3, ID = 2, Name = "Child 2 of Item 3" }, new() { ParentID = 3, ID = 3, Name = "Child 3 of Item 3" } } },
+            new() { ID = 4, Name = "Item 4", Related = new() { ID = 55 }, RelatedID = 55 },
+            new() { ID = 5, Name = "Item 5", Related = new() { ID = 55 }, RelatedID = 55 },
+            new() { ID = 9, Name = "kkkkkKk", Related = new() { ID = 99 }, RelatedID = 99 }
+        };
+
+        ExpressionBuilder builder = DefaultInstance();
+
+        // no filters
+        var querySource = builder.ToExpressionObjectQuery();
+        var expression = EficazFramework.Expressions.ExpressionObjectQuery.GetExpression<Validation.SampleObject>(querySource);
+        querySource.Should().HaveCount(0);
+        expression.Should().BeNull();
+
+        // simple filter: Child ID equals 1
+        builder.Items.Add(new ExpressionItem()
+        {
+            SelectedProperty = builder.Properties[7],
+            Operator = Enums.CompareMethod.Equals,
+            Value1 = 1
+        });
+        querySource = builder.ToExpressionObjectQuery();
+        querySource.Should().HaveCount(1);
+        expression = EficazFramework.Expressions.ExpressionObjectQuery.GetExpression<Validation.SampleObject>(querySource);
+        expression.Should().NotBeNull();
+        expression.ReturnType.Should().Be(typeof(bool));
+        var dataresult = dataSource.Where(expression.Compile()).ToList();
+        dataresult.Should().HaveCount(2);
+        dataresult.First().ID.Should().Be(2);
+        dataresult.Last().ID.Should().Be(3);
+
+        // simple filter: Child ID equals 3
+        builder.Items.First().Value1 = 3;
+        querySource = builder.ToExpressionObjectQuery();
+        querySource.Should().HaveCount(1);
+        expression = EficazFramework.Expressions.ExpressionObjectQuery.GetExpression<Validation.SampleObject>(querySource);
+        expression.Should().NotBeNull();
+        expression.ReturnType.Should().Be(typeof(bool));
+        dataresult = dataSource.Where(expression.Compile()).ToList();
+        dataresult.Should().HaveCount(1);
+        dataresult.First().ID.Should().Be(3);
+    }
+
+    [Test]
+    public void MultipleExpressionTest1()
+    {
+        List<Validation.SampleObject> dataSource = new()
+        {
+            new() { ID = 1, Name = "Item 1" },
+            new() { ID = 2, Name = "Item 2", Children = { new() { ParentID = 2, ID = 1, Name = "Child 1 of Item 2" }, new() { ParentID = 2, ID = 2, Name = "Child 2 of Item 2" } } },
+            new() { ID = 3, Name = "Item 3", Children = { new() { ParentID = 3, ID = 1, Name = "Child 1 of Item 3" }, new() { ParentID = 3, ID = 2, Name = "Child 2 of Item 3" }, new() { ParentID = 3, ID = 3, Name = "Child 3 of Item 3" } } },
+            new() { ID = 4, Name = "Item 4", Related = new() { ID = 55 }, RelatedID = 55 },
+            new() { ID = 5, Name = "Item 5", Related = new() { ID = 55 }, RelatedID = 55 },
+            new() { ID = 9, Name = "kkkkkKk", Related = new() { ID = 99 }, RelatedID = 99 }
+        };
+
+        ExpressionBuilder builder = DefaultInstance();
+
+        // filter: Child ID equals 2 AND ID equals 2
+        builder.Items.Add(new ExpressionItem()
+        {
+            SelectedProperty = builder.Properties.First(),
+            Value1 = 2
+        });
+        builder.Items.Add(new ExpressionItem()
+        {
+            SelectedProperty = builder.Properties[7],
+            Operator = Enums.CompareMethod.Equals,
+            Value1 = 2
+        });
+
+        var querySource = builder.ToExpressionObjectQuery();
+        querySource = builder.ToExpressionObjectQuery();
+        querySource.Should().HaveCount(2);
+        var expression = EficazFramework.Expressions.ExpressionObjectQuery.GetExpression<Validation.SampleObject>(querySource);
+        expression.Should().NotBeNull();
+        expression.ReturnType.Should().Be(typeof(bool));
+        var dataresult = dataSource.Where(expression.Compile()).ToList();
+        dataresult.Should().HaveCount(1);
+        dataresult.First().ID.Should().Be(2);
+
+        // filter: Child ID equals 3 AND ID equals 2
+        builder.Items.Last().Value1 = 3;
+        querySource = builder.ToExpressionObjectQuery();
+        querySource.Should().HaveCount(2);
+        expression = EficazFramework.Expressions.ExpressionObjectQuery.GetExpression<Validation.SampleObject>(querySource);
+        expression.Should().NotBeNull();
+        expression.ReturnType.Should().Be(typeof(bool));
+        dataresult = dataSource.Where(expression.Compile()).ToList();
+        dataresult.Should().BeEmpty();
+    }
+
+    [Test]
+    public void MultipleExpressionTest2()
+    {
+        List<Validation.SampleObject> dataSource = new()
+        {
+            new() { ID = 1, Name = "Item 1" },
+            new() { ID = 2, Name = "Item 2", Children = { new() { ParentID = 2, ID = 1, Name = "Child 1 of Item 2" }, new() { ParentID = 2, ID = 2, Name = "Child 2 of Item 2" } } },
+            new() { ID = 3, Name = "Item 3", Children = { new() { ParentID = 3, ID = 1, Name = "Child 1 of Item 3" }, new() { ParentID = 3, ID = 2, Name = "Child 2 of Item 3" }, new() { ParentID = 3, ID = 3, Name = "Child 3 of Item 3" } } },
+            new() { ID = 4, Name = "Item 4", Related = new() { ID = 55 }, RelatedID = 55 },
+            new() { ID = 5, Name = "Item 5", Related = new() { ID = 55 }, RelatedID = 55 },
+            new() { ID = 9, Name = "kkkkkKk", Related = new() { ID = 99 }, RelatedID = 99 }
+        };
+
+        ExpressionBuilder builder = DefaultInstance();
+
+        // filter: RelatedID = 55 AND Child ID equals 2
+        builder.Items.Add(new ExpressionItem()
+        {
+            SelectedProperty = builder.Properties.Last(),
+            Value1 = new Validation.SampleRelatedObject { ID = 55 }
+        });
+        builder.Items.Add(new ExpressionItem()
+        {
+            SelectedProperty = builder.Properties.First(),
+            Operator = Enums.CompareMethod.Equals,
+            Value1 = 2
+        });
+
+        var querySource = builder.ToExpressionObjectQuery();
+        querySource = builder.ToExpressionObjectQuery();
+        querySource.Should().HaveCount(2);
+        var expression = EficazFramework.Expressions.ExpressionObjectQuery.GetExpression<Validation.SampleObject>(querySource);
+        expression.Should().NotBeNull();
+        expression.ReturnType.Should().Be(typeof(bool));
+        var dataresult = dataSource.Where(expression.Compile()).ToList();
+        dataresult.Should().BeEmpty();
+
+        // filter: RelatedID = 55 AND ID bigger than 2
+        builder.Items.Last().Operator = Enums.CompareMethod.BiggerThan;
+        builder.Items.Last().Value1 = 2;
+        querySource = builder.ToExpressionObjectQuery();
+        querySource.Should().HaveCount(2);
+        expression = EficazFramework.Expressions.ExpressionObjectQuery.GetExpression<Validation.SampleObject>(querySource);
+        expression.Should().NotBeNull();
+        expression.ReturnType.Should().Be(typeof(bool));
+        dataresult = dataSource.Where(expression.Compile()).ToList();
+        dataresult.Should().HaveCount(2);
+        dataresult.First().ID.Should().Be(4);
+
+        // filter: RelatedID = 55 AND ID equals 5
+        builder.Items.Last().Operator = Enums.CompareMethod.Equals;
+        builder.Items.Last().Value1 = 5;
+        querySource = builder.ToExpressionObjectQuery();
+        querySource.Should().HaveCount(2);
+        expression = EficazFramework.Expressions.ExpressionObjectQuery.GetExpression<Validation.SampleObject>(querySource);
+        expression.Should().NotBeNull();
+        expression.ReturnType.Should().Be(typeof(bool));
+        dataresult = dataSource.Where(expression.Compile()).ToList();
+        dataresult.Should().HaveCount(1);
+        dataresult.First().ID.Should().Be(5);
+
+        // filter: RelatedID = 55 AND ID lower than 5
+        builder.Items.Last().Operator = Enums.CompareMethod.LowerThan;
+        builder.Items.Last().Value1 = 5;
+        querySource = builder.ToExpressionObjectQuery();
+        querySource.Should().HaveCount(2);
+        expression = EficazFramework.Expressions.ExpressionObjectQuery.GetExpression<Validation.SampleObject>(querySource);
+        expression.Should().NotBeNull();
+        expression.ReturnType.Should().Be(typeof(bool));
+        dataresult = dataSource.Where(expression.Compile()).ToList();
+        dataresult.Should().HaveCount(1);
+        dataresult.First().ID.Should().Be(4);
+
+    }
+
+    [Test]
+    public void TextContainsExpressionTest()
+    {
+        List<Validation.SampleObject> dataSource = new()
+        {
+            new() { ID = 1, Name = "Item 1" },
+            new() { ID = 2, Name = "Item 2", Children = { new() { ParentID = 2, ID = 1, Name = "Child 1 of Item 2" }, new() { ParentID = 2, ID = 2, Name = "Child 2 of Item 2" } } },
+            new() { ID = 3, Name = "Item 3", Children = { new() { ParentID = 3, ID = 1, Name = "Child 1 of Item 3" }, new() { ParentID = 3, ID = 2, Name = "Child 2 of Item 3" }, new() { ParentID = 3, ID = 3, Name = "Child 2 of Item 3" } } },
+            new() { ID = 4, Name = "Item 4", Related = new() { ID = 55 }, RelatedID = 55 },
+            new() { ID = 5, Name = "Item 5", Related = new() { ID = 55 }, RelatedID = 55 },
+            new() { ID = 9, Name = "kkkkkKk", Related = new() { ID = 99 }, RelatedID = 99 }
+        };
+
+        ExpressionBuilder builder = DefaultInstance();
+
+        // simple filter: Name Contains "Item"
+        builder.Items.Add(new ExpressionItem()
+        {
+            SelectedProperty = builder.Properties[1],
+            Value1 = "item"
+        });
+        var querySource = builder.ToExpressionObjectQuery();
+        querySource.Should().HaveCount(1);
+        var expression = EficazFramework.Expressions.ExpressionObjectQuery.GetExpression<Validation.SampleObject>(querySource);
+        expression.Should().NotBeNull();
+        expression.ReturnType.Should().Be(typeof(bool));
+        var dataresult = dataSource.Where(expression.Compile()).ToList();
+        dataresult.Should().HaveCount(5);
+        dataresult.Last().ID.Should().Be(5);
+
+        // simple filter: Name Contains "k"
+        builder.Items.First().Value1 = "K";
+        querySource = builder.ToExpressionObjectQuery();
+        querySource.Should().HaveCount(1);
+        expression = EficazFramework.Expressions.ExpressionObjectQuery.GetExpression<Validation.SampleObject>(querySource);
+        expression.Should().NotBeNull();
+        expression.ReturnType.Should().Be(typeof(bool));
+        dataresult = dataSource.Where(expression.Compile()).ToList();
+        dataresult.Should().HaveCount(1);
+        dataresult.First().ID.Should().Be(9);
+    }
+
+    [Test]
+    public void TextStartsWithExpressionTest()
+    {
+        List<Validation.SampleObject> dataSource = new()
+        {
+            new() { ID = 1, Name = "Item 1" },
+            new() { ID = 2, Name = "Item 2", Children = { new() { ParentID = 2, ID = 1, Name = "Child 1 of Item 2" }, new() { ParentID = 2, ID = 2, Name = "Child 2 of Item 2" } } },
+            new() { ID = 3, Name = "Item 3", Children = { new() { ParentID = 3, ID = 1, Name = "Child 1 of Item 3" }, new() { ParentID = 3, ID = 2, Name = "Child 2 of Item 3" }, new() { ParentID = 3, ID = 3, Name = "Child 2 of Item 3" } } },
+            new() { ID = 4, Name = "Item 4", Related = new() { ID = 55 }, RelatedID = 55 },
+            new() { ID = 5, Name = "Item 5", Related = new() { ID = 55 }, RelatedID = 55 },
+            new() { ID = 9, Name = "kkkkkKk", Related = new() { ID = 99 }, RelatedID = 99 }
+        };
+
+        ExpressionBuilder builder = DefaultInstance();
+
+        // simple filter: Name Starts With "Item"
+        builder.Items.Add(new ExpressionItem()
+        {
+            SelectedProperty = builder.Properties[1],
+            Operator = Enums.CompareMethod.StartsWith,
+            Value1 = "item"
+        });
+        var querySource = builder.ToExpressionObjectQuery();
+        querySource.Should().HaveCount(1);
+        var expression = EficazFramework.Expressions.ExpressionObjectQuery.GetExpression<Validation.SampleObject>(querySource);
+        expression.Should().NotBeNull();
+        expression.ReturnType.Should().Be(typeof(bool));
+        var dataresult = dataSource.Where(expression.Compile()).ToList();
+        dataresult.Should().HaveCount(5);
+        dataresult.Last().ID.Should().Be(5);
+
+        // simple filter: Name Starts With "k"
+        builder.Items.First().Value1 = "K";
+        querySource = builder.ToExpressionObjectQuery();
+        querySource.Should().HaveCount(1);
+        expression = EficazFramework.Expressions.ExpressionObjectQuery.GetExpression<Validation.SampleObject>(querySource);
+        expression.Should().NotBeNull();
+        expression.ReturnType.Should().Be(typeof(bool));
+        dataresult = dataSource.Where(expression.Compile()).ToList();
+        dataresult.Should().HaveCount(1);
+        dataresult.First().ID.Should().Be(9);
+
+        // simple filter: Name Starts With "tem"
+        builder.Items.First().Value1 = "tem";
+        querySource = builder.ToExpressionObjectQuery();
+        querySource.Should().HaveCount(1);
+        expression = EficazFramework.Expressions.ExpressionObjectQuery.GetExpression<Validation.SampleObject>(querySource);
+        expression.Should().NotBeNull();
+        expression.ReturnType.Should().Be(typeof(bool));
+        dataresult = dataSource.Where(expression.Compile()).ToList();
+        dataresult.Should().BeEmpty();
+
+    }
+
+    [Test]
+    public void TextLengthExpressionTest()
+    {
+        List<Validation.SampleObject> dataSource = new()
+        {
+            new() { ID = 1, Name = "Item 1" },
+            new() { ID = 2, Name = "Item 2", Children = { new() { ParentID = 2, ID = 1, Name = "Child 1 of Item 2" }, new() { ParentID = 2, ID = 2, Name = "Child 2 of Item 2" } } },
+            new() { ID = 3, Name = "Item 3", Children = { new() { ParentID = 3, ID = 1, Name = "Child 1 of Item 3" }, new() { ParentID = 3, ID = 2, Name = "Child 2 of Item 3" }, new() { ParentID = 3, ID = 3, Name = "Child 2 of Item 3" } } },
+            new() { ID = 4, Name = "Item 4", Related = new() { ID = 55 }, RelatedID = 55 },
+            new() { ID = 5, Name = "Item 5", Related = new() { ID = 55 }, RelatedID = 55 },
+            new() { ID = 9, Name = "kkkkkKk", Related = new() { ID = 99 }, RelatedID = 99 }
+        };
+
+        ExpressionBuilder builder = DefaultInstance();
+
+        // simple filter: Name Length equals 6
+        builder.Items.Add(new ExpressionItem()
+        {
+            SelectedProperty = builder.Properties[1],
+            Operator = Enums.CompareMethod.Length,
+            Value1 = 6
+        });
+        var querySource = builder.ToExpressionObjectQuery();
+        querySource.Should().HaveCount(1);
+        var expression = EficazFramework.Expressions.ExpressionObjectQuery.GetExpression<Validation.SampleObject>(querySource);
+        expression.Should().NotBeNull();
+        expression.ReturnType.Should().Be(typeof(bool));
+        var dataresult = dataSource.Where(expression.Compile()).ToList();
+        dataresult.Should().HaveCount(5);
+        dataresult.Last().ID.Should().Be(5);
+
+        // simple filter: Name Length equals 7
+        builder.Items.First().Value1 = 7;
+        querySource = builder.ToExpressionObjectQuery();
+        querySource.Should().HaveCount(1);
+        expression = EficazFramework.Expressions.ExpressionObjectQuery.GetExpression<Validation.SampleObject>(querySource);
+        expression.Should().NotBeNull();
+        expression.ReturnType.Should().Be(typeof(bool));
+        dataresult = dataSource.Where(expression.Compile()).ToList();
+        dataresult.Should().HaveCount(1);
+        dataresult.First().ID.Should().Be(9);
+
+        // simple filter: Name Length equals 1
+        builder.Items.First().Value1 = 1;
+        querySource = builder.ToExpressionObjectQuery();
+        querySource.Should().HaveCount(1);
+        expression = EficazFramework.Expressions.ExpressionObjectQuery.GetExpression<Validation.SampleObject>(querySource);
+        expression.Should().NotBeNull();
+        expression.ReturnType.Should().Be(typeof(bool));
+        dataresult = dataSource.Where(expression.Compile()).ToList();
+        dataresult.Should().BeEmpty();
+
+    }
 }

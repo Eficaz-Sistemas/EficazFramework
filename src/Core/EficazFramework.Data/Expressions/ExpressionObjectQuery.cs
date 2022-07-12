@@ -71,6 +71,7 @@ public class ExpressionObjectQuery
             m = Expression.Property(m, access);
                 
         var resolvedValue = m.Type.IsEnum ? Enum.Parse(m.Type, Conversions.ToString(Value)) : Conversion.CTypeDynamic(Value, m.Type);
+        
 
         object c;
         if (Nullable.GetUnderlyingType(m.Type) is null)
@@ -82,7 +83,7 @@ public class ExpressionObjectQuery
             else
                 c = Expression.Convert(Expression.Constant(Value, Value.GetType()), m.Type);
         }
-
+        
         object c2 = null;
         if (Operator == EficazFramework.Enums.CompareMethod.Between)
         {
@@ -103,6 +104,9 @@ public class ExpressionObjectQuery
 
         if (m.Type == typeof(string))
         {
+            c = Expression.Call((Expression)c, ToLowerMethod);
+            if (Operator == EficazFramework.Enums.CompareMethod.Between)
+                c2 = Expression.Call((Expression)c2, ToLowerMethod);
             b = Expression.Call(null, NullToEmptyMethod, m);
             b = Expression.Call(b ?? m, ToLowerMethod);
         }
@@ -206,15 +210,17 @@ public class ExpressionObjectQuery
         var groups = source.Where(c => c.CollectionName != null).
                             GroupBy(c => c.CollectionName).
                             Select(c => c.Key).ToList();
-        System.Reflection.PropertyInfo groupCollInfo = null;
-        Type groupCollType = null;
+               
         int icoll = 0;
         foreach (var group in groups)
         {
             icoll += 1;
             if (string.IsNullOrEmpty(group))
                 continue;
-                
+
+            System.Reflection.PropertyInfo groupCollInfo = typeof(TElement).GetProperty(group);
+            Type groupCollType = groupCollInfo.PropertyType.GetGenericArguments().FirstOrDefault();
+
             var groupParameter = System.Linq.Expressions.Expression.Parameter(groupCollType, string.Format("s{0}", icoll.ToString()));
 
             var group_items = source.Where(c => (c.CollectionName ?? "") == (group ?? "")).ToList();
@@ -223,16 +229,10 @@ public class ExpressionObjectQuery
                 if (string.IsNullOrEmpty(item.FieldName))
                     continue;
 
-                if (groupCollInfo is null)
-                    groupCollInfo = typeof(TElement).GetProperty(group);
-                
-                if (groupCollType is null)
-                    groupCollType = groupCollInfo.PropertyType.GetGenericArguments().FirstOrDefault();
-
                 // Build method call:
                 var buildInfo = item.GetType().GetMethod("Build", System.Reflection.BindingFlags.Public | System.Reflection.BindingFlags.Static | System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.NonPublic);
                 buildInfo = buildInfo.MakeGenericMethod(new[] { groupCollType });
-                var expr2 = buildInfo.Invoke(item, new[] { parameter });
+                var expr2 = buildInfo.Invoke(item, new[] { groupParameter });
 
                 // TEMPORARY FIX
                 if (resultExpression is null)
