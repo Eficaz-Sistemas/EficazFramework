@@ -764,8 +764,7 @@ public class ExpressionItem : INotifyPropertyChanged
                     Operator = Operator,
                     CollectionName = SelectedProperty.CollectionName,
                     ConversionTargetType = ConversionTargetType,
-                    Value = Value1,
-                    Value2 = Value2
+                    Value = EficazFramework.Extensions.ObjectExtensions.GetPropertyValue(Value1, mp.PrincipalKey)
                 });
             }
         }

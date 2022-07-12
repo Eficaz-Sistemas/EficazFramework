@@ -446,4 +446,52 @@ public class ExpressionObjectQueryTests
         dataresult.First().ID.Should().Be(2);
         dataresult.Where(f => f.ID == 1).ToList().Should().HaveCount(0);
     }
+
+    [Test]
+    public void RelatedExpressionTest()
+    {
+        List<Validation.SampleObject> dataSource = new()
+        {
+            new() { ID = 1, Name = "Item 1" },
+            new() { ID = 2, Name = "Item 2", Children = { new() { ParentID = 2, ID = 1, Name = "Child 1 of Item 2" }, new() { ParentID = 2, ID = 2, Name = "Child 2 of Item 2" } } },
+            new() { ID = 3, Name = "Item 3", Children = { new() { ParentID = 3, ID = 1, Name = "Child 1 of Item 3" }, new() { ParentID = 3, ID = 2, Name = "Child 2 of Item 3" }, new() { ParentID = 3, ID = 3, Name = "Child 2 of Item 3" } } },
+            new() { ID = 4, Name = "Item 4", Related = new() { ID = 55 }, RelatedID = 55 },
+            new() { ID = 5, Name = "Item 5", Related = new() { ID = 55 }, RelatedID = 55 },
+            new() { ID = 9, Name = "kkkkkKk", Related = new() { ID = 99 }, RelatedID = 99 }
+        };
+
+        ExpressionBuilder builder = DefaultInstance();
+
+        // no filters
+        var querySource = builder.ToExpressionObjectQuery();
+        var expression = EficazFramework.Expressions.ExpressionObjectQuery.GetExpression<Validation.SampleObject>(querySource);
+        querySource.Should().HaveCount(0);
+        expression.Should().BeNull();
+
+        // simple filter: RelatedID equals 55
+        builder.Items.Add(new ExpressionItem()
+        {
+            SelectedProperty = builder.Properties.Last(),
+            Value1 = new Validation.SampleRelatedObject { ID = 55 }
+        });
+        querySource = builder.ToExpressionObjectQuery();
+        querySource.Should().HaveCount(1);
+        expression = EficazFramework.Expressions.ExpressionObjectQuery.GetExpression<Validation.SampleObject>(querySource);
+        expression.Should().NotBeNull();
+        expression.ReturnType.Should().Be(typeof(bool));
+        var dataresult = dataSource.Where(expression.Compile()).ToList();
+        dataresult.Should().HaveCount(2);
+        dataresult.First().ID.Should().Be(4);
+
+        // simple filter: ID bigger than 1
+        builder.Items.First().Operator = Enums.CompareMethod.Different;
+        querySource = builder.ToExpressionObjectQuery();
+        querySource.Should().HaveCount(1);
+        expression = EficazFramework.Expressions.ExpressionObjectQuery.GetExpression<Validation.SampleObject>(querySource);
+        expression.Should().NotBeNull();
+        expression.ReturnType.Should().Be(typeof(bool));
+        dataresult = dataSource.Where(expression.Compile()).ToList();
+        dataresult.Should().HaveCount(4);
+    }
+
 }
