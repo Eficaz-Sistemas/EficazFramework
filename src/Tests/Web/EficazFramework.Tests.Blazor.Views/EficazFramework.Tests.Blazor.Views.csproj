@@ -7,10 +7,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Content Remove="Pages\Components\Panels\MdiApps\MdiPerSectionApp.razor" />
-  </ItemGroup>
-
-  <ItemGroup>
     <Folder Include="Pages\Components\Input\" />
     <Folder Include="wwwroot\css\" />
   </ItemGroup>
@@ -33,18 +29,6 @@
       <LastGenOutput>TestStrings.Designer.cs</LastGenOutput>
       <Generator>PublicResXFileCodeGenerator</Generator>
     </EmbeddedResource>
-  </ItemGroup>
-
-  <ItemGroup>
-    <UpToDateCheckInput Remove="Pages\Components\Panels\MdiApps\MdiPerSectionApp.razor" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <_ContentIncludedByDefault Remove="Pages\Components\Panels\MdiApps\MdiPerSectionApp.razor" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <None Include="Pages\Components\Panels\MdiApps\MdiPerSectionApp.razor" />
   </ItemGroup>
 
 </Project>

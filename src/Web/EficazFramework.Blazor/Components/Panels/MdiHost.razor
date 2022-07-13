@@ -182,7 +182,7 @@
                     <div class="ef-mdi-sections-current">
                         @if (CurrentSection == 0)
                         {
-                            <MudBlazor.MudIcon Icon="@MudBlazor.Icons.Filled.ScreenSearchDesktop" Class="ma-4" Size="MudBlazor.Size.Medium" />
+                            <MudBlazor.MudIcon Icon="@MudBlazor.Icons.Outlined.ViewCarousel" Class="ma-4" Size="MudBlazor.Size.Medium" />
                         }
                         else
                         {
@@ -192,7 +192,9 @@
                             }
                             else
                             {
-                                @CurrentSection
+                                <MudBlazor.MudText Typo="@MudBlazor.Typo.h4">
+                                    @CurrentSection
+                                </MudBlazor.MudText>
                             }
                         }
                     </div>
@@ -205,34 +207,42 @@
                                       Style="background-color:unset; left: 0px !important">
                     <MudBlazor.MudPaper Elevation="8" 
                                         Class="ef-mdi-sections-menu d-flex flex-column pa-4 ma-8">
+
                         <MudBlazor.MudGrid Spacing="3" 
-                                           Class="pa-1"
-                                           Justify="MudBlazor.Justify.SpaceBetween">
+                                           Class="pa-1 overflow-y-auto"
+                                           Justify="MudBlazor.Justify.FlexStart">
                                            
                             @*NEW SECTION ACTIOn*@            
-                            <MudBlazor.MudPaper Outlined Class="pa-2 d-flex flex-column">
-                                <MudBlazor.MudPaper Elevation="0" 
-                                                    Class="justify-center align-center relative" 
-                                                    Style="background-color: var(--mud-palette-background-grey)">
-                                    <MudBlazor.MudIconButton Icon="@MudBlazor.Icons.Filled.Add"
-                                                             Class="ma-4"
-                                                             OnClick="@(() => NewSectionClick?.Invoke())"/>
-                                </MudBlazor.MudPaper>
-                                <h6 class="mud-typography mud-typography-caption mud-inherit-text mt-1" >@NewSectionText</h6>
-                            </MudBlazor.MudPaper>
+                            <MudBlazor.MudItem>
+                                    <MudBlazor.MudTooltip Text="@NewSectionText">
+                                        <MudBlazor.MudIconButton Icon="@MudBlazor.Icons.Filled.Add"
+                                                                 Size="@MudBlazor.Size.Large"
+                                                                 Class="mud-paper-outlined" 
+                                                                 Style="width:125px;height:125px;background-color: var(--mud-palette-background-grey)"
+                                                                 Variant="@MudBlazor.Variant.Outlined"
+                                                                 OnClick="@(() => NewSectionClick?.Invoke())"/>
+                                    </MudBlazor.MudTooltip>
+                            </MudBlazor.MudItem>
 
                             @*Section SOURCE*@
                             @foreach (var section in SectionsSource.Where(f => f.ID > 0))
                             {
-                                <MudBlazor.MudPaper Outlined Class="pa-2 d-flex flex-column">
-                                    <MudBlazor.MudPaper Elevation="0" 
-                                                        Class="justify-center align-center relative"
-                                                        Style="background-color: var(--mud-palette-background-grey)">
-                                        <MudBlazor.MudIconButton Icon="@MudBlazor.Icons.Filled.Block" 
-                                                                 Class="ma-4"/>
+                                <MudBlazor.MudItem @onclick="() => MoveToSection(section.ID)">
+                                    <MudBlazor.MudPaper Outlined 
+                                                        Class="pa-2 d-flex flex-column"
+                                                        Style="@SectionStyleName(section.ID)">
+                                        <MudBlazor.MudText Typo="@MudBlazor.Typo.caption">
+                                            @($"{section.ID} - {section.Name}")
+                                        </MudBlazor.MudText>
+                                        <MudBlazor.MudPaper Elevation="0" 
+                                                            Class="flex-grow-1 d-flex justify-center align-center relative mt-1"
+                                                            Style="background-color: var(--mud-palette-background-grey)">
+                                            <MudBlazor.MudIcon Icon="@MudBlazor.Icons.Filled.Image" 
+                                                               Class="ma-4"
+                                                               Size="@MudBlazor.Size.Large"/>
+                                        </MudBlazor.MudPaper>
                                     </MudBlazor.MudPaper>
-                                    <h6 class="mud-typography mud-typography-caption mud-inherit-text mt-1" >@($"{section.ID} - {section.Name}")</h6>
-                                </MudBlazor.MudPaper>
+                                </MudBlazor.MudItem>
                             }
                         </MudBlazor.MudGrid>
                     </MudBlazor.MudPaper>

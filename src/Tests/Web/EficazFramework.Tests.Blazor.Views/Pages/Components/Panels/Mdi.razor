@@ -4,8 +4,10 @@
 
 <div class="d-flex flex-grow-1" style="margin-left:-24px;margin-right:-24px">
     <MdiHost @ref="_mdi" 
-             ItemsSource="ApplicationManager.RunningApplications"
-             SectionsSource="ApplicationManager.SectionManager.Sections">
+             NewSectionClick="NewSection"
+             ItemsSource="ApplicationManager?.RunningApplications"
+             SectionsSource="ApplicationManager?.SectionManager.Sections"
+             CurrentSection="ApplicationManager!.SectionManager.CurrentSection.ID">
         <StartMenuFooter>
             <MudBlazor.MudText Typo="@MudBlazor.Typo.body1">
                 footer here...

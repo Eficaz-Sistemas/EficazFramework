@@ -1,0 +1,6 @@
+﻿<h3>I'm an app scoped at Section @(ApplicationInstance!.SessionID)</h3>
+
+@code
+{
+    [CascadingParameter] public EficazFramework.Application.ApplicationInstance? ApplicationInstance { get; set; }
+}

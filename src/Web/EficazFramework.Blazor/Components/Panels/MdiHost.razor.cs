@@ -147,8 +147,20 @@ public partial class MdiHost : MudBlazor.MudBaseBindableItemsControl<MdiWindow, 
                     .AddStyle("border-top", "solid 3px var(--mud-palette-primary)", object.ReferenceEquals(_selectedApp, item))
                     .Build();
 
+
+    /// <summary>
+    /// Styles for main div element
+    /// </summary>
+    protected string SectionStyleName(long Id) =>
+                new StyleBuilder()
+                    .AddStyle("background-color", "var(--mud-palette-primary)", CurrentSection == Id)
+                    .AddStyle("width", "200px")
+                    .AddStyle("height", "125px")
+                    .Build();
+
+
     #endregion
-    
+
 
 
     #region Start Menu
@@ -223,6 +235,13 @@ public partial class MdiHost : MudBlazor.MudBaseBindableItemsControl<MdiWindow, 
         }
 
         StateHasChanged();
+    }
+
+    public void MoveToSection(long id)
+    {
+        CurrentSection = id;
+        ApplicationManager?.SectionManager.ActivateSection(id);
+        ToggleSectionsMenuOpen(true);
     }
 
     #endregion
