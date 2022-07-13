@@ -9,6 +9,9 @@ public partial class Mdi
     protected override void OnInitialized()
     {
         base.OnInitialized();
+
+        if (ApplicationManager.AllApplications.Count != 0)
+            return;
         
         appHello = new()
         {
@@ -75,6 +78,19 @@ public partial class Mdi
             StartupUriOrType = typeof(EficazFramework.Tests.Blazor.Views.Pages.Components.Panels.MdiApps.AnotherCoolApp)
         });
 
+        appPerSection2 = new()
+        {
+            LongTitle = $"New Scoped App",
+            IsPublic = false,
+            Group = "Paid Apps",
+            Title = $"New Scoped App",
+        };
+        appPerSection2.Targets.Add("Blazor", new()
+        {
+            Icon = MudBlazor.Icons.Custom.Brands.Linux,
+            StartupUriOrType = typeof(EficazFramework.Tests.Blazor.Views.Pages.Components.Panels.MdiApps.MdiPerSectionApp)
+        });
+
 
         ApplicationManager.AllApplications.Add(appHello);
         ApplicationManager.AllApplications.Add(appAnother);
@@ -86,6 +102,7 @@ public partial class Mdi
         ApplicationManager.AllApplications.Add(appPerSection);
         ApplicationManager.AllApplications.Add(appHello2);
         ApplicationManager.AllApplications.Add(appAnother2);
+        ApplicationManager.AllApplications.Add(appPerSection2);
 
     }
 
@@ -94,6 +111,7 @@ public partial class Mdi
     private EficazFramework.Application.ApplicationDefinition? appAnother;
     private EficazFramework.Application.ApplicationDefinition? appAnother2;
     private EficazFramework.Application.ApplicationDefinition? appPerSection;
+    private EficazFramework.Application.ApplicationDefinition? appPerSection2;
 
     private EficazFramework.Components.MdiHost? _mdi;
 

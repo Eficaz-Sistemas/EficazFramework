@@ -3,7 +3,7 @@
 
 ## SqlLite Class
 
-Implementa definições para trabalho com cache, utilizando  
+Implementa definições para trabalho com base de dados SqlLite, utilizando  
 o provedor EntityFrameworkCore.SqlLite
 
 ```csharp

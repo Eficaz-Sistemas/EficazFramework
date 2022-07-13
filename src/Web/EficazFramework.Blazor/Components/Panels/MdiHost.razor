@@ -80,7 +80,7 @@
                                                Class="flex-grow-1 flex-shrink-0 ml-n4"
                                                PanelClass="d-flex flex-column ml-4 my-4"
                                                @ref="_tabsHost">
-                                <MudBlazor.MudTabPanel Tag="@(Resources.Strings.Components.MDIApplication_TabApps_Header)"
+                                <MudBlazor.MudTabPanel Tag="@StartMenuMainTabHeader"
                                                        Icon="@MudBlazor.Icons.Filled.GridView">
                                     <div class="d-flex mx-2 mt-n4 align-center">
                                         <MudBlazor.MudTextField @bind-Value="AppSearchFilter"
@@ -180,13 +180,20 @@
                                          DisableElevation
                                          OnClick="() => ToggleSectionsMenuOpen()">
                     <div class="ef-mdi-sections-current">
-                        @if (CurrentSectionTemplate != null)
+                        @if (CurrentSection == 0)
                         {
-                            @CurrentSectionTemplate
+                            <MudBlazor.MudIcon Icon="@MudBlazor.Icons.Filled.ScreenSearchDesktop" Class="ma-4" Size="MudBlazor.Size.Medium" />
                         }
                         else
                         {
-                            @CurrentSection
+                            @if (CurrentSectionTemplate != null)
+                            {
+                                @CurrentSectionTemplate
+                            }
+                            else
+                            {
+                                @CurrentSection
+                            }
                         }
                     </div>
                 </MudBlazor.MudIconButton>
@@ -198,10 +205,36 @@
                                       Style="background-color:unset; left: 0px !important">
                     <MudBlazor.MudPaper Elevation="8" 
                                         Class="ef-mdi-sections-menu d-flex flex-column pa-4 ma-8">
-                        <div class="d-flex flex-column" style="height:inherit">
-                            
+                        <MudBlazor.MudGrid Spacing="3" 
+                                           Class="pa-1"
+                                           Justify="MudBlazor.Justify.SpaceBetween">
+                                           
+                            @*NEW SECTION ACTIOn*@            
+                            <MudBlazor.MudPaper Outlined Class="pa-2 d-flex flex-column">
+                                <MudBlazor.MudPaper Elevation="0" 
+                                                    Class="justify-center align-center relative" 
+                                                    Style="background-color: var(--mud-palette-background-grey)">
+                                    <MudBlazor.MudIconButton Icon="@MudBlazor.Icons.Filled.Add"
+                                                             Class="ma-4"
+                                                             OnClick="@(() => NewSectionClick?.Invoke())"/>
+                                </MudBlazor.MudPaper>
+                                <h6 class="mud-typography mud-typography-caption mud-inherit-text mt-1" >@NewSectionText</h6>
+                            </MudBlazor.MudPaper>
 
-                        </div>
+                            @*Section SOURCE*@
+                            @foreach (var section in SectionsSource.Where(f => f.ID > 0))
+                            {
+                                <MudBlazor.MudPaper Outlined Class="pa-2 d-flex flex-column">
+                                    <MudBlazor.MudPaper Elevation="0" 
+                                                        Class="justify-center align-center relative"
+                                                        Style="background-color: var(--mud-palette-background-grey)">
+                                        <MudBlazor.MudIconButton Icon="@MudBlazor.Icons.Filled.Block" 
+                                                                 Class="ma-4"/>
+                                    </MudBlazor.MudPaper>
+                                    <h6 class="mud-typography mud-typography-caption mud-inherit-text mt-1" >@($"{section.ID} - {section.Name}")</h6>
+                                </MudBlazor.MudPaper>
+                            }
+                        </MudBlazor.MudGrid>
                     </MudBlazor.MudPaper>
                 </MudBlazor.MudPopover>
             </MudBlazor.MudTooltip>

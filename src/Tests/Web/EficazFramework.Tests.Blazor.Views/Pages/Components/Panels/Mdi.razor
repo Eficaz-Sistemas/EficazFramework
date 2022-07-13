@@ -3,7 +3,9 @@
 <MudPopoverProvider/>
 
 <div class="d-flex flex-grow-1" style="margin-left:-24px;margin-right:-24px">
-    <MdiHost @ref="_mdi" ItemsSource="ApplicationManager.RunningApplications" >
+    <MdiHost @ref="_mdi" 
+             ItemsSource="ApplicationManager.RunningApplications"
+             SectionsSource="ApplicationManager.SectionManager.Sections">
         <StartMenuFooter>
             <MudBlazor.MudText Typo="@MudBlazor.Typo.body1">
                 footer here...

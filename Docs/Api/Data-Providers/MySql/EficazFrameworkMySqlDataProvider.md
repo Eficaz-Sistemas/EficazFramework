@@ -10,4 +10,4 @@
 | Classes | |
 | :--- | :--- |
 | [Extension](EficazFramework.Providers/Extension.md 'EficazFramework.Providers.Extension') | |
-| [MySql](EficazFramework.Providers/MySql.md 'EficazFramework.Providers.MySql') | Implementa definições para trabalho com cache, utilizando<br/>o provedor EntityFrameworkCore.SqlServer |
+| [MySql](EficazFramework.Providers/MySql.md 'EficazFramework.Providers.MySql') | Implementa definições para trabalho com base de dados MySQL, utilizando<br/>o provedor EntityFrameworkCore.SqlServer |

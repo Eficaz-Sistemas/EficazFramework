@@ -20,6 +20,10 @@ public partial class MdiHost : MudBlazor.MudBaseBindableItemsControl<MdiWindow, 
     /// </summary>
     [Parameter] public MudBlazor.Breakpoint Breakpoint { get; set; } = MudBlazor.Breakpoint.Xs;
 
+
+
+    #region Parameters: Start Menu
+
     /// <summary>
     /// The Start Menu Icon
     /// </summary>
@@ -29,9 +33,19 @@ public partial class MdiHost : MudBlazor.MudBaseBindableItemsControl<MdiWindow, 
     /// Start Menu Footer content
     /// </summary>
     [Parameter] public RenderFragment StartMenuFooter { get; set; }
-    
+
     /// <summary>
-    /// Aditional left tabs for Start Menu
+    /// Start Menu Main Tab Header (Default: Applications)
+    /// </summary>
+    [Parameter] public string StartMenuMainTabHeader { get; set; } = Resources.Strings.Components.MDIApplication_TabApps_Header;
+
+    /// <summary>
+    /// Start Menu Main Tab Icon (Default: MudBlazor.Icons.Filled.GridView)
+    /// </summary>
+    [Parameter] public string StartMenuMainTabIcon { get; set; } = MudBlazor.Icons.Filled.GridView;
+
+    /// <summary>
+    /// Aditional left tabs for Start Menu. Use MudtabPanel's Tag parameter for Title.
     /// </summary>
     [Parameter] public RenderFragment StartMenuTabs { get; set; }
 
@@ -60,6 +74,29 @@ public partial class MdiHost : MudBlazor.MudBaseBindableItemsControl<MdiWindow, 
     /// The template for Current Section representation on StartMenu's right
     /// </summary>
     [Parameter] public RenderFragment CurrentSectionTemplate { get; set; }
+
+    #endregion
+
+
+
+    #region Parameters: Sections
+
+    /// <summary>
+    /// Source for Available Sections (tenants)
+    /// </summary>
+    [Parameter] public IEnumerable<EficazFramework.Application.Section> SectionsSource { get; set; } = new List<EficazFramework.Application.Section>();
+
+    /// <summary>
+    /// Text for show into "New Section" button
+    /// </summary>
+    [Parameter] public string NewSectionText { get; set; } = Resources.Strings.Components.MDIContainer_NewSection;
+
+    /// <summary>
+    /// Action to invoke when "New Section" button is clicked
+    /// </summary>
+    [Parameter] public Action NewSectionClick { get; set; }
+
+    #endregion
 
 
 

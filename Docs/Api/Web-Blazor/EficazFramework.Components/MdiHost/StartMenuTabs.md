@@ -3,7 +3,7 @@
 
 ## MdiHost.StartMenuTabs Property
 
-Aditional left tabs for Start Menu
+Aditional left tabs for Start Menu. Use MudtabPanel's Tag parameter for Title.
 
 ```csharp
 public Microsoft.AspNetCore.Components.RenderFragment StartMenuTabs { get; set; }
