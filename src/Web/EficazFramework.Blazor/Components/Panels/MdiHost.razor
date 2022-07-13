@@ -227,7 +227,7 @@
                             @*Section SOURCE*@
                             @foreach (var section in SectionsSource.Where(f => f.ID > 0))
                             {
-                                <MudBlazor.MudItem @onclick="() => MoveToSection(section.ID)">
+                                <MudBlazor.MudItem @onclick="() => ActivateSection(section.ID)">
                                     <MudBlazor.MudPaper Outlined 
                                                         Class="pa-2 d-flex flex-column"
                                                         Style="@SectionStyleName(section.ID)">

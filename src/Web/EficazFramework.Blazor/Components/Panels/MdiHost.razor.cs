@@ -147,9 +147,8 @@ public partial class MdiHost : MudBlazor.MudBaseBindableItemsControl<MdiWindow, 
                     .AddStyle("border-top", "solid 3px var(--mud-palette-primary)", object.ReferenceEquals(_selectedApp, item))
                     .Build();
 
-
     /// <summary>
-    /// Styles for main div element
+    /// Style builder for every section div
     /// </summary>
     protected string SectionStyleName(long Id) =>
                 new StyleBuilder()
@@ -237,7 +236,11 @@ public partial class MdiHost : MudBlazor.MudBaseBindableItemsControl<MdiWindow, 
         StateHasChanged();
     }
 
-    public void MoveToSection(long id)
+    /// <summary>
+    /// Altera a seção ativa para o ID informado.
+    /// </summary>
+    /// <param name="id"></param>
+    public void ActivateSection(long id)
     {
         CurrentSection = id;
         ApplicationManager?.SectionManager.ActivateSection(id);
