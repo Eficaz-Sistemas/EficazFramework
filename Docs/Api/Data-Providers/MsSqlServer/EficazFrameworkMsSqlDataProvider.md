@@ -10,4 +10,4 @@
 | Classes | |
 | :--- | :--- |
 | [Extension](EficazFramework.Providers/Extension.md 'EficazFramework.Providers.Extension') | |
-| [MsSqlServer](EficazFramework.Providers/MsSqlServer.md 'EficazFramework.Providers.MsSqlServer') | Implementa definições para trabalho com cache, utilizando<br/>o provedor EntityFrameworkCore.SqlServer |
+| [MsSqlServer](EficazFramework.Providers/MsSqlServer.md 'EficazFramework.Providers.MsSqlServer') | Implementa definições para trabalho com base de dados Microsoft SQL Server, utilizando<br/>o provedor EntityFrameworkCore.SqlServer |
