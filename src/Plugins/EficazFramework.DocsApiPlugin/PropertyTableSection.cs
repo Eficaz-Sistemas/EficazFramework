@@ -80,7 +80,7 @@ namespace EficazFramework.DocsApiPlugin
                         writer
                             .AppendLine()
                             .AppendLine($"| Name | |")
-                            .AppendLine("| :--- |");
+                            .AppendLine("| :--- | :--- |");
 
                         titleWritten = true;
                     }

@@ -5,9 +5,9 @@
 	<LangVersion>latest</LangVersion>
 	<DevelopmentDependency>true</DevelopmentDependency>
 	<SuppressDependenciesWhenPacking>true</SuppressDependenciesWhenPacking>
-	<AssemblyVersion>1.0.6</AssemblyVersion>
-	<FileVersion>1.0.6.0</FileVersion>
-	<Version>1.0.6</Version>
+	<AssemblyVersion>1.0.7</AssemblyVersion>
+	<FileVersion>1.0.7.0</FileVersion>
+	<Version>1.0.7</Version>
 	<RootNamespace>EficazFramework</RootNamespace>
 	<Company>Eficaz Sistemas de Gestão e Inteligência Tributária</Company>
 	<Copyright>Copyright ©  2022. Eficaz Sistemas de Gestão e Inteligência Tributária Ltda.</Copyright>
