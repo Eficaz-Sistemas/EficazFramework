@@ -71,6 +71,14 @@ public class Registro0000
 
     // End Sub
 
+    /// <summary>
+    /// Só testando...
+    /// </summary>
+    public string EscreveLinha()
+    {
+        return "";
+    }
+
 }
 
 public enum Finalidade

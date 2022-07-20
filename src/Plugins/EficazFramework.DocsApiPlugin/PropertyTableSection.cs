@@ -51,12 +51,16 @@ namespace EficazFramework.DocsApiPlugin
                 writer.AppendLine("### Properties");
                 foreach (DocItem item in props)
                 {
+                    var prop = item as PropertyDocItem;
+                    string nulltype = string.Format("<{0}>", string.Join(",", prop.Property!.ReturnType!.TypeArguments!.Select(r => r.Name).ToList())) ?? "";
+                    nulltype = nulltype == "<>" ? "" : nulltype;
+                  
                     if (!titleWritten)
                     {
                         writer
                             .AppendLine()
-                            .AppendLine($"| # | Name | |")
-                            .AppendLine("| ---: | :--- | :--- |");
+                            .AppendLine($"| # | Name | Type | |")
+                            .AppendLine("| ---: | :--- | :---: | :--- |");
 
                         titleWritten = true;
                     }
@@ -64,7 +68,7 @@ namespace EficazFramework.DocsApiPlugin
                     counter++;
                     var innerXml = item.Documentation?.Element("summary")?.Nodes()?.Select(n => n.ToString()).ToList();
                     string summary = string.Concat(innerXml! ?? new List<string>()) ?? "";
-                    writer.AppendLine($"| {counter:#00} | {item.Name} | {(summary ?? "").Replace(Environment.NewLine, "").Trim()} |");
+                    writer.AppendLine($"| {counter:#00} | {item.Name} | `{prop.Property?.ReturnType?.Name ?? ""}{nulltype}` | {(summary ?? "").Replace(Environment.NewLine, "").Trim()} |");
                 }
             }
 
@@ -75,19 +79,23 @@ namespace EficazFramework.DocsApiPlugin
                 writer.AppendLine("### Methods");
                 foreach (DocItem item in GetMethods(writer.Context, writer.DocItem) ?? Array.Empty<DocItem>())
                 {
+                    var method = item as MethodDocItem;
+                    string nulltype = string.Format("<{0}>", string.Join(",", method.Method!.ReturnType!.TypeArguments!.Select(r => r.Name).ToList())) ?? "";
+                    nulltype = nulltype == "<>" ? "" : nulltype;
+                    
                     if (!titleWritten)
                     {
                         writer
                             .AppendLine()
-                            .AppendLine($"| Name | |")
-                            .AppendLine("| :--- | :--- |");
+                            .AppendLine($"| Name | Return Type | |")
+                            .AppendLine("| :--- | :---: | :--- |");
 
                         titleWritten = true;
                     }
 
                     var innerXml = item.Documentation?.Element("summary")?.Nodes()?.Select(n => n.ToString()).ToList();
                     string summary = string.Concat(innerXml! ?? new List<string>()) ?? "";
-                    writer.AppendLine($"| {item.Name} | {(summary ?? "").Replace(Environment.NewLine, "").Trim()} |");
+                    writer.AppendLine($"| {item.Name} | `{method.Method?.ReturnType?.Name ?? ""}{nulltype}` | {(summary ?? "").Replace(Environment.NewLine, "").Trim()} |");
                 }
             }
         }

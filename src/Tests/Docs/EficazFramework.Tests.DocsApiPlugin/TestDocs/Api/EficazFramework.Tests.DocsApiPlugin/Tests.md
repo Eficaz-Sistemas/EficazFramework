@@ -4,7 +4,7 @@
 ## Tests Class
 ### Methods
 
-| Name | |
-| :--- |
-| Setup() |  |
-| Test1() |  |
+| Name | Return Type | |
+| :--- | :---: | :--- |
+| Setup() | `Void` |  |
+| Test1() | `Void` |  |
