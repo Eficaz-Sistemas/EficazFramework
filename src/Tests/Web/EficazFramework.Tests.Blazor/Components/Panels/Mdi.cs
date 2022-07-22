@@ -32,7 +32,7 @@ public class Mdi : BunitTest
         comp.FindAll("div.ef-mdi-start-footer").Should().HaveCount(1);
 
         //Search for some apps
-        comp.FindAll("div.mud-grid-item").Should().HaveCount(10);
+        comp.FindAll("div.mud-grid-item").Should().HaveCount(11);
         var searchTb = comp.FindComponent<MudBlazor.MudTextField<string>>();
         searchTb.Should().NotBeNull();
         var innerInput = searchTb.Find("input");
@@ -44,13 +44,13 @@ public class Mdi : BunitTest
             innerInput.BlurAsync(new Microsoft.AspNetCore.Components.Web.FocusEventArgs());
         });
         host.AppSearchFilter.Should().Be("new");
-        comp.FindAll("div.mud-grid-item").Should().HaveCount(4);
+        comp.FindAll("div.mud-grid-item").Should().HaveCount(5);
 
         //Try StartMenu compact mode
         comp.FindAll("div.mud-list-item").Should().HaveCount(0);
         comp.InvokeAsync(() => host.ToggleStartMenuView());
         comp.FindAll("div.mud-grid-item").Should().HaveCount(0);
-        comp.FindAll("div.mud-list-item").Should().HaveCount(5); //4 apps + 1 group (with nested list)
+        comp.FindAll("div.mud-list-item").Should().HaveCount(7); //5 apps + 2 groups (with nested list)
         
         //Clear search (in compact mode)
         comp.InvokeAsync(() =>
@@ -61,7 +61,7 @@ public class Mdi : BunitTest
         });
         host.AppSearchFilter.Should().Be("");
         comp.FindAll("div.mud-grid-item").Should().HaveCount(0);
-        comp.FindAll("div.mud-list-item").Should().HaveCount(12); //10 apps + 2 groups
+        comp.FindAll("div.mud-list-item").Should().HaveCount(13); //11 apps + 2 groups
 
         //Close the start menu clicking outside it
         comp.InvokeAsync(() => host.ToggleStartMenuOpen(true));
