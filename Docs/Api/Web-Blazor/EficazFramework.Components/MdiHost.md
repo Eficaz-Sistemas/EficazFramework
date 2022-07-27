@@ -19,6 +19,7 @@ Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.O
 | [NewSectionClick](EficazFramework.Components/MdiHost/NewSectionClick.md 'EficazFramework.Components.MdiHost.NewSectionClick') | Action to invoke when "New Section" button is clicked |
 | [NewSectionText](EficazFramework.Components/MdiHost/NewSectionText.md 'EficazFramework.Components.MdiHost.NewSectionText') | Text for show into "New Section" button |
 | [SectionsSource](EficazFramework.Components/MdiHost/SectionsSource.md 'EficazFramework.Components.MdiHost.SectionsSource') | Source for Available Sections (tenants) |
+| [ShowSectionsArea](EficazFramework.Components/MdiHost/ShowSectionsArea.md 'EficazFramework.Components.MdiHost.ShowSectionsArea') | Gets and Sets the Section Menu and Button visibility. <br/> |
 | [StartMenuAppsHostHeight](EficazFramework.Components/MdiHost/StartMenuAppsHostHeight.md 'EficazFramework.Components.MdiHost.StartMenuAppsHostHeight') | Gets and Sets the available Application Menu Height. <br/><br/>It's possible to use CSS expressions, like calc. <br/><br/>Ex: calc(100vh - 428px) (default value) |
 | [StartMenuFooter](EficazFramework.Components/MdiHost/StartMenuFooter.md 'EficazFramework.Components.MdiHost.StartMenuFooter') | Start Menu Footer content |
 | [StartMenuIcon](EficazFramework.Components/MdiHost/StartMenuIcon.md 'EficazFramework.Components.MdiHost.StartMenuIcon') | The Start Menu Icon |
