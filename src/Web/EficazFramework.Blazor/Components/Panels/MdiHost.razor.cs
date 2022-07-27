@@ -96,6 +96,11 @@ public partial class MdiHost : MudBlazor.MudBaseBindableItemsControl<MdiWindow, 
     /// </summary>
     [Parameter] public Action NewSectionClick { get; set; }
 
+    /// <summary>
+    /// Gets and Sets the Section Menu and Button visibility. <br/>
+    /// </summary>
+    [Parameter] public bool ShowSectionsArea { get; set; } = true;
+
     #endregion
 
 
