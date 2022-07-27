@@ -23,7 +23,6 @@ Derived
 | [FirstChar](EficazFramework.Application/ApplicationDefinition/FirstChar.md 'EficazFramework.Application.ApplicationDefinition.FirstChar') | |
 | [Group](EficazFramework.Application/ApplicationDefinition/Group.md 'EficazFramework.Application.ApplicationDefinition.Group') | |
 | [GroupMenuPriority](EficazFramework.Application/ApplicationDefinition/GroupMenuPriority.md 'EficazFramework.Application.ApplicationDefinition.GroupMenuPriority') | |
-| [Icon](EficazFramework.Application/ApplicationDefinition/Icon.md 'EficazFramework.Application.ApplicationDefinition.Icon') | |
 | [IsChecked](EficazFramework.Application/ApplicationDefinition/IsChecked.md 'EficazFramework.Application.ApplicationDefinition.IsChecked') | |
 | [IsEnabled](EficazFramework.Application/ApplicationDefinition/IsEnabled.md 'EficazFramework.Application.ApplicationDefinition.IsEnabled') | |
 | [IsPublic](EficazFramework.Application/ApplicationDefinition/IsPublic.md 'EficazFramework.Application.ApplicationDefinition.IsPublic') | |

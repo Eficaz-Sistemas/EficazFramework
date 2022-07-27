@@ -34,8 +34,3 @@ Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.O
 | [NumberDecimalPlaces](EficazFramework.Controls/DataGridInputColumn/NumberDecimalPlaces.md 'EficazFramework.Controls.DataGridInputColumn.NumberDecimalPlaces') | |
 | [NumberMaximum](EficazFramework.Controls/DataGridInputColumn/NumberMaximum.md 'EficazFramework.Controls.DataGridInputColumn.NumberMaximum') | |
 | [NumberMinimum](EficazFramework.Controls/DataGridInputColumn/NumberMinimum.md 'EficazFramework.Controls.DataGridInputColumn.NumberMinimum') | |
-
-| Methods | |
-| :--- | :--- |
-| [GenerateEditingElement(DataGridCell, object)](EficazFramework.Controls/DataGridInputColumn/GenerateEditingElement(DataGridCell,object).md 'EficazFramework.Controls.DataGridInputColumn.GenerateEditingElement(System.Windows.Controls.DataGridCell, object)') | |
-| [GenerateElement(DataGridCell, object)](EficazFramework.Controls/DataGridInputColumn/GenerateElement(DataGridCell,object).md 'EficazFramework.Controls.DataGridInputColumn.GenerateElement(System.Windows.Controls.DataGridCell, object)') | |

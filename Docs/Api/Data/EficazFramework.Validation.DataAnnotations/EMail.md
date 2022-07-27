@@ -11,5 +11,4 @@ Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.O
 
 | Methods | |
 | :--- | :--- |
-| [IsValid(object, ValidationContext)](EficazFramework.Validation.DataAnnotations/EMail/IsValid(object,ValidationContext).md 'EficazFramework.Validation.DataAnnotations.EMail.IsValid(object, System.ComponentModel.DataAnnotations.ValidationContext)') | |
 | [ValidateAddress(object, string)](EficazFramework.Validation.DataAnnotations/EMail/ValidateAddress(object,string).md 'EficazFramework.Validation.DataAnnotations.EMail.ValidateAddress(object, string)') | |

@@ -3,7 +3,7 @@
 
 ## MySql Class
 
-Implementa definições para trabalho com cache, utilizando  
+Implementa definições para trabalho com base de dados MySQL, utilizando  
 o provedor EntityFrameworkCore.SqlServer
 
 ```csharp

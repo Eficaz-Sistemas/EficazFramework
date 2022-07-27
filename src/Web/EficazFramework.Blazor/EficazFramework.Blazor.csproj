@@ -5,7 +5,7 @@
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
     <AddRazorSupportForMvc>true</AddRazorSupportForMvc>
-	 <Version>6.0.0-preview004-Fix002</Version>
+	 <Version>6.0.0-preview005</Version>
 	 <AssemblyVersion>6.0.0.0</AssemblyVersion>
 	 <FileVersion>6.0.0.0</FileVersion>
 	 <RootNamespace>EficazFramework</RootNamespace>
@@ -29,6 +29,7 @@
 	 <DefaultDocumentationGeneratedPages>Assembly, Types, Members</DefaultDocumentationGeneratedPages>
 	 <DefaultDocumentationFileNameFactory>Folder</DefaultDocumentationFileNameFactory>
 	 <DefaultDocumentationIncludeUndocumentedItems>false</DefaultDocumentationIncludeUndocumentedItems>
+	 <DefaultDocumentationGeneratedAccessModifiers>Public</DefaultDocumentationGeneratedAccessModifiers>
   </PropertyGroup>
 	
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
@@ -56,8 +57,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Remove="Components\Selectors\MDIApplication.razor.cs" />
-    <Compile Remove="Components\Selectors\MDIContainer.razor.cs" />
     <Compile Remove="Templates\ApplicationMVVMToolbar.razor.cs" />
     <Compile Remove="Templates\Applications.razor.cs" />
     <Compile Remove="Templates\Footer.razor.cs" />
@@ -66,8 +65,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Content Remove="Components\Selectors\MDIApplication.razor" />
-    <Content Remove="Components\Selectors\MDIContainer.razor" />
     <Content Remove="Templates\ApplicationMVVMToolbar.razor" />
     <Content Remove="Templates\Applications.razor" />
     <Content Remove="Templates\Footer.razor" />
@@ -95,15 +92,15 @@
   </ItemGroup>
 	
   <ItemGroup>
-    <PackageReference Include="DefaultDocumentation" Version="0.8.1">
+    <PackageReference Include="DefaultDocumentation" Version="0.8.2">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
-    <PackageReference Include="EficazFramework.DocsApiPlugin" Version="1.0.1">
+    <PackageReference Include="EficazFramework.DocsApiPlugin" Version="1.0.6">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
-    <PackageReference Include="MudBlazor" Version="6.0.10" />
+    <PackageReference Include="MudBlazor" Version="6.0.12" />
   </ItemGroup>
 	
   <ItemGroup>
@@ -146,7 +143,6 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <Folder Include="Components\Selectors\" />
 	  <Folder Include="Styles\Templates\" />
 	</ItemGroup>
 

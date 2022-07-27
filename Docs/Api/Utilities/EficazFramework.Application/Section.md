@@ -16,14 +16,6 @@ Implements [System.ComponentModel.INotifyPropertyChanged](https://docs.microsoft
 | :--- | :--- |
 | [Section(long)](EficazFramework.Application/Section/Section(long).md 'EficazFramework.Application.Section.Section(long)') | |
 
-| Fields | |
-| :--- | :--- |
-| [_icon](EficazFramework.Application/Section/_icon.md 'EficazFramework.Application.Section._icon') | |
-| [_id](EficazFramework.Application/Section/_id.md 'EficazFramework.Application.Section._id') | |
-| [_name](EficazFramework.Application/Section/_name.md 'EficazFramework.Application.Section._name') | |
-| [_showIdAsIcon](EficazFramework.Application/Section/_showIdAsIcon.md 'EficazFramework.Application.Section._showIdAsIcon') | |
-| [_tag](EficazFramework.Application/Section/_tag.md 'EficazFramework.Application.Section._tag') | |
-
 | Properties | |
 | :--- | :--- |
 | [Icon](EficazFramework.Application/Section/Icon.md 'EficazFramework.Application.Section.Icon') | |

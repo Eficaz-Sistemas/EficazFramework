@@ -1,17 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace EficazFramework.Application;
+
+[ExcludeFromCodeCoverage]
 public class ApplicationTarget
 {
-    /// <summary>
-    /// Nome da Plataforma dos metadados
-    /// </summary>
-    public string Target { get; set; }
-
     /// <summary>
     /// Informações de inicialização da aplicação
     /// </summary>

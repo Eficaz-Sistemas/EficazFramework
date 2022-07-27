@@ -9,28 +9,6 @@ public class AuditModel : EficazFramework.Entities.EntityBase
 
 Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.Object 'System.Object') &#129106; [EntityBase](EficazFramework.Entities/EntityBase.md 'EficazFramework.Entities.EntityBase') &#129106; AuditModel
 
-| Fields | |
-| :--- | :--- |
-| [_action](EficazFramework.Security/AuditModel/_action.md 'EficazFramework.Security.AuditModel._action') | |
-| [_caeversion](EficazFramework.Security/AuditModel/_caeversion.md 'EficazFramework.Security.AuditModel._caeversion') | |
-| [_computername](EficazFramework.Security/AuditModel/_computername.md 'EficazFramework.Security.AuditModel._computername') | |
-| [_controllername](EficazFramework.Security/AuditModel/_controllername.md 'EficazFramework.Security.AuditModel._controllername') | |
-| [_cpuusage](EficazFramework.Security/AuditModel/_cpuusage.md 'EficazFramework.Security.AuditModel._cpuusage') | |
-| [_datetime](EficazFramework.Security/AuditModel/_datetime.md 'EficazFramework.Security.AuditModel._datetime') | |
-| [_empresa](EficazFramework.Security/AuditModel/_empresa.md 'EficazFramework.Security.AuditModel._empresa') | |
-| [_entry](EficazFramework.Security/AuditModel/_entry.md 'EficazFramework.Security.AuditModel._entry') | |
-| [_history](EficazFramework.Security/AuditModel/_history.md 'EficazFramework.Security.AuditModel._history') | |
-| [_id](EficazFramework.Security/AuditModel/_id.md 'EficazFramework.Security.AuditModel._id') | |
-| [_ip](EficazFramework.Security/AuditModel/_ip.md 'EficazFramework.Security.AuditModel._ip') | |
-| [_modulename](EficazFramework.Security/AuditModel/_modulename.md 'EficazFramework.Security.AuditModel._modulename') | |
-| [_moduleversion](EficazFramework.Security/AuditModel/_moduleversion.md 'EficazFramework.Security.AuditModel._moduleversion') | |
-| [_newvalue](EficazFramework.Security/AuditModel/_newvalue.md 'EficazFramework.Security.AuditModel._newvalue') | |
-| [_oldvalue](EficazFramework.Security/AuditModel/_oldvalue.md 'EficazFramework.Security.AuditModel._oldvalue') | |
-| [_osversion](EficazFramework.Security/AuditModel/_osversion.md 'EficazFramework.Security.AuditModel._osversion') | |
-| [_ramusage](EficazFramework.Security/AuditModel/_ramusage.md 'EficazFramework.Security.AuditModel._ramusage') | |
-| [_sqlinstance](EficazFramework.Security/AuditModel/_sqlinstance.md 'EficazFramework.Security.AuditModel._sqlinstance') | |
-| [_username](EficazFramework.Security/AuditModel/_username.md 'EficazFramework.Security.AuditModel._username') | |
-
 | Properties | |
 | :--- | :--- |
 | [Action](EficazFramework.Security/AuditModel/Action.md 'EficazFramework.Security.AuditModel.Action') | |

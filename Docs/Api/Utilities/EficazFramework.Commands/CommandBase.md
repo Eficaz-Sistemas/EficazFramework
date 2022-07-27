@@ -16,10 +16,6 @@ Implements [System.Windows.Input.ICommand](https://docs.microsoft.com/en-us/dotn
 | :--- | :--- |
 | [CommandBase(ExecuteEventHandler)](EficazFramework.Commands/CommandBase/CommandBase(ExecuteEventHandler).md 'EficazFramework.Commands.CommandBase.CommandBase(EficazFramework.Events.ExecuteEventHandler)') | |
 
-| Fields | |
-| :--- | :--- |
-| [_canexecute](EficazFramework.Commands/CommandBase/_canexecute.md 'EficazFramework.Commands.CommandBase._canexecute') | |
-
 | Properties | |
 | :--- | :--- |
 | [Action](EficazFramework.Commands/CommandBase/Action.md 'EficazFramework.Commands.CommandBase.Action') | A Ação que deve ser invocada pelo método .Execute() |

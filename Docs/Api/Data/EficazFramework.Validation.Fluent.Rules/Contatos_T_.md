@@ -18,10 +18,6 @@ Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.O
 Derived  
 &#8627; [EMail&lt;T&gt;](EficazFramework.Validation.Fluent.Rules/EMail_T_.md 'EficazFramework.Validation.Fluent.Rules.EMail<T>')
 
-| Constructors | |
-| :--- | :--- |
-| [Contatos(Expression&lt;Func&lt;T,object&gt;&gt;)](EficazFramework.Validation.Fluent.Rules/Contatos_T_/Contatos(Expression_Func_T,object__).md 'EficazFramework.Validation.Fluent.Rules.Contatos<T>.Contatos(System.Linq.Expressions.Expression<System.Func<T,object>>)') | |
-
 | Methods | |
 | :--- | :--- |
 | [Validate(T)](EficazFramework.Validation.Fluent.Rules/Contatos_T_/Validate(T).md 'EficazFramework.Validation.Fluent.Rules.Contatos<T>.Validate(T)') | |

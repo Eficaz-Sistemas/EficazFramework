@@ -5,7 +5,7 @@ using Microsoft.Extensions.DependencyInjection;
 namespace EficazFramework.Providers;
 
 /// <summary>
-/// Implementa definições para trabalho com cache, utilizando
+/// Implementa definições para trabalho com base de dados SqlLite, utilizando
 /// o provedor EntityFrameworkCore.SqlLite
 /// </summary>
 public class SqlLite : DataProviderBase

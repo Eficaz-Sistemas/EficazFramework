@@ -21,10 +21,6 @@ Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.O
 | :--- | :--- |
 | [SingleEdit(ViewModel&lt;T&gt;)](EficazFramework.ViewModels.Services/SingleEdit_T_/SingleEdit(ViewModel_T_).md 'EficazFramework.ViewModels.Services.SingleEdit<T>.SingleEdit(EficazFramework.ViewModels.ViewModel<T>)') | |
 
-| Fields | |
-| :--- | :--- |
-| [_currentEntry](EficazFramework.ViewModels.Services/SingleEdit_T_/_currentEntry.md 'EficazFramework.ViewModels.Services.SingleEdit<T>._currentEntry') | |
-
 | Properties | |
 | :--- | :--- |
 | [BatchInsert](EficazFramework.ViewModels.Services/SingleEdit_T_/BatchInsert.md 'EficazFramework.ViewModels.Services.SingleEdit<T>.BatchInsert') | Obtém ou define se o ViewModel deve iniciar em modo de inserção e iniciar novas inserções após o comando salvar. |
@@ -43,21 +39,9 @@ Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.O
 
 | Methods | |
 | :--- | :--- |
-| [AttachValidatorAndINotifyPropertyChanges(T)](EficazFramework.ViewModels.Services/SingleEdit_T_/AttachValidatorAndINotifyPropertyChanges(T).md 'EficazFramework.ViewModels.Services.SingleEdit<T>.AttachValidatorAndINotifyPropertyChanges(T)') | Anexa a instância de validação do repositório ao item especificado no parâmetro,<br/>além de iniciar a notificação de alteração pela interface INotifyPropertyChanged |
-| [CancelCommand_Executed(object, ExecuteEventArgs)](EficazFramework.ViewModels.Services/SingleEdit_T_/CancelCommand_Executed(object,ExecuteEventArgs).md 'EficazFramework.ViewModels.Services.SingleEdit<T>.CancelCommand_Executed(object, EficazFramework.Events.ExecuteEventArgs)') | Ações do comando Cancelar |
 | [CancelSave()](EficazFramework.ViewModels.Services/SingleEdit_T_/CancelSave().md 'EficazFramework.ViewModels.Services.SingleEdit<T>.CancelSave()') | Acão ao acionar o cancelamento da operação de gravação assíncrona |
-| [DeleteCommand_Executed(object, ExecuteEventArgs)](EficazFramework.ViewModels.Services/SingleEdit_T_/DeleteCommand_Executed(object,ExecuteEventArgs).md 'EficazFramework.ViewModels.Services.SingleEdit<T>.DeleteCommand_Executed(object, EficazFramework.Events.ExecuteEventArgs)') | Ações do comando Delete |
-| [DetachValidatorAndINotifyPropertyChanges(T)](EficazFramework.ViewModels.Services/SingleEdit_T_/DetachValidatorAndINotifyPropertyChanges(T).md 'EficazFramework.ViewModels.Services.SingleEdit<T>.DetachValidatorAndINotifyPropertyChanges(T)') | Remove a instância de validação do repositório ao item especificado no parâmetro,<br/>além de finalizar a notificação de alteração pela interface INotifyPropertyChanged |
-| [DisposeManagedCallerObjects()](EficazFramework.ViewModels.Services/SingleEdit_T_/DisposeManagedCallerObjects().md 'EficazFramework.ViewModels.Services.SingleEdit<T>.DisposeManagedCallerObjects()') | |
-| [EditCommand_Executed(object, ExecuteEventArgs)](EficazFramework.ViewModels.Services/SingleEdit_T_/EditCommand_Executed(object,ExecuteEventArgs).md 'EficazFramework.ViewModels.Services.SingleEdit<T>.EditCommand_Executed(object, EficazFramework.Events.ExecuteEventArgs)') | Ações do comando Edit |
-| [GetCurrentEntryIndex()](EficazFramework.ViewModels.Services/SingleEdit_T_/GetCurrentEntryIndex().md 'EficazFramework.ViewModels.Services.SingleEdit<T>.GetCurrentEntryIndex()') | Obtém o índice de alocação do item selecionado para com o DataContext |
 | [MoveNext()](EficazFramework.ViewModels.Services/SingleEdit_T_/MoveNext().md 'EficazFramework.ViewModels.Services.SingleEdit<T>.MoveNext()') | Seleciona o próximo item do DataContext, baseado no item atualmente selecionado |
 | [MovePrevious()](EficazFramework.ViewModels.Services/SingleEdit_T_/MovePrevious().md 'EficazFramework.ViewModels.Services.SingleEdit<T>.MovePrevious()') | Seleciona o item anteriro do DataContext, baseado no item atualmente selecionado |
 | [MoveTo(T)](EficazFramework.ViewModels.Services/SingleEdit_T_/MoveTo(T).md 'EficazFramework.ViewModels.Services.SingleEdit<T>.MoveTo(T)') | Seleciona o item definido em argumento |
 | [MoveToFirst()](EficazFramework.ViewModels.Services/SingleEdit_T_/MoveToFirst().md 'EficazFramework.ViewModels.Services.SingleEdit<T>.MoveToFirst()') | Seleciona o primeiro item do DataContext |
 | [MoveToLast()](EficazFramework.ViewModels.Services/SingleEdit_T_/MoveToLast().md 'EficazFramework.ViewModels.Services.SingleEdit<T>.MoveToLast()') | Seleciona o último item do DataContext |
-| [NewCommand_Executed(object, ExecuteEventArgs)](EficazFramework.ViewModels.Services/SingleEdit_T_/NewCommand_Executed(object,ExecuteEventArgs).md 'EficazFramework.ViewModels.Services.SingleEdit<T>.NewCommand_Executed(object, EficazFramework.Events.ExecuteEventArgs)') | Ações do comando Novo |
-| [OnItemsFetched(object, CRUDEventArgs&lt;T&gt;)](EficazFramework.ViewModels.Services/SingleEdit_T_/OnItemsFetched(object,CRUDEventArgs_T_).md 'EficazFramework.ViewModels.Services.SingleEdit<T>.OnItemsFetched(object, EficazFramework.Events.CRUDEventArgs<T>)') | Efetua os procedimentos post-get |
-| [OnItemsFetching(object, CRUDEventArgs&lt;T&gt;)](EficazFramework.ViewModels.Services/SingleEdit_T_/OnItemsFetching(object,CRUDEventArgs_T_).md 'EficazFramework.ViewModels.Services.SingleEdit<T>.OnItemsFetching(object, EficazFramework.Events.CRUDEventArgs<T>)') | Efetua os procedimentos pré-get |
-| [OnStateChanged(object, EventArgs)](EficazFramework.ViewModels.Services/SingleEdit_T_/OnStateChanged(object,EventArgs).md 'EficazFramework.ViewModels.Services.SingleEdit<T>.OnStateChanged(object, System.EventArgs)') | Atualiza o valor da Propriedade CanSave após a mudança de estado do ViewModel. |
-| [SaveCommand_Executed(object, ExecuteEventArgs)](EficazFramework.ViewModels.Services/SingleEdit_T_/SaveCommand_Executed(object,ExecuteEventArgs).md 'EficazFramework.ViewModels.Services.SingleEdit<T>.SaveCommand_Executed(object, EficazFramework.Events.ExecuteEventArgs)') | Ações do comando Salvar |

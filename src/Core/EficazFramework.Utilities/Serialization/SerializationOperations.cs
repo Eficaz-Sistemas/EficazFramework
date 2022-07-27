@@ -6,6 +6,7 @@ public class SerializationOperations
 {
 
     // ### FROM XML
+
     public static T FromXml<T>(System.IO.Stream source)
     {
         var serializer = new System.Xml.Serialization.XmlSerializer(typeof(T));

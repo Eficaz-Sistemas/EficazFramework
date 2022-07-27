@@ -249,20 +249,20 @@ public class CrudOperations
 
         var bkpName = service.CurrentEntry.Name;
         Vm.Commands["Edit"].Execute(null);
-        await Task.Delay(100);
+        await Task.Delay(150);
         service.CurrentEntry.Name = null;
 
         Vm.Commands["Save"].Execute(null);
-        await Task.Delay(100);
+        await Task.Delay(150);
         resultContext.Should().Be(Resources.Strings.Validation.Dialog_Title);
 
         resultContext = null;
         Vm.Commands["Cancel"].Execute(null);
-        await Task.Delay(100);
+        await Task.Delay(150);
         service.CurrentEntry.Name.Should().Be(bkpName);
 
         Vm.Commands["Edit"].Execute(service.CurrentEntry);
-        await Task.Delay(100);
+        await Task.Delay(150);
         service.CurrentEntry.Name = "Updated Item";
 
         Vm.Commands["Save"].Execute(null);

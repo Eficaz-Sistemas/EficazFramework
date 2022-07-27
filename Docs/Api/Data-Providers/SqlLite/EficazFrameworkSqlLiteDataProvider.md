@@ -10,4 +10,4 @@
 | Classes | |
 | :--- | :--- |
 | [Extension](EficazFramework.Providers/Extension.md 'EficazFramework.Providers.Extension') | |
-| [SqlLite](EficazFramework.Providers/SqlLite.md 'EficazFramework.Providers.SqlLite') | Implementa definições para trabalho com cache, utilizando<br/>o provedor EntityFrameworkCore.SqlLite |
+| [SqlLite](EficazFramework.Providers/SqlLite.md 'EficazFramework.Providers.SqlLite') | Implementa definições para trabalho com base de dados SqlLite, utilizando<br/>o provedor EntityFrameworkCore.SqlLite |

@@ -13,29 +13,20 @@ Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.O
 
 Implements [System.ComponentModel.INotifyPropertyChanged](https://docs.microsoft.com/en-us/dotnet/api/System.ComponentModel.INotifyPropertyChanged 'System.ComponentModel.INotifyPropertyChanged'), [System.IDisposable](https://docs.microsoft.com/en-us/dotnet/api/System.IDisposable 'System.IDisposable')
 
-| Constructors | |
-| :--- | :--- |
-| [ApplicationInstance()](EficazFramework.Application/ApplicationInstance/ApplicationInstance().md 'EficazFramework.Application.ApplicationInstance.ApplicationInstance()') | |
-| [ApplicationInstance(ApplicationDefinition, ISectionManager)](EficazFramework.Application/ApplicationInstance/ApplicationInstance(ApplicationDefinition,ISectionManager).md 'EficazFramework.Application.ApplicationInstance.ApplicationInstance(EficazFramework.Application.ApplicationDefinition, EficazFramework.Application.ISectionManager)') | |
-
-| Fields | |
-| :--- | :--- |
-| [_content](EficazFramework.Application/ApplicationInstance/_content.md 'EficazFramework.Application.ApplicationInstance._content') | |
-| [_isloading](EficazFramework.Application/ApplicationInstance/_isloading.md 'EficazFramework.Application.ApplicationInstance._isloading') | |
-| [_notifyContent](EficazFramework.Application/ApplicationInstance/_notifyContent.md 'EficazFramework.Application.ApplicationInstance._notifyContent') | |
-
 | Properties | |
 | :--- | :--- |
 | [Content](EficazFramework.Application/ApplicationInstance/Content.md 'EficazFramework.Application.ApplicationInstance.Content') | |
 | [IsLoading](EficazFramework.Application/ApplicationInstance/IsLoading.md 'EficazFramework.Application.ApplicationInstance.IsLoading') | |
 | [Metadata](EficazFramework.Application/ApplicationInstance/Metadata.md 'EficazFramework.Application.ApplicationInstance.Metadata') | |
 | [NotifyContent](EficazFramework.Application/ApplicationInstance/NotifyContent.md 'EficazFramework.Application.ApplicationInstance.NotifyContent') | |
+| [Services](EficazFramework.Application/ApplicationInstance/Services.md 'EficazFramework.Application.ApplicationInstance.Services') | |
 | [SessionID](EficazFramework.Application/ApplicationInstance/SessionID.md 'EficazFramework.Application.ApplicationInstance.SessionID') | |
 
 | Methods | |
 | :--- | :--- |
-| [AddTargets(IEnumerable&lt;ApplicationTarget&gt;)](EficazFramework.Application/ApplicationInstance/AddTargets(IEnumerable_ApplicationTarget_).md 'EficazFramework.Application.ApplicationInstance.AddTargets(System.Collections.Generic.IEnumerable<EficazFramework.Application.ApplicationTarget>)') | |
 | [Close()](EficazFramework.Application/ApplicationInstance/Close().md 'EficazFramework.Application.ApplicationInstance.Close()') | |
+| [Create(ApplicationDefinition)](EficazFramework.Application/ApplicationInstance/Create(ApplicationDefinition).md 'EficazFramework.Application.ApplicationInstance.Create(EficazFramework.Application.ApplicationDefinition)') | |
+| [Create(ApplicationDefinition, long)](EficazFramework.Application/ApplicationInstance/Create(ApplicationDefinition,long).md 'EficazFramework.Application.ApplicationInstance.Create(EficazFramework.Application.ApplicationDefinition, long)') | |
 | [Dispose()](EficazFramework.Application/ApplicationInstance/Dispose().md 'EficazFramework.Application.ApplicationInstance.Dispose()') | |
 | [RaisePropertyChanged(string)](EficazFramework.Application/ApplicationInstance/RaisePropertyChanged(string).md 'EficazFramework.Application.ApplicationInstance.RaisePropertyChanged(string)') | |
 | [ToString()](EficazFramework.Application/ApplicationInstance/ToString().md 'EficazFramework.Application.ApplicationInstance.ToString()') | |

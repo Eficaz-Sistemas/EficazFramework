@@ -9,6 +9,7 @@ using System.Xml.Linq;
 
 namespace EficazFramework.XML;
 
+/// <exclude/>
 public class XMLOperations
 {
 

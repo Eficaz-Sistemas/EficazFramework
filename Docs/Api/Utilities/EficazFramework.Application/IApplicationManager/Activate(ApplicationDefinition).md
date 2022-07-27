@@ -6,7 +6,7 @@
 Ativa uma aplicação para trabalho. Caso ainda não esteja em execução, uma nova intância é criada.
 
 ```csharp
-void Activate(EficazFramework.Application.ApplicationDefinition application);
+EficazFramework.Application.ApplicationInstance Activate(EficazFramework.Application.ApplicationDefinition application);
 ```
 #### Parameters
 
@@ -15,3 +15,6 @@ void Activate(EficazFramework.Application.ApplicationDefinition application);
 `application` [ApplicationDefinition](EficazFramework.Application/ApplicationDefinition.md 'EficazFramework.Application.ApplicationDefinition')
 
 Manifesto de aplicativo a ser iniciado ou ativado.
+
+#### Returns
+[ApplicationInstance](EficazFramework.Application/ApplicationInstance.md 'EficazFramework.Application.ApplicationInstance')

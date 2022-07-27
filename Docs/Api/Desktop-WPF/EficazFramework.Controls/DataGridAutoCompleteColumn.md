@@ -40,8 +40,3 @@ Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.O
 | [ValueBinding](EficazFramework.Controls/DataGridAutoCompleteColumn/ValueBinding.md 'EficazFramework.Controls.DataGridAutoCompleteColumn.ValueBinding') | |
 | [ValueIgnores](EficazFramework.Controls/DataGridAutoCompleteColumn/ValueIgnores.md 'EficazFramework.Controls.DataGridAutoCompleteColumn.ValueIgnores') | |
 | [ValuePath](EficazFramework.Controls/DataGridAutoCompleteColumn/ValuePath.md 'EficazFramework.Controls.DataGridAutoCompleteColumn.ValuePath') | |
-
-| Methods | |
-| :--- | :--- |
-| [GenerateEditingElement(DataGridCell, object)](EficazFramework.Controls/DataGridAutoCompleteColumn/GenerateEditingElement(DataGridCell,object).md 'EficazFramework.Controls.DataGridAutoCompleteColumn.GenerateEditingElement(System.Windows.Controls.DataGridCell, object)') | |
-| [GenerateElement(DataGridCell, object)](EficazFramework.Controls/DataGridAutoCompleteColumn/GenerateElement(DataGridCell,object).md 'EficazFramework.Controls.DataGridAutoCompleteColumn.GenerateElement(System.Windows.Controls.DataGridCell, object)') | |

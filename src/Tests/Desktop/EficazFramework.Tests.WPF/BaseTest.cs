@@ -37,7 +37,7 @@ namespace EficazFramework.Tests
                 Action<string> logMessage = (message) => sb.AppendLine(message);
                 try
                 {
-                    Application = XamlTest.App.StartRemote<EficazFramework.Tests.WPF.Views.App>(logMessage: logMessage);
+                    Application = await XamlTest.App.StartRemote<EficazFramework.Tests.WPF.Views.App>(logMessage);
                     MainWindow = await Application.GetMainWindow() ?? throw new System.Exception("Fail on get Main Window");
                 }
                 catch (Exception ex)

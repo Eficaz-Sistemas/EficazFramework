@@ -19,16 +19,7 @@ Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.O
 
 Derived  
 &#8627; [Contatos&lt;T&gt;](EficazFramework.Validation.Fluent.Rules/Contatos_T_.md 'EficazFramework.Validation.Fluent.Rules.Contatos<T>')  
-&#8627; [CustomExpression&lt;T&gt;](EficazFramework.Validation.Fluent.Rules/CustomExpression_T_.md 'EficazFramework.Validation.Fluent.Rules.CustomExpression<T>')  
-&#8627; [Documentos&lt;T&gt;](EficazFramework.Validation.Fluent.Rules/Documentos_T_.md 'EficazFramework.Validation.Fluent.Rules.Documentos<T>')  
-&#8627; [Equals&lt;T&gt;](EficazFramework.Validation.Fluent.Rules/Equals_T_.md 'EficazFramework.Validation.Fluent.Rules.Equals<T>')  
-&#8627; [MaxLenght&lt;T&gt;](EficazFramework.Validation.Fluent.Rules/MaxLenght_T_.md 'EficazFramework.Validation.Fluent.Rules.MaxLenght<T>')  
-&#8627; [MinLenght&lt;T&gt;](EficazFramework.Validation.Fluent.Rules/MinLenght_T_.md 'EficazFramework.Validation.Fluent.Rules.MinLenght<T>')  
-&#8627; [Range&lt;T&gt;](EficazFramework.Validation.Fluent.Rules/Range_T_.md 'EficazFramework.Validation.Fluent.Rules.Range<T>')  
-&#8627; [RangePeriod&lt;T&gt;](EficazFramework.Validation.Fluent.Rules/RangePeriod_T_.md 'EficazFramework.Validation.Fluent.Rules.RangePeriod<T>')  
-&#8627; [Required&lt;T&gt;](EficazFramework.Validation.Fluent.Rules/Required_T_.md 'EficazFramework.Validation.Fluent.Rules.Required<T>')  
-&#8627; [RequiredIf&lt;T&gt;](EficazFramework.Validation.Fluent.Rules/RequiredIf_T_.md 'EficazFramework.Validation.Fluent.Rules.RequiredIf<T>')  
-&#8627; [Unique&lt;T&gt;](EficazFramework.Validation.Fluent.Rules/Unique_T_.md 'EficazFramework.Validation.Fluent.Rules.Unique<T>')
+&#8627; [Documentos&lt;T&gt;](EficazFramework.Validation.Fluent.Rules/Documentos_T_.md 'EficazFramework.Validation.Fluent.Rules.Documentos<T>')
 
 | Constructors | |
 | :--- | :--- |

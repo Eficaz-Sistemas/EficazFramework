@@ -15,10 +15,6 @@ Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.O
 | :--- | :--- |
 | [DataProviderBase(IDbConfig)](EficazFramework.Providers/DataProviderBase/DataProviderBase(IDbConfig).md 'EficazFramework.Providers.DataProviderBase.DataProviderBase(EficazFramework.Configuration.IDbConfig)') | |
 
-| Fields | |
-| :--- | :--- |
-| [_dbConfig](EficazFramework.Providers/DataProviderBase/_dbConfig.md 'EficazFramework.Providers.DataProviderBase._dbConfig') | |
-
 | Properties | |
 | :--- | :--- |
 | [DbConfig](EficazFramework.Providers/DataProviderBase/DbConfig.md 'EficazFramework.Providers.DataProviderBase.DbConfig') | Instância de configurações para acesso à fonte de dados. |

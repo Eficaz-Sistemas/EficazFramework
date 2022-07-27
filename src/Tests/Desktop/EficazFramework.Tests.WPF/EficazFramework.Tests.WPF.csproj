@@ -31,7 +31,7 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
-    <PackageReference Include="XAMLTest" Version="1.0.0-ci249" />
+    <PackageReference Include="XAMLTest" Version="1.0.0-ci264" />
   </ItemGroup>
 
   <ItemGroup>

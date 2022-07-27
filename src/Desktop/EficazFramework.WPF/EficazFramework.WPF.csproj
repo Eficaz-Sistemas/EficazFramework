@@ -3,7 +3,7 @@
   <PropertyGroup>
     <TargetFramework>net6.0-windows</TargetFramework>
     <UseWPF>true</UseWPF>
-    <Version>6.0.0-preview004</Version>
+    <Version>6.0.0-preview005</Version>
     <AssemblyVersion>6.0.0.0</AssemblyVersion>
     <FileVersion>6.0.0.0</FileVersion>
     <RootNamespace>EficazFramework</RootNamespace>
@@ -30,6 +30,7 @@
 	<DefaultDocumentationGeneratedPages>Assembly, Types, Members</DefaultDocumentationGeneratedPages>
 	<DefaultDocumentationFileNameFactory>Folder</DefaultDocumentationFileNameFactory>
 	<DefaultDocumentationIncludeUndocumentedItems>true</DefaultDocumentationIncludeUndocumentedItems>
+	<DefaultDocumentationGeneratedAccessModifiers>Public</DefaultDocumentationGeneratedAccessModifiers>
   </PropertyGroup>
 	
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
@@ -47,11 +48,11 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="DefaultDocumentation" Version="0.8.1">
+    <PackageReference Include="DefaultDocumentation" Version="0.8.2">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
-    <PackageReference Include="EficazFramework.DocsApiPlugin" Version="1.0.1">
+    <PackageReference Include="EficazFramework.DocsApiPlugin" Version="1.0.6">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>

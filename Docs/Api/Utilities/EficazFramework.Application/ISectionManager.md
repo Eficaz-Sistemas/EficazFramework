@@ -7,9 +7,6 @@
 public interface ISectionManager
 ```
 
-Derived  
-&#8627; [SectionManager](EficazFramework.Application/SectionManager.md 'EficazFramework.Application.SectionManager')
-
 | Properties | |
 | :--- | :--- |
 | [ApplicationManager](EficazFramework.Application/ISectionManager/ApplicationManager.md 'EficazFramework.Application.ISectionManager.ApplicationManager') | Instância de ApplicationManager para sincronização de aplicativos por área de trabalho |

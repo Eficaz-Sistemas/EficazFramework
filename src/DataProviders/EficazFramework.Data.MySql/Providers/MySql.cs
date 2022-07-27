@@ -5,7 +5,7 @@ using Microsoft.Extensions.DependencyInjection;
 namespace EficazFramework.Providers;
 
 /// <summary>
-/// Implementa definições para trabalho com cache, utilizando
+/// Implementa definições para trabalho com base de dados MySQL, utilizando
 /// o provedor EntityFrameworkCore.SqlServer
 /// </summary>
 public class MySql : DataProviderBase

@@ -14,8 +14,6 @@ Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.O
 | [FindActionProperty](EficazFramework.Controls/ExpressionBuilder/FindActionProperty.md 'EficazFramework.Controls.ExpressionBuilder.FindActionProperty') | |
 | [HeaderProperty](EficazFramework.Controls/ExpressionBuilder/HeaderProperty.md 'EficazFramework.Controls.ExpressionBuilder.HeaderProperty') | |
 | [IsExpandedProperty](EficazFramework.Controls/ExpressionBuilder/IsExpandedProperty.md 'EficazFramework.Controls.ExpressionBuilder.IsExpandedProperty') | |
-| [part_button_find](EficazFramework.Controls/ExpressionBuilder/part_button_find.md 'EficazFramework.Controls.ExpressionBuilder.part_button_find') | |
-| [part_datagrid](EficazFramework.Controls/ExpressionBuilder/part_datagrid.md 'EficazFramework.Controls.ExpressionBuilder.part_datagrid') | |
 | [SearchCommandProperty](EficazFramework.Controls/ExpressionBuilder/SearchCommandProperty.md 'EficazFramework.Controls.ExpressionBuilder.SearchCommandProperty') | |
 | [ViewModelProperty](EficazFramework.Controls/ExpressionBuilder/ViewModelProperty.md 'EficazFramework.Controls.ExpressionBuilder.ViewModelProperty') | |
 
@@ -30,6 +28,3 @@ Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.O
 | Methods | |
 | :--- | :--- |
 | [OnApplyTemplate()](EficazFramework.Controls/ExpressionBuilder/OnApplyTemplate().md 'EficazFramework.Controls.ExpressionBuilder.OnApplyTemplate()') | |
-| [OnViewModel_Changed(DependencyObject, DependencyPropertyChangedEventArgs)](EficazFramework.Controls/ExpressionBuilder/OnViewModel_Changed(DependencyObject,DependencyPropertyChangedEventArgs).md 'EficazFramework.Controls.ExpressionBuilder.OnViewModel_Changed(System.Windows.DependencyObject, System.Windows.DependencyPropertyChangedEventArgs)') | |
-| [OnViewModel_PropertyChanged(object, PropertyChangedEventArgs)](EficazFramework.Controls/ExpressionBuilder/OnViewModel_PropertyChanged(object,PropertyChangedEventArgs).md 'EficazFramework.Controls.ExpressionBuilder.OnViewModel_PropertyChanged(object, System.ComponentModel.PropertyChangedEventArgs)') | |
-| [SetupInstance(bool, bool, bool)](EficazFramework.Controls/ExpressionBuilder/SetupInstance(bool,bool,bool).md 'EficazFramework.Controls.ExpressionBuilder.SetupInstance(bool, bool, bool)') | |

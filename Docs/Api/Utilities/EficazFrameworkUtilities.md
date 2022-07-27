@@ -12,10 +12,8 @@
 | [ApplicationDefinition](EficazFramework.Application/ApplicationDefinition.md 'EficazFramework.Application.ApplicationDefinition') | |
 | [ApplicationExtensions](EficazFramework.Application/ApplicationExtensions.md 'EficazFramework.Application.ApplicationExtensions') | |
 | [ApplicationInstance](EficazFramework.Application/ApplicationInstance.md 'EficazFramework.Application.ApplicationInstance') | |
-| [ApplicationManager](EficazFramework.Application/ApplicationManager.md 'EficazFramework.Application.ApplicationManager') | |
 | [ApplicationTarget](EficazFramework.Application/ApplicationTarget.md 'EficazFramework.Application.ApplicationTarget') | |
 | [Section](EficazFramework.Application/Section.md 'EficazFramework.Application.Section') | |
-| [SectionManager](EficazFramework.Application/SectionManager.md 'EficazFramework.Application.SectionManager') | |
 
 | Interfaces | |
 | :--- | :--- |
@@ -131,9 +129,7 @@
 
 | Classes | |
 | :--- | :--- |
-| [HubClient](EficazFramework.Services/HubClient.md 'EficazFramework.Services.HubClient') | |
 | [HubsList](EficazFramework.Services/HubsList.md 'EficazFramework.Services.HubsList') | |
-| [Messages](EficazFramework.Services/Messages.md 'EficazFramework.Services.Messages') | |
 
 <a name='EficazFramework.ThirdPart'></a>
 
@@ -152,11 +148,3 @@
 | :--- | :--- |
 | [ModalAssist](EficazFramework.Threading/ModalAssist.md 'EficazFramework.Threading.ModalAssist') | |
 | [Thread](EficazFramework.Threading/Thread.md 'EficazFramework.Threading.Thread') | This singleton class provides a common application situations that requires platform invariant actions,<br/>such Request Message Box, Sincronization Context (for multi-thread sync), etc. |
-
-<a name='EficazFramework.XML'></a>
-
-## EficazFramework.XML Namespace
-
-| Classes | |
-| :--- | :--- |
-| [XMLOperations](EficazFramework.XML/XMLOperations.md 'EficazFramework.XML.XMLOperations') | |

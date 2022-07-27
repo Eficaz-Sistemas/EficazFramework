@@ -104,15 +104,6 @@
 | :--- | :--- |
 | [ResourceExtension](EficazFramework.Extensions/ResourceExtension.md 'EficazFramework.Extensions.ResourceExtension') | |
 
-<a name='EficazFramework.Generators.XAML'></a>
-
-## EficazFramework.Generators.XAML Namespace
-
-| Classes | |
-| :--- | :--- |
-| [IconPackMemberAttribute](EficazFramework.Generators.XAML/IconPackMemberAttribute.md 'EficazFramework.Generators.XAML.IconPackMemberAttribute') | |
-| [IconSourceAttribute](EficazFramework.Generators.XAML/IconSourceAttribute.md 'EficazFramework.Generators.XAML.IconSourceAttribute') | |
-
 <a name='EficazFramework.Localization'></a>
 
 ## EficazFramework.Localization Namespace

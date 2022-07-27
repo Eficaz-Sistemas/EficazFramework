@@ -13,12 +13,6 @@ Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.O
 | :--- | :--- |
 | [FindRequestEventArgs(string, CancellationToken)](EficazFramework.Events/FindRequestEventArgs/FindRequestEventArgs(string,CancellationToken).md 'EficazFramework.Events.FindRequestEventArgs.FindRequestEventArgs(string, System.Threading.CancellationToken)') | |
 
-| Fields | |
-| :--- | :--- |
-| [_data](EficazFramework.Events/FindRequestEventArgs/_data.md 'EficazFramework.Events.FindRequestEventArgs._data') | |
-| [_read](EficazFramework.Events/FindRequestEventArgs/_read.md 'EficazFramework.Events.FindRequestEventArgs._read') | |
-| [_tag](EficazFramework.Events/FindRequestEventArgs/_tag.md 'EficazFramework.Events.FindRequestEventArgs._tag') | |
-
 | Properties | |
 | :--- | :--- |
 | [Args](EficazFramework.Events/FindRequestEventArgs/Args.md 'EficazFramework.Events.FindRequestEventArgs.Args') | |

@@ -5,6 +5,9 @@ using System.Threading.Tasks;
 
 namespace EficazFramework.Services;
 
+/// <summary>
+/// </summary>
+/// <exclude/>
 [ExcludeFromCodeCoverage]
 public abstract class HubClient : IAsyncDisposable
 {

@@ -187,6 +187,60 @@ namespace EficazFramework.Resources.Strings {
         }
         
         /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a pesquisar....
+        /// </summary>
+        public static string MDIApplication_FindPlaceholder {
+            get {
+                return ResourceManager.GetString("MDIApplication_FindPlaceholder", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Aplicativos.
+        /// </summary>
+        public static string MDIApplication_TabApps_Header {
+            get {
+                return ResourceManager.GetString("MDIApplication_TabApps_Header", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Exibição em blocos.
+        /// </summary>
+        public static string MDIApplication_ToggleApp_GridView {
+            get {
+                return ResourceManager.GetString("MDIApplication_ToggleApp_GridView", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Exibição em Lista.
+        /// </summary>
+        public static string MDIApplication_ToggleApp_ListView {
+            get {
+                return ResourceManager.GetString("MDIApplication_ToggleApp_ListView", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Nova seção.
+        /// </summary>
+        public static string MDIContainer_NewSection {
+            get {
+                return ResourceManager.GetString("MDIContainer_NewSection", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Seções.
+        /// </summary>
+        public static string MDIContainer_Sections {
+            get {
+                return ResourceManager.GetString("MDIContainer_Sections", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Consulta uma cadeia de caracteres localizada semelhante a Iniciar.
         /// </summary>
         public static string MDIContainer_StartTab {

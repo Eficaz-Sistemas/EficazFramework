@@ -9,10 +9,6 @@ public static class DataGridAssist
 
 Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.Object 'System.Object') &#129106; DataGridAssist
 
-| Constructors | |
-| :--- | :--- |
-| [DataGridAssist()](EficazFramework.XAML.Behaviors/DataGridAssist/DataGridAssist().md 'EficazFramework.XAML.Behaviors.DataGridAssist.DataGridAssist()') | |
-
 | Fields | |
 | :--- | :--- |
 | [EnterKeyNavigationProperty](EficazFramework.XAML.Behaviors/DataGridAssist/EnterKeyNavigationProperty.md 'EficazFramework.XAML.Behaviors.DataGridAssist.EnterKeyNavigationProperty') | |
@@ -20,15 +16,11 @@ Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.O
 
 | Methods | |
 | :--- | :--- |
-| [DataGrid_CellTab(DataGrid, KeyEventArgs)](EficazFramework.XAML.Behaviors/DataGridAssist/DataGrid_CellTab(DataGrid,KeyEventArgs).md 'EficazFramework.XAML.Behaviors.DataGridAssist.DataGrid_CellTab(System.Windows.Controls.DataGrid, System.Windows.Input.KeyEventArgs)') | |
-| [DataGrid_NavigationTemplate_PreviewKeyDown(object, KeyEventArgs)](EficazFramework.XAML.Behaviors/DataGridAssist/DataGrid_NavigationTemplate_PreviewKeyDown(object,KeyEventArgs).md 'EficazFramework.XAML.Behaviors.DataGridAssist.DataGrid_NavigationTemplate_PreviewKeyDown(object, System.Windows.Input.KeyEventArgs)') | |
-| [DataGridGrouping_CellTab(DataGrid, KeyEventArgs)](EficazFramework.XAML.Behaviors/DataGridAssist/DataGridGrouping_CellTab(DataGrid,KeyEventArgs).md 'EficazFramework.XAML.Behaviors.DataGridAssist.DataGridGrouping_CellTab(System.Windows.Controls.DataGrid, System.Windows.Input.KeyEventArgs)') | |
 | [GetCell(this DataGrid, object, int)](EficazFramework.XAML.Behaviors/DataGridAssist/GetCell(thisDataGrid,object,int).md 'EficazFramework.XAML.Behaviors.DataGridAssist.GetCell(this System.Windows.Controls.DataGrid, object, int)') | |
 | [GetCell(this DataGrid, DataGridRow, int)](EficazFramework.XAML.Behaviors/DataGridAssist/GetCell(thisDataGrid,DataGridRow,int).md 'EficazFramework.XAML.Behaviors.DataGridAssist.GetCell(this System.Windows.Controls.DataGrid, System.Windows.Controls.DataGridRow, int)') | |
 | [GetEnterKeyNavigation(DependencyObject)](EficazFramework.XAML.Behaviors/DataGridAssist/GetEnterKeyNavigation(DependencyObject).md 'EficazFramework.XAML.Behaviors.DataGridAssist.GetEnterKeyNavigation(System.Windows.DependencyObject)') | |
 | [GetRow(this DataGrid, object)](EficazFramework.XAML.Behaviors/DataGridAssist/GetRow(thisDataGrid,object).md 'EficazFramework.XAML.Behaviors.DataGridAssist.GetRow(this System.Windows.Controls.DataGrid, object)') | |
 | [GetShowFilter(DependencyObject)](EficazFramework.XAML.Behaviors/DataGridAssist/GetShowFilter(DependencyObject).md 'EficazFramework.XAML.Behaviors.DataGridAssist.GetShowFilter(System.Windows.DependencyObject)') | |
-| [OnEnterKeyNavigationChanged(object, DependencyPropertyChangedEventArgs)](EficazFramework.XAML.Behaviors/DataGridAssist/OnEnterKeyNavigationChanged(object,DependencyPropertyChangedEventArgs).md 'EficazFramework.XAML.Behaviors.DataGridAssist.OnEnterKeyNavigationChanged(object, System.Windows.DependencyPropertyChangedEventArgs)') | |
 | [SelectAndFocusCell(this DataGrid, int, object)](EficazFramework.XAML.Behaviors/DataGridAssist/SelectAndFocusCell(thisDataGrid,int,object).md 'EficazFramework.XAML.Behaviors.DataGridAssist.SelectAndFocusCell(this System.Windows.Controls.DataGrid, int, object)') | |
 | [SelectAndFocusCell(this DataGrid, int, DataGridRow)](EficazFramework.XAML.Behaviors/DataGridAssist/SelectAndFocusCell(thisDataGrid,int,DataGridRow).md 'EficazFramework.XAML.Behaviors.DataGridAssist.SelectAndFocusCell(this System.Windows.Controls.DataGrid, int, System.Windows.Controls.DataGridRow)') | |
 | [SelectAndFocusCell(this DataGrid, DataGridCell)](EficazFramework.XAML.Behaviors/DataGridAssist/SelectAndFocusCell(thisDataGrid,DataGridCell).md 'EficazFramework.XAML.Behaviors.DataGridAssist.SelectAndFocusCell(this System.Windows.Controls.DataGrid, System.Windows.Controls.DataGridCell)') | |

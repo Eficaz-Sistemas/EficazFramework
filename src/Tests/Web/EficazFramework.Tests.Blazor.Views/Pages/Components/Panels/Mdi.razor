@@ -1,14 +1,28 @@
 ﻿@page "/Components/Panels/Mdi"
 
-<div class="d-flex flex-grow-1">
-    <MdiHost TData="EficazFramework.Application.ApplicationDefinition">
+<MudPopoverProvider/>
 
+<div class="d-flex flex-grow-1" style="margin-left:-24px;margin-right:-24px">
+    <MdiHost @ref="_mdi" 
+             NewSectionClick="NewSection"
+             ItemsSource="ApplicationManager?.RunningApplications"
+             SectionsSource="ApplicationManager?.SectionManager.Sections"
+             CurrentSection="ApplicationManager!.SectionManager.CurrentSection.ID">
+        <StartMenuFooter>
+            <MudBlazor.MudText Typo="@MudBlazor.Typo.body1">
+                footer here...
+            </MudBlazor.MudText>
+        </StartMenuFooter>
+        <StartMenuTabs>
+            @*MAIN APPLICATION TABS IS INBUILT, JUST ADD YOUR ADITIONAL TABS...*@
+            <MudTabPanel Tag="@("Help")"
+                         Icon="@MudBlazor.Icons.Filled.Help">
+                there are nothing to show here... sorry 
+            </MudTabPanel>
+            <MudTabPanel Tag="@("Under Constructionressos")"
+                         Icon="@MudBlazor.Icons.Filled.Workspaces">
+                neither here
+            </MudTabPanel>
+        </StartMenuTabs>
     </MdiHost>
-    <GroupPanel Title="Playground">
-        <MudToolBar>
-            <MudTooltip Text="Start new App">
-                <MudFab Color="Color.Primary" Icon="@MudBlazor.Icons.Filled.Add" />
-            </MudTooltip>
-        </MudToolBar>
-    </GroupPanel>
 </div>

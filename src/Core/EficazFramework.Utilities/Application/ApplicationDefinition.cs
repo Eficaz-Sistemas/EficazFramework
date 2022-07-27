@@ -8,7 +8,6 @@ public class ApplicationDefinition
     public const string STARTWINDOWSTATE = "StartWindowState";
 
     // Metadata
-    public object Icon { get; set; }
     public string Title { get; set; }
     public string LongTitle { get; set; }
     public string Group { get; set; }
@@ -24,7 +23,7 @@ public class ApplicationDefinition
     public bool IsChecked { get; set; }
     
     // Per-Platform Attributes (Ex: WPF Desktop Window Size, etc)
-    public IEnumerable<ApplicationTarget> Targets { get; } = new List<ApplicationTarget>();
+    public IDictionary<string, ApplicationTarget> Targets { get; } = new Dictionary<string, ApplicationTarget>();
 
     
     public object[] Arguments { get; set; }

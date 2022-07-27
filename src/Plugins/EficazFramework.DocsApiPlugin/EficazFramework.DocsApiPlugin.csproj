@@ -5,13 +5,13 @@
 	<LangVersion>latest</LangVersion>
 	<DevelopmentDependency>true</DevelopmentDependency>
 	<SuppressDependenciesWhenPacking>true</SuppressDependenciesWhenPacking>
-	<AssemblyVersion>1.0.2</AssemblyVersion>
-	<FileVersion>1.0.2.0</FileVersion>
-	<Version>1.0.2</Version>
+	<AssemblyVersion>1.0.8</AssemblyVersion>
+	<FileVersion>1.0.8.0</FileVersion>
+	<Version>1.0.8</Version>
 	<RootNamespace>EficazFramework</RootNamespace>
 	<Company>Eficaz Sistemas de Gestão e Inteligência Tributária</Company>
 	<Copyright>Copyright ©  2022. Eficaz Sistemas de Gestão e Inteligência Tributária Ltda.</Copyright>
-	<Description>Plugin para pacote DefaultDocument para geração da Documentação por Markdown em estrutura de pastas.</Description>
+	<Description>Plugin para pacote DefaultDocument para geração da Documentação por Markdown, com opções específicas para a documentação das bibliotecas da Eficaz.</Description>
 	<RepositoryUrl>https://github.com/Eficaz-Sistemas/EficazFramework</RepositoryUrl>
 	<RepositoryType>git</RepositoryType>
 	<PackageTags>docs</PackageTags>
@@ -34,7 +34,7 @@
   </ItemGroup>
 	
   <ItemGroup>
-    <PackageReference Include="DefaultDocumentation.Api" Version="0.8.1" />
+    <PackageReference Include="DefaultDocumentation.Api" Version="0.8.2" />
   </ItemGroup>
 	
   <ItemGroup>

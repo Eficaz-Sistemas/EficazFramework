@@ -24,9 +24,6 @@ Implements [System.ComponentModel.INotifyPropertyChanged](https://docs.microsoft
 
 | Fields | |
 | :--- | :--- |
-| [_pagesize](EficazFramework.Repositories/RepositoryBase_T_/_pagesize.md 'EficazFramework.Repositories.RepositoryBase<T>._pagesize') | |
-| [_validator](EficazFramework.Repositories/RepositoryBase_T_/_validator.md 'EficazFramework.Repositories.RepositoryBase<T>._validator') | |
-| [disposedValue](EficazFramework.Repositories/RepositoryBase_T_/disposedValue.md 'EficazFramework.Repositories.RepositoryBase<T>.disposedValue') | |
 | [OnAfterGet](EficazFramework.Repositories/RepositoryBase_T_/OnAfterGet.md 'EficazFramework.Repositories.RepositoryBase<T>.OnAfterGet') | |
 
 | Properties | |
@@ -42,7 +39,6 @@ Implements [System.ComponentModel.INotifyPropertyChanged](https://docs.microsoft
 | :--- | :--- |
 | [Add(object, bool)](EficazFramework.Repositories/RepositoryBase_T_/Add(object,bool).md 'EficazFramework.Repositories.RepositoryBase<T>.Add(object, bool)') | s<br/>            Adiciona um item recém-criado à lista de items. |
 | [AddAsync(object, bool, CancellationToken)](EficazFramework.Repositories/RepositoryBase_T_/AddAsync(object,bool,CancellationToken).md 'EficazFramework.Repositories.RepositoryBase<T>.AddAsync(object, bool, System.Threading.CancellationToken)') | Adiciona um item recém-criado à lista de items. |
-| [AddInternal(object)](EficazFramework.Repositories/RepositoryBase_T_/AddInternal(object).md 'EficazFramework.Repositories.RepositoryBase<T>.AddInternal(object)') | |
 | [Cancel(object)](EficazFramework.Repositories/RepositoryBase_T_/Cancel(object).md 'EficazFramework.Repositories.RepositoryBase<T>.Cancel(object)') | Solicita o cancelamento das alterações efetuadas no argumento item.<br/>Caso o mesmo não seja informado, será aplicado sobre todos os itens no DataContext |
 | [CancelAsync(object)](EficazFramework.Repositories/RepositoryBase_T_/CancelAsync(object).md 'EficazFramework.Repositories.RepositoryBase<T>.CancelAsync(object)') | Solicita o cancelamento das alterações efetuadas no argumento item.<br/>Caso o mesmo não seja informado, será aplicado sobre todos os itens no DataContext |
 | [Commit()](EficazFramework.Repositories/RepositoryBase_T_/Commit().md 'EficazFramework.Repositories.RepositoryBase<T>.Commit()') | Efetua a persistência dos dados junto ao ambiente de armazenamento. |
@@ -51,24 +47,17 @@ Implements [System.ComponentModel.INotifyPropertyChanged](https://docs.microsoft
 | [Create&lt;T2&gt;()](EficazFramework.Repositories/RepositoryBase_T_/Create_T2_().md 'EficazFramework.Repositories.RepositoryBase<T>.Create<T2>()') | Solicita a criação de uma nova instância de T2 |
 | [Delete(object, bool)](EficazFramework.Repositories/RepositoryBase_T_/Delete(object,bool).md 'EficazFramework.Repositories.RepositoryBase<T>.Delete(object, bool)') | Solicita a exclusão de um item da lista de items |
 | [DeleteAsync(object, bool, CancellationToken)](EficazFramework.Repositories/RepositoryBase_T_/DeleteAsync(object,bool,CancellationToken).md 'EficazFramework.Repositories.RepositoryBase<T>.DeleteAsync(object, bool, System.Threading.CancellationToken)') | Solicita a exclusão de um item da lista de items |
-| [DeleteInternal(object)](EficazFramework.Repositories/RepositoryBase_T_/DeleteInternal(object).md 'EficazFramework.Repositories.RepositoryBase<T>.DeleteInternal(object)') | |
 | [Detach(object)](EficazFramework.Repositories/RepositoryBase_T_/Detach(object).md 'EficazFramework.Repositories.RepositoryBase<T>.Detach(object)') | Solicita que o item seja desanexado do contexto de persistÊncia. |
 | [Dispose()](EficazFramework.Repositories/RepositoryBase_T_/Dispose().md 'EficazFramework.Repositories.RepositoryBase<T>.Dispose()') | |
-| [Dispose(bool)](EficazFramework.Repositories/RepositoryBase_T_/Dispose(bool).md 'EficazFramework.Repositories.RepositoryBase<T>.Dispose(bool)') | |
-| [DisposeManagedCallerObjects()](EficazFramework.Repositories/RepositoryBase_T_/DisposeManagedCallerObjects().md 'EficazFramework.Repositories.RepositoryBase<T>.DisposeManagedCallerObjects()') | Tarefa pendente: descartar o estado gerenciado (objetos gerenciados) |
-| [DisposeUnManagedCallerObjects()](EficazFramework.Repositories/RepositoryBase_T_/DisposeUnManagedCallerObjects().md 'EficazFramework.Repositories.RepositoryBase<T>.DisposeUnManagedCallerObjects()') | Tarefa pendente: liberar recursos não gerenciados (objetos não gerenciados) e substituir o finalizador<br/>Tarefa pendente: definir campos grandes como nulos |
 | [FetchItems()](EficazFramework.Repositories/RepositoryBase_T_/FetchItems().md 'EficazFramework.Repositories.RepositoryBase<T>.FetchItems()') | Aciona a busca de dados contra a base. |
 | [FetchItemsAsync(CancellationToken)](EficazFramework.Repositories/RepositoryBase_T_/FetchItemsAsync(CancellationToken).md 'EficazFramework.Repositories.RepositoryBase<T>.FetchItemsAsync(System.Threading.CancellationToken)') | Aciona a busca de dados contra a base. |
 | [FirstPage()](EficazFramework.Repositories/RepositoryBase_T_/FirstPage().md 'EficazFramework.Repositories.RepositoryBase<T>.FirstPage()') | Move os método(s) Get e GetAsync para a primeira página (apenas quando a paginação estiver habilitada). |
 | [Get()](EficazFramework.Repositories/RepositoryBase_T_/Get().md 'EficazFramework.Repositories.RepositoryBase<T>.Get()') | Executa a solicitação da listagem de resultados |
 | [GetAsync(CancellationToken)](EficazFramework.Repositories/RepositoryBase_T_/GetAsync(CancellationToken).md 'EficazFramework.Repositories.RepositoryBase<T>.GetAsync(System.Threading.CancellationToken)') | Executa a solicitação da listagem de resultados |
-| [ItemAdded(object)](EficazFramework.Repositories/RepositoryBase_T_/ItemAdded(object).md 'EficazFramework.Repositories.RepositoryBase<T>.ItemAdded(object)') | Informa à fonte de dados que o item T deve ser adicionado a unidade de persistência do repositório |
-| [ItemDeleted(object)](EficazFramework.Repositories/RepositoryBase_T_/ItemDeleted(object).md 'EficazFramework.Repositories.RepositoryBase<T>.ItemDeleted(object)') | Informa à fonte de dados que o item T deve ser excluído a unidade de persistência do repositório |
 | [NextPage()](EficazFramework.Repositories/RepositoryBase_T_/NextPage().md 'EficazFramework.Repositories.RepositoryBase<T>.NextPage()') | Move os método(s) Get e GetAsync para a próxima página (apenas quando a paginação estiver habilitada). |
 | [OnValidate(T)](EficazFramework.Repositories/RepositoryBase_T_/OnValidate(T).md 'EficazFramework.Repositories.RepositoryBase<T>.OnValidate(T)') | |
 | [OnValidateAsync(T)](EficazFramework.Repositories/RepositoryBase_T_/OnValidateAsync(T).md 'EficazFramework.Repositories.RepositoryBase<T>.OnValidateAsync(T)') | |
 | [PreviousPage()](EficazFramework.Repositories/RepositoryBase_T_/PreviousPage().md 'EficazFramework.Repositories.RepositoryBase<T>.PreviousPage()') | Move os método(s) Get e GetAsync para a página anterior (apenas quando a paginação estiver habilitada). |
-| [RaisePropertyChanged(string)](EficazFramework.Repositories/RepositoryBase_T_/RaisePropertyChanged(string).md 'EficazFramework.Repositories.RepositoryBase<T>.RaisePropertyChanged(string)') | |
 | [Validate(T)](EficazFramework.Repositories/RepositoryBase_T_/Validate(T).md 'EficazFramework.Repositories.RepositoryBase<T>.Validate(T)') | Efetua Validação da instância especsificada ou de todo o DataContext |
 | [ValidateAsync(T)](EficazFramework.Repositories/RepositoryBase_T_/ValidateAsync(T).md 'EficazFramework.Repositories.RepositoryBase<T>.ValidateAsync(T)') | Efetua Validação da instância especificada ou de todo o DataContext |
 | [ValidateAsync&lt;T2&gt;(T2, Validator&lt;T2&gt;)](EficazFramework.Repositories/RepositoryBase_T_/ValidateAsync_T2_(T2,Validator_T2_).md 'EficazFramework.Repositories.RepositoryBase<T>.ValidateAsync<T2>(T2, EficazFramework.Validation.Fluent.Validator<T2>)') | Efetua Validação da instância especificada ou de todo o DataContext |

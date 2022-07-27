@@ -15,17 +15,13 @@ Implements [System.IDisposable](https://docs.microsoft.com/en-us/dotnet/api/Syst
 | Fields | |
 | :--- | :--- |
 | [ApplicationsProperty](EficazFramework.Controls/SessionView/ApplicationsProperty.md 'EficazFramework.Controls.SessionView.ApplicationsProperty') | |
-| [ApplicationsPropertyKey](EficazFramework.Controls/SessionView/ApplicationsPropertyKey.md 'EficazFramework.Controls.SessionView.ApplicationsPropertyKey') | |
 | [IsPopupOpenedProperty](EficazFramework.Controls/SessionView/IsPopupOpenedProperty.md 'EficazFramework.Controls.SessionView.IsPopupOpenedProperty') | |
 | [NewSessionRequestCommandProperty](EficazFramework.Controls/SessionView/NewSessionRequestCommandProperty.md 'EficazFramework.Controls.SessionView.NewSessionRequestCommandProperty') | |
-| [NewSessionRequestCommandPropertyKey](EficazFramework.Controls/SessionView/NewSessionRequestCommandPropertyKey.md 'EficazFramework.Controls.SessionView.NewSessionRequestCommandPropertyKey') | |
 | [OpenSessionsCommandProperty](EficazFramework.Controls/SessionView/OpenSessionsCommandProperty.md 'EficazFramework.Controls.SessionView.OpenSessionsCommandProperty') | |
-| [OpenSessionsCommandPropertyKey](EficazFramework.Controls/SessionView/OpenSessionsCommandPropertyKey.md 'EficazFramework.Controls.SessionView.OpenSessionsCommandPropertyKey') | |
 | [PopupPlacementProperty](EficazFramework.Controls/SessionView/PopupPlacementProperty.md 'EficazFramework.Controls.SessionView.PopupPlacementProperty') | |
 | [SelectedSessionTemplateProperty](EficazFramework.Controls/SessionView/SelectedSessionTemplateProperty.md 'EficazFramework.Controls.SessionView.SelectedSessionTemplateProperty') | |
 | [SessionListItemTemplateProperty](EficazFramework.Controls/SessionView/SessionListItemTemplateProperty.md 'EficazFramework.Controls.SessionView.SessionListItemTemplateProperty') | |
 | [SessionsProperty](EficazFramework.Controls/SessionView/SessionsProperty.md 'EficazFramework.Controls.SessionView.SessionsProperty') | |
-| [SessionsPropertyKey](EficazFramework.Controls/SessionView/SessionsPropertyKey.md 'EficazFramework.Controls.SessionView.SessionsPropertyKey') | |
 
 | Properties | |
 | :--- | :--- |
@@ -41,9 +37,6 @@ Implements [System.IDisposable](https://docs.microsoft.com/en-us/dotnet/api/Syst
 | Methods | |
 | :--- | :--- |
 | [Dispose()](EficazFramework.Controls/SessionView/Dispose().md 'EficazFramework.Controls.SessionView.Dispose()') | |
-| [OnSessionChanged(object, EventArgs)](EficazFramework.Controls/SessionView/OnSessionChanged(object,EventArgs).md 'EficazFramework.Controls.SessionView.OnSessionChanged(object, System.EventArgs)') | |
-| [SessionRequest_Executed(object, ExecuteEventArgs)](EficazFramework.Controls/SessionView/SessionRequest_Executed(object,ExecuteEventArgs).md 'EficazFramework.Controls.SessionView.SessionRequest_Executed(object, EficazFramework.Events.ExecuteEventArgs)') | |
-| [SessionsView_Executed(object, ExecuteEventArgs)](EficazFramework.Controls/SessionView/SessionsView_Executed(object,ExecuteEventArgs).md 'EficazFramework.Controls.SessionView.SessionsView_Executed(object, EficazFramework.Events.ExecuteEventArgs)') | |
 
 | Events | |
 | :--- | :--- |

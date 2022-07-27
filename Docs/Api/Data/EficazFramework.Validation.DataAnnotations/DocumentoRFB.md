@@ -20,4 +20,3 @@ Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.O
 | Methods | |
 | :--- | :--- |
 | [IsValid(object)](EficazFramework.Validation.DataAnnotations/DocumentoRFB/IsValid(object).md 'EficazFramework.Validation.DataAnnotations.DocumentoRFB.IsValid(object)') | |
-| [IsValid(object, ValidationContext)](EficazFramework.Validation.DataAnnotations/DocumentoRFB/IsValid(object,ValidationContext).md 'EficazFramework.Validation.DataAnnotations.DocumentoRFB.IsValid(object, System.ComponentModel.DataAnnotations.ValidationContext)') | |

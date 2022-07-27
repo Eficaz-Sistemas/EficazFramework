@@ -22,10 +22,6 @@ Derived
 &#8627; [InscrEstadual&lt;T&gt;](EficazFramework.Validation.Fluent.Rules/InscrEstadual_T_.md 'EficazFramework.Validation.Fluent.Rules.InscrEstadual<T>')  
 &#8627; [PIS&lt;T&gt;](EficazFramework.Validation.Fluent.Rules/PIS_T_.md 'EficazFramework.Validation.Fluent.Rules.PIS<T>')
 
-| Constructors | |
-| :--- | :--- |
-| [Documentos(Expression&lt;Func&lt;T,object&gt;&gt;)](EficazFramework.Validation.Fluent.Rules/Documentos_T_/Documentos(Expression_Func_T,object__).md 'EficazFramework.Validation.Fluent.Rules.Documentos<T>.Documentos(System.Linq.Expressions.Expression<System.Func<T,object>>)') | s<br/>            Regra de validação contra valores e/ou referências nulas ou vazias |
-
 | Methods | |
 | :--- | :--- |
 | [Validate(T)](EficazFramework.Validation.Fluent.Rules/Documentos_T_/Validate(T).md 'EficazFramework.Validation.Fluent.Rules.Documentos<T>.Validate(T)') | |

@@ -16,6 +16,4 @@ Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.O
 | Methods | |
 | :--- | :--- |
 | [GetSelectAllOnFocus(DependencyObject)](EficazFramework.XAML.Behaviors/TextBox/GetSelectAllOnFocus(DependencyObject).md 'EficazFramework.XAML.Behaviors.TextBox.GetSelectAllOnFocus(System.Windows.DependencyObject)') | |
-| [OnSelectAllOnFocusChanged(object, DependencyPropertyChangedEventArgs)](EficazFramework.XAML.Behaviors/TextBox/OnSelectAllOnFocusChanged(object,DependencyPropertyChangedEventArgs).md 'EficazFramework.XAML.Behaviors.TextBox.OnSelectAllOnFocusChanged(object, System.Windows.DependencyPropertyChangedEventArgs)') | |
 | [SetSelectAllOnFocus(DependencyObject, bool)](EficazFramework.XAML.Behaviors/TextBox/SetSelectAllOnFocus(DependencyObject,bool).md 'EficazFramework.XAML.Behaviors.TextBox.SetSelectAllOnFocus(System.Windows.DependencyObject, bool)') | |
-| [TextBox_GotKeyboardFocus(object, EventArgs)](EficazFramework.XAML.Behaviors/TextBox/TextBox_GotKeyboardFocus(object,EventArgs).md 'EficazFramework.XAML.Behaviors.TextBox.TextBox_GotKeyboardFocus(object, System.EventArgs)') | |

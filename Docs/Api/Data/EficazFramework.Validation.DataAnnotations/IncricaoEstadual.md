@@ -13,14 +13,6 @@ Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.O
 | :--- | :--- |
 | [IncricaoEstadual(string)](EficazFramework.Validation.DataAnnotations/IncricaoEstadual/IncricaoEstadual(string).md 'EficazFramework.Validation.DataAnnotations.IncricaoEstadual.IncricaoEstadual(string)') | |
 
-| Fields | |
-| :--- | :--- |
-| [_uf](EficazFramework.Validation.DataAnnotations/IncricaoEstadual/_uf.md 'EficazFramework.Validation.DataAnnotations.IncricaoEstadual._uf') | |
-
 | Properties | |
 | :--- | :--- |
 | [UFPropertyName](EficazFramework.Validation.DataAnnotations/IncricaoEstadual/UFPropertyName.md 'EficazFramework.Validation.DataAnnotations.IncricaoEstadual.UFPropertyName') | |
-
-| Methods | |
-| :--- | :--- |
-| [IsValid(object, ValidationContext)](EficazFramework.Validation.DataAnnotations/IncricaoEstadual/IsValid(object,ValidationContext).md 'EficazFramework.Validation.DataAnnotations.IncricaoEstadual.IsValid(object, System.ComponentModel.DataAnnotations.ValidationContext)') | |

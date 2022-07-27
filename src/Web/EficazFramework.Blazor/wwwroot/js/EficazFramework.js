@@ -72,6 +72,21 @@ window.EfJsFunctions = {
         });
     },
 
+    setDragImage: function (evt) {
+        //this.mouse = { x: evt.clientX, y: evt.clientY };
+        //this.actual = { x: this.style.left, y: this.style.top };
+        const canvas = document.createElement('canvas');
+        const context = canvas.getContext('2d');
+
+        context.fillStyle = 'blue';
+        context.font = 'bold 16px Arial';
+        context.fillText('hello world', 0, 16);
+        const img = new Image();
+        img.src = canvas.toDataURL();
+
+        event.dataTransfer.setDragImage(img, 0, 0);
+        // set the drag image to be the element itself
+    },
 
     scrollToBottom: function(element) {
         element.scrollIntoView({ behavior: 'smooth', block: 'end' });

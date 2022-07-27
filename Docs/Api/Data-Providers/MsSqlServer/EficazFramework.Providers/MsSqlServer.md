@@ -3,7 +3,7 @@
 
 ## MsSqlServer Class
 
-Implementa definições para trabalho com cache, utilizando  
+Implementa definições para trabalho com base de dados Microsoft SQL Server, utilizando  
 o provedor EntityFrameworkCore.SqlServer
 
 ```csharp

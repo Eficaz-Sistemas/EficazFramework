@@ -13,10 +13,6 @@ Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.O
 | :--- | :--- |
 | [ExecuteEventArgs(object)](EficazFramework.Events/ExecuteEventArgs/ExecuteEventArgs(object).md 'EficazFramework.Events.ExecuteEventArgs.ExecuteEventArgs(object)') | |
 
-| Fields | |
-| :--- | :--- |
-| [_parameter](EficazFramework.Events/ExecuteEventArgs/_parameter.md 'EficazFramework.Events.ExecuteEventArgs._parameter') | |
-
 | Properties | |
 | :--- | :--- |
 | [Parameter](EficazFramework.Events/ExecuteEventArgs/Parameter.md 'EficazFramework.Events.ExecuteEventArgs.Parameter') | |

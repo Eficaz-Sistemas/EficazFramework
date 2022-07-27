@@ -7,9 +7,6 @@
 public interface IApplicationManager
 ```
 
-Derived  
-&#8627; [ApplicationManager](EficazFramework.Application/ApplicationManager.md 'EficazFramework.Application.ApplicationManager')
-
 | Properties | |
 | :--- | :--- |
 | [AllApplications](EficazFramework.Application/IApplicationManager/AllApplications.md 'EficazFramework.Application.IApplicationManager.AllApplications') | Listagem de aplicações disponíveis para trabalho (pode ser utilizada como menu principal) |

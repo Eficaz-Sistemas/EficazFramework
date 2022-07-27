@@ -9,10 +9,6 @@ public class ModalAssist
 
 Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.Object 'System.Object') &#129106; ModalAssist
 
-| Fields | |
-| :--- | :--- |
-| [task](EficazFramework.Threading/ModalAssist/task.md 'EficazFramework.Threading.ModalAssist.task') | |
-
 | Methods | |
 | :--- | :--- |
 | [Push()](EficazFramework.Threading/ModalAssist/Push().md 'EficazFramework.Threading.ModalAssist.Push()') | |

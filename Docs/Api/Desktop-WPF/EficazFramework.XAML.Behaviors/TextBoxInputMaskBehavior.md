@@ -21,17 +21,3 @@ Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.O
 | [InputMask](EficazFramework.XAML.Behaviors/TextBoxInputMaskBehavior/InputMask.md 'EficazFramework.XAML.Behaviors.TextBoxInputMaskBehavior.InputMask') | |
 | [PromptChar](EficazFramework.XAML.Behaviors/TextBoxInputMaskBehavior/PromptChar.md 'EficazFramework.XAML.Behaviors.TextBoxInputMaskBehavior.PromptChar') | |
 | [Provider](EficazFramework.XAML.Behaviors/TextBoxInputMaskBehavior/Provider.md 'EficazFramework.XAML.Behaviors.TextBoxInputMaskBehavior.Provider') | |
-
-| Methods | |
-| :--- | :--- |
-| [AssociatedObjectLoaded(object, RoutedEventArgs)](EficazFramework.XAML.Behaviors/TextBoxInputMaskBehavior/AssociatedObjectLoaded(object,RoutedEventArgs).md 'EficazFramework.XAML.Behaviors.TextBoxInputMaskBehavior.AssociatedObjectLoaded(object, System.Windows.RoutedEventArgs)') | |
-| [AssociatedObjectPreviewKeyDown(object, KeyEventArgs)](EficazFramework.XAML.Behaviors/TextBoxInputMaskBehavior/AssociatedObjectPreviewKeyDown(object,KeyEventArgs).md 'EficazFramework.XAML.Behaviors.TextBoxInputMaskBehavior.AssociatedObjectPreviewKeyDown(object, System.Windows.Input.KeyEventArgs)') | |
-| [AssociatedObjectPreviewTextInput(object, TextCompositionEventArgs)](EficazFramework.XAML.Behaviors/TextBoxInputMaskBehavior/AssociatedObjectPreviewTextInput(object,TextCompositionEventArgs).md 'EficazFramework.XAML.Behaviors.TextBoxInputMaskBehavior.AssociatedObjectPreviewTextInput(object, System.Windows.Input.TextCompositionEventArgs)') | |
-| [GetNextCharacterPosition(int)](EficazFramework.XAML.Behaviors/TextBoxInputMaskBehavior/GetNextCharacterPosition(int).md 'EficazFramework.XAML.Behaviors.TextBoxInputMaskBehavior.GetNextCharacterPosition(int)') | |
-| [OnAttached()](EficazFramework.XAML.Behaviors/TextBoxInputMaskBehavior/OnAttached().md 'EficazFramework.XAML.Behaviors.TextBoxInputMaskBehavior.OnAttached()') | |
-| [OnDetaching()](EficazFramework.XAML.Behaviors/TextBoxInputMaskBehavior/OnDetaching().md 'EficazFramework.XAML.Behaviors.TextBoxInputMaskBehavior.OnDetaching()') | |
-| [Pasting(object, DataObjectPastingEventArgs)](EficazFramework.XAML.Behaviors/TextBoxInputMaskBehavior/Pasting(object,DataObjectPastingEventArgs).md 'EficazFramework.XAML.Behaviors.TextBoxInputMaskBehavior.Pasting(object, System.Windows.DataObjectPastingEventArgs)') | Pasting prüft ob korrekte Daten reingepastet werden |
-| [RefreshText(int)](EficazFramework.XAML.Behaviors/TextBoxInputMaskBehavior/RefreshText(int).md 'EficazFramework.XAML.Behaviors.TextBoxInputMaskBehavior.RefreshText(int)') | |
-| [SetText(string)](EficazFramework.XAML.Behaviors/TextBoxInputMaskBehavior/SetText(string).md 'EficazFramework.XAML.Behaviors.TextBoxInputMaskBehavior.SetText(string)') | |
-| [TreatSelectedText()](EficazFramework.XAML.Behaviors/TextBoxInputMaskBehavior/TreatSelectedText().md 'EficazFramework.XAML.Behaviors.TextBoxInputMaskBehavior.TreatSelectedText()') | Falls eine Textauswahl vorliegt wird diese entsprechend behandelt. |
-| [UpdateText()](EficazFramework.XAML.Behaviors/TextBoxInputMaskBehavior/UpdateText().md 'EficazFramework.XAML.Behaviors.TextBoxInputMaskBehavior.UpdateText()') | |

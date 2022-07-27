@@ -22,13 +22,6 @@ Implements [EficazFramework.Navigation.IIndexViewNavigator](https://docs.microso
 | :--- | :--- |
 | [IndexViewNavigator(ViewModel&lt;T&gt;)](EficazFramework.ViewModels.Services/IndexViewNavigator_T_/IndexViewNavigator(ViewModel_T_).md 'EficazFramework.ViewModels.Services.IndexViewNavigator<T>.IndexViewNavigator(EficazFramework.ViewModels.ViewModel<T>)') | |
 
-| Fields | |
-| :--- | :--- |
-| [_currentDetail](EficazFramework.ViewModels.Services/IndexViewNavigator_T_/_currentDetail.md 'EficazFramework.ViewModels.Services.IndexViewNavigator<T>._currentDetail') | |
-| [_entryListIndex](EficazFramework.ViewModels.Services/IndexViewNavigator_T_/_entryListIndex.md 'EficazFramework.ViewModels.Services.IndexViewNavigator<T>._entryListIndex') | |
-| [_formIndex](EficazFramework.ViewModels.Services/IndexViewNavigator_T_/_formIndex.md 'EficazFramework.ViewModels.Services.IndexViewNavigator<T>._formIndex') | |
-| [_searchIndex](EficazFramework.ViewModels.Services/IndexViewNavigator_T_/_searchIndex.md 'EficazFramework.ViewModels.Services.IndexViewNavigator<T>._searchIndex') | |
-
 | Properties | |
 | :--- | :--- |
 | [CurrentDetail](EficazFramework.ViewModels.Services/IndexViewNavigator_T_/CurrentDetail.md 'EficazFramework.ViewModels.Services.IndexViewNavigator<T>.CurrentDetail') | |
@@ -37,9 +30,3 @@ Implements [EficazFramework.Navigation.IIndexViewNavigator](https://docs.microso
 | [FormIndex](EficazFramework.ViewModels.Services/IndexViewNavigator_T_/FormIndex.md 'EficazFramework.ViewModels.Services.IndexViewNavigator<T>.FormIndex') | |
 | [SearchIndex](EficazFramework.ViewModels.Services/IndexViewNavigator_T_/SearchIndex.md 'EficazFramework.ViewModels.Services.IndexViewNavigator<T>.SearchIndex') | |
 | [SelectedIndex](EficazFramework.ViewModels.Services/IndexViewNavigator_T_/SelectedIndex.md 'EficazFramework.ViewModels.Services.IndexViewNavigator<T>.SelectedIndex') | |
-
-| Methods | |
-| :--- | :--- |
-| [DisposeManagedCallerObjects()](EficazFramework.ViewModels.Services/IndexViewNavigator_T_/DisposeManagedCallerObjects().md 'EficazFramework.ViewModels.Services.IndexViewNavigator<T>.DisposeManagedCallerObjects()') | |
-| [GoToFindPage_Executed(object, ExecuteEventArgs)](EficazFramework.ViewModels.Services/IndexViewNavigator_T_/GoToFindPage_Executed(object,ExecuteEventArgs).md 'EficazFramework.ViewModels.Services.IndexViewNavigator<T>.GoToFindPage_Executed(object, EficazFramework.Events.ExecuteEventArgs)') | Ações do comando GoToFindPage |
-| [OnViewModel_StateChanged(object, EventArgs)](EficazFramework.ViewModels.Services/IndexViewNavigator_T_/OnViewModel_StateChanged(object,EventArgs).md 'EficazFramework.ViewModels.Services.IndexViewNavigator<T>.OnViewModel_StateChanged(object, System.EventArgs)') | Altera o índice selecionado pelo estado do ViewModel |

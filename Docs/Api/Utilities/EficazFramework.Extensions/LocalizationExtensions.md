@@ -9,14 +9,6 @@ public static class LocalizationExtensions
 
 Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.Object 'System.Object') &#129106; LocalizationExtensions
 
-| Constructors | |
-| :--- | :--- |
-| [LocalizationExtensions()](EficazFramework.Extensions/LocalizationExtensions/LocalizationExtensions().md 'EficazFramework.Extensions.LocalizationExtensions.LocalizationExtensions()') | |
-
-| Fields | |
-| :--- | :--- |
-| [_resourcesCache](EficazFramework.Extensions/LocalizationExtensions/_resourcesCache.md 'EficazFramework.Extensions.LocalizationExtensions._resourcesCache') | |
-
 | Methods | |
 | :--- | :--- |
 | [Localize(this string)](EficazFramework.Extensions/LocalizationExtensions/Localize(thisstring).md 'EficazFramework.Extensions.LocalizationExtensions.Localize(this string)') | Retorna o texto no idioma (System.Globalization.Culture.CultureInfo) atual.<br/>Utiliza o dicionário EficazFramework.Resources.Strings.Descriptions. |

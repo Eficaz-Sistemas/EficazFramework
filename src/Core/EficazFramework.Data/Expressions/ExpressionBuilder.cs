@@ -27,16 +27,25 @@ public class ExpressionBuilder : INotifyPropertyChanged, IDisposable
 
 
     private string _errors = null;
+    /// <summary>
+    /// Indica se o construtor de filtros está em estado de Erro após a última compilação de <see cref="System.Linq.Expressions.Expression"/>
+    /// </summary>
     public bool HasErrors => !(string.IsNullOrEmpty(_errors) && string.IsNullOrWhiteSpace(_errors));
 
     public string LastValidationErrors => _errors;
 
 
     private readonly Collections.AsyncObservableCollection<ExpressionProperty> _props = new();
+    /// <summary>
+    /// Campos disponíveis para escolha no editor.
+    /// </summary>
     public Collections.AsyncObservableCollection<ExpressionProperty> Properties => _props;
 
 
     private readonly Collections.AsyncObservableCollection<ExpressionItem> _items;
+    /// <summary>
+    /// Itens que formam o filtro desejado.
+    /// </summary>
     public Collections.AsyncObservableCollection<ExpressionItem> Items
     {
         [MethodImpl(MethodImplOptions.Synchronized)]
@@ -44,6 +53,9 @@ public class ExpressionBuilder : INotifyPropertyChanged, IDisposable
     }
 
     private readonly Collections.AsyncObservableCollection<ExpressionItem> _fixeditems;
+    /// <summary>
+    /// Listagem de condições para pesquisa que deve ser fixas para toda e qualquer consulta.
+    /// </summary>
     public Collections.AsyncObservableCollection<ExpressionItem> FixedItems
     {
         [MethodImpl(MethodImplOptions.Synchronized)]
@@ -90,6 +102,9 @@ public class ExpressionBuilder : INotifyPropertyChanged, IDisposable
 
 
     private bool _allownulls;
+    /// <summary>
+    /// Obtém ou define se o construtor de expressões deve permitir que algum item possa ter valor nulo.
+    /// </summary>
     public bool AllowNulls
     {
         get => _allownulls;
@@ -211,6 +226,9 @@ public class ExpressionBuilder : INotifyPropertyChanged, IDisposable
         RaisePropertyChanged(nameof(LastValidationErrors));
     }
 
+    /// <summary>
+    /// Constrói a <see cref="System.Linq.Expressions.Expression"/> para a query que será executada.
+    /// </summary>
     public System.Linq.Expressions.Expression<Func<TElement, bool>> GetExpression<TElement>()
     {
         _MP_new.Clear();
@@ -324,6 +342,39 @@ public class ExpressionBuilder : INotifyPropertyChanged, IDisposable
     }
 
     internal void CallExpressionBuilding(object sender, Events.ExpressionEventArgs args) => ExpressionBuilding?.Invoke(sender, args);
+
+    public IEnumerable<ExpressionObjectQuery> ToExpressionObjectQuery()
+    {
+        var result = new List<ExpressionObjectQuery>();
+        var erros = new System.Text.StringBuilder();
+
+        var combineditems = new List<ExpressionItem>();
+        combineditems.AddRange(Items);
+        combineditems.AddRange(FixedItems);
+
+        foreach (var item in combineditems)
+        {
+            if (item.SelectedProperty is null)
+                continue;
+            
+            bool ignore = false;
+            
+            string validationResult = item.Validate(ref ignore);
+            
+            if (ignore == true)
+                continue;
+            
+            erros.AppendLine(validationResult);
+            
+            if (HasErrors == false)
+                result.AddRange(item.ToExpressionObjectQuery());
+        }
+
+        if (HasErrors == true)
+            return new List<ExpressionObjectQuery>();
+
+        return result;
+    }
 
     public void Dispose()
     {

@@ -48,7 +48,7 @@ public interface IApplicationManager
     /// Ativa uma aplicação para trabalho. Caso ainda não esteja em execução, uma nova intância é criada.
     /// </summary>
     /// <param name="application">Manifesto de aplicativo a ser iniciado ou ativado.</param>
-    public void Activate(ApplicationDefinition application);
+    public ApplicationInstance Activate(ApplicationDefinition application);
 
     public event EventHandler ActiveAppChanged;
 }
@@ -111,7 +111,7 @@ internal class ApplicationManager : IApplicationManager
     /// Ativa uma aplicação para trabalho. Caso ainda não esteja em execução, uma nova intância é criada.
     /// </summary>
     /// <param name="application">Manifesto de aplicativo a ser iniciado ou ativado.</param>
-    public void Activate(ApplicationDefinition application)
+    public ApplicationInstance Activate(ApplicationDefinition application)
     {
         bool running = IsRunning(application);
         ApplicationInstance instance = null;
@@ -126,6 +126,7 @@ internal class ApplicationManager : IApplicationManager
             instance = RunningApplications.Where(app => app.Metadata == application && (app.SessionID == 0 | app.SessionID == _sectionManager.CurrentSection.ID)).FirstOrDefault();
         }
         ActiveAppChanged?.Invoke(instance, EventArgs.Empty);
+        return instance;
     }
 
     private void AppClosed(object sender, System.EventArgs e)
@@ -148,7 +149,6 @@ public sealed class ApplicationInstance : ApplicationDefinition, INotifyProperty
         var sID = sectionManager.CurrentSection?.ID ?? 0;
 
         Metadata = fromDefinition;
-        Icon = fromDefinition.Icon;
         Title = fromDefinition.Title;
         LongTitle = fromDefinition.LongTitle;
         IsPublic = fromDefinition.IsPublic;
@@ -169,8 +169,14 @@ public sealed class ApplicationInstance : ApplicationDefinition, INotifyProperty
     {
         //throw new UnauthorizedAccessException();
     }
+    
+    public static ApplicationInstance Create(ApplicationDefinition fromDefinition) =>
+        new ApplicationInstance(fromDefinition, null);
 
-    public long SessionID { get; set; }
+    public static ApplicationInstance Create(ApplicationDefinition fromDefinition, long section) =>
+        new ApplicationInstance(fromDefinition, null) { SessionID = section };
+
+    public long SessionID { get; internal set; }
 
     private object _content = null;
     public object Content
@@ -201,13 +207,20 @@ public sealed class ApplicationInstance : ApplicationDefinition, INotifyProperty
 
     public ApplicationDefinition Metadata { get; } = null;
 
+    public IDictionary<string, object> Services { get; } = new Dictionary<string, object>();
+
     // Overrides
     public override string ToString() =>
         $"[{SessionID}] - {TooltipTilte}";
 
     //Methods
-    private void AddTargets(IEnumerable<ApplicationTarget> source) =>
-        ((List<ApplicationTarget>) Targets).AddRange(source);
+    private void AddTargets(IDictionary<string, ApplicationTarget> source)
+    {
+        foreach (var item in source)
+        {
+            Targets.Add(item);
+        }
+    }
 
     public void Close()
     {
