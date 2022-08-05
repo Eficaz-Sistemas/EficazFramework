@@ -7,7 +7,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Pages\Components\Input\" />
     <Folder Include="wwwroot\css\" />
   </ItemGroup>
 
