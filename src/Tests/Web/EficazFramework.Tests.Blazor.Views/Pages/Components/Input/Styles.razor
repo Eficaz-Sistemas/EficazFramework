@@ -38,3 +38,20 @@
         <MudAutocomplete T="string" Class="mud-input-control-ef"  Text="blablablablablablablablabla"/>
     </MudItem>
 </MudGrid>
+<div class="d-flex flex-column">
+    <MudBlazor.MudTextField Class="mud-input-control-ef flex-grow-0" 
+                            Label="Nome de Usuário" 
+                            T="string"/>
+    <div class="d-flex">
+        <MudBlazor.MudTextField Class="mud-input-control-ef flex-grow-1" 
+                                InputType="MudBlazor.InputType.Password"
+                                Label="Senha" 
+                                T="string"/>
+        <MudBlazor.MudButton Variant="@MudBlazor.Variant.Filled"
+                                Color="@MudBlazor.Color.Primary"
+                                Size="@MudBlazor.Size.Small"
+                                Class="ml-2 login-button align-self-end px-4" >
+            @(">")
+        </MudBlazor.MudButton>
+    </div>
+</div>
