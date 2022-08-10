@@ -1,5 +1,8 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using EficazFramework.Expressions;
+using EficazFramework.Extensions;
+using Microsoft.EntityFrameworkCore;
 using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.Linq;
@@ -12,11 +15,9 @@ namespace EficazFramework.Repositories;
 
 public sealed class ApiRepository<TEntity> : Repositories.RepositoryBase<TEntity> where TEntity : class
 {
-    public ApiRepository(HttpClient client) : base()
-    {
+    public ApiRepository(HttpClient client) : base() =>
         _client = client;
-        _contentType = contentType;
-    }
+    
     private readonly HttpClient _client;
 
     /// <summary>
@@ -48,19 +49,19 @@ public sealed class ApiRepository<TEntity> : Repositories.RepositoryBase<TEntity
     /// (Opcional) Instância de DbContext para Tracking de modificações.
     /// NOTA: Não exponha a connection string real nesta instância.
     /// </summary>
-    public DbContext TrackingContext { get; set; }
+    public Microsoft.EntityFrameworkCore.DbContext TrackingContext { get; set; }
 
 
 
     /// <summary>
     /// método POST base para implementações
     /// </summary>
-    private async Task<TResult> PostMethod<TBody, TResult>(string requestUri, TBody content, CancellationToken cancellationToken)
+    public async Task<TResult> PostMethod<TBody, TResult>(string requestUri, TBody body, CancellationToken cancellationToken)
     {
         if (cancellationToken != default && cancellationToken.IsCancellationRequested) return default;
         try
         {
-            var response = await _client.PostAsJsonAsync(requestUri, content, cancellationToken);
+            var response = await _client.PostAsJsonAsync(requestUri, body, cancellationToken);
             if (response.IsSuccessStatusCode)
                 return await response.Content.ReadFromJsonAsync<TResult>(new System.Text.Json.JsonSerializerOptions()
                 {
@@ -76,6 +77,12 @@ public sealed class ApiRepository<TEntity> : Repositories.RepositoryBase<TEntity
     }
 
 
+    /// <summary>
+    /// Paramêtros para filtragem de dados.
+    /// Efetua shadowing de <see cref="RepositoryBase{T}.Filter"/>
+    /// </summary>
+    public new Expressions.ExpressionQuery Filter { get; set; }
+
 
     /// <summary>s
     /// Efetua a instrução GET contra o datasource
@@ -90,7 +97,7 @@ public sealed class ApiRepository<TEntity> : Repositories.RepositoryBase<TEntity
     /// </summary>
     public override async Task<ObservableCollection<TEntity>> FetchItemsAsync(CancellationToken cancellationToken)
     {
-        return await PostMethod<object, ObservableCollection<TEntity>>(UriGet, new { Filter, OrderByDefinitions }, cancellationToken);
+        return (await PostMethod<object, List<TEntity>>(UriGet, new GetSchema(Filter, OrderByDefinitions), cancellationToken)).ToObservableCollection<TEntity>();
     }
 
     /// <summary>
@@ -229,4 +236,25 @@ public sealed class ApiRepository<TEntity> : Repositories.RepositoryBase<TEntity
         throw new NotImplementedException();
     }
 
+    internal override void ItemAdded(object item)
+    {
+        throw new NotImplementedException();
+    }
+
+    internal override void ItemDeleted(object item)
+    {
+        throw new NotImplementedException();
+    }
+}
+
+public class GetSchema
+{
+    public GetSchema(Expressions.ExpressionQuery filter, IEnumerable<Collections.SortDescription> orderBy)
+    {
+        Filter = filter;
+        OrderBy.AddRange(orderBy);
+    }
+    
+    public Expressions.ExpressionQuery Filter { get; set; } = null;
+    public List<Collections.SortDescription> OrderBy { get; set; } = new();
 }

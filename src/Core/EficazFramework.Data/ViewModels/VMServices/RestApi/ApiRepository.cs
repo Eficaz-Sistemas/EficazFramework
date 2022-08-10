@@ -7,9 +7,9 @@ namespace EficazFramework.ViewModels.Services;
 
 class RestApi<T> : ViewModelService<T> where T : class
 {
-    public RestApi(ViewModel<T> viewmodel, HttpClient client, string contentType = "application/json") : base(viewmodel)
+    public RestApi(ViewModel<T> viewmodel, HttpClient client) : base(viewmodel)
     {
-        viewmodel.Repository = new Repositories.ApiRepository<T>(client, contentType);
+        viewmodel.Repository = new Repositories.ApiRepository<T>(client);
     }
 }
 
@@ -24,7 +24,7 @@ public static partial class ServiceUtils
         if (viewmodel.Services.ContainsKey(ServiceUtils.KEY_REST))
             throw new ArgumentException(string.Format(Resources.Strings.ViewModel.ServiceAlreadyAdded, ServiceUtils.KEY_REST));
 
-        var service = new RestApi<T>(viewmodel, client, contentType);
+        var service = new RestApi<T>(viewmodel, client);
         viewmodel.Services.Add(ServiceUtils.KEY_REST, service);
         return viewmodel;
     }

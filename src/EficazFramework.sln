@@ -75,6 +75,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Docs", "Docs", "{50089854-3
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EficazFramework.Tests.DocsApiPlugin", "Tests\Docs\EficazFramework.Tests.DocsApiPlugin\EficazFramework.Tests.DocsApiPlugin.csproj", "{607CA85A-B7E0-4344-9FA5-5A1E1D5EB388}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EficazFramework.Tests.FakeServerApi", "Tests\Web\EficazFramework.Tests.FakeServerApi\EficazFramework.Tests.FakeServerApi.csproj", "{92F8CF42-34ED-441E-9D76-562AFAC8BABE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -196,6 +198,12 @@ Global
 		{607CA85A-B7E0-4344-9FA5-5A1E1D5EB388}.Release|Any CPU.Build.0 = Release|Any CPU
 		{607CA85A-B7E0-4344-9FA5-5A1E1D5EB388}.ReleaseDevOps|Any CPU.ActiveCfg = Release|Any CPU
 		{607CA85A-B7E0-4344-9FA5-5A1E1D5EB388}.ReleaseDevOps|Any CPU.Build.0 = Release|Any CPU
+		{92F8CF42-34ED-441E-9D76-562AFAC8BABE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{92F8CF42-34ED-441E-9D76-562AFAC8BABE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{92F8CF42-34ED-441E-9D76-562AFAC8BABE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{92F8CF42-34ED-441E-9D76-562AFAC8BABE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{92F8CF42-34ED-441E-9D76-562AFAC8BABE}.ReleaseDevOps|Any CPU.ActiveCfg = Release|Any CPU
+		{92F8CF42-34ED-441E-9D76-562AFAC8BABE}.ReleaseDevOps|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -225,6 +233,7 @@ Global
 		{6D37DC80-844D-493C-B470-49C4A5F7F024} = {6D40AE2F-A37E-4FFE-B3A1-EF932E7B3CB6}
 		{50089854-3B5E-4124-89EB-2C39C0DA6FD6} = {72380FF4-05A9-40F5-8ABD-46B2A572F453}
 		{607CA85A-B7E0-4344-9FA5-5A1E1D5EB388} = {50089854-3B5E-4124-89EB-2C39C0DA6FD6}
+		{92F8CF42-34ED-441E-9D76-562AFAC8BABE} = {8CC8E7BE-3B66-4334-9CB7-F5DA16CC71B0}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {727FB557-A5D6-456A-81CB-C45F2F95FCEB}
