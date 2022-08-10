@@ -12,13 +12,12 @@ namespace EficazFramework.Repositories;
 
 public sealed class ApiRepository<TEntity> : Repositories.RepositoryBase<TEntity> where TEntity : class
 {
-    public ApiRepository(HttpClient client, string contentType = "application/json") : base()
+    public ApiRepository(HttpClient client) : base()
     {
         _client = client;
         _contentType = contentType;
     }
     private readonly HttpClient _client;
-    private readonly string _contentType;
 
     /// <summary>
     /// URI de requisição para métodos FetchItems() e FetchItemsAsync()
@@ -61,17 +60,12 @@ public sealed class ApiRepository<TEntity> : Repositories.RepositoryBase<TEntity
         if (cancellationToken != default && cancellationToken.IsCancellationRequested) return default;
         try
         {
-            HttpResponseMessage response = _contentType switch
-            {
-                _ => await _client.PostAsJsonAsync(requestUri, content, cancellationToken)
-            };
+            var response = await _client.PostAsJsonAsync(requestUri, content, cancellationToken);
             if (response.IsSuccessStatusCode)
-            {
-                return _contentType switch
+                return await response.Content.ReadFromJsonAsync<TResult>(new System.Text.Json.JsonSerializerOptions()
                 {
-                    _ => await Serialization.SerializationOperations.FromJsonAsync<TResult>(await response.Content.ReadAsStringAsync(cancellationToken))
-                };
-            }
+                    PropertyNameCaseInsensitive = true
+                });
         }
         catch (TaskCanceledException tkex)
         {

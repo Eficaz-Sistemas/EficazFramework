@@ -19,7 +19,7 @@ public static partial class ServiceUtils
     /// <summary>
     /// Adiciona os serviços de DbContext do Entity Framework Core para persistência de dados com bases relacionais.
     /// </summary>
-    public static ViewModel<T> AddRestApi<T>(this ViewModel<T> viewmodel, HttpClient client, string contentType = "application/json") where T : class
+    public static ViewModel<T> AddRestApi<T>(this ViewModel<T> viewmodel, HttpClient client) where T : class
     {
         if (viewmodel.Services.ContainsKey(ServiceUtils.KEY_REST))
             throw new ArgumentException(string.Format(Resources.Strings.ViewModel.ServiceAlreadyAdded, ServiceUtils.KEY_REST));
