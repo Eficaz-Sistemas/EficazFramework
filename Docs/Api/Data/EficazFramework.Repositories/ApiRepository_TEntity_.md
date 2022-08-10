@@ -21,12 +21,14 @@ Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.O
 
 | Properties | |
 | :--- | :--- |
+| [DbContextRequest](EficazFramework.Repositories/ApiRepository_TEntity_/DbContextRequest.md 'EficazFramework.Repositories.ApiRepository<TEntity>.DbContextRequest') | Evento disparado quando o Repositório precisa de uma nova instância de DbContext. |
+| [Filter](EficazFramework.Repositories/ApiRepository_TEntity_/Filter.md 'EficazFramework.Repositories.ApiRepository<TEntity>.Filter') | Paramêtros para filtragem de dados.<br/>Efetua shadowing de [Filter](EficazFramework.Repositories/RepositoryBase_T_/Filter.md 'EficazFramework.Repositories.RepositoryBase<T>.Filter') |
 | [TrackingContext](EficazFramework.Repositories/ApiRepository_TEntity_/TrackingContext.md 'EficazFramework.Repositories.ApiRepository<TEntity>.TrackingContext') | (Opcional) Instância de DbContext para Tracking de modificações.<br/>NOTA: Não exponha a connection string real nesta instância. |
-| [UriCancel](EficazFramework.Repositories/ApiRepository_TEntity_/UriCancel.md 'EficazFramework.Repositories.ApiRepository<TEntity>.UriCancel') | URI de requisição para métodos FetchItems() e FetchItemsAsync() |
-| [UriDelete](EficazFramework.Repositories/ApiRepository_TEntity_/UriDelete.md 'EficazFramework.Repositories.ApiRepository<TEntity>.UriDelete') | URI de requisição para métodos FetchItems() e FetchItemsAsync() |
-| [UriGet](EficazFramework.Repositories/ApiRepository_TEntity_/UriGet.md 'EficazFramework.Repositories.ApiRepository<TEntity>.UriGet') | URI de requisição para métodos FetchItems() e FetchItemsAsync() |
-| [UriInsert](EficazFramework.Repositories/ApiRepository_TEntity_/UriInsert.md 'EficazFramework.Repositories.ApiRepository<TEntity>.UriInsert') | URI de requisição para métodos FetchItems() e FetchItemsAsync() |
-| [UriUpdate](EficazFramework.Repositories/ApiRepository_TEntity_/UriUpdate.md 'EficazFramework.Repositories.ApiRepository<TEntity>.UriUpdate') | s<br/>            URI de requisição para métodos FetchItems() e FetchItemsAsync() |
+| [UrlCancel](EficazFramework.Repositories/ApiRepository_TEntity_/UrlCancel.md 'EficazFramework.Repositories.ApiRepository<TEntity>.UrlCancel') | URL de requisição para métodos FetchItems() e FetchItemsAsync() |
+| [UrlDelete](EficazFramework.Repositories/ApiRepository_TEntity_/UrlDelete.md 'EficazFramework.Repositories.ApiRepository<TEntity>.UrlDelete') | URL de requisição para métodos FetchItems() e FetchItemsAsync() |
+| [UrlGet](EficazFramework.Repositories/ApiRepository_TEntity_/UrlGet.md 'EficazFramework.Repositories.ApiRepository<TEntity>.UrlGet') | URL de requisição para métodos FetchItems() e FetchItemsAsync() |
+| [UrlInsert](EficazFramework.Repositories/ApiRepository_TEntity_/UrlInsert.md 'EficazFramework.Repositories.ApiRepository<TEntity>.UrlInsert') | URL de requisição para métodos FetchItems() e FetchItemsAsync() |
+| [UrlUpdate](EficazFramework.Repositories/ApiRepository_TEntity_/UrlUpdate.md 'EficazFramework.Repositories.ApiRepository<TEntity>.UrlUpdate') | s<br/>            URL de requisição para métodos FetchItems() e FetchItemsAsync() |
 
 | Methods | |
 | :--- | :--- |
@@ -39,3 +41,4 @@ Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.O
 | [Detach(object)](EficazFramework.Repositories/ApiRepository_TEntity_/Detach(object).md 'EficazFramework.Repositories.ApiRepository<TEntity>.Detach(object)') | |
 | [FetchItems()](EficazFramework.Repositories/ApiRepository_TEntity_/FetchItems().md 'EficazFramework.Repositories.ApiRepository<TEntity>.FetchItems()') | s<br/>            Efetua a instrução GET contra o datasource |
 | [FetchItemsAsync(CancellationToken)](EficazFramework.Repositories/ApiRepository_TEntity_/FetchItemsAsync(CancellationToken).md 'EficazFramework.Repositories.ApiRepository<TEntity>.FetchItemsAsync(System.Threading.CancellationToken)') | s<br/>            Efetua a instrução GET contra o datasource |
+| [PostMethod&lt;TBody,TResult&gt;(string, TBody, CancellationToken)](EficazFramework.Repositories/ApiRepository_TEntity_/PostMethod_TBody,TResult_(string,TBody,CancellationToken).md 'EficazFramework.Repositories.ApiRepository<TEntity>.PostMethod<TBody,TResult>(string, TBody, System.Threading.CancellationToken)') | método POST base para implementações |

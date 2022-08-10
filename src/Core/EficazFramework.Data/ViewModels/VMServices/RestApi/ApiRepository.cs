@@ -7,9 +7,14 @@ namespace EficazFramework.ViewModels.Services;
 
 class RestApi<T> : ViewModelService<T> where T : class
 {
-    public RestApi(ViewModel<T> viewmodel, HttpClient client) : base(viewmodel)
+    public RestApi(ViewModel<T> viewmodel, HttpClient client, RestApiBuilderOptions options = null) : base(viewmodel)
     {
-        viewmodel.Repository = new Repositories.ApiRepository<T>(client);
+        var repo = new Repositories.ApiRepository<T>(client);
+        if (options != null)
+        {
+            repo.UrlGet = options.UrlGet;
+        }
+        viewmodel.Repository = repo;
     }
 }
 
@@ -39,4 +44,10 @@ public static partial class ServiceUtils
         service.Dispose();
         return viewmodel;
     }
+}
+
+public class RestApiBuilderOptions
+{
+    public string UrlGet { get; set; }
+    
 }

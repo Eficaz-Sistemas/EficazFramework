@@ -1,12 +1,13 @@
 #### [EficazFramework.Data](EficazFrameworkData.md 'EficazFramework Data')
 ### [EficazFramework.Repositories](EficazFrameworkData.md#EficazFramework.Repositories 'EficazFramework.Repositories').[ApiRepository&lt;TEntity&gt;](EficazFramework.Repositories/ApiRepository_TEntity_.md 'EficazFramework.Repositories.ApiRepository<TEntity>')
 
-## ApiRepository<TEntity>.UriDelete Property
+## ApiRepository<TEntity>.UrlUpdate Property
 
-URI de requisição para métodos FetchItems() e FetchItemsAsync()
+s  
+            URL de requisição para métodos FetchItems() e FetchItemsAsync()
 
 ```csharp
-public string UriDelete { get; set; }
+public string UrlUpdate { get; set; }
 ```
 
 #### Property Value

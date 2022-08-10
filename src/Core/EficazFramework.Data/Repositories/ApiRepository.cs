@@ -8,6 +8,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Net.Http;
 using System.Net.Http.Json;
+using System.Text.Json.Serialization;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -21,29 +22,29 @@ public sealed class ApiRepository<TEntity> : Repositories.RepositoryBase<TEntity
     private readonly HttpClient _client;
 
     /// <summary>
-    /// URI de requisição para métodos FetchItems() e FetchItemsAsync()
+    /// URL de requisição para métodos FetchItems() e FetchItemsAsync()
     /// </summary>
-    public string UriGet { get; set; } = "/myRestApi/get";
+    public string UrlGet { get; set; } = "/myRestApi/get";
 
     /// <summary>
-    /// URI de requisição para métodos FetchItems() e FetchItemsAsync()
+    /// URL de requisição para métodos FetchItems() e FetchItemsAsync()
     /// </summary>
-    public string UriInsert { get; set; } = "/myRestApi/insert";
+    public string UrlInsert { get; set; } = "/myRestApi/insert";
 
     /// <summary>s
-    /// URI de requisição para métodos FetchItems() e FetchItemsAsync()
+    /// URL de requisição para métodos FetchItems() e FetchItemsAsync()
     /// </summary>
-    public string UriUpdate { get; set; } = "/myRestApi/update";
+    public string UrlUpdate { get; set; } = "/myRestApi/update";
 
     /// <summary>
-    /// URI de requisição para métodos FetchItems() e FetchItemsAsync()
+    /// URL de requisição para métodos FetchItems() e FetchItemsAsync()
     /// </summary>
-    public string UriDelete { get; set; } = "/myRestApi/delete";
+    public string UrlDelete { get; set; } = "/myRestApi/delete";
 
     /// <summary>
-    /// URI de requisição para métodos FetchItems() e FetchItemsAsync()
+    /// URL de requisição para métodos FetchItems() e FetchItemsAsync()
     /// </summary>
-    public string UriCancel { get; set; } = "/myRestApi/cancel";
+    public string UrlCancel { get; set; } = "/myRestApi/cancel";
 
     /// <summary>
     /// (Opcional) Instância de DbContext para Tracking de modificações.
@@ -97,7 +98,15 @@ public sealed class ApiRepository<TEntity> : Repositories.RepositoryBase<TEntity
     /// </summary>
     public override async Task<ObservableCollection<TEntity>> FetchItemsAsync(CancellationToken cancellationToken)
     {
-        return (await PostMethod<object, List<TEntity>>(UriGet, new GetSchema(Filter, OrderByDefinitions), cancellationToken)).ToObservableCollection<TEntity>();
+        List<TEntity> result = new();
+        var response = await PostMethod<object, List<TEntity>>(UrlGet, new GetSchema(Filter, OrderByDefinitions), cancellationToken);
+        if (response != null)
+            result.AddRange(response as IList<TEntity>);
+
+        TrackingContext?.Dispose();
+        TrackingContext = DbContextRequest?.Invoke();
+        TrackingContext?.AttachRange(result);
+        return result.ToObservableCollection<TEntity>();
     }
 
     /// <summary>
@@ -185,7 +194,7 @@ public sealed class ApiRepository<TEntity> : Repositories.RepositoryBase<TEntity
     {
         try
         {
-            var result = await PostMethod<object, string>(UriCancel, item, default);
+            var result = await PostMethod<object, string>(UrlCancel, item, default);
             return null;
         }
         catch (Exception ex)
@@ -245,10 +254,21 @@ public sealed class ApiRepository<TEntity> : Repositories.RepositoryBase<TEntity
     {
         throw new NotImplementedException();
     }
+
+
+    /// <summary>
+    /// Evento disparado quando o Repositório precisa de uma nova instância de DbContext.
+    /// </summary>
+    public Func<Microsoft.EntityFrameworkCore.DbContext> DbContextRequest { get; set; } = null;
+
 }
 
 public class GetSchema
 {
+    [JsonConstructor]
+    public GetSchema()
+    { }
+    
     public GetSchema(Expressions.ExpressionQuery filter, IEnumerable<Collections.SortDescription> orderBy)
     {
         Filter = filter;
