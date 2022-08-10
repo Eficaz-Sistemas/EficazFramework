@@ -40,7 +40,7 @@ public class ApiRepositoryTests
     public void SelectTest()
     {
         var repository = new ApiRepository<Shared.MockClass>(Client);
-        repository.UriGet = "/mock/get";
+        repository.UrlGet = "/mock/get";
         repository.DataContext.Should().HaveCount(0);
         repository.Get();
         repository.DataContext.Should().HaveCount(300);
@@ -50,7 +50,7 @@ public class ApiRepositoryTests
     public async Task SelectAsyncTest()
     {
         var repository = new ApiRepository<Shared.MockClass>(Client);
-        repository.UriGet = "/mock/get";
+        repository.UrlGet = "/mock/get";
         repository.DataContext.Should().HaveCount(0);
         await repository.GetAsync(default);
         repository.DataContext.Should().HaveCount(300);
@@ -60,7 +60,7 @@ public class ApiRepositoryTests
     public async Task SelectStressAsyncTest()
     {
         var repository = new ApiRepository<Shared.MockClass>(Client);
-        repository.UriGet = "/mock/getBig";
+        repository.UrlGet = "/mock/getBig";
         repository.DataContext.Should().HaveCount(0);
         await repository.GetAsync(default);
         repository.DataContext.Should().HaveCount(150000);

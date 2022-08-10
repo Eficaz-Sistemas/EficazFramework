@@ -161,6 +161,7 @@
 | :--- | :--- |
 | [ApiRepository&lt;TEntity&gt;](EficazFramework.Repositories/ApiRepository_TEntity_.md 'EficazFramework.Repositories.ApiRepository<TEntity>') | |
 | [EntityRepository&lt;TEntity&gt;](EficazFramework.Repositories/EntityRepository_TEntity_.md 'EficazFramework.Repositories.EntityRepository<TEntity>') | |
+| [GetSchema](EficazFramework.Repositories/GetSchema.md 'EficazFramework.Repositories.GetSchema') | |
 | [RepositoryBase&lt;T&gt;](EficazFramework.Repositories/RepositoryBase_T_.md 'EficazFramework.Repositories.RepositoryBase<T>') | |
 
 | Interfaces | |
@@ -263,6 +264,7 @@
 | Classes | |
 | :--- | :--- |
 | [IndexViewNavigator&lt;T&gt;](EficazFramework.ViewModels.Services/IndexViewNavigator_T_.md 'EficazFramework.ViewModels.Services.IndexViewNavigator<T>') | |
+| [RestApiBuilderOptions](EficazFramework.ViewModels.Services/RestApiBuilderOptions.md 'EficazFramework.ViewModels.Services.RestApiBuilderOptions') | |
 | [ServiceUtils](EficazFramework.ViewModels.Services/ServiceUtils.md 'EficazFramework.ViewModels.Services.ServiceUtils') | |
 | [SingleEdit&lt;T&gt;](EficazFramework.ViewModels.Services/SingleEdit_T_.md 'EficazFramework.ViewModels.Services.SingleEdit<T>') | Serviço de gravação e/ou cancelamento de alterações para ViewModel |
 | [SingleEditDetail&lt;T,D&gt;](EficazFramework.ViewModels.Services/SingleEditDetail_T,D_.md 'EficazFramework.ViewModels.Services.SingleEditDetail<T,D>') | |
