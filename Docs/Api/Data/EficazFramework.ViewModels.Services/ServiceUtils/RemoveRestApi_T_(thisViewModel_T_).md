@@ -3,7 +3,7 @@
 
 ## ServiceUtils.RemoveRestApi<T>(this ViewModel<T>) Method
 
-Remove os serviços de DbContext do Entity Framework Core para persistência de dados com bases relacionais.
+Remove os serviços de operações CRUD via API's REST.
 
 ```csharp
 public static EficazFramework.ViewModels.ViewModel<T> RemoveRestApi<T>(this EficazFramework.ViewModels.ViewModel<T> viewmodel)

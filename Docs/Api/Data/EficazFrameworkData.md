@@ -125,6 +125,7 @@
 | [ExpressionProperty](EficazFramework.Expressions/ExpressionProperty.md 'EficazFramework.Expressions.ExpressionProperty') | |
 | [ExpressionQuery](EficazFramework.Expressions/ExpressionQuery.md 'EficazFramework.Expressions.ExpressionQuery') | |
 | [ExpressionUpdater](EficazFramework.Expressions/ExpressionUpdater.md 'EficazFramework.Expressions.ExpressionUpdater') | |
+| [QueryDescription](EficazFramework.Expressions/QueryDescription.md 'EficazFramework.Expressions.QueryDescription') | |
 | [RelationshipConfig](EficazFramework.Expressions/RelationshipConfig.md 'EficazFramework.Expressions.RelationshipConfig') | |
 
 | Enums | |
@@ -161,7 +162,6 @@
 | :--- | :--- |
 | [ApiRepository&lt;TEntity&gt;](EficazFramework.Repositories/ApiRepository_TEntity_.md 'EficazFramework.Repositories.ApiRepository<TEntity>') | |
 | [EntityRepository&lt;TEntity&gt;](EficazFramework.Repositories/EntityRepository_TEntity_.md 'EficazFramework.Repositories.EntityRepository<TEntity>') | |
-| [GetSchema](EficazFramework.Repositories/GetSchema.md 'EficazFramework.Repositories.GetSchema') | |
 | [RepositoryBase&lt;T&gt;](EficazFramework.Repositories/RepositoryBase_T_.md 'EficazFramework.Repositories.RepositoryBase<T>') | |
 
 | Interfaces | |

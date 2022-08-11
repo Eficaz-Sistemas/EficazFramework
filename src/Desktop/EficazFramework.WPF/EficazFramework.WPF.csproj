@@ -115,7 +115,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\CodeGenerators\EficazFramework.Generators\EficazFramework.Generators.csproj" ReferenceOutputAssembly="false" OutputItemType="Analyzer" />
+    <!--<ProjectReference Include="..\..\CodeGenerators\EficazFramework.Generators\EficazFramework.Generators.csproj" ReferenceOutputAssembly="false" OutputItemType="Analyzer" />-->
     <ProjectReference Include="..\..\Core\EficazFramework.Data\EficazFramework.Data.csproj" />
     <ProjectReference Include="..\..\Core\EficazFramework.Utilities\EficazFramework.Utilities.csproj" />
   </ItemGroup>

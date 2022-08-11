@@ -3,6 +3,7 @@ using Microsoft.Extensions.DependencyInjection;
 using NUnit.Framework;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Net.Http;
 using System.Net.Http.Json;
 using System.Threading.Tasks;
@@ -54,6 +55,8 @@ public class ApiRepositoryTests
         repository.DataContext.Should().HaveCount(0);
         await repository.GetAsync(default);
         repository.DataContext.Should().HaveCount(300);
+        repository.DataContext.Where(r => r.Id == 1).Count().Should().BeGreaterThan(0);
+        repository.DataContext.Where(r => r.Id != 1).Count().Should().BeGreaterThan(0);
     }
 
     [Test]
@@ -63,7 +66,27 @@ public class ApiRepositoryTests
         repository.UrlGet = "/mock/getBig";
         repository.DataContext.Should().HaveCount(0);
         await repository.GetAsync(default);
-        repository.DataContext.Should().HaveCount(150000);
+        repository.DataContext.Should().HaveCount(1500000);
+    }
+
+    [Test]
+    public async Task SelectFilteredAsyncTest()
+    {
+        var repository = new ApiRepository<Shared.MockClass>(Client);
+        repository.UrlGet = "/mock/get";
+        repository.Filter = new()
+        {
+            new Expressions.ExpressionObjectQuery()
+            {
+                FieldName = "Id",
+                Operator = Enums.CompareMethod.Equals, 
+                Value = 1
+            }
+        };
+        repository.DataContext.Should().HaveCount(0);
+        await repository.GetAsync(default);
+        repository.DataContext.Where(r => r.Id == 1).Count().Should().BeGreaterThan(0);
+        repository.DataContext.Where(r => r.Id != 1).Count().Should().Be(0);
     }
 
 }

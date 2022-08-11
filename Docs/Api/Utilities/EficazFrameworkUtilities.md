@@ -121,6 +121,7 @@
 
 | Classes | |
 | :--- | :--- |
+| [ObjectToInferredTypesConverter](EficazFramework.Serialization/ObjectToInferredTypesConverter.md 'EficazFramework.Serialization.ObjectToInferredTypesConverter') | |
 | [SerializationOperations](EficazFramework.Serialization/SerializationOperations.md 'EficazFramework.Serialization.SerializationOperations') | |
 
 <a name='EficazFramework.Services'></a>
