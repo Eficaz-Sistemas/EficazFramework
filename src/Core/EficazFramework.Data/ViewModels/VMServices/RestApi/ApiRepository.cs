@@ -22,21 +22,21 @@ public static partial class ServiceUtils
 {
 
     /// <summary>
-    /// Adiciona os serviços de DbContext do Entity Framework Core para persistência de dados com bases relacionais.
+    /// Adiciona os serviços de operações CRUD via API's REST.
     /// </summary>
-    public static ViewModel<T> AddRestApi<T>(this ViewModel<T> viewmodel, HttpClient client) where T : class
+    public static ViewModel<T> AddRestApi<T>(this ViewModel<T> viewmodel, HttpClient client, RestApiBuilderOptions options = null) where T : class
     {
         if (viewmodel.Services.ContainsKey(ServiceUtils.KEY_REST))
             throw new ArgumentException(string.Format(Resources.Strings.ViewModel.ServiceAlreadyAdded, ServiceUtils.KEY_REST));
 
-        var service = new RestApi<T>(viewmodel, client);
+        var service = new RestApi<T>(viewmodel, client, options);
         viewmodel.Services.Add(ServiceUtils.KEY_REST, service);
         return viewmodel;
     }
 
 
     /// <summary>
-    /// Remove os serviços de DbContext do Entity Framework Core para persistência de dados com bases relacionais.
+    /// Remove os serviços de operações CRUD via API's REST.
     /// </summary>
     public static ViewModel<T> RemoveRestApi<T>(this ViewModel<T> viewmodel) where T : Entities.EntityBase, Entities.IEntity
     {

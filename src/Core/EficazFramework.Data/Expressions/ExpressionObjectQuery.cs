@@ -25,10 +25,11 @@ public class ExpressionObjectQuery
     /// Operador ou critério de consulta
     /// </summary>
     public Enums.CompareMethod Operator { get; set; } = Enums.CompareMethod.Equals;
-    
+
     /// <summary>
     /// Valor a ser utilizado no filtro
     /// </summary>
+    [System.Text.Json.Serialization.JsonConverter(typeof(Serialization.ObjectToInferredTypesConverter))]
     public object Value { get; set; }
 
     /// <summary>
@@ -36,6 +37,7 @@ public class ExpressionObjectQuery
     /// Só será considerado quando <see cref="Operator"/> for igual a
     /// <see cref="Enums.CompareMethod.Between"/>
     /// </summary>
+    [System.Text.Json.Serialization.JsonConverter(typeof(Serialization.ObjectToInferredTypesConverter))]
     public object Value2 { get; set; }
 
     /// <summary>

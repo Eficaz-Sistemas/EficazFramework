@@ -1,7 +1,7 @@
 #### [EficazFramework.Data](EficazFrameworkData.md 'EficazFramework Data')
-### [EficazFramework.Repositories](EficazFrameworkData.md#EficazFramework.Repositories 'EficazFramework.Repositories').[GetSchema](EficazFramework.Repositories/GetSchema.md 'EficazFramework.Repositories.GetSchema')
+### [EficazFramework.Expressions](EficazFrameworkData.md#EficazFramework.Expressions 'EficazFramework.Expressions').[QueryDescription](EficazFramework.Expressions/QueryDescription.md 'EficazFramework.Expressions.QueryDescription')
 
-## GetSchema.Filter Property
+## QueryDescription.Filter Property
 
 ```csharp
 public EficazFramework.Expressions.ExpressionQuery Filter { get; set; }

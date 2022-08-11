@@ -99,7 +99,7 @@ public sealed class ApiRepository<TEntity> : Repositories.RepositoryBase<TEntity
     public override async Task<ObservableCollection<TEntity>> FetchItemsAsync(CancellationToken cancellationToken)
     {
         List<TEntity> result = new();
-        var response = await PostMethod<object, List<TEntity>>(UrlGet, new GetSchema(Filter, OrderByDefinitions), cancellationToken);
+        var response = await PostMethod<object, List<TEntity>>(UrlGet, new Expressions.QueryDescription(Filter, OrderByDefinitions), cancellationToken);
         if (response != null)
             result.AddRange(response as IList<TEntity>);
 
@@ -263,18 +263,3 @@ public sealed class ApiRepository<TEntity> : Repositories.RepositoryBase<TEntity
 
 }
 
-public class GetSchema
-{
-    [JsonConstructor]
-    public GetSchema()
-    { }
-    
-    public GetSchema(Expressions.ExpressionQuery filter, IEnumerable<Collections.SortDescription> orderBy)
-    {
-        Filter = filter;
-        OrderBy.AddRange(orderBy);
-    }
-    
-    public Expressions.ExpressionQuery Filter { get; set; } = null;
-    public List<Collections.SortDescription> OrderBy { get; set; } = new();
-}
