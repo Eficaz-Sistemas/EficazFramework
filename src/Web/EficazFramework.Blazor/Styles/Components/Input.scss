@@ -56,6 +56,16 @@ div.text-match div, div.mud-input input {
     }
 }
 
+.edit-mode-cell >
+    .mud-input-input-control >
+        .mud-input-control-input-container >
+            .mud-input-margin-dense >
+                input.mud-input-root-margin-dense {
+    padding-top: 3px;
+    padding-bottom: 3px;
+}
+
+
 .mud-input-control-ef > 
     .mud-input-control-input-container > 
         .mud-input > 
@@ -92,3 +102,4 @@ div.text-match div, div.mud-input input {
     margin-right: 8px;
     margin-top: 0px;
 }
+
