@@ -135,8 +135,8 @@ public class ModelBuilder : ISourceGenerator
             if ((!string.IsNullOrEmpty(prop.DefaultValue)) & prop.ComputedValue == false)
                 builder.Append($".HasDefaultValue({prop.DefaultValue})");
 
-            if ((!string.IsNullOrEmpty(prop.DefaultValue)) & prop.ComputedValue == true)
-                builder.Append($".HasComputedColumn(\"{prop.DefaultValue}\")");
+            //if ((!string.IsNullOrEmpty(prop.DefaultValue)) & prop.ComputedValue == true)
+            //    builder.Append($".HasComputedColumn(\"{prop.DefaultValue}\")");
 
             builder.Append(";");
             string result = builder.ToString();
