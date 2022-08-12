@@ -30,6 +30,7 @@
 	<ItemGroup>
 	  <ProjectReference Include="..\..\..\CodeGenerators\EficazFramework.Generators\EficazFramework.Generators.csproj" ReferenceOutputAssembly="false" OutputItemType="Analyzer" />
 	  <ProjectReference Include="..\..\..\Core\EficazFramework.Data\EficazFramework.Data.csproj" />
+	  <ProjectReference Include="..\..\..\DataProviders\EficazFramework.Data.InMemory\EficazFramework.Data.InMemory.csproj" />
 	  <ProjectReference Include="..\..\..\DataProviders\EficazFramework.Data.MsSqlServer\EficazFramework.Data.MsSqlServer.csproj" />
 	</ItemGroup>
 	
