@@ -6,8 +6,8 @@
 	<IsRoslynComponent>true</IsRoslynComponent>
 	<GeneratePackageOnBuild>True</GeneratePackageOnBuild>
 	<IncludeBuildOutput>false</IncludeBuildOutput>
-	<AssemblyVersion>6.0.0.0</AssemblyVersion>
-	<FileVersion>6.0.0.0</FileVersion>
+	<AssemblyVersion>6.0.1.0</AssemblyVersion>
+	<FileVersion>6.0.1.0</FileVersion>
 	<NeutralLanguage>pt-BR</NeutralLanguage>
 	<RepositoryUrl>https://github.com/Eficaz-Sistemas/EficazFramework</RepositoryUrl>
 	<RepositoryType>git</RepositoryType>
