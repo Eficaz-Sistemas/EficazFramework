@@ -4,7 +4,7 @@
 ## IEntityRepository.DbContext Property
 
 ```csharp
-Microsoft.EntityFrameworkCore.DbContext DbContext { get; }
+DbContext DbContext { get; }
 ```
 
 #### Property Value

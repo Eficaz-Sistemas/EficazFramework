@@ -132,8 +132,8 @@ public class ModelBuilder : ISourceGenerator
             if (prop.Lenght.HasValue)
                 builder.Append($".HasMaxLength({prop.Lenght.Value})");
 
-            if ((!string.IsNullOrEmpty(prop.DefaultValue)) & prop.ComputedValue == false)
-                builder.Append($".HasDefaultValue({prop.DefaultValue})");
+            //if ((!string.IsNullOrEmpty(prop.DefaultValue)) & prop.ComputedValue == false)
+            //    builder.Append($".HasDefaultValue({prop.DefaultValue})");
 
             //if ((!string.IsNullOrEmpty(prop.DefaultValue)) & prop.ComputedValue == true)
             //    builder.Append($".HasComputedColumn(\"{prop.DefaultValue}\")");

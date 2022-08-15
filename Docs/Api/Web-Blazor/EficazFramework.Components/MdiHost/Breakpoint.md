@@ -6,7 +6,7 @@
 Breakpoint that defines the view on Frames (windows) or Full Screen
 
 ```csharp
-public MudBlazor.Breakpoint Breakpoint { get; set; }
+public Breakpoint Breakpoint { get; set; }
 ```
 
 #### Property Value

@@ -11,7 +11,7 @@ Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.O
 
 | Constructors | |
 | :--- | :--- |
-| [DbContextModelCreatingEventArgs(ModelBuilder)](EficazFramework.Events/DbContextModelCreatingEventArgs/DbContextModelCreatingEventArgs(ModelBuilder).md 'EficazFramework.Events.DbContextModelCreatingEventArgs.DbContextModelCreatingEventArgs(Microsoft.EntityFrameworkCore.ModelBuilder)') | |
+| [DbContextModelCreatingEventArgs(ModelBuilder)](EficazFramework.Events/DbContextModelCreatingEventArgs/DbContextModelCreatingEventArgs(ModelBuilder).md 'EficazFramework.Events.DbContextModelCreatingEventArgs.DbContextModelCreatingEventArgs(ModelBuilder)') | |
 
 | Properties | |
 | :--- | :--- |

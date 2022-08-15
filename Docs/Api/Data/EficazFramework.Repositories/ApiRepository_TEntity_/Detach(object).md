@@ -3,6 +3,8 @@
 
 ## ApiRepository<TEntity>.Detach(object) Method
 
+Desanexa uma entidade da instância de [TrackingContext](EficazFramework.Repositories/ApiRepository_TEntity_/TrackingContext.md 'EficazFramework.Repositories.ApiRepository<TEntity>.TrackingContext'), caso nao seja nula.
+
 ```csharp
 public override void Detach(object item);
 ```

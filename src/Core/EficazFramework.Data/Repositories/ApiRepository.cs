@@ -203,15 +203,26 @@ public sealed class ApiRepository<TEntity> : Repositories.RepositoryBase<TEntity
         }
     }
 
+    /// <summary>
+    /// Desanexa uma entidade da instância de <see cref="TrackingContext"/>, caso nao seja nula.
+    /// </summary>
+    public override void Detach(object item)
+    {
+        if (TrackingContext == null)
+            return;
+        
+        var entry = TrackingContext.ChangeTracker.Entries().Where((it) => it.Entity == item).FirstOrDefault();
+        if (entry != null) entry.State = EntityState.Detached;
+    }
 
-
-
-
-
-
-
-
-
+    /// <summary>
+    /// Descartando o estado gerenciado (objetos gerenciados)
+    /// </summary>
+    internal override void DisposeManagedCallerObjects()
+    {
+        if (TrackingContext != null) TrackingContext.Dispose();
+        TrackingContext = null;
+    }
 
 
 
@@ -240,10 +251,6 @@ public sealed class ApiRepository<TEntity> : Repositories.RepositoryBase<TEntity
 
 
 
-    public override void Detach(object item)
-    {
-        throw new NotImplementedException();
-    }
 
     internal override void ItemAdded(object item)
     {

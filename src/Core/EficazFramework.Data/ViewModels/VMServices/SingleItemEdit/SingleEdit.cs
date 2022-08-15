@@ -282,17 +282,19 @@ public class SingleEdit<T> : ViewModelService<T> where T : class
         {
             entry = CurrentEntry;
         }
-        var args = new Events.CRUDEventArgs<T>(Enums.CRUD.Action.EntryEditing, ViewModelInstance.State, entry);
 
+        var args = new Events.CRUDEventArgs<T>(Enums.CRUD.Action.EntryEditing, ViewModelInstance.State, entry);
         ViewModelInstance.RaiseViewModelEvent(args);
         if (args.Cancel == true)
             return;
 
         ViewModelInstance.SetState(Enums.CRUD.State.Processando, true, null);
-
         AttachValidatorAndINotifyPropertyChanges(entry);
         await ViewModelInstance.OnEntrySetup(entry);
         (entry as EntityBase)?.SetIsLoaded();
+        
+        args = new Events.CRUDEventArgs<T>(Enums.CRUD.Action.EntrySetupCompleted, ViewModelInstance.State, entry);
+        ViewModelInstance.RaiseViewModelEvent(args);
 
         args = new Events.CRUDEventArgs<T>(Enums.CRUD.Action.EntryEdited, ViewModelInstance.State, entry);
         ViewModelInstance.RaiseViewModelEvent(args);

@@ -90,6 +90,10 @@ public enum Action
 
 `EntryEditing` 13
 
+<a name='EficazFramework.Enums.CRUD.Action.EntrySetupCompleted'></a>
+
+`EntrySetupCompleted` 6
+
 <a name='EficazFramework.Enums.CRUD.Action.EntryValidated'></a>
 
 `EntryValidated` 20

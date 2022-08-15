@@ -4,7 +4,7 @@
 ## DbContextInstanceCreatingEventArgs.Instance Property
 
 ```csharp
-public Microsoft.EntityFrameworkCore.DbContext Instance { get; set; }
+public DbContext Instance { get; set; }
 ```
 
 #### Property Value

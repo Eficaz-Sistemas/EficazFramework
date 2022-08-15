@@ -11,7 +11,7 @@ Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.O
 
 | Constructors | |
 | :--- | :--- |
-| [DbContextConfiguringEventArgs(DbContextOptionsBuilder)](EficazFramework.Events/DbContextConfiguringEventArgs/DbContextConfiguringEventArgs(DbContextOptionsBuilder).md 'EficazFramework.Events.DbContextConfiguringEventArgs.DbContextConfiguringEventArgs(Microsoft.EntityFrameworkCore.DbContextOptionsBuilder)') | |
+| [DbContextConfiguringEventArgs(DbContextOptionsBuilder)](EficazFramework.Events/DbContextConfiguringEventArgs/DbContextConfiguringEventArgs(DbContextOptionsBuilder).md 'EficazFramework.Events.DbContextConfiguringEventArgs.DbContextConfiguringEventArgs(DbContextOptionsBuilder)') | |
 
 | Properties | |
 | :--- | :--- |

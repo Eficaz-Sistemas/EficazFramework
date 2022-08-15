@@ -56,6 +56,8 @@ public enum Action
     Saving = 4,
     Saved = 5,
 
+    EntrySetupCompleted = 6,
+
     EntryAdding = 11,
     EntryAdded = 12,
 

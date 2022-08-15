@@ -23,4 +23,4 @@ Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.O
 | Methods | |
 | :--- | :--- |
 | [GetConnectionString(string, string, string)](EficazFramework.Providers/SqlLite/GetConnectionString(string,string,string).md 'EficazFramework.Providers.SqlLite.GetConnectionString(string, string, string)') | |
-| [OnConfiguring(DbContextOptionsBuilder, string, string, string)](EficazFramework.Providers/SqlLite/OnConfiguring(DbContextOptionsBuilder,string,string,string).md 'EficazFramework.Providers.SqlLite.OnConfiguring(Microsoft.EntityFrameworkCore.DbContextOptionsBuilder, string, string, string)') | |
+| [OnConfiguring(DbContextOptionsBuilder, string, string, string)](EficazFramework.Providers/SqlLite/OnConfiguring(DbContextOptionsBuilder,string,string,string).md 'EficazFramework.Providers.SqlLite.OnConfiguring(DbContextOptionsBuilder, string, string, string)') | |

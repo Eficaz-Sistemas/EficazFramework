@@ -4,7 +4,7 @@
 ## EntityRepositoryConfiguration<TEntity>.DbContextRequest Property
 
 ```csharp
-public System.Func<Microsoft.EntityFrameworkCore.DbContext> DbContextRequest { get; set; }
+public System.Func<DbContext> DbContextRequest { get; set; }
 ```
 
 #### Property Value

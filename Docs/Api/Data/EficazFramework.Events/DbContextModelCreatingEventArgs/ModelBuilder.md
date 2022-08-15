@@ -4,7 +4,7 @@
 ## DbContextModelCreatingEventArgs.ModelBuilder Property
 
 ```csharp
-public Microsoft.EntityFrameworkCore.ModelBuilder ModelBuilder { get; set; }
+public ModelBuilder ModelBuilder { get; set; }
 ```
 
 #### Property Value

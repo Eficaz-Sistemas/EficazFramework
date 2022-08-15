@@ -4,10 +4,10 @@
 ## DbContextModelCreatingEventArgs(ModelBuilder) Constructor
 
 ```csharp
-public DbContextModelCreatingEventArgs(Microsoft.EntityFrameworkCore.ModelBuilder modelbuilder);
+public DbContextModelCreatingEventArgs(ModelBuilder modelbuilder);
 ```
 #### Parameters
 
-<a name='EficazFramework.Events.DbContextModelCreatingEventArgs.DbContextModelCreatingEventArgs(Microsoft.EntityFrameworkCore.ModelBuilder).modelbuilder'></a>
+<a name='EficazFramework.Events.DbContextModelCreatingEventArgs.DbContextModelCreatingEventArgs(ModelBuilder).modelbuilder'></a>
 
 `modelbuilder` [Microsoft.EntityFrameworkCore.ModelBuilder](https://docs.microsoft.com/en-us/dotnet/api/Microsoft.EntityFrameworkCore.ModelBuilder 'Microsoft.EntityFrameworkCore.ModelBuilder')

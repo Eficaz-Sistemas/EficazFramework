@@ -4,19 +4,19 @@
 ## QueryOperations.CreateCommandAsync(this QueryBase, DbContext, DataProviderBase) Method
 
 ```csharp
-public static System.Threading.Tasks.Task<System.Data.Common.DbCommand> CreateCommandAsync(this EficazFramework.Repositories.Services.QueryBase query, Microsoft.EntityFrameworkCore.DbContext context, EficazFramework.Providers.DataProviderBase provider);
+public static System.Threading.Tasks.Task<System.Data.Common.DbCommand> CreateCommandAsync(this EficazFramework.Repositories.Services.QueryBase query, DbContext context, EficazFramework.Providers.DataProviderBase provider);
 ```
 #### Parameters
 
-<a name='EficazFramework.Extensions.QueryOperations.CreateCommandAsync(thisEficazFramework.Repositories.Services.QueryBase,Microsoft.EntityFrameworkCore.DbContext,EficazFramework.Providers.DataProviderBase).query'></a>
+<a name='EficazFramework.Extensions.QueryOperations.CreateCommandAsync(thisEficazFramework.Repositories.Services.QueryBase,DbContext,EficazFramework.Providers.DataProviderBase).query'></a>
 
 `query` [QueryBase](EficazFramework.Repositories.Services/QueryBase.md 'EficazFramework.Repositories.Services.QueryBase')
 
-<a name='EficazFramework.Extensions.QueryOperations.CreateCommandAsync(thisEficazFramework.Repositories.Services.QueryBase,Microsoft.EntityFrameworkCore.DbContext,EficazFramework.Providers.DataProviderBase).context'></a>
+<a name='EficazFramework.Extensions.QueryOperations.CreateCommandAsync(thisEficazFramework.Repositories.Services.QueryBase,DbContext,EficazFramework.Providers.DataProviderBase).context'></a>
 
 `context` [Microsoft.EntityFrameworkCore.DbContext](https://docs.microsoft.com/en-us/dotnet/api/Microsoft.EntityFrameworkCore.DbContext 'Microsoft.EntityFrameworkCore.DbContext')
 
-<a name='EficazFramework.Extensions.QueryOperations.CreateCommandAsync(thisEficazFramework.Repositories.Services.QueryBase,Microsoft.EntityFrameworkCore.DbContext,EficazFramework.Providers.DataProviderBase).provider'></a>
+<a name='EficazFramework.Extensions.QueryOperations.CreateCommandAsync(thisEficazFramework.Repositories.Services.QueryBase,DbContext,EficazFramework.Providers.DataProviderBase).provider'></a>
 
 `provider` [DataProviderBase](EficazFramework.Providers/DataProviderBase.md 'EficazFramework.Providers.DataProviderBase')
 

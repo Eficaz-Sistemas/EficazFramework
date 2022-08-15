@@ -6,11 +6,11 @@
 Verifica se todos os migrations foram devidamente aplicados
 
 ```csharp
-public static System.Threading.Tasks.Task<bool> AllMigrationsAppliedAsync(this Microsoft.EntityFrameworkCore.DbContext context);
+public static System.Threading.Tasks.Task<bool> AllMigrationsAppliedAsync(this DbContext context);
 ```
 #### Parameters
 
-<a name='EficazFramework.Extensions.DbContext.AllMigrationsAppliedAsync(thisMicrosoft.EntityFrameworkCore.DbContext).context'></a>
+<a name='EficazFramework.Extensions.DbContext.AllMigrationsAppliedAsync(thisDbContext).context'></a>
 
 `context` [Microsoft.EntityFrameworkCore.DbContext](https://docs.microsoft.com/en-us/dotnet/api/Microsoft.EntityFrameworkCore.DbContext 'Microsoft.EntityFrameworkCore.DbContext')
 

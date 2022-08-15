@@ -16,6 +16,9 @@ public class CrudOperations
     [SetUp]
     public async Task Setup()
     {
+        resultContext = null;
+        shouldCancel = false;
+        
         Vm = new ViewModel<Resources.Mocks.Classes.Blog>().AddEntityFramework();
         Vm.Repository.OrderByDefinitions.Add(new()
         {
@@ -59,7 +62,7 @@ public class CrudOperations
         (await ctb.Database.EnsureDeletedAsync()).Should().BeTrue();
     }
 
-    [Test, Order(1)]
+    [Test]
     public void SelectTest()
     {
         Vm.Commands["Get"].Execute(null);
@@ -101,7 +104,7 @@ public class CrudOperations
 
 
 
-    [Test, Order(2)]
+    [Test]
     public void TabularConstructorTest()
     {
         Vm.AddTabular();
@@ -110,7 +113,7 @@ public class CrudOperations
         ((Repositories.EntityRepository<Resources.Mocks.Classes.Blog>)Vm.Repository).AsNoTracking.Should().BeFalse();
     }
 
-    [Test, Order(3)]
+    [Test]
     public async Task TabularValidationTest()
     {
         Vm.AddTabular();
@@ -149,7 +152,7 @@ public class CrudOperations
 
 
 
-    [Test, Order(4)]
+    [Test]
     public async Task SingleEditTest_Navigation()
     {
         Vm.ViewModelAction += VmActions_Validation;
@@ -232,7 +235,7 @@ public class CrudOperations
     }
 
     private bool _saveNotified = false;
-    [Test, Order(5)]
+    [Test]
     public async Task SingleEditTest_Update()
     {
         Vm.AddSingledEdit();
@@ -279,7 +282,7 @@ public class CrudOperations
         Vm.ShowMessage -= Vm_Dialog;
     }
 
-    [Test, Order(6)]
+    [Test]
     public async Task SingleEditTest_Insert()
     {
         Vm.AddSingledEdit();
@@ -314,7 +317,7 @@ public class CrudOperations
         service.CurrentEntry.Name = "Added Item";
 
         Vm.Commands["Save"].Execute(null);
-        await Task.Delay(100);
+        await Task.Delay(250);
         resultContext.Should().BeNull();
 
         Vm.Commands["Get"].Execute(null);
@@ -323,7 +326,7 @@ public class CrudOperations
         Vm.ViewModelAction -= VmActions_Validation;
     }
 
-    [Test, Order(7)]
+    [Test]
     public async Task SingleEditTest_BatchInsert()
     {
         Vm.AddSingledEdit();
@@ -361,7 +364,7 @@ public class CrudOperations
     }
 
     private bool _refuseDelete = true;
-    [Test, Order(8)]
+    [Test]
     public async Task SingleEditTest_Delete()
     {
         Vm.AddSingledEdit();
@@ -373,14 +376,15 @@ public class CrudOperations
         resultContext = null;
         var service = Vm.GetSingleEdit();
 
+        _refuseDelete = true;
         Vm.Commands["Delete"].Execute(Vm.Repository.DataContext.Last());
-        await Task.Delay(100);
+        await Task.Delay(150);
         resultContext.Should().BeNull();
         Vm.Repository.DataContext.Should().HaveCount(100);
 
         _refuseDelete = false;
         Vm.Commands["Delete"].Execute(Vm.Repository.DataContext.Last());
-        await Task.Delay(100);
+        await Task.Delay(150);
         resultContext.Should().Be("ok");
         Vm.Repository.DataContext.Should().HaveCount(99);
 
@@ -389,7 +393,7 @@ public class CrudOperations
     }
 
     bool _exceptionRaised = false;
-    [Test, Order(14)]
+    [Test]
     public async Task SingleEdit_Exceptions()
     {
         Vm.ShowMessage += Vm_Dialog;
@@ -436,7 +440,7 @@ public class CrudOperations
     }
 
 
-    [Test, Order(10)]
+    [Test]
     public async Task SingleEditDetailTest_NavigationProperties()
     {
         Vm.AddSingledEdit().AddSingledEditDetail(dt => dt.Posts);
@@ -473,7 +477,7 @@ public class CrudOperations
 
     }
 
-    [Test, Order(11)]
+    [Test]
     public async Task SingleEditDetailTest_Update()
     {
         Vm.ShowMessage += Vm_Dialog;
@@ -539,7 +543,7 @@ public class CrudOperations
         Vm.ViewModelAction -= VmActions_Validation;
     }
 
-    [Test, Order(12)]
+    [Test]
     public async Task SingleEditDetailTest_Insert()
     {
         Vm.ShowMessage += Vm_Dialog;
@@ -623,7 +627,7 @@ public class CrudOperations
         Vm.ViewModelAction -= VmActions_Validation;
     }
 
-    [Test, Order(13)]
+    [Test]
     public async Task SingleEditDetailTest_Delete()
     {
         Vm.ShowMessage += Vm_Dialog;
@@ -698,7 +702,7 @@ public class CrudOperations
         Vm.ViewModelAction -= VmActions_Validation;
     }
 
-    [Test, Order(14)]
+    [Test]
     public async Task SingleEditDetailTest_DeleteWithAutoCommit()
     {
         Vm.ShowMessage += Vm_Dialog;
@@ -750,7 +754,7 @@ public class CrudOperations
         Vm.ViewModelAction -= VmActions_Validation;
     }
 
-    [Test, Order(15)]
+    [Test]
     public async Task SingleEditDetail_Exceptions()
     {
         Vm.ShowMessage += Vm_Dialog;
@@ -811,7 +815,7 @@ public class CrudOperations
 
 
 
-    [Test, Order(16)]
+    [Test]
     public async Task TabularEditDetailTest_NavigationProperties()
     {
         Vm.AddSingledEdit().AddTabularEditDetail(dt => dt.Posts);
@@ -829,7 +833,7 @@ public class CrudOperations
         Vm.Repository.DataContext.Count(p => p.Posts.Count <= 0).Should().Be(0);
     }
 
-    [Test, Order(17)]
+    [Test]
     public async Task TabularEditDetailTest_Update()
     {
         Vm.ShowMessage += Vm_Dialog;
@@ -890,7 +894,7 @@ public class CrudOperations
         Vm.ViewModelAction -= VmActions_Validation;
     }
 
-    [Test, Order(18)]
+    [Test]
     public async Task TabularEditDetailTest_Insert()
     {
         Vm.ShowMessage += Vm_Dialog;
@@ -971,7 +975,7 @@ public class CrudOperations
         Vm.ViewModelAction -= VmActions_Validation;
     }
 
-    [Test, Order(19)]
+    [Test]
     public async Task TabularEditDetailTest_Delete()
     {
         Vm.ShowMessage += Vm_Dialog;
@@ -1077,6 +1081,10 @@ public class CrudOperations
                     e.Cancel = true;
 
                 break;
+
+            //default:
+            //    resultContext = null;
+            //    break;
         }
     }
 

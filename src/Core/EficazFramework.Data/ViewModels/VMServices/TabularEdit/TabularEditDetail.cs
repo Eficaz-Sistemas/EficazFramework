@@ -141,7 +141,7 @@ public class TabularEditDetail<T, D> : ViewModelService<T>
                 _mustAttachDataContext = true;
                 break;
 
-            case Enums.CRUD.Action.EntryEditing:
+            case Enums.CRUD.Action.EntrySetupCompleted:
                 _mustAttachDataContext = true;
                 break;
 
