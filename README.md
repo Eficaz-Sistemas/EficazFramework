@@ -30,20 +30,7 @@
    - Construtor de expressões Func<T, Bool> para elaboração de operadores .Where<T>()
    - Integração com EntityFrameworkCore
    - SDK de desenvolvimento, publicado no MarketPlace do Visual Studio, com template de classes para tabelas de dados, suportando MsSQL, MySQL, OracleSQL e SqlLite, com classes parciais, permitindo expansão manual.
-   
-#### Integração com projetos do SPED, com mapeamento de campos e consumo de Web-Services, no Projeto [EficazFramework.SPED](https://github.com/Eficaz-Sistemas/EficazFramework.SPED)
-   - CT-e e CT-eOS
-   - DAPI
-   - e-CredAc portaria CAT 83/09 e 207/09
-   - e-Ressarcimento portaria CAT 42/18
-   - ECD
-   - ECF
-   - EFD ICMS / IPI
-   - EFD Contribuições
-   - GNRE
-   - NF-e
-   - NFS-e
-   
+      
 #### <img src="./Assets/blazor.svg" width="24" height="24" style="fill:#512BD4" /> Biblioteca de extensão para Blazor (Server-Side e WebAssembly) 
 
 ![Azure DevOps builds](https://eficazshields.azurewebsites.net/azure-devops/build/eficazcs/EficazFramework/29?&logo=azurepipelines&logoColor=white&style=flat-square)
