@@ -192,4 +192,7 @@
   <data name="Expression_DefaultErrorMessage" xml:space="preserve">
     <value>Falha na validação do item.</value>
   </data>
+  <data name="ServerValidation" xml:space="preserve">
+    <value>A validação dos dados falhou e a operação não pôde ser concluída.</value>
+  </data>
 </root>

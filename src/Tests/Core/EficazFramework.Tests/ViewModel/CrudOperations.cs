@@ -234,7 +234,7 @@ public class CrudOperations
         Vm.ViewModelAction -= VmActions_Validation;
     }
 
-    private bool _saveNotified = false;
+    //private bool _saveNotified = false;
     [Test]
     public async Task SingleEditTest_Update()
     {
@@ -1097,7 +1097,7 @@ public class CrudOperations
         }
         else if (e.Title == Resources.Strings.ViewModel.StoreService_SavedSucessfull_Title && e.Type == Events.MessageType.SnackBar)
         {
-            _saveNotified = true;
+            //_saveNotified = true;
         }
 
         if (e.StackTrace != null)

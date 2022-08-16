@@ -41,7 +41,7 @@ public class ModelBuilder : ISourceGenerator
             Models.EfModel.ModelClass model = null;
             try
             {
-                System.Xml.Serialization.XmlSerializer reader = new System.Xml.Serialization.XmlSerializer(typeof(Models.EfModel.ModelClass));
+                System.Xml.Serialization.XmlSerializer reader = new (typeof(Models.EfModel.ModelClass));
                 var content = new System.IO.MemoryStream(System.Text.Encoding.UTF8.GetBytes(file.GetText(context.CancellationToken).ToString()));
                 model = (Models.EfModel.ModelClass)reader.Deserialize(content);
                 content.Close();

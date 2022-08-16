@@ -8,4 +8,4 @@
 
 | Enums | |
 | :--- | :--- |
-| [Finalidade](EficazFramework.SPED.Schemas.EFD_ICMS_IPI/Finalidade.md 'EficazFramework.SPED.Schemas.EFD_ICMS_IPI.Finalidade') | |
+| [Finalidade](EficazFramework.SPED.Schemas.EFD_ICMS_IPI/Finalidade.md 'EficazFramework.SPED.Schemas.EFD_ICMS_IPI.Finalidade') | Finalidade do arquivo a ser escrito. |

@@ -478,7 +478,7 @@ public partial class AutoComplete : Primitives.InteractiveTextBox
                     ScrollToEnd();
                     // If item IsNot Nothing Then Me.SetValue(TextProperty, item.ToString) Else Me.SetValue(TextProperty, Nothing)
                 };
-                SelectionChangedAction?.Invoke(this, new SelectionChangedEventArgs(System.Windows.Controls.Primitives.Selector.SelectionChangedEvent, (new object[] { }).ToList(), (new object[] { item }).ToList()));
+                SelectionChangedAction?.Invoke(this, new SelectionChangedEventArgs(System.Windows.Controls.Primitives.Selector.SelectionChangedEvent, Array.Empty<object>().ToList(), (new object[] { item }).ToList()));
             }
             catch (Exception)
             {

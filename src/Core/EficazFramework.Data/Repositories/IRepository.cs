@@ -100,6 +100,12 @@ public abstract class RepositoryBase<T> : INotifyPropertyChanged, IDisposable wh
     #region T
 
     /// <summary>
+    /// Entidade atualmente em edição (ou inclusão).
+    /// Deve ser definido pelo ViewModel (ou regras de negócio)
+    /// </summary>
+    public T CurrentEntry { get; set; } = null;
+
+    /// <summary>
     /// Solicita a criação de uma nova instância de T
     /// </summary>
     public abstract T Create();

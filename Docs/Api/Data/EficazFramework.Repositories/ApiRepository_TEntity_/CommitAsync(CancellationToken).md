@@ -3,6 +3,8 @@
 
 ## ApiRepository<TEntity>.CommitAsync(CancellationToken) Method
 
+Executa as instruções de persistência do Servidor
+
 ```csharp
 public override System.Threading.Tasks.Task<System.Exception> CommitAsync(System.Threading.CancellationToken cancellationToken);
 ```

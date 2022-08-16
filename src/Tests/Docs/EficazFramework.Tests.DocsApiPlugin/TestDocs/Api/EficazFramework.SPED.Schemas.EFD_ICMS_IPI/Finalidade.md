@@ -3,6 +3,8 @@
 
 ## Finalidade Enum
 
+Finalidade do arquivo a ser escrito.
+
 ```csharp
 public enum Finalidade
 ```

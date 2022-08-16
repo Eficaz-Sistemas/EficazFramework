@@ -87,3 +87,13 @@ public enum Action
     DetailEntryDeleted = 66
 
 }
+
+/// <summary>
+/// Utilizado em <see cref="Repositories.ApiRepository{TEntity}"/> para determiner qual ação o método <see cref="Repositories.ApiRepository{TEntity}.RequestMethod{TBody, TResult}(string, TBody, System.Threading.CancellationToken)"/> deve executar.
+/// </summary>
+public enum RequestAction
+{
+    Get = 0,
+    Post = 1,
+    Put = 2
+}

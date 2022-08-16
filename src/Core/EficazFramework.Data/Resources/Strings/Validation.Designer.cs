@@ -277,6 +277,15 @@ namespace EficazFramework.Resources.Strings {
         }
         
         /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a A validação dos dados falhou e a operação não pôde ser concluída..
+        /// </summary>
+        public static string ServerValidation {
+            get {
+                return ResourceManager.GetString("ServerValidation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Consulta uma cadeia de caracteres localizada semelhante a A validação do campo {0} gerou uma falha geral. Detalhes técnicos: {1}..
         /// </summary>
         public static string ValidationException {

@@ -37,35 +37,35 @@ public class Registro0000
     /// <summary>
     /// Nome empresarial da entidade
     /// </summary>
-    public string RazaoSocial { get; set; } = null;
+    public string? RazaoSocial { get; set; } = null;
     /// <summary>
     /// Número de inscrição da entidade no CNPJ
     /// </summary>
-    public string CNPJ { get; set; } = null;
+    public string? CNPJ { get; set; } = null;
     /// <summary>
     /// Número de inscrição da entidade no CPF
     /// </summary>
-    public string CPF { get; set; } = null;
+    public string? CPF { get; set; } = null;
     /// <summary>
     /// Sigla da unidade da federação da entidade
     /// </summary>
-    public string UF { get; set; } = null;
+    public string? UF { get; set; } = null;
     /// <summary>
     /// Inscrição Estadual da entidade
     /// </summary>
-    public string InscricaoEstadual { get; set; } = null;
+    public string? InscricaoEstadual { get; set; } = null;
     /// <summary>
     /// Código do município do domicílio fiscal da entidade, conforme a tabela IBGE
     /// </summary>
-    public string MunicipioCodigo { get; set; } = null;
+    public string? MunicipioCodigo { get; set; } = null;
     /// <summary>
     /// Inscrição Municipal da entidade
     /// </summary>
-    public string InscricaoMunicipal { get; set; } = null;
+    public string? InscricaoMunicipal { get; set; } = null;
     /// <summary>
     /// Inscrição da entidade no Suframa
     /// </summary>
-    public string InscricaoSuframa { get; set; } = null;
+    public string? InscricaoSuframa { get; set; } = null;
 
     // Private Shared Sub ValidaIE()
 
@@ -81,6 +81,9 @@ public class Registro0000
 
 }
 
+/// <summary>
+/// Finalidade do arquivo a ser escrito.
+/// </summary>
 public enum Finalidade
 {
     /// <summary>

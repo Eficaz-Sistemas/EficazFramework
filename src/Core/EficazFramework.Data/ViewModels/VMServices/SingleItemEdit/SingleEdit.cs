@@ -112,7 +112,7 @@ public class SingleEdit<T> : ViewModelService<T> where T : class
         // Initializing T instance:
         AttachValidatorAndINotifyPropertyChanges(entry);
         MoveTo(entry);
-
+        ViewModelInstance.Repository.CurrentEntry = entry;
 
         // Created:
         args = new Events.CRUDEventArgs<T>(Enums.CRUD.Action.EntryAdded, ViewModelInstance.State, entry);
@@ -201,6 +201,7 @@ public class SingleEdit<T> : ViewModelService<T> where T : class
 
 
             // Post save State setup:
+            ViewModelInstance.Repository.CurrentEntry = null;
             if (BatchInsert == false)
             {
                 MoveTo(args.CurrentEntry);
@@ -240,6 +241,7 @@ public class SingleEdit<T> : ViewModelService<T> where T : class
         var ex = await ViewModelInstance.Repository.CancelAsync(CurrentEntry);
         if (ex is null && !ViewModelInstance.FailAssertion)
         {
+            ViewModelInstance.Repository.CurrentEntry = null;
             ViewModelInstance.RaiseViewModelEvent(args);
             DetachValidatorAndINotifyPropertyChanges(args.CurrentEntry);
             if (args.State == Enums.CRUD.State.Novo)
@@ -282,6 +284,7 @@ public class SingleEdit<T> : ViewModelService<T> where T : class
         {
             entry = CurrentEntry;
         }
+        ViewModelInstance.Repository.CurrentEntry = entry;
 
         var args = new Events.CRUDEventArgs<T>(Enums.CRUD.Action.EntryEditing, ViewModelInstance.State, entry);
         ViewModelInstance.RaiseViewModelEvent(args);
@@ -327,6 +330,7 @@ public class SingleEdit<T> : ViewModelService<T> where T : class
         {
             entry = CurrentEntry; //delete CurrentEntry
         }
+        ViewModelInstance.Repository.CurrentEntry = entry;
 
         // TODO: verify if operation is a BatchDelete...
         string messagetext = Resources.Strings.ViewModel.StoreService_DeleteConfirmation_Message;
@@ -376,6 +380,7 @@ public class SingleEdit<T> : ViewModelService<T> where T : class
             DetachValidatorAndINotifyPropertyChanges(args.CurrentEntry);
 
             // Post delete State setup:
+            ViewModelInstance.Repository.CurrentEntry = null;
             if (ViewModelInstance.Repository.DataContext.Count > 0)
             {
                 ViewModelInstance.SetState(Enums.CRUD.State.Leitura, false, null);
