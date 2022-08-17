@@ -11,4 +11,7 @@ Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.O
 
 | Properties | |
 | :--- | :--- |
+| [UrlDelete](EficazFramework.ViewModels.Services/RestApiBuilderOptions/UrlDelete.md 'EficazFramework.ViewModels.Services.RestApiBuilderOptions.UrlDelete') | |
 | [UrlGet](EficazFramework.ViewModels.Services/RestApiBuilderOptions/UrlGet.md 'EficazFramework.ViewModels.Services.RestApiBuilderOptions.UrlGet') | |
+| [UrlInsert](EficazFramework.ViewModels.Services/RestApiBuilderOptions/UrlInsert.md 'EficazFramework.ViewModels.Services.RestApiBuilderOptions.UrlInsert') | |
+| [UrlUpdate](EficazFramework.ViewModels.Services/RestApiBuilderOptions/UrlUpdate.md 'EficazFramework.ViewModels.Services.RestApiBuilderOptions.UrlUpdate') | |

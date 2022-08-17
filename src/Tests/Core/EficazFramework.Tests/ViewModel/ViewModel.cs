@@ -125,6 +125,24 @@ public class ViewModel
         Vm.Invoking(y => y.AddEntityFramework()).Should().Throw<ArgumentException>();
         Vm.RemoveEntityFramework();
 
+        var urlGet = "get";
+        var urlInsert = "insert";
+        var urlUpdate = "update";
+        var urlDelete = "delete";
+        Vm.AddRestApi(new(), options =>
+        {
+            options.UrlGet = urlGet;
+            options.UrlInsert = urlInsert;
+            options.UrlUpdate = urlUpdate;
+            options.UrlDelete = urlDelete;
+        });
+        Repositories.ApiRepository<Resources.Mocks.Classes.Blog> repo = Vm.Repository as Repositories.ApiRepository<Resources.Mocks.Classes.Blog>;
+        repo.Should().NotBeNull();
+        repo.UrlGet.Should().Be(urlGet);
+        repo.UrlInsert.Should().Be(urlInsert);
+        repo.UrlUpdate.Should().Be(urlUpdate);
+        repo.UrlDelete.Should().Be(urlDelete);
+
         Vm.AddSingledEdit();
         Vm.Invoking(y => y.AddSingledEdit()).Should().Throw<ArgumentException>();
         Vm.RemoveSingleEdit();

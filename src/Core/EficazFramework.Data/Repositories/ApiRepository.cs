@@ -4,10 +4,12 @@ using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.ComponentModel.DataAnnotations;
 using System.Diagnostics;
 using System.Linq;
 using System.Net.Http;
 using System.Net.Http.Json;
+using System.Text.Json;
 using System.Text.Json.Serialization;
 using System.Threading;
 using System.Threading.Tasks;
@@ -98,16 +100,30 @@ public sealed class ApiRepository<TEntity> : Repositories.RepositoryBase<TEntity
         }
         else
         {
+            string responseResult = await response.Content.ReadAsStringAsync(cancellationToken);
+            
+
             throw response.StatusCode switch
             {
                 System.Net.HttpStatusCode.Unauthorized => new UnauthorizedAccessException(Resources.Strings.Security.GPO_AccessViolationMessage),
                 System.Net.HttpStatusCode.Forbidden => new UnauthorizedAccessException(Resources.Strings.Security.GPO_AccessViolationMessage),
-                System.Net.HttpStatusCode.UnprocessableEntity => new Exception(Resources.Strings.Validation.ServerValidation),// TODO: parse validation errors
+                System.Net.HttpStatusCode.UnprocessableEntity => new ValidationException(ParseValidationFromResponseString(responseResult)),
                 _ => new HttpRequestException(string.Format(Resources.Strings.ViewModel.UnhandledError_Message, response.ReasonPhrase)),
             };
         }
     }
 
+    private string ParseValidationFromResponseString(string responseString)
+    {
+        var jsonParse = JsonDocument.Parse(responseString);
+        var jsonFilter = jsonParse.RootElement
+                            .GetProperty("errors")
+                            .GetRawText();
+
+        EficazFramework.Validation.Fluent.ValidationResult result = new();
+        result.AddRange(JsonSerializer.Deserialize<Dictionary<string, string[]>>(jsonFilter).First().Value.ToList());
+        return result.ToString();
+    }
 
     /// <summary>
     /// Paramêtros para filtragem de dados.

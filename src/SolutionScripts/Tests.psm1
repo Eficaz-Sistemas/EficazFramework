@@ -22,7 +22,7 @@ Param (
 			Remove-Item $location\$relativepath\*.css
 			Remove-Item $location\$relativepath\*.svg
 
-			dotnet $env:USERPROFILE\.nuget\packages\reportgenerator\$version\tools\net6.0\ReportGenerator.dll "$source" "$target" "-reporttypes:Html;HtmlChart" "-title:EficazFramework.WPF Code Coverage"
+			reportgenerator "$source" "$target" "-reporttypes:Html;HtmlChart" "-title:EficazFramework.WPF Code Coverage"
 			Invoke-Item $location\$relativepath\index.html
 			return 
 		}
@@ -41,7 +41,7 @@ Param (
 			Remove-Item $location\$relativepath\*.css
 			Remove-Item $location\$relativepath\*.svg
 
-			dotnet $env:USERPROFILE\.nuget\packages\reportgenerator\$version\tools\net6.0\ReportGenerator.dll "$source" "$target" "-reporttypes:Html;HtmlChart" "-title:EficazFramework.Blazor Code Coverage"
+			reportgenerator "$source" "$target" "-reporttypes:Html;HtmlChart" "-title:EficazFramework.Blazor Code Coverage"
 			Invoke-Item $location\$relativepath\index.html
 			return
 		}
@@ -57,7 +57,7 @@ Param (
 		Remove-Item $location\$relativepath\*.css
 		Remove-Item $location\$relativepath\*.svg
 
-		dotnet $env:USERPROFILE\.nuget\packages\reportgenerator\$version\tools\net6.0\ReportGenerator.dll "$source" "$target" "-reporttypes:Html;HtmlChart" "-title:EficazFramework (Core) Code Coverage"
+		reportgenerator "$source" "$target" "-reporttypes:Html;HtmlChart" "-title:EficazFramework (Core) Code Coverage"
 		Invoke-Item $location\$relativepath\index.html
 		return
 	}
