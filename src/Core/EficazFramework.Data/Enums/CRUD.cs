@@ -89,7 +89,7 @@ public enum Action
 }
 
 /// <summary>
-/// Utilizado em <see cref="Repositories.ApiRepository{TEntity}"/> para determiner qual ação o método <see cref="Repositories.ApiRepository{TEntity}.RequestMethod{TBody, TResult}(string, TBody, System.Threading.CancellationToken)"/> deve executar.
+/// Utilizado em <see cref="Repositories.ApiRepository{TEntity}"/> para determiner qual ação o método <see cref="Repositories.ApiRepository{TEntity}.RequestMethod{TBody, TResult}(RequestAction, string, TBody, System.Threading.CancellationToken)"/> deve executar.
 /// </summary>
 public enum RequestAction
 {

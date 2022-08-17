@@ -117,7 +117,7 @@ public sealed class ApiRepository<TEntity> : Repositories.RepositoryBase<TEntity
     /// </summary>
     /// <param name="responseString"></param>
     /// <returns></returns>
-    private string ParseValidationFromResponseString(string responseString)
+    private static string ParseValidationFromResponseString(string responseString)
     {
         var jsonParse = JsonDocument.Parse(responseString);
         var jsonFilter = jsonParse.RootElement
@@ -250,7 +250,7 @@ public sealed class ApiRepository<TEntity> : Repositories.RepositoryBase<TEntity
     /// <summary>
     /// Executa o cancelamento da edição por meio de uma Custom Action
     /// </summary>
-    private Action<object> CancelByCustomHandler;
+    private Action<object> CancelByCustomHandler { get; set; } = default;
 
     /// <summary>
     /// Desanexa uma entidade da instância de <see cref="TrackingContext"/>, caso nao seja nula.

@@ -3,7 +3,7 @@
 
 ## RequestAction Enum
 
-Utilizado em [ApiRepository&lt;TEntity&gt;](EficazFramework.Repositories/ApiRepository_TEntity_.md 'EficazFramework.Repositories.ApiRepository<TEntity>') para determiner qual ação o método [Repositories.ApiRepository&lt;TEntity&gt;.RequestMethod&lt;TBody, TResult&gt;(string, TBody, System.Threading.CancellationToken)](https://docs.microsoft.com/en-us/dotnet/api/Repositories.ApiRepository<TEntity>.RequestMethod<TBody, TResult>#Repositories_ApiRepository<TEntity>_RequestMethod<TBody, TResult>_string, TBody, System_Threading_CancellationToken_ 'Repositories.ApiRepository<TEntity>.RequestMethod<TBody, TResult>(string, TBody, System.Threading.CancellationToken)') deve executar.
+Utilizado em [ApiRepository&lt;TEntity&gt;](EficazFramework.Repositories/ApiRepository_TEntity_.md 'EficazFramework.Repositories.ApiRepository<TEntity>') para determiner qual ação o método [RequestMethod&lt;TBody,TResult&gt;(RequestAction, string, TBody, CancellationToken)](EficazFramework.Repositories/ApiRepository_TEntity_/RequestMethod_TBody,TResult_(RequestAction,string,TBody,CancellationToken).md 'EficazFramework.Repositories.ApiRepository<TEntity>.RequestMethod<TBody,TResult>(EficazFramework.Enums.CRUD.RequestAction, string, TBody, System.Threading.CancellationToken)') deve executar.
 
 ```csharp
 public enum RequestAction

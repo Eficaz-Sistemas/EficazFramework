@@ -317,7 +317,7 @@ public class CrudOperations
         service.CurrentEntry.Name = "Added Item";
 
         Vm.Commands["Save"].Execute(null);
-        await Task.Delay(250);
+        await Task.Delay(350);
         resultContext.Should().BeNull();
 
         Vm.Commands["Get"].Execute(null);
