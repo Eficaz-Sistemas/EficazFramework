@@ -44,9 +44,9 @@ public sealed class ApiRepository<TEntity> : Repositories.RepositoryBase<TEntity
     public string UrlDelete { get; set; } = "/myRestApi/delete";
 
     /// <summary>
-    /// URL de requisição para métodos FetchItems() e FetchItemsAsync()
+    /// Obtém ou define as definições para serialização Json nas requisições contra o servidor Http.
     /// </summary>
-    public string UrlCancel { get; set; } = "/myRestApi/cancel";
+    public JsonSerializerOptions SerializerOptions { get; set;} = default;
 
     /// <summary>
     /// (Opcional) Instância de DbContext para Tracking de modificações.
@@ -82,7 +82,6 @@ public sealed class ApiRepository<TEntity> : Repositories.RepositoryBase<TEntity
         }
     }
 
-
     /// <summary>
     /// Método Post executado por <see cref="RequestMethod{TBody, TResult}(Enums.CRUD.RequestAction, string, TBody, CancellationToken)"/>
     /// </summary>
@@ -90,7 +89,7 @@ public sealed class ApiRepository<TEntity> : Repositories.RepositoryBase<TEntity
         TBody body,
         CancellationToken cancellationToken)
     {
-        var response = await _client.PostAsJsonAsync(requestUri, body, cancellationToken);
+        var response = await _client.PostAsJsonAsync(requestUri, body, SerializerOptions, cancellationToken);
         if (response.IsSuccessStatusCode)
         {
             return await response.Content.ReadFromJsonAsync<TResult>(new System.Text.Json.JsonSerializerOptions()
@@ -113,6 +112,11 @@ public sealed class ApiRepository<TEntity> : Repositories.RepositoryBase<TEntity
         }
     }
 
+    /// <summary>
+    /// Extrai os erros de validação do Http Response.
+    /// </summary>
+    /// <param name="responseString"></param>
+    /// <returns></returns>
     private string ParseValidationFromResponseString(string responseString)
     {
         var jsonParse = JsonDocument.Parse(responseString);
@@ -125,12 +129,12 @@ public sealed class ApiRepository<TEntity> : Repositories.RepositoryBase<TEntity
         return result.ToString();
     }
 
+    
     /// <summary>
     /// Paramêtros para filtragem de dados.
     /// Efetua shadowing de <see cref="RepositoryBase{T}.Filter"/>
     /// </summary>
     public new Expressions.ExpressionQuery Filter { get; set; }
-
 
     /// <summary>s
     /// Efetua a instrução GET contra o datasource
@@ -175,7 +179,15 @@ public sealed class ApiRepository<TEntity> : Repositories.RepositoryBase<TEntity
         if (TrackingContext != null)
             return await CancelByDbContextAsync(item);
         else
-            return await CancelByApiAsync(item);
+            try
+            {
+                CancelByCustomHandler?.Invoke(item);
+                return null;
+            }
+            catch (Exception ex)
+            {
+                return ex;
+            }
     }
 
     /// <summary>
@@ -236,20 +248,9 @@ public sealed class ApiRepository<TEntity> : Repositories.RepositoryBase<TEntity
     }
 
     /// <summary>
-    /// Executa o cancelamento da edição por meio da API 'UriCancel'
+    /// Executa o cancelamento da edição por meio de uma Custom Action
     /// </summary>
-    private async Task<Exception> CancelByApiAsync(object item)
-    {
-        try
-        {
-            var result = await RequestMethod<object, string>(Enums.CRUD.RequestAction.Post, UrlCancel, item, default);
-            return null;
-        }
-        catch (Exception ex)
-        {
-            return ex;
-        }
-    }
+    private Action<object> CancelByCustomHandler;
 
     /// <summary>
     /// Desanexa uma entidade da instância de <see cref="TrackingContext"/>, caso nao seja nula.
@@ -285,24 +286,22 @@ public sealed class ApiRepository<TEntity> : Repositories.RepositoryBase<TEntity
     /// </summary>
     public override async Task<Exception> CommitAsync(CancellationToken cancellationToken)
     {
-        if (CurrentEntry != null)
+        try
         {
-            var response = await RequestMethod<TEntity, TEntity>(Enums.CRUD.RequestAction.Post, UrlUpdate, CurrentEntry, cancellationToken);
+            if (CurrentEntry != null)
+            {
+                var response = await RequestMethod<TEntity, TEntity>(Enums.CRUD.RequestAction.Post, UrlUpdate, CurrentEntry, cancellationToken);
+            }
+            else
+            {
+                var response = await RequestMethod<List<TEntity>, List<TEntity>>(Enums.CRUD.RequestAction.Post, UrlUpdate, DataContext.ToList(), cancellationToken);
+            }
+            return default;
         }
-        else
+        catch (Exception ex)
         {
-            var response = await RequestMethod<List<TEntity>, List<TEntity>>(Enums.CRUD.RequestAction.Post, UrlUpdate, DataContext.ToList(), cancellationToken);
+            return ex;
         }
-        return default;
-        //List<TEntity> result = new();
-        //var response = await RequestMethod<object, List<TEntity>>(Enums.CRUD.RequestAction.Post, UrlUpdate, new Expressions.QueryDescription(Filter, OrderByDefinitions), cancellationToken);
-        //if (response != null)
-        //    result.AddRange(response as IList<TEntity>);
-
-        //TrackingContext?.Dispose();
-        //TrackingContext = DbContextRequest?.Invoke();
-        //TrackingContext?.AttachRange(result);
-        //return result.ToObservableCollection<TEntity>();
     }
 
 
