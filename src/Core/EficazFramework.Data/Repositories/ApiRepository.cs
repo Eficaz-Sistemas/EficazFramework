@@ -92,10 +92,17 @@ public sealed class ApiRepository<TEntity> : Repositories.RepositoryBase<TEntity
         var response = await _client.PostAsJsonAsync(requestUri, body, SerializerOptions, cancellationToken);
         if (response.IsSuccessStatusCode)
         {
-            return await response.Content.ReadFromJsonAsync<TResult>(new System.Text.Json.JsonSerializerOptions()
+            try
             {
-                PropertyNameCaseInsensitive = true
-            }, cancellationToken);
+                return await response.Content.ReadFromJsonAsync<TResult>(new System.Text.Json.JsonSerializerOptions()
+                {
+                    PropertyNameCaseInsensitive = true
+                }, cancellationToken);
+            }
+            catch
+            {
+                return default;
+            }
         }
         else
         {

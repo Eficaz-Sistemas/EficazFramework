@@ -2,6 +2,7 @@
 using EficazFramework.Extensions;
 using System;
 using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 
@@ -215,15 +216,22 @@ public class SingleEdit<T> : ViewModelService<T> where T : class
         }
         else
         {
-            ViewModelInstance.SetState(args.State, false, null);
-            ViewModelInstance.RaiseDialogMessage(new Events.MessageEventArgs()
+            var messageData = new Events.MessageEventArgs()
             {
                 IconReference = Events.MessageIcon.Error,
                 Title = Resources.Strings.ViewModel.UnhandledError_Title,
                 Content = string.Format(Resources.Strings.ViewModel.UnhandledError_Message, ex?.Message),
                 StackTrace = ex?.ToString() ?? "Assertion Exception",
                 EnableReporting = true
-            });
+            };
+            
+            if (ex.GetType() == typeof(ValidationException))
+            {
+                messageData.Title = EficazFramework.Resources.Strings.Validation.Dialog_Title;
+                messageData.Content = string.Format(EficazFramework.Resources.Strings.Validation.Dialog_Message, Environment.NewLine, ex.Message);
+            }
+            ViewModelInstance.SetState(args.State, false, null);
+            ViewModelInstance.RaiseDialogMessage(messageData);
         }
         tokenregistration.Unregister();
         await tokenregistration.DisposeAsync();
