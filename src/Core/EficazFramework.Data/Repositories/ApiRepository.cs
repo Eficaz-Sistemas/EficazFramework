@@ -16,7 +16,7 @@ using System.Threading.Tasks;
 
 namespace EficazFramework.Repositories;
 
-public sealed class ApiRepository<TEntity> : Repositories.RepositoryBase<TEntity> where TEntity : class
+public sealed class ApiRepository<TEntity> : Repositories.RepositoryBase<TEntity> where TEntity : EficazFramework.Entities.EntityBase, IEntity
 {
     public ApiRepository(HttpClient client) : base() =>
         _client = client;
@@ -53,7 +53,6 @@ public sealed class ApiRepository<TEntity> : Repositories.RepositoryBase<TEntity
     /// NOTA: Não exponha a connection string real nesta instância.
     /// </summary>
     public Microsoft.EntityFrameworkCore.DbContext TrackingContext { get; set; }
-
 
 
     /// <summary>
@@ -146,11 +145,9 @@ public sealed class ApiRepository<TEntity> : Repositories.RepositoryBase<TEntity
     /// <summary>s
     /// Efetua a instrução GET contra o datasource
     /// </summary>
-    public override ObservableCollection<TEntity> FetchItems()
-    {
-        return FetchItemsAsync(default).Result;
-    }
-
+    public override ObservableCollection<TEntity> FetchItems() =>
+        FetchItemsAsync(default).Result;
+    
     /// <summary>s
     /// Efetua a instrução GET contra o datasource
     /// </summary>
@@ -172,11 +169,9 @@ public sealed class ApiRepository<TEntity> : Repositories.RepositoryBase<TEntity
     /// Solicita o cancelamento das alterações efetuadas no argumento item.
     /// Caso o mesmo não seja informado, será aplicado sobre todos os itens no DataContext
     /// </summary>
-    public override Exception Cancel(object item)
-    {
-        return CancelAsync(item).Result;
-    }
-
+    public override Exception Cancel(object item) =>
+        CancelAsync(item).Result;
+    
     /// <summary>
     /// Solicita o cancelamento das alterações efetuadas no argumento item.
     /// Caso o mesmo não seja informado, será aplicado sobre todos os itens no DataContext
@@ -273,12 +268,37 @@ public sealed class ApiRepository<TEntity> : Repositories.RepositoryBase<TEntity
 
     
     /// <summary>
-    /// Descartando o estado gerenciado (objetos gerenciados)
+    /// Solicita a criação de uma nova instância de Entidade de Base de Dados
     /// </summary>
-    internal override void DisposeManagedCallerObjects()
+    public override TEntity Create()
     {
-        if (TrackingContext != null) TrackingContext.Dispose();
-        TrackingContext = null;
+        if (TrackingContext == null)
+            TrackingContext = DbContextRequest?.Invoke();
+
+        return EficazFramework.Entities.EntityBase.Create<TEntity>();
+    }
+    
+    /// <summary>
+    /// Solicita a criação de uma nova instância de Entidade de Base de Dados
+    /// </summary>
+    public override T2 Create<T2>()
+    {
+        if (TrackingContext == null)
+            TrackingContext = DbContextRequest?.Invoke();
+
+        return EficazFramework.Entities.EntityBase.Create<T2>();
+    }
+
+    /// <summary>
+    /// Adicina uma nova entidade às intruções INSERT do TrackingContext
+    /// </summary>
+    /// <param name="item"></param>
+    internal override void ItemAdded(object item)
+    {
+        if (TrackingContext == null)
+            return;
+        
+        TrackingContext?.Add(item);
     }
 
 
@@ -297,43 +317,52 @@ public sealed class ApiRepository<TEntity> : Repositories.RepositoryBase<TEntity
         {
             if (CurrentEntry != null)
             {
-                var response = await RequestMethod<TEntity, TEntity>(Enums.CRUD.RequestAction.Post, UrlUpdate, CurrentEntry, cancellationToken);
+                if (CurrentEntry.IsNew)
+                    var response = await RequestMethod<TEntity, TEntity>(Enums.CRUD.RequestAction.Post, UrlInsert, CurrentEntry, cancellationToken);
+                elseif (_isDeleting)
+                    var response = await RequestMethod<TEntity, TEntity>(Enums.CRUD.RequestAction.Post, UrlDelete, CurrentEntry, cancellationToken);
+                else
+                    var response = await RequestMethod<TEntity, TEntity>(Enums.CRUD.RequestAction.Post, UrlUpdate, CurrentEntry, cancellationToken);
+                
             }
             else
             {
                 var response = await RequestMethod<List<TEntity>, List<TEntity>>(Enums.CRUD.RequestAction.Post, UrlUpdate, DataContext.ToList(), cancellationToken);
             }
+            _isDeleting = false;
             return default;
         }
         catch (Exception ex)
         {
+            _isDeleting = false;
             return ex;
         }
     }
 
-
-
-    public override TEntity Create()
-    {
-        throw new NotImplementedException();
-    }
-
-    public override T2 Create<T2>()
-    {
-        throw new NotImplementedException();
-    }
-
-
-
-
-    internal override void ItemAdded(object item)
-    {
-        throw new NotImplementedException();
-    }
-
+    private bool _isDeleting = false;
+    /// <summary>
+    /// Adicina uma nova entidade às intruções DELETE do TrackingContext
+    /// </summary>
+    /// <param name="item"></param>
     internal override void ItemDeleted(object item)
     {
-        throw new NotImplementedException();
+        _isDeleting = true;
+        CurrentEntry = item;
+        
+        if (TrackingContext == null)
+            return;
+        
+        TrackingContext?.Remove(item);
+    }
+
+    
+    /// <summary>
+    /// Descartando o estado gerenciado (objetos gerenciados)
+    /// </summary>
+    internal override void DisposeManagedCallerObjects()
+    {
+        if (TrackingContext != null) TrackingContext.Dispose();
+        TrackingContext = null;
     }
 
 
