@@ -1,5 +1,4 @@
 ﻿using EficazFramework.Serialization;
-using EficazFramework.Shared;
 using FluentAssertions;
 using NUnit.Framework;
 using System;
@@ -16,7 +15,7 @@ public class OperationTests
     public void SignXmlDocument()
     {
         // Setup
-        MockClass mockClass = new() { Id = 1, Name = "Henrique" };
+        Resources.Mocks.Classes.MockClass mockClass = new() { Id = 1, Name = "Henrique" };
         string target = $"{Environment.CurrentDirectory}/mockClass.xml";
         SerializationOperations.ToXml(mockClass, target);
         System.Xml.XmlDocument source = XMLOperations.ToXmlDocument(target);
@@ -59,7 +58,7 @@ public class OperationTests
     public void SignXDocument()
     {
         // Setup
-        MockClass mockClass = new() { Id = 1, Name = "Henrique" };
+        Resources.Mocks.Classes.MockClass mockClass = new() { Id = 1, Name = "Henrique" };
         string target = $"{Environment.CurrentDirectory}/mockClass.xml";
         SerializationOperations.ToXml(mockClass, target);
         System.Xml.XmlDocument source = XMLOperations.ToXmlDocument(target);
@@ -88,7 +87,7 @@ public class OperationTests
     public void ToXDocument()
     {
         // Setup
-        MockClass mockClass = new() { Id = 1, Name = "Henrique" };
+        Resources.Mocks.Classes.MockClass mockClass = new() { Id = 1, Name = "Henrique" };
         string target = $"{Environment.CurrentDirectory}/mockClass.xml";
         SerializationOperations.ToXml(mockClass, target);
         System.Xml.XmlDocument source = XMLOperations.ToXmlDocument(target);
@@ -108,7 +107,7 @@ public class OperationTests
     public void ToXmlDocument()
     {
         // Setup
-        MockClass mockClass = new() { Id = 1, Name = "Henrique" };
+        Resources.Mocks.Classes.MockClass mockClass = new() { Id = 1, Name = "Henrique" };
         string target = $"{Environment.CurrentDirectory}/mockClass.xml";
 
         // To string
@@ -140,7 +139,7 @@ public class OperationTests
     public async Task ToXmlDocumentAsync()
     {
         // Setup
-        MockClass mockClass = new() { Id = 2, Name = "Eficaz" };
+        Resources.Mocks.Classes.MockClass mockClass = new() { Id = 2, Name = "Eficaz" };
         string target = $"{Environment.CurrentDirectory}/mockClass.xml";
 
         // To string
@@ -161,7 +160,7 @@ public class OperationTests
     public void ToXElement()
     {
         // Setup
-        MockClass mockClass = new() { Id = 1, Name = "Henrique" };
+        Resources.Mocks.Classes.MockClass mockClass = new() { Id = 1, Name = "Henrique" };
         string target = $"{Environment.CurrentDirectory}/mockClass.xml";
 
         // To string
@@ -184,7 +183,7 @@ public class OperationTests
     public void ToXmlElement()
     {
         // Setup
-        MockClass mockClass = new() { Id = 1, Name = "Henrique" };
+        Resources.Mocks.Classes.MockClass mockClass = new() { Id = 1, Name = "Henrique" };
         string target = $"{Environment.CurrentDirectory}/mockClass.xml";
 
         // To string

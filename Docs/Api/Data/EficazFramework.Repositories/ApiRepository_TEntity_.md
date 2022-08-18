@@ -27,8 +27,8 @@ Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.O
 | [TrackingContext](EficazFramework.Repositories/ApiRepository_TEntity_/TrackingContext.md 'EficazFramework.Repositories.ApiRepository<TEntity>.TrackingContext') | (Opcional) Instância de DbContext para Tracking de modificações.<br/>NOTA: Não exponha a connection string real nesta instância. |
 | [UrlDelete](EficazFramework.Repositories/ApiRepository_TEntity_/UrlDelete.md 'EficazFramework.Repositories.ApiRepository<TEntity>.UrlDelete') | URL de requisição para métodos FetchItems() e FetchItemsAsync() |
 | [UrlGet](EficazFramework.Repositories/ApiRepository_TEntity_/UrlGet.md 'EficazFramework.Repositories.ApiRepository<TEntity>.UrlGet') | URL de requisição para métodos FetchItems() e FetchItemsAsync() |
-| [UrlInsert](EficazFramework.Repositories/ApiRepository_TEntity_/UrlInsert.md 'EficazFramework.Repositories.ApiRepository<TEntity>.UrlInsert') | URL de requisição para métodos FetchItems() e FetchItemsAsync() |
-| [UrlUpdate](EficazFramework.Repositories/ApiRepository_TEntity_/UrlUpdate.md 'EficazFramework.Repositories.ApiRepository<TEntity>.UrlUpdate') | s<br/>            URL de requisição para métodos FetchItems() e FetchItemsAsync() |
+| [UrlPost](EficazFramework.Repositories/ApiRepository_TEntity_/UrlPost.md 'EficazFramework.Repositories.ApiRepository<TEntity>.UrlPost') | s<br/>            URL de requisição para métodos FetchItems() e FetchItemsAsync() |
+| [UrlPut](EficazFramework.Repositories/ApiRepository_TEntity_/UrlPut.md 'EficazFramework.Repositories.ApiRepository<TEntity>.UrlPut') | URL de requisição para métodos FetchItems() e FetchItemsAsync() |
 
 | Methods | |
 | :--- | :--- |

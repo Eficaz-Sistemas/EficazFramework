@@ -525,20 +525,22 @@ public class FluentTests
     public void CustomExpression()
     {
         EficazFramework.Validation.Fluent.Validator<SampleObject> validator = new EficazFramework.Validation.Fluent.Validator<SampleObject>()
-            .CustomExpression((e) => e.Name == null || e.Name.Length == 5, (e) => $"O nome {e.Name} deve ter 5 caracteres e possui {e.Name.Length}");
+            .CustomExpression((e) => (e.Name ?? "").Length == 5, (e) => $"O nome '{e.Name}' deve ter 5 caracteres e possui {(e.Name ?? "").Length}");
 
         SampleObject instance = new() { Name = null };
-        validator.Validate(instance).Should().BeNullOrEmpty();
-
-        instance.Name = "";
         var result = validator.Validate(instance);
         result.Should().HaveCount(1);
-        result[0].Should().Be("O nome  deve ter 5 caracteres e possui 0");
+        result[0].Should().Be("O nome '' deve ter 5 caracteres e possui 0");
+
+        instance.Name = "";
+        result = validator.Validate(instance);
+        result.Should().HaveCount(1);
+        result[0].Should().Be("O nome '' deve ter 5 caracteres e possui 0");
 
         instance.Name = "Henrique";
         result = validator.Validate(instance);
         result.Should().HaveCount(1);
-        result[0].Should().Be("O nome Henrique deve ter 5 caracteres e possui 8");
+        result[0].Should().Be("O nome 'Henrique' deve ter 5 caracteres e possui 8");
 
         instance.Name = "Arara";
         result = validator.Validate(instance);

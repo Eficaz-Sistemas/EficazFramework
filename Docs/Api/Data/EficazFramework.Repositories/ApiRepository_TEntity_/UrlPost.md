@@ -1,12 +1,13 @@
 #### [EficazFramework.Data](EficazFrameworkData.md 'EficazFramework Data')
 ### [EficazFramework.Repositories](EficazFrameworkData.md#EficazFramework.Repositories 'EficazFramework.Repositories').[ApiRepository&lt;TEntity&gt;](EficazFramework.Repositories/ApiRepository_TEntity_.md 'EficazFramework.Repositories.ApiRepository<TEntity>')
 
-## ApiRepository<TEntity>.UrlInsert Property
+## ApiRepository<TEntity>.UrlPost Property
 
-URL de requisição para métodos FetchItems() e FetchItemsAsync()
+s  
+            URL de requisição para métodos FetchItems() e FetchItemsAsync()
 
 ```csharp
-public string UrlInsert { get; set; }
+public string UrlPost { get; set; }
 ```
 
 #### Property Value

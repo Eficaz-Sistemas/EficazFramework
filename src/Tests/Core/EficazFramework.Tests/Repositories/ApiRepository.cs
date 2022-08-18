@@ -34,14 +34,14 @@ public class ApiRepositoryTests
         response.IsSuccessStatusCode.Should().BeTrue();
         response.StatusCode.Should().Be(System.Net.HttpStatusCode.OK);
 
-        var result = await response.Content.ReadFromJsonAsync<List<Shared.MockClass>>();
+        var result = await response.Content.ReadFromJsonAsync<List<Resources.Mocks.Classes.MockClass>>();
         result.Should().HaveCount(300);
     }
 
     [Test]
     public void SelectTest()
     {
-        var repository = new ApiRepository<Shared.MockClass>(Client);
+        var repository = new ApiRepository<Resources.Mocks.Classes.MockClass>(Client);
         repository.UrlGet = "/mock/get";
         repository.DataContext.Should().HaveCount(0);
         repository.Get();
@@ -51,7 +51,7 @@ public class ApiRepositoryTests
     [Test]
     public async Task SelectAsyncTest()
     {
-        var repository = new ApiRepository<Shared.MockClass>(Client);
+        var repository = new ApiRepository<Resources.Mocks.Classes.MockClass>(Client);
         repository.UrlGet = "/mock/get";
         repository.DataContext.Should().HaveCount(0);
         await repository.GetAsync(default);
@@ -63,7 +63,7 @@ public class ApiRepositoryTests
     [Test]
     public async Task SelectStressAsyncTest()
     {
-        var repository = new ApiRepository<Shared.MockClass>(Client);
+        var repository = new ApiRepository<Resources.Mocks.Classes.MockClass>(Client);
         repository.UrlGet = "/mock/getBig";
         repository.DataContext.Should().HaveCount(0);
         await repository.GetAsync(default);
@@ -73,7 +73,7 @@ public class ApiRepositoryTests
     [Test]
     public async Task SelectFilteredAsyncTest()
     {
-        var repository = new ApiRepository<Shared.MockClass>(Client);
+        var repository = new ApiRepository<Resources.Mocks.Classes.MockClass>(Client);
         repository.UrlGet = "/mock/get";
         repository.Filter = new()
         {
@@ -96,7 +96,7 @@ public class ApiRepositoryTests
         string newName = System.Guid.NewGuid().ToString();
 
         var dataContext = EficazFramework.API.Mock.MockDb;
-        var repository = new ApiRepository<Shared.MockClass>(Client)
+        var repository = new ApiRepository<Resources.Mocks.Classes.MockClass>(Client)
         {
             UrlGet = "/mock/getForCrudTest",
             UrlPost = "mock/update"
@@ -120,7 +120,7 @@ public class ApiRepositoryTests
     [Test]
     public async Task ResponseUnauthorized()
     {
-        var repository = new ApiRepository<Shared.MockClass>(Client);
+        var repository = new ApiRepository<Resources.Mocks.Classes.MockClass>(Client);
         repository.UrlGet = "/mock/fail/401";
         await repository.Invoking(async (a) => await repository.GetAsync(default)).Should().ThrowAsync<UnauthorizedAccessException>();
         ;
@@ -130,7 +130,7 @@ public class ApiRepositoryTests
     [Test]
     public async Task ResponseValidationFailed()
     {
-        var repository = new ApiRepository<Shared.MockClass>(Client);
+        var repository = new ApiRepository<Resources.Mocks.Classes.MockClass>(Client);
         repository.UrlGet = "/mock/fail/422";
         await repository.Invoking(async (a) => await repository.GetAsync(default)).Should().ThrowAsync<ValidationException>();
         repository.DataContext.Should().HaveCount(0);

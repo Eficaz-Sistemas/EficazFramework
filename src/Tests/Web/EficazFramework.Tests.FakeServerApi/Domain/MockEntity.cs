@@ -1,4 +1,4 @@
-﻿namespace EficazFramework.Shared;
+﻿namespace EficazFramework.Resources.Mocks.Classes;
 
 public class MockClass
 {

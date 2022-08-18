@@ -30,7 +30,7 @@ internal class CustomExpression<T> : Rules.ValidationRule<T> where T : class
         if (Func is null)
             return null;
 
-        if (Func.Invoke(instance))
+        if (!Func.Invoke(instance))
         {
             if (ErrorMessage is null)
                 return Resources.Strings.Validation.Expression_DefaultErrorMessage;

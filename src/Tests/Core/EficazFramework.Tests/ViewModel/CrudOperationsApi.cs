@@ -32,99 +32,43 @@ public class CrudOperationsApi
     }
 
     [SetUp]
-    public async Task Setup()
+    public void Setup()
     {
         resultContext = null;
         shouldCancel = false;
+        var provider = new EficazFramework.Providers.InMemory(new EficazFramework.Configuration.DbConfiguration()
+        {
+            ServerName = "myserver"
+        }); ;
         
         Vm = new ViewModel<Resources.Mocks.Classes.Blog>().AddRestApi(Client, options =>
         {
-            options.UrlGet = "/mock/get";
-            options.UrlPost = "/mock/post";
-            options.UrlPut = "/mock/put";
-            options.UrlDelete = "/mock/delete";
+            options.UrlGet = "/blog/get";
+            options.UrlPost = "/blog/post";
+            options.UrlPut = "/blog/put";
+            options.UrlDelete = "/blog/delete";
 
         });
-        Vm.Repository.OrderByDefinitions.Add(new()
-        {
-            PropertyName = "Id",
-            Direction = Enums.Collection.SortOrientation.Asceding
-        });
 
-        var dbContextRepo = (EficazFramework.Repositories.EntityRepository<Resources.Mocks.Classes.Blog>)Vm.Repository;
-        ((EficazFramework.Repositories.EntityRepository<Resources.Mocks.Classes.Blog>)Vm.Repository).DbContextRequest = () => new Resources.Mocks.MockDbContext();
-
-        // seed
-        dbContextRepo.PrepareDbContext();
-        (await dbContextRepo.DbContext.Database.EnsureCreatedAsync()).Should().BeTrue();
-        for (int i = 0; i < 100; i++)
-        {
-            var tmpId = System.Guid.NewGuid();
-            dbContextRepo.DbContext.Add(new Resources.Mocks.Classes.Blog()
-            {
-                Id = tmpId,
-                Name = $"Blog {i}"
-            });
-            dbContextRepo.DbContext.Add(new Resources.Mocks.Classes.Post()
-            {
-                BlogId = tmpId,
-                PostId = System.Guid.NewGuid(),
-                Title = $"Post {i}"
-            });
-        }
-        await dbContextRepo.DbContext.SaveChangesAsync();
-        await dbContextRepo.DbContext.DisposeAsync();
-        dbContextRepo.DbContext = null;
+        var dbContextRepo = (EficazFramework.Repositories.ApiRepository<Resources.Mocks.Classes.Blog>)Vm.Repository;
+        ((EficazFramework.Repositories.ApiRepository<Resources.Mocks.Classes.Blog>)Vm.Repository).DbContextRequest = () => new Resources.Mocks.MockDbContext(provider);
     }
 
     [TearDown]
-    public async Task TearDown()
+    public void TearDown()
     {
-        ((EficazFramework.Repositories.EntityRepository<Resources.Mocks.Classes.Blog>)Vm.Repository).DbContextRequest = () => new Resources.Mocks.MockDbContext();
         Vm.Dispose();
-
-        var ctb = new Resources.Mocks.MockDbContext();
-        (await ctb.Database.EnsureDeletedAsync()).Should().BeTrue();
     }
 
     [Test]
-    public void SelectTest()
+    public async Task SelectTestAsync()
     {
+        Vm.Repository.DataContext.Should().HaveCount(0);
         Vm.Commands["Get"].Execute(null);
-        Vm.Repository.DataContext.Should().HaveCount(100);
-
-        Vm.Repository.PageSize = 45;
-
-        Vm.Repository.CurrentPage.Should().Be(1);
-        Vm.Commands["Get"].Execute(null);
-        Vm.Repository.DataContext.Should().HaveCount(45); // 1..45
-
-        Vm.Repository.NextPage().Should().BeTrue();
-        Vm.Repository.CurrentPage.Should().Be(2);
-        Vm.Commands["Get"].Execute(null);
-        Vm.Repository.DataContext.Should().HaveCount(45); // 46..90
-
-        Vm.Repository.NextPage().Should().BeTrue();
-        Vm.Repository.CurrentPage.Should().Be(3);
-        Vm.Commands["Get"].Execute(null);
-        Vm.Repository.DataContext.Should().HaveCount(10); // 91..100
-
-        Vm.Repository.NextPage().Should().BeFalse();
-        Vm.Repository.CurrentPage.Should().Be(3);
-
-        Vm.Repository.PreviousPage().Should().BeTrue();
-        Vm.Repository.CurrentPage.Should().Be(2);
-        Vm.Commands["Get"].Execute(null);
-        Vm.Repository.DataContext.Should().HaveCount(45); // 45..90
-
-        Vm.Repository.FirstPage().Should().BeTrue();
-        Vm.Repository.CurrentPage.Should().Be(1);
-        Vm.Commands["Get"].Execute(null);
-        Vm.Repository.DataContext.Should().HaveCount(45); // 1..45
-
-        Vm.Repository.PreviousPage().Should().BeFalse();
-        Vm.Repository.CurrentPage.Should().Be(1);
-
+        while (Vm.IsLoading)
+            await Task.Delay(50);
+            
+        Vm.Repository.DataContext.Should().HaveCount(5);
     }
 
 
