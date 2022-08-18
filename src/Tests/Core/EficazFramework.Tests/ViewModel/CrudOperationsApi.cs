@@ -39,8 +39,11 @@ public class CrudOperationsApi
         
         Vm = new ViewModel<Resources.Mocks.Classes.Blog>().AddRestApi(Client, options =>
         {
-            options.UrlGet = "",
-            
+            options.UrlGet = "/mock/get";
+            options.UrlPost = "/mock/post";
+            options.UrlPut = "/mock/put";
+            options.UrlDelete = "/mock/delete";
+
         });
         Vm.Repository.OrderByDefinitions.Add(new()
         {

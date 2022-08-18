@@ -132,8 +132,8 @@ public class ViewModel
         Vm.AddRestApi(new(), options =>
         {
             options.UrlGet = urlGet;
-            options.UrlInsert = urlInsert;
-            options.UrlUpdate = urlUpdate;
+            options.UrlPut = urlInsert;
+            options.UrlPost = urlUpdate;
             options.UrlDelete = urlDelete;
         });
         Repositories.ApiRepository<Resources.Mocks.Classes.Blog> repo = Vm.Repository as Repositories.ApiRepository<Resources.Mocks.Classes.Blog>;
