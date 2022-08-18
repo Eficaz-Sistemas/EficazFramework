@@ -16,7 +16,7 @@ using System.Threading.Tasks;
 
 namespace EficazFramework.Repositories;
 
-public sealed class ApiRepository<TEntity> : Repositories.RepositoryBase<TEntity> where TEntity : EficazFramework.Entities.EntityBase, IEntity
+public sealed class ApiRepository<TEntity> : Repositories.RepositoryBase<TEntity> where TEntity : EficazFramework.Entities.EntityBase
 {
     public ApiRepository(HttpClient client) : base() =>
         _client = client;
@@ -317,12 +317,13 @@ public sealed class ApiRepository<TEntity> : Repositories.RepositoryBase<TEntity
         {
             if (CurrentEntry != null)
             {
+                TEntity response;
                 if (CurrentEntry.IsNew)
-                    var response = await RequestMethod<TEntity, TEntity>(Enums.CRUD.RequestAction.Post, UrlInsert, CurrentEntry, cancellationToken);
+                    response = await RequestMethod<TEntity, TEntity>(Enums.CRUD.RequestAction.Post, UrlInsert, CurrentEntry, cancellationToken);
                 else if (_isDeleting)
-                    var response = await RequestMethod<TEntity, TEntity>(Enums.CRUD.RequestAction.Post, UrlDelete, CurrentEntry, cancellationToken);
+                    response = await RequestMethod<TEntity, TEntity>(Enums.CRUD.RequestAction.Post, UrlDelete, CurrentEntry, cancellationToken);
                 else
-                    var response = await RequestMethod<TEntity, TEntity>(Enums.CRUD.RequestAction.Post, UrlUpdate, CurrentEntry, cancellationToken);
+                    response = await RequestMethod<TEntity, TEntity>(Enums.CRUD.RequestAction.Post, UrlUpdate, CurrentEntry, cancellationToken);
                 
             }
             else
@@ -347,7 +348,7 @@ public sealed class ApiRepository<TEntity> : Repositories.RepositoryBase<TEntity
     internal override void ItemDeleted(object item)
     {
         _isDeleting = true;
-        CurrentEntry = item;
+        CurrentEntry = item as TEntity;
         
         if (TrackingContext == null)
             return;
