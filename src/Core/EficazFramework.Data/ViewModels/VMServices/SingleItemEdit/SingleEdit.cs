@@ -225,7 +225,7 @@ public class SingleEdit<T> : ViewModelService<T> where T : class
                 EnableReporting = true
             };
             
-            if (ex.GetType() == typeof(ValidationException))
+            if (ex != null && ex.GetType() == typeof(ValidationException))
             {
                 messageData.Title = EficazFramework.Resources.Strings.Validation.Dialog_Title;
                 messageData.Content = string.Format(EficazFramework.Resources.Strings.Validation.Dialog_Message, Environment.NewLine, ex.Message);

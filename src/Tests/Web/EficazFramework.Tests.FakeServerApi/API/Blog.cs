@@ -6,11 +6,17 @@ namespace EficazFramework.API;
 
 internal static class Blog
 {
-    public static readonly IEnumerable<Resources.Mocks.Classes.BlogEntity> BlogDb;
+    private static readonly List<Resources.Mocks.Classes.BlogEntity> BlogDb = new();
     
     static Blog()
     {
+        ResetDb();
+    }
+
+    public static void ResetDb()
+    {
         var faker = new Faker<Resources.Mocks.Classes.BlogEntity>("pt_BR")
+            .RuleFor(o => o.Id, f => f.Database.Random.Guid())
             .RuleFor(o => o.Name, f => f.Company.CompanyName());
 
         List<Resources.Mocks.Classes.BlogEntity> result = new();
@@ -18,7 +24,8 @@ internal static class Blog
         {
             result.Add(faker.Generate());
         }
-        BlogDb = result;
+        BlogDb.Clear();
+        BlogDb.AddRange(result);
     }
 
     internal static IResult Get(EficazFramework.Expressions.QueryDescription parameters)
@@ -45,7 +52,7 @@ internal static class Blog
     {
         try
         {
-            (BlogDb as IList<Resources.Mocks.Classes.BlogEntity>)!.Add(item);
+            BlogDb.Add(item);
             return Results.Ok(item);
         }
         catch
@@ -58,7 +65,7 @@ internal static class Blog
     {
         try
         {
-            (BlogDb as IList<Resources.Mocks.Classes.BlogEntity>)!.Remove(item);
+            BlogDb.Remove(item);
             return Results.Ok(item);
         }
         catch

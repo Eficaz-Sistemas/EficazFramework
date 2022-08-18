@@ -50,6 +50,7 @@ public class CrudOperationsApi
 
         });
 
+        EficazFramework.API.Blog.ResetDb();
         var dbContextRepo = (EficazFramework.Repositories.ApiRepository<Resources.Mocks.Classes.Blog>)Vm.Repository;
         ((EficazFramework.Repositories.ApiRepository<Resources.Mocks.Classes.Blog>)Vm.Repository).DbContextRequest = () => new Resources.Mocks.MockDbContext(provider);
     }
