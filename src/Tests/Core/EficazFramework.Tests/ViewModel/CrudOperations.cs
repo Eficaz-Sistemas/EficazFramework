@@ -393,7 +393,7 @@ public class CrudOperations
     }
 
     bool _exceptionRaised = false;
-    [Test]
+    //[Test]
     public async Task SingleEdit_Exceptions()
     {
         Vm.ShowMessage += Vm_Dialog;
