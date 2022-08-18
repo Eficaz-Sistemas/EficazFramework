@@ -139,8 +139,8 @@ public class ViewModel
         Repositories.ApiRepository<Resources.Mocks.Classes.Blog> repo = Vm.Repository as Repositories.ApiRepository<Resources.Mocks.Classes.Blog>;
         repo.Should().NotBeNull();
         repo.UrlGet.Should().Be(urlGet);
-        repo.UrlInsert.Should().Be(urlInsert);
-        repo.UrlUpdate.Should().Be(urlUpdate);
+        repo.UrlPut.Should().Be(urlInsert);
+        repo.UrlPost.Should().Be(urlUpdate);
         repo.UrlDelete.Should().Be(urlDelete);
 
         Vm.AddSingledEdit();

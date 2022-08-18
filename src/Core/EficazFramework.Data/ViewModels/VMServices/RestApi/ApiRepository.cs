@@ -17,8 +17,8 @@ class RestApi<T> : ViewModelService<T> where T : class
             RestApiBuilderOptions optionsInstance = new();
             options.Invoke(optionsInstance);
             repo.UrlGet = optionsInstance.UrlGet;
-            repo.UrlInsert = optionsInstance.UrlInsert;
-            repo.UrlUpdate = optionsInstance.UrlUpdate;
+            repo.UrlPut = optionsInstance.UrlInsert;
+            repo.UrlPost = optionsInstance.UrlUpdate;
             repo.UrlDelete = optionsInstance.UrlDelete;
         }
         viewmodel.Repository = repo;

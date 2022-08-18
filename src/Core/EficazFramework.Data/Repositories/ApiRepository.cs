@@ -31,12 +31,12 @@ public sealed class ApiRepository<TEntity> : Repositories.RepositoryBase<TEntity
     /// <summary>
     /// URL de requisição para métodos FetchItems() e FetchItemsAsync()
     /// </summary>
-    public string UrlInsert { get; set; } = "/myRestApi/insert";
+    public string UrlPut { get; set; } = "/myRestApi/put";
 
     /// <summary>s
     /// URL de requisição para métodos FetchItems() e FetchItemsAsync()
     /// </summary>
-    public string UrlUpdate { get; set; } = "/myRestApi/update";
+    public string UrlPost { get; set; } = "/myRestApi/post";
 
     /// <summary>
     /// URL de requisição para métodos FetchItems() e FetchItemsAsync()
@@ -179,6 +179,7 @@ public sealed class ApiRepository<TEntity> : Repositories.RepositoryBase<TEntity
     public override async Task<Exception> CancelAsync(object item)
     {
         _isAdding = false;
+        _isDeleting = false;
         
         if (TrackingContext != null)
             return await CancelByDbContextAsync(item);
@@ -320,15 +321,15 @@ public sealed class ApiRepository<TEntity> : Repositories.RepositoryBase<TEntity
             {
                 TEntity response;
                 if (_isAdding)
-                    response = await RequestMethod<TEntity, TEntity>(Enums.CRUD.RequestAction.Post, UrlInsert, CurrentEntry, cancellationToken);
+                    response = await RequestMethod<TEntity, TEntity>(Enums.CRUD.RequestAction.Post, UrlPut, CurrentEntry, cancellationToken);
                 else if (_isDeleting)
                     response = await RequestMethod<TEntity, TEntity>(Enums.CRUD.RequestAction.Post, UrlDelete, CurrentEntry, cancellationToken);
                 else
-                    response = await RequestMethod<TEntity, TEntity>(Enums.CRUD.RequestAction.Post, UrlUpdate, CurrentEntry, cancellationToken);
+                    response = await RequestMethod<TEntity, TEntity>(Enums.CRUD.RequestAction.Post, UrlPost, CurrentEntry, cancellationToken);
             }
             else
             {
-                var response = await RequestMethod<List<TEntity>, List<TEntity>>(Enums.CRUD.RequestAction.Post, UrlUpdate, DataContext.ToList(), cancellationToken);
+                var response = await RequestMethod<List<TEntity>, List<TEntity>>(Enums.CRUD.RequestAction.Post, UrlPost, DataContext.ToList(), cancellationToken);
             }
             _isDeleting = false;
             return default;
