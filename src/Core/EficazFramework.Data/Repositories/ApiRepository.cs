@@ -319,7 +319,7 @@ public sealed class ApiRepository<TEntity> : Repositories.RepositoryBase<TEntity
             {
                 if (CurrentEntry.IsNew)
                     var response = await RequestMethod<TEntity, TEntity>(Enums.CRUD.RequestAction.Post, UrlInsert, CurrentEntry, cancellationToken);
-                elseif (_isDeleting)
+                else if (_isDeleting)
                     var response = await RequestMethod<TEntity, TEntity>(Enums.CRUD.RequestAction.Post, UrlDelete, CurrentEntry, cancellationToken);
                 else
                     var response = await RequestMethod<TEntity, TEntity>(Enums.CRUD.RequestAction.Post, UrlUpdate, CurrentEntry, cancellationToken);
