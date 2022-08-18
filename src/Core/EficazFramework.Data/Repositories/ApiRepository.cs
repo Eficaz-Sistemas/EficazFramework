@@ -16,7 +16,7 @@ using System.Threading.Tasks;
 
 namespace EficazFramework.Repositories;
 
-public sealed class ApiRepository<TEntity> : Repositories.RepositoryBase<TEntity> where TEntity : EficazFramework.Entities.EntityBase
+public sealed class ApiRepository<TEntity> : Repositories.RepositoryBase<TEntity> where TEntity : class
 {
     public ApiRepository(HttpClient client) : base() =>
         _client = client;
@@ -178,6 +178,8 @@ public sealed class ApiRepository<TEntity> : Repositories.RepositoryBase<TEntity
     /// </summary>
     public override async Task<Exception> CancelAsync(object item)
     {
+        _isAdding = false;
+        
         if (TrackingContext != null)
             return await CancelByDbContextAsync(item);
         else
@@ -190,6 +192,7 @@ public sealed class ApiRepository<TEntity> : Repositories.RepositoryBase<TEntity
             {
                 return ex;
             }
+        
     }
 
     /// <summary>
@@ -272,9 +275,7 @@ public sealed class ApiRepository<TEntity> : Repositories.RepositoryBase<TEntity
     /// </summary>
     public override TEntity Create()
     {
-        if (TrackingContext == null)
-            TrackingContext = DbContextRequest?.Invoke();
-
+        TrackingContext ??= DbContextRequest?.Invoke();
         return EficazFramework.Entities.EntityBase.Create<TEntity>();
     }
     
@@ -283,18 +284,18 @@ public sealed class ApiRepository<TEntity> : Repositories.RepositoryBase<TEntity
     /// </summary>
     public override T2 Create<T2>()
     {
-        if (TrackingContext == null)
-            TrackingContext = DbContextRequest?.Invoke();
-
+        TrackingContext ??= DbContextRequest?.Invoke();
         return EficazFramework.Entities.EntityBase.Create<T2>();
     }
 
+    private bool _isAdding = false;
     /// <summary>
     /// Adicina uma nova entidade às intruções INSERT do TrackingContext
     /// </summary>
     /// <param name="item"></param>
     internal override void ItemAdded(object item)
     {
+        _isAdding = true;
         if (TrackingContext == null)
             return;
         
@@ -318,13 +319,12 @@ public sealed class ApiRepository<TEntity> : Repositories.RepositoryBase<TEntity
             if (CurrentEntry != null)
             {
                 TEntity response;
-                if (CurrentEntry.IsNew)
+                if (_isAdding)
                     response = await RequestMethod<TEntity, TEntity>(Enums.CRUD.RequestAction.Post, UrlInsert, CurrentEntry, cancellationToken);
                 else if (_isDeleting)
                     response = await RequestMethod<TEntity, TEntity>(Enums.CRUD.RequestAction.Post, UrlDelete, CurrentEntry, cancellationToken);
                 else
                     response = await RequestMethod<TEntity, TEntity>(Enums.CRUD.RequestAction.Post, UrlUpdate, CurrentEntry, cancellationToken);
-                
             }
             else
             {
@@ -335,6 +335,7 @@ public sealed class ApiRepository<TEntity> : Repositories.RepositoryBase<TEntity
         }
         catch (Exception ex)
         {
+            _isAdding = false;
             _isDeleting = false;
             return ex;
         }

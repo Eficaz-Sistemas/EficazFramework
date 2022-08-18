@@ -1,4 +1,5 @@
-﻿using System;
+﻿using EficazFramework.Entities;
+using System;
 using System.Collections.Generic;
 using System.Net.Http;
 using System.Text;
@@ -44,7 +45,7 @@ public static partial class ServiceUtils
     /// <summary>
     /// Remove os serviços de operações CRUD via API's REST.
     /// </summary>
-    public static ViewModel<T> RemoveRestApi<T>(this ViewModel<T> viewmodel) where T : Entities.EntityBase, Entities.IEntity
+    public static ViewModel<T> RemoveRestApi<T>(this ViewModel<T> viewmodel) where T : class
     {
         RestApi<T> service = (RestApi<T>)viewmodel.Services[ServiceUtils.KEY_REST];
         service.Dispose();
