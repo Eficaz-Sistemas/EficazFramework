@@ -169,7 +169,7 @@ public class SingleEdit<T> : ViewModelService<T> where T : class
         }
         ViewModelInstance.RaiseViewModelEvent(new Events.CRUDEventArgs<T>(Enums.CRUD.Action.EntryValidated, args.State, args.CurrentEntry));
 
-
+        ViewModelInstance.SetState(ViewModelInstance.State, true);
         // Unlocking Async Cancel
         CanCancelAsyncSave = true;
         RaisePropertyChanged(nameof(CanCancelAsyncSave));

@@ -16,6 +16,9 @@ app.MapPost("/mock/fail/401", () => Results.Unauthorized());
 app.MapPost("/mock/fail/403", () => Results.Forbid());
 app.MapPost("/mock/fail/422", () => EficazFramework.API.Mock.ValidationFail());
 
-app.MapPost("/blog/get", () => EficazFramework.API.Blog.Get());
+app.MapPost("/blog/get", (EficazFramework.Expressions.QueryDescription parameters) => EficazFramework.API.Blog.Get(parameters));
+app.MapPost("/blog/post", (EficazFramework.Resources.Mocks.Classes.BlogEntity blog) => EficazFramework.API.Blog.Update(blog));
+app.MapPut("/blog/put", (EficazFramework.Resources.Mocks.Classes.BlogEntity blog) => EficazFramework.API.Blog.Insert(blog));
+app.MapPost("/blog/delete", (EficazFramework.Resources.Mocks.Classes.BlogEntity blog) => EficazFramework.API.Blog.Insert(blog));
 
 app.Run();

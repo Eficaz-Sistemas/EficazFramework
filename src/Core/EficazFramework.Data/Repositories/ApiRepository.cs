@@ -24,6 +24,12 @@ public sealed class ApiRepository<TEntity> : Repositories.RepositoryBase<TEntity
     private readonly HttpClient _client;
 
     /// <summary>
+    /// Paramêtros para filtragem de dados.
+    /// Efetua shadowing de <see cref="RepositoryBase{T}.Filter"/>
+    /// </summary>
+    public new Expressions.ExpressionQuery Filter { get; set; }
+
+    /// <summary>
     /// URL de requisição para métodos FetchItems() e FetchItemsAsync()
     /// </summary>
     public string UrlGet { get; set; } = "/myRestApi/get";
@@ -70,7 +76,7 @@ public sealed class ApiRepository<TEntity> : Repositories.RepositoryBase<TEntity
             {
                 Enums.CRUD.RequestAction.Get => await PostAsync<TBody, TResult>(requestUri, body, cancellationToken),
                 Enums.CRUD.RequestAction.Post => await PostAsync<TBody, TResult>(requestUri, body, cancellationToken),
-                Enums.CRUD.RequestAction.Put => await PostAsync<TBody, TResult>(requestUri, body, cancellationToken),
+                Enums.CRUD.RequestAction.Put => await PutAsync<TBody, TResult>(requestUri, body, cancellationToken),
                 _ => default
             };
         }
@@ -119,6 +125,43 @@ public sealed class ApiRepository<TEntity> : Repositories.RepositoryBase<TEntity
     }
 
     /// <summary>
+    /// Método Post executado por <see cref="RequestMethod{TBody, TResult}(Enums.CRUD.RequestAction, string, TBody, CancellationToken)"/>
+    /// </summary>
+    private async Task<TResult> PutAsync<TBody, TResult>(string requestUri,
+        TBody body,
+        CancellationToken cancellationToken)
+    {
+        var response = await _client.PutAsJsonAsync(requestUri, body, SerializerOptions, cancellationToken);
+        if (response.IsSuccessStatusCode)
+        {
+            try
+            {
+                return await response.Content.ReadFromJsonAsync<TResult>(new System.Text.Json.JsonSerializerOptions()
+                {
+                    PropertyNameCaseInsensitive = true
+                }, cancellationToken);
+            }
+            catch
+            {
+                return default;
+            }
+        }
+        else
+        {
+            string responseResult = await response.Content.ReadAsStringAsync(cancellationToken);
+
+
+            throw response.StatusCode switch
+            {
+                System.Net.HttpStatusCode.Unauthorized => new UnauthorizedAccessException(Resources.Strings.Security.GPO_AccessViolationMessage),
+                System.Net.HttpStatusCode.Forbidden => new UnauthorizedAccessException(Resources.Strings.Security.GPO_AccessViolationMessage),
+                System.Net.HttpStatusCode.UnprocessableEntity => new ValidationException(ParseValidationFromResponseString(responseResult)),
+                _ => new HttpRequestException(string.Format(Resources.Strings.ViewModel.UnhandledError_Message, response.ReasonPhrase)),
+            };
+        }
+    }
+
+    /// <summary>
     /// Extrai os erros de validação do Http Response.
     /// </summary>
     /// <param name="responseString"></param>
@@ -135,13 +178,7 @@ public sealed class ApiRepository<TEntity> : Repositories.RepositoryBase<TEntity
         return result.ToString();
     }
 
-    
-    /// <summary>
-    /// Paramêtros para filtragem de dados.
-    /// Efetua shadowing de <see cref="RepositoryBase{T}.Filter"/>
-    /// </summary>
-    public new Expressions.ExpressionQuery Filter { get; set; }
-
+  
     /// <summary>s
     /// Efetua a instrução GET contra o datasource
     /// </summary>
@@ -321,7 +358,7 @@ public sealed class ApiRepository<TEntity> : Repositories.RepositoryBase<TEntity
             {
                 TEntity response;
                 if (_isAdding)
-                    response = await RequestMethod<TEntity, TEntity>(Enums.CRUD.RequestAction.Post, UrlPut, CurrentEntry, cancellationToken);
+                    response = await RequestMethod<TEntity, TEntity>(Enums.CRUD.RequestAction.Put, UrlPut, CurrentEntry, cancellationToken);
                 else if (_isDeleting)
                     response = await RequestMethod<TEntity, TEntity>(Enums.CRUD.RequestAction.Post, UrlDelete, CurrentEntry, cancellationToken);
                 else
