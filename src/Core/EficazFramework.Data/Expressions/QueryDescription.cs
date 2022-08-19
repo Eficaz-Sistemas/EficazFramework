@@ -18,4 +18,6 @@ public class QueryDescription
 
     public ExpressionQuery Filter { get; set; } = null;
     public List<SortDescription> OrderBy { get; set; } = new();
+    public int PageNumber { get; set; } = 0;
+    public int PageSize { get; set; } = 0;
 }

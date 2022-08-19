@@ -11,5 +11,5 @@ Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.O
 
 | Methods | |
 | :--- | :--- |
-| [CreateCommand(this QueryBase, DbContext, DataProviderBase)](EficazFramework.Extensions/QueryOperations/CreateCommand(thisQueryBase,DbContext,DataProviderBase).md 'EficazFramework.Extensions.QueryOperations.CreateCommand(this EficazFramework.Repositories.Services.QueryBase, Microsoft.EntityFrameworkCore.DbContext, EficazFramework.Providers.DataProviderBase)') | |
-| [CreateCommandAsync(this QueryBase, DbContext, DataProviderBase)](EficazFramework.Extensions/QueryOperations/CreateCommandAsync(thisQueryBase,DbContext,DataProviderBase).md 'EficazFramework.Extensions.QueryOperations.CreateCommandAsync(this EficazFramework.Repositories.Services.QueryBase, Microsoft.EntityFrameworkCore.DbContext, EficazFramework.Providers.DataProviderBase)') | |
+| [CreateCommand(this QueryBase, DbContext, DataProviderBase)](EficazFramework.Extensions/QueryOperations/CreateCommand(thisQueryBase,DbContext,DataProviderBase).md 'EficazFramework.Extensions.QueryOperations.CreateCommand(this EficazFramework.Repositories.Services.QueryBase, DbContext, EficazFramework.Providers.DataProviderBase)') | |
+| [CreateCommandAsync(this QueryBase, DbContext, DataProviderBase)](EficazFramework.Extensions/QueryOperations/CreateCommandAsync(thisQueryBase,DbContext,DataProviderBase).md 'EficazFramework.Extensions.QueryOperations.CreateCommandAsync(this EficazFramework.Repositories.Services.QueryBase, DbContext, EficazFramework.Providers.DataProviderBase)') | |

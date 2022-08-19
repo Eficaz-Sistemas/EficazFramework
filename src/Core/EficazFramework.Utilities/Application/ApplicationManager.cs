@@ -171,10 +171,10 @@ public sealed class ApplicationInstance : ApplicationDefinition, INotifyProperty
     }
     
     public static ApplicationInstance Create(ApplicationDefinition fromDefinition) =>
-        new ApplicationInstance(fromDefinition, null);
+        new (fromDefinition, null);
 
     public static ApplicationInstance Create(ApplicationDefinition fromDefinition, long section) =>
-        new ApplicationInstance(fromDefinition, null) { SessionID = section };
+        new (fromDefinition, null) { SessionID = section };
 
     public long SessionID { get; internal set; }
 

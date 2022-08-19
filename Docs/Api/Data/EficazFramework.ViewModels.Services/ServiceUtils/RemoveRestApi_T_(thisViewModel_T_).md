@@ -7,7 +7,7 @@ Remove os serviços de operações CRUD via API's REST.
 
 ```csharp
 public static EficazFramework.ViewModels.ViewModel<T> RemoveRestApi<T>(this EficazFramework.ViewModels.ViewModel<T> viewmodel)
-    where T : EficazFramework.Entities.EntityBase, EficazFramework.Entities.IEntity;
+    where T : class;
 ```
 #### Type parameters
 

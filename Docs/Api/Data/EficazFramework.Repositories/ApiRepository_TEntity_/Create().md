@@ -3,6 +3,8 @@
 
 ## ApiRepository<TEntity>.Create() Method
 
+Solicita a criação de uma nova instância de Entidade de Base de Dados
+
 ```csharp
 public override TEntity Create();
 ```

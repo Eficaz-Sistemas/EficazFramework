@@ -89,6 +89,7 @@
 | Enums | |
 | :--- | :--- |
 | [Action](EficazFramework.Enums.CRUD/Action.md 'EficazFramework.Enums.CRUD.Action') | Informa o momento em que o evento ViewModelAction foi disparado |
+| [RequestAction](EficazFramework.Enums.CRUD/RequestAction.md 'EficazFramework.Enums.CRUD.RequestAction') | Utilizado em [ApiRepository&lt;TEntity&gt;](EficazFramework.Repositories/ApiRepository_TEntity_.md 'EficazFramework.Repositories.ApiRepository<TEntity>') para determiner qual ação o método [RequestMethod&lt;TBody,TResult&gt;(RequestAction, string, TBody, CancellationToken)](EficazFramework.Repositories/ApiRepository_TEntity_/RequestMethod_TBody,TResult_(RequestAction,string,TBody,CancellationToken).md 'EficazFramework.Repositories.ApiRepository<TEntity>.RequestMethod<TBody,TResult>(EficazFramework.Enums.CRUD.RequestAction, string, TBody, System.Threading.CancellationToken)') deve executar. |
 | [State](EficazFramework.Enums.CRUD/State.md 'EficazFramework.Enums.CRUD.State') | Efetua a comunicação de estado entre ViewModel e View, posicionando a última na tela condizente ao estado da ViewModel. |
 
 <a name='EficazFramework.Events'></a>
@@ -107,9 +108,9 @@
 | Delegates | |
 | :--- | :--- |
 | [CRUDEventHandler&lt;T&gt;(object, CRUDEventArgs&lt;T&gt;)](EficazFramework.Events/CRUDEventHandler_T_(object,CRUDEventArgs_T_).md 'EficazFramework.Events.CRUDEventHandler<T>(object, EficazFramework.Events.CRUDEventArgs<T>)') | |
-| [DbContextConfiguringEventHandler(DbContext, DbContextConfiguringEventArgs)](EficazFramework.Events/DbContextConfiguringEventHandler(DbContext,DbContextConfiguringEventArgs).md 'EficazFramework.Events.DbContextConfiguringEventHandler(Microsoft.EntityFrameworkCore.DbContext, EficazFramework.Events.DbContextConfiguringEventArgs)') | |
+| [DbContextConfiguringEventHandler(DbContext, DbContextConfiguringEventArgs)](EficazFramework.Events/DbContextConfiguringEventHandler(DbContext,DbContextConfiguringEventArgs).md 'EficazFramework.Events.DbContextConfiguringEventHandler(DbContext, EficazFramework.Events.DbContextConfiguringEventArgs)') | |
 | [DbContextInstanceCreatingEventHandler(object, DbContextInstanceCreatingEventArgs)](EficazFramework.Events/DbContextInstanceCreatingEventHandler(object,DbContextInstanceCreatingEventArgs).md 'EficazFramework.Events.DbContextInstanceCreatingEventHandler(object, EficazFramework.Events.DbContextInstanceCreatingEventArgs)') | |
-| [DbContextModelCreatingEventHandler(DbContext, DbContextModelCreatingEventArgs)](EficazFramework.Events/DbContextModelCreatingEventHandler(DbContext,DbContextModelCreatingEventArgs).md 'EficazFramework.Events.DbContextModelCreatingEventHandler(Microsoft.EntityFrameworkCore.DbContext, EficazFramework.Events.DbContextModelCreatingEventArgs)') | |
+| [DbContextModelCreatingEventHandler(DbContext, DbContextModelCreatingEventArgs)](EficazFramework.Events/DbContextModelCreatingEventHandler(DbContext,DbContextModelCreatingEventArgs).md 'EficazFramework.Events.DbContextModelCreatingEventHandler(DbContext, EficazFramework.Events.DbContextModelCreatingEventArgs)') | |
 | [ExpressionBuiltEventHandler(object, ExpressionBuiltEventArgs)](EficazFramework.Events/ExpressionBuiltEventHandler(object,ExpressionBuiltEventArgs).md 'EficazFramework.Events.ExpressionBuiltEventHandler(object, EficazFramework.Events.ExpressionBuiltEventArgs)') | |
 | [ExpressionEventHandler(object, ExpressionEventArgs)](EficazFramework.Events/ExpressionEventHandler(object,ExpressionEventArgs).md 'EficazFramework.Events.ExpressionEventHandler(object, EficazFramework.Events.ExpressionEventArgs)') | |
 

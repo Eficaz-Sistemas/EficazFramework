@@ -4,7 +4,7 @@
 ## DbContextConfiguringEventArgs.OptionsBuilder Property
 
 ```csharp
-public Microsoft.EntityFrameworkCore.DbContextOptionsBuilder OptionsBuilder { get; set; }
+public DbContextOptionsBuilder OptionsBuilder { get; set; }
 ```
 
 #### Property Value

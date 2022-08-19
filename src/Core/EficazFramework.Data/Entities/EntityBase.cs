@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Globalization;
 using System.Reflection;
+using System.Text.Json.Serialization;
 
 namespace EficazFramework.Entities;
 
@@ -12,14 +13,21 @@ public interface IEntity
 {
     public IEnumerable GetErrors(string propertyName);
     public string ErrorText(string propertyName);
+    [JsonIgnore]
     public bool HasErrors { get; }
 
+    [JsonIgnore]
     public bool IsLoaded { get; }
+    [JsonIgnore]
     public bool IsNew { get; }
+    [JsonIgnore]
     public bool IsSelected { get; }
+    [JsonIgnore]
     public bool PostProcessed { get; set; }
 
+    [JsonIgnore]
     public EficazFramework.Enums.ValidationMode ValidationMode { get; set; }
+    [JsonIgnore]
     public EficazFramework.Validation.Fluent.IValidator Validator { get; set; }
     public EficazFramework.Collections.StringCollection Validate(string propertyName);
 
@@ -65,14 +73,17 @@ public abstract class EntityBase : IEntity, INotifyPropertyChanged, INotifyDataE
     /// <returns>Boolean</returns>
     /// <remarks></remarks>
     [Attributes.UIEditor.EditorGeneration.IgnoreAttribute()]
+    [JsonIgnore]
     public bool HasErrors => Validate(null).Count > 0;
 
     private bool _isLoaded = false;
     [Attributes.UIEditor.EditorGeneration.IgnoreAttribute()]
+    [JsonIgnore]
     public bool IsLoaded => _isLoaded;
 
     private bool _isNew = false;
     [Attributes.UIEditor.EditorGeneration.IgnoreAttribute()]
+    [JsonIgnore]
     public bool IsNew => _isNew;
 
     private bool _selected;
@@ -87,6 +98,8 @@ public abstract class EntityBase : IEntity, INotifyPropertyChanged, INotifyDataE
     }
 
     private bool _postProcessed = false;
+    [Attributes.UIEditor.EditorGeneration.IgnoreAttribute()]
+    [JsonIgnore]
     public bool PostProcessed
     {
         get => _postProcessed;
@@ -98,6 +111,8 @@ public abstract class EntityBase : IEntity, INotifyPropertyChanged, INotifyDataE
     }
 
     private EficazFramework.Enums.ValidationMode _vmode = EficazFramework.Validation.Definitions.InitialValidationMode;
+    [Attributes.UIEditor.EditorGeneration.IgnoreAttribute()]
+    [JsonIgnore]
     public EficazFramework.Enums.ValidationMode ValidationMode
     {
         get => _vmode;
@@ -109,6 +124,8 @@ public abstract class EntityBase : IEntity, INotifyPropertyChanged, INotifyDataE
     }
 
     private EficazFramework.Validation.Fluent.IValidator _validator;
+    [Attributes.UIEditor.EditorGeneration.IgnoreAttribute()]
+    [JsonIgnore]
     public EficazFramework.Validation.Fluent.IValidator Validator
     {
         get => _validator;

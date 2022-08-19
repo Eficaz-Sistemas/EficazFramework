@@ -1,16 +1,24 @@
-namespace EficazFramework.Tests.DocsApiPlugin
-{
-    public class Tests
-    {
-        [SetUp]
-        public void Setup()
-        {
-        }
+namespace EficazFramework.Tests.DocsApiPlugin;
 
-        [Test]
-        public void Test1()
-        {
-            Assert.Pass();
-        }
+/// <summary>
+/// 
+/// </summary>
+public class Tests
+{
+    /// <summary>
+    /// 
+    /// </summary>
+    [SetUp]
+    public void Setup()
+    {
+    }
+
+    /// <summary>
+    /// 
+    /// </summary>
+    [Test]
+    public void Test1()
+    {
+        Assert.Pass();
     }
 }

@@ -2,6 +2,7 @@
 using EficazFramework.Extensions;
 using System;
 using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 
@@ -112,7 +113,7 @@ public class SingleEdit<T> : ViewModelService<T> where T : class
         // Initializing T instance:
         AttachValidatorAndINotifyPropertyChanges(entry);
         MoveTo(entry);
-
+        ViewModelInstance.Repository.CurrentEntry = entry;
 
         // Created:
         args = new Events.CRUDEventArgs<T>(Enums.CRUD.Action.EntryAdded, ViewModelInstance.State, entry);
@@ -168,7 +169,7 @@ public class SingleEdit<T> : ViewModelService<T> where T : class
         }
         ViewModelInstance.RaiseViewModelEvent(new Events.CRUDEventArgs<T>(Enums.CRUD.Action.EntryValidated, args.State, args.CurrentEntry));
 
-
+        ViewModelInstance.SetState(ViewModelInstance.State, true);
         // Unlocking Async Cancel
         CanCancelAsyncSave = true;
         RaisePropertyChanged(nameof(CanCancelAsyncSave));
@@ -201,6 +202,7 @@ public class SingleEdit<T> : ViewModelService<T> where T : class
 
 
             // Post save State setup:
+            ViewModelInstance.Repository.CurrentEntry = null;
             if (BatchInsert == false)
             {
                 MoveTo(args.CurrentEntry);
@@ -214,15 +216,22 @@ public class SingleEdit<T> : ViewModelService<T> where T : class
         }
         else
         {
-            ViewModelInstance.SetState(args.State, false, null);
-            ViewModelInstance.RaiseDialogMessage(new Events.MessageEventArgs()
+            var messageData = new Events.MessageEventArgs()
             {
                 IconReference = Events.MessageIcon.Error,
                 Title = Resources.Strings.ViewModel.UnhandledError_Title,
                 Content = string.Format(Resources.Strings.ViewModel.UnhandledError_Message, ex?.Message),
                 StackTrace = ex?.ToString() ?? "Assertion Exception",
                 EnableReporting = true
-            });
+            };
+            
+            if (ex != null && ex.GetType() == typeof(ValidationException))
+            {
+                messageData.Title = EficazFramework.Resources.Strings.Validation.Dialog_Title;
+                messageData.Content = string.Format(EficazFramework.Resources.Strings.Validation.Dialog_Message, Environment.NewLine, ex.Message);
+            }
+            ViewModelInstance.SetState(args.State, false, null);
+            ViewModelInstance.RaiseDialogMessage(messageData);
         }
         tokenregistration.Unregister();
         await tokenregistration.DisposeAsync();
@@ -240,6 +249,7 @@ public class SingleEdit<T> : ViewModelService<T> where T : class
         var ex = await ViewModelInstance.Repository.CancelAsync(CurrentEntry);
         if (ex is null && !ViewModelInstance.FailAssertion)
         {
+            ViewModelInstance.Repository.CurrentEntry = null;
             ViewModelInstance.RaiseViewModelEvent(args);
             DetachValidatorAndINotifyPropertyChanges(args.CurrentEntry);
             if (args.State == Enums.CRUD.State.Novo)
@@ -282,17 +292,20 @@ public class SingleEdit<T> : ViewModelService<T> where T : class
         {
             entry = CurrentEntry;
         }
-        var args = new Events.CRUDEventArgs<T>(Enums.CRUD.Action.EntryEditing, ViewModelInstance.State, entry);
+        ViewModelInstance.Repository.CurrentEntry = entry;
 
+        var args = new Events.CRUDEventArgs<T>(Enums.CRUD.Action.EntryEditing, ViewModelInstance.State, entry);
         ViewModelInstance.RaiseViewModelEvent(args);
         if (args.Cancel == true)
             return;
 
         ViewModelInstance.SetState(Enums.CRUD.State.Processando, true, null);
-
         AttachValidatorAndINotifyPropertyChanges(entry);
         await ViewModelInstance.OnEntrySetup(entry);
         (entry as EntityBase)?.SetIsLoaded();
+        
+        args = new Events.CRUDEventArgs<T>(Enums.CRUD.Action.EntrySetupCompleted, ViewModelInstance.State, entry);
+        ViewModelInstance.RaiseViewModelEvent(args);
 
         args = new Events.CRUDEventArgs<T>(Enums.CRUD.Action.EntryEdited, ViewModelInstance.State, entry);
         ViewModelInstance.RaiseViewModelEvent(args);
@@ -325,6 +338,7 @@ public class SingleEdit<T> : ViewModelService<T> where T : class
         {
             entry = CurrentEntry; //delete CurrentEntry
         }
+        ViewModelInstance.Repository.CurrentEntry = entry;
 
         // TODO: verify if operation is a BatchDelete...
         string messagetext = Resources.Strings.ViewModel.StoreService_DeleteConfirmation_Message;
@@ -374,6 +388,7 @@ public class SingleEdit<T> : ViewModelService<T> where T : class
             DetachValidatorAndINotifyPropertyChanges(args.CurrentEntry);
 
             // Post delete State setup:
+            ViewModelInstance.Repository.CurrentEntry = null;
             if (ViewModelInstance.Repository.DataContext.Count > 0)
             {
                 ViewModelInstance.SetState(Enums.CRUD.State.Leitura, false, null);

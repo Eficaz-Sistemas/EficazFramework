@@ -11,5 +11,5 @@ Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.O
 
 | Methods | |
 | :--- | :--- |
-| [AllMigrationsApplied(this DbContext)](EficazFramework.Extensions/DbContext/AllMigrationsApplied(thisDbContext).md 'EficazFramework.Extensions.DbContext.AllMigrationsApplied(this Microsoft.EntityFrameworkCore.DbContext)') | Verifica se todos os migrations foram devidamente aplicados |
-| [AllMigrationsAppliedAsync(this DbContext)](EficazFramework.Extensions/DbContext/AllMigrationsAppliedAsync(thisDbContext).md 'EficazFramework.Extensions.DbContext.AllMigrationsAppliedAsync(this Microsoft.EntityFrameworkCore.DbContext)') | Verifica se todos os migrations foram devidamente aplicados |
+| [AllMigrationsApplied(this DbContext)](EficazFramework.Extensions/DbContext/AllMigrationsApplied(thisDbContext).md 'EficazFramework.Extensions.DbContext.AllMigrationsApplied(this DbContext)') | Verifica se todos os migrations foram devidamente aplicados |
+| [AllMigrationsAppliedAsync(this DbContext)](EficazFramework.Extensions/DbContext/AllMigrationsAppliedAsync(thisDbContext).md 'EficazFramework.Extensions.DbContext.AllMigrationsAppliedAsync(this DbContext)') | Verifica se todos os migrations foram devidamente aplicados |

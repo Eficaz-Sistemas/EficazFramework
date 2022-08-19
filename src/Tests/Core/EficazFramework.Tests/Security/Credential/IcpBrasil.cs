@@ -1,5 +1,4 @@
 ﻿using EficazFramework.Serialization;
-using EficazFramework.Shared;
 using EficazFramework.XML;
 using FluentAssertions;
 using NUnit.Framework;
@@ -68,7 +67,7 @@ public class IcpBrasilTests
     public void SignXmlDocument()
     {
         // Setup
-        MockClass mockClass = new() { Id = 1, Name = "Henrique" };
+        Resources.Mocks.Classes.MockClass mockClass = new() { Id = 1, Name = "Henrique" };
         string target = $"{Environment.CurrentDirectory}/mockClass.xml";
         SerializationOperations.ToXml(mockClass, target);
         System.Xml.XmlDocument source = XMLOperations.ToXmlDocument(target);
@@ -95,7 +94,7 @@ public class IcpBrasilTests
     public void SignXDocument()
     {
         // Setup
-        MockClass mockClass = new() { Id = 1, Name = "Henrique" };
+        Resources.Mocks.Classes.MockClass mockClass = new() { Id = 1, Name = "Henrique" };
         string target = $"{Environment.CurrentDirectory}/mockClass.xml";
         SerializationOperations.ToXml(mockClass, target);
         System.Xml.XmlDocument source = XMLOperations.ToXmlDocument(target);

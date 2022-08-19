@@ -4,10 +4,10 @@
 ## DbContextConfiguringEventArgs(DbContextOptionsBuilder) Constructor
 
 ```csharp
-public DbContextConfiguringEventArgs(Microsoft.EntityFrameworkCore.DbContextOptionsBuilder optionsBuilder);
+public DbContextConfiguringEventArgs(DbContextOptionsBuilder optionsBuilder);
 ```
 #### Parameters
 
-<a name='EficazFramework.Events.DbContextConfiguringEventArgs.DbContextConfiguringEventArgs(Microsoft.EntityFrameworkCore.DbContextOptionsBuilder).optionsBuilder'></a>
+<a name='EficazFramework.Events.DbContextConfiguringEventArgs.DbContextConfiguringEventArgs(DbContextOptionsBuilder).optionsBuilder'></a>
 
 `optionsBuilder` [Microsoft.EntityFrameworkCore.DbContextOptionsBuilder](https://docs.microsoft.com/en-us/dotnet/api/Microsoft.EntityFrameworkCore.DbContextOptionsBuilder 'Microsoft.EntityFrameworkCore.DbContextOptionsBuilder')

@@ -4,10 +4,10 @@
 ## MdiHost Class
 
 ```csharp
-public class MdiHost : MudBlazor.MudBaseBindableItemsControl<EficazFramework.Components.MdiWindow, EficazFramework.Application.ApplicationInstance>
+public class MdiHost
 ```
 
-Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.Object 'System.Object') &#129106; [Microsoft.AspNetCore.Components.ComponentBase](https://docs.microsoft.com/en-us/dotnet/api/Microsoft.AspNetCore.Components.ComponentBase 'Microsoft.AspNetCore.Components.ComponentBase') &#129106; [MudBlazor.MudComponentBase](https://docs.microsoft.com/en-us/dotnet/api/MudBlazor.MudComponentBase 'MudBlazor.MudComponentBase') &#129106; [MudBlazor.MudBaseItemsControl&lt;](https://docs.microsoft.com/en-us/dotnet/api/MudBlazor.MudBaseItemsControl-1 'MudBlazor.MudBaseItemsControl`1')[MdiWindow](EficazFramework.Components/MdiWindow.md 'EficazFramework.Components.MdiWindow')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/MudBlazor.MudBaseItemsControl-1 'MudBlazor.MudBaseItemsControl`1') &#129106; [MudBlazor.MudBaseBindableItemsControl&lt;](https://docs.microsoft.com/en-us/dotnet/api/MudBlazor.MudBaseBindableItemsControl-2 'MudBlazor.MudBaseBindableItemsControl`2')[MdiWindow](EficazFramework.Components/MdiWindow.md 'EficazFramework.Components.MdiWindow')[,](https://docs.microsoft.com/en-us/dotnet/api/MudBlazor.MudBaseBindableItemsControl-2 'MudBlazor.MudBaseBindableItemsControl`2')[EficazFramework.Application.ApplicationInstance](https://docs.microsoft.com/en-us/dotnet/api/EficazFramework.Application.ApplicationInstance 'EficazFramework.Application.ApplicationInstance')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/MudBlazor.MudBaseBindableItemsControl-2 'MudBlazor.MudBaseBindableItemsControl`2') &#129106; MdiHost
+Inheritance [MudBlazor.MudBaseBindableItemsControl](https://docs.microsoft.com/en-us/dotnet/api/MudBlazor.MudBaseBindableItemsControl 'MudBlazor.MudBaseBindableItemsControl') &#129106; MdiHost
 
 | Properties | |
 | :--- | :--- |

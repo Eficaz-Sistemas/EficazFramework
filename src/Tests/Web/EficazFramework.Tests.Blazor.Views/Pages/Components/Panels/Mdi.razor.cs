@@ -10,7 +10,7 @@ public partial class Mdi
     {
         base.OnInitialized();
 
-        if (ApplicationManager.AllApplications.Count != 0)
+        if (ApplicationManager!.AllApplications.Count != 0)
             return;
         
         appHello = new()

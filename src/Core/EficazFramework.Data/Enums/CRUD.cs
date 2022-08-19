@@ -56,6 +56,8 @@ public enum Action
     Saving = 4,
     Saved = 5,
 
+    EntrySetupCompleted = 6,
+
     EntryAdding = 11,
     EntryAdded = 12,
 
@@ -84,4 +86,14 @@ public enum Action
     DetailEntryDeleting = 65,
     DetailEntryDeleted = 66
 
+}
+
+/// <summary>
+/// Utilizado em <see cref="Repositories.ApiRepository{TEntity}"/> para determiner qual ação o método <see cref="Repositories.ApiRepository{TEntity}.RequestMethod{TBody, TResult}(RequestAction, string, TBody, System.Threading.CancellationToken)"/> deve executar.
+/// </summary>
+public enum RequestAction
+{
+    Get = 0,
+    Post = 1,
+    Put = 2
 }

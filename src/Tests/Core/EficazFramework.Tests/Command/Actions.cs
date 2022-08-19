@@ -21,9 +21,8 @@ public class Actions
 
             { MyConfig, false }
         };
-        Action action = () => CustomAction(parameters);
         TimeSpan start = DateTime.Now.TimeOfDay;
-        EficazFramework.Commands.DelayedAction.Invoke(action, delay);
+        EficazFramework.Commands.DelayedAction.Invoke(() => CustomAction(parameters), delay);
         TimeSpan delta = DateTime.Now.TimeOfDay - start;
         delta.Milliseconds.Should().BeGreaterThanOrEqualTo(delay);
         parameters[MyConfig].Should().Be(true);

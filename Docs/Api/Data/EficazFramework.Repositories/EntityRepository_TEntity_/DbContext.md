@@ -6,7 +6,7 @@
 Instância de DbContext do EntityFrameworkCore
 
 ```csharp
-public Microsoft.EntityFrameworkCore.DbContext DbContext { get; set; }
+public DbContext DbContext { get; set; }
 ```
 
 Implements [DbContext](EficazFramework.Repositories/IEntityRepository/DbContext.md 'EficazFramework.Repositories.IEntityRepository.DbContext')

@@ -29,6 +29,7 @@ Implements [System.ComponentModel.INotifyPropertyChanged](https://docs.microsoft
 
 | Properties | |
 | :--- | :--- |
+| [CurrentEntry](EficazFramework.Repositories/RepositoryBase_T_/CurrentEntry.md 'EficazFramework.Repositories.RepositoryBase<T>.CurrentEntry') | Entidade atualmente em edição (ou inclusão).<br/>Deve ser definido pelo ViewModel (ou regras de negócio) |
 | [CurrentPage](EficazFramework.Repositories/RepositoryBase_T_/CurrentPage.md 'EficazFramework.Repositories.RepositoryBase<T>.CurrentPage') | Página atual dos métodos FetchItems e FetchItemsAsync. Será sempre 0 ou 1 quando a paginação estiver desabilitada. |
 | [DataContext](EficazFramework.Repositories/RepositoryBase_T_/DataContext.md 'EficazFramework.Repositories.RepositoryBase<T>.DataContext') | Contém a enumeração dos resultados obtidos nos métodos Get e GetAsync. |
 | [Filter](EficazFramework.Repositories/RepositoryBase_T_/Filter.md 'EficazFramework.Repositories.RepositoryBase<T>.Filter') | Expressão lambda para filtragem de dados dos métodos Get e GetAsync. |

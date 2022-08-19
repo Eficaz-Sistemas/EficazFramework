@@ -4,10 +4,12 @@ using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.ComponentModel.DataAnnotations;
 using System.Diagnostics;
 using System.Linq;
 using System.Net.Http;
 using System.Net.Http.Json;
+using System.Text.Json;
 using System.Text.Json.Serialization;
 using System.Threading;
 using System.Threading.Tasks;
@@ -22,6 +24,12 @@ public sealed class ApiRepository<TEntity> : Repositories.RepositoryBase<TEntity
     private readonly HttpClient _client;
 
     /// <summary>
+    /// Paramêtros para filtragem de dados.
+    /// Efetua shadowing de <see cref="RepositoryBase{T}.Filter"/>
+    /// </summary>
+    public new Expressions.ExpressionQuery Filter { get; set; }
+
+    /// <summary>
     /// URL de requisição para métodos FetchItems() e FetchItemsAsync()
     /// </summary>
     public string UrlGet { get; set; } = "/myRestApi/get";
@@ -29,12 +37,12 @@ public sealed class ApiRepository<TEntity> : Repositories.RepositoryBase<TEntity
     /// <summary>
     /// URL de requisição para métodos FetchItems() e FetchItemsAsync()
     /// </summary>
-    public string UrlInsert { get; set; } = "/myRestApi/insert";
+    public string UrlPut { get; set; } = "/myRestApi/put";
 
     /// <summary>s
     /// URL de requisição para métodos FetchItems() e FetchItemsAsync()
     /// </summary>
-    public string UrlUpdate { get; set; } = "/myRestApi/update";
+    public string UrlPost { get; set; } = "/myRestApi/post";
 
     /// <summary>
     /// URL de requisição para métodos FetchItems() e FetchItemsAsync()
@@ -42,9 +50,9 @@ public sealed class ApiRepository<TEntity> : Repositories.RepositoryBase<TEntity
     public string UrlDelete { get; set; } = "/myRestApi/delete";
 
     /// <summary>
-    /// URL de requisição para métodos FetchItems() e FetchItemsAsync()
+    /// Obtém ou define as definições para serialização Json nas requisições contra o servidor Http.
     /// </summary>
-    public string UrlCancel { get; set; } = "/myRestApi/cancel";
+    public JsonSerializerOptions SerializerOptions { get; set;} = default;
 
     /// <summary>
     /// (Opcional) Instância de DbContext para Tracking de modificações.
@@ -53,53 +61,137 @@ public sealed class ApiRepository<TEntity> : Repositories.RepositoryBase<TEntity
     public Microsoft.EntityFrameworkCore.DbContext TrackingContext { get; set; }
 
 
-
     /// <summary>
-    /// método POST base para implementações
+    /// Request base para implementações
     /// </summary>
-    public async Task<TResult> PostMethod<TBody, TResult>(string requestUri, TBody body, CancellationToken cancellationToken)
+    public async Task<TResult> RequestMethod<TBody, TResult>(Enums.CRUD.RequestAction action,
+        string requestUri, 
+        TBody body, 
+        CancellationToken cancellationToken)
     {
         if (cancellationToken != default && cancellationToken.IsCancellationRequested) return default;
         try
         {
-            var response = await _client.PostAsJsonAsync(requestUri, body, cancellationToken);
-            if (response.IsSuccessStatusCode)
-                return await response.Content.ReadFromJsonAsync<TResult>(new System.Text.Json.JsonSerializerOptions()
-                {
-                    PropertyNameCaseInsensitive = true
-                });
+            return action switch
+            {
+                Enums.CRUD.RequestAction.Get => await PostAsync<TBody, TResult>(requestUri, body, cancellationToken),
+                Enums.CRUD.RequestAction.Post => await PostAsync<TBody, TResult>(requestUri, body, cancellationToken),
+                Enums.CRUD.RequestAction.Put => await PutAsync<TBody, TResult>(requestUri, body, cancellationToken),
+                _ => default
+            };
         }
         catch (TaskCanceledException tkex)
         {
             Debug.WriteLine(tkex.ToString());
             return default;
         }
-        return default;
     }
 
+    /// <summary>
+    /// Método Post executado por <see cref="RequestMethod{TBody, TResult}(Enums.CRUD.RequestAction, string, TBody, CancellationToken)"/>
+    /// </summary>
+    private async Task<TResult> PostAsync<TBody, TResult>(string requestUri,
+        TBody body,
+        CancellationToken cancellationToken)
+    {
+        var response = await _client.PostAsJsonAsync(requestUri, body, SerializerOptions, cancellationToken);
+        if (response.IsSuccessStatusCode)
+        {
+            try
+            {
+                return await response.Content.ReadFromJsonAsync<TResult>(new System.Text.Json.JsonSerializerOptions()
+                {
+                    PropertyNameCaseInsensitive = true
+                }, cancellationToken);
+            }
+            catch
+            {
+                return default;
+            }
+        }
+        else
+        {
+            string responseResult = await response.Content.ReadAsStringAsync(cancellationToken);
+            
+
+            throw response.StatusCode switch
+            {
+                System.Net.HttpStatusCode.Unauthorized => new UnauthorizedAccessException(Resources.Strings.Security.GPO_AccessViolationMessage),
+                System.Net.HttpStatusCode.Forbidden => new UnauthorizedAccessException(Resources.Strings.Security.GPO_AccessViolationMessage),
+                System.Net.HttpStatusCode.UnprocessableEntity => new ValidationException(ParseValidationFromResponseString(responseResult)),
+                _ => new HttpRequestException(string.Format(Resources.Strings.ViewModel.UnhandledError_Message, response.ReasonPhrase)),
+            };
+        }
+    }
 
     /// <summary>
-    /// Paramêtros para filtragem de dados.
-    /// Efetua shadowing de <see cref="RepositoryBase{T}.Filter"/>
+    /// Método Post executado por <see cref="RequestMethod{TBody, TResult}(Enums.CRUD.RequestAction, string, TBody, CancellationToken)"/>
     /// </summary>
-    public new Expressions.ExpressionQuery Filter { get; set; }
+    private async Task<TResult> PutAsync<TBody, TResult>(string requestUri,
+        TBody body,
+        CancellationToken cancellationToken)
+    {
+        var response = await _client.PutAsJsonAsync(requestUri, body, SerializerOptions, cancellationToken);
+        if (response.IsSuccessStatusCode)
+        {
+            try
+            {
+                return await response.Content.ReadFromJsonAsync<TResult>(new System.Text.Json.JsonSerializerOptions()
+                {
+                    PropertyNameCaseInsensitive = true
+                }, cancellationToken);
+            }
+            catch
+            {
+                return default;
+            }
+        }
+        else
+        {
+            string responseResult = await response.Content.ReadAsStringAsync(cancellationToken);
 
 
+            throw response.StatusCode switch
+            {
+                System.Net.HttpStatusCode.Unauthorized => new UnauthorizedAccessException(Resources.Strings.Security.GPO_AccessViolationMessage),
+                System.Net.HttpStatusCode.Forbidden => new UnauthorizedAccessException(Resources.Strings.Security.GPO_AccessViolationMessage),
+                System.Net.HttpStatusCode.UnprocessableEntity => new ValidationException(ParseValidationFromResponseString(responseResult)),
+                _ => new HttpRequestException(string.Format(Resources.Strings.ViewModel.UnhandledError_Message, response.ReasonPhrase)),
+            };
+        }
+    }
+
+    /// <summary>
+    /// Extrai os erros de validação do Http Response.
+    /// </summary>
+    /// <param name="responseString"></param>
+    /// <returns></returns>
+    private static string ParseValidationFromResponseString(string responseString)
+    {
+        var jsonParse = JsonDocument.Parse(responseString);
+        var jsonFilter = jsonParse.RootElement
+                            .GetProperty("errors")
+                            .GetRawText();
+
+        EficazFramework.Validation.Fluent.ValidationResult result = new();
+        result.AddRange(JsonSerializer.Deserialize<Dictionary<string, string[]>>(jsonFilter).First().Value.ToList());
+        return result.ToString();
+    }
+
+  
     /// <summary>s
     /// Efetua a instrução GET contra o datasource
     /// </summary>
-    public override ObservableCollection<TEntity> FetchItems()
-    {
-        return FetchItemsAsync(default).Result;
-    }
-
+    public override ObservableCollection<TEntity> FetchItems() =>
+        FetchItemsAsync(default).Result;
+    
     /// <summary>s
     /// Efetua a instrução GET contra o datasource
     /// </summary>
     public override async Task<ObservableCollection<TEntity>> FetchItemsAsync(CancellationToken cancellationToken)
     {
         List<TEntity> result = new();
-        var response = await PostMethod<object, List<TEntity>>(UrlGet, new Expressions.QueryDescription(Filter, OrderByDefinitions), cancellationToken);
+        var response = await RequestMethod<Expressions.QueryDescription, List<TEntity>>(Enums.CRUD.RequestAction.Post, UrlGet, new Expressions.QueryDescription(Filter, OrderByDefinitions), cancellationToken);
         if (response != null)
             result.AddRange(response as IList<TEntity>);
 
@@ -109,25 +201,36 @@ public sealed class ApiRepository<TEntity> : Repositories.RepositoryBase<TEntity
         return result.ToObservableCollection<TEntity>();
     }
 
+    
     /// <summary>
     /// Solicita o cancelamento das alterações efetuadas no argumento item.
     /// Caso o mesmo não seja informado, será aplicado sobre todos os itens no DataContext
     /// </summary>
-    public override Exception Cancel(object item)
-    {
-        return CancelAsync(item).Result;
-    }
-
+    public override Exception Cancel(object item) =>
+        CancelAsync(item).Result;
+    
     /// <summary>
     /// Solicita o cancelamento das alterações efetuadas no argumento item.
     /// Caso o mesmo não seja informado, será aplicado sobre todos os itens no DataContext
     /// </summary>
     public override async Task<Exception> CancelAsync(object item)
     {
+        _isAdding = false;
+        _isDeleting = false;
+        
         if (TrackingContext != null)
             return await CancelByDbContextAsync(item);
         else
-            return await CancelByApiAsync(item);
+            try
+            {
+                CancelByCustomHandler?.Invoke(item);
+                return null;
+            }
+            catch (Exception ex)
+            {
+                return ex;
+            }
+        
     }
 
     /// <summary>
@@ -188,71 +291,118 @@ public sealed class ApiRepository<TEntity> : Repositories.RepositoryBase<TEntity
     }
 
     /// <summary>
-    /// Executa o cancelamento da edição por meio da API 'UriCancel'
+    /// Executa o cancelamento da edição por meio de uma Custom Action
     /// </summary>
-    private async Task<Exception> CancelByApiAsync(object item)
+    private Action<object> CancelByCustomHandler { get; set; } = default;
+
+    /// <summary>
+    /// Desanexa uma entidade da instância de <see cref="TrackingContext"/>, caso nao seja nula.
+    /// </summary>
+    public override void Detach(object item)
+    {
+        if (TrackingContext == null)
+            return;
+        
+        var entry = TrackingContext.ChangeTracker.Entries().Where((it) => it.Entity == item).FirstOrDefault();
+        if (entry != null) entry.State = EntityState.Detached;
+    }
+
+    
+    /// <summary>
+    /// Solicita a criação de uma nova instância de Entidade de Base de Dados
+    /// </summary>
+    public override TEntity Create()
+    {
+        TrackingContext ??= DbContextRequest?.Invoke();
+        return EficazFramework.Entities.EntityBase.Create<TEntity>();
+    }
+    
+    /// <summary>
+    /// Solicita a criação de uma nova instância de Entidade de Base de Dados
+    /// </summary>
+    public override T2 Create<T2>()
+    {
+        TrackingContext ??= DbContextRequest?.Invoke();
+        return EficazFramework.Entities.EntityBase.Create<T2>();
+    }
+
+    private bool _isAdding = false;
+    /// <summary>
+    /// Adicina uma nova entidade às intruções INSERT do TrackingContext
+    /// </summary>
+    /// <param name="item"></param>
+    internal override void ItemAdded(object item)
+    {
+        _isAdding = true;
+        if (TrackingContext == null)
+            return;
+        
+        TrackingContext?.Add(item);
+    }
+
+
+    /// <summary>
+    /// Executa as instruções de persistência do Servidor
+    /// </summary>
+    public override Exception Commit() =>
+        CommitAsync(default).Result;
+    
+    /// <summary>
+    /// Executa as instruções de persistência do Servidor
+    /// </summary>
+    public override async Task<Exception> CommitAsync(CancellationToken cancellationToken)
     {
         try
         {
-            var result = await PostMethod<object, string>(UrlCancel, item, default);
-            return null;
+            if (CurrentEntry != null)
+            {
+                TEntity response;
+                if (_isAdding)
+                    response = await RequestMethod<TEntity, TEntity>(Enums.CRUD.RequestAction.Put, UrlPut, CurrentEntry, cancellationToken);
+                else if (_isDeleting)
+                    response = await RequestMethod<TEntity, TEntity>(Enums.CRUD.RequestAction.Post, UrlDelete, CurrentEntry, cancellationToken);
+                else
+                    response = await RequestMethod<TEntity, TEntity>(Enums.CRUD.RequestAction.Post, UrlPost, CurrentEntry, cancellationToken);
+            }
+            else
+            {
+                var response = await RequestMethod<List<TEntity>, List<TEntity>>(Enums.CRUD.RequestAction.Post, UrlPost, DataContext.ToList(), cancellationToken);
+            }
+            _isDeleting = false;
+            return default;
         }
         catch (Exception ex)
         {
+            _isAdding = false;
+            _isDeleting = false;
             return ex;
         }
     }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-    public override Exception Commit()
-    {
-        throw new NotImplementedException();
-    }
-
-    public override Task<Exception> CommitAsync(CancellationToken cancellationToken)
-    {
-        throw new NotImplementedException();
-    }
-
-
-
-    public override TEntity Create()
-    {
-        throw new NotImplementedException();
-    }
-
-    public override T2 Create<T2>()
-    {
-        throw new NotImplementedException();
-    }
-
-
-
-    public override void Detach(object item)
-    {
-        throw new NotImplementedException();
-    }
-
-    internal override void ItemAdded(object item)
-    {
-        throw new NotImplementedException();
-    }
-
+    private bool _isDeleting = false;
+    /// <summary>
+    /// Adicina uma nova entidade às intruções DELETE do TrackingContext
+    /// </summary>
+    /// <param name="item"></param>
     internal override void ItemDeleted(object item)
     {
-        throw new NotImplementedException();
+        _isDeleting = true;
+        CurrentEntry = item as TEntity;
+        
+        if (TrackingContext == null)
+            return;
+        
+        TrackingContext?.Remove(item);
+    }
+
+    
+    /// <summary>
+    /// Descartando o estado gerenciado (objetos gerenciados)
+    /// </summary>
+    internal override void DisposeManagedCallerObjects()
+    {
+        if (TrackingContext != null) TrackingContext.Dispose();
+        TrackingContext = null;
     }
 
 

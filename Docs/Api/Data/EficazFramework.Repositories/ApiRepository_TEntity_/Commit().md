@@ -3,6 +3,8 @@
 
 ## ApiRepository<TEntity>.Commit() Method
 
+Executa as instruções de persistência do Servidor
+
 ```csharp
 public override System.Exception Commit();
 ```

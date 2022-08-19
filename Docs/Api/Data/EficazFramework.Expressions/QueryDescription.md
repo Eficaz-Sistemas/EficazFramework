@@ -18,3 +18,5 @@ Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.O
 | :--- | :--- |
 | [Filter](EficazFramework.Expressions/QueryDescription/Filter.md 'EficazFramework.Expressions.QueryDescription.Filter') | |
 | [OrderBy](EficazFramework.Expressions/QueryDescription/OrderBy.md 'EficazFramework.Expressions.QueryDescription.OrderBy') | |
+| [PageNumber](EficazFramework.Expressions/QueryDescription/PageNumber.md 'EficazFramework.Expressions.QueryDescription.PageNumber') | |
+| [PageSize](EficazFramework.Expressions/QueryDescription/PageSize.md 'EficazFramework.Expressions.QueryDescription.PageSize') | |

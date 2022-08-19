@@ -1,5 +1,4 @@
-﻿using EficazFramework.Shared;
-using FluentAssertions;
+﻿using FluentAssertions;
 using NUnit.Framework;
 using System;
 using System.Threading.Tasks;
@@ -13,7 +12,7 @@ public class Xml
     public void XmlStream()
     {
         // Setup
-        MockClass mockClass = new() { Id = 1, Name = "Henrique" };
+        Resources.Mocks.Classes.MockClass mockClass = new() { Id = 1, Name = "Henrique" };
         System.IO.MemoryStream ms = new();
 
         // To Xml
@@ -22,7 +21,7 @@ public class Xml
 
         // From Xml (stream)
         ms.Position = 0;
-        var assert = SerializationOperations.FromXml<MockClass>(ms);
+        var assert = SerializationOperations.FromXml<Resources.Mocks.Classes.MockClass>(ms);
         assert.Id.Should().Be(1);
         assert.Name.Should().Be("Henrique");
 
@@ -33,7 +32,7 @@ public class Xml
         SerializationOperations.ToXml(mockClass, ms, new() { Indent = false, OmitXmlDeclaration = true });
         ms.Position = 0;
         Console.WriteLine(System.Text.Encoding.UTF8.GetString(ms.ToArray()));
-        assert = SerializationOperations.FromXml<MockClass>(ms);
+        assert = SerializationOperations.FromXml<Resources.Mocks.Classes.MockClass>(ms);
         assert.Id.Should().Be(7);
         assert.Name.Should().Be("Eficaz");
 
@@ -43,7 +42,7 @@ public class Xml
     public async Task XmlStreamAsync()
     {
         // Setup
-        MockClass mockClass = new() { Id = 1, Name = "Henrique" };
+        Resources.Mocks.Classes.MockClass mockClass = new() { Id = 1, Name = "Henrique" };
         System.IO.MemoryStream ms = new();
 
         // To Xml
@@ -52,7 +51,7 @@ public class Xml
 
         // From Xml (stream)
         ms.Position = 0;
-        var assert = await SerializationOperations.FromXmlAsync<MockClass>(ms);
+        var assert = await SerializationOperations.FromXmlAsync<Resources.Mocks.Classes.MockClass>(ms);
         assert.Id.Should().Be(1);
         assert.Name.Should().Be("Henrique");
 
@@ -63,7 +62,7 @@ public class Xml
         await SerializationOperations.ToXmlAsync(mockClass, ms, new() { Indent = false, OmitXmlDeclaration = true });
         ms.Position = 0;
         Console.WriteLine(System.Text.Encoding.UTF8.GetString(ms.ToArray()));
-        assert = await SerializationOperations.FromXmlAsync<MockClass>(ms);
+        assert = await SerializationOperations.FromXmlAsync<Resources.Mocks.Classes.MockClass>(ms);
         assert.Id.Should().Be(7);
         assert.Name.Should().Be("Eficaz");
     }
@@ -73,14 +72,14 @@ public class Xml
     {
         // Setup
         Console.WriteLine(Environment.CurrentDirectory);
-        MockClass mockClass = new() { Id = 1, Name = "Henrique" };
+        Resources.Mocks.Classes.MockClass mockClass = new() { Id = 1, Name = "Henrique" };
         string target = $"{Environment.CurrentDirectory}/mockClass.xml";
 
         // To Xml
         SerializationOperations.ToXml(mockClass, target);
 
         // From Xml (stream)
-        var assert = SerializationOperations.FromXml<MockClass>(target);
+        var assert = SerializationOperations.FromXml<Resources.Mocks.Classes.MockClass>(target);
         assert.Id.Should().Be(1);
         assert.Name.Should().Be("Henrique");
         System.IO.File.Delete(target);
@@ -89,7 +88,7 @@ public class Xml
         mockClass.Id = 7;
         mockClass.Name = "Eficaz";
         SerializationOperations.ToXml(mockClass, target, new() { Indent = false, OmitXmlDeclaration = true });
-        assert = SerializationOperations.FromXml<MockClass>(target);
+        assert = SerializationOperations.FromXml<Resources.Mocks.Classes.MockClass>(target);
         assert.Id.Should().Be(7);
         assert.Name.Should().Be("Eficaz");
         System.IO.File.Delete(target);
@@ -100,14 +99,14 @@ public class Xml
     {
         // Setup
         Console.WriteLine(Environment.CurrentDirectory);
-        MockClass mockClass = new() { Id = 1, Name = "Henrique" };
+        Resources.Mocks.Classes.MockClass mockClass = new() { Id = 1, Name = "Henrique" };
         string target = $"{Environment.CurrentDirectory}/mockClass.xml";
 
         // To Xml
         await SerializationOperations.ToXmlAsync(mockClass, target);
 
         // From Xml (stream)
-        var assert = await SerializationOperations.FromXmlAsync<MockClass>(target);
+        var assert = await SerializationOperations.FromXmlAsync<Resources.Mocks.Classes.MockClass>(target);
         assert.Id.Should().Be(1);
         assert.Name.Should().Be("Henrique");
         System.IO.File.Delete(target);
@@ -116,7 +115,7 @@ public class Xml
         mockClass.Id = 7;
         mockClass.Name = "Eficaz";
         await SerializationOperations.ToXmlAsync(mockClass, target, new() { Indent = false, OmitXmlDeclaration = true });
-        assert = await SerializationOperations.FromXmlAsync<MockClass>(target);
+        assert = await SerializationOperations.FromXmlAsync<Resources.Mocks.Classes.MockClass>(target);
         assert.Id.Should().Be(7);
         assert.Name.Should().Be("Eficaz");
         System.IO.File.Delete(target);
@@ -131,13 +130,13 @@ public class Json
     public void JsonString()
     {
         // Setup
-        MockClass mockClass = new() { Id = 2, Name = "Miguel" };
+        Resources.Mocks.Classes.MockClass mockClass = new() { Id = 2, Name = "Miguel" };
 
         // To Json (string)
         string result = SerializationOperations.ToJson(mockClass);
 
         // From Json (string)
-        var assert = SerializationOperations.FromJson<MockClass>(result);
+        var assert = SerializationOperations.FromJson<Resources.Mocks.Classes.MockClass>(result);
         assert.Id.Should().Be(2);
         assert.Name.Should().Be("Miguel");
     }
@@ -146,13 +145,13 @@ public class Json
     public async Task JsonStringAsync()
     {
         // Setup
-        MockClass mockClass = new() { Id = 2, Name = "Miguel" };
+        Resources.Mocks.Classes.MockClass mockClass = new() { Id = 2, Name = "Miguel" };
 
         // To Json (string)
         string result = await SerializationOperations.ToJsonAsync(mockClass);
 
         // From Json (string)
-        var assert = await SerializationOperations.FromJsonAsync<MockClass>(result);
+        var assert = await SerializationOperations.FromJsonAsync<Resources.Mocks.Classes.MockClass>(result);
         assert.Id.Should().Be(2);
         assert.Name.Should().Be("Miguel");
     }
@@ -161,14 +160,14 @@ public class Json
     public void JsonFile()
     {
         // Setup
-        MockClass mockClass = new() { Id = 2, Name = "Miguel" };
+        Resources.Mocks.Classes.MockClass mockClass = new() { Id = 2, Name = "Miguel" };
         string target = $"{Environment.CurrentDirectory}/mockClass.txt";
 
         // To Json (string)
         SerializationOperations.ToJsonFile(mockClass, target);
 
         // From Json (string)
-        var assert = SerializationOperations.FromJsonFile<MockClass>(target);
+        var assert = SerializationOperations.FromJsonFile<Resources.Mocks.Classes.MockClass>(target);
         assert.Id.Should().Be(2);
         assert.Name.Should().Be("Miguel");
         System.IO.File.Delete(target);
@@ -178,14 +177,14 @@ public class Json
     public async Task JsonFileAsync()
     {
         // Setup
-        MockClass mockClass = new() { Id = 2, Name = "Miguel" };
+        Resources.Mocks.Classes.MockClass mockClass = new() { Id = 2, Name = "Miguel" };
         string target = $"{Environment.CurrentDirectory}/mockClass.txt";
 
         // To Json (string)
         await SerializationOperations.ToJsonFileAsync(mockClass, target);
 
         // From Json (string)
-        var assert = await SerializationOperations.FromJsonFileAsync<MockClass>(target);
+        var assert = await SerializationOperations.FromJsonFileAsync<Resources.Mocks.Classes.MockClass>(target);
         assert.Id.Should().Be(2);
         assert.Name.Should().Be("Miguel");
         System.IO.File.Delete(target);
@@ -195,7 +194,7 @@ public class Json
     public void JsonStream()
     {
         // Setup
-        MockClass mockClass = new() { Id = 2, Name = "Miguel" };
+        Resources.Mocks.Classes.MockClass mockClass = new() { Id = 2, Name = "Miguel" };
         System.IO.MemoryStream ms = new();
         string plain = SerializationOperations.ToJson(mockClass);
         Console.WriteLine(plain);
@@ -204,7 +203,7 @@ public class Json
         ms.Position = 0;
 
         // From Json (stream)
-        var assert = SerializationOperations.FromJson<MockClass>(ms);
+        var assert = SerializationOperations.FromJson<Resources.Mocks.Classes.MockClass>(ms);
         assert.Id.Should().Be(2);
         assert.Name.Should().Be("Miguel");
     }
@@ -213,7 +212,7 @@ public class Json
     public async Task JsonStreamAsync()
     {
         // Setup
-        MockClass mockClass = new() { Id = 2, Name = "Miguel" };
+        Resources.Mocks.Classes.MockClass mockClass = new() { Id = 2, Name = "Miguel" };
         System.IO.MemoryStream ms = new();
         string plain = await SerializationOperations.ToJsonAsync(mockClass);
         Console.WriteLine(plain);
@@ -222,7 +221,7 @@ public class Json
         ms.Position = 0;
 
         // From Json (stream)
-        var assert = await SerializationOperations.FromJsonAsync<MockClass>(ms);
+        var assert = await SerializationOperations.FromJsonAsync<Resources.Mocks.Classes.MockClass>(ms);
         assert.Id.Should().Be(2);
         assert.Name.Should().Be("Miguel");
     }

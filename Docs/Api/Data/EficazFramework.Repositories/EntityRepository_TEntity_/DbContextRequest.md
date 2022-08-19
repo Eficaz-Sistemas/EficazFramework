@@ -6,7 +6,7 @@
 Evento disparado quando o Repositório precisa de uma nova instância de DbContext.
 
 ```csharp
-public System.Func<Microsoft.EntityFrameworkCore.DbContext> DbContextRequest { get; set; }
+public System.Func<DbContext> DbContextRequest { get; set; }
 ```
 
 #### Property Value

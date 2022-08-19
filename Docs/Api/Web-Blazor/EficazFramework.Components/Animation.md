@@ -4,10 +4,10 @@
 ## Animation Class
 
 ```csharp
-public class Animation : MudBlazor.MudComponentBase
+public class Animation
 ```
 
-Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.Object 'System.Object') &#129106; [Microsoft.AspNetCore.Components.ComponentBase](https://docs.microsoft.com/en-us/dotnet/api/Microsoft.AspNetCore.Components.ComponentBase 'Microsoft.AspNetCore.Components.ComponentBase') &#129106; [MudBlazor.MudComponentBase](https://docs.microsoft.com/en-us/dotnet/api/MudBlazor.MudComponentBase 'MudBlazor.MudComponentBase') &#129106; Animation
+Inheritance [MudBlazor.MudComponentBase](https://docs.microsoft.com/en-us/dotnet/api/MudBlazor.MudComponentBase 'MudBlazor.MudComponentBase') &#129106; Animation
 
 | Properties | |
 | :--- | :--- |

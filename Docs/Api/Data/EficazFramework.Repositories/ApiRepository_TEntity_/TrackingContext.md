@@ -7,7 +7,7 @@
 NOTA: Não exponha a connection string real nesta instância.
 
 ```csharp
-public Microsoft.EntityFrameworkCore.DbContext TrackingContext { get; set; }
+public DbContext TrackingContext { get; set; }
 ```
 
 #### Property Value

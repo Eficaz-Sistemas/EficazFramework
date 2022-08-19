@@ -66,10 +66,7 @@ public static class TextExtensions
         if (name is null)
             return null;
         name = name.Trim();
-        if (splitChars is null)
-        {
-            splitChars = new string[] { "" };
-        }
+        splitChars ??= new string[] { "" };
 
         var array = name.ToLower().ToCharArray();
         if (array.Length > 1)
