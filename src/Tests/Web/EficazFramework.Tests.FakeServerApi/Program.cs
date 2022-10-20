@@ -6,6 +6,7 @@ var builder = WebApplication.CreateBuilder(args);
 var app = builder.Build();
 
 app.MapGet("/", () => "Hello World!");
+app.MapGet("/mock/get", async () => await EficazFramework.API.Mock.GetAsync(null));
 app.MapPost("/mock/get", async (EficazFramework.Expressions.QueryDescription parameters) => await EficazFramework.API.Mock.GetAsync(parameters));
 app.MapPost("/mock/getBig", async (EficazFramework.Expressions.QueryDescription parameters) => await EficazFramework.API.Mock.GetBigAsync(parameters));
 app.MapPost("/mock/getForCrudTest", () => EficazFramework.API.Mock.GetForCrudTest());

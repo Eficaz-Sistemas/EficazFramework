@@ -52,6 +52,7 @@ public class ApiRepositoryTests
     public async Task SelectAsyncTest()
     {
         var repository = new ApiRepository<Resources.Mocks.Classes.MockClass>(Client);
+        repository.GetRequestMode = Enums.CRUD.RequestAction.Get;
         repository.UrlGet = "/mock/get";
         repository.DataContext.Should().HaveCount(0);
         await repository.GetAsync(default);
@@ -59,6 +60,19 @@ public class ApiRepositoryTests
         repository.DataContext.Where(r => r.Id == 1).Count().Should().BeGreaterThan(0);
         repository.DataContext.Where(r => r.Id != 1).Count().Should().BeGreaterThan(0);
     }
+
+    [Test]
+    public async Task SelectWithPostAsyncTest()
+    {
+        var repository = new ApiRepository<Resources.Mocks.Classes.MockClass>(Client);
+        repository.UrlGet = "/mock/get";
+        repository.DataContext.Should().HaveCount(0);
+        await repository.GetAsync(default);
+        repository.DataContext.Should().HaveCount(300);
+        repository.DataContext.Where(r => r.Id == 1).Count().Should().BeGreaterThan(0);
+        repository.DataContext.Where(r => r.Id != 1).Count().Should().BeGreaterThan(0);
+    }
+
 
     [Test]
     public async Task SelectStressAsyncTest()
