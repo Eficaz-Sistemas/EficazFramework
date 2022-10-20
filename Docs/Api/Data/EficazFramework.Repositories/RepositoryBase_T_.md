@@ -25,7 +25,8 @@ Implements [System.ComponentModel.INotifyPropertyChanged](https://docs.microsoft
 
 | Fields | |
 | :--- | :--- |
-| [OnAfterGet](EficazFramework.Repositories/RepositoryBase_T_/OnAfterGet.md 'EficazFramework.Repositories.RepositoryBase<T>.OnAfterGet') | |
+| [AfterGet](EficazFramework.Repositories/RepositoryBase_T_/AfterGet.md 'EficazFramework.Repositories.RepositoryBase<T>.AfterGet') | |
+| [BeforeGet](EficazFramework.Repositories/RepositoryBase_T_/BeforeGet.md 'EficazFramework.Repositories.RepositoryBase<T>.BeforeGet') | |
 
 | Properties | |
 | :--- | :--- |
