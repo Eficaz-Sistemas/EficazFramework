@@ -115,10 +115,14 @@ class Number
         (-4530D).ToSignificantDigits(5, 2).Replace(System.Globalization.CultureInfo.CurrentCulture.NumberFormat.NumberDecimalSeparator, ".").Should().Be("-4530.00");
         (-45300D).ToSignificantDigits(5, 2).Replace(System.Globalization.CultureInfo.CurrentCulture.NumberFormat.NumberDecimalSeparator, ".").Should().Be("-45300.00");
 
+        0.00453D.ToSignificantDigits(5).Replace(System.Globalization.CultureInfo.CurrentCulture.NumberFormat.NumberDecimalSeparator, ".").Should().Be("0.0045300");
+
+
         double? number = null;
         number.ToSignificantDigits(5).Replace(System.Globalization.CultureInfo.CurrentCulture.NumberFormat.NumberDecimalSeparator, ".").Should().Be("0.00000");
 
-        4.53M.ToSignificantDigits(5).Replace(System.Globalization.CultureInfo.CurrentCulture.NumberFormat.NumberDecimalSeparator, ".").Should().Be("4.5300");
+        4393.91M.ToSignificantDigits(5, 2).Replace(System.Globalization.CultureInfo.CurrentCulture.NumberFormat.NumberDecimalSeparator, ".").Should().Be("4393.91");
+        4393.91M.ToSignificantDigits(5).Replace(System.Globalization.CultureInfo.CurrentCulture.NumberFormat.NumberDecimalSeparator, ".").Should().Be("4393.91");
 
         decimal? numberDec = null;
         numberDec.ToSignificantDigits(5).Replace(System.Globalization.CultureInfo.CurrentCulture.NumberFormat.NumberDecimalSeparator, ".").Should().Be("0.00000");

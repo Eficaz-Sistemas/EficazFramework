@@ -1,5 +1,6 @@
 ﻿using Microsoft.VisualBasic.CompilerServices;
 using System;
+using System.Linq;
 
 namespace EficazFramework.Extensions;
 
@@ -13,9 +14,18 @@ public static class NumberExtensions
         if (d.ToString("F0").Length >= SignificantDigits)
             return d.ToString($"F{MinDecimals}");
 
+        var decimalDigit = System.Globalization.CultureInfo.CurrentCulture.NumberFormat.NumberDecimalSeparator;
+        var parts = d.ToString().Split(System.Globalization.CultureInfo.CurrentCulture.NumberFormat.NumberDecimalSeparator);
+        if (parts.Length > 1 && (parts[0].Length + parts[1].Length) > SignificantDigits && int.Parse(parts[0]) > 0)
+        {
+            if (MinDecimals > 0)
+                return d.ToString($"F{MinDecimals}");
+            else
+                return d.ToString();
+        }
+
         // Use G format to get significant digits.
         // Then convert to double and use F format.
-        var decimalDigit = System.Globalization.CultureInfo.CurrentCulture.NumberFormat.NumberDecimalSeparator;
         var gFormatted = String.Format(string.Join("", "{0:", $"G{SignificantDigits}", "}"), Math.Abs(d));
         string result = Convert.ToDecimal(gFormatted).ToString("F99");
 
@@ -47,7 +57,7 @@ public static class NumberExtensions
 
         if (MinDecimals > 0)
         {
-            var parts = result.Split(decimalDigit);
+            parts = result.Split(decimalDigit);
             if (parts.Length == 1 || parts[1].Length < MinDecimals)
                 return double.Parse(result).ToString($"F{MinDecimals}");
         }

@@ -69,12 +69,13 @@ public abstract class RepositoryBase<T> : INotifyPropertyChanged, IDisposable wh
     /// </summary>
     public void Get()
     {
+        BeforeGet?.Invoke();
         if (CurrentPage == 0)
             CurrentPage = 1;
         RaisePropertyChanged(nameof(CurrentPage));
         DataContext = (EficazFramework.Collections.AsyncObservableCollection<T>)FetchItems();
         RaisePropertyChanged(nameof(DataContext));
-        OnAfterGet?.Invoke();
+        AfterGet?.Invoke();
     }
 
     /// <summary>
@@ -82,16 +83,18 @@ public abstract class RepositoryBase<T> : INotifyPropertyChanged, IDisposable wh
     /// </summary>
     public async Task GetAsync(CancellationToken cancellationToken)
     {
+        BeforeGet?.Invoke();
         if (CurrentPage == 0)
             CurrentPage = 1;
         RaisePropertyChanged(nameof(CurrentPage));
         DataContext = (EficazFramework.Collections.AsyncObservableCollection<T>)await FetchItemsAsync(cancellationToken);
         RaisePropertyChanged(nameof(DataContext));
-        OnAfterGet?.Invoke();
+        AfterGet?.Invoke();
 
     }
 
-    public Action OnAfterGet = null;
+    public Action BeforeGet = null;
+    public Action AfterGet = null;
 
     #endregion
 
