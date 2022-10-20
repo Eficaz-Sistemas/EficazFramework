@@ -21,7 +21,7 @@ internal static class Mock
         MockDb = result;
     }
 
-    internal static async Task<IResult> GetAsync(EficazFramework.Expressions.QueryDescription parameters)
+    internal static async Task<IResult> GetAsync(EficazFramework.Expressions.QueryDescription? parameters)
     {
         await Task.Delay(1);
         List<Resources.Mocks.Classes.MockClass> result = new();

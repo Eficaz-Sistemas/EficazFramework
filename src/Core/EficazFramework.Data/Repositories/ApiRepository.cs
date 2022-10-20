@@ -50,6 +50,11 @@ public sealed class ApiRepository<TEntity> : Repositories.RepositoryBase<TEntity
     public string UrlDelete { get; set; } = "/myRestApi/delete";
 
     /// <summary>
+    /// Permite parametrizar se a requição para obtenção de dados será GET ou POST
+    /// </summary>
+    public Enums.CRUD.RequestAction GetRequestMode { get; set; } = Enums.CRUD.RequestAction.Post;
+
+    /// <summary>
     /// Obtém ou define as definições para serialização Json nas requisições contra o servidor Http.
     /// </summary>
     public JsonSerializerOptions SerializerOptions { get; set;} = default;
@@ -74,7 +79,7 @@ public sealed class ApiRepository<TEntity> : Repositories.RepositoryBase<TEntity
         {
             return action switch
             {
-                Enums.CRUD.RequestAction.Get => await PostAsync<TBody, TResult>(requestUri, body, cancellationToken),
+                Enums.CRUD.RequestAction.Get => await GetAsync<TResult>(requestUri, cancellationToken),
                 Enums.CRUD.RequestAction.Post => await PostAsync<TBody, TResult>(requestUri, body, cancellationToken),
                 Enums.CRUD.RequestAction.Put => await PutAsync<TBody, TResult>(requestUri, body, cancellationToken),
                 _ => default
@@ -84,6 +89,39 @@ public sealed class ApiRepository<TEntity> : Repositories.RepositoryBase<TEntity
         {
             Debug.WriteLine(tkex.ToString());
             return default;
+        }
+    }
+
+    /// <summary>
+    /// Método Get executado por <see cref="RequestMethod{TBody, TResult}(Enums.CRUD.RequestAction, string, TBody, CancellationToken)"/>
+    /// </summary>
+    private async Task<TResult> GetAsync<TResult>(string requestUri,
+        CancellationToken cancellationToken)
+    {
+        var response = await _client.GetAsync(requestUri, cancellationToken);
+        if (response.IsSuccessStatusCode)
+        {
+            try
+            {
+                return await response.Content.ReadFromJsonAsync<TResult>(SerializerOptions, cancellationToken);
+            }
+            catch
+            {
+                return default;
+            }
+        }
+        else
+        {
+            string responseResult = await response.Content.ReadAsStringAsync(cancellationToken);
+
+
+            throw response.StatusCode switch
+            {
+                System.Net.HttpStatusCode.Unauthorized => new UnauthorizedAccessException(Resources.Strings.Security.GPO_AccessViolationMessage),
+                System.Net.HttpStatusCode.Forbidden => new UnauthorizedAccessException(Resources.Strings.Security.GPO_AccessViolationMessage),
+                System.Net.HttpStatusCode.UnprocessableEntity => new ValidationException(ParseValidationFromResponseString(responseResult)),
+                _ => new HttpRequestException(string.Format(Resources.Strings.ViewModel.UnhandledError_Message, response.ReasonPhrase)),
+            };
         }
     }
 
@@ -191,7 +229,7 @@ public sealed class ApiRepository<TEntity> : Repositories.RepositoryBase<TEntity
     public override async Task<ObservableCollection<TEntity>> FetchItemsAsync(CancellationToken cancellationToken)
     {
         List<TEntity> result = new();
-        var response = await RequestMethod<Expressions.QueryDescription, List<TEntity>>(Enums.CRUD.RequestAction.Post, UrlGet, new Expressions.QueryDescription(Filter, OrderByDefinitions), cancellationToken);
+        var response = await RequestMethod<Expressions.QueryDescription, List<TEntity>>(GetRequestMode, UrlGet, new Expressions.QueryDescription(Filter, OrderByDefinitions), cancellationToken);
         if (response != null)
             result.AddRange(response as IList<TEntity>);
 

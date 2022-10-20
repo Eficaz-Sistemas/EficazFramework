@@ -20,6 +20,7 @@ class RestApi<T> : ViewModelService<T> where T : class
             repo.UrlPut = optionsInstance.UrlPut;
             repo.UrlPost = optionsInstance.UrlPost;
             repo.UrlDelete = optionsInstance.UrlDelete;
+            repo.GetRequestMode = optionsInstance.GetRequestMode;
         }
         viewmodel.Repository = repo;
     }
@@ -59,4 +60,5 @@ public class RestApiBuilderOptions
     public string UrlPut { get; set; }
     public string UrlPost { get; set; }
     public string UrlDelete { get; set; }
+    public Enums.CRUD.RequestAction GetRequestMode { get; set; } = Enums.CRUD.RequestAction.Post;
 }
