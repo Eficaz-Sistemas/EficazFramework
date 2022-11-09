@@ -10,4 +10,4 @@ public DocumentoAttribute(EficazFramework.Enums.Documentos tipoDocumento);
 
 <a name='EficazFramework.Attributes.UIEditor.EditorGeneration.DocumentoAttribute.DocumentoAttribute(EficazFramework.Enums.Documentos).tipoDocumento'></a>
 
-`tipoDocumento` [Documentos](EficazFramework.Enums/Documentos.md 'EficazFramework.Enums.Documentos')
+`tipoDocumento` [EficazFramework.Enums.Documentos](https://docs.microsoft.com/en-us/dotnet/api/EficazFramework.Enums.Documentos 'EficazFramework.Enums.Documentos')

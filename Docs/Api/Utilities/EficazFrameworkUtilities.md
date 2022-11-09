@@ -37,6 +37,15 @@
 | [CommandBase](EficazFramework.Commands/CommandBase.md 'EficazFramework.Commands.CommandBase') | |
 | [DelayedAction](EficazFramework.Commands/DelayedAction.md 'EficazFramework.Commands.DelayedAction') | |
 
+<a name='EficazFramework.Enums'></a>
+
+## EficazFramework.Enums Namespace
+
+| Enums | |
+| :--- | :--- |
+| [Documentos](EficazFramework.Enums/Documentos.md 'EficazFramework.Enums.Documentos') | |
+| [DocumentosRFB](EficazFramework.Enums/DocumentosRFB.md 'EficazFramework.Enums.DocumentosRFB') | |
+
 <a name='EficazFramework.Events'></a>
 
 ## EficazFramework.Events Namespace

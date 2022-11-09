@@ -25,17 +25,6 @@
 | [IgnoreAttribute](EficazFramework.Attributes.UIEditor.EditorGeneration/IgnoreAttribute.md 'EficazFramework.Attributes.UIEditor.EditorGeneration.IgnoreAttribute') | |
 | [MaxLengthAttribute](EficazFramework.Attributes.UIEditor.EditorGeneration/MaxLengthAttribute.md 'EficazFramework.Attributes.UIEditor.EditorGeneration.MaxLengthAttribute') | |
 
-<a name='EficazFramework.Collections'></a>
-
-## EficazFramework.Collections Namespace
-
-| Classes | |
-| :--- | :--- |
-| [AsyncObservableCollection&lt;T&gt;](EficazFramework.Collections/AsyncObservableCollection_T_.md 'EficazFramework.Collections.AsyncObservableCollection<T>') | |
-| [ObservableDictionary&lt;TKey,TValue&gt;](EficazFramework.Collections/ObservableDictionary_TKey,TValue_.md 'EficazFramework.Collections.ObservableDictionary<TKey,TValue>') | |
-| [SortDescription](EficazFramework.Collections/SortDescription.md 'EficazFramework.Collections.SortDescription') | |
-| [StringCollection](EficazFramework.Collections/StringCollection.md 'EficazFramework.Collections.StringCollection') | |
-
 <a name='EficazFramework.Configuration'></a>
 
 ## EficazFramework.Configuration Namespace
@@ -69,18 +58,7 @@
 
 | Enums | |
 | :--- | :--- |
-| [CompareMethod](EficazFramework.Enums/CompareMethod.md 'EficazFramework.Enums.CompareMethod') | |
-| [Documentos](EficazFramework.Enums/Documentos.md 'EficazFramework.Enums.Documentos') | |
-| [DocumentosRFB](EficazFramework.Enums/DocumentosRFB.md 'EficazFramework.Enums.DocumentosRFB') | |
 | [ValidationMode](EficazFramework.Enums/ValidationMode.md 'EficazFramework.Enums.ValidationMode') | |
-
-<a name='EficazFramework.Enums.Collection'></a>
-
-## EficazFramework.Enums.Collection Namespace
-
-| Enums | |
-| :--- | :--- |
-| [SortOrientation](EficazFramework.Enums.Collection/SortOrientation.md 'EficazFramework.Enums.Collection.SortOrientation') | |
 
 <a name='EficazFramework.Enums.CRUD'></a>
 
@@ -102,8 +80,6 @@
 | [DbContextConfiguringEventArgs](EficazFramework.Events/DbContextConfiguringEventArgs.md 'EficazFramework.Events.DbContextConfiguringEventArgs') | |
 | [DbContextInstanceCreatingEventArgs](EficazFramework.Events/DbContextInstanceCreatingEventArgs.md 'EficazFramework.Events.DbContextInstanceCreatingEventArgs') | |
 | [DbContextModelCreatingEventArgs](EficazFramework.Events/DbContextModelCreatingEventArgs.md 'EficazFramework.Events.DbContextModelCreatingEventArgs') | |
-| [ExpressionBuiltEventArgs](EficazFramework.Events/ExpressionBuiltEventArgs.md 'EficazFramework.Events.ExpressionBuiltEventArgs') | |
-| [ExpressionEventArgs](EficazFramework.Events/ExpressionEventArgs.md 'EficazFramework.Events.ExpressionEventArgs') | |
 
 | Delegates | |
 | :--- | :--- |
@@ -111,28 +87,6 @@
 | [DbContextConfiguringEventHandler(DbContext, DbContextConfiguringEventArgs)](EficazFramework.Events/DbContextConfiguringEventHandler(DbContext,DbContextConfiguringEventArgs).md 'EficazFramework.Events.DbContextConfiguringEventHandler(DbContext, EficazFramework.Events.DbContextConfiguringEventArgs)') | |
 | [DbContextInstanceCreatingEventHandler(object, DbContextInstanceCreatingEventArgs)](EficazFramework.Events/DbContextInstanceCreatingEventHandler(object,DbContextInstanceCreatingEventArgs).md 'EficazFramework.Events.DbContextInstanceCreatingEventHandler(object, EficazFramework.Events.DbContextInstanceCreatingEventArgs)') | |
 | [DbContextModelCreatingEventHandler(DbContext, DbContextModelCreatingEventArgs)](EficazFramework.Events/DbContextModelCreatingEventHandler(DbContext,DbContextModelCreatingEventArgs).md 'EficazFramework.Events.DbContextModelCreatingEventHandler(DbContext, EficazFramework.Events.DbContextModelCreatingEventArgs)') | |
-| [ExpressionBuiltEventHandler(object, ExpressionBuiltEventArgs)](EficazFramework.Events/ExpressionBuiltEventHandler(object,ExpressionBuiltEventArgs).md 'EficazFramework.Events.ExpressionBuiltEventHandler(object, EficazFramework.Events.ExpressionBuiltEventArgs)') | |
-| [ExpressionEventHandler(object, ExpressionEventArgs)](EficazFramework.Events/ExpressionEventHandler(object,ExpressionEventArgs).md 'EficazFramework.Events.ExpressionEventHandler(object, EficazFramework.Events.ExpressionEventArgs)') | |
-
-<a name='EficazFramework.Expressions'></a>
-
-## EficazFramework.Expressions Namespace
-
-| Classes | |
-| :--- | :--- |
-| [ExpressionBuilder](EficazFramework.Expressions/ExpressionBuilder.md 'EficazFramework.Expressions.ExpressionBuilder') | |
-| [ExpressionItem](EficazFramework.Expressions/ExpressionItem.md 'EficazFramework.Expressions.ExpressionItem') | |
-| [ExpressionObjectQuery](EficazFramework.Expressions/ExpressionObjectQuery.md 'EficazFramework.Expressions.ExpressionObjectQuery') | Representa a tradução da query originada de uma instância de [ExpressionItem](EficazFramework.Expressions/ExpressionItem.md 'EficazFramework.Expressions.ExpressionItem'). <br/><br/>Esta classe pode ser utilizada para traduzir a query montada por um [ExpressionBuilder](EficazFramework.Expressions/ExpressionBuilder.md 'EficazFramework.Expressions.ExpressionBuilder')<br/>no intuito de ser passada como argumento (Body) para alguma API Rest, por exemplo, uma vez que<br/>não é possível utilizar [System.Linq.Expressions.Expression](https://docs.microsoft.com/en-us/dotnet/api/System.Linq.Expressions.Expression 'System.Linq.Expressions.Expression') diretamente como parametro. |
-| [ExpressionProperty](EficazFramework.Expressions/ExpressionProperty.md 'EficazFramework.Expressions.ExpressionProperty') | |
-| [ExpressionQuery](EficazFramework.Expressions/ExpressionQuery.md 'EficazFramework.Expressions.ExpressionQuery') | |
-| [ExpressionUpdater](EficazFramework.Expressions/ExpressionUpdater.md 'EficazFramework.Expressions.ExpressionUpdater') | |
-| [QueryDescription](EficazFramework.Expressions/QueryDescription.md 'EficazFramework.Expressions.QueryDescription') | |
-| [RelationshipConfig](EficazFramework.Expressions/RelationshipConfig.md 'EficazFramework.Expressions.RelationshipConfig') | |
-
-| Enums | |
-| :--- | :--- |
-| [ExpressionEditor](EficazFramework.Expressions/ExpressionEditor.md 'EficazFramework.Expressions.ExpressionEditor') | |
-| [UpdateValueMode](EficazFramework.Expressions/UpdateValueMode.md 'EficazFramework.Expressions.UpdateValueMode') | |
 
 <a name='EficazFramework.Extensions'></a>
 
@@ -143,8 +97,6 @@
 | [DataReader](EficazFramework.Extensions/DataReader.md 'EficazFramework.Extensions.DataReader') | |
 | [DbCommand](EficazFramework.Extensions/DbCommand.md 'EficazFramework.Extensions.DbCommand') | |
 | [DbContext](EficazFramework.Extensions/DbContext.md 'EficazFramework.Extensions.DbContext') | |
-| [Expressions](EficazFramework.Extensions/Expressions.md 'EficazFramework.Extensions.Expressions') | Refer to http://www.albahari.com/nutshell/linqkit.html and<br/>http://tomasp.net/blog/linq-expand.aspx for more information.<br/><br/>This is a part of LinqKit Tool.<br/>See http://www.albahari.com/expressions for information and examples. |
-| [IEnumerableExtensions](EficazFramework.Extensions/IEnumerableExtensions.md 'EficazFramework.Extensions.IEnumerableExtensions') | |
 | [QueryOperations](EficazFramework.Extensions/QueryOperations.md 'EficazFramework.Extensions.QueryOperations') | |
 
 <a name='EficazFramework.Providers'></a>

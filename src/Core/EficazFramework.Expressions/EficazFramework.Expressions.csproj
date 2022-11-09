@@ -1,0 +1,103 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+	  <TargetFramework>net6.0</TargetFramework>
+	  <Version>6.0.0</Version>
+	  <AssemblyVersion>6.0.0.0</AssemblyVersion>
+	  <FileVersion>6.0.0.0</FileVersion>
+	  <RootNamespace>EficazFramework</RootNamespace>
+	  <SignAssembly>true</SignAssembly>
+	  <AssemblyOriginatorKeyFile>EfCore.snk</AssemblyOriginatorKeyFile>
+	  <DelaySign>false</DelaySign>
+	  <Company>Eficaz Sistemas de Gestão e Inteligência Tributária</Company>
+	  <Copyright>Copyright ©  2022. Eficaz Sistemas de Gestão e Inteligência Tributária Ltda.</Copyright>
+	  <Description>Biblioteca de componentes lógicos (ViewModel) para construção dinâmica de System.Linq.Expressions.Expression(T).</Description>
+	  <RepositoryUrl>https://github.com/Eficaz-Sistemas/EficazFramework</RepositoryUrl>
+	  <RepositoryType>git</RepositoryType>
+	  <PackageTags>expressions dynamic</PackageTags>
+	  <NeutralLanguage>pt-BR</NeutralLanguage>
+	  <Authors>Eficaz Sistemas</Authors>
+	  <PackageIcon>logo.png</PackageIcon>
+	  <PackageIconUrl>https://efsuporte.blob.core.windows.net/portal/EficazFramework.png</PackageIconUrl>
+	  <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+	  <Configurations>Debug;Release</Configurations>
+	  <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+	  <GenerateDocumentationFile>true</GenerateDocumentationFile>
+	  <DefaultDocumentationFolder>..\..\..\Docs\Api\Expressions</DefaultDocumentationFolder>
+	  <DefaultDocumentationAssemblyPageName>EficazFramework Expressions</DefaultDocumentationAssemblyPageName>
+	  <DefaultDocumentationGeneratedPages>Assembly, Types, Members</DefaultDocumentationGeneratedPages>
+	  <DefaultDocumentationFileNameFactory>Folder</DefaultDocumentationFileNameFactory>
+	  <DefaultDocumentationIncludeUndocumentedItems>true</DefaultDocumentationIncludeUndocumentedItems>
+	  <DefaultDocumentationGeneratedAccessModifiers>Public</DefaultDocumentationGeneratedAccessModifiers>
+	  <DefaultDocumentationLogLevel>Trace</DefaultDocumentationLogLevel>
+  </PropertyGroup>
+
+
+
+	<ItemGroup>
+		<AssemblyAttribute Include="System.Runtime.CompilerServices.InternalsVisibleTo">
+			<_Parameter1>
+				EficazFramework.Tests, PublicKey=0024000004800000940000000602000000240000525341310004000001000100d16a73322f95949ad691901229d27abe5dd688e03aa2550ca2a551184e2554b8ddc5416bf8d52a88339e24dd8063cf74e0f5ecd12b5e2927ad604049e29acb4648db2675ac6cb1e31638767731dc1ae90a6432bac0178e5422b7297d946e6fded3fa4addd534d06e75ad983675cf5bae2e41c8915890ec122ed0baef5fc74aad
+			</_Parameter1>
+		</AssemblyAttribute>
+		<AssemblyAttribute Include="System.Runtime.CompilerServices.InternalsVisibleTo">
+			<_Parameter1>
+				EficazFramework.WPF, PublicKey=0024000004800000940000000602000000240000525341310004000001000100d16a73322f95949ad691901229d27abe5dd688e03aa2550ca2a551184e2554b8ddc5416bf8d52a88339e24dd8063cf74e0f5ecd12b5e2927ad604049e29acb4648db2675ac6cb1e31638767731dc1ae90a6432bac0178e5422b7297d946e6fded3fa4addd534d06e75ad983675cf5bae2e41c8915890ec122ed0baef5fc74aad
+			</_Parameter1>
+		</AssemblyAttribute>
+		<AssemblyAttribute Include="System.Runtime.CompilerServices.InternalsVisibleTo">
+			<_Parameter1>
+				EficazFramework.Blazor, PublicKey=0024000004800000940000000602000000240000525341310004000001000100d16a73322f95949ad691901229d27abe5dd688e03aa2550ca2a551184e2554b8ddc5416bf8d52a88339e24dd8063cf74e0f5ecd12b5e2927ad604049e29acb4648db2675ac6cb1e31638767731dc1ae90a6432bac0178e5422b7297d946e6fded3fa4addd534d06e75ad983675cf5bae2e41c8915890ec122ed0baef5fc74aad
+			</_Parameter1>
+		</AssemblyAttribute>
+  </ItemGroup>
+
+
+
+	<ItemGroup>
+	  <None Include="..\..\..\Assets\logo.png" Link="logo.png">
+	    <PackagePath>\</PackagePath>
+	    <Pack>True</Pack>
+	  </None>
+	</ItemGroup>
+
+
+
+	<ItemGroup>
+	  <PackageReference Include="DefaultDocumentation" Version="0.8.2">
+	    <PrivateAssets>all</PrivateAssets>
+	    <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+	  </PackageReference>
+	  <PackageReference Include="EficazFramework.DocsApiPlugin" Version="1.0.8">
+	    <PrivateAssets>all</PrivateAssets>
+	    <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+	  </PackageReference>
+	</ItemGroup>
+
+
+
+	<ItemGroup>
+	  <ProjectReference Include="..\EficazFramework.Collections\EficazFramework.Collections.csproj" />
+	</ItemGroup>
+
+
+
+	<ItemGroup>
+	  <Compile Update="Resources\Strings\Expressions.Designer.cs">
+	    <DependentUpon>Expressions.resx</DependentUpon>
+	    <DesignTime>True</DesignTime>
+	    <AutoGen>True</AutoGen>
+	  </Compile>
+	</ItemGroup>
+
+
+
+	<ItemGroup>
+	  <EmbeddedResource Update="Resources\Strings\Expressions.resx">
+	    <SubType>Designer</SubType>
+	    <CustomToolNamespace>EficazFramework.Resources.Strings</CustomToolNamespace>
+	    <LastGenOutput>Expressions.Designer.cs</LastGenOutput>
+	    <Generator>PublicResXFileCodeGenerator</Generator>
+	  </EmbeddedResource>
+	</ItemGroup>
+</Project>

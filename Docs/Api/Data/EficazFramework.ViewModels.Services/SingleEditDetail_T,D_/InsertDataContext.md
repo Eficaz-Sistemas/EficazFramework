@@ -10,4 +10,4 @@ public EficazFramework.Collections.AsyncObservableCollection<D> InsertDataContex
 ```
 
 #### Property Value
-[EficazFramework.Collections.AsyncObservableCollection&lt;](EficazFramework.Collections/AsyncObservableCollection_T_.md 'EficazFramework.Collections.AsyncObservableCollection<T>')[D](EficazFramework.ViewModels.Services/SingleEditDetail_T,D_.md#EficazFramework.ViewModels.Services.SingleEditDetail_T,D_.D 'EficazFramework.ViewModels.Services.SingleEditDetail<T,D>.D')[&gt;](EficazFramework.Collections/AsyncObservableCollection_T_.md 'EficazFramework.Collections.AsyncObservableCollection<T>')
+[EficazFramework.Collections.AsyncObservableCollection&lt;](https://docs.microsoft.com/en-us/dotnet/api/EficazFramework.Collections.AsyncObservableCollection-1 'EficazFramework.Collections.AsyncObservableCollection`1')[D](EficazFramework.ViewModels.Services/SingleEditDetail_T,D_.md#EficazFramework.ViewModels.Services.SingleEditDetail_T,D_.D 'EficazFramework.ViewModels.Services.SingleEditDetail<T,D>.D')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/EficazFramework.Collections.AsyncObservableCollection-1 'EficazFramework.Collections.AsyncObservableCollection`1')

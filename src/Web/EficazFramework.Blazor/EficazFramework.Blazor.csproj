@@ -96,11 +96,11 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
-    <PackageReference Include="MudBlazor" Version="6.0.16" />
+    <PackageReference Include="MudBlazor" Version="6.0.18" />
   </ItemGroup>
 	
   <ItemGroup>
-    <ProjectReference Include="..\..\Core\EficazFramework.Data\EficazFramework.Data.csproj" />
+    <ProjectReference Include="..\..\Core\EficazFramework.Expressions\EficazFramework.Expressions.csproj" />
     <ProjectReference Include="..\..\Core\EficazFramework.Utilities\EficazFramework.Utilities.csproj" />
   </ItemGroup>
 	

@@ -14,7 +14,7 @@ public VisibleIfAttribute(string propertyName, EficazFramework.Enums.CompareMeth
 
 <a name='EficazFramework.Attributes.UIEditor.EditingState.VisibleIfAttribute.VisibleIfAttribute(string,EficazFramework.Enums.CompareMethod,object).comparemethod'></a>
 
-`comparemethod` [CompareMethod](EficazFramework.Enums/CompareMethod.md 'EficazFramework.Enums.CompareMethod')
+`comparemethod` [EficazFramework.Enums.CompareMethod](https://docs.microsoft.com/en-us/dotnet/api/EficazFramework.Enums.CompareMethod 'EficazFramework.Enums.CompareMethod')
 
 <a name='EficazFramework.Attributes.UIEditor.EditingState.VisibleIfAttribute.VisibleIfAttribute(string,EficazFramework.Enums.CompareMethod,object).expectedValue'></a>
 

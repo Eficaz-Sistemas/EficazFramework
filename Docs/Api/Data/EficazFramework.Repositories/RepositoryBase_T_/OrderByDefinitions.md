@@ -10,4 +10,4 @@ public System.Collections.Generic.List<EficazFramework.Collections.SortDescripti
 ```
 
 #### Property Value
-[System.Collections.Generic.List&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.Generic.List-1 'System.Collections.Generic.List`1')[SortDescription](EficazFramework.Collections/SortDescription.md 'EficazFramework.Collections.SortDescription')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.Generic.List-1 'System.Collections.Generic.List`1')
+[System.Collections.Generic.List&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.Generic.List-1 'System.Collections.Generic.List`1')[EficazFramework.Collections.SortDescription](https://docs.microsoft.com/en-us/dotnet/api/EficazFramework.Collections.SortDescription 'EficazFramework.Collections.SortDescription')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.Generic.List-1 'System.Collections.Generic.List`1')

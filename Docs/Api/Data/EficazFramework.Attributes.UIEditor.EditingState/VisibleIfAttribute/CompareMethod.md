@@ -8,4 +8,4 @@ public EficazFramework.Enums.CompareMethod CompareMethod { get; set; }
 ```
 
 #### Property Value
-[CompareMethod](EficazFramework.Enums/CompareMethod.md 'EficazFramework.Enums.CompareMethod')
+[EficazFramework.Enums.CompareMethod](https://docs.microsoft.com/en-us/dotnet/api/EficazFramework.Enums.CompareMethod 'EficazFramework.Enums.CompareMethod')

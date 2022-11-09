@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:EficazFramework.Tests.WPF.Views"
         xmlns:System="clr-namespace:System;assembly=mscorlib"  
-        xmlns:EfExpr="clr-namespace:EficazFramework.Expressions;assembly=EficazFramework.Data"
+        xmlns:EfExpr="clr-namespace:EficazFramework.Expressions;assembly=EficazFramework.Expressions"
         xmlns:EfControls="clr-namespace:EficazFramework.Controls;assembly=EficazFramework.WPF"
         xmlns:EfAttachedProps="clr-namespace:EficazFramework.Controls.AttachedProperties;assembly=EficazFramework.WPF"
         xmlns:Resources="clr-namespace:EficazFramework.Tests.WPF.Views.Resources"

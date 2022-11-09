@@ -146,7 +146,7 @@ internal class OperatorConverter : MudBlazor.DefaultConverter<EficazFramework.En
 {
     internal OperatorConverter()
     {
-        SetFunc = (e) => e.GetLocalizedDescription(typeof(EficazFramework.Resources.Strings.DataDescriptions));
+        SetFunc = (e) => e.GetLocalizedDescription(typeof(EficazFramework.Resources.Strings.Expressions));
     }
 }
 

@@ -1,7 +1,9 @@
 # <p align="center"> ![EficazFramework](../../Assets/GitHub-HeaderReadme.png)
 # Documentação
 ## Core
+ - ### [EficazFramework.Collections](Collections/EficazFrameworkCollections.md)
  - ### [EficazFramework.Data](Data/EficazFrameworkData.md)
+ - ### [EficazFramework.Expressions](Data/EficazFrameworkExpressions.md)
  - ### [EficazFramework.Utilities](Utilities/EficazFrameworkUtilities.md)
  
 ## Provedores de Bancos de Dados (com EntityFrameworkCore)

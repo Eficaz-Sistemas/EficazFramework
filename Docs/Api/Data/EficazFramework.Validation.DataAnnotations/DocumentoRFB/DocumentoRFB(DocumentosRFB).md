@@ -10,4 +10,4 @@ public DocumentoRFB(EficazFramework.Enums.DocumentosRFB tipo);
 
 <a name='EficazFramework.Validation.DataAnnotations.DocumentoRFB.DocumentoRFB(EficazFramework.Enums.DocumentosRFB).tipo'></a>
 
-`tipo` [DocumentosRFB](EficazFramework.Enums/DocumentosRFB.md 'EficazFramework.Enums.DocumentosRFB')
+`tipo` [EficazFramework.Enums.DocumentosRFB](https://docs.microsoft.com/en-us/dotnet/api/EficazFramework.Enums.DocumentosRFB 'EficazFramework.Enums.DocumentosRFB')

@@ -11,4 +11,4 @@ public EficazFramework.Expressions.ExpressionQuery Filter { get; set; }
 ```
 
 #### Property Value
-[ExpressionQuery](EficazFramework.Expressions/ExpressionQuery.md 'EficazFramework.Expressions.ExpressionQuery')
+[EficazFramework.Expressions.ExpressionQuery](https://docs.microsoft.com/en-us/dotnet/api/EficazFramework.Expressions.ExpressionQuery 'EficazFramework.Expressions.ExpressionQuery')
