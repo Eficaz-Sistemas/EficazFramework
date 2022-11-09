@@ -2,7 +2,7 @@
 
   <PropertyGroup>
 	  <TargetFramework>net6.0</TargetFramework>
-	  <Version>6.0.0-preview007-update001</Version>
+	  <Version>6.0.0</Version>
 	  <AssemblyVersion>6.0.0.0</AssemblyVersion>
 	  <FileVersion>6.0.0.0</FileVersion>
 	  <RootNamespace>EficazFramework</RootNamespace>
@@ -21,7 +21,7 @@
 	  <PackageIconUrl>https://efsuporte.blob.core.windows.net/portal/EficazFramework.png</PackageIconUrl>
 	  <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
 	  <ImplicitUsings>enable</ImplicitUsings>
-	  <GenerateDocumentationFile>true</GenerateDocumentationFile>
+	  <GenerateDocumentationFile>false</GenerateDocumentationFile>
 	  <DefaultDocumentationFolder>..\..\..\Docs\Api\Data-Providers\InMemory</DefaultDocumentationFolder>
 	  <DefaultDocumentationAssemblyPageName>EficazFramework InMemory Data Provider</DefaultDocumentationAssemblyPageName>
 	  <DefaultDocumentationGeneratedPages>Assembly, Types, Members</DefaultDocumentationGeneratedPages>
@@ -64,7 +64,7 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
-    <PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" Version="6.0.9" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" Version="6.0.11" />
   </ItemGroup>
 
   <ItemGroup>

@@ -8,4 +8,4 @@ public EficazFramework.Enums.Documentos TipoDocumento { get; set; }
 ```
 
 #### Property Value
-[Documentos](EficazFramework.Enums/Documentos.md 'EficazFramework.Enums.Documentos')
+[EficazFramework.Enums.Documentos](https://docs.microsoft.com/en-us/dotnet/api/EficazFramework.Enums.Documentos 'EficazFramework.Enums.Documentos')

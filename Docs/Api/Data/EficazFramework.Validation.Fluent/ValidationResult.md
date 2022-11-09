@@ -9,7 +9,7 @@ Lista resultante dos métodos de Validação
 public class ValidationResult : EficazFramework.Collections.StringCollection
 ```
 
-Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.Object 'System.Object') &#129106; [System.Collections.Generic.List&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.Generic.List-1 'System.Collections.Generic.List`1')[System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.Generic.List-1 'System.Collections.Generic.List`1') &#129106; [StringCollection](EficazFramework.Collections/StringCollection.md 'EficazFramework.Collections.StringCollection') &#129106; ValidationResult
+Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.Object 'System.Object') &#129106; [System.Collections.Generic.List&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.Generic.List-1 'System.Collections.Generic.List`1')[System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.Generic.List-1 'System.Collections.Generic.List`1') &#129106; [EficazFramework.Collections.StringCollection](https://docs.microsoft.com/en-us/dotnet/api/EficazFramework.Collections.StringCollection 'EficazFramework.Collections.StringCollection') &#129106; ValidationResult
 
 | Properties | |
 | :--- | :--- |

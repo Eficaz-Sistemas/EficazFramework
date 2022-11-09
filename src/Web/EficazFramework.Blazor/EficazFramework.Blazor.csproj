@@ -23,7 +23,7 @@
 	 <AssemblyName>$(MSBuildProjectName)</AssemblyName>
 	 <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
 	 <Description>Controles, extensões e utulitários para implementação Blazor.</Description>
-	 <GenerateDocumentationFile>true</GenerateDocumentationFile>
+	 <GenerateDocumentationFile>false</GenerateDocumentationFile>
 	 <DefaultDocumentationFolder>..\..\..\Docs\Api\Web-Blazor</DefaultDocumentationFolder>
 	 <DefaultDocumentationAssemblyPageName>EficazFramework Blazor</DefaultDocumentationAssemblyPageName>
 	 <DefaultDocumentationGeneratedPages>Assembly, Types, Members</DefaultDocumentationGeneratedPages>
@@ -96,11 +96,11 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
-    <PackageReference Include="MudBlazor" Version="6.0.16" />
+    <PackageReference Include="MudBlazor" Version="6.0.18" />
   </ItemGroup>
 	
   <ItemGroup>
-    <ProjectReference Include="..\..\Core\EficazFramework.Data\EficazFramework.Data.csproj" />
+    <ProjectReference Include="..\..\Core\EficazFramework.Expressions\EficazFramework.Expressions.csproj" />
     <ProjectReference Include="..\..\Core\EficazFramework.Utilities\EficazFramework.Utilities.csproj" />
   </ItemGroup>
 	

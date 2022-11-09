@@ -13,4 +13,4 @@ EficazFramework.Collections.StringCollection Validate(string propertyName);
 `propertyName` [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
 
 #### Returns
-[StringCollection](EficazFramework.Collections/StringCollection.md 'EficazFramework.Collections.StringCollection')
+[EficazFramework.Collections.StringCollection](https://docs.microsoft.com/en-us/dotnet/api/EficazFramework.Collections.StringCollection 'EficazFramework.Collections.StringCollection')

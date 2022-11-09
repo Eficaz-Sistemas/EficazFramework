@@ -10,4 +10,4 @@ public EficazFramework.Collections.AsyncObservableCollection<T> DataContext { ge
 ```
 
 #### Property Value
-[EficazFramework.Collections.AsyncObservableCollection&lt;](EficazFramework.Collections/AsyncObservableCollection_T_.md 'EficazFramework.Collections.AsyncObservableCollection<T>')[T](EficazFramework.Repositories/RepositoryBase_T_.md#EficazFramework.Repositories.RepositoryBase_T_.T 'EficazFramework.Repositories.RepositoryBase<T>.T')[&gt;](EficazFramework.Collections/AsyncObservableCollection_T_.md 'EficazFramework.Collections.AsyncObservableCollection<T>')
+[EficazFramework.Collections.AsyncObservableCollection&lt;](https://docs.microsoft.com/en-us/dotnet/api/EficazFramework.Collections.AsyncObservableCollection-1 'EficazFramework.Collections.AsyncObservableCollection`1')[T](EficazFramework.Repositories/RepositoryBase_T_.md#EficazFramework.Repositories.RepositoryBase_T_.T 'EficazFramework.Repositories.RepositoryBase<T>.T')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/EficazFramework.Collections.AsyncObservableCollection-1 'EficazFramework.Collections.AsyncObservableCollection`1')
