@@ -24,7 +24,7 @@
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <Configurations>Debug;Release</Configurations>
     <RuntimeIdentifiers>win-x64;win-x86</RuntimeIdentifiers>
-	<GenerateDocumentationFile>true</GenerateDocumentationFile>
+	<GenerateDocumentationFile>false</GenerateDocumentationFile>
 	<DefaultDocumentationFolder>..\..\..\Docs\Api\Desktop-WPF</DefaultDocumentationFolder>
 	<DefaultDocumentationAssemblyPageName>EficazFramework WPF</DefaultDocumentationAssemblyPageName>
 	<DefaultDocumentationGeneratedPages>Assembly, Types, Members</DefaultDocumentationGeneratedPages>

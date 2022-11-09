@@ -21,7 +21,7 @@
 	  <PackageIconUrl>https://efsuporte.blob.core.windows.net/portal/EficazFramework.png</PackageIconUrl>
 	  <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
 	  <ImplicitUsings>enable</ImplicitUsings>
-	  <GenerateDocumentationFile>true</GenerateDocumentationFile>
+	  <GenerateDocumentationFile>false</GenerateDocumentationFile>
 	  <DefaultDocumentationFolder>..\..\..\Docs\Api\Data-Providers\InMemory</DefaultDocumentationFolder>
 	  <DefaultDocumentationAssemblyPageName>EficazFramework InMemory Data Provider</DefaultDocumentationAssemblyPageName>
 	  <DefaultDocumentationGeneratedPages>Assembly, Types, Members</DefaultDocumentationGeneratedPages>

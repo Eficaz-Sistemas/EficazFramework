@@ -23,7 +23,7 @@
 	 <AssemblyName>$(MSBuildProjectName)</AssemblyName>
 	 <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
 	 <Description>Controles, extensões e utulitários para implementação Blazor.</Description>
-	 <GenerateDocumentationFile>true</GenerateDocumentationFile>
+	 <GenerateDocumentationFile>false</GenerateDocumentationFile>
 	 <DefaultDocumentationFolder>..\..\..\Docs\Api\Web-Blazor</DefaultDocumentationFolder>
 	 <DefaultDocumentationAssemblyPageName>EficazFramework Blazor</DefaultDocumentationAssemblyPageName>
 	 <DefaultDocumentationGeneratedPages>Assembly, Types, Members</DefaultDocumentationGeneratedPages>

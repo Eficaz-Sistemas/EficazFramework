@@ -22,7 +22,7 @@
 	  <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
 	  <Configurations>Debug;Release</Configurations>
 	  <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
-	  <GenerateDocumentationFile>true</GenerateDocumentationFile>
+	  <GenerateDocumentationFile>false</GenerateDocumentationFile>
 	  <DefaultDocumentationFolder>..\..\..\Docs\Api\Expressions</DefaultDocumentationFolder>
 	  <DefaultDocumentationAssemblyPageName>EficazFramework Expressions</DefaultDocumentationAssemblyPageName>
 	  <DefaultDocumentationGeneratedPages>Assembly, Types, Members</DefaultDocumentationGeneratedPages>
