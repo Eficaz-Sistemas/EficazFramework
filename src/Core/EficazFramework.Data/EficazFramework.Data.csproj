@@ -1,10 +1,10 @@
 <Project Sdk="Microsoft.NET.Sdk">
   <!--in Memory of Laudo Ferreira da Silva and Francisco Luis de Sousa † 2020-->
   <PropertyGroup>
-    <TargetFramework>net6.0</TargetFramework>
-    <Version>6.0.0</Version>
-    <AssemblyVersion>6.0.0.0</AssemblyVersion>
-    <FileVersion>6.0.0.0</FileVersion>
+    <TargetFrameworks>net6.0;net7.0</TargetFrameworks>
+    <Version>6.1.0</Version>
+    <AssemblyVersion>6.1.0.0</AssemblyVersion>
+    <FileVersion>6.1.0.0</FileVersion>
     <RootNamespace>EficazFramework</RootNamespace>
     <SignAssembly>true</SignAssembly>
     <AssemblyOriginatorKeyFile>EfCore.snk</AssemblyOriginatorKeyFile>
@@ -98,9 +98,18 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
-    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="6.0.11" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore.Relational" Version="6.0.11" />
-	<PackageReference Include="System.Security.Permissions" Version="6.0.0" />
+  </ItemGroup>
+
+  <ItemGroup Condition=" '$(TargetFramework)' == 'net6.0' ">
+  	<PackageReference Include="Microsoft.EntityFrameworkCore" Version="6.0.11" />
+  	<PackageReference Include="Microsoft.EntityFrameworkCore.Relational" Version="6.0.11" />
+  	<PackageReference Include="System.Security.Permissions" Version="6.0.0" />
+  </ItemGroup>
+  
+  <ItemGroup Condition=" '$(TargetFramework)' == 'net7.0' ">
+  	<PackageReference Include="Microsoft.EntityFrameworkCore" Version="7.0.0" />
+  	<PackageReference Include="Microsoft.EntityFrameworkCore.Relational" Version="7.0.0" />
+  	<PackageReference Include="System.Security.Permissions" Version="7.0.0" />
   </ItemGroup>
 
   <ItemGroup>
