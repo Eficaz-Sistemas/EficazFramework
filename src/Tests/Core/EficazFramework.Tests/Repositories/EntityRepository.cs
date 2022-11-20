@@ -42,7 +42,7 @@ public class EntityRepositoryTests
         System.IO.File.Delete($"{DbConfiguration.SettingsPath}data_provider.json");
     }
 
-    [Test, Order(1)]
+    [Test]
     public async Task SelectTest()
     {
         var repository = new EntityRepository<Resources.Mocks.Classes.Blog>();
@@ -93,7 +93,7 @@ public class EntityRepositoryTests
         repository.Dispose();
     }
 
-    [Test, Order(2)]
+    [Test]
     public void CreateEntry()
     {
         var repository = new EntityRepository<Resources.Mocks.Classes.Blog>();
@@ -103,7 +103,7 @@ public class EntityRepositoryTests
         (newPost as Resources.Mocks.Classes.Post).Should().NotBeNull();
     }
 
-    [Test, Order(3)]
+    [Test]
     public async Task ValidationTest()
     {
         var repository = new EntityRepository<Resources.Mocks.Classes.Blog>();
@@ -142,7 +142,7 @@ public class EntityRepositoryTests
         (await repository.ValidateAsync(newEntry)).Should().HaveCount(0);
     }
 
-    [Test, Order(4)]
+    [Test]
     public async Task InsertTest()
     {
         var repository = new EntityRepository<Resources.Mocks.Classes.Blog>();
@@ -181,7 +181,7 @@ public class EntityRepositoryTests
         repository.DbContextRequest = () => new Resources.Mocks.MockDbContext();
     }
 
-    [Test, Order(5)]
+    [Test]
     public async Task DeleteTest()
     {
         var repository = new EntityRepository<Resources.Mocks.Classes.Blog>();
@@ -232,7 +232,7 @@ public class EntityRepositoryTests
         repository.DbContextRequest = () => new Resources.Mocks.MockDbContext();
     }
 
-    [Test, Order(6)]
+    [Test]
     public async Task UpdateTest()
     {
         var repository = new EntityRepository<Resources.Mocks.Classes.Blog>();
@@ -261,7 +261,7 @@ public class EntityRepositoryTests
 
     }
 
-    [Test, Order(6)]
+    [Test]
     public async Task CancelEditingTest()
     {
         var repository = new EntityRepository<Resources.Mocks.Classes.Blog>();
@@ -290,7 +290,7 @@ public class EntityRepositoryTests
         repository.DbContext.Entry(newEntry).State.Should().Be(EntityState.Detached);
     }
 
-    [Test, Order(7)]
+    [Test]
     public async Task RunCommandTest()
     {
         var repository = new EntityRepository<Resources.Mocks.Classes.Blog>();

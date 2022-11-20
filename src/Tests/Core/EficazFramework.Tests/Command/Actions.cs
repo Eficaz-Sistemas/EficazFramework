@@ -13,7 +13,7 @@ public class Actions
     private const string MyConfig = "MyConfig";
     private const int delay = 500;
 
-    [Test, Order(1)]
+    [Test]
     public void Invoke()
     {
         var parameters = new Dictionary<string, bool>
@@ -28,7 +28,7 @@ public class Actions
         parameters[MyConfig].Should().Be(true);
     }
 
-    [Test, Order(2)]
+    [Test]
     public async Task InvokeAsync()
     {
         var parameters = new Dictionary<string, bool>
