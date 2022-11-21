@@ -24,7 +24,7 @@ public class Actions
         TimeSpan start = DateTime.Now.TimeOfDay;
         EficazFramework.Commands.DelayedAction.Invoke(() => CustomAction(parameters), delay);
         TimeSpan delta = DateTime.Now.TimeOfDay - start;
-        delta.Milliseconds.Should().BeGreaterThanOrEqualTo(delay);
+        delta.Milliseconds.Should().BeCloseTo(delay, 50);
         parameters[MyConfig].Should().Be(true);
     }
 
@@ -46,7 +46,7 @@ public class Actions
         {
             await EficazFramework.Commands.DelayedAction.InvokeAsync(action, delay, tks.Token);
             TimeSpan delta = DateTime.Now.TimeOfDay - start;
-            delta.Milliseconds.Should().BeGreaterThanOrEqualTo(delay);
+            delta.Milliseconds.Should().BeCloseTo(delay, 50);
         }
         catch (TaskCanceledException tex)
         {
