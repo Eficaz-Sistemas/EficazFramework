@@ -1,4 +1,5 @@
-﻿.text-right > 
+﻿/*Text Alignment*/
+.text-right > 
     .mud-input-control-input-container > 
         .mud-input > 
             input.mud-input-root {
@@ -29,6 +30,8 @@ div.text-match div, div.mud-input input {
     text-align: match-parent;
 }
 
+
+/*Input Background*/
 .mud-input-control-ef > 
     .mud-input-control-input-container > 
         .mud-input {
@@ -56,6 +59,39 @@ div.text-match div, div.mud-input input {
     }
 }
 
+
+/*Picker Background*/
+.mud-input-control-ef > 
+    .mud-input-control >
+        .mud-input-control-input-container > 
+            .mud-input {
+    border-radius: 4px !important;
+    background-color: rgba(var(--mud-palette-primary-rgb),0.55);
+    border: solid 1px var(--mud-palette-lines-default) !important;
+}
+
+.mud-input-control-ef > 
+    .mud-input-control >
+        .mud-input-control-input-container > 
+            .mud-input {
+
+    &:before {
+        border-bottom: 0px solid var(--mud-palette-primary);
+        border-radius: 4px !important;
+    }
+
+    &:after {
+        border-bottom: 3px solid var(--mud-palette-primary);
+        border-radius: 0px 0px 8px 8px !important;
+    }
+
+    &.mud-input-error:after {
+        border-radius: 4px !important;
+    }
+}
+
+
+/*Cell*/
 .edit-mode-cell >
     .mud-input-input-control >
         .mud-input-control-input-container >
@@ -66,13 +102,24 @@ div.text-match div, div.mud-input input {
 }
 
 
-.mud-input-control-ef > 
-    .mud-input-control-input-container > 
-        .mud-input > 
-            input.mud-input-root {
-    padding: 8px !important;
+/*Input Label*/
+.mud-input-control-ef >
+    .mud-input-control-input-container >
+        .mud-input-label-inputcontrol {
+    margin-left: 8px;
+    margin-right: 8px;
+    margin-top: 0px;
+}
+.mud-input-control-ef >
+    .mud-input-control >
+        .mud-input-control-input-container >
+            .mud-input-label-inputcontrol {
+    margin-left: 8px;
+    margin-right: 8px;
+    margin-top: 0px;
 }
 
+/*Input text box*/
 .mud-input-control-ef > 
     .mud-input-control-input-container > 
         .mud-input-adorned-start > 
@@ -95,11 +142,31 @@ div.text-match div, div.mud-input input {
     opacity: 0.5
 }
 
-.mud-input-control-ef >
-    .mud-input-control-input-container >
-        .mud-input-label-inputcontrol {
-    margin-left: 8px;
-    margin-right: 8px;
-    margin-top: 0px;
+.mud-input-control-ef > 
+    .mud-input-control-input-container > 
+        .mud-input > 
+            input.mud-input-root {
+    padding: 8px !important;
 }
 
+.mud-input-control-ef > 
+    .mud-input-control-input-container > 
+        .mud-input > 
+            div.mud-select-input {
+    padding: 8px 0px 8px 8px !important
+}
+
+.mud-input-control-ef >
+    .mud-input-control >
+        .mud-input-control-input-container >
+            .mud-input {
+    padding: 8px !important
+}
+
+.mud-input-control-ef >
+    .mud-input-control >
+        .mud-input-control-input-container >
+            .mud-input >
+                input.mud-input-root {
+    padding: 0px !important;
+}

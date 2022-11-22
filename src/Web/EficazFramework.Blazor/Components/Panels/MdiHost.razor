@@ -36,7 +36,9 @@
              <div class="flex-grow-1 overflow-hidden">
                 @if (_selectedApp != null)
                  {
-                     <DynamicComponent Type="@((Type)_selectedApp!.Targets["Blazor"].StartupUriOrType)" />
+                    <CascadingValue Value="_selectedApp">
+                        <DynamicComponent Type="@((Type)_selectedApp!.Targets["Blazor"].StartupUriOrType)" />
+                     </CascadingValue>
                  }
                  else
                  {                 

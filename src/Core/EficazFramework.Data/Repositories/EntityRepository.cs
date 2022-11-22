@@ -89,7 +89,6 @@ public sealed class EntityRepository<TEntity> : Repositories.RepositoryBase<TEnt
         }
         catch (OperationCanceledException tkex)
         {
-            Console.WriteLine(tkex.ToString());
             return new System.Collections.ObjectModel.ObservableCollection<TEntity>();
         }
     }

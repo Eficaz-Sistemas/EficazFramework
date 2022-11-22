@@ -13,7 +13,7 @@ public class Actions
     private const string MyConfig = "MyConfig";
     private const int delay = 500;
 
-    [Test, Order(1)]
+    [Test]
     public void Invoke()
     {
         var parameters = new Dictionary<string, bool>
@@ -24,11 +24,11 @@ public class Actions
         TimeSpan start = DateTime.Now.TimeOfDay;
         EficazFramework.Commands.DelayedAction.Invoke(() => CustomAction(parameters), delay);
         TimeSpan delta = DateTime.Now.TimeOfDay - start;
-        delta.Milliseconds.Should().BeGreaterThanOrEqualTo(delay);
+        delta.Milliseconds.Should().BeCloseTo(delay, 50);
         parameters[MyConfig].Should().Be(true);
     }
 
-    [Test, Order(2)]
+    [Test]
     public async Task InvokeAsync()
     {
         var parameters = new Dictionary<string, bool>
@@ -46,7 +46,7 @@ public class Actions
         {
             await EficazFramework.Commands.DelayedAction.InvokeAsync(action, delay, tks.Token);
             TimeSpan delta = DateTime.Now.TimeOfDay - start;
-            delta.Milliseconds.Should().BeGreaterThanOrEqualTo(delay);
+            delta.Milliseconds.Should().BeCloseTo(delay, 50);
         }
         catch (TaskCanceledException tex)
         {
