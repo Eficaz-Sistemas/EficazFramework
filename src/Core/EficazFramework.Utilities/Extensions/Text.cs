@@ -504,7 +504,7 @@ public static class TextExtensions
     /// <remarks></remarks>
     public static string RemoveTextMask(this string texto)
     {
-        texto = Regex.Replace(texto, @"(?:[^a-z0-9]|(?<=['\'])s)", string.Empty, RegexOptions.IgnoreCase & RegexOptions.CultureInvariant);
+        texto = Regex.Replace(texto, @"(?:[^a-za-zA-Z0-9]|(?<=['\'])s)", string.Empty, RegexOptions.IgnoreCase & RegexOptions.CultureInvariant);
         return texto.Replace(" ", "");
     }
 
