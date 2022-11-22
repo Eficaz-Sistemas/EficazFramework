@@ -39,8 +39,8 @@ public class DocumentField : BunitTest
             input.Change("non valid IE...");
             input.BlurAsync(new Microsoft.AspNetCore.Components.Web.FocusEventArgs());
         });
-        comp.Instance.Text.Should().Be("nonvalid");
-        comp.Instance.Value.Should().Be("nonvalid");
+        comp.Instance.Text.Should().Be("nonvalidIE");
+        comp.Instance.Value.Should().Be("nonvalidIE");
 
         // valid IE for MG, expecting to set non-formated text
         comp.InvokeAsync(() =>
