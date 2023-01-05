@@ -129,7 +129,7 @@ div.mud-input-slot.mud-input-root {
 
 .ef-mdi-window-host {
   cursor: initial;
-  overflow: auto;
+  overflow: hidden;
 }
 
 .ef-mdi-start-menu {
