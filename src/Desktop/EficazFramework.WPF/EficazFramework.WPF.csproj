@@ -3,14 +3,14 @@
   <PropertyGroup>
     <TargetFrameworks>net6.0-windows;net7.0-windows</TargetFrameworks>
     <UseWPF>true</UseWPF>
-	<Version>6.1.0</Version>
-	<AssemblyVersion>6.1.0.0</AssemblyVersion>
-	<FileVersion>6.1.0.0</FileVersion>
+    <Version>6.1.1</Version>
+    <AssemblyVersion>6.1.1.0</AssemblyVersion>
+    <FileVersion>6.1.1.0</FileVersion>
     <RootNamespace>EficazFramework</RootNamespace>
     <Authors>Eficaz Sistemas</Authors>
     <Company>Eficaz Sistemas de Gestão e Inteligência Tributária</Company>
     <Description>Controles, extensões e utulitários para implementação WPF.</Description>
-    <Copyright>Copyright ©  2022. Eficaz Sistemas de Gestão e Inteligência Tributária Ltda.</Copyright>
+    <Copyright>Copyright ©  2023. Eficaz Sistemas de Gestão e Inteligência Tributária Ltda.</Copyright>
     <SignAssembly>true</SignAssembly>
     <AssemblyOriginatorKeyFile>EfCore.snk</AssemblyOriginatorKeyFile>
     <PackageIcon>logo.png</PackageIcon>
@@ -56,7 +56,7 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
-    <PackageReference Include="MaterialDesignThemes" Version="4.6.1" />
+    <PackageReference Include="MaterialDesignThemes" Version="4.7.0" />
     <PackageReference Include="Microsoft.Xaml.Behaviors.Wpf" Version="1.1.39" />
   </ItemGroup>
 	
