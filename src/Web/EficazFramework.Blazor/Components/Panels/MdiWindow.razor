@@ -21,18 +21,18 @@
                                Class="mr-2 mt-1 flex-grow-1">
                 @(ApplicationInstance != null ? ApplicationInstance.Title : Title)
             </MudBlazor.MudText>
-            <MudBlazor.MudIconButton Icon="@MudBlazor.Icons.Filled.Close" 
+            <MudBlazor.MudIconButton Icon="@MudBlazor.Icons.Material.Filled.Close" 
                                      OnClick="OnClose"
                                      DisableElevation 
                                      Variant="MudBlazor.Variant.Filled" 
                                      Size="MudBlazor.Size.Small"/>
         </div>
         <!--CONTENT-->
-        <div clas="ef-mdi-window-host"
+        <div class="ef-mdi-window-host d-flex"
              draggable="true" 
              @ondragstart:preventDefault="true" 
              @ondragstart:stopPropagation="true">
-            <MudBlazor.MudFocusTrap>
+            <MudBlazor.MudFocusTrap Class="d-flex flex-column flex-grow-1 overflow-auto">
                 @ChildContent
             </MudBlazor.MudFocusTrap>
         </div>
