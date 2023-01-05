@@ -2,14 +2,14 @@
   <!--in Memory of Laudo Ferreira da Silva and Francisco Luis de Sousa † 2020-->
   <PropertyGroup>
 	<TargetFrameworks>net6.0;net7.0</TargetFrameworks>
-	<Version>6.1.0</Version>
-	<AssemblyVersion>6.1.0.0</AssemblyVersion>
-	<FileVersion>6.1.0.0</FileVersion>
+    <Version>6.1.1</Version>
+    <AssemblyVersion>6.1.1.0</AssemblyVersion>
+    <FileVersion>6.1.1.0</FileVersion>
 	<RootNamespace>EficazFramework</RootNamespace>
     <Authors>Eficaz Sistemas</Authors>
     <Company>Eficaz Sistemas de Gestão e Inteligência Tributária</Company>
     <Description>Extensões e métodos úteis em cenários comuns variados.</Description>
-    <Copyright>Copyright ©  2022. Eficaz Sistemas de Gestão e Inteligência Tributária Ltda.</Copyright>
+    <Copyright>Copyright ©  2023. Eficaz Sistemas de Gestão e Inteligência Tributária Ltda.</Copyright>
     <RepositoryType>git</RepositoryType>
     <PackageTags>utilitários IO api</PackageTags>
     <PackageIcon>logo.png</PackageIcon>
@@ -67,7 +67,7 @@
   </ItemGroup>
   
   <ItemGroup Condition=" '$(TargetFramework)' == 'net7.0' ">
-	<PackageReference Include="Microsoft.AspNetCore.SignalR.Client" Version="7.0.0" />
+	<PackageReference Include="Microsoft.AspNetCore.SignalR.Client" Version="7.0.1" />
 	<PackageReference Include="System.Security.Cryptography.Xml" Version="7.0.0" />
   </ItemGroup>
 	

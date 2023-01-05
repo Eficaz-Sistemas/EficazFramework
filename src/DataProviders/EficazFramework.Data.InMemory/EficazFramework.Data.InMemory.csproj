@@ -2,15 +2,15 @@
 
   <PropertyGroup>
 	  <TargetFrameworks>net6.0;net7.0</TargetFrameworks>
-	  <Version>6.1.0</Version>
-	  <AssemblyVersion>6.1.0.0</AssemblyVersion>
-	  <FileVersion>6.1.0.0</FileVersion>
+	  <Version>6.1.1</Version>
+	  <AssemblyVersion>6.1.1.0</AssemblyVersion>
+	  <FileVersion>6.1.1.0</FileVersion>
 	  <RootNamespace>EficazFramework</RootNamespace>
 	  <SignAssembly>true</SignAssembly>
 	  <AssemblyOriginatorKeyFile>EfCore.snk</AssemblyOriginatorKeyFile>
 	  <DelaySign>false</DelaySign>
 	  <Company>Eficaz Sistemas de Gestão e Inteligência Tributária</Company>
-	  <Copyright>Copyright ©  2022. Eficaz Sistemas de Gestão e Inteligência Tributária Ltda.</Copyright>
+	  <Copyright>Copyright ©  2023. Eficaz Sistemas de Gestão e Inteligência Tributária Ltda.</Copyright>
 	  <Description>Fornece funcionalidades específicas para trabalho com bases de dados em memória.</Description>
 	  <RepositoryUrl>https://github.com/Eficaz-Sistemas/EficazFramework</RepositoryUrl>
 	  <RepositoryType>git</RepositoryType>
@@ -71,7 +71,7 @@
   </ItemGroup>
   
   <ItemGroup Condition=" '$(TargetFramework)' == 'net7.0' ">
-	  <PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" Version="7.0.0" />
+	  <PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" Version="7.0.1" />
   </ItemGroup>
 	
   <ItemGroup>
