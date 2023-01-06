@@ -102,7 +102,8 @@
                                                                      Size="@MudBlazor.Size.Medium"
                                                                      Class="mt-6 ml-4"
                                                                      DisableElevation
-                                                                     OnClick="ToggleStartMenuView"/>
+                                                                     OnClick="ToggleStartMenuView"
+                                                                     Title="Alternar visualização"/>
                                         </MudBlazor.MudTooltip>
                                     </div>
 
@@ -115,18 +116,20 @@
                                                                    Class="mx-1 pb-1 px-2">
                                                     @group.Key
                                                 </MudBlazor.MudText>
-                                                <MudBlazor.MudGrid Class="flex-grow-1 mx-1 mb-4 pr-6" Spacing="1">
+                                                <MudBlazor.MudGrid Class="flex-grow-1 mx-1 mb-4 pr-6" 
+                                                                   Spacing="1"
+                                                                   Justify="MudBlazor.Justify.FlexStart">
                                                     @foreach (var app in group)
                                                     {
                                                         <MudBlazor.MudItem>
                                                             <MudBlazor.MudButton Variant="@MudBlazor.Variant.Filled"
-                                                                                    Color="@MudBlazor.Color.Primary"
-                                                                                    Size="@MudBlazor.Size.Large"
-                                                                                    Class="pt-5 pb-7"
-                                                                                    Style="width:96px; height:96px;"
-                                                                                    OnClick="() => LoadApplication(app)">
+                                                                                 Color="@MudBlazor.Color.Primary"
+                                                                                 Size="@MudBlazor.Size.Large"
+                                                                                 Class="pt-5 pb-7"
+                                                                                 Style="width:84px; height:84px;"
+                                                                                 OnClick="() => LoadApplication(app)">
                                                                 <MudBlazor.MudIcon Icon="@(app.Targets["Blazor"].Icon?.ToString())"
-                                                                                   Style="font-size:3rem !important"/>
+                                                                                   Style="font-size:2rem !important"/>
                                                                 <MudBlazor.MudText Typo="MudBlazor.Typo.caption"
                                                                                    Align="MudBlazor.Align.Center"
                                                                                    Class="mt-n3"
@@ -185,7 +188,8 @@
                                              Class="ef-mdi-buttons-toolbar"
                                              Size="@MudBlazor.Size.Large"
                                              DisableElevation
-                                             OnClick="() => ToggleSectionsMenuOpen()">
+                                             OnClick="() => ToggleSectionsMenuOpen()"
+                                             Title="Sections Button">
                         <div class="ef-mdi-sections-current">
                             @if (CurrentSection == 0)
                             {
