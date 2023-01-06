@@ -120,7 +120,7 @@ public partial class Mdi
         ApplicationManager?.SectionManager.ActivateSection(new(((long)(ApplicationManager?.SectionManager.Sections.Count ?? 0)) + 1)
         {
             Name = $"Section {ApplicationManager?.SectionManager.Sections.Count + 1}",
-            Icon = MudBlazor.Icons.Filled.Inbox,
+            Icon = MudBlazor.Icons.Material.Filled.Inbox,
         }, true);
         StateHasChanged();
     }

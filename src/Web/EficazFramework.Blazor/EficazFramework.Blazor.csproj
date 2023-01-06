@@ -5,31 +5,31 @@
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
     <AddRazorSupportForMvc>true</AddRazorSupportForMvc>
-    <Version>6.1.1-fix001</Version>
-    <AssemblyVersion>6.1.1.1</AssemblyVersion>
-    <FileVersion>6.1.1.1</FileVersion>
-	 <RootNamespace>EficazFramework</RootNamespace>
-	 <Authors>Eficaz Sistemas</Authors>
-	 <Company>Eficaz Sistemas de Gestão e Inteligência Tributária</Company>
-	 <Copyright>Copyright ©  2023. Eficaz Sistemas de Gestão e Inteligência Tributária Ltda.</Copyright>
-	 <PackageIcon>logo.png</PackageIcon>
-	 <PackageIconUrl>https://efsuporte.blob.core.windows.net/portal/EficazFramework.png</PackageIconUrl>
-	 <RepositoryUrl>https://github.com/Eficaz-Sistemas/EficazFramework</RepositoryUrl>
-	 <RepositoryType>git</RepositoryType>
-	 <PackageTags>blazor api components web html css</PackageTags>
-	 <NeutralLanguage>pt-BR</NeutralLanguage>
-	 <SignAssembly>true</SignAssembly>
-	 <AssemblyOriginatorKeyFile>EfCore.snk</AssemblyOriginatorKeyFile>
-	 <AssemblyName>$(MSBuildProjectName)</AssemblyName>
-	 <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-	 <Description>Controles, extensões e utulitários para implementação Blazor.</Description>
-	 <GenerateDocumentationFile>false</GenerateDocumentationFile>
-	 <DefaultDocumentationFolder>..\..\..\Docs\Api\Web-Blazor</DefaultDocumentationFolder>
-	 <DefaultDocumentationAssemblyPageName>EficazFramework Blazor</DefaultDocumentationAssemblyPageName>
-	 <DefaultDocumentationGeneratedPages>Assembly, Types, Members</DefaultDocumentationGeneratedPages>
-	 <DefaultDocumentationFileNameFactory>Folder</DefaultDocumentationFileNameFactory>
-	 <DefaultDocumentationIncludeUndocumentedItems>false</DefaultDocumentationIncludeUndocumentedItems>
-	 <DefaultDocumentationGeneratedAccessModifiers>Public</DefaultDocumentationGeneratedAccessModifiers>
+    <Version>6.1.2-preview002</Version>
+    <AssemblyVersion>6.1.1.2</AssemblyVersion>
+    <FileVersion>6.1.1.2</FileVersion>
+	<RootNamespace>EficazFramework</RootNamespace>
+	<Authors>Eficaz Sistemas</Authors>
+	<Company>Eficaz Sistemas de Gestão e Inteligência Tributária</Company>
+	<Copyright>Copyright ©  2023. Eficaz Sistemas de Gestão e Inteligência Tributária Ltda.</Copyright>
+	<PackageIcon>logo.png</PackageIcon>
+	<PackageIconUrl>https://efsuporte.blob.core.windows.net/portal/EficazFramework.png</PackageIconUrl>
+	<RepositoryUrl>https://github.com/Eficaz-Sistemas/EficazFramework</RepositoryUrl>
+	<RepositoryType>git</RepositoryType>
+	<PackageTags>blazor api components web html css</PackageTags>
+	<NeutralLanguage>pt-BR</NeutralLanguage>
+	<SignAssembly>true</SignAssembly>
+	<AssemblyOriginatorKeyFile>EfCore.snk</AssemblyOriginatorKeyFile>
+	<AssemblyName>$(MSBuildProjectName)</AssemblyName>
+	<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+	<Description>Controles, extensões e utulitários para implementação Blazor.</Description>
+	<GenerateDocumentationFile>false</GenerateDocumentationFile>
+	<DefaultDocumentationFolder>..\..\..\Docs\Api\Web-Blazor</DefaultDocumentationFolder>
+	<DefaultDocumentationAssemblyPageName>EficazFramework Blazor</DefaultDocumentationAssemblyPageName>
+	<DefaultDocumentationGeneratedPages>Assembly, Types, Members</DefaultDocumentationGeneratedPages>
+	<DefaultDocumentationFileNameFactory>Folder</DefaultDocumentationFileNameFactory>
+	<DefaultDocumentationIncludeUndocumentedItems>false</DefaultDocumentationIncludeUndocumentedItems>
+	<DefaultDocumentationGeneratedAccessModifiers>Public</DefaultDocumentationGeneratedAccessModifiers>
   </PropertyGroup>
 	
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">

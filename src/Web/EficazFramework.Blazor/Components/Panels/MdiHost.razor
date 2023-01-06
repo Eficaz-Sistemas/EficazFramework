@@ -53,11 +53,12 @@
             <MudBlazor.MudTooltip Text="@Resources.Strings.Components.MDIContainer_StartTab">
                 <MudBlazor.MudIconButton Variant="@MudBlazor.Variant.Filled"
                                          Color="@MudBlazor.Color.Transparent"
+                                         Class="ef-mdi-buttons-toolbar"
                                          Icon="@StartMenuIcon"
                                          Size="@MudBlazor.Size.Large"
-                                         Style="@StartMenuButtonStyle()"
                                          DisableElevation
-                                         OnClick="() => ToggleStartMenuOpen()"/>
+                                         OnClick="() => ToggleStartMenuOpen()"
+                                         Title="Start Menu"/>
                 @*START MENU FRAME*@            
                 <MudBlazor.MudPopover Open="_startMenuIsOpen" 
                                       Elevation="0"
@@ -70,7 +71,7 @@
                             
                             @*HEADER*@
                             <div class="ef-mdi-start-header">
-                                <MudBlazor.MudIcon Icon="@MudBlazor.Icons.Filled.Menu"
+                                <MudBlazor.MudIcon Icon="@MudBlazor.Icons.Material.Filled.Menu"
                                                    Class="mr-5"/>
                                 <MudBlazor.MudText Typo="@MudBlazor.Typo.h6">
                                     @(_tabsHost?.ActivePanel?.Tag?.ToString() ?? "")
@@ -81,21 +82,23 @@
                             <MudBlazor.MudTabs Position="@MudBlazor.Position.Left" 
                                                Class="flex-grow-1 flex-shrink-0 ml-n4"
                                                PanelClass="d-flex flex-column ml-4 my-4"
+                                               MinimumTabWidth="64px"
                                                @ref="_tabsHost">
                                 <MudBlazor.MudTabPanel Tag="@StartMenuMainTabHeader"
-                                                       Icon="@MudBlazor.Icons.Filled.GridView">
+                                                       Icon="@MudBlazor.Icons.Material.Filled.GridView"
+                                                       MinimumTabWidth="64px">
                                     <div class="d-flex mx-2 mt-n4 align-center">
                                         <MudBlazor.MudTextField @bind-Value="AppSearchFilter"
                                                                 Class="mud-input-control-ef flex-grow1" 
                                                                 Placeholder="@Resources.Strings.Components.MDIApplication_FindPlaceholder"
                                                                 Adornment="MudBlazor.Adornment.Start"
-                                                                AdornmentIcon="@MudBlazor.Icons.Filled.Search"
+                                                                AdornmentIcon="@MudBlazor.Icons.Material.Filled.Search"
                                                                 Immediate 
                                                                 AutoFocus/>
                                         <MudBlazor.MudTooltip Text="@(_startMenuIsCompact ? Resources.Strings.Components.MDIApplication_ToggleApp_GridView : Resources.Strings.Components.MDIApplication_ToggleApp_ListView)">
                                             <MudBlazor.MudIconButton Variant="@MudBlazor.Variant.Filled"
                                                                      Color="@MudBlazor.Color.Transparent"
-                                                                     Icon="@(_startMenuIsCompact ? MudBlazor.Icons.Filled.GridView : MudBlazor.Icons.Filled.List)"
+                                                                     Icon="@(_startMenuIsCompact ? MudBlazor.Icons.Material.Filled.GridView : MudBlazor.Icons.Material.Filled.List)"
                                                                      Size="@MudBlazor.Size.Medium"
                                                                      Class="mt-6 ml-4"
                                                                      DisableElevation
@@ -119,7 +122,7 @@
                                                             <MudBlazor.MudButton Variant="@MudBlazor.Variant.Filled"
                                                                                     Color="@MudBlazor.Color.Primary"
                                                                                     Size="@MudBlazor.Size.Large"
-                                                                                    Class="py-6"
+                                                                                    Class="pt-5 pb-7"
                                                                                     Style="width:96px; height:96px;"
                                                                                     OnClick="() => LoadApplication(app)">
                                                                 <MudBlazor.MudIcon Icon="@(app.Targets["Blazor"].Icon?.ToString())"
@@ -179,14 +182,14 @@
                 <MudBlazor.MudTooltip Text="@Resources.Strings.Components.MDIContainer_Sections">
                     <MudBlazor.MudIconButton Variant="@MudBlazor.Variant.Filled"
                                              Color="@MudBlazor.Color.Transparent"
+                                             Class="ef-mdi-buttons-toolbar"
                                              Size="@MudBlazor.Size.Large"
-                                             Style="@StartMenuButtonStyle()"
                                              DisableElevation
                                              OnClick="() => ToggleSectionsMenuOpen()">
                         <div class="ef-mdi-sections-current">
                             @if (CurrentSection == 0)
                             {
-                                <MudBlazor.MudIcon Icon="@MudBlazor.Icons.Outlined.ViewCarousel" Class="ma-4" Size="MudBlazor.Size.Medium" />
+                                <MudBlazor.MudIcon Icon="@MudBlazor.Icons.Material.Outlined.ViewCarousel" Class="ma-4" Size="MudBlazor.Size.Medium" />
                             }
                             else
                             {
@@ -219,7 +222,7 @@
                                 @*NEW SECTION ACTIOn*@            
                                 <MudBlazor.MudItem>
                                         <MudBlazor.MudTooltip Text="@NewSectionText">
-                                            <MudBlazor.MudIconButton Icon="@MudBlazor.Icons.Filled.Add"
+                                            <MudBlazor.MudIconButton Icon="@MudBlazor.Icons.Material.Filled.Add"
                                                                      Size="@MudBlazor.Size.Large"
                                                                      Class="mud-paper-outlined" 
                                                                      Style="width:125px;height:125px;background-color: var(--mud-palette-background-grey)"
@@ -241,7 +244,7 @@
                                             <MudBlazor.MudPaper Elevation="0" 
                                                                 Class="flex-grow-1 d-flex justify-center align-center relative mt-1"
                                                                 Style="background-color: var(--mud-palette-background-grey)">
-                                                <MudBlazor.MudIcon Icon="@MudBlazor.Icons.Filled.Image" 
+                                                <MudBlazor.MudIcon Icon="@MudBlazor.Icons.Material.Filled.Image" 
                                                                    Class="ma-4"
                                                                    Size="@MudBlazor.Size.Large"/>
                                             </MudBlazor.MudPaper>
@@ -260,6 +263,7 @@
                 <MudBlazor.MudTooltip Text="@item.Title">
                     <MudBlazor.MudIconButton Variant="@MudBlazor.Variant.Filled"
                                              Color="@MudBlazor.Color.Transparent"
+                                             Class="ef-mdi-buttons-toolbar"
                                              Icon="@(item.Targets["Blazor"]?.Icon.ToString())"
                                              Size="@MudBlazor.Size.Large"
                                              DisableElevation

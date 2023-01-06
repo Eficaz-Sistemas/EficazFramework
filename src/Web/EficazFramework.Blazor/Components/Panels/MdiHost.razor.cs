@@ -40,21 +40,22 @@ public partial class MdiHost : MudBlazor.MudBaseBindableItemsControl<MdiWindow, 
     [Parameter] public string StartMenuMainTabHeader { get; set; } = Resources.Strings.Components.MDIApplication_TabApps_Header;
 
     /// <summary>
-    /// Start Menu Main Tab Icon (Default: MudBlazor.Icons.Filled.GridView)
+    /// Start Menu Main Tab Icon (Default: MudBlazor.Icons.Material.Filled.GridView)
     /// </summary>
-    [Parameter] public string StartMenuMainTabIcon { get; set; } = MudBlazor.Icons.Filled.GridView;
+    [Parameter] public string StartMenuMainTabIcon { get; set; } = MudBlazor.Icons.Material.Filled.GridView;
 
     /// <summary>
     /// Aditional left tabs for Start Menu. Use MudtabPanel's Tag parameter for Title.
     /// </summary>
     [Parameter] public RenderFragment StartMenuTabs { get; set; }
 
-    /// <summary>
-    /// Gets and Sets the available Application Menu Height. <br/>
-    /// It's possible to use CSS expressions, like calc. <br/>
-    /// Ex: calc(100vh - 428px) (default value)
-    /// </summary>
-    [Parameter] public string StartMenuAppsHostHeight { get; set; } = "calc(100vh - 428px)";
+
+/// <summary>
+/// Gets and Sets the available Application Menu Height. <br/>
+/// It's possible to use CSS expressions, like calc. <br/>
+/// Ex: calc(100vh - 428px) (default value)
+/// </summary>
+[Parameter] public string StartMenuAppsHostHeight { get; set; } = "calc(100vh - 428px)";
 
     private string _appSearchFilter = "";
     /// <summary>
@@ -143,13 +144,9 @@ public partial class MdiHost : MudBlazor.MudBaseBindableItemsControl<MdiWindow, 
     /// </summary>
     private string TaskBarAppInstanceButtonStyle(ApplicationInstance item) =>
                 new StyleBuilder()
-                    .AddStyle("padding", "8px")
-                    .AddStyle("padding-left", "12px")
-                    .AddStyle("padding-right", "12px")
-                    .AddStyle("border-radius", "0px")
                     .AddStyle("border-top", "solid 3px transparent")
-                    .AddStyle("border-bottom", "solid 3px transparent")
-                    .AddStyle("border-top", "solid 3px var(--mud-palette-primary)", object.ReferenceEquals(_selectedApp, item))
+                    .AddStyle("border-bottom", "solid 3px var(--mud-palette-primary)", object.ReferenceEquals(_selectedApp, item))
+                    .AddStyle("border-radius", "3px")
                     .Build();
 
     /// <summary>
@@ -202,7 +199,7 @@ public partial class MdiHost : MudBlazor.MudBaseBindableItemsControl<MdiWindow, 
         StateHasChanged();
     }
 
-    private MudBlazor.MudTabs _tabsHost;
+    private MudBlazor.MudTabs? _tabsHost;
 
     /// <summary>
     /// Style builder for the Application Menu

@@ -9,7 +9,7 @@ namespace EficazFramework.Components;
 
 public partial class MdiWindow: MudBlazor.MudComponentBase, IDisposable
 {
-    [Parameter] public RenderFragment ChildContent { get; set; }
+    [Parameter] public RenderFragment? ChildContent { get; set; }
     
     [Parameter] public string Title { get; set; }
 
@@ -18,6 +18,17 @@ public partial class MdiWindow: MudBlazor.MudComponentBase, IDisposable
     [Parameter] public Size StartupPosition { get; set; } = new(0, 0);
     
     [Parameter] public ApplicationInstance ApplicationInstance { get; set; }
+
+    /// <summary>
+    /// Gets or Sets if ef-mdi-window-host element should render a vertical scrollbar
+    /// </summary>
+    public bool Scrollable { get; set; } = false;
+
+    /// <summary>
+    /// Custom Header Frame Content. Will use Icon + Title if null
+    /// </summary>
+    public RenderFragment? HeaderContent { get; set; }
+
 
     [CascadingParameter] public MdiHost MdiHost { get; set; }
 
@@ -55,6 +66,18 @@ public partial class MdiWindow: MudBlazor.MudComponentBase, IDisposable
                     .AddStyle("height", $"{((Size)ApplicationInstance.Targets["Blazor"].Properties["Size"]).Height}px")
                     .AddStyle("z-index", $"{zIndex}")
                     .Build();
+
+    /// <summary>
+    /// Css classes app host div
+    /// </summary>
+    protected string HostClassname =>
+                    new CssBuilder()
+                        .AddClass(Class)
+                        .AddClass("d-flex")
+                        .AddClass("flex-column")
+                        .AddClass("flex-grow-1")
+                        .AddClass("overflow-auto", Scrollable)
+                        .Build();
 
     protected override void OnInitialized()
     {
