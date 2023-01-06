@@ -3,5 +3,26 @@
 <div class="d-flex flex-column align-center">
     <MudRating SelectedValue="2" Size="Size.Small" />
     <MudRating SelectedValue="2" Size="Size.Medium" />
+    <MudRating SelectedValue="1" Size="Size.Large" />
     <MudRating SelectedValue="2" Size="Size.Large" />
+    <MudRating SelectedValue="3" Size="Size.Large" />
+    <MudRating SelectedValue="4" Size="Size.Large" />
+    <MudRating SelectedValue="5" Size="Size.Large" />
 </div>
+
+@code {
+    [CascadingParameter] MdiWindow? MdiWindow { get; set; }
+
+    protected override void OnParametersSet()
+    {
+        base.OnParametersSet();
+        MdiWindow!.Scrollable = true;
+        MdiWindow!.HeaderContent = CustomHeader();
+    }
+
+    private RenderFragment CustomHeader()
+    {
+        return @<div class="text-center flex-grow-1 mt-1 mud-typography mud-typography-caption">Hello World!</div>;
+    }
+
+}

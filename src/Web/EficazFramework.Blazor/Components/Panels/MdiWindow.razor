@@ -10,29 +10,32 @@
                     @ondragstart="OnDragStart" 
                     @ondragend="OnDragEnd"
                     Style="@StyleName">
-    <CascadingValue Value="ApplicationInstance">
+    <CascadingValue Value="this">
         <!--HEADER-->
-        <div class="d-flex" @ref="myRef" 
+        <div class="d-flex flex-row" @ref="myRef"
              style="@($"cursor: {(isDragging ? "grabbing" : "grab")};")">
-            <MudBlazor.MudIcon Icon="@Icon" 
-                               Class="ma-2" 
+            <MudBlazor.MudIcon Icon="@Icon"
+                               Class="ma-2"
                                Style="width: 14px; height: 14px;" />
-            <MudBlazor.MudText Typo="MudBlazor.Typo.caption" 
-                               Class="mr-2 mt-1 flex-grow-1">
-                @(ApplicationInstance != null ? ApplicationInstance.Title : Title)
-            </MudBlazor.MudText>
-            <MudBlazor.MudIconButton Icon="@MudBlazor.Icons.Material.Filled.Close" 
+            <div class="d-flex flex-row flex-grow-1">
+                <MudBlazor.MudText Typo="MudBlazor.Typo.caption"
+                                   Class="mr-2 mt-1">
+                    @(ApplicationInstance != null ? ApplicationInstance.Title : Title)
+                </MudBlazor.MudText>
+                @HeaderContent
+            </div>
+            <MudBlazor.MudIconButton Icon="@MudBlazor.Icons.Material.Filled.Close"
                                      OnClick="OnClose"
-                                     DisableElevation 
-                                     Variant="MudBlazor.Variant.Filled" 
-                                     Size="MudBlazor.Size.Small"/>
+                                     DisableElevation
+                                     Variant="MudBlazor.Variant.Text"
+                                     Size="MudBlazor.Size.Small"
+                                     Title="Close"/>
         </div>
         <!--CONTENT-->
-        <div class="ef-mdi-window-host d-flex"
-             draggable="true" 
-             @ondragstart:preventDefault="true" 
+        <div class="ef-mdi-window-host d-flex flex-grow-1 "
+             @ondragstart:preventDefault="true"
              @ondragstart:stopPropagation="true">
-            <MudBlazor.MudFocusTrap Class="d-flex flex-column flex-grow-1 overflow-auto">
+            <MudBlazor.MudFocusTrap Class="@HostClassname">
                 @ChildContent
             </MudBlazor.MudFocusTrap>
         </div>
