@@ -40,9 +40,9 @@ public partial class MdiHost : MudBlazor.MudBaseBindableItemsControl<MdiWindow, 
     [Parameter] public string StartMenuMainTabHeader { get; set; } = Resources.Strings.Components.MDIApplication_TabApps_Header;
 
     /// <summary>
-    /// Start Menu Main Tab Icon (Default: MudBlazor.Icons.Filled.GridView)
+    /// Start Menu Main Tab Icon (Default: MudBlazor.Icons.Material.Filled.GridView)
     /// </summary>
-    [Parameter] public string StartMenuMainTabIcon { get; set; } = MudBlazor.Icons.Filled.GridView;
+    [Parameter] public string StartMenuMainTabIcon { get; set; } = MudBlazor.Icons.Material.Filled.GridView;
 
     /// <summary>
     /// Aditional left tabs for Start Menu. Use MudtabPanel's Tag parameter for Title.
