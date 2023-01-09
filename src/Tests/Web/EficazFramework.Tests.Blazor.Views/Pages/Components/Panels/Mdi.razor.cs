@@ -54,16 +54,17 @@ public partial class Mdi
 
         appHello2 = new()
         {
-            LongTitle = $"My New App 1",
+            LongTitle = $"Full Screen App",
             IsPublic = true,
             Group = "Free Apps",
-            Title = $"My New App 1",
+            Title = $"Full Screen",
         };
         appHello2.Targets.Add("Blazor", new()
         {
             Icon = MudBlazor.Icons.Custom.Brands.Microsoft,
             StartupUriOrType = typeof(EficazFramework.Tests.Blazor.Views.Pages.Components.Panels.MdiApps.MdiIconApp)
         });
+        appHello2.Targets["Blazor"].Properties.Add("IsMaximized", true);
 
         appAnother2 = new()
         {

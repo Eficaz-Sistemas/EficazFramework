@@ -8,6 +8,20 @@
     <MudRating SelectedValue="3" Size="Size.Large" />
     <MudRating SelectedValue="4" Size="Size.Large" />
     <MudRating SelectedValue="5" Size="Size.Large" />
+    <MudRating SelectedValue="2" Size="Size.Small" />
+    <MudRating SelectedValue="2" Size="Size.Medium" />
+    <MudRating SelectedValue="1" Size="Size.Large" />
+    <MudRating SelectedValue="2" Size="Size.Large" />
+    <MudRating SelectedValue="3" Size="Size.Large" />
+    <MudRating SelectedValue="4" Size="Size.Large" />
+    <MudRating SelectedValue="5" Size="Size.Large" />
+    <MudRating SelectedValue="2" Size="Size.Small" />
+    <MudRating SelectedValue="2" Size="Size.Medium" />
+    <MudRating SelectedValue="1" Size="Size.Large" />
+    <MudRating SelectedValue="2" Size="Size.Large" />
+    <MudRating SelectedValue="3" Size="Size.Large" />
+    <MudRating SelectedValue="4" Size="Size.Large" />
+    <MudRating SelectedValue="5" Size="Size.Large" />
 </div>
 
 @code {
@@ -16,8 +30,11 @@
     protected override void OnParametersSet()
     {
         base.OnParametersSet();
-        MdiWindow!.Scrollable = true;
-        MdiWindow!.HeaderContent = CustomHeader();
+        if (MdiWindow != null)
+        {
+            MdiWindow!.Scrollable = true;
+            MdiWindow!.HeaderContent = CustomHeader();
+        }
     }
 
     private RenderFragment CustomHeader()

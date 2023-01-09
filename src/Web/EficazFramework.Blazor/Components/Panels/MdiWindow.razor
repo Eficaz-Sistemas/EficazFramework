@@ -5,15 +5,15 @@
 <MudBlazor.MudPaper Elevation="5" 
                     Outlined 
                     Class="@Classname" 
-                    draggable="true"
-                    @onclick="OnClick"
-                    @ondragstart="OnDragStart" 
-                    @ondragend="OnDragEnd"
-                    Style="@StyleName">
+                    Style="@StyleName"
+                    @onclick="OnClick">
     <CascadingValue Value="this">
         <!--HEADER-->
         <div class="d-flex flex-row" @ref="myRef"
-             style="@($"cursor: {(isDragging ? "grabbing" : "grab")};")">
+             style="@($"cursor: {(isDragging ? "grabbing" : "grab")};")"
+             draggable="true"
+             @ondragstart="OnDragStart"
+             @ondragend="OnDragEnd">
             <MudBlazor.MudIcon Icon="@Icon"
                                Class="ma-2"
                                Style="width: 14px; height: 14px;" />
