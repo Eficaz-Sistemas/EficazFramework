@@ -19,6 +19,8 @@ public partial class MdiWindow: MudBlazor.MudComponentBase, IDisposable
     
     [Parameter] public ApplicationInstance ApplicationInstance { get; set; }
 
+    [Parameter] public bool IsMaximized { get; set; } = false;
+
     /// <summary>
     /// Gets or Sets if ef-mdi-window-host element should render a vertical scrollbar
     /// </summary>
@@ -50,8 +52,10 @@ public partial class MdiWindow: MudBlazor.MudComponentBase, IDisposable
                         .AddClass(Class)
                         .AddClass("d-flex")
                         .AddClass("flex-column")
-                        .AddClass("ef-mdi-window")
+                        .AddClass("ef-mdi-window", !IsMaximized)
+                        .AddClass("ef-mdi-window-maximized", IsMaximized)
                         .AddClass("ef-mdi-window-active", object.ReferenceEquals(MdiHost._selectedApp, ApplicationInstance))
+                        .AddClass("flex-grow-1")
                         .Build();
 
     /// <summary>
@@ -60,10 +64,10 @@ public partial class MdiWindow: MudBlazor.MudComponentBase, IDisposable
     protected string StyleName =>
                 new StyleBuilder()
                     .AddStyle(Style)
-                    .AddStyle("left", $"{((Size)ApplicationInstance.Targets["Blazor"].Properties["Position"]).Width}px")
-                    .AddStyle("top", $"{((Size)ApplicationInstance.Targets["Blazor"].Properties["Position"]).Height}px")
-                    .AddStyle("width", $"{((Size)ApplicationInstance.Targets["Blazor"].Properties["Size"]).Width}px")
-                    .AddStyle("height", $"{((Size)ApplicationInstance.Targets["Blazor"].Properties["Size"]).Height}px")
+                    .AddStyle("left", $"{((Size)ApplicationInstance.Targets["Blazor"].Properties["Position"]).Width}px", !IsMaximized)
+                    .AddStyle("top", $"{((Size)ApplicationInstance.Targets["Blazor"].Properties["Position"]).Height}px", !IsMaximized)
+                    .AddStyle("width", $"{((Size)ApplicationInstance.Targets["Blazor"].Properties["Size"]).Width}px", !IsMaximized)
+                    .AddStyle("height", $"{((Size)ApplicationInstance.Targets["Blazor"].Properties["Size"]).Height}px", !IsMaximized)
                     .AddStyle("z-index", $"{zIndex}")
                     .Build();
 
@@ -110,12 +114,31 @@ public partial class MdiWindow: MudBlazor.MudComponentBase, IDisposable
     /// </summary>
     private void OnDragStart(DragEventArgs args)
     {
+        //if (ApplicationInstance.Targets["Blazor"].Properties["State"] = 1)
+        //    return;
+
         //Utilities.JsInterop.SetDragImage(JsRutinme, args);
         MoveToMe();
         isDragging = true;
-        startX = args.ClientX;
-        startY = args.ClientY;
+        startX = args.OffsetX;
+        startY = args.OffsetY;
     }
+
+    //private void OnDragging(DragEventArgs args)
+    //{
+    //    if (!isDragging)
+    //        return;
+
+    //    offsetX += args.OffsetX - startX;
+    //    if (offsetX < 0)
+    //        offsetX = 0;
+
+    //    offsetY += args.OffsetY - startY;
+    //    if (offsetY < 0)
+    //        offsetY = 0;
+
+    //    ApplicationInstance.Targets["Blazor"].Properties["Position"] = new Size((int)offsetX, (int)offsetY);
+    //}
 
     /// <summary>
     /// Ends a Drag operation and update the screen coordinates of this instance.
@@ -124,11 +147,11 @@ public partial class MdiWindow: MudBlazor.MudComponentBase, IDisposable
     {
         isDragging = false;
 
-        offsetX += args.ClientX - startX;
+        offsetX += args.OffsetX - startX;
         if (offsetX < 0)
             offsetX = 0;
 
-        offsetY += args.ClientY - startY;
+        offsetY += args.OffsetY - startY;
         if (offsetY < 0)
             offsetY = 0;
 
@@ -166,4 +189,10 @@ public partial class MdiWindow: MudBlazor.MudComponentBase, IDisposable
         MdiHost.Items.Remove(this);
     }
         
+}
+
+public enum WindowState
+{
+    Normal = 0,
+    Maximized = 1
 }

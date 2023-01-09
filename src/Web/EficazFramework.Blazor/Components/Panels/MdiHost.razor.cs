@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Components;
 using MudBlazor.Utilities;
 using EficazFramework.Application;
+using Microsoft.JSInterop;
 
 namespace EficazFramework.Components;
 public partial class MdiHost : MudBlazor.MudBaseBindableItemsControl<MdiWindow, ApplicationInstance>
@@ -9,6 +10,10 @@ public partial class MdiHost : MudBlazor.MudBaseBindableItemsControl<MdiWindow, 
     /// IApplicationManager service instance, if available on DI
     /// </summary>
     [Inject] public EficazFramework.Application.IApplicationManager? ApplicationManager { get; set; }
+
+
+    [Inject] IJSRuntime JsRutinme { get; set; }
+
 
     /// <summary>
     /// Current MDI Section (for multi tenant purposes)
@@ -307,6 +312,9 @@ public partial class MdiHost : MudBlazor.MudBaseBindableItemsControl<MdiWindow, 
             else
                 (ItemsSource as IList<ApplicationInstance>)!.Add(newinstance);
         }
+
+        if (!newinstance.Targets["Blazor"].Properties.ContainsKey("IsMaximized"))
+            newinstance.Targets["Blazor"].Properties.Add("IsMaximized", false);
 
         if (!newinstance.Targets["Blazor"].Properties.ContainsKey("Position"))
             newinstance.Targets["Blazor"].Properties.Add("Position", new System.Drawing.Size(15, 15));

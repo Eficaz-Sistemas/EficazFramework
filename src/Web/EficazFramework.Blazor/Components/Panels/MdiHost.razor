@@ -10,7 +10,7 @@
          @onclick="CloseMenus">
         @*MDI AREA*@
         <MudBlazor.MudHidden Breakpoint="@Breakpoint" >
-            <div class="flex-grow-1"
+            <div class="d-flex flex-grow-1"
                  ondragover="event.preventDefault();"
                  ondragstart="event.dataTransfer.setData('', event.target.id);">
                 @if (ItemsSource == null)
@@ -23,7 +23,8 @@
                     {
                         <MdiWindow ApplicationInstance="item"
                                    Title="@item.Title"
-                                   Icon="@(item.Targets["Blazor"]?.Icon.ToString())">
+                                   Icon="@(item.Targets["Blazor"]?.Icon.ToString())"
+                                   IsMaximized="@((bool?)item.Targets["Blazor"]?.Properties["IsMaximized"] ?? false)">
                             <DynamicComponent Type="@((Type)item.Targets["Blazor"].StartupUriOrType)" />
                         </MdiWindow>
                     }
