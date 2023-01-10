@@ -58,7 +58,6 @@ public partial class MdiApplicationsMenu
         new StyleBuilder()
             .AddStyle("overflow-y", "auto")
             .AddStyle("overflow-x", "hidden")
-            .AddStyle("height", StartMenuAppsHostHeight)
             .Build();
 
 

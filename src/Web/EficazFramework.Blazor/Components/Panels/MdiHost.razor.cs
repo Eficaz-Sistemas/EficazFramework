@@ -32,6 +32,14 @@ public partial class MdiHost : MudBlazor.MudBaseBindableItemsControl<MdiWindow, 
 
     #region Parameters: Sections
 
+
+    /// <summary>
+    /// Gets or Sets if Host should create a new Section automatically when user click
+    /// on 'New Section' button. Otherwise, the NewSectionClick action will be invoked
+    /// for custom logic.
+    /// </summary>
+    [Parameter] public bool AutoManageSections { get; set; } = true;
+
     /// <summary>
     /// Source for Available Sections (tenants)
     /// </summary>
@@ -83,8 +91,8 @@ public partial class MdiHost : MudBlazor.MudBaseBindableItemsControl<MdiWindow, 
     private string StartMenuButtonStyle() =>
             new StyleBuilder()
                 .AddStyle("padding", "8px")
-                .AddStyle("padding-left", "9px")
-                .AddStyle("padding-right", "9px")
+                .AddStyle("padding-left", "12px")
+                .AddStyle("padding-right", "12px")
                 .AddStyle("border-radius", "0px")
                 .AddStyle("border", "solid 3px transparent")
                 .Build();
