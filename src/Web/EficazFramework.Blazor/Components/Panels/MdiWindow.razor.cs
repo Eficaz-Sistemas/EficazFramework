@@ -54,7 +54,7 @@ public partial class MdiWindow: MudBlazor.MudComponentBase, IDisposable
                         .AddClass("flex-column")
                         .AddClass("ef-mdi-window", !IsMaximized)
                         .AddClass("ef-mdi-window-maximized", IsMaximized)
-                        .AddClass("ef-mdi-window-active", object.ReferenceEquals(MdiHost._selectedApp, ApplicationInstance))
+                        .AddClass("ef-mdi-window-active", object.ReferenceEquals(MdiHost.SelectedApp, ApplicationInstance))
                         .AddClass("flex-grow-1")
                         .Build();
 

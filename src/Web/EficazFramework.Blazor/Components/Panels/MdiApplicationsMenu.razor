@@ -1,0 +1,79 @@
+﻿<div>
+    <div class="d-flex mx-2 mt-n4 align-center">
+        <MudBlazor.MudTextField @bind-Value="AppSearchFilter"
+                                Class="mud-input-control-ef flex-grow1"
+                                Placeholder="@Resources.Strings.Components.MDIApplication_FindPlaceholder"
+                                Adornment="MudBlazor.Adornment.Start"
+                                AdornmentIcon="@MudBlazor.Icons.Material.Filled.Search"
+                                Immediate
+                                AutoFocus />
+        <MudBlazor.MudTooltip Text="@(_startMenuIsCompact ? Resources.Strings.Components.MDIApplication_ToggleApp_GridView : Resources.Strings.Components.MDIApplication_ToggleApp_ListView)">
+            <MudBlazor.MudIconButton Variant="@MudBlazor.Variant.Filled"
+                                     Color="@MudBlazor.Color.Transparent"
+                                     Icon="@(_startMenuIsCompact ? MudBlazor.Icons.Material.Filled.GridView : MudBlazor.Icons.Material.Filled.List)"
+                                     Size="@MudBlazor.Size.Medium"
+                                     Class="mt-6 ml-4"
+                                     DisableElevation
+                                     OnClick="ToggleStartMenuView"
+                                     Title="Alternar visualização" />
+        </MudBlazor.MudTooltip>
+    </div>
+
+    <div class="mt-4" style="@StartMenuAppsHostStyle()">
+        @if (!_startMenuIsCompact)
+        {
+            @foreach (var group in FilteredApplications())
+            {
+                <MudBlazor.MudText Typo="MudBlazor.Typo.body1"
+                           Class="mx-1 pb-1 px-2">
+                    @group.Key
+                </MudBlazor.MudText>
+                <MudBlazor.MudGrid Class="flex-grow-1 mx-1 mb-4 pr-6"
+                           Spacing="1"
+                           Justify="MudBlazor.Justify.FlexStart">
+                    @foreach (var app in group)
+                    {
+                        <MudBlazor.MudItem>
+                            <MudBlazor.MudButton Variant="@MudBlazor.Variant.Filled"
+                                                 Color="@MudBlazor.Color.Primary"
+                                                 Size="@MudBlazor.Size.Large"
+                                                 Class="pt-5 pb-7 ef-application-button"
+                                                 OnClick="() => ApplicationSelectedCallBack?.Invoke(app)">
+                                <MudBlazor.MudIcon Icon="@(app.Targets["Blazor"].Icon?.ToString())"
+                                                   Class="ef-application-button-icon" />
+                                <MudBlazor.MudText Typo="MudBlazor.Typo.caption"
+                                                   Align="MudBlazor.Align.Center"
+                                                   Class="mt-n3 ef-application-button-caption"
+                                                   Style="">
+                                    @app.Title
+                                </MudBlazor.MudText>
+                            </MudBlazor.MudButton>
+                        </MudBlazor.MudItem>
+                    }
+                </MudBlazor.MudGrid>
+            }
+        }
+        else
+        {
+            <MudBlazor.MudList Clickable="true"
+                           Class="py-0">
+                @foreach (var group in FilteredApplications())
+                {
+                    <MudBlazor.MudListItem Text="@group.Key"
+                                   InitiallyExpanded="true">
+                        <NestedList>
+                            @foreach (var app in group)
+                            {
+                                <MudBlazor.MudListItem Icon="@(app.Targets["Blazor"].Icon?.ToString())"
+                                           OnClick="() => ApplicationSelectedCallBack?.Invoke(app)">
+                                    @app.LongTitle
+                                </MudBlazor.MudListItem>
+                            }
+                        </NestedList>
+                    </MudBlazor.MudListItem>
+                }
+            </MudBlazor.MudList>
+        }
+
+    </div>
+</div>

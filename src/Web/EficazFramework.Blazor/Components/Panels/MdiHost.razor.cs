@@ -27,61 +27,6 @@ public partial class MdiHost : MudBlazor.MudBaseBindableItemsControl<MdiWindow, 
 
 
 
-    #region Parameters: Start Menu
-
-    /// <summary>
-    /// The Start Menu Icon
-    /// </summary>
-    [Parameter] public string StartMenuIcon { get; set; } = Icons.Brands.Eficaz;
-
-    /// <summary>
-    /// Start Menu Footer content
-    /// </summary>
-    [Parameter] public RenderFragment StartMenuFooter { get; set; }
-
-    /// <summary>
-    /// Start Menu Main Tab Header (Default: Applications)
-    /// </summary>
-    [Parameter] public string StartMenuMainTabHeader { get; set; } = Resources.Strings.Components.MDIApplication_TabApps_Header;
-
-    /// <summary>
-    /// Start Menu Main Tab Icon (Default: MudBlazor.Icons.Material.Filled.GridView)
-    /// </summary>
-    [Parameter] public string StartMenuMainTabIcon { get; set; } = MudBlazor.Icons.Material.Filled.GridView;
-
-    /// <summary>
-    /// Aditional left tabs for Start Menu. Use MudtabPanel's Tag parameter for Title.
-    /// </summary>
-    [Parameter] public RenderFragment StartMenuTabs { get; set; }
-
-
-/// <summary>
-/// Gets and Sets the available Application Menu Height. <br/>
-/// It's possible to use CSS expressions, like calc. <br/>
-/// Ex: calc(100vh - 428px) (default value)
-/// </summary>
-[Parameter] public string StartMenuAppsHostHeight { get; set; } = "calc(100vh - 428px)";
-
-    private string _appSearchFilter = "";
-    /// <summary>
-    /// The literal for searching for applications on the list
-    /// </summary>
-    [Parameter] public string AppSearchFilter
-    {
-        get => _appSearchFilter;
-        set
-        {
-            _appSearchFilter = value;
-            StateHasChanged();
-        }
-    }
-
-    /// <summary>
-    /// The template for Current Section representation on StartMenu's right
-    /// </summary>
-    [Parameter] public RenderFragment CurrentSectionTemplate { get; set; }
-
-    #endregion
 
 
 
@@ -260,7 +205,7 @@ public partial class MdiHost : MudBlazor.MudBaseBindableItemsControl<MdiWindow, 
 
     #region Applications
 
-    internal ApplicationInstance? _selectedApp = null;
+    public ApplicationInstance? SelectedApp { get; internal set; } = null;
 
     /// <summary>
     /// Add a new MdiWindow to the Host
@@ -275,11 +220,6 @@ public partial class MdiHost : MudBlazor.MudBaseBindableItemsControl<MdiWindow, 
         }
     }
 
-    /// <summary>
-    /// Get's the filtered application list for Menu. Uses the AppSearchFilter as literal.
-    /// </summary>
-    private IEnumerable<IGrouping<string, ApplicationDefinition>> FilteredApplications() =>
-        ApplicationManager!.AllApplications.Where(app => (app.Title ?? "").ToLower().Contains((_appSearchFilter ?? "").ToString().ToLower())).GroupBy(app => app.Group).ToList();
 
     /// <summary>
     /// Running applications (MdiWindow) for the Current Section (ou public apps_
