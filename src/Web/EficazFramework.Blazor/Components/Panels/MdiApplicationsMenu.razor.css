@@ -1,12 +1,16 @@
-﻿::deep .mud-tab {
-    min-width: 64px;
-    width: 64px;
-    height: auto;
+﻿::deep .ef-application-button {
+    width: 84px;
+    height: 84px;
 }
 
+::deep .ef-application-button-icon {
+    font-size: 2rem !important;
+}
 
-::deep .mud-tabs-toolbar {
-    background-color: var(--mud-palette-background-grey);
+::deep .ef-application-button-caption {
+    position: absolute;
+    bottom: 4px;
+    height: 20px;
 }
 
 ::deep .mud-tab-slider.mud-tab-slider-vertical {
