@@ -5,20 +5,20 @@ using System.Collections.ObjectModel;
 
 namespace EficazFramework.Components.Panels;
 
-public partial class MdiApplicationsMenu
+public partial class ApplicationsMenu : MudBlazor.MudComponentBase
 {
 
-    private string _appSearchFilter = "";
+    private string _searchFilter = "";
     /// <summary>
     /// The literal for searching for applications on the list
     /// </summary>
     [Parameter]
-    public string AppSearchFilter
+    public string SearchFilter
     {
-        get => _appSearchFilter;
+        get => _searchFilter;
         set
         {
-            _appSearchFilter = value;
+            _searchFilter = value;
             StateHasChanged();
         }
     }
@@ -27,26 +27,26 @@ public partial class MdiApplicationsMenu
     /// <summary>
     /// Aplication source for menu.
     /// </summary>
-    [Parameter] public ObservableCollection<ApplicationDefinition> ApplicationsSource { get; set; } = new();
+    [Parameter] public ObservableCollection<ApplicationDefinition> ItemsSource { get; set; } = new();
 
 
     /// <summary>
     /// Raised when Application's menu button is clicked.
     /// </summary>
-    public Action<ApplicationDefinition>? ApplicationSelectedCallBack { get; set; } = null;
+    [Parameter] public Action<ApplicationDefinition>? SelectionCallBack { get; set; } = null;
 
 
     private bool _startMenuIsOpen = false;
     public bool StartMenuIsOpen => _startMenuIsOpen;
 
 
-    private bool _startMenuIsCompact = false;
+    private bool _isCompact = false;
     /// <summary>
     /// Toggle between Full and Compact (list) Application Menu
     /// </summary>
-    public void ToggleStartMenuView()
+    public void ToggleHostView()
     {
-        _startMenuIsCompact = !_startMenuIsCompact;
+        _isCompact = !_isCompact;
         StateHasChanged();
     }
 
@@ -54,7 +54,7 @@ public partial class MdiApplicationsMenu
     /// <summary>
     /// Style builder for the Application Menu
     /// </summary>
-    private string StartMenuAppsHostStyle() =>
+    private string HostStyle() =>
         new StyleBuilder()
             .AddStyle("overflow-y", "auto")
             .AddStyle("overflow-x", "hidden")
@@ -65,7 +65,7 @@ public partial class MdiApplicationsMenu
     /// Get's the filtered application list for Menu. Uses the AppSearchFilter as literal.
     /// </summary>
     private IEnumerable<IGrouping<string, ApplicationDefinition>> FilteredApplications() =>
-        ApplicationsSource.Where(app => (app.Title ?? "").ToLower().Contains((_appSearchFilter ?? "").ToString().ToLower())).GroupBy(app => app.Group).ToList();
+        ItemsSource.Where(app => (app.Title ?? "").ToLower().Contains((_searchFilter ?? "").ToString().ToLower())).GroupBy(app => app.Group).ToList();
 
 
 }

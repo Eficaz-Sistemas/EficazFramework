@@ -1,0 +1,39 @@
+﻿@inherits MudBlazor.MudComponentBase
+
+<div>
+    <MudBlazor.MudTooltip Text="@Tooltip">
+        <MudBlazor.MudIconButton Variant="@MudBlazor.Variant.Filled"
+                                 Color="@MudBlazor.Color.Transparent"
+                                 Class="@ToggleButtonClass()"
+                                 Style="@ToggleButtonStyle()"
+                                 Icon="@Icon"
+                                 Size="@MudBlazor.Size.Large"
+                                 DisableElevation
+                                 OnClick="() => ToggleOpen()"
+                                 Title="Start Menu" />
+        @*START MENU FRAME*@
+        <MudBlazor.MudPopover Open="IsOpen"
+                              Elevation="0"
+                              AnchorOrigin="@AnchorOrigin"
+                              TransformOrigin="@TransformOrigin"
+                              Style="background-color:unset">
+            <MudBlazor.MudPaper Elevation="@Elevation"
+                                Class="ef-mdi-startmenu d-flex flex-column">
+                @*HEADER*@
+                <div class="ef-mdi-startmenu-header">
+                    @Header
+                </div>
+
+                @*CONTENT*@
+                <div class="ef-mdi-startmenu-content">
+                    @Footer
+                </div>
+
+                @*FOOTER*@
+                <div class="ef-mdi-startmenu-footer">
+                    @Footer
+                </div>
+            </MudBlazor.MudPaper>
+        </MudBlazor.MudPopover>
+    </MudBlazor.MudTooltip>
+</div>

@@ -51,56 +51,7 @@
             @*TASKBAR*@         
             
             @*START MENU BUTTON*@            
-            <MudBlazor.MudTooltip Text="@Resources.Strings.Components.MDIContainer_StartTab">
-                <MudBlazor.MudIconButton Variant="@MudBlazor.Variant.Filled"
-                                         Color="@MudBlazor.Color.Transparent"
-                                         Class="ef-mdi-buttons-toolbar"
-                                         Icon="@StartMenuIcon"
-                                         Size="@MudBlazor.Size.Large"
-                                         DisableElevation
-                                         OnClick="() => ToggleStartMenuOpen()"
-                                         Title="Start Menu"/>
-                @*START MENU FRAME*@            
-                <MudBlazor.MudPopover Open="_startMenuIsOpen" 
-                                      Elevation="0"
-                                      AnchorOrigin="MudBlazor.Origin.TopLeft"
-                                      TransformOrigin="MudBlazor.Origin.BottomLeft"
-                                      Style="background-color:unset">
-                    <MudBlazor.MudPaper Elevation="8" 
-                                        Class="ef-mdi-start-menu d-flex flex-column pa-4 ma-8">
-                        <div class="d-flex flex-column" style="height:inherit">
-                            
-                            @*HEADER*@
-                            <div class="ef-mdi-start-header">
-                                <MudBlazor.MudIcon Icon="@MudBlazor.Icons.Material.Filled.Menu"
-                                                   Class="mr-5"/>
-                                <MudBlazor.MudText Typo="@MudBlazor.Typo.h6">
-                                    @(_tabsHost?.ActivePanel?.Tag?.ToString() ?? "")
-                                </MudBlazor.MudText>
-                            </div>
-                            
-                            @*TABS*@
-                            <MudBlazor.MudTabs Position="@MudBlazor.Position.Left" 
-                                               Class="flex-grow-1 flex-shrink-0 ml-n4"
-                                               PanelClass="d-flex flex-column ml-4 my-4"
-                                               MinimumTabWidth="64px"
-                                               @ref="_tabsHost">
-                                <MudBlazor.MudTabPanel Tag="@StartMenuMainTabHeader"
-                                                       Icon="@MudBlazor.Icons.Material.Filled.GridView"
-                                                       MinimumTabWidth="64px">
-                                </MudBlazor.MudTabPanel>
-                                @StartMenuTabs
-                            </MudBlazor.MudTabs>
-                            
-                            @*Footer*@
-                            <div class="ef-mdi-start-footer">
-                                @StartMenuFooter
-                            </div>
 
-                        </div>
-                    </MudBlazor.MudPaper>
-                </MudBlazor.MudPopover>
-            </MudBlazor.MudTooltip>
 
             @*CURRENT SECTION CLICK*@    
             @if (ShowSectionsArea)

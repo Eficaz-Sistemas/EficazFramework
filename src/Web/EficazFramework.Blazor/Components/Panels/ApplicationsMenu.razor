@@ -1,26 +1,28 @@
-﻿<div>
+﻿@inherits MudBlazor.MudComponentBase
+
+<div>
     <div class="d-flex mx-2 mt-n4 align-center">
-        <MudBlazor.MudTextField @bind-Value="AppSearchFilter"
+        <MudBlazor.MudTextField @bind-Value="SearchFilter"
                                 Class="mud-input-control-ef flex-grow1"
                                 Placeholder="@Resources.Strings.Components.MDIApplication_FindPlaceholder"
                                 Adornment="MudBlazor.Adornment.Start"
                                 AdornmentIcon="@MudBlazor.Icons.Material.Filled.Search"
                                 Immediate
                                 AutoFocus />
-        <MudBlazor.MudTooltip Text="@(_startMenuIsCompact ? Resources.Strings.Components.MDIApplication_ToggleApp_GridView : Resources.Strings.Components.MDIApplication_ToggleApp_ListView)">
+        <MudBlazor.MudTooltip Text="@(_isCompact ? Resources.Strings.Components.MDIApplication_ToggleApp_GridView : Resources.Strings.Components.MDIApplication_ToggleApp_ListView)">
             <MudBlazor.MudIconButton Variant="@MudBlazor.Variant.Filled"
                                      Color="@MudBlazor.Color.Transparent"
-                                     Icon="@(_startMenuIsCompact ? MudBlazor.Icons.Material.Filled.GridView : MudBlazor.Icons.Material.Filled.List)"
+                                     Icon="@(_isCompact ? MudBlazor.Icons.Material.Filled.GridView : MudBlazor.Icons.Material.Filled.List)"
                                      Size="@MudBlazor.Size.Medium"
                                      Class="mt-6 ml-4"
                                      DisableElevation
-                                     OnClick="ToggleStartMenuView"
+                                     OnClick="ToggleHostView"
                                      Title="Alternar visualização" />
         </MudBlazor.MudTooltip>
     </div>
 
-    <div class="mt-4" style="@StartMenuAppsHostStyle()">
-        @if (!_startMenuIsCompact)
+    <div class="mt-4" style="@HostStyle()">
+        @if (!_isCompact)
         {
             @foreach (var group in FilteredApplications())
             {
@@ -38,7 +40,7 @@
                                                  Color="@MudBlazor.Color.Primary"
                                                  Size="@MudBlazor.Size.Large"
                                                  Class="pt-5 pb-7 ef-application-button"
-                                                 OnClick="() => ApplicationSelectedCallBack?.Invoke(app)">
+                                                 OnClick="() => SelectionCallBack?.Invoke(app)">
                                 <MudBlazor.MudIcon Icon="@(app.Targets["Blazor"].Icon?.ToString())"
                                                    Class="ef-application-button-icon" />
                                 <MudBlazor.MudText Typo="MudBlazor.Typo.caption"
@@ -65,7 +67,7 @@
                             @foreach (var app in group)
                             {
                                 <MudBlazor.MudListItem Icon="@(app.Targets["Blazor"].Icon?.ToString())"
-                                           OnClick="() => ApplicationSelectedCallBack?.Invoke(app)">
+                                           OnClick="() => SelectionCallBack?.Invoke(app)">
                                     @app.LongTitle
                                 </MudBlazor.MudListItem>
                             }

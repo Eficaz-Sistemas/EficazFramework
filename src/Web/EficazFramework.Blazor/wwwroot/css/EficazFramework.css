@@ -143,13 +143,6 @@ div.mud-input-slot.mud-input-root {
   overflow: hidden;
 }
 
-.ef-mdi-start-menu {
-  border: solid 1px var(--mud-palette-primary);
-  border-radius: 10px;
-  max-width: 670px;
-  height: calc(100vh - 226px);
-}
-
 .ef-mdi-sections-menu {
   border: solid 1px var(--mud-palette-primary);
   border-radius: 10px;
@@ -163,30 +156,36 @@ div.mud-input-slot.mud-input-root {
   align-items: center !important;
 }
 
-.ef-mdi-start-header {
+.ef-mdi-startmenu {
+  border: solid 1px var(--mud-palette-primary);
+  border-radius: 10px;
+  max-width: 670px;
+  /*height: calc(100vh - 226px);*/
+}
+
+.ef-mdi-startmenu-header {
   display: flex;
-  align-items: center;
   border-radius: 10px 10px 0 0;
   background-color: var(--mud-palette-background-grey);
-  margin-left: -16px !important;
-  margin-top: -16px !important;
-  margin-right: -16px !important;
   padding-left: 20px !important;
   padding-top: 8px !important;
-  padding-right: 24px !important;
+  padding-right: 20px !important;
   padding-bottom: 8px !important;
 }
 
-.ef-mdi-start-footer {
+.ef-mdi-startmenu-content {
+  display: flex;
+  flex-grow: 1;
+  padding: 0px !important;
+}
+
+.ef-mdi-startmenu-footer {
   border-radius: 0 0 10px 10px;
   background-color: var(--mud-palette-background-grey);
-  margin-left: -16px !important;
-  margin-bottom: -16px !important;
-  margin-right: -16px !important;
-  padding-top: 12px !important;
-  padding-left: 64px !important;
-  padding-bottom: 12px !important;
-  padding-right: 24px !important;
+  padding-top: 8px !important;
+  padding-left: 20px !important;
+  padding-bottom: 8px !important;
+  padding-right: 20px !important;
 }
 
 .ef-mdi-buttons-toolbar {
@@ -671,4 +670,4 @@ div.mud-input-slot.mud-input-root {
   }
 }
 
-/*# sourceMappingURL=data:application/json;charset=utf-8,%7B%22version%22:3,%22sourceRoot%22:%22%22,%22sources%22:%5B%22file:///E:/Henrique%2520Clausing/Repositorios/Current/EficazFramework/src/Web/EficazFramework.Blazor/Styles/Components/Input.scss%22,%22file:///E:/Henrique%2520Clausing/Repositorios/Current/EficazFramework/src/Web/EficazFramework.Blazor/Styles/Components/Mdi.scss%22,%22file:///E:/Henrique%2520Clausing/Repositorios/Current/EficazFramework/src/Web/EficazFramework.Blazor/Styles/Components/Navigator.scss%22,%22file:///E:/Henrique%2520Clausing/Repositorios/Current/EficazFramework/src/Web/EficazFramework.Blazor/Styles/Components/Table.scss%22,%22file:///E:/Henrique%2520Clausing/Repositorios/Current/EficazFramework/src/Web/EficazFramework.Blazor/Styles/General/Icons.scss%22,%22file:///E:/Henrique%2520Clausing/Repositorios/Current/EficazFramework/src/Web/EficazFramework.Blazor/Styles/General/Layout.scss%22,%22file:///E:/Henrique%2520Clausing/Repositorios/Current/EficazFramework/src/Web/EficazFramework.Blazor/Styles/General/Text.scss%22,%22file:///E:/Henrique%2520Clausing/Repositorios/Current/EficazFramework/src/Web/EficazFramework.Blazor/Styles/General/Transitions.scss%22,%22file:///E:/Henrique%2520Clausing/Repositorios/Current/EficazFramework/src/Web/EficazFramework.Blazor/Styles/EfCore.scss%22,%22file:///E:/Henrique%2520Clausing/Repositorios/Current/EficazFramework/src/Web/EficazFramework.Blazor/Styles/General/Print.scss%22%5D,%22names%22:%5B%5D,%22mappings%22:%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%22%7D */
+/*# sourceMappingURL=data:application/json;charset=utf-8,%7B%22version%22:3,%22sourceRoot%22:%22%22,%22sources%22:%5B%22file:///E:/Henrique%2520Clausing/Repositorios/Current/EficazFramework/src/Web/EficazFramework.Blazor/Styles/Components/Input.scss%22,%22file:///E:/Henrique%2520Clausing/Repositorios/Current/EficazFramework/src/Web/EficazFramework.Blazor/Styles/Components/Mdi.scss%22,%22file:///E:/Henrique%2520Clausing/Repositorios/Current/EficazFramework/src/Web/EficazFramework.Blazor/Styles/Components/Navigator.scss%22,%22file:///E:/Henrique%2520Clausing/Repositorios/Current/EficazFramework/src/Web/EficazFramework.Blazor/Styles/Components/Table.scss%22,%22file:///E:/Henrique%2520Clausing/Repositorios/Current/EficazFramework/src/Web/EficazFramework.Blazor/Styles/General/Icons.scss%22,%22file:///E:/Henrique%2520Clausing/Repositorios/Current/EficazFramework/src/Web/EficazFramework.Blazor/Styles/General/Layout.scss%22,%22file:///E:/Henrique%2520Clausing/Repositorios/Current/EficazFramework/src/Web/EficazFramework.Blazor/Styles/General/Text.scss%22,%22file:///E:/Henrique%2520Clausing/Repositorios/Current/EficazFramework/src/Web/EficazFramework.Blazor/Styles/General/Transitions.scss%22,%22file:///E:/Henrique%2520Clausing/Repositorios/Current/EficazFramework/src/Web/EficazFramework.Blazor/Styles/EfCore.scss%22,%22file:///E:/Henrique%2520Clausing/Repositorios/Current/EficazFramework/src/Web/EficazFramework.Blazor/Styles/General/Print.scss%22%5D,%22names%22:%5B%5D,%22mappings%22:%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%22%7D */

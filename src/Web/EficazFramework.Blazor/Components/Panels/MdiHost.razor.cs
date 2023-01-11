@@ -16,22 +16,16 @@ public partial class MdiHost : MudBlazor.MudBaseBindableItemsControl<MdiWindow, 
 
 
     /// <summary>
-    /// Current MDI Section (for multi tenant purposes)
-    /// </summary>
-    [Parameter] public long CurrentSection { get; set; } = 0;
-
-    /// <summary>
     /// Breakpoint that defines the view on Frames (windows) or Full Screen
     /// </summary>
     [Parameter] public MudBlazor.Breakpoint Breakpoint { get; set; } = MudBlazor.Breakpoint.Xs;
 
-
-
-
-
-
     #region Parameters: Sections
 
+    /// <summary>
+    /// Current MDI Section (for multi tenant purposes)
+    /// </summary>
+    [Parameter] public long CurrentSection { get; set; } = 0;
 
     /// <summary>
     /// Gets or Sets if Host should create a new Section automatically when user click
@@ -63,7 +57,6 @@ public partial class MdiHost : MudBlazor.MudBaseBindableItemsControl<MdiWindow, 
     #endregion
 
 
-
     #region Classes And Styles
 
     /// <summary>
@@ -85,17 +78,6 @@ public partial class MdiHost : MudBlazor.MudBaseBindableItemsControl<MdiWindow, 
                     .AddStyle(Style)
                     .Build();
 
-    /// <summary>
-    /// Style builder for the Start Menu Button
-    /// </summary>
-    private string StartMenuButtonStyle() =>
-            new StyleBuilder()
-                .AddStyle("padding", "8px")
-                .AddStyle("padding-left", "12px")
-                .AddStyle("padding-right", "12px")
-                .AddStyle("border-radius", "0px")
-                .AddStyle("border", "solid 3px transparent")
-                .Build();
 
     /// <summary>
     /// Style builder for the TaskBar Applications' Tiles
@@ -103,7 +85,7 @@ public partial class MdiHost : MudBlazor.MudBaseBindableItemsControl<MdiWindow, 
     private string TaskBarAppInstanceButtonStyle(ApplicationInstance item) =>
                 new StyleBuilder()
                     .AddStyle("border-top", "solid 3px transparent")
-                    .AddStyle("border-bottom", "solid 3px var(--mud-palette-primary)", object.ReferenceEquals(_selectedApp, item))
+                    .AddStyle("border-bottom", "solid 3px var(--mud-palette-primary)", object.ReferenceEquals(SelectedApp, item))
                     .AddStyle("border-radius", "3px")
                     .Build();
 
@@ -117,63 +99,18 @@ public partial class MdiHost : MudBlazor.MudBaseBindableItemsControl<MdiWindow, 
                     .AddStyle("height", "125px")
                     .Build();
 
-
     #endregion
 
 
-
-    #region Start Menu
-
-    private bool _startMenuIsOpen = false;
-    public bool StartMenuIsOpen => _startMenuIsOpen;
+   
     
-    /// <summary>
-    /// Toggle the Start Menu on Open and Closed states.
-    /// </summary>
-    /// <param name="onlyClose">Just act as closing the menu</param>
-    public void ToggleStartMenuOpen(bool onlyClose = false)
-    {
-
-        if (onlyClose)
-            _startMenuIsOpen = false;
-        else
-        {
-            _startMenuIsOpen = !_startMenuIsOpen;
-            ToggleSectionsMenuOpen(true);
-        }
-
-        AppSearchFilter = "";
-        _tabsHost?.ActivatePanel(0, false);
-        StateHasChanged();
-    }
-    
-    private bool _startMenuIsCompact = false;
-    /// <summary>
-    /// Toggle between Full and Compact (list) Application Menu
-    /// </summary>
-    public void ToggleStartMenuView()
-    {
-        _startMenuIsCompact = !_startMenuIsCompact;
-        StateHasChanged();
-    }
-
-    private MudBlazor.MudTabs? _tabsHost;
-
-    /// <summary>
-    /// Style builder for the Application Menu
-    /// </summary>
-    private string StartMenuAppsHostStyle() =>
-        new StyleBuilder()
-            .AddStyle("overflow-y", "auto")
-            .AddStyle("overflow-x", "hidden")
-            .AddStyle("height", StartMenuAppsHostHeight)
-            .Build();
-
-    #endregion
-
-
-
     #region Section Area
+
+    /// <summary>
+    /// The template for Current Section representation on StartMenu's right
+    /// </summary>
+    [Parameter] public RenderFragment CurrentSectionTemplate { get; set; }
+
 
     private bool _sectionsMenuIsOpen = false;
     public bool SectionsMenuIsOpen => _sectionsMenuIsOpen;
@@ -190,7 +127,6 @@ public partial class MdiHost : MudBlazor.MudBaseBindableItemsControl<MdiWindow, 
         else
         {
             _sectionsMenuIsOpen = !_sectionsMenuIsOpen;
-            ToggleStartMenuOpen(true);
         }
 
         StateHasChanged();
@@ -270,14 +206,12 @@ public partial class MdiHost : MudBlazor.MudBaseBindableItemsControl<MdiWindow, 
         if (!newinstance.Targets["Blazor"].Properties.ContainsKey("Size"))
             newinstance.Targets["Blazor"].Properties.Add("Size", new System.Drawing.Size(425, 250));
 
-        _selectedApp = newinstance;
+        SelectedApp = newinstance;
 
         var container = Items.SingleOrDefault(ct => object.ReferenceEquals(ct.ApplicationInstance, newinstance));
-        if (container != null)
-            container.MoveToMe();
+        container?.MoveToMe();
 
         StateHasChanged();
-        ToggleStartMenuOpen(true);
     }
 
     /// <summary>
@@ -299,7 +233,7 @@ public partial class MdiHost : MudBlazor.MudBaseBindableItemsControl<MdiWindow, 
         var resultingItems = Items.Where(item => !object.ReferenceEquals(item, appHost)).ToList();
 
         if (resultingItems.Count > 0)
-            _selectedApp = resultingItems.LastOrDefault()!.ApplicationInstance; ;
+            SelectedApp = resultingItems.LastOrDefault()!.ApplicationInstance; ;
 
     }
 
@@ -309,7 +243,6 @@ public partial class MdiHost : MudBlazor.MudBaseBindableItemsControl<MdiWindow, 
 
     private void CloseMenus()
     {
-        ToggleStartMenuOpen(true);
         ToggleSectionsMenuOpen(true);
     }
 

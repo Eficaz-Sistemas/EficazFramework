@@ -168,7 +168,7 @@ public partial class MdiWindow: MudBlazor.MudComponentBase, IDisposable
         foreach (var item in MdiHost.Items.Where(it => !object.ReferenceEquals(this, it)))
             item.zIndex = Math.Max(1, item.zIndex -= 1);
 
-        MdiHost._selectedApp = this.ApplicationInstance;
+        MdiHost.SelectedApp = this.ApplicationInstance;
         MdiHost.MoveTo(MdiHost.Items.IndexOf(this));
     }
 
