@@ -1,6 +1,6 @@
 ﻿@inherits MudBlazor.MudComponentBase
 
-<div>
+<div style="@Style">
     <MudBlazor.MudTooltip Text="@Tooltip">
         <MudBlazor.MudIconButton Variant="@MudBlazor.Variant.Filled"
                                  Color="@MudBlazor.Color.Transparent"
@@ -20,19 +20,26 @@
             <MudBlazor.MudPaper Elevation="@Elevation"
                                 Class="ef-mdi-startmenu d-flex flex-column">
                 @*HEADER*@
-                <div class="ef-mdi-startmenu-header">
-                    @Header
-                </div>
+                @if (ShowHeader)
+                {
+                    <div class="ef-mdi-startmenu-header">
+                        @Header
+                    </div>
+                }
 
                 @*CONTENT*@
-                <div class="ef-mdi-startmenu-content">
-                    @Footer
+                <div class="ef-mdi-startmenu-content"
+                     style="@ContentStyle()">
+                    @Content
                 </div>
 
                 @*FOOTER*@
-                <div class="ef-mdi-startmenu-footer">
-                    @Footer
-                </div>
+                @if (ShowFooter)
+                {
+                    <div class="ef-mdi-startmenu-footer">
+                        @Footer
+                    </div>
+                }
             </MudBlazor.MudPaper>
         </MudBlazor.MudPopover>
     </MudBlazor.MudTooltip>

@@ -1,0 +1,34 @@
+﻿@page "/Components/Panels/StartMenu"
+
+<div style="height:100%; align-items: flex-end; display: flex">
+    <EficazFramework.Components.Panels.StartMenu ShowHeader="_showHeader"
+                                                 ShowFooter="_showFooter">
+        <Header>
+            <div style="background-color:indigo">
+                Header here...
+            </div>
+        </Header>
+        <Content>
+            <div style="background-color:red; height:400px; width: 250px;">
+                Main content...
+                <br/>
+                <MudSwitch @bind-Checked="_showHeader">Show Header</MudSwitch>
+                <br />
+                <MudSwitch @bind-Checked="_showFooter">Show Footer</MudSwitch>
+            </div>
+        </Content>
+        <Footer>
+            <div style="background-color:green">
+                Footer here...
+            </div>
+        </Footer>
+    </EficazFramework.Components.Panels.StartMenu>
+    <div class="mb-3">
+        Clique para abrir/fechar
+    </div>
+</div>
+
+@code {
+    private bool _showHeader = true;
+    private bool _showFooter = true;
+}

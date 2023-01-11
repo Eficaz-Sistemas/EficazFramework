@@ -22,6 +22,9 @@ public partial class StartMenu : MudBlazor.MudComponentBase
     [Parameter] public RenderFragment? Content { get; set; }
     [Parameter] public RenderFragment? Footer { get; set; }
 
+    [Parameter] public bool ShowHeader { get; set; } = true;
+    [Parameter] public bool ShowFooter { get; set; } = true;
+
     [Parameter] public string Tooltip { get; set; } = Resources.Strings.Components.MDIContainer_StartTab;
 
     [Parameter] public MudBlazor.Origin AnchorOrigin { get; set; } = MudBlazor.Origin.TopLeft;
@@ -49,6 +52,15 @@ public partial class StartMenu : MudBlazor.MudComponentBase
                 .AddStyle("border", "solid 3px transparent")
                 .AddStyle(Style)
                 .Build();
+
+    private string ContentStyle() =>
+            new StyleBuilder()
+                .AddStyle("border-top-left-radius", "10px", !ShowHeader)
+                .AddStyle("border-top-right-radius", "10px", !ShowHeader)
+                .AddStyle("pborder-bottom-left-radius", "10px", !ShowFooter)
+                .AddStyle("border-bottom-right-radius", "10px", !ShowFooter)
+                .Build();
+
 
     /// <summary>
     /// Toggle the Start Menu into Opened/Closed states.
