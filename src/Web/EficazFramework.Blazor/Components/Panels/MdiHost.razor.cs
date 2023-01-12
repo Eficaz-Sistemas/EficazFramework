@@ -27,12 +27,6 @@ public partial class MdiHost : MudBlazor.MudBaseBindableItemsControl<MdiWindow, 
     /// </summary>
     [Parameter] public long CurrentSection { get; set; } = 0;
 
-    /// <summary>
-    /// Gets or Sets if Host should create a new Section automatically when user click
-    /// on 'New Section' button. Otherwise, the NewSectionClick action will be invoked
-    /// for custom logic.
-    /// </summary>
-    [Parameter] public bool AutoManageSections { get; set; } = true;
 
     /// <summary>
     /// Source for Available Sections (tenants)
@@ -89,15 +83,6 @@ public partial class MdiHost : MudBlazor.MudBaseBindableItemsControl<MdiWindow, 
                     .AddStyle("border-radius", "3px")
                     .Build();
 
-    /// <summary>
-    /// Style builder for every section div
-    /// </summary>
-    protected string SectionStyleName(long Id) =>
-                new StyleBuilder()
-                    .AddStyle("background-color", "var(--mud-palette-primary)", CurrentSection == Id)
-                    .AddStyle("width", "200px")
-                    .AddStyle("height", "125px")
-                    .Build();
 
     #endregion
 
@@ -107,32 +92,6 @@ public partial class MdiHost : MudBlazor.MudBaseBindableItemsControl<MdiWindow, 
     #region Section Area
 
     /// <summary>
-    /// The template for Current Section representation on StartMenu's right
-    /// </summary>
-    [Parameter] public RenderFragment CurrentSectionTemplate { get; set; }
-
-
-    private bool _sectionsMenuIsOpen = false;
-    public bool SectionsMenuIsOpen => _sectionsMenuIsOpen;
-
-    /// <summary>
-    /// Toggle the Sections Menu on Open and Closed states.
-    /// </summary>
-    /// <param name="onlyClose">Just act as closing the menu</param>
-    public void ToggleSectionsMenuOpen(bool onlyClose = false)
-    {
-
-        if (onlyClose)
-            _sectionsMenuIsOpen = false;
-        else
-        {
-            _sectionsMenuIsOpen = !_sectionsMenuIsOpen;
-        }
-
-        StateHasChanged();
-    }
-
-    /// <summary>
     /// Altera a seção ativa para o ID informado.
     /// </summary>
     /// <param name="id"></param>
@@ -140,7 +99,6 @@ public partial class MdiHost : MudBlazor.MudBaseBindableItemsControl<MdiWindow, 
     {
         CurrentSection = id;
         ApplicationManager?.SectionManager.ActivateSection(id);
-        ToggleSectionsMenuOpen(true);
     }
 
     #endregion
@@ -239,11 +197,5 @@ public partial class MdiHost : MudBlazor.MudBaseBindableItemsControl<MdiWindow, 
 
     #endregion
 
-
-
-    private void CloseMenus()
-    {
-        ToggleSectionsMenuOpen(true);
-    }
 
 }
