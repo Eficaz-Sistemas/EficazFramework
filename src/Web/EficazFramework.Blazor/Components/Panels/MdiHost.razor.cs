@@ -28,29 +28,6 @@ public partial class MdiHost : MudBlazor.MudBaseBindableItemsControl<MdiWindow, 
     [Parameter] public long CurrentSection { get; set; } = 0;
 
 
-    /// <summary>
-    /// Source for Available Sections (tenants)
-    /// </summary>
-    [Parameter] public IEnumerable<EficazFramework.Application.Section> SectionsSource { get; set; } = new List<EficazFramework.Application.Section>();
-
-    /// <summary>
-    /// Text for show into "New Section" button
-    /// </summary>
-    [Parameter] public string NewSectionText { get; set; } = Resources.Strings.Components.MDIContainer_NewSection;
-
-    /// <summary>
-    /// Action to invoke when "New Section" button is clicked
-    /// </summary>
-    [Parameter] public Action NewSectionClick { get; set; }
-
-    /// <summary>
-    /// Gets and Sets the Section Menu and Button visibility. <br/>
-    /// </summary>
-    [Parameter] public bool ShowSectionsArea { get; set; } = true;
-
-    #endregion
-
-
     #region Classes And Styles
 
     /// <summary>
