@@ -223,6 +223,15 @@ namespace EficazFramework.Resources.Strings {
         }
         
         /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Encerrar todas as seções.
+        /// </summary>
+        public static string MDIContainer_CloseAllSections {
+            get {
+                return ResourceManager.GetString("MDIContainer_CloseAllSections", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Consulta uma cadeia de caracteres localizada semelhante a Nova seção.
         /// </summary>
         public static string MDIContainer_NewSection {

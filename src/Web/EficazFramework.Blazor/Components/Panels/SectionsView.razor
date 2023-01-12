@@ -57,13 +57,22 @@
                     @*Section SOURCE*@
                     @foreach (var section in SectionsSource.Where(f => f.ID > 0))
                     {
-                        <MudBlazor.MudItem @onclick="() => ActivateSection(section.ID)">
+                        <MudBlazor.MudItem onclick="@(() => UpdateCurrentSection(section.ID))">
                             <MudBlazor.MudPaper Outlined 
                                                 Class="pa-2 d-flex flex-column"
                                                 Style="@SectionItemStyle(section.ID)">
-                                <MudBlazor.MudText Typo="@MudBlazor.Typo.caption">
-                                    @($"{section.ID} - {section.Name}")
-                                </MudBlazor.MudText>
+                                <div class="d-flex">
+                                    <MudBlazor.MudText Typo="@MudBlazor.Typo.caption" Class="flex-grow-1" Style="margin-top: -2px !important; margin-left: 4px;">
+                                        @($"{section.ID} - {section.Name}")
+                                    </MudBlazor.MudText>
+                                    <MudBlazor.MudIconButton Icon="@MudBlazor.Icons.Material.Filled.Close"
+                                                         OnClick="@(() => RemoveSection(section))"
+                                                         DisableElevation
+                                                         Variant="MudBlazor.Variant.Text"
+                                                         Size="MudBlazor.Size.Small"
+                                                         Style="margin-top: -6px;"
+                                                         Title="Close" />
+                                </div>
                                 <MudBlazor.MudPaper Elevation="0" 
                                                     Class="flex-grow-1 d-flex justify-center align-center relative mt-1"
                                                     Style="background-color: var(--mud-palette-background-grey)">
@@ -72,6 +81,20 @@
                                                        Size="@MudBlazor.Size.Large"/>
                                 </MudBlazor.MudPaper>
                             </MudBlazor.MudPaper>
+                        </MudBlazor.MudItem>
+                    }
+
+                    @if (SectionsSource.Count(f => f.ID > 0) > 1)
+                    {
+                        <MudBlazor.MudItem>
+                            <MudBlazor.MudTooltip Text="@NewSectionText">
+                                <MudBlazor.MudIconButton Icon="@MudBlazor.Icons.Material.Filled.Delete"
+                                                     Size="@MudBlazor.Size.Large"
+                                                     Class="mud-paper-outlined"
+                                                     Style="width:125px;height:125px;background-color: var(--mud-palette-background-grey)"
+                                                     Variant="@MudBlazor.Variant.Outlined"
+                                                     OnClick="() => OnCloseAllSectionsClick()" />
+                            </MudBlazor.MudTooltip>
                         </MudBlazor.MudItem>
                     }
                 </MudBlazor.MudGrid>

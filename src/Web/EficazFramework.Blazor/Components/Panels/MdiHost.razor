@@ -51,12 +51,6 @@
             
 
             @*CURRENT SECTION CLICK*@    
-            @if (ShowSectionsArea)
-            {
-                <MudBlazor.MudTooltip Text="@Resources.Strings.Components.MDIContainer_Sections">
-                    @*SECTIONS MENU FRAME*@            
-                </MudBlazor.MudTooltip>
-            }
             
             @*OPENED APPS*@
             @foreach (var item in RunningApplications())

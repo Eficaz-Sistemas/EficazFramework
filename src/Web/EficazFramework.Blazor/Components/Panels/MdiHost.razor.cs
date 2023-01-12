@@ -27,6 +27,9 @@ public partial class MdiHost : MudBlazor.MudBaseBindableItemsControl<MdiWindow, 
     /// </summary>
     [Parameter] public long CurrentSection { get; set; } = 0;
 
+    #endregion
+
+
 
     #region Classes And Styles
 
@@ -60,9 +63,7 @@ public partial class MdiHost : MudBlazor.MudBaseBindableItemsControl<MdiWindow, 
                     .AddStyle("border-radius", "3px")
                     .Build();
 
-
     #endregion
-
 
    
     

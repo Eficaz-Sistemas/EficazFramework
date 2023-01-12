@@ -171,6 +171,9 @@
   <data name="MDIApplication_ToggleApp_ListView" xml:space="preserve">
     <value>Exibição em Lista</value>
   </data>
+  <data name="MDIContainer_CloseAllSections" xml:space="preserve">
+    <value>Encerrar todas as seções</value>
+  </data>
   <data name="MDIContainer_NewSection" xml:space="preserve">
     <value>Nova seção</value>
   </data>

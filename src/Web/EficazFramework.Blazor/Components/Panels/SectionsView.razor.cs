@@ -62,6 +62,18 @@ public partial class SectionsView : MudBlazor.MudComponentBase
 
 
     /// <summary>
+    /// Text for show into CloseAllSections" button
+    /// </summary>
+    [Parameter] public string CloseAllSectionsText { get; set; } = Resources.Strings.Components.MDIContainer_CloseAllSections;
+
+
+    /// <summary>
+    /// Action to invoke when "c" button is clicked
+    /// </summary>
+    [Parameter] public Action CloseAllSectionsClick { get; set; }
+
+
+    /// <summary>
     /// Gets or Sets if Host should create a new Section automatically when user click
     /// on 'New Section' button. Otherwise, the NewSectionClick action will be invoked
     /// for custom logic.
@@ -86,6 +98,30 @@ public partial class SectionsView : MudBlazor.MudComponentBase
         });
         CurrentSection= id;
     }
+
+    private void UpdateCurrentSection(long id)
+    {
+        CurrentSection = id;
+        StateHasChanged();
+    }
+
+    private void RemoveSection(EficazFramework.Application.Section section)
+    {
+        long id = SectionsSource.Count() + 1;
+        (SectionsSource as IList<EficazFramework.Application.Section>)?.Remove(section);
+        CurrentSection = SectionsSource.LastOrDefault()?.ID ?? 0;
+    }
+
+    private void OnCloseAllSectionsClick()
+    {
+        if (AutoManageSections)
+            (SectionsSource as IList<EficazFramework.Application.Section>)?.Clear();
+        else
+            CloseAllSectionsClick?.Invoke();
+
+        CurrentSection = 0;
+    }
+
 
 
     /// <summary>
@@ -118,6 +154,7 @@ public partial class SectionsView : MudBlazor.MudComponentBase
                     .AddStyle("background-color", "var(--mud-palette-primary)", CurrentSection == Id)
                     .AddStyle("width", "200px")
                     .AddStyle("height", "125px")
+                    .AddStyle("cursor", "pointer")
                     .Build();
 
 
