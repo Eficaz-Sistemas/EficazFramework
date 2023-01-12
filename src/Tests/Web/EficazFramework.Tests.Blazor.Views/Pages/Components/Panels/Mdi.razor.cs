@@ -21,7 +21,6 @@ public partial class Mdi
             Name = $"Section {ApplicationManager?.SectionManager.Sections.Count + 1}",
             Icon = MudBlazor.Icons.Material.Filled.Inbox,
         }, true);
-        StateHasChanged();
     }
 
 }

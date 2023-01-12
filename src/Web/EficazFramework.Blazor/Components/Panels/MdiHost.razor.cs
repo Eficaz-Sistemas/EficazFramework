@@ -2,33 +2,59 @@
 using MudBlazor.Utilities;
 using EficazFramework.Application;
 using Microsoft.JSInterop;
+using MudBlazor;
+using MudBlazor.Services;
 
 namespace EficazFramework.Components;
 public partial class MdiHost : MudBlazor.MudBaseBindableItemsControl<MdiWindow, ApplicationInstance>
 {
-    /// <summary>
-    /// IApplicationManager service instance, if available on DI
-    /// </summary>
-    [Inject] public EficazFramework.Application.IApplicationManager? ApplicationManager { get; set; }
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            var subscriptionResult = await BreakpointListener.Subscribe((breakpoint) =>
+            {
+                _breakpoint = breakpoint;
+                InvokeAsync(StateHasChanged);
+            }, new ResizeOptions
+            {
+                ReportRate = 250,
+                NotifyOnBreakpointOnly = true,
+            });
+            _breakpoint = subscriptionResult.Breakpoint;
+            _subscriptionId = subscriptionResult.SubscriptionId;
+            StateHasChanged();
+        }
+    }
 
 
-    [Inject] IJSRuntime JsRutinme { get; set; }
-
+    private Breakpoint _breakpoint;
+    private Guid _subscriptionId;
+    [Inject] public MudBlazor.Services.IBreakpointService BreakpointListener { get; set; }
 
     /// <summary>
     /// Breakpoint that defines the view on Frames (windows) or Full Screen
     /// </summary>
-    [Parameter] public MudBlazor.Breakpoint Breakpoint { get; set; } = MudBlazor.Breakpoint.Xs;
+    [Parameter] public MudBlazor.Breakpoint Breakpoint { get; set; } = MudBlazor.Breakpoint.SmAndDown;
 
-    #region Parameters: Sections
+
+    /// <summary>
+    /// Content to be rendered at Toolbar's left side.
+    /// </summary>
+    [Parameter] public RenderFragment? ToolbarLeftContent { get; set; }
+
+
+    /// <summary>
+    /// Content to be rendered at Toolbar's right side.
+    /// </summary>
+    [Parameter] public RenderFragment? ToolbarRightContent { get; set; }
+
 
     /// <summary>
     /// Current MDI Section (for multi tenant purposes)
     /// </summary>
     [Parameter] public long CurrentSection { get; set; } = 0;
-
-    #endregion
-
 
 
     #region Classes And Styles
@@ -65,23 +91,6 @@ public partial class MdiHost : MudBlazor.MudBaseBindableItemsControl<MdiWindow, 
 
     #endregion
 
-   
-    
-    #region Section Area
-
-    /// <summary>
-    /// Altera a seção ativa para o ID informado.
-    /// </summary>
-    /// <param name="id"></param>
-    public void ActivateSection(long id)
-    {
-        CurrentSection = id;
-        ApplicationManager?.SectionManager.ActivateSection(id);
-    }
-
-    #endregion
-
-
 
     #region Applications
 
@@ -117,12 +126,12 @@ public partial class MdiHost : MudBlazor.MudBaseBindableItemsControl<MdiWindow, 
 
         ApplicationInstance? newinstance;
         
-        if (ApplicationManager != null)
-        {
-            newinstance = ApplicationManager!.Activate(app);
-        }
-        else
-        {
+        //if (ApplicationManager != null)
+        //{
+        //    newinstance = ApplicationManager!.Activate(app);
+        //}
+        //else
+        //{
             newinstance = ApplicationInstance.Create(app, CurrentSection);
             
             if (ItemsSource == null)
@@ -131,7 +140,7 @@ public partial class MdiHost : MudBlazor.MudBaseBindableItemsControl<MdiWindow, 
 #pragma warning restore BL0005 // Component parameter should not be set outside of its component.
             else
                 (ItemsSource as IList<ApplicationInstance>)!.Add(newinstance);
-        }
+        //}
 
         if (!newinstance.Targets["Blazor"].Properties.ContainsKey("IsMaximized"))
             newinstance.Targets["Blazor"].Properties.Add("IsMaximized", false);

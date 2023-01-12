@@ -4,69 +4,56 @@
 @namespace EficazFramework.Components
 @inherits MudBlazor.MudBaseBindableItemsControl<MdiWindow, ApplicationInstance>
 
-<CascadingValue Value="this">
-    <div class="@Classname" 
-         style="@StyleName" >
+<div class="@Classname" 
+     style="@StyleName" >
+    <CascadingValue Value="this">
         @*MDI AREA*@
-        <MudBlazor.MudHidden Breakpoint="@Breakpoint" >
-            <div class="d-flex flex-grow-1"
-                 ondragover="event.preventDefault();"
-                 ondragstart="event.dataTransfer.setData('', event.target.id);">
-                @if (ItemsSource == null)
+        <div class="d-flex flex-grow-1"
+             ondragover="event.preventDefault();"
+             ondragstart="event.dataTransfer.setData('', event.target.id);">
+            @if (ItemsSource == null)
+            {
+                @ChildContent
+            }
+            else
+            {
+                foreach (var item in RunningApplications())
                 {
-                    @ChildContent
+                    <MdiWindow ApplicationInstance="item"
+                               Title="@item.Title"
+                               Icon="@(item.Targets["Blazor"]?.Icon.ToString())"
+                               IsMaximized="@((bool?)item.Targets["Blazor"]?.Properties["IsMaximized"] ?? false)">
+                        <DynamicComponent Type="@((Type)item.Targets["Blazor"].StartupUriOrType)" />
+                    </MdiWindow>
                 }
-                else
-                {
-                    foreach (var item in RunningApplications())
-                    {
-                        <MdiWindow ApplicationInstance="item"
-                                   Title="@item.Title"
-                                   Icon="@(item.Targets["Blazor"]?.Icon.ToString())"
-                                   IsMaximized="@((bool?)item.Targets["Blazor"]?.Properties["IsMaximized"] ?? false)">
-                            <DynamicComponent Type="@((Type)item.Targets["Blazor"].StartupUriOrType)" />
-                        </MdiWindow>
-                    }
-                }
-            </div>
-        </MudBlazor.MudHidden>
-        @*SELECTED CONTENT AREA (FOR RESPONSIVE DESIGN)*@
-        <MudBlazor.MudHidden Invert
-                             Breakpoint="@Breakpoint">
-             <div class="flex-grow-1 overflow-hidden">
-                @if (SelectedApp != null)
-                 {
-                    <CascadingValue Value="SelectedApp">
-                        <DynamicComponent Type="@((Type)SelectedApp!.Targets["Blazor"].StartupUriOrType)" />
-                     </CascadingValue>
-                 }
-                 else
-                 {                 
-                    @ChildContent
-                 }
-             </div>
-        </MudBlazor.MudHidden>
-        <div class="d-flex" style="background-color: var(--mud-palette-background-grey);z-index:2">
+            }
+        </div>
+        @if (BreakpointListener.IsMediaSize(Breakpoint, _breakpoint))
+        {
+            <div>I'm compact!</div>
+        }
+        else
+        {
+            <div>I'm full!</div>
+        }
+        <div class="d-flex" style="background-color: var(--mud-palette-background-grey);z-index:2; height: 48px;">
             @*TASKBAR*@         
-            
-
-            @*CURRENT SECTION CLICK*@    
-            
-            @*OPENED APPS*@
+            @ToolbarLeftContent
             @foreach (var item in RunningApplications())
             {
                 <MudBlazor.MudTooltip Text="@item.Title">
                     <MudBlazor.MudIconButton Variant="@MudBlazor.Variant.Filled"
-                                             Color="@MudBlazor.Color.Transparent"
-                                             Class="ef-mdi-buttons-toolbar"
-                                             Icon="@(item.Targets["Blazor"]?.Icon.ToString())"
-                                             Size="@MudBlazor.Size.Large"
-                                             DisableElevation
-                                             Style="@TaskBarAppInstanceButtonStyle(item)"
-                                             OnClick="() => LoadApplication(item.Metadata)"/>
+                                                Color="@MudBlazor.Color.Transparent"
+                                                Class="ef-mdi-buttons-toolbar"
+                                                Icon="@(item.Targets["Blazor"]?.Icon.ToString())"
+                                                Size="@MudBlazor.Size.Large"
+                                                DisableElevation
+                                                Style="@TaskBarAppInstanceButtonStyle(item)"
+                                                OnClick="() => LoadApplication(item.Metadata)"/>
                 </MudBlazor.MudTooltip>
             }
-           
-        </div>
-    </div>
-</CascadingValue>
+            <MudBlazor.MudSpacer/>
+            @ToolbarRightContent
+            </div>
+    </CascadingValue>
+</div>

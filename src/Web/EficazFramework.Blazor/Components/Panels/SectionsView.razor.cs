@@ -46,7 +46,7 @@ public partial class SectionsView : MudBlazor.MudComponentBase
     /// <summary>
     /// Source for Available Sections (tenants)
     /// </summary>
-    [Parameter] public IEnumerable<EficazFramework.Application.Section> SectionsSource { get; set; } = new List<EficazFramework.Application.Section>();
+    [Parameter] public IEnumerable<EficazFramework.Application.Section> ItemsSource { get; set; } = new List<EficazFramework.Application.Section>();
 
 
     /// <summary>
@@ -91,8 +91,8 @@ public partial class SectionsView : MudBlazor.MudComponentBase
 
     private void AddSection()
     {
-        long id = SectionsSource.Count() + 1;
-        (SectionsSource as IList<EficazFramework.Application.Section>)?.Add(new EficazFramework.Application.Section(id)
+        long id = ItemsSource.Count() + 1;
+        (ItemsSource as IList<EficazFramework.Application.Section>)?.Add(new EficazFramework.Application.Section(id)
         {
             Name = $"Section {id}"
         });
@@ -107,15 +107,15 @@ public partial class SectionsView : MudBlazor.MudComponentBase
 
     private void RemoveSection(EficazFramework.Application.Section section)
     {
-        long id = SectionsSource.Count() + 1;
-        (SectionsSource as IList<EficazFramework.Application.Section>)?.Remove(section);
-        CurrentSection = SectionsSource.LastOrDefault()?.ID ?? 0;
+        long id = ItemsSource.Count() + 1;
+        (ItemsSource as IList<EficazFramework.Application.Section>)?.Remove(section);
+        CurrentSection = ItemsSource.LastOrDefault()?.ID ?? 0;
     }
 
     private void OnCloseAllSectionsClick()
     {
         if (AutoManageSections)
-            (SectionsSource as IList<EficazFramework.Application.Section>)?.Clear();
+            (ItemsSource as IList<EficazFramework.Application.Section>)?.Clear();
         else
             CloseAllSectionsClick?.Invoke();
 

@@ -36,8 +36,8 @@
 .ef-mdi-sections-menu {
     border: solid 1px var(--mud-palette-primary);
     border-radius: 10px;
-    width: calc(100vw - 120px);
-    height: calc(100vh - 226px);
+    max-width: calc(100vw - 120px);
+    max-height: calc(100vh - 226px);
 }
 
 .ef-mdi-sections-current {
@@ -52,7 +52,7 @@
     border: solid 1px var(--mud-palette-primary);
     border-radius: 10px;
     max-width: 670px;
-    /*height: calc(100vh - 226px);*/
+    max-height: calc(100vh - 226px);
 }
 
 .ef-mdi-startmenu-header {
@@ -62,7 +62,6 @@
 }
 
 .ef-mdi-startmenu-content {
-    display: flex;
     flex-grow: 1;
     padding: 0px !important;
     width: 100%;

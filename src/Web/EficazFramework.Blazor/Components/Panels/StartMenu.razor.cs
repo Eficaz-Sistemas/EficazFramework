@@ -57,7 +57,7 @@ public partial class StartMenu : MudBlazor.MudComponentBase
             new StyleBuilder()
                 .AddStyle("border-top-left-radius", "10px", !ShowHeader)
                 .AddStyle("border-top-right-radius", "10px", !ShowHeader)
-                .AddStyle("pborder-bottom-left-radius", "10px", !ShowFooter)
+                .AddStyle("border-bottom-left-radius", "10px", !ShowFooter)
                 .AddStyle("border-bottom-right-radius", "10px", !ShowFooter)
                 .Build();
 

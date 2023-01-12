@@ -36,7 +36,7 @@
                               TransformOrigin="@TransformOrigin"
                               Style="background-color:unset; left: 0px !important">
             <MudBlazor.MudPaper Elevation="@Elevation" 
-                                Class="ef-mdi-sections-menu d-flex flex-column pa-4 ma-8">
+                                Class="ef-mdi-sections-menu d-flex flex-column pa-4 mb-8 mr-8">
 
                 <MudBlazor.MudGrid Spacing="3" 
                                    Class="pa-1 overflow-y-auto"
@@ -55,7 +55,7 @@
                     </MudBlazor.MudItem>
 
                     @*Section SOURCE*@
-                    @foreach (var section in SectionsSource.Where(f => f.ID > 0))
+                    @foreach (var section in ItemsSource.Where(f => f.ID > 0))
                     {
                         <MudBlazor.MudItem onclick="@(() => UpdateCurrentSection(section.ID))">
                             <MudBlazor.MudPaper Outlined 
@@ -84,7 +84,7 @@
                         </MudBlazor.MudItem>
                     }
 
-                    @if (SectionsSource.Count(f => f.ID > 0) > 1)
+                    @if (ItemsSource.Count(f => f.ID > 0) > 1)
                     {
                         <MudBlazor.MudItem>
                             <MudBlazor.MudTooltip Text="@NewSectionText">

@@ -1,6 +1,7 @@
 ﻿@inherits MudBlazor.MudComponentBase
 
-<div>
+<div class="@ClassName()"
+     style="@Style">
     <div class="d-flex mx-2 mt-n4 align-center">
         <MudBlazor.MudTextField @bind-Value="SearchFilter"
                                 Class="mud-input-control-ef flex-grow1"
@@ -30,7 +31,7 @@
                            Class="mx-1 pb-1 px-2">
                     @group.Key
                 </MudBlazor.MudText>
-                <MudBlazor.MudGrid Class="flex-grow-1 mx-1 mb-4 pr-6"
+                <MudBlazor.MudGrid Class="mx-1 mb-4 pr-6"
                            Spacing="1"
                            Justify="MudBlazor.Justify.FlexStart">
                     @foreach (var app in group)

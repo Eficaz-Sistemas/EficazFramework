@@ -52,6 +52,19 @@ public partial class ApplicationsMenu : MudBlazor.MudComponentBase
 
 
     /// <summary>
+    /// Css builder for the main div
+    /// </summary>
+    private string ClassName() =>
+            new CssBuilder()
+                .AddClass("d-flex")
+                .AddClass("flex-column")
+                .AddClass("overflow-auto")
+                .AddClass("overflow-x-hidden")
+                .AddClass(Class)
+                .Build();
+
+
+    /// <summary>
     /// Style builder for the Application Menu
     /// </summary>
     private string HostStyle() =>
