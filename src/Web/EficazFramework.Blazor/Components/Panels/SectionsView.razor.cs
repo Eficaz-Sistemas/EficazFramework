@@ -68,7 +68,13 @@ public partial class SectionsView : MudBlazor.MudComponentBase
 
 
     /// <summary>
-    /// Action to invoke when "c" button is clicked
+    /// Action to invoke when "Clear" button is clicked
+    /// </summary>
+    [Parameter] public Action<long> CloseSectionClick { get; set; }
+
+
+    /// <summary>
+    /// Action to invoke when "Clear" button is clicked
     /// </summary>
     [Parameter] public Action CloseAllSectionsClick { get; set; }
 
@@ -107,9 +113,14 @@ public partial class SectionsView : MudBlazor.MudComponentBase
 
     private void RemoveSection(EficazFramework.Application.Section section)
     {
-        long id = ItemsSource.Count() + 1;
-        (ItemsSource as IList<EficazFramework.Application.Section>)?.Remove(section);
-        CurrentSection = ItemsSource.LastOrDefault()?.ID ?? 0;
+        long id = section.ID;
+        if (AutoManageSections)
+        {
+            (ItemsSource as IList<EficazFramework.Application.Section>)?.Remove(section);
+            CurrentSection = ItemsSource.LastOrDefault()?.ID ?? 0;
+        }
+        else
+            CloseSectionClick?.Invoke(id);
     }
 
     private void OnCloseAllSectionsClick()
@@ -138,11 +149,8 @@ public partial class SectionsView : MudBlazor.MudComponentBase
     /// </summary>
     private string ToggleButtonStyle() =>
             new StyleBuilder()
-                .AddStyle("padding", "8px")
-                .AddStyle("padding-left", "12px")
-                .AddStyle("padding-right", "12px")
-                .AddStyle("border-radius", "0px")
-                .AddStyle("border", "solid 3px transparent")
+                .AddStyle("width", "unset;")
+                .AddStyle("min-width", "48px;")
                 .AddStyle(Style)
                 .Build();
 

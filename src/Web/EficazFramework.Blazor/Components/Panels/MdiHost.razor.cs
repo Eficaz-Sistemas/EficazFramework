@@ -51,11 +51,19 @@ public partial class MdiHost : MudBlazor.MudBaseBindableItemsControl<MdiWindow, 
     [Parameter] public RenderFragment? ToolbarRightContent { get; set; }
 
 
+    private long _currentSection = 0;
     /// <summary>
     /// Current MDI Section (for multi tenant purposes)
     /// </summary>
-    [Parameter] public long CurrentSection { get; set; } = 0;
-
+    [Parameter] public long CurrentSection 
+    { 
+        get => _currentSection;
+        set
+        {
+            _currentSection = value;
+            StateHasChanged();
+        }
+    }
 
     #region Classes And Styles
 

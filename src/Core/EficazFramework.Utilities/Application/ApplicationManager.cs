@@ -114,10 +114,10 @@ internal class ApplicationManager : IApplicationManager
     public ApplicationInstance Activate(ApplicationDefinition application)
     {
         bool running = IsRunning(application);
-        ApplicationInstance instance = null;
+        ApplicationInstance? instance = null;
         if (!running)
         {
-            instance = new ApplicationInstance(application, _sectionManager);
+            instance = new ApplicationInstance(application, _sectionManager.CurrentSectionId);
             RunningApplications.Add(instance);
             instance.AppClosed += AppClosed;
         }
@@ -126,10 +126,10 @@ internal class ApplicationManager : IApplicationManager
             instance = RunningApplications.Where(app => app.Metadata == application && (app.SessionID == 0 | app.SessionID == _sectionManager.CurrentSection.ID)).FirstOrDefault();
         }
         ActiveAppChanged?.Invoke(instance, EventArgs.Empty);
-        return instance;
+        return instance!;
     }
 
-    private void AppClosed(object sender, System.EventArgs e)
+    private void AppClosed(object? sender, System.EventArgs e)
     {
         var instance = sender as ApplicationInstance;
         if (instance != null)
@@ -144,10 +144,8 @@ internal class ApplicationManager : IApplicationManager
 
 public sealed class ApplicationInstance : ApplicationDefinition, INotifyPropertyChanged, IDisposable
 {
-    internal ApplicationInstance(ApplicationDefinition fromDefinition, ISectionManager? sectionManager)
+    internal ApplicationInstance(ApplicationDefinition fromDefinition, long forSection)
     {
-        var sID = sectionManager?.CurrentSection?.ID ?? 0;
-
         Metadata = fromDefinition;
         Title = fromDefinition.Title;
         LongTitle = fromDefinition.LongTitle;
@@ -160,21 +158,13 @@ public sealed class ApplicationInstance : ApplicationDefinition, INotifyProperty
         Arguments = fromDefinition.Arguments;
         IsLoading = true;
         if (!fromDefinition.IsPublic)
-            SessionID = sID != 0 ? sID : throw new InvalidDataException(Resources.Strings.Application.NoSessionForPrivateApp);
+            SessionID = forSection != 0 ? forSection : throw new InvalidDataException(Resources.Strings.Application.NoSessionForPrivateApp);
         else
             SessionID = 0;
     }
-
-    internal ApplicationInstance()
-    {
-        //throw new UnauthorizedAccessException();
-    }
     
-    public static ApplicationInstance Create(ApplicationDefinition fromDefinition) =>
-        new (fromDefinition, null);
-
-    public static ApplicationInstance Create(ApplicationDefinition fromDefinition, long section) =>
-        new (fromDefinition, null) { SessionID = section };
+    public static ApplicationInstance Create(ApplicationDefinition fromDefinition, long forSection) =>
+        new (fromDefinition, forSection) { SessionID = forSection };
 
     public long SessionID { get; internal set; }
 
@@ -205,7 +195,7 @@ public sealed class ApplicationInstance : ApplicationDefinition, INotifyProperty
         { _isloading = value; RaisePropertyChanged(nameof(IsLoading)); }
     }
 
-    public ApplicationDefinition? Metadata { get; }
+    public ApplicationDefinition Metadata { get; }
 
     public IDictionary<string, object> Services { get; } = new Dictionary<string, object>();
 

@@ -26,7 +26,12 @@
                     </MudTabs>
                 </Content>
             </EficazFramework.Components.Panels.StartMenu>
-            <EficazFramework.Components.Panels.SectionsView ItemsSource="ApplicationManager?.SectionManager.Sections" />
+            <EficazFramework.Components.Panels.SectionsView ItemsSource="ApplicationManager?.SectionManager.Sections"
+                                                            AutoManageSections="false"
+                                                            NewSectionClick="NewSection"
+                                                            CloseSectionClick="CloseSection"
+                                                            CloseAllSectionsClick="CloseAllSections"
+                                                            @bind-CurrentSection="ApplicationManager!.SectionManager!.CurrentSectionId"/>
         </ToolbarLeftContent>
     </MdiHost>
 </div>

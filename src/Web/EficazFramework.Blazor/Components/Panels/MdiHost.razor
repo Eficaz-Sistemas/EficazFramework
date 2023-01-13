@@ -28,14 +28,14 @@
                 }
             }
         </div>
-        @if (BreakpointListener.IsMediaSize(Breakpoint, _breakpoint))
+@*        @if (BreakpointListener.IsMediaSize(Breakpoint, _breakpoint))
         {
             <div>I'm compact!</div>
         }
         else
         {
             <div>I'm full!</div>
-        }
+        }*@
         <div class="d-flex" style="background-color: var(--mud-palette-background-grey);z-index:2; height: 48px;">
             @*TASKBAR*@         
             @ToolbarLeftContent
@@ -46,7 +46,7 @@
                                                 Color="@MudBlazor.Color.Transparent"
                                                 Class="ef-mdi-buttons-toolbar"
                                                 Icon="@(item.Targets["Blazor"]?.Icon.ToString())"
-                                                Size="@MudBlazor.Size.Large"
+                                                Size="@MudBlazor.Size.Medium"
                                                 DisableElevation
                                                 Style="@TaskBarAppInstanceButtonStyle(item)"
                                                 OnClick="() => LoadApplication(item.Metadata)"/>

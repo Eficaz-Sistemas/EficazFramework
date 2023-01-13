@@ -47,11 +47,6 @@ public partial class StartMenu : MudBlazor.MudComponentBase
     /// </summary>
     private string ToggleButtonStyle() =>
             new StyleBuilder()
-                .AddStyle("padding", "8px")
-                .AddStyle("padding-left", "12px")
-                .AddStyle("padding-right", "12px")
-                .AddStyle("border-radius", "0px")
-                .AddStyle("border", "solid 3px transparent")
                 .AddStyle(Style)
                 .Build();
 

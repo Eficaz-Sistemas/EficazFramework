@@ -16,6 +16,11 @@ public interface ISectionManager
     public Section CurrentSection { get; set; }
 
     /// <summary>
+    /// Obtém ou define o ID da seção ativa.
+    /// </summary>
+    public long CurrentSectionId { get; set; }
+
+    /// <summary>
     /// Instância de ApplicationManager para sincronização de aplicativos por área de trabalho
     /// </summary>
     public IApplicationManager ApplicationManager { get; }
@@ -62,6 +67,21 @@ internal class SectionManager : ISectionManager, INotifyPropertyChanged
         {
             _current = value;
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(CurrentSection)));
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(CurrentSectionId)));
+            CurrentSectionChanged?.Invoke(this, EventArgs.Empty);
+        }
+    }
+
+    /// <summary>
+    /// Obtém ou define o ID da seção ativa.
+    /// </summary>
+    public long CurrentSectionId
+    {
+        get => CurrentSection.ID;
+        set
+        {
+            ActivateSection(value);
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(CurrentSectionId)));
             CurrentSectionChanged?.Invoke(this, EventArgs.Empty);
         }
     }
@@ -110,13 +130,13 @@ internal class SectionManager : ISectionManager, INotifyPropertyChanged
 
     public void ActivateSection(long ID)
     {
-        Section exists = SectionsInternal.Where(s => s.ID == ID).FirstOrDefault();
+        Section? exists = SectionsInternal.Where(s => s.ID == ID).FirstOrDefault();
         CurrentSection = exists ?? throw new NullReferenceException(string.Format(Resources.Strings.Application.SessionNotFoundByID, ID));
     }
 
     public void ActivateSection(Section section, bool update = false)
     {
-        Section exists = SectionsInternal.Where(s => s.ID == section.ID).FirstOrDefault();
+        Section? exists = SectionsInternal.Where(s => s.ID == section.ID).FirstOrDefault();
         if (exists == null)
         {
             SectionsInternal.Add(section);
@@ -135,7 +155,9 @@ internal class SectionManager : ISectionManager, INotifyPropertyChanged
 
     public void DisposeSection(long ID)
     {
-        SectionsInternal.Remove(SectionsInternal.FirstOrDefault(s => s.ID == ID));
+        var section = SectionsInternal!.FirstOrDefault(s => s.ID == ID);
+        if (section != null)
+            SectionsInternal.Remove(section);
     }
 
     public void DisposeSection(Section section)
@@ -143,8 +165,8 @@ internal class SectionManager : ISectionManager, INotifyPropertyChanged
         SectionsInternal.Remove(section);
     }
 
-    public event PropertyChangedEventHandler PropertyChanged;
-    public event EventHandler CurrentSectionChanged;
+    public event PropertyChangedEventHandler? PropertyChanged;
+    public event EventHandler? CurrentSectionChanged;
 
 }
 
