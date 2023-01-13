@@ -42,5 +42,8 @@
                 }
             </MudBlazor.MudPaper>
         </MudBlazor.MudPopover>
+        <MudBlazor.MudOverlay Visible="IsOpen"
+                              LockScroll
+                              OnClick="@(() => ToggleOpen())"  />
     </MudBlazor.MudTooltip>
 </div>

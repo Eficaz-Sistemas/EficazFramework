@@ -13,6 +13,7 @@ public partial class Mdi
     }
 
     private EficazFramework.Components.MdiHost? _mdi;
+    private EficazFramework.Components.Panels.StartMenu? _startMenu;
 
     private void NewSection()
     {
@@ -23,4 +24,10 @@ public partial class Mdi
         }, true);
     }
 
+
+    private void AppClick(EficazFramework.Application.ApplicationDefinition app)
+    {
+        _startMenu!.ToggleOpen(true);
+        _mdi!.LoadApplication(app);
+    }
 }

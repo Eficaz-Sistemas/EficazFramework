@@ -4,6 +4,8 @@ using MudBlazor.Utilities;
 namespace EficazFramework.Components.Panels;
 public partial class StartMenu : MudBlazor.MudComponentBase
 {
+
+    private bool _isMouseOver = false;
     private bool _isOpen = false;
     [Parameter] public bool IsOpen
     {

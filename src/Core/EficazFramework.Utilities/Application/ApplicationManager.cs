@@ -61,7 +61,7 @@ internal class ApplicationManager : IApplicationManager
         Instance = this;
     }
 
-    private static IApplicationManager _instance = null;
+    private static IApplicationManager? _instance = null;
     /// <summary>
     /// Retorna em padrão singleton a Última Instância de ApplicationManager instanciada.
     /// </summary>
@@ -139,14 +139,14 @@ internal class ApplicationManager : IApplicationManager
         }
     }
 
-    public event EventHandler ActiveAppChanged;
+    public event EventHandler? ActiveAppChanged;
 }
 
 public sealed class ApplicationInstance : ApplicationDefinition, INotifyPropertyChanged, IDisposable
 {
-    internal ApplicationInstance(ApplicationDefinition fromDefinition, ISectionManager sectionManager)
+    internal ApplicationInstance(ApplicationDefinition fromDefinition, ISectionManager? sectionManager)
     {
-        var sID = sectionManager.CurrentSection?.ID ?? 0;
+        var sID = sectionManager?.CurrentSection?.ID ?? 0;
 
         Metadata = fromDefinition;
         Title = fromDefinition.Title;
@@ -178,8 +178,8 @@ public sealed class ApplicationInstance : ApplicationDefinition, INotifyProperty
 
     public long SessionID { get; internal set; }
 
-    private object _content = null;
-    public object Content
+    private object? _content;
+    public object? Content
     {
         get => _content;
         set
@@ -190,8 +190,8 @@ public sealed class ApplicationInstance : ApplicationDefinition, INotifyProperty
         }
     }
 
-    private object _notifyContent = null;
-    public object NotifyContent
+    private object? _notifyContent;
+    public object? NotifyContent
     {
         get => _notifyContent;
         set { _notifyContent = value; RaisePropertyChanged(nameof(NotifyContent)); }
@@ -205,7 +205,7 @@ public sealed class ApplicationInstance : ApplicationDefinition, INotifyProperty
         { _isloading = value; RaisePropertyChanged(nameof(IsLoading)); }
     }
 
-    public ApplicationDefinition Metadata { get; } = null;
+    public ApplicationDefinition? Metadata { get; }
 
     public IDictionary<string, object> Services { get; } = new Dictionary<string, object>();
 
@@ -239,11 +239,11 @@ public sealed class ApplicationInstance : ApplicationDefinition, INotifyProperty
     }
 
     // INotifyPropertyChanged
-    public event PropertyChangedEventHandler PropertyChanged;
+    public event PropertyChangedEventHandler? PropertyChanged;
     public void RaisePropertyChanged(string propertyname) =>
         PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyname));
 
     // Events
-    public event EventHandler AppClosed;
+    public event EventHandler? AppClosed;
 
 }

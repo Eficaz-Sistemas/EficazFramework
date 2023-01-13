@@ -1,13 +1,11 @@
 ﻿@page "/Components/Panels/Mdi"
 
-<MudPopoverProvider/>
-
 <div class="d-flex flex-grow-1" style="margin-left:-16px;margin-right:-16px;margin-bottom:8px;">
     <MdiHost @ref="_mdi" 
              ItemsSource="ApplicationManager?.RunningApplications"
              CurrentSection="ApplicationManager!.SectionManager.CurrentSection.ID">
         <ToolbarLeftContent>
-            <EficazFramework.Components.Panels.StartMenu>
+            <EficazFramework.Components.Panels.StartMenu @ref="_startMenu">
                 <Content>
                     <MudTabs Position="@MudBlazor.Position.Left"
                              Class="flex-grow-1 flex-shrink-0"
@@ -16,7 +14,8 @@
                              Style="height: calc(100vh - 300px)">
                         <MudTabPanel Icon="@MudBlazor.Icons.Material.Filled.GridView">
                             <EficazFramework.Components.Panels.ApplicationsMenu ItemsSource="ApplicationManager?.AllApplications"
-                                                                                Class="ma-4"/>
+                                                                                Class="ma-4"
+                                                                                SelectionCallBack="@(app => AppClick(app))"/>
                         </MudTabPanel>
                         <MudTabPanel Icon="@MudBlazor.Icons.Material.Filled.Filter">
                             @*<EficazFramework.Components.Panels.ApplicationsMenu ItemsSource="ApplicationManager?.AllApplications" />*@
