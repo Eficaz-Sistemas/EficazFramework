@@ -10,6 +10,7 @@ public partial class Mdi
     {
         base.OnInitialized();
         EficazFramework.Tests.Blazor.Views.Resources.Mocks.Applications.GenerateApps(ApplicationManager);
+        ApplicationManager!.SectionManager.CurrentSectionChanged += SectionChanged;
     }
 
     private EficazFramework.Components.MdiHost? _mdi;
@@ -22,6 +23,11 @@ public partial class Mdi
             Name = $"Section {ApplicationManager!.SectionManager!.Sections.Count}",
             Icon = MudBlazor.Icons.Material.Filled.Inbox,
         }, true);
+        StateHasChanged();
+    }
+
+    private void SectionChanged(object? sender, EventArgs e)
+    {
         StateHasChanged();
     }
 

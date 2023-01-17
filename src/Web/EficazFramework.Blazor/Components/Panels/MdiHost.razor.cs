@@ -121,8 +121,14 @@ public partial class MdiHost : MudBlazor.MudBaseBindableItemsControl<MdiWindow, 
     /// <summary>
     /// Running applications (MdiWindow) for the Current Section (ou public apps_
     /// </summary>
-    private IEnumerable<ApplicationInstance> RunningApplications() =>
-        ItemsSource.Where(app => app.SessionID == 0 || app.SessionID == CurrentSection).ToList();
+    private IEnumerable<ApplicationInstance> RunningApplications()
+    {
+        if (ItemsSource != null)
+            return ItemsSource.Where(app => app.SessionID == 0 || app.SessionID == CurrentSection).ToList();
+        else
+            return Items.Where(it => it.ApplicationInstance.SessionID == 0 || it.ApplicationInstance.SessionID == CurrentSection).Select(it => it.ApplicationInstance).ToList();
+    }
+
 
     /// <summary>
     /// Start a new application instance (from <paramref name="app"/> metadata) and adds it to the host.
@@ -132,36 +138,50 @@ public partial class MdiHost : MudBlazor.MudBaseBindableItemsControl<MdiWindow, 
         if (app.IsPublic == false && CurrentSection == 0)
             return;
 
-        ApplicationInstance? newinstance;
-        
+        ApplicationInstance? instance;
+
         //if (ApplicationManager != null)
         //{
         //    newinstance = ApplicationManager!.Activate(app);
         //}
         //else
         //{
-            newinstance = ApplicationInstance.Create(app, CurrentSection);
-            
+
+        if (ItemsSource != null)
+        {
+            var itemsSourceList = (ItemsSource as IList<ApplicationInstance>);
+            instance = itemsSourceList?.Where(a => a.Metadata == app && (a.SessionID == 0 || a.SessionID == CurrentSection)).FirstOrDefault();
+        }
+        else
+        {
+            var itemsSourceList = Items.Select(a => a.ApplicationInstance).ToList();
+            instance = itemsSourceList?.Where(a => a.Metadata == app && (a.SessionID == 0 || a.SessionID == CurrentSection)).FirstOrDefault();
+        }
+        if (instance == null)
+        {
+            instance = ApplicationInstance.Create(app, CurrentSection);
+
+            if (!instance.Targets["Blazor"].Properties.ContainsKey("IsMaximized"))
+                instance.Targets["Blazor"].Properties.Add("IsMaximized", false);
+
+            if (!instance.Targets["Blazor"].Properties.ContainsKey("Position"))
+                instance.Targets["Blazor"].Properties.Add("Position", new System.Drawing.Size(15, 15));
+
+            if (!instance.Targets["Blazor"].Properties.ContainsKey("Size"))
+                instance.Targets["Blazor"].Properties.Add("Size", new System.Drawing.Size(425, 250));
+
             if (ItemsSource == null)
 #pragma warning disable BL0005 // Component parameter should not be set outside of its component.
-                Items.Add(new MdiWindow() { ApplicationInstance = newinstance });
+                Items.Add(new MdiWindow() { ApplicationInstance = instance });
 #pragma warning restore BL0005 // Component parameter should not be set outside of its component.
             else
-                (ItemsSource as IList<ApplicationInstance>)!.Add(newinstance);
-        //}
+                (ItemsSource as IList<ApplicationInstance>)!.Add(instance);
+        }
 
-        if (!newinstance.Targets["Blazor"].Properties.ContainsKey("IsMaximized"))
-            newinstance.Targets["Blazor"].Properties.Add("IsMaximized", false);
 
-        if (!newinstance.Targets["Blazor"].Properties.ContainsKey("Position"))
-            newinstance.Targets["Blazor"].Properties.Add("Position", new System.Drawing.Size(15, 15));
+        SelectedApp = instance;
 
-        if (!newinstance.Targets["Blazor"].Properties.ContainsKey("Size"))
-            newinstance.Targets["Blazor"].Properties.Add("Size", new System.Drawing.Size(425, 250));
-
-        SelectedApp = newinstance;
-
-        var container = Items.SingleOrDefault(ct => object.ReferenceEquals(ct.ApplicationInstance, newinstance));
+        var container = Items.SingleOrDefault(ct => object.ReferenceEquals(ct.ApplicationInstance, instance));
         container?.MoveToMe();
 
         StateHasChanged();

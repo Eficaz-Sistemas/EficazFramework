@@ -41,6 +41,7 @@ public partial class SectionsView : MudBlazor.MudComponentBase
     /// Current MDI Section (for multi tenant purposes)
     /// </summary>
     [Parameter] public long CurrentSection { get; set; } = 0;
+    [Parameter] public EventCallback<long> CurrentSectionChanged { get; set; }
 
 
     /// <summary>
@@ -109,6 +110,7 @@ public partial class SectionsView : MudBlazor.MudComponentBase
     {
         CurrentSection = id;
         StateHasChanged();
+        CurrentSectionChanged.InvokeAsync();
     }
 
     private void RemoveSection(EficazFramework.Application.Section section)
