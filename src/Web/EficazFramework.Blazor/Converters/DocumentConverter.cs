@@ -44,7 +44,7 @@ internal class DocumentConverter<T> : MudBlazor.DefaultConverter<T>
         if (value == null)
             return null;
 
-        string baseStr = value.ToString().RemoveTextMask();
+        string baseStr = value!.ToString()!.RemoveTextMask();
 
         if (!decimal.TryParse(baseStr, out decimal test))
             return value.ToString();

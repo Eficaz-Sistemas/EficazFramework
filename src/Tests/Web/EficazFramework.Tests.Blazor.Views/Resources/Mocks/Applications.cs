@@ -103,7 +103,6 @@ public static class Applications
         };
         appEmptyIcon.Targets.Add("Blazor", new()
         {
-            Icon = null,
             StartupUriOrType = typeof(EficazFramework.Tests.Blazor.Views.Pages.Components.Panels.MdiApps.MdiScopedApp)
         });
 

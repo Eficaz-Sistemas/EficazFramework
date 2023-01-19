@@ -8,9 +8,9 @@ public class ApplicationDefinition
     public const string STARTWINDOWSTATE = "StartWindowState";
 
     // Metadata
-    public string Title { get; set; }
-    public string LongTitle { get; set; }
-    public string Group { get; set; }
+    public string Title { get; set; } = "";
+    public string LongTitle { get; set; } = "";
+    public string Group { get; set; } = "";
     public bool IsPublic { get; set; } = true;
     public string TooltipTilte => LongTitle ?? Title;
     public char FirstChar => (TooltipTilte ?? "#").First();

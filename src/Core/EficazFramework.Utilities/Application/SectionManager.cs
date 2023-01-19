@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Collections.Specialized;
 using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 
 namespace EficazFramework.Application;
@@ -13,7 +14,7 @@ public interface ISectionManager
     /// <summary>
     /// Contém informações acerca da Seção Ativa.
     /// </summary>
-    public Section CurrentSection { get; set; }
+    public Section? CurrentSection { get; set; }
 
     /// <summary>
     /// Obtém ou define o ID da seção ativa.
@@ -50,17 +51,17 @@ internal class SectionManager : ISectionManager, INotifyPropertyChanged
         SectionsInternal.CollectionChanged += Sections_CollectionChanged;
     }
 
-    private IApplicationManager _appManager;
+    private readonly IApplicationManager _appManager;
     /// <summary>
     /// Instância de ApplicationManager para sincronização de aplicativos por área de trabalho
     /// </summary>
     public IApplicationManager ApplicationManager => _appManager;
 
-    private Section _current;
+    private Section? _current;
     /// <summary>
     /// Contém informações acerca da Seção Ativa.
     /// </summary>
-    public Section CurrentSection
+    public Section? CurrentSection
     {
         get => _current;
         set
@@ -77,7 +78,7 @@ internal class SectionManager : ISectionManager, INotifyPropertyChanged
     /// </summary>
     public long CurrentSectionId
     {
-        get => CurrentSection.ID;
+        get => CurrentSection?.ID ?? 0;
         set
         {
             ActivateSection(value);
@@ -101,9 +102,9 @@ internal class SectionManager : ISectionManager, INotifyPropertyChanged
         get => SectionsInternal.ToReadOnlyCollection<Section>();
     }
 
-    private void Sections_CollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
+    private void Sections_CollectionChanged(object? sender, [Required] NotifyCollectionChangedEventArgs? e)
     {
-        if (e.NewItems != null && e.NewItems.Count > 0)
+        if (e!.NewItems != null && e!.NewItems.Count > 0)
         {
             foreach (Section news in e.NewItems)
             {
@@ -177,7 +178,7 @@ public class Section : INotifyPropertyChanged
         _id = Id;
     }
 
-    private long _id;
+    private readonly long _id = 0;
     public long ID => _id;
 
     public bool SectionIdLargerText
@@ -191,8 +192,8 @@ public class Section : INotifyPropertyChanged
         }
     }
 
-    private object _icon;
-    public object Icon
+    private object? _icon;
+    public object? Icon
     {
         get => _icon;
         set
@@ -202,7 +203,7 @@ public class Section : INotifyPropertyChanged
         }
     }
 
-    private string _name;
+    private string _name = "";
     public string Name
     {
         get => _name;
@@ -224,8 +225,8 @@ public class Section : INotifyPropertyChanged
         }
     }
 
-    private object _tag;
-    public object Tag
+    private object? _tag;
+    public object? Tag
     {
         get => _tag;
         set
@@ -240,6 +241,6 @@ public class Section : INotifyPropertyChanged
         return string.Format("{0} - {1}", ID, Name);
     }
 
-    public event PropertyChangedEventHandler PropertyChanged;
+    public event PropertyChangedEventHandler? PropertyChanged;
 
 }
