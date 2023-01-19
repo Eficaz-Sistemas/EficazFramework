@@ -7,7 +7,7 @@ namespace EficazFramework.Application;
 
 public class Apps
 {
-    EficazFramework.Application.IApplicationManager _appManager = EficazFramework.Application.IApplicationManager.Create();
+    readonly EficazFramework.Application.IApplicationManager _appManager = EficazFramework.Application.IApplicationManager.Create();
 
     private void GenerateAppList()
     {

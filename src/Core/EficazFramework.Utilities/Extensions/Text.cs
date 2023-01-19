@@ -556,10 +556,10 @@ public static partial class TextExtensions
     /// <param name="splitChars"></param>
     /// <returns>String</returns>
     /// <remarks></remarks>
-    public static string ToTitleCase(this string? name, string[]? splitChars = null)
+    public static string? ToTitleCase(this string? name, string[]? splitChars = null)
     {
         if (name is null)
-            return (name ?? "");
+            return name;
 
         name = name.Trim();
         splitChars ??= new string[] { "" };

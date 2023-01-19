@@ -49,7 +49,7 @@ public class IcpBrasil : X509Certificate2
         var temp = data[0].Split(":");
         Titular = (temp[0] ?? "").Replace("CN=", "");
         CNPJ_CPF = temp[1].FormatRFBDocument() ?? "";
-        CNPJ_CPF = temp[1].FormatRFBDocument() ?? "";
+        AutoridadeCertificadora = (data[1] ?? "").Replace("OU=Autenticado por ", "").Trim();
         Tipo = (data[2] ?? "").Replace("OU=", "").Trim();
         DataEfetiva = Conversions.ToDate(GetEffectiveDateString());
         Validade = Conversions.ToDate(GetExpirationDateString());
