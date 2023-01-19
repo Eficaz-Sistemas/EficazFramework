@@ -16,7 +16,7 @@ public static class ObjectExtensions
     /// <returns>Object</returns>
     /// <remarks>Para caminhos completox, separe cada membro por ponto. Ex: Endereco.UF: Obtém a UF, da instância de endereço, que por sua vez é
     /// uma propriedade de uma entidade de nível superior, como por exemplo Empresa.</remarks>
-    public static PropertyInfo GetPropertyInfo(this object instance, string path, [Optional, DefaultParameterValue(null)] ref object out_instance)
+    public static PropertyInfo? GetPropertyInfo(this object instance, string path, [Optional, DefaultParameterValue(null)] ref object out_instance)
     {
         out_instance = instance;
         var tmp_instance = instance;

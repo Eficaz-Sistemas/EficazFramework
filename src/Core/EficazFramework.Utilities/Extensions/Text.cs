@@ -1,4 +1,4 @@
-﻿using Microsoft.VisualBasic.CompilerServices;
+﻿    using Microsoft.VisualBasic.CompilerServices;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -196,39 +196,28 @@ public static partial class TextExtensions
             }
         }
 
-        _palavra = "";
         if (result[0] is null)
         {
             result[0] = "Rua";
             if (logradouro.Length > 45)
-            {
                 result[1] = logradouro[..Math.Min(45, logradouro.Length)].Trim();
-            }
             else
-            {
                 result[1] = logradouro.Trim();
-            }
         }
 
         if (result[0] != null)
         {
             if (result[0].Length > 15)
-            {
                 result[0] = result[0][..Math.Min(14, result[1].Length)];
-            }
 
             if (ToTitleCase == true)
-            {
                 result[0] = result[0].ToTitleCase();
-            }
         }
 
         if (result[1] != null)
         {
             if (ToTitleCase == true)
-            {
                 result[1] = result[1].ToTitleCase();
-            }
         }
 
         return result;
@@ -3424,10 +3413,8 @@ public static class LocalizationExtensions
     /// </summary>
     /// <param name="text">ID do texto a ser localizado.</param>
     /// <returns></returns>
-    public static string Localize(this string text)
-    {
-        return text.Localize(typeof(EficazFramework.Resources.Strings.Descriptions), null);
-    }
+    public static string? Localize(this string text) =>
+        text.Localize(typeof(EficazFramework.Resources.Strings.Descriptions), null);
 
     /// <summary>
     /// Retorna o texto no idioma (System.Globalization.Culture.CultureInfo) atual
@@ -3453,7 +3440,7 @@ public static class LocalizationExtensions
                 _resourcesCache.Add(resourceManager, resourceManagerInstance);
             }
 
-            tmpstring = resourceManagerInstance.GetString(text);
+            tmpstring = (resourceManagerInstance.GetString(text) ?? text);
             if (tmpstring != null)
             {
                 if (stringformat == null)

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Diagnostics;
+using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Security.Cryptography.X509Certificates;
 using System.Security.Cryptography.Xml;
@@ -30,14 +31,11 @@ public class XMLOperations
             throw new ArgumentNullException(EficazFramework.Resources.Strings.XML.Sign_NullX509Certificate);
         var tags = xml.GetElementsByTagName(tag);
         int count = tags.Count;
+      
         if (count == 0)
-        {
             throw new ArgumentException(string.Format(EficazFramework.Resources.Strings.XML.Sign_TagNotFound, tag));
-        }
         else if (count > 1)
-        {
             throw new ArgumentException(string.Format(EficazFramework.Resources.Strings.XML.Sign_TagNonUnique, tag));
-        }
 
         // ## Solicita as credenciais do certificado
         var sxml = new SignedXml(xml)
@@ -50,7 +48,7 @@ public class XMLOperations
         // ## Faz umas coisas que eu não entendi
         var @ref = new Reference();
         if (emptyURI == false)
-            @ref.Uri = "#" + xml.GetElementsByTagName(idTag).Item(0).Attributes.Cast<XmlNode>().Where(att => att.Name.ToLower() == "id").First().InnerText;
+            @ref.Uri = "#" + xml.GetElementsByTagName(idTag).Item(0)?.Attributes?.Cast<XmlNode>()?.Where(att => att.Name.ToLower() == "id").First().InnerText;
         else
             @ref.Uri = "";
         @ref.AddTransform(new XmlDsigEnvelopedSignatureTransform());
@@ -70,7 +68,7 @@ public class XMLOperations
         var xmle = sxml.GetXml();
 
         // ## Adiciona o XMLElement assinado ao XMLDocument e faz um clonning para evitar algum problema que eu não entendi
-        tags[0].AppendChild(xml.ImportNode(xmle, true));
+        tags[0]!.AppendChild(xml.ImportNode(xmle, true));
 
         // ## Trace Debug
         var stringWriter = new System.IO.StringWriter();
@@ -105,7 +103,7 @@ public class XMLOperations
     /// <summary>
     /// Converte uma instância de System.Xml.Linq.XElement para System.Xml.XmlElement
     /// </summary>
-    public static XmlElement ToXmlElement(XElement source)
+    public static XmlElement ToXmlElement([NotNull] XElement source)
     {
         if (source is null)
             throw new NullReferenceException();

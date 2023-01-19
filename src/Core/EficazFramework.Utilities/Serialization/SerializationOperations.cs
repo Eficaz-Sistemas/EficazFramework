@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System.Text.Json;
+using System.Threading.Tasks;
 
 namespace EficazFramework.Serialization;
 
@@ -7,13 +8,13 @@ public class SerializationOperations
 
     // ### FROM XML
 
-    public static T FromXml<T>(System.IO.Stream source)
+    public static T? FromXml<T>(System.IO.Stream source)
     {
         var serializer = new System.Xml.Serialization.XmlSerializer(typeof(T));
-        return (T)serializer.Deserialize(source);
+        return (T?)serializer.Deserialize(source);
     }
 
-    public static T FromXml<T>(string sourcePath)
+    public static T? FromXml<T>(string sourcePath)
     {
         var file = System.IO.File.OpenRead(sourcePath);
         var result = FromXml<T>(file);
@@ -22,16 +23,11 @@ public class SerializationOperations
         return result;
     }
 
-    public async static Task<T> FromXmlAsync<T>(System.IO.Stream source)
-    {
-        return await Task.Run(() => FromXml<T>(source));
-    }
+    public async static Task<T?> FromXmlAsync<T>(System.IO.Stream source) =>
+        await Task.Run(() => FromXml<T>(source));
 
-    public async static Task<T> FromXmlAsync<T>(string sourcePath)
-    {
-        return await Task.Run(() => FromXml<T>(sourcePath));
-    }
-
+    public async static Task<T?> FromXmlAsync<T>(string sourcePath) =>
+        await Task.Run(() => FromXml<T>(sourcePath));
 
     // ### TO XML
 
@@ -90,24 +86,19 @@ public class SerializationOperations
         PropertyNameCaseInsensitive = true
     };
 
-    public static T FromJson<T>(string source)
-    {
-        return System.Text.Json.JsonSerializer.Deserialize<T>(source, JsonSerializerOptions);
-    }
+    public static T? FromJson<T>(string source) =>
+        System.Text.Json.JsonSerializer.Deserialize<T>(source, JsonSerializerOptions);
 
-    public static T FromJson<T>(System.IO.Stream source)
-    {
-        return System.Text.Json.JsonSerializer.Deserialize<T>(source, JsonSerializerOptions);
-    }
+    public static T? FromJson<T>(System.IO.Stream source) =>
+        System.Text.Json.JsonSerializer.Deserialize<T>(source, JsonSerializerOptions);
 
-    public static T FromJsonFile<T>(string sourcePath)
+    public static T? FromJsonFile<T>(string sourcePath)
     {
         string filecontent = System.IO.File.ReadAllText(sourcePath);
         return FromJson<T>(filecontent);
-
     }
 
-    public static async Task<T> FromJsonAsync<T>(string source)
+    public static async Task<T?> FromJsonAsync<T>(string source)
     {
         T result = default;
         using (var memory = new System.IO.MemoryStream(System.Text.Encoding.UTF8.GetBytes(source)))
@@ -120,12 +111,10 @@ public class SerializationOperations
         return result;
     }
 
-    public static async Task<T> FromJsonAsync<T>(System.IO.Stream source)
-    {
-        return await System.Text.Json.JsonSerializer.DeserializeAsync<T>(source, JsonSerializerOptions); ;
-    }
+    public static async Task<T?> FromJsonAsync<T>(System.IO.Stream source) =>
+        await System.Text.Json.JsonSerializer.DeserializeAsync<T>(source, JsonSerializerOptions);
 
-    public static async Task<T> FromJsonFileAsync<T>(string sourcePath)
+    public static async Task<T?> FromJsonFileAsync<T>(string sourcePath)
     {
         string filecontent = await System.IO.File.ReadAllTextAsync(sourcePath, System.Text.Encoding.UTF8);
         return await FromJsonAsync<T>(filecontent);
@@ -133,10 +122,8 @@ public class SerializationOperations
 
     // ### TO JSON
 
-    public static string ToJson<T>(T source)
-    {
-        return System.Text.Json.JsonSerializer.Serialize(source, new System.Text.Json.JsonSerializerOptions { WriteIndented = true });
-    }
+    public static string ToJson<T>(T source) =>
+        System.Text.Json.JsonSerializer.Serialize(source, new System.Text.Json.JsonSerializerOptions { WriteIndented = true });
 
     public static void ToJsonFile<T>(T source, string targetPath)
     {
