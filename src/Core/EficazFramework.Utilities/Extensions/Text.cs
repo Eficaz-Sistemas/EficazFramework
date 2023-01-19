@@ -48,6 +48,10 @@ public static partial class TextExtensions
     [GeneratedRegex(@"(?:[^a-za-zA-Z0-9]|(?<=['\'])s)", RegexOptions.CultureInvariant)]
     private static partial Regex RegexMask();
 
+    [GeneratedRegex(@"^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$", RegexOptions.CultureInvariant)]
+    private static partial Regex RegexMail();
+
+
 #endif
 
     /// <summary>
@@ -211,13 +215,13 @@ public static partial class TextExtensions
                 result[0] = result[0][..Math.Min(14, result[1].Length)];
 
             if (ToTitleCase == true)
-                result[0] = result[0].ToTitleCase();
+                result[0] = (result[0]!.ToTitleCase() ?? "");
         }
 
         if (result[1] != null)
         {
             if (ToTitleCase == true)
-                result[1] = result[1].ToTitleCase();
+                result[1] = (result[1].ToTitleCase() ?? "");
         }
 
         return result;
@@ -542,8 +546,12 @@ public static partial class TextExtensions
     /// <remarks></remarks>
     public static bool IsValidEmailAddress(this string email)
     {
+#if NET7_0_OR_GREATER
+        return RegexMail().IsMatch(email);
+#else
         var r = new Regex(@"^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$");
         return r.IsMatch(email);
+#endif
     }
 
     /// <summary>
@@ -1275,9 +1283,9 @@ public static partial class TextExtensions
         int intValor;
         int intPeso = 0;
         int intResto;
-        string strDigito1 = "";
-        string strDigito2 = "";
-        string strBase2 = "";
+        string strDigito1;
+        string strDigito2;
+        string strBase2;
 
 
         // #Region "Validação 8 dígitos"
@@ -3423,7 +3431,7 @@ public static class LocalizationExtensions
     /// <param name="resourceManager">Tipo do dicionário ResourceManager a ser consultado.</param>
     /// <param name="stringformat">(Opcional) Máscara para formatação do texto resultante.</param>
     /// <returns></returns>
-    public static string Localize(this string text, Type resourceManager, string stringformat)
+    public static string Localize(this string text, Type resourceManager, string? stringformat)
     {
         try
         {
@@ -3449,7 +3457,7 @@ public static class LocalizationExtensions
                     return string.Format(stringformat, tmpstring);
             }
 
-            if (stringformat == null)
+            if (string.IsNullOrEmpty(stringformat))
                 return text;
             else
                 return string.Format(stringformat, text);
@@ -3457,7 +3465,7 @@ public static class LocalizationExtensions
         catch //(Exception ex)
         {
 
-            if (stringformat == null)
+            if (string.IsNullOrEmpty(stringformat))
                 return text;
             else
                 return string.Format(stringformat, text);
