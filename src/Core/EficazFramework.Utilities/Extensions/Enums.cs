@@ -7,12 +7,12 @@ namespace EficazFramework.Extensions;
 
 public static class Enums
 {
-    private static TEnum[] GetEnumList<TEnum>()
+    private static TEnum[]? GetEnumList<TEnum>()
     {
         if (typeof(TEnum).IsEnum == false & !ReferenceEquals(typeof(TEnum).BaseType, typeof(TEnum))) { return null; }
         return Enum.GetValues(typeof(TEnum)).Cast<TEnum>().ToArray();
     }
-    private static object[] GetEnumList(Type enumType)
+    private static object[]? GetEnumList(Type enumType)
     {
         if (enumType.IsEnum == false & !ReferenceEquals(enumType.BaseType, enumType)) { return null; }
         return Enum.GetValues(enumType).Cast<object>().ToArray();

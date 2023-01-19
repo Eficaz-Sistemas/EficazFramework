@@ -179,8 +179,7 @@ public class ExpressionBuilder : INotifyPropertyChanged, IDisposable
             return;
 
         var removed = (e.Parameter as ExpressionItem);
-        if (removed == null)
-            removed = CurrentItem;
+        removed ??= CurrentItem;
 
         Items.Remove(removed);
         RemovedAdded?.Invoke(this, new NotifyCollectionChangedEventArgs(NotifyCollectionChangedAction.Add, new[] { removed }.ToList()));
@@ -267,7 +266,6 @@ public class ExpressionBuilder : INotifyPropertyChanged, IDisposable
             }
         }
 
-        // Collection Items = Any(Funcion(x):
         var groups = combineditems.Where(c => c.SelectedProperty != null && c.SelectedProperty.CollectionName != null).
                                    GroupBy(c => c.SelectedProperty.CollectionName).
                                    Select(c => c.Key).ToList();
@@ -277,20 +275,18 @@ public class ExpressionBuilder : INotifyPropertyChanged, IDisposable
         foreach (var group in groups)
         {
             icoll += 1;
-            // Dim eteste As Func(Of String, Boolean) = Function(x) x.Length
-
-            //object groupExpression = null; // As Linq.Expressions.Expression(Of Func(Of TElement, Boolean))
             var group_items = combineditems.Where(c => (c.SelectedProperty.CollectionName ?? "") == (group ?? "")).ToList();
             foreach (var ex in group_items)
             {
                 if (ex.SelectedProperty is null)
                     continue;
-                if (groupCollInfo is null)
-                    groupCollInfo = ex.SelectedProperty.GetCollectionPropertyInfo<TElement>();
-                if (groupCollType is null)
-                    groupCollType = ex.SelectedProperty.GetCollectionGenericType<TElement>();
+
+                groupCollInfo ??= ex.SelectedProperty.GetCollectionPropertyInfo<TElement>();
+                groupCollType ??= ex.SelectedProperty.GetCollectionGenericType<TElement>();
+
                 if (!_MP_new.ContainsKey(groupCollType))
                     _MP_new.Add(groupCollType, System.Linq.Expressions.Expression.Parameter(groupCollType, string.Format("s{0}", icoll.ToString())));
+
                 bool ignore = false;
                 string result = ex.Validate(ref ignore);
                 if (ignore == true)
@@ -308,8 +304,7 @@ public class ExpressionBuilder : INotifyPropertyChanged, IDisposable
                     // If groupExpression IsNot Nothing Then groupExpression = Expressions.And(groupExpression, expr2) Else groupExpression = expr2
 
                     // TEMPORARY FIX
-                    if (resultExpression is null)
-                        resultExpression = f => true;
+                    resultExpression ??= f => true;
                     resultExpression = resultExpression.And(resultExpression.Any(groupCollInfo, (System.Linq.Expressions.Expression)expr2));
                 }
             }
@@ -380,6 +375,7 @@ public class ExpressionBuilder : INotifyPropertyChanged, IDisposable
     {
         _items.CollectionChanged -= ItemsCollectionsChanged;
         _fixeditems.CollectionChanged -= ItemsCollectionsChanged;
+        GC.SuppressFinalize(this);
     }
 
     #endregion

@@ -439,7 +439,7 @@ public sealed class ApiRepository<TEntity> : Repositories.RepositoryBase<TEntity
     /// </summary>
     internal override void DisposeManagedCallerObjects()
     {
-        if (TrackingContext != null) TrackingContext.Dispose();
+        TrackingContext?.Dispose();
         TrackingContext = null;
     }
 

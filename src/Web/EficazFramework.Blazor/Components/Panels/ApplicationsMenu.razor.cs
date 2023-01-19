@@ -36,10 +36,6 @@ public partial class ApplicationsMenu : MudBlazor.MudComponentBase
     [Parameter] public Action<ApplicationDefinition>? SelectionCallBack { get; set; } = null;
 
 
-    private bool _startMenuIsOpen = false;
-    public bool StartMenuIsOpen => _startMenuIsOpen;
-
-
     private bool _isCompact = false;
     /// <summary>
     /// Toggle between Full and Compact (list) Application Menu

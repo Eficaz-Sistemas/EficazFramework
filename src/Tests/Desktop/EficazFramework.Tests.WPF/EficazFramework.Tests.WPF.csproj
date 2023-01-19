@@ -9,6 +9,7 @@
 	<RootNamespace>EficazFramework</RootNamespace>
 	<SignAssembly>True</SignAssembly>
 	<AssemblyOriginatorKeyFile>EfCore.snk</AssemblyOriginatorKeyFile>
+	<NeutralLanguage>pt-BR</NeutralLanguage>
   </PropertyGroup>
 	
   <ItemGroup>

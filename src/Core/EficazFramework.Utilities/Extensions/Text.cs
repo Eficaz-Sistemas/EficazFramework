@@ -6,8 +6,49 @@ using System.Text.RegularExpressions;
 
 namespace EficazFramework.Extensions;
 
-public static class TextExtensions
+public static partial class TextExtensions
 {
+#if NET7_0_OR_GREATER
+    [GeneratedRegex("[á|à|ä|â|ã]", RegexOptions.CultureInvariant)]
+    private static partial Regex RegexA();
+
+    [GeneratedRegex("[é|è|ë|ê]", RegexOptions.CultureInvariant)]
+    private static partial Regex RegexE();
+
+    [GeneratedRegex("[í|ì|ï|î]", RegexOptions.CultureInvariant)]
+    private static partial Regex RegexI();
+
+    [GeneratedRegex("[ó|ò|ö|ô|õ]", RegexOptions.CultureInvariant)]
+    private static partial Regex RegexO();
+
+    [GeneratedRegex("[ú|ù|ü|û]", RegexOptions.CultureInvariant)]
+    private static partial Regex RegexU();
+
+    [GeneratedRegex("[Á|À|Ä|Â|Ã]", RegexOptions.CultureInvariant)]
+    private static partial Regex RegexAUpperCase();
+
+    [GeneratedRegex("[É|È|Ë|Ê]", RegexOptions.CultureInvariant)]
+    private static partial Regex RegexEUpperCase();
+
+    [GeneratedRegex("[Í|Ì|Ï|Î]", RegexOptions.CultureInvariant)]
+    private static partial Regex RegexIUpperCase();
+
+    [GeneratedRegex("[Ó|Ò|Ö|Ô|Õ]", RegexOptions.CultureInvariant)]
+    private static partial Regex RegexOUpperCase();
+
+    [GeneratedRegex("[Ú|Ù|Ü|Û]", RegexOptions.CultureInvariant)]
+    private static partial Regex RegexUUpperCase();
+
+    [GeneratedRegex("[ç]", RegexOptions.CultureInvariant)]
+    private static partial Regex RegexC();
+
+    [GeneratedRegex("[Ç]", RegexOptions.CultureInvariant)]
+    private static partial Regex RegexCUpperCase();
+
+    [GeneratedRegex(@"(?:[^a-za-zA-Z0-9]|(?<=['\'])s)", RegexOptions.CultureInvariant)]
+    private static partial Regex RegexMask();
+
+#endif
 
     /// <summary>
     /// Returns the left part of this string instance.
@@ -57,58 +98,19 @@ public static class TextExtensions
     public static string FormatCEP(this string @base)
     {
         @base = @base.Replace("-", string.Empty).Replace(".", string.Empty).Replace(",", string.Empty).Replace("_", string.Empty);
-        switch (@base.Length)
+        return @base.Length switch
         {
-            case 4:
-                {
-                    return @base[..1] + "-" + @base.Substring(1, 3);
-                }
-
-            case 5:
-                {
-                    return @base[..2] + "-" + @base.Substring(2, 3);
-                }
-
-            case 6:
-                {
-                    return @base[..3] + "-" + @base.Substring(3, 3);
-                }
-
-            case 7:
-                {
-                    return @base[..1] + "." + @base.Substring(1, 3) + "-" + @base.Substring(4, 3);
-                }
-
-            case 8:
-                {
-                    return @base[..2] + "." + @base.Substring(2, 3) + "-" + @base.Substring(5, 3);
-                }
-
-            case 9:
-                {
-                    return @base[..3] + "." + @base.Substring(3, 3) + "-" + @base.Substring(6, 3);
-                }
-
-            case 10:
-                {
-                    return @base[..1] + "." + @base.Substring(1, 3) + "." + @base.Substring(4, 3) + "-" + @base.Substring(7, 3);
-                }
-
-            case 11:
-                {
-                    return @base[..2] + "." + @base.Substring(2, 3) + "." + @base.Substring(5, 3) + "-" + @base.Substring(8, 3);
-                }
-
-            case 12:
-                {
-                    return @base[..3] + "." + @base.Substring(3, 3) + "." + @base.Substring(6, 3) + "-" + @base.Substring(9, 3);
-                }
-
-            default:
-                {
-                    return @base;
-                }
-        }
+            4 => $"{@base[..1]}-{@base.Substring(1, 3)}",
+            5 => $"{@base[..2]}-{@base.Substring(2, 3)}",
+            6 => $"{@base[..3]}-{@base.Substring(3, 3)}",
+            7 => $"{@base[..1]}.{@base.Substring(1, 3)}-{@base.Substring(4, 3)}",
+            8 => $"{@base[..2]}.{@base.Substring(2, 3)}-{@base.Substring(5, 3)}",
+            9 => $"{@base[..3]}.{@base.Substring(3, 3)}-{@base.Substring(6, 3)}",
+            10 => $"{@base[..1]}.{@base.Substring(1, 3)}.{@base.Substring(4, 3)}-{@base.Substring(7, 3)}",
+            11 => $"{@base[..2]}.{@base.Substring(2, 3)}.{@base.Substring(5, 3)}-{@base.Substring(8, 3)}",
+            12 => $"{@base[..3]}.{@base.Substring(3, 3)}.{@base.Substring(6, 3)}-{@base.Substring(9, 3)}",
+            _ => @base
+        };
     }
 
     public static string FormatFone(this string @base)
@@ -116,6 +118,7 @@ public static class TextExtensions
         @base = @base.RemoveTextMask();
         if (long.TryParse(@base, out long number) == false)
             return @base;
+
         switch (@base.Length)
         {
             case 7: // 544-1511
@@ -238,7 +241,7 @@ public static class TextExtensions
     /// <param name="documento">O documento a ser formatado.</param>
     /// <returns>String</returns>
     /// <remarks></remarks>
-    public static string FormatRFBDocument(this string documento)
+    public static string? FormatRFBDocument(this string documento)
     {
         if (documento is null)
         {
@@ -252,12 +255,12 @@ public static class TextExtensions
         {
             case 14:
                 {
-                    return FormatCNPJ(documento);
+                    return documento.FormatCNPJ();
                 }
 
             case 11:
                 {
-                    return FormatCPF(documento);
+                    return documento.FormatCPF();
                 }
 
             default:
@@ -267,21 +270,14 @@ public static class TextExtensions
         }
     }
 
-    private static string FormatCNPJ(this string documento)
-    {
-        return documento[..2] + "." + documento.Substring(2, 3) + "." + documento.Substring(5, 3) + "/" + documento.Substring(8, 4) + "-" + documento.Substring(12, 2);
-        // Return [String].Format("{0:00\.000\.000\/0000\-00}", documento) Long para CNPJ
-    }
+    private static string FormatCNPJ(this string documento) =>
+        $"{documento[..2]}.{documento.Substring(2, 3)}.{documento.Substring(5, 3)}/{documento.Substring(8, 4)}-{documento.Substring(12, 2)}";
 
-    public static string FormatPIS(this string documento)
-    {
-        return Convert.ToDecimal(documento).ToString(@"#000\.00000\.00\-0");
-    }
+    public static string FormatPIS(this string documento) =>
+        Convert.ToDecimal(documento).ToString(@"#000\.00000\.00\-0");
 
-    private static string FormatCPF(this string documento)
-    {
-        return documento[..3] + "." + documento.Substring(3, 3) + "." + documento.Substring(6, 3) + "-" + documento.Substring(9, 2);
-    }
+    private static string FormatCPF(this string documento) =>
+        documento[..3] + "." + documento.Substring(3, 3) + "." + documento.Substring(6, 3) + "-" + documento.Substring(9, 2);
 
     /// <summary>
     /// Insere a máscara de formatação em uma Inscrição Estadual
@@ -297,7 +293,7 @@ public static class TextExtensions
             return vIE;
         if (long.TryParse(vIE, out _) == false)
             return vIE;
-        return FormataIE(vIE, vUF);
+        return vIE.FormataIE(vUF);
     }
 
     private static string FormataIE(this string IE, string UF)
@@ -481,6 +477,20 @@ public static class TextExtensions
     /// <remarks></remarks>
     public static string GetClearText(this string texto)
     {
+#if NET7_0_OR_GREATER
+        texto = RegexA().Replace(texto, "a");
+        texto = RegexE().Replace(texto, "e");
+        texto = RegexI().Replace(texto, "i");
+        texto = RegexO().Replace(texto, "o");
+        texto = RegexU().Replace(texto, "u");
+        texto = RegexC().Replace(texto, "c");
+        texto = RegexAUpperCase().Replace(texto, "A");
+        texto = RegexEUpperCase().Replace(texto, "E");
+        texto = RegexIUpperCase().Replace(texto, "I");
+        texto = RegexOUpperCase().Replace(texto, "O");
+        texto = RegexUUpperCase().Replace(texto, "U");
+        texto = RegexCUpperCase().Replace(texto, "C");
+#else
         texto = Regex.Replace(texto, "[á|à|ä|â|ã]", "a", RegexOptions.IgnoreCase & RegexOptions.CultureInvariant);
         texto = Regex.Replace(texto, "[é|è|ë|ê]", "e", RegexOptions.IgnoreCase & RegexOptions.CultureInvariant);
         texto = Regex.Replace(texto, "[í|ì|ï|î]", "i", RegexOptions.IgnoreCase & RegexOptions.CultureInvariant);
@@ -493,6 +503,7 @@ public static class TextExtensions
         texto = Regex.Replace(texto, "[Ú|Ù|Ü|Û]", "U", RegexOptions.IgnoreCase & RegexOptions.CultureInvariant);
         texto = Regex.Replace(texto, "[ç]", "c", RegexOptions.IgnoreCase & RegexOptions.CultureInvariant);
         texto = Regex.Replace(texto, "[Ç]", "C", RegexOptions.IgnoreCase & RegexOptions.CultureInvariant);
+#endif
         return texto;
     }
 
@@ -504,7 +515,11 @@ public static class TextExtensions
     /// <remarks></remarks>
     public static string RemoveTextMask(this string texto)
     {
+#if NET7_0_OR_GREATER
+        texto = RegexMask().Replace(texto, string.Empty);
+#else
         texto = Regex.Replace(texto, @"(?:[^a-za-zA-Z0-9]|(?<=['\'])s)", string.Empty, RegexOptions.IgnoreCase & RegexOptions.CultureInvariant);
+#endif
         return texto.Replace(" ", "");
     }
 
@@ -514,10 +529,8 @@ public static class TextExtensions
     /// <param name="texto">A string a ser analisada.</param>
     /// <param name="tamanho">quantidade de caracteres desejada</param>
     /// <returns></returns>
-    public static IEnumerable<string> SplitByLength(this string texto, int tamanho)
-    {
-        return Enumerable.Range(0, Conversions.ToInteger(Math.Ceiling(texto.Length / (double)tamanho))).Select(i => texto.Substring(i * tamanho, Math.Min(texto.Length - i * tamanho, tamanho)));
-    }
+    public static IEnumerable<string> SplitByLength(this string texto, int tamanho) =>
+        Enumerable.Range(0, Conversions.ToInteger(Math.Ceiling(texto.Length / (double)tamanho))).Select(i => texto.Substring(i * tamanho, Math.Min(texto.Length - i * tamanho, tamanho)));
 
     /// <summary>
     /// Converte a sequência de caracteres desejada em formato de URL Slug
@@ -554,30 +567,24 @@ public static class TextExtensions
     /// <param name="splitChars"></param>
     /// <returns>String</returns>
     /// <remarks></remarks>
-    public static string ToTitleCase(this string name, string[] splitChars = null)
+    public static string ToTitleCase(this string? name, string[]? splitChars = null)
     {
         if (name is null)
-            return null;
+            return (name ?? "");
+
         name = name.Trim();
-        if (splitChars is null)
-        {
-            splitChars = new string[] { "" };
-        }
+        splitChars ??= new string[] { "" };
 
         var array = name.ToLower().ToCharArray();
         if (array.Length > 1)
         {
             if (char.IsLower(array[0]))
-            {
                 array[0] = char.ToUpper(array[0]);
-            }
 
             for (int i = 1, loopTo = array.Length; i <= loopTo; i++)
             {
                 if (Conversions.ToString(array[i - 1]) == " " | splitChars.Contains(Conversions.ToString(array[i - 1])))
-                {
                     array[i] = char.ToUpper(array[i]);
-                }
             }
 
             return new string(array);
@@ -638,22 +645,16 @@ public static class TextExtensions
             }
 
             if (calc_t == 0)
-            {
                 return false;
-            }
 
             // realiza a divisão do somatório por 11 e captura o resto da divisão
             resto = calc_t % 11;
 
             // analisa o resto da divisão e apura o valor do primeiro dígito verificador
             if (resto < 2)
-            {
                 st_value = 0;
-            }
             else
-            {
                 st_value = 11 - resto;
-            }
 
             // CÁLCULO DO SEGUNDO DÍGITO VERIFICADOR:
             // nessa etapa os numeros da tabela "verify" foram modificados, além da 
@@ -689,23 +690,15 @@ public static class TextExtensions
 
             // analisa o resto da divisão e apura o valor do segundo dígito verificador
             if (resto < 2)
-            {
                 nd_value = 0;
-            }
             else
-            {
                 nd_value = 11 - resto;
-            }
 
             // compara os dígitos apurados com os informados pelo usuário
             if (st_value == Conversions.ToInteger(CNPJ.Substring(12, 1)) & nd_value == Conversions.ToInteger(CNPJ.Substring(13, 1)))
-            {
                 return true;
-            }
             else
-            {
                 return false;
-            }
         }
         catch (Exception)
         {
@@ -756,22 +749,16 @@ public static class TextExtensions
             }
 
             if (calc_t == 0)
-            {
                 return false;
-            }
 
             // realiza a divisão do somatório por 11 e captura o resto da divisão
             resto = calc_t % 11;
 
             // analisa o resto da divisão e apura o valor do primeiro dígito verificador
             if (resto < 2)
-            {
                 st_value = 0;
-            }
             else
-            {
                 st_value = 11 - resto;
-            }
 
             // CÁLCULO DO SEGUNDO DÍGITO VERIFICADOR:
             // nessa etapa os numeros da tabela "verify" foram modificados, além da 
@@ -804,23 +791,15 @@ public static class TextExtensions
 
             // analisa o resto da divisão e apura o valor do segundo dígito verificador
             if (resto < 2)
-            {
                 nd_value = 0;
-            }
             else
-            {
                 nd_value = 11 - resto;
-            }
 
             // compara os dígitos apurados com os informados pelo usuário
             if (st_value == Conversions.ToInteger(CPF.Substring(9, 1)) & nd_value == Conversions.ToInteger(CPF.Substring(10, 1)))
-            {
                 return true;
-            }
             else
-            {
                 return false;
-            }
         }
         catch (Exception)
         {
@@ -875,23 +854,15 @@ public static class TextExtensions
 
             // analisa o resto da divisão e apura o valor do dígito verificador
             if (resto != 0)
-            {
                 value = 11 - resto;
-            }
             else
-            {
                 value = 0;
-            }
 
             // compara os dígitos apurados com os informados pelo usuário
             if (value == Conversions.ToInteger(PIS.Substring(10, 1)))
-            {
                 return true;
-            }
             else
-            {
                 return false;
-            }
         }
         catch (Exception)
         {
@@ -908,7 +879,7 @@ public static class TextExtensions
     /// <remarks></remarks>
     public static bool IsValidInscricaoEstadual(this string IE, string UF)
     {
-        if (String.IsNullOrEmpty(IE) || (IE ?? "").ToUpper().Contains("ISENTO"))
+        if (string.IsNullOrEmpty(IE) || (IE ?? "").ToUpper().Contains("ISENTO"))
             return true;
 
         if (string.IsNullOrEmpty(UF))
@@ -918,7 +889,7 @@ public static class TextExtensions
             return true;
 
         UF = UF.ToUpper();
-        IE = IE.ToUpper();
+        IE = (IE ?? "").ToUpper();
         // Formata os dígitos da inscrição, deixando apenas números
         IE = IE.Replace(".", string.Empty);
         IE = IE.Replace(",", string.Empty);
@@ -938,148 +909,37 @@ public static class TextExtensions
         IE = IE.Replace(")", string.Empty);
 
         // Verifica a UF
-        switch (UF ?? "")
+        return (UF ?? "") switch
         {
-            case "AC": // Acre
-                {
-                    return Validate_AC(IE);
-                }
-
-            case "AL": // Alagoas
-                {
-                    return Validate_AL(IE);
-                }
-
-            case "AM": // Amazonas
-                {
-                    return Validate_AM(IE);
-                }
-
-            case "AP": // Amapá
-                {
-                    return Validate_AP(IE);
-                }
-
-            case "BA": // Bahia
-                {
-                    return Validate_BA(IE);
-                }
-
-            case "CE": // Ceará
-                {
-                    return Validate_CE(IE);
-                }
-
-            case "DF": // Distrito Federal
-                {
-                    return Validate_DF(IE);
-                }
-
-            case "ES": // Espírito Santo
-                {
-                    return Validate_ES(IE);
-                }
-
-            case "GO": // Goiás
-                {
-                    return Validate_GO(IE);
-                }
-
-            case "MA": // Maranhão
-                {
-                    return Validate_MA(IE);
-                }
-
-            case "MG": // Minas Gerais
-                {
-                    return Validate_MG(IE);
-                }
-
-            case "MS": // Mato Grosso do Sul
-                {
-                    return Validate_MS(IE);
-                }
-
-            case "MT": // Mato Grosso
-                {
-                    return Validate_MT(IE);
-                }
-
-            case "PA": // Pará
-                {
-                    return Validate_PA(IE);
-                }
-
-            case "PB": // Paraíba
-                {
-                    return Validate_PB(IE);
-                }
-
-            case "PE": // Pernambuco
-                {
-                    return Validate_PE(IE);
-                }
-
-            case "PI": // Piauí
-                {
-                    return Validate_PI(IE);
-                }
-
-            case "PR": // Paraná
-                {
-                    return Validate_PR(IE);
-                }
-
-            case "RJ": // Rio de Janeiro
-                {
-                    return Validate_RJ(IE);
-                }
-
-            case "RN": // Rio Grande do Norte
-                {
-                    return Validate_RN(IE);
-                }
-
-            case "RS": // Rio Grande do Sul
-                {
-                    return Validate_RS(IE);
-                }
-
-            case "RO": // Rondônia
-                {
-                    return Validate_RO(IE);
-                }
-
-            case "RR": // Roraima
-                {
-                    return Validate_RR(IE);
-                }
-
-            case "SC": // Santa Catarina
-                {
-                    return Validate_SC(IE);
-                }
-
-            case "SE": // Sergipe
-                {
-                    return Validate_SE(IE);
-                }
-
-            case "SP": // São Paulo
-                {
-                    return Validate_SP(IE);
-                }
-
-            case "TO":
-                {
-                    return Validate_TO(IE);
-                }
-
-            default:
-                {
-                    return false;
-                }
-        }
+            "AC" => IE.Validate_AC(),
+            "AL" => IE.Validate_AL(),
+            "AM" => IE.Validate_AM(),
+            "AP" => IE.Validate_AP(),
+            "BA" => IE.Validate_BA(),
+            "CE" => IE.Validate_CE(),
+            "DF" => IE.Validate_DF(),
+            "ES" => IE.Validate_ES(),
+            "GO" => IE.Validate_GO(),
+            "MA" => IE.Validate_MA(),
+            "MG" => IE.Validate_MG(),
+            "MS" => IE.Validate_MS(),
+            "MT" => IE.Validate_MT(),
+            "PA" => IE.Validate_PA(),
+            "PB" => IE.Validate_PB(),
+            "PE" => IE.Validate_PE(),
+            "PI" => IE.Validate_PI(),
+            "PR" => IE.Validate_PR(),
+            "RJ" => IE.Validate_RJ(),
+            "RN" => IE.Validate_RN(),
+            "RS" => IE.Validate_RS(),
+            "RO" => IE.Validate_RO(),
+            "RR" => IE.Validate_RR(),
+            "SC" => IE.Validate_SC(),
+            "SE" => IE.Validate_SE(),
+            "SP" => IE.Validate_SP(),
+            "TO" => IE.Validate_TO(),
+            _ => false
+        };
     }
 
 
@@ -1612,190 +1472,6 @@ public static class TextExtensions
 
         return true;
     } // UPdated 02/02/2017
-
-    // Private Function ValidaBA_08Digitos(ByVal IE As String) As Boolean
-    // If IE.Trim().Length = 8 Then
-    // Dim xdigito(7) As Integer
-    // Dim digito1 As Integer
-    // Dim digito2 As Integer
-
-    // '## CÁLCULO DO SEGUNDO DÍGITO VERIFICADOR ## (que palhaçada..)
-    // xdigito(0) = CInt(IE.Substring(0, 1)) * 7
-    // xdigito(1) = CInt(IE.Substring(1, 1)) * 6
-    // xdigito(2) = CInt(IE.Substring(2, 1)) * 5
-    // xdigito(3) = CInt(IE.Substring(3, 1)) * 4
-    // xdigito(4) = CInt(IE.Substring(4, 1)) * 3
-    // xdigito(5) = CInt(IE.Substring(5, 1)) * 2
-
-    // Dim totalD2 As Integer = 0
-    // For i As Integer = 0 To 5
-    // totalD2 += xdigito(i)
-    // Next
-
-    // Dim resto As Integer
-    // Select Case CInt(IE.Substring(0, 1))
-    // Case 0, 1, 2, 3, 4, 5, 8
-    // resto = totalD2 Mod 10
-    // Case 6, 7, 9
-    // resto = totalD2 Mod 11
-    // End Select
-
-    // '## Avaliação do resto da divisão ##
-    // Select Case CInt(IE.Substring(0, 1))
-    // Case 0, 1, 2, 3, 4, 5, 8
-    // If resto = 0 Then
-    // digito2 = 0
-    // Else
-    // digito2 = 10 - resto
-    // End If
-    // Case 6, 7, 9
-    // If resto <= 1 Then
-    // digito2 = 0
-    // Else
-    // digito2 = 11 - resto
-    // End If
-    // End Select
-
-    // '## CÁLCULO DO PRIMEIRO DÍGITO VERIFICADOR ##
-    // xdigito(0) = CInt(IE.Substring(0, 1)) * 8
-    // xdigito(1) = CInt(IE.Substring(1, 1)) * 7
-    // xdigito(2) = CInt(IE.Substring(2, 1)) * 6
-    // xdigito(3) = CInt(IE.Substring(3, 1)) * 5
-    // xdigito(4) = CInt(IE.Substring(4, 1)) * 4
-    // xdigito(5) = CInt(IE.Substring(5, 1)) * 3
-    // xdigito(6) = digito2 * 2
-
-    // Dim totalD1 As Integer = 0
-    // For i As Integer = 0 To 6
-    // totalD1 += xdigito(i)
-    // Next
-
-    // Dim resto1 As Integer
-    // Select Case CInt(IE.Substring(0, 1))
-    // Case 0, 1, 2, 3, 4, 5, 8
-    // resto1 = totalD1 Mod 10
-    // Case 6, 7, 9
-    // resto1 = totalD1 Mod 11
-    // End Select
-
-    // '## Avaliação do resto da divisão ##
-    // If resto1 < 1 Then
-    // digito1 = 0
-    // Else
-    // Select Case CInt(IE.Substring(0, 1))
-    // Case 0, 1, 2, 3, 4, 5, 8
-    // digito1 = 10 - resto1
-    // Case 6, 7, 9
-    // digito1 = 11 - resto1
-    // End Select
-    // End If
-
-
-    // '## VALIDAÇÃO DOS DÍGITOS ##
-    // Dim dinf1 As Integer = CInt(IE.Substring(6, 1))
-    // Dim dinf2 As Integer = CInt(IE.Substring(7, 1))
-    // If (dinf1 = digito1) And (dinf2 = digito2) Then
-    // Return True
-    // Else
-    // Return False
-    // End If
-    // Else
-    // Return False
-    // End If
-    // End Function
-
-    // Private Function ValidaBA_09Digitos(ByVal IE As String) As Boolean
-    // If IE.Trim().Length = 9 Then
-    // Dim xdigito(8) As Integer
-    // Dim digito1 As Integer
-    // Dim digito2 As Integer
-
-    // '## CÁLCULO DO SEGUNDO DÍGITO VERIFICADOR ## (que palhaçada..)
-    // xdigito(0) = CInt(IE.Substring(0, 1)) * 8
-    // xdigito(1) = CInt(IE.Substring(1, 1)) * 7
-    // xdigito(2) = CInt(IE.Substring(2, 1)) * 6
-    // xdigito(3) = CInt(IE.Substring(3, 1)) * 5
-    // xdigito(4) = CInt(IE.Substring(4, 1)) * 4
-    // xdigito(5) = CInt(IE.Substring(5, 1)) * 3
-    // xdigito(6) = CInt(IE.Substring(6, 1)) * 2
-
-    // Dim totalD2 As Integer = 0
-    // For i As Integer = 0 To 6
-    // totalD2 += xdigito(i)
-    // Next
-
-    // Dim resto As Integer
-    // Select Case CInt(IE.Substring(1, 1))
-    // Case 0, 1, 2, 3, 4, 5, 8
-    // resto = totalD2 Mod 10
-    // Case 6, 7, 9
-    // resto = totalD2 Mod 11
-    // End Select
-
-    // '## Avaliação do resto da divisão ##
-    // Select Case CInt(IE.Substring(0, 1))
-    // Case 0, 1, 2, 3, 4, 5, 8
-    // If resto = 0 Then
-    // digito2 = 0
-    // Else
-    // digito2 = 10 - resto
-    // End If
-    // Case 6, 7, 9
-    // If resto <= 1 Then
-    // digito2 = 0
-    // Else
-    // digito2 = 11 - resto
-    // End If
-    // End Select
-
-    // '## CÁLCULO DO PRIMEIRO DÍGITO VERIFICADOR ##
-    // xdigito(0) = CInt(IE.Substring(0, 1)) * 8
-    // xdigito(1) = CInt(IE.Substring(1, 1)) * 7
-    // xdigito(2) = CInt(IE.Substring(2, 1)) * 6
-    // xdigito(3) = CInt(IE.Substring(3, 1)) * 5
-    // xdigito(4) = CInt(IE.Substring(4, 1)) * 4
-    // xdigito(5) = CInt(IE.Substring(5, 1)) * 3
-    // xdigito(6) = CInt(IE.Substring(6, 1)) * 2
-    // xdigito(7) = digito2 * 2
-
-    // Dim totalD1 As Integer = 0
-    // For i As Integer = 0 To 7
-    // totalD1 += xdigito(i)
-    // Next
-
-    // Dim resto1 As Integer
-    // Select Case CInt(IE.Substring(1, 1))
-    // Case 0, 1, 2, 3, 4, 5, 8
-    // resto1 = totalD1 Mod 10
-    // Case 6, 7, 9
-    // resto1 = totalD1 Mod 11
-    // End Select
-
-    // '## Avaliação do resto da divisão ##
-    // If resto1 < 1 Then
-    // digito1 = 0
-    // Else
-    // Select Case CInt(IE.Substring(0, 1))
-    // Case 0, 1, 2, 3, 4, 5, 8
-    // digito1 = 10 - resto1
-    // Case 6, 7, 9
-    // digito1 = 11 - resto1
-    // End Select
-    // End If
-
-
-    // '## VALIDAÇÃO DOS DÍGITOS ##
-    // Dim dinf1 As Integer = CInt(IE.Substring(6, 1))
-    // Dim dinf2 As Integer = CInt(IE.Substring(7, 1))
-    // If (dinf1 = digito1) And (dinf2 = digito2) Then
-    // Return True
-    // Else
-    // Return False
-    // End If
-    // Else
-    // Return False
-    // End If
-    // End Function
 
     private static bool Validate_CE(this string IE)
     {
@@ -3437,22 +3113,21 @@ public static class TextExtensions
             return false;
         }
     } // Tested & Working..
+
 }
 
 public class LogradouroExtensions
 {
-    private static Dictionary<string, string> _replacementDict;
+    private static Dictionary<string, string>? _replacementDict;
 
     public static Dictionary<string, string> ReplacementDictionary
     {
         get
         {
             if (_replacementDict is null)
-            {
                 CreateKnownReplacementDictionary();
-            }
 
-            return _replacementDict;
+            return _replacementDict!;
         }
     }
 
