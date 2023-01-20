@@ -37,11 +37,23 @@ public partial class SectionsView : MudBlazor.MudComponentBase
     [Parameter] public RenderFragment CurrentSectionTemplate { get; set; }
 
 
+    private long _currentSection = 0;
     /// <summary>
     /// Current MDI Section (for multi tenant purposes)
     /// </summary>
-    [Parameter] public long CurrentSection { get; set; } = 0;
-
+    [Parameter]
+    public long CurrentSection
+    {
+        get => _currentSection;
+        set
+        {
+            if (_currentSection == value) return;
+            _currentSection = value;
+            InvokeAsync(async () => await SectionChanged.InvokeAsync(value));
+            
+        }
+    }
+    [Parameter] public EventCallback<long> SectionChanged { get; set; }
 
     /// <summary>
     /// Source for Available Sections (tenants)

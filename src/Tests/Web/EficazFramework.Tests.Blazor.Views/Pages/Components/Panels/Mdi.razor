@@ -3,7 +3,7 @@
 <div class="d-flex flex-grow-1" style="margin-left:-16px;margin-right:-16px;margin-bottom:8px;">
     <MdiHost @ref="_mdi" 
              ItemsSource="ApplicationManager?.RunningApplications"
-             CurrentSection="ApplicationManager!.SectionManager.CurrentSection.ID">
+             CurrentSection="ApplicationManager!.SectionManager.CurrentSectionId">
         <ToolbarLeftContent>
             <EficazFramework.Components.Panels.StartMenu @ref="_startMenu">
                 <Content>
@@ -20,19 +20,30 @@
                         </MudTabPanel>
                         <MudTabPanel Icon="@MudBlazor.Icons.Material.Filled.Filter">
                             @*<EficazFramework.Components.Panels.ApplicationsMenu ItemsSource="ApplicationManager?.AllApplications" />*@
-                        </MudTabPanel>
+                        </MudTabPanel>122022
                         <MudTabPanel Icon="@MudBlazor.Icons.Material.Filled.Image">
                             @*<EficazFramework.Components.Panels.ApplicationsMenu ItemsSource="ApplicationManager?.AllApplications" />*@
                         </MudTabPanel>
                     </MudTabs>
                 </Content>
             </EficazFramework.Components.Panels.StartMenu>
-            <EficazFramework.Components.Panels.SectionsView ItemsSource="ApplicationManager?.SectionManager.Sections"
+            <EficazFramework.Components.Panels.SectionsView @ref="_sectionsView"
+                                                            ItemsSource="ApplicationManager?.SectionManager.Sections"
                                                             AutoManageSections="false"
                                                             NewSectionClick="NewSection"
                                                             CloseSectionClick="CloseSection"
                                                             CloseAllSectionsClick="CloseAllSections"
-                                                            @bind-CurrentSection="ApplicationManager!.SectionManager!.CurrentSectionId"/>
+                                                            @bind-CurrentSection="ApplicationManager!.SectionManager!.CurrentSectionId" 
+                                                            SectionChanged="SectionChanged" />
         </ToolbarLeftContent>
+        <ToolbarRightContent>
+            <div class="mt-n5 mr-2">
+                @($"Mdi: {_mdi!.CurrentSection}")
+                <br />
+                @($"Service, ID: {ApplicationManager!.SectionManager.CurrentSectionId}")
+                <br />
+                @($"Service, Instance: {ApplicationManager!.SectionManager.CurrentSection!.ID}")
+            </div>
+        </ToolbarRightContent>
     </MdiHost>
 </div>

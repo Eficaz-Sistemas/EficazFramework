@@ -114,10 +114,16 @@ public partial class MdiHost : MudBlazor.MudBaseBindableItemsControl<MdiWindow, 
     /// </summary>
     private IEnumerable<ApplicationInstance> RunningApplications()
     {
+        IEnumerable<ApplicationInstance> result;
         if (ItemsSource != null)
-            return ItemsSource.Where(app => app.SessionID == 0 || app.SessionID == CurrentSection).ToList();
+            result =  ItemsSource.Where(app => app.SessionID == 0 || app.SessionID == CurrentSection).ToList();
         else
-            return Items.Where(it => it.ApplicationInstance.SessionID == 0 || it.ApplicationInstance.SessionID == CurrentSection).Select(it => it.ApplicationInstance).ToList();
+            result = Items.Where(it => it.ApplicationInstance.SessionID == 0 || it.ApplicationInstance.SessionID == CurrentSection).Select(it => it.ApplicationInstance).ToList();
+
+        if (!result.Contains(SelectedApp) && result.Count() > 0)
+            LoadApplication(result.Last());
+
+        return result;
     }
 
 

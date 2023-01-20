@@ -10,11 +10,11 @@ public partial class Mdi
     {
         base.OnInitialized();
         EficazFramework.Tests.Blazor.Views.Resources.Mocks.Applications.GenerateApps(ApplicationManager);
-        ApplicationManager!.SectionManager.CurrentSectionChanged += SectionChanged;
     }
 
     private EficazFramework.Components.MdiHost? _mdi;
     private EficazFramework.Components.Panels.StartMenu? _startMenu;
+    private EficazFramework.Components.Panels.SectionsView? _sectionsView;
 
     private void NewSection()
     {
@@ -26,9 +26,10 @@ public partial class Mdi
         StateHasChanged();
     }
 
-    private void SectionChanged(object? sender, EventArgs e)
+    private void SectionChanged(long newID)
     {
-        StateHasChanged();
+        ApplicationManager!.SectionManager.CurrentSectionId = newID;
+        //StateHasChanged();
     }
 
     private void CloseSection(long id)
