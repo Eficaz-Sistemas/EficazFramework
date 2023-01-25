@@ -29,7 +29,7 @@ public static class ServiceCollectionExtensions
 
     private static IServiceCollection AddApplicationManager(this IServiceCollection serviceCollection)
     {
-        return serviceCollection.AddScoped<EficazFramework.Application.IApplicationManager>(builder => Application.IApplicationManager.Create());
+        return serviceCollection.AddScoped<EficazFramework.Application.IApplicationManager>(builder => Application.IApplicationManager.Instance);
     }
 
     private static IServiceCollection AddThemeProvider(this IServiceCollection serviceCollection, MudBlazor.MudTheme theme, bool darkMode)

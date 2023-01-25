@@ -13,17 +13,17 @@ public class ApplicationTarget
     /// <summary>
     /// Informações de inicialização da aplicação
     /// </summary>
-    public object StartupUriOrType { get; set; }
+    public object? StartupUriOrType { get; set; }
 
     /// <summary>
     /// Ícone da Aplicação
     /// </summary>
-    public object Icon { get; set; }
+    public object? Icon { get; set; }
 
     /// <summary>
     /// Ativo Visual de inicialização/carregamento do aplicativo
     /// </summary>
-    public object SplashScreen { get; set; }
+    public object? SplashScreen { get; set; }
 
     /// <summary>
     /// Atributos ou propriedades adicionais da plataforma

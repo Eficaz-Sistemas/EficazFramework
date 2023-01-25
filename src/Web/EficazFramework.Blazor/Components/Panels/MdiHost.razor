@@ -2,7 +2,7 @@
 @using EficazFramework.Application
 @using System.Drawing
 @namespace EficazFramework.Components
-@inherits MudBlazor.MudBaseBindableItemsControl<MdiWindow, ApplicationInstance>
+@inherits MudBlazor.MudComponentBase
 
 <div class="@Classname" 
      style="@StyleName" >
@@ -11,21 +11,14 @@
         <div class="d-flex flex-grow-1"
              ondragover="event.preventDefault();"
              ondragstart="event.dataTransfer.setData('', event.target.id);">
-            @if (ItemsSource == null)
+            @foreach (var item in RunningApplications())
             {
-                @ChildContent
-            }
-            else
-            {
-                foreach (var item in RunningApplications())
-                {
-                    <MdiWindow ApplicationInstance="item"
-                               Title="@item.Title"
-                               Icon="@(item.Targets["Blazor"]?.Icon.ToString())"
-                               IsMaximized="@((bool?)item.Targets["Blazor"]?.Properties["IsMaximized"] ?? false)">
-                        <DynamicComponent Type="@((Type)item.Targets["Blazor"].StartupUriOrType)" />
-                    </MdiWindow>
-                }
+                <MdiWindow ApplicationInstance="item"
+                           Title="@item.Title"
+                           Icon="@(item.Targets["Blazor"].Icon?.ToString())"
+                           IsMaximized="@((bool?)item.Targets["Blazor"].Properties["IsMaximized"] ?? false)">
+                    <DynamicComponent Type="@((Type)(item.Targets["Blazor"].StartupUriOrType ?? typeof(string)))" />
+                </MdiWindow>
             }
         </div>
 @*        @if (BreakpointListener.IsMediaSize(Breakpoint, _breakpoint))
@@ -45,7 +38,7 @@
                     <MudBlazor.MudIconButton Variant="@MudBlazor.Variant.Filled"
                                                 Color="@MudBlazor.Color.Transparent"
                                                 Class="ef-mdi-buttons-toolbar"
-                                                Icon="@(item.Targets["Blazor"]?.Icon.ToString())"
+                                                Icon="@(item.Targets["Blazor"].Icon?.ToString())"
                                                 Size="@MudBlazor.Size.Medium"
                                                 DisableElevation
                                                 Style="@TaskBarAppInstanceButtonStyle(item)"

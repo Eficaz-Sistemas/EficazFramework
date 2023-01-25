@@ -2,7 +2,7 @@
 
 <div class="d-flex flex-grow-1" style="margin-left:-16px;margin-right:-16px;margin-bottom:8px;">
     <MdiHost @ref="_mdi" 
-             ItemsSource="ApplicationManager?.RunningApplications"
+             ApplicationsSource="ApplicationManager?.RunningApplications"
              CurrentSection="ApplicationManager!.SectionManager.CurrentSectionId">
         <ToolbarLeftContent>
             <EficazFramework.Components.Panels.StartMenu @ref="_startMenu">
@@ -11,7 +11,6 @@
                              Class="flex-grow-1 flex-shrink-0"
                              PanelClass="d-flex flex-column"
                              MinimumTabWidth="64px"
-                             Color="Color.Primary"
                              Style="height: calc(100vh - 300px)">
                         <MudTabPanel Icon="@MudBlazor.Icons.Material.Filled.GridView">
                             <EficazFramework.Components.Panels.ApplicationsMenu ItemsSource="ApplicationManager?.AllApplications"
@@ -20,7 +19,7 @@
                         </MudTabPanel>
                         <MudTabPanel Icon="@MudBlazor.Icons.Material.Filled.Filter">
                             @*<EficazFramework.Components.Panels.ApplicationsMenu ItemsSource="ApplicationManager?.AllApplications" />*@
-                        </MudTabPanel>122022
+                        </MudTabPanel>
                         <MudTabPanel Icon="@MudBlazor.Icons.Material.Filled.Image">
                             @*<EficazFramework.Components.Panels.ApplicationsMenu ItemsSource="ApplicationManager?.AllApplications" />*@
                         </MudTabPanel>

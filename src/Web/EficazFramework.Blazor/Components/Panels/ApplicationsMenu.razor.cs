@@ -74,7 +74,7 @@ public partial class ApplicationsMenu : MudBlazor.MudComponentBase
     /// Get's the filtered application list for Menu. Uses the AppSearchFilter as literal.
     /// </summary>
     private IEnumerable<IGrouping<string, ApplicationDefinition>> FilteredApplications() =>
-        ItemsSource.Where(app => (app.Title ?? "").ToLower().Contains((_searchFilter ?? "").ToString().ToLower())).GroupBy(app => app.Group).ToList();
+        ItemsSource.Where(app => (app.Title ?? "").ToLower().Contains((_searchFilter ?? "").ToString().ToLower())).GroupBy(app => app.Group ?? "").ToList();
 
 
 }

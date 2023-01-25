@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.IO;
 using System.Linq;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace EficazFramework.Application;
 
@@ -12,15 +13,25 @@ public interface IApplicationManager
     /// <summary>
     /// Inicia e retorna uma nova instância de ApplicationManager.
     /// </summary>
-    public static IApplicationManager Create()
-    {
-        return new ApplicationManager();
-    }
+    private static IApplicationManager Create() =>
+        new ApplicationManager();
 
+    private static IApplicationManager? _instance = null;
     /// <summary>
     /// Retorna em padrão singleton a Última Instância de ApplicationManager instanciada.
     /// </summary>
-    public static IApplicationManager Instance { get; private set; }
+    public static IApplicationManager Instance
+    {
+        get
+        {
+            _instance ??= Create();
+            return _instance;
+        }
+        private set
+        {
+            _instance = value;
+        }
+    }
 
     /// <summary>
     /// Instância de SectionManager para gestão de múltiplas área de trabalho.
@@ -50,6 +61,8 @@ public interface IApplicationManager
     /// <param name="application">Manifesto de aplicativo a ser iniciado ou ativado.</param>
     public ApplicationInstance Activate(ApplicationDefinition application);
 
+    public void Clear();
+
     public event EventHandler ActiveAppChanged;
 }
 
@@ -58,29 +71,9 @@ internal class ApplicationManager : IApplicationManager
     internal ApplicationManager()
     {
         _sectionManager = new SectionManager(this);
-        Instance = this;
     }
 
-    private static IApplicationManager? _instance = null;
-    /// <summary>
-    /// Retorna em padrão singleton a Última Instância de ApplicationManager instanciada.
-    /// </summary>
-    public static IApplicationManager Instance
-    {
-        get
-        {
-            if (_instance == null)
-                _instance = new ApplicationManager();
-
-            return _instance;
-        }
-        private set
-        {
-            _instance = value;
-        }
-    }
-
-    private ISectionManager _sectionManager;
+    private readonly ISectionManager _sectionManager;
 
     /// <summary>
     /// Instância de SectionManager para gestão de múltiplas área de trabalho.
@@ -104,7 +97,7 @@ internal class ApplicationManager : IApplicationManager
     /// <returns></returns>
     public bool IsRunning(ApplicationDefinition application)
     {
-        return (RunningApplications.Where(app => app.Metadata == application && (app.SessionID == 0 | app.SessionID == _sectionManager.CurrentSection.ID)).Any());
+        return (RunningApplications.Where(app => app.Metadata == application && (app.SessionID == 0 || app.SessionID == (_sectionManager.CurrentSection?.ID ?? 0))).Any());
     }
 
     /// <summary>
@@ -123,7 +116,7 @@ internal class ApplicationManager : IApplicationManager
         }
         else
         {
-            instance = RunningApplications.Where(app => app.Metadata == application && (app.SessionID == 0 | app.SessionID == _sectionManager.CurrentSection.ID)).FirstOrDefault();
+            instance = RunningApplications.Where(app => app.Metadata == application && (app.SessionID == 0 || app.SessionID == (_sectionManager.CurrentSection?.ID ?? 0))).FirstOrDefault();
         }
         ActiveAppChanged?.Invoke(instance, EventArgs.Empty);
         return instance!;
@@ -131,8 +124,7 @@ internal class ApplicationManager : IApplicationManager
 
     private void AppClosed(object? sender, System.EventArgs e)
     {
-        var instance = sender as ApplicationInstance;
-        if (instance != null)
+        if (sender is ApplicationInstance instance)
         {
             instance.AppClosed -= AppClosed;
             RunningApplications.Remove(instance);
@@ -140,6 +132,17 @@ internal class ApplicationManager : IApplicationManager
     }
 
     public event EventHandler? ActiveAppChanged;
+
+    public void Clear()
+    {
+        foreach (var all in RunningApplications)
+        {
+            all.Dispose();
+        }
+        AllApplications.Clear();
+        RunningApplications.Clear();
+    }
+
 }
 
 public sealed class ApplicationInstance : ApplicationDefinition, INotifyPropertyChanged, IDisposable
@@ -208,7 +211,7 @@ public sealed class ApplicationInstance : ApplicationDefinition, INotifyProperty
     {
         foreach (var item in source)
         {
-            Targets.Add(item);
+            Targets.Add(item.Key, item.Value);
         }
     }
 
@@ -225,6 +228,9 @@ public sealed class ApplicationInstance : ApplicationDefinition, INotifyProperty
             IDisposable i = (IDisposable)Content;
             i.Dispose();
         }
+
+        foreach(var svc in Services)
+            (svc.Value as IDisposable)?.Dispose();
 
     }
 

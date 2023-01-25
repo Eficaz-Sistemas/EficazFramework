@@ -6,7 +6,7 @@ using MudBlazor;
 using MudBlazor.Services;
 
 namespace EficazFramework.Components;
-public partial class MdiHost : MudBlazor.MudBaseBindableItemsControl<MdiWindow, ApplicationInstance>
+public partial class MdiHost : MudComponentBase
 {
 
     protected override async Task OnAfterRenderAsync(bool firstRender)
@@ -56,6 +56,9 @@ public partial class MdiHost : MudBlazor.MudBaseBindableItemsControl<MdiWindow, 
     /// </summary>
     [Parameter] public long CurrentSection { get; set; }
 
+
+    [Parameter] public IEnumerable<ApplicationInstance>? ApplicationsSource { get; set; }
+
     #region Classes And Styles
 
     /// <summary>
@@ -95,36 +98,12 @@ public partial class MdiHost : MudBlazor.MudBaseBindableItemsControl<MdiWindow, 
 
     public ApplicationInstance? SelectedApp { get; internal set; } = null;
 
-    /// <summary>
-    /// Add a new MdiWindow to the Host
-    /// </summary>
-    public override void AddItem(MdiWindow item)
-    {
-        if (!Items.Contains(item))
-        {
-            Items.Add(item);
-            MoveTo(Items.IndexOf(item));
-            item.zIndex = Items.Count + 1;
-        }
-    }
-
 
     /// <summary>
     /// Running applications (MdiWindow) for the Current Section (ou public apps_
     /// </summary>
-    private IEnumerable<ApplicationInstance> RunningApplications()
-    {
-        IEnumerable<ApplicationInstance> result;
-        if (ItemsSource != null)
-            result =  ItemsSource.Where(app => app.SessionID == 0 || app.SessionID == CurrentSection).ToList();
-        else
-            result = Items.Where(it => it.ApplicationInstance.SessionID == 0 || it.ApplicationInstance.SessionID == CurrentSection).Select(it => it.ApplicationInstance).ToList();
-
-        if (!result.Contains(SelectedApp) && result.Count() > 0)
-            LoadApplication(result.Last());
-
-        return result;
-    }
+    private IEnumerable<ApplicationInstance> RunningApplications() =>
+        ApplicationsSource?.Where(app => app.SessionID == 0 || app.SessionID == CurrentSection).ToList() ?? new List<ApplicationInstance>();
 
 
     /// <summary>
@@ -135,25 +114,7 @@ public partial class MdiHost : MudBlazor.MudBaseBindableItemsControl<MdiWindow, 
         if (app.IsPublic == false && CurrentSection == 0)
             return;
 
-        ApplicationInstance? instance;
-
-        //if (ApplicationManager != null)
-        //{
-        //    newinstance = ApplicationManager!.Activate(app);
-        //}
-        //else
-        //{
-
-        if (ItemsSource != null)
-        {
-            var itemsSourceList = (ItemsSource as IList<ApplicationInstance>);
-            instance = itemsSourceList?.Where(a => a.Metadata == app && (a.SessionID == 0 || a.SessionID == CurrentSection)).FirstOrDefault();
-        }
-        else
-        {
-            var itemsSourceList = Items.Select(a => a.ApplicationInstance).ToList();
-            instance = itemsSourceList?.Where(a => a.Metadata == app && (a.SessionID == 0 || a.SessionID == CurrentSection)).FirstOrDefault();
-        }
+        ApplicationInstance? instance = ApplicationsSource?.FirstOrDefault(a => a.Metadata == app && (a.SessionID == 0 || a.SessionID == CurrentSection));
         if (instance == null)
         {
             instance = ApplicationInstance.Create(app, CurrentSection);
@@ -167,44 +128,49 @@ public partial class MdiHost : MudBlazor.MudBaseBindableItemsControl<MdiWindow, 
             if (!instance.Targets["Blazor"].Properties.ContainsKey("Size"))
                 instance.Targets["Blazor"].Properties.Add("Size", new System.Drawing.Size(425, 250));
 
-            if (ItemsSource == null)
-#pragma warning disable BL0005 // Component parameter should not be set outside of its component.
-                Items.Add(new MdiWindow() { ApplicationInstance = instance });
-#pragma warning restore BL0005 // Component parameter should not be set outside of its component.
-            else
-                (ItemsSource as IList<ApplicationInstance>)!.Add(instance);
+            (ApplicationsSource as IList<ApplicationInstance>)?.Add(instance);
         }
 
+        MoveTo(instance);
+    }
 
-        SelectedApp = instance;
-
-        var container = Items.SingleOrDefault(ct => object.ReferenceEquals(ct.ApplicationInstance, instance));
-        container?.MoveToMe();
-
+    /// <summary>
+    /// Move o foco para a Instância de aplicativo <paramref name="app"/>
+    /// </summary>
+    /// <param name="app"></param>
+    public void MoveTo(ApplicationInstance app)
+    {
+        //int zIndex = 0;
+        SelectedApp = app;
         StateHasChanged();
     }
+
+
+    /// <summary>
+    /// Move o foco para o último aplicativo válido de <see cref="RunningApplications"/>
+    /// </summary>
+    /// <param name="app"></param>
+    public void MoveToLast()
+    {
+        var last = RunningApplications().LastOrDefault();
+        if (last != null)
+            MoveTo(last);
+        else
+        {
+            SelectedApp = null;
+            StateHasChanged();
+        }
+    }
+
 
     /// <summary>
     /// Closes the application from the <paramref name="appHost"/> parameter.
     /// </summary>
     public void CloseApplication(MdiWindow appHost)
-    {      
-        if (ItemsSource == null)
-            Items.Remove(appHost);
-        else
-        {
-            (ItemsSource as IList<ApplicationInstance>)!.Remove(appHost.ApplicationInstance);
-            StateHasChanged();
-        }
-
-        foreach (var service in appHost.ApplicationInstance.Services)
-            (service.Value as IDisposable)!.Dispose();
-
-        var resultingItems = Items.Where(item => !object.ReferenceEquals(item, appHost)).ToList();
-
-        if (resultingItems.Count > 0)
-            SelectedApp = resultingItems.LastOrDefault()!.ApplicationInstance; ;
-
+    {
+        appHost.ApplicationInstance.Dispose();
+        (ApplicationsSource as IList<ApplicationInstance>)?.Remove(appHost.ApplicationInstance);
+        MoveToLast();
     }
 
     #endregion

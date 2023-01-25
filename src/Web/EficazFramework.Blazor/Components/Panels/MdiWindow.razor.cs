@@ -7,7 +7,7 @@ using Microsoft.JSInterop;
 
 namespace EficazFramework.Components;
 
-public partial class MdiWindow: MudBlazor.MudComponentBase, IDisposable
+public partial class MdiWindow: MudBlazor.MudComponentBase
 {
     [Parameter] public RenderFragment? ChildContent { get; set; }
     
@@ -85,7 +85,6 @@ public partial class MdiWindow: MudBlazor.MudComponentBase, IDisposable
 
     protected override void OnInitialized()
     {
-        MdiHost.AddItem(this);
         base.OnInitialized();
     }
 
@@ -107,7 +106,7 @@ public partial class MdiWindow: MudBlazor.MudComponentBase, IDisposable
     /// </summary>
     /// <param name="e"></param>
     private void OnClick(MouseEventArgs e) =>
-        MoveToMe();
+        MdiHost.MoveTo(ApplicationInstance);
 
     /// <summary>
     /// Start a Drag operation for move
@@ -118,27 +117,11 @@ public partial class MdiWindow: MudBlazor.MudComponentBase, IDisposable
         //    return;
 
         //Utilities.JsInterop.SetDragImage(JsRutinme, args);
-        MoveToMe();
+        MdiHost.SelectedApp = ApplicationInstance;
         isDragging = true;
         startX = args.OffsetX;
         startY = args.OffsetY;
     }
-
-    //private void OnDragging(DragEventArgs args)
-    //{
-    //    if (!isDragging)
-    //        return;
-
-    //    offsetX += args.OffsetX - startX;
-    //    if (offsetX < 0)
-    //        offsetX = 0;
-
-    //    offsetY += args.OffsetY - startY;
-    //    if (offsetY < 0)
-    //        offsetY = 0;
-
-    //    ApplicationInstance.Targets["Blazor"].Properties["Position"] = new Size((int)offsetX, (int)offsetY);
-    //}
 
     /// <summary>
     /// Ends a Drag operation and update the screen coordinates of this instance.
@@ -159,35 +142,14 @@ public partial class MdiWindow: MudBlazor.MudComponentBase, IDisposable
     }
     
     /// <summary>
-    /// Request the host to update the selected item to this instance.
-    /// </summary>
-    internal void MoveToMe()
-    {
-        zIndex = MdiHost.Items.Count;
-
-        foreach (var item in MdiHost.Items.Where(it => !object.ReferenceEquals(this, it)))
-            item.zIndex = Math.Max(1, item.zIndex -= 1);
-
-        MdiHost.SelectedApp = this.ApplicationInstance;
-        MdiHost.MoveTo(MdiHost.Items.IndexOf(this));
-    }
-
-    /// <summary>
     /// Close Button Click action
     /// </summary>
     private void OnClose()
     {
-        MoveToMe();
+        MdiHost.SelectedApp = ApplicationInstance;
         MdiHost.CloseApplication(this);
     }
 
-    /// <summary>
-    /// Remove this instance from host.
-    /// </summary>
-    public void Dispose()
-    {
-        MdiHost.Items.Remove(this);
-    }
         
 }
 

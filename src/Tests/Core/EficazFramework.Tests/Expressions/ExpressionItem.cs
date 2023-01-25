@@ -33,10 +33,11 @@ public class ExpressionItemTests
         };
 
         // model
-        ExpressionItem item = new();
-
-        // number (int)
-        item.SelectedProperty = IdProperty;
+        ExpressionItem item = new()
+        {
+            // number (int)
+            SelectedProperty = IdProperty
+        };
         item.SelectedPropertyPath.Should().Be("ID");
         item.Operator.Should().Be(Enums.CompareMethod.Equals);
         item.AvailableOperators.Should().HaveCount(7);
@@ -78,10 +79,11 @@ public class ExpressionItemTests
         };
 
         // model
-        ExpressionItem item = new();
-
-        // text (string)
-        item.SelectedProperty = NameProperty;
+        ExpressionItem item = new()
+        {
+            // text (string)
+            SelectedProperty = NameProperty
+        };
         item.SelectedPropertyPath.Should().Be("Name");
         item.Operator.Should().Be(Enums.CompareMethod.Contains);
         item.AvailableOperators.Should().HaveCount(4);
@@ -112,10 +114,11 @@ public class ExpressionItemTests
         };
 
         // model
-        ExpressionItem item = new();
-
-        // date
-        item.SelectedProperty = BirthProperty;
+        ExpressionItem item = new()
+        {
+            // date
+            SelectedProperty = BirthProperty
+        };
         item.SelectedPropertyPath.Should().Be("Birth");
         item.Operator.Should().Be(Enums.CompareMethod.Between);
         item.AvailableOperators.Should().HaveCount(7);
@@ -154,12 +157,13 @@ public class ExpressionItemTests
         };
 
         // model
-        ExpressionItem item = new();
-
-        // bool
-        item.Value1StringFormat = null;
-        item.Value2StringFormat = null;
-        item.SelectedProperty = IsActiveProperty;
+        ExpressionItem item = new()
+        {
+            // bool
+            Value1StringFormat = null,
+            Value2StringFormat = null,
+            SelectedProperty = IsActiveProperty
+        };
         item.SelectedPropertyPath.Should().Be("IsActive");
         item.Operator.Should().Be(Enums.CompareMethod.Equals);
         item.AvailableOperators.Should().HaveCount(1);
@@ -191,10 +195,11 @@ public class ExpressionItemTests
         };
 
         // model
-        ExpressionItem item = new();
-
-        // enum (basic)
-        item.SelectedProperty = TeamProperty;
+        ExpressionItem item = new()
+        {
+            // enum (basic)
+            SelectedProperty = TeamProperty
+        };
         item.SelectedPropertyPath.Should().Be("Team");
         item.Operator.Should().Be(Enums.CompareMethod.Different);
         item.AvailableOperators.Should().HaveCount(2);
@@ -228,10 +233,11 @@ public class ExpressionItemTests
         };
 
         // model
-        ExpressionItem item = new();
-
-        // enum (localized)
-        item.SelectedProperty = TeamLocalizedProperty;
+        ExpressionItem item = new()
+        {
+            // enum (localized)
+            SelectedProperty = TeamLocalizedProperty
+        };
         item.SelectedPropertyPath.Should().Be("Team");
         item.Operator.Should().Be(Enums.CompareMethod.Different);
         item.AvailableOperators.Should().HaveCount(2);
@@ -270,12 +276,13 @@ public class ExpressionItemTests
         };
 
         // model
-        ExpressionItem item = new();
-
-        // number (decimal)
-        item.Value1StringFormat = "n2";
-        item.Value2StringFormat = "n2";
-        item.SelectedProperty = SalaryProperty;
+        ExpressionItem item = new()
+        {
+            // number (decimal)
+            Value1StringFormat = "n2",
+            Value2StringFormat = "n2",
+            SelectedProperty = SalaryProperty
+        };
         item.SelectedPropertyPath.Should().Be("Salary");
         item.Operator.Should().Be(Enums.CompareMethod.Between);
         item.AvailableOperators.Should().HaveCount(7);

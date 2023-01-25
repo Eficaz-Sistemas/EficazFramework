@@ -7,7 +7,7 @@ namespace EficazFramework.Application;
 
 public class Apps
 {
-    readonly EficazFramework.Application.IApplicationManager _appManager = EficazFramework.Application.IApplicationManager.Create();
+    readonly EficazFramework.Application.IApplicationManager _appManager = EficazFramework.Application.IApplicationManager.Instance;
 
     private void GenerateAppList()
     {
@@ -58,6 +58,12 @@ public class Apps
         _appManager.AllApplications.Add(cobranca);
         _appManager.AllApplications.Add(suporte);
         _appManager.AllApplications.Add(manuais);
+    }
+
+    [TearDown]
+    public void TearDown()
+    {
+        _appManager.Clear();
     }
 
     [Test, Order(0)]
