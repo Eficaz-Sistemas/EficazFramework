@@ -518,7 +518,7 @@
                             </GroupBox>
                             <GroupBox Margin="15,0,15,15" Header="AutoComplete">
                                 <UniformGrid Columns="6">
-                                    <EfControls:AutoComplete FindAction="autocomplete_Find" EfAttachedProps:Control.TipText="default" Margin="3"/>
+                                    <EfControls:AutoComplete FindAction="Autocomplete_Find" EfAttachedProps:Control.TipText="default" Margin="3"/>
                                     <EfControls:AutoComplete EfAttachedProps:Control.TipText="n/a" Margin="3"/>
                                     <EfControls:AutoComplete IsReadOnly="True"  EfAttachedProps:Control.TipText="read-only" Margin="3"/>
                                     <EfControls:AutoComplete IsEnabled="False" EfAttachedProps:Control.TipText="disabled" Margin="3"/>
