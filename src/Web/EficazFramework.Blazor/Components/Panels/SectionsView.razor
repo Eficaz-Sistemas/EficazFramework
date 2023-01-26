@@ -1,4 +1,5 @@
-﻿@inherits MudBlazor.MudComponentBase
+﻿@namespace EficazFramework.Components
+@inherits MudBlazor.MudComponentBase
 
 <div style="@Style">
      <MudBlazor.MudTooltip Text="@Tooltip">
@@ -47,7 +48,7 @@
                             <MudBlazor.MudTooltip Text="@NewSectionText">
                                 <MudBlazor.MudIconButton Icon="@MudBlazor.Icons.Material.Filled.Add"
                                                          Size="@MudBlazor.Size.Large"
-                                                         Class="mud-paper-outlined" 
+                                                         Class="mud-paper-outlined ef-mdi-sections-add" 
                                                          Style="width:125px;height:125px;background-color: var(--mud-palette-background-grey)"
                                                          Variant="@MudBlazor.Variant.Outlined"
                                                          OnClick="() => OnNewSectionClick()"/>
@@ -61,17 +62,18 @@
                             <MudBlazor.MudPaper Outlined 
                                                 Class="pa-2 d-flex flex-column"
                                                 Style="@SectionItemStyle(section.ID)">
-                                <div class="d-flex">
+                                <div class="d-flex">s
                                     <MudBlazor.MudText Typo="@MudBlazor.Typo.caption" Class="flex-grow-1" Style="margin-top: -2px !important; margin-left: 4px;">
                                         @($"{section.ID} - {section.Name}")
                                     </MudBlazor.MudText>
                                     <MudBlazor.MudIconButton Icon="@MudBlazor.Icons.Material.Filled.Close"
-                                                         OnClick="@(() => RemoveSection(section))"
-                                                         DisableElevation
-                                                         Variant="MudBlazor.Variant.Text"
-                                                         Size="MudBlazor.Size.Small"
-                                                         Style="margin-top: -6px;"
-                                                         Title="Close" />
+                                                             OnClick="@(() => RemoveSection(section))"
+                                                             DisableElevation
+                                                             Variant="MudBlazor.Variant.Text"
+                                                             Size="MudBlazor.Size.Small"
+                                                             Class="ef-mdi-sections-close"
+                                                             Style="margin-top: -6px;"
+                                                             Title="Close" />
                                 </div>
                                 <MudBlazor.MudPaper Elevation="0" 
                                                     Class="flex-grow-1 d-flex justify-center align-center relative mt-1"
@@ -90,7 +92,7 @@
                             <MudBlazor.MudTooltip Text="@NewSectionText">
                                 <MudBlazor.MudIconButton Icon="@MudBlazor.Icons.Material.Filled.Delete"
                                                      Size="@MudBlazor.Size.Large"
-                                                     Class="mud-paper-outlined"
+                                                     Class="mud-paper-outlined ef-mdi-sections-clear"
                                                      Style="width:125px;height:125px;background-color: var(--mud-palette-background-grey)"
                                                      Variant="@MudBlazor.Variant.Outlined"
                                                      OnClick="() => OnCloseAllSectionsClick()" />

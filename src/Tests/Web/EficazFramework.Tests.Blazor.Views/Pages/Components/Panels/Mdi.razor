@@ -5,7 +5,7 @@
              ApplicationsSource="ApplicationManager?.RunningApplications"
              CurrentSection="ApplicationManager!.SectionManager.CurrentSectionId">
         <ToolbarLeftContent>
-            <EficazFramework.Components.Panels.StartMenu @ref="_startMenu">
+            <EficazFramework.Components.StartMenu @ref="_startMenu">
                 <Content>
                     <MudTabs Position="@MudBlazor.Position.Left"
                              Class="flex-grow-1 flex-shrink-0"
@@ -13,9 +13,9 @@
                              MinimumTabWidth="64px"
                              Style="height: calc(100vh - 300px)">
                         <MudTabPanel Icon="@MudBlazor.Icons.Material.Filled.GridView">
-                            <EficazFramework.Components.Panels.ApplicationsMenu ItemsSource="ApplicationManager?.AllApplications"
-                                                                                Class="ma-4"
-                                                                                SelectionCallBack="@(app => AppClick(app))"/>
+                            <EficazFramework.Components.ApplicationsMenu ItemsSource="ApplicationManager?.AllApplications"
+                                                                         Class="ma-4"
+                                                                         SelectionCallBack="@(app => AppClick(app))"/>
                         </MudTabPanel>
                         <MudTabPanel Icon="@MudBlazor.Icons.Material.Filled.Filter">
                             @*<EficazFramework.Components.Panels.ApplicationsMenu ItemsSource="ApplicationManager?.AllApplications" />*@
@@ -25,15 +25,15 @@
                         </MudTabPanel>
                     </MudTabs>
                 </Content>
-            </EficazFramework.Components.Panels.StartMenu>
-            <EficazFramework.Components.Panels.SectionsView @ref="_sectionsView"
-                                                            ItemsSource="ApplicationManager?.SectionManager.Sections"
-                                                            AutoManageSections="false"
-                                                            NewSectionClick="NewSection"
-                                                            CloseSectionClick="CloseSection"
-                                                            CloseAllSectionsClick="CloseAllSections"
-                                                            @bind-CurrentSection="ApplicationManager!.SectionManager!.CurrentSectionId" 
-                                                            SectionChanged="SectionChanged" />
+            </EficazFramework.Components.StartMenu>
+            <EficazFramework.Components.SectionsView @ref="_sectionsView"
+                                                     ItemsSource="ApplicationManager?.SectionManager.Sections"
+                                                     AutoManageSections="false"
+                                                     NewSectionClick="NewSection"
+                                                     CloseSectionClick="CloseSection"
+                                                     CloseAllSectionsClick="CloseAllSections"
+                                                     @bind-CurrentSection="ApplicationManager!.SectionManager!.CurrentSectionId" 
+                                                     SectionChanged="SectionChanged" />
         </ToolbarLeftContent>
         <ToolbarRightContent>
             <div class="mt-n5 mr-2">

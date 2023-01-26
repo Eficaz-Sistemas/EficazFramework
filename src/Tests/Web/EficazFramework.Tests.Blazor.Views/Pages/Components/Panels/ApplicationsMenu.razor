@@ -1,4 +1,4 @@
 ﻿@page "/Components/Panels/AppMenus"
 
-<EficazFramework.Components.Panels.ApplicationsMenu ItemsSource="ApplicationManager?.AllApplications"
-                                                    SelectionCallBack="@(app => Snackbar!.Add(app.Title))" />
+<EficazFramework.Components.ApplicationsMenu ItemsSource="ApplicationManager?.AllApplications"
+                                             SelectionCallBack="@(app => Snackbar!.Add(app.Title))" />

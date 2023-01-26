@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Components;
 using MudBlazor.Utilities;
 
-namespace EficazFramework.Components.Panels;
+namespace EficazFramework.Components;
 public partial class StartMenu : MudBlazor.MudComponentBase
 {
 

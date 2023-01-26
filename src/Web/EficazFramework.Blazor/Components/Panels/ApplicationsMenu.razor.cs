@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Components;
 using MudBlazor.Utilities;
 using System.Collections.ObjectModel;
 
-namespace EficazFramework.Components.Panels;
+namespace EficazFramework.Components;
 
 public partial class ApplicationsMenu : MudBlazor.MudComponentBase
 {

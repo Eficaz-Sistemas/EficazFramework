@@ -13,8 +13,8 @@ public partial class Mdi
     }
 
     private EficazFramework.Components.MdiHost? _mdi;
-    private EficazFramework.Components.Panels.StartMenu? _startMenu;
-    private EficazFramework.Components.Panels.SectionsView? _sectionsView;
+    private EficazFramework.Components.StartMenu? _startMenu;
+    private EficazFramework.Components.SectionsView? _sectionsView;
 
     private void NewSection()
     {

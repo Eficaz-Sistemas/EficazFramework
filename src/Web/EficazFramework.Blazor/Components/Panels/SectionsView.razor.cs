@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace EficazFramework.Components.Panels;
+namespace EficazFramework.Components;
 public partial class SectionsView : MudBlazor.MudComponentBase
 {
     private bool _isOpen = false;
