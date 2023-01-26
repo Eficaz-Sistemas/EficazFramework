@@ -52,11 +52,11 @@ public class ExpressionObjectQuery
     public Type ConversionTargetType { get; set; }
 
 
-    private static System.Reflection.MethodInfo ContainsMethod = typeof(string).GetMethod("Contains", new[] { typeof(string) });
-    private static System.Reflection.MethodInfo StartsWithMethod = typeof(string).GetMethod("StartsWith", new[] { typeof(string) });
-    private static System.Reflection.MethodInfo LengthMethod = typeof(string).GetMethod("get_Length", new[] { typeof(string) });
-    private static System.Reflection.MethodInfo ToLowerMethod = typeof(string).GetMethod("ToLower", Array.Empty<Type>());
-    private static System.Reflection.MethodInfo NullToEmptyMethod = typeof(Extensions.TextExtensions).GetMethod("NullToEmpty", new[] { typeof(string) });
+    private static readonly System.Reflection.MethodInfo ContainsMethod = typeof(string).GetMethod("Contains", new[] { typeof(string) });
+    private static readonly System.Reflection.MethodInfo StartsWithMethod = typeof(string).GetMethod("StartsWith", new[] { typeof(string) });
+    //private static readonly System.Reflection.MethodInfo LengthMethod = typeof(string).GetMethod("get_Length", new[] { typeof(string) });
+    private static readonly System.Reflection.MethodInfo ToLowerMethod = typeof(string).GetMethod("ToLower", Array.Empty<Type>());
+    private static readonly System.Reflection.MethodInfo NullToEmptyMethod = typeof(Extensions.TextExtensions).GetMethod("NullToEmpty", new[] { typeof(string) });
 
     /// <summary>
     /// Retorna a expressão para filtro do campo especificado nesta instância, para o tipo
@@ -237,8 +237,7 @@ public class ExpressionObjectQuery
                 var expr2 = buildInfo.Invoke(item, new[] { groupParameter });
 
                 // TEMPORARY FIX
-                if (resultExpression is null)
-                    resultExpression = f => true;
+                resultExpression ??= f => true;
                 resultExpression = resultExpression.And(resultExpression.Any(groupCollInfo, (System.Linq.Expressions.Expression)expr2));
             }
 

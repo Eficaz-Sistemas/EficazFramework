@@ -19,9 +19,9 @@ public partial class VisualTreeHelpers
             return null;
         do
         {
-            if (current is T)
+            if (current is T t)
             {
-                return (T)current;
+                return t;
             }
 
             current = VisualTreeHelper.GetParent(current);
@@ -187,7 +187,7 @@ public partial class VisualTreeHelpers
             else if (lockonfirstlevel == false & resultlist.Count > -0)
             {
                 var innerresult = FindVisualChildren<T>(child);
-                if (innerresult != null && innerresult.Count() > 0)
+                if (innerresult?.Any() ?? false)
                     resultlist.AddRange(innerresult);
             }
         }

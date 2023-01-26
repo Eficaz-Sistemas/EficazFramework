@@ -129,3 +129,5 @@ dotnet_style_readonly_field = true:suggestion
 dotnet_style_require_accessibility_modifiers = for_non_interface_members:silent
 dotnet_style_allow_multiple_blank_lines_experimental = true:silent
 dotnet_style_allow_statement_immediately_after_block_experimental = true:silent
+dotnet_diagnostic.CA2012.severity = silent
+dotnet_diagnostic.CA1822.severity = silent

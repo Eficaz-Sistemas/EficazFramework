@@ -395,15 +395,13 @@ public abstract class RepositoryBase<T> : INotifyPropertyChanged, IDisposable wh
             {
                 // Tarefa pendente: descartar o estado gerenciado (objetos gerenciados)
                 Filter = null;
-                if (OrderByDefinitions != null)
-                    OrderByDefinitions.Clear();
+                OrderByDefinitions?.Clear();
                 DisposeManagedCallerObjects();
             }
 
             // Tarefa pendente: liberar recursos não gerenciados (objetos não gerenciados) e substituir o finalizador
             // Tarefa pendente: definir campos grandes como nulos
-            if (DataContext != null)
-                DataContext.Clear();
+            DataContext?.Clear();
             DisposeUnManagedCallerObjects();
             disposedValue = true;
         }

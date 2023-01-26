@@ -252,7 +252,7 @@ public abstract partial class MultiRangeBase : Control
             return str;
         }
 
-        return string.Format("Min.: {0} | Start: {1} | End: {2} | Máx: {3}", str, minimum, maximum, startvalue, endvalue);
+        return $"Min.: {str} | Start: {minimum} | End: {maximum} | Máx: {startvalue}";
     }
 
     [Category("Behavior")]

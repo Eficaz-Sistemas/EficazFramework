@@ -10,8 +10,10 @@ public class ObservableDictionaryTests
     [Test, Order(1)]
     public void Constructor()
     {
-        var internalDictionary = new Dictionary<int, string>();
-        internalDictionary.Add(1, "abc");
+        var internalDictionary = new Dictionary<int, string>
+        {
+            { 1, "abc" }
+        };
         var collection = new ObservableDictionary<int, string>(internalDictionary);
         collection.Count.Should().Be(1);
 

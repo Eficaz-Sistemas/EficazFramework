@@ -51,6 +51,7 @@ public partial class ObservableElement : MudBlazor.MudComponentBase, IDisposable
     {
         if (JSRuntime != null)
             StopObserve();
+        GC.SuppressFinalize(this);
         //stops observer
     }
 }

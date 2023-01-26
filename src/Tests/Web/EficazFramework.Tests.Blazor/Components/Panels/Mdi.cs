@@ -1,6 +1,4 @@
-﻿#pragma warning disable BL0005 // Component parameter should not be set outside of its component.
-#pragma warning disable CS4014 // Como esta chamada não é esperada, a execução do método atual continua antes de a chamada ser concluída
-
+﻿
 using Bunit;
 using EficazFramework.Tests;
 using FluentAssertions;
@@ -23,7 +21,7 @@ public class Mdi : BunitTest
         //host.StartMenuIsOpen.Should().BeFalse();
 
         var menu = comp.Find("div.mud-popover-cascading-value");
-        var popoverContentNode = comp.Find($"#popovercontent-{menu.Id!.Substring(8)}");
+        var popoverContentNode = comp.Find($"#popovercontent-{menu.Id![8..]}");
         popoverContentNode.Children.Should().BeEmpty();
 
         //comp.InvokeAsync(() => host.ToggleStartMenuOpen());

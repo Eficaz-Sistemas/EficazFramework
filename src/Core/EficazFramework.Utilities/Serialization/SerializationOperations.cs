@@ -100,7 +100,7 @@ public class SerializationOperations
 
     public static async Task<T?> FromJsonAsync<T>(string source)
     {
-        T result = default;
+        T? result;
         using (var memory = new System.IO.MemoryStream(System.Text.Encoding.UTF8.GetBytes(source)))
         {
             result = await FromJsonAsync<T>(memory);

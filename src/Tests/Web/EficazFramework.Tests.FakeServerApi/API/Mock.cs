@@ -77,8 +77,10 @@ internal static class Mock
 
     internal static IResult ValidationFail()
     {
-        IDictionary<string, string[]> errors = new Dictionary<string, string[]>();
-        errors.Add("Validation", new[] { "Erro 001", "Erro 002" });
+        IDictionary<string, string[]> errors = new Dictionary<string, string[]>
+        {
+            { "Validation", new[] { "Erro 001", "Erro 002" } }
+        };
         return Results.ValidationProblem(errors, title: "Informações Inválidas", statusCode: 422);
     }
 

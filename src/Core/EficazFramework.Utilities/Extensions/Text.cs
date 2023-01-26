@@ -51,6 +51,14 @@ public static partial class TextExtensions
     [GeneratedRegex(@"^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$", RegexOptions.CultureInvariant)]
     private static partial Regex RegexMail();
 
+    [GeneratedRegex(@"[^A-Za-z0-9\s-]", RegexOptions.CultureInvariant)]
+    private static partial Regex RegexUrlSlug_StageA();
+
+    [GeneratedRegex(@"\s+", RegexOptions.CultureInvariant)]
+    private static partial Regex RegexUrlSlug_StageB();
+
+    [GeneratedRegex(@"\s", RegexOptions.CultureInvariant)]
+    private static partial Regex RegexUrlSlug_StageC();
 
 #endif
 
@@ -531,12 +539,20 @@ public static partial class TextExtensions
     /// <returns></returns>
     public static string ToUrlSlug(this string value)
     {
+#if NET7_0_OR_GREATER
+        value = (value ?? "").GetClearText().ToLowerInvariant();
+        value = RegexUrlSlug_StageA().Replace(value, "");
+        value = RegexUrlSlug_StageB().Replace(value, " ").Trim();
+        value = RegexUrlSlug_StageC().Replace(value, "-");
+#else
         value = (value ?? "").GetClearText().ToLowerInvariant();
         value = Regex.Replace(value, @"[^A-Za-z0-9\s-]", "");
         value = Regex.Replace(value, @"\s+", " ").Trim();
         value = Regex.Replace(value, @"\s", "-");
+#endif
         return value;
     }
+
 
     /// <summary>
     /// Verifica se o endereço de e-mail informado é válido.

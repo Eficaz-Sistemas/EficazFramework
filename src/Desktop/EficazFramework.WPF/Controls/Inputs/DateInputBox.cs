@@ -37,7 +37,7 @@ public partial class DateInputBox : EficazFramework.Controls.Primitives.Interact
         string formated_value = null;
         if (string.IsNullOrEmpty(input.StringFormat))
             input.StringFormat = SetupDatePatternByCulture();
-        if (e.NewValue is object)
+        if (e.NewValue != null)
             formated_value = string.Format("{0:" + input.StringFormat + "}", e.NewValue);
         if (input.Text != formated_value)
             input.Text = formated_value;
@@ -96,8 +96,7 @@ public partial class DateInputBox : EficazFramework.Controls.Primitives.Interact
         }
         else
         {
-            DateTime tmp_date;
-            if (DateTime.TryParse(Text.Replace(_maskBehavior.PromptChar, new char()), out tmp_date))
+            if (DateTime.TryParse(Text.Replace(_maskBehavior.PromptChar, new char()), out DateTime tmp_date))
             {
                 if (StringFormat == "MM/yyyy")
                 {
@@ -124,7 +123,7 @@ public partial class DateInputBox : EficazFramework.Controls.Primitives.Interact
     {
         base.OnMouseDoubleClick(e);
         CalendarDayButton cdbt = EficazFramework.XAML.Utilities.VisualTreeHelpers.FindAnchestor<CalendarDayButton>((DependencyObject)e.Source);
-        if (cdbt is object)
+        if (cdbt != null)
             CommitSelection();
     }
 

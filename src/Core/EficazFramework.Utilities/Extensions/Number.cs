@@ -385,9 +385,9 @@ public static class NumberExtensions
                     {
                         if (!(centenas % 100 == 0))
                         {
-                            numstr = numstr + ", ";
+                            numstr += ", ";
                         }
-                        numstr = numstr + GetNumberStringArray(centenas, genero);
+                        numstr += GetNumberStringArray(centenas, genero);
                     }
 
                     if (moeda == true)

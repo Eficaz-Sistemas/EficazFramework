@@ -17,7 +17,7 @@ public class DIPTest : EficazFramework.Tests.BaseTest
     [Test]
     public void PleaseHelpMe()
     {
-        EficazFramework.Controls.ColorZone colorZone = new EficazFramework.Controls.ColorZone();
+        EficazFramework.Controls.ColorZone colorZone = new();
         colorZone.IsVisible.Should().BeFalse();
     }
 }

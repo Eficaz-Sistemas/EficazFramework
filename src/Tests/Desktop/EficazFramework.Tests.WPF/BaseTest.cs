@@ -1,5 +1,4 @@
-﻿#pragma warning disable CS8601 // Possível atribuição de referência nula.
-#pragma warning disable CS8618 // O campo não anulável precisa conter um valor não nulo ao sair do construtor. Considere declará-lo como anulável.
+﻿#pragma warning disable CS8618 // O campo não anulável precisa conter um valor não nulo ao sair do construtor. Considere declará-lo como anulável.
 
 global using FluentAssertions;
 global using NUnit.Framework;
@@ -33,8 +32,8 @@ public class BaseTest
     {
         if (Application == null)
         {
-            StringBuilder sb = new StringBuilder();
-            Action<string> logMessage = (message) => sb.AppendLine(message);
+            StringBuilder sb = new();
+            void logMessage(string message) => sb.AppendLine(message);
             try
             {
                 Application = await XamlTest.App.StartRemote<EficazFramework.Tests.WPF.Views.App>(logMessage);

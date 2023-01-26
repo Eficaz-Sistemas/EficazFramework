@@ -17,7 +17,9 @@ public class ExpressionBuilder : System.Windows.Controls.Control
 
     DataGrid part_datagrid;
 
+#pragma warning disable IDE0052 // Remover membros particulares não lidos
     Button part_button_find;
+#pragma warning restore IDE0052 // Remover membros particulares não lidos
 
     #endregion
 

@@ -1,5 +1,4 @@
-﻿#pragma warning disable BL0005 // Set parameter outside component
-#pragma warning disable CS4014 // Como esta chamada não é esperada, a execução do método atual continua antes de a chamada ser concluída
+﻿#pragma warning disable CS4014 // Como esta chamada não é esperada, a execução do método atual continua antes de a chamada ser concluída
 
 using Bunit;
 using EficazFramework.Tests;

@@ -157,8 +157,7 @@ public class DbConfiguration : IDbConfig, System.ComponentModel.INotifyPropertyC
             Save();
         }
 
-        if (data == null)
-            data = Serialization.SerializationOperations.FromJsonFile<DbConfiguration>(SettingsPath + _FILE);
+        data ??= Serialization.SerializationOperations.FromJsonFile<DbConfiguration>(SettingsPath + _FILE);
 
         CopyFrom(data);
     }

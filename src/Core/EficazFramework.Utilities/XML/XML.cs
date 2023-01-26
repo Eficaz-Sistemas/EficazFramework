@@ -103,14 +103,13 @@ public class XMLOperations
     /// <summary>
     /// Converte uma instância de System.Xml.Linq.XElement para System.Xml.XmlElement
     /// </summary>
-    public static XmlElement ToXmlElement([NotNull] XElement source)
+    public static XmlElement? ToXmlElement([NotNull] XElement source)
     {
         if (source is null)
             throw new NullReferenceException();
         var tmp_doc = new XmlDocument();
         tmp_doc.Load(source.CreateReader());
-        var result = tmp_doc.DocumentElement;
-        return result;
+        return tmp_doc.DocumentElement;
     }
 
     /// <summary>

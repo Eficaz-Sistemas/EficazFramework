@@ -15,11 +15,9 @@ public partial class ViewModelDialog
         if (messageArgs.Type != Events.MessageType.Default)
             return Events.MessageResult.Cancel;
 
-        if (mudDialogParams == null)
-            mudDialogParams = new();
+        mudDialogParams ??= new();
 
-        if (mudDialogOptions == null)
-            mudDialogOptions = new() { DisableBackdropClick = true};
+        mudDialogOptions ??= new() { DisableBackdropClick = true};
 
         mudDialogParams?.Add("Args", messageArgs);
 

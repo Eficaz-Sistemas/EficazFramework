@@ -152,7 +152,7 @@ public class ExpressionBuilderTests
 
     private static ExpressionBuilder DefaultInstance()
     {
-        ExpressionBuilder builder = new ExpressionBuilder();
+        ExpressionBuilder builder = new();
         builder.Properties.Add(IdProperty);
         builder.Properties.Add(NameProperty);
         builder.Properties.Add(CreatedInProperty);

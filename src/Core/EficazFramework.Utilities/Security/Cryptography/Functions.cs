@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Security.Cryptography;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace EficazFramework.Security.Cryptography;
 
@@ -22,9 +23,15 @@ public class Functions
 
     public static string Decript(string text, string key)
     {
-        var md5 = MD5.Create();
-        return Decript(text, md5.ComputeHash(Encoding.Unicode.GetBytes(key)));
+        return Decript(text, MD5.HashData(Encoding.Unicode.GetBytes(key)));
     }
+
+#if NET7_0_OR_GREATER
+    public static async Task<string> DecriptAsync(string text, string key)
+    {
+        return Decript(text, await MD5.HashDataAsync(new System.IO.MemoryStream(Encoding.Unicode.GetBytes(key))));
+    }
+#endif
 
     private static string Decript(string text, byte[] key)
     {

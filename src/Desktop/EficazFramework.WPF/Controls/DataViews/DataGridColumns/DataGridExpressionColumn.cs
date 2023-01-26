@@ -188,8 +188,7 @@ public class DataGridExpressionColumn : System.Windows.Controls.DataGridTextColu
         if (!UpdateMode)
         {
             ExpressionBuilder expr = EficazFramework.XAML.Utilities.VisualTreeHelpers.FindAnchestor<ExpressionBuilder>(clcell);
-            if (expr != null)
-                expr.FindAction?.Invoke(sender, e);
+            expr?.FindAction?.Invoke(sender, e);
         }
         else
         {

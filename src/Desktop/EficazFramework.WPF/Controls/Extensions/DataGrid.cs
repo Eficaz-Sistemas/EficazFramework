@@ -116,8 +116,8 @@ public partial class DataGrid
                 if (clindex > 0)
                 {
                     var result = cell.PredictFocus(FocusNavigationDirection.Left);
-                    if (result is DataGridCell)
-                        cell = (DataGridCell)result;
+                    if (result is DataGridCell dgcell)
+                        cell = dgcell;
                     else
                         cell = XAML.Utilities.VisualTreeHelpers.FindAnchestor<DataGridCell>(result);
                 }
@@ -138,8 +138,8 @@ public partial class DataGrid
             else if (dg.Columns.Count - 1 > clindex)
             {
                 var result = cell.PredictFocus(FocusNavigationDirection.Right);
-                if (result is DataGridCell)
-                    cell = (DataGridCell)result;
+                if (result is DataGridCell dgcell)
+                    cell = dgcell;
                 else
                     cell = XAML.Utilities.VisualTreeHelpers.FindAnchestor<DataGridCell>(result);
             }
@@ -189,7 +189,7 @@ public partial class DataGrid
                     newrow.IsSelected = true;
 
                 dg.BeginEdit();
-                if (!(cell.Content is TextBlock))
+                if (cell.Content is not TextBlock)
                     cell.MoveFocus(new TraversalRequest(FocusNavigationDirection.Next));
             }
 
@@ -270,11 +270,9 @@ public partial class DataGrid
         var bindingFlags = BindingFlags.FlattenHierarchy | BindingFlags.NonPublic | BindingFlags.Instance;
         var cellError = sender.GetType().GetProperty("HasCellValidationError", bindingFlags);
         var rowError = sender.GetType().GetProperty("HasRowValidationError", bindingFlags);
-        if (cellError != null)
-            cellError.SetValue(sender, false); // hasCellValidationError = CBool(cellError.GetValue(sender, Nothing))
+        cellError?.SetValue(sender, false); // hasCellValidationError = CBool(cellError.GetValue(sender, Nothing))
 
-        if (rowError != null)
-            rowError.SetValue(sender, false); // hasRowValidationError = CBool(rowError.GetValue(sender, Nothing))
+        rowError?.SetValue(sender, false); // hasRowValidationError = CBool(rowError.GetValue(sender, Nothing))
 
         // If (Not hasCellValidationError) OrElse (Not hasRowValidationError) Then
         e.CanExecute = true;
@@ -422,7 +420,7 @@ public partial class DataGrid
             if (cell.IsReadOnly == false)
             {
                 dg.BeginEdit();
-                if (!(cell.Content is TextBlock))
+                if (cell.Content is not TextBlock)
                 {
                     cell.MoveFocus(new TraversalRequest(FocusNavigationDirection.Next));
                 }
@@ -437,8 +435,7 @@ public partial class DataGrid
         for (int i = 0, loopTo = VisualTreeHelper.GetChildrenCount(reference) - 1; i <= loopTo; i++)
         {
             DependencyObject child = VisualTreeHelper.GetChild(reference, i);
-            DataGridColumnHeader colHeader = child as DataGridColumnHeader;
-            if (colHeader != null && ReferenceEquals(colHeader.Column, column))
+            if (child is DataGridColumnHeader colHeader && ReferenceEquals(colHeader.Column, column))
                 return colHeader;
 
             colHeader = GetDataGridColumnsHeader(column, child);
@@ -508,7 +505,7 @@ public partial class DataGrid
 
     #region Commands
 
-    private static EficazFramework.Commands.CommandBase _filterCommand = new EficazFramework.Commands.CommandBase(new EficazFramework.Events.ExecuteEventHandler(FilterCommand_Execute));
+    private static EficazFramework.Commands.CommandBase _filterCommand = new(new EficazFramework.Events.ExecuteEventHandler(FilterCommand_Execute));
     /// <summary>
     /// Abre o popup
     /// </summary>
@@ -534,7 +531,7 @@ public partial class DataGrid
 
 
 
-    private static EficazFramework.Commands.CommandBase _applyfilterCommand = new EficazFramework.Commands.CommandBase(new EficazFramework.Events.ExecuteEventHandler(ApplyCommand_Execute));
+    private static EficazFramework.Commands.CommandBase _applyfilterCommand = new(new EficazFramework.Events.ExecuteEventHandler(ApplyCommand_Execute));
 
     /// <summary>
     /// Aplica o filtro pela edição da textobox da coluna
@@ -590,7 +587,7 @@ public partial class DataGrid
             it.Value1 = Conversion.CTypeDynamic(value, prop);
         }
 
-        UpdateFilter(dg, vm, collectionType);
+        UpdateFilter(dg, vm);
 
         ContextMenu ctxmenu = XAML.Utilities.VisualTreeHelpers.FindAnchestor<ContextMenu>(context);
         if (ctxmenu != null)
@@ -603,7 +600,7 @@ public partial class DataGrid
 
 
 
-    private static EficazFramework.Commands.CommandBase _clearfilterCommand = new EficazFramework.Commands.CommandBase(new EficazFramework.Events.ExecuteEventHandler(ClearFilterCommand_Execute));
+    private static EficazFramework.Commands.CommandBase _clearfilterCommand = new(new EficazFramework.Events.ExecuteEventHandler(ClearFilterCommand_Execute));
 
     /// <summary>
     /// Limpa o filtro da coluna desejada
@@ -623,7 +620,7 @@ public partial class DataGrid
         Binding b = (Binding)((DataGridBoundColumn)cl.Column).Binding;
         var it = vm.Items.Where(it => it.SelectedProperty.PropertyPath == b.Path.Path).FirstOrDefault();
         vm.Items.Remove(it);
-        UpdateFilter(dg, vm, CollectionType(dg));
+        UpdateFilter(dg, vm);
 
         System.Windows.Controls.Button filterbt = XAML.Utilities.VisualTreeHelpers.FindVisualChildByName<System.Windows.Controls.Button>(cl, "PART_AddCommand");
         System.Windows.Controls.Button removebt = XAML.Utilities.VisualTreeHelpers.FindVisualChildByName<System.Windows.Controls.Button>(cl, "PART_RemoveCommand");
@@ -650,7 +647,7 @@ public partial class DataGrid
         return firstitem.GetType();
     }
 
-    public static void UpdateFilter(System.Windows.Controls.DataGrid dg, EficazFramework.Expressions.ExpressionBuilder vm, Type collectionType)
+    public static void UpdateFilter(System.Windows.Controls.DataGrid dg, EficazFramework.Expressions.ExpressionBuilder vm)
     {
         if (vm.Items.Count <= 0)
         {

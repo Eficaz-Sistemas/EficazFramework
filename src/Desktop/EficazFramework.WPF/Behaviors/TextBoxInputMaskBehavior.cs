@@ -87,10 +87,7 @@ public class TextBoxInputMaskBehavior : Behavior<System.Windows.Controls.TextBox
 
         //seems the only way that the text is formatted correct, when source is updated
         var textProp = DependencyPropertyDescriptor.FromProperty(System.Windows.Controls.TextBox.TextProperty, typeof(System.Windows.Controls.TextBox));
-        if (textProp != null)
-        {
-            textProp.AddValueChanged(AssociatedObject, (s, args) => UpdateText());
-        }
+        textProp?.AddValueChanged(AssociatedObject, (s, args) => UpdateText());
     }
 
     void AssociatedObjectPreviewTextInput(object sender, System.Windows.Input.TextCompositionEventArgs e)

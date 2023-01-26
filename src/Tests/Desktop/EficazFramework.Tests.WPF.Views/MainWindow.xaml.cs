@@ -21,9 +21,9 @@ public partial class MainWindow : Window
         maintab.SelectedIndex = 1;
 
     #region "Global"
-    public static IEnumerable<Extensions.EnumMember> Colors => EficazFramework.Extensions.Enums.GetLocalizedValues<EficazFramework.Controls.AttachedProperties.Color>();
+    public static IEnumerable<Extensions.EnumMember>? Colors => EficazFramework.Extensions.Enums.GetLocalizedValues<EficazFramework.Controls.AttachedProperties.Color>();
 
-    public static IEnumerable<Extensions.EnumMember> TabsOrientation => EficazFramework.Extensions.Enums.GetLocalizedValues<System.Windows.Controls.Dock>();
+    public static IEnumerable<Extensions.EnumMember>? TabsOrientation => EficazFramework.Extensions.Enums.GetLocalizedValues<System.Windows.Controls.Dock>();
 
     #endregion
 
@@ -50,7 +50,7 @@ public partial class MainWindow : Window
 
     #region Configurations
 
-    private void animationck_Checked(object sender, RoutedEventArgs e)
+    private void Animationck_Checked(object sender, RoutedEventArgs e)
     {
         EficazFramework.Configuration.Visual.Effects = ((CheckBox)sender).IsChecked ?? true;
     }
@@ -60,8 +60,8 @@ public partial class MainWindow : Window
 
     #region Inputs
 
-    string[] itemsToFind = { "Audi", "Aston Martin", "BMW", "Ferrari", "Mercedes", "Porsche", "Volkswagen" };
-    private void autocomplete_Find(object sender, Events.FindRequestEventArgs e)
+    readonly string[] itemsToFind = { "Audi", "Aston Martin", "BMW", "Ferrari", "Mercedes", "Porsche", "Volkswagen" };
+    private void Autocomplete_Find(object sender, Events.FindRequestEventArgs e)
     {
         e.Data = itemsToFind.Where(x => x.Contains(e.Literal, StringComparison.InvariantCultureIgnoreCase)).ToList();
     }
@@ -71,7 +71,7 @@ public partial class MainWindow : Window
 
     #region DataGrid
 
-    private void nomeCl_CheckChanged(object sender, RoutedEventArgs e)
+    private void NomeCl_CheckChanged(object sender, RoutedEventArgs e)
     {
         EficazFramework.Controls.AttachedProperties.DataGrid.SetShowFilter(nomeCl, (((CheckBox)sender).IsChecked ?? true));
         var value = EficazFramework.Controls.AttachedProperties.DataGrid.GetShowFilter(nomeCl);
@@ -80,7 +80,7 @@ public partial class MainWindow : Window
         //dgMain.ApplyTemplate();
     }
 
-    private void ufCl_CheckChanged(object sender, RoutedEventArgs e)
+    private void UfCl_CheckChanged(object sender, RoutedEventArgs e)
     {
         EficazFramework.Controls.AttachedProperties.DataGrid.SetShowFilter(nomeCl, (((CheckBox)sender).IsChecked ?? true));
         dgMain.InvalidateVisual();

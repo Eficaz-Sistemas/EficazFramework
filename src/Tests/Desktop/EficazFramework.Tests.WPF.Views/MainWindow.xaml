@@ -778,7 +778,7 @@
                         <TextBlock Text="Hello World"/>
                     </Expander>
                 </StackPanel>
-                <CheckBox x:Name="animationck" Checked="animationck_Checked" Unchecked="animationck_Checked" VerticalAlignment="Bottom" HorizontalAlignment="Left" Margin="25" IsChecked="True" Style="{DynamicResource Style.Checkbox.Modern}">
+                <CheckBox x:Name="animationck" Checked="Animationck_Checked" Unchecked="Animationck_Checked" VerticalAlignment="Bottom" HorizontalAlignment="Left" Margin="25" IsChecked="True" Style="{DynamicResource Style.Checkbox.Modern}">
                     <TextBlock Margin="5,0,0,0">Efeitos Visuais</TextBlock>
                 </CheckBox>
             </Grid>

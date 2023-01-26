@@ -12,7 +12,7 @@ internal class MockDbContext : Microsoft.EntityFrameworkCore.DbContext
         _provider = provider;
     }
 
-    Providers.DataProviderBase _provider;
+    readonly Providers.DataProviderBase _provider;
 
     internal readonly static string MockDb = @$"{Environment.CurrentDirectory}\MockDb.db";
 

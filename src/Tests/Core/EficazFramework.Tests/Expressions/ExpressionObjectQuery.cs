@@ -388,7 +388,7 @@ public class ExpressionObjectQueryTests
         },
         };
 
-        ExpressionBuilder builder = new ExpressionBuilder();
+        ExpressionBuilder builder = new();
         builder.Properties.Add(IdProperty);
         builder.Properties.Add(NameProperty);
         builder.Properties.Add(CreatedInProperty);
@@ -658,7 +658,6 @@ public class ExpressionObjectQueryTests
         });
 
         var querySource = builder.ToExpressionObjectQuery();
-        querySource = builder.ToExpressionObjectQuery();
         querySource.Should().HaveCount(2);
         var expression = EficazFramework.Expressions.ExpressionObjectQuery.GetExpression<Validation.SampleObject>(querySource);
         expression.Should().NotBeNull();
@@ -707,7 +706,6 @@ public class ExpressionObjectQueryTests
         });
 
         var querySource = builder.ToExpressionObjectQuery();
-        querySource = builder.ToExpressionObjectQuery();
         querySource.Should().HaveCount(2);
         var expression = EficazFramework.Expressions.ExpressionObjectQuery.GetExpression<Validation.SampleObject>(querySource);
         expression.Should().NotBeNull();

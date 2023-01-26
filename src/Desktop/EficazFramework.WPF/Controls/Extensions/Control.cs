@@ -17,12 +17,12 @@ public partial class Control
 
     private static void OnTipTextChanged(DependencyObject source, DependencyPropertyChangedEventArgs e)
     {
-        if (source is PasswordBox)
+        if (source is PasswordBox box)
         {
             if (!string.IsNullOrEmpty((string)e.NewValue))
-                ((PasswordBox)source).PasswordChanged += OnPasswordChanged;
+                box.PasswordChanged += OnPasswordChanged;
             else
-                ((PasswordBox)source).PasswordChanged -= OnPasswordChanged;
+                box.PasswordChanged -= OnPasswordChanged;
         }
     }
 

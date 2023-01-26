@@ -76,7 +76,7 @@ public class DataGridExtensionsTests : BaseTest
     [Test, Apartment(ApartmentState.STA)]
     public void AttachedPropertiesHandlersTest()
     {
-        DataGrid dg = new DataGrid()
+        DataGrid dg = new()
         { 
             AutoGenerateColumns = true, 
             SelectionUnit = DataGridSelectionUnit.FullRow, 

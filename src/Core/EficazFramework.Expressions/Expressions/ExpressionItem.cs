@@ -498,7 +498,7 @@ public class ExpressionItem : INotifyPropertyChanged
             ignores = true;
             return null;
         }
-        bool parentAllowsNull = !UpdateMode ? (_tmpOwnerExpressionBuilder?.AllowNulls ?? false) : false; // todo: change last 'false' to 
+        bool parentAllowsNull = !UpdateMode && (_tmpOwnerExpressionBuilder?.AllowNulls ?? false); // todo: change last 'false' to 
         bool canbenull = SelectedProperty.AllowNull && parentAllowsNull;
         if (Value1 is null && ignores == false && canbenull == false)
             errors.AppendLine(string.Format(Resources.Strings.Expressions.Required, SelectedProperty.DisplayName));

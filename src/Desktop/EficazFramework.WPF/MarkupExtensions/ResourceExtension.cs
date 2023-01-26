@@ -14,7 +14,7 @@ public partial class ResourceExtension : MarkupExtension
     public ResourceExtension(string resourceKey) : base()
     {
         if (resourceKey is null)
-            throw new ArgumentNullException("resourceKey");
+            throw new ArgumentNullException(nameof(resourceKey));
 
         ResourceKey = resourceKey;
     }
