@@ -17,6 +17,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="ThirdPart Services\TimeZone.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="coverlet.collector" Version="3.2.0">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
@@ -92,6 +96,10 @@
       <LastGenOutput>TestStrings.Designer.cs</LastGenOutput>
       <CustomToolNamespace>EficazFramework.Resources.Strings</CustomToolNamespace>
     </EmbeddedResource>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="ThirdPart Services\" />
   </ItemGroup>
 
 </Project>

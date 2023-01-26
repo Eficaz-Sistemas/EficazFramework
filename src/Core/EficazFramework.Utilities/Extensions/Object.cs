@@ -16,18 +16,18 @@ public static class ObjectExtensions
     /// <returns>Object</returns>
     /// <remarks>Para caminhos completox, separe cada membro por ponto. Ex: Endereco.UF: Obtém a UF, da instância de endereço, que por sua vez é
     /// uma propriedade de uma entidade de nível superior, como por exemplo Empresa.</remarks>
-    public static PropertyInfo? GetPropertyInfo(this object instance, string path, [Optional, DefaultParameterValue(null)] ref object out_instance)
+    public static PropertyInfo? GetPropertyInfo(this object instance, string path, [Optional, DefaultParameterValue(null)] ref object? out_instance)
     {
         out_instance = instance;
         var tmp_instance = instance;
         var props = path.Split(".");
-        PropertyInfo info;
-        object result = null;
+        PropertyInfo? info;
+        object? result = null;
         for (int i = 0, loopTo = props.Length - 1; i <= loopTo; i++)
         {
             if (i == 0)
             {
-                info = instance.GetType().GetRuntimeProperty(props[i]);
+                info = instance?.GetType().GetRuntimeProperty(props[i]);
                 if (i == props.Length - 1)
                 {
                     result = info;
@@ -35,23 +35,23 @@ public static class ObjectExtensions
                 }
                 else
                 {
-                    tmp_instance = info.GetValue(instance, null);
+                    tmp_instance = info?.GetValue(instance, null);
                     out_instance = tmp_instance;
                 }
             }
             else if (i < props.Length - 1)
             {
-                info = tmp_instance.GetType().GetRuntimeProperty(props[i]);
-                tmp_instance = info.GetValue(tmp_instance, null);
+                info = tmp_instance?.GetType().GetRuntimeProperty(props[i]);
+                tmp_instance = info?.GetValue(tmp_instance, null);
                 out_instance = tmp_instance;
             }
             else
             {
-                result = tmp_instance.GetType().GetRuntimeProperty(props[i]);
+                result = tmp_instance?.GetType().GetRuntimeProperty(props[i]);
             }
         }
 
-        return (PropertyInfo)result;
+        return result as PropertyInfo;
     }
 
     /// <summary>
@@ -63,12 +63,12 @@ public static class ObjectExtensions
     /// <returns>Object</returns>
     /// <remarks>Para caminhos completox, separe cada membro por ponto. Ex: Endereco.UF: Obtém a UF, da instância de endereço, que por sua vez é
     /// uma propriedade de uma entidade de nível superior, como por exemplo Empresa.</remarks>
-    public static object GetPropertyValue(this object instance, string path)
+    public static object? GetPropertyValue(this object instance, string path)
     {
         try
         {
             var out_instance = instance;
-            return instance.GetPropertyInfo(path, ref out_instance).GetValue(out_instance, null);
+            return instance.GetPropertyInfo(path, ref out_instance)?.GetValue(out_instance, null);
         }
         catch
         {
@@ -87,7 +87,7 @@ public static class ObjectExtensions
     public static void SetPropertyValue(this object instance, string path, object value)
     {
         var out_instance = instance;
-        instance.GetPropertyInfo(path, ref out_instance).SetValue(out_instance, value, null);
+        instance.GetPropertyInfo(path, ref out_instance)?.SetValue(out_instance, value, null);
     }
 
 }
