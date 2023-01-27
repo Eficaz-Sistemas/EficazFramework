@@ -12,7 +12,7 @@ public partial class ApplicationsMenu : MudBlazor.MudComponentBase
     /// <summary>
     /// The literal for searching for applications on the list
     /// </summary>
-    [Parameter]
+    [Parameter] 
     public string SearchFilter
     {
         get => _searchFilter;

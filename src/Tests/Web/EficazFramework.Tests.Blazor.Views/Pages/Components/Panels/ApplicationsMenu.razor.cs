@@ -8,6 +8,9 @@ public partial class ApplicationsMenu
     [Inject] public EficazFramework.Application.IApplicationManager? ApplicationManager { get; set; }
     [Inject] public MudBlazor.ISnackbar? Snackbar { get; set; }
 
+    public string BoundSearchFilter { get; set; } = string.Empty;
+    EficazFramework.Components.ApplicationsMenu? elementRef;
+
     protected override void OnInitialized()
     {
         base.OnInitialized();
