@@ -1,5 +1,7 @@
 ﻿@page "/Components/Panels/StartMenu"
 
+<MudPopoverProvider />
+
 <div style="height:100%; align-items: flex-end; display: flex">
     <EficazFramework.Components.StartMenu ShowHeader="_showHeader"
                                           ShowFooter="_showFooter">
@@ -29,6 +31,6 @@
 </div>
 
 @code {
-    private bool _showHeader = true;
-    private bool _showFooter = true;
+    public bool _showHeader = true;
+    public bool _showFooter = true;
 }
