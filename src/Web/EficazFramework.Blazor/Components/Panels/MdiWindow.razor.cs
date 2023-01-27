@@ -14,9 +14,7 @@ public partial class MdiWindow: MudBlazor.MudComponentBase
     [Parameter] public string Title { get; set; }
 
     [Parameter] public string Icon { get; set; } = EficazFramework.Icons.Brands.Eficaz;
-    
-    [Parameter] public Size StartupPosition { get; set; } = new(0, 0);
-    
+        
     [Parameter] public ApplicationInstance ApplicationInstance { get; set; }
 
     [Parameter] public bool IsMaximized { get; set; } = false;
@@ -37,8 +35,6 @@ public partial class MdiWindow: MudBlazor.MudComponentBase
     [Inject] IJSRuntime JsRutinme { get; set; }
 
     private object myRef;
-
-    internal int zIndex = 1;
 
     //internal Size FrameSize() =>
     //    (Size)ApplicationInstance.Targets["Blazor"].Properties["Size"] ?? new Size(300, 250)
@@ -64,11 +60,11 @@ public partial class MdiWindow: MudBlazor.MudComponentBase
     protected string StyleName =>
                 new StyleBuilder()
                     .AddStyle(Style)
-                    .AddStyle("left", $"{((Size)ApplicationInstance.Targets["Blazor"].Properties["Position"]).Width}px", !IsMaximized)
-                    .AddStyle("top", $"{((Size)ApplicationInstance.Targets["Blazor"].Properties["Position"]).Height}px", !IsMaximized)
-                    .AddStyle("width", $"{((Size)ApplicationInstance.Targets["Blazor"].Properties["Size"]).Width}px", !IsMaximized)
-                    .AddStyle("height", $"{((Size)ApplicationInstance.Targets["Blazor"].Properties["Size"]).Height}px", !IsMaximized)
-                    .AddStyle("z-index", $"{zIndex}")
+                    .AddStyle("left", $"{(int)ApplicationInstance.Targets["Blazor"].Properties["OffsetX"]}px", !IsMaximized)
+                    .AddStyle("top", $"{(int)ApplicationInstance.Targets["Blazor"].Properties["OffsetY"]}px", !IsMaximized)
+                    .AddStyle("width", $"{(int)ApplicationInstance.Targets["Blazor"].Properties["Width"]}px", !IsMaximized)
+                    .AddStyle("height", $"{(int)ApplicationInstance.Targets["Blazor"].Properties["Height"]}px", !IsMaximized)
+                    .AddStyle("z-index", $"{(int)ApplicationInstance.Targets["Blazor"].Properties["ZIndex"]}")
                     .Build();
 
     /// <summary>
@@ -88,16 +84,6 @@ public partial class MdiWindow: MudBlazor.MudComponentBase
         base.OnInitialized();
     }
 
-    protected override void OnAfterRender(bool firstRender)
-    {
-        base.OnAfterRender(firstRender);
-        if (firstRender)
-        {
-            offsetX = StartupPosition.Width;
-            offsetY = StartupPosition.Height;
-        }
-    }
-
     private double startX, startY, offsetX, offsetY;
     private bool isDragging = false;
 
@@ -113,11 +99,8 @@ public partial class MdiWindow: MudBlazor.MudComponentBase
     /// </summary>
     private void OnDragStart(DragEventArgs args)
     {
-        //if (ApplicationInstance.Targets["Blazor"].Properties["State"] = 1)
-        //    return;
-
         //Utilities.JsInterop.SetDragImage(JsRutinme, args);
-        MdiHost.SelectedApp = ApplicationInstance;
+        MdiHost.MoveTo(ApplicationInstance);
         isDragging = true;
         startX = args.OffsetX;
         startY = args.OffsetY;
@@ -138,9 +121,10 @@ public partial class MdiWindow: MudBlazor.MudComponentBase
         if (offsetY < 0)
             offsetY = 0;
 
-        ApplicationInstance.Targets["Blazor"].Properties["Position"] = new Size((int)offsetX, (int)offsetY);
+        ApplicationInstance.Targets["Blazor"].Properties["OffsetX"] = (int)offsetX;
+        ApplicationInstance.Targets["Blazor"].Properties["OffsetY"] = (int)offsetY;
     }
-    
+
     /// <summary>
     /// Close Button Click action
     /// </summary>

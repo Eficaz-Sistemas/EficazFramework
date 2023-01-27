@@ -51,10 +51,19 @@ public partial class MdiHost : MudComponentBase
     [Parameter] public RenderFragment? ToolbarRightContent { get; set; }
 
 
+    private long _currentSection = 0;
     /// <summary>
     /// Current MDI Section (for multi tenant purposes)
     /// </summary>
-    [Parameter] public long CurrentSection { get; set; }
+    [Parameter] public long CurrentSection
+    {
+        get => _currentSection;
+        set
+        {
+            _currentSection = value;
+            MoveToLast();
+        }
+    }
 
 
     [Parameter] public IEnumerable<ApplicationInstance>? ApplicationsSource { get; set; }
@@ -122,11 +131,16 @@ public partial class MdiHost : MudComponentBase
             if (!instance.Targets["Blazor"].Properties.ContainsKey("IsMaximized"))
                 instance.Targets["Blazor"].Properties.Add("IsMaximized", false);
 
-            if (!instance.Targets["Blazor"].Properties.ContainsKey("Position"))
-                instance.Targets["Blazor"].Properties.Add("Position", new System.Drawing.Size(15, 15));
+            instance.Targets["Blazor"].Properties.Add("OffsetX", 15);
+            instance.Targets["Blazor"].Properties.Add("OffsetY", 15);
 
-            if (!instance.Targets["Blazor"].Properties.ContainsKey("Size"))
-                instance.Targets["Blazor"].Properties.Add("Size", new System.Drawing.Size(425, 250));
+            if (!instance.Targets["Blazor"].Properties.ContainsKey("Width"))
+                instance.Targets["Blazor"].Properties.Add("Width", 425);
+
+            if (!instance.Targets["Blazor"].Properties.ContainsKey("Height"))
+                instance.Targets["Blazor"].Properties.Add("Height", 250);
+
+            instance.Targets["Blazor"].Properties["ZIndex"] = (ApplicationsSource?.Count() ?? 0) + 1;
 
             (ApplicationsSource as IList<ApplicationInstance>)?.Add(instance);
         }
@@ -140,7 +154,15 @@ public partial class MdiHost : MudComponentBase
     /// <param name="app"></param>
     public void MoveTo(ApplicationInstance app)
     {
-        //int zIndex = 0;
+        foreach(var anotherApp in ApplicationsSource!.Where(a => !object.ReferenceEquals(a, app)))
+        {
+            int zIndex = (int?)anotherApp.Targets["Blazor"].Properties["ZIndex"] ?? 1;
+            anotherApp.Targets["Blazor"].Properties["ZIndex"] = zIndex - 1;
+        }
+
+        if (app != null)
+            app.Targets["Blazor"].Properties["ZIndex"] = ApplicationsSource!.Count();
+
         SelectedApp = app;
         StateHasChanged();
     }

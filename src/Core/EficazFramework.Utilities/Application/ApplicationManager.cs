@@ -5,6 +5,7 @@ using System.IO;
 using System.Linq;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Xml.Linq;
 
 namespace EficazFramework.Application;
 
@@ -157,7 +158,7 @@ public sealed class ApplicationInstance : ApplicationDefinition, INotifyProperty
         MenuPriority = fromDefinition.MenuPriority;
         IsEnabled = true;
         IsChecked = false;
-        AddTargets(fromDefinition.Targets);
+        AddTargetProperties(fromDefinition.Targets);
         Arguments = fromDefinition.Arguments;
         IsLoading = true;
         if (!fromDefinition.IsPublic)
@@ -171,6 +172,7 @@ public sealed class ApplicationInstance : ApplicationDefinition, INotifyProperty
 
     public long SessionID { get; internal set; }
 
+
     private object? _content;
     public object? Content
     {
@@ -183,12 +185,14 @@ public sealed class ApplicationInstance : ApplicationDefinition, INotifyProperty
         }
     }
 
+
     private object? _notifyContent;
     public object? NotifyContent
     {
         get => _notifyContent;
         set { _notifyContent = value; RaisePropertyChanged(nameof(NotifyContent)); }
     }
+
 
     private bool _isloading = true;
     public bool IsLoading
@@ -207,11 +211,22 @@ public sealed class ApplicationInstance : ApplicationDefinition, INotifyProperty
         $"[{SessionID}] - {TooltipTilte}";
 
     //Methods
-    private void AddTargets(IDictionary<string, ApplicationTarget> source)
+    private void AddTargetProperties(IDictionary<string, ApplicationTarget> sourceTargets)
     {
-        foreach (var item in source)
+        foreach (var sourceTarget in sourceTargets)
         {
-            Targets.Add(item.Key, item.Value);
+            ApplicationTarget appTarget = new()
+            {
+                Icon = sourceTarget.Value.Icon,
+                InitialSize = sourceTarget.Value.InitialSize,
+                SplashScreen = sourceTarget.Value.SplashScreen,
+                StartupUriOrType = sourceTarget.Value.StartupUriOrType
+            };
+            foreach (var item in sourceTarget.Value.Properties)
+            {
+                appTarget.Properties.Add(item.Key, item.Value);
+            }
+            Targets.Add(sourceTarget.Key, appTarget);
         }
     }
 
