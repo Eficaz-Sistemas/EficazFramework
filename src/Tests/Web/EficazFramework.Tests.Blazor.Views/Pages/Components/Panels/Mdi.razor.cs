@@ -18,9 +18,10 @@ public partial class Mdi
 
     private void NewSection()
     {
-        ApplicationManager!.SectionManager!.ActivateSection(new(((long)(ApplicationManager?.SectionManager.Sections.Count ?? 0)))
+        long last = (ApplicationManager?.SectionManager.Sections.DefaultIfEmpty().Max(e => e?.ID) ?? 0) + 1;
+        ApplicationManager!.SectionManager!.ActivateSection(new(last)
         {
-            Name = $"Section {ApplicationManager!.SectionManager!.Sections.Count}",
+            Name = $"Section {last}",
             Icon = MudBlazor.Icons.Material.Filled.Inbox,
         }, true);
         StateHasChanged();

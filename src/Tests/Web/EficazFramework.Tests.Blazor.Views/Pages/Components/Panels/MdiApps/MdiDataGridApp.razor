@@ -1,0 +1,24 @@
+﻿<h3>MdiDataGridApp</h3>
+
+<MudDataGrid Items="_dataSource" Dense Virtualize FixedHeader Class="flex-grow-1" Height="195px">
+    <Columns>
+        <Column T="string" Title="Item">
+            <CellTemplate>
+                @context.Item
+            </CellTemplate>
+        </Column>
+    </Columns>
+</MudDataGrid>
+
+@code {
+    EficazFramework.Collections.StringCollection _dataSource = new();
+
+    protected override void OnInitialized()
+    {
+        base.OnInitialized();
+        for (int i =0; i <= 10000; i++)
+        {
+            _dataSource.Add($"Data {i}");
+        }
+    }
+}

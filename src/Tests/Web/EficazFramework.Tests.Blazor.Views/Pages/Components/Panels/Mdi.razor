@@ -41,7 +41,7 @@
                 <br />
                 @($"Service, ID: {ApplicationManager!.SectionManager.CurrentSectionId}")
                 <br />
-                @($"Service, Instance: {ApplicationManager!.SectionManager.CurrentSection!.ID}")
+                @($"Service, Instance: {ApplicationManager!.SectionManager.CurrentSection?.ID ?? 0}")
             </div>
         </ToolbarRightContent>
     </MdiHost>

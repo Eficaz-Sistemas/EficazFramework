@@ -154,14 +154,15 @@ public partial class MdiHost : MudComponentBase
     /// <param name="app"></param>
     public void MoveTo(ApplicationInstance app)
     {
-        foreach(var anotherApp in ApplicationsSource!.Where(a => !object.ReferenceEquals(a, app)))
+        var runningAps = RunningApplications();
+        foreach(var anotherApp in runningAps.Where(a => !object.ReferenceEquals(a, app)))
         {
             int zIndex = (int?)anotherApp.Targets["Blazor"].Properties["ZIndex"] ?? 1;
-            anotherApp.Targets["Blazor"].Properties["ZIndex"] = zIndex - 1;
+            anotherApp.Targets["Blazor"].Properties["ZIndex"] = Math.Max(1, zIndex -= 1);
         }
 
         if (app != null)
-            app.Targets["Blazor"].Properties["ZIndex"] = ApplicationsSource!.Count();
+            app.Targets["Blazor"].Properties["ZIndex"] = runningAps.Count();
 
         SelectedApp = app;
         StateHasChanged();

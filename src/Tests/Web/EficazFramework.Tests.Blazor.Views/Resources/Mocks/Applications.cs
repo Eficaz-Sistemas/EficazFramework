@@ -9,6 +9,8 @@ public static class Applications
     private static EficazFramework.Application.ApplicationDefinition? appPerSection;
     private static EficazFramework.Application.ApplicationDefinition? appPerSection2;
     private static EficazFramework.Application.ApplicationDefinition? appEmptyIcon;
+    private static EficazFramework.Application.ApplicationDefinition? appDataGrid;
+    private static EficazFramework.Application.ApplicationDefinition? appDataGrid2;
 
     public static void GenerateApps(EficazFramework.Application.IApplicationManager? applicationManager)
     {
@@ -106,19 +108,41 @@ public static class Applications
             StartupUriOrType = typeof(EficazFramework.Tests.Blazor.Views.Pages.Components.Panels.MdiApps.MdiScopedApp)
         });
 
+        appDataGrid = new()
+        {
+            LongTitle = $"DataGrid App",
+            IsPublic = true,
+            Group = "Free Apps",
+            Title = $"DataGrid App",
+        };
+        appDataGrid.Targets.Add("Blazor", new()
+        {
+            Icon = MudBlazor.Icons.Material.Filled.DataArray,
+            StartupUriOrType = typeof(EficazFramework.Tests.Blazor.Views.Pages.Components.Panels.MdiApps.MdiDataGridApp)
+        });
+
+        appDataGrid2 = new()
+        {
+            LongTitle = $"DataGrid App FS",
+            IsPublic = true,
+            Group = "Free Apps",
+            Title = $"DataGrid App (Full Scrren)",
+        };
+        appDataGrid2.Targets.Add("Blazor", new()
+        {
+            Icon = MudBlazor.Icons.Material.Filled.DataArray,
+            StartupUriOrType = typeof(EficazFramework.Tests.Blazor.Views.Pages.Components.Panels.MdiApps.MdiDataGridFullScreenApp)
+        });
+        appDataGrid2.Targets["Blazor"].Properties.Add("IsMaximized", true);
+
 
         applicationManager.AllApplications.Add(appHello);
         applicationManager.AllApplications.Add(appAnother);
         applicationManager.AllApplications.Add(appPerSection);
         applicationManager.AllApplications.Add(appHello2);
         applicationManager.AllApplications.Add(appAnother2);
-        applicationManager.AllApplications.Add(appHello);
-        applicationManager.AllApplications.Add(appAnother);
-        applicationManager.AllApplications.Add(appPerSection);
-        applicationManager.AllApplications.Add(appHello2);
-        applicationManager.AllApplications.Add(appAnother2);
-        applicationManager.AllApplications.Add(appPerSection2);
         applicationManager.AllApplications.Add(appEmptyIcon);
-
+        applicationManager.AllApplications.Add(appDataGrid);
+        applicationManager.AllApplications.Add(appDataGrid2);
     }
 }

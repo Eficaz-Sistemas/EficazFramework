@@ -22,12 +22,12 @@ public partial class MdiWindow: MudBlazor.MudComponentBase
     /// <summary>
     /// Gets or Sets if ef-mdi-window-host element should render a vertical scrollbar
     /// </summary>
-    public bool Scrollable { get; set; } = false;
+    [Parameter] public bool Scrollable { get; set; } = false;
 
     /// <summary>
     /// Custom Header Frame Content. Will use Icon + Title if null
     /// </summary>
-    public RenderFragment? HeaderContent { get; set; }
+    [Parameter] public RenderFragment? HeaderContent { get; set; }
 
 
     [CascadingParameter] public MdiHost MdiHost { get; set; }
@@ -50,7 +50,8 @@ public partial class MdiWindow: MudBlazor.MudComponentBase
                         .AddClass("flex-column")
                         .AddClass("ef-mdi-window", !IsMaximized)
                         .AddClass("ef-mdi-window-maximized", IsMaximized)
-                        .AddClass("ef-mdi-window-active", object.ReferenceEquals(MdiHost.SelectedApp, ApplicationInstance))
+                        .AddClass("ef-mdi-window-active", object.ReferenceEquals(MdiHost.SelectedApp, ApplicationInstance) && !IsMaximized)
+                        .AddClass("ef-mdi-window-active-maximized", object.ReferenceEquals(MdiHost.SelectedApp, ApplicationInstance) && IsMaximized)
                         .AddClass("flex-grow-1")
                         .Build();
 
@@ -134,7 +135,16 @@ public partial class MdiWindow: MudBlazor.MudComponentBase
         MdiHost.CloseApplication(this);
     }
 
-        
+
+    public void OverrideFrameParameters(RenderFragment? customHeader = null,
+        bool scrolable = false)
+    {
+        HeaderContent = customHeader;
+        Scrollable = scrolable;
+        StateHasChanged();
+    }
+
+
 }
 
 public enum WindowState

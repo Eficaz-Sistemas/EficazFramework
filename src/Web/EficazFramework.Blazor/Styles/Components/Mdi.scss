@@ -12,9 +12,8 @@
 
 .ef-mdi-window-maximized {
     position: relative;
-    box-shadow: var(--mud-elevation-3);
     background-color: var(--mud-palette-surface);
-    border-radius: 10px;
+    border-radius: 0px;
     overflow: hidden;
     flex-grow: 1;
     width: 100%;
@@ -25,6 +24,11 @@
     box-shadow: var(--mud-elevation-10);
     border-color: var(--mud-palette-primary)
 }
+
+.ef-mdi-window-active-maximized {
+    border-color: var(--mud-palette-primary)
+}
+
 
 .ef-mdi-window-host {
     cursor: initial;

@@ -131,8 +131,15 @@ internal class SectionManager : ISectionManager, INotifyPropertyChanged
 
     public void ActivateSection(long ID)
     {
-        Section? exists = SectionsInternal.Where(s => s.ID == ID).FirstOrDefault();
-        CurrentSection = exists ?? throw new NullReferenceException(string.Format(Resources.Strings.Application.SessionNotFoundByID, ID));
+        if (ID != 0)
+        {
+            Section? exists = SectionsInternal.Where(s => s.ID == ID).FirstOrDefault();
+            CurrentSection = exists ?? throw new NullReferenceException(string.Format(Resources.Strings.Application.SessionNotFoundByID, ID));
+        }
+        else
+        {
+            CurrentSection = null;
+        }
     }
 
     public void ActivateSection(Section section, bool update = false)
