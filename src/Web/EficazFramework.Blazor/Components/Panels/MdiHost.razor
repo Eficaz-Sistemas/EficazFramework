@@ -8,27 +8,36 @@
      style="@StyleName" >
     <CascadingValue Value="this">
         @*MDI AREA*@
-        <div class="d-flex flex-grow-1"
-             ondragover="event.preventDefault();"
-             ondragstart="event.dataTransfer.setData('', event.target.id);">
-            @foreach (var item in RunningApplications())
-            {
-                <MdiWindow ApplicationInstance="item"
-                           Title="@item.Title"
-                           Icon="@(item.Targets["Blazor"].Icon?.ToString())"
-                           IsMaximized="@((bool?)item.Targets["Blazor"].Properties["IsMaximized"] ?? false)">
-                    <DynamicComponent Type="@((Type)(item.Targets["Blazor"].StartupUriOrType ?? typeof(string)))" />
-                </MdiWindow>
-            }
-        </div>
-@*        @if (BreakpointListener.IsMediaSize(Breakpoint, _breakpoint))
+        @if (BreakpointListener.IsMediaSize(Breakpoint, _breakpoint))
         {
-            <div>I'm compact!</div>
+            <div class="d-flex flex-grow-1">
+                @if(SelectedApp != null)
+                {
+                    <MdiWindow ApplicationInstance="SelectedApp"
+                               Title="@SelectedApp.Title"
+                               Icon="@(SelectedApp.Targets["Blazor"].Icon?.ToString())"
+                               IsMaximized="true">
+                        <DynamicComponent Type="@((Type)(SelectedApp.Targets["Blazor"].StartupUriOrType ?? typeof(string)))" />
+                    </MdiWindow>
+                }
+            </div>
         }
         else
         {
-            <div>I'm full!</div>
-        }*@
+            <div class="d-flex flex-grow-1"
+                 ondragover="event.preventDefault();"
+                 ondragstart="event.dataTransfer.setData('', event.target.id);">
+                @foreach (var item in RunningApplications())
+                {
+                    <MdiWindow ApplicationInstance="item"
+                               Title="@item.Title"
+                               Icon="@(item.Targets["Blazor"].Icon?.ToString())"
+                               IsMaximized="@((bool?)item.Targets["Blazor"].Properties["IsMaximized"] ?? false)">
+                        <DynamicComponent Type="@((Type)(item.Targets["Blazor"].StartupUriOrType ?? typeof(string)))" />
+                    </MdiWindow>
+                }
+            </div>
+        }
         <div class="d-flex" style="background-color: var(--mud-palette-background-grey);z-index: var(--mud-zindex-appbar) - 101; height: 48px;">
             @*TASKBAR*@         
             @ToolbarLeftContent
