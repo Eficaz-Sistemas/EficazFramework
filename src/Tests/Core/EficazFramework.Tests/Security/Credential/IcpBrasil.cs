@@ -10,7 +10,7 @@ namespace EficazFramework.Security.Credential;
 
 public class IcpBrasilTests
 {
-    System.Security.Cryptography.X509Certificates.X509Certificate2 cert = null;
+    System.Security.Cryptography.X509Certificates.X509Certificate2 cert;
 
     [SetUp]
     public void Setup()
@@ -29,7 +29,6 @@ public class IcpBrasilTests
     public void ReadPfx()
     {
         string target = $"{Environment.CurrentDirectory}/mockCertificate.pfxs";
-        System.Security.Cryptography.X509Certificates.X509Certificate2 cert = MockCertificate();
 
         // read from file:
         EficazFramework.Security.Credential.IcpBrasil icp1 = new(target, "1234");

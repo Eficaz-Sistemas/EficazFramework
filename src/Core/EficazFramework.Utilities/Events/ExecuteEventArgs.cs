@@ -5,9 +5,9 @@ namespace EficazFramework.Events;
 [ExcludeFromCodeCoverage]
 public class ExecuteEventArgs
 {
-    private object _parameter;
+    private object? _parameter;
 
-    public object Parameter
+    public object? Parameter
     {
         get
         {
@@ -20,10 +20,10 @@ public class ExecuteEventArgs
         }
     }
 
-    public ExecuteEventArgs(object parameter)
+    public ExecuteEventArgs(object? parameter)
     {
         _parameter = parameter;
     }
 }
 
-public delegate void ExecuteEventHandler(object sender, ExecuteEventArgs e);
+public delegate void ExecuteEventHandler(object? sender, ExecuteEventArgs e);

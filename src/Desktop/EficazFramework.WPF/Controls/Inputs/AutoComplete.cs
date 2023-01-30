@@ -174,8 +174,7 @@ public partial class AutoComplete : Primitives.InteractiveTextBox
 
     private async void StartFind()
     {
-        if (_cancellationTokenSource != null)
-            _cancellationTokenSource.Cancel();
+        _cancellationTokenSource?.Cancel();
 
         await Task.Delay(100); // assegurando que a Task será cancelada a tempo...
         _cancellationTokenSource = new System.Threading.CancellationTokenSource();
@@ -273,8 +272,7 @@ public partial class AutoComplete : Primitives.InteractiveTextBox
                     ClosePopup();
         }); // ex As Exception
 
-        if (_cancellationTokenSource != null)
-            _cancellationTokenSource.Dispose();
+        _cancellationTokenSource?.Dispose();
         _cancellationTokenSource = null;
     }
 
@@ -361,8 +359,7 @@ public partial class AutoComplete : Primitives.InteractiveTextBox
                 SyncText();
         }
 
-        if (_cancellationTokenSource != null)
-            _cancellationTokenSource.Cancel();
+        _cancellationTokenSource?.Cancel();
     }
 
     protected override void OnMouseDoubleClick(MouseButtonEventArgs e)

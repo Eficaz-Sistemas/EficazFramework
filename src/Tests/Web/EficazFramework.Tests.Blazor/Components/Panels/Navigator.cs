@@ -1,5 +1,4 @@
-﻿#pragma warning disable BL0005 // Component parameter should not be set outside of its component.
-
+﻿
 using Bunit;
 using EficazFramework.Tests;
 using FluentAssertions;

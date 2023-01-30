@@ -17,8 +17,7 @@ public sealed partial class MDIWindow : HeaderedContentControl
         if (DesignerProperties.GetIsInDesignMode(this))
             return;
         var isselected_descriptor = DependencyPropertyDescriptor.FromProperty(IsSelectedProperty, typeof(MDIWindow));
-        if (isselected_descriptor != null)
-            isselected_descriptor.AddValueChanged(this, OnIsSelectedChanged);
+        isselected_descriptor?.AddValueChanged(this, OnIsSelectedChanged);
         Loaded += OnLoaded;
         var leftDescriptor = DependencyPropertyDescriptor.FromProperty(Canvas.LeftProperty, typeof(MDIContainer));
         leftDescriptor.AddValueChanged(this, (_, __) => OnMove());
@@ -201,8 +200,7 @@ public sealed partial class MDIWindow : HeaderedContentControl
             window.RaiseEvent(args);
             if (window.WindowState < WindowState.Maximized)
                 return;
-            if (window._container is null)
-                window._container = XAML.Utilities.VisualTreeHelpers.FindAnchestor<MDIContainer>(window);
+            window._container ??= XAML.Utilities.VisualTreeHelpers.FindAnchestor<MDIContainer>(window);
             if (window._container is null)
                 return;
             window.Width = window._container.ActualWidth;
@@ -215,10 +213,7 @@ public sealed partial class MDIWindow : HeaderedContentControl
     public void CloseWindow(object sender, RoutedEventArgs e)
     {
         var canCloseBinding = BindingOperations.GetBindingExpression(this, CanCloseProperty);
-        if (canCloseBinding != null)
-        {
-            canCloseBinding.UpdateTarget();
-        }
+        canCloseBinding?.UpdateTarget();
 
         if (CanClose)
         {
@@ -249,8 +244,7 @@ public sealed partial class MDIWindow : HeaderedContentControl
 
             token.RoutedEvent = ClosedEvent;
             RaiseEvent(token);
-            if (AppDefinition != null)
-                AppDefinition.Close();
+            AppDefinition?.Close();
         }
     }
 
@@ -260,8 +254,7 @@ public sealed partial class MDIWindow : HeaderedContentControl
         {
             if (IsSelected == true)
             {
-                if (_container != null)
-                    _container.SyncTabZIndex(Content);
+                _container?.SyncTabZIndex(Content);
             }
         }
         catch

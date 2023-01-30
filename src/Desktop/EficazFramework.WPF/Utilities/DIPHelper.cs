@@ -135,7 +135,7 @@ public sealed partial class DipHelper
     {
         get
         {
-            int h = 0;
+            int h;
             if (tier == 0)
                 h = (int)SystemParameters.VirtualScreenHeight;
             else
@@ -154,7 +154,7 @@ public sealed partial class DipHelper
         }
     }
 
-    private static FontSizeConverter conv = new FontSizeConverter();
+    private static FontSizeConverter conv = new();
 
     public static object FontSize_DataGridColumnText =>
         PrimaryScreenResolutionTier switch

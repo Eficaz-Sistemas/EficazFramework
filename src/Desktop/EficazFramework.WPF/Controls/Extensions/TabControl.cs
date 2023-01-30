@@ -67,8 +67,7 @@ public partial class TabControl
             return;
         }
 
-        System.Windows.Controls.TabControl tab = source as System.Windows.Controls.TabControl;
-        if (tab is null)
+        if (source is not System.Windows.Controls.TabControl tab)
             return;
 
         var dpd = DependencyPropertyDescriptor.FromProperty(System.Windows.Controls.TabControl.SelectedContentProperty, typeof(System.Windows.Controls.TabControl));
@@ -94,11 +93,10 @@ public partial class TabControl
             if (DesignerProperties.GetIsInDesignMode((System.Windows.DependencyObject)sender))
                 return;
 
-            if (!(sender is System.Windows.Controls.TabControl))
+            if (sender is not System.Windows.Controls.TabControl)
                 return;
 
-            System.Windows.Controls.TabControl tab = sender as System.Windows.Controls.TabControl;
-            if (tab is null)
+            if (sender is not System.Windows.Controls.TabControl tab)
                 return;
 
             if (tab.IsLoaded == false)
@@ -272,8 +270,6 @@ public partial class TabControl
         else
             return;
         UIElement element = (UIElement)sender;
-        System.Windows.Controls.TabControl tabcontrol = null;
-
         int? index = default;
         if (e.KeyboardDevice.Modifiers == ModifierKeys.None)
             index = GetNextTab(element);
@@ -284,7 +280,7 @@ public partial class TabControl
         if (index.HasValue == false)
             return;
 
-        tabcontrol = EficazFramework.XAML.Utilities.VisualTreeHelpers.FindAnchestor<System.Windows.Controls.TabControl>(element);
+        System.Windows.Controls.TabControl tabcontrol = XAML.Utilities.VisualTreeHelpers.FindAnchestor<System.Windows.Controls.TabControl>(element);
         if (tabcontrol is null)
             return;
 

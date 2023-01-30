@@ -6,30 +6,22 @@ namespace EficazFramework.Events;
 [ExcludeFromCodeCoverage]
 public sealed partial class FindRequestEventArgs : EventArgs
 {
-    private object _tag;
+    private object? _tag;
 
-    public object Tag
+    public object? Tag
     {
-        get
-        {
-            return _tag;
-        }
-
+        get => _tag;
         set
         {
             _tag = value;
         }
     }
 
-    private object _data = null;
+    private object? _data;
 
-    public object Data
+    public object? Data
     {
-        get
-        {
-            return _data;
-        }
-
+        get => _data;
         set
         {
             _data = value;
@@ -37,19 +29,13 @@ public sealed partial class FindRequestEventArgs : EventArgs
         }
     }
 
-    public object[] Args { get; set; }
+    public object[]? Args { get; set; }
 
     private bool _read = false;
 
-    public bool Completed
-    {
-        get
-        {
-            return _read;
-        }
-    }
+    public bool Completed => _read;
 
-    public string Literal { get; private set; } = null;
+    public string Literal { get; private set; }
 
     public System.Threading.CancellationToken CancellationToken { get; }
 

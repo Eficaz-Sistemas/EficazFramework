@@ -1,0 +1,36 @@
+﻿@page "/Components/Panels/StartMenu"
+
+<MudPopoverProvider />
+
+<div style="height:100%; align-items: flex-end; display: flex">
+    <EficazFramework.Components.StartMenu ShowHeader="_showHeader"
+                                          ShowFooter="_showFooter">
+        <Header>
+            <div style="background-color:indigo">
+                Header here...
+            </div>
+        </Header>
+        <Content>
+            <div style="background-color:red; height:400px; width: 250px;">
+                Main content...
+                <br/>
+                <MudSwitch @bind-Checked="_showHeader">Show Header</MudSwitch>
+                <br />
+                <MudSwitch @bind-Checked="_showFooter">Show Footer</MudSwitch>
+            </div>
+        </Content>
+        <Footer>
+            <div style="background-color:green">
+                Footer here...
+            </div>
+        </Footer>
+    </EficazFramework.Components.StartMenu>
+    <div class="mb-3">
+        Clique para abrir/fechar
+    </div>
+</div>
+
+@code {
+    public bool _showHeader = true;
+    public bool _showFooter = true;
+}

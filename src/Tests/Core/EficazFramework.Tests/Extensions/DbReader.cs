@@ -96,8 +96,10 @@ class DbReader<TProvider> where TProvider : DataProviderBase
     public async Task ReadTest2()
     {
         // query spces
-        TestQuery query = new();
-        query.Name = "Blog 1";
+        TestQuery query = new()
+        {
+            Name = "Blog 1"
+        };
 
         // some aditional setup
         Resources.Mocks.MockDbContext dbContext = new(_provider.GetService<DataProviderBase>());

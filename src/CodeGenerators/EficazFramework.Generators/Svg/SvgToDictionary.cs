@@ -27,7 +27,7 @@ public class ModelBuilder : ISourceGenerator
             code.AppendLine("        {");
 
             var content = file.GetText(context.CancellationToken);
-            XmlDocument doc = new XmlDocument();
+            XmlDocument doc = new();
             doc.LoadXml(content.ToString());
             XmlNodeList items = doc.DocumentElement.GetElementsByTagName("glyph");
             Console.WriteLine($"Found {items.Count} glyph(s) for class {className}");

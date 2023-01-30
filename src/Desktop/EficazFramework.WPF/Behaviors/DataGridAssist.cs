@@ -336,7 +336,7 @@ public static partial class DataGridAssist
 
     // ### SHOW FILTER ###
 
-    [Obsolete]
+    [Obsolete("Não implementado até o momento.")]
     public static bool GetShowFilter(DependencyObject element)
     {
         if (element is null)
@@ -347,7 +347,7 @@ public static partial class DataGridAssist
         return (bool)element.GetValue(ShowFilterProperty);
     }
 
-    [Obsolete]
+    [Obsolete("Não implementado até o momento.")]
     public static void SetShowFilter(DependencyObject element, bool value)
     {
         if (element is null)

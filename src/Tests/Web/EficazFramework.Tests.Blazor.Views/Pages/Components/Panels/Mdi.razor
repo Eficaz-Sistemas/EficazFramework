@@ -1,28 +1,48 @@
 ﻿@page "/Components/Panels/Mdi"
 
-<MudPopoverProvider/>
-
-<div class="d-flex flex-grow-1" style="margin-left:-24px;margin-right:-24px">
+<div class="d-flex flex-grow-1" style="margin-left:-16px;margin-right:-16px;margin-bottom:8px;">
     <MdiHost @ref="_mdi" 
-             NewSectionClick="NewSection"
-             ItemsSource="ApplicationManager?.RunningApplications"
-             SectionsSource="ApplicationManager?.SectionManager.Sections"
-             CurrentSection="ApplicationManager!.SectionManager.CurrentSection.ID">
-        <StartMenuFooter>
-            <MudBlazor.MudText Typo="@MudBlazor.Typo.body1">
-                footer here...
-            </MudBlazor.MudText>
-        </StartMenuFooter>
-        <StartMenuTabs>
-            @*MAIN APPLICATION TABS IS INBUILT, JUST ADD YOUR ADITIONAL TABS...*@
-            <MudTabPanel Tag="@("Help")"
-                         Icon="@MudBlazor.Icons.Material.Filled.Help">
-                there are nothing to show here... sorry 
-            </MudTabPanel>
-            <MudTabPanel Tag="@("Under Constructionressos")"
-                         Icon="@MudBlazor.Icons.Material.Filled.Workspaces">
-                neither here
-            </MudTabPanel>
-        </StartMenuTabs>
+             ApplicationsSource="ApplicationManager?.RunningApplications"
+             CurrentSection="ApplicationManager!.SectionManager.CurrentSectionId">
+        <ToolbarLeftContent>
+            <EficazFramework.Components.StartMenu @ref="_startMenu">
+                <Content>
+                    <MudTabs Position="@MudBlazor.Position.Left"
+                             Class="flex-grow-1 flex-shrink-0"
+                             PanelClass="d-flex flex-column"
+                             MinimumTabWidth="64px"
+                             Style="height: calc(100vh - 300px)">
+                        <MudTabPanel Icon="@MudBlazor.Icons.Material.Filled.GridView">
+                            <EficazFramework.Components.ApplicationsMenu ItemsSource="ApplicationManager?.AllApplications"
+                                                                         Class="ma-4"
+                                                                         SelectionCallBack="@(app => AppClick(app))"/>
+                        </MudTabPanel>
+                        <MudTabPanel Icon="@MudBlazor.Icons.Material.Filled.Filter">
+                            @*<EficazFramework.Components.Panels.ApplicationsMenu ItemsSource="ApplicationManager?.AllApplications" />*@
+                        </MudTabPanel>
+                        <MudTabPanel Icon="@MudBlazor.Icons.Material.Filled.Image">
+                            @*<EficazFramework.Components.Panels.ApplicationsMenu ItemsSource="ApplicationManager?.AllApplications" />*@
+                        </MudTabPanel>
+                    </MudTabs>
+                </Content>
+            </EficazFramework.Components.StartMenu>
+            <EficazFramework.Components.SectionsView @ref="_sectionsView"
+                                                     ItemsSource="ApplicationManager?.SectionManager.Sections"
+                                                     AutoManageSections="false"
+                                                     NewSectionClick="NewSection"
+                                                     CloseSectionClick="CloseSection"
+                                                     CloseAllSectionsClick="CloseAllSections"
+                                                     @bind-CurrentSection="ApplicationManager!.SectionManager!.CurrentSectionId" 
+                                                     SectionChanged="SectionChanged" />
+        </ToolbarLeftContent>
+        <ToolbarRightContent>
+            <div class="mt-n5 mr-2">
+                @($"Mdi: {_mdi!.CurrentSection}")
+                <br />
+                @($"Service, ID: {ApplicationManager!.SectionManager.CurrentSectionId}")
+                <br />
+                @($"Service, Instance: {ApplicationManager!.SectionManager.CurrentSection?.ID ?? 0}")
+            </div>
+        </ToolbarRightContent>
     </MdiHost>
 </div>

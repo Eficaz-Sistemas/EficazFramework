@@ -1,8 +1,6 @@
 using EficazFramework.XAML.Behaviors;
 using System.Windows.Controls.Primitives;
 
-#pragma warning disable CS8600 // Conversão de literal nula ou possível valor nulo em tipo não anulável.
-
 namespace EficazFramework.Tests.Behaviors;
 
 [Apartment(System.Threading.ApartmentState.STA)]
@@ -26,4 +24,3 @@ public class MdiWindowMoveThumb
         Canvas.GetTop(mock).Should().Be(top);
     }
 }
-#pragma warning restore CS8600 // Conversão de literal nula ou possível valor nulo em tipo não anulável.

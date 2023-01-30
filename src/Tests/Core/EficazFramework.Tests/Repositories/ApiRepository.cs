@@ -41,8 +41,10 @@ public class ApiRepositoryTests
     [Test]
     public void SelectTest()
     {
-        var repository = new ApiRepository<Resources.Mocks.Classes.MockClass>(Client);
-        repository.UrlGet = "/mock/get";
+        var repository = new ApiRepository<Resources.Mocks.Classes.MockClass>(Client)
+        {
+            UrlGet = "/mock/get"
+        };
         repository.DataContext.Should().HaveCount(0);
         repository.Get();
         repository.DataContext.Should().HaveCount(300);
@@ -51,9 +53,11 @@ public class ApiRepositoryTests
     [Test]
     public async Task SelectAsyncTest()
     {
-        var repository = new ApiRepository<Resources.Mocks.Classes.MockClass>(Client);
-        repository.GetRequestMode = Enums.CRUD.RequestAction.Get;
-        repository.UrlGet = "/mock/get";
+        var repository = new ApiRepository<Resources.Mocks.Classes.MockClass>(Client)
+        {
+            GetRequestMode = Enums.CRUD.RequestAction.Get,
+            UrlGet = "/mock/get"
+        };
         repository.DataContext.Should().HaveCount(0);
         await repository.GetAsync(default);
         repository.DataContext.Should().HaveCount(300);
@@ -64,8 +68,10 @@ public class ApiRepositoryTests
     [Test]
     public async Task SelectWithPostAsyncTest()
     {
-        var repository = new ApiRepository<Resources.Mocks.Classes.MockClass>(Client);
-        repository.UrlGet = "/mock/get";
+        var repository = new ApiRepository<Resources.Mocks.Classes.MockClass>(Client)
+        {
+            UrlGet = "/mock/get"
+        };
         repository.DataContext.Should().HaveCount(0);
         await repository.GetAsync(default);
         repository.DataContext.Should().HaveCount(300);
@@ -77,8 +83,10 @@ public class ApiRepositoryTests
     [Test]
     public async Task SelectStressAsyncTest()
     {
-        var repository = new ApiRepository<Resources.Mocks.Classes.MockClass>(Client);
-        repository.UrlGet = "/mock/getBig";
+        var repository = new ApiRepository<Resources.Mocks.Classes.MockClass>(Client)
+        {
+            UrlGet = "/mock/getBig"
+        };
         repository.DataContext.Should().HaveCount(0);
         await repository.GetAsync(default);
         repository.DataContext.Should().HaveCount(1500000);
@@ -87,16 +95,18 @@ public class ApiRepositoryTests
     [Test]
     public async Task SelectFilteredAsyncTest()
     {
-        var repository = new ApiRepository<Resources.Mocks.Classes.MockClass>(Client);
-        repository.UrlGet = "/mock/get";
-        repository.Filter = new()
+        var repository = new ApiRepository<Resources.Mocks.Classes.MockClass>(Client)
+        {
+            UrlGet = "/mock/get",
+            Filter = new()
         {
             new Expressions.ExpressionObjectQuery()
             {
                 FieldName = "Id",
-                Operator = Enums.CompareMethod.Equals, 
+                Operator = Enums.CompareMethod.Equals,
                 Value = 1
             }
+        }
         };
         repository.DataContext.Should().HaveCount(0);
         await repository.GetAsync(default);
@@ -134,8 +144,10 @@ public class ApiRepositoryTests
     [Test]
     public async Task ResponseUnauthorized()
     {
-        var repository = new ApiRepository<Resources.Mocks.Classes.MockClass>(Client);
-        repository.UrlGet = "/mock/fail/401";
+        var repository = new ApiRepository<Resources.Mocks.Classes.MockClass>(Client)
+        {
+            UrlGet = "/mock/fail/401"
+        };
         await repository.Invoking(async (a) => await repository.GetAsync(default)).Should().ThrowAsync<UnauthorizedAccessException>();
         ;
         repository.DataContext.Should().HaveCount(0);
@@ -144,8 +156,10 @@ public class ApiRepositoryTests
     [Test]
     public async Task ResponseValidationFailed()
     {
-        var repository = new ApiRepository<Resources.Mocks.Classes.MockClass>(Client);
-        repository.UrlGet = "/mock/fail/422";
+        var repository = new ApiRepository<Resources.Mocks.Classes.MockClass>(Client)
+        {
+            UrlGet = "/mock/fail/422"
+        };
         await repository.Invoking(async (a) => await repository.GetAsync(default)).Should().ThrowAsync<ValidationException>();
         repository.DataContext.Should().HaveCount(0);
     }

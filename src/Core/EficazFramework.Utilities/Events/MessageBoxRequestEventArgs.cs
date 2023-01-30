@@ -7,16 +7,15 @@ namespace EficazFramework.Events;
 [ExcludeFromCodeCoverage]
 public class MessageEventArgs : EventArgs
 {
-    public string DialogResourceKey { get; set; }
-
+    public string? DialogResourceKey { get; set; }
     public string Title { get; set; } = Resources.Strings.Events.MessageBox_DefaultTitle;
     public MessageIcon IconReference { get; set; } = MessageIcon.None;
-    public object Content { get; set; } = null;
+    public object? Content { get; set; }
     public bool EnableReporting { get; set; } = false;
-    public string StackTrace { get; set; } = null;
+    public string? StackTrace { get; set; }
     public MessageButtons Buttons { get; set; } = MessageButtons.OK;
     public MessageType Type { get; set; } = MessageType.Default;
-    public object Tag { get; set; }
+    public object? Tag { get; set; }
     public ModalAssist ModalAssist { get; } = new ModalAssist();
 }
 

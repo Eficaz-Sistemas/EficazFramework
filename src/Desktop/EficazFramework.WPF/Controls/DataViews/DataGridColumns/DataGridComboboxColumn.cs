@@ -9,7 +9,7 @@ public partial class DataGridComboBoxColumn : System.Windows.Controls.DataGridCo
     protected override FrameworkElement GenerateElement(DataGridCell cell, object dataItem)
     {
         TextBlock tb = (TextBlock)base.GenerateElement(cell, dataItem);
-        if (SelectedItemBinding is object)
+        if (SelectedItemBinding is not null)
             tb.SetBinding(TextBlock.TextProperty, SelectedItemBinding);
         else
             tb.SetBinding(TextBlock.TextProperty, SelectedValueBinding);

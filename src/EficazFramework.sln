@@ -77,9 +77,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EficazFramework.Tests.DocsA
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EficazFramework.Tests.FakeServerApi", "Tests\Web\EficazFramework.Tests.FakeServerApi\EficazFramework.Tests.FakeServerApi.csproj", "{92F8CF42-34ED-441E-9D76-562AFAC8BABE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EficazFramework.Expressions", "Core\EficazFramework.Expressions\EficazFramework.Expressions.csproj", "{3065B333-6353-43BE-AFB9-AB32B95C68D5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EficazFramework.Expressions", "Core\EficazFramework.Expressions\EficazFramework.Expressions.csproj", "{3065B333-6353-43BE-AFB9-AB32B95C68D5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EficazFramework.Collections", "Core\EficazFramework.Collections\EficazFramework.Collections.csproj", "{B01BE4AB-632D-4205-8CA1-08C5D6E1BFFA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EficazFramework.Collections", "Core\EficazFramework.Collections\EficazFramework.Collections.csproj", "{B01BE4AB-632D-4205-8CA1-08C5D6E1BFFA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

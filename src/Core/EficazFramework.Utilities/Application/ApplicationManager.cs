@@ -4,6 +4,8 @@ using System.ComponentModel;
 using System.IO;
 using System.Linq;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
+using System.Xml.Linq;
 
 namespace EficazFramework.Application;
 
@@ -12,15 +14,25 @@ public interface IApplicationManager
     /// <summary>
     /// Inicia e retorna uma nova instância de ApplicationManager.
     /// </summary>
-    public static IApplicationManager Create()
-    {
-        return new ApplicationManager();
-    }
+    private static IApplicationManager Create() =>
+        new ApplicationManager();
 
+    private static IApplicationManager? _instance = null;
     /// <summary>
     /// Retorna em padrão singleton a Última Instância de ApplicationManager instanciada.
     /// </summary>
-    public static IApplicationManager Instance { get; private set; }
+    public static IApplicationManager Instance
+    {
+        get
+        {
+            _instance ??= Create();
+            return _instance;
+        }
+        private set
+        {
+            _instance = value;
+        }
+    }
 
     /// <summary>
     /// Instância de SectionManager para gestão de múltiplas área de trabalho.
@@ -50,6 +62,8 @@ public interface IApplicationManager
     /// <param name="application">Manifesto de aplicativo a ser iniciado ou ativado.</param>
     public ApplicationInstance Activate(ApplicationDefinition application);
 
+    public void Clear();
+
     public event EventHandler ActiveAppChanged;
 }
 
@@ -58,29 +72,9 @@ internal class ApplicationManager : IApplicationManager
     internal ApplicationManager()
     {
         _sectionManager = new SectionManager(this);
-        Instance = this;
     }
 
-    private static IApplicationManager _instance = null;
-    /// <summary>
-    /// Retorna em padrão singleton a Última Instância de ApplicationManager instanciada.
-    /// </summary>
-    public static IApplicationManager Instance
-    {
-        get
-        {
-            if (_instance == null)
-                _instance = new ApplicationManager();
-
-            return _instance;
-        }
-        private set
-        {
-            _instance = value;
-        }
-    }
-
-    private ISectionManager _sectionManager;
+    private readonly ISectionManager _sectionManager;
 
     /// <summary>
     /// Instância de SectionManager para gestão de múltiplas área de trabalho.
@@ -104,7 +98,7 @@ internal class ApplicationManager : IApplicationManager
     /// <returns></returns>
     public bool IsRunning(ApplicationDefinition application)
     {
-        return (RunningApplications.Where(app => app.Metadata == application && (app.SessionID == 0 | app.SessionID == _sectionManager.CurrentSection.ID)).Any());
+        return (RunningApplications.Where(app => app.Metadata == application && (app.SessionID == 0 || app.SessionID == (_sectionManager.CurrentSection?.ID ?? 0))).Any());
     }
 
     /// <summary>
@@ -114,40 +108,48 @@ internal class ApplicationManager : IApplicationManager
     public ApplicationInstance Activate(ApplicationDefinition application)
     {
         bool running = IsRunning(application);
-        ApplicationInstance instance = null;
+        ApplicationInstance? instance = null;
         if (!running)
         {
-            instance = new ApplicationInstance(application, _sectionManager);
+            instance = new ApplicationInstance(application, _sectionManager.CurrentSectionId);
             RunningApplications.Add(instance);
             instance.AppClosed += AppClosed;
         }
         else
         {
-            instance = RunningApplications.Where(app => app.Metadata == application && (app.SessionID == 0 | app.SessionID == _sectionManager.CurrentSection.ID)).FirstOrDefault();
+            instance = RunningApplications.Where(app => app.Metadata == application && (app.SessionID == 0 || app.SessionID == (_sectionManager.CurrentSection?.ID ?? 0))).FirstOrDefault();
         }
         ActiveAppChanged?.Invoke(instance, EventArgs.Empty);
-        return instance;
+        return instance!;
     }
 
-    private void AppClosed(object sender, System.EventArgs e)
+    private void AppClosed(object? sender, System.EventArgs e)
     {
-        var instance = sender as ApplicationInstance;
-        if (instance != null)
+        if (sender is ApplicationInstance instance)
         {
             instance.AppClosed -= AppClosed;
             RunningApplications.Remove(instance);
         }
     }
 
-    public event EventHandler ActiveAppChanged;
+    public event EventHandler? ActiveAppChanged;
+
+    public void Clear()
+    {
+        foreach (var all in RunningApplications)
+        {
+            all.Dispose();
+        }
+        AllApplications.Clear();
+        RunningApplications.Clear();
+    }
+
 }
 
 public sealed class ApplicationInstance : ApplicationDefinition, INotifyPropertyChanged, IDisposable
 {
-    internal ApplicationInstance(ApplicationDefinition fromDefinition, ISectionManager sectionManager)
+    internal ApplicationInstance(ApplicationDefinition fromDefinition, long forSection)
     {
-        var sID = sectionManager.CurrentSection?.ID ?? 0;
-
         Metadata = fromDefinition;
         Title = fromDefinition.Title;
         LongTitle = fromDefinition.LongTitle;
@@ -156,30 +158,23 @@ public sealed class ApplicationInstance : ApplicationDefinition, INotifyProperty
         MenuPriority = fromDefinition.MenuPriority;
         IsEnabled = true;
         IsChecked = false;
-        AddTargets(fromDefinition.Targets);
+        AddTargetProperties(fromDefinition.Targets);
         Arguments = fromDefinition.Arguments;
         IsLoading = true;
         if (!fromDefinition.IsPublic)
-            SessionID = sID != 0 ? sID : throw new InvalidDataException(Resources.Strings.Application.NoSessionForPrivateApp);
+            SessionID = forSection != 0 ? forSection : throw new InvalidDataException(Resources.Strings.Application.NoSessionForPrivateApp);
         else
             SessionID = 0;
     }
-
-    internal ApplicationInstance()
-    {
-        //throw new UnauthorizedAccessException();
-    }
     
-    public static ApplicationInstance Create(ApplicationDefinition fromDefinition) =>
-        new (fromDefinition, null);
-
-    public static ApplicationInstance Create(ApplicationDefinition fromDefinition, long section) =>
-        new (fromDefinition, null) { SessionID = section };
+    public static ApplicationInstance Create(ApplicationDefinition fromDefinition, long forSection) =>
+        new (fromDefinition, forSection) { SessionID = forSection };
 
     public long SessionID { get; internal set; }
 
-    private object _content = null;
-    public object Content
+
+    private object? _content;
+    public object? Content
     {
         get => _content;
         set
@@ -190,12 +185,14 @@ public sealed class ApplicationInstance : ApplicationDefinition, INotifyProperty
         }
     }
 
-    private object _notifyContent = null;
-    public object NotifyContent
+
+    private object? _notifyContent;
+    public object? NotifyContent
     {
         get => _notifyContent;
         set { _notifyContent = value; RaisePropertyChanged(nameof(NotifyContent)); }
     }
+
 
     private bool _isloading = true;
     public bool IsLoading
@@ -205,7 +202,7 @@ public sealed class ApplicationInstance : ApplicationDefinition, INotifyProperty
         { _isloading = value; RaisePropertyChanged(nameof(IsLoading)); }
     }
 
-    public ApplicationDefinition Metadata { get; } = null;
+    public ApplicationDefinition Metadata { get; }
 
     public IDictionary<string, object> Services { get; } = new Dictionary<string, object>();
 
@@ -214,11 +211,22 @@ public sealed class ApplicationInstance : ApplicationDefinition, INotifyProperty
         $"[{SessionID}] - {TooltipTilte}";
 
     //Methods
-    private void AddTargets(IDictionary<string, ApplicationTarget> source)
+    private void AddTargetProperties(IDictionary<string, ApplicationTarget> sourceTargets)
     {
-        foreach (var item in source)
+        foreach (var sourceTarget in sourceTargets)
         {
-            Targets.Add(item);
+            ApplicationTarget appTarget = new()
+            {
+                Icon = sourceTarget.Value.Icon,
+                InitialSize = sourceTarget.Value.InitialSize,
+                SplashScreen = sourceTarget.Value.SplashScreen,
+                StartupUriOrType = sourceTarget.Value.StartupUriOrType
+            };
+            foreach (var item in sourceTarget.Value.Properties)
+            {
+                appTarget.Properties.Add(item.Key, item.Value);
+            }
+            Targets.Add(sourceTarget.Key, appTarget);
         }
     }
 
@@ -236,14 +244,17 @@ public sealed class ApplicationInstance : ApplicationDefinition, INotifyProperty
             i.Dispose();
         }
 
+        foreach(var svc in Services)
+            (svc.Value as IDisposable)?.Dispose();
+
     }
 
     // INotifyPropertyChanged
-    public event PropertyChangedEventHandler PropertyChanged;
+    public event PropertyChangedEventHandler? PropertyChanged;
     public void RaisePropertyChanged(string propertyname) =>
         PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyname));
 
     // Events
-    public event EventHandler AppClosed;
+    public event EventHandler? AppClosed;
 
 }

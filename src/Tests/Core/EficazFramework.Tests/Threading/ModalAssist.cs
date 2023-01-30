@@ -11,12 +11,11 @@ public class ModalAssistTests
     {
         // Setup
         ModalAssist instance = new();
-        Events.MessageResult result = Events.MessageResult.NotSet;
         var push = instance.Push();
 
         // Test
         instance.Release(Events.MessageResult.OK);
-        result = await push;
+        Events.MessageResult result = await push;
 
         // Assert
         result.Should().Be(Events.MessageResult.OK);

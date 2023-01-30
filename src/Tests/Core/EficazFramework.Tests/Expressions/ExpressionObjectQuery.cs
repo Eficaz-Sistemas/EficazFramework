@@ -34,11 +34,12 @@ public class ExpressionObjectQueryTests
         };
 
         // model
-        ExpressionItem item = new();
+        ExpressionItem item = new()
+        {
+            // number (int)
+            SelectedProperty = IdProperty
+        };
 
-        // number (int)
-        item.SelectedProperty = IdProperty;
-        
         var translated = item.ToExpressionObjectQuery();
         translated.Should().HaveCount(1);
         translated.First().FieldName.Should().Be(item.SelectedProperty.PropertyPath);
@@ -91,10 +92,11 @@ public class ExpressionObjectQueryTests
         };
 
         // model
-        ExpressionItem item = new();
-
-        // text (string)
-        item.SelectedProperty = NameProperty;
+        ExpressionItem item = new()
+        {
+            // text (string)
+            SelectedProperty = NameProperty
+        };
 
         var translated = item.ToExpressionObjectQuery();
         translated.Should().HaveCount(1);
@@ -132,10 +134,11 @@ public class ExpressionObjectQueryTests
         };
 
         // model
-        ExpressionItem item = new();
-
-        // date
-        item.SelectedProperty = BirthProperty;
+        ExpressionItem item = new()
+        {
+            // date
+            SelectedProperty = BirthProperty
+        };
 
         var translated = item.ToExpressionObjectQuery();
         translated.Should().HaveCount(1);
@@ -182,12 +185,13 @@ public class ExpressionObjectQueryTests
         };
 
         // model
-        ExpressionItem item = new();
+        ExpressionItem item = new()
+        {
+            // bool
+            SelectedProperty = IsActiveProperty,
+            Value1 = true
+        };
 
-        // bool
-        item.SelectedProperty = IsActiveProperty;
-        item.Value1 = true;
-        
         var translated = item.ToExpressionObjectQuery();
         translated.Should().HaveCount(1);
         translated.First().FieldName.Should().Be(item.SelectedProperty.PropertyPath);
@@ -384,7 +388,7 @@ public class ExpressionObjectQueryTests
         },
         };
 
-        ExpressionBuilder builder = new ExpressionBuilder();
+        ExpressionBuilder builder = new();
         builder.Properties.Add(IdProperty);
         builder.Properties.Add(NameProperty);
         builder.Properties.Add(CreatedInProperty);
@@ -654,7 +658,6 @@ public class ExpressionObjectQueryTests
         });
 
         var querySource = builder.ToExpressionObjectQuery();
-        querySource = builder.ToExpressionObjectQuery();
         querySource.Should().HaveCount(2);
         var expression = EficazFramework.Expressions.ExpressionObjectQuery.GetExpression<Validation.SampleObject>(querySource);
         expression.Should().NotBeNull();
@@ -703,7 +706,6 @@ public class ExpressionObjectQueryTests
         });
 
         var querySource = builder.ToExpressionObjectQuery();
-        querySource = builder.ToExpressionObjectQuery();
         querySource.Should().HaveCount(2);
         var expression = EficazFramework.Expressions.ExpressionObjectQuery.GetExpression<Validation.SampleObject>(querySource);
         expression.Should().NotBeNull();

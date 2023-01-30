@@ -27,19 +27,18 @@
 @code {
     [CascadingParameter] MdiWindow? MdiWindow { get; set; }
 
-    protected override void OnParametersSet()
+    protected override void OnAfterRender(bool firstRender)
     {
-        base.OnParametersSet();
-        if (MdiWindow != null)
-        {
-            MdiWindow!.Scrollable = true;
-            MdiWindow!.HeaderContent = CustomHeader();
-        }
+        base.OnAfterRender(firstRender);
+        if (firstRender)
+            MdiWindow?.OverrideFrameParameters(CustomHeader(), true);
     }
 
     private RenderFragment CustomHeader()
     {
-        return @<div class="text-center flex-grow-1 mt-1 mud-typography mud-typography-caption">Hello World!</div>;
+        return 
+    @<div class="text-center flex-grow-1 mt-1 mud-typography mud-typography-caption"
+                     style="position: absolute; left:25%; right: 25%">Hello World!</div>;
     }
 
 }

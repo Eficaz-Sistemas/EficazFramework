@@ -14,6 +14,6 @@ public class Thread
         SynchronizationContext = SynchronizationContext.Current;
     }
 
-    public static SynchronizationContext SynchronizationContext { get; private set; }
+    public static SynchronizationContext? SynchronizationContext { get; private set; }
 
 }

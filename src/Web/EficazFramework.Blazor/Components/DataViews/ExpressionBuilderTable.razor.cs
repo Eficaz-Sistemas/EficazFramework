@@ -78,8 +78,7 @@ public partial class ExpressionBuilderTable : MudBlazor.MudComponentBase
 
     private async Task<IEnumerable<object>> OnAutoCompleteSearch(string literal, string tag)
     {
-        if (_cancellationTokenSource != null)
-            _cancellationTokenSource.Cancel();
+        _cancellationTokenSource?.Cancel();
         _cancellationTokenSource = new System.Threading.CancellationTokenSource();
 
         System.Threading.CancellationToken tk = default;
@@ -94,10 +93,7 @@ public partial class ExpressionBuilderTable : MudBlazor.MudComponentBase
                 _cancellationTokenSource.Token.ThrowIfCancellationRequested();
         }
 
-        if (SearchColumnFindRequest != null)
-            SearchColumnFindRequest.Invoke(args);
-        else
-            args.Data = null;
+        SearchColumnFindRequest?.Invoke(args);
 
         while (args.Completed == false)
             await Task.Delay(1);

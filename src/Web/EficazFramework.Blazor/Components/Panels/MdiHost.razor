@@ -2,281 +2,60 @@
 @using EficazFramework.Application
 @using System.Drawing
 @namespace EficazFramework.Components
-@inherits MudBlazor.MudBaseBindableItemsControl<MdiWindow, ApplicationInstance>
+@inherits MudBlazor.MudComponentBase
 
-<CascadingValue Value="this">
-    <div class="@Classname" 
-         style="@StyleName" 
-         @onclick="CloseMenus">
+<div class="@Classname" 
+     style="@StyleName" >
+    <CascadingValue Value="this">
         @*MDI AREA*@
-        <MudBlazor.MudHidden Breakpoint="@Breakpoint" >
+        @if (BreakpointListener.IsMediaSize(Breakpoint, _breakpoint))
+        {
+            <div class="d-flex flex-grow-1">
+                @if(SelectedApp != null)
+                {
+                    <MdiWindow ApplicationInstance="SelectedApp"
+                               Title="@SelectedApp.Title"
+                               Icon="@(SelectedApp.Targets["Blazor"].Icon?.ToString())"
+                               IsMaximized="true">
+                        <DynamicComponent Type="@((Type)(SelectedApp.Targets["Blazor"].StartupUriOrType ?? typeof(string)))" />
+                    </MdiWindow>
+                }
+            </div>
+        }
+        else
+        {
             <div class="d-flex flex-grow-1"
                  ondragover="event.preventDefault();"
                  ondragstart="event.dataTransfer.setData('', event.target.id);">
-                @if (ItemsSource == null)
+                @foreach (var item in RunningApplications())
                 {
-                    @ChildContent
-                }
-                else
-                {
-                    foreach (var item in RunningApplications())
-                    {
-                        <MdiWindow ApplicationInstance="item"
-                                   Title="@item.Title"
-                                   Icon="@(item.Targets["Blazor"]?.Icon.ToString())"
-                                   IsMaximized="@((bool?)item.Targets["Blazor"]?.Properties["IsMaximized"] ?? false)">
-                            <DynamicComponent Type="@((Type)item.Targets["Blazor"].StartupUriOrType)" />
-                        </MdiWindow>
-                    }
+                    <MdiWindow ApplicationInstance="item"
+                               Title="@item.Title"
+                               Icon="@(item.Targets["Blazor"].Icon?.ToString())"
+                               IsMaximized="@((bool?)item.Targets["Blazor"].Properties["IsMaximized"] ?? false)">
+                        <DynamicComponent Type="@((Type)(item.Targets["Blazor"].StartupUriOrType ?? typeof(string)))" />
+                    </MdiWindow>
                 }
             </div>
-        </MudBlazor.MudHidden>
-        @*SELECTED CONTENT AREA (FOR RESPONSIVE DESIGN)*@
-        <MudBlazor.MudHidden Invert
-                             Breakpoint="@Breakpoint">
-             <div class="flex-grow-1 overflow-hidden">
-                @if (_selectedApp != null)
-                 {
-                    <CascadingValue Value="_selectedApp">
-                        <DynamicComponent Type="@((Type)_selectedApp!.Targets["Blazor"].StartupUriOrType)" />
-                     </CascadingValue>
-                 }
-                 else
-                 {                 
-                    @ChildContent
-                 }
-             </div>
-        </MudBlazor.MudHidden>
-        <div class="d-flex" style="background-color: var(--mud-palette-background-grey);z-index:2">
+        }
+        <div class="d-flex" style="background-color: var(--mud-palette-background-grey);z-index: var(--mud-zindex-appbar) - 101; height: 48px;">
             @*TASKBAR*@         
-            
-            @*START MENU BUTTON*@            
-            <MudBlazor.MudTooltip Text="@Resources.Strings.Components.MDIContainer_StartTab">
-                <MudBlazor.MudIconButton Variant="@MudBlazor.Variant.Filled"
-                                         Color="@MudBlazor.Color.Transparent"
-                                         Class="ef-mdi-buttons-toolbar"
-                                         Icon="@StartMenuIcon"
-                                         Size="@MudBlazor.Size.Large"
-                                         DisableElevation
-                                         OnClick="() => ToggleStartMenuOpen()"
-                                         Title="Start Menu"/>
-                @*START MENU FRAME*@            
-                <MudBlazor.MudPopover Open="_startMenuIsOpen" 
-                                      Elevation="0"
-                                      AnchorOrigin="MudBlazor.Origin.TopLeft"
-                                      TransformOrigin="MudBlazor.Origin.BottomLeft"
-                                      Style="background-color:unset">
-                    <MudBlazor.MudPaper Elevation="8" 
-                                        Class="ef-mdi-start-menu d-flex flex-column pa-4 ma-8">
-                        <div class="d-flex flex-column" style="height:inherit">
-                            
-                            @*HEADER*@
-                            <div class="ef-mdi-start-header">
-                                <MudBlazor.MudIcon Icon="@MudBlazor.Icons.Material.Filled.Menu"
-                                                   Class="mr-5"/>
-                                <MudBlazor.MudText Typo="@MudBlazor.Typo.h6">
-                                    @(_tabsHost?.ActivePanel?.Tag?.ToString() ?? "")
-                                </MudBlazor.MudText>
-                            </div>
-                            
-                            @*TABS*@
-                            <MudBlazor.MudTabs Position="@MudBlazor.Position.Left" 
-                                               Class="flex-grow-1 flex-shrink-0 ml-n4"
-                                               PanelClass="d-flex flex-column ml-4 my-4"
-                                               MinimumTabWidth="64px"
-                                               @ref="_tabsHost">
-                                <MudBlazor.MudTabPanel Tag="@StartMenuMainTabHeader"
-                                                       Icon="@MudBlazor.Icons.Material.Filled.GridView"
-                                                       MinimumTabWidth="64px">
-                                    <div class="d-flex mx-2 mt-n4 align-center">
-                                        <MudBlazor.MudTextField @bind-Value="AppSearchFilter"
-                                                                Class="mud-input-control-ef flex-grow1" 
-                                                                Placeholder="@Resources.Strings.Components.MDIApplication_FindPlaceholder"
-                                                                Adornment="MudBlazor.Adornment.Start"
-                                                                AdornmentIcon="@MudBlazor.Icons.Material.Filled.Search"
-                                                                Immediate 
-                                                                AutoFocus/>
-                                        <MudBlazor.MudTooltip Text="@(_startMenuIsCompact ? Resources.Strings.Components.MDIApplication_ToggleApp_GridView : Resources.Strings.Components.MDIApplication_ToggleApp_ListView)">
-                                            <MudBlazor.MudIconButton Variant="@MudBlazor.Variant.Filled"
-                                                                     Color="@MudBlazor.Color.Transparent"
-                                                                     Icon="@(_startMenuIsCompact ? MudBlazor.Icons.Material.Filled.GridView : MudBlazor.Icons.Material.Filled.List)"
-                                                                     Size="@MudBlazor.Size.Medium"
-                                                                     Class="mt-6 ml-4"
-                                                                     DisableElevation
-                                                                     OnClick="ToggleStartMenuView"
-                                                                     Title="Alternar visualização"/>
-                                        </MudBlazor.MudTooltip>
-                                    </div>
-
-                                    <div class="mt-4" style="@StartMenuAppsHostStyle()">
-                                        @if (!_startMenuIsCompact)
-                                        {
-                                            @foreach (var group in FilteredApplications())
-                                            {
-                                                <MudBlazor.MudText Typo="MudBlazor.Typo.body1"
-                                                                   Class="mx-1 pb-1 px-2">
-                                                    @group.Key
-                                                </MudBlazor.MudText>
-                                                <MudBlazor.MudGrid Class="flex-grow-1 mx-1 mb-4 pr-6" 
-                                                                   Spacing="1"
-                                                                   Justify="MudBlazor.Justify.FlexStart">
-                                                    @foreach (var app in group)
-                                                    {
-                                                        <MudBlazor.MudItem>
-                                                            <MudBlazor.MudButton Variant="@MudBlazor.Variant.Filled"
-                                                                                 Color="@MudBlazor.Color.Primary"
-                                                                                 Size="@MudBlazor.Size.Large"
-                                                                                 Class="pt-5 pb-7"
-                                                                                 Style="width:84px; height:84px;"
-                                                                                 OnClick="() => LoadApplication(app)">
-                                                                <MudBlazor.MudIcon Icon="@(app.Targets["Blazor"].Icon?.ToString())"
-                                                                                   Style="font-size:2rem !important"/>
-                                                                <MudBlazor.MudText Typo="MudBlazor.Typo.caption"
-                                                                                   Align="MudBlazor.Align.Center"
-                                                                                   Class="mt-n3"
-                                                                                   Style="position:absolute;bottom:4px;height:20px;">
-                                                                    @app.Title
-                                                                </MudBlazor.MudText>
-                                                            </MudBlazor.MudButton>
-                                                        </MudBlazor.MudItem>
-                                                    }                              
-                                                </MudBlazor.MudGrid>
-                                            }
-                                        }
-                                        else
-                                        {
-                                            <MudBlazor.MudList Clickable="true" 
-                                                               Class="py-0">
-                                                @foreach (var group in FilteredApplications())
-                                                {
-                                                    <MudBlazor.MudListItem Text="@group.Key"
-                                                                           InitiallyExpanded="true">
-                                                        <NestedList>
-                                                            @foreach (var app in group)
-                                                            {
-                                                                <MudBlazor.MudListItem Icon="@(app.Targets["Blazor"].Icon?.ToString())"
-                                                                                       OnClick="() => LoadApplication(app)">
-                                                                    @app.LongTitle
-                                                                </MudBlazor.MudListItem>
-                                                            }
-                                                        </NestedList>
-                                                    </MudBlazor.MudListItem>
-                                                }
-                                            </MudBlazor.MudList>
-                                        }
-
-                                    </div>
-                                </MudBlazor.MudTabPanel>
-                                @StartMenuTabs
-                            </MudBlazor.MudTabs>
-                            
-                            @*Footer*@
-                            <div class="ef-mdi-start-footer">
-                                @StartMenuFooter
-                            </div>
-
-                        </div>
-                    </MudBlazor.MudPaper>
-                </MudBlazor.MudPopover>
-            </MudBlazor.MudTooltip>
-
-            @*CURRENT SECTION CLICK*@    
-            @if (ShowSectionsArea)
-            {
-                <MudBlazor.MudTooltip Text="@Resources.Strings.Components.MDIContainer_Sections">
-                    <MudBlazor.MudIconButton Variant="@MudBlazor.Variant.Filled"
-                                             Color="@MudBlazor.Color.Transparent"
-                                             Class="ef-mdi-buttons-toolbar"
-                                             Size="@MudBlazor.Size.Large"
-                                             DisableElevation
-                                             OnClick="() => ToggleSectionsMenuOpen()"
-                                             Title="Sections Button">
-                        <div class="ef-mdi-sections-current">
-                            @if (CurrentSection == 0)
-                            {
-                                <MudBlazor.MudIcon Icon="@MudBlazor.Icons.Material.Outlined.ViewCarousel" Class="ma-4" Size="MudBlazor.Size.Medium" />
-                            }
-                            else
-                            {
-                                @if (CurrentSectionTemplate != null)
-                                {
-                                    @CurrentSectionTemplate
-                                }
-                                else
-                                {
-                                    <MudBlazor.MudText Typo="@MudBlazor.Typo.h4">
-                                        @CurrentSection
-                                    </MudBlazor.MudText>
-                                }
-                            }
-                        </div>
-                    </MudBlazor.MudIconButton>
-                    @*SECTIONS MENU FRAME*@            
-                    <MudBlazor.MudPopover Open="_sectionsMenuIsOpen" 
-                                          Elevation="0"
-                                          AnchorOrigin="MudBlazor.Origin.TopLeft"
-                                          TransformOrigin="MudBlazor.Origin.BottomLeft"
-                                          Style="background-color:unset; left: 0px !important">
-                        <MudBlazor.MudPaper Elevation="8" 
-                                            Class="ef-mdi-sections-menu d-flex flex-column pa-4 ma-8">
-
-                            <MudBlazor.MudGrid Spacing="3" 
-                                               Class="pa-1 overflow-y-auto"
-                                               Justify="MudBlazor.Justify.FlexStart">
-                                           
-                                @*NEW SECTION ACTIOn*@            
-                                <MudBlazor.MudItem>
-                                        <MudBlazor.MudTooltip Text="@NewSectionText">
-                                            <MudBlazor.MudIconButton Icon="@MudBlazor.Icons.Material.Filled.Add"
-                                                                     Size="@MudBlazor.Size.Large"
-                                                                     Class="mud-paper-outlined" 
-                                                                     Style="width:125px;height:125px;background-color: var(--mud-palette-background-grey)"
-                                                                     Variant="@MudBlazor.Variant.Outlined"
-                                                                     OnClick="@(() => NewSectionClick?.Invoke())"/>
-                                        </MudBlazor.MudTooltip>
-                                </MudBlazor.MudItem>
-
-                                @*Section SOURCE*@
-                                @foreach (var section in SectionsSource.Where(f => f.ID > 0))
-                                {
-                                    <MudBlazor.MudItem @onclick="() => ActivateSection(section.ID)">
-                                        <MudBlazor.MudPaper Outlined 
-                                                            Class="pa-2 d-flex flex-column"
-                                                            Style="@SectionStyleName(section.ID)">
-                                            <MudBlazor.MudText Typo="@MudBlazor.Typo.caption">
-                                                @($"{section.ID} - {section.Name}")
-                                            </MudBlazor.MudText>
-                                            <MudBlazor.MudPaper Elevation="0" 
-                                                                Class="flex-grow-1 d-flex justify-center align-center relative mt-1"
-                                                                Style="background-color: var(--mud-palette-background-grey)">
-                                                <MudBlazor.MudIcon Icon="@MudBlazor.Icons.Material.Filled.Image" 
-                                                                   Class="ma-4"
-                                                                   Size="@MudBlazor.Size.Large"/>
-                                            </MudBlazor.MudPaper>
-                                        </MudBlazor.MudPaper>
-                                    </MudBlazor.MudItem>
-                                }
-                            </MudBlazor.MudGrid>
-                        </MudBlazor.MudPaper>
-                    </MudBlazor.MudPopover>
-                </MudBlazor.MudTooltip>
-            }
-            
-            @*OPENED APPS*@
+            @ToolbarLeftContent
             @foreach (var item in RunningApplications())
             {
                 <MudBlazor.MudTooltip Text="@item.Title">
                     <MudBlazor.MudIconButton Variant="@MudBlazor.Variant.Filled"
-                                             Color="@MudBlazor.Color.Transparent"
-                                             Class="ef-mdi-buttons-toolbar"
-                                             Icon="@(item.Targets["Blazor"]?.Icon.ToString())"
-                                             Size="@MudBlazor.Size.Large"
-                                             DisableElevation
-                                             Style="@TaskBarAppInstanceButtonStyle(item)"
-                                             OnClick="() => LoadApplication(item.Metadata)"/>
+                                                Color="@MudBlazor.Color.Transparent"
+                                                Class="ef-mdi-buttons-toolbar"
+                                                Icon="@(item.Targets["Blazor"].Icon?.ToString())"
+                                                Size="@MudBlazor.Size.Medium"
+                                                DisableElevation
+                                                Style="@TaskBarAppInstanceButtonStyle(item)"
+                                                OnClick="() => LoadApplication(item.Metadata)"/>
                 </MudBlazor.MudTooltip>
             }
-           
-        </div>
-    </div>
-</CascadingValue>
+            <MudBlazor.MudSpacer/>
+            @ToolbarRightContent
+            </div>
+    </CascadingValue>
+</div>

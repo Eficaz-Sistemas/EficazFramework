@@ -12,7 +12,7 @@ namespace EficazFramework.Services;
 public abstract class HubClient : IAsyncDisposable
 {
     private readonly string _hubUrl;
-    private HubConnection _hubConnection;
+    private HubConnection? _hubConnection;
     private readonly string _username;
     private readonly string _group;
     private bool _started;
@@ -37,7 +37,7 @@ public abstract class HubClient : IAsyncDisposable
         {
             IHubConnectionBuilder builder = new HubConnectionBuilder().WithUrl(_hubUrl, options =>
             {
-                options.AccessTokenProvider = TokenProvider;
+                options.AccessTokenProvider = TokenProvider!;
             });
             if (autoReconnect)
                 builder.WithAutomaticReconnect();
@@ -52,14 +52,14 @@ public abstract class HubClient : IAsyncDisposable
         }
     }
 
-    private Action<string, string, string> _receiveMessageCallBack;
+    private Action<string, string, string> _receiveMessageCallBack = (a, b, c) => a.ToLower();
     public Action<string, string, string> ReceiveMessageCallBack
     {
         get => _receiveMessageCallBack;
         set
         {
             _receiveMessageCallBack = value;
-            _hubConnection.On<string, string, string>(Messages.RECEIVE, ReceiveMessageCallBack);
+            _hubConnection!.On<string, string, string>(Messages.RECEIVE, ReceiveMessageCallBack);
         }
 
     }
@@ -68,7 +68,7 @@ public abstract class HubClient : IAsyncDisposable
     {
         if (!_started)
             throw new InvalidOperationException("Client not started");
-        await _hubConnection.SendAsync(Messages.SEND, _username, _group, message);
+        await _hubConnection!.SendAsync(Messages.SEND, _username, _group, message);
         Console.WriteLine($"ChatClient: User {_username} sent message to group {_group}. Content: {message}");
     }
 
@@ -76,7 +76,7 @@ public abstract class HubClient : IAsyncDisposable
     {
         if (!_started)
             throw new InvalidOperationException("Client not started");
-        await _hubConnection.SendAsync("AddToGroup", _group);
+        await _hubConnection!.SendAsync("AddToGroup", _group);
         Console.WriteLine($"ChatClient: {_username} joined on group {_group}");
     }
 
@@ -84,7 +84,7 @@ public abstract class HubClient : IAsyncDisposable
     {
         if (!_started)
             return; // Throw New InvalidOperationException("Client not started")
-        await _hubConnection.SendAsync("RemoveFromGroup", _group);
+        await _hubConnection!.SendAsync("RemoveFromGroup", _group);
         Console.WriteLine($"ChatClient: {_username} exited from group {_group}");
     }
 
@@ -92,7 +92,7 @@ public abstract class HubClient : IAsyncDisposable
     {
         if (_started)
         {
-            await _hubConnection.StopAsync();
+            await _hubConnection!.StopAsync();
             _started = false;
             Console.WriteLine("ChatClient: Stop returned");
         }

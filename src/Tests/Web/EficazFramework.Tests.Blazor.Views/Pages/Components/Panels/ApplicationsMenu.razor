@@ -1,0 +1,9 @@
+﻿@page "/Components/Panels/AppMenus"
+
+<EficazFramework.Components.ApplicationsMenu @ref="elementRef" 
+                                             ItemsSource="ApplicationManager?.AllApplications"
+                                             SelectionCallBack="@(app => Snackbar!.Add(app.Title))"
+                                             @bind-SearchFilter="BoundSearchFilter"/>
+@($"ViewModel Value: {BoundSearchFilter}")
+<br/>
+@($"Element Parameter: {elementRef?.SearchFilter ?? ""}")

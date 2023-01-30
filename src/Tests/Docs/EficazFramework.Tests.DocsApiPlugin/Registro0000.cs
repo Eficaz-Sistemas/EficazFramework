@@ -74,7 +74,7 @@ public class Registro0000
     /// <summary>
     /// Só testando...
     /// </summary>
-    public string EscreveLinha()
+    public static string EscreveLinha()
     {
         return "";
     }

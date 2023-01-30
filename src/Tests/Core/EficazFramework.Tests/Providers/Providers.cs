@@ -24,10 +24,9 @@ public class ProviderTests
     public void TestInMemory()
     {
         IServiceCollection serviceCollection = new ServiceCollection();
-        IServiceProvider provider = null;
         serviceCollection.AddDbConfig(false);
         serviceCollection.AddInMemoryService();
-        provider = serviceCollection.BuildServiceProvider();
+        IServiceProvider provider = serviceCollection.BuildServiceProvider();
 
         var svc = provider.GetService<DataProviderBase>();
         svc.Should().NotBeNull();
@@ -41,10 +40,9 @@ public class ProviderTests
     public void TestMySql()
     {
         IServiceCollection serviceCollection = new ServiceCollection();
-        IServiceProvider provider = null;
         serviceCollection.AddDbConfig(false);
         serviceCollection.AddMySqlService();
-        provider = serviceCollection.BuildServiceProvider();
+        IServiceProvider provider = serviceCollection.BuildServiceProvider();
 
         var svc = provider.GetService<DataProviderBase>();
         svc.Should().NotBeNull();
@@ -58,10 +56,9 @@ public class ProviderTests
     public void TestMsSql()
     {
         IServiceCollection serviceCollection = new ServiceCollection();
-        IServiceProvider provider = null;
         serviceCollection.AddDbConfig(false);
         serviceCollection.AddSqlService();
-        provider = serviceCollection.BuildServiceProvider();
+        IServiceProvider provider = serviceCollection.BuildServiceProvider();
 
         var svc = provider.GetService<DataProviderBase>();
         svc.Should().NotBeNull();
@@ -75,10 +72,9 @@ public class ProviderTests
     public void TestSqlLite()
     {
         IServiceCollection serviceCollection = new ServiceCollection();
-        IServiceProvider provider = null;
         serviceCollection.AddDbConfig(false);
         serviceCollection.AddSqlLiteService();
-        provider = serviceCollection.BuildServiceProvider();
+        IServiceProvider provider = serviceCollection.BuildServiceProvider();
 
         var svc = provider.GetService<DataProviderBase>();
         svc.Should().NotBeNull();

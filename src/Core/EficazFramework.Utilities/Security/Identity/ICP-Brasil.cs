@@ -47,37 +47,28 @@ public class IcpBrasil : X509Certificate2
     {
         var data = Subject.Split(",");
         var temp = data[0].Split(":");
-        if (temp.Length >= 1)
-            Titular = temp[0].Replace("CN=", "");
-        if (temp.Length >= 2)
-            CNPJ_CPF = temp[1].ToString().FormatRFBDocument();
-        if (data.Length >= 2)
-            AutoridadeCertificadora = data[1].Replace("OU=Autenticado por ", "").Trim();
-        if (data.Length >= 3)
-            Tipo = data[2].Replace("OU=", "").Trim();
+        Titular = (temp[0] ?? "").Replace("CN=", "");
+        CNPJ_CPF = temp[1].FormatRFBDocument() ?? "";
+        AutoridadeCertificadora = (data[1] ?? "").Replace("OU=Autenticado por ", "").Trim();
+        Tipo = (data[2] ?? "").Replace("OU=", "").Trim();
         DataEfetiva = Conversions.ToDate(GetEffectiveDateString());
         Validade = Conversions.ToDate(GetExpirationDateString());
         PrivateInstance = this;
     }
 
-    public IcpBrasil(byte[] rawdata, X509Certificate2 instance, string password = null) : base(rawdata, password)
+    public IcpBrasil(byte[] rawdata, X509Certificate2 instance, string? password = null) : base(rawdata, password)
     {
         var data = Subject.Split(",");
         var temp = data[0].Split(":");
-        if (temp.Length >= 1)
-            Titular = temp[0].Replace("CN=", "");
-        if (temp.Length >= 2)
-            CNPJ_CPF = temp[1].ToString().FormatRFBDocument();
-        if (data.Length >= 2)
-            AutoridadeCertificadora = data[1].Replace("OU=Autenticado por ", "").Trim();
-        if (data.Length >= 3)
-            Tipo = data[2].Replace("OU=", "").Trim();
+        Titular = (temp[0] ?? "").Replace("CN=", "");
+        CNPJ_CPF = temp[1].FormatRFBDocument() ?? "";
+        AutoridadeCertificadora = (data[1] ?? "").Replace("OU=Autenticado por ", "").Trim();
+        Tipo = (data[2] ?? "").Replace("OU=", "").Trim();
         DataEfetiva = Conversions.ToDate(GetEffectiveDateString());
         Validade = Conversions.ToDate(GetExpirationDateString());
         PrivateInstance = instance;
         // If instance IsNot Nothing Then Me.PrivateKey = instance.PrivateKey
     }
-
 
     #endregion
 

@@ -34,7 +34,6 @@ public class OperationTests
             ex = e;
         }
         ex.Should().NotBeNull();
-        ex = null;
 
         // Assert
         XMLOperations.SignXml(source, "Name", "MockClass", cert, true, true);

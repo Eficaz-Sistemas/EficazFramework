@@ -7,16 +7,14 @@ using Microsoft.JSInterop;
 
 namespace EficazFramework.Components;
 
-public partial class MdiWindow: MudBlazor.MudComponentBase, IDisposable
+public partial class MdiWindow: MudBlazor.MudComponentBase
 {
     [Parameter] public RenderFragment? ChildContent { get; set; }
     
     [Parameter] public string Title { get; set; }
 
     [Parameter] public string Icon { get; set; } = EficazFramework.Icons.Brands.Eficaz;
-    
-    [Parameter] public Size StartupPosition { get; set; } = new(0, 0);
-    
+        
     [Parameter] public ApplicationInstance ApplicationInstance { get; set; }
 
     [Parameter] public bool IsMaximized { get; set; } = false;
@@ -24,12 +22,12 @@ public partial class MdiWindow: MudBlazor.MudComponentBase, IDisposable
     /// <summary>
     /// Gets or Sets if ef-mdi-window-host element should render a vertical scrollbar
     /// </summary>
-    public bool Scrollable { get; set; } = false;
+    [Parameter] public bool Scrollable { get; set; } = false;
 
     /// <summary>
     /// Custom Header Frame Content. Will use Icon + Title if null
     /// </summary>
-    public RenderFragment? HeaderContent { get; set; }
+    [Parameter] public RenderFragment? HeaderContent { get; set; }
 
 
     [CascadingParameter] public MdiHost MdiHost { get; set; }
@@ -37,8 +35,6 @@ public partial class MdiWindow: MudBlazor.MudComponentBase, IDisposable
     [Inject] IJSRuntime JsRutinme { get; set; }
 
     private object myRef;
-
-    internal int zIndex = 1;
 
     //internal Size FrameSize() =>
     //    (Size)ApplicationInstance.Targets["Blazor"].Properties["Size"] ?? new Size(300, 250)
@@ -54,7 +50,8 @@ public partial class MdiWindow: MudBlazor.MudComponentBase, IDisposable
                         .AddClass("flex-column")
                         .AddClass("ef-mdi-window", !IsMaximized)
                         .AddClass("ef-mdi-window-maximized", IsMaximized)
-                        .AddClass("ef-mdi-window-active", object.ReferenceEquals(MdiHost._selectedApp, ApplicationInstance))
+                        .AddClass("ef-mdi-window-active", object.ReferenceEquals(MdiHost.SelectedApp, ApplicationInstance) && !IsMaximized)
+                        .AddClass("ef-mdi-window-active-maximized", object.ReferenceEquals(MdiHost.SelectedApp, ApplicationInstance) && IsMaximized)
                         .AddClass("flex-grow-1")
                         .Build();
 
@@ -64,11 +61,11 @@ public partial class MdiWindow: MudBlazor.MudComponentBase, IDisposable
     protected string StyleName =>
                 new StyleBuilder()
                     .AddStyle(Style)
-                    .AddStyle("left", $"{((Size)ApplicationInstance.Targets["Blazor"].Properties["Position"]).Width}px", !IsMaximized)
-                    .AddStyle("top", $"{((Size)ApplicationInstance.Targets["Blazor"].Properties["Position"]).Height}px", !IsMaximized)
-                    .AddStyle("width", $"{((Size)ApplicationInstance.Targets["Blazor"].Properties["Size"]).Width}px", !IsMaximized)
-                    .AddStyle("height", $"{((Size)ApplicationInstance.Targets["Blazor"].Properties["Size"]).Height}px", !IsMaximized)
-                    .AddStyle("z-index", $"{zIndex}")
+                    .AddStyle("left", $"{(int)ApplicationInstance.Targets["Blazor"].Properties["OffsetX"]}px", !IsMaximized)
+                    .AddStyle("top", $"{(int)ApplicationInstance.Targets["Blazor"].Properties["OffsetY"]}px", !IsMaximized)
+                    .AddStyle("width", $"{(int)ApplicationInstance.Targets["Blazor"].Properties["Width"]}px", !IsMaximized)
+                    .AddStyle("height", $"{(int)ApplicationInstance.Targets["Blazor"].Properties["Height"]}px", !IsMaximized)
+                    .AddStyle("z-index", $"{(int)ApplicationInstance.Targets["Blazor"].Properties["ZIndex"]}")
                     .Build();
 
     /// <summary>
@@ -85,18 +82,7 @@ public partial class MdiWindow: MudBlazor.MudComponentBase, IDisposable
 
     protected override void OnInitialized()
     {
-        MdiHost.AddItem(this);
         base.OnInitialized();
-    }
-
-    protected override void OnAfterRender(bool firstRender)
-    {
-        base.OnAfterRender(firstRender);
-        if (firstRender)
-        {
-            offsetX = StartupPosition.Width;
-            offsetY = StartupPosition.Height;
-        }
     }
 
     private double startX, startY, offsetX, offsetY;
@@ -107,38 +93,19 @@ public partial class MdiWindow: MudBlazor.MudComponentBase, IDisposable
     /// </summary>
     /// <param name="e"></param>
     private void OnClick(MouseEventArgs e) =>
-        MoveToMe();
+        MdiHost.MoveTo(ApplicationInstance);
 
     /// <summary>
     /// Start a Drag operation for move
     /// </summary>
     private void OnDragStart(DragEventArgs args)
     {
-        //if (ApplicationInstance.Targets["Blazor"].Properties["State"] = 1)
-        //    return;
-
         //Utilities.JsInterop.SetDragImage(JsRutinme, args);
-        MoveToMe();
+        MdiHost.MoveTo(ApplicationInstance);
         isDragging = true;
         startX = args.OffsetX;
         startY = args.OffsetY;
     }
-
-    //private void OnDragging(DragEventArgs args)
-    //{
-    //    if (!isDragging)
-    //        return;
-
-    //    offsetX += args.OffsetX - startX;
-    //    if (offsetX < 0)
-    //        offsetX = 0;
-
-    //    offsetY += args.OffsetY - startY;
-    //    if (offsetY < 0)
-    //        offsetY = 0;
-
-    //    ApplicationInstance.Targets["Blazor"].Properties["Position"] = new Size((int)offsetX, (int)offsetY);
-    //}
 
     /// <summary>
     /// Ends a Drag operation and update the screen coordinates of this instance.
@@ -155,21 +122,8 @@ public partial class MdiWindow: MudBlazor.MudComponentBase, IDisposable
         if (offsetY < 0)
             offsetY = 0;
 
-        ApplicationInstance.Targets["Blazor"].Properties["Position"] = new Size((int)offsetX, (int)offsetY);
-    }
-    
-    /// <summary>
-    /// Request the host to update the selected item to this instance.
-    /// </summary>
-    internal void MoveToMe()
-    {
-        zIndex = MdiHost.Items.Count;
-
-        foreach (var item in MdiHost.Items.Where(it => !object.ReferenceEquals(this, it)))
-            item.zIndex = Math.Max(1, item.zIndex -= 1);
-
-        MdiHost._selectedApp = this.ApplicationInstance;
-        MdiHost.MoveTo(MdiHost.Items.IndexOf(this));
+        ApplicationInstance.Targets["Blazor"].Properties["OffsetX"] = (int)offsetX;
+        ApplicationInstance.Targets["Blazor"].Properties["OffsetY"] = (int)offsetY;
     }
 
     /// <summary>
@@ -177,18 +131,20 @@ public partial class MdiWindow: MudBlazor.MudComponentBase, IDisposable
     /// </summary>
     private void OnClose()
     {
-        MoveToMe();
+        MdiHost.SelectedApp = ApplicationInstance;
         MdiHost.CloseApplication(this);
     }
 
-    /// <summary>
-    /// Remove this instance from host.
-    /// </summary>
-    public void Dispose()
+
+    public void OverrideFrameParameters(RenderFragment? customHeader = null,
+        bool scrolable = false)
     {
-        MdiHost.Items.Remove(this);
+        HeaderContent = customHeader;
+        Scrollable = scrolable;
+        StateHasChanged();
     }
-        
+
+
 }
 
 public enum WindowState

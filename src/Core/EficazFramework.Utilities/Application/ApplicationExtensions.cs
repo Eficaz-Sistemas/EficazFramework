@@ -8,9 +8,8 @@ public static class ApplicationExtensions
     /// <param name="application">Instância de aplicativo a ser verificado.</param>
     /// <returns></returns>
     public static bool IsRunning(this ApplicationDefinition application)
-    {
-        return ApplicationManager.Instance.IsRunning(application);
-    }
+        => IApplicationManager.Instance.IsRunning(application);
+
 
     /// <summary>
     /// Ativa uma aplicação para trabalho. Caso ainda não esteja em execução, uma nova intância é criada.
@@ -18,7 +17,7 @@ public static class ApplicationExtensions
     /// <param name="application">Manifesto de aplicativo a ser iniciado ou ativado.</param>
     public static void Activate(this ApplicationDefinition application)
     {
-        ApplicationManager.Instance.Activate(application);
+        IApplicationManager.Instance.Activate(application);
     }
 
 }

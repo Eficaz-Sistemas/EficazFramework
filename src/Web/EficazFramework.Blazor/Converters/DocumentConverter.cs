@@ -1,8 +1,6 @@
 ﻿using EficazFramework.Extensions;
 using System.Globalization;
 
-#pragma warning disable CS8603 // Possível retorno de referência nula.
-
 namespace EficazFramework.Converters;
 
 internal class DocumentConverter<T> : MudBlazor.DefaultConverter<T>
@@ -44,7 +42,7 @@ internal class DocumentConverter<T> : MudBlazor.DefaultConverter<T>
         if (value == null)
             return null;
 
-        string baseStr = value.ToString().RemoveTextMask();
+        string baseStr = value!.ToString()!.RemoveTextMask();
 
         if (!decimal.TryParse(baseStr, out decimal test))
             return value.ToString();
@@ -60,5 +58,3 @@ internal class DocumentConverter<T> : MudBlazor.DefaultConverter<T>
         };
     }
 }
-
-#pragma warning restore CS8603 // Possível retorno de referência nula.

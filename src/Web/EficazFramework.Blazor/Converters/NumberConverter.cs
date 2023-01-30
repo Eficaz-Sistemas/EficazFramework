@@ -1,6 +1,4 @@
-﻿#pragma warning disable CS8603 // Possível retorno de referência nula.
-
-namespace EficazFramework.Converters;
+﻿namespace EficazFramework.Converters;
 
 public class NumberConverter<T> : MudBlazor.DefaultConverter<T>
 {
@@ -139,4 +137,3 @@ public class NumberConverter<T> : MudBlazor.DefaultConverter<T>
     private readonly Func<string, T> OnGetBase;
     private readonly Func<T, string> OnSetBase;
 }
-#pragma warning restore CS8603 // Possível retorno de referência nula.

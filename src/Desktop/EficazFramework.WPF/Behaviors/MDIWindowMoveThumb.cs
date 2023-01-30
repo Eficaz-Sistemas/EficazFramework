@@ -21,8 +21,7 @@ public sealed partial class MDIWindowMoveThumb : Thumb
     protected override void OnMouseDown(MouseButtonEventArgs e)
     {
         var window = Utilities.VisualTreeHelpers.FindAnchestor<Controls.MDIWindow>(this);
-        if (window != null)
-            window.Focus();
+        window?.Focus();
         base.OnMouseDown(e);
     }
 

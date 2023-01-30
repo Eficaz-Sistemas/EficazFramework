@@ -4,7 +4,7 @@ namespace EficazFramework.Tests.Blazor.Views.Pages.Components.DataViews;
 
 public partial class ExpressionBuilder
 {
-    EficazFramework.Expressions.ExpressionBuilder expressionBuilder = new();
+    readonly EficazFramework.Expressions.ExpressionBuilder expressionBuilder = new();
     readonly ExpressionProperty IdProperty = new()
     {
         PropertyPath = "ID",

@@ -1,0 +1,109 @@
+﻿@namespace EficazFramework.Components
+@inherits MudBlazor.MudComponentBase
+
+<div style="@Style">
+     <MudBlazor.MudTooltip Text="@Tooltip">
+        <MudBlazor.MudIconButton Variant="@MudBlazor.Variant.Filled"
+                                 Color="@MudBlazor.Color.Transparent"
+                                 Class="@ToggleButtonClass()"
+                                 Style="@ToggleButtonStyle()"
+                                 Size="@MudBlazor.Size.Large"
+                                 DisableElevation
+                                 OnClick="() => ToggleOpen()"
+                                 Title="Sections Button">
+            <div class="ef-mdi-sections-current">
+                @if (CurrentSection == 0)
+                {
+                    <MudBlazor.MudIcon Icon="@MudBlazor.Icons.Material.Outlined.ViewCarousel" Class="ma-4" Size="MudBlazor.Size.Medium" />
+                }
+                else
+                {
+                    @if (CurrentSectionTemplate != null)
+                    {
+                        @CurrentSectionTemplate
+                    }
+                    else
+                    {
+                        <MudBlazor.MudText Typo="@MudBlazor.Typo.h4">
+                            @CurrentSection
+                        </MudBlazor.MudText>
+                    }
+                }
+            </div>
+        </MudBlazor.MudIconButton>
+        <MudBlazor.MudPopover Open="IsOpen"
+                              Elevation="0"
+                              AnchorOrigin="@AnchorOrigin"
+                              TransformOrigin="@TransformOrigin"
+                              Style="background-color:unset; left: 0px !important">
+            <MudBlazor.MudPaper Elevation="@Elevation" 
+                                Class="ef-mdi-sections-menu d-flex flex-column pa-4 mb-8 mr-8">
+
+                <MudBlazor.MudGrid Spacing="3" 
+                                   Class="pa-1 overflow-y-auto"
+                                   Justify="MudBlazor.Justify.FlexStart">
+                                           
+                    @*NEW SECTION ACTIOn*@            
+                    <MudBlazor.MudItem>
+                            <MudBlazor.MudTooltip Text="@NewSectionText">
+                                <MudBlazor.MudIconButton Icon="@MudBlazor.Icons.Material.Filled.Add"
+                                                         Size="@MudBlazor.Size.Large"
+                                                         Class="mud-paper-outlined ef-mdi-sections-add" 
+                                                         Style="width:125px;height:125px;background-color: var(--mud-palette-background-grey)"
+                                                         Variant="@MudBlazor.Variant.Outlined"
+                                                         OnClick="() => OnNewSectionClick()"/>
+                            </MudBlazor.MudTooltip>
+                    </MudBlazor.MudItem>
+
+                    @*Section SOURCE*@
+                    @foreach (var section in ItemsSource.Where(f => f.ID > 0))
+                    {
+                        <MudBlazor.MudItem onclick="@(() => UpdateCurrentSection(section.ID))">
+                            <MudBlazor.MudPaper Outlined 
+                                                Class="pa-2 d-flex flex-column"
+                                                Style="@SectionItemStyle(section.ID)">
+                                <div class="d-flex">
+                                    <MudBlazor.MudText Typo="@MudBlazor.Typo.caption" Class="flex-grow-1" Style="margin-top: -2px !important; margin-left: 4px;">
+                                        @($"{section.ID} - {section.Name}")
+                                    </MudBlazor.MudText>
+                                    <MudBlazor.MudIconButton Icon="@MudBlazor.Icons.Material.Filled.Close"
+                                                             OnClick="@(() => RemoveSection(section))"
+                                                             DisableElevation
+                                                             Variant="MudBlazor.Variant.Text"
+                                                             Size="MudBlazor.Size.Small"
+                                                             Class="ef-mdi-sections-close"
+                                                             Style="margin-top: -6px;"
+                                                             Title="Close" />
+                                </div>
+                                <MudBlazor.MudPaper Elevation="0" 
+                                                    Class="flex-grow-1 d-flex justify-center align-center relative mt-1"
+                                                    Style="background-color: var(--mud-palette-background-grey)">
+                                    <MudBlazor.MudIcon Icon="@MudBlazor.Icons.Material.Filled.Image" 
+                                                       Class="ma-4"
+                                                       Size="@MudBlazor.Size.Large"/>
+                                </MudBlazor.MudPaper>
+                            </MudBlazor.MudPaper>
+                        </MudBlazor.MudItem>
+                    }
+
+                    @if (ItemsSource.Count(f => f.ID > 0) > 1)
+                    {
+                        <MudBlazor.MudItem>
+                            <MudBlazor.MudTooltip Text="@NewSectionText">
+                                <MudBlazor.MudIconButton Icon="@MudBlazor.Icons.Material.Filled.Delete"
+                                                     Size="@MudBlazor.Size.Large"
+                                                     Class="mud-paper-outlined ef-mdi-sections-clear"
+                                                     Style="width:125px;height:125px;background-color: var(--mud-palette-background-grey)"
+                                                     Variant="@MudBlazor.Variant.Outlined"
+                                                     OnClick="() => OnCloseAllSectionsClick()" />
+                            </MudBlazor.MudTooltip>
+                        </MudBlazor.MudItem>
+                    }
+                </MudBlazor.MudGrid>
+            </MudBlazor.MudPaper>
+        </MudBlazor.MudPopover>
+        <MudBlazor.MudOverlay Visible="IsOpen"
+                        LockScroll
+                        OnClick="@(() => ToggleOpen())"  />
+    </MudBlazor.MudTooltip>
+</div>

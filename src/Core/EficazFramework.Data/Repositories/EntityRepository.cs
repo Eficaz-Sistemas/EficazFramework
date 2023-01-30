@@ -87,7 +87,7 @@ public sealed class EntityRepository<TEntity> : Repositories.RepositoryBase<TEnt
             var result = await query.ToListAsync(cancellationToken);
             return result.ToAsyncObservableCollection();
         }
-        catch (OperationCanceledException tkex)
+        catch //(OperationCanceledException tkex)
         {
             return new System.Collections.ObjectModel.ObservableCollection<TEntity>();
         }
@@ -272,11 +272,10 @@ public sealed class EntityRepository<TEntity> : Repositories.RepositoryBase<TEnt
     /// </summary>
     internal override void DisposeManagedCallerObjects()
     {
-        if (Includes != null) Includes.Clear();
-        if (TrackingIgnores != null) TrackingIgnores.Clear();
-        if (OrderByDefinitions != null) OrderByDefinitions.Clear();
-        if (DbContext != null) DbContext.Dispose();
-        DbContext = null;
+        Includes?.Clear();
+        TrackingIgnores?.Clear();
+        OrderByDefinitions?.Clear();
+        DbContext?.Dispose();
     }
 
     /// <summary>

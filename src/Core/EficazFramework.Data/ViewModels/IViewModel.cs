@@ -301,8 +301,7 @@ public class ViewModel<T> : INotifyPropertyChanged, IDisposable where T : class
                 // Tarefa pendente: descartar o estado gerenciado (objetos gerenciados)
                 if (_CancelationTokenSource != null)
                     CancelCurrentOperation();
-                if (Repository != null)
-                    Repository.Dispose();
+                Repository?.Dispose();
                 var services = Services.ToList();
                 services.ForEach(s => s.Value.Dispose());
                 services = null;

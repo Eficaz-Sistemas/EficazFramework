@@ -12,7 +12,7 @@ public class DisplayNameAttribute : Attribute
         DisplayName = DescriptionOrResource;
     }
 
-    public string DisplayName { get; set; } = null;
+    public string? DisplayName { get; set; } = null;
 #nullable enable
     public Type? ResourceType { get; set; } = null;
 #nullable disable

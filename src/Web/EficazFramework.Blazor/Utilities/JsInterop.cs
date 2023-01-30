@@ -2,8 +2,6 @@ using Microsoft.AspNetCore.Components;
 using Microsoft.JSInterop;
 using System.Diagnostics.CodeAnalysis;
 
-#pragma warning disable CA2012 // Usar ValueTasks corretamente
-
 namespace EficazFramework.Utilities;
 
 [ExcludeFromCodeCoverage]
@@ -135,4 +133,3 @@ public static class JsInterop
     }
 
 }
-#pragma warning restore CA2012 // Usar ValueTasks corretamente

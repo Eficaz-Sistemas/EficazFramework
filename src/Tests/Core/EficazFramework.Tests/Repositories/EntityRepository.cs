@@ -45,8 +45,10 @@ public class EntityRepositoryTests
     [Test]
     public async Task SelectTest()
     {
-        var repository = new EntityRepository<Resources.Mocks.Classes.Blog>();
-        repository.DbContextRequest = () => new Resources.Mocks.MockDbContext();
+        var repository = new EntityRepository<Resources.Mocks.Classes.Blog>
+        {
+            DbContextRequest = () => new Resources.Mocks.MockDbContext()
+        };
         repository.DbContext.Should().BeNull();
         repository.PageSize = 10;
         repository.Get();
@@ -106,8 +108,10 @@ public class EntityRepositoryTests
     [Test]
     public async Task ValidationTest()
     {
-        var repository = new EntityRepository<Resources.Mocks.Classes.Blog>();
-        repository.Validator = new Validation.Fluent.Validator<Resources.Mocks.Classes.Blog>();
+        var repository = new EntityRepository<Resources.Mocks.Classes.Blog>
+        {
+            Validator = new Validation.Fluent.Validator<Resources.Mocks.Classes.Blog>()
+        };
         repository.Validator.Required(x => x.Name);
         var newEntry = repository.Create();
 
@@ -184,8 +188,10 @@ public class EntityRepositoryTests
     [Test]
     public async Task DeleteTest()
     {
-        var repository = new EntityRepository<Resources.Mocks.Classes.Blog>();
-        repository.DbContextRequest = () => new Resources.Mocks.MockDbContext();
+        var repository = new EntityRepository<Resources.Mocks.Classes.Blog>
+        {
+            DbContextRequest = () => new Resources.Mocks.MockDbContext()
+        };
         repository.PrepareDbContext();
         //clear if running all tests.
         repository.DbContext.Set<Resources.Mocks.Classes.Blog>().RemoveRange(repository.DbContext.Set<Resources.Mocks.Classes.Blog>());
@@ -235,8 +241,10 @@ public class EntityRepositoryTests
     [Test]
     public async Task UpdateTest()
     {
-        var repository = new EntityRepository<Resources.Mocks.Classes.Blog>();
-        repository.DbContextRequest = () => new Resources.Mocks.MockDbContext();
+        var repository = new EntityRepository<Resources.Mocks.Classes.Blog>
+        {
+            DbContextRequest = () => new Resources.Mocks.MockDbContext()
+        };
         repository.PrepareDbContext();
         //clear if running all tests.
         repository.DbContext.Set<Resources.Mocks.Classes.Blog>().RemoveRange(repository.DbContext.Set<Resources.Mocks.Classes.Blog>());
@@ -264,8 +272,10 @@ public class EntityRepositoryTests
     [Test]
     public async Task CancelEditingTest()
     {
-        var repository = new EntityRepository<Resources.Mocks.Classes.Blog>();
-        repository.DbContextRequest = () => new Resources.Mocks.MockDbContext();
+        var repository = new EntityRepository<Resources.Mocks.Classes.Blog>
+        {
+            DbContextRequest = () => new Resources.Mocks.MockDbContext()
+        };
         repository.PrepareDbContext();
 
         var newEntry = repository.Create();
@@ -293,8 +303,10 @@ public class EntityRepositoryTests
     [Test]
     public async Task RunCommandTest()
     {
-        var repository = new EntityRepository<Resources.Mocks.Classes.Blog>();
-        repository.DbContextRequest = () => new Resources.Mocks.MockDbContext();
+        var repository = new EntityRepository<Resources.Mocks.Classes.Blog>
+        {
+            DbContextRequest = () => new Resources.Mocks.MockDbContext()
+        };
         repository.PrepareDbContext();
 
         await repository.DbContext.Database.EnsureCreatedAsync();

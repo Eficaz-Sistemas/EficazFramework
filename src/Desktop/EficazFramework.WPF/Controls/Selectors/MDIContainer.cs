@@ -97,9 +97,9 @@ public class MDIContainer : Selector
                 Application.ApplicationInstance appinfo = null;
 
                 // EficazFramework Application manager:
-                if (item is Application.ApplicationInstance)
+                if (item is Application.ApplicationInstance instance)
                 {
-                    appinfo = (Application.ApplicationInstance)item;
+                    appinfo = instance;
                     if (appinfo.Content == null)
                     {
                         appinfo.IsLoading = true;
@@ -112,9 +112,9 @@ public class MDIContainer : Selector
                 }
 
                 // Custom UIElement item:
-                else if (item is DependencyObject)
+                else if (item is DependencyObject dp)
                 {
-                    appinfo = GetApplicationDefinition((DependencyObject)item);
+                    appinfo = GetApplicationDefinition(dp);
                 }
 
                 if (appinfo != null)
@@ -226,12 +226,12 @@ public class MDIContainer : Selector
 
             if (ItemsSource != null)
             {
-                if (ItemsSource is ListCollectionView)
+                if (ItemsSource is ListCollectionView lcv)
                 {
                     if (window.AppDefinition != null)
-                        ((IList)((ListCollectionView)ItemsSource).SourceCollection).Remove(window.AppDefinition);
+                        ((IList)lcv.SourceCollection).Remove(window.AppDefinition);
                     else
-                        ((IList)((ListCollectionView)ItemsSource).SourceCollection).Remove(window.Content);
+                        ((IList)lcv.SourceCollection).Remove(window.Content);
                 }
                 else
                 {
@@ -262,8 +262,7 @@ public class MDIContainer : Selector
         if (Items.Count > 0)
         {
             MDIWindow window_last = (MDIWindow)ItemContainerGenerator.ContainerFromIndex(Items.Count - 1);
-            if (window_last != null)
-                window_last.Focus();
+            window_last?.Focus();
         }
     }
 

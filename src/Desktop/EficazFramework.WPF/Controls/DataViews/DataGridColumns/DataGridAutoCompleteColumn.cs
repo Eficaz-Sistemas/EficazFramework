@@ -106,8 +106,10 @@ public partial class DataGridAutoCompleteColumn : System.Windows.Controls.DataGr
 
     protected override FrameworkElement GenerateEditingElement(DataGridCell cell, object dataItem)
     {
-        AutoComplete tb = new();
-        tb.FreeText = FreeText;
+        AutoComplete tb = new()
+        {
+            FreeText = FreeText
+        };
         if (FreeText == false)
         {
             tb.ContentPath = ContentPath;

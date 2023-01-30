@@ -11,54 +11,48 @@ Param (
 
 		if ($area -eq "wpf")
 		{
-			dotnet test ./Tests/Desktop/EficazFramework.Tests.WPF/EficazFramework.Tests.WPF.csproj  --no-build /p:CollectCoverage=true /p:CoverletOutputFormat=cobertura /p:CoverletOutput='./Coverage/' /p:Exclude=[*]EficazFramework.Resources.*%2c[*]EficazFramework.Tests.*%2c[*.Utilities]*%2c[*.Data*]*%2c[*.Tests*]*%2c[*.Blazor*]*
+			dotnet test ./Tests/Desktop/EficazFramework.Tests.WPF/EficazFramework.Tests.WPF.csproj --collect:"XPlat Code Coverage"  
+			$relativepath = 'Tests\Desktop\EficazFramework.Tests.WPF\TestResults'
+			$source = '-reports:./' + $relativepath.replace('\','/') + '/*/coverage.cobertura.xml'
+			$target = '-targetdir:./' + $relativepath.replace('\','/') + '/Report/'
 			
-			$relativepath = 'Tests\Desktop\EficazFramework.Tests.WPF\Coverage'
-			$source = '-reports:./' + $relativepath.replace('\','/') + '/coverage.cobertura.xml'
-			$target = '-targetdir:./' + $relativepath.replace('\','/') + '/'
-			
-			Remove-Item $location\$relativepath\*.html
-			Remove-Item $location\$relativepath\*.js
-			Remove-Item $location\$relativepath\*.css
-			Remove-Item $location\$relativepath\*.svg
+			Remove-Item $location\$relativepath\Report\*.*
 
-			reportgenerator "$source" "$target" "-reporttypes:Html;HtmlChart" "-title:EficazFramework.WPF Code Coverage"
-			Invoke-Item $location\$relativepath\index.html
+			reportgenerator "$source" "$target" "-reporttypes:Html;HtmlChart;Badges" "-title:EficazFramework.WPF Code Coverage" "-assemblyfilters:-EficazFramework.Collections;-EficazFramework.Expressions;-EficazFramework.Tests.WPF.Views;-EficazFramework.Utilities"  "-classfilters:-EficazFramework.Resources.Strings.*"
+			Get-ChildItem -Path $relativepath -Recurse -Force -Directory | Where-Object {$_.Name -ne 'Report'} | Foreach-object {Remove-item -Recurse -path $_.FullName }
+			Invoke-Item $location\$relativepath\Report\index.html
 			return 
 		}
 
 		if ($area -eq "blazor")
 		{
 
-			dotnet test ./Tests/Web/EficazFramework.Tests.Blazor/EficazFramework.Tests.Blazor.csproj --no-build /p:CollectCoverage=true /p:CoverletOutputFormat=cobertura /p:CoverletOutput='./Coverage/' /p:Exclude=[*]EficazFramework.Resources.*%2c[*]EficazFramework.Tests.%2c[*.Utilities]*%2c[*.Data*]*%2c[*.Tests*]*%2c[*.WPF*]*
-			
-			$relativepath = 'Tests\Web\EficazFramework.Tests.Blazor\Coverage'
-			$source = '-reports:./' + $relativepath.replace('\','/') + '/coverage.cobertura.xml'
-			$target = '-targetdir:./' + $relativepath.replace('\','/') + '/'
-			
-			Remove-Item $location\$relativepath\*.html
-			Remove-Item $location\$relativepath\*.js
-			Remove-Item $location\$relativepath\*.css
-			Remove-Item $location\$relativepath\*.svg
+			dotnet test ./Tests/Web/EficazFramework.Tests.Blazor/EficazFramework.Tests.Blazor.csproj --collect:"XPlat Code Coverage"  
 
-			reportgenerator "$source" "$target" "-reporttypes:Html;HtmlChart" "-title:EficazFramework.Blazor Code Coverage"
-			Invoke-Item $location\$relativepath\index.html
+			$relativepath = 'Tests\Web\EficazFramework.Tests.Blazor\TestResults'
+			$source = '-reports:./' + $relativepath.replace('\','/') + '/*/coverage.cobertura.xml'
+			$target = '-targetdir:./' + $relativepath.replace('\','/') + '/Report/'
+			
+			Remove-Item $location\$relativepath\Report\*.*
+
+			reportgenerator "$source" "$target" "-reporttypes:Html;HtmlChart;Badges" "-title:EficazFramework.Blazor Code Coverage" "-assemblyfilters:-EficazFramework.Collections;-EficazFramework.Expressions;-EficazFramework.Tests.Blazor.Views;-EficazFramework.Utilities" "-classfilters:-EficazFramework.Resources.Strings.*"
+
+			Get-ChildItem -Path $relativepath -Recurse -Force -Directory | Where-Object {$_.Name -ne 'Report'} | Foreach-object {Remove-item -Recurse -path $_.FullName }
+			Invoke-Item $location\$relativepath\Report\index.html
 			return
 		}
 
-		dotnet test ./Tests/Core/EficazFramework.Tests/EficazFramework.Tests.csproj --no-build /p:CollectCoverage=true /p:CoverletOutputFormat=cobertura /p:CoverletOutput='./Coverage/' /p:Exclude=[*]EficazFramework.Resources.Strings.*
+		dotnet test ./Tests/Core/EficazFramework.Tests/EficazFramework.Tests.csproj --collect:"XPlat Code Coverage"
 					
-		$relativepath = 'Tests\Core\EficazFramework.Tests\Coverage'
-		$source = '-reports:./' + $relativepath.replace('\','/') + '/coverage.cobertura.xml'
-		$target = '-targetdir:./' + $relativepath.replace('\','/') + '/'
+		$relativepath = 'Tests\Core\EficazFramework.Tests\TestResults'
+		$source = '-reports:./' + $relativepath.replace('\','/') + '/*/coverage.cobertura.xml'
+		$target = '-targetdir:./' + $relativepath.replace('\','/') + '/Report/'
+			
+		Remove-Item $location\$relativepath\Report\*.*
 
-		Remove-Item $location\$relativepath\*.html
-		Remove-Item $location\$relativepath\*.js
-		Remove-Item $location\$relativepath\*.css
-		Remove-Item $location\$relativepath\*.svg
-
-		reportgenerator "$source" "$target" "-reporttypes:Html;HtmlChart" "-title:EficazFramework (Core) Code Coverage"
-		Invoke-Item $location\$relativepath\index.html
+		reportgenerator "$source" "$target" "-reporttypes:Html;HtmlChart;Badges" "-title:EficazFramework (Core) Code Coverage" "-assemblyfilters:-EficazFramework.Tests.FakeServerApi"  "-classfilters:-EficazFramework.Resources.Strings.*"
+		Get-ChildItem -Path $relativepath -Recurse -Force -Directory | Where-Object {$_.Name -ne 'Report'} | Foreach-object {Remove-item -Recurse -path $_.FullName }
+		Invoke-Item $location\$relativepath\Report\index.html
 		return
 	}
 }
