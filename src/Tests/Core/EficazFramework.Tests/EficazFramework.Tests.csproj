@@ -60,12 +60,12 @@
   </ItemGroup>
   
   <ItemGroup Condition=" '$(TargetFramework)' == 'net7.0' ">
-	  <PackageReference Include="Microsoft.AspNetCore.Mvc.Testing" Version="7.0.1" />
-	  <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="7.0.1">
+	  <PackageReference Include="Microsoft.AspNetCore.Mvc.Testing" Version="7.0.2" />
+	  <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="7.0.2">
 		  <PrivateAssets>all</PrivateAssets>
 		  <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
 	  </PackageReference>
-	  <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="7.0.1">
+	  <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="7.0.2">
 		  <PrivateAssets>all</PrivateAssets>
 		  <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
 	  </PackageReference>
