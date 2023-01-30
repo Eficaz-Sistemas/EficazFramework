@@ -1,5 +1,4 @@
-﻿
-using Bunit;
+﻿using Bunit;
 using EficazFramework.Tests;
 using FluentAssertions;
 using NUnit.Framework;

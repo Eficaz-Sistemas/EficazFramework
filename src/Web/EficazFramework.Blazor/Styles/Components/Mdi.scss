@@ -11,13 +11,12 @@
 }
 
 .ef-mdi-window-maximized {
-    position: relative;
+    position: absolute;
     background-color: var(--mud-palette-surface);
     border-radius: 0px;
     overflow: hidden;
-    flex-grow: 1;
     width: 100%;
-    height: 100%;
+    height: calc(100% - 48px);
 }
 
 .ef-mdi-window-active {
