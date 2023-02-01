@@ -5,9 +5,9 @@
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
     <AddRazorSupportForMvc>true</AddRazorSupportForMvc>
-    <Version>6.1.3-preview001</Version>
-    <AssemblyVersion>6.1.2.1</AssemblyVersion>
-    <FileVersion>6.1.2.1</FileVersion>
+    <Version>6.1.3-preview002</Version>
+    <AssemblyVersion>6.1.2.2</AssemblyVersion>
+    <FileVersion>6.1.2.2</FileVersion>
 	<RootNamespace>EficazFramework</RootNamespace>
 	<Authors>Eficaz Sistemas</Authors>
 	<Company>Eficaz Sistemas de Gestão e Inteligência Tributária</Company>

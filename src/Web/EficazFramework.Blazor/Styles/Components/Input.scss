@@ -170,3 +170,11 @@ div.text-match div, div.mud-input input {
                 input.mud-input-root {
     padding: 0px !important;
 }
+
+.mud-input-control-ef >
+    .mud-input-control-input-container >
+        .mud-input-text >
+            textarea.mud-input-root {
+    padding-left: 8px !important;
+    padding-right: 8px !important;
+}
