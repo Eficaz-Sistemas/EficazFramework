@@ -78,7 +78,8 @@ public partial class MdiWindow: MudBlazor.MudComponentBase
                         .AddClass("flex-column")
                         .AddClass("flex-grow-1")
                         .AddClass("overflow-auto", Scrollable)
-                        .AddClass("h-100")
+                        .AddClass("h-inherit")
+                        .AddClass("w-inherit")
                         .Build();
 
     protected override void OnInitialized()
