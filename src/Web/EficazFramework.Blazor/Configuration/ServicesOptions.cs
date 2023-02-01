@@ -45,8 +45,8 @@ public class ServiceConfiguration
             TertiaryLighten = "#869CAE",
             TertiaryContrastText = "#000000",
             
-            Surface = "#002844",
-            Background = "#002b49",
+            Surface = "#002b49",
+            Background = "#002844",
             BackgroundGrey = "#00223a",
 
             AppbarText = "#c8c8d7",
