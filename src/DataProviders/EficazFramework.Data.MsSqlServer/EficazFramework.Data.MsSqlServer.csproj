@@ -2,9 +2,9 @@
 
   <PropertyGroup>
 	<TargetFrameworks>net6.0;net7.0</TargetFrameworks>
-    <Version>6.1.2</Version>
-    <AssemblyVersion>6.1.2.0</AssemblyVersion>
-    <FileVersion>6.1.2.0</FileVersion>
+	<Version>6.1.3</Version>
+	<AssemblyVersion>6.1.3.0</AssemblyVersion>
+	<FileVersion>6.1.3.0</FileVersion>
 	<RootNamespace>EficazFramework</RootNamespace>
 	<SignAssembly>true</SignAssembly>
 	<AssemblyOriginatorKeyFile>EfCore.snk</AssemblyOriginatorKeyFile>
@@ -72,7 +72,7 @@
   </ItemGroup>
   
   <ItemGroup Condition=" '$(TargetFramework)' == 'net7.0' ">
-	  <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="7.0.2" />
+	  <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="7.0.3" />
   </ItemGroup>
 
   <ItemGroup>
