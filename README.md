@@ -52,4 +52,7 @@
    - UI baseada em MaterialDesign, usufruindo do trabalho feito na versão 3.x desta framework, consolidada no mercado e em produção desde 2015;
    
 #### Pré-Requisitos
-   - [.NET 6.0](https://dotnet.microsoft.com/download/dotnet/6.0), para versão mais recente da biblioteca (pode sofrer alterações sem aviso prévio).
+| Versão | Versão do .NET | Suporte |
+| :--- | :--- | :---: |
+| 6.1.x | [.NET 6](https://dotnet.microsoft.com/download/dotnet/6.0); [.NET 7](https://dotnet.microsoft.com/en-us/download/dotnet/7.0) | :white_check_mark:|
+| 6.0.x | [.NET 6](https://dotnet.microsoft.com/download/dotnet/6.0) | :x: |
