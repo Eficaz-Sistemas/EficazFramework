@@ -16,14 +16,14 @@ public class ServicesTest : BunitTest
             o.UseApplicationManager = true;
             o.Theme = new MudBlazor.MudTheme()
             {
-                Palette = new MudBlazor.Palette()
+                Palette = new MudBlazor.PaletteLight()
                 {
                     Primary = "#0078d7",
                     Secondary = "#003864",
                     AppbarBackground = "#0078d7",
                     AppbarText = "#fff",
                 },
-                PaletteDark = new MudBlazor.Palette()
+                PaletteDark = new MudBlazor.PaletteDark()
                 {
                     Primary = "#0078d7",
                     Secondary = "#003864",
