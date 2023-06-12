@@ -1,5 +1,11 @@
 ﻿@page "/Components/Panels/Mdi"
 
+<style>
+    .mud-table-container {
+        height: 100%;
+    }
+</style>
+
 <div class="d-flex flex-grow-1" style="margin-left:-16px;margin-right:-16px;margin-bottom:8px;">
     <MdiHost @ref="_mdi" 
              ApplicationsSource="ApplicationManager?.RunningApplications"

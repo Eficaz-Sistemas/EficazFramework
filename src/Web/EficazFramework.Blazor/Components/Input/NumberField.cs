@@ -36,10 +36,12 @@ public class NumberField<T> : MudBlazor.MudTextField<T>
             attributes["step"] = (object)"1";
     }
 
-    protected override void OnBlurred(FocusEventArgs obj)
+
+    protected override Task OnBlurredAsync(FocusEventArgs obj)
     {
-        base.OnBlurred(obj);
-        SetTextAsync(Converter.Set(Value), false);
+        base.OnBlurredAsync(obj);
+        return SetTextAsync(Converter.Set(Value), false);
     }
+
 
 }

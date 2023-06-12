@@ -131,7 +131,7 @@ public static class Applications
         appDataGrid2.Targets.Add("Blazor", new()
         {
             Icon = MudBlazor.Icons.Material.Filled.DataArray,
-            StartupUriOrType = typeof(EficazFramework.Tests.Blazor.Views.Pages.Components.Panels.MdiApps.MdiDataGridFullScreenApp)
+            StartupUriOrType = typeof(EficazFramework.Tests.Blazor.Views.Pages.Components.Panels.MdiApps.MdiDataGridApp)
         });
         appDataGrid2.Targets["Blazor"].Properties.Add("IsMaximized", true);
 

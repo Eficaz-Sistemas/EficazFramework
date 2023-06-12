@@ -22,7 +22,11 @@
                                    Class="mr-2 mt-1">
                     @(ApplicationInstance != null ? ApplicationInstance.Title : Title)
                 </MudBlazor.MudText>
-                @HeaderContent
+                <div class="d-flex flex-row flex-grow-1"
+                     @ondragstart:preventDefault="true"
+                     @ondragstart:stopPropagation="true">
+                    @HeaderContent
+                </div>
             </div>
             <MudBlazor.MudIconButton Icon="@MudBlazor.Icons.Material.Filled.Close"
                                      OnClick="OnClose"
@@ -37,9 +41,9 @@
         <div class="ef-mdi-window-host d-flex flex-grow-1 "
              @ondragstart:preventDefault="true"
              @ondragstart:stopPropagation="true">
-            <MudBlazor.MudFocusTrap Class="@HostClassname">
+            <FocusTrapEx Class="@HostClassname">
                 @ChildContent
-            </MudBlazor.MudFocusTrap>
+            </FocusTrapEx>
         </div>
     </CascadingValue>
 </MudBlazor.MudPaper>
