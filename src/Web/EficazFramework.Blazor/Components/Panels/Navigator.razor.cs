@@ -8,11 +8,12 @@ public partial class Navigator : MudBlazor.MudBaseItemsControl<NavigatorPage>
 
 
     //FRAGMENTS:
-    [Parameter]
-    public RenderFragment HeaderContent { get; set; }
+    [Parameter]    public RenderFragment HeaderContent { get; set; }
 
     protected internal List<NavigatorPage> Pages = new();
-    public RenderFragment FooterContent { get; set; }
+
+
+    [Parameter] public RenderFragment FooterContent { get; set; }
 
     //HELPERS:
 
