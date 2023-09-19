@@ -109,7 +109,7 @@ public partial class SectionsView : MudBlazor.MudComponentBase
 
     private void AddSection()
     {
-        long id = ItemsSource.Count() + 1;
+        long id = ItemsSource.DefaultIfEmpty(new(0)).Max(s => s.ID) + 1;
         (ItemsSource as IList<EficazFramework.Application.Section>)?.Add(new EficazFramework.Application.Section(id)
         {
             Name = $"Section {id}"
