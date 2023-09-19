@@ -54,7 +54,7 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-	 <PackageReference Include="MySql.EntityFrameworkCore" Version="7.0.2" />
+	 <PackageReference Include="MySql.EntityFrameworkCore" Version="7.0.5" />
     <PackageReference Include="DefaultDocumentation" Version="0.8.2">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>

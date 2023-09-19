@@ -96,7 +96,7 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
-    <PackageReference Include="MudBlazor" Version="6.4.1" />
+    <PackageReference Include="MudBlazor" Version="6.10.0" />
   </ItemGroup>
 	
   <ItemGroup>
