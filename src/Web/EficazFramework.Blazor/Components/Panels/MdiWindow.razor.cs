@@ -66,6 +66,9 @@ public partial class MdiWindow: MudBlazor.MudComponentBase
                     .AddStyle("width", $"{(int)ApplicationInstance.Targets["Blazor"].Properties["Width"]}px", !IsMaximized)
                     .AddStyle("height", $"{(int)ApplicationInstance.Targets["Blazor"].Properties["Height"]}px", !IsMaximized)
                     .AddStyle("z-index", $"{(int)ApplicationInstance.Targets["Blazor"].Properties["ZIndex"]}")
+                    .AddStyle("-webkit-user-select", "none", !IsDragging)
+                    .AddStyle("-ms-user-select", "none", !IsDragging)
+                    .AddStyle("user-select", "none", !IsDragging)
                     .Build();
 
     /// <summary>
@@ -87,8 +90,7 @@ public partial class MdiWindow: MudBlazor.MudComponentBase
         base.OnInitialized();
     }
 
-    private double offsetX, offsetY;
-    private bool isDragging = false;
+    internal bool IsDragging { get; private set; } = false;
 
     /// <summary>
     /// Set this instance as SelectedItem on the host when it's clicked
@@ -101,94 +103,37 @@ public partial class MdiWindow: MudBlazor.MudComponentBase
     /// <summary>
     /// Starts a Drag operation for move
     /// </summary>
-    private void OnPointerDown(PointerEventArgs args)
+    private void OnHeaderPointerDown(PointerEventArgs args)
     {
         if ((args.PointerType == "mouse" && args.Button == 0)
             || args.PointerType == "touch")
         {
             MdiHost.MoveTo(ApplicationInstance);
-            isDragging = true;
-            offsetX = (int)ApplicationInstance.Targets["Blazor"].Properties["OffsetX"];
-            offsetY = (int)ApplicationInstance.Targets["Blazor"].Properties["OffsetY"];
+            MdiHost._movingWindow = this;
+            IsDragging = true;
+            MdiHost.offsetX = (int)ApplicationInstance.Targets["Blazor"].Properties["OffsetX"];
+            MdiHost.offsetY = (int)ApplicationInstance.Targets["Blazor"].Properties["OffsetY"];
         }
     }
-
-    ///// <summary>
-    ///// Start a Drag operation for move
-    ///// </summary>
-    //private void OnDragStart(DragEventArgs args)
-    //{
-    //    //Utilities.JsInterop.SetDragImage(JsRutinme, args);
-    //    MdiHost.MoveTo(ApplicationInstance);
-    //    isDragging = true;
-    //    startX = args.OffsetX;
-    //    startY = args.OffsetY;
-    //}
-
-    /// <summary>
-    /// Smoothly Drags this instance
-    /// </summary>
-    private void OnPointerMove(PointerEventArgs args)
-    {
-        if (isDragging)
-        {
-
-#if NET7_0_OR_GREATER
-            offsetX += args.MovementX;
-            offsetY += args.MovementY;
-#else
-            double deltaX = args.ClientX - offsetX;
-            double deltaY = args.ClientY - offsetY;
-            offsetX += deltaX;
-            offsetY += deltaY;
-#endif
-            ApplicationInstance.Targets["Blazor"].Properties["OffsetX"] = (int)offsetX;
-            ApplicationInstance.Targets["Blazor"].Properties["OffsetY"] = (int)offsetY;
-        }
-    }
-
 
     /// <summary>
     /// Ends a Drag operation and update the screen coordinates of this instance.
     /// </summary>
-    private void OnPointerUp(PointerEventArgs args)
-    {
-        isDragging = false;
+    private void OnHeaderPointerUp(PointerEventArgs args) =>
+        CancelMove();
 
-        //offsetX += args.OffsetX - startX;
-        //if (offsetX < 0)
-        //    offsetX = 0;
-
-        //offsetY += args.OffsetY - startY;
-        //if (offsetY < 0)
-        //    offsetY = 0;
-
-    }
-
-    ///// <summary>
-    ///// Ends a Drag operation and update the screen coordinates of this instance.
-    ///// </summary>
-    //private void OnDragEnd(DragEventArgs args)
-    //{
-    //    isDragging = false;
-
-    //    //offsetX += args.OffsetX - startX;
-    //    //if (offsetX < 0)
-    //    //    offsetX = 0;
-
-    //    //offsetY += args.OffsetY - startY;
-    //    //if (offsetY < 0)
-    //    //    offsetY = 0;
-
-    //    ApplicationInstance.Targets["Blazor"].Properties["OffsetX"] = (int)offsetX;
-    //    ApplicationInstance.Targets["Blazor"].Properties["OffsetY"] = (int)offsetY;
-    //}
+    /// <summary>
+    /// Cancels a dragging operation by external component
+    /// </summary>
+    internal void CancelMove() =>
+        IsDragging = false;
 
     /// <summary>
     /// Close Button Click action
     /// </summary>
     private void OnClose()
     {
+        CancelMove();
         MdiHost.SelectedApp = ApplicationInstance;
         MdiHost.CloseApplication(this);
     }

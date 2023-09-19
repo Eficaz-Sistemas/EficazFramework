@@ -1,9 +1,9 @@
-﻿using Microsoft.AspNetCore.Components;
-using MudBlazor.Utilities;
-using EficazFramework.Application;
-using Microsoft.JSInterop;
+﻿using EficazFramework.Application;
+using Microsoft.AspNetCore.Components;
+using Microsoft.AspNetCore.Components.Web;
 using MudBlazor;
 using MudBlazor.Services;
+using MudBlazor.Utilities;
 
 namespace EficazFramework.Components;
 public partial class MdiHost : MudComponentBase
@@ -49,6 +49,45 @@ public partial class MdiHost : MudComponentBase
     /// Content to be rendered at Toolbar's right side.
     /// </summary>
     [Parameter] public RenderFragment? ToolbarRightContent { get; set; }
+
+
+    //! Selected MdiWindow drag move
+    internal double offsetX, offsetY;
+    internal MdiWindow? _movingWindow;
+    /// <summary>
+    /// Ends a Drag operation for Current Application
+    /// </summary>
+    private void OnPointerUp(PointerEventArgs args)
+    {
+        _movingWindow?.CancelMove();
+        _movingWindow = null;
+    }
+
+    /// <summary>
+    /// Smoothly Drags this instance
+    /// </summary>
+    private void OnPointerMove(PointerEventArgs args)
+    {
+        if (_movingWindow?.IsDragging ?? false)
+        {
+
+#if NET7_0_OR_GREATER
+            offsetX += args.MovementX;
+            offsetY += args.MovementY;
+#else
+            double deltaX = args.ClientX - offsetX;
+            double deltaY = args.ClientY - offsetY;
+            offsetX += deltaX;
+            offsetY += deltaY;
+#endif
+            if (SelectedApp != null)
+            {
+                SelectedApp.Targets["Blazor"].Properties["OffsetX"] = (int)offsetX;
+                SelectedApp.Targets["Blazor"].Properties["OffsetY"] = (int)offsetY;
+            }
+        }
+    }
+
 
 
     private long _currentSection = 0;

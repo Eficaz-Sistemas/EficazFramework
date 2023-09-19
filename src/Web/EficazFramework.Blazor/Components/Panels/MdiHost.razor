@@ -5,7 +5,9 @@
 @inherits MudBlazor.MudComponentBase
 
 <div class="@Classname" 
-     style="@StyleName" >
+     style="@StyleName"
+     @onpointerup="OnPointerUp"
+     @onpointermove="OnPointerMove">
     <CascadingValue Value="this">
         @*MDI AREA*@
         @if (BreakpointListener.IsMediaSize(Breakpoint, _breakpoint))
