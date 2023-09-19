@@ -41,7 +41,7 @@
                                                      @bind-CurrentSection="ApplicationManager!.SectionManager!.CurrentSectionId" 
                                                      SectionChanged="SectionChanged" />
         </ToolbarLeftContent>
-        <ToolbarRightContent>
+@*         <ToolbarRightContent>
             <div class="mt-n5 mr-2">
                 @($"Mdi: {_mdi!.CurrentSection}")
                 <br />
@@ -50,5 +50,5 @@
                 @($"Service, Instance: {ApplicationManager!.SectionManager.CurrentSection?.ID ?? 0}")
             </div>
         </ToolbarRightContent>
-    </MdiHost>
+ *@    </MdiHost>
 </div>

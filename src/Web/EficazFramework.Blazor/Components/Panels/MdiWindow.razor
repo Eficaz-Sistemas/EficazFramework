@@ -9,11 +9,12 @@
                     @onclick="OnClick">
     <CascadingValue Value="this">
         <!--HEADER-->
-        <div class="d-flex flex-row" @ref="myRef"
-             style="@($"cursor: {(isDragging ? "grabbing" : "grab")};")"
-             draggable="true"
-             @ondragstart="OnDragStart"
-             @ondragend="OnDragEnd">
+        <div class="d-flex flex-row" 
+             @ref="myRef"
+             @onpointerdown="OnPointerDown"
+             @onpointermove="OnPointerMove"
+             @onpointerup="OnPointerUp"
+             @onpointerleave="OnPointerUp">
             <MudBlazor.MudIcon Icon="@Icon"
                                Class="ma-2"
                                Style="width: 14px; height: 14px;" />
@@ -22,9 +23,7 @@
                                    Class="mr-2 mt-1">
                     @(ApplicationInstance != null ? ApplicationInstance.Title : Title)
                 </MudBlazor.MudText>
-                <div class="d-flex flex-row flex-grow-1"
-                     @ondragstart:preventDefault="true"
-                     @ondragstart:stopPropagation="true">
+                <div class="d-flex flex-row flex-grow-1">
                     @HeaderContent
                 </div>
             </div>
@@ -38,9 +37,7 @@
                                      Title="Close"/>
         </div>
         <!--CONTENT-->
-        <div class="ef-mdi-window-host d-flex flex-grow-1 "
-             @ondragstart:preventDefault="true"
-             @ondragstart:stopPropagation="true">
+        <div class="ef-mdi-window-host d-flex flex-grow-1 ">
             <FocusTrapEx Class="@HostClassname">
                 @ChildContent
             </FocusTrapEx>

@@ -87,7 +87,7 @@ public partial class MdiWindow: MudBlazor.MudComponentBase
         base.OnInitialized();
     }
 
-    private double startX, startY, offsetX, offsetY;
+    private double offsetX, offsetY;
     private bool isDragging = false;
 
     /// <summary>
@@ -97,36 +97,92 @@ public partial class MdiWindow: MudBlazor.MudComponentBase
     private void OnClick(MouseEventArgs e) =>
         MdiHost.MoveTo(ApplicationInstance);
 
+
     /// <summary>
-    /// Start a Drag operation for move
+    /// Starts a Drag operation for move
     /// </summary>
-    private void OnDragStart(DragEventArgs args)
+    private void OnPointerDown(PointerEventArgs args)
     {
-        //Utilities.JsInterop.SetDragImage(JsRutinme, args);
-        MdiHost.MoveTo(ApplicationInstance);
-        isDragging = true;
-        startX = args.OffsetX;
-        startY = args.OffsetY;
+        if ((args.PointerType == "mouse" && args.Button == 0)
+            || args.PointerType == "touch")
+        {
+            MdiHost.MoveTo(ApplicationInstance);
+            isDragging = true;
+            offsetX = (int)ApplicationInstance.Targets["Blazor"].Properties["OffsetX"];
+            offsetY = (int)ApplicationInstance.Targets["Blazor"].Properties["OffsetY"];
+        }
     }
+
+    ///// <summary>
+    ///// Start a Drag operation for move
+    ///// </summary>
+    //private void OnDragStart(DragEventArgs args)
+    //{
+    //    //Utilities.JsInterop.SetDragImage(JsRutinme, args);
+    //    MdiHost.MoveTo(ApplicationInstance);
+    //    isDragging = true;
+    //    startX = args.OffsetX;
+    //    startY = args.OffsetY;
+    //}
+
+    /// <summary>
+    /// Smoothly Drags this instance
+    /// </summary>
+    private void OnPointerMove(PointerEventArgs args)
+    {
+        if (isDragging)
+        {
+
+#if NET7_0_OR_GREATER
+            offsetX += args.MovementX;
+            offsetY += args.MovementY;
+#else
+            double deltaX = args.ClientX - offsetX;
+            double deltaY = args.ClientY - offsetY;
+            offsetX += deltaX;
+            offsetY += deltaY;
+#endif
+            ApplicationInstance.Targets["Blazor"].Properties["OffsetX"] = (int)offsetX;
+            ApplicationInstance.Targets["Blazor"].Properties["OffsetY"] = (int)offsetY;
+        }
+    }
+
 
     /// <summary>
     /// Ends a Drag operation and update the screen coordinates of this instance.
     /// </summary>
-    private void OnDragEnd(DragEventArgs args)
+    private void OnPointerUp(PointerEventArgs args)
     {
         isDragging = false;
 
-        offsetX += args.OffsetX - startX;
-        if (offsetX < 0)
-            offsetX = 0;
+        //offsetX += args.OffsetX - startX;
+        //if (offsetX < 0)
+        //    offsetX = 0;
 
-        offsetY += args.OffsetY - startY;
-        if (offsetY < 0)
-            offsetY = 0;
+        //offsetY += args.OffsetY - startY;
+        //if (offsetY < 0)
+        //    offsetY = 0;
 
-        ApplicationInstance.Targets["Blazor"].Properties["OffsetX"] = (int)offsetX;
-        ApplicationInstance.Targets["Blazor"].Properties["OffsetY"] = (int)offsetY;
     }
+
+    ///// <summary>
+    ///// Ends a Drag operation and update the screen coordinates of this instance.
+    ///// </summary>
+    //private void OnDragEnd(DragEventArgs args)
+    //{
+    //    isDragging = false;
+
+    //    //offsetX += args.OffsetX - startX;
+    //    //if (offsetX < 0)
+    //    //    offsetX = 0;
+
+    //    //offsetY += args.OffsetY - startY;
+    //    //if (offsetY < 0)
+    //    //    offsetY = 0;
+
+    //    ApplicationInstance.Targets["Blazor"].Properties["OffsetX"] = (int)offsetX;
+    //    ApplicationInstance.Targets["Blazor"].Properties["OffsetY"] = (int)offsetY;
+    //}
 
     /// <summary>
     /// Close Button Click action
@@ -145,8 +201,6 @@ public partial class MdiWindow: MudBlazor.MudComponentBase
         Scrollable = scrolable;
         StateHasChanged();
     }
-
-
 }
 
 public enum WindowState
