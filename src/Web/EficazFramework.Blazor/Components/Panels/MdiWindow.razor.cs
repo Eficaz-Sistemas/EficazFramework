@@ -19,6 +19,13 @@ public partial class MdiWindow: MudBlazor.MudComponentBase
 
     [Parameter] public bool IsMaximized { get; set; } = false;
 
+
+    /// <summary>
+    /// Gets or Sets if user can resize the MdiWindow content
+    /// </summary>
+    [Parameter] public bool Resizable { get; set; } = true;
+
+
     /// <summary>
     /// Gets or Sets if ef-mdi-window-host element should render a vertical scrollbar
     /// </summary>
@@ -68,6 +75,8 @@ public partial class MdiWindow: MudBlazor.MudComponentBase
                     .AddStyle("z-index", $"{(int)ApplicationInstance.Targets["Blazor"].Properties["ZIndex"]}")
                     .AddStyle("-webkit-user-select", "none", !IsDragging)
                     .AddStyle("-ms-user-select", "none", !IsDragging)
+                    .AddStyle("resize", "both", Resizable && !IsMaximized)
+                    .AddStyle("overflow", "auto", Resizable && !IsMaximized)
                     .AddStyle("user-select", "none", !IsDragging)
                     .Build();
 
