@@ -108,6 +108,9 @@ public partial class MdiWindow: MudBlazor.MudComponentBase
         if ((args.PointerType == "mouse" && args.Button == 0)
             || args.PointerType == "touch")
         {
+            if (IsMaximized)
+                return;
+
             MdiHost.MoveTo(ApplicationInstance);
             MdiHost._movingWindow = this;
             IsDragging = true;

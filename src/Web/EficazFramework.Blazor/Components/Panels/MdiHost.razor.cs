@@ -57,7 +57,7 @@ public partial class MdiHost : MudComponentBase
     /// <summary>
     /// Ends a Drag operation for Current Application
     /// </summary>
-    private void OnPointerUp(PointerEventArgs args)
+    private void OnPointerUpOrLeave(PointerEventArgs args)
     {
         _movingWindow?.CancelMove();
         _movingWindow = null;
@@ -75,8 +75,8 @@ public partial class MdiHost : MudComponentBase
             offsetX += args.MovementX;
             offsetY += args.MovementY;
 #else
-            double deltaX = args.ClientX - offsetX;
-            double deltaY = args.ClientY - offsetY;
+            double deltaX = args.OffsetX - offsetX;
+            double deltaY = args.OffsetY - offsetY;
             offsetX += deltaX;
             offsetY += deltaY;
 #endif

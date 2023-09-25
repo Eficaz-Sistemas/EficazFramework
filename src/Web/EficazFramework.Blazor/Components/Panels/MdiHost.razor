@@ -6,8 +6,9 @@
 
 <div class="@Classname" 
      style="@StyleName"
-     @onpointerup="OnPointerUp"
-     @onpointermove="OnPointerMove">
+     @onpointerup="OnPointerUpOrLeave"
+     @onpointermove="OnPointerMove"
+     @onpointerleave="OnPointerUpOrLeave">
     <CascadingValue Value="this">
         @*MDI AREA*@
         @if (BreakpointListener.IsMediaSize(Breakpoint, _breakpoint))
