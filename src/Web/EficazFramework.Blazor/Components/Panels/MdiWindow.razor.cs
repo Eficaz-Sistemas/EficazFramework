@@ -1,9 +1,9 @@
-﻿using Microsoft.AspNetCore.Components;
+﻿using EficazFramework.Application;
+using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Web;
-using MudBlazor.Utilities;
-using System.Drawing;
-using EficazFramework.Application;
 using Microsoft.JSInterop;
+using MudBlazor;
+using MudBlazor.Utilities;
 
 namespace EficazFramework.Components;
 
@@ -19,6 +19,13 @@ public partial class MdiWindow: MudBlazor.MudComponentBase
 
     [Parameter] public bool IsMaximized { get; set; } = false;
 
+
+    /// <summary>
+    /// Gets or Sets if user can resize the MdiWindow content
+    /// </summary>
+    [Parameter] public bool Resizable { get; set; } = true;
+
+
     /// <summary>
     /// Gets or Sets if ef-mdi-window-host element should render a vertical scrollbar
     /// </summary>
@@ -29,15 +36,9 @@ public partial class MdiWindow: MudBlazor.MudComponentBase
     /// </summary>
     [Parameter] public RenderFragment? HeaderContent { get; set; }
 
-
     [CascadingParameter] public MdiHost MdiHost { get; set; }
 
     [Inject] IJSRuntime JsRutinme { get; set; }
-
-    private object myRef;
-
-    //internal Size FrameSize() =>
-    //    (Size)ApplicationInstance.Targets["Blazor"].Properties["Size"] ?? new Size(300, 250)
 
 
     /// <summary>
@@ -61,12 +62,21 @@ public partial class MdiWindow: MudBlazor.MudComponentBase
     protected string StyleName =>
                 new StyleBuilder()
                     .AddStyle(Style)
-                    .AddStyle("left", $"{(int)ApplicationInstance.Targets["Blazor"].Properties["OffsetX"]}px", !IsMaximized)
-                    .AddStyle("top", $"{(int)ApplicationInstance.Targets["Blazor"].Properties["OffsetY"]}px", !IsMaximized)
-                    .AddStyle("width", $"{(int)ApplicationInstance.Targets["Blazor"].Properties["Width"]}px", !IsMaximized)
-                    .AddStyle("height", $"{(int)ApplicationInstance.Targets["Blazor"].Properties["Height"]}px", !IsMaximized)
-                    .AddStyle("z-index", $"{(int)ApplicationInstance.Targets["Blazor"].Properties["ZIndex"]}")
+                    .AddStyle("left", $"{ApplicationInstance.Blazor()!.OffsetX}px", !IsMaximized)
+                    .AddStyle("top", $"{ApplicationInstance.Blazor()!.OffsetY}px", !IsMaximized)
+                    .AddStyle("width", $"{ApplicationInstance.Blazor()!.Width}px", !IsMaximized)
+                    .AddStyle("height", $"{ApplicationInstance.Blazor()!.Height}px", !IsMaximized)
+                    .AddStyle("z-index", $"{ApplicationInstance.Blazor()!.ZIndex}")
+                    .AddStyle("-webkit-user-select", "none", !IsMoving)
+                    .AddStyle("-ms-user-select", "none", !IsMoving)
+                    .AddStyle("user-select", "none", !IsMoving)
+                    .AddStyle("cursor", "move", Resizable)
+                    .AddStyle("outline", "5px solid transparent")
+                    .AddStyle("outline-offset", "-5px")
                     .Build();
+                    //.AddStyle("resize", "both", Resizable && !IsMaximized)
+                    //.AddStyle("overflow", "auto", Resizable && !IsMaximized)
+
 
     /// <summary>
     /// Css classes app host div
@@ -87,8 +97,6 @@ public partial class MdiWindow: MudBlazor.MudComponentBase
         base.OnInitialized();
     }
 
-    private double startX, startY, offsetX, offsetY;
-    private bool isDragging = false;
 
     /// <summary>
     /// Set this instance as SelectedItem on the host when it's clicked
@@ -98,46 +106,10 @@ public partial class MdiWindow: MudBlazor.MudComponentBase
         MdiHost.MoveTo(ApplicationInstance);
 
     /// <summary>
-    /// Start a Drag operation for move
+    /// Set a header custom content
     /// </summary>
-    private void OnDragStart(DragEventArgs args)
-    {
-        //Utilities.JsInterop.SetDragImage(JsRutinme, args);
-        MdiHost.MoveTo(ApplicationInstance);
-        isDragging = true;
-        startX = args.OffsetX;
-        startY = args.OffsetY;
-    }
-
-    /// <summary>
-    /// Ends a Drag operation and update the screen coordinates of this instance.
-    /// </summary>
-    private void OnDragEnd(DragEventArgs args)
-    {
-        isDragging = false;
-
-        offsetX += args.OffsetX - startX;
-        if (offsetX < 0)
-            offsetX = 0;
-
-        offsetY += args.OffsetY - startY;
-        if (offsetY < 0)
-            offsetY = 0;
-
-        ApplicationInstance.Targets["Blazor"].Properties["OffsetX"] = (int)offsetX;
-        ApplicationInstance.Targets["Blazor"].Properties["OffsetY"] = (int)offsetY;
-    }
-
-    /// <summary>
-    /// Close Button Click action
-    /// </summary>
-    private void OnClose()
-    {
-        MdiHost.SelectedApp = ApplicationInstance;
-        MdiHost.CloseApplication(this);
-    }
-
-
+    /// <param name="customHeader"></param>
+    /// <param name="scrolable"></param>
     public void OverrideFrameParameters(RenderFragment? customHeader = null,
         bool scrolable = false)
     {
@@ -147,6 +119,86 @@ public partial class MdiWindow: MudBlazor.MudComponentBase
     }
 
 
+    /// <summary>
+    /// Close Button Click action
+    /// </summary>
+    private void OnClose()
+    {
+        CancelMove();
+        MdiHost.SelectedApp = ApplicationInstance;
+        MdiHost.CloseApplication(this);
+    }
+
+
+    //! Move Behavior
+
+    internal bool IsMoving { get; private set; } = false;
+    /// <summary>
+    /// Starts a Drag operation for move
+    /// </summary>
+    private void OnHeaderPointerDown(PointerEventArgs args)
+    {
+        if ((args.PointerType == "mouse" && args.Button == 0)
+            || args.PointerType == "touch")
+        {
+            if (IsMaximized)
+                return;
+
+            MdiHost.MoveTo(ApplicationInstance);
+            MdiHost._movingWindow = this;
+            IsMoving = true;
+            IsResizing = false;
+            MdiHost.offsetX = ApplicationInstance.Blazor()!.OffsetX;
+            MdiHost.offsetY = ApplicationInstance.Blazor()!.OffsetY;
+        }
+    }
+
+    /// <summary>
+    /// Ends a Drag operation and update the screen coordinates of this instance.
+    /// </summary>
+    private void OnHeaderPointerUp(PointerEventArgs args) =>
+        CancelMove();
+
+    /// <summary>
+    /// Cancels a dragging operation by external component
+    /// </summary>
+    internal void CancelMove() =>
+        IsMoving = false;
+
+
+    //! Resize Behavior
+    internal bool IsResizing { get; private set; } = false;
+    internal double width, height;
+    /// <summary>
+    /// Starts a Drag operation for resize
+    /// </summary>
+    private void OnBorderPointerDown(PointerEventArgs args)
+    {
+        if ((args.PointerType == "mouse" && args.Button == 0)
+            || args.PointerType == "touch")
+        {
+            if (IsMaximized || !Resizable)
+                return;
+
+            MdiHost.MoveTo(ApplicationInstance);
+            MdiHost._movingWindow = this;
+            IsResizing = true;
+            MdiHost.width = ApplicationInstance.Blazor()!.Width;
+            MdiHost.height = ApplicationInstance.Blazor()!.Height;
+        }
+    }
+
+    /// <summary>
+    /// Ends a Drag operation and update the measures of this instance.
+    /// </summary>
+    private void OnBorderPointerUp(PointerEventArgs args) =>
+        CancelResize();
+
+    /// <summary>
+    /// Cancels a dragging operation by external component
+    /// </summary>
+    internal void CancelResize() =>
+        IsResizing = false;
 }
 
 public enum WindowState

@@ -2,9 +2,9 @@
   <!--in Memory of Laudo Ferreira da Silva and Francisco Luis de Sousa † 2020-->
   <PropertyGroup>
 	<TargetFrameworks>net6.0;net7.0</TargetFrameworks>
-	<Version>6.1.5</Version>
-	<AssemblyVersion>6.1.5.0</AssemblyVersion>
-	<FileVersion>6.1.5.0</FileVersion>
+	<Version>6.1.6</Version>
+	<AssemblyVersion>6.1.6.0</AssemblyVersion>
+	<FileVersion>6.1.6.0</FileVersion>
 	<Nullable>enable</Nullable>
 	<RootNamespace>EficazFramework</RootNamespace>
     <Authors>Eficaz Sistemas</Authors>
@@ -72,7 +72,7 @@
   </ItemGroup>
   
   <ItemGroup Condition=" '$(TargetFramework)' == 'net7.0' ">
-	<PackageReference Include="Microsoft.AspNetCore.SignalR.Client" Version="7.0.5" />
+	<PackageReference Include="Microsoft.AspNetCore.SignalR.Client" Version="7.0.11" />
   </ItemGroup>
 	
   <ItemGroup>

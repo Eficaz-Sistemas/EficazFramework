@@ -1,7 +1,7 @@
-﻿using System.Collections;
+﻿using EficazFramework.Application;
+using System.Collections;
 using System.ComponentModel;
 using System.Diagnostics;
-using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Controls.Primitives;
 
@@ -22,7 +22,7 @@ public class MDIContainer : Selector
 
     public object CustomTaskBarLeftContent
     {
-        get => (object)GetValue(CustomTaskBarLeftContentProperty);
+        get => GetValue(CustomTaskBarLeftContentProperty);
         set => SetValue(CustomTaskBarLeftContentProperty, value);
     }
     public static readonly DependencyProperty CustomTaskBarLeftContentProperty =
@@ -39,7 +39,7 @@ public class MDIContainer : Selector
 
     public object CustomTaskBarRightContent
     {
-        get { return (object)GetValue(CustomTaskBarRightContentProperty); }
+        get { return GetValue(CustomTaskBarRightContentProperty); }
         set { SetValue(CustomTaskBarRightContentProperty, value); }
     }
     public static readonly DependencyProperty CustomTaskBarRightContentProperty =
@@ -121,8 +121,8 @@ public class MDIContainer : Selector
                 {
                     window.AppDefinition = appinfo;
                     window.Title = appinfo.LongTitle ?? appinfo.Title;
-                    window.WindowState = (WindowState)(appinfo.Targets["WPF"].Properties[Application.ApplicationDefinition.STARTWINDOWSTATE] ?? WindowState.Normal);
-                    target = (UIElement)(appinfo.Content ?? appinfo.Targets["WPF"].SplashScreen);
+                    window.WindowState = appinfo.Wpf().StartWindowState;
+                    target = (UIElement)(appinfo.Content ?? appinfo.Wpf().SplashScreen);
                 }
                 else
                 {
@@ -318,7 +318,8 @@ public class MDIContainer : Selector
         try
         {
             await Task.Delay(1000);
-            UIElement app = await System.Windows.Application.Current.Dispatcher.InvokeAsync(() => System.Windows.Application.LoadComponent(new Uri(item.Targets["WPF"].StartupUriOrType.ToString(), UriKind.RelativeOrAbsolute)) as UIElement);
+            UIElement app = await System.Windows.Application.Current.Dispatcher.InvokeAsync(() => 
+                System.Windows.Application.LoadComponent(new Uri(item.Wpf().StartupUriOrType.ToString(), UriKind.RelativeOrAbsolute)) as UIElement);
             if (app != null) item.Content = app;
             item.IsLoading = false;
         }

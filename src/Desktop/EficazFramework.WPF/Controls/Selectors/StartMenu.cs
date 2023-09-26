@@ -1,7 +1,7 @@
-﻿using System.Collections.ObjectModel;
+﻿using EficazFramework.Application;
+using System.Collections.ObjectModel;
 using System.Collections.Specialized;
 using System.Globalization;
-using System.Linq;
 using System.Windows.Controls.Primitives;
 
 namespace EficazFramework.Controls;
@@ -23,7 +23,7 @@ public class StartMenu : TabControl
         PinnedApplications.Filter = (app) =>
         {
             Application.ApplicationDefinition eapp = app as Application.ApplicationDefinition;
-            return !ExcludedUris.Contains(eapp.Targets["WPF"].StartupUriOrType.ToString());
+            return !ExcludedUris.Contains(eapp.Wpf().StartupUriOrType.ToString());
         };
 
         SetValue(OpenMenuCommandPropertyKey, new Commands.CommandBase(OpenPopupMenu_Executed));
@@ -203,7 +203,7 @@ public class StartMenu : TabControl
             instance.PinnedApplications.Filter = (app) =>
             {
                 Application.ApplicationDefinition eapp = app as Application.ApplicationDefinition;
-                return !instance.ExcludedUris.Contains(eapp.Targets["WPF"].StartupUriOrType.ToString());
+                return !instance.ExcludedUris.Contains(eapp.Wpf().StartupUriOrType.ToString());
             };
             return;
         }
@@ -220,7 +220,7 @@ public class StartMenu : TabControl
         instance.PinnedApplications.Filter = (app) =>
         {
             Application.ApplicationDefinition eapp = app as Application.ApplicationDefinition;
-            return (!instance.ExcludedUris.Contains(eapp.Targets["WPF"].StartupUriOrType.ToString())) &&
+            return (!instance.ExcludedUris.Contains(eapp.Wpf().StartupUriOrType.ToString())) &&
                    CultureInfo.InvariantCulture.CompareInfo.IndexOf(eapp.TooltipTilte, (string)e.NewValue,
                                                                     CompareOptions.IgnoreNonSpace |
                                                                     CompareOptions.IgnoreCase) >= 0 ||
@@ -263,9 +263,9 @@ public class StartMenu : TabControl
     {
         if ((e.Parameter as Application.ApplicationDefinition) == null) return;
         Application.ApplicationDefinition app = (Application.ApplicationDefinition)e.Parameter;
-        ExcludedUris.Add(app.Targets["WPF"].StartupUriOrType.ToString());
+        ExcludedUris.Add(app.Wpf().StartupUriOrType.ToString());
         RefreshPinnedApps();
-        ApplicationPinnedOff?.Invoke(this, new NotifyCollectionChangedEventArgs(NotifyCollectionChangedAction.Remove, app.Targets["WPF"].StartupUriOrType.ToString()));
+        ApplicationPinnedOff?.Invoke(this, new NotifyCollectionChangedEventArgs(NotifyCollectionChangedAction.Remove, app.Wpf().StartupUriOrType.ToString()));
     }
 
     private void ChangeAppsViewMode_Executed(object sender, Events.ExecuteEventArgs e)

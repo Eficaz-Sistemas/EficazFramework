@@ -1,9 +1,9 @@
-﻿using Microsoft.AspNetCore.Components;
-using MudBlazor.Utilities;
-using EficazFramework.Application;
-using Microsoft.JSInterop;
+﻿using EficazFramework.Application;
+using Microsoft.AspNetCore.Components;
+using Microsoft.AspNetCore.Components.Web;
 using MudBlazor;
 using MudBlazor.Services;
+using MudBlazor.Utilities;
 
 namespace EficazFramework.Components;
 public partial class MdiHost : MudComponentBase
@@ -49,6 +49,73 @@ public partial class MdiHost : MudComponentBase
     /// Content to be rendered at Toolbar's right side.
     /// </summary>
     [Parameter] public RenderFragment? ToolbarRightContent { get; set; }
+
+
+    //! Selected MdiWindow drag move & resize
+    internal double offsetX, offsetY;
+    internal double width, height;
+    internal MdiWindow? _movingWindow;
+    /// <summary>
+    /// Ends a Drag operation for Current Application
+    /// </summary>
+    private void OnHeaderPointerUpOrLeave(PointerEventArgs args)
+    {
+        _movingWindow?.CancelMove();
+        _movingWindow?.CancelResize();
+        _movingWindow = null;
+    }
+
+    /// <summary>
+    /// Smoothly Drags this instance
+    /// </summary>
+    private void OnHeaderPointerMove(PointerEventArgs args)
+    {
+        if (_movingWindow?.IsMoving ?? false)
+        {
+            MoveSeletedWindow(args);
+            return;
+        }
+
+        if ((_movingWindow?.IsResizing ?? false) && !(_movingWindow?.IsMoving ?? false))
+            ResizeSeletedWindow(args);
+    }
+
+    private void MoveSeletedWindow(PointerEventArgs args)
+    {
+#if NET7_0_OR_GREATER
+        offsetX += args.MovementX;
+        offsetY += args.MovementY;
+#else
+            double deltaX = args.OffsetX - offsetX;
+            double deltaY = args.OffsetY - offsetY;
+            offsetX += deltaX;
+            offsetY += deltaY;
+#endif
+        if (SelectedApp != null)
+        {
+            SelectedApp.Blazor()!.OffsetX = (int)offsetX;
+            SelectedApp.Blazor()!.OffsetY = (int)offsetY;
+        }
+    }
+
+    private void ResizeSeletedWindow(PointerEventArgs args)
+    {
+#if NET7_0_OR_GREATER
+        width += args.MovementX;
+        height += args.MovementY;
+#else
+            double deltaX = args.OffsetX - width;
+            double deltaY = args.OffsetY - height;
+            width += deltaX;
+            height += deltaY;
+#endif
+        if (SelectedApp != null)
+        {
+            SelectedApp.Blazor()!.Width = (int)width;
+            SelectedApp.Blazor()!.Height = (int)height;
+        }
+    }
+
 
 
     private long _currentSection = 0;
@@ -127,21 +194,9 @@ public partial class MdiHost : MudComponentBase
         if (instance == null)
         {
             instance = ApplicationInstance.Create(app, CurrentSection);
-
-            if (!instance.Targets["Blazor"].Properties.ContainsKey("IsMaximized"))
-                instance.Targets["Blazor"].Properties.Add("IsMaximized", false);
-
-            instance.Targets["Blazor"].Properties.Add("OffsetX", 15);
-            instance.Targets["Blazor"].Properties.Add("OffsetY", 15);
-
-            if (!instance.Targets["Blazor"].Properties.ContainsKey("Width"))
-                instance.Targets["Blazor"].Properties.Add("Width", 425);
-
-            if (!instance.Targets["Blazor"].Properties.ContainsKey("Height"))
-                instance.Targets["Blazor"].Properties.Add("Height", 250);
-
-            instance.Targets["Blazor"].Properties["ZIndex"] = (ApplicationsSource?.Count() ?? 0) + 1;
-
+            instance.Blazor()!.ZIndex = (ApplicationsSource?.Count() ?? 0) + 1;
+            instance.Blazor()!.Width = instance.Blazor()!.InitialSize.Width;
+            instance.Blazor()!.Height = instance.Blazor()!.InitialSize.Height;
             (ApplicationsSource as IList<ApplicationInstance>)?.Add(instance);
         }
 
@@ -157,12 +212,12 @@ public partial class MdiHost : MudComponentBase
         var runningAps = RunningApplications();
         foreach(var anotherApp in runningAps.Where(a => !object.ReferenceEquals(a, app)))
         {
-            int zIndex = (int?)anotherApp.Targets["Blazor"].Properties["ZIndex"] ?? 1;
-            anotherApp.Targets["Blazor"].Properties["ZIndex"] = Math.Max(1, zIndex -= 1);
+            int zIndex = anotherApp.Blazor()!.ZIndex;
+            anotherApp.Blazor()!.ZIndex = Math.Max(1, zIndex -= 1);
         }
 
         if (app != null)
-            app.Targets["Blazor"].Properties["ZIndex"] = runningAps.Count();
+            app.Blazor()!.ZIndex = runningAps.Count();
 
         SelectedApp = app;
         StateHasChanged();

@@ -5,8 +5,6 @@ namespace EficazFramework.Application;
 
 public class ApplicationDefinition
 {
-    public const string STARTWINDOWSTATE = "StartWindowState";
-
     // Metadata
     public string? Title { get; set; }
     public string? LongTitle { get; set; }

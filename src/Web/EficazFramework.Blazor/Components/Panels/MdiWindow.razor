@@ -6,25 +6,27 @@
                     Outlined 
                     Class="@Classname" 
                     Style="@StyleName"
-                    @onclick="OnClick">
+                    @onclick="OnClick"
+                    @onpointerdown="OnBorderPointerDown"
+                    @onpointerup="OnBorderPointerUp">
     <CascadingValue Value="this">
         <!--HEADER-->
-        <div class="d-flex flex-row" @ref="myRef"
-             style="@($"cursor: {(isDragging ? "grabbing" : "grab")};")"
-             draggable="true"
-             @ondragstart="OnDragStart"
-             @ondragend="OnDragEnd">
+        <div class="d-flex flex-row" 
+             style="cursor:default"
+             @onpointerdown="OnHeaderPointerDown"
+             @onpointerup="OnHeaderPointerUp">
             <MudBlazor.MudIcon Icon="@Icon"
                                Class="ma-2"
-                               Style="width: 14px; height: 14px;" />
+                               Style="width: 14px; height: 14px;"
+                               @onpointermove:preventDefault/>
             <div class="d-flex flex-row flex-grow-1">
                 <MudBlazor.MudText Typo="MudBlazor.Typo.caption"
-                                   Class="mr-2 mt-1">
+                                   Class="mr-2 mt-1"
+                                   @onpointermove:preventDefault>
                     @(ApplicationInstance != null ? ApplicationInstance.Title : Title)
                 </MudBlazor.MudText>
                 <div class="d-flex flex-row flex-grow-1"
-                     @ondragstart:preventDefault="true"
-                     @ondragstart:stopPropagation="true">
+                     @onpointermove:preventDefault>
                     @HeaderContent
                 </div>
             </div>
@@ -35,13 +37,15 @@
                                      Size="MudBlazor.Size.Small"
                                      Class="align-self-start"
                                      Style="top:2px;"
-                                     Title="Close"/>
+                                     Title="Close"
+                                     @onpointermove:preventDefault/>
         </div>
         <!--CONTENT-->
-        <div class="ef-mdi-window-host d-flex flex-grow-1 "
-             @ondragstart:preventDefault="true"
-             @ondragstart:stopPropagation="true">
-            <FocusTrapEx Class="@HostClassname">
+         <div class="ef-mdi-window-host d-flex flex-grow-1 "
+              style="cursor:default"
+              @onpointerdown:stopPropagation>
+            <FocusTrapEx Class="@HostClassname" 
+                         DefaultFocus="@MudBlazor.DefaultFocus.FirstChild">
                 @ChildContent
             </FocusTrapEx>
         </div>

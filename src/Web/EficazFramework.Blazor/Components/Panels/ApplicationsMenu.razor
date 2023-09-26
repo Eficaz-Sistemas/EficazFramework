@@ -1,5 +1,6 @@
 ﻿@namespace EficazFramework.Components
 @inherits MudBlazor.MudComponentBase
+@using EficazFramework.Application
 
 <div class="@ClassName()"
      style="@Style">
@@ -43,7 +44,7 @@
                                                  Size="@MudBlazor.Size.Large"
                                                  Class="pt-5 pb-7 ef-application-button"
                                                  OnClick="() => SelectionCallBack?.Invoke(app)">
-                                <MudBlazor.MudIcon Icon="@(app.Targets["Blazor"].Icon?.ToString())"
+                                <MudBlazor.MudIcon Icon="@(app.Blazor()?.Icon?.ToString())"
                                                    Class="ef-application-button-icon" />
                                 <MudBlazor.MudText Typo="MudBlazor.Typo.caption"
                                                    Align="MudBlazor.Align.Center"
@@ -68,7 +69,7 @@
                         <NestedList>
                             @foreach (var app in group)
                             {
-                                <MudBlazor.MudListItem Icon="@(app.Targets["Blazor"].Icon?.ToString())"
+                                <MudBlazor.MudListItem Icon="@(app.Blazor()?.Icon?.ToString())"
                                            OnClick="() => SelectionCallBack?.Invoke(app)">
                                     @app.LongTitle
                                 </MudBlazor.MudListItem>

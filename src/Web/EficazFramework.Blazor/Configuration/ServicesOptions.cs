@@ -4,7 +4,7 @@ public class ServiceConfiguration
 {
     public MudBlazor.MudTheme Theme { get; set; } = new MudBlazor.MudTheme()
     {
-        Palette = new MudBlazor.Palette()
+        Palette = new MudBlazor.PaletteLight()
         {
             PrimaryDarken = "#00172b",
             Primary = "#0060ad",
@@ -24,7 +24,7 @@ public class ServiceConfiguration
             AppbarBackground = "#0078d7",
             AppbarText = "#fff",
         },
-        PaletteDark = new MudBlazor.Palette()
+        PaletteDark = new MudBlazor.PaletteDark()
         {
             TextDisabled = "#404040ff",
 
@@ -135,5 +135,5 @@ public class ServiceConfiguration
 
     public bool UseApplicationManager { get; set; } = false;
 
-    public MudBlazor.Services.MudServicesConfiguration MudBlazorConfigurations { get; set; }
+    public MudBlazor.Services.MudServicesConfiguration MudBlazorConfigurations { get; set; } = new();
 }
