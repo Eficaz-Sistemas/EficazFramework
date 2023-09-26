@@ -18,9 +18,10 @@
                 {
                     <MdiWindow ApplicationInstance="SelectedApp"
                                Title="@SelectedApp.Title"
-                               Icon="@(SelectedApp.Targets["Blazor"].Icon?.ToString())"
+                               Icon="@(SelectedApp.Blazor()!.Icon?.ToString())"
+                               Resizable="false"
                                IsMaximized="true">
-                        <DynamicComponent Type="@((Type)(SelectedApp.Targets["Blazor"].StartupUriOrType ?? typeof(string)))" />
+                        <DynamicComponent Type="@((Type)(SelectedApp.Blazor()!.StartupUriOrType ?? typeof(string)))" />
                     </MdiWindow>
                 }
             </div>
@@ -34,9 +35,10 @@
                 {
                     <MdiWindow ApplicationInstance="item"
                                Title="@item.Title"
-                               Icon="@(item.Targets["Blazor"].Icon?.ToString())"
-                               IsMaximized="@((bool?)item.Targets["Blazor"].Properties["IsMaximized"] ?? false)">
-                        <DynamicComponent Type="@((Type)(item.Targets["Blazor"].StartupUriOrType ?? typeof(string)))" />
+                               Icon="@item.Blazor()!.Icon?.ToString()"
+                               Resizable="@item.Blazor()!.Resizable"
+                               IsMaximized="@item.Blazor()!.IsMaximized">
+                        <DynamicComponent Type="@((Type)(item.Blazor()!.StartupUriOrType ?? typeof(string)))" />
                     </MdiWindow>
                 }
             </div>
@@ -50,7 +52,7 @@
                     <MudBlazor.MudIconButton Variant="@MudBlazor.Variant.Filled"
                                                 Color="@MudBlazor.Color.Transparent"
                                                 Class="ef-mdi-buttons-toolbar"
-                                                Icon="@(item.Targets["Blazor"].Icon?.ToString())"
+                                                Icon="@item.Blazor()!.Icon?.ToString()"
                                                 Size="@MudBlazor.Size.Medium"
                                                 DisableElevation
                                                 Style="@TaskBarAppInstanceButtonStyle(item)"
@@ -59,6 +61,6 @@
             }
             <MudBlazor.MudSpacer/>
             @ToolbarRightContent
-            </div>
+        </div>
     </CascadingValue>
 </div>

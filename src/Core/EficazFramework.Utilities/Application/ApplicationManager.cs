@@ -215,18 +215,7 @@ public sealed class ApplicationInstance : ApplicationDefinition, INotifyProperty
     {
         foreach (var sourceTarget in sourceTargets)
         {
-            ApplicationTarget appTarget = new()
-            {
-                Icon = sourceTarget.Value.Icon,
-                InitialSize = sourceTarget.Value.InitialSize,
-                SplashScreen = sourceTarget.Value.SplashScreen,
-                StartupUriOrType = sourceTarget.Value.StartupUriOrType
-            };
-            foreach (var item in sourceTarget.Value.Properties)
-            {
-                appTarget.Properties.Add(item.Key, item.Value);
-            }
-            Targets.Add(sourceTarget.Key, appTarget);
+            Targets.Add(sourceTarget);
         }
     }
 

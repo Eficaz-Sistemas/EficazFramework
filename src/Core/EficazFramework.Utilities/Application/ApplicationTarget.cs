@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 namespace EficazFramework.Application;
 
 [ExcludeFromCodeCoverage]
-public class ApplicationTarget
+public abstract class ApplicationTarget
 {
     /// <summary>
     /// Informações de inicialização da aplicação
@@ -32,7 +32,7 @@ public class ApplicationTarget
     /// <summary>
     /// Ativo Visual de inicialização/carregamento do aplicativo
     /// </summary>
-    public Size InitialSize { get; set; } = new(250, 200);
+    public Size InitialSize { get; set; } = new(425, 200);
 
 
     /// <summary>

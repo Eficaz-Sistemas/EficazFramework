@@ -93,8 +93,8 @@ public partial class MdiHost : MudComponentBase
 #endif
         if (SelectedApp != null)
         {
-            SelectedApp.Targets["Blazor"].Properties["OffsetX"] = (int)offsetX;
-            SelectedApp.Targets["Blazor"].Properties["OffsetY"] = (int)offsetY;
+            SelectedApp.Blazor()!.OffsetX = (int)offsetX;
+            SelectedApp.Blazor()!.OffsetY = (int)offsetY;
         }
     }
 
@@ -111,8 +111,8 @@ public partial class MdiHost : MudComponentBase
 #endif
         if (SelectedApp != null)
         {
-            SelectedApp.Targets["Blazor"].Properties["Width"] = (int)width;
-            SelectedApp.Targets["Blazor"].Properties["Height"] = (int)height;
+            SelectedApp.Blazor()!.Width = (int)width;
+            SelectedApp.Blazor()!.Height = (int)height;
         }
     }
 
@@ -194,21 +194,9 @@ public partial class MdiHost : MudComponentBase
         if (instance == null)
         {
             instance = ApplicationInstance.Create(app, CurrentSection);
-
-            if (!instance.Targets["Blazor"].Properties.ContainsKey("IsMaximized"))
-                instance.Targets["Blazor"].Properties.Add("IsMaximized", false);
-
-            instance.Targets["Blazor"].Properties.Add("OffsetX", 15);
-            instance.Targets["Blazor"].Properties.Add("OffsetY", 15);
-
-            if (!instance.Targets["Blazor"].Properties.ContainsKey("Width"))
-                instance.Targets["Blazor"].Properties.Add("Width", 425);
-
-            if (!instance.Targets["Blazor"].Properties.ContainsKey("Height"))
-                instance.Targets["Blazor"].Properties.Add("Height", 250);
-
-            instance.Targets["Blazor"].Properties["ZIndex"] = (ApplicationsSource?.Count() ?? 0) + 1;
-
+            instance.Blazor()!.ZIndex = (ApplicationsSource?.Count() ?? 0) + 1;
+            instance.Blazor()!.Width = instance.Blazor()!.InitialSize.Width;
+            instance.Blazor()!.Height = instance.Blazor()!.InitialSize.Height;
             (ApplicationsSource as IList<ApplicationInstance>)?.Add(instance);
         }
 
@@ -224,12 +212,12 @@ public partial class MdiHost : MudComponentBase
         var runningAps = RunningApplications();
         foreach(var anotherApp in runningAps.Where(a => !object.ReferenceEquals(a, app)))
         {
-            int zIndex = (int?)anotherApp.Targets["Blazor"].Properties["ZIndex"] ?? 1;
-            anotherApp.Targets["Blazor"].Properties["ZIndex"] = Math.Max(1, zIndex -= 1);
+            int zIndex = anotherApp.Blazor()!.ZIndex;
+            anotherApp.Blazor()!.ZIndex = Math.Max(1, zIndex -= 1);
         }
 
         if (app != null)
-            app.Targets["Blazor"].Properties["ZIndex"] = runningAps.Count();
+            app.Blazor()!.ZIndex = runningAps.Count();
 
         SelectedApp = app;
         StateHasChanged();

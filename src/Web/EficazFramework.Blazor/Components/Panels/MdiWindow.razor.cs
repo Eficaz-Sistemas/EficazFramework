@@ -62,15 +62,15 @@ public partial class MdiWindow: MudBlazor.MudComponentBase
     protected string StyleName =>
                 new StyleBuilder()
                     .AddStyle(Style)
-                    .AddStyle("left", $"{(int)ApplicationInstance.Targets["Blazor"].Properties["OffsetX"]}px", !IsMaximized)
-                    .AddStyle("top", $"{(int)ApplicationInstance.Targets["Blazor"].Properties["OffsetY"]}px", !IsMaximized)
-                    .AddStyle("width", $"{(int)ApplicationInstance.Targets["Blazor"].Properties["Width"]}px", !IsMaximized)
-                    .AddStyle("height", $"{(int)ApplicationInstance.Targets["Blazor"].Properties["Height"]}px", !IsMaximized)
-                    .AddStyle("z-index", $"{(int)ApplicationInstance.Targets["Blazor"].Properties["ZIndex"]}")
+                    .AddStyle("left", $"{ApplicationInstance.Blazor()!.OffsetX}px", !IsMaximized)
+                    .AddStyle("top", $"{ApplicationInstance.Blazor()!.OffsetY}px", !IsMaximized)
+                    .AddStyle("width", $"{ApplicationInstance.Blazor()!.Width}px", !IsMaximized)
+                    .AddStyle("height", $"{ApplicationInstance.Blazor()!.Height}px", !IsMaximized)
+                    .AddStyle("z-index", $"{ApplicationInstance.Blazor()!.ZIndex}")
                     .AddStyle("-webkit-user-select", "none", !IsMoving)
                     .AddStyle("-ms-user-select", "none", !IsMoving)
                     .AddStyle("user-select", "none", !IsMoving)
-                    .AddStyle("cursor", "move")
+                    .AddStyle("cursor", "move", Resizable)
                     .AddStyle("outline", "5px solid transparent")
                     .AddStyle("outline-offset", "-5px")
                     .Build();
@@ -148,8 +148,8 @@ public partial class MdiWindow: MudBlazor.MudComponentBase
             MdiHost._movingWindow = this;
             IsMoving = true;
             IsResizing = false;
-            MdiHost.offsetX = (int)ApplicationInstance.Targets["Blazor"].Properties["OffsetX"];
-            MdiHost.offsetY = (int)ApplicationInstance.Targets["Blazor"].Properties["OffsetY"];
+            MdiHost.offsetX = ApplicationInstance.Blazor()!.OffsetX;
+            MdiHost.offsetY = ApplicationInstance.Blazor()!.OffsetY;
         }
     }
 
@@ -183,8 +183,8 @@ public partial class MdiWindow: MudBlazor.MudComponentBase
             MdiHost.MoveTo(ApplicationInstance);
             MdiHost._movingWindow = this;
             IsResizing = true;
-            MdiHost.width = (int)ApplicationInstance.Targets["Blazor"].Properties["Width"];
-            MdiHost.height = (int)ApplicationInstance.Targets["Blazor"].Properties["Height"];
+            MdiHost.width = ApplicationInstance.Blazor()!.Width;
+            MdiHost.height = ApplicationInstance.Blazor()!.Height;
         }
     }
 
@@ -199,8 +199,6 @@ public partial class MdiWindow: MudBlazor.MudComponentBase
     /// </summary>
     internal void CancelResize() =>
         IsResizing = false;
-
-
 }
 
 public enum WindowState

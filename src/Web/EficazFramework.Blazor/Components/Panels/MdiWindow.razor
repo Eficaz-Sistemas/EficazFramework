@@ -42,8 +42,10 @@
         </div>
         <!--CONTENT-->
          <div class="ef-mdi-window-host d-flex flex-grow-1 "
-              style="cursor:default">
-            <FocusTrapEx Class="@HostClassname">
+              style="cursor:default"
+              @onpointerdown:stopPropagation>
+            <FocusTrapEx Class="@HostClassname" 
+                         DefaultFocus="@MudBlazor.DefaultFocus.FirstChild">
                 @ChildContent
             </FocusTrapEx>
         </div>

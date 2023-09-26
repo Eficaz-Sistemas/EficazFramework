@@ -1,4 +1,6 @@
-﻿namespace EficazFramework.Tests.Blazor.Views.Resources.Mocks;
+﻿using EficazFramework.Application;
+
+namespace EficazFramework.Tests.Blazor.Views.Resources.Mocks;
 
 public static class Applications
 {
@@ -24,7 +26,7 @@ public static class Applications
             Group = "Free Apps",
             Title = $"My App 1",
         };
-        appHello.Targets.Add("Blazor", new()
+        appHello.Targets.Add("Blazor", new BlazorApplicationTarget()
         {
             Icon = MudBlazor.Icons.Custom.Brands.WhatsApp,
             StartupUriOrType = typeof(EficazFramework.Tests.Blazor.Views.Pages.Components.Panels.MdiApps.MdiAppHelloWorld)
@@ -37,7 +39,7 @@ public static class Applications
             Group = "Free Apps",
             Title = $"My App 2",
         };
-        appAnother.Targets.Add("Blazor", new()
+        appAnother.Targets.Add("Blazor", new BlazorApplicationTarget()
         {
             Icon = MudBlazor.Icons.Custom.Brands.Facebook,
             StartupUriOrType = typeof(EficazFramework.Tests.Blazor.Views.Pages.Components.Panels.MdiApps.MdiAnotherApp)
@@ -50,7 +52,7 @@ public static class Applications
             Group = "Paid Apps",
             Title = $"My Scoped App",
         };
-        appPerSection.Targets.Add("Blazor", new()
+        appPerSection.Targets.Add("Blazor", new BlazorApplicationTarget()
         {
             Icon = MudBlazor.Icons.Custom.Brands.GitHub,
             StartupUriOrType = typeof(EficazFramework.Tests.Blazor.Views.Pages.Components.Panels.MdiApps.MdiScopedApp)
@@ -63,12 +65,12 @@ public static class Applications
             Group = "Free Apps",
             Title = $"Full Screen",
         };
-        appHello2.Targets.Add("Blazor", new()
+        appHello2.Targets.Add("Blazor", new BlazorApplicationTarget()
         {
             Icon = MudBlazor.Icons.Custom.Brands.Microsoft,
-            StartupUriOrType = typeof(EficazFramework.Tests.Blazor.Views.Pages.Components.Panels.MdiApps.MdiIconApp)
+            StartupUriOrType = typeof(EficazFramework.Tests.Blazor.Views.Pages.Components.Panels.MdiApps.MdiIconApp),
+            IsMaximized = true,
         });
-        appHello2.Targets["Blazor"].Properties.Add("IsMaximized", true);
 
         appAnother2 = new()
         {
@@ -77,10 +79,12 @@ public static class Applications
             Group = "Free Apps",
             Title = $"My New App 2",
         };
-        appAnother2.Targets.Add("Blazor", new()
+        appAnother2.Targets.Add("Blazor", new BlazorApplicationTarget()
         {
             Icon = MudBlazor.Icons.Custom.Brands.Google,
-            StartupUriOrType = typeof(EficazFramework.Tests.Blazor.Views.Pages.Components.Panels.MdiApps.AnotherCoolApp)
+            StartupUriOrType = typeof(EficazFramework.Tests.Blazor.Views.Pages.Components.Panels.MdiApps.AnotherCoolApp),
+            InitialSize = new(200, 225),
+            Resizable = false
         });
 
         appPerSection2 = new()
@@ -90,7 +94,7 @@ public static class Applications
             Group = "Paid Apps",
             Title = $"New Scoped App",
         };
-        appPerSection2.Targets.Add("Blazor", new()
+        appPerSection2.Targets.Add("Blazor", new BlazorApplicationTarget()
         {
             Icon = MudBlazor.Icons.Custom.Brands.Linux,
             StartupUriOrType = typeof(EficazFramework.Tests.Blazor.Views.Pages.Components.Panels.MdiApps.MdiScopedApp)
@@ -103,7 +107,7 @@ public static class Applications
             Group = "Paid Apps",
             Title = $"Default Icon",
         };
-        appEmptyIcon.Targets.Add("Blazor", new()
+        appEmptyIcon.Targets.Add("Blazor", new BlazorApplicationTarget()
         {
             StartupUriOrType = typeof(EficazFramework.Tests.Blazor.Views.Pages.Components.Panels.MdiApps.MdiScopedApp)
         });
@@ -115,7 +119,7 @@ public static class Applications
             Group = "Free Apps",
             Title = $"DataGrid App",
         };
-        appDataGrid.Targets.Add("Blazor", new()
+        appDataGrid.Targets.Add("Blazor", new BlazorApplicationTarget()
         {
             Icon = MudBlazor.Icons.Material.Filled.DataArray,
             StartupUriOrType = typeof(EficazFramework.Tests.Blazor.Views.Pages.Components.Panels.MdiApps.MdiDataGridApp)
@@ -128,12 +132,12 @@ public static class Applications
             Group = "Free Apps",
             Title = $"DataGrid App (Full Scrren)",
         };
-        appDataGrid2.Targets.Add("Blazor", new()
+        appDataGrid2.Targets.Add("Blazor", new BlazorApplicationTarget()
         {
             Icon = MudBlazor.Icons.Material.Filled.DataArray,
-            StartupUriOrType = typeof(EficazFramework.Tests.Blazor.Views.Pages.Components.Panels.MdiApps.MdiDataGridApp)
+            StartupUriOrType = typeof(EficazFramework.Tests.Blazor.Views.Pages.Components.Panels.MdiApps.MdiDataGridApp),
+            IsMaximized = true
         });
-        appDataGrid2.Targets["Blazor"].Properties.Add("IsMaximized", true);
 
 
         applicationManager.AllApplications.Add(appHello);
