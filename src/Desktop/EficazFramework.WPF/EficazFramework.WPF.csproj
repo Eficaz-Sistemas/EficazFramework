@@ -3,9 +3,9 @@
   <PropertyGroup>
     <TargetFrameworks>net6.0-windows;net7.0-windows</TargetFrameworks>
     <UseWPF>true</UseWPF>
-	<Version>6.1.5</Version>
-	<AssemblyVersion>6.1.5.0</AssemblyVersion>
-	<FileVersion>6.1.5.0</FileVersion>
+	<Version>6.1.6</Version>
+	<AssemblyVersion>6.1.6.0</AssemblyVersion>
+	<FileVersion>6.1.6.0</FileVersion>
     <RootNamespace>EficazFramework</RootNamespace>
     <Authors>Eficaz Sistemas</Authors>
     <Company>Eficaz Sistemas de Gestão e Inteligência Tributária</Company>
