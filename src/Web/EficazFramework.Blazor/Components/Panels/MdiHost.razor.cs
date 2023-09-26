@@ -51,40 +51,68 @@ public partial class MdiHost : MudComponentBase
     [Parameter] public RenderFragment? ToolbarRightContent { get; set; }
 
 
-    //! Selected MdiWindow drag move
+    //! Selected MdiWindow drag move & resize
     internal double offsetX, offsetY;
+    internal double width, height;
     internal MdiWindow? _movingWindow;
     /// <summary>
     /// Ends a Drag operation for Current Application
     /// </summary>
-    private void OnPointerUpOrLeave(PointerEventArgs args)
+    private void OnHeaderPointerUpOrLeave(PointerEventArgs args)
     {
         _movingWindow?.CancelMove();
+        _movingWindow?.CancelResize();
         _movingWindow = null;
     }
 
     /// <summary>
     /// Smoothly Drags this instance
     /// </summary>
-    private void OnPointerMove(PointerEventArgs args)
+    private void OnHeaderPointerMove(PointerEventArgs args)
     {
-        if (_movingWindow?.IsDragging ?? false)
+        if (_movingWindow?.IsMoving ?? false)
         {
+            MoveSeletedWindow(args);
+            return;
+        }
 
+        if ((_movingWindow?.IsResizing ?? false) && !(_movingWindow?.IsMoving ?? false))
+            ResizeSeletedWindow(args);
+    }
+
+    private void MoveSeletedWindow(PointerEventArgs args)
+    {
 #if NET7_0_OR_GREATER
-            offsetX += args.MovementX;
-            offsetY += args.MovementY;
+        offsetX += args.MovementX;
+        offsetY += args.MovementY;
 #else
             double deltaX = args.OffsetX - offsetX;
             double deltaY = args.OffsetY - offsetY;
             offsetX += deltaX;
             offsetY += deltaY;
 #endif
-            if (SelectedApp != null)
-            {
-                SelectedApp.Targets["Blazor"].Properties["OffsetX"] = (int)offsetX;
-                SelectedApp.Targets["Blazor"].Properties["OffsetY"] = (int)offsetY;
-            }
+        if (SelectedApp != null)
+        {
+            SelectedApp.Targets["Blazor"].Properties["OffsetX"] = (int)offsetX;
+            SelectedApp.Targets["Blazor"].Properties["OffsetY"] = (int)offsetY;
+        }
+    }
+
+    private void ResizeSeletedWindow(PointerEventArgs args)
+    {
+#if NET7_0_OR_GREATER
+        width += args.MovementX;
+        height += args.MovementY;
+#else
+            double deltaX = args.OffsetX - width;
+            double deltaY = args.OffsetY - height;
+            width += deltaX;
+            height += deltaY;
+#endif
+        if (SelectedApp != null)
+        {
+            SelectedApp.Targets["Blazor"].Properties["Width"] = (int)width;
+            SelectedApp.Targets["Blazor"].Properties["Height"] = (int)height;
         }
     }
 

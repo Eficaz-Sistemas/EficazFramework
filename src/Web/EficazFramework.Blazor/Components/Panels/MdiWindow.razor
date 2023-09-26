@@ -6,11 +6,13 @@
                     Outlined 
                     Class="@Classname" 
                     Style="@StyleName"
-                    @onclick="OnClick">
+                    @onclick="OnClick"
+                    @onpointerdown="OnBorderPointerDown"
+                    @onpointerup="OnBorderPointerUp">
     <CascadingValue Value="this">
         <!--HEADER-->
         <div class="d-flex flex-row" 
-             @ref="myRef"
+             style="cursor:default"
              @onpointerdown="OnHeaderPointerDown"
              @onpointerup="OnHeaderPointerUp">
             <MudBlazor.MudIcon Icon="@Icon"
@@ -39,7 +41,8 @@
                                      @onpointermove:preventDefault/>
         </div>
         <!--CONTENT-->
-        <div class="ef-mdi-window-host d-flex flex-grow-1 ">
+         <div class="ef-mdi-window-host d-flex flex-grow-1 "
+              style="cursor:default">
             <FocusTrapEx Class="@HostClassname">
                 @ChildContent
             </FocusTrapEx>
