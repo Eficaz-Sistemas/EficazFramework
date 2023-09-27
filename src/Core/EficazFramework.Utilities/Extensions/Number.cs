@@ -240,13 +240,13 @@ public static class NumberExtensions
             Currency.Real_BRL => real_br,
             Currency.Dolar_USD => dolar_us,
             Currency.Euro_EUR => euro_eu,
-            _ => throw new NotImplementedException()
+            _ => real_br
         };
         var generoNaturais = genero switch
         {
             Gender.Masculino => naturais,
             Gender.Feminino => naturaisFem,
-            _ => throw new NotImplementedException()
+            _ => naturais
         };
 
         // variaveis
@@ -397,17 +397,17 @@ public static class NumberExtensions
                     break;
                 }
 
-            case var case3 when case3 <= 12: // bilhões
-                {
-                    numstr = "zzz...";
-                    break;
-                }
+            //case var case3 when case3 <= 12: // bilhões
+            //    {
+            //        numstr = "zzz...";
+            //        break;
+            //    }
 
-            case var case4 when case4 <= 15: // trilhões
-                {
-                    numstr = "chega né?...";
-                    break;
-                }
+            //case var case4 when case4 <= 15: // trilhões
+            //    {
+            //        numstr = "chega né?...";
+            //        break;
+            //    }
         }
         if (fracao == 0)
             numstr = numstr.Replace(generoNaturais[1], "").Replace(generoNaturais[0], "").Trim();
