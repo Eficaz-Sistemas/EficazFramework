@@ -1,4 +1,5 @@
-﻿using System;
+﻿using EficazFramework.Extensions;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using System.Drawing;
@@ -39,5 +40,23 @@ public abstract class ApplicationTarget
     /// Atributos ou propriedades adicionais da plataforma
     /// </summary>
     public Dictionary<string, object> Properties { get; } = new();
+
+
+    public ApplicationTarget Clone()
+    {
+        var target = Activator.CreateInstance(GetType()) as ApplicationTarget;
+
+        target!.Icon = Icon;
+        target!.SplashScreen = SplashScreen;
+        target!.InitialSize = InitialSize;
+        target!.StartupUriOrType = StartupUriOrType;
+
+        foreach (var item in Properties)
+        {
+            target.Properties.Add(item.Key, item.Value);
+        }
+
+        return target;
+    }
 
 }
