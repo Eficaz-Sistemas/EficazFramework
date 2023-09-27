@@ -3465,18 +3465,10 @@ public static class LocalizationExtensions
             }
 
             tmpstring = (resourceManagerInstance.GetString(text) ?? text);
-            if (tmpstring != null)
-            {
-                if (stringformat == null)
-                    return tmpstring;
-                else
-                    return string.Format(stringformat, tmpstring);
-            }
-
             if (string.IsNullOrEmpty(stringformat))
-                return text;
+                return tmpstring;
             else
-                return string.Format(stringformat, text);
+                return string.Format(stringformat, tmpstring);
         }
         catch //(Exception ex)
         {
