@@ -143,6 +143,7 @@ public static class Applications
         applicationManager.AllApplications.Add(appHello);
         applicationManager.AllApplications.Add(appAnother);
         applicationManager.AllApplications.Add(appPerSection);
+        applicationManager.AllApplications.Add(appPerSection2);
         applicationManager.AllApplications.Add(appHello2);
         applicationManager.AllApplications.Add(appAnother2);
         applicationManager.AllApplications.Add(appEmptyIcon);

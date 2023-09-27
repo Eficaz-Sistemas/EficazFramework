@@ -45,4 +45,14 @@ public class Products
     /// </summary>
     public static string EficazRuralAlt => "<path d=\"M24 3.398h-13.72l-10.28 17.161h6.839l6.796-11.269h10.366z\"></path>";
 
+    /// <summary>
+    /// ViewBox Sugerido: 0 0 24 24 (padrão)
+    /// </summary>
+    public static string EficazSocial => "<path d=\"M18.327 0h-12.655c-3.142 0-5.673 2.531-5.673 5.673v12.655c0 3.142 2.531 5.673 5.673 5.673h12.655c3.142 0 5.673-2.553 5.673-5.673v-12.655c0-3.142-2.553-5.673-5.673-5.673zM16.364 16.364l-5.804 3.469v-3.469l2.902-1.746-5.826-3.491v-3.491l5.804-3.469v3.469l-2.902 1.746 5.825 3.491v3.491z\"></path>\r\n</symbol>";
+
+    /// <summary>
+    /// ViewBox Sugerido: 0 0 24 24 (padrão)
+    /// </summary>
+    public static string EficazSocialAlt => "<path d=\"M14.206 5.315v-5.315l-8.891 5.315v5.348l8.925 5.348-4.446 2.674v5.315l8.891-5.315v-5.348l-8.925-5.348z\"></path>\r\n</symbol>";
+
 }

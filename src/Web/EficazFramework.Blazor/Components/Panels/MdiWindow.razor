@@ -25,8 +25,7 @@
                                    @onpointermove:preventDefault>
                     @(ApplicationInstance != null ? ApplicationInstance.Title : Title)
                 </MudBlazor.MudText>
-                <div class="d-flex flex-row flex-grow-1"
-                     @onpointermove:preventDefault>
+                <div class="d-flex flex-row flex-grow-1">
                     @HeaderContent
                 </div>
             </div>
@@ -41,7 +40,7 @@
                                      @onpointermove:preventDefault/>
         </div>
         <!--CONTENT-->
-         <div class="ef-mdi-window-host d-flex flex-grow-1 "
+         <div class="ef-mdi-window-host d-flex flex-grow-1"
               style="cursor:default"
               @onpointerdown:stopPropagation>
             <FocusTrapEx Class="@HostClassname" 

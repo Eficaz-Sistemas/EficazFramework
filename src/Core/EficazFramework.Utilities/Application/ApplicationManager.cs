@@ -215,15 +215,15 @@ public sealed class ApplicationInstance : ApplicationDefinition, INotifyProperty
     {
         foreach (var sourceTarget in sourceTargets)
         {
-            Targets.Add(sourceTarget);
+            Targets.Add(sourceTarget.Key, sourceTarget.Value.Clone()); ;
         }
     }
 
     public void Close()
-    {
-        AppClosed?.Invoke(this, EventArgs.Empty);
-        Dispose();
-    }
+        {
+            AppClosed?.Invoke(this, EventArgs.Empty);
+            Dispose();
+        }
 
     public void Dispose()
     {
