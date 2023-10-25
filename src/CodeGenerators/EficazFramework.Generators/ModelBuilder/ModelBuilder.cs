@@ -78,6 +78,9 @@ public class ModelBuilder : ISourceGenerator
                 if (useSqlServer)
                     GenerateForMsSqlServer(code, model);
 
+                if (useMySql)
+                    GenerateForMySqlOrMariaDb(code, model);
+
                 code.AppendLine("    }");
                 code.AppendLine("}");
 
@@ -230,6 +233,77 @@ public class ModelBuilder : ISourceGenerator
         code.AppendLine("        ");
         code.AppendLine("        ");
     }
+
+
+    void GenerateForMySqlOrMariaDb(StringBuilder code, Models.EfModel.ModelClass model)
+    {
+        code.AppendLine("        #region MySQL/MariaDB Entity Mapping");
+        code.AppendLine("        ");
+        code.AppendLine($"        public static EntityTypeBuilder<{model.Name}> MapForMsSqlServer(EntityTypeBuilder<{model.Name}> builder, string overrideTableSchema)");
+        code.AppendLine("        {");
+
+        code.AppendLine("            // Table Mapping");
+        code.AppendLine($"            builder.ToTable(\"{model.TableName}\"{(!string.IsNullOrEmpty(model.TableSchema) ? $", \"{model.TableSchema}\"" : string.Empty)});");
+
+        var pks = model.Properties.Where(f => f.Key == true).Select(f => string.Format("pk.{0}", f.Name)).ToArray();
+        if (pks.Count() > 0)
+        {
+            code.AppendLine("            // Primary Keys");
+            code.AppendLine($"            builder.HasKey(pk => new {{ {string.Join(",", pks)} }});");
+        }
+
+        code.AppendLine("            // Column Mapping");
+        foreach (var prop in model.Properties.Where(f => f.NotMap == false && (f.IsRequired | f.IsReadOnly | f.Ignore | (!string.IsNullOrEmpty(f.DefaultValue)) | f.Lenght.HasValue | f.Identity | (!string.IsNullOrEmpty(f.ValueGenerated)))).ToList())
+        {
+            if (prop.Ignore || (prop.IsReadOnly && (!prop.ComputedValue)))
+            {
+                code.AppendLine($"            builder.Ignore(e => e.{prop.Name});");
+                continue;
+            }
+            System.Text.StringBuilder builder = new();
+            builder.Append($"            builder.Property(e => e.{prop.Name})");
+
+            if (prop.Key & (!string.IsNullOrEmpty(prop.ValueGenerated)))
+                builder.Append($".ValueGenerated{prop.ValueGenerated}()");
+
+            if (prop.Identity)
+                builder.Append(".UseIdentityColumn()");
+
+            if (prop.IsRequired)
+                builder.Append(".IsRequired()");
+
+            if (prop.Lenght.HasValue)
+                builder.Append($".HasMaxLength({prop.Lenght.Value})");
+
+            if ((!string.IsNullOrEmpty(prop.DefaultValue)) & prop.ComputedValue == false)
+                builder.Append($".HasDefaultValueSql({prop.DefaultValue})");
+
+            if ((!string.IsNullOrEmpty(prop.DefaultValue)) & prop.ComputedValue == true)
+                builder.Append($".HasComputedColumnSql(\"{prop.DefaultValue}\")");
+
+            builder.Append(";");
+            string result = builder.ToString();
+            builder = null;
+            if (!string.IsNullOrEmpty(result))
+                code.AppendLine(result);
+        }
+        code.AppendLine($"            EntityMappingConfigurator.MapBaseClassProperties(builder);");
+
+        if (model.Relationships.Count > 0)
+        {
+            code.AppendLine("            // Relationships");
+            GenerateRelationShips(code, model);
+        }
+
+        code.AppendLine("            // Finish");
+        code.AppendLine("            return builder;");
+        code.AppendLine("        }");
+        code.AppendLine("        ");
+        code.AppendLine("        #endregion");
+        code.AppendLine("        ");
+        code.AppendLine("        ");
+    }
+
 
 
     void GenerateRelationShips(StringBuilder code, Models.EfModel.ModelClass model)
