@@ -65,6 +65,8 @@ public class ModelBuilder : ISourceGenerator
                 code.AppendLine("using EficazFramework.Extensions;");
                 code.AppendLine("using Microsoft.EntityFrameworkCore;");
                 code.AppendLine("using Microsoft.EntityFrameworkCore.Metadata.Builders;");
+                if (useMySql)
+                    code.AppendLine("using MySql.EntityFrameworkCore.Extensions;");
 
                 code.AppendLine($"namespace {model.Namespace}");
                 code.AppendLine("{");
@@ -267,7 +269,7 @@ public class ModelBuilder : ISourceGenerator
                 builder.Append($".ValueGenerated{prop.ValueGenerated}()");
 
             if (prop.Identity)
-                builder.Append($".UseMySQLAutoIncrementColumn(\"\")");
+                builder.Append($".UseMySQLAutoIncrementColumn()");
 
             if (prop.IsRequired)
                 builder.Append(".IsRequired()");
