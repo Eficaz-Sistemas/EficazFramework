@@ -269,7 +269,7 @@ public class ModelBuilder : ISourceGenerator
                 builder.Append($".ValueGenerated{prop.ValueGenerated}()");
 
             if (prop.Identity)
-                builder.Append($".UseMySQLAutoIncrementColumn()");
+                builder.Append($".UseMySQLAutoIncrementColumn(\"\")");
 
             if (prop.IsRequired)
                 builder.Append(".IsRequired()");
