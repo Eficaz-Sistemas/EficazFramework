@@ -239,7 +239,7 @@ public class ModelBuilder : ISourceGenerator
     {
         code.AppendLine("        #region MySQL/MariaDB Entity Mapping");
         code.AppendLine("        ");
-        code.AppendLine($"        public static EntityTypeBuilder<{model.Name}> MapForMsSqlServer(EntityTypeBuilder<{model.Name}> builder, string overrideTableSchema)");
+        code.AppendLine($"        public static EntityTypeBuilder<{model.Name}> MapForMySql(EntityTypeBuilder<{model.Name}> builder, string overrideTableSchema)");
         code.AppendLine("        {");
 
         code.AppendLine("            // Table Mapping");
@@ -267,7 +267,7 @@ public class ModelBuilder : ISourceGenerator
                 builder.Append($".ValueGenerated{prop.ValueGenerated}()");
 
             if (prop.Identity)
-                builder.Append(".UseIdentityColumn()");
+                builder.Append($".UseMySQLAutoIncrementColumn(\"\")");
 
             if (prop.IsRequired)
                 builder.Append(".IsRequired()");
@@ -276,7 +276,7 @@ public class ModelBuilder : ISourceGenerator
                 builder.Append($".HasMaxLength({prop.Lenght.Value})");
 
             if ((!string.IsNullOrEmpty(prop.DefaultValue)) & prop.ComputedValue == false)
-                builder.Append($".HasDefaultValueSql({prop.DefaultValue})");
+                builder.Append($".ForMySQLHasDefaultValueSql({prop.DefaultValue})");
 
             if ((!string.IsNullOrEmpty(prop.DefaultValue)) & prop.ComputedValue == true)
                 builder.Append($".HasComputedColumnSql(\"{prop.DefaultValue}\")");
