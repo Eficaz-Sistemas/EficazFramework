@@ -245,7 +245,7 @@ public class ModelBuilder : ISourceGenerator
         code.AppendLine("        {");
 
         code.AppendLine("            // Table Mapping");
-        code.AppendLine($"            builder.ToTable(\"{model.TableName}\"{(!string.IsNullOrEmpty(model.TableSchema) ? $", \"{model.TableSchema}\"" : string.Empty)});");
+        code.AppendLine($"            builder.ToTable(\"{model.TableName}\");");
 
         var pks = model.Properties.Where(f => f.Key == true).Select(f => string.Format("pk.{0}", f.Name)).ToArray();
         if (pks.Count() > 0)
