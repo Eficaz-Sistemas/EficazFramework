@@ -1,11 +1,11 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFrameworks>net6.0-windows;net7.0-windows</TargetFrameworks>
+    <TargetFrameworks>net7.0-windows;net8.0-windows</TargetFrameworks>
     <UseWPF>true</UseWPF>
-	<Version>6.1.7</Version>
-	<AssemblyVersion>6.1.7.0</AssemblyVersion>
-	<FileVersion>6.1.7.0</FileVersion>
+	<Version>6.2.0</Version>
+	<AssemblyVersion>6.2.0.0</AssemblyVersion>
+	<FileVersion>6.2.0.0</FileVersion>
     <RootNamespace>EficazFramework</RootNamespace>
     <Authors>Eficaz Sistemas</Authors>
     <Company>Eficaz Sistemas de Gestão e Inteligência Tributária</Company>
@@ -57,7 +57,7 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
     <PackageReference Include="MaterialDesignThemes" Version="4.9.0" />
-    <PackageReference Include="Microsoft.Xaml.Behaviors.Wpf" Version="1.1.39" />
+    <PackageReference Include="Microsoft.Xaml.Behaviors.Wpf" Version="1.1.77" />
   </ItemGroup>
 	
   <ItemGroup>
