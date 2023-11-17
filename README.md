@@ -2,7 +2,7 @@
 
 # EficazFramework
 
-![DotNet Versions](https://img.shields.io/static/v1?label=dotnet&message=6.0%20%7C%207.0&color=blueviolet&style=flat-square&logo=dotnet)
+![DotNet Versions](https://img.shields.io/static/v1?label=dotnet&message=7.0%20%7C%208.0&color=blueviolet&style=flat-square&logo=dotnet)
 [![Discord](https://eficazshields.azurewebsites.net/discord/846078359498653706?color=purple&logo=discord&logoColor=white&style=flat-square)](https://discord.gg/ePvZEGBgaf)
 [![Twitter Follow](https://eficazshields.azurewebsites.net/twitter/follow/EficazCS?color=blue&label=twitter&logo=twitter&logoColor=white&style=flat-square)](https://twitter.com/EficazCS)
 
@@ -51,5 +51,6 @@
 ### Pré-Requisitos
 | Versão | Versão do .NET | Suporte |
 | :--- | :--- | :---: |
-| 6.1.x | [.NET 6](https://dotnet.microsoft.com/download/dotnet/6.0); [.NET 7](https://dotnet.microsoft.com/en-us/download/dotnet/7.0) | :white_check_mark:|
+| 6.2.x | [.NET 7](https://dotnet.microsoft.com/download/dotnet/7.0); [.NET 8](https://dotnet.microsoft.com/en-us/download/dotnet/8.0) | :white_check_mark:|
+| 6.1.x | [.NET 6](https://dotnet.microsoft.com/download/dotnet/6.0); [.NET 7](https://dotnet.microsoft.com/en-us/download/dotnet/7.0) | :x: |
 | 6.0.x | [.NET 6](https://dotnet.microsoft.com/download/dotnet/6.0) | :x: |
