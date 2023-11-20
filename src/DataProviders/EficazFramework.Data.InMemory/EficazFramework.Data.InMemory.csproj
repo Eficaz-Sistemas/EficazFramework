@@ -1,10 +1,10 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-	  <TargetFrameworks>net6.0;net7.0</TargetFrameworks>
-	  <Version>6.1.7</Version>
-	  <AssemblyVersion>6.1.7.0</AssemblyVersion>
-	  <FileVersion>6.1.7.0</FileVersion>
+	  <TargetFrameworks>net7.0;net8.0</TargetFrameworks>
+	  <Version>6.2.0</Version>
+	  <AssemblyVersion>6.2.0.0</AssemblyVersion>
+	  <FileVersion>6.2.0.0</FileVersion>
 	  <RootNamespace>EficazFramework</RootNamespace>
 	  <SignAssembly>true</SignAssembly>
 	  <AssemblyOriginatorKeyFile>EfCore.snk</AssemblyOriginatorKeyFile>
@@ -56,7 +56,6 @@
   </ItemGroup>
 	
   <ItemGroup>
-	  <PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" Version="7.0.11" />
     <PackageReference Include="DefaultDocumentation" Version="0.8.2">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
@@ -70,5 +69,23 @@
   <ItemGroup>
     <ProjectReference Include="..\..\Core\EficazFramework.Data\EficazFramework.Data.csproj" />
   </ItemGroup>
+
+  <ItemGroup Condition=" '$(TargetFramework)' == 'net7.0' ">
+	<PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" Version="7.0.14" />
+  </ItemGroup>
+
+  <ItemGroup Condition=" '$(TargetFramework)' == 'net8.0' ">
+	<PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" Version="8.0.0" />
+  </ItemGroup>
+
+
+	<!--<ItemGroup Condition=" '$(TargetFramework)' == 'net7.0' ">
+
+  </ItemGroup>
+  
+  <ItemGroup Condition=" '$(TargetFramework)' == 'net8.0' ">
+
+  </ItemGroup>-->
+
 
 </Project>
