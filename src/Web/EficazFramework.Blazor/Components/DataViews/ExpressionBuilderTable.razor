@@ -1,6 +1,7 @@
 ﻿@namespace EficazFramework.Components.Primitives
 @using EficazFramework.Extensions;
 @inherits MudBlazor.MudComponentBase
+@inject MudBlazor.IBrowserViewportService BrowserViewportService
 
 <MudBlazor.MudTable Dense Breakpoint="@MudBlazor.Breakpoint.Xs" Elevation="0" Items="@vm.Items" Class="flex-grow-1 order-2 mx-4">
     <HeaderContent>
@@ -95,20 +96,22 @@
                         {
                             case EficazFramework.Expressions.ExpressionEditor.Date:
                                 <MudBlazor.MudDatePicker Margin="@MudBlazor.Margin.Dense" 
-                                                            @bind-Date="context.DateTimeValue1" 
-                                                            Class="flex-grow-0 ef-expression-table-cell"
-                                                            DateFormat="d" 
-                                                            AllowKeyboardInput
-                                                            Editable />
+                                                         @bind-Date="context.DateTimeValue1" 
+                                                         Class="flex-grow-0 ef-expression-table-cell"
+                                                         DateFormat="d" 
+                                                         AllowKeyboardInput
+                                                         Editable
+                                                         PickerVariant="@pickerVariant"/>
 
                                 <MudBlazor.MudText Typo="@MudBlazor.Typo.body2" Class="flex-grow-0 mx-4 align-self-center">@($"  {EficazFramework.Resources.Strings.Components.ExpressionBuilder_Between_Separator}  ")</MudBlazor.MudText>
                                                     
                                 <MudBlazor.MudDatePicker Margin="@MudBlazor.Margin.Dense" 
-                                                            @bind-Date="context.DateTimeValue2" 
-                                                            Class="ef-expression-table-cell" 
-                                                            DateFormat="d" 
-                                                            AllowKeyboardInput
-                                                            Editable />
+                                                         @bind-Date="context.DateTimeValue2" 
+                                                         Class="ef-expression-table-cell" 
+                                                         DateFormat="d" 
+                                                         AllowKeyboardInput
+                                                         Editable
+                                                         PickerVariant="@pickerVariant" />
                                 <div class="flex-grow-1"/>
                                 break;
 
@@ -141,7 +144,8 @@
                                                             @bind-Date="context.DateTimeValue1" 
                                                             DateFormat="d"
                                                             AllowKeyboardInput
-                                                            Editable />
+                                                            Editable
+                                                            PickerVariant="@pickerVariant" />
                                 break;
 
                             case EficazFramework.Expressions.ExpressionEditor.Number:

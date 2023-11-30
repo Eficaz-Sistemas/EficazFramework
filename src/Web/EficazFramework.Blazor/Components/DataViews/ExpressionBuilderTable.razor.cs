@@ -1,6 +1,7 @@
 ﻿using EficazFramework.Events;
 using EficazFramework.Extensions;
 using Microsoft.AspNetCore.Components;
+using MudBlazor;
 
 namespace EficazFramework.Components.Primitives;
 
@@ -8,6 +9,8 @@ public partial class ExpressionBuilderTable : MudBlazor.MudComponentBase
 {
     // in Memory of Laudo Ferreira da Silva and Francisco Luis de Sousa
     // † 2020
+
+    private MudBlazor.PickerVariant pickerVariant = PickerVariant.Inline;
 
     private readonly OperatorConverter converter = new();
 
@@ -30,6 +33,15 @@ public partial class ExpressionBuilderTable : MudBlazor.MudComponentBase
 
 
     [Parameter] public Action<Events.FindRequestEventArgs> SearchColumnFindRequest { get; set; }
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        var bp = await BrowserViewportService.GetCurrentBreakpointAsync();
+        if (bp == MudBlazor.Breakpoint.Sm || bp == MudBlazor.Breakpoint.Xs)
+            pickerVariant = PickerVariant.Dialog;
+        else 
+            pickerVariant = PickerVariant.Inline;
+    }
 
     private void OnViewModel_Changed(EficazFramework.Expressions.ExpressionBuilder OldValue, EficazFramework.Expressions.ExpressionBuilder NewValue)
     {
