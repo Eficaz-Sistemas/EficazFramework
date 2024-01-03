@@ -65,8 +65,8 @@ public class ModelBuilder : ISourceGenerator
                 code.AppendLine("using EficazFramework.Extensions;");
                 code.AppendLine("using Microsoft.EntityFrameworkCore;");
                 code.AppendLine("using Microsoft.EntityFrameworkCore.Metadata.Builders;");
-                if (useMySql)
-                    code.AppendLine("using MySql.EntityFrameworkCore.Extensions;");
+                //if (useMySql)
+                //    code.AppendLine("using MySql.EntityFrameworkCore.Extensions;");
 
                 code.AppendLine($"namespace {model.Namespace}");
                 code.AppendLine("{");
@@ -269,7 +269,7 @@ public class ModelBuilder : ISourceGenerator
                 builder.Append($".ValueGenerated{prop.ValueGenerated}()");
 
             if (prop.Identity)
-                builder.Append($".UseMySQLAutoIncrementColumn(\"\")");
+                builder.Append($".UseMySqlIdentityColumn(\"\")");
 
             if (prop.IsRequired)
                 builder.Append(".IsRequired()");
@@ -278,7 +278,7 @@ public class ModelBuilder : ISourceGenerator
                 builder.Append($".HasMaxLength({prop.Lenght.Value})");
 
             if ((!string.IsNullOrEmpty(prop.DefaultValue)) & prop.ComputedValue == false)
-                builder.Append($".ForMySQLHasDefaultValueSql({prop.DefaultValue})");
+                builder.Append($".HasDefaultValueSql({prop.DefaultValue})");
 
             if ((!string.IsNullOrEmpty(prop.DefaultValue)) & prop.ComputedValue == true)
                 builder.Append($".HasComputedColumnSql(\"{prop.DefaultValue}\")");
