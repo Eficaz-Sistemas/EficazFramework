@@ -269,7 +269,7 @@ public class ModelBuilder : ISourceGenerator
                 builder.Append($".ValueGenerated{prop.ValueGenerated}()");
 
             if (prop.Identity)
-                builder.Append($".UseMySqlIdentityColumn(\"\")");
+                builder.Append($".UseMySqlIdentityColumn()");
 
             if (prop.IsRequired)
                 builder.Append(".IsRequired()");
