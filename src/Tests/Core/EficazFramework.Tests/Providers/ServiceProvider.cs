@@ -6,7 +6,7 @@ using System;
 
 namespace EficazFramework.Providers;
 
-public class ProviderTests
+public class ServiceProviderTests
 {
     [SetUp]
     public void Setup()
