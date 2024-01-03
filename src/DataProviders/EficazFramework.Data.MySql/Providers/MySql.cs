@@ -22,7 +22,9 @@ public class MySql : DataProviderBase
         return $"Server={((DbConfiguration)DbConfig).ServerName};Port={((DbConfiguration)DbConfig).Port};Database={database};Uid={username};Pwd={password};Connect Timeout={30};";
     }
 
-    public override void OnConfiguring(DbContextOptionsBuilder optionsBuilder, string database, string username, string password) => optionsBuilder.UseMySQL(GetConnectionString(database, username, password));
+    public override void OnConfiguring(DbContextOptionsBuilder optionsBuilder, string database, string username, string password) =>
+        optionsBuilder.UseMySql(GetConnectionString(database, username, password), new MySqlServerVersion(new Version(8, 0, 34)));
+
 }
 public static class Extension
 {

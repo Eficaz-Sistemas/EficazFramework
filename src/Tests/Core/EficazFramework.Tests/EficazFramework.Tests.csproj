@@ -2,18 +2,14 @@
 
   <PropertyGroup>
     <TargetFrameworks>net7.0;net8.0</TargetFrameworks>
-
     <IsPackable>false</IsPackable>
-
     <Version>6.1.0</Version>
-
     <Description>Biblioteca de testes da Eficaz Framework Core.</Description>
-
     <RootNamespace>EficazFramework</RootNamespace>
-
     <SignAssembly>True</SignAssembly>
-
     <AssemblyOriginatorKeyFile>EfCore.snk</AssemblyOriginatorKeyFile>
+    <UserSecretsId>e10bb1d5-0e97-4115-a772-d071793e3d69</UserSecretsId>
+	<LangVersion>latest</LangVersion>
   </PropertyGroup>
 
   <ItemGroup>
@@ -41,7 +37,7 @@
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.8.0" />
     <PackageReference Include="MSTest.TestAdapter" Version="3.1.1" />
     <PackageReference Include="MSTest.TestFramework" Version="3.1.1" />
-    <PackageReference Include="NUnit" Version="4.0.0" />
+    <PackageReference Include="NUnit" Version="4.0.1" />
     <PackageReference Include="NUnit3TestAdapter" Version="4.5.0" />
     <PackageReference Include="SolutionScripts" Version="1.2.0" />
     <PackageReference Include="System.Data.SqlClient" Version="4.8.5" />
