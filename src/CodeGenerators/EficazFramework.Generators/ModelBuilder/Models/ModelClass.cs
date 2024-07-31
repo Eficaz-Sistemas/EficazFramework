@@ -172,6 +172,66 @@ public sealed class ModelClass : INotifyPropertyChanged, IDisposable
     }
 
 
+    private string _generationModel = "SourceGenerator";
+    public string GenerationMode
+    {
+        get => _generationModel;
+        set
+        {
+            _generationModel = value;
+            RaisePropertyChanged(nameof(GenerationMode));
+        }
+    }
+
+    private bool _skipOnProviderProject = true;
+    public bool SkipOnProviderProject
+    {
+        get { return _skipOnProviderProject; }
+        set
+        {
+            _skipOnProviderProject = value;
+            RaisePropertyChanged(nameof(SkipOnProviderProject));
+        }
+    }
+
+    private bool _implementsINotify;
+    public bool ImplementsINotify
+    {
+        get
+        {
+            return _implementsINotify;
+        }
+        set
+        {
+            _implementsINotify = value;
+            RaisePropertyChanged(nameof(ImplementsINotify));
+        }
+    }
+
+
+    private string _collectionType = "EficazFramework.Collections.AsyncObservableCollection<T>";
+    public string CollectionType
+    {
+        get => _collectionType;
+        set
+        {
+            _collectionType = value;
+            RaisePropertyChanged(nameof(CollectionType));
+        }
+    }
+
+    private string _collectionInitializationType = "EficazFramework.Collections.AsyncObservableCollection<T>";
+    public string CollectionInitializationType
+    {
+        get => _collectionInitializationType;
+        set
+        {
+            _collectionInitializationType = value;
+            RaisePropertyChanged(nameof(CollectionInitializationType));
+        }
+    }
+
+
 
     private readonly ObservableCollection<ModelProperty> _props;
     public ObservableCollection<ModelProperty> Properties => _props;

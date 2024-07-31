@@ -1,0 +1,96 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ModelClass xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <Namespace>EficazFramework.Tests.Generators.Metadata</Namespace>
+    <BaseClass>EntityBase</BaseClass>
+    <Name>ModelEntity2</Name>
+    <TableName>ModelEntity2</TableName>
+    <TableSchema>dbo</TableSchema>
+    <Localizable>false</Localizable>
+    <LocalizationResourceClass>EficazFramework.Tests.Generators.Metadata.Resources.Strings</LocalizationResourceClass>
+    <Providers_MsSQL>true</Providers_MsSQL>
+    <Providers_SqlLite>true</Providers_SqlLite>
+    <Providers_MySQL>true</Providers_MySQL>
+    <Providers_OracleSQL>true</Providers_OracleSQL>
+    <GenerationMode>SourceGenerator</GenerationMode>
+    <SkipOnProviderProject>false</SkipOnProviderProject>
+    <ImplementsINotify>true</ImplementsINotify>
+    <CollectionType>System.Collections.Generic.ICollection&lt;T&gt;</CollectionType>
+    <CollectionInitializationType>System.Collections.Generic.HashSet&lt;T&gt;</CollectionInitializationType>
+    <Properties>
+        <ModelProperty>
+            <Key>true</Key>
+            <ValueGenerated>Never</ValueGenerated>
+            <Name>ID</Name>
+            <DataType>System.Guid</DataType>
+            <Lenght xsi:nil="true" />
+            <IsRequired>false</IsRequired>
+            <Identity>false</Identity>
+            <ComputedValue>false</ComputedValue>
+            <IsList>false</IsList>
+            <Ignore>false</Ignore>
+            <NotMap>false</NotMap>
+            <IgnoreOnSerialization>false</IgnoreOnSerialization>
+            <Virtual>false</Virtual>
+            <Override>false</Override>
+            <IsReadOnly>false</IsReadOnly>
+            <CustomValidation>false</CustomValidation>
+            <DisplayName>Código</DisplayName>
+            <Category>Identificação</Category>
+        </ModelProperty>
+        <ModelProperty>
+            <Key>false</Key>
+            <Name>Nome</Name>
+            <DataType>System.String</DataType>
+            <Lenght xsi:nil="true" />
+            <IsRequired>false</IsRequired>
+            <Identity>false</Identity>
+            <ComputedValue>false</ComputedValue>
+            <IsList>false</IsList>
+            <Ignore>false</Ignore>
+            <NotMap>false</NotMap>
+            <IgnoreOnSerialization>false</IgnoreOnSerialization>
+            <Virtual>false</Virtual>
+            <Override>false</Override>
+            <IsReadOnly>false</IsReadOnly>
+            <CustomValidation>false</CustomValidation>
+            <DisplayName>Descrição</DisplayName>
+            <Category>Identificação</Category>
+        </ModelProperty>
+        <ModelProperty>
+            <Key>false</Key>
+            <Name>Count</Name>
+            <DataType>int</DataType>
+            <Lenght xsi:nil="true" />
+            <IsRequired>false</IsRequired>
+            <Identity>false</Identity>
+            <ComputedValue>false</ComputedValue>
+            <IsList>false</IsList>
+            <Ignore>false</Ignore>
+            <NotMap>false</NotMap>
+            <IgnoreOnSerialization>false</IgnoreOnSerialization>
+            <Virtual>false</Virtual>
+            <Override>false</Override>
+            <IsReadOnly>true</IsReadOnly>
+            <ReadOnlyExpression>1+1</ReadOnlyExpression>
+            <CustomValidation>false</CustomValidation>
+        </ModelProperty>
+        <ModelProperty>
+            <Key>false</Key>
+            <Name>List</Name>
+            <DataType>System.String</DataType>
+            <Lenght xsi:nil="true" />
+            <IsRequired>false</IsRequired>
+            <Identity>false</Identity>
+            <ComputedValue>false</ComputedValue>
+            <IsList>true</IsList>
+            <Ignore>false</Ignore>
+            <NotMap>false</NotMap>
+            <IgnoreOnSerialization>false</IgnoreOnSerialization>
+            <Virtual>false</Virtual>
+            <Override>false</Override>
+            <IsReadOnly>false</IsReadOnly>
+            <CustomValidation>false</CustomValidation>
+        </ModelProperty>
+    </Properties>
+    <Relationships />
+</ModelClass>
