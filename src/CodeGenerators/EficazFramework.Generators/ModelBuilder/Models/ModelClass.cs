@@ -194,6 +194,20 @@ public sealed class ModelClass : INotifyPropertyChanged, IDisposable
         }
     }
 
+    private bool _implementsINotify;
+    public bool ImplementsINotify
+    {
+        get
+        {
+            return _implementsINotify;
+        }
+        set
+        {
+            _implementsINotify = value;
+            RaisePropertyChanged(nameof(ImplementsINotify));
+        }
+    }
+
 
     private string _collectionType = "EficazFramework.Collections.AsyncObservableCollection<T>";
     public string CollectionType

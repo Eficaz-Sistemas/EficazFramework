@@ -2,7 +2,7 @@
   "profiles": {
     "Debug Generators": {
       "commandName": "DebugRoslynComponent",
-      "targetProject": "..\\..\\Desktop\\EficazFramework.WPF\\EficazFramework.WPF.csproj"
+      "targetProject": "..\\..\\Tests\\Generators\\EficazFramework.Tests.Generators.Metadata\\EficazFramework.Tests.Generators.Metadata.csproj"
     }
   }
 }

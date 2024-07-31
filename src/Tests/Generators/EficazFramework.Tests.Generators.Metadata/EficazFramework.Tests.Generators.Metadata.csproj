@@ -12,18 +12,16 @@
 	</ItemGroup>
 	
 	<ItemGroup>
-	  <None Remove="AnotherModelFolder\Product.efmodel" />
-	  <None Remove="Person.efmodel" />
+	  <None Remove="ModelEntity1.efmodel" />
+	  <None Remove="ModelEntity2.efmodel" />
 	</ItemGroup>
 	
 	<ItemGroup>
-	  <AdditionalFiles Include="AnotherModelFolder\Product.efmodel">
+	  <AdditionalFiles Include="ModelEntity1.efmodel">
 	    <Generator>EfModelClassGenerator</Generator>
-	    <LastGenOutput>Product.Designer.efmodel.cs</LastGenOutput>
 	  </AdditionalFiles>
-	  <AdditionalFiles Include="Person.efmodel">
+	  <AdditionalFiles Include="ModelEntity2.efmodel">
 	    <Generator>EfModelClassGenerator</Generator>
-	    <LastGenOutput>Person.Designer.efmodel.cs</LastGenOutput>
 	  </AdditionalFiles>
 	</ItemGroup>
 	
@@ -35,21 +33,11 @@
 	</ItemGroup>
 	
 	<ItemGroup>
-	  <Compile Update="AnotherModelFolder\Product.Designer.efmodel.cs">
-	    <DependentUpon>Product.efmodel</DependentUpon>
-	    <DesignTime>True</DesignTime>
-	    <AutoGen>True</AutoGen>
+	  <Compile Update="ModelEntity1.efmodel.cs">
+	    <DependentUpon>ModelEntity1.efmodel</DependentUpon>
 	  </Compile>
-	  <Compile Update="AnotherModelFolder\Product.efmodel.cs">
-		  <DependentUpon>Product.efmodel</DependentUpon>
-	  </Compile>
-	  <Compile Update="Person.Designer.efmodel.cs">
-	    <DependentUpon>Person.efmodel</DependentUpon>
-	    <DesignTime>True</DesignTime>
-	    <AutoGen>True</AutoGen>
-	  </Compile>
-	  <Compile Update="Person.efmodel.cs">
-		  <DependentUpon>Person.efmodel</DependentUpon>
+	  <Compile Update="ModelEntity2.efmodel.cs">
+	    <DependentUpon>ModelEntity2.efmodel</DependentUpon>
 	  </Compile>
 	</ItemGroup>
 </Project>
