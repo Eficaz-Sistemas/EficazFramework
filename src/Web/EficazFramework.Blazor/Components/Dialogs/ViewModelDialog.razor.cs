@@ -15,17 +15,17 @@ public partial class ViewModelDialog
         if (messageArgs.Type != Events.MessageType.Default)
             return Events.MessageResult.Cancel;
 
-        mudDialogParams ??= new();
+        mudDialogParams ??= [];
 
-        mudDialogOptions ??= new() { DisableBackdropClick = true};
+        mudDialogOptions ??= new() { BackdropClick = false, CloseButton = false, CloseOnEscapeKey = false};
 
         mudDialogParams?.Add("Args", messageArgs);
 
         MudBlazor.IDialogReference _dialog = dialogService.Show<ViewModelDialog>(messageArgs.Title,
-                                                                                 mudDialogParams,
+                                                                                 mudDialogParams!,
                                                                                  mudDialogOptions);
 
-        Events.MessageResult result = (Events.MessageResult)(await _dialog.Result).Data;
+        Events.MessageResult result = (Events.MessageResult)(await _dialog!.Result)!.Data!;
         messageArgs.ModalAssist.Release(result);
         return result;
     }

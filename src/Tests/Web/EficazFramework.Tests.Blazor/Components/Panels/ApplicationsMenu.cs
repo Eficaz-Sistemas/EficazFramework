@@ -37,14 +37,14 @@ public class ApplicationsMenu : BunitTest
 
         var items = comp.FindComponents<MudBlazor.MudItem>();
         items.Should().HaveCount(obj.Instance.ItemsSource.Count);
-        var listItems = comp.FindComponents<MudBlazor.MudListItem>();
+        var listItems = comp.FindComponents<MudBlazor.MudListItem<IGrouping<string, EficazFramework.Application.ApplicationDefinition>>>();
         listItems.Should().BeEmpty();
 
         await comp.InvokeAsync(() => obj.Instance.ToggleHostView());
 
         items = comp.FindComponents<MudBlazor.MudItem>();
         items.Should().BeEmpty();
-        listItems = comp.FindComponents<MudBlazor.MudListItem>();
+        listItems = comp.FindComponents<MudBlazor.MudListItem<IGrouping<string, EficazFramework.Application.ApplicationDefinition>>>();
         listItems.Should().HaveCount(obj.Instance.ItemsSource.Count + groupCount);
     }
 
@@ -57,7 +57,7 @@ public class ApplicationsMenu : BunitTest
 
         var items = comp.FindComponents<MudBlazor.MudItem>();
         items.Should().HaveCount(obj.Instance.ItemsSource.Count);
-        var listItems = comp.FindComponents<MudBlazor.MudListItem>();
+        var listItems = comp.FindComponents<MudBlazor.MudListItem<IGrouping<string, EficazFramework.Application.ApplicationDefinition>>>();
         listItems.Should().BeEmpty();
 
         var button = comp.Find("button.ef-buttons-togglehost");
@@ -66,7 +66,7 @@ public class ApplicationsMenu : BunitTest
 
         items = comp.FindComponents<MudBlazor.MudItem>();
         items.Should().BeEmpty();
-        listItems = comp.FindComponents<MudBlazor.MudListItem>();
+        listItems = comp.FindComponents<MudBlazor.MudListItem<IGrouping<string, EficazFramework.Application.ApplicationDefinition>>>();
         listItems.Should().HaveCount(obj.Instance.ItemsSource.Count + groupCount);
     }
 

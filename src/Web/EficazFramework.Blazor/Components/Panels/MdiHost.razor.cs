@@ -2,36 +2,37 @@
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Web;
 using MudBlazor;
-using MudBlazor.Services;
 using MudBlazor.Utilities;
 
 namespace EficazFramework.Components;
-public partial class MdiHost : MudComponentBase
+public partial class MdiHost : MudComponentBase, IBrowserViewportObserver
 {
 
     protected override async Task OnAfterRenderAsync(bool firstRender)
     {
         if (firstRender)
-        {
-            var subscriptionResult = await BreakpointListener.Subscribe((breakpoint) =>
-            {
-                _breakpoint = breakpoint;
-                InvokeAsync(StateHasChanged);
-            }, new ResizeOptions
-            {
-                ReportRate = 250,
-                NotifyOnBreakpointOnly = true,
-            });
-            _breakpoint = subscriptionResult.Breakpoint;
-            _subscriptionId = subscriptionResult.SubscriptionId;
-            StateHasChanged();
-        }
+            await BrowserViewportService.SubscribeAsync(this, fireImmediately: true);
+    }
+
+    public async ValueTask DisposeAsync()
+    {
+        if (IsJSRuntimeAvailable)
+            await BrowserViewportService.UnsubscribeAsync(this);
     }
 
 
     private Breakpoint _breakpoint;
-    private Guid _subscriptionId;
-    [Inject] public MudBlazor.Services.IBreakpointService BreakpointListener { get; set; }
+
+    [Inject] protected IBrowserViewportService BrowserViewportService { get; set; } = null!;
+
+    Guid IBrowserViewportObserver.Id { get; } = Guid.NewGuid();
+
+    async Task IBrowserViewportObserver.NotifyBrowserViewportChangeAsync(BrowserViewportEventArgs browserViewportEventArgs)
+    {
+        Breakpoint = browserViewportEventArgs.Breakpoint;
+        await InvokeAsync(StateHasChanged);
+    }
+
 
     /// <summary>
     /// Breakpoint that defines the view on Frames (windows) or Full Screen

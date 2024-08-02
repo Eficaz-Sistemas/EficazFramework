@@ -11,7 +11,7 @@
      @onpointerleave="OnHeaderPointerUpOrLeave">
     <CascadingValue Value="this">
         @*MDI AREA*@
-        @if (BreakpointListener.IsMediaSize(Breakpoint, _breakpoint))
+        @if (BrowserViewportService.IsBreakpointWithinReferenceSizeAsync(Breakpoint, _breakpoint).GetAwaiter().GetResult())
         {
             <div class="d-flex flex-grow-1">
                 @if(SelectedApp != null)

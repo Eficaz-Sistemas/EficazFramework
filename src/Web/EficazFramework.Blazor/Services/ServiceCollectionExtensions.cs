@@ -7,8 +7,7 @@ public static class ServiceCollectionExtensions
 {
     public static IServiceCollection AddEficazFramework(this IServiceCollection serviceCollection, Action<Configuration.ServiceConfiguration>? options = null)
     {
-        if (serviceCollection == null)
-            throw new ArgumentNullException(nameof(serviceCollection));
+        ArgumentNullException.ThrowIfNull(serviceCollection);
 
         Configuration.ServiceConfiguration config = new();
 

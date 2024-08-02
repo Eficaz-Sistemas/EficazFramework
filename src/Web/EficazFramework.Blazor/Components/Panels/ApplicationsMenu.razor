@@ -61,7 +61,8 @@
         else
         {
             <MudBlazor.MudList Clickable="true"
-                           Class="py-0">
+                               T="IGrouping<string, ApplicationDefinition>"
+                               Class="py-0">
                 @foreach (var group in FilteredApplications())
                 {
                     <MudBlazor.MudListItem Text="@group.Key"
