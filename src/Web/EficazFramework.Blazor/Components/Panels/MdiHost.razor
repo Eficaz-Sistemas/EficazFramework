@@ -43,7 +43,7 @@
                 }
             </div>
         }
-        <div class="d-flex" style="background-color: var(--mud-palette-background-grey);z-index: var(--mud-zindex-appbar) - 101; height: 48px;">
+        <div class="d-flex" style="background-color: var(--mud-palette-background-gray);z-index: var(--mud-zindex-appbar) - 101; height: 48px;">
             @*TASKBAR*@         
             @ToolbarLeftContent
             @foreach (var item in RunningApplications())
@@ -51,7 +51,7 @@
                 <MudBlazor.MudTooltip Text="@item.Title">
                     <MudBlazor.MudIconButton Variant="@MudBlazor.Variant.Filled"
                                                 Color="@MudBlazor.Color.Transparent"
-                                                Class="ef-mdi-buttons-toolbar"
+                                                Class="ef-mdi-buttons-toolbar mud-elevation-0"
                                                 Icon="@item.Blazor()!.Icon?.ToString()"
                                                 Size="@MudBlazor.Size.Medium"
                                                 DisableElevation

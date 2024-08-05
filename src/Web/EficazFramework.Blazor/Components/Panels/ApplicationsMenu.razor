@@ -4,7 +4,7 @@
 
 <div class="@ClassName()"
      style="@Style">
-    <div class="d-flex mx-2 mt-n4 align-center">
+    <div class="d-flex mx-2 align-center">
         <MudBlazor.MudTextField @bind-Value="SearchFilter"
                                 Class="mud-input-control-ef flex-grow1"
                                 Placeholder="@Resources.Strings.Components.MDIApplication_FindPlaceholder"
@@ -17,7 +17,8 @@
                                      Color="@MudBlazor.Color.Transparent"
                                      Icon="@(_isCompact ? MudBlazor.Icons.Material.Filled.GridView : MudBlazor.Icons.Material.Filled.List)"
                                      Size="@MudBlazor.Size.Medium"
-                                     Class="mt-6 ml-4 ef-buttons-togglehost"
+                                     Class="ml-4 ef-buttons-togglehost"
+                                     Style="margin-top:6px;"
                                      DisableElevation
                                      OnClick="ToggleHostView"
                                      Title="Alternar visualização" />

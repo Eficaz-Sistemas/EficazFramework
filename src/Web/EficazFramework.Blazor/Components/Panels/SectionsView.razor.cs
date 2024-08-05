@@ -153,6 +153,7 @@ public partial class SectionsView : MudBlazor.MudComponentBase
     private string ToggleButtonClass() =>
             new CssBuilder()
                 .AddClass("ef-mdi-buttons-toolbar")
+                .AddClass("mud-elevation-0")
                 .AddClass(Class)
                 .Build();
 
