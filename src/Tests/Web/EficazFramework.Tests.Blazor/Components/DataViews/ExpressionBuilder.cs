@@ -18,7 +18,8 @@ public class ExpressionBuilder : BunitTest
     public async Task CreateExpressionBuilderTest()
     {
         // with null ViewModel (and no MudTable)
-        var comp = Context.RenderComponent<Components.ExpressionBuilder>();
+        var view = Context.RenderComponent<EficazFramework.Tests.Blazor.Views.TestComponents.DataViews.ExpressionBuilderTest>();
+        var comp = view.FindComponent<Components.ExpressionBuilder>();
         comp.Instance.ViewModel.Should().BeNull();
 
         // applying the ViewModel
