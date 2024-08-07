@@ -2,17 +2,22 @@
 
 <PageTitle>Home - EficazFramework</PageTitle>
 
-<div style="position: absolute;top: 15%;bottom: auto;width: -webkit-fill-available;height: 28%;">
-    <MudBlazor.MudIcon Icon="@EficazFramework.Icons.Brands.EfTitle" ViewBox="0 0 154 32" Style="width: -webkit-fill-available;height: 28%; margin-bottom: 96px" />
-    <MudBlazor.MudText Typo="MudBlazor.Typo.h3" Align="MudBlazor.Align.Center">EficazFramework</MudBlazor.MudText>
-    <br/>
-    <MudBlazor.MudText Typo="MudBlazor.Typo.h4" Align="MudBlazor.Align.Center">Sample Application</MudBlazor.MudText>
-</div>
+<EficazFramework.Components.Animation KeyFrameName="fadeIn"
+                                      Delay="0"
+                                      Duration="1000"
+                                      Direction="@EficazFramework.Enums.AnimationDirection.normal">
+    <div style="position: absolute;top: 15%;bottom: auto;width: -webkit-fill-available;height: 28%;">
+        <MudBlazor.MudIcon Icon="@EficazFramework.Icons.Brands.EfTitle" ViewBox="0 0 154 32" Style="width: -webkit-fill-available;height: 28%; margin-bottom: 96px" />
+        <MudBlazor.MudText Typo="MudBlazor.Typo.h3" Align="MudBlazor.Align.Center">EficazFramework</MudBlazor.MudText>
+        <br />
+        <MudBlazor.MudText Typo="MudBlazor.Typo.h4" Align="MudBlazor.Align.Center">Sample Application</MudBlazor.MudText>
+    </div>
+</EficazFramework.Components.Animation>
 
 
-<EficazFramework.Components.MdiHost Class="h-100">
+<EficazFramework.Components.MdiHost Class="h-100" @ref="_mdiHost">
     <ToolbarLeftContent>
-        <EficazFramework.Components.StartMenu>
+        <EficazFramework.Components.StartMenu @ref="_startMenu">
             <Content>
                 <MudBlazor.MudTabs Position="@MudBlazor.Position.Left"
                                    Class="flex-grow-1 flex-shrink-0"
@@ -20,12 +25,11 @@
                                    MinimumTabWidth="64px"
                                    Color="MudBlazor.Color.Primary"
                                    Style="height: calc(100vh - 300px)">
-                <MudBlazor.MudTabPanel Icon="@MudBlazor.Icons.Material.Filled.GridView" ToolTip="Aplicativos">
+                    <MudBlazor.MudTabPanel Icon="@MudBlazor.Icons.Material.Filled.GridView" ToolTip="Applications">
                         <EficazFramework.Components.ApplicationsMenu Class="ma-4"/>
                     </MudBlazor.MudTabPanel>
-                <MudBlazor.MudTabPanel Icon="@MudBlazor.Icons.Material.Filled.Filter">
-                    </MudBlazor.MudTabPanel>
-                <MudBlazor.MudTabPanel Icon="@MudBlazor.Icons.Material.Filled.Image">
+                    <MudBlazor.MudTabPanel Icon="@MudBlazor.Icons.Material.Filled.Image" ToolTip="UI / UX">
+                        <EficazFramework.Components.ApplicationsMenu Class="ma-4" />
                     </MudBlazor.MudTabPanel>
                 </MudBlazor.MudTabs>
             </Content>
