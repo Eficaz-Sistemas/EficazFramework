@@ -1,0 +1,5 @@
+# For more info on HTTP files go to https://aka.ms/vs/httpfile
+@address = https://localhost:5997
+
+GET {{address}}/vendors/
+Accept: application/json

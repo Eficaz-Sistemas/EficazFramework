@@ -1,6 +1,7 @@
 using Blazor.Client.Pages;
 using Blazor.Components;
 using EficazFramework.Services;
+using Blazor.APIs;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -29,6 +30,8 @@ else
 }
 
 app.UseHttpsRedirection();
+
+app.MapApis();
 
 app.UseStaticFiles();
 app.UseAntiforgery();

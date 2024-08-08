@@ -1,6 +1,11 @@
 ﻿@page "/"
+@inject EficazFramework.Services.IThemeProvider ThemeProvider
 
 <PageTitle>Home - EficazFramework</PageTitle>
+
+<div class="h-100" style="position: absolute;top: auto;bottom: auto;width: 100%;display: grid;justify-items: end;opacity: 0.1;">
+    <div style="height: 100vh; width: 15%; min-width: 125px; background-image: url('@(EficazFramework.Icons.Utilities.ToUri(EficazFramework.Icons.Brands.EficazGraphism, ThemeProvider.Theme.PaletteLight.Secondary.Value, "0 0 70 24"))');"></div>
+</div>
 
 <EficazFramework.Components.Animation KeyFrameName="fadeIn"
                                       Delay="0"
@@ -15,7 +20,9 @@
 </EficazFramework.Components.Animation>
 
 
-<EficazFramework.Components.MdiHost Class="h-100" @ref="_mdiHost">
+<EficazFramework.Components.MdiHost @ref="_mdiHost"
+                                    Class="h-100"
+                                    ApplicationsSource="ApplicationManager?.RunningApplications">
     <ToolbarLeftContent>
         <EficazFramework.Components.StartMenu @ref="_startMenu">
             <Content>
@@ -25,12 +32,22 @@
                                    MinimumTabWidth="64px"
                                    Color="MudBlazor.Color.Primary"
                                    Style="height: calc(100vh - 300px)">
+
                     <MudBlazor.MudTabPanel Icon="@MudBlazor.Icons.Material.Filled.GridView" ToolTip="Applications">
-                        <EficazFramework.Components.ApplicationsMenu Class="ma-4"/>
+
+                        <EficazFramework.Components.ApplicationsMenu ItemsSource="@_mainApps"
+                                                                     SelectionCallBack="AppClick"
+                                                                     Class="ma-4"/>
                     </MudBlazor.MudTabPanel>
+
                     <MudBlazor.MudTabPanel Icon="@MudBlazor.Icons.Material.Filled.Image" ToolTip="UI / UX">
-                        <EficazFramework.Components.ApplicationsMenu Class="ma-4" />
+
+                        <EficazFramework.Components.ApplicationsMenu ItemsSource="@_uiApps"
+                                                                     SelectionCallBack="AppClick"
+                                                                     Class="ma-4" />
+
                     </MudBlazor.MudTabPanel>
+
                 </MudBlazor.MudTabs>
             </Content>
         </EficazFramework.Components.StartMenu>
