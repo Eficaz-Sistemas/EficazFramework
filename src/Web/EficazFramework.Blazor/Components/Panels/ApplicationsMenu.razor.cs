@@ -27,7 +27,7 @@ public partial class ApplicationsMenu : MudBlazor.MudComponentBase
     /// <summary>
     /// Aplication source for menu.
     /// </summary>
-    [Parameter] public ObservableCollection<ApplicationDefinition> ItemsSource { get; set; } = new();
+    [Parameter] public IEnumerable<ApplicationDefinition> ItemsSource { get; set; } = [];
 
 
     /// <summary>

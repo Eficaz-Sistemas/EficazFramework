@@ -25,7 +25,7 @@ public class ApplicationsMenu : BunitTest
         obj.Instance.SearchFilter.Should().BeNullOrEmpty();
 
         var items = comp.FindComponents<MudBlazor.MudItem>();
-        items.Should().HaveCount(obj.Instance.ItemsSource.Count);
+        items.Should().HaveCount(obj.Instance.ItemsSource.Count());
     }
 
     [Test]
@@ -36,7 +36,7 @@ public class ApplicationsMenu : BunitTest
         var groupCount = obj.Instance.ItemsSource.GroupBy(g => g.Group).Count();
 
         var items = comp.FindComponents<MudBlazor.MudItem>();
-        items.Should().HaveCount(obj.Instance.ItemsSource.Count);
+        items.Should().HaveCount(obj.Instance.ItemsSource.Count());
         var listItems = comp.FindComponents<MudBlazor.MudListItem<IGrouping<string, EficazFramework.Application.ApplicationDefinition>>>();
         listItems.Should().BeEmpty();
 
@@ -45,7 +45,7 @@ public class ApplicationsMenu : BunitTest
         items = comp.FindComponents<MudBlazor.MudItem>();
         items.Should().BeEmpty();
         listItems = comp.FindComponents<MudBlazor.MudListItem<IGrouping<string, EficazFramework.Application.ApplicationDefinition>>>();
-        listItems.Should().HaveCount(obj.Instance.ItemsSource.Count + groupCount);
+        listItems.Should().HaveCount(obj.Instance.ItemsSource.Count() + groupCount);
     }
 
     [Test]
@@ -56,7 +56,7 @@ public class ApplicationsMenu : BunitTest
         var groupCount = obj.Instance.ItemsSource.GroupBy(g => g.Group).Count();
 
         var items = comp.FindComponents<MudBlazor.MudItem>();
-        items.Should().HaveCount(obj.Instance.ItemsSource.Count);
+        items.Should().HaveCount(obj.Instance.ItemsSource.Count());
         var listItems = comp.FindComponents<MudBlazor.MudListItem<IGrouping<string, EficazFramework.Application.ApplicationDefinition>>>();
         listItems.Should().BeEmpty();
 
@@ -67,7 +67,7 @@ public class ApplicationsMenu : BunitTest
         items = comp.FindComponents<MudBlazor.MudItem>();
         items.Should().BeEmpty();
         listItems = comp.FindComponents<MudBlazor.MudListItem<IGrouping<string, EficazFramework.Application.ApplicationDefinition>>>();
-        listItems.Should().HaveCount(obj.Instance.ItemsSource.Count + groupCount);
+        listItems.Should().HaveCount(obj.Instance.ItemsSource.Count() + groupCount);
     }
 
     [Test]
@@ -77,14 +77,14 @@ public class ApplicationsMenu : BunitTest
         var obj = comp.FindComponent<EficazFramework.Components.ApplicationsMenu>();
 
         var items = comp.FindComponents<MudBlazor.MudItem>();
-        items.Should().HaveCount(obj.Instance.ItemsSource.Count);
+        items.Should().HaveCount(obj.Instance.ItemsSource.Count());
 
         comp.Instance.BoundSearchFilter = "1";
         comp.Render();
         obj.Instance.SearchFilter.Should().Be("1");
 
         items = comp.FindComponents<MudBlazor.MudItem>();
-        items.Should().HaveCountLessThan(obj.Instance.ItemsSource.Count);
+        items.Should().HaveCountLessThan(obj.Instance.ItemsSource.Count());
 
 
     }
@@ -96,13 +96,13 @@ public class ApplicationsMenu : BunitTest
         var obj = comp.FindComponent<EficazFramework.Components.ApplicationsMenu>();
 
         var items = comp.FindComponents<MudBlazor.MudItem>();
-        items.Should().HaveCount(obj.Instance.ItemsSource.Count);
+        items.Should().HaveCount(obj.Instance.ItemsSource.Count());
 
         var tbox = comp.FindComponent<MudBlazor.MudTextField<string>>();
         await comp.InvokeAsync(() => tbox.Instance.SetText("1"));
 
         items = comp.FindComponents<MudBlazor.MudItem>();
-        items.Should().HaveCountLessThan(obj.Instance.ItemsSource.Count);
+        items.Should().HaveCountLessThan(obj.Instance.ItemsSource.Count());
     }
 
 }

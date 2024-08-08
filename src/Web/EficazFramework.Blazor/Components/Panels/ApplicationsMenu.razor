@@ -33,8 +33,8 @@
                     @group.Key
                 </MudBlazor.MudText>
                 <MudBlazor.MudGrid Class="mx-1 mb-4 pr-6"
-                           Spacing="1"
-                           Justify="MudBlazor.Justify.FlexStart">
+                                   Spacing="1"
+                                   Justify="MudBlazor.Justify.FlexStart">
                     @foreach (var app in group)
                     {
                         <MudBlazor.MudItem>
@@ -59,20 +59,18 @@
         }
         else
         {
-            <MudBlazor.MudList Clickable="true"
-                               T="IGrouping<string, ApplicationDefinition>"
+            <MudBlazor.MudList T="IGrouping<string, ApplicationDefinition>"
                                Class="py-0">
                 @foreach (var group in FilteredApplications())
                 {
                     <MudBlazor.MudListItem Text="@group.Key"
-                                   InitiallyExpanded="true">
+                                           Expanded>
                         <NestedList>
                             @foreach (var app in group)
                             {
                                 <MudBlazor.MudListItem Icon="@(app.Blazor()?.Icon?.ToString())"
-                                           OnClick="() => SelectionCallBack?.Invoke(app)">
-                                    @app.LongTitle
-                                </MudBlazor.MudListItem>
+                                                       Text="@app.TooltipTilte"
+                                                       OnClick="() => SelectionCallBack?.Invoke(app)"/>
                             }
                         </NestedList>
                     </MudBlazor.MudListItem>
