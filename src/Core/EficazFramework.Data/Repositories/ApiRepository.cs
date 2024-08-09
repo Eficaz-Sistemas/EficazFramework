@@ -396,11 +396,11 @@ public sealed class ApiRepository<TEntity> : Repositories.RepositoryBase<TEntity
             {
                 TEntity response;
                 if (_isAdding)
-                    response = await RequestMethod<TEntity, TEntity>(Enums.CRUD.RequestAction.Put, UrlPut, CurrentEntry, cancellationToken);
-                else if (_isDeleting)
-                    response = await RequestMethod<TEntity, TEntity>(Enums.CRUD.RequestAction.Post, UrlDelete, CurrentEntry, cancellationToken);
-                else
                     response = await RequestMethod<TEntity, TEntity>(Enums.CRUD.RequestAction.Post, UrlPost, CurrentEntry, cancellationToken);
+                else if (_isDeleting)
+                    response = await RequestMethod<TEntity, TEntity>(Enums.CRUD.RequestAction.Delete, UrlDelete, CurrentEntry, cancellationToken);
+                else
+                    response = await RequestMethod<TEntity, TEntity>(Enums.CRUD.RequestAction.Put, UrlPut, CurrentEntry, cancellationToken);
             }
             else
             {

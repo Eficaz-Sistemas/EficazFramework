@@ -123,7 +123,7 @@ public class ApiRepositoryTests
         var repository = new ApiRepository<Resources.Mocks.Classes.MockClass>(Client)
         {
             UrlGet = "/mock/getForCrudTest",
-            UrlPost = "mock/update"
+            UrlPut = "/mock/update"
         };
         repository.Get();
         repository.DataContext.Should().HaveCount(5);

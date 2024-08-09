@@ -10,7 +10,7 @@ app.MapGet("/mock/get", async () => await EficazFramework.API.Mock.GetAsync(null
 app.MapPost("/mock/get", async (EficazFramework.Expressions.QueryDescription parameters) => await EficazFramework.API.Mock.GetAsync(parameters));
 app.MapPost("/mock/getBig", async (EficazFramework.Expressions.QueryDescription parameters) => await EficazFramework.API.Mock.GetBigAsync(parameters));
 app.MapPost("/mock/getForCrudTest", () => EficazFramework.API.Mock.GetForCrudTest());
-app.MapPost("/mock/update", (EficazFramework.Resources.Mocks.Classes.MockClass item) => EficazFramework.API.Mock.Update(item));
+app.MapPut("/mock/update", (EficazFramework.Resources.Mocks.Classes.MockClass item) => EficazFramework.API.Mock.Update(item));
 
 
 app.MapPost("/mock/fail/401", () => Results.Unauthorized());

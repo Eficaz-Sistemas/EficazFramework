@@ -60,5 +60,5 @@ public class RestApiBuilderOptions
     public string UrlPut { get; set; }
     public string UrlPost { get; set; }
     public string UrlDelete { get; set; }
-    public Enums.CRUD.RequestAction GetRequestMode { get; set; } = Enums.CRUD.RequestAction.Post;
+    public Enums.CRUD.RequestAction GetRequestMode { get; set; } = Enums.CRUD.RequestAction.Get;
 }
