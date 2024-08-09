@@ -12,7 +12,7 @@
 }
 
 .w-100 {
-    height: 100%;
+    width: 100%;
 }
 
 .w-inherit {
@@ -21,4 +21,15 @@
 .mud-dialog {
     border-width: thin;
     border: 1px solid var(--mud-palette-primary);
+}
+
+.app-flex-host {
+    height: inherit !important;
+    display: flex !important;
+    flex-grow: 1 !important;
+    flex-direction: column !important; 
+}
+
+.mud-table-container {
+    height: 100%;
 }

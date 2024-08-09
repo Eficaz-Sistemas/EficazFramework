@@ -61,8 +61,8 @@ public class ServiceConfiguration
             ActionDisabledBackground = "#808080ff",
             
             LinesDefault = "#163c56",
-            TableLines = "#163c56",
-
+            TableLines = "#163c564d",
+            TableStriped = "#ffffff08",
 
             GrayLight = "#2a2833",
             GrayLighter = "#1e1e2d",

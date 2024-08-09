@@ -12,21 +12,3 @@
     background-color: var(--mud-palette-background-gray);
 }
 
-.mud-table {
-    background-color: unset;
-}
-
-.mud-table-head > .mud-table-row > th.mud-table-cell:first-child {
-    background-color: var(--mud-palette-primary);
-    border-start-start-radius: 4px;
-}
-
-.mud-table-head > .mud-table-row > th.mud-table-cell:nth-child(1n+1) {
-    background-color: var(--mud-palette-primary);
-}
-
-
-.mud-table-head > .mud-table-row > th.mud-table-cell:last-child {
-    background-color: var(--mud-palette-primary);
-    border-start-end-radius: 4px;
-}
