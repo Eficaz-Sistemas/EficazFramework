@@ -1,5 +1,25 @@
 # For more info on HTTP files go to https://aka.ms/vs/httpfile
-@address = https://localhost:5997
+@address = http://localhost:5997
 
-GET {{address}}/vendors/
+GET {{address}}/api/vendors/
 Accept: application/json
+
+###
+
+POST {{address}}/api/vendors/
+Content-Type: application/json
+{
+    "Id" : "D66E8BB3-1B8C-4067-A758-F5FBA84A1622",
+    "Name" : "Test Guy"
+}
+
+###
+
+POST {{address}}/api/vendors/
+Content-Type: application/json
+{
+    "Id" : null,
+    "Name" : null
+}
+
+###

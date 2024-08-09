@@ -10,10 +10,11 @@ internal static class Mapping
             IsPublic = true,
             Title = "Vendors",
         };
-        vendors.Targets.Add("Blazor",new EficazFramework.Application.BlazorApplicationTarget
+        vendors.Targets.Add("Blazor", new EficazFramework.Application.BlazorApplicationTarget
         {
             Icon = MudBlazor.Icons.Material.Filled.People,
-            StartupUriOrType = typeof(Pages.Vendor)
+            StartupUriOrType = typeof(Pages.Vendor),
+            InitialSize = new(560, 350)
         });
 
         return

@@ -1,9 +1,55 @@
-﻿<div class="ma-4">
-    <h3>Vendor</h3>
+﻿<div class="ma-4 app-flex-host">
+    <EficazFramework.Components.Navigator Class="app-flex-host" 
+                                          SelectedIndex="0">
+                                      
+        <ChildContent>
+            <EficazFramework.Components.NavigatorPage>
+                <MudBlazor.MudDataGrid Items="_viewModel?.Repository.DataContext"
+                                       Loading="@(_viewModel?.IsLoading ?? true)"
+                                       Dense
+                                       Striped
+                                       FixedHeader
+                                       Virtualize
+                                       Class="flex-grow-1 overflow-auto">
+                    <LoadingContent>
+                        <MudBlazor.MudText>@(_viewModel?.LoadingMessage ?? "")</MudBlazor.MudText>
+                    </LoadingContent>
+                    <Columns>
+                        <MudBlazor.TemplateColumn CellClass="py-0 action-button-cell">
+                            <CellTemplate>
+                                <MudBlazor.MudGrid Spacing="3">
+                                    <MudBlazor.MudItem>
+                                        <MudBlazor.MudIconButton OnClick="@(() => _viewModel!.Commands["Edit"].Execute(@context.Item))"
+                                                                 Icon="@MudBlazor.Icons.Material.Filled.Edit"
+                                                                 Size="@MudBlazor.Size.Small"
+                                                                 Class="mr-n3" Disabled />
+                                    </MudBlazor.MudItem>
+                                    <MudBlazor.MudItem>
+                                        <MudBlazor.MudIconButton OnClick="@(() => _viewModel!.Commands["Delete"].Execute(@context.Item))"
+                                                                 Icon="@MudBlazor.Icons.Material.Filled.Delete"
+                                                                 Size="@MudBlazor.Size.Small"
+                                                                 Class="mr-n3" Disabled />
+                                    </MudBlazor.MudItem>
+                                </MudBlazor.MudGrid>
+                            </CellTemplate>
+                        </MudBlazor.TemplateColumn>
+
+                        <MudBlazor.PropertyColumn Title="Name"
+                                                  Property="x => x.Name"/>
+                    </Columns>
+                    <NoRecordsContent>
+                        @EficazFramework.Resources.Strings.ViewModel.StoreService_Get_NoRecords
+                    </NoRecordsContent>
+                    <ColGroup>
+                        <col span="1" style="width: 80px;">
+                        <col span="1" style="width: fit-content;">
+                    </ColGroup>
+                </MudBlazor.MudDataGrid>
+            </EficazFramework.Components.NavigatorPage>
+            <EficazFramework.Components.NavigatorPage>
+
+            </EficazFramework.Components.NavigatorPage>
+        </ChildContent>                         
+    </EficazFramework.Components.Navigator>
 
 </div>
-
-
-@code {
-
-}

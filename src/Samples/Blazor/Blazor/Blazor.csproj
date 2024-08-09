@@ -17,8 +17,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\..\Core\EficazFramework.Data\EficazFramework.Data.csproj" />
     <ProjectReference Include="..\..\..\Web\EficazFramework.Blazor\EficazFramework.Blazor.csproj" />
     <ProjectReference Include="..\..\Common\Entities\Entities.csproj" />
+    <ProjectReference Include="..\..\Common\Shared\Shared.csproj" />
     <ProjectReference Include="..\Blazor.Client\Blazor.Client.csproj" />
     <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.Server" Version="8.0.7" />
   </ItemGroup>
