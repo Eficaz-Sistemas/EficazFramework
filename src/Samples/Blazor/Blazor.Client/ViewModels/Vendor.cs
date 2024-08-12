@@ -13,6 +13,9 @@ internal sealed class Vendor : EficazFramework.ViewModels.ViewModel<Shared.DTOs.
         {
             options.UrlGet = "/api/vendors";
             options.UrlPost = "/api/vendors";
+            options.UrlPut = "/api/vendors";
+            options.UrlDelete = "/api/vendors";
+            options.DeleteQueryFunc = (vendor) => vendor.Id.ToString() ; // DELETE : /api/vendors/vendorID
         })
             .AddSingledEdit()
             .WithNavigationByIndex();

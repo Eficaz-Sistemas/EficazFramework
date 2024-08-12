@@ -16,6 +16,7 @@ public partial class Vendor
         _viewModel = new(HttpClient!);
         _viewModel.PropertyChanged += VM_PropertyChanged;
         _viewModel.StateChanged += VM_StateChanged;
+        _viewModel.ShowMessage += ViewModel_Message;
         _viewModel.Commands["Get"].Execute(null);
     }
 

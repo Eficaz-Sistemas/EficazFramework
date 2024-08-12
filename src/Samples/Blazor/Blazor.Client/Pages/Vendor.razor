@@ -34,7 +34,7 @@
                                         <MudBlazor.MudIconButton OnClick="@(() => _viewModel!.Commands["Delete"].Execute(@context.Item))"
                                                                  Icon="@MudBlazor.Icons.Material.Filled.Delete"
                                                                  Size="@MudBlazor.Size.Small"
-                                                                 Class="mr-n3" Disabled />
+                                                                 Class="mr-n3" />
                                     </MudBlazor.MudItem>
                                 </MudBlazor.MudGrid>
                             </CellTemplate>
@@ -84,8 +84,7 @@
                                                  Icon="@MudBlazor.Icons.Material.Filled.Save"
                                                  Class="rounded-circle pa-3"
                                                  OnClick="@(() => _viewModel!.Commands["Save"].Execute(null))"
-                                                 Style="z-index:3;"
-                                                 Disabled/>
+                                                 Style="z-index:3;"/>
                     </MudBlazor.MudTooltip>
                     <MudBlazor.MudTooltip Text="@EficazFramework.Resources.Strings.Commands.Cancel">
                         <MudBlazor.MudIconButton Color="MudBlazor.Color.Tertiary"

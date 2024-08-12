@@ -9,14 +9,16 @@ internal static class Vendor
     {
         app.MapGet("/api/vendors", () => TypedResults.Ok(GetVendors())).AllowAnonymous();
         app.MapPost("/api/vendors", ([FromBody] VendorDto vendor) => AddVendor(vendor)).AllowAnonymous();
+        app.MapPut("/api/vendors", ([FromBody] VendorDto vendor) => UpdateVendor(vendor)).AllowAnonymous();
+        app.MapDelete("/api/vendors/{vendorID}", (string vendorID) => DeleteVendor(Guid.Parse(vendorID))).AllowAnonymous();
 
         return app;
     }
 
     //TODO: Implement Unit of Work, Repositories, etc
 
-    private static IList<Entities.Vendor>? _cacheVendors;
-    private static IList<Entities.Vendor> GetVendors()
+    private static List<Entities.Vendor>? _cacheVendors;
+    private static List<Entities.Vendor> GetVendors()
     {
         var faker = new Bogus.Faker<Entities.Vendor>();
         faker
@@ -61,4 +63,54 @@ internal static class Vendor
 
         return TypedResults.Created($"/api/vendors/{vendor.Id}", vendor);
     }
+
+    private static IResult UpdateVendor(VendorDto vendor)
+    {
+        if (vendor == null)
+            return TypedResults.UnprocessableEntity();
+
+        try
+        {
+            // PK check
+            var vendorEntity = GetVendors().FirstOrDefault(v => v.Id == vendor.Id);
+            if (vendorEntity is null)
+                return TypedResults.UnprocessableEntity(new[] { $"Any vendor were found with ID {vendor.Id}." });
+
+            // Validation
+            var result = (vendor as Shared.Interfaces.IValidatable).Validate();
+            if (result?.Any() ?? false)
+                return TypedResults.UnprocessableEntity(result);
+
+            // Mapper work
+            vendorEntity.Name = vendor.Name;
+        }
+        catch (Exception ex)
+        {
+            return TypedResults.Problem(ex.ToString());
+        }
+
+        return TypedResults.Ok(vendor);
+    }
+
+    private static IResult DeleteVendor(Guid vendorID)
+    {
+        try
+        {
+            // PK check
+            var vendorEntity = GetVendors().FirstOrDefault(v => v.Id == vendorID);
+            if (vendorEntity is null)
+                return TypedResults.UnprocessableEntity(new[] { $"Any vendor were found with ID {vendorID}." });
+
+
+            // Mapper work
+            _ = (_cacheVendors?.Remove(vendorEntity));
+        }
+        catch (Exception ex)
+        {
+            return TypedResults.Problem(ex.ToString());
+        }
+
+        return TypedResults.Ok(vendorID);
+    }
+
 }
