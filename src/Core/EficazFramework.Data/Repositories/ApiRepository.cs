@@ -16,7 +16,7 @@ using System.Threading.Tasks;
 
 namespace EficazFramework.Repositories;
 
-public sealed class ApiRepository<TEntity> : Repositories.RepositoryBase<TEntity> where TEntity : class
+public sealed class ApiRepository<T> : Repositories.RepositoryBase<T> where T : class
 {
     public ApiRepository(HttpClient client) : base() =>
         _client = client;
@@ -220,23 +220,23 @@ public sealed class ApiRepository<TEntity> : Repositories.RepositoryBase<TEntity
     /// <summary>s
     /// Efetua a instrução GET contra o datasource
     /// </summary>
-    public override ObservableCollection<TEntity> FetchItems() =>
+    public override ObservableCollection<T> FetchItems() =>
         FetchItemsAsync(default).Result;
     
     /// <summary>s
     /// Efetua a instrução GET contra o datasource
     /// </summary>
-    public override async Task<ObservableCollection<TEntity>> FetchItemsAsync(CancellationToken cancellationToken)
+    public override async Task<ObservableCollection<T>> FetchItemsAsync(CancellationToken cancellationToken)
     {
-        List<TEntity> result = new();
-        var response = await RequestMethod<Expressions.QueryDescription, List<TEntity>>(GetRequestMode, UrlGet, new Expressions.QueryDescription(Filter, OrderByDefinitions), cancellationToken);
+        List<T> result = new();
+        var response = await RequestMethod<Expressions.QueryDescription, List<T>>(GetRequestMode, UrlGet, new Expressions.QueryDescription(Filter, OrderByDefinitions), cancellationToken);
         if (response != null)
-            result.AddRange(response as IList<TEntity>);
+            result.AddRange(response as IList<T>);
 
         TrackingContext?.Dispose();
         TrackingContext = DbContextRequest?.Invoke();
         TrackingContext?.AttachRange(result);
-        return result.ToObservableCollection<TEntity>();
+        return result.ToObservableCollection<T>();
     }
 
     
@@ -289,7 +289,7 @@ public sealed class ApiRepository<TEntity> : Repositories.RepositoryBase<TEntity
                         {
                             entry.State = EntityState.Detached;
                             if (DataContext.Contains(item))
-                                DataContext.Remove((TEntity)item);
+                                DataContext.Remove((T)item);
                             break;
                         }
 
@@ -303,8 +303,8 @@ public sealed class ApiRepository<TEntity> : Repositories.RepositoryBase<TEntity
                     case EntityState.Deleted:
                         {
                             entry.State = EntityState.Unchanged;
-                            if (!DataContext.Contains(item) & ReferenceEquals(item.GetType(), typeof(TEntity)))
-                                DataContext.Add((TEntity)item);
+                            if (!DataContext.Contains(item) & ReferenceEquals(item.GetType(), typeof(T)))
+                                DataContext.Add((T)item);
 
                             break;
                         }
@@ -349,10 +349,10 @@ public sealed class ApiRepository<TEntity> : Repositories.RepositoryBase<TEntity
     /// <summary>
     /// Solicita a criação de uma nova instância de Entidade de Base de Dados
     /// </summary>
-    public override TEntity Create()
+    public override T Create()
     {
         TrackingContext ??= DbContextRequest?.Invoke();
-        return EficazFramework.Entities.EntityBase.Create<TEntity>();
+        return Activator.CreateInstance<T>();
     }
     
     /// <summary>
@@ -394,17 +394,17 @@ public sealed class ApiRepository<TEntity> : Repositories.RepositoryBase<TEntity
         {
             if (CurrentEntry != null)
             {
-                TEntity response;
+                T response;
                 if (_isAdding)
-                    response = await RequestMethod<TEntity, TEntity>(Enums.CRUD.RequestAction.Post, UrlPost, CurrentEntry, cancellationToken);
+                    response = await RequestMethod<T, T>(Enums.CRUD.RequestAction.Post, UrlPost, CurrentEntry, cancellationToken);
                 else if (_isDeleting)
-                    response = await RequestMethod<TEntity, TEntity>(Enums.CRUD.RequestAction.Delete, UrlDelete, CurrentEntry, cancellationToken);
+                    response = await RequestMethod<T, T>(Enums.CRUD.RequestAction.Delete, UrlDelete, CurrentEntry, cancellationToken);
                 else
-                    response = await RequestMethod<TEntity, TEntity>(Enums.CRUD.RequestAction.Put, UrlPut, CurrentEntry, cancellationToken);
+                    response = await RequestMethod<T, T>(Enums.CRUD.RequestAction.Put, UrlPut, CurrentEntry, cancellationToken);
             }
             else
             {
-                var response = await RequestMethod<List<TEntity>, List<TEntity>>(Enums.CRUD.RequestAction.Post, UrlPost, DataContext.ToList(), cancellationToken);
+                var response = await RequestMethod<List<T>, List<T>>(Enums.CRUD.RequestAction.Post, UrlPost, DataContext.ToList(), cancellationToken);
             }
             _isDeleting = false;
             return default;
@@ -425,7 +425,7 @@ public sealed class ApiRepository<TEntity> : Repositories.RepositoryBase<TEntity
     internal override void ItemDeleted(object item)
     {
         _isDeleting = true;
-        CurrentEntry = item as TEntity;
+        CurrentEntry = item as T;
         
         if (TrackingContext == null)
             return;
