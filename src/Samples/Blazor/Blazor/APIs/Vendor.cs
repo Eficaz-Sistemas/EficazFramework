@@ -18,18 +18,12 @@ internal static class Vendor
     private static IList<Entities.Vendor>? _cacheVendors;
     private static IList<Entities.Vendor> GetVendors()
     {
-        _cacheVendors ??= [
-                new Entities.Vendor()
-                {
-                    Id = Guid.NewGuid(),
-                    Name = "John Moreno"
-                },
-                new Entities.Vendor()
-                {
-                    Id = Guid.NewGuid(),
-                    Name = "Brian Lawson"
-                }
-            ];
+        var faker = new Bogus.Faker<Entities.Vendor>();
+        faker
+            .RuleFor(v => v.Id, r => r.Random.Uuid())
+            .RuleFor(v => v.Name, r => r.Person.FullName);
+
+        _cacheVendors ??= faker.Generate(50);
         return _cacheVendors!;
     }
 

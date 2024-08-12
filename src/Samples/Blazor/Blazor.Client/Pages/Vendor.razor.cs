@@ -7,7 +7,8 @@ public partial class Vendor
 
     [Inject] HttpClient? HttpClient { get; set; }
     [Inject] MudBlazor.ISnackbar? Snackbar { get; set; }
-    [Inject] MudBlazor.IDialogService? Dialog {  get; set; } 
+    [Inject] MudBlazor.IDialogService? Dialog {  get; set; }
+    [CascadingParameter] EficazFramework.Components.MdiWindow? MdiWindow { get; set; }
 
     protected override void OnInitialized()
     {
@@ -16,6 +17,14 @@ public partial class Vendor
         _viewModel.PropertyChanged += VM_PropertyChanged;
         _viewModel.StateChanged += VM_StateChanged;
         _viewModel.Commands["Get"].Execute(null);
+    }
+
+    protected override void OnAfterRender(bool firstRender)
+    {
+        base.OnAfterRender(firstRender);
+
+        if (firstRender)
+            MdiWindow?.OverrideFrameParameters(CustomHeader(), false);
     }
 
     private ViewModels.Vendor? _viewModel;
@@ -45,6 +54,7 @@ public partial class Vendor
 
     private void VM_StateChanged(object? sender, EventArgs e)
     {
+        MdiWindow?.OverrideFrameParameters(CustomHeader(), false);
         StateHasChanged();
     }
 

@@ -6,7 +6,7 @@ namespace Shared.Interfaces;
 public interface IValidatable
 {
     [JsonIgnore()]
-    IValidator Validator { get; }
+    IValidator? Validator { get; }
 
-    public sealed ValidationResult Validate() => Validator.Validate(this);
+    public sealed ValidationResult? Validate() => Validator?.Validate(this);
 }
