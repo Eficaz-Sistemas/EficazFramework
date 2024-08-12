@@ -24,7 +24,7 @@ public sealed class ApiRepository<T> : Repositories.RepositoryBase<T> where T : 
     private readonly HttpClient _client;
 
     /// <summary>
-    /// Paramêtros para filtragem de dados.
+    /// Paramêtros para filtragem de dados para pesquisas com POST (body contendo instruções de query dinâmica).
     /// Efetua shadowing de <see cref="RepositoryBase{T}.Filter"/>
     /// </summary>
     public new Expressions.ExpressionQuery Filter { get; set; }
@@ -35,19 +35,29 @@ public sealed class ApiRepository<T> : Repositories.RepositoryBase<T> where T : 
     public string UrlGet { get; set; } = "/myRestApi/get";
 
     /// <summary>
-    /// URL de requisição para métodos FetchItems() e FetchItemsAsync()
+    /// Expressão para formação da query para os métodos FetchItems() e FetchItemsAsync()
+    /// </summary>
+    public Func<T, string> GetQueryFunc { get; set; }
+
+    /// <summary>
+    /// URL de requisição para método PutAsync()
     /// </summary>
     public string UrlPut { get; set; } = "/myRestApi/put";
 
     /// <summary>s
-    /// URL de requisição para métodos FetchItems() e FetchItemsAsync()
+    /// URL de requisição para método PostAsync()
     /// </summary>
     public string UrlPost { get; set; } = "/myRestApi/post";
 
     /// <summary>
-    /// URL de requisição para métodos FetchItems() e FetchItemsAsync()
+    /// URL de requisição para o método DeleteAsync()
     /// </summary>
     public string UrlDelete { get; set; } = "/myRestApi/delete";
+
+    /// <summary>
+    /// Expressão para formação da query para o método DeleteAsync()
+    /// </summary>
+    public Func<T, string> DeleteQueryFunc { get; set; }
 
     /// <summary>
     /// Permite parametrizar se a requição para obtenção de dados será GET ou POST
@@ -71,6 +81,7 @@ public sealed class ApiRepository<T> : Repositories.RepositoryBase<T> where T : 
     /// </summary>
     public async Task<TResult> RequestMethod<TBody, TResult>(Enums.CRUD.RequestAction action,
         string requestUri, 
+        string queryExpr,
         TBody body, 
         CancellationToken cancellationToken)
     {
@@ -79,9 +90,10 @@ public sealed class ApiRepository<T> : Repositories.RepositoryBase<T> where T : 
         {
             return action switch
             {
-                Enums.CRUD.RequestAction.Get => await GetAsync<TResult>(requestUri, cancellationToken),
+                Enums.CRUD.RequestAction.Get => await GetAsync<TResult>($"{requestUri}/{queryExpr}", cancellationToken),
                 Enums.CRUD.RequestAction.Post => await PostAsync<TBody, TResult>(requestUri, body, cancellationToken),
                 Enums.CRUD.RequestAction.Put => await PutAsync<TBody, TResult>(requestUri, body, cancellationToken),
+                Enums.CRUD.RequestAction.Delete => await DeleteAsync<TBody, TResult>($"{requestUri}/{queryExpr}", cancellationToken),
                 _ => default
             };
         }
@@ -93,7 +105,7 @@ public sealed class ApiRepository<T> : Repositories.RepositoryBase<T> where T : 
     }
 
     /// <summary>
-    /// Método Get executado por <see cref="RequestMethod{TBody, TResult}(Enums.CRUD.RequestAction, string, TBody, CancellationToken)"/>
+    /// Método GET executado por <see cref="RequestMethod{TBody, TResult}(Enums.CRUD.RequestAction, string, Func{TBody, string}, TBody, CancellationToken)"/>
     /// </summary>
     private async Task<TResult> GetAsync<TResult>(string requestUri,
         CancellationToken cancellationToken)
@@ -126,7 +138,7 @@ public sealed class ApiRepository<T> : Repositories.RepositoryBase<T> where T : 
     }
 
     /// <summary>
-    /// Método Post executado por <see cref="RequestMethod{TBody, TResult}(Enums.CRUD.RequestAction, string, TBody, CancellationToken)"/>
+    /// Método POST executado por <see cref="RequestMethod{TBody, TResult}(Enums.CRUD.RequestAction, string, Func{TBody, string}, TBody, CancellationToken)"/>
     /// </summary>
     private async Task<TResult> PostAsync<TBody, TResult>(string requestUri,
         TBody body,
@@ -163,7 +175,7 @@ public sealed class ApiRepository<T> : Repositories.RepositoryBase<T> where T : 
     }
 
     /// <summary>
-    /// Método Post executado por <see cref="RequestMethod{TBody, TResult}(Enums.CRUD.RequestAction, string, TBody, CancellationToken)"/>
+    /// Método PUT executado por <see cref="RequestMethod{TBody, TResult}(Enums.CRUD.RequestAction, string, Func{TBody, string}, TBody, CancellationToken)"/>
     /// </summary>
     private async Task<TResult> PutAsync<TBody, TResult>(string requestUri,
         TBody body,
@@ -200,6 +212,44 @@ public sealed class ApiRepository<T> : Repositories.RepositoryBase<T> where T : 
     }
 
     /// <summary>
+    /// Método DELETE executado por <see cref="RequestMethod{TBody, TResult}(Enums.CRUD.RequestAction, string, Func{TBody, string}, TBody, CancellationToken)"/>
+    /// </summary>
+    private async Task<TResult> DeleteAsync<TBody, TResult>(string requestUri,
+        CancellationToken cancellationToken)
+    {
+        var response = await _client.DeleteAsync(requestUri, cancellationToken);
+        if (response.IsSuccessStatusCode)
+        {
+            try
+            {
+                return await response.Content.ReadFromJsonAsync<TResult>(new System.Text.Json.JsonSerializerOptions()
+                {
+                    PropertyNameCaseInsensitive = true
+                }, cancellationToken);
+            }
+            catch
+            {
+                return default;
+            }
+        }
+        else
+        {
+            string responseResult = await response.Content.ReadAsStringAsync(cancellationToken);
+
+
+            throw response.StatusCode switch
+            {
+                System.Net.HttpStatusCode.Unauthorized => new UnauthorizedAccessException(Resources.Strings.Security.GPO_AccessViolationMessage),
+                System.Net.HttpStatusCode.Forbidden => new UnauthorizedAccessException(Resources.Strings.Security.GPO_AccessViolationMessage),
+                System.Net.HttpStatusCode.UnprocessableEntity => new ValidationException(ParseValidationFromResponseString(responseResult)),
+                _ => new HttpRequestException(string.Format(Resources.Strings.ViewModel.UnhandledError_Message, response.ReasonPhrase)),
+            };
+        }
+    }
+
+
+
+    /// <summary>
     /// Extrai os erros de validação do Http Response.
     /// </summary>
     /// <param name="responseString"></param>
@@ -228,8 +278,8 @@ public sealed class ApiRepository<T> : Repositories.RepositoryBase<T> where T : 
     /// </summary>
     public override async Task<ObservableCollection<T>> FetchItemsAsync(CancellationToken cancellationToken)
     {
-        List<T> result = new();
-        var response = await RequestMethod<Expressions.QueryDescription, List<T>>(GetRequestMode, UrlGet, new Expressions.QueryDescription(Filter, OrderByDefinitions), cancellationToken);
+        List<T> result = [];
+        var response = await RequestMethod<Expressions.QueryDescription, List<T>>(GetRequestMode, UrlGet, null, new Expressions.QueryDescription(Filter, OrderByDefinitions), cancellationToken);
         if (response != null)
             result.AddRange(response as IList<T>);
 
@@ -396,15 +446,15 @@ public sealed class ApiRepository<T> : Repositories.RepositoryBase<T> where T : 
             {
                 T response;
                 if (_isAdding)
-                    response = await RequestMethod<T, T>(Enums.CRUD.RequestAction.Post, UrlPost, CurrentEntry, cancellationToken);
+                    response = await RequestMethod<T, T>(Enums.CRUD.RequestAction.Post, UrlPost, null, CurrentEntry, cancellationToken);
                 else if (_isDeleting)
-                    response = await RequestMethod<T, T>(Enums.CRUD.RequestAction.Delete, UrlDelete, CurrentEntry, cancellationToken);
+                    response = await RequestMethod<T, T>(Enums.CRUD.RequestAction.Delete, UrlDelete, DeleteQueryFunc.Invoke(CurrentEntry), CurrentEntry, cancellationToken);
                 else
-                    response = await RequestMethod<T, T>(Enums.CRUD.RequestAction.Put, UrlPut, CurrentEntry, cancellationToken);
+                    response = await RequestMethod<T, T>(Enums.CRUD.RequestAction.Put, UrlPut, null, CurrentEntry, cancellationToken);
             }
             else
             {
-                var response = await RequestMethod<List<T>, List<T>>(Enums.CRUD.RequestAction.Post, UrlPost, DataContext.ToList(), cancellationToken);
+                var response = await RequestMethod<List<T>, List<T>>(Enums.CRUD.RequestAction.Post, UrlPost, null, DataContext.ToList(), cancellationToken);
             }
             _isDeleting = false;
             return default;
