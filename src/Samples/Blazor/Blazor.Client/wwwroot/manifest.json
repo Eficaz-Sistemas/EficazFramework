@@ -26,7 +26,7 @@
   "orientation": "any",
   "description": "Aplicativo de Exemplo da EficazFramework",
   "lang": "pt",
-  "scope": "https://https://framework.eficazcs.app/",
+  "scope": "https://framework.eficazcs.app/",
   "categories": [
     "dev", "libs", "c#", "dotnet"
   ]
