@@ -256,13 +256,8 @@ public sealed class ApiRepository<T> : Repositories.RepositoryBase<T> where T : 
     /// <returns></returns>
     private static string ParseValidationFromResponseString(string responseString)
     {
-        var jsonParse = JsonDocument.Parse(responseString);
-        var jsonFilter = jsonParse.RootElement
-                            .GetProperty("errors")
-                            .GetRawText();
-
-        EficazFramework.Validation.Fluent.ValidationResult result = new();
-        result.AddRange(JsonSerializer.Deserialize<Dictionary<string, string[]>>(jsonFilter).First().Value.ToList());
+        EficazFramework.Validation.Fluent.ValidationResult result = [];
+        result.AddRange(JsonSerializer.Deserialize<string[]>(responseString));
         return result.ToString();
     }
 
