@@ -76,7 +76,7 @@
         if (_viewModel?.State == EficazFramework.Enums.CRUD.State.Novo || _viewModel?.State == EficazFramework.Enums.CRUD.State.Edicao)
         {
             return
-                @<div class="d-flex flex-row flex-grow-1 justify-end mt-1 mb-n6">
+                @<div class="d-flex flex-row flex-grow-1 justify-end mt-1 mb-n6 mr-1">
                     <MudBlazor.MudTooltip Text="@EficazFramework.Resources.Strings.Commands.Save">
                         <MudBlazor.MudIconButton Color="MudBlazor.Color.Primary"
                                                  Variant="MudBlazor.Variant.Filled"
@@ -101,7 +101,7 @@
         else if (_viewModel?.State == EficazFramework.Enums.CRUD.State.Bloqueado || _viewModel?.State == EficazFramework.Enums.CRUD.State.Leitura)
         {
             return
-                @<div class="d-flex flex-row flex-grow-1 justify-end mt-1 mb-n6">
+                @<div class="d-flex flex-row flex-grow-1 justify-end mt-1 mb-n6 mr-1">
                     <MudBlazor.MudTooltip Text="@EficazFramework.Resources.Strings.Commands.Add">
                                 <MudBlazor.MudIconButton Color="MudBlazor.Color.Secondary"
                                                             Variant="MudBlazor.Variant.Filled"
