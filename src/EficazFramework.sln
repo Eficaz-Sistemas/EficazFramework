@@ -91,7 +91,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Common", "Common", "{7E8056
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Entities", "Samples\Common\Entities\Entities.csproj", "{7212F180-3800-481C-A5A8-0A5F4EF84F0A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shared", "Samples\Common\Shared\Shared.csproj", "{37BFA1B1-1AC4-48B5-A12C-08FDDF7E0F6A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Shared", "Samples\Common\Shared\Shared.csproj", "{37BFA1B1-1AC4-48B5-A12C-08FDDF7E0F6A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -296,6 +296,7 @@ Global
 		{37BFA1B1-1AC4-48B5-A12C-08FDDF7E0F6A} = {7E805616-1883-4ACB-993F-58A2031ABF11}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
+		RESX_NeutralResourcesLanguage = pt-BR
 		SolutionGuid = {727FB557-A5D6-456A-81CB-C45F2F95FCEB}
 	EndGlobalSection
 EndGlobal
