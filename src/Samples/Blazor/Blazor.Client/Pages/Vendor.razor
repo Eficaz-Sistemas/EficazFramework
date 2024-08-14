@@ -25,16 +25,20 @@
                             <CellTemplate>
                                 <MudBlazor.MudGrid Class="justify-end" Spacing="3">
                                     <MudBlazor.MudItem>
-                                        <MudBlazor.MudIconButton OnClick="@(() => _viewModel!.Commands["Edit"].Execute(@context.Item))"
-                                                                 Icon="@MudBlazor.Icons.Material.Filled.Edit"
-                                                                 Size="@MudBlazor.Size.Small"
-                                                                 Class="mr-n3" />
+                                        <MudBlazor.MudTooltip Text="@EficazFramework.Resources.Strings.Commands.Edit">
+                                            <MudBlazor.MudIconButton OnClick="@(() => _viewModel!.Commands["Edit"].Execute(@context.Item))"
+                                                                     Icon="@MudBlazor.Icons.Material.Filled.Edit"
+                                                                     Size="@MudBlazor.Size.Small"
+                                                                     Class="mr-n3" />
+                                        </MudBlazor.MudTooltip>
                                     </MudBlazor.MudItem>
                                     <MudBlazor.MudItem>
-                                        <MudBlazor.MudIconButton OnClick="@(() => _viewModel!.Commands["Delete"].Execute(@context.Item))"
-                                                                 Icon="@MudBlazor.Icons.Material.Filled.Delete"
-                                                                 Size="@MudBlazor.Size.Small"
-                                                                 Class="mr-n3" />
+                                        <MudBlazor.MudTooltip Text="@EficazFramework.Resources.Strings.Commands.Delete">
+                                            <MudBlazor.MudIconButton OnClick="@(() => _viewModel!.Commands["Delete"].Execute(@context.Item))"
+                                                                     Icon="@MudBlazor.Icons.Material.Filled.Delete"
+                                                                     Size="@MudBlazor.Size.Small"
+                                                                     Class="mr-n3" />
+                                        </MudBlazor.MudTooltip>
                                     </MudBlazor.MudItem>
                                 </MudBlazor.MudGrid>
                             </CellTemplate>

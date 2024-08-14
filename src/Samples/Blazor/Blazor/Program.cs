@@ -29,12 +29,19 @@ else
     app.UseHsts();
 }
 
+
 app.UseHttpsRedirection();
 
 app.MapApis();
 
 app.UseStaticFiles();
 app.UseAntiforgery();
+
+app.UseRequestLocalization(new RequestLocalizationOptions()
+    .SetDefaultCulture("en-US")
+    .AddSupportedCultures(["pt-BR", "en-US"])
+    .AddSupportedUICultures(["pt-BR", "en-US"]));
+
 
 app.MapRazorComponents<App>()
     .AddInteractiveWebAssemblyRenderMode()

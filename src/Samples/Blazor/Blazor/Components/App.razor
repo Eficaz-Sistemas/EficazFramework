@@ -1,4 +1,7 @@
-﻿<!DOCTYPE html>
+﻿@using System.Globalization
+@using Microsoft.AspNetCore.Localization
+
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -45,4 +48,18 @@
 
 @code {
     private IComponentRenderMode LocalInteractiveWebAssemblyMode => new InteractiveWebAssemblyRenderMode(false);
+
+    [CascadingParameter]
+    public HttpContext? HttpContext { get; set; }
+
+    protected override void OnInitialized()
+    {
+        HttpContext?.Response.Cookies.Append(
+            CookieRequestCultureProvider.DefaultCookieName,
+            CookieRequestCultureProvider.MakeCookieValue(
+                new RequestCulture(
+                    CultureInfo.CurrentCulture,
+                    CultureInfo.CurrentUICulture)));
+    }
+
 }
