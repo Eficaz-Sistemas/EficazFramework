@@ -97,7 +97,7 @@ namespace EficazFramework.Resources.Strings {
         }
         
         /// <summary>
-        ///   Consulta uma cadeia de caracteres localizada semelhante a Oppss....
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Ooppss....
         /// </summary>
         public static string Exception_DefaultHeader {
             get {
@@ -250,7 +250,7 @@ namespace EficazFramework.Resources.Strings {
         }
         
         /// <summary>
-        ///   Consulta uma cadeia de caracteres localizada semelhante a O valor {0} já está sendo utilizado.
+        ///   Consulta uma cadeia de caracteres localizada semelhante a O valor &apos;{0}&apos; já está sendo utilizado.
         /// </summary>
         public static string NotUnique {
             get {

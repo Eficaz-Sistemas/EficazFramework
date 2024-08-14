@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <root>
   <!-- 
     Microsoft ResX Schema 
@@ -117,64 +117,13 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="BoolToYesNo_False" xml:space="preserve">
-    <value>Não</value>
+  <data name="BlazorError_Development" xml:space="preserve">
+    <value>An unmanaged fault was triggered. Check the browser's developer tools for more details.</value>
   </data>
-  <data name="BoolToYesNo_True" xml:space="preserve">
-    <value>Sim</value>
+  <data name="BlazorError_Production" xml:space="preserve">
+    <value>An error occurred in the application. It may not respond until you reload the page.</value>
   </data>
-  <data name="eComparer_Between" xml:space="preserve">
-    <value>Entre</value>
-  </data>
-  <data name="eComparer_Bigger" xml:space="preserve">
-    <value>Maior que</value>
-  </data>
-  <data name="eComparer_BiggerOrEqualThan" xml:space="preserve">
-    <value>Maior ou igual a</value>
-  </data>
-  <data name="eComparer_Contains" xml:space="preserve">
-    <value>Contém</value>
-  </data>
-  <data name="eComparer_Different" xml:space="preserve">
-    <value>Diferente de</value>
-  </data>
-  <data name="eComparer_Equals" xml:space="preserve">
-    <value>Igual a</value>
-  </data>
-  <data name="eComparer_Is" xml:space="preserve">
-    <value>Igual a</value>
-  </data>
-  <data name="eComparer_IsNot" xml:space="preserve">
-    <value>Diferente de</value>
-  </data>
-  <data name="eComparer_Length" xml:space="preserve">
-    <value>Compr. do Texto</value>
-  </data>
-  <data name="eComparer_LowerOrEqualThan" xml:space="preserve">
-    <value>Menor ou igual a</value>
-  </data>
-  <data name="eComparer_LowerThan" xml:space="preserve">
-    <value>Menor que</value>
-  </data>
-  <data name="eComparer_StartsWith" xml:space="preserve">
-    <value>Inicia com</value>
-  </data>
-  <data name="eDocumento_PIS_NIT" xml:space="preserve">
-    <value>PIS ou NIT</value>
-  </data>
-  <data name="eUpdateValueMode_Expression" xml:space="preserve">
-    <value>Expressão</value>
-  </data>
-  <data name="eUpdateValueMode_Fixed" xml:space="preserve">
-    <value>Fixo</value>
-  </data>
-  <data name="Exception_DefaultContent" xml:space="preserve">
-    <value>Ocorreu uma exceção ao realizar esta ação. Por favor tente novamente. Caso o erro persista entre em contato com o suporte.</value>
-  </data>
-  <data name="Exception_DefaultHeader" xml:space="preserve">
-    <value>Ooppss...</value>
-  </data>
-  <data name="Required" xml:space="preserve">
-    <value>O campo {0} não pode ficar em branco.</value>
+  <data name="BlazorError_Reload" xml:space="preserve">
+    <value>Reload</value>
   </data>
 </root>

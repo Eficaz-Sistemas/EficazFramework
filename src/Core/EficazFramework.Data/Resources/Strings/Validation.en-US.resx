@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <root>
   <!-- 
     Microsoft ResX Schema 
@@ -117,64 +117,82 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="BoolToYesNo_False" xml:space="preserve">
-    <value>Não</value>
-  </data>
-  <data name="BoolToYesNo_True" xml:space="preserve">
-    <value>Sim</value>
-  </data>
-  <data name="eComparer_Between" xml:space="preserve">
-    <value>Entre</value>
-  </data>
-  <data name="eComparer_Bigger" xml:space="preserve">
-    <value>Maior que</value>
-  </data>
-  <data name="eComparer_BiggerOrEqualThan" xml:space="preserve">
-    <value>Maior ou igual a</value>
-  </data>
-  <data name="eComparer_Contains" xml:space="preserve">
-    <value>Contém</value>
-  </data>
-  <data name="eComparer_Different" xml:space="preserve">
-    <value>Diferente de</value>
-  </data>
-  <data name="eComparer_Equals" xml:space="preserve">
-    <value>Igual a</value>
-  </data>
-  <data name="eComparer_Is" xml:space="preserve">
-    <value>Igual a</value>
-  </data>
-  <data name="eComparer_IsNot" xml:space="preserve">
-    <value>Diferente de</value>
-  </data>
-  <data name="eComparer_Length" xml:space="preserve">
-    <value>Compr. do Texto</value>
-  </data>
-  <data name="eComparer_LowerOrEqualThan" xml:space="preserve">
-    <value>Menor ou igual a</value>
-  </data>
-  <data name="eComparer_LowerThan" xml:space="preserve">
-    <value>Menor que</value>
-  </data>
-  <data name="eComparer_StartsWith" xml:space="preserve">
-    <value>Inicia com</value>
-  </data>
-  <data name="eDocumento_PIS_NIT" xml:space="preserve">
-    <value>PIS ou NIT</value>
-  </data>
-  <data name="eUpdateValueMode_Expression" xml:space="preserve">
-    <value>Expressão</value>
-  </data>
-  <data name="eUpdateValueMode_Fixed" xml:space="preserve">
-    <value>Fixo</value>
-  </data>
   <data name="Exception_DefaultContent" xml:space="preserve">
-    <value>Ocorreu uma exceção ao realizar esta ação. Por favor tente novamente. Caso o erro persista entre em contato com o suporte.</value>
+    <value>An exception occurred when performing this action. Please try again. If the error persists, contact support.</value>
   </data>
   <data name="Exception_DefaultHeader" xml:space="preserve">
     <value>Ooppss...</value>
   </data>
+  <data name="Dialog_Title" xml:space="preserve">
+    <value>Invalid data</value>
+  </data>
+  <data name="Dialog_Message" xml:space="preserve">
+    <value>Check the errors pointed out in the validation below: {0}{1}</value>
+  </data>
+  <data name="InvalidCNPJ" xml:space="preserve">
+    <value>Invalid CNPJ.</value>
+  </data>
+  <data name="InvalidCNPJorCPF" xml:space="preserve">
+    <value>Invalid CNPJ / CPF.</value>
+  </data>
+  <data name="InvalidCPF" xml:space="preserve">
+    <value>Invalid CPF.</value>
+  </data>
+  <data name="InvalideMail" xml:space="preserve">
+    <value>The email entered for the {0} field is not valid.</value>
+  </data>
+  <data name="InvalidIE" xml:space="preserve">
+    <value>The State Registration informed is not valid for the State of {0}.</value>
+  </data>
+  <data name="InvalidIE_NoUF" xml:space="preserve">
+    <value>The State Registration cannot be validated because there is no information about UF.</value>
+  </data>
+  <data name="InvalidPIS" xml:space="preserve">
+    <value>Invalid PIS/PASEP.</value>
+  </data>
+  <data name="InvalidRange" xml:space="preserve">
+    <value>The {0} field only allows values between {1} and {2}.</value>
+  </data>
+  <data name="InvalidRange_Maximum" xml:space="preserve">
+    <value>The {0} field must be less than {1}.</value>
+  </data>
+  <data name="InvalidRange_Minimum" xml:space="preserve">
+    <value>The {0} field must be larger than {1}.</value>
+  </data>
+  <data name="MaxLenght" xml:space="preserve">
+    <value>The {0} field must be filled in with a maximum of {1} digits.</value>
+  </data>
+  <data name="NotAuditableRepository" xml:space="preserve">
+    <value>The specified Repository is not auditable.</value>
+  </data>
+  <data name="Expression_DefaultErrorMessage" xml:space="preserve">
+    <value>Item validation failed.</value>
+  </data>
   <data name="Required" xml:space="preserve">
-    <value>O campo {0} não pode ficar em branco.</value>
+    <value>The {0} field cannot be left blank.</value>
+  </data>
+  <data name="NullInstance" xml:space="preserve">
+    <value>No entity was submitted for validation.</value>
+  </data>
+  <data name="ValidationException" xml:space="preserve">
+    <value>Validation for field {0} generated an overall failure. Technical details: {1}.</value>
+  </data>
+  <data name="InvalidRangePeriod_Lower" xml:space="preserve">
+    <value>The {0} field cannot be less than the {1} field.</value>
+  </data>
+  <data name="InvalidRangePeriod_LowerOrEquals" xml:space="preserve">
+    <value>The {0} field cannot be less or equal to the {1} field.</value>
+  </data>
+  <data name="MinLenght" xml:space="preserve">
+    <value>The {0} field must be filled in with at least {1} digits.</value>
+  </data>
+  <data name="EqualsTo" xml:space="preserve">
+    <value>The values in fields {0} and {1} must be identical.</value>
+  </data>
+  <data name="NotUnique" xml:space="preserve">
+    <value>The value '{0}' is already being used</value>
+  </data>
+  <data name="ServerValidation" xml:space="preserve">
+    <value>The data validation failed and the operation could not be completed.</value>
   </data>
 </root>
