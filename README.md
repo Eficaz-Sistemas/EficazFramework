@@ -39,6 +39,8 @@
 
    - Novos Componentes, Templates e Layouts para melhor padronização das aplicações, conforme sua natureza
    - UI baseada em MaterialDesign, utilizando a biblioteca OpenSource [MudBlazor](https://github.com/MudBlazor/MudBlazor)
+
+🆕 [Aplicação de Exemplo](https://framework.eficazcs.app)
    
 ![Mdi Host](/Assets/Blazor/MdiHost.gif)
 
