@@ -7,10 +7,13 @@ internal static class Vendor
 {
     internal static WebApplication MapVendors(this WebApplication app)
     {
-        app.MapGet("/api/vendors", () => TypedResults.Ok(GetVendors())).AllowAnonymous();
-        app.MapPost("/api/vendors", ([FromBody] VendorDto vendor) => AddVendor(vendor)).AllowAnonymous();
-        app.MapPut("/api/vendors", ([FromBody] VendorDto vendor) => UpdateVendor(vendor)).AllowAnonymous();
-        app.MapDelete("/api/vendors/{vendorID}", (string vendorID) => DeleteVendor(Guid.Parse(vendorID))).AllowAnonymous();
+        var vendors = app.MapGroup("/api/vendors");
+        vendors.MapGet("", () => TypedResults.Ok(GetVendors()));
+        vendors.MapGet("/{search}", (string search) => TypedResults.Ok(SearchVendors(search)));
+        vendors.MapPost("", ([FromBody] VendorDto vendor) => AddVendor(vendor));
+        vendors.MapPut("", ([FromBody] VendorDto vendor) => UpdateVendor(vendor));
+        vendors.MapDelete("/{vendorID}", (string vendorID) => DeleteVendor(Guid.Parse(vendorID)));
+        vendors.AllowAnonymous();
 
         return app;
     }
@@ -28,6 +31,9 @@ internal static class Vendor
         _cacheVendors ??= faker.Generate(50);
         return _cacheVendors!;
     }
+
+    private static List<Entities.Vendor> SearchVendors(string search) =>
+        GetVendors().Where(v => v.Name!.Contains(search, StringComparison.InvariantCultureIgnoreCase)).ToList();
 
     private static IResult AddVendor(VendorDto vendor)
     {
