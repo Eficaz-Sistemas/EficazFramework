@@ -149,6 +149,14 @@ div.text-match div, div.mud-input input {
     padding: 8px !important;
 }
 
+.mud-input-control-ef.mud-input-showspin.text-right > 
+    .mud-input-control-input-container > 
+        .mud-input > 
+            input.mud-input-root {
+    padding-right: 28px !important;
+}
+
+
 .mud-input-control-ef > 
     .mud-input-control-input-container > 
         .mud-input > 

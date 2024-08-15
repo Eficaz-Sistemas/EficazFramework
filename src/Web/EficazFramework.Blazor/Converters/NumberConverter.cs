@@ -6,11 +6,11 @@ public class NumberConverter<T> : MudBlazor.DefaultConverter<T>
     {
         DecimalPlaces = decimals;
 
-        OnGetBase = base.GetFunc;
-        GetFunc = OnGet;
+        OnGetBase = base.GetFunc!;
+        GetFunc = OnGet!;
 
-        OnSetBase = base.SetFunc;
-        SetFunc = OnSet;
+        OnSetBase = base.SetFunc!;
+        SetFunc = OnSet!;
     }
 
     private int _decimals = 0;
