@@ -1,15 +1,18 @@
 ﻿using Microsoft.AspNetCore.Components;
+using Microsoft.AspNetCore.Components.Rendering;
 using Microsoft.AspNetCore.Components.Web;
+using System.Globalization;
 
 namespace EficazFramework.Components;
 
-public class NumberField<T> : MudBlazor.MudTextField<T>
+public class NumberField<T> : MudBlazor.MudNumericField<T>
 {
     public NumberField() : base()
     {
-        InputType = MudBlazor.InputType.Number;
-        Converter = new Converters.NumberConverter<T>() { DecimalPlaces = DecimalPlaces };
-        Tag = (object)"input";
+        Converter = new Converters.NumberConverter<T>(DecimalPlaces)
+        {
+            Culture = Culture
+        };
         SetupAttributes();
     }
 
@@ -36,12 +39,16 @@ public class NumberField<T> : MudBlazor.MudTextField<T>
             attributes["step"] = (object)"1";
     }
 
-
-    protected override Task OnBlurredAsync(FocusEventArgs obj)
+    protected override bool SetCulture(CultureInfo value)
     {
-        base.OnBlurredAsync(obj);
-        return SetTextAsync(Converter.Set(Value), false);
+        var result = base.SetCulture(value);
+        ((Converters.NumberConverter<T>)Converter).Culture = value;
+        return result;
     }
 
+    protected override void BuildRenderTree(RenderTreeBuilder __builder)
+    {
+        base.BuildRenderTree(__builder);
+    }
 
 }
