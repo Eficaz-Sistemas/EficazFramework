@@ -66,22 +66,24 @@
 
             <!-- FORM (CURRENT ENTRY) -->
             <EficazFramework.Components.NavigatorPage>
-                <MudBlazor.MudForm>
+                <MudBlazor.MudForm Model="_viewModel!.Editor.CurrentEntry">
                     <EficazFramework.Components.FocusTrapEx>
                         <MudBlazor.MudTextField Label="Name"
-                                                @bind-Value="_viewModel!.Editor.CurrentEntry.Name"
                                                 Required
                                                 Class="@($"{Layout.MainLayout.INPUTCLASS}")"
-                                                Validation="@Validator" />
+                                                @bind-Value="_viewModel!.Editor.CurrentEntry.Name"
+                                                For="@(() => _viewModel!.Editor.CurrentEntry.Name)"
+                                                Validation="@(new Func<object, string, IEnumerable<string>>(Validate))" />
 
                         <MudBlazor.MudNumericField Label="Price"
-                                                   @bind-Value="_viewModel!.Editor.CurrentEntry.Price"
                                                    Required
                                                    Format="n2"
-                                                   Converter="@(new EficazFramework.Converters.NumberConverter<decimal?>(2))"
                                                    HideSpinButtons
                                                    Class="@($"{Layout.MainLayout.INPUTCLASS} text-right")"
-                                                   Validation="@Validator" />
+                                                   @bind-Value="_viewModel!.Editor.CurrentEntry.Price"
+                                                   For="@(() => _viewModel!.Editor.CurrentEntry.Price)"
+                                                   Converter="@(new EficazFramework.Converters.NumberConverter<decimal?>(2))"
+                                                   Validation="@(new Func<object, string, IEnumerable<string>>(Validate))" />
                     </EficazFramework.Components.FocusTrapEx>
                 </MudBlazor.MudForm>
             </EficazFramework.Components.NavigatorPage>

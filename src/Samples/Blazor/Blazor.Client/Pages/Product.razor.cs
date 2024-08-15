@@ -67,12 +67,19 @@ public partial class Product
     }
 
 
-    public Func<decimal?, IEnumerable<string>> Validator = value =>
+    //public Func<T, IEnumerable<string>> Validator = value =>
+    //{
+    //    return ["Passwords don't match", "I don't like you"];
+    //    //var result = model.Validator!.Validate(model);
+    //    //return result!;
+    //}; 
+
+
+    private IEnumerable<string> Validate(object model, string propertyName)
     {
-        return ["Passwords don't match", "I don't like you"];
-        //var result = model.Validator!.Validate(model);
-        //return result!;
-    };
+            return ["Passwords don't match", "I don't like you"];
+    }
+
     private string PasswordMatch(string text)   
     {
         return "Passwords don't match";
