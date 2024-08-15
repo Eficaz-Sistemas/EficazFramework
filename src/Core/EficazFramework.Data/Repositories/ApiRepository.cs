@@ -62,7 +62,7 @@ public sealed class ApiRepository<T> : Repositories.RepositoryBase<T> where T : 
     /// <summary>
     /// Permite parametrizar se a requição para obtenção de dados será GET ou POST
     /// </summary>
-    public Enums.CRUD.RequestAction GetRequestMode { get; set; } = Enums.CRUD.RequestAction.Post;
+    public Enums.CRUD.RequestAction GetRequestMode { get; set; } = Enums.CRUD.RequestAction.Get;
 
     /// <summary>
     /// Obtém ou define as definições para serialização Json nas requisições contra o servidor Http.
