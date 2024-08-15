@@ -2,12 +2,20 @@
 using FluentAssertions;
 using NUnit.Framework;
 using System;
+using System.Globalization;
 using System.Linq;
 
 namespace EficazFramework.Expressions;
 
 public class ExpressionItemTests
 {
+    [OneTimeSetUp]
+    public void OneTimeSetup()
+    {
+        System.Threading.Thread.CurrentThread.CurrentCulture = new CultureInfo("pt-BR");
+        System.Threading.Thread.CurrentThread.CurrentUICulture = new CultureInfo("pt-BR");
+    }
+
     [Test]
     public void NumberTest()
     {
