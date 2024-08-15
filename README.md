@@ -39,7 +39,9 @@
 
    - Novos Componentes, Templates e Layouts para melhor padronização das aplicações, conforme sua natureza
    - UI baseada em MaterialDesign, utilizando a biblioteca OpenSource [MudBlazor](https://github.com/MudBlazor/MudBlazor)
-   
+
+🌟🆕 [Aplicação de Exemplo](https://framework.eficazcs.app)
+
 ![Mdi Host](/Assets/Blazor/MdiHost.gif)
 
 ### <img src="./Assets/xaml.svg" width="24" height="24" style="fill:#512BD4" /> Biblioteca de extensão para Windows Presentation Foundation (WPF)
