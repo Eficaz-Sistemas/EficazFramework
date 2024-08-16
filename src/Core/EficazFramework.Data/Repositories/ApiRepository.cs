@@ -18,9 +18,12 @@ namespace EficazFramework.Repositories;
 
 public sealed class ApiRepository<T> : Repositories.RepositoryBase<T> where T : class
 {
-    public ApiRepository(HttpClient client) : base() =>
+    public ApiRepository(HttpClient client) : base()
+    {
         _client = client;
-    
+        TrackChanges = true;
+    }
+
     private readonly HttpClient _client;
 
     /// <summary>

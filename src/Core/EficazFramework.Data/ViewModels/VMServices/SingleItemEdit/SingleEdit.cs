@@ -249,6 +249,9 @@ public class SingleEdit<T> : ViewModelService<T> where T : class
         var ex = await ViewModelInstance.Repository.CancelAsync(CurrentEntry);
         if (ex is null && !ViewModelInstance.FailAssertion)
         {
+            if (args.State == Enums.CRUD.State.Edicao) 
+                ViewModelInstance.Repository.RollbackEdit();
+
             ViewModelInstance.Repository.CurrentEntry = null;
             ViewModelInstance.RaiseViewModelEvent(args);
             DetachValidatorAndINotifyPropertyChanges(args.CurrentEntry);
@@ -306,6 +309,7 @@ public class SingleEdit<T> : ViewModelService<T> where T : class
         
         args = new Events.CRUDEventArgs<T>(Enums.CRUD.Action.EntrySetupCompleted, ViewModelInstance.State, entry);
         ViewModelInstance.RaiseViewModelEvent(args);
+        ViewModelInstance.Repository.PrepareToEdit();
 
         args = new Events.CRUDEventArgs<T>(Enums.CRUD.Action.EntryEdited, ViewModelInstance.State, entry);
         ViewModelInstance.RaiseViewModelEvent(args);
