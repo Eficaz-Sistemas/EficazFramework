@@ -73,7 +73,7 @@
                                                 Class="@($"{Layout.MainLayout.INPUTCLASS}")"
                                                 @bind-Value="_viewModel!.Editor.CurrentEntry.Name"
                                                 For="@(() => _viewModel!.Editor.CurrentEntry.Name)"
-                                                Validation="@(new Func<object, string, IEnumerable<string>>(Validate))" />
+                                                Validation="@(new Func<string, IEnumerable<string>>(value => Validate(nameof(Shared.DTOs.ProductDto.Name))))" />
 
                         <MudBlazor.MudNumericField Label="Price"
                                                    Required
@@ -83,7 +83,7 @@
                                                    @bind-Value="_viewModel!.Editor.CurrentEntry.Price"
                                                    For="@(() => _viewModel!.Editor.CurrentEntry.Price)"
                                                    Converter="@(new EficazFramework.Converters.NumberConverter<decimal?>(2))"
-                                                   Validation="@(new Func<object, string, IEnumerable<string>>(Validate))" />
+                                                   Validation="@(new Func<decimal?, IEnumerable<string>>(value => Validate(nameof(Shared.DTOs.ProductDto.Price))))" />
                     </EficazFramework.Components.FocusTrapEx>
                 </MudBlazor.MudForm>
             </EficazFramework.Components.NavigatorPage>

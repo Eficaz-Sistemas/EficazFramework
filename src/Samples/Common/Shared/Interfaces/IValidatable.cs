@@ -9,4 +9,6 @@ public interface IValidatable
     IValidator? Validator { get; }
 
     public sealed ValidationResult? Validate() => Validator?.Validate(this);
+    public sealed ValidationResult? Validate(string propertyName) => Validator?.Validate(this, propertyName);
+
 }

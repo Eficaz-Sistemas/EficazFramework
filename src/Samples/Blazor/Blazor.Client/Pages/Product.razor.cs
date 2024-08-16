@@ -67,26 +67,9 @@ public partial class Product
     }
 
 
-    //public Func<T, IEnumerable<string>> Validator = value =>
-    //{
-    //    return ["Passwords don't match", "I don't like you"];
-    //    //var result = model.Validator!.Validate(model);
-    //    //return result!;
-    //}; 
-
-
-    private IEnumerable<string> Validate(object model, string propertyName)
+    private IEnumerable<string> Validate(string propertyName)
     {
-            return ["Passwords don't match", "I don't like you"];
-    }
-
-    private string PasswordMatch(string text)   
-    {
-        return "Passwords don't match";
-    }
-
-    private string PasswordMatch(decimal? value)
-    {
-        return "Passwords don't match";
+        var result = (_viewModel!.Editor.CurrentEntry as Shared.Interfaces.IValidatable).Validate(propertyName);
+        return result!.AsEnumerable();
     }
 }
