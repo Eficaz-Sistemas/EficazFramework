@@ -11,7 +11,8 @@ public static class CustomerValidator
 
         ((Validator<CustomerDto>)validator)
             .Required(c => c.Id)
-            .Required(c => c.Name);
+            .Required(c => c.Name)
+            .Required(c => c.Address.Street);
 
         return validator;
     }
