@@ -21,4 +21,12 @@
     <ProjectReference Include="..\..\Common\Shared\Shared.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <UpToDateCheckInput Remove="Pages\VersionHistory.razor" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <_ContentIncludedByDefault Remove="Pages\VersionHistory.razor" />
+  </ItemGroup>
+
 </Project>

@@ -40,14 +40,19 @@
                                                                      Class="ma-4"/>
                     </MudBlazor.MudTabPanel>
 
-                    <MudBlazor.MudTabPanel Icon="@MudBlazor.Icons.Material.Filled.Image" ToolTip="UI / UX">
+@*                     <MudBlazor.MudTabPanel Icon="@MudBlazor.Icons.Material.Filled.Image" ToolTip="UI / UX">
 
                         <EficazFramework.Components.ApplicationsMenu ItemsSource="@_uiApps"
                                                                      SelectionCallBack="AppClick"
                                                                      Class="ma-4" />
 
                     </MudBlazor.MudTabPanel>
+ *@
+                    <MudBlazor.MudTabPanel Icon="@MudBlazor.Icons.Material.Filled.History" ToolTip="Release Notes">
 
+                        <VersionHistory/>
+
+                    </MudBlazor.MudTabPanel>
                 </MudBlazor.MudTabs>
             </Content>
         </EficazFramework.Components.StartMenu>
