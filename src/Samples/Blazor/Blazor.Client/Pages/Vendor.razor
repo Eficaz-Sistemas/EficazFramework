@@ -125,6 +125,15 @@
                                                     OnClick="@(() => _viewModel!.Commands["New"].Execute(null))"
                                                     Style="z-index:3;" />
                     </MudBlazor.MudTooltip>
+                    <MudBlazor.MudTooltip Text="@EficazFramework.Resources.Strings.Commands.Refresh">
+                        <MudBlazor.MudIconButton Color="MudBlazor.Color.Primary"
+                                                    Variant="MudBlazor.Variant.Filled"
+                                                    Size="@MudBlazor.Size.Small"
+                                                    Icon="@MudBlazor.Icons.Material.Filled.Refresh"
+                                                    Class="rounded-circle pa-3"
+                                                    OnClick="@(() => _viewModel!.Commands["Get"].Execute(null))"
+                                                    Style="z-index:3;" />
+                    </MudBlazor.MudTooltip>
                 </div>;
         }
         return null;
