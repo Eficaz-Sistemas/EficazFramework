@@ -150,6 +150,9 @@ public sealed class ApiRepository<T> : Repositories.RepositoryBase<T> where T : 
         var response = await _client.PostAsJsonAsync(requestUri, body, SerializerOptions, cancellationToken);
         if (response.IsSuccessStatusCode)
         {
+            if (_isAdding)
+                _isAdding = false;
+
             try
             {
                 return await response.Content.ReadFromJsonAsync<TResult>(new System.Text.Json.JsonSerializerOptions()
@@ -223,6 +226,7 @@ public sealed class ApiRepository<T> : Repositories.RepositoryBase<T> where T : 
         var response = await _client.DeleteAsync(requestUri, cancellationToken);
         if (response.IsSuccessStatusCode)
         {
+            _isDeleting = false;
             try
             {
                 return await response.Content.ReadFromJsonAsync<TResult>(new System.Text.Json.JsonSerializerOptions()
@@ -454,13 +458,10 @@ public sealed class ApiRepository<T> : Repositories.RepositoryBase<T> where T : 
             {
                 var response = await RequestMethod<List<T>, List<T>>(Enums.CRUD.RequestAction.Post, UrlPost, null, DataContext.ToList(), cancellationToken);
             }
-            _isDeleting = false;
             return default;
         }
         catch (Exception ex)
         {
-            _isAdding = false;
-            _isDeleting = false;
             return ex;
         }
     }
