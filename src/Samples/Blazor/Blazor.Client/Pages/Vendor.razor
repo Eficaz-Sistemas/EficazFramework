@@ -13,6 +13,7 @@
                                        FixedHeader
                                        Virtualize
                                        ReadOnly
+                                       QuickFilter="@_quickFilter"
                                        Class="flex-grow-1 overflow-auto">
                     <LoadingContent>
                         <MudBlazor.MudText>@(_viewModel?.LoadingMessage ?? "")</MudBlazor.MudText>
@@ -107,14 +108,22 @@
         {
             return
                 @<div class="d-flex flex-row flex-grow-1 justify-end mt-1 mb-n6 mr-1">
+                    <div style="max-width:200px">
+                        <MudBlazor.MudTextField @bind-Value="_searchString"
+                                                Immediate
+                                                Margin="MudBlazor.Margin.Dense"
+                                                Adornment="MudBlazor.Adornment.Start"
+                                                AdornmentIcon="@MudBlazor.Icons.Material.Filled.Search"
+                                                Class="@($"{Layout.MainLayout.INPUTCLASS}")"/>
+                    </div>
                     <MudBlazor.MudTooltip Text="@EficazFramework.Resources.Strings.Commands.Add">
-                                <MudBlazor.MudIconButton Color="MudBlazor.Color.Secondary"
-                                                            Variant="MudBlazor.Variant.Filled"
-                                                            Size="@MudBlazor.Size.Medium"
-                                                            Icon="@MudBlazor.Icons.Material.Filled.Add"
-                                                            Class="rounded-circle pa-3"
-                                                            OnClick="@(() => _viewModel!.Commands["New"].Execute(null))"
-                                                            Style="z-index:3;" />
+                        <MudBlazor.MudIconButton Color="MudBlazor.Color.Secondary"
+                                                    Variant="MudBlazor.Variant.Filled"
+                                                    Size="@MudBlazor.Size.Medium"
+                                                    Icon="@MudBlazor.Icons.Material.Filled.Add"
+                                                    Class="rounded-circle pa-3"
+                                                    OnClick="@(() => _viewModel!.Commands["New"].Execute(null))"
+                                                    Style="z-index:3;" />
                     </MudBlazor.MudTooltip>
                 </div>;
         }
