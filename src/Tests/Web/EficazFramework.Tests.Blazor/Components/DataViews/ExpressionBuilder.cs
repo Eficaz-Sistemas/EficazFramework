@@ -109,7 +109,7 @@ public class ExpressionBuilder : BunitTest
         viewModel.Items[0].Value1.Should().Be(viewModel.Properties[0].DefaultValue1);
         viewModel.Items[0].Value2.Should().Be(viewModel.Properties[0].DefaultValue2);
         selectorOp.Instance.Value.Should().Be(viewModel.Items[0].Operator);
-        var textField = editorCl.FindComponent<MudBlazor.MudTextField<object>>();
+        var textField = editorCl.FindComponent<EficazFramework.Components.NumberField<object>>();
         textField.Should().NotBeNull();
         textField.Instance.Value.Should().Be(viewModel.Items[0].Value1);
 
