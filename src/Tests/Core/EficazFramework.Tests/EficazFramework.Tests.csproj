@@ -12,6 +12,7 @@
     <AssemblyOriginatorKeyFile>EfCore.snk</AssemblyOriginatorKeyFile>
     <UserSecretsId>e10bb1d5-0e97-4115-a772-d071793e3d69</UserSecretsId>
 	<LangVersion>latest</LangVersion>
+	<NeutralLanguage>pt-BR</NeutralLanguage>
   </PropertyGroup>
 
   <ItemGroup>
