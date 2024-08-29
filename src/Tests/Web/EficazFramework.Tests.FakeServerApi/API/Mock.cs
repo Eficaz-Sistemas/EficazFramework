@@ -40,7 +40,7 @@ internal static class Mock
         return Results.Ok(result);
     }
 
-    internal static async Task<IResult> GetBigAsync(EficazFramework.Expressions.QueryDescription parameters)
+    internal static async Task<IResult> GetBigAsync(EficazFramework.Expressions.QueryDescription? parameters)
     {
         await Task.Delay(1);
         List<Resources.Mocks.Classes.MockClass> result = new();
