@@ -109,12 +109,12 @@ public partial class MdiWindow: MudBlazor.MudComponentBase
     /// Set a header custom content
     /// </summary>
     /// <param name="customHeader"></param>
-    /// <param name="scrolable"></param>
+    /// <param name="scrollable"></param>
     public void OverrideFrameParameters(RenderFragment? customHeader = null,
-        bool scrolable = false)
+        bool scrollable = false)
     {
         HeaderContent = customHeader;
-        Scrollable = scrolable;
+        Scrollable = scrollable;
         StateHasChanged();
     }
 

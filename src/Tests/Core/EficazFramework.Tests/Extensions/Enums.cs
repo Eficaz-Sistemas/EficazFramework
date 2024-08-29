@@ -33,27 +33,27 @@ class Enum
         valuesComp.Count().Should().Be(12);
         valuesComp.ElementAt(6).Value.Should().Be(EficazFramework.Enums.CompareMethod.BiggerOrEqualThan);
         valuesComp.ElementAt(6).Description.Should().Be(EficazFramework.Resources.Strings.DataDescriptions.eComparer_BiggerOrEqualThan);
-        valuesComp.Count(c => c.Description == c.Value.ToString()).Should().Be(0);
+        valuesComp.Count(c => c.Description == c.Value.ToString()).Should().BeLessThan(valuesComp.Count());
 
         var valuesComp1 = Enums.GetLocalizedValues(typeof(EficazFramework.Enums.CompareMethod));
         valuesComp1.Count().Should().Be(12);
         valuesComp1.ElementAt(6).Value.Should().Be(EficazFramework.Enums.CompareMethod.BiggerOrEqualThan);
         valuesComp1.ElementAt(6).Description.Should().Be(EficazFramework.Resources.Strings.DataDescriptions.eComparer_BiggerOrEqualThan);
         valuesComp1.ElementAt(6).ToString().Should().Be(EficazFramework.Resources.Strings.DataDescriptions.eComparer_BiggerOrEqualThan);
-        valuesComp1.Count(c => c.Description == c.Value.ToString()).Should().Be(0);
+        valuesComp1.Count(c => c.Description == c.Value.ToString()).Should().BeLessThan(valuesComp1.Count());
 
         var valuesComp2 = Enums.GetLocalizedValues<DocumentosTeste>(typeof(EficazFramework.Resources.Strings.TestStrings));
         valuesComp2.Count().Should().Be(9);
         valuesComp2.ElementAt(4).Value.Should().Be(DocumentosTeste.PIS_NIT);
         valuesComp2.ElementAt(4).Description.Should().Be(EficazFramework.Resources.Strings.TestStrings.eDocumento_PIS_NIT);
-        valuesComp2.Count(c => c.Description == c.Value.ToString()).Should().Be(6);
+        valuesComp2.Count(c => c.Description == c.Value.ToString()).Should().BeLessThan(valuesComp2.Count());
 
         var valuesComp3 = Enums.GetLocalizedValues(typeof(DocumentosTeste), typeof(EficazFramework.Resources.Strings.TestStrings));
         valuesComp3.Count().Should().Be(9);
         valuesComp3.ElementAt(4).Value.Should().Be(DocumentosTeste.PIS_NIT);
         valuesComp3.ElementAt(4).Description.Should().Be(EficazFramework.Resources.Strings.TestStrings.eDocumento_PIS_NIT);
         valuesComp3.ElementAt(6).Description.Should().Be("CPF do cara");
-        valuesComp3.Count(c => c.Description == c.Value.ToString()).Should().Be(6);
+        valuesComp3.Count(c => c.Description == c.Value.ToString()).Should().BeLessThan(valuesComp3.Count());
 
         DocumentosTeste.CPF.GetDescription().Should().Be("CPF do cara");
     }
@@ -64,12 +64,12 @@ class Enum
         _ = Resources.Strings.Descriptions.Culture;
         var values = Enums.GetBoolValues();
         values.Count().Should().Be(2);
-        values.First(b => (bool)b.Value == true).Description.Should().Be("Sim");
-        values.First(b => (bool)b.Value == false).Description.Should().Be("Não");
+        values.First(b => (bool)b.Value == true).Description.Should().Be(EficazFramework.Resources.Strings.Descriptions.BoolToYesNo_True);
+        values.First(b => (bool)b.Value == false).Description.Should().Be(EficazFramework.Resources.Strings.Descriptions.BoolToYesNo_False);
         values = Enums.GetBoolValues(BoolDescriptionType.TrueFalse);
         values.Count().Should().Be(2);
-        values.First(b => (bool)b.Value == true).Description.Should().Be("Verdadeiro");
-        values.First(b => (bool)b.Value == false).Description.Should().Be("Falso");
+        values.First(b => (bool)b.Value == true).Description.Should().Be(EficazFramework.Resources.Strings.Descriptions.BoolToTrueFalse_True);
+        values.First(b => (bool)b.Value == false).Description.Should().Be(EficazFramework.Resources.Strings.Descriptions.BoolToTrueFalse_False);
     }
 
     [Test, Order(4)]

@@ -1,8 +1,17 @@
 ﻿@inject EficazFramework.Services.IThemeProvider themeProvider
 
 <MudBlazor.MudThemeProvider Theme=themeProvider.Theme IsDarkMode="themeProvider.IsDarkMode"/>
-<MudBlazor.MudDialogProvider/>
-<MudBlazor.MudSnackbarProvider/>
+
+@* Required *@
+<MudBlazor.MudThemeProvider Theme=themeProvider.Theme IsDarkMode="themeProvider.IsDarkMode" />
+<MudPopoverProvider />
+
+@* Needed for dialogs *@
+<MudDialogProvider />
+
+@* Needed for snackbars *@
+<MudSnackbarProvider />
+
 
 <Router AppAssembly="@typeof(App).Assembly">
     <Found Context="routeData">

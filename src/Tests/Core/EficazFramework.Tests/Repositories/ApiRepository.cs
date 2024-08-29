@@ -30,7 +30,7 @@ public class ApiRepositoryTests
     [Test]
     public async Task ApiTest()
     {
-        var response = await Client.PostAsJsonAsync("/mock/get", new object(), default);
+        var response = await Client.GetAsync("/mock/get");
         response.IsSuccessStatusCode.Should().BeTrue();
         response.StatusCode.Should().Be(System.Net.HttpStatusCode.OK);
 
@@ -43,7 +43,8 @@ public class ApiRepositoryTests
     {
         var repository = new ApiRepository<Resources.Mocks.Classes.MockClass>(Client)
         {
-            UrlGet = "/mock/get"
+            UrlGet = "/mock/get",
+            GetRequestMode = Enums.CRUD.RequestAction.Get,
         };
         repository.DataContext.Should().HaveCount(0);
         repository.Get();
@@ -55,7 +56,6 @@ public class ApiRepositoryTests
     {
         var repository = new ApiRepository<Resources.Mocks.Classes.MockClass>(Client)
         {
-            GetRequestMode = Enums.CRUD.RequestAction.Get,
             UrlGet = "/mock/get"
         };
         repository.DataContext.Should().HaveCount(0);
@@ -70,7 +70,8 @@ public class ApiRepositoryTests
     {
         var repository = new ApiRepository<Resources.Mocks.Classes.MockClass>(Client)
         {
-            UrlGet = "/mock/get"
+            UrlGet = "/mock/get",
+            GetRequestMode = Enums.CRUD.RequestAction.Post,
         };
         repository.DataContext.Should().HaveCount(0);
         await repository.GetAsync(default);
@@ -85,7 +86,7 @@ public class ApiRepositoryTests
     {
         var repository = new ApiRepository<Resources.Mocks.Classes.MockClass>(Client)
         {
-            UrlGet = "/mock/getBig"
+            UrlGet = "/mock/getBig",
         };
         repository.DataContext.Should().HaveCount(0);
         await repository.GetAsync(default);
@@ -98,15 +99,16 @@ public class ApiRepositoryTests
         var repository = new ApiRepository<Resources.Mocks.Classes.MockClass>(Client)
         {
             UrlGet = "/mock/get",
-            Filter = new()
-        {
-            new Expressions.ExpressionObjectQuery()
-            {
-                FieldName = "Id",
-                Operator = Enums.CompareMethod.Equals,
-                Value = 1
-            }
-        }
+            GetRequestMode = Enums.CRUD.RequestAction.Post,
+            Filter =
+            [
+                new Expressions.ExpressionObjectQuery()
+                {
+                    FieldName = "Id",
+                    Operator = Enums.CompareMethod.Equals,
+                    Value = 1
+                }
+            ]
         };
         repository.DataContext.Should().HaveCount(0);
         await repository.GetAsync(default);
@@ -123,7 +125,7 @@ public class ApiRepositoryTests
         var repository = new ApiRepository<Resources.Mocks.Classes.MockClass>(Client)
         {
             UrlGet = "/mock/getForCrudTest",
-            UrlPost = "mock/update"
+            UrlPut = "/mock/update"
         };
         repository.Get();
         repository.DataContext.Should().HaveCount(5);

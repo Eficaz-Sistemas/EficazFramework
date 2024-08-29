@@ -70,7 +70,7 @@ namespace EficazFramework.Resources.Strings {
         }
         
         /// <summary>
-        ///   Consulta uma cadeia de caracteres localizada semelhante a Oppss....
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Ooppss....
         /// </summary>
         public static string Exception_DefaultHeader {
             get {

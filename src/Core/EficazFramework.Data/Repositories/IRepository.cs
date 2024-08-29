@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -9,9 +10,6 @@ namespace EficazFramework.Repositories;
 
 public abstract class RepositoryBase<T> : INotifyPropertyChanged, IDisposable where T : class
 {
-
-    #region Get
-
     /// <summary>
     /// Página atual dos métodos FetchItems e FetchItemsAsync. Será sempre 0 ou 1 quando a paginação estiver desabilitada.
     /// </summary>
@@ -96,17 +94,27 @@ public abstract class RepositoryBase<T> : INotifyPropertyChanged, IDisposable wh
     public Action BeforeGet = null;
     public Action AfterGet = null;
 
-    #endregion
 
 
-
-    #region T
 
     /// <summary>
     /// Entidade atualmente em edição (ou inclusão).
     /// Deve ser definido pelo ViewModel (ou regras de negócio)
     /// </summary>
     public T CurrentEntry { get; set; } = null;
+
+    /// <summary>
+    /// Valores originais da Entidade atualmente em edição.
+    /// </summary>
+    public T OriginalValues { get; set; } = null;
+
+    /// <summary>
+    /// Determina se o Repositório deve monitorar as alterações
+    /// em <see cref="CurrentEntry"/> e aplicar RollBack
+    /// no cancelamento.
+    /// </summary>
+    public bool TrackChanges { get; set; } = false;
+
 
     /// <summary>
     /// Solicita a criação de uma nova instância de T
@@ -186,11 +194,9 @@ public abstract class RepositoryBase<T> : INotifyPropertyChanged, IDisposable wh
 
     public virtual EficazFramework.Validation.Fluent.ValidationResult OnValidate(T instance) => Validation.Fluent.ValidationResult.Empty;
     public virtual async Task<EficazFramework.Validation.Fluent.ValidationResult> OnValidateAsync(T instance) => await Task.Run(() => Validation.Fluent.ValidationResult.Empty);
-    #endregion
 
 
 
-    #region Generic
 
     /// <summary>s
     /// Adiciona um item recém-criado à lista de items.
@@ -225,6 +231,19 @@ public abstract class RepositoryBase<T> : INotifyPropertyChanged, IDisposable wh
     /// Informa à fonte de dados que o item T deve ser adicionado a unidade de persistência do repositório
     /// </summary>
     internal virtual void ItemAdded(object item) { }
+
+    /// <summary>
+    /// Efetua uma cópia da entidade em edição ( <see cref="CurrentEntry"/> )
+    /// para manter seus valores originais intactos, para rollback em caso de 
+    /// cancelamento
+    /// </summary>
+    public void PrepareToEdit()
+    {
+        if (!TrackChanges)
+            return;
+
+        OriginalValues = System.Text.Json.JsonSerializer.Deserialize<T>(System.Text.Json.JsonSerializer.Serialize(CurrentEntry));
+    }
 
 
     /// <summary>
@@ -277,6 +296,7 @@ public abstract class RepositoryBase<T> : INotifyPropertyChanged, IDisposable wh
 
 
 
+
     /// <summary>
     /// Solicita o cancelamento das alterações efetuadas no argumento item.
     /// Caso o mesmo não seja informado, será aplicado sobre todos os itens no DataContext
@@ -291,15 +311,27 @@ public abstract class RepositoryBase<T> : INotifyPropertyChanged, IDisposable wh
 
 
     /// <summary>
+    /// Restaura os valores originais de <see cref="CurrentEntry"/>
+    /// a partir da cópia armazenada em <see cref="OriginalValues"/>
+    /// </summary>
+    public void RollbackEdit()
+    {
+        if (!TrackChanges)
+            return;
+
+        int currentIndex = DataContext.IndexOf(CurrentEntry);
+        DataContext[currentIndex] = OriginalValues;
+        CurrentEntry = OriginalValues;
+    }
+
+
+    /// <summary>
     /// Solicita que o item seja desanexado do contexto de persistÊncia.
     /// </summary>
     public abstract void Detach(object item);
 
-    #endregion
 
 
-
-    #region T2
 
     /// <summary>
     /// Solicita a criação de uma nova instância de T2
@@ -322,11 +354,8 @@ public abstract class RepositoryBase<T> : INotifyPropertyChanged, IDisposable wh
         return result;
     }
 
-    #endregion
 
 
-
-    #region Navigation
 
     /// <summary>
     /// Move os método(s) Get e GetAsync para a primeira página (apenas quando a paginação estiver habilitada).
@@ -367,23 +396,16 @@ public abstract class RepositoryBase<T> : INotifyPropertyChanged, IDisposable wh
         return true;
     }
 
-    #endregion
 
 
 
-    #region HandlersEvents
-
-    internal void RaisePropertyChanged(string propertyName)
-    {
+    internal void RaisePropertyChanged(string propertyName) =>
         PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-    }
+
     public event PropertyChangedEventHandler PropertyChanged;
 
-    #endregion
 
 
-
-    #region Dispose
 
     private bool disposedValue;
 
@@ -435,8 +457,6 @@ public abstract class RepositoryBase<T> : INotifyPropertyChanged, IDisposable wh
     internal virtual void DisposeUnManagedCallerObjects()
     {
     }
-
-    #endregion
 }
 
 public interface IAuditableRepository

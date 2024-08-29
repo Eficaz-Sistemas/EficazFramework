@@ -8,7 +8,6 @@
                                  Class="@ToggleButtonClass()"
                                  Style="@ToggleButtonStyle()"
                                  Size="@MudBlazor.Size.Large"
-                                 DisableElevation
                                  OnClick="() => ToggleOpen()"
                                  Title="Sections Button">
             <div class="ef-mdi-sections-current">
@@ -49,7 +48,7 @@
                                 <MudBlazor.MudIconButton Icon="@MudBlazor.Icons.Material.Filled.Add"
                                                          Size="@MudBlazor.Size.Large"
                                                          Class="mud-paper-outlined ef-mdi-sections-add" 
-                                                         Style="width:125px;height:125px;background-color: var(--mud-palette-background-grey)"
+                                                         Style="width:125px;height:125px;background-color: var(--mud-palette-background-gray)"
                                                          Variant="@MudBlazor.Variant.Outlined"
                                                          OnClick="() => OnNewSectionClick()"/>
                             </MudBlazor.MudTooltip>
@@ -77,7 +76,7 @@
                                 </div>
                                 <MudBlazor.MudPaper Elevation="0" 
                                                     Class="flex-grow-1 d-flex justify-center align-center relative mt-1"
-                                                    Style="background-color: var(--mud-palette-background-grey)">
+                                                    Style="background-color: var(--mud-palette-background-gray)">
                                     <MudBlazor.MudIcon Icon="@MudBlazor.Icons.Material.Filled.Image" 
                                                        Class="ma-4"
                                                        Size="@MudBlazor.Size.Large"/>
@@ -93,7 +92,7 @@
                                 <MudBlazor.MudIconButton Icon="@MudBlazor.Icons.Material.Filled.Delete"
                                                      Size="@MudBlazor.Size.Large"
                                                      Class="mud-paper-outlined ef-mdi-sections-clear"
-                                                     Style="width:125px;height:125px;background-color: var(--mud-palette-background-grey)"
+                                                     Style="width:125px;height:125px;background-color: var(--mud-palette-background-gray)"
                                                      Variant="@MudBlazor.Variant.Outlined"
                                                      OnClick="() => OnCloseAllSectionsClick()" />
                             </MudBlazor.MudTooltip>

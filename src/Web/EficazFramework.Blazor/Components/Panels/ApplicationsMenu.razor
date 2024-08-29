@@ -4,7 +4,7 @@
 
 <div class="@ClassName()"
      style="@Style">
-    <div class="d-flex mx-2 mt-n4 align-center">
+    <div class="d-flex mx-2 align-center">
         <MudBlazor.MudTextField @bind-Value="SearchFilter"
                                 Class="mud-input-control-ef flex-grow1"
                                 Placeholder="@Resources.Strings.Components.MDIApplication_FindPlaceholder"
@@ -17,8 +17,7 @@
                                      Color="@MudBlazor.Color.Transparent"
                                      Icon="@(_isCompact ? MudBlazor.Icons.Material.Filled.GridView : MudBlazor.Icons.Material.Filled.List)"
                                      Size="@MudBlazor.Size.Medium"
-                                     Class="mt-6 ml-4 ef-buttons-togglehost"
-                                     DisableElevation
+                                     Class="ml-4 ef-buttons-togglehost"
                                      OnClick="ToggleHostView"
                                      Title="Alternar visualização" />
         </MudBlazor.MudTooltip>
@@ -33,9 +32,9 @@
                            Class="mx-1 pb-1 px-2">
                     @group.Key
                 </MudBlazor.MudText>
-                <MudBlazor.MudGrid Class="mx-1 mb-4 pr-6"
-                           Spacing="1"
-                           Justify="MudBlazor.Justify.FlexStart">
+                <MudBlazor.MudGrid Class="mx-1 ml-0 mb-4 pr-6"
+                                   Spacing="2"
+                                   Justify="MudBlazor.Justify.FlexStart">
                     @foreach (var app in group)
                     {
                         <MudBlazor.MudItem>
@@ -60,19 +59,18 @@
         }
         else
         {
-            <MudBlazor.MudList Clickable="true"
-                           Class="py-0">
+            <MudBlazor.MudList T="IGrouping<string, ApplicationDefinition>"
+                               Class="py-0">
                 @foreach (var group in FilteredApplications())
                 {
                     <MudBlazor.MudListItem Text="@group.Key"
-                                   InitiallyExpanded="true">
+                                           Expanded>
                         <NestedList>
                             @foreach (var app in group)
                             {
                                 <MudBlazor.MudListItem Icon="@(app.Blazor()?.Icon?.ToString())"
-                                           OnClick="() => SelectionCallBack?.Invoke(app)">
-                                    @app.LongTitle
-                                </MudBlazor.MudListItem>
+                                                       Text="@app.TooltipTilte"
+                                                       OnClick="() => SelectionCallBack?.Invoke(app)"/>
                             }
                         </NestedList>
                     </MudBlazor.MudListItem>

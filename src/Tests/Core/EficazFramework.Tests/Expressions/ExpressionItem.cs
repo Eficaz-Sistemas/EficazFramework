@@ -2,12 +2,20 @@
 using FluentAssertions;
 using NUnit.Framework;
 using System;
+using System.Globalization;
 using System.Linq;
 
 namespace EficazFramework.Expressions;
 
 public class ExpressionItemTests
 {
+    [OneTimeSetUp]
+    public void OneTimeSetup()
+    {
+        System.Threading.Thread.CurrentThread.CurrentCulture = new CultureInfo("pt-BR");
+        System.Threading.Thread.CurrentThread.CurrentUICulture = new CultureInfo("pt-BR");
+    }
+
     [Test]
     public void NumberTest()
     {
@@ -54,9 +62,9 @@ public class ExpressionItemTests
         item.Value2 = 9;
         item.Value2.Should().Be(9);
 
-        item.ToString().Should().Be("Código Igual a 4");
+        item.ToString().Should().Be($"Código {EficazFramework.Resources.Strings.Expressions.eComparer_Equals} 4");
         item.Operator = Enums.CompareMethod.Between;
-        item.ToString().Should().Be("Código Entre 4 - 9");
+        item.ToString().Should().Be($"Código {EficazFramework.Resources.Strings.Expressions.eComparer_Between} 4 - 9");
     }
 
     [Test]

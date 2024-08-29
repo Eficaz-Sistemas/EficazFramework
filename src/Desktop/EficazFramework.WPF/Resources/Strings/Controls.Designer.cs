@@ -61,7 +61,7 @@ namespace EficazFramework.Resources.Strings {
         }
         
         /// <summary>
-        ///   Consulta uma cadeia de caracteres localizada semelhante a Pesquisar....
+        ///   Consulta uma cadeia de caracteres localizada semelhante a pesquisar....
         /// </summary>
         public static string AutoComplete_Tooltip {
             get {

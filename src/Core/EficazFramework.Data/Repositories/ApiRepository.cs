@@ -16,15 +16,18 @@ using System.Threading.Tasks;
 
 namespace EficazFramework.Repositories;
 
-public sealed class ApiRepository<TEntity> : Repositories.RepositoryBase<TEntity> where TEntity : class
+public sealed class ApiRepository<T> : Repositories.RepositoryBase<T> where T : class
 {
-    public ApiRepository(HttpClient client) : base() =>
+    public ApiRepository(HttpClient client) : base()
+    {
         _client = client;
-    
+        TrackChanges = true;
+    }
+
     private readonly HttpClient _client;
 
     /// <summary>
-    /// Paramêtros para filtragem de dados.
+    /// Paramêtros para filtragem de dados para pesquisas com POST (body contendo instruções de query dinâmica).
     /// Efetua shadowing de <see cref="RepositoryBase{T}.Filter"/>
     /// </summary>
     public new Expressions.ExpressionQuery Filter { get; set; }
@@ -35,24 +38,34 @@ public sealed class ApiRepository<TEntity> : Repositories.RepositoryBase<TEntity
     public string UrlGet { get; set; } = "/myRestApi/get";
 
     /// <summary>
-    /// URL de requisição para métodos FetchItems() e FetchItemsAsync()
+    /// Expressão para formação da query para os métodos FetchItems() e FetchItemsAsync()
+    /// </summary>
+    public Func<T, string> GetQueryFunc { get; set; }
+
+    /// <summary>
+    /// URL de requisição para método PutAsync()
     /// </summary>
     public string UrlPut { get; set; } = "/myRestApi/put";
 
     /// <summary>s
-    /// URL de requisição para métodos FetchItems() e FetchItemsAsync()
+    /// URL de requisição para método PostAsync()
     /// </summary>
     public string UrlPost { get; set; } = "/myRestApi/post";
 
     /// <summary>
-    /// URL de requisição para métodos FetchItems() e FetchItemsAsync()
+    /// URL de requisição para o método DeleteAsync()
     /// </summary>
     public string UrlDelete { get; set; } = "/myRestApi/delete";
 
     /// <summary>
+    /// Expressão para formação da query para o método DeleteAsync()
+    /// </summary>
+    public Func<T, string> DeleteQueryFunc { get; set; }
+
+    /// <summary>
     /// Permite parametrizar se a requição para obtenção de dados será GET ou POST
     /// </summary>
-    public Enums.CRUD.RequestAction GetRequestMode { get; set; } = Enums.CRUD.RequestAction.Post;
+    public Enums.CRUD.RequestAction GetRequestMode { get; set; } = Enums.CRUD.RequestAction.Get;
 
     /// <summary>
     /// Obtém ou define as definições para serialização Json nas requisições contra o servidor Http.
@@ -71,6 +84,7 @@ public sealed class ApiRepository<TEntity> : Repositories.RepositoryBase<TEntity
     /// </summary>
     public async Task<TResult> RequestMethod<TBody, TResult>(Enums.CRUD.RequestAction action,
         string requestUri, 
+        string queryExpr,
         TBody body, 
         CancellationToken cancellationToken)
     {
@@ -79,9 +93,10 @@ public sealed class ApiRepository<TEntity> : Repositories.RepositoryBase<TEntity
         {
             return action switch
             {
-                Enums.CRUD.RequestAction.Get => await GetAsync<TResult>(requestUri, cancellationToken),
+                Enums.CRUD.RequestAction.Get => await GetAsync<TResult>($"{requestUri}/{queryExpr}", cancellationToken),
                 Enums.CRUD.RequestAction.Post => await PostAsync<TBody, TResult>(requestUri, body, cancellationToken),
                 Enums.CRUD.RequestAction.Put => await PutAsync<TBody, TResult>(requestUri, body, cancellationToken),
+                Enums.CRUD.RequestAction.Delete => await DeleteAsync<TBody, TResult>($"{requestUri}/{queryExpr}", cancellationToken),
                 _ => default
             };
         }
@@ -93,7 +108,7 @@ public sealed class ApiRepository<TEntity> : Repositories.RepositoryBase<TEntity
     }
 
     /// <summary>
-    /// Método Get executado por <see cref="RequestMethod{TBody, TResult}(Enums.CRUD.RequestAction, string, TBody, CancellationToken)"/>
+    /// Método GET executado por <see cref="RequestMethod{TBody, TResult}(Enums.CRUD.RequestAction, string, Func{TBody, string}, TBody, CancellationToken)"/>
     /// </summary>
     private async Task<TResult> GetAsync<TResult>(string requestUri,
         CancellationToken cancellationToken)
@@ -126,7 +141,7 @@ public sealed class ApiRepository<TEntity> : Repositories.RepositoryBase<TEntity
     }
 
     /// <summary>
-    /// Método Post executado por <see cref="RequestMethod{TBody, TResult}(Enums.CRUD.RequestAction, string, TBody, CancellationToken)"/>
+    /// Método POST executado por <see cref="RequestMethod{TBody, TResult}(Enums.CRUD.RequestAction, string, Func{TBody, string}, TBody, CancellationToken)"/>
     /// </summary>
     private async Task<TResult> PostAsync<TBody, TResult>(string requestUri,
         TBody body,
@@ -135,6 +150,9 @@ public sealed class ApiRepository<TEntity> : Repositories.RepositoryBase<TEntity
         var response = await _client.PostAsJsonAsync(requestUri, body, SerializerOptions, cancellationToken);
         if (response.IsSuccessStatusCode)
         {
+            if (_isAdding)
+                _isAdding = false;
+
             try
             {
                 return await response.Content.ReadFromJsonAsync<TResult>(new System.Text.Json.JsonSerializerOptions()
@@ -163,7 +181,7 @@ public sealed class ApiRepository<TEntity> : Repositories.RepositoryBase<TEntity
     }
 
     /// <summary>
-    /// Método Post executado por <see cref="RequestMethod{TBody, TResult}(Enums.CRUD.RequestAction, string, TBody, CancellationToken)"/>
+    /// Método PUT executado por <see cref="RequestMethod{TBody, TResult}(Enums.CRUD.RequestAction, string, Func{TBody, string}, TBody, CancellationToken)"/>
     /// </summary>
     private async Task<TResult> PutAsync<TBody, TResult>(string requestUri,
         TBody body,
@@ -200,19 +218,53 @@ public sealed class ApiRepository<TEntity> : Repositories.RepositoryBase<TEntity
     }
 
     /// <summary>
+    /// Método DELETE executado por <see cref="RequestMethod{TBody, TResult}(Enums.CRUD.RequestAction, string, Func{TBody, string}, TBody, CancellationToken)"/>
+    /// </summary>
+    private async Task<TResult> DeleteAsync<TBody, TResult>(string requestUri,
+        CancellationToken cancellationToken)
+    {
+        var response = await _client.DeleteAsync(requestUri, cancellationToken);
+        if (response.IsSuccessStatusCode)
+        {
+            _isDeleting = false;
+            try
+            {
+                return await response.Content.ReadFromJsonAsync<TResult>(new System.Text.Json.JsonSerializerOptions()
+                {
+                    PropertyNameCaseInsensitive = true
+                }, cancellationToken);
+            }
+            catch
+            {
+                return default;
+            }
+        }
+        else
+        {
+            string responseResult = await response.Content.ReadAsStringAsync(cancellationToken);
+
+
+            throw response.StatusCode switch
+            {
+                System.Net.HttpStatusCode.Unauthorized => new UnauthorizedAccessException(Resources.Strings.Security.GPO_AccessViolationMessage),
+                System.Net.HttpStatusCode.Forbidden => new UnauthorizedAccessException(Resources.Strings.Security.GPO_AccessViolationMessage),
+                System.Net.HttpStatusCode.UnprocessableEntity => new ValidationException(ParseValidationFromResponseString(responseResult)),
+                _ => new HttpRequestException(string.Format(Resources.Strings.ViewModel.UnhandledError_Message, response.ReasonPhrase)),
+            };
+        }
+    }
+
+
+
+    /// <summary>
     /// Extrai os erros de validação do Http Response.
     /// </summary>
     /// <param name="responseString"></param>
     /// <returns></returns>
     private static string ParseValidationFromResponseString(string responseString)
     {
-        var jsonParse = JsonDocument.Parse(responseString);
-        var jsonFilter = jsonParse.RootElement
-                            .GetProperty("errors")
-                            .GetRawText();
-
-        EficazFramework.Validation.Fluent.ValidationResult result = new();
-        result.AddRange(JsonSerializer.Deserialize<Dictionary<string, string[]>>(jsonFilter).First().Value.ToList());
+        EficazFramework.Validation.Fluent.ValidationResult result = [];
+        result.AddRange(JsonSerializer.Deserialize<string[]>(responseString));
         return result.ToString();
     }
 
@@ -220,23 +272,23 @@ public sealed class ApiRepository<TEntity> : Repositories.RepositoryBase<TEntity
     /// <summary>s
     /// Efetua a instrução GET contra o datasource
     /// </summary>
-    public override ObservableCollection<TEntity> FetchItems() =>
+    public override ObservableCollection<T> FetchItems() =>
         FetchItemsAsync(default).Result;
     
     /// <summary>s
     /// Efetua a instrução GET contra o datasource
     /// </summary>
-    public override async Task<ObservableCollection<TEntity>> FetchItemsAsync(CancellationToken cancellationToken)
+    public override async Task<ObservableCollection<T>> FetchItemsAsync(CancellationToken cancellationToken)
     {
-        List<TEntity> result = new();
-        var response = await RequestMethod<Expressions.QueryDescription, List<TEntity>>(GetRequestMode, UrlGet, new Expressions.QueryDescription(Filter, OrderByDefinitions), cancellationToken);
+        List<T> result = [];
+        var response = await RequestMethod<Expressions.QueryDescription, List<T>>(GetRequestMode, UrlGet, null, new Expressions.QueryDescription(Filter, OrderByDefinitions), cancellationToken);
         if (response != null)
-            result.AddRange(response as IList<TEntity>);
+            result.AddRange(response as IList<T>);
 
         TrackingContext?.Dispose();
         TrackingContext = DbContextRequest?.Invoke();
         TrackingContext?.AttachRange(result);
-        return result.ToObservableCollection<TEntity>();
+        return result.ToObservableCollection<T>();
     }
 
     
@@ -289,7 +341,7 @@ public sealed class ApiRepository<TEntity> : Repositories.RepositoryBase<TEntity
                         {
                             entry.State = EntityState.Detached;
                             if (DataContext.Contains(item))
-                                DataContext.Remove((TEntity)item);
+                                DataContext.Remove((T)item);
                             break;
                         }
 
@@ -303,8 +355,8 @@ public sealed class ApiRepository<TEntity> : Repositories.RepositoryBase<TEntity
                     case EntityState.Deleted:
                         {
                             entry.State = EntityState.Unchanged;
-                            if (!DataContext.Contains(item) & ReferenceEquals(item.GetType(), typeof(TEntity)))
-                                DataContext.Add((TEntity)item);
+                            if (!DataContext.Contains(item) & ReferenceEquals(item.GetType(), typeof(T)))
+                                DataContext.Add((T)item);
 
                             break;
                         }
@@ -349,10 +401,10 @@ public sealed class ApiRepository<TEntity> : Repositories.RepositoryBase<TEntity
     /// <summary>
     /// Solicita a criação de uma nova instância de Entidade de Base de Dados
     /// </summary>
-    public override TEntity Create()
+    public override T Create()
     {
         TrackingContext ??= DbContextRequest?.Invoke();
-        return EficazFramework.Entities.EntityBase.Create<TEntity>();
+        return Activator.CreateInstance<T>();
     }
     
     /// <summary>
@@ -394,25 +446,22 @@ public sealed class ApiRepository<TEntity> : Repositories.RepositoryBase<TEntity
         {
             if (CurrentEntry != null)
             {
-                TEntity response;
+                T response;
                 if (_isAdding)
-                    response = await RequestMethod<TEntity, TEntity>(Enums.CRUD.RequestAction.Put, UrlPut, CurrentEntry, cancellationToken);
+                    response = await RequestMethod<T, T>(Enums.CRUD.RequestAction.Post, UrlPost, null, CurrentEntry, cancellationToken);
                 else if (_isDeleting)
-                    response = await RequestMethod<TEntity, TEntity>(Enums.CRUD.RequestAction.Post, UrlDelete, CurrentEntry, cancellationToken);
+                    response = await RequestMethod<T, T>(Enums.CRUD.RequestAction.Delete, UrlDelete, DeleteQueryFunc.Invoke(CurrentEntry), CurrentEntry, cancellationToken);
                 else
-                    response = await RequestMethod<TEntity, TEntity>(Enums.CRUD.RequestAction.Post, UrlPost, CurrentEntry, cancellationToken);
+                    response = await RequestMethod<T, T>(Enums.CRUD.RequestAction.Put, UrlPut, null, CurrentEntry, cancellationToken);
             }
             else
             {
-                var response = await RequestMethod<List<TEntity>, List<TEntity>>(Enums.CRUD.RequestAction.Post, UrlPost, DataContext.ToList(), cancellationToken);
+                var response = await RequestMethod<List<T>, List<T>>(Enums.CRUD.RequestAction.Post, UrlPost, null, DataContext.ToList(), cancellationToken);
             }
-            _isDeleting = false;
             return default;
         }
         catch (Exception ex)
         {
-            _isAdding = false;
-            _isDeleting = false;
             return ex;
         }
     }
@@ -425,7 +474,7 @@ public sealed class ApiRepository<TEntity> : Repositories.RepositoryBase<TEntity
     internal override void ItemDeleted(object item)
     {
         _isDeleting = true;
-        CurrentEntry = item as TEntity;
+        CurrentEntry = item as T;
         
         if (TrackingContext == null)
             return;

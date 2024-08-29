@@ -43,10 +43,12 @@ public class CrudOperationsApi
         
         Vm = new ViewModel<Resources.Mocks.Classes.Blog>().AddRestApi(Client, options =>
         {
+            options.GetRequestMode = Enums.CRUD.RequestAction.Post;
             options.UrlGet = "/blog/get";
             options.UrlPost = "/blog/post";
             options.UrlPut = "/blog/put";
             options.UrlDelete = "/blog/delete";
+            options.DeleteQueryFunc = blog => blog.Id.ToString();
 
         });
 

@@ -3,7 +3,7 @@
 }
 
 .ef-mdi-window {
-    position: absolute;
+    position: relative;
     box-shadow: var(--mud-elevation-3);
     background-color: var(--mud-palette-background);
     border-radius: 10px;
@@ -62,7 +62,7 @@
 
 .ef-mdi-startmenu-header {
     border-radius: 10px 10px 0 0;
-    background-color: var(--mud-palette-background-grey);
+    background-color: var(--mud-palette-background-gray);
     padding: 20px !important;
 }
 
@@ -75,7 +75,7 @@
 
 .ef-mdi-startmenu-footer {
     border-radius: 0 0 10px 10px;
-    background-color: var(--mud-palette-background-grey);
+    background-color: var(--mud-palette-background-gray);
     padding: 20px !important;
 }
 
@@ -86,4 +86,5 @@
     border: solid 3px transparent;
     width: 48px;
     height: 48px;
+    box-shadow: none;
 }

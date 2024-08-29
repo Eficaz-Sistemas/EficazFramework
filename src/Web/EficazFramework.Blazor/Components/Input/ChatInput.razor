@@ -1,16 +1,17 @@
-﻿@namespace EficazFramework.Components
+﻿@using MudBlazor
+@namespace EficazFramework.Components
 @inherits MudBlazor.MudInput<string>
 
 <div class="@Classname" style="@Style">
 	@if (Adornment == MudBlazor.Adornment.Start)
 	{
-	 <MudBlazor.MudInputAdornment Class="@AdornmentClassname" Icon="@AdornmentIcon" Color="@AdornmentColor" Size="@IconSize" Text="@AdornmentText" Edge="@MudBlazor.Edge.Start" AdornmentClick="@OnAdornmentClick" />
+	 <MudInputAdornment Class="@AdornmentClassname" Icon="@AdornmentIcon" Color="@AdornmentColor" Size="@IconSize" Text="@AdornmentText" Edge="@MudBlazor.Edge.Start" AdornmentClick="@OnAdornmentClick" />
 	}
 
     @*note: the value="@Text" is absolutely essential here. the inner html @Text is kept only for compatibility*@
     <textarea @ref="_elementReference" rows="@Lines" @attributes="UserAttributes" type="@InputTypeString" class="@InputClassname" placeholder="@Placeholder" disabled=@Disabled readonly="@ReadOnly" inputmode="@InputMode.ToString()"
-			  @oninput="OnInput" @onchange="OnChange" @onblur="OnBlur" @onkeydown="OnKeyDown" @onkeypress="OnKeyPress" @onkeyup="OnKeyUp" @onpaste="OnPaste" value="@Text"
-			  @onkeydown:preventDefault="KeyDownPreventDefault" @onkeypress:preventDefault="KeyPressPreventDefault" @onkeyup:preventDefault="KeyUpPreventDefault">@Text</textarea>
+			  @oninput="OnInput" @onchange="OnChange" @onblur="OnBlur" @onkeydown="OnKeyDown" @onkeyup="OnKeyUp" @onpaste="OnPaste" value="@Text"
+			  @onkeydown:preventDefault="KeyDownPreventDefault" @onkeyup:preventDefault="KeyUpPreventDefault">@Text</textarea>
 
 	@if (Clearable && !Disabled)
 	{
@@ -19,7 +20,7 @@
 
 	@if (Adornment == MudBlazor.Adornment.End)
 	{
-	 <MudBlazor.MudInputAdornment Class="@AdornmentClassname" Icon="@AdornmentIcon" Color="@AdornmentColor" Size="@IconSize" Text="@AdornmentText" Edge="@MudBlazor.Edge.End" AdornmentClick="@OnAdornmentClick" />
+	 <MudInputAdornment Class="@AdornmentClassname" Icon="@AdornmentIcon" Color="@AdornmentColor" Size="@IconSize" Text="@AdornmentText" Edge="@MudBlazor.Edge.End" AdornmentClick="@OnAdornmentClick" />
 	}
 
 	@if (Variant == MudBlazor.Variant.Outlined)

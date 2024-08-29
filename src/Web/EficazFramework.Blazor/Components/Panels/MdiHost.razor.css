@@ -7,7 +7,7 @@
 
 
 ::deep .mud-tabs-toolbar {
-    background-color: var(--mud-palette-background-grey);
+    background-color: var(--mud-palette-background-gray);
 }
 
 ::deep .mud-tab-slider.mud-tab-slider-vertical {

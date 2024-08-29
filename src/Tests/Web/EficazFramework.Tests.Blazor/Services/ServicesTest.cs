@@ -16,7 +16,7 @@ public class ServicesTest : BunitTest
             o.UseApplicationManager = true;
             o.Theme = new MudBlazor.MudTheme()
             {
-                Palette = new MudBlazor.PaletteLight()
+                PaletteLight = new MudBlazor.PaletteLight()
                 {
                     Primary = "#0078d7",
                     Secondary = "#003864",

@@ -15,6 +15,6 @@ public partial class ChatInput : MudBlazor.MudInput<string>
     protected virtual void InvokePaste(ClipboardEventArgs obj)
     {
         _isFocused = true;
-        OnPaste.InvokeAsync(obj).AndForget();
+        OnPaste.InvokeAsync(obj);
     }
 }

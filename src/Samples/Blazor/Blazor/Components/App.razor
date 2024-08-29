@@ -1,0 +1,65 @@
+﻿@using System.Globalization
+@using Microsoft.AspNetCore.Localization
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <base href="/" />
+    <link rel="stylesheet" href="EficazFramework.Samples.Blazor.styles.css" />
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,500,700&display=swap" rel="stylesheet" />
+    <link href="_content/MudBlazor/MudBlazor.min.css" rel="stylesheet" />
+    <link href="_content/EficazFramework.Blazor/css/EficazFramework.min.css" rel="stylesheet" />
+    <link href="/css/loader.css" rel="stylesheet" />
+    <link href="manifest.json" rel="manifest" />
+    <link rel="icon" type="image/png" href="favicon.png" />
+    <link rel="apple-touch-icon" sizes="512x512" href="icon-512.png" />
+    <link rel="apple-touch-icon" sizes="192x192" href="icon-192.png" />
+    <HeadOutlet @rendermode="@LocalInteractiveWebAssemblyMode" />
+</head>
+
+<body style="height: 100vh; background-color:#002844; overflow:hidden">
+    <div id="preload">
+        <svg xmlns="http://www.w3.org/2000/svg" width="80%" style="max-width: 512px" viewBox="0 0 154 32">
+            <path d="M9.030 14.843v5.982l13.658-8.24v-5.982l-2.483 1.524-4.966-2.991v-4.515l-14.956 8.974v11.965l8.748 5.249v4.459l13.658-8.183v-5.982l-9.933 5.982-7.337-4.402v-6.152l6.095-3.668 3.725 2.258-6.208 3.725z"></path>
+            <path d="M40.917 22.067h-9.481v-12.247h9.312v2.878h-5.813v1.524h5.136v2.878h-5.136v2.088h5.982v2.878z"></path>
+            <path d="M47.125 14.561h4.854v2.878h-4.854v4.628h-3.499v-12.247h9.030v2.878h-5.531v1.862z"></path>
+            <path d="M70.434 11.175l-0.903 1.129c-0.847-0.677-2.032-1.185-3.499-1.185-1.58 0-2.653 0.564-2.653 2.032 0 0.959 0.452 1.242 3.048 1.975 1.919 0.508 4.289 1.016 4.289 3.499 0 2.54-2.427 3.668-4.571 3.668s-3.781-0.847-4.797-2.088l0.903-1.129c0.903 1.129 2.596 1.693 3.894 1.693 1.524 0 2.878-0.734 2.878-2.088 0-1.298-1.185-1.524-3.048-2.032-3.104-0.847-4.289-1.58-4.289-3.499 0-2.596 2.258-3.556 4.402-3.556s3.33 0.621 4.402 1.58z"></path>
+            <path d="M74.272 22.067v-12.247h1.637v12.247h-1.637z"></path>
+            <path d="M88.55 11.175l-0.903 1.129c-0.847-0.677-2.032-1.185-3.499-1.185-1.58 0-2.653 0.564-2.653 2.032 0 0.959 0.451 1.242 3.048 1.975 1.919 0.508 4.289 1.016 4.289 3.499 0 2.54-2.427 3.668-4.571 3.668s-3.781-0.847-4.797-2.088l0.903-1.129c0.903 1.129 2.596 1.693 3.894 1.693 1.524 0 2.878-0.734 2.878-2.088 0-1.298-1.185-1.524-3.048-2.032-3.104-0.847-4.289-1.58-4.289-3.499 0-2.596 2.257-3.556 4.402-3.556s3.33 0.621 4.402 1.58z"></path>
+            <path d="M96.79 11.231v10.836h-1.693v-10.836h-4.007v-1.411h9.651v1.411h-4.007z"></path>
+            <path d="M112.198 22.067h-8.183v-12.247h8.014v1.411h-6.377v3.725h5.7v1.411h-5.7v4.289h6.547v1.411z"></path>
+            <path d="M127.774 22.067h-1.637v-9.030l-3.556 5.079h-1.693l-3.556-5.079v9.030h-1.637v-12.247h1.467l4.628 6.772 4.628-6.773h1.467v12.247z"></path>
+            <path d="M140.698 22.067l-1.072-2.822h-5.869l-1.072 2.822h-1.75l4.797-12.247h1.975l4.797 12.247h-1.75zM139.118 17.834l-2.427-6.434-2.427 6.434h4.854z"></path>
+            <path d="M153.905 11.175l-0.903 1.129c-0.847-0.677-2.032-1.185-3.499-1.185-1.58 0-2.653 0.564-2.653 2.032 0 0.959 0.452 1.242 3.048 1.975 1.919 0.508 4.289 1.016 4.289 3.499 0 2.54-2.427 3.668-4.571 3.668s-3.781-0.847-4.797-2.088l0.903-1.129c0.903 1.129 2.596 1.693 3.894 1.693 1.524 0 2.878-0.734 2.878-2.088 0-1.298-1.185-1.524-3.048-2.032-3.104-0.847-4.289-1.58-4.289-3.499 0-2.596 2.257-3.556 4.402-3.556s3.33 0.621 4.402 1.58z"></path>
+        </svg>
+        <div class="loader"></div>
+    </div>
+    <Routes @rendermode="@LocalInteractiveWebAssemblyMode" />
+    <script src="_framework/blazor.web.js"></script>
+    <script src="_content/MudBlazor/MudBlazor.min.js"></script>
+    <script src="_content/EficazFramework.Blazor/js/EficazFramework.js"></script>
+    <script>navigator.serviceWorker.register('service-worker.js');</script>
+</body>
+
+</html>
+
+@code {
+    private IComponentRenderMode LocalInteractiveWebAssemblyMode => new InteractiveWebAssemblyRenderMode(false);
+
+    [CascadingParameter]
+    public HttpContext? HttpContext { get; set; }
+
+    protected override void OnInitialized()
+    {
+        HttpContext?.Response.Cookies.Append(
+            CookieRequestCultureProvider.DefaultCookieName,
+            CookieRequestCultureProvider.MakeCookieValue(
+                new RequestCulture(
+                    CultureInfo.CurrentCulture,
+                    CultureInfo.CurrentUICulture)));
+    }
+
+}

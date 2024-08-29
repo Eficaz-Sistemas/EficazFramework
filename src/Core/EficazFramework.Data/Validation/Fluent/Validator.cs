@@ -102,7 +102,7 @@ namespace EficazFramework.Validation.Fluent
             return result;
         }
 
-        internal List<Rules.ValidationRule<T>> ValidationRules = new();
+        internal List<Rules.ValidationRule<T>> ValidationRules = [];
     }
 
     /// <summary>

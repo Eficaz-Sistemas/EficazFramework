@@ -40,7 +40,7 @@ internal static class Mock
         return Results.Ok(result);
     }
 
-    internal static async Task<IResult> GetBigAsync(EficazFramework.Expressions.QueryDescription parameters)
+    internal static async Task<IResult> GetBigAsync(EficazFramework.Expressions.QueryDescription? parameters)
     {
         await Task.Delay(1);
         List<Resources.Mocks.Classes.MockClass> result = new();
@@ -77,11 +77,7 @@ internal static class Mock
 
     internal static IResult ValidationFail()
     {
-        IDictionary<string, string[]> errors = new Dictionary<string, string[]>
-        {
-            { "Validation", new[] { "Erro 001", "Erro 002" } }
-        };
-        return Results.ValidationProblem(errors, title: "Informações Inválidas", statusCode: 422);
+        return Results.UnprocessableEntity(new[] { "Erro 001", "Erro 002" });
     }
 
 }

@@ -1,0 +1,33 @@
+{
+  "name": "EficazFramework Sample App",
+  "short_name": "EficazFramework",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#002b49",
+  "theme_color": "#002b49",
+  "prefer_related_applications": false,
+  "icons": [
+    {
+      "src": "icon-512.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    },
+    {
+      "src": "icon-512.png",
+      "type": "image/png",
+      "sizes": "any"
+    },
+    {
+      "src": "icon-192.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    }
+  ],
+  "orientation": "any",
+  "description": "Aplicativo de Exemplo da EficazFramework",
+  "lang": "pt",
+  "scope": "https://framework.eficazcs.app/",
+  "categories": [
+    "dev", "libs", "c#", "dotnet"
+  ]
+}

@@ -67,9 +67,10 @@ public class ExpressionObjectQueryTests
         translated.First().Value2.Should().Be(9);
 
 
-        item.ToString().Should().Be("Código Igual a 4");
+        item.ToString().Should().Be($"Código {EficazFramework.Resources.Strings.Expressions.eComparer_Equals} 4");
         item.Operator = Enums.CompareMethod.Between;
-        item.ToString().Should().Be("Código Entre 4 - 9");
+        item.ToString().Should().Be($"Código {EficazFramework.Resources.Strings.Expressions.eComparer_Between} 4 - 9");
+
     }
 
     [Test]

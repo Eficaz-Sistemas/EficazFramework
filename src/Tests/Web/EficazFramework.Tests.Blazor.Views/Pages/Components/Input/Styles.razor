@@ -1,35 +1,37 @@
 ﻿@page "/Components/Input/Styles"
 
-
+<MudPopoverProvider />
 <MudGrid Spacing="3">
-    <MudItem>
-        <MudTextField T="string" Class="mud-input-control-ef" Text="blablablablablablablablabla"/>
+    <MudItem lg="3" md="3" sm="12">
+        <MudFocusTrap>
+            <MudTextField T="string" Class="mud-input-control-ef" Text="blablablablablablablablabla" FullWidth />
+        </MudFocusTrap>
     </MudItem>
-    <MudItem>
-        <MudTextField T="string" Class="mud-input-control-ef" Text="blablablablablablablablabla" Adornment="@MudBlazor.Adornment.Start" AdornmentIcon="@MudBlazor.Icons.Material.Filled.Edit"/>
+    <MudItem lg="3" md="3" sm="12">
+        <MudTextField T="string" Class="mud-input-control-ef" Text="blablablablablablablablabla" Adornment="@MudBlazor.Adornment.Start" AdornmentIcon="@MudBlazor.Icons.Material.Filled.Edit" FullWidth />
     </MudItem>
-    <MudItem>
-        <MudTextField T="string" Class="mud-input-control-ef" Text="blablablablablablablablabla" Adornment="@MudBlazor.Adornment.End" AdornmentIcon="@MudBlazor.Icons.Material.Filled.Edit"/>
+    <MudItem lg="3" md="3" sm="12">
+        <MudTextField T="string" Class="mud-input-control-ef" Text="blablablablablablablablabla" Adornment="@MudBlazor.Adornment.End" AdornmentIcon="@MudBlazor.Icons.Material.Filled.Edit" FullWidth />
     </MudItem>
-    <MudItem>
-        <DocumentField T="string" Class="mud-input-control-ef" Text="Isento" Adornment="@MudBlazor.Adornment.End" AdornmentIcon="@MudBlazor.Icons.Material.Filled.Edit"/>
+    <MudItem lg="3" md="3" sm="12">
+        <DocumentField T="string" Class="mud-input-control-ef" Text="Isento" Adornment="@MudBlazor.Adornment.End" AdornmentIcon="@MudBlazor.Icons.Material.Filled.Edit" FullWidth />
     </MudItem>
 
-    <MudItem>
+    <MudItem lg="3" md="3" sm="12">
         <MudSelect T="string" Class="mud-input-control-ef" Text="blablablablablablablablabla" >
             <MudSelectItem T="string">Teste 1</MudSelectItem>
             <MudSelectItem T="string">Teste 2</MudSelectItem>
             <MudSelectItem T="string">Teste 3</MudSelectItem>
         </MudSelect>
     </MudItem>
-    <MudItem>
+    <MudItem lg="3" md="3" sm="12">
         <MudSelect T="string" Class="mud-input-control-ef" Text="blablablablablablablablabla" >
             <MudSelectItem T="string">Teste 1</MudSelectItem>
             <MudSelectItem T="string">Teste 2</MudSelectItem>
             <MudSelectItem T="string">Teste 3</MudSelectItem>
         </MudSelect>
     </MudItem>
-    <MudItem>
+    <MudItem lg="3" md="3" sm="12">
         <MudSelect T="string" Class="mud-input-control-ef" Text="blablablablablablablablabla" >
             <MudSelectItem T="string">Teste 1</MudSelectItem>
             <MudSelectItem T="string">Teste 2</MudSelectItem>
@@ -37,11 +39,11 @@
         </MudSelect>
     </MudItem>
 
-    <MudItem>
-        <MudAutocomplete T="string" Class="mud-input-control-ef"  Text="blablablablablablablablabla"/>
+    <MudItem lg="3" md="3" sm="12">
+        <MudAutocomplete SearchFunc="StringsAsync" T="string" Class="mud-input-control-ef" Text="blablablablablablablablabla" />
     </MudItem>
 
-    <MudItem>
+    <MudItem lg="3" md="3" sm="12">
         <MudDatePicker Class="mud-input-control-ef" Adornment="@MudBlazor.Adornment.End" AdornmentIcon="@MudBlazor.Icons.Material.Filled.Edit"/>
     </MudItem>
 </MudGrid>
@@ -57,8 +59,39 @@
         <MudBlazor.MudButton Variant="@MudBlazor.Variant.Filled"
                                 Color="@MudBlazor.Color.Primary"
                                 Size="@MudBlazor.Size.Small"
-                                Class="ml-2 login-button align-self-end px-4" >
-            @(">")
+                                Class="ml-2 login-button align-self-end px-4"
+                                Style="height: 37px;">
+            <MudIcon Icon="@MudBlazor.Icons.Material.Filled.LockOpen"/>
+        </MudBlazor.MudButton>
+        <MudBlazor.MudButton Variant="@MudBlazor.Variant.Filled"
+                             Color="@MudBlazor.Color.Secondary"
+                             Size="@MudBlazor.Size.Small"
+                             Class="ml-2 login-button align-self-end px-4"
+                             Style="height: 37px;">
+            <MudIcon Icon="@MudBlazor.Icons.Material.Filled.LockOpen" />
+        </MudBlazor.MudButton>
+        <MudBlazor.MudButton Variant="@MudBlazor.Variant.Filled"
+                             Color="@MudBlazor.Color.Tertiary"
+                             Size="@MudBlazor.Size.Small"
+                             Class="ml-2 login-button align-self-end px-4"
+                             Style="height: 37px;">
+            <MudIcon Icon="@MudBlazor.Icons.Material.Filled.LockOpen" />
+        </MudBlazor.MudButton>
+        <MudBlazor.MudButton Variant="@MudBlazor.Variant.Filled"
+                             Color="@MudBlazor.Color.Transparent"
+                             Size="@MudBlazor.Size.Small"
+                             Class="ml-2 login-button align-self-end px-4"
+                             Style="height: 37px;">
+            <MudIcon Icon="@MudBlazor.Icons.Material.Filled.LockOpen" />
         </MudBlazor.MudButton>
     </div>
 </div>
+
+@code {
+
+    private async Task<IEnumerable<string>> StringsAsync(string literal, CancellationToken token)
+    {
+        await Task.Delay(1);
+        return ["01", "02"];
+    }
+}

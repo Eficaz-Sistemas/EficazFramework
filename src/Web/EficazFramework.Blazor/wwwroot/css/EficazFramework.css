@@ -98,6 +98,14 @@ div.mud-input-slot.mud-input-root {
   padding: 8px !important;
 }
 
+.mud-input-control-ef > .mud-input-control-input-container > .mud-input > input.mud-input-root-margin-dense {
+  padding: 3px !important;
+}
+
+.mud-input-control-ef.mud-input-showspin.text-right > .mud-input-control-input-container > .mud-input > input.mud-input-root {
+  padding-right: 28px !important;
+}
+
 .mud-input-control-ef > .mud-input-control-input-container > .mud-input > div.mud-select-input {
   padding: 8px 0px 8px 8px !important;
 }
@@ -116,11 +124,16 @@ div.mud-input-slot.mud-input-root {
 }
 
 .ef-group-panel {
-  background-color: var(--mud-palette-background-grey);
+  background-color: var(--mud-palette-background-gray);
   padding-top: 8px;
-  padding-left: 16px;
-  padding-right: 16px;
-  padding-bottom: 16px;
+  padding-left: 8px;
+  padding-right: 8px;
+  padding-bottom: 8px;
+  display: grid;
+}
+
+.mud-expansion-panels > .mud-expand-panel {
+  background-color: var(--mud-palette-background-gray);
 }
 
 .ef-mdi-host {
@@ -128,7 +141,7 @@ div.mud-input-slot.mud-input-root {
 }
 
 .ef-mdi-window {
-  position: absolute;
+  position: relative;
   box-shadow: var(--mud-elevation-3);
   background-color: var(--mud-palette-background);
   border-radius: 10px;
@@ -182,7 +195,7 @@ div.mud-input-slot.mud-input-root {
 
 .ef-mdi-startmenu-header {
   border-radius: 10px 10px 0 0;
-  background-color: var(--mud-palette-background-grey);
+  background-color: var(--mud-palette-background-gray);
   padding: 20px !important;
 }
 
@@ -195,7 +208,7 @@ div.mud-input-slot.mud-input-root {
 
 .ef-mdi-startmenu-footer {
   border-radius: 0 0 10px 10px;
-  background-color: var(--mud-palette-background-grey);
+  background-color: var(--mud-palette-background-gray);
   padding: 20px !important;
 }
 
@@ -205,6 +218,25 @@ div.mud-input-slot.mud-input-root {
   border: solid 3px transparent;
   width: 48px;
   height: 48px;
+  box-shadow: none;
+}
+
+.mud-table {
+  background-color: unset;
+}
+
+.mud-table-head > .mud-table-row > th.mud-table-cell:first-child {
+  background-color: var(--mud-palette-primary);
+  border-start-start-radius: 4px;
+}
+
+.mud-table-head > .mud-table-row > th.mud-table-cell:nth-child(1n+1) {
+  background-color: var(--mud-palette-primary);
+}
+
+.mud-table-head > .mud-table-row > th.mud-table-cell:last-child {
+  background-color: var(--mud-palette-primary);
+  border-start-end-radius: 4px;
 }
 
 .mud-nav-link.active:not(.mud-nav-link-disabled) {
@@ -222,6 +254,28 @@ div.mud-input-slot.mud-input-root {
 .ef-table-scroll table td:first-child {
   position: sticky;
   left: 0;
+}
+
+.mud-table {
+  background-color: var(--mud-palette-background-gray);
+  border: 1px solid var(--mud-palette-lines-default);
+  height: 0px;
+}
+
+.mud-table-head > .mud-table-row > th.mud-table-cell:first-child {
+  background-color: var(--mud-palette-primary);
+}
+
+.mud-table-head > .mud-table-row > th.mud-table-cell:nth-child(1n+1) {
+  background-color: var(--mud-palette-primary);
+}
+
+.mud-table-head > .mud-table-row > th.mud-table-cell:last-child {
+  background-color: var(--mud-palette-primary);
+}
+
+.mud-table-empty-row {
+  background-color: unset;
 }
 
 .brand {
@@ -254,7 +308,7 @@ div.mud-input-slot.mud-input-root {
 }
 
 .w-100 {
-  height: 100%;
+  width: 100%;
 }
 
 .w-inherit {
@@ -264,6 +318,17 @@ div.mud-input-slot.mud-input-root {
 .mud-dialog {
   border-width: thin;
   border: 1px solid var(--mud-palette-primary);
+}
+
+.app-flex-host {
+  height: inherit !important;
+  display: flex !important;
+  flex-grow: 1 !important;
+  flex-direction: column !important;
+}
+
+.mud-table-container {
+  height: 100%;
 }
 
 .text-right {
@@ -696,4 +761,4 @@ div.mud-input-slot.mud-input-root {
   }
 }
 
-/*# sourceMappingURL=data:application/json;charset=utf-8,%7B%22version%22:3,%22sourceRoot%22:%22%22,%22sources%22:%5B%22file:///C:/Users/Henrique/Source/Repos/Eficaz-Sistemas/EficazFramework/src/Web/EficazFramework.Blazor/Styles/Components/Input.scss%22,%22file:///C:/Users/Henrique/Source/Repos/Eficaz-Sistemas/EficazFramework/src/Web/EficazFramework.Blazor/Styles/Components/GroupPanel.scss%22,%22file:///C:/Users/Henrique/Source/Repos/Eficaz-Sistemas/EficazFramework/src/Web/EficazFramework.Blazor/Styles/Components/Mdi.scss%22,%22file:///C:/Users/Henrique/Source/Repos/Eficaz-Sistemas/EficazFramework/src/Web/EficazFramework.Blazor/Styles/Components/Navigator.scss%22,%22file:///C:/Users/Henrique/Source/Repos/Eficaz-Sistemas/EficazFramework/src/Web/EficazFramework.Blazor/Styles/Components/Table.scss%22,%22file:///C:/Users/Henrique/Source/Repos/Eficaz-Sistemas/EficazFramework/src/Web/EficazFramework.Blazor/Styles/General/Icons.scss%22,%22file:///C:/Users/Henrique/Source/Repos/Eficaz-Sistemas/EficazFramework/src/Web/EficazFramework.Blazor/Styles/General/Layout.scss%22,%22file:///C:/Users/Henrique/Source/Repos/Eficaz-Sistemas/EficazFramework/src/Web/EficazFramework.Blazor/Styles/General/Text.scss%22,%22file:///C:/Users/Henrique/Source/Repos/Eficaz-Sistemas/EficazFramework/src/Web/EficazFramework.Blazor/Styles/General/Transitions.scss%22,%22file:///C:/Users/Henrique/Source/Repos/Eficaz-Sistemas/EficazFramework/src/Web/EficazFramework.Blazor/Styles/EfCore.scss%22,%22file:///C:/Users/Henrique/Source/Repos/Eficaz-Sistemas/EficazFramework/src/Web/EficazFramework.Blazor/Styles/General/Print.scss%22%5D,%22names%22:%5B%5D,%22mappings%22:%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%22%7D */
+/*# sourceMappingURL=data:application/json;charset=utf-8,%7B%22version%22:3,%22sourceRoot%22:%22%22,%22sources%22:%5B%22file:///C:/Users/Henrique/Source/Repos/Eficaz-Sistemas/EficazFramework/src/Web/EficazFramework.Blazor/Styles/Components/Input.scss%22,%22file:///C:/Users/Henrique/Source/Repos/Eficaz-Sistemas/EficazFramework/src/Web/EficazFramework.Blazor/Styles/Components/GroupPanel.scss%22,%22file:///C:/Users/Henrique/Source/Repos/Eficaz-Sistemas/EficazFramework/src/Web/EficazFramework.Blazor/Styles/Components/Mdi.scss%22,%22file:///C:/Users/Henrique/Source/Repos/Eficaz-Sistemas/EficazFramework/src/Web/EficazFramework.Blazor/Styles/Components/MudTable.scss%22,%22file:///C:/Users/Henrique/Source/Repos/Eficaz-Sistemas/EficazFramework/src/Web/EficazFramework.Blazor/Styles/Components/Navigator.scss%22,%22file:///C:/Users/Henrique/Source/Repos/Eficaz-Sistemas/EficazFramework/src/Web/EficazFramework.Blazor/Styles/Components/Table.scss%22,%22file:///C:/Users/Henrique/Source/Repos/Eficaz-Sistemas/EficazFramework/src/Web/EficazFramework.Blazor/Styles/General/Icons.scss%22,%22file:///C:/Users/Henrique/Source/Repos/Eficaz-Sistemas/EficazFramework/src/Web/EficazFramework.Blazor/Styles/General/Layout.scss%22,%22file:///C:/Users/Henrique/Source/Repos/Eficaz-Sistemas/EficazFramework/src/Web/EficazFramework.Blazor/Styles/General/Text.scss%22,%22file:///C:/Users/Henrique/Source/Repos/Eficaz-Sistemas/EficazFramework/src/Web/EficazFramework.Blazor/Styles/General/Transitions.scss%22,%22file:///C:/Users/Henrique/Source/Repos/Eficaz-Sistemas/EficazFramework/src/Web/EficazFramework.Blazor/Styles/EfCore.scss%22,%22file:///C:/Users/Henrique/Source/Repos/Eficaz-Sistemas/EficazFramework/src/Web/EficazFramework.Blazor/Styles/General/Print.scss%22%5D,%22names%22:%5B%5D,%22mappings%22:%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%22%7D */

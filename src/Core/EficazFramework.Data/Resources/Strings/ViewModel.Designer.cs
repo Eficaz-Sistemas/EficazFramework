@@ -250,7 +250,7 @@ namespace EficazFramework.Resources.Strings {
         }
         
         /// <summary>
-        ///   Consulta uma cadeia de caracteres localizada semelhante a Oopss....
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Ooppss....
         /// </summary>
         public static string UnhandledError_Title {
             get {

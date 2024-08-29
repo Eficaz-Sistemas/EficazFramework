@@ -1,5 +1,5 @@
 ﻿@page "/Components/Panels/AppMenus"
-
+<MudPopoverProvider />
 <EficazFramework.Components.ApplicationsMenu @ref="elementRef" 
                                              ItemsSource="ApplicationManager?.AllApplications"
                                              SelectionCallBack="@(app => Snackbar!.Add(app.Title))"

@@ -172,7 +172,7 @@
     <value>Ocorreu uma exceção ao realizar esta ação. Por favor tente novamente. Caso o erro persista entre em contato com o suporte.</value>
   </data>
   <data name="Exception_DefaultHeader" xml:space="preserve">
-    <value>Oppss...</value>
+    <value>Ooppss...</value>
   </data>
   <data name="Required" xml:space="preserve">
     <value>O campo {0} não pode ficar em branco.</value>

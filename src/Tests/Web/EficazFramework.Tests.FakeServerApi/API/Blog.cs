@@ -61,10 +61,11 @@ internal static class Blog
         }
     }
 
-    internal static IResult Delete(Resources.Mocks.Classes.BlogEntity item)
+    internal static IResult Delete(string itemId)
     {
         try
         {
+            Resources.Mocks.Classes.BlogEntity item = BlogDb.Where(i => i.Id == Guid.Parse(itemId)).FirstOrDefault()!;
             BlogDb.Remove(item);
             return Results.Ok(item);
         }

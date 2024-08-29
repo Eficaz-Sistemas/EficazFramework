@@ -181,6 +181,6 @@
     <value>Ocorreu uma falha não esperada pelo aplicativo. Detalhes técnicos: {0}. Por gentileza entre em contato com o suporte.</value>
   </data>
   <data name="UnhandledError_Title" xml:space="preserve">
-    <value>Oopss...</value>
+    <value>Ooppss...</value>
   </data>
 </root>
