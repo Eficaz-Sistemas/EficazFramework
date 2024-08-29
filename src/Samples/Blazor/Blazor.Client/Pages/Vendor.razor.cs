@@ -70,7 +70,6 @@ public partial class Vendor
 
 
     string? _searchString;
-
     private Func<Shared.DTOs.VendorDto, bool> _quickFilter => x =>
     {
         if (string.IsNullOrWhiteSpace(_searchString))

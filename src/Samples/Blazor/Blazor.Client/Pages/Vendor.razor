@@ -63,10 +63,12 @@
             <EficazFramework.Components.NavigatorPage>
                 <MudBlazor.MudForm>
                     <EficazFramework.Components.FocusTrapEx>
-                        <MudBlazor.MudTextField Label="Full Name"
-                                                @bind-Value="_viewModel!.Editor.CurrentEntry.Name"
-                                                Required
-                                                Class="@($"{Layout.MainLayout.INPUTCLASS}")" />
+                        <EficazFramework.Components.GroupPanel Title="Info">
+                            <MudBlazor.MudTextField Label="Full Name"
+                                                    @bind-Value="_viewModel!.Editor.CurrentEntry.Name"
+                                                    Required
+                                                    Class="@($"{Layout.MainLayout.INPUTCLASS}")" />
+                        </EficazFramework.Components.GroupPanel>
                     </EficazFramework.Components.FocusTrapEx>
                 </MudBlazor.MudForm>
             </EficazFramework.Components.NavigatorPage>
@@ -77,7 +79,7 @@
 
 @code {
 
-    private RenderFragment CustomHeader()
+    private RenderFragment? CustomHeader()
     {
         if (_viewModel?.State == EficazFramework.Enums.CRUD.State.Novo || _viewModel?.State == EficazFramework.Enums.CRUD.State.Edicao)
         {
@@ -101,7 +103,6 @@
                                                  OnClick="@(() => _viewModel!.Commands["Cancel"].Execute(null))"
                                                  Style="z-index:3;" />
                     </MudBlazor.MudTooltip>
-
                 </div>;
         }
         else if (_viewModel?.State == EficazFramework.Enums.CRUD.State.Bloqueado || _viewModel?.State == EficazFramework.Enums.CRUD.State.Leitura)

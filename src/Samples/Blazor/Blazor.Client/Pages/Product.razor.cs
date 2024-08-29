@@ -72,4 +72,18 @@ public partial class Product
         var result = (_viewModel!.Editor.CurrentEntry as Shared.Interfaces.IValidatable).Validate(propertyName);
         return result!.AsEnumerable();
     }
+
+    int[] _pageSizeOptions = [250];
+    string? _searchString;
+    private Func<Shared.DTOs.ProductDto, bool> _quickFilter => x =>
+    {
+        if (string.IsNullOrWhiteSpace(_searchString))
+            return true;
+
+        if (x.Name?.Contains(_searchString, StringComparison.OrdinalIgnoreCase) ?? false)
+            return true;
+
+        return false;
+    };
+
 }

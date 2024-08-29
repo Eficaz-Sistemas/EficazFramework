@@ -1,6 +1,7 @@
 ﻿using EficazFramework.Validation.Fluent;
 using EficazFramework.Validation.Fluent.Rules;
 using Shared.DTOs;
+using Shared.Interfaces;
 
 namespace Shared.Validators;
 public static class CustomerValidator
@@ -12,7 +13,8 @@ public static class CustomerValidator
         ((Validator<CustomerDto>)validator)
             .Required(c => c.Id)
             .Required(c => c.Name)
-            .Required(c => c.Address.Street);
+            .Required(c => c.Address.Street)
+            .CustomExpression(c => !(c.Address as IValidatable).Validate()!.Any(), r => (r.Address as IValidatable).Validate()!.ToString());
 
         return validator;
     }
