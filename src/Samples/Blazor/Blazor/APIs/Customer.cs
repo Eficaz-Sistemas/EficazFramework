@@ -35,7 +35,7 @@ internal static class Customer
         faker
             .RuleFor(c => c.Id, r => r.Random.Uuid())
             .RuleFor(c => c.Name, r => r.Person.FullName)
-            .RuleFor(c => c.Address, addressFaker.Generate());
+            .RuleFor(c => c.Address, () => addressFaker);
 
         _cacheCustomers ??= faker.Generate(125);
         return _cacheCustomers!;
