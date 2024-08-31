@@ -6,6 +6,7 @@ public static class Mappings
     {
         app.MapVendors();
         app.MapProducts();
+        app.MapCustomers();
         return app;
     }
 

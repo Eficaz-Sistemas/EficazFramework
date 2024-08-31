@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Shared.DTOs;
+using Shared.Validators;
 
 namespace Blazor.APIs;
 
@@ -23,21 +24,25 @@ internal static class Customer
     private static List<Entities.Customer>? _cacheCustomers;
     private static List<Entities.Customer> GetCustomers()
     {
+        var addressFaker = new Bogus.Faker<Entities.Address>();
+        addressFaker
+            .RuleFor(c => c.Street, r => r.Address.StreetAddress(true))
+            .RuleFor(c => c.ZipCode, r => r.Address.ZipCode())
+            .RuleFor(c => c.City, r => r.Address.City())
+            .RuleFor(c => c.State, r => r.Address.State());
+
         var faker = new Bogus.Faker<Entities.Customer>();
         faker
             .RuleFor(c => c.Id, r => r.Random.Uuid())
             .RuleFor(c => c.Name, r => r.Person.FullName)
-            .RuleFor(c => c.Address.Street, r => r.Address.StreetAddress(true))
-            .RuleFor(c => c.Address.ZipCode, r => r.Address.ZipCode())
-            .RuleFor(c => c.Address.City, r => r.Address.City())
-            .RuleFor(c => c.Address.State, r => r.Address.State());
+            .RuleFor(c => c.Address, addressFaker.Generate());
 
         _cacheCustomers ??= faker.Generate(125);
         return _cacheCustomers!;
     }
 
     private static List<Entities.Customer> SearchCustomers(string search) =>
-        GetCustomers().Where(v => v.Name!.Contains(search, StringComparison.InvariantCultureIgnoreCase)).ToList();
+        GetCustomers().Where(v => v.Name!.Contains(search, StringComparison.InvariantCultureIgnoreCase) || v.Address!.City!.Contains(search, StringComparison.InvariantCultureIgnoreCase)).ToList();
 
     private static IResult AddCustomer(CustomerDto customer)
     {
@@ -61,6 +66,13 @@ internal static class Customer
             {
                 Id = customer.Id!.Value,
                 Name = customer.Name,
+                Address = new()
+                {
+                    Street = customer.Address.Street,
+                    ZipCode = customer.Address.ZipCode,
+                    City = customer.Address.City,
+                    State = customer.Address.State
+                }
             };
 
             // Insert
@@ -93,6 +105,10 @@ internal static class Customer
 
             // Mapper work
             vendorEntity.Name = customer.Name;
+            vendorEntity.Address.Street = customer.Address.Street;
+            vendorEntity.Address.ZipCode = customer.Address.ZipCode;
+            vendorEntity.Address.City = customer.Address.City;
+            vendorEntity.Address.State = customer.Address.State;
         }
         catch (Exception ex)
         {

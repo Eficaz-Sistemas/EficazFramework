@@ -12,7 +12,7 @@ internal static class Mapping
         };
         vendors.Targets.Add("Blazor", new EficazFramework.Application.BlazorApplicationTarget
         {
-            Icon = MudBlazor.Icons.Material.Filled.People,
+            Icon = MudBlazor.Icons.Material.Filled.PersonPinCircle,
             StartupUriOrType = typeof(Pages.Vendor),
             InitialSize = new(560, 350)
         });
@@ -30,11 +30,25 @@ internal static class Mapping
             InitialSize = new(620, 420)
         });
 
+        var customers = new EficazFramework.Application.ApplicationDefinition
+        {
+            Group = "CRUD",
+            IsPublic = true,
+            Title = "Customers",
+        };
+        customers.Targets.Add("Blazor", new EficazFramework.Application.BlazorApplicationTarget
+        {
+            Icon = MudBlazor.Icons.Material.Filled.People,
+            StartupUriOrType = typeof(Pages.Customer),
+            InitialSize = new(560, 450)
+        });
+
 
         return
         [
             vendors,
             products,
+            customers
         ];
     }
 }

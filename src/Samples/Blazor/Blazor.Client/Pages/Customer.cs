@@ -2,12 +2,11 @@
 
 namespace Blazor.Client.Pages;
 
-public partial class Vendor
+public partial class Customer
 {
-
     [Inject] HttpClient? HttpClient { get; set; }
     [Inject] MudBlazor.ISnackbar? Snackbar { get; set; }
-    [Inject] MudBlazor.IDialogService? Dialog {  get; set; }
+    [Inject] MudBlazor.IDialogService? Dialog { get; set; }
     [CascadingParameter] EficazFramework.Components.MdiWindow? MdiWindow { get; set; }
 
     protected override void OnInitialized()
@@ -28,7 +27,7 @@ public partial class Vendor
             MdiWindow?.OverrideFrameParameters(CustomHeader(), false);
     }
 
-    private ViewModels.Vendor? _viewModel;
+    private ViewModels.Customer? _viewModel;
 
 
     private async void ViewModel_Message(object sender, EficazFramework.Events.MessageEventArgs e)
@@ -70,12 +69,13 @@ public partial class Vendor
 
 
     string? _searchString;
-    private Func<Shared.DTOs.VendorDto, bool> _quickFilter => x =>
+    private Func<Shared.DTOs.CustomerDto, bool> _quickFilter => x =>
     {
         if (string.IsNullOrWhiteSpace(_searchString))
             return true;
 
-        if (x.Name?.Contains(_searchString, StringComparison.OrdinalIgnoreCase) ?? false)
+        if ((x.Name?.Contains(_searchString, StringComparison.OrdinalIgnoreCase) ?? false) ||
+            (x.Address?.City?.Contains(_searchString, StringComparison.OrdinalIgnoreCase) ?? false))
             return true;
 
         return false;
