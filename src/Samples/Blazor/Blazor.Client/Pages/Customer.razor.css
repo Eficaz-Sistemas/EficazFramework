@@ -1,0 +1,15 @@
+﻿::deep .address-form {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    column-gap: 12px;
+}
+
+    ::deep .address-form > .street {
+        grid-column: 1 / -1;
+    }
+
+@media (max-width: 400px) {
+    ::deep .address-form {
+        grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+    }
+}
