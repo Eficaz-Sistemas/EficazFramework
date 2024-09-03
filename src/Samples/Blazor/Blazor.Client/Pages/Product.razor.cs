@@ -12,11 +12,22 @@ public partial class Product
     protected override void OnInitialized()
     {
         base.OnInitialized();
-        _viewModel = new(HttpClient!);
-        _viewModel.PropertyChanged += VM_PropertyChanged;
-        _viewModel.StateChanged += VM_StateChanged;
-        _viewModel.ShowMessage += ViewModel_Message;
-        _viewModel.Commands["Get"].Execute(null);
+
+        if (MdiWindow?.ApplicationInstance.Services.ContainsKey("ViewModel") ?? false)
+        {
+            _viewModel = MdiWindow?.ApplicationInstance.Services["ViewModel"] as ViewModels.Product;
+        }
+        else
+        {
+            _viewModel = new(HttpClient!);
+            _viewModel.PropertyChanged += VM_PropertyChanged;
+            _viewModel.StateChanged += VM_StateChanged;
+            _viewModel.ShowMessage += ViewModel_Message;
+            _viewModel.Commands["Get"].Execute(null);
+
+            if (MdiWindow != null)
+                MdiWindow!.ApplicationInstance.Services["ViewModel"] = _viewModel;
+        }
     }
     protected override void OnAfterRender(bool firstRender)
     {
