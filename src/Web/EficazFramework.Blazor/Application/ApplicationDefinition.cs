@@ -44,7 +44,7 @@ public sealed class BlazorApplicationTarget : ApplicationTarget
         get 
         {
             if (!Properties.ContainsKey("OffsetX"))
-                Properties["OffsetX"] = 15;
+                Properties["OffsetX"] = 50;
             return (int)Properties["OffsetX"];
         }
             
@@ -56,7 +56,7 @@ public sealed class BlazorApplicationTarget : ApplicationTarget
         get
         {
             if (!Properties.ContainsKey("OffsetY"))
-                Properties["OffsetY"] = 15;
+                Properties["OffsetY"] = 50;
             return (int)Properties["OffsetY"];
         }
         set => Properties["OffsetY"] = value;

@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Components.Web;
 using Microsoft.JSInterop;
 using MudBlazor;
 using MudBlazor.Utilities;
+using System.Data.SqlTypes;
 
 namespace EficazFramework.Components;
 
@@ -103,7 +104,7 @@ public partial class MdiWindow: MudBlazor.MudComponentBase
     /// </summary>
     /// <param name="e"></param>
     private void OnClick(MouseEventArgs e) =>
-        MdiHost.MoveTo(ApplicationInstance);
+        MdiHost.SelectApplication(ApplicationInstance);
 
     /// <summary>
     /// Set a header custom content
@@ -133,6 +134,7 @@ public partial class MdiWindow: MudBlazor.MudComponentBase
     //! Move Behavior
 
     internal bool IsMoving { get; private set; } = false;
+
     /// <summary>
     /// Starts a Drag operation for move
     /// </summary>
@@ -144,7 +146,7 @@ public partial class MdiWindow: MudBlazor.MudComponentBase
             if (IsMaximized)
                 return;
 
-            MdiHost.MoveTo(ApplicationInstance);
+            MdiHost.SelectApplication(ApplicationInstance);
             MdiHost._movingWindow = this;
             IsMoving = true;
             IsResizing = false;
@@ -180,7 +182,7 @@ public partial class MdiWindow: MudBlazor.MudComponentBase
             if (IsMaximized || !Resizable)
                 return;
 
-            MdiHost.MoveTo(ApplicationInstance);
+            MdiHost.SelectApplication(ApplicationInstance);
             MdiHost._movingWindow = this;
             IsResizing = true;
             MdiHost.width = ApplicationInstance.Blazor()!.Width;
