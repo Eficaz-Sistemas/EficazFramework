@@ -1,47 +1,43 @@
 <Project Sdk="Microsoft.NET.Sdk.Razor">
-
   <PropertyGroup>
-	<LangVersion>latest</LangVersion>
+    <LangVersion>latest</LangVersion>
     <TargetFrameworks>net7.0;net8.0</TargetFrameworks>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
     <AddRazorSupportForMvc>true</AddRazorSupportForMvc>
-	<Version>6.2.4</Version>
-	<AssemblyVersion>6.2.4.0</AssemblyVersion>
-	<FileVersion>6.2.4.0</FileVersion>
-	<RootNamespace>EficazFramework</RootNamespace>
-	<Authors>Eficaz Sistemas</Authors>
-	<Company>Eficaz Sistemas de Gestão e Inteligência Tributária</Company>
-	<Copyright>Copyright ©  2024. Eficaz Sistemas de Gestão e Inteligência Tributária Ltda.</Copyright>
-	<PackageIcon>logo.png</PackageIcon>
-	<PackageIconUrl>https://efsuporte.blob.core.windows.net/portal/EficazFramework.png</PackageIconUrl>
-	<RepositoryUrl>https://github.com/Eficaz-Sistemas/EficazFramework</RepositoryUrl>
-	<RepositoryType>git</RepositoryType>
-	<PackageTags>blazor api components web html css</PackageTags>
-	<NeutralLanguage>pt-BR</NeutralLanguage>
-	<SignAssembly>true</SignAssembly>
-	<AssemblyOriginatorKeyFile>EfCore.snk</AssemblyOriginatorKeyFile>
-	<AssemblyName>$(MSBuildProjectName)</AssemblyName>
-	<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-	<Description>Controles, extensões e utulitários para implementação Blazor.</Description>
-	<GenerateDocumentationFile>false</GenerateDocumentationFile>
-	<DefaultDocumentationFolder>..\..\..\Docs\Api\Web-Blazor</DefaultDocumentationFolder>
-	<DefaultDocumentationAssemblyPageName>EficazFramework Blazor</DefaultDocumentationAssemblyPageName>
-	<DefaultDocumentationGeneratedPages>Assembly, Types, Members</DefaultDocumentationGeneratedPages>
-	<DefaultDocumentationFileNameFactory>Folder</DefaultDocumentationFileNameFactory>
-	<DefaultDocumentationIncludeUndocumentedItems>false</DefaultDocumentationIncludeUndocumentedItems>
-	<DefaultDocumentationGeneratedAccessModifiers>Public</DefaultDocumentationGeneratedAccessModifiers>
+    <Version>6.2.5</Version>
+    <AssemblyVersion>6.2.5.0</AssemblyVersion>
+    <FileVersion>6.2.5.0</FileVersion>
+    <RootNamespace>EficazFramework</RootNamespace>
+    <Authors>Eficaz Sistemas</Authors>
+    <Company>Eficaz Sistemas de Gestão e Inteligência Tributária</Company>
+    <Copyright>Copyright ©  2024. Eficaz Sistemas de Gestão e Inteligência Tributária Ltda.</Copyright>
+    <PackageIcon>logo.png</PackageIcon>
+    <PackageIconUrl>https://efsuporte.blob.core.windows.net/portal/EficazFramework.png</PackageIconUrl>
+    <RepositoryUrl>https://github.com/Eficaz-Sistemas/EficazFramework</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <PackageTags>blazor api components web html css</PackageTags>
+    <NeutralLanguage>pt-BR</NeutralLanguage>
+    <SignAssembly>true</SignAssembly>
+    <AssemblyOriginatorKeyFile>EfCore.snk</AssemblyOriginatorKeyFile>
+    <AssemblyName>$(MSBuildProjectName)</AssemblyName>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <Description>Controles, extensões e utulitários para implementação Blazor.</Description>
+    <GenerateDocumentationFile>false</GenerateDocumentationFile>
+    <DefaultDocumentationFolder>..\..\..\Docs\Api\Web-Blazor</DefaultDocumentationFolder>
+    <DefaultDocumentationAssemblyPageName>EficazFramework Blazor</DefaultDocumentationAssemblyPageName>
+    <DefaultDocumentationGeneratedPages>Assembly, Types, Members</DefaultDocumentationGeneratedPages>
+    <DefaultDocumentationFileNameFactory>Folder</DefaultDocumentationFileNameFactory>
+    <DefaultDocumentationIncludeUndocumentedItems>false</DefaultDocumentationIncludeUndocumentedItems>
+    <DefaultDocumentationGeneratedAccessModifiers>Public</DefaultDocumentationGeneratedAccessModifiers>
   </PropertyGroup>
-	
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-  	<NoWarn>1573;1591;1701;1702;8603;8618</NoWarn>
+    <NoWarn>1573;1591;1701;1702;8603;8618</NoWarn>
   </PropertyGroup>
-
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
-  	<NoWarn>1573;1591;1701;1702;8603;8618</NoWarn>
-	<DisableDefaultDocumentation>true</DisableDefaultDocumentation>
+    <NoWarn>1573;1591;1701;1702;8603;8618</NoWarn>
+    <DisableDefaultDocumentation>true</DisableDefaultDocumentation>
   </PropertyGroup>
-
   <ItemGroup>
     <Compile Remove="Components\Theme\**" />
     <Compile Remove="Layouts\**" />
@@ -56,7 +52,6 @@
     <None Remove="Layouts\**" />
     <None Remove="wwwroot\projects\**" />
   </ItemGroup>
-
   <ItemGroup>
     <Compile Remove="Templates\ApplicationMVVMToolbar.razor.cs" />
     <Compile Remove="Templates\Applications.razor.cs" />
@@ -64,7 +59,6 @@
     <Compile Remove="Templates\NavBarApps.razor.cs" />
     <Compile Remove="Templates\StartMenu.razor.cs" />
   </ItemGroup>
-
   <ItemGroup>
     <Content Remove="Templates\ApplicationMVVMToolbar.razor" />
     <Content Remove="Templates\Applications.razor" />
@@ -72,22 +66,19 @@
     <Content Remove="Templates\NavBarApps.razor" />
     <Content Remove="Templates\StartMenu.razor" />
   </ItemGroup>
-
   <ItemGroup>
     <None Remove="Components\Panels\l5t002mw.04g~" />
     <None Remove="Styles\Components\MDIContainer.scss" />
     <None Remove="Styles\Templates\Applications.scss" />
     <None Remove="Styles\Templates\StartMenu.scss" />
   </ItemGroup>
-
   <ItemGroup>
-  	<None Include="..\..\..\Assets\logo.png">
-  		<Pack>True</Pack>
-  		<PackagePath>\</PackagePath>
-  	</None>
-  	<None Include="Templates\CookieConsent.razor" />
+    <None Include="..\..\..\Assets\logo.png">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
+    <None Include="Templates\CookieConsent.razor" />
   </ItemGroup>
-	
   <ItemGroup>
     <PackageReference Include="DefaultDocumentation" Version="0.8.2">
       <PrivateAssets>all</PrivateAssets>
@@ -99,12 +90,10 @@
     </PackageReference>
     <PackageReference Include="MudBlazor" Version="7.7.0" />
   </ItemGroup>
-	
   <ItemGroup>
     <ProjectReference Include="..\..\Core\EficazFramework.Expressions\EficazFramework.Expressions.csproj" />
     <ProjectReference Include="..\..\Core\EficazFramework.Utilities\EficazFramework.Utilities.csproj" />
   </ItemGroup>
-	
   <ItemGroup>
     <Compile Update="Resources\Strings\Components.Designer.cs">
       <DesignTime>True</DesignTime>
@@ -117,7 +106,6 @@
       <DependentUpon>Layouts.resx</DependentUpon>
     </Compile>
   </ItemGroup>
-	
   <ItemGroup>
     <EmbeddedResource Update="Resources\Strings\Components.resx">
       <CustomToolNamespace>EficazFramework.Resources.Strings</CustomToolNamespace>
@@ -130,17 +118,14 @@
       <LastGenOutput>Layouts.Designer.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
-
-	<ItemGroup>
-		<AssemblyAttribute Include="System.Runtime.CompilerServices.InternalsVisibleTo">
-			<_Parameter1>
+  <ItemGroup>
+    <AssemblyAttribute Include="System.Runtime.CompilerServices.InternalsVisibleTo">
+      <_Parameter1>
 				EficazFramework.Tests.Blazor, PublicKey=0024000004800000940000000602000000240000525341310004000001000100d16a73322f95949ad691901229d27abe5dd688e03aa2550ca2a551184e2554b8ddc5416bf8d52a88339e24dd8063cf74e0f5ecd12b5e2927ad604049e29acb4648db2675ac6cb1e31638767731dc1ae90a6432bac0178e5422b7297d946e6fded3fa4addd534d06e75ad983675cf5bae2e41c8915890ec122ed0baef5fc74aad
 			</_Parameter1>
-		</AssemblyAttribute>
-	</ItemGroup>
-
-	<ItemGroup>
-	  <Folder Include="Styles\Templates\" />
-	</ItemGroup>
-
+    </AssemblyAttribute>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Styles\Templates\" />
+  </ItemGroup>
 </Project>

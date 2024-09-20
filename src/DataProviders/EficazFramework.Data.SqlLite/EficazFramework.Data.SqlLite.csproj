@@ -1,73 +1,64 @@
 <Project Sdk="Microsoft.NET.Sdk">
-
-	<PropertyGroup>
-		<TargetFrameworks>net7.0;net8.0</TargetFrameworks>
-		<Version>6.2.4</Version>
-		<AssemblyVersion>6.2.4.0</AssemblyVersion>
-		<FileVersion>6.2.4.0</FileVersion>
-		<RootNamespace>EficazFramework</RootNamespace>
-		<SignAssembly>true</SignAssembly>
-		<AssemblyOriginatorKeyFile>EfCore.snk</AssemblyOriginatorKeyFile>
-		<DelaySign>false</DelaySign>
-		<Company>Eficaz Sistemas de Gestão e Inteligência Tributária</Company>
-		<Copyright>Copyright ©  2024. Eficaz Sistemas de Gestão e Inteligência Tributária Ltda.</Copyright>
-		<Description>Fornece funcionalidades específicas para trabalho com bases de dados Microsoft SQL Server.</Description>
-		<RepositoryUrl>https://github.com/Eficaz-Sistemas/EficazFramework</RepositoryUrl>
-		<RepositoryType>git</RepositoryType>
-		<PackageTags>data efcore entityframeworkcore persistência sqllite</PackageTags>
-		<NeutralLanguage>pt-BR</NeutralLanguage>
-		<Authors>Eficaz Sistemas</Authors>
-		<PackageIcon>logo.png</PackageIcon>
-		<PackageIconUrl>https://efsuporte.blob.core.windows.net/portal/EficazFramework.png</PackageIconUrl>
-		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-		<ImplicitUsings>enable</ImplicitUsings>
-		<GenerateDocumentationFile>false</GenerateDocumentationFile>
-		<DefaultDocumentationFolder>..\..\..\Docs\Api\Data-Providers\SqlLite</DefaultDocumentationFolder>
-		<DefaultDocumentationAssemblyPageName>EficazFramework SqlLite Data Provider</DefaultDocumentationAssemblyPageName>
-		<DefaultDocumentationGeneratedPages>Assembly, Types, Members</DefaultDocumentationGeneratedPages>
-		<DefaultDocumentationFileNameFactory>Folder</DefaultDocumentationFileNameFactory>
-		<DefaultDocumentationIncludeUndocumentedItems>true</DefaultDocumentationIncludeUndocumentedItems>
-		<DefaultDocumentationGeneratedAccessModifiers>Public</DefaultDocumentationGeneratedAccessModifiers>
-		<Nullable>enable</Nullable>
-	</PropertyGroup>
-
-	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-		<NoWarn>1573;1591;1701;1702</NoWarn>
-	</PropertyGroup>
-
-	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
-		<NoWarn>1573;1591;1701;1702</NoWarn>
-		<DisableDefaultDocumentation>true</DisableDefaultDocumentation>
-	</PropertyGroup>
-	
-	<ItemGroup>
-		<None Include="..\..\..\Assets\logo.png" Link="logo.png">
-			<PackagePath>\</PackagePath>
-			<Pack>True</Pack>
-		</None>
-	</ItemGroup>
-	
-	<ItemGroup>
-	  <PackageReference Include="DefaultDocumentation" Version="0.8.2">
-	    <PrivateAssets>all</PrivateAssets>
-	    <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-	  </PackageReference>
-	  <PackageReference Include="EficazFramework.DocsApiPlugin" Version="1.0.8">
-	    <PrivateAssets>all</PrivateAssets>
-	    <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-	  </PackageReference>
-	</ItemGroup>
-
-	<ItemGroup Condition=" '$(TargetFramework)' == 'net7.0' ">
-		<PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="7.0.20" />
-	</ItemGroup>
-
-	<ItemGroup Condition=" '$(TargetFramework)' == 'net8.0' ">
-		<PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="8.0.8" />
-	</ItemGroup>
-	
-	<ItemGroup>
-	  <ProjectReference Include="..\..\Core\EficazFramework.Data\EficazFramework.Data.csproj" />
-	</ItemGroup>	
-	
+  <PropertyGroup>
+    <TargetFrameworks>net7.0;net8.0</TargetFrameworks>
+    <Version>6.2.5</Version>
+    <AssemblyVersion>6.2.5.0</AssemblyVersion>
+    <FileVersion>6.2.5.0</FileVersion>
+    <RootNamespace>EficazFramework</RootNamespace>
+    <SignAssembly>true</SignAssembly>
+    <AssemblyOriginatorKeyFile>EfCore.snk</AssemblyOriginatorKeyFile>
+    <DelaySign>false</DelaySign>
+    <Company>Eficaz Sistemas de Gestão e Inteligência Tributária</Company>
+    <Copyright>Copyright ©  2024. Eficaz Sistemas de Gestão e Inteligência Tributária Ltda.</Copyright>
+    <Description>Fornece funcionalidades específicas para trabalho com bases de dados Microsoft SQL Server.</Description>
+    <RepositoryUrl>https://github.com/Eficaz-Sistemas/EficazFramework</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <PackageTags>data efcore entityframeworkcore persistência sqllite</PackageTags>
+    <NeutralLanguage>pt-BR</NeutralLanguage>
+    <Authors>Eficaz Sistemas</Authors>
+    <PackageIcon>logo.png</PackageIcon>
+    <PackageIconUrl>https://efsuporte.blob.core.windows.net/portal/EficazFramework.png</PackageIconUrl>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <GenerateDocumentationFile>false</GenerateDocumentationFile>
+    <DefaultDocumentationFolder>..\..\..\Docs\Api\Data-Providers\SqlLite</DefaultDocumentationFolder>
+    <DefaultDocumentationAssemblyPageName>EficazFramework SqlLite Data Provider</DefaultDocumentationAssemblyPageName>
+    <DefaultDocumentationGeneratedPages>Assembly, Types, Members</DefaultDocumentationGeneratedPages>
+    <DefaultDocumentationFileNameFactory>Folder</DefaultDocumentationFileNameFactory>
+    <DefaultDocumentationIncludeUndocumentedItems>true</DefaultDocumentationIncludeUndocumentedItems>
+    <DefaultDocumentationGeneratedAccessModifiers>Public</DefaultDocumentationGeneratedAccessModifiers>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <NoWarn>1573;1591;1701;1702</NoWarn>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <NoWarn>1573;1591;1701;1702</NoWarn>
+    <DisableDefaultDocumentation>true</DisableDefaultDocumentation>
+  </PropertyGroup>
+  <ItemGroup>
+    <None Include="..\..\..\Assets\logo.png" Link="logo.png">
+      <PackagePath>\</PackagePath>
+      <Pack>True</Pack>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="DefaultDocumentation" Version="0.8.2">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="EficazFramework.DocsApiPlugin" Version="1.0.8">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+  </ItemGroup>
+  <ItemGroup Condition=" '$(TargetFramework)' == 'net7.0' ">
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="7.0.20" />
+  </ItemGroup>
+  <ItemGroup Condition=" '$(TargetFramework)' == 'net8.0' ">
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="8.0.8" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Core\EficazFramework.Data\EficazFramework.Data.csproj" />
+  </ItemGroup>
 </Project>
