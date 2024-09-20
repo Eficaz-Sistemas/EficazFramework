@@ -11,7 +11,7 @@ public partial class MdiHost : MudComponentBase, IBrowserViewportObserver
     protected override async Task OnAfterRenderAsync(bool firstRender)
     {
         if (firstRender)
-            await BrowserViewportService.SubscribeAsync(this, fireImmediately: true);
+            await BrowserViewportService.SubscribeAsync(this, true);
     }
 
     public async ValueTask DisposeAsync()
@@ -22,6 +22,9 @@ public partial class MdiHost : MudComponentBase, IBrowserViewportObserver
 
 
     private Breakpoint _breakpoint;
+    private bool _iscompact = false;
+    private MudBlazor.Interop.BoundingClientRect _hostArea;
+    ElementReference MdiHostArea;
 
     [Inject] protected IBrowserViewportService BrowserViewportService { get; set; } = null!;
 
@@ -29,8 +32,27 @@ public partial class MdiHost : MudComponentBase, IBrowserViewportObserver
 
     async Task IBrowserViewportObserver.NotifyBrowserViewportChangeAsync(BrowserViewportEventArgs browserViewportEventArgs)
     {
-        Breakpoint = browserViewportEventArgs.Breakpoint;
+        _breakpoint = browserViewportEventArgs.Breakpoint;
+        _iscompact = await BrowserViewportService.IsBreakpointWithinReferenceSizeAsync(Breakpoint, _breakpoint);
+        _hostArea = await MdiHostArea.MudGetBoundingClientRectAsync();
+
+        if (!_iscompact)
+            FixAppsLocationOnResize();
+
         await InvokeAsync(StateHasChanged);
+    }
+
+    private void FixAppsLocationOnResize()
+    {
+        var source = ApplicationsSource as IList<ApplicationInstance> ?? [];
+        foreach (ApplicationInstance app in source!)
+        {
+            if (app.Blazor()!.OffsetX > _hostArea.Width)
+                app.Blazor()!.OffsetX = ((((int)_hostArea.Width) - app.Blazor()!.InitialSize.Width) / 2) - (int)_hostArea.AbsoluteLeft;
+
+            if (app.Blazor()!.OffsetY > _hostArea.Height)
+                app.Blazor()!.OffsetY = ((((int)_hostArea.Height) - app.Blazor()!.InitialSize.Height) / 2) - (int)_hostArea.AbsoluteTop;
+        }
     }
 
 
@@ -73,7 +95,7 @@ public partial class MdiHost : MudComponentBase, IBrowserViewportObserver
     {
         if (_movingWindow?.IsMoving ?? false)
         {
-            MoveSeletedWindow(args);
+            DragSeletedWindow(args);
             return;
         }
 
@@ -81,7 +103,7 @@ public partial class MdiHost : MudComponentBase, IBrowserViewportObserver
             ResizeSeletedWindow(args);
     }
 
-    private void MoveSeletedWindow(PointerEventArgs args)
+    private void DragSeletedWindow(PointerEventArgs args)
     {
 #if NET7_0_OR_GREATER
         offsetX += args.MovementX;
@@ -129,7 +151,7 @@ public partial class MdiHost : MudComponentBase, IBrowserViewportObserver
         set
         {
             _currentSection = value;
-            MoveToLast();
+            SelectLastApplication();
         }
     }
 
@@ -186,11 +208,12 @@ public partial class MdiHost : MudComponentBase, IBrowserViewportObserver
     /// <summary>
     /// Start a new application instance (from <paramref name="app"/> metadata) and adds it to the host.
     /// </summary>
-    public void LoadApplication(ApplicationDefinition app)
+    public async void LoadApplication(ApplicationDefinition app)
     {
         if (app.IsPublic == false && CurrentSection == 0)
             return;
 
+        _hostArea = await MdiHostArea.MudGetBoundingClientRectAsync();
         ApplicationInstance? instance = ApplicationsSource?.FirstOrDefault(a => a.Metadata == app && (a.SessionID == 0 || a.SessionID == CurrentSection));
         if (instance == null)
         {
@@ -198,17 +221,19 @@ public partial class MdiHost : MudComponentBase, IBrowserViewportObserver
             instance.Blazor()!.ZIndex = (ApplicationsSource?.Count() ?? 0) + 1;
             instance.Blazor()!.Width = instance.Blazor()!.InitialSize.Width;
             instance.Blazor()!.Height = instance.Blazor()!.InitialSize.Height;
+            instance.Blazor()!.OffsetX = ((((int)_hostArea.Width) - instance.Blazor()!.InitialSize.Width) / 2) - (int)_hostArea.AbsoluteLeft;
+            instance.Blazor()!.OffsetY = ((((int)_hostArea.Height) - instance.Blazor()!.InitialSize.Height) / 2) - (int)_hostArea.AbsoluteTop;
             (ApplicationsSource as IList<ApplicationInstance>)?.Add(instance);
         }
 
-        MoveTo(instance);
+        SelectApplication(instance);
     }
 
     /// <summary>
     /// Move o foco para a Instância de aplicativo <paramref name="app"/>
     /// </summary>
     /// <param name="app"></param>
-    public void MoveTo(ApplicationInstance app)
+    public void SelectApplication(ApplicationInstance app)
     {
         var runningAps = RunningApplications();
         foreach(var anotherApp in runningAps.Where(a => !object.ReferenceEquals(a, app)))
@@ -229,11 +254,11 @@ public partial class MdiHost : MudComponentBase, IBrowserViewportObserver
     /// Move o foco para o último aplicativo válido de <see cref="RunningApplications"/>
     /// </summary>
     /// <param name="app"></param>
-    public void MoveToLast()
+    public void SelectLastApplication()
     {
         var last = RunningApplications().LastOrDefault();
         if (last != null)
-            MoveTo(last);
+            SelectApplication(last);
         else
         {
             SelectedApp = null;
@@ -249,10 +274,8 @@ public partial class MdiHost : MudComponentBase, IBrowserViewportObserver
     {
         appHost.ApplicationInstance.Dispose();
         (ApplicationsSource as IList<ApplicationInstance>)?.Remove(appHost.ApplicationInstance);
-        MoveToLast();
+        SelectLastApplication();
     }
 
     #endregion
-
-
 }

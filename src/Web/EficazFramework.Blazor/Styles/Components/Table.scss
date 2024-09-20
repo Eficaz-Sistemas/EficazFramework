@@ -13,6 +13,11 @@
     height: 0px;
 }
 
+.mud-table > .mud-table-pagination {
+    overflow: hidden;
+}
+
+
 .mud-table-head > .mud-table-row > th.mud-table-cell:first-child {
     background-color: var(--mud-palette-primary);
 }

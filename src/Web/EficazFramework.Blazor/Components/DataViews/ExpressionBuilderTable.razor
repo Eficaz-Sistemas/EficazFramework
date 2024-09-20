@@ -3,7 +3,7 @@
 @inherits MudBlazor.MudComponentBase
 @inject MudBlazor.IBrowserViewportService BrowserViewportService
 
-<MudBlazor.MudTable Dense Breakpoint="@MudBlazor.Breakpoint.Xs" Elevation="0" Items="@vm.Items" Class="flex-grow-1 order-2 mx-4">
+<MudBlazor.MudTable Dense Breakpoint="@MudBlazor.Breakpoint.Xs" Elevation="0" Items="@vm.Items" Class="flex-grow-1 order-2 border-0">
     <HeaderContent>
         @if (vm.CanAddExpressions)
         {
@@ -99,7 +99,6 @@
                                                          @bind-Date="context.DateTimeValue1" 
                                                          Class="flex-grow-0 ef-expression-table-cell"
                                                          DateFormat="d" 
-                                                         AllowKeyboardInput
                                                          Editable
                                                          PickerVariant="@pickerVariant"/>
 
@@ -109,7 +108,6 @@
                                                          @bind-Date="context.DateTimeValue2" 
                                                          Class="ef-expression-table-cell" 
                                                          DateFormat="d" 
-                                                         AllowKeyboardInput
                                                          Editable
                                                          PickerVariant="@pickerVariant" />
                                 <div class="flex-grow-1"/>
@@ -143,7 +141,6 @@
                                                             Class="ef-expression-table-cell"
                                                             @bind-Date="context.DateTimeValue1" 
                                                             DateFormat="d"
-                                                            AllowKeyboardInput
                                                             Editable
                                                             PickerVariant="@pickerVariant" />
                                 break;
@@ -157,11 +154,10 @@
                                 break;
 
                             case EficazFramework.Expressions.ExpressionEditor.BoolSelection:
-                                <MudBlazor.MudCheckBox Margin="@MudBlazor.Margin.Dense"
-                                                        Class="ef-expression-table-cell"
-                                                        @bind-Checked="context.Value1" 
-                                                        Converter="@(new EficazFramework.Converters.ObjectToBoolConverter())"
-                                                        Color="@MudBlazor.Color.Primary"><span class="ml-2">@(((bool?)context.Value1)?.GetBoolValue())</span></MudBlazor.MudCheckBox>
+                                <MudBlazor.MudCheckBox Class="ef-expression-table-cell"
+                                                       @bind-Value="context.Value1" 
+                                                       Converter="@(new EficazFramework.Converters.ObjectToBoolConverter())"
+                                                       Color="@MudBlazor.Color.Primary"><span class="ml-2">@(((bool?)context.Value1)?.GetBoolValue())</span></MudBlazor.MudCheckBox>
                                 break;
 
                             case EficazFramework.Expressions.ExpressionEditor.EnumLocalizedSelection:

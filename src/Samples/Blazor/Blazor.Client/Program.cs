@@ -16,6 +16,8 @@ builder.Services.AddEficazFramework(options =>
 {
     options.UseApplicationManager = true;
     options.ThemeIsDarkMode = true;
+    options.MudBlazorConfigurations = opt =>
+        opt.ResizeOptions.NotifyOnBreakpointOnly = false;
 });
 
 var app = builder.Build(); //.RunAsync();

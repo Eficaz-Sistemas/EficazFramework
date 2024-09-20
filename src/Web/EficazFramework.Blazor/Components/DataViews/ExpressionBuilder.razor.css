@@ -2,6 +2,10 @@
     overflow: visible;
 }
 
+::deep .mud-table {
+   height: unset !important;
+}
+
 ::deep .mud-table-cell {
     padding: 4px 24px 2px 16px !important;
 }

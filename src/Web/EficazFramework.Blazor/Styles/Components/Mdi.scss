@@ -2,8 +2,12 @@
     position: relative;
 }
 
+.ef-mdi-host-area {
+}
+
+
 .ef-mdi-window {
-    position: relative;
+    position: fixed;
     box-shadow: var(--mud-elevation-3);
     background-color: var(--mud-palette-background);
     border-radius: 10px;

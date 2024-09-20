@@ -1,44 +1,41 @@
 <Project Sdk="Microsoft.NET.Sdk">
-
   <PropertyGroup>
-	  <TargetFrameworks>net7.0;net8.0</TargetFrameworks>
-	  <Version>6.2.4</Version>
-	  <AssemblyVersion>6.2.4.0</AssemblyVersion>
-	  <FileVersion>6.2.4.0</FileVersion>
-	  <RootNamespace>EficazFramework</RootNamespace>
-	  <SignAssembly>true</SignAssembly>
-	  <AssemblyOriginatorKeyFile>EfCore.snk</AssemblyOriginatorKeyFile>
-	  <DelaySign>false</DelaySign>
-	  <Company>Eficaz Sistemas de Gestão e Inteligência Tributária</Company>
-	  <Copyright>Copyright ©  2024. Eficaz Sistemas de Gestão e Inteligência Tributária Ltda.</Copyright>
-	  <Description>Implementa novos tipos de Coleções e provê algumas extensões.</Description>
-	  <RepositoryUrl>https://github.com/Eficaz-Sistemas/EficazFramework</RepositoryUrl>
-	  <RepositoryType>git</RepositoryType>
-	  <PackageTags>collections async</PackageTags>
-	  <NeutralLanguage>pt-BR</NeutralLanguage>
-	  <Authors>Eficaz Sistemas</Authors>
-	  <PackageIcon>logo.png</PackageIcon>
-	  <PackageIconUrl>https://efsuporte.blob.core.windows.net/portal/EficazFramework.png</PackageIconUrl>
-	  <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-	  <Configurations>Debug;Release</Configurations>
-	  <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
-	  <GenerateDocumentationFile>false</GenerateDocumentationFile>
-	  <DefaultDocumentationFolder>..\..\..\Docs\Api\Collections</DefaultDocumentationFolder>
-	  <DefaultDocumentationAssemblyPageName>EficazFramework Collections</DefaultDocumentationAssemblyPageName>
-	  <DefaultDocumentationGeneratedPages>Assembly, Types, Members</DefaultDocumentationGeneratedPages>
-	  <DefaultDocumentationFileNameFactory>Folder</DefaultDocumentationFileNameFactory>
-	  <DefaultDocumentationIncludeUndocumentedItems>true</DefaultDocumentationIncludeUndocumentedItems>
-	  <DefaultDocumentationGeneratedAccessModifiers>Public</DefaultDocumentationGeneratedAccessModifiers>
-	  <DefaultDocumentationLogLevel>Trace</DefaultDocumentationLogLevel>
+    <TargetFrameworks>net7.0;net8.0</TargetFrameworks>
+    <Version>6.2.5</Version>
+    <AssemblyVersion>6.2.5.0</AssemblyVersion>
+    <FileVersion>6.2.5.0</FileVersion>
+    <RootNamespace>EficazFramework</RootNamespace>
+    <SignAssembly>true</SignAssembly>
+    <AssemblyOriginatorKeyFile>EfCore.snk</AssemblyOriginatorKeyFile>
+    <DelaySign>false</DelaySign>
+    <Company>Eficaz Sistemas de Gestão e Inteligência Tributária</Company>
+    <Copyright>Copyright ©  2024. Eficaz Sistemas de Gestão e Inteligência Tributária Ltda.</Copyright>
+    <Description>Implementa novos tipos de Coleções e provê algumas extensões.</Description>
+    <RepositoryUrl>https://github.com/Eficaz-Sistemas/EficazFramework</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <PackageTags>collections async</PackageTags>
+    <NeutralLanguage>pt-BR</NeutralLanguage>
+    <Authors>Eficaz Sistemas</Authors>
+    <PackageIcon>logo.png</PackageIcon>
+    <PackageIconUrl>https://efsuporte.blob.core.windows.net/portal/EficazFramework.png</PackageIconUrl>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <Configurations>Debug;Release</Configurations>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <GenerateDocumentationFile>false</GenerateDocumentationFile>
+    <DefaultDocumentationFolder>..\..\..\Docs\Api\Collections</DefaultDocumentationFolder>
+    <DefaultDocumentationAssemblyPageName>EficazFramework Collections</DefaultDocumentationAssemblyPageName>
+    <DefaultDocumentationGeneratedPages>Assembly, Types, Members</DefaultDocumentationGeneratedPages>
+    <DefaultDocumentationFileNameFactory>Folder</DefaultDocumentationFileNameFactory>
+    <DefaultDocumentationIncludeUndocumentedItems>true</DefaultDocumentationIncludeUndocumentedItems>
+    <DefaultDocumentationGeneratedAccessModifiers>Public</DefaultDocumentationGeneratedAccessModifiers>
+    <DefaultDocumentationLogLevel>Trace</DefaultDocumentationLogLevel>
   </PropertyGroup>
-
   <ItemGroup>
     <None Include="..\..\..\Assets\logo.png" Link="logo.png">
       <PackagePath>\</PackagePath>
       <Pack>True</Pack>
     </None>
   </ItemGroup>
-
   <ItemGroup>
     <PackageReference Include="DefaultDocumentation" Version="0.8.2">
       <PrivateAssets>all</PrivateAssets>
@@ -49,9 +46,7 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
   </ItemGroup>
-
   <ItemGroup>
     <ProjectReference Include="..\EficazFramework.Utilities\EficazFramework.Utilities.csproj" />
   </ItemGroup>
-
 </Project>

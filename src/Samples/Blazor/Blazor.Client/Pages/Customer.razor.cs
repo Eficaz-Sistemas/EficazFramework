@@ -2,7 +2,7 @@
 
 namespace Blazor.Client.Pages;
 
-public partial class Product
+public partial class Customer
 {
     [Inject] HttpClient? HttpClient { get; set; }
     [Inject] MudBlazor.ISnackbar? Snackbar { get; set; }
@@ -15,7 +15,7 @@ public partial class Product
 
         if (MdiWindow?.ApplicationInstance.Services.ContainsKey("ViewModel") ?? false)
         {
-            _viewModel = MdiWindow?.ApplicationInstance.Services["ViewModel"] as ViewModels.Product;
+            _viewModel = MdiWindow?.ApplicationInstance.Services["ViewModel"] as ViewModels.Customer;
         }
         else
         {
@@ -28,7 +28,9 @@ public partial class Product
             if (MdiWindow != null)
                 MdiWindow!.ApplicationInstance.Services["ViewModel"] = _viewModel;
         }
+
     }
+
     protected override void OnAfterRender(bool firstRender)
     {
         base.OnAfterRender(firstRender);
@@ -37,7 +39,7 @@ public partial class Product
             MdiWindow?.OverrideFrameParameters(CustomHeader(), false);
     }
 
-    private ViewModels.Product? _viewModel;
+    private ViewModels.Customer? _viewModel;
 
 
     private async void ViewModel_Message(object sender, EficazFramework.Events.MessageEventArgs e)
@@ -78,23 +80,16 @@ public partial class Product
     }
 
 
-    private IEnumerable<string> Validate(string propertyName)
-    {
-        var result = (_viewModel!.Editor.CurrentEntry as Shared.Interfaces.IValidatable).Validate(propertyName);
-        return result!.AsEnumerable();
-    }
-
-    int[] _pageSizeOptions = [250];
     string? _searchString;
-    private Func<Shared.DTOs.ProductDto, bool> _quickFilter => x =>
+    private Func<Shared.DTOs.CustomerDto, bool> _quickFilter => x =>
     {
         if (string.IsNullOrWhiteSpace(_searchString))
             return true;
 
-        if (x.Name?.Contains(_searchString, StringComparison.OrdinalIgnoreCase) ?? false)
+        if ((x.Name?.Contains(_searchString, StringComparison.OrdinalIgnoreCase) ?? false) ||
+            (x.Address?.City?.Contains(_searchString, StringComparison.OrdinalIgnoreCase) ?? false))
             return true;
 
         return false;
     };
-
 }

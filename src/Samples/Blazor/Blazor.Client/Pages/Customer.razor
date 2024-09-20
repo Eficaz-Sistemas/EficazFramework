@@ -1,7 +1,7 @@
 ﻿<div class="ma-4 app-flex-host">
-    <EficazFramework.Components.Navigator Class="app-flex-host" 
+    <EficazFramework.Components.Navigator Class="app-flex-host"
                                           SelectedIndex="@(_viewModel!.Navigator?.SelectedIndex ?? -1)">
-                                      
+
         <ChildContent>
 
             <!-- ENTRIES LIST -->
@@ -21,7 +21,10 @@
                     <Columns>
 
                         <MudBlazor.PropertyColumn Title="Name"
-                                                  Property="x => x.Name"/>
+                                                  Property="x => x.Name" />
+                        <MudBlazor.PropertyColumn Title="City"
+                                                  Property="x => x.Address.City" />
+
 
                         <MudBlazor.TemplateColumn CellClass="py-0 action-button-cell">
                             <CellTemplate>
@@ -53,6 +56,7 @@
                     <ColGroup>
                         <MudBlazor.MudHidden Breakpoint="@MudBlazor.Breakpoint.SmAndDown">
                             <col span="1" style="width: fit-content;">
+                            <col span="1" style="width: fit-content;">
                             <col span="1" style="width: 80px;">
                         </MudBlazor.MudHidden>
                     </ColGroup>
@@ -69,10 +73,30 @@
                                                     Required
                                                     Class="@($"{Layout.MainLayout.INPUTCLASS}")" />
                         </EficazFramework.Components.GroupPanel>
+                        <EficazFramework.Components.GroupPanel Title="Address" Class="mt-4">
+                            <div class="address-form">
+                                <MudBlazor.MudTextField Label="Street"
+                                                        @bind-Value="_viewModel!.Editor.CurrentEntry.Address.Street"
+                                                        Required
+                                                        Class="@($"{Layout.MainLayout.INPUTCLASS} street")" />
+                                <MudBlazor.MudTextField Label="Zip Code"
+                                                        @bind-Value="_viewModel!.Editor.CurrentEntry.Address.ZipCode"
+                                                        Required
+                                                        Class="@($"{Layout.MainLayout.INPUTCLASS}")" />
+                                <MudBlazor.MudTextField Label="City"
+                                                        @bind-Value="_viewModel!.Editor.CurrentEntry.Address.City"
+                                                        Required
+                                                        Class="@($"{Layout.MainLayout.INPUTCLASS} city")"/>
+                                <MudBlazor.MudTextField Label="State"
+                                                        @bind-Value="_viewModel!.Editor.CurrentEntry.Address.State"
+                                                        Required
+                                                        Class="@($"{Layout.MainLayout.INPUTCLASS} state")" />
+                            </div>
+                        </EficazFramework.Components.GroupPanel>
                     </EficazFramework.Components.FocusTrapEx>
                 </MudBlazor.MudForm>
             </EficazFramework.Components.NavigatorPage>
-        </ChildContent>                         
+        </ChildContent>
     </EficazFramework.Components.Navigator>
 
 </div>
@@ -84,26 +108,26 @@
         if (_viewModel?.State == EficazFramework.Enums.CRUD.State.Novo || _viewModel?.State == EficazFramework.Enums.CRUD.State.Edicao)
         {
             return
-                @<div class="d-flex flex-row flex-grow-1 justify-end mt-1 mb-n6 mr-1">
-                    <MudBlazor.MudTooltip Text="@EficazFramework.Resources.Strings.Commands.Save">
-                        <MudBlazor.MudIconButton Color="MudBlazor.Color.Primary"
-                                                 Variant="MudBlazor.Variant.Filled"
-                                                 Size="@MudBlazor.Size.Medium"
-                                                 Icon="@MudBlazor.Icons.Material.Filled.Save"
-                                                 Class="rounded-circle pa-3"
-                                                 OnClick="@(() => _viewModel!.Commands["Save"].Execute(null))"
-                                                 Style="z-index:3;"/>
-                    </MudBlazor.MudTooltip>
-                    <MudBlazor.MudTooltip Text="@EficazFramework.Resources.Strings.Commands.Cancel">
-                        <MudBlazor.MudIconButton Color="MudBlazor.Color.Tertiary"
-                                                 Variant="MudBlazor.Variant.Filled"
-                                                 Size="@MudBlazor.Size.Small"
-                                                 Icon="@MudBlazor.Icons.Material.Filled.Cancel"
-                                                 Class="rounded-circle pa-3"
-                                                 OnClick="@(() => _viewModel!.Commands["Cancel"].Execute(null))"
-                                                 Style="z-index:3;" />
-                    </MudBlazor.MudTooltip>
-                </div>;
+    @<div class="d-flex flex-row flex-grow-1 justify-end mt-1 mb-n6 mr-1">
+        <MudBlazor.MudTooltip Text="@EficazFramework.Resources.Strings.Commands.Save">
+            <MudBlazor.MudIconButton Color="MudBlazor.Color.Primary"
+                                     Variant="MudBlazor.Variant.Filled"
+                                     Size="@MudBlazor.Size.Medium"
+                                     Icon="@MudBlazor.Icons.Material.Filled.Save"
+                                     Class="rounded-circle pa-3"
+                                     OnClick="@(() => _viewModel!.Commands["Save"].Execute(null))"
+                                     Style="z-index:3;" />
+        </MudBlazor.MudTooltip>
+        <MudBlazor.MudTooltip Text="@EficazFramework.Resources.Strings.Commands.Cancel">
+            <MudBlazor.MudIconButton Color="MudBlazor.Color.Tertiary"
+                                     Variant="MudBlazor.Variant.Filled"
+                                     Size="@MudBlazor.Size.Small"
+                                     Icon="@MudBlazor.Icons.Material.Filled.Cancel"
+                                     Class="rounded-circle pa-3"
+                                     OnClick="@(() => _viewModel!.Commands["Cancel"].Execute(null))"
+                                     Style="z-index:3;" />
+        </MudBlazor.MudTooltip>
+    </div>;
         }
         else if (_viewModel?.State == EficazFramework.Enums.CRUD.State.Bloqueado || _viewModel?.State == EficazFramework.Enums.CRUD.State.Leitura)
         {
@@ -115,25 +139,25 @@
                                                 Margin="MudBlazor.Margin.Dense"
                                                 Adornment="MudBlazor.Adornment.Start"
                                                 AdornmentIcon="@MudBlazor.Icons.Material.Filled.Search"
-                                                Class="@($"{Layout.MainLayout.INPUTCLASS}")"/>
+                                                Class="@($"{Layout.MainLayout.INPUTCLASS}")" />
                     </div>
                     <MudBlazor.MudTooltip Text="@EficazFramework.Resources.Strings.Commands.Add">
                         <MudBlazor.MudIconButton Color="MudBlazor.Color.Secondary"
-                                                    Variant="MudBlazor.Variant.Filled"
-                                                    Size="@MudBlazor.Size.Medium"
-                                                    Icon="@MudBlazor.Icons.Material.Filled.Add"
-                                                    Class="rounded-circle pa-3"
-                                                    OnClick="@(() => _viewModel!.Commands["New"].Execute(null))"
-                                                    Style="z-index:3;" />
+                                                 Variant="MudBlazor.Variant.Filled"
+                                                 Size="@MudBlazor.Size.Medium"
+                                                 Icon="@MudBlazor.Icons.Material.Filled.Add"
+                                                 Class="rounded-circle pa-3"
+                                                 OnClick="@(() => _viewModel!.Commands["New"].Execute(null))"
+                                                 Style="z-index:3;" />
                     </MudBlazor.MudTooltip>
                     <MudBlazor.MudTooltip Text="@EficazFramework.Resources.Strings.Commands.Refresh">
                         <MudBlazor.MudIconButton Color="MudBlazor.Color.Primary"
-                                                    Variant="MudBlazor.Variant.Filled"
-                                                    Size="@MudBlazor.Size.Small"
-                                                    Icon="@MudBlazor.Icons.Material.Filled.Refresh"
-                                                    Class="rounded-circle pa-3"
-                                                    OnClick="@(() => _viewModel!.Commands["Get"].Execute(null))"
-                                                    Style="z-index:3;" />
+                                                 Variant="MudBlazor.Variant.Filled"
+                                                 Size="@MudBlazor.Size.Small"
+                                                 Icon="@MudBlazor.Icons.Material.Filled.Refresh"
+                                                 Class="rounded-circle pa-3"
+                                                 OnClick="@(() => _viewModel!.Commands["Get"].Execute(null))"
+                                                 Style="z-index:3;" />
                     </MudBlazor.MudTooltip>
                 </div>;
         }

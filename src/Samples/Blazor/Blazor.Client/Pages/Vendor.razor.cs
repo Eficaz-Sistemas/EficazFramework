@@ -13,11 +13,22 @@ public partial class Vendor
     protected override void OnInitialized()
     {
         base.OnInitialized();
-        _viewModel = new(HttpClient!);
-        _viewModel.PropertyChanged += VM_PropertyChanged;
-        _viewModel.StateChanged += VM_StateChanged;
-        _viewModel.ShowMessage += ViewModel_Message;
-        _viewModel.Commands["Get"].Execute(null);
+
+        if (MdiWindow?.ApplicationInstance.Services.ContainsKey("ViewModel") ?? false)
+        {
+            _viewModel = MdiWindow?.ApplicationInstance.Services["ViewModel"] as ViewModels.Vendor;
+        }
+        else
+        {
+            _viewModel = new(HttpClient!);
+            _viewModel.PropertyChanged += VM_PropertyChanged;
+            _viewModel.StateChanged += VM_StateChanged;
+            _viewModel.ShowMessage += ViewModel_Message;
+            _viewModel.Commands["Get"].Execute(null);
+
+            if (MdiWindow != null)
+                MdiWindow!.ApplicationInstance.Services["ViewModel"] = _viewModel;
+        }
     }
 
     protected override void OnAfterRender(bool firstRender)
@@ -70,7 +81,6 @@ public partial class Vendor
 
 
     string? _searchString;
-
     private Func<Shared.DTOs.VendorDto, bool> _quickFilter => x =>
     {
         if (string.IsNullOrWhiteSpace(_searchString))
@@ -81,5 +91,4 @@ public partial class Vendor
 
         return false;
     };
-
 }

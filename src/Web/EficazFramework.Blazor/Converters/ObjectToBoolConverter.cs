@@ -1,6 +1,6 @@
 ﻿namespace EficazFramework.Converters;
 
-public class ObjectToBoolConverter : MudBlazor.BoolConverter<object>
+public class ObjectToBoolConverter : MudBlazor.BoolConverter<object?>
 {
     public ObjectToBoolConverter()
     {
@@ -8,9 +8,9 @@ public class ObjectToBoolConverter : MudBlazor.BoolConverter<object>
         GetFunc = OnGet;
     }
 
-    private object OnGet(bool? value) => value == true;
+    private object? OnGet(bool? value) => value == true;
 
-    private bool? OnSet(object arg)
+    private bool? OnSet(object? arg)
     {
         if (arg == null)
             return null;
