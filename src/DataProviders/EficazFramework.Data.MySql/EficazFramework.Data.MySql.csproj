@@ -62,6 +62,7 @@
   </ItemGroup>
   <ItemGroup Condition=" '$(TargetFramework)' == 'net9.0' ">
     <PackageReference Include="Pomelo.EntityFrameworkCore.MySql" Version="9.0.0-preview.1" />
+	<PackageReference Include="Microsoft.EntityFrameworkCore.Relational" Version="9.0.0" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\Core\EficazFramework.Data\EficazFramework.Data.csproj" />
