@@ -1,12 +1,12 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-	<TargetFrameworks>net7.0-windows;net8.0-windows</TargetFrameworks>
+	<TargetFrameworks>net8.0-windows;net9.0-windows</TargetFrameworks>
 	<Nullable>enable</Nullable>
     <IsPackable>false</IsPackable>
-	<Version>6.2.3</Version>
-	<AssemblyVersion>6.2.3.0</AssemblyVersion>
-	<FileVersion>6.2.3.0</FileVersion>
+	<Version>6.3.0</Version>
+	<AssemblyVersion>6.3.0.0</AssemblyVersion>
+	<FileVersion>6.3.0.0</FileVersion>
 	<Description>Biblioteca de testes para WPF da Eficaz Framework.</Description>
 	<RootNamespace>EficazFramework</RootNamespace>
 	<SignAssembly>True</SignAssembly>
@@ -26,15 +26,15 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
-    <PackageReference Include="FluentAssertions" Version="6.12.0" />
-    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.11.0" />
-    <PackageReference Include="NUnit" Version="4.2.1" />
+    <PackageReference Include="FluentAssertions" Version="7.0.0" />
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.12.0" />
+    <PackageReference Include="NUnit" Version="4.2.2" />
     <PackageReference Include="NUnit3TestAdapter" Version="4.6.0" />
     <PackageReference Include="coverlet.collector" Version="6.0.2">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
-    <PackageReference Include="XAMLTest" Version="1.2.1" />
+    <PackageReference Include="XAMLTest" Version="1.2.2" />
   </ItemGroup>
 
   <ItemGroup>

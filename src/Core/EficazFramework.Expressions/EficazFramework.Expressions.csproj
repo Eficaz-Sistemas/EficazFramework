@@ -1,9 +1,9 @@
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <TargetFrameworks>net7.0;net8.0</TargetFrameworks>
-    <Version>6.2.5</Version>
-    <AssemblyVersion>6.2.5.0</AssemblyVersion>
-    <FileVersion>6.2.5.0</FileVersion>
+    <TargetFrameworks>net8.0;net9.0</TargetFrameworks>
+    <Version>6.3.0</Version>
+    <AssemblyVersion>6.3.0.0</AssemblyVersion>
+    <FileVersion>6.3.0.0</FileVersion>
     <RootNamespace>EficazFramework</RootNamespace>
     <SignAssembly>true</SignAssembly>
     <AssemblyOriginatorKeyFile>EfCore.snk</AssemblyOriginatorKeyFile>
