@@ -4,9 +4,9 @@
 	<TargetFrameworks>net8.0-windows;net9.0-windows</TargetFrameworks>
 	<Nullable>enable</Nullable>
     <IsPackable>false</IsPackable>
-	<Version>6.3.0</Version>
-	<AssemblyVersion>6.3.0.0</AssemblyVersion>
-	<FileVersion>6.3.0.0</FileVersion>
+	<Version>6.4.0</Version>
+	<AssemblyVersion>6.4.0.0</AssemblyVersion>
+	<FileVersion>6.4.0.0</FileVersion>
 	<Description>Biblioteca de testes para WPF da Eficaz Framework.</Description>
 	<RootNamespace>EficazFramework</RootNamespace>
 	<SignAssembly>True</SignAssembly>
@@ -22,15 +22,15 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="coverlet.msbuild" Version="6.0.2">
+    <PackageReference Include="AwesomeAssertions" Version="8.0.1" />
+    <PackageReference Include="coverlet.msbuild" Version="6.0.4">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
-    <PackageReference Include="FluentAssertions" Version="7.0.0" />
-    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.12.0" />
-    <PackageReference Include="NUnit" Version="4.2.2" />
-    <PackageReference Include="NUnit3TestAdapter" Version="4.6.0" />
-    <PackageReference Include="coverlet.collector" Version="6.0.2">
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.13.0" />
+    <PackageReference Include="NUnit" Version="4.3.2" />
+    <PackageReference Include="NUnit3TestAdapter" Version="5.0.0" />
+    <PackageReference Include="coverlet.collector" Version="6.0.4">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>

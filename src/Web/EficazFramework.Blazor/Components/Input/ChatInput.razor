@@ -1,4 +1,5 @@
 ﻿@using MudBlazor
+@using MudBlazor.Internal
 @namespace EficazFramework.Components
 @inherits MudBlazor.MudInput<string>
 
@@ -15,7 +16,7 @@
 
 	@if (Clearable && !Disabled)
 	{
-	 <MudBlazor.MudIconButton Color="@MudBlazor.Color.Default" Icon="@MudBlazor.Icons.Material.Filled.Clear" Size="@MudBlazor.Size.Small" OnClick="@ClearButtonClickHandlerAsync" Class="mud-icon-button-edge-end" />
+	 <MudBlazor.MudIconButton Color="@MudBlazor.Color.Default" Icon="@MudBlazor.Icons.Material.Filled.Clear" Size="@MudBlazor.Size.Small" OnClick="@HandleClearButtonAsync" Class="mud-icon-button-edge-end" />
 	}
 
 	@if (Adornment == MudBlazor.Adornment.End)

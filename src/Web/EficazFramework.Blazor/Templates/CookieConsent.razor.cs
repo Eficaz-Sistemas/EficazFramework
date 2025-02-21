@@ -23,7 +23,7 @@ public partial class CookieConsent
                 config.ActionVariant = MudBlazor.Variant.Text;
                 config.RequireInteraction = true;
                 config.SnackbarVariant = MudBlazor.Variant.Filled;
-                config.Onclick = (snackbar) =>
+                config.OnClick = (snackbar) =>
                 {
                     Utilities.JsInterop.AcceptCookie(JSRuntime, CookieConsentName);
                     return Task.CompletedTask;
