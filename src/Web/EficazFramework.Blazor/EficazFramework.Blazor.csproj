@@ -5,9 +5,9 @@
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
     <AddRazorSupportForMvc>true</AddRazorSupportForMvc>
-    <Version>6.4.0</Version>
-    <AssemblyVersion>6.4.0.0</AssemblyVersion>
-    <FileVersion>6.4.0.0</FileVersion>
+    <Version>6.4.1</Version>
+    <AssemblyVersion>6.4.1.0</AssemblyVersion>
+    <FileVersion>6.4.1.0</FileVersion>
     <RootNamespace>EficazFramework</RootNamespace>
     <Authors>Eficaz Sistemas</Authors>
     <Company>Eficaz Sistemas de Gestão e Inteligência Tributária</Company>
@@ -88,7 +88,7 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
-    <PackageReference Include="MudBlazor" Version="8.2.0" />
+    <PackageReference Include="MudBlazor" Version="8.3.0" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\Core\EficazFramework.Expressions\EficazFramework.Expressions.csproj" />
