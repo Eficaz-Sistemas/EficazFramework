@@ -253,6 +253,7 @@ public class ModelBuilder : IIncrementalGenerator
         bool useInMemory = false;
         context.RegisterImplementationSourceOutput(referencies, (writer, reference) =>
         {
+            //writer.ReportDiagnostic(Diagnostic.Create(new DiagnosticDescriptor("EfMB999", "Reference", reference, "EficazFramework Model Builder", DiagnosticSeverity.Warning, true), Location.None));
             switch (reference)
             {
                 case string e when e.Contains("EficazFramework.Data.MsSqlServer"):
@@ -279,11 +280,11 @@ public class ModelBuilder : IIncrementalGenerator
         // generate code
         context.RegisterSourceOutput(efModels, (spc, efModel) =>
         {
-            if (!shouldGenerate)
-            {
-                spc.ReportDiagnostic(Diagnostic.Create(new DiagnosticDescriptor("EfMB001", "No data providers available", "Any EficazFramework.Data provider is referenced by the project.", "EficazFramework Model Builder", DiagnosticSeverity.Warning, true), Location.None));
-                return;
-            }
+            //if (!shouldGenerate)
+            //{
+            //    spc.ReportDiagnostic(Diagnostic.Create(new DiagnosticDescriptor("EfMB001", "No data providers available", $"Any EficazFramework.Data provider is referenced by the project. {DateTime.Now:HH:mm:ss.FFF}", "EficazFramework Model Builder", DiagnosticSeverity.Warning, true), Location.None));
+            //    return;
+            //}
 
             Models.EfModel.ModelClass model = null;
             try
@@ -320,13 +321,22 @@ public class ModelBuilder : IIncrementalGenerator
                 code.AppendLine("        ");
 
                 if (useInMemory)
+                {
+                    spc.ReportDiagnostic(Diagnostic.Create(new DiagnosticDescriptor("EfMB002", "Reference", $"Mapping for InMemory at {DateTime.Now:HH:mm:ss.FFF}", "EficazFramework Model Builder", DiagnosticSeverity.Warning, true), Location.None));
                     GenerateForInMemory(code, model);
+                }
 
                 if (useSqlServer)
+                {
+                    spc.ReportDiagnostic(Diagnostic.Create(new DiagnosticDescriptor("EfMB002", "Reference", $"Mapping for MsSqlServer at {DateTime.Now:HH:mm:ss.FFF}", "EficazFramework Model Builder", DiagnosticSeverity.Warning, true), Location.None));
                     GenerateForMsSqlServer(code, model);
+                }
 
                 if (useMySql)
+                {
+                    spc.ReportDiagnostic(Diagnostic.Create(new DiagnosticDescriptor("EfMB002", "Reference", $"Mapping for MySql/MariaDb at {DateTime.Now:HH:mm:ss.FFF}", "EficazFramework Model Builder", DiagnosticSeverity.Warning, true), Location.None));
                     GenerateForMySqlOrMariaDb(code, model);
+                }
 
                 code.AppendLine("    }");
                 code.AppendLine("}");
