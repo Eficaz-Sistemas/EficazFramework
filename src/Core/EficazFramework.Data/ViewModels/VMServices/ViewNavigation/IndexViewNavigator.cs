@@ -70,6 +70,8 @@ public class IndexViewNavigator<T> : ViewModelService<T>, IIndexViewNavigator wh
         }
     }
 
+    public bool DetailHasOwnPage { get; internal set; } = false;
+
     public int SelectedIndex { get; private set; } = 0;
 
     /// <summary>
@@ -126,11 +128,15 @@ public class IndexViewNavigator<T> : ViewModelService<T>, IIndexViewNavigator wh
             case Enums.CRUD.State.NovoDetalhe:
             case Enums.CRUD.State.EdicaoDeDelhe:
                 {
-                    if (!DetailFormIndex.ContainsKey(CurrentDetail))
+                    if (DetailHasOwnPage == false)
                         return;
-                    if (SelectedIndex != DetailFormIndex[CurrentDetail])
+
+                    if (!DetailFormIndex.TryGetValue(CurrentDetail, out int value))
+                        return;
+
+                    if (SelectedIndex != value)
                     {
-                        SelectedIndex = DetailFormIndex[CurrentDetail];
+                        SelectedIndex = value;
                         RaisePropertyChanged(nameof(SelectedIndex));
                     }
 

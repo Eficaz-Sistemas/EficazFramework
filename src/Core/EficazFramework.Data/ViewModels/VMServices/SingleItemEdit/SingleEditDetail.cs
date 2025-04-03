@@ -143,6 +143,11 @@ public class SingleEditDetail<T, D> : ViewModelService<T>
     public bool CanCancelAsyncSave { get; private set; } = false;
 
 
+    /// <summary>
+    /// Determinar se a entidade detalhe deve ser exibida para edição em uma nova página ou em um popup
+    /// </summary>
+    public Enums.CRUD.ViewModelEditDetailMode EditMode { get; set; } = Enums.CRUD.ViewModelEditDetailMode.Paged;
+
 
     /// <summary>
     /// Monitora a mudança de estado do ViewModel e executa os procedimentos 
@@ -277,9 +282,22 @@ public class SingleEditDetail<T, D> : ViewModelService<T>
 
         // Created:
         ((Services.IndexViewNavigator<T>)ViewModelInstance.Services[ServiceUtils.KEY_INDEXVIEWNAVIGATOR]).CurrentDetail = PART_NavigationProperty.GetName();
+        ((Services.IndexViewNavigator<T>)ViewModelInstance.Services[ServiceUtils.KEY_INDEXVIEWNAVIGATOR]).DetailHasOwnPage = EditMode == Enums.CRUD.ViewModelEditDetailMode.Paged;
         ViewModelInstance.SetState(Enums.CRUD.State.NovoDetalhe, false, null);
         args = new Events.CRUDEventArgs<T>(Enums.CRUD.Action.DetailEntryAdded, ViewModelInstance.State, PART_SingleEditT.CurrentEntry) { Tag = entry };
         ViewModelInstance.RaiseViewModelEvent(args);
+
+        if (EditMode == Enums.CRUD.ViewModelEditDetailMode.Popup)
+        {
+            ViewModelInstance.RaiseDialogMessage(new Events.MessageEventArgs()
+            {
+                IconReference = Events.MessageIcon.Certificate,
+                Title = string.Empty,
+                Content = entry,
+                Buttons = Events.MessageButtons.OKCancel,
+                Tag = $"Popup:{PART_NavigationProperty.GetName()}"
+            });
+        };
 
     }
 
@@ -453,8 +471,22 @@ public class SingleEditDetail<T, D> : ViewModelService<T>
             return;
 
         ((Services.IndexViewNavigator<T>)ViewModelInstance.Services[ServiceUtils.KEY_INDEXVIEWNAVIGATOR]).CurrentDetail = PART_NavigationProperty.GetName();
+        ((Services.IndexViewNavigator<T>)ViewModelInstance.Services[ServiceUtils.KEY_INDEXVIEWNAVIGATOR]).DetailHasOwnPage = EditMode == Enums.CRUD.ViewModelEditDetailMode.Paged;
         ViewModelInstance.SetState(Enums.CRUD.State.EdicaoDeDelhe, false, null);
+
+        if (EditMode == Enums.CRUD.ViewModelEditDetailMode.Popup)
+        {
+            ViewModelInstance.RaiseDialogMessage(new Events.MessageEventArgs()
+            {
+                IconReference = Events.MessageIcon.Certificate,
+                Title = string.Empty,
+                Content = entry,
+                Buttons = Events.MessageButtons.OKCancel,
+                Tag = $"Popup:{PART_NavigationProperty.GetName()}"
+            });
+        };
     }
+
 
     /// <summary>
     /// Ações do comando Delete

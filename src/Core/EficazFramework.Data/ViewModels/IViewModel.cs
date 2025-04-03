@@ -66,7 +66,7 @@ public class ViewModel<T> : INotifyPropertyChanged, IDisposable where T : class
 
 
     // ### Service Injection
-    internal Dictionary<string, Services.ViewModelService<T>> _servicesInternal = new();
+    internal Dictionary<string, Services.ViewModelService<T>> _servicesInternal = [];
     public Dictionary<string, Services.ViewModelService<T>> Services => _servicesInternal;
 
     internal bool FailAssertion { get; set; } = false;
