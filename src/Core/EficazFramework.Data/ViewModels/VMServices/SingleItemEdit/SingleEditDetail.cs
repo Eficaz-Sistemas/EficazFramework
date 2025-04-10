@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
 using System.Security.Policy;
+using System.Text.Json;
 using System.Threading;
 
 namespace EficazFramework.ViewModels.Services;
@@ -46,6 +47,10 @@ public class SingleEditDetail<T, D> : ViewModelService<T>
     private bool commitOperationAllowed = false;
     private Enums.CRUD.State _targetVMState = Enums.CRUD.State.Bloqueado;
     private D _originalValues = null;
+    private readonly System.Text.Json.JsonSerializerOptions _jsonOptions = new()
+    {
+        ReferenceHandler = System.Text.Json.Serialization.ReferenceHandler.IgnoreCycles,
+    };
 
     /// <summary>
     /// Validador para Entidades Detalhe
@@ -427,11 +432,12 @@ public class SingleEditDetail<T, D> : ViewModelService<T>
         if (ex is null && !ViewModelInstance.FailAssertion)
         {
             var index = DataContext.IndexOf(CurrentEntry);
-            if (args.State == Enums.CRUD.State.Novo ||
+            if ((args.State == Enums.CRUD.State.Novo ||
                 args.State == Enums.CRUD.State.Edicao ||
-                args.State == Enums.CRUD.State.EdicaoDeDelhe)
+                args.State == Enums.CRUD.State.EdicaoDeDelhe) &&
+                !ViewModelInstance.Repository.TrackChanges)
             {
-                CurrentEntry = System.Text.Json.JsonSerializer.Deserialize<D>(System.Text.Json.JsonSerializer.Serialize(_originalValues));
+                CurrentEntry = System.Text.Json.JsonSerializer.Deserialize<D>(System.Text.Json.JsonSerializer.Serialize(_originalValues, _jsonOptions));
                 DataContext[index] = CurrentEntry;
             }
 
@@ -485,7 +491,7 @@ public class SingleEditDetail<T, D> : ViewModelService<T>
         ((Services.IndexViewNavigator<T>)ViewModelInstance.Services[ServiceUtils.KEY_INDEXVIEWNAVIGATOR]).DetailHasOwnPage = EditMode == Enums.CRUD.ViewModelEditDetailMode.Paged;
 
         if (!ViewModelInstance.Repository.TrackChanges)
-            _originalValues = System.Text.Json.JsonSerializer.Deserialize<D>(System.Text.Json.JsonSerializer.Serialize(entry));
+            _originalValues = System.Text.Json.JsonSerializer.Deserialize<D>(System.Text.Json.JsonSerializer.Serialize(entry, _jsonOptions));
 
         ViewModelInstance.SetState(Enums.CRUD.State.EdicaoDeDelhe, false, null);
 
