@@ -30,6 +30,7 @@ Param (
 Function Set-Versions {
  Process {
     Clear
+    $new_version = Get-NextVersion
     Set-Version -Projectname "EficazFramework.Collections" -SubFolder "\Core"
     Set-Version -Projectname "EficazFramework.Data" -SubFolder "\Core"
     Set-Version -Projectname "EficazFramework.Expressions" -SubFolder "\Core"
