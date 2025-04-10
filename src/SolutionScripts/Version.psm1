@@ -42,7 +42,6 @@ Function Set-Versions {
     Set-Version -Projectname "EficazFramework.WPF" -SubFolder "\Desktop"
     Set-Version -Projectname "EficazFramework.Blazor" -SubFolder "\Web"
 
-    $new_version = Get-NextVersion
     [string]$commitMessage = 'RELEASE ' + [string]$new_version
     [string]$commitTag = [string]'v' + [string]$new_version
 
