@@ -99,3 +99,10 @@ public enum RequestAction
     Delete = 3,
     Patch = 4
 }
+
+
+public enum ViewModelEditDetailMode
+{
+    Paged = 0,
+    Popup = 1
+}

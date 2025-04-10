@@ -30,6 +30,7 @@ Param (
 Function Set-Versions {
  Process {
     Clear
+    $new_version = Get-NextVersion
     Set-Version -Projectname "EficazFramework.Collections" -SubFolder "\Core"
     Set-Version -Projectname "EficazFramework.Data" -SubFolder "\Core"
     Set-Version -Projectname "EficazFramework.Expressions" -SubFolder "\Core"
@@ -148,4 +149,20 @@ Param (
     # FLUSH
     $xmldoc.Save($nuspecFilePath)
    }
+}
+
+Function Get-NextVersion {
+    [cmdletbinding()]
+    Param (
+    )
+    Process {
+        [String]$location = Get-Location
+        [String]$nuspecFilePath   = $location + "\Core\EficazFramework.Utilities\EficazFramework.Utilities.csproj"
+        [System.Xml.XmlDocument]$xmldoc =  New-Object System.Xml.XmlDocument
+        $xmldoc.Load($nuspecFilePath)
+        [System.Xml.XmlNode]$xmlnode_version = $xmldoc.GetElementsByTagName('Version')[0]
+        [version]$oldversion = $xmlnode_version.InnerText
+        [version]$new_version = [version]::new($oldversion.Major, $oldversion.Minor, $oldversion.Build + 1)
+        Return [string]$new_version
+    }
 }
