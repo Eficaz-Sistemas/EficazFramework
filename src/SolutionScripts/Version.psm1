@@ -41,6 +41,7 @@ Function Set-Versions {
     Set-Version -Projectname "EficazFramework.WPF" -SubFolder "\Desktop"
     Set-Version -Projectname "EficazFramework.Blazor" -SubFolder "\Web"
 
+    $new_version = Get-NextVersion
     [string]$commitMessage = 'RELEASE ' + [string]$new_version
     [string]$commitTag = [string]'v' + [string]$new_version
 
@@ -148,4 +149,20 @@ Param (
     # FLUSH
     $xmldoc.Save($nuspecFilePath)
    }
+}
+
+Function Get-NextVersion {
+    [cmdletbinding()]
+    Param (
+    )
+    Process {
+        [String]$location = Get-Location
+        [String]$nuspecFilePath   = $location + "\Core\EficazFramework.Utilities\EficazFramework.Utilities.csproj"
+        [System.Xml.XmlDocument]$xmldoc =  New-Object System.Xml.XmlDocument
+        $xmldoc.Load($nuspecFilePath)
+        [System.Xml.XmlNode]$xmlnode_version = $xmldoc.GetElementsByTagName('Version')[0]
+        [version]$oldversion = $xmlnode_version.InnerText
+        [version]$new_version = [version]::new($oldversion.Major, $oldversion.Minor, $oldversion.Build + 1)
+        Return [string]$new_version
+    }
 }
