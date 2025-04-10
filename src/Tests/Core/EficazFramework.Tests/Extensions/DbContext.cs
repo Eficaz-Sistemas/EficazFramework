@@ -31,6 +31,7 @@ class DbContext<TProvider> where TProvider : DataProviderBase
     public async Task MigrationsTest()
     {
         Resources.Mocks.MockDbContext ctx = new();
+        ctx.Database.EnsureDeleted();
         ctx.AllMigrationsApplied().Should().BeFalse();
         await ctx.Database.MigrateAsync();
         ctx.AllMigrationsApplied().Should().BeTrue();

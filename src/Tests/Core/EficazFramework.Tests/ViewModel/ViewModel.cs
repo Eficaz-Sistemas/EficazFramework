@@ -42,6 +42,8 @@ public class ViewModel
     public void NavigationIndexTest()
     {
         Setup();
+        Vm.AddSingledEdit();
+        Vm.AddSingledEditDetail(p => p.Posts);
         Vm.WithNavigationByIndex().Should().NotBeNull();
         Vm.GetIndexNavigator().Should().NotBeNull();
         var navigator = Vm.GetIndexNavigator();
@@ -62,11 +64,12 @@ public class ViewModel
         ex.Should().NotBeNull();
 
         //commands
-        Vm.Commands.Should().HaveCount(2);
+        Vm.Commands.Should().HaveCount(12);
         Vm.Commands.ContainsKey("GoToFindPage").Should().BeTrue();
 
         // navigation
         navigator = Vm.GetIndexNavigator();
+        navigator.DetailHasOwnPage = true;
 
         Vm.SetState(Enums.CRUD.State.Novo, false, null);
         navigator.SelectedIndex.Should().Be(navigator.FormIndex);
@@ -97,6 +100,8 @@ public class ViewModel
         Vm.Commands["GoToFindPage"].Execute(null);
         navigator.SelectedIndex.Should().Be(navigator.SearchIndex);
 
+        Vm.RemoveSingleEditDetail<Resources.Mocks.Classes.Blog, Resources.Mocks.Classes.Post>();
+        Vm.RemoveSingleEdit();
         Vm.RemoveNavigationByIndex();
         Vm.Services.Should().HaveCount(0);
 
