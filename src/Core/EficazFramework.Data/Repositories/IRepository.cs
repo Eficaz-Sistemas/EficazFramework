@@ -232,6 +232,11 @@ public abstract class RepositoryBase<T> : INotifyPropertyChanged, IDisposable wh
     /// </summary>
     internal virtual void ItemAdded(object item) { }
 
+
+    private readonly System.Text.Json.JsonSerializerOptions _jsonOptions = new()
+    {
+        ReferenceHandler = System.Text.Json.Serialization.ReferenceHandler.IgnoreCycles,
+    };
     /// <summary>
     /// Efetua uma cópia da entidade em edição ( <see cref="CurrentEntry"/> )
     /// para manter seus valores originais intactos, para rollback em caso de 
@@ -242,7 +247,7 @@ public abstract class RepositoryBase<T> : INotifyPropertyChanged, IDisposable wh
         if (!TrackChanges)
             return;
 
-        OriginalValues = System.Text.Json.JsonSerializer.Deserialize<T>(System.Text.Json.JsonSerializer.Serialize(CurrentEntry));
+        OriginalValues = System.Text.Json.JsonSerializer.Deserialize<T>(System.Text.Json.JsonSerializer.Serialize(CurrentEntry, _jsonOptions));
     }
 
 
