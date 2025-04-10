@@ -31,7 +31,15 @@ public class MySqlTests : ProviderBase
         });
 
         _context = new(builder.Options);
-        (await _context.Database.EnsureCreatedAsync()).Should().BeTrue();
+        try
+        {
+            (await _context.Database.EnsureCreatedAsync()).Should().BeTrue();
+        }
+        catch (Exception ex)
+        {
+            ex.StackTrace.ToString().Should().ContainEquivalentOf("database exists");
+            throw;
+        }
     }
 
 
