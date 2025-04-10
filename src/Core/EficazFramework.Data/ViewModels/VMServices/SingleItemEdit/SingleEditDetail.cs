@@ -16,11 +16,13 @@ public class SingleEditDetail<T, D> : ViewModelService<T>
 {
     public SingleEditDetail(ViewModel<T> viewmodel,
                             SingleEdit<T> singleEditInstance,
-                            System.Linq.Expressions.Expression<Func<T, IList<D>>> navigationProperty) : base(viewmodel)
+                            System.Linq.Expressions.Expression<Func<T, IList<D>>> navigationProperty,
+                            Enums.CRUD.ViewModelEditDetailMode editMode = Enums.CRUD.ViewModelEditDetailMode.Paged) : base(viewmodel)
     {
         PART_SingleEditT = singleEditInstance;
         PART_NavigationProperty = navigationProperty;
 
+        EditMode = editMode;
         viewmodel.ViewModelAction += OnViewModelAction;
         viewmodel.StateChanged += OnStateChanged;
         singleEditInstance.PropertyChanged += OnMasterPropertyChanged;
@@ -43,7 +45,7 @@ public class SingleEditDetail<T, D> : ViewModelService<T>
     private readonly System.Linq.Expressions.Expression<Func<T, IList<D>>> PART_NavigationProperty = null;
     private bool commitOperationAllowed = false;
     private Enums.CRUD.State _targetVMState = Enums.CRUD.State.Bloqueado;
-
+    private D _originalValues = null;
 
     /// <summary>
     /// Validador para Entidades Detalhe
@@ -424,6 +426,15 @@ public class SingleEditDetail<T, D> : ViewModelService<T>
         var ex = await ViewModelInstance.Repository.CancelAsync(CurrentEntry);
         if (ex is null && !ViewModelInstance.FailAssertion)
         {
+            var index = DataContext.IndexOf(CurrentEntry);
+            if (args.State == Enums.CRUD.State.Novo ||
+                args.State == Enums.CRUD.State.Edicao ||
+                args.State == Enums.CRUD.State.EdicaoDeDelhe)
+            {
+                CurrentEntry = System.Text.Json.JsonSerializer.Deserialize<D>(System.Text.Json.JsonSerializer.Serialize(_originalValues));
+                DataContext[index] = CurrentEntry;
+            }
+
             ViewModelInstance.RaiseViewModelEvent(args);
             DetachValidatorAndINotifyPropertyChanges((D)args.Tag);
             if (args.State == Enums.CRUD.State.NovoDetalhe)
@@ -472,7 +483,9 @@ public class SingleEditDetail<T, D> : ViewModelService<T>
 
         ((Services.IndexViewNavigator<T>)ViewModelInstance.Services[ServiceUtils.KEY_INDEXVIEWNAVIGATOR]).CurrentDetail = PART_NavigationProperty.GetName();
         ((Services.IndexViewNavigator<T>)ViewModelInstance.Services[ServiceUtils.KEY_INDEXVIEWNAVIGATOR]).DetailHasOwnPage = EditMode == Enums.CRUD.ViewModelEditDetailMode.Paged;
-        ViewModelInstance.SetState(Enums.CRUD.State.EdicaoDeDelhe, false, null);
+
+        if (!ViewModelInstance.Repository.TrackChanges)
+            _originalValues = System.Text.Json.JsonSerializer.Deserialize<D>(System.Text.Json.JsonSerializer.Serialize(entry));
 
         if (EditMode == Enums.CRUD.ViewModelEditDetailMode.Popup)
         {
@@ -484,7 +497,12 @@ public class SingleEditDetail<T, D> : ViewModelService<T>
                 Buttons = Events.MessageButtons.OKCancel,
                 Tag = $"Popup:{PART_NavigationProperty.GetName()}"
             });
-        };
+        }
+        else
+        {
+            ViewModelInstance.SetState(Enums.CRUD.State.EdicaoDeDelhe, false, null);
+        }
+
     }
 
 
@@ -713,6 +731,7 @@ public class SingleEditDetail<T, D> : ViewModelService<T>
         InsertDataContext.Clear();
         DeleteDataContext.Clear();
         DataContext.Clear();
+        ViewModelInstance.Services.Remove(string.Join(",", ServiceUtils.KEY_SINGLEEDITDETAIL, typeof(D).ToString()));
     }
 
 }
@@ -723,8 +742,10 @@ public static partial class ServiceUtils
     /// <summary>
     /// Adiciona funções Tracking, Validação e Persistêcia de Edição em Estados de Visualização para a instância ViewModel.
     /// </summary>
-    public static ViewModel<T> AddSingledEditDetail<T, D>(this ViewModel<T> viewmodel,
-                                                              System.Linq.Expressions.Expression<Func<T, IList<D>>> navigationProperty)
+    public static ViewModel<T> AddSingledEditDetail<T, D>(
+        this ViewModel<T> viewmodel,
+        System.Linq.Expressions.Expression<Func<T, IList<D>>> navigationProperty,
+        Enums.CRUD.ViewModelEditDetailMode editMode = Enums.CRUD.ViewModelEditDetailMode.Paged)
         where T : class
         where D : class
     {
@@ -734,7 +755,7 @@ public static partial class ServiceUtils
             throw new PolicyException(Resources.Strings.ViewModel.SingleEditDetailWithoutMaster);
         }
 
-        var service = new SingleEditDetail<T, D>(viewmodel, (SingleEdit<T>)mainservice, navigationProperty);
+        var service = new SingleEditDetail<T, D>(viewmodel, (SingleEdit<T>)mainservice, navigationProperty, editMode);
         if (viewmodel.Services.ContainsKey(string.Join(",", ServiceUtils.KEY_SINGLEEDITDETAIL, typeof(D).ToString())))
             throw new ArgumentException(string.Format(Resources.Strings.ViewModel.ServiceAlreadyAdded, string.Join(",", ServiceUtils.KEY_SINGLEEDITDETAIL, typeof(D).ToString())));
         viewmodel._servicesInternal.Add(string.Join(",", ServiceUtils.KEY_SINGLEEDITDETAIL, typeof(D).ToString()), service);
