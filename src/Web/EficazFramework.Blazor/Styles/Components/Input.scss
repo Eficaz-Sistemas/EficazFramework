@@ -195,3 +195,8 @@ div.text-match div, div.mud-input input {
     padding-left: 8px !important;
     padding-right: 8px !important;
 }
+
+.mud-selected-item {
+    background-color: var(--mud-palette-primary) !important;
+    color: var(--mud-palette-primary-text) !important;
+}
