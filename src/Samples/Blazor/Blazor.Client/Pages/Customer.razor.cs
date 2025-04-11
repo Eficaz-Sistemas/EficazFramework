@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Components;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
 
 namespace Blazor.Client.Pages;
 
@@ -8,6 +9,8 @@ public partial class Customer
     [Inject] MudBlazor.ISnackbar? Snackbar { get; set; }
     [Inject] MudBlazor.IDialogService? Dialog { get; set; }
     [CascadingParameter] EficazFramework.Components.MdiWindow? MdiWindow { get; set; }
+
+    private Func<string, Task<IEnumerable<string>>> _teste = null!;
 
     protected override void OnInitialized()
     {
@@ -27,6 +30,9 @@ public partial class Customer
 
             if (MdiWindow != null)
                 MdiWindow!.ApplicationInstance.Services["ViewModel"] = _viewModel;
+
+            _teste = async propertyName =>
+                await _viewModel.Repository.Validator.ValidateAsync(_viewModel.Editor.CurrentEntry, propertyName);
         }
 
     }
@@ -68,6 +74,8 @@ public partial class Customer
     {
         MdiWindow?.OverrideFrameParameters(CustomHeader(), false);
         StateHasChanged();
+
+        
     }
 
 
