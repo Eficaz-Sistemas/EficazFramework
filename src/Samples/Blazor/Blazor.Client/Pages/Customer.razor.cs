@@ -10,8 +10,6 @@ public partial class Customer
     [Inject] MudBlazor.IDialogService? Dialog { get; set; }
     [CascadingParameter] EficazFramework.Components.MdiWindow? MdiWindow { get; set; }
 
-    private Func<string, Task<IEnumerable<string>>> _teste = null!;
-
     protected override void OnInitialized()
     {
         base.OnInitialized();
@@ -30,9 +28,6 @@ public partial class Customer
 
             if (MdiWindow != null)
                 MdiWindow!.ApplicationInstance.Services["ViewModel"] = _viewModel;
-
-            _teste = async propertyName =>
-                await _viewModel.Repository.Validator.ValidateAsync(_viewModel.Editor.CurrentEntry, propertyName);
         }
 
     }
@@ -53,16 +48,15 @@ public partial class Customer
         if (e.Type == EficazFramework.Events.MessageType.SnackBar)
         {
             Snackbar!.Configuration.PositionClass = MudBlazor.Defaults.Classes.Position.BottomCenter;
-            Snackbar!.Add((e.Content ?? "").ToString(), MudBlazor.Severity.Normal, config => { config.ShowCloseIcon = false; });
+            Snackbar!.Add((e.Content ?? "").ToString() ?? "", MudBlazor.Severity.Normal, config => { config.ShowCloseIcon = false; });
         }
         else
         {
-            //var bp = await BrowserViewportService.GetCurrentBreakpointAsync();
             MudBlazor.DialogParameters argsParams = new()
             {
                 { "Args", e }
             };
-            var dialog = Dialog!.Show<EficazFramework.Components.Dialogs.ViewModelDialog>(e.Title, argsParams, new MudBlazor.DialogOptions() { BackdropClick = false, Position = MudBlazor.DialogPosition.Center });
+            var dialog = await Dialog!.ShowAsync<EficazFramework.Components.Dialogs.ViewModelDialog>(e.Title, argsParams, new MudBlazor.DialogOptions() { BackdropClick = false, Position = MudBlazor.DialogPosition.Center });
             EficazFramework.Events.MessageResult result = (EficazFramework.Events.MessageResult)(await dialog.Result)!.Data!;
             e.ModalAssist.Release(result);
             StateHasChanged();

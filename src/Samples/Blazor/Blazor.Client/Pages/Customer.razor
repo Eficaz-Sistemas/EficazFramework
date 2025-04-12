@@ -70,30 +70,26 @@
                         <EficazFramework.Components.GroupPanel Title="Info">
                             <MudBlazor.MudTextField Label="Full Name"
                                                     @bind-Value="_viewModel!.Editor.CurrentEntry.Name"
-                                                    Validation="_teste"
+                                                    Validation="@_viewModel!.Editor.Validate"
                                                     Class="@($"{Layout.MainLayout.INPUTCLASS}")" />
                         </EficazFramework.Components.GroupPanel>
                         <EficazFramework.Components.GroupPanel Title="Address" Class="mt-4">
                             <div class="address-form">
                                 <MudBlazor.MudTextField Label="Street"
                                                         @bind-Value="_viewModel!.Editor.CurrentEntry.Address.Street"
-                                                        Required
-                                                        Validation="_teste"
+                                                        Validation="@_viewModel!.Editor.Validate"
                                                         Class="@($"{Layout.MainLayout.INPUTCLASS}")" />
                                 <MudBlazor.MudTextField Label="Zip Code"
                                                         @bind-Value="_viewModel!.Editor.CurrentEntry.Address.ZipCode"
-                                                        Required
-                                                        Validation="_teste"
+                                                        Validation="@_viewModel!.Editor.Validate"
                                                         Class="@($"{Layout.MainLayout.INPUTCLASS}")" />
                                 <MudBlazor.MudTextField Label="City"
                                                         @bind-Value="_viewModel!.Editor.CurrentEntry.Address.City"
-                                                        Required
-                                                        Validation="_teste"
+                                                        Validation="@_viewModel!.Editor.Validate"
                                                         Class="@($"{Layout.MainLayout.INPUTCLASS}")" />
                                 <MudBlazor.MudTextField Label="State"
                                                         @bind-Value="_viewModel!.Editor.CurrentEntry.Address.State"
-                                                        Required
-                                                        Validation="_teste"
+                                                        Validation="@_viewModel!.Editor.Validate"
                                                         Class="@($"{Layout.MainLayout.INPUTCLASS}")" />
                             </div>
                         </EficazFramework.Components.GroupPanel>
