@@ -8,6 +8,7 @@ using System.Linq;
 using System.Security.Policy;
 using System.Text.Json;
 using System.Threading;
+using System.Threading.Tasks;
 
 namespace EficazFramework.ViewModels.Services;
 
@@ -33,11 +34,15 @@ public class SingleEditDetail<T, D> : ViewModelService<T>
         _cmd_save_name = $"SaveDetail_{navigationProperty.GetName()}";
         _cmd_cancel_Name = $"CancelDetail_{navigationProperty.GetName()}";
         _cmd_delete_name = $"DeleteDetail_{navigationProperty.GetName()}";
+
         viewmodel.Commands.Add(_cmd_add_name, new Commands.CommandBase(NewDetailCommand_Executed));
         viewmodel.Commands.Add(_cmd_edit_name, new Commands.CommandBase(EditDetailCommand_Executed));
         viewmodel.Commands.Add(_cmd_save_name, new Commands.CommandBase(SaveDetailCommand_Executed));
         viewmodel.Commands.Add(_cmd_cancel_Name, new Commands.CommandBase(CancelDetailCommand_Executed));
         viewmodel.Commands.Add(_cmd_delete_name, new Commands.CommandBase(DeleteDetailCommand_Executed));
+
+        Validate = async (propertyName) =>
+            await viewmodel.Repository.Validator.ValidateAsync(CurrentEntry, propertyName);
     }
 
     private readonly string _cmd_add_name, _cmd_edit_name, _cmd_save_name, _cmd_cancel_Name, _cmd_delete_name;
@@ -722,6 +727,7 @@ public class SingleEditDetail<T, D> : ViewModelService<T>
             ifluent.Validator = null;
     }
 
+    public Func<string, Task<IEnumerable<string>>> Validate { get; }
 
 
     internal override void DisposeManagedCallerObjects()

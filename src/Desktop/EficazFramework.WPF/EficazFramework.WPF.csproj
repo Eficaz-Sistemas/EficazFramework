@@ -2,9 +2,9 @@
   <PropertyGroup>
     <TargetFrameworks>net8.0-windows;net9.0-windows</TargetFrameworks>
     <UseWPF>true</UseWPF>
-    <Version>6.4.2</Version>
-    <AssemblyVersion>6.4.2.0</AssemblyVersion>
-    <FileVersion>6.4.2.0</FileVersion>
+    <Version>6.4.3</Version>
+    <AssemblyVersion>6.4.3.0</AssemblyVersion>
+    <FileVersion>6.4.3.0</FileVersion>
     <RootNamespace>EficazFramework</RootNamespace>
     <Authors>Eficaz Sistemas</Authors>
     <Company>Eficaz Sistemas de Gestão e Inteligência Tributária</Company>
@@ -51,7 +51,7 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
-    <PackageReference Include="MaterialDesignThemes" Version="5.1.0" />
+    <PackageReference Include="MaterialDesignThemes" Version="5.2.1" />
     <PackageReference Include="Microsoft.Xaml.Behaviors.Wpf" Version="1.1.135" />
   </ItemGroup>
   <ItemGroup>

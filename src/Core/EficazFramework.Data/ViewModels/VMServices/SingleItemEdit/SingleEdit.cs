@@ -1,10 +1,12 @@
 ﻿using EficazFramework.Entities;
 using EficazFramework.Extensions;
 using System;
+using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace EficazFramework.ViewModels.Services;
 
@@ -20,9 +22,13 @@ public class SingleEdit<T> : ViewModelService<T> where T : class
         viewmodel.Commands.Add("Save", new Commands.CommandBase(SaveCommand_Executed));
         viewmodel.Commands.Add("Cancel", new Commands.CommandBase(CancelCommand_Executed));
         viewmodel.Commands.Add("Delete", new Commands.CommandBase(DeleteCommand_Executed));
+
         viewmodel.StateChanged += OnStateChanged;
         viewmodel.ItemsFetching += OnItemsFetching;
         viewmodel.ItemsFetched += OnItemsFetched;
+
+        Validate = async (propertyName) =>
+            await viewmodel.Repository.Validator.ValidateAsync(CurrentEntry, propertyName);
     }
 
     [ExcludeFromCodeCoverage]
@@ -599,6 +605,9 @@ public class SingleEdit<T> : ViewModelService<T> where T : class
         if (ViewModelInstance.Repository.DataContext.Count > 0)
             MoveToFirst();
     }
+
+
+    public Func<string, Task<IEnumerable<string>>> Validate { get; }
 
 
     internal override void DisposeManagedCallerObjects()

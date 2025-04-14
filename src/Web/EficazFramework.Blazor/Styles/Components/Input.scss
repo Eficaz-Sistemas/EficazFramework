@@ -40,9 +40,9 @@ div.text-match div, div.mud-input input {
     border: solid 1px var(--mud-palette-lines-default) !important;
 }
 
-.mud-input-control-ef > 
-    .mud-input-control-input-container > 
-        .mud-input.mud-input-underline {
+.mud-input-control-ef >
+.mud-input-control-input-container >
+.mud-input.mud-input-underline {
 
     &:before {
         border-bottom: 0px solid var(--mud-palette-primary);
@@ -55,7 +55,8 @@ div.text-match div, div.mud-input input {
     }
 
     &.mud-input-error:after {
-        border-radius: 4px !important;
+        border-radius: 0px 0px 4px 4px !important;
+        border-bottom-color: var(--mud-palette-error);
     }
 }
 
@@ -70,10 +71,10 @@ div.text-match div, div.mud-input input {
     border: solid 1px var(--mud-palette-lines-default) !important;
 }
 
-.mud-input-control-ef > 
-    .mud-input-control >
-        .mud-input-control-input-container > 
-            .mud-input {
+.mud-input-control-ef >
+.mud-input-control >
+.mud-input-control-input-container >
+.mud-input {
 
     &:before {
         border-bottom: 0px solid var(--mud-palette-primary);
@@ -86,7 +87,8 @@ div.text-match div, div.mud-input input {
     }
 
     &.mud-input-error:after {
-        border-radius: 4px !important;
+        border-radius: 0px 0px 4px 4px !important;
+        border-bottom-color: var(--mud-palette-error);
     }
 }
 
@@ -192,4 +194,9 @@ div.text-match div, div.mud-input input {
             textarea.mud-input-root {
     padding-left: 8px !important;
     padding-right: 8px !important;
+}
+
+.mud-selected-item {
+    background-color: var(--mud-palette-primary) !important;
+    color: var(--mud-palette-primary-text) !important;
 }

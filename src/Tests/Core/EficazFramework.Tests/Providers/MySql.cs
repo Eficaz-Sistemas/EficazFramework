@@ -46,7 +46,15 @@ public class MySqlTests : ProviderBase
     [TearDown]
     public async Task TearDownAsync()
     {
-        (await _context.Database.EnsureDeletedAsync()).Should().BeTrue();
+        try
+        {
+            (await _context.Database.EnsureDeletedAsync()).Should().BeTrue();
+        }
+        catch (Exception ex)
+        {
+            ex.StackTrace.ToString().Should().ContainEquivalentOf("Unknown database 'eficazframeworkprovidertests'");
+            throw;
+        }
         await _context.DisposeAsync();
     }
 
