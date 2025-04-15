@@ -65,31 +65,32 @@
 
             <!-- FORM (CURRENT ENTRY) -->
             <EficazFramework.Components.NavigatorPage>
-                <MudBlazor.MudForm>
+                <MudBlazor.MudForm Model="_viewModel.Editor.CurrentEntry"
+                                   Validation="@_viewModel!.Editor.Validate">
                     <EficazFramework.Components.FocusTrapEx>
                         <EficazFramework.Components.GroupPanel Title="Info">
                             <MudBlazor.MudTextField Label="Full Name"
                                                     @bind-Value="_viewModel!.Editor.CurrentEntry.Name"
-                                                    Validation="@_viewModel!.Editor.Validate"
+                                                    For="() => _viewModel!.Editor.CurrentEntry.Name"
                                                     Class="@($"{Layout.MainLayout.INPUTCLASS}")" />
                         </EficazFramework.Components.GroupPanel>
                         <EficazFramework.Components.GroupPanel Title="Address" Class="mt-4">
                             <div class="address-form">
                                 <MudBlazor.MudTextField Label="Street"
                                                         @bind-Value="_viewModel!.Editor.CurrentEntry.Address.Street"
-                                                        Validation="@_viewModel!.Editor.Validate"
+                                                        For="() =>_viewModel!.Editor.CurrentEntry.Address.Street"
                                                         Class="@($"{Layout.MainLayout.INPUTCLASS}")" />
                                 <MudBlazor.MudTextField Label="Zip Code"
                                                         @bind-Value="_viewModel!.Editor.CurrentEntry.Address.ZipCode"
-                                                        Validation="@_viewModel!.Editor.Validate"
+                                                        For="() =>_viewModel!.Editor.CurrentEntry.Address.ZipCode"
                                                         Class="@($"{Layout.MainLayout.INPUTCLASS}")" />
                                 <MudBlazor.MudTextField Label="City"
                                                         @bind-Value="_viewModel!.Editor.CurrentEntry.Address.City"
-                                                        Validation="@_viewModel!.Editor.Validate"
+                                                        For="() =>_viewModel!.Editor.CurrentEntry.Address.City"
                                                         Class="@($"{Layout.MainLayout.INPUTCLASS}")" />
                                 <MudBlazor.MudTextField Label="State"
                                                         @bind-Value="_viewModel!.Editor.CurrentEntry.Address.State"
-                                                        Validation="@_viewModel!.Editor.Validate"
+                                                        For="() =>_viewModel!.Editor.CurrentEntry.Address.State"
                                                         Class="@($"{Layout.MainLayout.INPUTCLASS}")" />
                             </div>
                         </EficazFramework.Components.GroupPanel>

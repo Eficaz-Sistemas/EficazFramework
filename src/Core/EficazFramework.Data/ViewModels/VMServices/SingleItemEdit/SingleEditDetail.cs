@@ -42,7 +42,7 @@ public class SingleEditDetail<T, D> : ViewModelService<T>
         viewmodel.Commands.Add(_cmd_delete_name, new Commands.CommandBase(DeleteDetailCommand_Executed));
 
         Validate = async (propertyName) =>
-            await viewmodel.Repository.Validator.ValidateAsync(CurrentEntry, propertyName);
+            await viewmodel.Repository.Validator.ValidateAsync(CurrentEntry, propertyName[(propertyName.IndexOf(nameof(CurrentEntry)) + 13)..]);
     }
 
     private readonly string _cmd_add_name, _cmd_edit_name, _cmd_save_name, _cmd_cancel_Name, _cmd_delete_name;

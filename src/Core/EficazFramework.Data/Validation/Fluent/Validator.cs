@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Threading.Tasks;
 
 namespace EficazFramework.Validation.Fluent
@@ -179,8 +180,6 @@ namespace EficazFramework.Validation.Fluent.Rules
         /// </summary>
         public string GetPropertyName()
         {
-            if (Property is null)
-                return null;
             return Property.GetName();
         }
     }
