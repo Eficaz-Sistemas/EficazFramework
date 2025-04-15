@@ -1,5 +1,6 @@
 ﻿@using System.Globalization
 @using Microsoft.AspNetCore.Localization
+@using System.Reflection
 
 <!DOCTYPE html>
 <html lang="en">
@@ -39,7 +40,7 @@
     </div>
     <Routes @rendermode="@LocalInteractiveWebAssemblyMode" />
     <script src="_framework/blazor.web.js"></script>
-    <script src="_content/MudBlazor/MudBlazor.min.js"></script>
+    <script src="_content/MudBlazor/MudBlazor.min.js?v=@(Assembly.GetAssembly(typeof(MudBlazor.AbstractLocalizationInterceptor))?.GetName().Version?.ToString())"></script>
     <script src="_content/EficazFramework.Blazor/js/EficazFramework.js"></script>
     <script>navigator.serviceWorker.register('service-worker.js');</script>
 </body>

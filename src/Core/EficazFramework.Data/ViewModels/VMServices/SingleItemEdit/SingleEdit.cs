@@ -27,8 +27,8 @@ public class SingleEdit<T> : ViewModelService<T> where T : class
         viewmodel.ItemsFetching += OnItemsFetching;
         viewmodel.ItemsFetched += OnItemsFetched;
 
-        Validate = async (propertyName) =>
-            await viewmodel.Repository.Validator.ValidateAsync(CurrentEntry, propertyName);
+        Validate = async (model, propertyName) =>
+            await viewmodel.Repository.Validator.ValidateAsync(model, propertyName[(propertyName.IndexOf(nameof(CurrentEntry)) + 13)..]);
     }
 
     [ExcludeFromCodeCoverage]
@@ -607,7 +607,7 @@ public class SingleEdit<T> : ViewModelService<T> where T : class
     }
 
 
-    public Func<string, Task<IEnumerable<string>>> Validate { get; }
+    public Func<object, string, Task<IEnumerable<string>>> Validate { get; }
 
 
     internal override void DisposeManagedCallerObjects()

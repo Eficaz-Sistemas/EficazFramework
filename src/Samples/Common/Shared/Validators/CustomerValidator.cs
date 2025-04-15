@@ -11,9 +11,9 @@ public static class CustomerValidator
         var validator = new Validator<CustomerDto>();
 
         ((Validator<CustomerDto>)validator)
-            .Required(c => c.Id)
+            .Required(c => c.Id, "Identifier")
             .Required(c => c.Name)
-            .Required(c => c.Address.Street)
+            .Required(c => c.Address.Street, "Street Name")
             .CustomExpression(c => !(c.Address as IValidatable).Validate()!.Any(), r => (r.Address as IValidatable).Validate()!.ToString());
 
         return validator;

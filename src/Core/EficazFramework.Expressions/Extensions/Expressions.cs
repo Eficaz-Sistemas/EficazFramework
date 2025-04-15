@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Reflection;
+using System.Runtime.InteropServices;
 
 namespace EficazFramework.Extensions;
 
@@ -55,7 +56,46 @@ public static class Expressions
 
     public static string GetName<TSource, TField>(this Expression<Func<TSource, TField>> Field)
     {
-        return (Field.Body as MemberExpression ?? ((UnaryExpression)Field.Body).Operand as MemberExpression).Member.Name;
+        if (Field?.Body == null)
+            return null;
+
+        try
+        {
+            var fullName = GetFullSortName(Field.Body);
+            if (string.IsNullOrEmpty(fullName))
+                return (Field.Body as MemberExpression ?? ((UnaryExpression)Field.Body).Operand as MemberExpression).Member.Name;
+            else
+                return fullName;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine(ex.ToString());
+        }
+        return "unknown";
     }
+
+
+    /// <summary>
+    /// Obtém o nome completo da propriedade, assegurando tipos complextos (nested)
+    /// </summary>
+    public static string GetFullSortName(Expression expression)
+    {
+        if (expression == null)
+            return null;
+
+        var memberNames = new List<string>();
+
+        var memberExpression = expression as MemberExpression ?? ((UnaryExpression)expression).Operand as MemberExpression;
+        while (null != memberExpression)
+        {
+            memberNames.Add(memberExpression.Member.Name);
+            memberExpression = memberExpression.Expression as MemberExpression;
+        }
+
+        memberNames.Reverse();
+        string fullName = string.Join(".", [.. memberNames]);
+        return fullName;
+    }
+
 
 }
