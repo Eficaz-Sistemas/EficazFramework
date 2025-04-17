@@ -213,6 +213,7 @@ public class ViewModel<T> : INotifyPropertyChanged, IDisposable where T : class
         else
             SetState(EficazFramework.Enums.CRUD.State.Bloqueado, false, null);
         var args = new Events.CRUDEventArgs<T>(Enums.CRUD.Action.DataFetched, State, null);
+        ViewModelAction?.Invoke(this, args);
         ItemsFetched?.Invoke(this, args);
     }
 
