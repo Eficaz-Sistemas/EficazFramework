@@ -2,12 +2,17 @@
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Web;
 using Microsoft.JSInterop;
+using MudBlazor;
 using MudBlazor.Utilities;
+using static MudBlazor.CategoryTypes;
 
 namespace EficazFramework.Components;
 
 public partial class MdiWindow: MudBlazor.MudComponentBase
 {
+    internal const string DIALOGSVC = "Dialog";
+    private DialogInfo? _dialog;
+
     [Parameter] public RenderFragment? ChildContent { get; set; }
     
     [Parameter] public string Title { get; set; }
@@ -94,6 +99,8 @@ public partial class MdiWindow: MudBlazor.MudComponentBase
     protected override void OnInitialized()
     {
         base.OnInitialized();
+        if (ApplicationInstance.Services.TryGetValue(DIALOGSVC, out var dialogObject) && dialogObject is DialogInfo dialog)
+            _dialog = dialog;
     }
 
 
@@ -199,6 +206,45 @@ public partial class MdiWindow: MudBlazor.MudComponentBase
     /// </summary>
     internal void CancelResize() =>
         IsResizing = false;
+
+
+    private EficazFramework.Components.AbsoluteDialogContainer _dialogContainer;
+    /// <summary>
+    /// Exibe um diálogo modal com o conteúdo fornecido.
+    /// </summary>
+    public async Task<DialogInfo?> ShowDialogAsync<T>(
+        string title,
+        MudBlazor.DialogParameters? parameters = null,
+        MudBlazor.DialogOptions? options = null)
+    {
+        DialogInfo dialog = new()
+        {
+            Type = typeof(T),
+            Title = title,
+            Parameters = parameters?.ToDictionary() ?? [],
+            Options = options
+        };
+        ApplicationInstance.Services[DIALOGSVC] = dialog;
+        _dialog = dialog;
+        await ValueTask.CompletedTask;
+        _dialog.Result.ContinueWith(t =>
+        {
+            return InvokeAsync(() =>
+            {
+                _dialog = null;
+                ApplicationInstance.Services.Remove(DIALOGSVC);
+            });
+        }).CatchAndLog();
+        return _dialog;
+    }
+
+    public void Close(MudBlazor.DialogResult? result)
+    {
+        if (_dialog is null)
+            return;
+
+        _dialog.Close(result);
+    }
 }
 
 public enum WindowState

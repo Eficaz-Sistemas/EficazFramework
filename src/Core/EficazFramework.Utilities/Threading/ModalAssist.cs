@@ -15,6 +15,6 @@ public class ModalAssist
     public void Release(EficazFramework.Events.MessageResult result)
     {
         task ??= new TaskCompletionSource<Events.MessageResult>();
-        task.SetResult(result);
+        task.TrySetResult(result);
     }
 }

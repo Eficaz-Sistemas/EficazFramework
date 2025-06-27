@@ -1,14 +1,15 @@
-﻿<h3 class="mx-4 mt-4">MdiAppHelloWorld</h3>
+﻿@inject MudBlazor.ISnackbar? Snackbar;
+
+<h3 class="mx-4 mt-4">MdiAppHelloWorld</h3>
 <MudPaper Class="ma-4" Elevation="1">
-    <MudButton Class="ma-4" Variant="@Variant.Filled" Color="Color.Primary">Click Me</MudButton>
-    <EficazFramework.Components.Dialogs.AbsoluteDialogContainer Title="Título!" >
-        <Content>
-            <EficazFramework.Components.Dialogs.ViewModelDialog Args="_labs" />
-        </Content>
-    </EficazFramework.Components.Dialogs.AbsoluteDialogContainer>
+    <MudButton Class="ma-4" Variant="@Variant.Filled" Color="Color.Primary" OnClick="ShowMessage">Click Me</MudButton>
+    <MudButton Class="ma-4" Variant="@Variant.Filled" Color="Color.Primary" OnClick="ShowViewModelMessage">Click Me</MudButton>
 </MudPaper>
 
 @code {
+
+    [CascadingParameter] EficazFramework.Components.MdiWindow _mdi { get; set; } = null!;
+
     private readonly Events.MessageEventArgs _labs = new()
         {
             Title = "Teste",
@@ -16,4 +17,21 @@
             Buttons = Events.MessageButtons.YesNo,
             Type = Events.MessageType.Default
         };
+
+    private async void ShowMessage()
+    {
+        DialogParameters parameters = new();
+        parameters?.Add("Args", _labs);
+        var dialogRef = await _mdi?.ShowDialogAsync<EficazFramework.Components.Dialogs.ViewModelDialog>(_labs.Title, parameters);
+        var result = (Events.MessageResult)(await dialogRef!.Result)!.Data!;
+        Snackbar!.Add(result.ToString());
+
+    }
+
+    private async void ShowViewModelMessage()
+    {
+        var result = await EficazFramework.Components.Dialogs.ViewModelDialog.ShowAsync(_mdi, _labs);
+        Snackbar!.Add(result.ToString());
+    }
+
 }

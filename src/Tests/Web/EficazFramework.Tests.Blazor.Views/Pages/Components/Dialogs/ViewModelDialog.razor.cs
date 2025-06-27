@@ -30,7 +30,7 @@ public partial class ViewModelDialog
             Buttons = _buttons,
             Type = _type
         };
-        var result = await EficazFramework.Components.Dialogs.ViewModelDialog.ShowAsync(DialogService!, e);
+        var result = await EficazFramework.Components.Dialogs.MudViewModelDialog.ShowAsync(DialogService!, e);
         Snackbar!.Add(result.ToString());
     }
 }

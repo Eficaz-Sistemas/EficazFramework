@@ -1,16 +1,16 @@
-@namespace EficazFramework.Components.Dialogs
 @using MudBlazor.Resources
+@namespace EficazFramework.Components
 @inherits MudBlazor.MudComponentBase
 
 @{
 #nullable enable
 }
 
-<div @attributes="UserAttributes">
-    <MudBlazor.MudOverlay Absolute 
-                          Visible 
-                          Class="@BackgroundClassname" 
-                          DarkBackground/>
+<div class="@Class" @attributes="UserAttributes">
+    <MudBlazor.MudOverlay Absolute
+                          Visible
+                          Class="@BackgroundClassname"
+                          DarkBackground />
 
     <div @ref="_dialogContainerReference" role="dialog" class="@Classname" style="@Style" tabindex="-1">
         <div class="@TitleClassname">
@@ -22,9 +22,7 @@
             {
                 @TitleContent
             }
-        </div>        
-        <CascadingValue Value="this" IsFixed>
-            @Content
-        </CascadingValue>
+        </div>
+        @ChildContent
     </div>
 </div>

@@ -1,16 +1,20 @@
 ﻿using Microsoft.AspNetCore.Components;
 using MudBlazor;
 using MudBlazor.Utilities;
-using static MudBlazor.CategoryTypes;
 
-namespace EficazFramework.Components.Dialogs;
+namespace EficazFramework.Components;
+
+/// <summary>
+/// Dialog container to preferably use with <see cref="MdiWindow"/>.
+/// </summary>
 public partial class AbsoluteDialogContainer
 {
     private ElementReference _dialogContainerReference;
 
     protected string TitleClassname =>
         new CssBuilder("mud-dialog-title")
-        .AddClass("ef-dialog-title")
+            .AddClass("ef-dialog-title")
+            .AddClass(TitleClass)
             .Build();
 
     protected string Classname =>
@@ -51,13 +55,20 @@ public partial class AbsoluteDialogContainer
     [Category(CategoryTypes.Dialog.Behavior)]
     public RenderFragment? TitleContent { get; set; }
 
+
+
     /// <summary>
-    /// The content within this dialog.
+    /// The CSS classes to apply to the title.
     /// </summary>
     /// <remarks>
-    /// Defaults to the content of the <see cref="MudDialog"/> being displayed.
+    /// Multiple classes must be separated by spaces.
     /// </remarks>
     [Parameter]
+    [Category(CategoryTypes.Dialog.Appearance)]
+    public string? TitleClass { get; set; }
+
+
+    [Parameter]
     [Category(CategoryTypes.Dialog.Behavior)]
-    public RenderFragment? Content { get; set; }
+    public RenderFragment? ChildContent { get; set; }
 }
