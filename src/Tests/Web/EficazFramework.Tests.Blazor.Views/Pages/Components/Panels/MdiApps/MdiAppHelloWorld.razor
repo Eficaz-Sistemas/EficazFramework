@@ -1,4 +1,19 @@
 ﻿<h3 class="mx-4 mt-4">MdiAppHelloWorld</h3>
 <MudPaper Class="ma-4" Elevation="1">
     <MudButton Class="ma-4" Variant="@Variant.Filled" Color="Color.Primary">Click Me</MudButton>
+    <EficazFramework.Components.Dialogs.AbsoluteDialogContainer Title="Título!" >
+        <Content>
+            <EficazFramework.Components.Dialogs.ViewModelDialog Args="_labs" />
+        </Content>
+    </EficazFramework.Components.Dialogs.AbsoluteDialogContainer>
 </MudPaper>
+
+@code {
+    private readonly Events.MessageEventArgs _labs = new()
+        {
+            Title = "Teste",
+            Content = "Funciona?",
+            Buttons = Events.MessageButtons.YesNo,
+            Type = Events.MessageType.Default
+        };
+}

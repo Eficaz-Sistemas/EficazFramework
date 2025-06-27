@@ -2,9 +2,7 @@
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Web;
 using Microsoft.JSInterop;
-using MudBlazor;
 using MudBlazor.Utilities;
-using System.Data.SqlTypes;
 
 namespace EficazFramework.Components;
 

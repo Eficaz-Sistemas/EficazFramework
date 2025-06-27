@@ -1,0 +1,30 @@
+@namespace EficazFramework.Components.Dialogs
+@using MudBlazor.Resources
+@inherits MudBlazor.MudComponentBase
+
+@{
+#nullable enable
+}
+
+<div @attributes="UserAttributes">
+    <MudBlazor.MudOverlay Absolute 
+                          Visible 
+                          Class="@BackgroundClassname" 
+                          DarkBackground/>
+
+    <div @ref="_dialogContainerReference" role="dialog" class="@Classname" style="@Style" tabindex="-1">
+        <div class="@TitleClassname">
+            @if (TitleContent is null)
+            {
+                <MudBlazor.MudText Typo="MudBlazor.Typo.h6">@Title</MudBlazor.MudText>
+            }
+            else
+            {
+                @TitleContent
+            }
+        </div>        
+        <CascadingValue Value="this" IsFixed>
+            @Content
+        </CascadingValue>
+    </div>
+</div>

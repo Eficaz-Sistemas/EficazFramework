@@ -13,6 +13,14 @@ public partial class ViewModelDialog
     public Events.MessageType _type = Events.MessageType.Default;
     public Events.MessageButtons _buttons = Events.MessageButtons.OK;
 
+    private readonly Events.MessageEventArgs _labs = new()
+    {
+        Title = "Teste",
+        Content = "Funciona?",
+        Buttons = Events.MessageButtons.YesNo,
+        Type = Events.MessageType.Default
+    };
+
     public async Task ShowDialog()
     {
         Events.MessageEventArgs e = new()
