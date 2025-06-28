@@ -2,8 +2,9 @@
 
 <h3 class="mx-4 mt-4">MdiAppHelloWorld</h3>
 <MudPaper Class="ma-4" Elevation="1">
-    <MudButton Class="ma-4" Variant="@Variant.Filled" Color="Color.Primary" OnClick="ShowMessage">Click Me</MudButton>
-    <MudButton Class="ma-4" Variant="@Variant.Filled" Color="Color.Primary" OnClick="ShowViewModelMessage">Click Me</MudButton>
+    <MudButton Class="ma-4" Variant="@Variant.Filled" Color="Color.Primary" OnClick="ShowMessage">MudDialog</MudButton>
+    <MudButton Class="ma-4" Variant="@Variant.Filled" Color="Color.Primary" OnClick="ShowViewModelMessage">Mdi Dialog</MudButton>
+    <MudButton Class="ma-4" Variant="@Variant.Filled" Color="Color.Primary" OnClick="ShowSnackBar">Mdi SnackBar</MudButton>
 </MudPaper>
 
 @code {
@@ -22,7 +23,7 @@
     {
         DialogParameters parameters = new();
         parameters?.Add("Args", _labs);
-        var dialogRef = await _mdi?.ShowDialogAsync<EficazFramework.Components.Dialogs.ViewModelDialog>(_labs.Title, parameters);
+        var dialogRef = await _mdi?.ShowDialogAsync<EficazFramework.Components.Dialogs.ViewModelDialog>(_labs.Title, parameters)!;
         var result = (Events.MessageResult)(await dialogRef!.Result)!.Data!;
         Snackbar!.Add(result.ToString());
 
@@ -32,6 +33,17 @@
     {
         var result = await EficazFramework.Components.Dialogs.ViewModelDialog.ShowAsync(_mdi, _labs);
         Snackbar!.Add(result.ToString());
+    }
+
+    private void ShowSnackBar()
+    {
+        _mdi.ConfigureSnackBar(new SnackbarConfiguration()
+            {
+                BackgroundBlurred = true,
+                ShowCloseIcon = true,
+                PositionClass = MudBlazor.Defaults.Classes.Position.BottomCenter,
+            });
+        _mdi.AddSnackbar("Hello World!!", Severity.Info);
     }
 
 }

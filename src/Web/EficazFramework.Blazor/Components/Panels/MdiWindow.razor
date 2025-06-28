@@ -47,6 +47,8 @@
                          DefaultFocus="@MudBlazor.DefaultFocus.FirstChild">
                 @ChildContent
             </FocusTrapEx>
+            <SnackbarProvider Style="position:absolute" 
+                              SnackbarService="_snackbarService"/>
             @if(_dialog?.Type is not null)
             {
                 <AbsoluteDialogContainer @ref="_dialogContainer"

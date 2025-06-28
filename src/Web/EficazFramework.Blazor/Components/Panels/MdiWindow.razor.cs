@@ -11,7 +11,12 @@ namespace EficazFramework.Components;
 public partial class MdiWindow: MudBlazor.MudComponentBase
 {
     internal const string DIALOGSVC = "Dialog";
+    internal const string SNACKBARSVC = "SnackBar";
+
     private DialogInfo? _dialog;
+    private SnackbarService? _snackbarService;
+
+    [Inject] public NavigationManager? NavigationManager { get; set; }
 
     [Parameter] public RenderFragment? ChildContent { get; set; }
     
@@ -101,6 +106,15 @@ public partial class MdiWindow: MudBlazor.MudComponentBase
         base.OnInitialized();
         if (ApplicationInstance.Services.TryGetValue(DIALOGSVC, out var dialogObject) && dialogObject is DialogInfo dialog)
             _dialog = dialog;
+
+        if (ApplicationInstance.Services.TryGetValue(SNACKBARSVC, out var snackbarObject) && snackbarObject is SnackbarService snackbarService)
+            _snackbarService = snackbarService;
+
+        if(_snackbarService is null)
+        {
+            _snackbarService = new SnackbarService(NavigationManager!);
+            ApplicationInstance.Services[SNACKBARSVC] = _snackbarService;
+        }
     }
 
 
@@ -126,7 +140,7 @@ public partial class MdiWindow: MudBlazor.MudComponentBase
 
 
     /// <summary>
-    /// Close Button Click action
+    /// CloseDialog Button Click action
     /// </summary>
     private void OnClose()
     {
@@ -238,12 +252,72 @@ public partial class MdiWindow: MudBlazor.MudComponentBase
         return _dialog;
     }
 
-    public void Close(MudBlazor.DialogResult? result)
+    /// <summary>
+    /// Closes the dialog with the specified result.
+    /// </summary>
+    internal void CloseDialog(MudBlazor.DialogResult? result)
     {
         if (_dialog is null)
             return;
 
         _dialog.Close(result);
+    }
+
+
+    /// <summary>
+    /// Exibe uma notificação (snackbar) com a mensagem fornecida.
+    /// </summary>
+    public void AddSnackbar(
+        MarkupString message, 
+        Severity severity = Severity.Normal, 
+        Action<SnackbarOptions>? configure = null, 
+        string? key = null) =>
+        _snackbarService?.Add(message, severity, configure, key);
+
+    /// <summary>
+    /// Exibe uma notificação (snackbar) com a mensagem fornecida.
+    /// </summary>
+    public void AddSnackbar(
+        string message,
+        Severity severity = Severity.Normal,
+        Action<SnackbarOptions>? configure = null,
+        string? key = null) =>
+        _snackbarService?.Add(message, severity, configure, key);
+
+    /// <summary>
+    /// Exibe uma notificação (snackbar) com a mensagem fornecida.
+    /// </summary>
+    public void AddSnackbar(
+        RenderFragment message,
+        Severity severity = Severity.Normal,
+        Action<SnackbarOptions>? configure = null,
+        string? key = null) =>
+        _snackbarService?.Add(message, severity, configure, key);
+
+    public void ConfigureSnackBar(MudBlazor.SnackbarConfiguration snackbarConfiguration)
+    {
+        if (_snackbarService is null)
+            return;
+
+        _snackbarService.Configuration.BackgroundBlurred = snackbarConfiguration.BackgroundBlurred;
+        _snackbarService.Configuration.ClearAfterNavigation = snackbarConfiguration.ClearAfterNavigation;
+        _snackbarService.Configuration.ErrorIcon = snackbarConfiguration.ErrorIcon;
+        _snackbarService.Configuration.HideTransitionDuration = snackbarConfiguration.HideTransitionDuration;
+        _snackbarService.Configuration.IconSize = snackbarConfiguration.IconSize;
+        _snackbarService.Configuration.InfoIcon = snackbarConfiguration.InfoIcon;
+        _snackbarService.Configuration.MaxDisplayedSnackbars = snackbarConfiguration.MaxDisplayedSnackbars;
+        _snackbarService.Configuration.MaximumOpacity = snackbarConfiguration.MaximumOpacity;
+        _snackbarService.Configuration.NewestOnTop = snackbarConfiguration.NewestOnTop;
+        _snackbarService.Configuration.NormalIcon = snackbarConfiguration.NormalIcon;
+        _snackbarService.Configuration.PositionClass = snackbarConfiguration.PositionClass;
+        _snackbarService.Configuration.PreventDuplicates = snackbarConfiguration.PreventDuplicates;
+        _snackbarService.Configuration.RequireInteraction = snackbarConfiguration.RequireInteraction;
+        _snackbarService.Configuration.ShowCloseIcon = snackbarConfiguration.ShowCloseIcon;
+        _snackbarService.Configuration.ShowTransitionDuration = snackbarConfiguration.ShowTransitionDuration;
+        _snackbarService.Configuration.SnackbarVariant = snackbarConfiguration.SnackbarVariant;
+        _snackbarService.Configuration.SuccessIcon = snackbarConfiguration.SuccessIcon;
+        _snackbarService.Configuration.VisibleStateDuration = snackbarConfiguration.VisibleStateDuration;
+        _snackbarService.Configuration.WarningIcon = snackbarConfiguration.WarningIcon;
     }
 }
 

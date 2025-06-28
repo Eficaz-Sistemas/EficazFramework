@@ -1,0 +1,9 @@
+@namespace EficazFramework.Components
+@inherits MudBlazor.MudComponentBase
+
+<div @attributes="UserAttributes" class="@Classname" style="@Stylename">
+    @foreach (var snackbar in Snackbar)
+    {
+        <MudBlazor.MudSnackbarElement @key="snackbar" Snackbar="@snackbar"></MudBlazor.MudSnackbarElement>
+    }
+</div>
