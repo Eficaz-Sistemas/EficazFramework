@@ -150,6 +150,7 @@ public sealed class ApplicationInstance : ApplicationDefinition, INotifyProperty
 {
     internal ApplicationInstance(ApplicationDefinition fromDefinition, long forSection)
     {
+        Id = System.Guid.NewGuid();
         Metadata = fromDefinition;
         Title = fromDefinition.Title;
         LongTitle = fromDefinition.LongTitle;
@@ -169,6 +170,8 @@ public sealed class ApplicationInstance : ApplicationDefinition, INotifyProperty
     
     public static ApplicationInstance Create(ApplicationDefinition fromDefinition, long forSection) =>
         new (fromDefinition, forSection) { SessionID = forSection };
+
+    public System.Guid Id { get; }
 
     public long SessionID { get; internal set; }
 

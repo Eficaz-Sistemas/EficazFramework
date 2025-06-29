@@ -1,0 +1,14 @@
+::deep .ef-dialog {
+    position: absolute;
+    align-self: anchor-center;
+    justify-self: anchor-center;
+    max-width: 90%;
+    max-height: 90%;
+    overflow: hidden;
+}
+
+::deep .ef-dialog-title {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}

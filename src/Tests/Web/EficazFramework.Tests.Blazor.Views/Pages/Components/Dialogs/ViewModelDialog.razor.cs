@@ -13,6 +13,14 @@ public partial class ViewModelDialog
     public Events.MessageType _type = Events.MessageType.Default;
     public Events.MessageButtons _buttons = Events.MessageButtons.OK;
 
+    private readonly Events.MessageEventArgs _labs = new()
+    {
+        Title = "Teste",
+        Content = "Funciona?",
+        Buttons = Events.MessageButtons.YesNo,
+        Type = Events.MessageType.Default
+    };
+
     public async Task ShowDialog()
     {
         Events.MessageEventArgs e = new()
@@ -22,7 +30,7 @@ public partial class ViewModelDialog
             Buttons = _buttons,
             Type = _type
         };
-        var result = await EficazFramework.Components.Dialogs.ViewModelDialog.ShowAsync(DialogService!, e);
+        var result = await EficazFramework.Components.Dialogs.MudViewModelDialog.ShowAsync(DialogService!, e);
         Snackbar!.Add(result.ToString());
     }
 }

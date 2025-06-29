@@ -1,0 +1,17 @@
+@namespace EficazFramework.Components
+@inherits MudBlazor.MudComponentBase
+
+<MudBlazor.MudFocusTrap DefaultFocus="DefaultFocus">
+
+    <div @attributes="UserAttributes" class="@ContentClassname" style="@ContentStyle">
+        @DialogContent
+    </div>
+
+    @if (DialogActions != null)
+    {
+        <div class="@ActionsClassname">
+            @DialogActions
+        </div>
+    }
+
+</MudBlazor.MudFocusTrap>

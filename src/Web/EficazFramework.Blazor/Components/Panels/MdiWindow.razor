@@ -47,6 +47,17 @@
                          DefaultFocus="@MudBlazor.DefaultFocus.FirstChild">
                 @ChildContent
             </FocusTrapEx>
+            <SnackbarProvider Style="position:absolute" 
+                              SnackbarService="_snackbarService"/>
+            @if(_dialog?.Type is not null)
+            {
+                <AbsoluteDialogContainer @ref="_dialogContainer"
+                                         Title="@_dialog?.Title"
+                                         TitleContent="_dialog?.TitleContent">
+                    <DynamicComponent Type="@_dialog?.Type"
+                                      Parameters="@_dialog?.Parameters" />
+                </AbsoluteDialogContainer>
+            }
         </div>
     </CascadingValue>
 </MudBlazor.MudPaper>
