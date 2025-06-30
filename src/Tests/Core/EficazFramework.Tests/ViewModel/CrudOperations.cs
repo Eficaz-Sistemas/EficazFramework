@@ -1,6 +1,6 @@
 ﻿using EficazFramework.Validation.Fluent.Rules;
 using EficazFramework.ViewModels.Services;
-using FluentAssertions;
+using AwesomeAssertions;
 using NUnit.Framework;
 using System.Linq;
 using System.Threading.Tasks;

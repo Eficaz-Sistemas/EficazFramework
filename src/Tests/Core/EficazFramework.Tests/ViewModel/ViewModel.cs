@@ -1,5 +1,5 @@
 ﻿using EficazFramework.ViewModels.Services;
-using FluentAssertions;
+using AwesomeAssertions;
 using NUnit.Framework;
 using System;
 using System.Security.Policy;

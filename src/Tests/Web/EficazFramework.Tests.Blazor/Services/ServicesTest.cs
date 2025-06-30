@@ -1,5 +1,5 @@
 ﻿using EficazFramework.Tests;
-using FluentAssertions;
+using AwesomeAssertions;
 using NUnit.Framework;
 
 namespace EficazFramework.Services;

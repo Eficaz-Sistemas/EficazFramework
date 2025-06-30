@@ -1,5 +1,5 @@
 ﻿using EficazFramework.Providers.Mock;
-using FluentAssertions;
+using AwesomeAssertions;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using NUnit.Framework;

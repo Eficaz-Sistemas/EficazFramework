@@ -1,6 +1,6 @@
 ﻿using EficazFramework.Configuration;
 using EficazFramework.Validation.Fluent.Rules;
-using FluentAssertions;
+using AwesomeAssertions;
 using NUnit.Framework;
 using System;
 using System.Collections.Generic;

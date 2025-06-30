@@ -1,5 +1,5 @@
 ﻿using EficazFramework.Serialization;
-using FluentAssertions;
+using AwesomeAssertions;
 using NUnit.Framework;
 using System;
 using System.Linq;

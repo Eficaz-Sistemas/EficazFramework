@@ -1,7 +1,7 @@
 ﻿using EficazFramework.Configuration;
 using EficazFramework.Extensions;
 using EficazFramework.Validation.Fluent.Rules;
-using FluentAssertions;
+using AwesomeAssertions;
 using Microsoft.EntityFrameworkCore;
 using NUnit.Framework;
 using System;
