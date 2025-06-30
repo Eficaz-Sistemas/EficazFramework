@@ -1,6 +1,6 @@
 ﻿#pragma warning disable CS8618 // O campo não anulável precisa conter um valor não nulo ao sair do construtor. Considere declará-lo como anulável.
 
-global using FluentAssertions;
+global using AwesomeAssertions;
 global using NUnit.Framework;
 global using System;
 global using System.Collections.Generic;

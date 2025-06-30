@@ -1,7 +1,7 @@
 ﻿using EficazFramework.Configuration;
 using EficazFramework.Providers;
 using EficazFramework.ViewModels.Services;
-using FluentAssertions;
+using AwesomeAssertions;
 using Microsoft.Extensions.DependencyInjection;
 using NUnit.Framework;
 using System;

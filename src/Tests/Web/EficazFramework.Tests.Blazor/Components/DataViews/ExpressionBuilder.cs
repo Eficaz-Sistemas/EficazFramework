@@ -2,7 +2,7 @@
 
 using Bunit;
 using EficazFramework.Tests;
-using FluentAssertions;
+using AwesomeAssertions;
 using NUnit.Framework;
 using System;
 using System.Collections.Generic;

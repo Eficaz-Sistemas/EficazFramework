@@ -1,6 +1,6 @@
 ﻿using EficazFramework.Configuration;
 using EficazFramework.Providers;
-using FluentAssertions;
+using AwesomeAssertions;
 using Microsoft.EntityFrameworkCore;
 using NUnit.Framework;
 using System;

@@ -1,5 +1,5 @@
 ﻿using EficazFramework.Configuration;
-using FluentAssertions;
+using AwesomeAssertions;
 using Microsoft.Extensions.DependencyInjection;
 using NUnit.Framework;
 using System;

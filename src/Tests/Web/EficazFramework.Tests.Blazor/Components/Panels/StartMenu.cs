@@ -1,7 +1,7 @@
 ﻿using AngleSharp.Dom;
 using Bunit;
 using EficazFramework.Tests;
-using FluentAssertions;
+using AwesomeAssertions;
 using NUnit.Framework;
 using System.Linq;
 using System.Threading.Tasks;

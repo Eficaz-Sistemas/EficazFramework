@@ -1,6 +1,6 @@
 ﻿using EficazFramework.Serialization;
 using EficazFramework.XML;
-using FluentAssertions;
+using AwesomeAssertions;
 using NUnit.Framework;
 using System;
 using System.Security.Cryptography;
