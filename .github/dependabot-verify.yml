@@ -1,0 +1,23 @@
+name: Verificar PRs do Dependabot
+
+on:
+  pull_request:
+    branches: [main]
+    types: [opened, synchronize]
+    paths:
+      - '**/*.csproj'
+      - '**/*.sln'
+
+jobs:
+  build:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v3
+        with:
+          dotnet-version: '9.x'
+      - name: Build
+        run: dotnet build --no-restore --configuration Release
+      - name: Run tests
+        run: dotnet test --no-build --configuration Release
