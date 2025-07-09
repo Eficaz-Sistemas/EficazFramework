@@ -8,4 +8,5 @@ updates:
     allow:
       - dependency-type: "direct"
     ignore:
-      - dependency-type: "indirect"
+      - dependency-name: "DefaultDocumentation"
+
