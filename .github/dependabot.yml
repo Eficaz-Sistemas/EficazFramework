@@ -6,4 +6,4 @@ updates:
       interval: "daily"
     open-pull-requests-limit: 5
     ignore:
-      - dependency-name: "DefaultDocumentation"
+      - dependency-name: "DefaultDocumentation*"
