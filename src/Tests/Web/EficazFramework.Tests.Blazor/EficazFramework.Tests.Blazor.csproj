@@ -14,7 +14,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="AwesomeAssertions" Version="9.0.0" />
+    <PackageReference Include="AwesomeAssertions" Version="9.1.0" />
     <PackageReference Include="bunit" Version="1.40.0" />
     <PackageReference Include="coverlet.msbuild" Version="6.0.4">
       <PrivateAssets>all</PrivateAssets>
@@ -42,7 +42,7 @@
 
 	<ItemGroup Condition=" '$(TargetFramework)' == 'net8.0' ">
 		<PackageReference Include="Microsoft.AspNetCore.Components" Version="8.0.17" />
-		<PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="8.0.1" />
+		<PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="9.0.7" />
 	</ItemGroup>
 
 </Project>
