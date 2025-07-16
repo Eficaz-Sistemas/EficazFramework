@@ -11,11 +11,15 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="9.0.6" />
-    <PackageReference Include="Microsoft.Extensions.Http" Version="9.0.6" />
-    <PackageReference Include="Microsoft.Extensions.Localization" Version="9.0.6" />
+    <PackageReference Include="Microsoft.Extensions.Http" Version="9.0.7" />
+    <PackageReference Include="Microsoft.Extensions.Localization" Version="9.0.7" />
   </ItemGroup>
 
   <ItemGroup>
+
+    <PackageReference Include="Microsoft.NET.ILLink.Tasks" Version="9.0.7" />
+
+    <PackageReference Include="Microsoft.NET.Sdk.WebAssembly.Pack" Version="9.0.7" />
     <ProjectReference Include="..\..\..\Core\EficazFramework.Data\EficazFramework.Data.csproj" />
     <ProjectReference Include="..\..\..\Web\EficazFramework.Blazor\EficazFramework.Blazor.csproj" />
     <ProjectReference Include="..\..\Common\Shared\Shared.csproj" />
