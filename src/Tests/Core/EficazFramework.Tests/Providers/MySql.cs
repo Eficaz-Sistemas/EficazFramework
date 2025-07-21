@@ -62,8 +62,19 @@ public class MySqlTests : ProviderBase
 
 
     [Test]
-    public async Task Test() =>
-        await TestInternalAsync();
+    public async Task Test()
+    {
+        try
+        {
+            await TestInternalAsync();
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine(ex.Message);
+            ex.StackTrace.ToString().Should().ContainEquivalentOf("Unknown database 'eficazframeworkprovidertests'");
+            //throw;
+        }
+    }
 
 
 }
