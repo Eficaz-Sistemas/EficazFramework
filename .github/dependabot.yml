@@ -1,11 +1,9 @@
 version: 2
 updates:
   - package-ecosystem: "nuget"
-    directory: "/" 
+    directory: "/src" 
     schedule:
-      interval: "daily"
+      interval: "weekly"
     open-pull-requests-limit: 5
-    allow:
-      - dependency-type: "direct"
     ignore:
-      - dependency-name: "DefaultDocumentation"
+      - dependency-name: "DefaultDocumentation*"
