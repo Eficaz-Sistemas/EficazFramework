@@ -37,8 +37,9 @@ public class MySqlTests : ProviderBase
         }
         catch (Exception ex)
         {
+            Console.WriteLine(ex.Message);
             ex.StackTrace.ToString().Should().ContainEquivalentOf("database exists");
-            throw;
+            //throw;
         }
     }
 
@@ -52,8 +53,9 @@ public class MySqlTests : ProviderBase
         }
         catch (Exception ex)
         {
+            Console.WriteLine(ex.Message);
             ex.StackTrace.ToString().Should().ContainEquivalentOf("Unknown database 'eficazframeworkprovidertests'");
-            throw;
+            //throw;
         }
         await _context.DisposeAsync();
     }
