@@ -65,5 +65,9 @@ public class ViewModelDialog : BunitTest
         windowRenderer.InvokeAsync(async() => await dlgButton.ClickAsync(new MouseEventArgs()));
 
         hostRenderer.WaitForElement("div.mud-overlay-dialog", System.TimeSpan.FromMilliseconds(1000)); // now open
+
+        IElement dlgButtonClose = _buttons()[0];
+        windowRenderer.InvokeAsync(async () => await dlgButtonClose.ClickAsync(new MouseEventArgs()));
+
     }
 }
