@@ -1,9 +1,15 @@
 ﻿#pragma warning disable CS4014 // Como esta chamada não é esperada, a execução do método atual continua antes de a chamada ser concluída
 
+using AngleSharp.Dom;
+using AwesomeAssertions;
 using Bunit;
 using EficazFramework.Tests;
-using AwesomeAssertions;
+using Microsoft.AspNetCore.Components.Forms;
+using Microsoft.AspNetCore.Components.Web;
+using Microsoft.AspNetCore.Mvc.ModelBinding.Validation;
+using MudBlazor;
 using NUnit.Framework;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace EficazFramework.Components.Dialogs;
@@ -30,5 +36,34 @@ public class ViewModelDialog : BunitTest
         comp.Instance.ShowDialog();
         await Task.Delay(5000);
 
+    }
+
+    [Test]
+    public async Task MdiTestDialog()
+    {
+        var comp = Context.RenderComponent<Tests.Blazor.Views.Pages.Components.Panels.Mdi>();
+        var hostRenderer = comp.FindComponent<EficazFramework.Components.MdiHost>();
+        var host = hostRenderer.Instance;
+        host.Should().NotBeNull();
+
+        var app = EficazFramework.Application.IApplicationManager.Instance!.AllApplications
+            .Where(manifest => manifest.Title == "My App 1").SingleOrDefault();
+        app.Should().NotBeNull();
+
+        hostRenderer.InvokeAsync(() => host.LoadApplication(app!));
+        hostRenderer.WaitForElement("div.ef-mdi-window-maximized", System.TimeSpan.FromMilliseconds(1000));
+        var windowRenderer = hostRenderer.FindComponent<EficazFramework.Components.MdiWindow>();
+        var window = windowRenderer.Instance;
+        window.ApplicationInstance.Title.Should().Be("My App 1");
+
+
+        System.Action compFindAction = () => comp.Find("div.ef-dialog");
+        compFindAction.Should().Throw<Bunit.ElementNotFoundException>();
+
+        IRefreshableElementCollection<IElement> _buttons() => windowRenderer.FindAll("button.mud-button-root");
+        IElement dlgButton = _buttons()[1];
+        windowRenderer.InvokeAsync(async() => await dlgButton.ClickAsync(new MouseEventArgs()));
+
+        hostRenderer.WaitForElement("div.mud-overlay-dialog", System.TimeSpan.FromMilliseconds(1000)); // now open
     }
 }
