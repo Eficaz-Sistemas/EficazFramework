@@ -34,7 +34,11 @@ public partial class MdiHost : MudComponentBase, IBrowserViewportObserver
     {
         _breakpoint = browserViewportEventArgs.Breakpoint;
         _iscompact = await BrowserViewportService.IsBreakpointWithinReferenceSizeAsync(Breakpoint, _breakpoint);
-        _hostArea = await MdiHostArea.MudGetBoundingClientRectAsync();
+        _hostArea = await MdiHostArea.MudGetBoundingClientRectAsync() ?? new()
+        {
+            Width = 900,
+            Height = 700,
+        }; ;
 
         if (!_iscompact)
             FixAppsLocationOnResize();
@@ -213,7 +217,11 @@ public partial class MdiHost : MudComponentBase, IBrowserViewportObserver
         if (app.IsPublic == false && CurrentSection == 0)
             return;
 
-        _hostArea = await MdiHostArea.MudGetBoundingClientRectAsync();
+        _hostArea = await MdiHostArea.MudGetBoundingClientRectAsync() ?? new()
+        {
+            Width = 900,
+            Height = 700,
+        };
         ApplicationInstance? instance = ApplicationsSource?.FirstOrDefault(a => a.Metadata == app && (a.SessionID == 0 || a.SessionID == CurrentSection));
         if (instance == null)
         {

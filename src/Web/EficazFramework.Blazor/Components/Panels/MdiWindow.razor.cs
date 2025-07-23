@@ -241,6 +241,7 @@ public partial class MdiWindow: MudBlazor.MudComponentBase
         ApplicationInstance.Services[DIALOGSVC] = dialog;
         _dialog = dialog;
         await ValueTask.CompletedTask;
+        StateHasChanged();
         _dialog.Result.ContinueWith(t =>
         {
             return InvokeAsync(() =>
