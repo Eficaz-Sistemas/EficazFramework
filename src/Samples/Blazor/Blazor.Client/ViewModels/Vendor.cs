@@ -11,11 +11,14 @@ internal sealed class Vendor : EficazFramework.ViewModels.ViewModel<Shared.DTOs.
 
         this.AddRestApi(client, options =>
         {
-            options.UrlGet = "/api/vendors";
-            options.UrlPost = "/api/vendors";
-            options.UrlPut = "/api/vendors";
-            options.UrlDelete = "/api/vendors";
-            options.DeleteQueryFunc = (vendor) => vendor.Id.ToString() ; // DELETE : /api/vendors/vendorID
+            options.GetOptions = new()
+            {
+                UrlExpr = () => "/api/vendors",
+                AttachFilterExpressionOnBodyAtGet = false
+            };
+            options.UrlPost = (entry) => "/api/vendors";
+            options.UrlPut = (entry) => "/api/vendors";
+            options.UrlDelete = (entry) => "/api/vendors";
         })
             .AddSingledEdit()
             .WithNavigationByIndex();

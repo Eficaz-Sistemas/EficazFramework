@@ -44,8 +44,11 @@ public partial class Product
     {
         if (e.Type == EficazFramework.Events.MessageType.SnackBar)
         {
-            Snackbar!.Configuration.PositionClass = MudBlazor.Defaults.Classes.Position.BottomCenter;
-            Snackbar!.Add((e.Content ?? "").ToString(), MudBlazor.Severity.Normal, config => { config.ShowCloseIcon = false; });
+            MdiWindow!.ConfigureSnackBar(new()
+            {
+                PositionClass = MudBlazor.Defaults.Classes.Position.BottomCenter
+            });
+            MdiWindow!.AddSnackbar((e.Content ?? "").ToString() ?? "", MudBlazor.Severity.Normal, config => { config.ShowCloseIcon = false; });
         }
         else
         {
@@ -54,10 +57,9 @@ public partial class Product
             {
                 { "Args", e }
             };
-            var dialog = Dialog!.Show<EficazFramework.Components.Dialogs.ViewModelDialog>(e.Title, argsParams, new MudBlazor.DialogOptions() { BackdropClick = false, Position = MudBlazor.DialogPosition.Center });
-            EficazFramework.Events.MessageResult result = (EficazFramework.Events.MessageResult)(await dialog.Result)!.Data!;
+            var dialog = await MdiWindow!.ShowDialogAsync<EficazFramework.Components.Dialogs.ViewModelDialog>(e.Title, argsParams, new MudBlazor.DialogOptions() { BackdropClick = false, Position = MudBlazor.DialogPosition.Center });
+            EficazFramework.Events.MessageResult result = (EficazFramework.Events.MessageResult)(await dialog!.Result)!.Data!;
             e.ModalAssist.Release(result);
-            StateHasChanged();
         }
     }
 

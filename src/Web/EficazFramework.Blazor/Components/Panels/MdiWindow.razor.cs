@@ -248,6 +248,7 @@ public partial class MdiWindow: MudBlazor.MudComponentBase
             {
                 _dialog = null;
                 ApplicationInstance.Services.Remove(DIALOGSVC);
+                StateHasChanged();
             });
         }).CatchAndLog();
         return _dialog;
