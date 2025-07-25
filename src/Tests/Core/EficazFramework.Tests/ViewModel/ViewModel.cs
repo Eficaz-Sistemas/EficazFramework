@@ -136,17 +136,21 @@ public class ViewModel
         var urlDelete = "delete";
         Vm.AddRestApi(new(), options =>
         {
-            options.UrlGet = urlGet;
-            options.UrlPut = urlInsert;
-            options.UrlPost = urlUpdate;
-            options.UrlDelete = urlDelete;
+            options.GetOptions = new()
+            {
+                UrlExpr = () => urlGet,
+                AttachFilterExpressionOnBodyAtGet = false,
+            };
+            options.UrlPut = (entry) => urlInsert;
+            options.UrlPost = (entry) => urlUpdate;
+            options.UrlDelete = (entry) => urlDelete;
         });
         Repositories.ApiRepository<Resources.Mocks.Classes.Blog> repo = Vm.Repository as Repositories.ApiRepository<Resources.Mocks.Classes.Blog>;
         repo.Should().NotBeNull();
-        repo.UrlGet.Should().Be(urlGet);
-        repo.UrlPut.Should().Be(urlInsert);
-        repo.UrlPost.Should().Be(urlUpdate);
-        repo.UrlDelete.Should().Be(urlDelete);
+        repo.UrlGet.Invoke().Should().Be(urlGet);
+        repo.UrlPut.Invoke(null).Should().Be(urlInsert);
+        repo.UrlPost.Invoke(null).Should().Be(urlUpdate);
+        repo.UrlDelete.Invoke(null).Should().Be(urlDelete);
 
         Vm.AddSingledEdit();
         Vm.Invoking(y => y.AddSingledEdit()).Should().Throw<ArgumentException>();

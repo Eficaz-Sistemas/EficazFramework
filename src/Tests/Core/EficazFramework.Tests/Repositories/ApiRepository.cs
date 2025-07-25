@@ -43,8 +43,7 @@ public class ApiRepositoryTests
     {
         var repository = new ApiRepository<Resources.Mocks.Classes.MockClass>(Client)
         {
-            UrlGet = "/mock/get",
-            GetRequestMode = Enums.CRUD.RequestAction.Get,
+            UrlGet = () => "/mock/get",
         };
         repository.DataContext.Should().HaveCount(0);
         repository.Get();
@@ -56,7 +55,7 @@ public class ApiRepositoryTests
     {
         var repository = new ApiRepository<Resources.Mocks.Classes.MockClass>(Client)
         {
-            UrlGet = "/mock/get"
+            UrlGet = () => "/mock/get",
         };
         repository.DataContext.Should().HaveCount(0);
         await repository.GetAsync(default);
@@ -70,8 +69,7 @@ public class ApiRepositoryTests
     {
         var repository = new ApiRepository<Resources.Mocks.Classes.MockClass>(Client)
         {
-            UrlGet = "/mock/get",
-            GetRequestMode = Enums.CRUD.RequestAction.Post,
+            UrlGet = () => "/mock/get",
         };
         repository.DataContext.Should().HaveCount(0);
         await repository.GetAsync(default);
@@ -86,7 +84,7 @@ public class ApiRepositoryTests
     {
         var repository = new ApiRepository<Resources.Mocks.Classes.MockClass>(Client)
         {
-            UrlGet = "/mock/getBig",
+            UrlGet = () => "/mock/getBig",
         };
         repository.DataContext.Should().HaveCount(0);
         await repository.GetAsync(default);
@@ -98,8 +96,8 @@ public class ApiRepositoryTests
     {
         var repository = new ApiRepository<Resources.Mocks.Classes.MockClass>(Client)
         {
-            UrlGet = "/mock/get",
-            GetRequestMode = Enums.CRUD.RequestAction.Post,
+            UrlGet = () => "/mock/get",
+            AttachFilterExpressionOnBodyAtGet = true,
             Filter =
             [
                 new Expressions.ExpressionObjectQuery()
@@ -124,8 +122,8 @@ public class ApiRepositoryTests
         var dataContext = EficazFramework.API.Mock.MockDb;
         var repository = new ApiRepository<Resources.Mocks.Classes.MockClass>(Client)
         {
-            UrlGet = "/mock/getForCrudTest",
-            UrlPut = "/mock/update"
+            UrlGet = () => "/mock/getForCrudTest",
+            UrlPut = (entry) => "/mock/update"
         };
         repository.Get();
         repository.DataContext.Should().HaveCount(5);
@@ -148,7 +146,7 @@ public class ApiRepositoryTests
     {
         var repository = new ApiRepository<Resources.Mocks.Classes.MockClass>(Client)
         {
-            UrlGet = "/mock/fail/401"
+            UrlGet = () => "/mock/fail/401"
         };
         await repository.Invoking(async (a) => await repository.GetAsync(default)).Should().ThrowAsync<UnauthorizedAccessException>();
         ;
@@ -160,7 +158,7 @@ public class ApiRepositoryTests
     {
         var repository = new ApiRepository<Resources.Mocks.Classes.MockClass>(Client)
         {
-            UrlGet = "/mock/fail/422"
+            UrlGet = () => "/mock/fail/422"
         };
         await repository.Invoking(async (a) => await repository.GetAsync(default)).Should().ThrowAsync<ValidationException>();
         repository.DataContext.Should().HaveCount(0);
