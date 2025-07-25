@@ -35,37 +35,31 @@ public sealed class ApiRepository<T> : Repositories.RepositoryBase<T> where T : 
     /// <summary>
     /// URL de requisição para métodos FetchItems() e FetchItemsAsync()
     /// </summary>
-    public string UrlGet { get; set; } = "/myRestApi/get";
+    public Func<string> UrlGet { get; set; } = () => "/myRestApi/get";
 
     /// <summary>
-    /// Expressão para formação da query para os métodos FetchItems() e FetchItemsAsync()
+    /// Opção para utilizar uma <see cref="Expressions.ExpressionQuery"/> persinalizada, 
+    /// definida em <see cref="Repositories.ApiRepository{T}.Filter"/>
+    /// no corpo da requisição da API. Automaticamente o método da requisição será alterado para POST.
+    /// <br/>
+    /// O padrão é <c>false</c>.
     /// </summary>
-    public Func<T, string> GetQueryFunc { get; set; }
+    public bool AttachFilterExpressionOnBodyAtGet { get; set; } = false;
 
     /// <summary>
     /// URL de requisição para método PutAsync()
     /// </summary>
-    public string UrlPut { get; set; } = "/myRestApi/put";
+    public Func<T, string> UrlPut { get; set; } = (obj) => "/myRestApi/put";
 
     /// <summary>s
     /// URL de requisição para método PostAsync()
     /// </summary>
-    public string UrlPost { get; set; } = "/myRestApi/post";
+    public Func<T, string> UrlPost { get; set; } = (obj) => "/myRestApi/post";
 
     /// <summary>
     /// URL de requisição para o método DeleteAsync()
     /// </summary>
-    public string UrlDelete { get; set; } = "/myRestApi/delete";
-
-    /// <summary>
-    /// Expressão para formação da query para o método DeleteAsync()
-    /// </summary>
-    public Func<T, string> DeleteQueryFunc { get; set; }
-
-    /// <summary>
-    /// Permite parametrizar se a requição para obtenção de dados será GET ou POST
-    /// </summary>
-    public Enums.CRUD.RequestAction GetRequestMode { get; set; } = Enums.CRUD.RequestAction.Get;
+    public Func<T, string> UrlDelete { get; set; } = (obj) => "/myRestApi/delete";
 
     /// <summary>
     /// Obtém ou define as definições para serialização Json nas requisições contra o servidor Http.
@@ -84,7 +78,6 @@ public sealed class ApiRepository<T> : Repositories.RepositoryBase<T> where T : 
     /// </summary>
     public async Task<TResult> RequestMethod<TBody, TResult>(Enums.CRUD.RequestAction action,
         string requestUri, 
-        string queryExpr,
         TBody body, 
         CancellationToken cancellationToken)
     {
@@ -93,10 +86,10 @@ public sealed class ApiRepository<T> : Repositories.RepositoryBase<T> where T : 
         {
             return action switch
             {
-                Enums.CRUD.RequestAction.Get => await GetAsync<TResult>($"{requestUri}/{queryExpr}", cancellationToken),
+                Enums.CRUD.RequestAction.Get => await GetAsync<TResult>(requestUri, cancellationToken),
                 Enums.CRUD.RequestAction.Post => await PostAsync<TBody, TResult>(requestUri, body, cancellationToken),
                 Enums.CRUD.RequestAction.Put => await PutAsync<TBody, TResult>(requestUri, body, cancellationToken),
-                Enums.CRUD.RequestAction.Delete => await DeleteAsync<TBody, TResult>($"{requestUri}/{queryExpr}", cancellationToken),
+                Enums.CRUD.RequestAction.Delete => await DeleteAsync<TBody, TResult>(requestUri, cancellationToken),
                 _ => default
             };
         }
@@ -274,14 +267,24 @@ public sealed class ApiRepository<T> : Repositories.RepositoryBase<T> where T : 
     /// </summary>
     public override ObservableCollection<T> FetchItems() =>
         FetchItemsAsync(default).Result;
-    
+
     /// <summary>s
-    /// Efetua a instrução GET contra o datasource
+    /// Efetua a instrução GET contra o datasource (OU POST com QueryDescription no corpo)
     /// </summary>
     public override async Task<ObservableCollection<T>> FetchItemsAsync(CancellationToken cancellationToken)
     {
         List<T> result = [];
-        var response = await RequestMethod<Expressions.QueryDescription, List<T>>(GetRequestMode, UrlGet, null, new Expressions.QueryDescription(Filter, OrderByDefinitions), cancellationToken);
+
+        var response = await RequestMethod<Expressions.QueryDescription, List<T>>(
+            AttachFilterExpressionOnBodyAtGet ? 
+                Enums.CRUD.RequestAction.Post : 
+                Enums.CRUD.RequestAction.Get, 
+            UrlGet.Invoke(),
+            AttachFilterExpressionOnBodyAtGet ? 
+                new Expressions.QueryDescription(Filter, OrderByDefinitions) :
+                null, 
+            cancellationToken);
+
         if (response != null)
             result.AddRange(response as IList<T>);
 
@@ -448,15 +451,15 @@ public sealed class ApiRepository<T> : Repositories.RepositoryBase<T> where T : 
             {
                 T response;
                 if (_isAdding)
-                    response = await RequestMethod<T, T>(Enums.CRUD.RequestAction.Post, UrlPost, null, CurrentEntry, cancellationToken);
+                    response = await RequestMethod<T, T>(Enums.CRUD.RequestAction.Post, UrlPost.Invoke(CurrentEntry), CurrentEntry, cancellationToken);
                 else if (_isDeleting)
-                    response = await RequestMethod<T, T>(Enums.CRUD.RequestAction.Delete, UrlDelete, DeleteQueryFunc.Invoke(CurrentEntry), CurrentEntry, cancellationToken);
+                    response = await RequestMethod<T, T>(Enums.CRUD.RequestAction.Delete, UrlDelete.Invoke(CurrentEntry), CurrentEntry, cancellationToken);
                 else
-                    response = await RequestMethod<T, T>(Enums.CRUD.RequestAction.Put, UrlPut, null, CurrentEntry, cancellationToken);
+                    response = await RequestMethod<T, T>(Enums.CRUD.RequestAction.Put, UrlPut.Invoke(CurrentEntry), CurrentEntry, cancellationToken);
             }
             else
             {
-                var response = await RequestMethod<List<T>, List<T>>(Enums.CRUD.RequestAction.Post, UrlPost, null, DataContext.ToList(), cancellationToken);
+                var response = await RequestMethod<List<T>, List<T>>(Enums.CRUD.RequestAction.Post, UrlPost.Invoke(null), DataContext.ToList(), cancellationToken);
             }
             return default;
         }
