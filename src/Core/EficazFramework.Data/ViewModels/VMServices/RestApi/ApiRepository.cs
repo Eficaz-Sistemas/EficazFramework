@@ -16,13 +16,14 @@ class RestApi<T> : ViewModelService<T> where T : class
         {
             RestApiBuilderOptions<T> optionsInstance = new();
             options.Invoke(optionsInstance);
-            repo.UrlGet = optionsInstance.UrlGet;
-            repo.GetQueryFunc = optionsInstance.GetQueryFunc;
+
+            // GET
+            repo.UrlGet = optionsInstance.GetOptions.UrlExpr;
+            repo.AttachFilterExpressionOnBodyAtGet = optionsInstance.GetOptions.AttachFilterExpressionOnBodyAtGet;
+
             repo.UrlPut = optionsInstance.UrlPut;
             repo.UrlPost = optionsInstance.UrlPost;
             repo.UrlDelete = optionsInstance.UrlDelete;
-            repo.DeleteQueryFunc = optionsInstance.DeleteQueryFunc;
-            repo.GetRequestMode = optionsInstance.GetRequestMode;
         }
         viewmodel.Repository = repo;
     }
@@ -56,13 +57,32 @@ public static partial class ServiceUtils
     }
 }
 
-public class RestApiBuilderOptions<T> where T : class
+public sealed class RestApiBuilderOptions<T> where T : class
 {
-    public string UrlGet { get; set; }
-    public Func<T, string> GetQueryFunc { get; set; }
-    public string UrlPut { get; set; }
-    public string UrlPost { get; set; }
-    public string UrlDelete { get; set; }
-    public Func<T, string> DeleteQueryFunc { get; set; }
-    public Enums.CRUD.RequestAction GetRequestMode { get; set; } = Enums.CRUD.RequestAction.Get;
+    /// <summary>
+    /// Used to fecth data from the API. Generally used for GET requests, with list results.
+    /// </summary>
+    public RestApiBuilderFetchOptions<T> GetOptions { get; set; } = new();
+    public Func<T, string> UrlPut { get; set; }
+    public Func<T, string> UrlPost { get; set; }
+    public Func<T, string> UrlDelete { get; set; }
+}
+
+
+public sealed class RestApiBuilderFetchOptions<T> where T : class
+{
+    /// <summary>
+    /// The URL to fetch data from the API. Use an expression to build the URL dynamically.
+    /// <br/>
+    /// Ex: <b>()</b> => $"api/endpoint<b>?value1={myvalue1}&value2={myvalue2}</b>"
+    /// </summary>
+    public Func<string> UrlExpr { get; set; }
+
+    /// <summary>
+    /// Option to use a custom <see cref="Expressions.ExpressionQuery"/> defined in <see cref="Repositories.ApiRepository{T}.Filter"/>
+    /// on the request body of the API. It will  change the request method to POST.
+    /// <br/>
+    /// Defaults to <c>false</c>.
+    /// </summary>
+    public bool AttachFilterExpressionOnBodyAtGet { get; set; } = false;
 }
