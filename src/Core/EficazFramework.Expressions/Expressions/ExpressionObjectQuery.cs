@@ -56,7 +56,7 @@ public class ExpressionObjectQuery
     private static readonly System.Reflection.MethodInfo StartsWithMethod = typeof(string).GetMethod("StartsWith", new[] { typeof(string) });
     //private static readonly System.Reflection.MethodInfo LengthMethod = typeof(string).GetMethod("get_Length", new[] { typeof(string) });
     private static readonly System.Reflection.MethodInfo ToLowerMethod = typeof(string).GetMethod("ToLower", Array.Empty<Type>());
-    private static readonly System.Reflection.MethodInfo NullToEmptyMethod = typeof(Extensions.TextExtensions).GetMethod("NullToEmpty", new[] { typeof(string) });
+    //private static readonly System.Reflection.MethodInfo NullToEmptyMethod = typeof(Extensions.TextExtensions).GetMethod("NullToEmpty", new[] { typeof(string) });
 
     /// <summary>
     /// Retorna a expressão para filtro do campo especificado nesta instância, para o tipo
@@ -81,7 +81,10 @@ public class ExpressionObjectQuery
         else
         {
             if (Value is null)
-                c = Expression.Constant(null);
+                if (Operator != Enums.CompareMethod.Contains)
+                    c = Expression.Constant(null);
+                else
+                    c = Expression.Convert(Expression.Constant(Value ?? string.Empty, Value.GetType()), m.Type);
             else
                 c = Expression.Convert(Expression.Constant(Value, Value.GetType()), m.Type);
         }
@@ -96,7 +99,10 @@ public class ExpressionObjectQuery
             else
             {
                 if (Value2 is null)
-                    c2 = Expression.Constant(null);
+                    if (Operator != Enums.CompareMethod.Contains)
+                        c2 = Expression.Constant(null);
+                    else
+                        c2 = Expression.Convert(Expression.Constant(Value2 ?? string.Empty, Value2.GetType()), m.Type);
                 else
                     c2 = Expression.Convert(Expression.Constant(Value2, Value2.GetType()), m.Type);
             }
@@ -109,7 +115,7 @@ public class ExpressionObjectQuery
             c = Expression.Call((Expression)c, ToLowerMethod);
             if (Operator == EficazFramework.Enums.CompareMethod.Between)
                 c2 = Expression.Call((Expression)c2, ToLowerMethod);
-            b = Expression.Call(null, NullToEmptyMethod, m);
+            //b = Expression.Call(null, NullToEmptyMethod, m);
             b = Expression.Call(b ?? m, ToLowerMethod);
         }
 
