@@ -185,6 +185,8 @@ public class SingleEdit<T> : ViewModelService<T> where T : class
         CanCancelAsyncSave = false;
         RaisePropertyChanged(nameof(CanCancelAsyncSave));
 
+        tokenregistration.Unregister();
+        await tokenregistration.DisposeAsync();
 
         // Saved (or not):
         if (ex is null && !ViewModelInstance.FailAssertion)
@@ -239,8 +241,6 @@ public class SingleEdit<T> : ViewModelService<T> where T : class
             ViewModelInstance.SetState(args.State, false, null);
             ViewModelInstance.RaiseDialogMessage(messageData);
         }
-        tokenregistration.Unregister();
-        await tokenregistration.DisposeAsync();
     }
 
     /// <summary>

@@ -90,6 +90,9 @@ public class TabularEdit<T> : ViewModelService<T> where T : class
         CanCancelAsyncSave = false;
         RaisePropertyChanged(nameof(CanCancelAsyncSave));
 
+        tokenregistration.Unregister();
+        await tokenregistration.DisposeAsync();
+
         // Saved (or not):
         ViewModelInstance.SetState(args.State, false, null);
         if (ex is null)
@@ -116,8 +119,6 @@ public class TabularEdit<T> : ViewModelService<T> where T : class
                 EnableReporting = true
             });
         }
-        tokenregistration.Unregister();
-        await tokenregistration.DisposeAsync();
     }
 
     /// <summary>
