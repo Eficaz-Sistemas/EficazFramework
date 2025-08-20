@@ -55,6 +55,9 @@ public class FluentTests
         instance.Document = "07731253619";
         validator.Validate(instance).Should().BeNullOrEmpty();
 
+        instance.Document = "07731253617";
+        validator.Validate(instance).Should().NotBeNullOrEmpty();
+
         instance.Document = "10608025000126";
         validator.Validate(instance).Should().NotBeNullOrEmpty();
     }
@@ -65,6 +68,9 @@ public class FluentTests
         EficazFramework.Validation.Fluent.Validator<SampleObject> validator = new EficazFramework.Validation.Fluent.Validator<SampleObject>().CNPJ((e) => e.Document);
 
         SampleObject instance = new() { Document = "00000000000" };
+        validator.Validate(instance).Should().NotBeNullOrEmpty();
+
+        instance.Document = "00000000000000";
         validator.Validate(instance).Should().NotBeNullOrEmpty();
 
         instance.Document = "";
@@ -94,11 +100,20 @@ public class FluentTests
         instance.Document = null;
         validator.Validate(instance).Should().BeNullOrEmpty();
 
+        instance.Document = "00000000000";
+        validator.Validate(instance).Should().NotBeNullOrEmpty();
+
         instance.Document = "07731253619";
         validator.Validate(instance).Should().BeNullOrEmpty();
 
         instance.Document = "10608025000126";
         validator.Validate(instance).Should().BeNullOrEmpty();
+
+        instance.Document = "10608025000125";
+        validator.Validate(instance).Should().NotBeNullOrEmpty();
+
+        instance.Document = "07731253618";
+        validator.Validate(instance).Should().NotBeNullOrEmpty();
     }
 
     [Test]

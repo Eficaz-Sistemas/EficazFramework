@@ -61,6 +61,8 @@ public static partial class TextExtensions
     private static partial Regex RegexUrlSlug_StageC();
 
 #endif
+    public static int CharToBase36(char c) =>
+        char.IsDigit(c) ? c - '0' : c - 'A' + 10;
 
     /// <summary>
     /// Returns the left part of this string instance.
@@ -622,96 +624,41 @@ public static partial class TextExtensions
     {
         try
         {
-            // Declara as variáveis
-            var digit = new int[13];
-            var verify = new int[13];
-            int st_value, nd_value;
-            int[] calc = new int[13];
-            int calc_t, resto;
-
-            // CÁLCULO DO PRIMEIRO DÍGITO VERIFICADOR:
-            // define os valores fixos para cálculo do 1º dígito verificador
-            verify[0] = 5;
-            verify[1] = 4;
-            verify[2] = 3;
-            verify[3] = 2;
-            verify[4] = 9;
-            verify[5] = 8;
-            verify[6] = 7;
-            verify[7] = 6;
-            verify[8] = 5;
-            verify[9] = 4;
-            verify[10] = 3;
-            verify[11] = 2;
-
-            // obtém os valores de cada dígito do cnpj informado pelo usuário
-            for (int ic = 0; ic <= 11; ic++)
-                digit[ic] = Conversions.ToInteger(CNPJ.Substring(ic, 1));
-
-            // calcula a multiplicação das colunas da matriz e faz o somatório dos resultados
-            int i;
-            calc_t = 0;
-            for (i = 0; i <= 11; i++)
-            {
-                calc[i] = verify[i] * digit[i];
-                calc_t += calc[i];
-            }
-
-            if (calc_t == 0)
+            if (string.IsNullOrWhiteSpace(CNPJ))
                 return false;
 
-            // realiza a divisão do somatório por 11 e captura o resto da divisão
-            resto = calc_t % 11;
-
-            // analisa o resto da divisão e apura o valor do primeiro dígito verificador
-            if (resto < 2)
-                st_value = 0;
-            else
-                st_value = 11 - resto;
-
-            // CÁLCULO DO SEGUNDO DÍGITO VERIFICADOR:
-            // nessa etapa os numeros da tabela "verify" foram modificados, além da 
-            // adição de mais um algarismo, para ser multiplicado com o valor do primeiro
-            // dígito verificador encontrado
-            // define os valores fixos para cálculo do 2º dígito verificador
-            verify[0] = 6;
-            verify[1] = 5;
-            verify[2] = 4;
-            verify[3] = 3;
-            verify[4] = 2;
-            verify[5] = 9;
-            verify[6] = 8;
-            verify[7] = 7;
-            verify[8] = 6;
-            verify[9] = 5;
-            verify[10] = 4;
-            verify[11] = 3;
-            verify[12] = 2;
-            digit[12] = st_value;
-
-            // calcula a multiplicação das colunas da matriz e faz o somatório dos resultados
-            int j;
-            calc_t = 0;
-            for (j = 0; j <= 12; j++)
-            {
-                calc[j] = verify[j] * digit[j];
-                calc_t += calc[j];
-            }
-
-            // realiza a divisão do somatório por 11 e captura o resto da divisão
-            resto = calc_t % 11;
-
-            // analisa o resto da divisão e apura o valor do segundo dígito verificador
-            if (resto < 2)
-                nd_value = 0;
-            else
-                nd_value = 11 - resto;
-
-            // compara os dígitos apurados com os informados pelo usuário
-            if (st_value == Conversions.ToInteger(CNPJ.Substring(12, 1)) & nd_value == Conversions.ToInteger(CNPJ.Substring(13, 1)))
-                return true;
-            else
+            if (CNPJ.Length != 14 || CNPJ.Distinct().Count() == 1)
                 return false;
+
+            // Verifica se os 12 primeiros são alfanuméricos válidos
+            if (!CNPJ.Take(12).All(c => char.IsDigit(c) || (c >= 'A' && c <= 'Z')))
+                return false;
+
+            // Verifica se os dois últimos são dígitos numéricos
+            if (!char.IsDigit(CNPJ[12]) || !char.IsDigit(CNPJ[13]))
+                return false;
+
+            // Converte os 12 primeiros caracteres para valores numéricos
+            int[] baseValues = [.. CNPJ.Take(12).Select(c => (int)c - 48)];
+
+            // Calcula primeiro dígito verificador
+            int[] weights1 = [5, 4, 3, 2, 9, 8, 7, 6, 5, 4, 3, 2];
+            int sum1 = baseValues.Select((v, i) => v * weights1[i]).Sum();
+            int dv1 = sum1 % 11;
+            dv1 = dv1 < 2 ? 0 : 11 - dv1;
+
+            // Calcula segundo dígito verificador
+            int[] weights2 = [6, .. weights1];
+            int[] baseWithDV1 = [.. baseValues, dv1];
+            int sum2 = baseWithDV1.Select((v, i) => v * weights2[i]).Sum();
+            int dv2 = sum2 % 11;
+            dv2 = dv2 < 2 ? 0 : 11 - dv2;
+
+            // Compara com os dois últimos dígitos informados
+            int dv1Input = CNPJ[12] - '0';
+            int dv2Input = CNPJ[13] - '0';
+
+            return dv1 == dv1Input && dv2 == dv2Input;
         }
         catch (Exception)
         {
@@ -729,93 +676,43 @@ public static partial class TextExtensions
     {
         try
         {
-            // Declara as variáveis
-            var digit = new int[10];
-            var verify = new int[10];
-            int st_value, nd_value;
-            int[] calc = new int[10];
-            int calc_t, resto;
-
-            // CÁLCULO DO PRIMEIRO DÍGITO VERIFICADOR:
-            // define os valores fixos para cálculo do 1º dígito verificador
-            verify[0] = 10;
-            verify[1] = 9;
-            verify[2] = 8;
-            verify[3] = 7;
-            verify[4] = 6;
-            verify[5] = 5;
-            verify[6] = 4;
-            verify[7] = 3;
-            verify[8] = 2;
-
-            // obtém os valores de cada dígito do cnpj informado pelo usuário
-            for (int ic = 0; ic <= 8; ic++)
-                digit[ic] = Conversions.ToInteger(CPF.Substring(ic, 1));
-
-            // calcula a multiplicação das colunas da matriz e faz o somatório dos resultados
-            int i;
-            calc_t = 0;
-            for (i = 0; i <= 8; i++)
-            {
-                calc[i] = verify[i] * digit[i];
-                calc_t += calc[i];
-            }
-
-            if (calc_t == 0)
+            if (string.IsNullOrWhiteSpace(CPF))
                 return false;
 
-            // realiza a divisão do somatório por 11 e captura o resto da divisão
-            resto = calc_t % 11;
-
-            // analisa o resto da divisão e apura o valor do primeiro dígito verificador
-            if (resto < 2)
-                st_value = 0;
-            else
-                st_value = 11 - resto;
-
-            // CÁLCULO DO SEGUNDO DÍGITO VERIFICADOR:
-            // nessa etapa os numeros da tabela "verify" foram modificados, além da 
-            // adição de mais um algarismo, para ser multiplicado com o valor do primeiro
-            // dígito verificador encontrado
-            // define os valores fixos para cálculo do 2º dígito verificador
-            verify[0] = 11;
-            verify[1] = 10;
-            verify[2] = 9;
-            verify[3] = 8;
-            verify[4] = 7;
-            verify[5] = 6;
-            verify[6] = 5;
-            verify[7] = 4;
-            verify[8] = 3;
-            verify[9] = 2;
-            digit[9] = st_value;
-
-            // calcula a multiplicação das colunas da matriz e faz o somatório dos resultados
-            int j;
-            calc_t = 0;
-            for (j = 0; j <= 9; j++)
-            {
-                calc[j] = verify[j] * digit[j];
-                calc_t += calc[j];
-            }
-
-            // realiza a divisão do somatório por 11 e captura o resto da divisão
-            resto = calc_t % 11;
-
-            // analisa o resto da divisão e apura o valor do segundo dígito verificador
-            if (resto < 2)
-                nd_value = 0;
-            else
-                nd_value = 11 - resto;
-
-            // compara os dígitos apurados com os informados pelo usuário
-            if (st_value == Conversions.ToInteger(CPF.Substring(9, 1)) & nd_value == Conversions.ToInteger(CPF.Substring(10, 1)))
-                return true;
-            else
+            if (CPF.Length != 11 || CPF.Distinct().Count() == 1)
                 return false;
+
+            // Verifica se 11 dígic são alfanuméricos válidos
+            if (!CPF.Take(11).All(c => char.IsDigit(c)))
+                return false;
+
+            // Calcula primeiro dígito verificador
+            int[] weights1 = [10, 9, 8, 7, 6, 5, 4, 3, 2];
+
+            int[] baseValues = [.. CPF.Take(9).Select(c => (int)c - 48)];
+
+            // Calcula primeiro dígito verificador
+            int sum1 = baseValues.Select((v, i) => v * weights1[i]).Sum();
+            int dv1 = sum1 % 11;
+            dv1 = dv1 < 2 ? 0 : 11 - dv1;
+
+            // Calcula segundo dígito verificador
+            int[] weights2 = [11, .. weights1];
+            int[] baseWithDV1 = [.. baseValues, dv1];
+            int sum2 = baseWithDV1.Select((v, i) => v * weights2[i]).Sum();
+            int dv2 = sum2 % 11;
+            dv2 = dv2 < 2 ? 0 : 11 - dv2;
+
+            // Compara com os dois últimos dígitos informados
+            int dv1Input = CPF[9] - 48;
+            int dv2Input = CPF[10] - 48;
+
+            return dv1 == dv1Input && dv2 == dv2Input;
         }
-        catch (Exception)
+        catch (Exception ex)
         {
+            // Log the exception if necessary
+            Console.WriteLine($"Error validating CPF: {ex.Message}");
             return false;
         }
     }
