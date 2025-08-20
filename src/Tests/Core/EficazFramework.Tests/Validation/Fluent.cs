@@ -105,6 +105,9 @@ public class FluentTests
 
         instance.Document = "SV6V0UPJGT5046";
         validator.Validate(instance).Should().BeNullOrEmpty();
+
+        instance.Document = "SV6V0UPJGT504";
+        validator.Validate(instance).Should().NotBeNullOrEmpty();
     }
 
     [Test]
@@ -157,6 +160,8 @@ public class FluentTests
         instance.Document = "SV6V0UPJGT5046";
         validator.Validate(instance).Should().BeNullOrEmpty();
 
+        instance.Document = "SV6V0UPJGT504";
+        validator.Validate(instance).Should().NotBeNullOrEmpty();
     }
 
     [Test]
