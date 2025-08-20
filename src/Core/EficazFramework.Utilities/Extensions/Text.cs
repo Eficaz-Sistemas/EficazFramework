@@ -61,8 +61,6 @@ public static partial class TextExtensions
     private static partial Regex RegexUrlSlug_StageC();
 
 #endif
-    public static int CharToBase36(char c) =>
-        char.IsDigit(c) ? c - '0' : c - 'A' + 10;
 
     /// <summary>
     /// Returns the left part of this string instance.
