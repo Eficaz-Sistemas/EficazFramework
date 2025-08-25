@@ -2,9 +2,9 @@
   <PropertyGroup>
     <TargetFrameworks>net8.0-windows;net9.0-windows</TargetFrameworks>
     <UseWPF>true</UseWPF>
-    <Version>6.4.9</Version>
-    <AssemblyVersion>6.4.9.0</AssemblyVersion>
-    <FileVersion>6.4.9.0</FileVersion>
+    <Version>6.4.10</Version>
+    <AssemblyVersion>6.4.10.0</AssemblyVersion>
+    <FileVersion>6.4.10.0</FileVersion>
     <RootNamespace>EficazFramework</RootNamespace>
     <Authors>Eficaz Sistemas</Authors>
     <Company>Eficaz Sistemas de Gestão e Inteligência Tributária</Company>

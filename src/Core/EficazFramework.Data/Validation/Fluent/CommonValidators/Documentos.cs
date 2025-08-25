@@ -49,7 +49,7 @@ public class CNPJouCPF<T> : Rules.Documentos<T> where T : class
 
     public override string ValidateDocumento(string value, object[] args = null)
     {
-        if (!(value.IsValidCNPJ() || value.IsValidCPF())) { return Resources.Strings.Validation.InvalidCNPJorCPF; } else { return null; }
+        if (!(value.IsValidCNPJ() | value.IsValidCPF())) { return Resources.Strings.Validation.InvalidCNPJorCPF; } else { return null; }
     }
 
 }

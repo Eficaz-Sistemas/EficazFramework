@@ -55,6 +55,9 @@ public class FluentTests
         instance.Document = "07731253619";
         validator.Validate(instance).Should().BeNullOrEmpty();
 
+        instance.Document = "07731253617";
+        validator.Validate(instance).Should().NotBeNullOrEmpty();
+
         instance.Document = "10608025000126";
         validator.Validate(instance).Should().NotBeNullOrEmpty();
     }
@@ -65,6 +68,9 @@ public class FluentTests
         EficazFramework.Validation.Fluent.Validator<SampleObject> validator = new EficazFramework.Validation.Fluent.Validator<SampleObject>().CNPJ((e) => e.Document);
 
         SampleObject instance = new() { Document = "00000000000" };
+        validator.Validate(instance).Should().NotBeNullOrEmpty();
+
+        instance.Document = "00000000000000";
         validator.Validate(instance).Should().NotBeNullOrEmpty();
 
         instance.Document = "";
@@ -78,6 +84,30 @@ public class FluentTests
 
         instance.Document = "10608025000126";
         validator.Validate(instance).Should().BeNullOrEmpty();
+
+        instance.Document = "4HIAT750VAMM20";
+        validator.Validate(instance).Should().BeNullOrEmpty();
+
+        instance.Document = "B35VXBMLXF7683";
+        validator.Validate(instance).Should().BeNullOrEmpty();
+
+        instance.Document = "BXOWWTTGH3Z167";
+        validator.Validate(instance).Should().BeNullOrEmpty();
+
+        instance.Document = "R2YLGDOIY7CR38";
+        validator.Validate(instance).Should().BeNullOrEmpty();
+
+        instance.Document = "7S1IE0E3RJGH68";
+        validator.Validate(instance).Should().BeNullOrEmpty();
+
+        instance.Document = "WJ1F7AQ0YMUV35";
+        validator.Validate(instance).Should().BeNullOrEmpty();
+
+        instance.Document = "SV6V0UPJGT5046";
+        validator.Validate(instance).Should().BeNullOrEmpty();
+
+        instance.Document = "SV6V0UPJGT504";
+        validator.Validate(instance).Should().NotBeNullOrEmpty();
     }
 
     [Test]
@@ -94,11 +124,44 @@ public class FluentTests
         instance.Document = null;
         validator.Validate(instance).Should().BeNullOrEmpty();
 
+        instance.Document = "00000000000";
+        validator.Validate(instance).Should().NotBeNullOrEmpty();
+
         instance.Document = "07731253619";
         validator.Validate(instance).Should().BeNullOrEmpty();
 
         instance.Document = "10608025000126";
         validator.Validate(instance).Should().BeNullOrEmpty();
+
+        instance.Document = "10608025000125";
+        validator.Validate(instance).Should().NotBeNullOrEmpty();
+
+        instance.Document = "07731253618";
+        validator.Validate(instance).Should().NotBeNullOrEmpty();
+
+        instance.Document = "4HIAT750VAMM20";
+        validator.Validate(instance).Should().BeNullOrEmpty();
+
+        instance.Document = "B35VXBMLXF7683";
+        validator.Validate(instance).Should().BeNullOrEmpty();
+
+        instance.Document = "BXOWWTTGH3Z167";
+        validator.Validate(instance).Should().BeNullOrEmpty();
+
+        instance.Document = "R2YLGDOIY7CR38";
+        validator.Validate(instance).Should().BeNullOrEmpty();
+
+        instance.Document = "7S1IE0E3RJGH68";
+        validator.Validate(instance).Should().BeNullOrEmpty();
+
+        instance.Document = "WJ1F7AQ0YMUV35";
+        validator.Validate(instance).Should().BeNullOrEmpty();
+
+        instance.Document = "SV6V0UPJGT5046";
+        validator.Validate(instance).Should().BeNullOrEmpty();
+
+        instance.Document = "SV6V0UPJGT504";
+        validator.Validate(instance).Should().NotBeNullOrEmpty();
     }
 
     [Test]
