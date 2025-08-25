@@ -1,0 +1,20 @@
+﻿@page "/Components/Input/Documents"
+
+<MudGrid Spacing="3">
+    <MudItem lg="6" md="6" sm="12">
+        <DocumentField AutoFocus 
+                       @bind-Value="_cnpj"
+                       Class="mud-input-control-ef"
+                       DocumentType="Enums.Documentos.CNPJ"
+                       FullWidth />
+    </MudItem>
+    <MudItem lg="6" md="6" sm="12">
+        @_cnpj
+    </MudItem>
+</MudGrid>
+
+
+
+@code {
+    private string _cnpj = "10608025000126";
+}

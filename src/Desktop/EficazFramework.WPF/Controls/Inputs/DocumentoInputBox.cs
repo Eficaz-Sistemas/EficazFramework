@@ -13,6 +13,7 @@ public class DocumentoInputBox : TextBox
     }
 
     readonly Regex rg = new(@"[^\d]");
+    readonly Regex rgCnpnj = new(@"[^a-za-zA-Z0-9]");
 
     #region Properties
 
@@ -142,7 +143,18 @@ public class DocumentoInputBox : TextBox
 
     private string ResolveValue(string text)
     {
-        return rg.Replace(text, string.Empty).Replace(System.Environment.NewLine, string.Empty);
+        if (Documento == EDocumentos.CNPJ_CPF || Documento == EDocumentos.CNPJ)
+        {
+            return rgCnpnj.Replace(text, string.Empty).Replace(System.Environment.NewLine, string.Empty);
+        }
+        else if (Documento == EDocumentos.eMail)
+        {
+            return text.Replace(System.Environment.NewLine, string.Empty);
+        }
+        else 
+        {
+            return rg.Replace(text, string.Empty).Replace(System.Environment.NewLine, string.Empty);
+        }
     }
 
     #endregion
