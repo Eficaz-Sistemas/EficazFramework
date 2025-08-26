@@ -2,35 +2,37 @@
 @using EficazFramework.Extensions;
 @inherits MudBlazor.MudComponentBase
 
-<MudBlazor.MudExpansionPanels Elevation="0" Class=@HostClassNames>
-    <MudBlazor.MudExpansionPanel @bind-Expanded="IsExpanded">
-        <TitleContent>
+<MudBlazor.MudCard Elevation="0" Outlined>
+    <MudBlazor.MudExpansionPanels Elevation="0" Class=@HostClassNames>
+        <MudBlazor.MudExpansionPanel @bind-Expanded="IsExpanded">
+            <TitleContent>
                 <div class="d-flex">
                     <MudBlazor.MudIcon Icon="@MudBlazor.Icons.Material.Filled.FilterList"></MudBlazor.MudIcon>
                     <MudBlazor.MudText Class="ml-4">@Header</MudBlazor.MudText>
                 </div>
-        </TitleContent>
-        <ChildContent>
-            <div class="d-flex">
-                @if (vm != null)
-                {
-                    <EficazFramework.Components.Primitives.ExpressionBuilderTable ViewModel="ViewModel"
-                                                                                  SearchColumnFindRequest="SearchColumnFindRequest" />
-                    <MudBlazor.MudHidden Breakpoint="@MudBlazor.Breakpoint.SmAndUp">
-                        <div class="d-flex flex-column pt-4">
-                            @if (vm.CanAddExpressions)
-                            {
-                                <MudBlazor.MudTooltip Text="@EficazFramework.Resources.Strings.Components.ExpressionBuilder_AddCommand" Class="flex-grow-0 order-1" >
-                                    <MudBlazor.MudIconButton Icon="@MudBlazor.Icons.Material.Filled.Add" Variant="@MudBlazor.Variant.Filled" OnClick="() => OnAddCommand()" Size="MudBlazor.Size.Small" Class="mx-auto"/>
+            </TitleContent>
+            <ChildContent>
+                <div class="d-flex">
+                    @if (vm != null)
+                    {
+                        <EficazFramework.Components.Primitives.ExpressionBuilderTable ViewModel="ViewModel"
+                                                                                      SearchColumnFindRequest="SearchColumnFindRequest" />
+                        <MudBlazor.MudHidden Breakpoint="@MudBlazor.Breakpoint.SmAndUp">
+                            <div class="d-flex flex-column pt-4">
+                                @if (vm.CanAddExpressions)
+                                {
+                                    <MudBlazor.MudTooltip Text="@EficazFramework.Resources.Strings.Components.ExpressionBuilder_AddCommand" Class="flex-grow-0 order-1">
+                                        <MudBlazor.MudIconButton Icon="@MudBlazor.Icons.Material.Filled.Add" Variant="@MudBlazor.Variant.Filled" OnClick="() => OnAddCommand()" Size="MudBlazor.Size.Small" Class="mx-auto" />
+                                    </MudBlazor.MudTooltip>
+                                }
+                                <MudBlazor.MudTooltip Text="@EficazFramework.Resources.Strings.Components.ExpressionBuilder_FindCommand" Class="flex-grow-0 order-1">
+                                    <MudBlazor.MudIconButton OnClick="SearchAction" Icon="@MudBlazor.Icons.Material.Filled.Search" Variant="MudBlazor.Variant.Filled" Color="@MudBlazor.Color.Primary" Class="mx-auto my-4" Size="MudBlazor.Size.Small" />
                                 </MudBlazor.MudTooltip>
-                            }
-                                <MudBlazor.MudTooltip Text="@EficazFramework.Resources.Strings.Components.ExpressionBuilder_FindCommand" Class="flex-grow-0 order-1" >
-                                    <MudBlazor.MudIconButton OnClick="SearchAction" Icon="@MudBlazor.Icons.Material.Filled.Search" Variant="MudBlazor.Variant.Filled" Color="@MudBlazor.Color.Primary" Class="mx-auto my-4" Size="MudBlazor.Size.Small"/>
-                                </MudBlazor.MudTooltip>
-                        </div>
-                    </MudBlazor.MudHidden>
-                }
-            </div>
-        </ChildContent>
-    </MudBlazor.MudExpansionPanel>
-</MudBlazor.MudExpansionPanels>
+                            </div>
+                        </MudBlazor.MudHidden>
+                    }
+                </div>
+            </ChildContent>
+        </MudBlazor.MudExpansionPanel>
+    </MudBlazor.MudExpansionPanels>
+</MudBlazor.MudCard>
