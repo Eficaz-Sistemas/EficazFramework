@@ -38,7 +38,7 @@ public static partial class ValidatorUtils
     /// <summary>
     /// Adiciona uma regração de validação que recusa textos acima do limite de caracteres.s
     /// </summary>
-    public static Validator<T> MaxLenght<T>(this Validator<T> validator, System.Linq.Expressions.Expression<Func<T, object>> propertyexpression, int lenght) where T : class
+    public static Validator<T> MaxLength<T>(this Validator<T> validator, System.Linq.Expressions.Expression<Func<T, object>> propertyexpression, int lenght) where T : class
     {
         validator.ValidationRules.Add(new MaxLenght<T>(propertyexpression, lenght));
         return validator;
