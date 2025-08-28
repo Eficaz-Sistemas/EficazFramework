@@ -183,8 +183,22 @@ public class ViewModel<T> : INotifyPropertyChanged, IDisposable where T : class
         CancelCurrentOperation();
         SetState(Enums.CRUD.State.Processando, true, Resources.Strings.ViewModel.DefaultLoadingMessage);
         CreatActionToken();
-        await Repository.GetAsync(_CancelationTokenSource.Token);
-        await OnEntrySetup(null);
+        try
+        {
+            await Repository.GetAsync(_CancelationTokenSource.Token);
+            await OnEntrySetup(null);
+        }
+        catch (Exception ex)
+        {
+            RaiseDialogMessage(new()
+            {
+                StackTrace = ex.StackTrace,
+                Title = Resources.Strings.ViewModel.UnhandledError_Title,
+                Content = ex.Message,
+                Buttons = Events.MessageButtons.OK,
+                IconReference = Events.MessageIcon.Error
+            });
+        }
         EndGet();
     }
 

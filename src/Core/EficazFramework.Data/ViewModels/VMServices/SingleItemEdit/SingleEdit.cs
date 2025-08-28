@@ -224,6 +224,9 @@ public class SingleEdit<T> : ViewModelService<T> where T : class
         }
         else
         {
+            if (args.State == EficazFramework.Enums.CRUD.State.Novo)
+                ViewModelInstance.Repository.DataContext.Remove(args.CurrentEntry);
+
             var messageData = new Events.MessageEventArgs()
             {
                 IconReference = Events.MessageIcon.Error,
