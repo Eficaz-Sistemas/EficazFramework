@@ -236,7 +236,7 @@ public class FluentTests
     [Test]
     public void MaxLenght()
     {
-        EficazFramework.Validation.Fluent.Validator<SampleObject> validator = new EficazFramework.Validation.Fluent.Validator<SampleObject>().MaxLenght((e) => e.Obs, 6);
+        EficazFramework.Validation.Fluent.Validator<SampleObject> validator = new EficazFramework.Validation.Fluent.Validator<SampleObject>().MaxLength((e) => e.Obs, 6);
 
         SampleObject instance = new() { Obs = "Abc" };
         validator.Validate(instance).Should().BeNullOrEmpty();

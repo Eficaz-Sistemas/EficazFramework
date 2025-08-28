@@ -1,0 +1,160 @@
+﻿<div class="ma-4 app-flex-host">
+    <EficazFramework.Components.Navigator Class="app-flex-host"
+                                          SelectedIndex="@(_viewModel!.Navigator?.SelectedIndex ?? -1)">
+
+        <ChildContent>
+
+            <!-- ENTRIES LIST -->
+            <EficazFramework.Components.NavigatorPage>
+                <MudBlazor.MudDataGrid Items="_viewModel?.Repository.DataContext"
+                                       Loading="@(_viewModel?.IsLoading ?? true)"
+                                       Dense
+                                       Striped
+                                       FixedHeader
+                                       Virtualize
+                                       ReadOnly
+                                       QuickFilter="_quickFilter"
+                                       Class="flex-grow-1 d-flex flex-column overflow-auto">
+                    <LoadingContent>
+                        <MudBlazor.MudText>@(_viewModel?.LoadingMessage ?? "")</MudBlazor.MudText>
+                    </LoadingContent>
+                    <Columns>
+
+                        <MudBlazor.PropertyColumn Title="Name"
+                                                  Property="x => x.Id" />
+
+                        <MudBlazor.PropertyColumn Title="Name"
+                                                  Property="x => x.Name" />
+
+                        <MudBlazor.TemplateColumn CellClass="py-0 action-button-cell">
+                            <CellTemplate>
+                                <MudBlazor.MudGrid Class="justify-end" Spacing="3">
+                                    <MudBlazor.MudItem>
+                                        <MudBlazor.MudTooltip Text="@EficazFramework.Resources.Strings.Commands.Edit">
+                                            <MudBlazor.MudIconButton OnClick="@(() => _viewModel!.Commands["Edit"].Execute(@context.Item))"
+                                                                     Icon="@MudBlazor.Icons.Material.Filled.Edit"
+                                                                     Size="@MudBlazor.Size.Small"
+                                                                     Class="mr-n3" />
+                                        </MudBlazor.MudTooltip>
+                                    </MudBlazor.MudItem>
+                                    <MudBlazor.MudItem>
+                                        <MudBlazor.MudTooltip Text="@EficazFramework.Resources.Strings.Commands.Delete">
+                                            <MudBlazor.MudIconButton OnClick="@(() => _viewModel!.Commands["Delete"].Execute(@context.Item))"
+                                                                     Icon="@MudBlazor.Icons.Material.Filled.Delete"
+                                                                     Size="@MudBlazor.Size.Small"
+                                                                     Class="mr-n3" />
+                                        </MudBlazor.MudTooltip>
+                                    </MudBlazor.MudItem>
+                                </MudBlazor.MudGrid>
+                            </CellTemplate>
+                        </MudBlazor.TemplateColumn>
+
+                    </Columns>
+                    <NoRecordsContent>
+                        @EficazFramework.Resources.Strings.ViewModel.StoreService_Get_NoRecords
+                    </NoRecordsContent>
+                    <ColGroup>
+                        <MudBlazor.MudHidden Breakpoint="@MudBlazor.Breakpoint.SmAndDown">
+                            <col span="1" style="width: fit-content;">
+                            <col span="1" style="width: 150px;">
+                            <col span="1" style="width: 80px;">
+                        </MudBlazor.MudHidden>
+                    </ColGroup>
+                    <PagerContent>
+                        <MudBlazor.MudDataGridPager PageSizeSelector="false" PageSizeOptions="_pageSizeOptions" />
+                    </PagerContent>
+                </MudBlazor.MudDataGrid>
+            </EficazFramework.Components.NavigatorPage>
+
+            <!-- FORM (CURRENT ENTRY) -->
+            <EficazFramework.Components.NavigatorPage>
+                <MudBlazor.MudForm Model="_viewModel!.Editor.CurrentEntry">
+                    <EficazFramework.Components.FocusTrapEx>
+                        <EficazFramework.Components.GroupPanel Title="Info">
+                            <MudBlazor.MudTextField Label="ID"
+                                                    Required
+                                                    Class="@($"{Layout.MainLayout.INPUTCLASS}")"
+                                                    @bind-Value="_viewModel!.Editor.CurrentEntry.Id"
+                                                    For="@(() => _viewModel!.Editor.CurrentEntry.Id)"
+                                                    Validation="@(new Func<string, IEnumerable<string>>(value => Validate(nameof(Shared.DTOs.TagDto.Id))))" />
+
+                            <MudBlazor.MudTextField Label="Name"
+                                                    Required
+                                                    Class="@($"{Layout.MainLayout.INPUTCLASS}")"
+                                                    @bind-Value="_viewModel!.Editor.CurrentEntry.Name"
+                                                    For="@(() => _viewModel!.Editor.CurrentEntry.Name)"
+                                                    Validation="@(new Func<string, IEnumerable<string>>(value => Validate(nameof(Shared.DTOs.TagDto.Name))))" />
+                        </EficazFramework.Components.GroupPanel>
+                    </EficazFramework.Components.FocusTrapEx>
+                </MudBlazor.MudForm>
+            </EficazFramework.Components.NavigatorPage>
+        </ChildContent>
+    </EficazFramework.Components.Navigator>
+
+</div>
+
+@code {
+
+    private RenderFragment? CustomHeader()
+    {
+        if (_viewModel?.State == EficazFramework.Enums.CRUD.State.Novo || _viewModel?.State == EficazFramework.Enums.CRUD.State.Edicao)
+        {
+            return
+                @<div class="d-flex flex-row flex-grow-1 justify-end mt-1 mb-n6 mr-1">
+                <MudBlazor.MudTooltip Text="@EficazFramework.Resources.Strings.Commands.Save">
+                    <MudBlazor.MudIconButton Color="MudBlazor.Color.Primary"
+                                             Variant="MudBlazor.Variant.Filled"
+                                             Size="@MudBlazor.Size.Medium"
+                                             Icon="@MudBlazor.Icons.Material.Filled.Save"
+                                             Class="rounded-circle pa-3"
+                                             OnClick="@(() => _viewModel!.Commands["Save"].Execute(null))"
+                                             Style="z-index:3;" />
+                </MudBlazor.MudTooltip>
+                <MudBlazor.MudTooltip Text="@EficazFramework.Resources.Strings.Commands.Cancel">
+                    <MudBlazor.MudIconButton Color="MudBlazor.Color.Tertiary"
+                                             Variant="MudBlazor.Variant.Filled"
+                                             Size="@MudBlazor.Size.Small"
+                                             Icon="@MudBlazor.Icons.Material.Filled.Cancel"
+                                             Class="rounded-circle pa-3"
+                                             OnClick="@(() => _viewModel!.Commands["Cancel"].Execute(null))"
+                                             Style="z-index:3;" />
+                </MudBlazor.MudTooltip>
+
+            </div>;
+        }
+        else if (_viewModel?.State == EficazFramework.Enums.CRUD.State.Bloqueado || _viewModel?.State == EficazFramework.Enums.CRUD.State.Leitura)
+        {
+            return
+                @<div class="d-flex flex-row flex-grow-1 justify-end mt-1 mb-n6 mr-1">
+                <div style="max-width:200px">
+                    <MudBlazor.MudTextField @bind-Value="_searchString"
+                                            Immediate
+                                            Margin="MudBlazor.Margin.Dense"
+                                            Adornment="MudBlazor.Adornment.Start"
+                                            AdornmentIcon="@MudBlazor.Icons.Material.Filled.Search"
+                                            Class="@($"{Layout.MainLayout.INPUTCLASS}")" />
+                </div>
+                <MudBlazor.MudTooltip Text="@EficazFramework.Resources.Strings.Commands.Add">
+                    <MudBlazor.MudIconButton Color="MudBlazor.Color.Secondary"
+                                             Variant="MudBlazor.Variant.Filled"
+                                             Size="@MudBlazor.Size.Medium"
+                                             Icon="@MudBlazor.Icons.Material.Filled.Add"
+                                             Class="rounded-circle pa-3"
+                                             OnClick="@(() => _viewModel!.Commands["New"].Execute(null))"
+                                             Style="z-index:3;" />
+                </MudBlazor.MudTooltip>
+                <MudBlazor.MudTooltip Text="@EficazFramework.Resources.Strings.Commands.Refresh">
+                    <MudBlazor.MudIconButton Color="MudBlazor.Color.Primary"
+                                             Variant="MudBlazor.Variant.Filled"
+                                             Size="@MudBlazor.Size.Small"
+                                             Icon="@MudBlazor.Icons.Material.Filled.Refresh"
+                                             Class="rounded-circle pa-3"
+                                             OnClick="@(() => _viewModel!.Commands["Get"].Execute(null))"
+                                             Style="z-index:3;" />
+                </MudBlazor.MudTooltip>
+            </div>;
+        }
+        return null;
+    }
+
+}
