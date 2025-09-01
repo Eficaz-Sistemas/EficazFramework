@@ -16,6 +16,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.NET.Sdk.WebAssembly.Pack" Version="9.0.8" />
     <ProjectReference Include="..\..\..\Core\EficazFramework.Data\EficazFramework.Data.csproj" />
     <ProjectReference Include="..\..\..\Web\EficazFramework.Blazor\EficazFramework.Blazor.csproj" />
     <ProjectReference Include="..\..\Common\Shared\Shared.csproj" />
