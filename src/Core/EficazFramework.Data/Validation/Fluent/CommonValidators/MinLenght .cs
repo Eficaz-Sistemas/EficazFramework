@@ -3,7 +3,7 @@ using System;
 
 namespace EficazFramework.Validation.Fluent.Rules;
 
-internal class MinLenght<T> : Rules.ValidationRule<T> where T : class
+internal class MinLength<T> : Rules.ValidationRule<T> where T : class
 {
 
     /// <summary>
@@ -14,7 +14,7 @@ internal class MinLenght<T> : Rules.ValidationRule<T> where T : class
     /// <summary>
     /// Regra de validação contra valores e/ou referências nulas ou vazias
     /// </summary>
-    public MinLenght(System.Linq.Expressions.Expression<Func<T, object>> propertyexpression, int lenght) : base(propertyexpression)
+    public MinLength(System.Linq.Expressions.Expression<Func<T, object>> propertyexpression, int lenght) : base(propertyexpression)
     {
         Lenght = lenght;
     }
@@ -38,9 +38,9 @@ public static partial class ValidatorUtils
     /// <summary>
     /// Adiciona uma regração de validação que recusa textos acima do limite de caracteres.s
     /// </summary>
-    public static Validator<T> MinLenght<T>(this Validator<T> validator, System.Linq.Expressions.Expression<Func<T, object>> propertyexpression, int lenght) where T : class
+    public static Validator<T> MinLength<T>(this Validator<T> validator, System.Linq.Expressions.Expression<Func<T, object>> propertyexpression, int lenght) where T : class
     {
-        validator.ValidationRules.Add(new MinLenght<T>(propertyexpression, lenght));
+        validator.ValidationRules.Add(new MinLength<T>(propertyexpression, lenght));
         return validator;
     }
 }

@@ -43,12 +43,25 @@ internal static class Mapping
             InitialSize = new(560, 450)
         });
 
+        var tags = new EficazFramework.Application.ApplicationDefinition
+        {
+            Group = "CRUD",
+            IsPublic = true,
+            Title = "Tags",
+        };
+        tags.Targets.Add("Blazor", new EficazFramework.Application.BlazorApplicationTarget
+        {
+            Icon = MudBlazor.Icons.Material.Filled.Tag,
+            StartupUriOrType = typeof(Pages.Tag),
+            InitialSize = new(560, 350)
+        });
 
         return
         [
             vendors,
             products,
-            customers
+            customers,
+            tags
         ];
     }
 }
