@@ -5,7 +5,10 @@
     <TargetFrameworks>net8.0-windows;net9.0-windows</TargetFrameworks>
     <Nullable>enable</Nullable>
     <UseWPF>true</UseWPF>
-    <ApplicationIcon>framework.ico</ApplicationIcon>
+	<Version>6.4.11</Version>
+	<AssemblyVersion>6.4.11.0</AssemblyVersion>
+	<FileVersion>6.4.11.0</FileVersion>
+	<ApplicationIcon>framework.ico</ApplicationIcon>
 	<NeutralLanguage>pt-BR</NeutralLanguage>
   </PropertyGroup>
 
