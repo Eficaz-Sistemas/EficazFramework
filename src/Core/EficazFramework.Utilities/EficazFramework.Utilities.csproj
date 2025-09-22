@@ -2,15 +2,15 @@
   <!--in Memory of Laudo Ferreira da Silva and Francisco Luis de Sousa † 2020-->
   <PropertyGroup>
     <TargetFrameworks>net8.0;net9.0</TargetFrameworks>
-    <Version>6.4.10</Version>
-    <AssemblyVersion>6.4.10.0</AssemblyVersion>
-    <FileVersion>6.4.10.0</FileVersion>
+    <Version>6.4.11</Version>
+    <AssemblyVersion>6.4.11.0</AssemblyVersion>
+    <FileVersion>6.4.11.0</FileVersion>
     <Nullable>enable</Nullable>
     <RootNamespace>EficazFramework</RootNamespace>
     <Authors>Eficaz Sistemas</Authors>
     <Company>Eficaz Sistemas de Gestão e Inteligência Tributária</Company>
     <Description>Extensões e métodos úteis em cenários comuns variados.</Description>
-    <Copyright>Copyright ©  2024. Eficaz Sistemas de Gestão e Inteligência Tributária Ltda.</Copyright>
+    <Copyright>Copyright ©  2025. Eficaz Sistemas de Gestão e Inteligência Tributária Ltda.</Copyright>
     <RepositoryType>git</RepositoryType>
     <PackageTags>utilitários IO api</PackageTags>
     <PackageIcon>logo.png</PackageIcon>
@@ -50,7 +50,7 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="DefaultDocumentation" Version="0.8.2">
+    <PackageReference Include="DefaultDocumentation" Version="1.2.0">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
@@ -60,11 +60,11 @@
     </PackageReference>
   </ItemGroup>
   <ItemGroup Condition=" '$(TargetFramework)' == 'net9.0' ">
-    <PackageReference Include="Microsoft.AspNetCore.SignalR.Client" Version="9.0.8" />
-    <PackageReference Include="System.Security.Cryptography.Xml" Version="9.0.8" />
+    <PackageReference Include="Microsoft.AspNetCore.SignalR.Client" Version="9.0.9" />
+    <PackageReference Include="System.Security.Cryptography.Xml" Version="9.0.9" />
   </ItemGroup>
   <ItemGroup Condition=" '$(TargetFramework)' == 'net8.0' ">
-    <PackageReference Include="Microsoft.AspNetCore.SignalR.Client" Version="8.0.19" />
+    <PackageReference Include="Microsoft.AspNetCore.SignalR.Client" Version="8.0.20" />
     <PackageReference Include="System.Security.Cryptography.Xml" Version="8.0.2" />
   </ItemGroup>
   <ItemGroup>

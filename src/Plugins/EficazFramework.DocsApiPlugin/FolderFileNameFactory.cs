@@ -1,6 +1,7 @@
 ﻿using DefaultDocumentation;
 using DefaultDocumentation.Api;
 using DefaultDocumentation.Models;
+using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
@@ -17,7 +18,14 @@ public sealed class FolderFileNameFactory : IFileNameFactory
 
     public void Clean(IGeneralContext context)
     {
-        context.Settings.Logger.Debug($"Cleaning output folder \"{context.Settings.OutputDirectory}\"");
+        // Substitui o método Debug por Log com LogLevel apropriado
+        context.Settings.Logger.Log(
+            LogLevel.Debug,
+            new EventId(0, "CleanOutputFolder"),
+            $"Cleaning output folder \"{context.Settings.OutputDirectory}\"",
+            null,
+            (state, ex) => state.ToString()
+        );
 
         if (context.Settings.OutputDirectory.Exists)
         {

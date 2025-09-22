@@ -13,7 +13,7 @@
 	<RepositoryType>git</RepositoryType>
 	<PackageIcon>logo.png</PackageIcon>
 	<PackageIconUrl>https://efsuporte.blob.core.windows.net/portal/EficazFramework.png</PackageIconUrl>
-	<Copyright>Copyright ©  2024. Eficaz Sistemas de Gestão e Inteligência Tributária Ltda.</Copyright>
+	<Copyright>Copyright ©  2025. Eficaz Sistemas de Gestão e Inteligência Tributária Ltda.</Copyright>
 	<Description>Roslyn code generators for EficazFramework.</Description>
 	<Company>Eficaz Sistemas de Gestão e Inteligência Tributária</Company>
 	<Version>6.4.2-preview001</Version>

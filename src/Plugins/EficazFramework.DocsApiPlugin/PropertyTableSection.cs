@@ -45,7 +45,7 @@ public sealed class PropertyTableSection : ISection
         writer.TrimEnd();
         writer.AppendLine("");
 
-        var props = GetProperties(writer.Context, writer.DocItem) ?? Array.Empty<DocItem>();
+        var props = GetProperties(writer.Context, writer.Context.DocItem) ?? Array.Empty<DocItem>();
         if (props.Count() > 0)
         {
             writer.AppendLine("### Properties");
