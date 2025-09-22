@@ -120,6 +120,42 @@ public partial class ExpressionBuilderTable : MudBlazor.MudComponentBase
         return (IEnumerable<object>)args.Data!;
     }
 
+
+    private MudBlazor.DateRange? _selectedDateRange;
+    private void OnDateRangePickerSelectCompleted(EficazFramework.Expressions.ExpressionItem context)
+    {
+        if (_selectedDateRange == null)
+        {
+            context.Value1 = null;
+            context.Value2 = null;
+        }
+        else
+        {
+            context.Value1 = _selectedDateRange.Start;
+            context.Value2 = _selectedDateRange.End;
+        }
+        StateHasChanged();
+    }
+
+
+    private MudBlazor.Range<decimal>? _selectedNumberRange;
+    private void OnNumberRangePickerSelectCompleted(EficazFramework.Expressions.ExpressionItem context)
+    {
+        if (_selectedNumberRange == null)
+        {
+            context.Value1 = null;
+            context.Value2 = null;
+        }
+        else
+        {
+            context.Value1 = _selectedNumberRange.Start;
+            context.Value2 = _selectedNumberRange.End;
+        }
+        StateHasChanged();
+    }
+
+
+
     void SetupInstance(bool set_vm, bool set_isreadonly, bool set_collectionEdit)
     {
         //bool stateChanged = false;
