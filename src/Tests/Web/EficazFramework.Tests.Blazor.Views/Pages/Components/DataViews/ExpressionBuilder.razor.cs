@@ -53,7 +53,9 @@ public partial class ExpressionBuilder
             Enums.CompareMethod.Between,
             Enums.CompareMethod.BiggerOrEqualThan,
             Enums.CompareMethod.BiggerThan
-        }
+        },
+        DefaultValue1 = DateTime.Now.AddYears(-1).Date,
+        DefaultValue2 = DateTime.Now.Date.AddDays(1).AddSeconds(-1)
     };
     readonly ExpressionProperty IsActiveProperty = new()
     {
