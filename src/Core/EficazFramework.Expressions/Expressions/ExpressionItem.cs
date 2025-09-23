@@ -236,6 +236,7 @@ public class ExpressionItem : INotifyPropertyChanged
         set
         {
             Value1 = CoerceValueChanged(value);
+            _tmpOwnerExpressionBuilder?.Refresh();
         }
     }
 
@@ -251,6 +252,7 @@ public class ExpressionItem : INotifyPropertyChanged
         set
         {
             Value2 = CoerceValueChanged(value, true);
+            _tmpOwnerExpressionBuilder?.Refresh();
         }
     }
 

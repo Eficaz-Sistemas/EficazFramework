@@ -128,10 +128,16 @@ public class ExpressionBuilder : BunitTest
         viewModel.Items[0].Value2.Should().Be(viewModel.Properties[2].DefaultValue2);
         selectorOp.Instance.Value.Should().Be(viewModel.Items[0].Operator);
 
-        var dateField = editorCl.FindComponent<MudBlazor.MudDatePicker>();
-        dateField.Should().NotBeNull();
-        dateField.Instance.Date.Should().Be((DateTime?)viewModel.Items[0].Value1);
-        editorCl.FindComponents<MudBlazor.MudDatePicker>().Should().HaveCount(2); // between
+        var dateRangeField = editorCl.FindComponent<MudBlazor.MudDateRangePicker>();
+        dateRangeField.Should().NotBeNull();
+        dateRangeField.Instance.DateRange.Should().NotBeNull();
+        dateRangeField.Instance.DateRange.Start.Should().Be((DateTime?)viewModel.Items[0].Value1);
+        dateRangeField.Instance.DateRange.End.Should().Be((DateTime?)viewModel.Items[0].Value2);
+
+        //viewModel.Items[0].DateTimeValue1 = DateTime.Now.Date.AddDays(30);
+        //dateRangeField.Instance.DateRange.Start.Should().Be((DateTime?)viewModel.Items[0].Value1);
+        //viewModel.Items[0].DateTimeValue2 = DateTime.Now.Date.AddDays(15);
+        //dateRangeField.Instance.DateRange.End.Should().Be((DateTime?)viewModel.Items[0].Value2);
 
         // select Name property:
         await comp.InvokeAsync(() => selector.Instance.SelectOption(viewModel.Properties[1]));

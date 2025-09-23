@@ -185,6 +185,11 @@ public class ExpressionBuilder : INotifyPropertyChanged, IDisposable
         RemovedAdded?.Invoke(this, new NotifyCollectionChangedEventArgs(NotifyCollectionChangedAction.Add, new[] { removed }.ToList()));
     }
 
+    internal void Refresh()
+    {
+        RefreshBuilder?.Invoke(new RefreshEventArgs(this));
+    }
+
     #endregion
 
     #region Methods
@@ -382,6 +387,7 @@ public class ExpressionBuilder : INotifyPropertyChanged, IDisposable
 
     #region Events
 
+    public event RefreshEventHandler RefreshBuilder;
     public event PropertyChangedEventHandler PropertyChanged;
     public event NotifyCollectionChangedEventHandler ItemAdded;
     public event NotifyCollectionChangedEventHandler RemovedAdded;

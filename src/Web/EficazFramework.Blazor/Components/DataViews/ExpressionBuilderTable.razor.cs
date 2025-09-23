@@ -2,6 +2,7 @@
 using EficazFramework.Extensions;
 using Microsoft.AspNetCore.Components;
 using MudBlazor;
+using System.ComponentModel;
 
 namespace EficazFramework.Components.Primitives;
 
@@ -48,11 +49,17 @@ public partial class ExpressionBuilderTable : MudBlazor.MudComponentBase
         SetupInstance(true, true, true);
 
         if (OldValue != null)
+        {
             OldValue.PropertyChanged -= OnViewModel_PropertyChanged;
+            OldValue.RefreshBuilder -= RefreshRange;
+        }
 
 
         if (NewValue != null)
+        {
             NewValue.PropertyChanged += OnViewModel_PropertyChanged;
+            NewValue.RefreshBuilder += RefreshRange;
+        }
     }
 
     private void OnViewModel_PropertyChanged(object? sender, System.ComponentModel.PropertyChangedEventArgs e)
@@ -120,6 +127,31 @@ public partial class ExpressionBuilderTable : MudBlazor.MudComponentBase
         return (IEnumerable<object>)args.Data!;
     }
 
+
+    private MudBlazor.DateRange? OnDateRangePickerGet(
+        EficazFramework.Expressions.ExpressionItem context) =>
+        new(context.DateTimeValue1, context.DateTimeValue2);
+
+    private void OnDateRangePickerSet(
+        EficazFramework.Expressions.ExpressionItem context,
+        MudBlazor.DateRange value)  
+    {
+        if (value == null)
+        {
+            context.DateTimeValue1 = null;
+            context.DateTimeValue2 = null;
+        }
+        else
+        {
+            context.DateTimeValue1 = value.Start;
+            context.DateTimeValue2 = value.End;
+        }
+    }
+
+
+    private void RefreshRange(RefreshEventArgs e) => InvokeAsync(StateHasChanged);
+
+
     void SetupInstance(bool set_vm, bool set_isreadonly, bool set_collectionEdit)
     {
         //bool stateChanged = false;
@@ -147,7 +179,6 @@ public partial class ExpressionBuilderTable : MudBlazor.MudComponentBase
         //if (stateChanged) 
         StateHasChanged();
     }
-
 }
 
 internal class OperatorConverter : MudBlazor.DefaultConverter<EficazFramework.Enums.CompareMethod>

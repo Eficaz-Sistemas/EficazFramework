@@ -3,7 +3,10 @@
 @inherits MudBlazor.MudComponentBase
 @inject MudBlazor.IBrowserViewportService BrowserViewportService
 
-<MudBlazor.MudTable Dense Breakpoint="@MudBlazor.Breakpoint.Xs" Elevation="0" Items="@vm.Items" Class="flex-grow-1 order-2 border-0">
+<MudBlazor.MudTable Dense 
+                    Breakpoint="@MudBlazor.Breakpoint.Sm" 
+                    Elevation="0" Items="@vm.Items" 
+                    Class="flex-grow-1 order-2 border-0">
     <HeaderContent>
         @if (vm.CanAddExpressions)
         {
@@ -33,6 +36,9 @@
             <MudBlazor.MudSelect Margin="@MudBlazor.Margin.Dense"
                                     T="@EficazFramework.Expressions.ExpressionProperty" 
                                     @bind-Value="@context.SelectedProperty" 
+                                    FitContent
+                                    
+                                    FullWidth
                                     Class="ef-expression-table-cell">
                 @foreach (EficazFramework.Expressions.ExpressionProperty prop in vm.Properties)
                     {
@@ -62,6 +68,8 @@
                                         T="@EficazFramework.Enums.CompareMethod" 
                                         @bind-Value="@context.Operator" 
                                         Converter="@converter"  
+                                        FitContent
+                                        FullWidth
                                         Class="ef-expression-table-cell">
                     @if(context.SelectedProperty != null)
                     {
@@ -95,28 +103,20 @@
                     @switch (context.SelectedProperty.Editor)
                         {
                             case EficazFramework.Expressions.ExpressionEditor.Date:
-                                <MudBlazor.MudDatePicker Margin="@MudBlazor.Margin.Dense" 
-                                                         @bind-Date="context.DateTimeValue1" 
-                                                         Class="flex-grow-0 ef-expression-table-cell"
-                                                         DateFormat="d" 
-                                                         Editable
-                                                         PickerVariant="@pickerVariant"/>
-
-                                <MudBlazor.MudText Typo="@MudBlazor.Typo.body2" Class="flex-grow-0 mx-4 align-self-center">@($"  {EficazFramework.Resources.Strings.Components.ExpressionBuilder_Between_Separator}  ")</MudBlazor.MudText>
-                                                    
-                                <MudBlazor.MudDatePicker Margin="@MudBlazor.Margin.Dense" 
-                                                         @bind-Date="context.DateTimeValue2" 
-                                                         Class="ef-expression-table-cell" 
-                                                         DateFormat="d" 
-                                                         Editable
-                                                         PickerVariant="@pickerVariant" />
-                                <div class="flex-grow-1"/>
+                                <MudBlazor.MudDateRangePicker Margin="@MudBlazor.Margin.Dense"
+                                                              Class="ef-expression-table-cell flex-grow-1"
+                                                              @bind-DateRange:get="OnDateRangePickerGet(context)"
+                                                              @bind-DateRange:set="@((value) => OnDateRangePickerSet(context, value))"
+                                                              AutoClose
+                                                              DateFormat="d"
+                                                              PickerVariant="@pickerVariant" />
                                 break;
 
                             case EficazFramework.Expressions.ExpressionEditor.Number:
                                 <EficazFramework.Components.NumberField Margin="@MudBlazor.Margin.Dense" 
                                                                         @bind-Value="context.Value1"
                                                                         Class="flex-grow-0 ef-expression-table-cell"
+                                                                        FullWidth
                                                                         DecimalPlaces="context.SelectedProperty?.DecimalPlaces ?? 8" />
                                                     
                                 <MudBlazor.MudText Typo="@MudBlazor.Typo.body2" Class="flex-grow-0 mx-4 align-self-center">@($"  {EficazFramework.Resources.Strings.Components.ExpressionBuilder_Between_Separator}  ")</MudBlazor.MudText>
@@ -124,8 +124,8 @@
                                 <EficazFramework.Components.NumberField Margin="@MudBlazor.Margin.Dense" 
                                                                         @bind-Value="context.Value2"
                                                                         Class="flex-grow-0 ef-expression-table-cell"
+                                                                        FullWidth
                                                                         DecimalPlaces="context.SelectedProperty?.DecimalPlaces ?? 8" />
-                                <div class="flex-grow-1"/>
                                 break;
                         }
                 </div>
@@ -141,7 +141,6 @@
                                                             Class="ef-expression-table-cell"
                                                             @bind-Date="context.DateTimeValue1" 
                                                             DateFormat="d"
-                                                            Editable
                                                             PickerVariant="@pickerVariant" />
                                 break;
 
@@ -149,7 +148,7 @@
                                 <EficazFramework.Components.NumberField Margin="@MudBlazor.Margin.Dense"
                                                                         Class="ef-expression-table-cell"
                                                                         @bind-Value="context.Value1"
-                                                                        FullWidth 
+                                                                        FullWidth
                                                                         DecimalPlaces="context.SelectedProperty?.DecimalPlaces ?? 8" />
                                 break;
 
@@ -162,8 +161,9 @@
 
                             case EficazFramework.Expressions.ExpressionEditor.EnumLocalizedSelection:
                                 <MudBlazor.MudSelect Margin="@MudBlazor.Margin.Dense"
-                                                        Class="ef-expression-table-cell"
-                                                        @bind-Value="@context.Value1">
+                                                     Class="ef-expression-table-cell"
+                                                     @bind-Value="@context.Value1"
+                                                     FullWidth>
                                     @foreach (EficazFramework.Extensions.EnumMember enummember in context.EnumValues)
                                         {
                                         <MudBlazor.MudSelectItem Value="@enummember.Value">
@@ -175,8 +175,9 @@
 
                             case EficazFramework.Expressions.ExpressionEditor.EnumSelection:
                                 <MudBlazor.MudSelect Margin="@MudBlazor.Margin.Dense"
-                                                        Class="ef-expression-table-cell"
-                                                        @bind-Value="@context.Value1">
+                                                     Class="ef-expression-table-cell"
+                                                     @bind-Value="@context.Value1"
+                                                 FullWidth>
                                     @foreach (EficazFramework.Extensions.EnumMember enummember in context.EnumValues)
                                         {
                                         <MudBlazor.MudSelectItem Value="@enummember.Value">
@@ -199,7 +200,8 @@
                                 <MudBlazor.MudTextField Margin="@MudBlazor.Margin.Dense" 
                                                         Class="ef-expression-table-cell"
                                                         @bind-Value="context.Value1" 
-                                                        Converter="new StringObjConverter()" />
+                                                        Converter="new StringObjConverter()"
+                                                        FullWidth/>
                                 break;
                         }
                     }
