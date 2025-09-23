@@ -105,8 +105,9 @@
                             case EficazFramework.Expressions.ExpressionEditor.Date:
                                 <MudBlazor.MudDateRangePicker Margin="@MudBlazor.Margin.Dense"
                                                               Class="ef-expression-table-cell flex-grow-1"
-                                                              @bind-DateRange="_selectedDateRange"
-                                                              @bind-DateRange:after="@(() => OnDateRangePickerSelectCompleted(context))"
+                                                              @bind-DateRange:get="OnDateRangePickerGet(context)"
+                                                              @bind-DateRange:set="@((value) => OnDateRangePickerSet(context, value))"
+                                                              AutoClose
                                                               DateFormat="d"
                                                               PickerVariant="@pickerVariant" />
                                 break;

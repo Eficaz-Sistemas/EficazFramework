@@ -2,6 +2,7 @@
 using EficazFramework.Extensions;
 using Microsoft.AspNetCore.Components;
 using MudBlazor;
+using System.ComponentModel;
 
 namespace EficazFramework.Components.Primitives;
 
@@ -48,11 +49,17 @@ public partial class ExpressionBuilderTable : MudBlazor.MudComponentBase
         SetupInstance(true, true, true);
 
         if (OldValue != null)
+        {
             OldValue.PropertyChanged -= OnViewModel_PropertyChanged;
+            OldValue.RefreshBuilder -= RefreshRange;
+        }
 
 
         if (NewValue != null)
+        {
             NewValue.PropertyChanged += OnViewModel_PropertyChanged;
+            NewValue.RefreshBuilder += RefreshRange;
+        }
     }
 
     private void OnViewModel_PropertyChanged(object? sender, System.ComponentModel.PropertyChangedEventArgs e)
@@ -121,39 +128,28 @@ public partial class ExpressionBuilderTable : MudBlazor.MudComponentBase
     }
 
 
-    private MudBlazor.DateRange? _selectedDateRange;
-    private void OnDateRangePickerSelectCompleted(EficazFramework.Expressions.ExpressionItem context)
+    private MudBlazor.DateRange? OnDateRangePickerGet(
+        EficazFramework.Expressions.ExpressionItem context) =>
+        new(context.DateTimeValue1, context.DateTimeValue2);
+
+    private void OnDateRangePickerSet(
+        EficazFramework.Expressions.ExpressionItem context,
+        MudBlazor.DateRange value)  
     {
-        if (_selectedDateRange == null)
+        if (value == null)
         {
-            context.Value1 = null;
-            context.Value2 = null;
+            context.DateTimeValue1 = null;
+            context.DateTimeValue2 = null;
         }
         else
         {
-            context.Value1 = _selectedDateRange.Start;
-            context.Value2 = _selectedDateRange.End;
+            context.DateTimeValue1 = value.Start;
+            context.DateTimeValue2 = value.End;
         }
-        StateHasChanged();
     }
 
 
-    private MudBlazor.Range<decimal>? _selectedNumberRange;
-    private void OnNumberRangePickerSelectCompleted(EficazFramework.Expressions.ExpressionItem context)
-    {
-        if (_selectedNumberRange == null)
-        {
-            context.Value1 = null;
-            context.Value2 = null;
-        }
-        else
-        {
-            context.Value1 = _selectedNumberRange.Start;
-            context.Value2 = _selectedNumberRange.End;
-        }
-        StateHasChanged();
-    }
-
+    private void RefreshRange(RefreshEventArgs e) => InvokeAsync(StateHasChanged);
 
 
     void SetupInstance(bool set_vm, bool set_isreadonly, bool set_collectionEdit)
@@ -183,7 +179,6 @@ public partial class ExpressionBuilderTable : MudBlazor.MudComponentBase
         //if (stateChanged) 
         StateHasChanged();
     }
-
 }
 
 internal class OperatorConverter : MudBlazor.DefaultConverter<EficazFramework.Enums.CompareMethod>
