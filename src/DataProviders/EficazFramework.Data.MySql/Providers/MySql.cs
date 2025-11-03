@@ -29,7 +29,7 @@ public class MySql : DataProviderBase
 public static class Extension
 {
     /// <summary>
-    /// Adiciona o provedor MsSqlServer ao contexto de Injeção de Dependência
+    /// Adiciona o provedor MySql ao contexto de Injeção de Dependência
     /// </summary>
     public static IServiceCollection AddMySqlService(this IServiceCollection serviceCollection)
     {
