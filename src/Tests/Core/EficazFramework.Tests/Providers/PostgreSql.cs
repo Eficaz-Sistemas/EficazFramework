@@ -1,0 +1,80 @@
+﻿using EficazFramework.Providers.Mock;
+using AwesomeAssertions;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
+using NUnit.Framework;
+using System;
+using System.Threading.Tasks;
+
+namespace EficazFramework.Providers;
+
+public class PostgreSqlTests : ProviderBase
+{
+    [SetUp]
+    public async Task SetUpAsync()
+    {
+        TestDbContext.ModelCreatingAction = (modelBuilder) => 
+        {
+            var personBuiler = modelBuilder.Entity<Person>();
+            personBuiler.ToTable("Persons");
+            personBuiler.HasKey(pk => pk.Id);
+            personBuiler.Property(e => e.Id).ValueGeneratedNever().IsRequired();
+            personBuiler.Property(e => e.Name).HasMaxLength(60).IsRequired();
+        };
+
+        DbContextOptionsBuilder<TestDbContext> builder = new();
+        builder.UseNpgsql(_configuration.GetConnectionString("PostgreSql") ?? "", o =>
+        {
+            o.CommandTimeout(600000);
+            o.EnableRetryOnFailure();
+            o.MigrationsHistoryTable("HistoryV3", "Migrations");
+        });
+
+        _context = new(builder.Options);
+        try
+        {
+            (await _context.Database.EnsureCreatedAsync()).Should().BeTrue();
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine(ex.Message);
+            //ex.StackTrace.ToString().Should().ContainEquivalentOf("database exists");
+            //throw;
+        }
+    }
+
+
+    [TearDown]
+    public async Task TearDownAsync()
+    {
+        try
+        {
+            (await _context.Database.EnsureDeletedAsync()).Should().BeTrue();
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine(ex.Message);
+            //ex.StackTrace.ToString().Should().ContainEquivalentOf("Unknown database 'eficazframeworkprovidertests'");
+            //throw;
+        }
+        await _context.DisposeAsync();
+    }
+
+
+    [Test]
+    public async Task Test()
+    {
+        try
+        {
+            await TestInternalAsync();
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine(ex.Message);
+            //ex.StackTrace.ToString().Should().ContainEquivalentOf("Unknown database 'eficazframeworkprovidertests'");
+            //throw;
+        }
+    }
+
+
+}

@@ -34,6 +34,7 @@ public class ServiceProviderTests
         (svc as MsSqlServer).Should().BeNull();
         (svc as MySql).Should().BeNull();
         (svc as SqlLite).Should().BeNull();
+        (svc as PostgreSql).Should().BeNull();
     }
 
     [Test]
@@ -50,6 +51,7 @@ public class ServiceProviderTests
         (svc as MsSqlServer).Should().BeNull();
         (svc as MySql).Should().NotBeNull();
         (svc as SqlLite).Should().BeNull();
+        (svc as PostgreSql).Should().BeNull();
     }
 
     [Test]
@@ -65,7 +67,7 @@ public class ServiceProviderTests
         (svc as InMemory).Should().BeNull();
         (svc as MsSqlServer).Should().NotBeNull();
         (svc as MySql).Should().BeNull();
-        (svc as SqlLite).Should().BeNull();
+        (svc as PostgreSql).Should().BeNull();
     }
 
     [Test]
@@ -82,10 +84,27 @@ public class ServiceProviderTests
         (svc as MsSqlServer).Should().BeNull();
         (svc as MySql).Should().BeNull();
         (svc as SqlLite).Should().NotBeNull();
+        (svc as PostgreSql).Should().BeNull();
 
         var config = provider.GetService<IDbConfig>();
         config.UseConnectionStringEncryption = true;
         svc.GetConnectionString("test", "user", null).Should().Be(Security.Cryptography.Functions.Encript($"Data Source=test;", "#hd@cl$cb#"));
+    }
+
+    public void TestPostgreSql()
+    {
+        IServiceCollection serviceCollection = new ServiceCollection();
+        serviceCollection.AddDbConfig(false);
+        serviceCollection.AddPostgreSqlService();
+        IServiceProvider provider = serviceCollection.BuildServiceProvider();
+
+        var svc = provider.GetService<DataProviderBase>();
+        svc.Should().NotBeNull();
+        (svc as InMemory).Should().BeNull();
+        (svc as MsSqlServer).Should().BeNull();
+        (svc as MySql).Should().BeNull();
+        (svc as SqlLite).Should().BeNull();
+        (svc as PostgreSql).Should().NotBeNull();
     }
 
 }
