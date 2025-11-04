@@ -3,9 +3,9 @@
   <PropertyGroup>
     <TargetFrameworks>net8.0;net9.0</TargetFrameworks>
     <Nullable>enable</Nullable>
-	<Version>6.4.11</Version>
-	<AssemblyVersion>6.4.11.0</AssemblyVersion>
-	<FileVersion>6.4.11.0</FileVersion>
+    <Version>6.4.15</Version>
+    <AssemblyVersion>6.4.15.0</AssemblyVersion>
+    <FileVersion>6.4.15.0</FileVersion>
 	<Description>Biblioteca de testes para Blazor da Eficaz Framework.</Description>
 	<RootNamespace>EficazFramework</RootNamespace>
 	<SignAssembly>True</SignAssembly>

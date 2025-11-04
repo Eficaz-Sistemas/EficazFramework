@@ -5,9 +5,9 @@
     <TargetFrameworks>net8.0-windows;net9.0-windows</TargetFrameworks>
     <Nullable>enable</Nullable>
     <UseWPF>true</UseWPF>
-	<Version>6.4.11</Version>
-	<AssemblyVersion>6.4.11.0</AssemblyVersion>
-	<FileVersion>6.4.11.0</FileVersion>
+    <Version>6.4.15</Version>
+    <AssemblyVersion>6.4.15.0</AssemblyVersion>
+    <FileVersion>6.4.15.0</FileVersion>
 	<ApplicationIcon>framework.ico</ApplicationIcon>
 	<NeutralLanguage>pt-BR</NeutralLanguage>
   </PropertyGroup>
