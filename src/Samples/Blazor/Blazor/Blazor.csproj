@@ -22,7 +22,7 @@
     <ProjectReference Include="..\..\Common\Entities\Entities.csproj" />
     <ProjectReference Include="..\..\Common\Shared\Shared.csproj" />
     <ProjectReference Include="..\Blazor.Client\Blazor.Client.csproj" />
-    <PackageReference Include="Bogus" Version="35.6.3" />
+    <PackageReference Include="Bogus" Version="35.6.5" />
     <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.Server" Version="9.0.9" />
   </ItemGroup>
 
