@@ -22,7 +22,8 @@
 
 <EficazFramework.Components.MdiHost @ref="_mdiHost"
                                     Class="h-100"
-                                    ApplicationsSource="ApplicationManager?.RunningApplications">
+                                    ApplicationsSource="ApplicationManager?.RunningApplications"
+                                    CurrentSection="ApplicationManager!.SectionManager.CurrentSectionId">
     <ToolbarLeftContent>
         <EficazFramework.Components.StartMenu @ref="_startMenu">
             <Content>
@@ -56,7 +57,13 @@
                 </MudBlazor.MudTabs>
             </Content>
         </EficazFramework.Components.StartMenu>
-        <EficazFramework.Components.SectionsView AutoManageSections="false" />
+        <EficazFramework.Components.SectionsView ItemsSource="ApplicationManager.SectionManager.Sections"
+                                                 @bind-CurrentSection="ApplicationManager.SectionManager.CurrentSectionId"
+                                                 AutoManageSections="false"
+                                                 NewSectionClick="NewSection"
+                                                 CloseSectionClick="CloseSection"
+                                                 CloseAllSectionsClick="CloseAllSections"
+                                                 SectionChanged="SectionChanged" />
     </ToolbarLeftContent>
 </EficazFramework.Components.MdiHost>
 

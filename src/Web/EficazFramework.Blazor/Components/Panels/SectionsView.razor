@@ -67,19 +67,26 @@
                                     </MudBlazor.MudText>
                                     <MudBlazor.MudIconButton Icon="@MudBlazor.Icons.Material.Filled.Close"
                                                              OnClick="@(() => RemoveSection(section))"
-                                                             DisableElevation
                                                              Variant="MudBlazor.Variant.Text"
                                                              Size="MudBlazor.Size.Small"
                                                              Class="ef-mdi-sections-close"
-                                                             Style="margin-top: -6px;"
-                                                             Title="Close" />
+                                                             Style="margin-top: -6px;" />
                                 </div>
+
                                 <MudBlazor.MudPaper Elevation="0" 
                                                     Class="flex-grow-1 d-flex justify-center align-center relative mt-1"
                                                     Style="background-color: var(--mud-palette-background-gray)">
-                                    <MudBlazor.MudIcon Icon="@MudBlazor.Icons.Material.Filled.Image" 
-                                                       Class="ma-4"
-                                                       Size="@MudBlazor.Size.Large"/>
+
+                                    @if (SectionTemplate != null)
+                                    {
+                                        @SectionTemplate
+                                    }
+                                    else
+                                    {
+                                        <MudBlazor.MudIcon Icon="@MudBlazor.Icons.Material.Filled.Image"
+                                                           Class="ma-4"
+                                                           Size="@MudBlazor.Size.Large" />
+                                    }
                                 </MudBlazor.MudPaper>
                             </MudBlazor.MudPaper>
                         </MudBlazor.MudItem>
