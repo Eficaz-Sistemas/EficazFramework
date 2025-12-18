@@ -9,6 +9,7 @@ using Microsoft.AspNetCore.Components.Web;
 using Microsoft.AspNetCore.Mvc.ModelBinding.Validation;
 using MudBlazor;
 using NUnit.Framework;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -19,7 +20,7 @@ public class ViewModelDialog : BunitTest
     [Test]
     public async Task TestDialog()
     {
-        var comp = Context.RenderComponent<Tests.Blazor.Views.Pages.Components.Dialogs.ViewModelDialog>();
+        var comp = Context.Render<Tests.Blazor.Views.Pages.Components.Dialogs.ViewModelDialog>();
 
         comp.FindAll("div.mud-dialog-container").Count.Should().Be(0); // init closed
         comp.FindAll("div.mud-dialog-title").Count.Should().Be(0); // init closed
@@ -41,7 +42,7 @@ public class ViewModelDialog : BunitTest
     [Test]
     public async Task MdiTestDialog()
     {
-        var comp = Context.RenderComponent<Tests.Blazor.Views.Pages.Components.Panels.Mdi>();
+        var comp = Context.Render<Tests.Blazor.Views.Pages.Components.Panels.Mdi>();
         var hostRenderer = comp.FindComponent<EficazFramework.Components.MdiHost>();
         var host = hostRenderer.Instance;
         host.Should().NotBeNull();
@@ -60,14 +61,13 @@ public class ViewModelDialog : BunitTest
         System.Action compFindAction = () => comp.Find("div.ef-dialog");
         compFindAction.Should().Throw<Bunit.ElementNotFoundException>();
 
-        IRefreshableElementCollection<IElement> _buttons() => windowRenderer.FindAll("button.mud-button-root");
-        IElement dlgButton = _buttons()[1];
+        IReadOnlyCollection<IElement> _buttons() => windowRenderer.FindAll("button.mud-button-root");
+        IElement dlgButton = _buttons().ElementAt(1);
         windowRenderer.InvokeAsync(async() => await dlgButton.ClickAsync(new MouseEventArgs()));
 
         hostRenderer.WaitForElement("div.mud-overlay-dialog", System.TimeSpan.FromMilliseconds(1000)); // now open
 
-        IElement dlgButtonClose = _buttons()[0];
+        IElement dlgButtonClose = _buttons().ElementAt(0);
         windowRenderer.InvokeAsync(async () => await dlgButtonClose.ClickAsync(new MouseEventArgs()));
-
     }
 }

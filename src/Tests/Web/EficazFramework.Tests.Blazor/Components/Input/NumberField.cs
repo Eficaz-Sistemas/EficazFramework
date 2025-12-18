@@ -14,7 +14,7 @@ public class NumberField : BunitTest
     [Test]
     public void TestShort()
     {
-        var comp = Context.RenderComponent<NumberField<short>>();
+        var comp = Context.Render<NumberField<short>>();
         comp.Instance.Converter.Should().BeOfType(typeof(Converters.NumberConverter<short>));
         var _converter = comp.Instance.Converter as Converters.NumberConverter<short>;
         _converter.Should().NotBeNull();
@@ -64,7 +64,7 @@ public class NumberField : BunitTest
     [Test]
     public void TestNullableShort()
     {
-        var comp = Context.RenderComponent<NumberField<short?>>();
+        var comp = Context.Render<NumberField<short?>>();
         comp.Instance.Converter.Should().BeOfType(typeof(Converters.NumberConverter<short?>));
         var _converter = comp.Instance.Converter as Converters.NumberConverter<short?>;
         _converter.Should().NotBeNull();
@@ -114,7 +114,7 @@ public class NumberField : BunitTest
     [Test]
     public void TestInt()
     {
-        var comp = Context.RenderComponent<NumberField<int>>();
+        var comp = Context.Render<NumberField<int>>();
         comp.Instance.Converter.Should().BeOfType(typeof(Converters.NumberConverter<int>));
         var _converter = comp.Instance.Converter as Converters.NumberConverter<int>;
         _converter.Should().NotBeNull();
@@ -164,7 +164,7 @@ public class NumberField : BunitTest
     [Test]
     public void TestNullableInt()
     {
-        var comp = Context.RenderComponent<NumberField<int?>>();
+        var comp = Context.Render<NumberField<int?>>();
         comp.Instance.Converter.Should().BeOfType(typeof(Converters.NumberConverter<int?>));
         var _converter = comp.Instance.Converter as Converters.NumberConverter<int?>;
         _converter.Should().NotBeNull();
@@ -214,7 +214,7 @@ public class NumberField : BunitTest
     [Test]
     public void TestLong()
     {
-        var comp = Context.RenderComponent<NumberField<long>>();
+        var comp = Context.Render<NumberField<long>>();
         comp.Instance.Converter.Should().BeOfType(typeof(Converters.NumberConverter<long>));
         var _converter = comp.Instance.Converter as Converters.NumberConverter<long>;
         _converter.Should().NotBeNull();
@@ -264,7 +264,7 @@ public class NumberField : BunitTest
     [Test]
     public void TestNullableLong()
     {
-        var comp = Context.RenderComponent<NumberField<long?>>();
+        var comp = Context.Render<NumberField<long?>>();
         comp.Instance.Converter.Should().BeOfType(typeof(Converters.NumberConverter<long?>));
         var _converter = comp.Instance.Converter as Converters.NumberConverter<long?>;
         _converter.Should().NotBeNull();
@@ -314,7 +314,7 @@ public class NumberField : BunitTest
     [Test]
     public void TestFloat()
     {
-        var comp = Context.RenderComponent<NumberField<float>>();
+        var comp = Context.Render<NumberField<float>>();
         comp.Instance.Converter.Should().BeOfType(typeof(Converters.NumberConverter<float>));
         var _converter = comp.Instance.Converter as Converters.NumberConverter<float>;
         _converter.Should().NotBeNull();
@@ -374,7 +374,7 @@ public class NumberField : BunitTest
     [Test]
     public void TestNullableFloat()
     {
-        var comp = Context.RenderComponent<NumberField<float?>>();
+        var comp = Context.Render<NumberField<float?>>();
         comp.Instance.Converter.Should().BeOfType(typeof(Converters.NumberConverter<float?>));
         var _converter = comp.Instance.Converter as Converters.NumberConverter<float?>;
         _converter.Should().NotBeNull();
@@ -434,7 +434,7 @@ public class NumberField : BunitTest
     [Test]
     public void TestDouble()
     {
-        var comp = Context.RenderComponent<NumberField<double>>();
+        var comp = Context.Render<NumberField<double>>();
         comp.Instance.Converter.Should().BeOfType(typeof(Converters.NumberConverter<double>));
         var _converter = comp.Instance.Converter as Converters.NumberConverter<double>;
         _converter.Should().NotBeNull();
@@ -494,7 +494,7 @@ public class NumberField : BunitTest
     [Test]
     public void TestNullableDouble()
     {
-        var comp = Context.RenderComponent<NumberField<double?>>();
+        var comp = Context.Render<NumberField<double?>>();
         comp.Instance.Converter.Should().BeOfType(typeof(Converters.NumberConverter<double?>));
         var _converter = comp.Instance.Converter as Converters.NumberConverter<double?>;
         _converter.Should().NotBeNull();
@@ -554,7 +554,7 @@ public class NumberField : BunitTest
     [Test]
     public void TestDecimal()
     {
-        var comp = Context.RenderComponent<NumberField<decimal>>();
+        var comp = Context.Render<NumberField<decimal>>();
         comp.Instance.Converter.Should().BeOfType(typeof(Converters.NumberConverter<decimal>));
         var _converter = comp.Instance.Converter as Converters.NumberConverter<decimal>;
         _converter.Should().NotBeNull();
@@ -614,7 +614,7 @@ public class NumberField : BunitTest
     [Test]
     public void TestNullableDecimal()
     {
-        var comp = Context.RenderComponent<NumberField<decimal?>>();
+        var comp = Context.Render<NumberField<decimal?>>();
         comp.Instance.Converter.Should().BeOfType(typeof(Converters.NumberConverter<decimal?>));
         var _converter = comp.Instance.Converter as Converters.NumberConverter<decimal?>;
         _converter.Should().NotBeNull();
@@ -674,7 +674,7 @@ public class NumberField : BunitTest
     [Test]
     public void TestUShort()
     {
-        var comp = Context.RenderComponent<NumberField<ushort>>();
+        var comp = Context.Render<NumberField<ushort>>();
         comp.Instance.Converter.Should().BeOfType(typeof(Converters.NumberConverter<ushort>));
         var _converter = comp.Instance.Converter as Converters.NumberConverter<ushort>;
         _converter.Should().NotBeNull();
@@ -724,7 +724,7 @@ public class NumberField : BunitTest
     [Test]
     public void TestNullableUShort()
     {
-        var comp = Context.RenderComponent<NumberField<ushort?>>();
+        var comp = Context.Render<NumberField<ushort?>>();
         comp.Instance.Converter.Should().BeOfType(typeof(Converters.NumberConverter<ushort?>));
         var _converter = comp.Instance.Converter as Converters.NumberConverter<ushort?>;
         _converter.Should().NotBeNull();
@@ -774,7 +774,7 @@ public class NumberField : BunitTest
     [Test]
     public void TestUInt()
     {
-        var comp = Context.RenderComponent<NumberField<uint>>();
+        var comp = Context.Render<NumberField<uint>>();
         comp.Instance.Converter.Should().BeOfType(typeof(Converters.NumberConverter<uint>));
         var _converter = comp.Instance.Converter as Converters.NumberConverter<uint>;
         _converter.Should().NotBeNull();
@@ -824,7 +824,7 @@ public class NumberField : BunitTest
     [Test]
     public void TestNullableUInt()
     {
-        var comp = Context.RenderComponent<NumberField<uint?>>();
+        var comp = Context.Render<NumberField<uint?>>();
         comp.Instance.Converter.Should().BeOfType(typeof(Converters.NumberConverter<uint?>));
         var _converter = comp.Instance.Converter as Converters.NumberConverter<uint?>;
         _converter.Should().NotBeNull();
@@ -874,7 +874,7 @@ public class NumberField : BunitTest
     [Test]
     public void TestULong()
     {
-        var comp = Context.RenderComponent<NumberField<ulong>>();
+        var comp = Context.Render<NumberField<ulong>>();
         comp.Instance.Converter.Should().BeOfType(typeof(Converters.NumberConverter<ulong>));
         var _converter = comp.Instance.Converter as Converters.NumberConverter<ulong>;
         _converter.Should().NotBeNull();
@@ -924,7 +924,7 @@ public class NumberField : BunitTest
     [Test]
     public void TestNullableULong()
     {
-        var comp = Context.RenderComponent<NumberField<ulong?>>();
+        var comp = Context.Render<NumberField<ulong?>>();
         comp.Instance.Converter.Should().BeOfType(typeof(Converters.NumberConverter<ulong?>));
         var _converter = comp.Instance.Converter as Converters.NumberConverter<ulong?>;
         _converter.Should().NotBeNull();
@@ -974,7 +974,7 @@ public class NumberField : BunitTest
     [Test]
     public void TestNonNumberAndEmpty()
     {
-        var comp = Context.RenderComponent<NumberField<int>>();
+        var comp = Context.Render<NumberField<int>>();
         comp.Instance.Converter.Should().BeOfType(typeof(Converters.NumberConverter<int>));
         var _converter = comp.Instance.Converter as Converters.NumberConverter<int>;
         _converter.Should().NotBeNull();
@@ -1006,7 +1006,7 @@ public class NumberField : BunitTest
     [Test]
     public void TestNullableNonNumberAndEmpty()
     {
-        var comp = Context.RenderComponent<NumberField<int?>>();
+        var comp = Context.Render<NumberField<int?>>();
         comp.Instance.Converter.Should().BeOfType(typeof(Converters.NumberConverter<int?>));
         var _converter = comp.Instance.Converter as Converters.NumberConverter<int?>;
         _converter.Should().NotBeNull();

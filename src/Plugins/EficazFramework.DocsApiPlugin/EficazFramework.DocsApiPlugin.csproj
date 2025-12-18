@@ -34,7 +34,7 @@
   </ItemGroup>
 	
   <ItemGroup>
-    <PackageReference Include="DefaultDocumentation.Api" Version="1.2.0" />
+    <PackageReference Include="DefaultDocumentation.Api" Version="1.2.2" />
   </ItemGroup>
 	
   <ItemGroup>
