@@ -14,7 +14,7 @@ public class DocumentField : BunitTest
     [Test]
     public void Document_IE()
     {
-        var comp = Context.RenderComponent<DocumentField<string>>();
+        var comp = Context.Render<DocumentField<string>>();
         comp.Instance.Converter.Should().BeOfType(typeof(Converters.DocumentConverter<string>));
         var _converter = comp.Instance.Converter as Converters.DocumentConverter<string>;
         _converter.Should().NotBeNull();
@@ -67,7 +67,7 @@ public class DocumentField : BunitTest
     [Test]
     public void Document_CnpjCpf()
     {
-        var comp = Context.RenderComponent<DocumentField<string>>();
+        var comp = Context.Render<DocumentField<string>>();
         comp.Instance.Converter.Should().BeOfType(typeof(Converters.DocumentConverter<string>));
         var _converter = comp.Instance.Converter as Converters.DocumentConverter<string>;
         _converter.Should().NotBeNull();
@@ -125,7 +125,7 @@ public class DocumentField : BunitTest
     [Test]
     public void Document_Pis()
     {
-        var comp = Context.RenderComponent<DocumentField<string>>();
+        var comp = Context.Render<DocumentField<string>>();
         comp.Instance.Converter.Should().BeOfType(typeof(Converters.DocumentConverter<string>));
         var _converter = comp.Instance.Converter as Converters.DocumentConverter<string>;
         _converter.Should().NotBeNull();
@@ -164,7 +164,7 @@ public class DocumentField : BunitTest
     [Test]
     public void Document_Fone()
     {
-        var comp = Context.RenderComponent<DocumentField<string>>();
+        var comp = Context.Render<DocumentField<string>>();
         comp.Instance.Converter.Should().BeOfType(typeof(Converters.DocumentConverter<string>));
         var _converter = comp.Instance.Converter as Converters.DocumentConverter<string>;
         _converter.Should().NotBeNull();
@@ -253,7 +253,7 @@ public class DocumentField : BunitTest
     [Test]
     public void Document_Cep()
     {
-        var comp = Context.RenderComponent<DocumentField<string>>();
+        var comp = Context.Render<DocumentField<string>>();
         comp.Instance.Converter.Should().BeOfType(typeof(Converters.DocumentConverter<string>));
         var _converter = comp.Instance.Converter as Converters.DocumentConverter<string>;
         _converter.Should().NotBeNull();
@@ -342,7 +342,7 @@ public class DocumentField : BunitTest
     [Test]
     public void Document_Mail()
     {
-        var comp = Context.RenderComponent<DocumentField<string>>();
+        var comp = Context.Render<DocumentField<string>>();
         comp.Instance.Converter.Should().BeOfType(typeof(Converters.DocumentConverter<string>));
         var _converter = comp.Instance.Converter as Converters.DocumentConverter<string>;
         _converter.Should().NotBeNull();

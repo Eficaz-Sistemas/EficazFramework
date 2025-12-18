@@ -80,7 +80,7 @@
     <None Include="Templates\CookieConsent.razor" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="DefaultDocumentation" Version="1.2.0">
+    <PackageReference Include="DefaultDocumentation" Version="1.2.2">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
@@ -88,7 +88,7 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
-    <PackageReference Include="MudBlazor" Version="8.12.0" />
+    <PackageReference Include="MudBlazor" Version="8.15.0" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\Core\EficazFramework.Expressions\EficazFramework.Expressions.csproj" />

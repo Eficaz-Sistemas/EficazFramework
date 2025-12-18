@@ -18,7 +18,7 @@ public class ExpressionBuilder : BunitTest
     public async Task CreateExpressionBuilderTest()
     {
         // with null ViewModel (and no MudTable)
-        var view = Context.RenderComponent<EficazFramework.Tests.Blazor.Views.TestComponents.DataViews.ExpressionBuilderTest>();
+        var view = Context.Render<EficazFramework.Tests.Blazor.Views.TestComponents.DataViews.ExpressionBuilderTest>();
         var comp = view.FindComponent<Components.ExpressionBuilder>();
         comp.Instance.ViewModel.Should().BeNull();
 
@@ -68,7 +68,7 @@ public class ExpressionBuilder : BunitTest
     [Test, Order(2)]
     public async Task CrudTest()
     {
-        var page = Context.RenderComponent<Tests.Blazor.Views.Pages.Components.DataViews.ExpressionBuilder>();
+        var page = Context.Render<Tests.Blazor.Views.Pages.Components.DataViews.ExpressionBuilder>();
         var comp = page.FindComponent<Components.ExpressionBuilder>();
 
         comp.Should().NotBeNull();
