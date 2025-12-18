@@ -18,7 +18,8 @@
                 <div class="d-flex">
                     @if (SelectedApp != null)
                     {
-                        <MdiWindow ApplicationInstance="SelectedApp"
+                        <MdiWindow @key="SelectedApp.Id"
+                                   ApplicationInstance="SelectedApp"
                                    Title="@SelectedApp.Title"
                                    Icon="@(SelectedApp.Blazor()!.Icon?.ToString())"
                                    Resizable="false"
@@ -35,7 +36,8 @@
                      ondragstart="event.dataTransfer.setData('', event.target.id);">
                     @foreach (var item in RunningApplications())
                     {
-                        <MdiWindow ApplicationInstance="item"
+                        <MdiWindow @key="item.Id"
+                                   ApplicationInstance="item"
                                    Title="@item.Title"
                                    Icon="@item.Blazor()!.Icon?.ToString()"
                                    Resizable="@item.Blazor()!.Resizable"

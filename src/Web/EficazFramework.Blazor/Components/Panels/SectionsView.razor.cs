@@ -36,6 +36,11 @@ public partial class SectionsView : MudBlazor.MudComponentBase
     /// </summary>
     [Parameter] public RenderFragment CurrentSectionTemplate { get; set; }
 
+    /// <summary>
+    /// The template for every Section representation in list (inside Popover)
+    /// </summary>
+    [Parameter] public RenderFragment SectionTemplate { get; set; }
+
 
     private long _currentSection = 0;
     /// <summary>
