@@ -11,7 +11,7 @@ public class CookieConsent : BunitTest
     [Test]
     public void TestInitialization()
     {
-        var comp = Context.RenderComponent<Tests.Blazor.Views.Pages.Templates.CookieConsent>();
+        var comp = Context.Render<Tests.Blazor.Views.Pages.Templates.CookieConsent>();
         //Console.WriteLine(comp.Markup);
         //comp.Find("div.mud-snackbar").Should().NotBeNull();
 

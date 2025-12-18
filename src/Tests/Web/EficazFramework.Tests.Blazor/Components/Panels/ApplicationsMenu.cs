@@ -14,7 +14,7 @@ public class ApplicationsMenu : BunitTest
     [Test]
     public void BaseTest()
     {
-        var comp = Context.RenderComponent<Tests.Blazor.Views.Pages.Components.Panels.ApplicationsMenu>();
+        var comp = Context.Render<Tests.Blazor.Views.Pages.Components.Panels.ApplicationsMenu>();
         comp.Should().NotBeNull();
         comp.Instance.Should().NotBeNull();
         comp.Instance.BoundSearchFilter.Should().BeNullOrEmpty();
@@ -31,7 +31,7 @@ public class ApplicationsMenu : BunitTest
     [Test]
     public async Task ViewModeTest()
     {
-        var comp = Context.RenderComponent<Tests.Blazor.Views.Pages.Components.Panels.ApplicationsMenu>();
+        var comp = Context.Render<Tests.Blazor.Views.Pages.Components.Panels.ApplicationsMenu>();
         var obj = comp.FindComponent<EficazFramework.Components.ApplicationsMenu>();
         var groupCount = obj.Instance.ItemsSource.GroupBy(g => g.Group).Count();
 
@@ -51,7 +51,7 @@ public class ApplicationsMenu : BunitTest
     [Test]
     public void ViewModeByButtonTest()
     {
-        var comp = Context.RenderComponent<Tests.Blazor.Views.Pages.Components.Panels.ApplicationsMenu>();
+        var comp = Context.Render<Tests.Blazor.Views.Pages.Components.Panels.ApplicationsMenu>();
         var obj = comp.FindComponent<EficazFramework.Components.ApplicationsMenu>();
         var groupCount = obj.Instance.ItemsSource.GroupBy(g => g.Group).Count();
 
@@ -73,7 +73,7 @@ public class ApplicationsMenu : BunitTest
     [Test]
     public void FilterBindingTest()
     {
-        var comp = Context.RenderComponent<Tests.Blazor.Views.Pages.Components.Panels.ApplicationsMenu>();
+        var comp = Context.Render<Tests.Blazor.Views.Pages.Components.Panels.ApplicationsMenu>();
         var obj = comp.FindComponent<EficazFramework.Components.ApplicationsMenu>();
 
         var items = comp.FindComponents<MudBlazor.MudItem>();
@@ -92,7 +92,7 @@ public class ApplicationsMenu : BunitTest
     [Test]
     public async Task FilterTypingTest()
     {
-        var comp = Context.RenderComponent<Tests.Blazor.Views.Pages.Components.Panels.ApplicationsMenu>();
+        var comp = Context.Render<Tests.Blazor.Views.Pages.Components.Panels.ApplicationsMenu>();
         var obj = comp.FindComponent<EficazFramework.Components.ApplicationsMenu>();
 
         var items = comp.FindComponents<MudBlazor.MudItem>();

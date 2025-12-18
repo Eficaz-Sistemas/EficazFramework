@@ -12,9 +12,9 @@ public class ObservableElement : BunitTest
     [Test]
     public async Task ObserveTest()
     {
-        var comp = Context.RenderComponent<Tests.Blazor.Views.Pages.Components.Panels.ObservableElement>();
-        comp.Find("h2").ToMarkup().Should().NotContain("on-screen");
-        comp.Find("h3").ToMarkup().Should().NotContain("on-screen");
+        var comp = Context.Render<Tests.Blazor.Views.Pages.Components.Panels.ObservableElement>();
+        comp.Find("h2").OuterHtml.Should().NotContain("on-screen");
+        comp.Find("h3").OuterHtml.Should().NotContain("on-screen");
 
         var buttons = comp.FindAll("button");
         buttons.Should().HaveCount(4); //should include mudFab inside MudScrollToTop

@@ -13,7 +13,7 @@ public class Navigator : BunitTest
     [Test]
     public async Task NavigationTest()
     {
-        var comp = Context.RenderComponent<Tests.Blazor.Views.Pages.Components.Panels.Navigator>();
+        var comp = Context.Render<Tests.Blazor.Views.Pages.Components.Panels.Navigator>();
         comp.Markup.Should().Contain("Page A");
         comp.Markup.Should().Contain("Next");
 

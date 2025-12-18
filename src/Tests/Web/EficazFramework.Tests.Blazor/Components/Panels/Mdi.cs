@@ -12,7 +12,7 @@ public class Mdi : BunitTest
     [Test]
     public void RunPublicApplicationTest()
     {
-        var comp = Context.RenderComponent<Tests.Blazor.Views.Pages.Components.Panels.Mdi>();
+        var comp = Context.Render<Tests.Blazor.Views.Pages.Components.Panels.Mdi>();
         var host = comp.FindComponent<EficazFramework.Components.MdiHost>().Instance;
 
         host.CurrentSection.Should().Be(0);

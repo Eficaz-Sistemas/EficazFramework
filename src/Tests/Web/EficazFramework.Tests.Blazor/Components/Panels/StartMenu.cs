@@ -14,7 +14,7 @@ public class StartMenu : BunitTest
     [Test]
     public async Task BaseTest()
     {
-        var comp = Context.RenderComponent<Tests.Blazor.Views.Pages.Components.Panels.StartMenu>();
+        var comp = Context.Render<Tests.Blazor.Views.Pages.Components.Panels.StartMenu>();
         comp.Should().NotBeNull();
         comp.Instance.Should().NotBeNull();
 
@@ -37,7 +37,7 @@ public class StartMenu : BunitTest
     [Test]
     public void ButtonTest()
     {
-        var comp = Context.RenderComponent<Tests.Blazor.Views.Pages.Components.Panels.StartMenu>();
+        var comp = Context.Render<Tests.Blazor.Views.Pages.Components.Panels.StartMenu>();
         var obj = comp.FindComponent<EficazFramework.Components.StartMenu>();
 
         var button = comp.Find("button.ef-mdi-buttons-toolbar");
@@ -53,7 +53,7 @@ public class StartMenu : BunitTest
     [Test]
     public async Task HeaderTest()
     {
-        var comp = Context.RenderComponent<Tests.Blazor.Views.Pages.Components.Panels.StartMenu>();
+        var comp = Context.Render<Tests.Blazor.Views.Pages.Components.Panels.StartMenu>();
         var obj = comp.FindComponent<EficazFramework.Components.StartMenu>();
         obj.Instance.ShowHeader.Should().BeTrue();
 
@@ -80,7 +80,7 @@ public class StartMenu : BunitTest
     [Test]
     public async Task FooterTest()
     {
-        var comp = Context.RenderComponent<Tests.Blazor.Views.Pages.Components.Panels.StartMenu>();
+        var comp = Context.Render<Tests.Blazor.Views.Pages.Components.Panels.StartMenu>();
         var obj = comp.FindComponent<EficazFramework.Components.StartMenu>();
         obj.Instance.ShowFooter.Should().BeTrue();
 

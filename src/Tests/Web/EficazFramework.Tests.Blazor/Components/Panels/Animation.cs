@@ -14,7 +14,7 @@ public class Animation : BunitTest
     [Test]
     public void AnimateOnRenderTest()
     {
-        var comp = Context.RenderComponent<Tests.Blazor.Views.Pages.Components.Panels.Animation>();
+        var comp = Context.Render<Tests.Blazor.Views.Pages.Components.Panels.Animation>();
         comp.Find("div.obj001")?.Attributes["style"]?.Value.Should().Contain("animation:fadeInLeft 0.5s linear 0s normal");
         comp.Find("div.obj002")?.Attributes["style"]?.Value.Should().Contain("animation:fadeIn 1s linear 0s normal");
         comp.Find("div.obj003")?.Attributes["style"]?.Value.Should().Contain("animation:fadeInDown 1.5s linear 0s normal");
@@ -24,7 +24,7 @@ public class Animation : BunitTest
     [Test]
     public async Task AnimateExplicityTest()
     {
-        var comp = Context.RenderComponent<Tests.Blazor.Views.Pages.Components.Panels.Animation>();
+        var comp = Context.Render<Tests.Blazor.Views.Pages.Components.Panels.Animation>();
         comp.Find("div.obj005")?.Attributes["style"]?.Value.Should().Be(string.Empty);
         var obj005 = comp.FindComponents<EficazFramework.Components.Animation>()[4];
         obj005.Instance.Trigger.Should().Be(Enums.AnimationTrigger.Explicity);

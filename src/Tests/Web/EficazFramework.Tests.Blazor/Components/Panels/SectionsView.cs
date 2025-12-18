@@ -14,7 +14,7 @@ public class SectionsView : BunitTest
     [Test]
     public async Task BaseTest()
     {
-        var comp = Context.RenderComponent<Tests.Blazor.Views.Pages.Components.Panels.SectionsView>();
+        var comp = Context.Render<Tests.Blazor.Views.Pages.Components.Panels.SectionsView>();
         comp.Should().NotBeNull();
         comp.Instance.Should().NotBeNull();
         
@@ -39,7 +39,7 @@ public class SectionsView : BunitTest
     [Test]
     public void ButtonTest()
     {
-        var comp = Context.RenderComponent<Tests.Blazor.Views.Pages.Components.Panels.SectionsView>();
+        var comp = Context.Render<Tests.Blazor.Views.Pages.Components.Panels.SectionsView>();
         var obj = comp.FindComponents<EficazFramework.Components.SectionsView>()[0];
 
         var button = comp.Find("button.ef-mdi-buttons-toolbar");
@@ -55,7 +55,7 @@ public class SectionsView : BunitTest
     [Test]
     public async Task SectionHandlingTest()
     {
-        var comp = Context.RenderComponent<Tests.Blazor.Views.Pages.Components.Panels.SectionsView>();
+        var comp = Context.Render<Tests.Blazor.Views.Pages.Components.Panels.SectionsView>();
         var obj = comp.FindComponents<EficazFramework.Components.SectionsView>()[0];
         await comp.InvokeAsync(() => obj.Instance.ToggleOpen());
 
