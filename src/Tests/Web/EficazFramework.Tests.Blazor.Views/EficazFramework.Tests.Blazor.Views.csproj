@@ -24,6 +24,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="10.0.1" />
     <EmbeddedResource Update="Resources\Strings\TestStrings.resx">
       <CustomToolNamespace>EficazFramework.Tests.Blazor.Views.Resources.Strings</CustomToolNamespace>
       <LastGenOutput>TestStrings.Designer.cs</LastGenOutput>
