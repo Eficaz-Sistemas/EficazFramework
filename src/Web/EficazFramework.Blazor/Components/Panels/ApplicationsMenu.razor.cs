@@ -82,11 +82,19 @@ public partial class ApplicationsMenu : MudBlazor.MudComponentBase
     private IEnumerable<IGrouping<string, IApplicationDefinition>> FilteredApplications() =>
         ItemsSource.Where(app => (app.Title ?? "").ToLower().Contains((_searchFilter ?? "").ToString().ToLower())).GroupBy(GroupingExpression).ToList();
 
-    private void MenuButtonClick(IApplicationDefinition iApp) 
+    private void MenuButtonClick(IApplicationDefinition iApp, GroupApplicationDefinition? gMainApp = null) 
     {
         if (iApp is ApplicationDefinition app)
+        {
             SelectionCallBack?.Invoke(app);
+            gMainApp?.IsExpanded = false;
+        }
         else if (iApp is GroupApplicationDefinition gApp)
-            gApp.IsExpanded = !gApp.IsExpanded;
+            ToggleMenuButton(gApp);
+    }
+
+    private void ToggleMenuButton(GroupApplicationDefinition gApp)
+    {
+        gApp.IsExpanded = !gApp.IsExpanded;
     }
 }
