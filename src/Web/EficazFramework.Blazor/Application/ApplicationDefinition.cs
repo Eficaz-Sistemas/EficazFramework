@@ -4,7 +4,7 @@ namespace EficazFramework.Application;
 
 public static class ApplicationDefinitionHelpers
 {
-    public static BlazorApplicationTarget? Blazor([NotNull] this ApplicationDefinition applicationDefinition) =>
+    public static BlazorApplicationTarget? Blazor([NotNull] this IApplicationDefinition applicationDefinition) =>
         (BlazorApplicationTarget)applicationDefinition.Targets["Blazor"];
 
 

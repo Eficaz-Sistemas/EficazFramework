@@ -71,6 +71,7 @@
 }
 
 .ef-mdi-startmenu-content {
+    display: flex;
     flex-grow: 1;
     padding: 0px !important;
     width: 100%;
@@ -91,4 +92,19 @@
     width: 48px;
     height: 48px;
     box-shadow: none;
+}
+
+.ef-application-button {
+    width: 84px;
+    height: 84px;
+}
+
+.ef-application-button-icon {
+    font-size: 2rem !important;
+}
+
+.ef-application-button-caption {
+    position: absolute;
+    bottom: 4px;
+    height: 20px;
 }

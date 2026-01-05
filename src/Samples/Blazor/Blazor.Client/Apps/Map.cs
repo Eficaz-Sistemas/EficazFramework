@@ -2,7 +2,7 @@
 
 internal static class Mapping
 {
-    internal static IEnumerable<EficazFramework.Application.ApplicationDefinition> MapApplications()
+    internal static IEnumerable<EficazFramework.Application.IApplicationDefinition> MapApplications()
     {
         var vendors = new EficazFramework.Application.ApplicationDefinition
         {
@@ -69,13 +69,28 @@ internal static class Mapping
             InitialSize = new(560, 350)
         });
 
+        var groupingTest = new EficazFramework.Application.GroupApplicationDefinition
+        {
+            Group = "Grouping Test",
+            Title = "People",
+        };
+        groupingTest.Applications.AddRange([
+                vendors,
+                customers
+        ]);
+        groupingTest.Targets.Add("Blazor", new EficazFramework.Application.BlazorApplicationTarget
+        {
+            Icon = MudBlazor.Icons.Material.Filled.People,
+        });
+
         return
         [
             vendors,
             products,
             customers,
             tags,
-            tenant
+            tenant,
+            groupingTest
         ];
     }
 }
