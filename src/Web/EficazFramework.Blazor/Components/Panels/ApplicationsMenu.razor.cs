@@ -98,7 +98,9 @@ public partial class ApplicationsMenu : MudBlazor.MudComponentBase
         if (iApp is ApplicationDefinition app)
         {
             SelectionCallBack?.Invoke(app);
-            gMainApp?.IsExpanded = false;
+
+            if (gMainApp is not null)
+                gMainApp.IsExpanded = false;
         }
         else if (iApp is GroupApplicationDefinition gApp)
             ToggleMenuButton(gApp);
