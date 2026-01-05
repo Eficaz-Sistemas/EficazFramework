@@ -169,7 +169,7 @@ public sealed class ApplicationInstance : ApplicationDefinition, INotifyProperty
     }
     
     public static ApplicationInstance Create(ApplicationDefinition fromDefinition, long forSection) =>
-        new (fromDefinition, forSection) { SessionID = forSection };
+        new (fromDefinition, forSection);
 
     public System.Guid Id { get; }
 
