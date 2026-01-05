@@ -79,8 +79,19 @@ public partial class ApplicationsMenu : MudBlazor.MudComponentBase
     /// <summary>
     /// Get's the filtered application list for Menu. Uses the AppSearchFilter as literal.
     /// </summary>
-    private IEnumerable<IGrouping<string, IApplicationDefinition>> FilteredApplications() =>
-        ItemsSource.Where(app => (app.Title ?? "").ToLower().Contains((_searchFilter ?? "").ToString().ToLower())).GroupBy(GroupingExpression).ToList();
+    private IList<IGrouping<string, IApplicationDefinition>> FilteredApplications()
+    {
+        if (string.IsNullOrEmpty(_searchFilter))
+        {
+            return [.. ItemsSource.Where(app => app.IsEnabled).GroupBy(GroupingExpression)];
+        }
+        else
+        {
+            return [.. ItemsSource.Where(app => (app.Title ?? "").Contains((_searchFilter ?? "").ToString(), StringComparison.CurrentCultureIgnoreCase) ||
+                                        ((app as GroupApplicationDefinition)?.Applications.Any((sApp) => (sApp.Title ?? "").Contains((_searchFilter ?? "").ToString(), StringComparison.CurrentCultureIgnoreCase)) ?? false))
+                                  .GroupBy(GroupingExpression)];
+        }
+    }
 
     private void MenuButtonClick(IApplicationDefinition iApp, GroupApplicationDefinition? gMainApp = null) 
     {

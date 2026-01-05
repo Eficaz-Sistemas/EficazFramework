@@ -94,6 +94,10 @@
     box-shadow: none;
 }
 
+.ef-tabs-startmenu > .mud-tab-panel {
+    display: contents;
+}
+
 .ef-application-button {
     width: 84px;
     height: 84px;

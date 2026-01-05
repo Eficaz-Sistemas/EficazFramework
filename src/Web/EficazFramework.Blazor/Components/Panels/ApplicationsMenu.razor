@@ -107,31 +107,23 @@
                         <NestedList>
                             @foreach (var iApp in group)
                             {
-                                <MudBlazor.MudListItem Icon="@(iApp.Blazor()?.Icon?.ToString())"
-                                                       Text="@iApp.TooltipTilte"
-                                                       OnClick="() => MenuButtonClick(iApp)" />
-                                @if (iApp is GroupApplicationDefinition gApp)
+                                @if (iApp is ApplicationDefinition app)
                                 {
-                                    <MudBlazor.MudPopover Open="gApp.IsExpanded" 
-                                                          AnchorOrigin="MudBlazor.Origin.CenterCenter"
-                                                            TransformOrigin="MudBlazor.Origin.TopRight">
-                                        <MudBlazor.MudText Typo="MudBlazor.Typo.body1"
-                                                           Class="mx-1 pb-1 px-2">
-                                            @gApp.LongTitle
-                                        </MudBlazor.MudText>
-                                        <MudBlazor.MudList T="IGrouping<string, ApplicationDefinition>"
-                                                           Class="py-0">
-                                            @foreach (var subApp in gApp.Applications)
-                                            {
-                                                <MudBlazor.MudListItem Icon="@(subApp.Blazor()?.Icon?.ToString())"
-                                                                       Text="@subApp.TooltipTilte"
-                                                                       OnClick="() => MenuButtonClick(subApp, gApp)" />
-                                            }
-                                        </MudBlazor.MudList>
-                                    </MudBlazor.MudPopover>
-                                    <MudBlazor.MudOverlay Visible="gApp.IsExpanded"
-                                                          LockScroll
-                                                          OnClick="@(() => ToggleMenuButton(gApp))" />
+                                    <MudBlazor.MudListItem Icon="@(app.Blazor()?.Icon?.ToString())"
+                                                           Text="@app.TooltipTilte"
+                                                           OnClick="() => MenuButtonClick(app)" />
+                                }
+                                else if (iApp is GroupApplicationDefinition gApp)
+                                {
+                                    @foreach (var subApp in gApp.Applications)
+                                    {
+                                        @if ((subApp.Title ?? "").Contains(_searchFilter, StringComparison.InvariantCultureIgnoreCase))
+                                        {
+                                            <MudBlazor.MudListItem Icon="@(subApp.Blazor()?.Icon?.ToString())"
+                                                                   Text="@subApp.TooltipTilte"
+                                                                   OnClick="() => MenuButtonClick(subApp)" />
+                                        }
+                                    }
                                 }
                             }
                         </NestedList>
