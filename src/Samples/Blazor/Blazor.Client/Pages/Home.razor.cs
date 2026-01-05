@@ -12,8 +12,8 @@ public partial class Home
     private EficazFramework.Components.MdiHost? _mdiHost;
     private EficazFramework.Components.StartMenu? _startMenu;
 
-    private IEnumerable<EficazFramework.Application.ApplicationDefinition> _mainApps = [];
-    private IEnumerable<EficazFramework.Application.ApplicationDefinition> _uiApps = [];
+    private IEnumerable<EficazFramework.Application.IApplicationDefinition> _mainApps = [];
+    private IEnumerable<EficazFramework.Application.IApplicationDefinition> _uiApps = [];
 
     protected override Task OnAfterRenderAsync(bool firstRender)
     {
