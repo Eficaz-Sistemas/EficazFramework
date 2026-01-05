@@ -35,24 +35,56 @@
                 <MudBlazor.MudGrid Class="mx-1 ml-0 mb-4 pr-6"
                                    Spacing="2"
                                    Justify="MudBlazor.Justify.FlexStart">
-                    @foreach (var app in group)
+                    @foreach (var iApp in group)
                     {
                         <MudBlazor.MudItem>
                             <MudBlazor.MudButton Variant="@MudBlazor.Variant.Filled"
                                                  Color="@MudBlazor.Color.Primary"
                                                  Size="@MudBlazor.Size.Large"
                                                  Class="pt-5 pb-7 ef-application-button"
-                                                 OnClick="() => SelectionCallBack?.Invoke(app)">
-                                <MudBlazor.MudIcon Icon="@(app.Blazor()?.Icon?.ToString())"
+                                                 OnClick="() => MenuButtonClick(iApp)">
+                                <MudBlazor.MudIcon Icon="@(iApp.Blazor()?.Icon?.ToString())"
                                                    Class="ef-application-button-icon" />
                                 <MudBlazor.MudText Typo="MudBlazor.Typo.caption"
                                                    Align="MudBlazor.Align.Center"
                                                    Class="mt-n3 ef-application-button-caption"
                                                    Style="">
-                                    @app.Title
+                                    @iApp.Title
                                 </MudBlazor.MudText>
                             </MudBlazor.MudButton>
                         </MudBlazor.MudItem>
+                        @if(iApp is GroupApplicationDefinition gApp)
+                        {
+                            <MudBlazor.MudPopover Open="gApp.IsExpanded">
+                                <MudBlazor.MudText Typo="MudBlazor.Typo.body1"
+                                                   Class="mx-1 pb-1 px-2">
+                                    @gApp.LongTitle
+                                </MudBlazor.MudText>
+                                <MudBlazor.MudGrid Class="mx-1 ml-0 mb-4 pr-6"
+                                                   Spacing="2"
+                                                   Justify="MudBlazor.Justify.FlexStart">
+                                    @foreach (var subApp in gApp.Applications)
+                                    {
+                                        <MudBlazor.MudItem>
+                                            <MudBlazor.MudButton Variant="@MudBlazor.Variant.Filled"
+                                                                 Color="@MudBlazor.Color.Primary"
+                                                                 Size="@MudBlazor.Size.Large"
+                                                                 Class="pt-5 pb-7 ef-application-button"
+                                                                 OnClick="() => MenuButtonClick(subApp)">
+                                                <MudBlazor.MudIcon Icon="@(subApp.Blazor()?.Icon?.ToString())"
+                                                                   Class="ef-application-button-icon" />
+                                                <MudBlazor.MudText Typo="MudBlazor.Typo.caption"
+                                                                   Align="MudBlazor.Align.Center"
+                                                                   Class="mt-n3 ef-application-button-caption"
+                                                                   Style="">
+                                                    @subApp.Title
+                                                </MudBlazor.MudText>
+                                            </MudBlazor.MudButton>
+                                        </MudBlazor.MudItem>
+                                    }
+                                </MudBlazor.MudGrid>
+                            </MudBlazor.MudPopover>
+                        }
                     }
                 </MudBlazor.MudGrid>
             }
@@ -66,11 +98,29 @@
                     <MudBlazor.MudListItem Text="@group.Key"
                                            Expanded>
                         <NestedList>
-                            @foreach (var app in group)
+                            @foreach (var iApp in group)
                             {
-                                <MudBlazor.MudListItem Icon="@(app.Blazor()?.Icon?.ToString())"
-                                                       Text="@app.TooltipTilte"
-                                                       OnClick="() => SelectionCallBack?.Invoke(app)"/>
+                                <MudBlazor.MudListItem Icon="@(iApp.Blazor()?.Icon?.ToString())"
+                                                       Text="@iApp.TooltipTilte"
+                                                       OnClick="() => MenuButtonClick(iApp)" />
+                                @if (iApp is GroupApplicationDefinition gApp)
+                                {
+                                    <MudBlazor.MudPopover Open="gApp.IsExpanded">
+                                        <MudBlazor.MudText Typo="MudBlazor.Typo.body1"
+                                                           Class="mx-1 pb-1 px-2">
+                                            @gApp.LongTitle
+                                        </MudBlazor.MudText>
+                                        <MudBlazor.MudList T="IGrouping<string, ApplicationDefinition>"
+                                                           Class="py-0">
+                                            @foreach (var subApp in gApp.Applications)
+                                            {
+                                                <MudBlazor.MudListItem Icon="@(subApp.Blazor()?.Icon?.ToString())"
+                                                                       Text="@subApp.TooltipTilte"
+                                                                       OnClick="() => MenuButtonClick(subApp)" />
+                                            }
+                                        </MudBlazor.MudList>
+                                    </MudBlazor.MudPopover>
+                                }
                             }
                         </NestedList>
                     </MudBlazor.MudListItem>

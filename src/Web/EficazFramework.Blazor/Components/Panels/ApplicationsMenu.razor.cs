@@ -27,13 +27,19 @@ public partial class ApplicationsMenu : MudBlazor.MudComponentBase
     /// <summary>
     /// Aplication source for menu.
     /// </summary>
-    [Parameter] public IEnumerable<ApplicationDefinition> ItemsSource { get; set; } = [];
+    [Parameter] public IEnumerable<IApplicationDefinition> ItemsSource { get; set; } = [];
 
 
     /// <summary>
     /// Raised when Application's menu button is clicked.
     /// </summary>
     [Parameter] public Action<ApplicationDefinition>? SelectionCallBack { get; set; } = null;
+
+    /// <summary>
+    /// The function to group applications. Default is by <see cref="ApplicationDefinition.Group"/> property.
+    /// Since C# 14 you can use Exntesion Properties here and have custom grouping logic.
+    /// </summary>
+    [Parameter] public Func<IApplicationDefinition, string> GroupingExpression { get; set; } = app => app.Group ?? "";
 
 
     private bool _isCompact = false;
@@ -73,8 +79,14 @@ public partial class ApplicationsMenu : MudBlazor.MudComponentBase
     /// <summary>
     /// Get's the filtered application list for Menu. Uses the AppSearchFilter as literal.
     /// </summary>
-    private IEnumerable<IGrouping<string, ApplicationDefinition>> FilteredApplications() =>
-        ItemsSource.Where(app => (app.Title ?? "").ToLower().Contains((_searchFilter ?? "").ToString().ToLower())).GroupBy(app => app.Group ?? "").ToList();
+    private IEnumerable<IGrouping<string, IApplicationDefinition>> FilteredApplications() =>
+        ItemsSource.Where(app => (app.Title ?? "").ToLower().Contains((_searchFilter ?? "").ToString().ToLower())).GroupBy(GroupingExpression).ToList();
 
-
+    private void MenuButtonClick(IApplicationDefinition iApp) 
+    {
+        if (iApp is ApplicationDefinition app)
+            SelectionCallBack?.Invoke(app);
+        else if (iApp is GroupApplicationDefinition gApp)
+            gApp.IsExpanded = !gApp.IsExpanded;
+    }
 }
