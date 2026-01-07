@@ -1,9 +1,9 @@
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <TargetFrameworks>net8.0;net9.0</TargetFrameworks>
-    <Version>6.4.17</Version>
-    <AssemblyVersion>6.4.17.0</AssemblyVersion>
-    <FileVersion>6.4.17.0</FileVersion>
+    <Version>6.4.18</Version>
+    <AssemblyVersion>6.4.18.0</AssemblyVersion>
+    <FileVersion>6.4.18.0</FileVersion>
     <RootNamespace>EficazFramework</RootNamespace>
     <Company>Eficaz Sistemas de Gestão e Inteligência Tributária</Company>
     <Copyright>Copyright ©  2025. Eficaz Sistemas de Gestão e Inteligência Tributária Ltda.</Copyright>
