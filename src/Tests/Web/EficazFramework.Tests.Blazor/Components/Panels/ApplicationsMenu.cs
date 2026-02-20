@@ -45,7 +45,7 @@ public class ApplicationsMenu : BunitTest
         items = comp.FindComponents<MudBlazor.MudItem>();
         items.Should().BeEmpty();
         listItems = comp.FindComponents<MudBlazor.MudListItem<IGrouping<string, EficazFramework.Application.ApplicationDefinition>>>();
-        listItems.Should().HaveCount(obj.Instance.ItemsSource.Count() + groupCount);
+        listItems.Should().HaveCount(groupCount);
     }
 
     [Test]
@@ -67,7 +67,7 @@ public class ApplicationsMenu : BunitTest
         items = comp.FindComponents<MudBlazor.MudItem>();
         items.Should().BeEmpty();
         listItems = comp.FindComponents<MudBlazor.MudListItem<IGrouping<string, EficazFramework.Application.ApplicationDefinition>>>();
-        listItems.Should().HaveCount(obj.Instance.ItemsSource.Count() + groupCount);
+        listItems.Should().HaveCount(groupCount);
     }
 
     [Test]

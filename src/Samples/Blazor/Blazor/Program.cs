@@ -34,7 +34,7 @@ app.UseHttpsRedirection();
 
 app.MapApis();
 
-app.UseStaticFiles();
+app.MapStaticAssets();
 app.UseAntiforgery();
 
 app.UseRequestLocalization(new RequestLocalizationOptions()
