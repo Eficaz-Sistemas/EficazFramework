@@ -1,15 +1,15 @@
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <TargetFrameworks>net9.0;net10.0</TargetFrameworks>
-    <Version>6.4.18</Version>
-    <AssemblyVersion>6.4.18.0</AssemblyVersion>
-    <FileVersion>6.4.18.0</FileVersion>
+    <Version>6.5.0</Version>
+	<AssemblyVersion>6.5.0.0</AssemblyVersion>
+	<AssemblyVersion>6.5.0.0</AssemblyVersion>
     <RootNamespace>EficazFramework</RootNamespace>
     <SignAssembly>true</SignAssembly>
     <AssemblyOriginatorKeyFile>EfCore.snk</AssemblyOriginatorKeyFile>
     <DelaySign>false</DelaySign>
     <Company>Eficaz Sistemas de Gestão e Inteligência Tributária</Company>
-    <Copyright>Copyright ©  2025. Eficaz Sistemas de Gestão e Inteligência Tributária Ltda.</Copyright>
+    <Copyright>Copyright ©  2026. Eficaz Sistemas de Gestão e Inteligência Tributária Ltda.</Copyright>
     <Description>Implementa novos tipos de Coleções e provê algumas extensões.</Description>
     <RepositoryUrl>https://github.com/Eficaz-Sistemas/EficazFramework</RepositoryUrl>
     <RepositoryType>git</RepositoryType>

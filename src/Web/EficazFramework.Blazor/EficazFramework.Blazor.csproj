@@ -5,13 +5,13 @@
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
     <AddRazorSupportForMvc>true</AddRazorSupportForMvc>
-    <Version>6.4.18</Version>
-    <AssemblyVersion>6.4.18.0</AssemblyVersion>
-    <FileVersion>6.4.18.0</FileVersion>
+    <Version>6.5.0</Version>
+    <AssemblyVersion>6.5.0.0</AssemblyVersion>
+    <FileVersion>6.5.0.0</FileVersion>
     <RootNamespace>EficazFramework</RootNamespace>
     <Authors>Eficaz Sistemas</Authors>
     <Company>Eficaz Sistemas de Gestão e Inteligência Tributária</Company>
-    <Copyright>Copyright ©  2025. Eficaz Sistemas de Gestão e Inteligência Tributária Ltda.</Copyright>
+    <Copyright>Copyright ©  2026. Eficaz Sistemas de Gestão e Inteligência Tributária Ltda.</Copyright>
     <PackageIcon>logo.png</PackageIcon>
     <PackageIconUrl>https://efsuporte.blob.core.windows.net/portal/EficazFramework.png</PackageIconUrl>
     <RepositoryUrl>https://github.com/Eficaz-Sistemas/EficazFramework</RepositoryUrl>
