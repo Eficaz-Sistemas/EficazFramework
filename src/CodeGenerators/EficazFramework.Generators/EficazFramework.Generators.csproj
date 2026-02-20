@@ -6,17 +6,17 @@
 	<IsRoslynComponent>true</IsRoslynComponent>
 	<GeneratePackageOnBuild>True</GeneratePackageOnBuild>
 	<IncludeBuildOutput>false</IncludeBuildOutput>
-	<AssemblyVersion>6.4.2.0</AssemblyVersion>
-	<FileVersion>6.4.2.0</FileVersion>
+	<AssemblyVersion>6.5.0.0</AssemblyVersion>
+	<AssemblyVersion>6.5.0.0</AssemblyVersion>
 	<NeutralLanguage>pt-BR</NeutralLanguage>
 	<RepositoryUrl>https://github.com/Eficaz-Sistemas/EficazFramework</RepositoryUrl>
 	<RepositoryType>git</RepositoryType>
 	<PackageIcon>logo.png</PackageIcon>
 	<PackageIconUrl>https://efsuporte.blob.core.windows.net/portal/EficazFramework.png</PackageIconUrl>
-	<Copyright>Copyright ©  2025. Eficaz Sistemas de Gestão e Inteligência Tributária Ltda.</Copyright>
+	<Copyright>Copyright ©  2026. Eficaz Sistemas de Gestão e Inteligência Tributária Ltda.</Copyright>
 	<Description>Roslyn code generators for EficazFramework.</Description>
 	<Company>Eficaz Sistemas de Gestão e Inteligência Tributária</Company>
-	<Version>6.4.2-preview001</Version>
+	<Version>6.5.0</Version>
 	<SignAssembly>True</SignAssembly>
 	<AssemblyOriginatorKeyFile>EfCore.snk</AssemblyOriginatorKeyFile>
 	<EnforceExtendedAnalyzerRules>true</EnforceExtendedAnalyzerRules>

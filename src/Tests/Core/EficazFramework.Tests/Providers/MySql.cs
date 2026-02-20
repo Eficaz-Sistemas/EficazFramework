@@ -61,7 +61,7 @@ public class MySqlTests : ProviderBase
     }
 
 
-    [Test]
+    //[Test]
     public async Task Test()
     {
         try

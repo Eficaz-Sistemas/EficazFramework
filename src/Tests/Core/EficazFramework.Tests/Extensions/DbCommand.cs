@@ -1,6 +1,6 @@
 ﻿using AwesomeAssertions;
 using NUnit.Framework;
-using System.Data.SqlClient;
+using Microsoft.Data.SqlClient;
 
 namespace EficazFramework.Extensions;
 
