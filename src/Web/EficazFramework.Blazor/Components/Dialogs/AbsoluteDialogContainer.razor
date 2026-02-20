@@ -11,7 +11,7 @@
                           Visible
                           Class="@BackgroundClassname"
                           DarkBackground
-                          Modal>
+                          Modal/>
     <div @ref="_dialogContainerReference" role="dialog" class="@Classname" style="@Style" tabindex="-1">
         <div class="@TitleClassname">
             @if (TitleContent is null)
@@ -24,6 +24,5 @@
             }
         </div>
         @ChildContent
-    </div></MudBlazor.MudOverlay>
-
+    </div>
 </div>
