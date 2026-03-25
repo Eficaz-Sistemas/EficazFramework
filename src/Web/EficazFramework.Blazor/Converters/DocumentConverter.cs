@@ -3,7 +3,7 @@ using System.Globalization;
 
 namespace EficazFramework.Converters;
 
-internal class DocumentConverter<T> : MudBlazor.DefaultConverter<T>
+internal class DocumentConverter<T> : MudBlazor.IReversibleConverter<T, string>, MudBlazor.ICultureAwareConverter
 {
     internal DocumentConverter()
     {
@@ -11,41 +11,24 @@ internal class DocumentConverter<T> : MudBlazor.DefaultConverter<T>
         _setCulture.NumberFormat.PercentGroupSeparator = "";
         _setCulture.NumberFormat.CurrencyGroupSeparator = "";
         _setCulture.NumberFormat.NumberGroupSeparator = "";
-
-        SetFunc = OnSet;
-        GetFunc = OnGet;
+        Culture = () => _setCulture;
     }
 
     private readonly CultureInfo _setCulture;
     public Enums.Documentos DocumentType { get; set; } = Enums.Documentos.CNPJ_CPF;
     public string UF { get; set; } = "EX";
+    public Func<CultureInfo> Culture { get; set; }
+    public Func<string?> Format { get; set; }
 
-    private T OnGet(string value)
+    public string Convert(T? input)
     {
-        try
-        {
-            return DocumentType switch
-            {
-                Enums.Documentos.eMail => (T)(object)value,
-                _ => (T)(object)value.RemoveTextMask()
-            };
-        }
-        catch (FormatException e)
-        {
-            UpdateGetError(e.Message);
-            return default;
-        }
-    }
-
-    private string OnSet(T value)
-    {
-        if (value == null)
+        if (input == null)
             return null;
 
-        string baseStr = value!.ToString()!.RemoveTextMask();
+        string baseStr = input!.ToString()!.RemoveTextMask();
 
-        if (!decimal.TryParse(baseStr, out decimal test))
-            return value.ToString();
+        if (!decimal.TryParse(baseStr, out decimal _))
+            return input.ToString();
 
         return DocumentType switch
         {
@@ -57,4 +40,10 @@ internal class DocumentConverter<T> : MudBlazor.DefaultConverter<T>
             _ => "",
         };
     }
+
+    public T ConvertBack(string input) =>
+        DocumentType switch
+        {
+            Enums.Documentos.eMail => (T)(object)input,
+            _ => (T)(object)input.RemoveTextMask()};
 }
