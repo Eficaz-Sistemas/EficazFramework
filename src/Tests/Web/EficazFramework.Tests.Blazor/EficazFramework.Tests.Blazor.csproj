@@ -15,19 +15,19 @@
 
   <ItemGroup>
     <PackageReference Include="AwesomeAssertions" Version="9.4.0" />
-    <PackageReference Include="bunit" Version="2.5.3" />
-    <PackageReference Include="coverlet.msbuild" Version="8.0.0">
+    <PackageReference Include="bunit" Version="2.6.2" />
+    <PackageReference Include="coverlet.msbuild" Version="8.0.1">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
-    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="18.0.1" />
-    <PackageReference Include="NUnit" Version="4.5.0" />
-    <PackageReference Include="NUnit3TestAdapter" Version="6.1.0" />
-    <PackageReference Include="coverlet.collector" Version="8.0.0">
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="18.3.0" />
+    <PackageReference Include="NUnit" Version="4.5.1" />
+    <PackageReference Include="NUnit3TestAdapter" Version="6.2.0" />
+    <PackageReference Include="coverlet.collector" Version="8.0.1">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
-    <PackageReference Include="ReportGenerator" Version="5.5.1" />
+    <PackageReference Include="ReportGenerator" Version="5.5.4" />
   </ItemGroup>
 
   <ItemGroup>
@@ -36,13 +36,13 @@
   </ItemGroup>
 
 	<ItemGroup Condition=" '$(TargetFramework)' == 'net9.0' ">
-		<PackageReference Include="Microsoft.AspNetCore.Components" Version="9.0.13" />
-		<PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="9.0.13" />
+		<PackageReference Include="Microsoft.AspNetCore.Components" Version="9.0.14" />
+		<PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="9.0.14" />
 	</ItemGroup>
 
 	<ItemGroup Condition=" '$(TargetFramework)' == 'net10.0' ">
-		<PackageReference Include="Microsoft.AspNetCore.Components" Version="10.0.3" />
-		<PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="10.0.3" />
+		<PackageReference Include="Microsoft.AspNetCore.Components" Version="10.0.5" />
+		<PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="10.0.5" />
 	</ItemGroup>
 
 </Project>

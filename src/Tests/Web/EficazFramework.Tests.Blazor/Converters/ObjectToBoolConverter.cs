@@ -10,14 +10,11 @@ public class ObjectToBoolConverterTests
     public void SetValueTest()
     {
         EficazFramework.Converters.ObjectToBoolConverter converter = new();
-        converter.Set(true).Should().BeTrue();
-        converter.Set(false).Should().BeFalse();
+        ((bool)converter.ConvertBack(true)!).Should().BeTrue();
+        ((bool)converter.ConvertBack(false)!).Should().BeFalse();
         bool? nullable = true;
-        converter.Set(nullable).Should().BeTrue();
+        ((bool)converter.ConvertBack(nullable)!).Should().BeTrue();
         nullable = false;
-        converter.Set(nullable).Should().BeFalse();
-
-        object anytype = new ObjectToBoolConverter();
-        converter.Set(anytype).Should().BeNull();
+        ((bool)converter.ConvertBack(nullable)!).Should().BeFalse();
     }
 }

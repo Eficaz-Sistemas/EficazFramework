@@ -112,7 +112,7 @@ public partial class MdiWindow: MudBlazor.MudComponentBase
 
         if(_snackbarService is null)
         {
-            _snackbarService = new SnackbarService(NavigationManager!);
+            _snackbarService = new SnackbarService(NavigationManager!, TimeProvider.System);
             ApplicationInstance.Services[SNACKBARSVC] = _snackbarService;
         }
     }

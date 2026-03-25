@@ -8,6 +8,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using MudBlazor.Extensions;
 
 namespace EficazFramework.Components.DataViews;
 
@@ -88,13 +89,13 @@ public class ExpressionBuilder : BunitTest
         // property column
         var selector = entryRow.FindComponent<MudBlazor.MudSelect<Expressions.ExpressionProperty>>();
         selector.Should().NotBeNull();
-        selector.Instance.SelectedValues.Should().HaveCount(0);
-        selector.Instance.Value.Should().BeNull();
+        selector.Instance.GetState(s => s.SelectedValues).Should().HaveCount(0);
+        selector.Instance.GetState(s => s.Value).Should().BeNull();
 
         // operator column
         var selectorOp = entryRow.FindComponent<MudBlazor.MudSelect<Enums.CompareMethod>>();
         selectorOp.Should().NotBeNull();
-        selectorOp.Instance.SelectedValues.Should().HaveCount(0);
+        selectorOp.Instance.GetState(s => s.SelectedValues).Should().HaveCount(0);
 
         // operator column
         var editorCl = entryRow.FindComponents<MudBlazor.MudTd>().Last();
@@ -104,29 +105,29 @@ public class ExpressionBuilder : BunitTest
         // select 'ID' property
         await comp.InvokeAsync(() => selector.Instance.SelectOption(viewModel.Properties.First()));
         viewModel.Items.First().SelectedProperty.Should().NotBeNull();
-        selector.Instance.Text.Should().Be(viewModel.Items.First().SelectedProperty.DisplayName); // 'Codigo'
+        selector.Instance.GetState(s => s.Text).Should().Be(viewModel.Items.First().SelectedProperty.DisplayName); // 'Codigo'
         viewModel.Items[0].Operator.Should().Be(viewModel.Properties[0].DefaultOperator);
         viewModel.Items[0].Value1.Should().Be(viewModel.Properties[0].DefaultValue1);
         viewModel.Items[0].Value2.Should().Be(viewModel.Properties[0].DefaultValue2);
-        selectorOp.Instance.Value.Should().Be(viewModel.Items[0].Operator);
-        var textField = editorCl.FindComponent<EficazFramework.Components.NumberField<object>>();
+        selectorOp.Instance.GetState(s => s.Value).Should().Be(viewModel.Items[0].Operator);
+        var textField = editorCl.FindComponent<EficazFramework.Components.NumberField<decimal>>();
         textField.Should().NotBeNull();
-        textField.Instance.Value.Should().Be(viewModel.Items[0].Value1);
+        textField.Instance.GetState(s => s.Value).Should().Be(viewModel.Items[0].Value1AsNumeric);
 
         // two-way binding test
         textField.Find("input").Change(5);
-        comp.WaitForAssertion(() => textField.Instance.Text.Should().Be("5"));
-        comp.WaitForAssertion(() => textField.Instance.Value.Should().Be(5));
+        comp.WaitForAssertion(() => textField.Instance.GetState(s => s.Text).Should().Be("5"));
+        comp.WaitForAssertion(() => textField.Instance.GetState(s => s.Value).Should().Be(5));
         viewModel.Items[0].Value1.Should().Be(5);
 
         // select CreatedIn property:
         await comp.InvokeAsync(() => selector.Instance.SelectOption(viewModel.Properties[2]));
-        selector.Instance.Text.Should().Be("Aniversário");
-        selector.Instance.Text.Should().Be(viewModel.Items.First().SelectedProperty.DisplayName); // 'Aniversário'
+        selector.Instance.GetState(s => s.Text).Should().Be("Aniversário");
+        selector.Instance.GetState(s => s.Text).Should().Be(viewModel.Items.First().SelectedProperty.DisplayName); // 'Aniversário'
         viewModel.Items[0].Operator.Should().Be(viewModel.Properties[2].DefaultOperator);
         viewModel.Items[0].Value1.Should().Be(viewModel.Properties[2].DefaultValue1);
         viewModel.Items[0].Value2.Should().Be(viewModel.Properties[2].DefaultValue2);
-        selectorOp.Instance.Value.Should().Be(viewModel.Items[0].Operator);
+        selectorOp.Instance.GetState(s => s.Value).Should().Be(viewModel.Items[0].Operator);
 
         var dateRangeField = editorCl.FindComponent<MudBlazor.MudDateRangePicker>();
         dateRangeField.Should().NotBeNull();
@@ -141,21 +142,21 @@ public class ExpressionBuilder : BunitTest
 
         // select Name property:
         await comp.InvokeAsync(() => selector.Instance.SelectOption(viewModel.Properties[1]));
-        selector.Instance.Text.Should().Be("Nome");
-        selector.Instance.Text.Should().Be(viewModel.Items.First().SelectedProperty.DisplayName); // 'Nome'
+        selector.Instance.GetState(s => s.Text).Should().Be("Nome");
+        selector.Instance.GetState(s => s.Text).Should().Be(viewModel.Items.First().SelectedProperty.DisplayName); // 'Nome'
         viewModel.Items[0].Operator.Should().Be(viewModel.Properties[1].DefaultOperator);
         viewModel.Items[0].Value1.Should().Be(viewModel.Properties[1].DefaultValue1);
         viewModel.Items[0].Value2.Should().Be(viewModel.Properties[1].DefaultValue2);
-        selectorOp.Instance.Value.Should().Be(viewModel.Items[0].Operator);
+        selectorOp.Instance.GetState(s => s.Value).Should().Be(viewModel.Items[0].Operator);
 
         var textFieldStr = editorCl.FindComponent<MudBlazor.MudTextField<object>>();
         textFieldStr.Should().NotBeNull();
-        textFieldStr.Instance.Value.Should().Be((string)viewModel.Items[0].Value1);
+        textFieldStr.Instance.GetState(s => s.Value).Should().Be((string)viewModel.Items[0].Value1);
 
         // two-way binding test
         textFieldStr.Find("input").Change("Miguel");
-        comp.WaitForAssertion(() => textFieldStr.Instance.Text.Should().Be("Miguel"));
-        comp.WaitForAssertion(() => textFieldStr.Instance.Value.Should().Be("Miguel"));
+        comp.WaitForAssertion(() => textFieldStr.Instance.GetState(s => s.Text).Should().Be("Miguel"));
+        comp.WaitForAssertion(() => textFieldStr.Instance.GetState(s => s.Value).Should().Be("Miguel"));
         viewModel.Items[0].Value1.Should().Be("Miguel");
 
         var table = comp.FindComponent<EficazFramework.Components.Primitives.ExpressionBuilderTable>();
@@ -164,16 +165,16 @@ public class ExpressionBuilder : BunitTest
 
         // select Related property:
         await comp.InvokeAsync(() => selector.Instance.SelectOption(viewModel.Properties[8]));
-        selector.Instance.Text.Should().Be("Relacionado");
-        selector.Instance.Text.Should().Be(viewModel.Items.First().SelectedProperty.DisplayName); // 'Relacionado'
+        selector.Instance.GetState(s => s.Text).Should().Be("Relacionado");
+        selector.Instance.GetState(s => s.Text).Should().Be(viewModel.Items.First().SelectedProperty.DisplayName); // 'Relacionado'
         viewModel.Items[0].Operator.Should().Be(viewModel.Properties[8].DefaultOperator);
         viewModel.Items[0].Value1.Should().Be(viewModel.Properties[8].DefaultValue1);
         viewModel.Items[0].Value2.Should().Be(viewModel.Properties[8].DefaultValue2);
-        selectorOp.Instance.Value.Should().Be(viewModel.Items[0].Operator);
+        selectorOp.Instance.GetState(s => s.Value).Should().Be(viewModel.Items[0].Operator);
 
         var autoCompl = editorCl.FindComponent<MudBlazor.MudAutocomplete<object>>();
         autoCompl.Should().NotBeNull();
-        autoCompl.Instance.Value.Should().Be((string)viewModel.Items[0].Value1);
+        autoCompl.Instance.GetState(s => s.Value).Should().Be((string)viewModel.Items[0].Value1);
         await comp.InvokeAsync(() => autoCompl.Instance.FocusAsync());
 
         // disable custom expressions
@@ -195,12 +196,12 @@ public class ExpressionBuilder : BunitTest
         // property column
         selector = entryRow.FindComponent<MudBlazor.MudSelect<Expressions.ExpressionProperty>>();
         selector.Should().NotBeNull();
-        selector.Instance.SelectedValues.Should().HaveCount(0);
+        selector.Instance.GetState(s => s.SelectedValues).Should().HaveCount(0);
 
         // operator column
         selectorOp = entryRow.FindComponent<MudBlazor.MudSelect<Enums.CompareMethod>>();
         selectorOp.Should().NotBeNull();
-        selectorOp.Instance.SelectedValues.Should().HaveCount(0);
+        selectorOp.Instance.GetState(s => s.SelectedValues).Should().HaveCount(0);
 
         // operator column
         editorCl = entryRow.FindComponents<MudBlazor.MudTd>().Last();
@@ -209,8 +210,8 @@ public class ExpressionBuilder : BunitTest
 
         await comp.InvokeAsync(() => selector.Instance.SelectOption(viewModel.Properties[3]));
         editorCl.FindComponent<MudBlazor.MudCheckBox<object>>().Should().NotBeNull();
-        selector.Instance.Text.Should().Be("Ativo");
-        selector.Instance.Text.Should().Be(viewModel.Items.First().SelectedProperty.DisplayName); // 'Ativo'
+        selector.Instance.GetState(s => s.Text).Should().Be("Ativo");
+        selector.Instance.GetState(s => s.Text).Should().Be(viewModel.Items.First().SelectedProperty.DisplayName); // 'Ativo'
         viewModel.Items[0].Operator.Should().Be(viewModel.Properties[3].DefaultOperator);
         viewModel.Items[0].Value1.Should().Be(viewModel.Properties[3].DefaultValue1);
         viewModel.Items[0].Value2.Should().Be(viewModel.Properties[3].DefaultValue2);

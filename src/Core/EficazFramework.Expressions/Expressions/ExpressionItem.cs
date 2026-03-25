@@ -76,6 +76,23 @@ public class ExpressionItem : INotifyPropertyChanged
             RaisePropertyChanged("ValueToString");
         }
     }
+    public decimal? Value1AsNumeric
+    {
+        get
+        {
+            decimal.TryParse(_value1?.ToString() ?? "0", out var asDecimal);
+            return asDecimal;
+        }
+        set
+        {
+            _value1 = CoerceValueChanged(value);
+            var args = RaisePropertyChanged("Value1");
+            RaisePropertyChanged("Value1AsNumeric");
+            RaisePropertyChanged("ValueToString");
+            OnValue_Changed(args);
+        }
+    }
+
 
     private string _value1StringFormat;
     public string Value1StringFormat
@@ -100,6 +117,24 @@ public class ExpressionItem : INotifyPropertyChanged
             RaisePropertyChanged("ValueToString");
         }
     }
+
+    public decimal? Value2AsNumeric
+    {
+        get
+        {
+            decimal.TryParse(_value2?.ToString() ?? "0", out var asDecimal);
+            return asDecimal;
+        }
+        set
+        {
+            _value2 = CoerceValueChanged(value);
+            var args = RaisePropertyChanged("Value2");
+            RaisePropertyChanged("Value2AsNumeric");
+            RaisePropertyChanged("ValueToString");
+            OnValue_Changed(args);
+        }
+    }
+
 
     private string _value2StringFormat;
     public string Value2StringFormat
@@ -271,7 +306,7 @@ public class ExpressionItem : INotifyPropertyChanged
             if (value is null)
                 return null;
 
-            bool valid = double.TryParse(value.ToString(), out double result);
+            bool valid = decimal.TryParse(value.ToString(), out decimal result);
             if (valid == false)
                 return null;
             else

@@ -1,20 +1,24 @@
 ﻿using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Rendering;
-using Microsoft.AspNetCore.Components.Web;
-using System.Globalization;
+using MudBlazor;
+using System.Numerics;
 
 namespace EficazFramework.Components;
 
-public class NumberField<T> : MudBlazor.MudNumericField<T>
+public class NumberField<T> : MudBlazor.MudNumericField<T?> where T : struct, INumber<T>
 {
     public NumberField() : base()
     {
-        Converter = new Converters.NumberConverter<T>(DecimalPlaces)
-        {
-            Culture = Culture
-        };
         SetupAttributes();
+        Converter = GetDefaultConverter();
     }
+
+    protected override IConverter<T?, string?> GetDefaultConverter() =>
+        new Converters.NumberConverter<T>(DecimalPlaces)
+        {
+            Culture = () => GetCulture(),
+            DecimalPlaces = DecimalPlaces
+        };
 
     readonly Dictionary<string, object> attributes = new() { { "step", "1" } };
 
@@ -26,7 +30,7 @@ public class NumberField<T> : MudBlazor.MudNumericField<T>
         set
         {
             _decimals = value;
-            ((Converters.NumberConverter<T>)Converter).DecimalPlaces = value;
+                ((Converters.NumberConverter<T>)Converter!).DecimalPlaces = value;
             SetupAttributes();
         }
     }
@@ -39,11 +43,10 @@ public class NumberField<T> : MudBlazor.MudNumericField<T>
             attributes["step"] = (object)"1";
     }
 
-    protected override bool SetCulture(CultureInfo value)
+    protected override Task OnCultureAndFormatChangedAsync()
     {
-        var result = base.SetCulture(value);
-        ((Converters.NumberConverter<T>)Converter).Culture = value;
-        return result;
+
+        return base.OnCultureAndFormatChangedAsync();
     }
 
     protected override void BuildRenderTree(RenderTreeBuilder __builder)

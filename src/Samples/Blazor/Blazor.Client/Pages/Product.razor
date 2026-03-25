@@ -87,7 +87,7 @@
                                                        Class="@($"{Layout.MainLayout.INPUTCLASS} text-right")"
                                                        @bind-Value="_viewModel!.Editor.CurrentEntry.Price"
                                                        For="@(() => _viewModel!.Editor.CurrentEntry.Price)"
-                                                       Converter="@(new EficazFramework.Converters.NumberConverter<decimal?>(2))"
+                                                       Converter="@(new EficazFramework.Converters.NumberConverter<decimal>(2))"
                                                        Validation="@(new Func<decimal?, IEnumerable<string>>(value => Validate(nameof(Shared.DTOs.ProductDto.Price))))" />
                         </EficazFramework.Components.GroupPanel>
                     </EficazFramework.Components.FocusTrapEx>

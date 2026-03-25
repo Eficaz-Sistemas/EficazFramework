@@ -51,9 +51,11 @@
                                 }
                             }
                             <MudBlazor.MudPopover Open="gApp.IsExpanded" 
+                                                  AnchorOrigin="MudBlazor.Origin.BottomLeft"
+                                                  TransformOrigin="MudBlazor.Origin.BottomLeft"
                                                   Class="pa-4" 
                                                   Style="border: 1px solid var(--mud-palette-lines-default);">
-                                <div>
+                                <div style="overflow-x:clip;overflow-y:auto;max-width:304px">
                                     <MudBlazor.MudText Typo="MudBlazor.Typo.body1"
                                                        Class="mx-1 pb-1 px-2">
                                         @(gApp.LongTitle ?? gApp.Title)
