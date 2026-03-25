@@ -18,8 +18,8 @@ public class DocumentField<T> : MudBlazor.MudTextField<T>
         set
         {
             _type = value;
-            ((Converters.DocumentConverter<T>)Converter).DocumentType = DocumentType;
-            ((Converters.DocumentConverter<T>)Converter).UF = UF;
+            ((Converters.DocumentConverter<T>)Converter!).DocumentType = DocumentType;
+            ((Converters.DocumentConverter<T>)Converter!).UF = UF;
             //InputType = value switch
             //{
             //    Enums.Documentos.eMail or Enums.Documentos.Custom => MudBlazor.InputType.Text,
@@ -36,14 +36,14 @@ public class DocumentField<T> : MudBlazor.MudTextField<T>
         set
         {
             _uf = value;
-            ((Converters.DocumentConverter<T>)Converter).UF = UF;
+            ((Converters.DocumentConverter<T>)Converter!).UF = UF;
         }
     }
 
-    protected override Task OnBlurredAsync(FocusEventArgs obj)
+    protected override async Task OnBlurredAsync(FocusEventArgs obj)
     {
-        base.OnBlurredAsync(obj);
-        return SetTextAsync(Converter.Set(Value), false);
+        await base.OnBlurredAsync(obj);
+        await SetTextAsync(Converter!.Convert(Value));
     }
 
 }
