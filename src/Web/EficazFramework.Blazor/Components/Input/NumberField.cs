@@ -26,7 +26,7 @@ public class NumberField<T> : MudBlazor.MudNumericField<T>
         set
         {
             _decimals = value;
-            ((Converters.NumberConverter<T>)Converter).DecimalPlaces = value;
+            ((Converters.NumberConverter<T>)Converter!).DecimalPlaces = value;
             SetupAttributes();
         }
     }
