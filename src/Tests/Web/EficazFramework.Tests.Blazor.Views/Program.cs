@@ -1,4 +1,6 @@
 using EficazFramework.Services;
+using Microsoft.AspNetCore.Localization;
+using System.Globalization;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -13,7 +15,21 @@ builder.Services.AddEficazFramework(options =>
     options.ThemeIsDarkMode = true;
 });
 
+
 var app = builder.Build();
+
+// pt-BR
+string culture = "pt-BR";
+var supportedCultures = new[] { new CultureInfo(culture) };
+app.UseRequestLocalization(new RequestLocalizationOptions
+{
+    DefaultRequestCulture = new RequestCulture(culture: culture, uiCulture: culture),
+    SupportedCultures = supportedCultures,
+    SupportedUICultures = supportedCultures
+});
+System.Threading.Thread.CurrentThread.CurrentCulture = new CultureInfo(culture);
+System.Threading.Thread.CurrentThread.CurrentUICulture = new CultureInfo(culture);
+
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())

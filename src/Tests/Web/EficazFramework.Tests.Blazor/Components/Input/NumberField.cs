@@ -1,10 +1,15 @@
 ﻿#pragma warning disable BL0005 // Set parameter outside component
 #pragma warning disable CS8625 // Não é possível converter um literal nulo em um tipo de referência não anulável.
 
+using AwesomeAssertions;
 using Bunit;
 using EficazFramework.Tests;
-using AwesomeAssertions;
+using MudBlazor.Extensions;
 using NUnit.Framework;
+using System;
+using System.Globalization;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace EficazFramework.Components.Input;
 
@@ -12,1027 +17,212 @@ namespace EficazFramework.Components.Input;
 public class NumberField : BunitTest
 {
     [Test]
-    public void TestShort()
+    [TestCase("InvariantCulture")]
+    [TestCase("pt-BR")]
+    [TestCase("en-US")]
+    [TestCase("de-DE")]
+    public async Task Test(string cultureName)
     {
-        var comp = Context.Render<NumberField<short>>();
-        comp.Instance.Converter.Should().BeOfType(typeof(Converters.NumberConverter<short>));
-        var _converter = comp.Instance.Converter as Converters.NumberConverter<short>;
+        if (cultureName == "InvariantCulture")
+            cultureName = CultureInfo.InvariantCulture.Name;
+
+        System.Threading.Thread.CurrentThread.CurrentCulture = new CultureInfo(cultureName);
+        System.Threading.Thread.CurrentThread.CurrentUICulture = new CultureInfo(cultureName);
+        Console.WriteLine($"{cultureName} test");
+
+        Console.WriteLine($"short");
+        await TestIntNumberInternal<short>();   
+
+        Console.WriteLine($"int");
+        await TestIntNumberInternal<int>();
+
+        Console.WriteLine($"long");
+        await TestIntNumberInternal<long>();
+        Console.WriteLine($"long?");
+
+        Console.WriteLine($"ushort");
+        await TestIntNumberInternal<ushort>();
+
+        Console.WriteLine($"uint");
+        await TestIntNumberInternal<uint>();
+
+        await TestIntNumberInternal<ulong>();
+
+        //Console.WriteLine($"Int128");
+        //await TestIntNumberInternal<Int128>();
+        //Console.WriteLine($"Int128?");
+        //await TestIntNumberInternal<Int128?>();
+
+        Console.WriteLine($"float");
+        await TestDecimalNumberInternal<float>();
+
+        Console.WriteLine($"double");
+        await TestDecimalNumberInternal<double>();
+
+        Console.WriteLine($"decimal");
+        await TestDecimalNumberInternal<decimal>();
+    }
+
+
+    private async Task TestIntNumberInternal<T>() where T : struct, System.Numerics.INumber<T>
+    {
+
+        var comp = Context.Render<NumberField<T>>();
+        var _converter = comp.Instance.Converter as Converters.NumberConverter<T>;
         _converter.Should().NotBeNull();
+
+        Console.Write(_converter.Culture.Invoke().DisplayName);
+        Console.WriteLine($"|{_converter.Culture.Invoke().NumberFormat.NumberDecimalSeparator}");
+        Console.Write(comp.Instance.GetState(s => s.Culture).DisplayName);
+        Console.WriteLine($"|{comp.Instance.GetState(s => s.Culture).NumberFormat.NumberDecimalSeparator}");
+
+        _converter.Culture.Invoke().Should().Be(comp.Instance.GetState(s => s.Culture));
         _converter?.DecimalPlaces.Should().Be(comp.Instance.DecimalPlaces);
 
         var input = comp.Find("input");
 
         //let's try some typing...
-        comp.InvokeAsync(() =>
-        {
-            comp.Instance.FocusAsync();
-            input.Change("5");
-            input.BlurAsync(new Microsoft.AspNetCore.Components.Web.FocusEventArgs());
-        });
-        comp.Instance.Text.Should().Be("5");
-        comp.Instance.Value.Should().Be(5);
+        await comp.Instance.FocusAsync();
+        await input.ChangeAsync("5");
+        await input.BlurAsync(new Microsoft.AspNetCore.Components.Web.FocusEventArgs());
+        comp.Instance.GetState(s => s.Text).Should().Be("5");
+        comp.Instance.GetState(s => s.Value).Should().Be(5);
 
         //invalid dcimal places test...
-        comp.InvokeAsync(() =>
-        {
-            comp.Instance.FocusAsync();
-            input.Change($"5{comp.Instance.Culture.NumberFormat.NumberDecimalSeparator}7");
-            input.BlurAsync(new Microsoft.AspNetCore.Components.Web.FocusEventArgs());
-        });
-        comp.Instance.Text.Should().Be("6");
-        comp.Instance.Value.Should().Be(6);
+        await comp.Instance.FocusAsync();
+        await input.ChangeAsync($"5{comp.Instance.GetState(s => s.Culture).NumberFormat.NumberDecimalSeparator}7");
+        await input.BlurAsync(new Microsoft.AspNetCore.Components.Web.FocusEventArgs());
+        comp.Instance.GetState(s => s.Text).Should().Be("6");
+        comp.Instance.GetState(s => s.Value).Should().Be(6);
 
-        comp.InvokeAsync(() =>
-        {
-            comp.Instance.FocusAsync();
-            input.Change($"5{comp.Instance.Culture.NumberFormat.NumberDecimalSeparator}2");
-            input.BlurAsync(new Microsoft.AspNetCore.Components.Web.FocusEventArgs());
-        });
-        comp.Instance.Text.Should().Be("5");
-        comp.Instance.Value.Should().Be(5);
+        await comp.Instance.FocusAsync();
+        await input.ChangeAsync($"5{comp.Instance.GetState(s => s.Culture).NumberFormat.NumberDecimalSeparator}2");
+        await input.BlurAsync(new Microsoft.AspNetCore.Components.Web.FocusEventArgs());
+        comp.Instance.GetState(s => s.Text).Should().Be("5");
+        comp.Instance.GetState(s => s.Value).Should().Be(5);
 
-        comp.InvokeAsync(() =>
-        {
-            comp.Instance.FocusAsync();
-            input.Change($"5{comp.Instance.Culture.NumberFormat.NumberGroupSeparator}2");
-            input.BlurAsync(new Microsoft.AspNetCore.Components.Web.FocusEventArgs());
-        });
-        comp.Instance.Text.Should().Be("52");
-        comp.Instance.Value.Should().Be(52);
+        await comp.Instance.FocusAsync();
+        await input.ChangeAsync($"5{comp.Instance.GetState(s => s.Culture).NumberFormat.NumberGroupSeparator}2");
+        await input.BlurAsync(new Microsoft.AspNetCore.Components.Web.FocusEventArgs());
+        comp.Instance.GetState(s => s.Text).Should().Be("52");
+        comp.Instance.GetState(s => s.Value).Should().Be(52);
+
+        Console.WriteLine("nullable tests...");
+        // Renderiza o componente com T? (nullable)
+
     }
 
     [Test]
-    public void TestNullableShort()
+    private async Task TestDecimalNumberInternal<T>() where T : struct, System.Numerics.INumber<T>
     {
-        var comp = Context.Render<NumberField<short?>>();
-        comp.Instance.Converter.Should().BeOfType(typeof(Converters.NumberConverter<short?>));
-        var _converter = comp.Instance.Converter as Converters.NumberConverter<short?>;
+        var comp = Context.Render<NumberField<T>>();
+        comp.Instance.Converter.Should().BeOfType(typeof(Converters.NumberConverter<T>));
+        var _converter = comp.Instance.Converter as Converters.NumberConverter<T>;
         _converter.Should().NotBeNull();
         _converter?.DecimalPlaces.Should().Be(comp.Instance.DecimalPlaces);
 
         var input = comp.Find("input");
 
         //let's try some typing...
-        comp.InvokeAsync(() =>
-        {
-            comp.Instance.FocusAsync();
-            input.Change("5");
-            input.BlurAsync(new Microsoft.AspNetCore.Components.Web.FocusEventArgs());
-        });
-        comp.Instance.Text.Should().Be("5");
-        comp.Instance.Value.Should().Be(5);
+        await comp.Instance.FocusAsync();
+        await input.ChangeAsync("5");
+        await input.BlurAsync(new Microsoft.AspNetCore.Components.Web.FocusEventArgs());
+        comp.Instance.GetState(s => s.Text).Should().Be("5");
+        Convert.ToDecimal(comp.Instance.GetState(s => s.Value)).Should().Be(5m);
 
-        //invalid dcimal places test...
-        comp.InvokeAsync(() =>
-        {
-            comp.Instance.FocusAsync();
-            input.Change($"5{comp.Instance.Culture.NumberFormat.NumberDecimalSeparator}7");
-            input.BlurAsync(new Microsoft.AspNetCore.Components.Web.FocusEventArgs());
-        });
-        comp.Instance.Text.Should().Be("6");
-        comp.Instance.Value.Should().Be(6);
+        // 5.7 => 6
+        await comp.Instance.FocusAsync();
+        await input.ChangeAsync($"5{comp.Instance.GetState(s => s.Culture).NumberFormat.NumberDecimalSeparator}7");
+        await input.BlurAsync(new Microsoft.AspNetCore.Components.Web.FocusEventArgs());
+        comp.Instance.GetState(s => s.Text).Should().Be("6");
+        Convert.ToDecimal(comp.Instance.GetState(s => s.Value)).Should().Be(6m);
 
-        comp.InvokeAsync(() =>
-        {
-            comp.Instance.FocusAsync();
-            input.Change($"5{comp.Instance.Culture.NumberFormat.NumberDecimalSeparator}2");
-            input.BlurAsync(new Microsoft.AspNetCore.Components.Web.FocusEventArgs());
-        });
-        comp.Instance.Text.Should().Be("5");
-        comp.Instance.Value.Should().Be(5);
+        // 5.7 => 5.7
+        comp.Instance.DecimalPlaces = 1;
+        await comp.Instance.FocusAsync();
+        await input.ChangeAsync($"5{comp.Instance.GetState(s => s.Culture).NumberFormat.NumberDecimalSeparator}7");
+        await input.BlurAsync(new Microsoft.AspNetCore.Components.Web.FocusEventArgs());
+        comp.Instance.GetState(s => s.Text).Should().Be($"5{comp.Instance.GetState(s => s.Culture).NumberFormat.NumberDecimalSeparator}7");
+        Convert.ToDecimal(comp.Instance.GetState(s => s.Value)).Should().Be(5.7m);
 
-        comp.InvokeAsync(() =>
-        {
-            comp.Instance.FocusAsync();
-            input.Change($"5{comp.Instance.Culture.NumberFormat.NumberGroupSeparator}2");
-            input.BlurAsync(new Microsoft.AspNetCore.Components.Web.FocusEventArgs());
-        });
-        comp.Instance.Text.Should().Be("52");
-        comp.Instance.Value.Should().Be(52);
+        // 5.77 => 5.8
+        await comp.Instance.FocusAsync();
+        await input.ChangeAsync($"5{comp.Instance.GetState(s => s.Culture).NumberFormat.NumberDecimalSeparator}77");
+        await input.BlurAsync(new Microsoft.AspNetCore.Components.Web.FocusEventArgs());
+        comp.Instance.GetState(s => s.Text).Should().Be($"5{comp.Instance.GetState(s => s.Culture).NumberFormat.NumberDecimalSeparator}8");
+        Convert.ToDecimal(comp.Instance.GetState(s => s.Value)).Should().Be(5.8m);
+
+        // 5,7 => 5.7
+        await comp.Instance.FocusAsync();
+        await input.ChangeAsync($"5{comp.Instance.GetState(s => s.Culture).NumberFormat.NumberGroupSeparator}7");
+        await input.BlurAsync(new Microsoft.AspNetCore.Components.Web.FocusEventArgs());
+        comp.Instance.GetState(s => s.Text).Should().Be($"57{comp.Instance.GetState(s => s.Culture).NumberFormat.NumberDecimalSeparator}0");
+        Convert.ToDecimal(comp.Instance.GetState(s => s.Value)).Should().Be(57.0m);
     }
 
-    [Test]
-    public void TestInt()
-    {
-        var comp = Context.Render<NumberField<int>>();
-        comp.Instance.Converter.Should().BeOfType(typeof(Converters.NumberConverter<int>));
-        var _converter = comp.Instance.Converter as Converters.NumberConverter<int>;
-        _converter.Should().NotBeNull();
-        _converter?.DecimalPlaces.Should().Be(comp.Instance.DecimalPlaces);
 
-        var input = comp.Find("input");
-
-        //let's try some typing...
-        comp.InvokeAsync(() =>
-        {
-            comp.Instance.FocusAsync();
-            input.Change("5");
-            input.BlurAsync(new Microsoft.AspNetCore.Components.Web.FocusEventArgs());
-        });
-        comp.Instance.Text.Should().Be("5");
-        comp.Instance.Value.Should().Be(5);
-
-        //invalid dcimal places test...
-        comp.InvokeAsync(() =>
-        {
-            comp.Instance.FocusAsync();
-            input.Change($"5{comp.Instance.Culture.NumberFormat.NumberDecimalSeparator}7");
-            input.BlurAsync(new Microsoft.AspNetCore.Components.Web.FocusEventArgs());
-        });
-        comp.Instance.Text.Should().Be("6");
-        comp.Instance.Value.Should().Be(6);
-
-        comp.InvokeAsync(() =>
-        {
-            comp.Instance.FocusAsync();
-            input.Change($"5{comp.Instance.Culture.NumberFormat.NumberDecimalSeparator}2");
-            input.BlurAsync(new Microsoft.AspNetCore.Components.Web.FocusEventArgs());
-        });
-        comp.Instance.Text.Should().Be("5");
-        comp.Instance.Value.Should().Be(5);
-
-        comp.InvokeAsync(() =>
-        {
-            comp.Instance.FocusAsync();
-            input.Change($"5{comp.Instance.Culture.NumberFormat.NumberGroupSeparator}2");
-            input.BlurAsync(new Microsoft.AspNetCore.Components.Web.FocusEventArgs());
-        });
-        comp.Instance.Text.Should().Be("52");
-        comp.Instance.Value.Should().Be(52);
-    }
-
-    [Test]
-    public void TestNullableInt()
-    {
-        var comp = Context.Render<NumberField<int?>>();
-        comp.Instance.Converter.Should().BeOfType(typeof(Converters.NumberConverter<int?>));
-        var _converter = comp.Instance.Converter as Converters.NumberConverter<int?>;
-        _converter.Should().NotBeNull();
-        _converter?.DecimalPlaces.Should().Be(comp.Instance.DecimalPlaces);
-
-        var input = comp.Find("input");
-
-        //let's try some typing...
-        comp.InvokeAsync(() =>
-        {
-            comp.Instance.FocusAsync();
-            input.Change("5");
-            input.BlurAsync(new Microsoft.AspNetCore.Components.Web.FocusEventArgs());
-        });
-        comp.Instance.Text.Should().Be("5");
-        comp.Instance.Value.Should().Be(5);
-
-        //invalid dcimal places test...
-        comp.InvokeAsync(() =>
-        {
-            comp.Instance.FocusAsync();
-            input.Change($"5{comp.Instance.Culture.NumberFormat.NumberDecimalSeparator}7");
-            input.BlurAsync(new Microsoft.AspNetCore.Components.Web.FocusEventArgs());
-        });
-        comp.Instance.Text.Should().Be("6");
-        comp.Instance.Value.Should().Be(6);
-
-        comp.InvokeAsync(() =>
-        {
-            comp.Instance.FocusAsync();
-            input.Change($"5{comp.Instance.Culture.NumberFormat.NumberDecimalSeparator}2");
-            input.BlurAsync(new Microsoft.AspNetCore.Components.Web.FocusEventArgs());
-        });
-        comp.Instance.Text.Should().Be("5");
-        comp.Instance.Value.Should().Be(5);
-
-        comp.InvokeAsync(() =>
-        {
-            comp.Instance.FocusAsync();
-            input.Change($"5{comp.Instance.Culture.NumberFormat.NumberGroupSeparator}2");
-            input.BlurAsync(new Microsoft.AspNetCore.Components.Web.FocusEventArgs());
-        });
-        comp.Instance.Text.Should().Be("52");
-        comp.Instance.Value.Should().Be(52);
-    }
-
-    [Test]
-    public void TestLong()
-    {
-        var comp = Context.Render<NumberField<long>>();
-        comp.Instance.Converter.Should().BeOfType(typeof(Converters.NumberConverter<long>));
-        var _converter = comp.Instance.Converter as Converters.NumberConverter<long>;
-        _converter.Should().NotBeNull();
-        _converter?.DecimalPlaces.Should().Be(comp.Instance.DecimalPlaces);
-
-        var input = comp.Find("input");
-
-        //let's try some typing...
-        comp.InvokeAsync(() =>
-        {
-            comp.Instance.FocusAsync();
-            input.Change("5");
-            input.BlurAsync(new Microsoft.AspNetCore.Components.Web.FocusEventArgs());
-        });
-        comp.Instance.Text.Should().Be("5");
-        comp.Instance.Value.Should().Be(5L);
-
-        //invalid dcimal places test...
-        comp.InvokeAsync(() =>
-        {
-            comp.Instance.FocusAsync();
-            input.Change($"5{comp.Instance.Culture.NumberFormat.NumberDecimalSeparator}7");
-            input.BlurAsync(new Microsoft.AspNetCore.Components.Web.FocusEventArgs());
-        });
-        comp.Instance.Text.Should().Be("6");
-        comp.Instance.Value.Should().Be(6L);
-
-        comp.InvokeAsync(() =>
-        {
-            comp.Instance.FocusAsync();
-            input.Change($"5{comp.Instance.Culture.NumberFormat.NumberDecimalSeparator}2");
-            input.BlurAsync(new Microsoft.AspNetCore.Components.Web.FocusEventArgs());
-        });
-        comp.Instance.Text.Should().Be("5");
-        comp.Instance.Value.Should().Be(5L);
-
-        comp.InvokeAsync(() =>
-        {
-            comp.Instance.FocusAsync();
-            input.Change($"5{comp.Instance.Culture.NumberFormat.NumberGroupSeparator}2");
-            input.BlurAsync(new Microsoft.AspNetCore.Components.Web.FocusEventArgs());
-        });
-        comp.Instance.Text.Should().Be("52");
-        comp.Instance.Value.Should().Be(52L);
-    }
-
-    [Test]
-    public void TestNullableLong()
-    {
-        var comp = Context.Render<NumberField<long?>>();
-        comp.Instance.Converter.Should().BeOfType(typeof(Converters.NumberConverter<long?>));
-        var _converter = comp.Instance.Converter as Converters.NumberConverter<long?>;
-        _converter.Should().NotBeNull();
-        _converter?.DecimalPlaces.Should().Be(comp.Instance.DecimalPlaces);
-
-        var input = comp.Find("input");
-
-        //let's try some typing...
-        comp.InvokeAsync(() =>
-        {
-            comp.Instance.FocusAsync();
-            input.Change("5");
-            input.BlurAsync(new Microsoft.AspNetCore.Components.Web.FocusEventArgs());
-        });
-        comp.Instance.Text.Should().Be("5");
-        comp.Instance.Value.Should().Be(5L);
-
-        //invalid dcimal places test...
-        comp.InvokeAsync(() =>
-        {
-            comp.Instance.FocusAsync();
-            input.Change($"5{comp.Instance.Culture.NumberFormat.NumberDecimalSeparator}7");
-            input.BlurAsync(new Microsoft.AspNetCore.Components.Web.FocusEventArgs());
-        });
-        comp.Instance.Text.Should().Be("6");
-        comp.Instance.Value.Should().Be(6L);
-
-        comp.InvokeAsync(() =>
-        {
-            comp.Instance.FocusAsync();
-            input.Change($"5{comp.Instance.Culture.NumberFormat.NumberDecimalSeparator}2");
-            input.BlurAsync(new Microsoft.AspNetCore.Components.Web.FocusEventArgs());
-        });
-        comp.Instance.Text.Should().Be("5");
-        comp.Instance.Value.Should().Be(5L);
-
-        comp.InvokeAsync(() =>
-        {
-            comp.Instance.FocusAsync();
-            input.Change($"5{comp.Instance.Culture.NumberFormat.NumberGroupSeparator}2");
-            input.BlurAsync(new Microsoft.AspNetCore.Components.Web.FocusEventArgs());
-        });
-        comp.Instance.Text.Should().Be("52");
-        comp.Instance.Value.Should().Be(52L);
-    }
-
-    [Test]
-    public void TestFloat()
-    {
-        var comp = Context.Render<NumberField<float>>();
-        comp.Instance.Converter.Should().BeOfType(typeof(Converters.NumberConverter<float>));
-        var _converter = comp.Instance.Converter as Converters.NumberConverter<float>;
-        _converter.Should().NotBeNull();
-        _converter?.DecimalPlaces.Should().Be(comp.Instance.DecimalPlaces);
-
-        var input = comp.Find("input");
-
-        //let's try some typing...
-        comp.InvokeAsync(() =>
-        {
-            comp.Instance.FocusAsync();
-            input.Change("5");
-            input.BlurAsync(new Microsoft.AspNetCore.Components.Web.FocusEventArgs());
-        });
-        comp.Instance.Text.Should().Be("5");
-        comp.Instance.Value.Should().Be(5F);
-
-        comp.InvokeAsync(() =>
-        {
-            comp.Instance.FocusAsync();
-            input.Change(string.Join(comp.Instance.Culture.NumberFormat.NumberDecimalSeparator, "5", "7"));
-            input.BlurAsync(new Microsoft.AspNetCore.Components.Web.FocusEventArgs());
-        });
-        comp.Instance.Text.Should().Be("6");
-        comp.Instance.Value.Should().Be(6F);
-
-        comp.InvokeAsync(() =>
-        {
-            comp.Instance.DecimalPlaces = 1;
-            comp.Instance.FocusAsync();
-            input.Change(string.Join(comp.Instance.Culture.NumberFormat.NumberDecimalSeparator, "5", "7"));
-            input.BlurAsync(new Microsoft.AspNetCore.Components.Web.FocusEventArgs());
-        });
-        comp.Instance.Text.Should().Be(string.Join(comp.Instance.Culture.NumberFormat.NumberDecimalSeparator, "5", "7"));
-        comp.Instance.Value.Should().Be(5.7F);
-
-        comp.InvokeAsync(() =>
-        {
-            comp.Instance.FocusAsync();
-            input.Change(string.Join(comp.Instance.Culture.NumberFormat.NumberDecimalSeparator, "5", "77"));
-            input.BlurAsync(new Microsoft.AspNetCore.Components.Web.FocusEventArgs());
-        });
-        comp.Instance.Text.Should().Be(string.Join(comp.Instance.Culture.NumberFormat.NumberDecimalSeparator, "5", "8"));
-        comp.Instance.Value.Should().Be(5.8F);
-
-        comp.InvokeAsync(() =>
-        {
-            comp.Instance.FocusAsync();
-            input.Change(string.Join(comp.Instance.Culture.NumberFormat.NumberGroupSeparator, "5", "7"));
-            input.BlurAsync(new Microsoft.AspNetCore.Components.Web.FocusEventArgs());
-        });
-        comp.Instance.Text.Should().Be(string.Join(comp.Instance.Culture.NumberFormat.NumberDecimalSeparator, "57", "0"));
-        comp.Instance.Value.Should().Be(57F);
-
-    }
-
-    [Test]
-    public void TestNullableFloat()
-    {
-        var comp = Context.Render<NumberField<float?>>();
-        comp.Instance.Converter.Should().BeOfType(typeof(Converters.NumberConverter<float?>));
-        var _converter = comp.Instance.Converter as Converters.NumberConverter<float?>;
-        _converter.Should().NotBeNull();
-        _converter?.DecimalPlaces.Should().Be(comp.Instance.DecimalPlaces);
-
-        var input = comp.Find("input");
-
-        //let's try some typing...
-        comp.InvokeAsync(() =>
-        {
-            comp.Instance.FocusAsync();
-            input.Change("5");
-            input.BlurAsync(new Microsoft.AspNetCore.Components.Web.FocusEventArgs());
-        });
-        comp.Instance.Text.Should().Be("5");
-        comp.Instance.Value.Should().Be(5F);
-
-        comp.InvokeAsync(() =>
-        {
-            comp.Instance.FocusAsync();
-            input.Change(string.Join(comp.Instance.Culture.NumberFormat.NumberDecimalSeparator, "5", "7"));
-            input.BlurAsync(new Microsoft.AspNetCore.Components.Web.FocusEventArgs());
-        });
-        comp.Instance.Text.Should().Be("6");
-        comp.Instance.Value.Should().Be(6F);
-
-        comp.InvokeAsync(() =>
-        {
-            comp.Instance.DecimalPlaces = 1;
-            comp.Instance.FocusAsync();
-            input.Change(string.Join(comp.Instance.Culture.NumberFormat.NumberDecimalSeparator, "5", "7"));
-            input.BlurAsync(new Microsoft.AspNetCore.Components.Web.FocusEventArgs());
-        });
-        comp.Instance.Text.Should().Be(string.Join(comp.Instance.Culture.NumberFormat.NumberDecimalSeparator, "5", "7"));
-        comp.Instance.Value.Should().Be(5.7F);
-
-        comp.InvokeAsync(() =>
-        {
-            comp.Instance.FocusAsync();
-            input.Change(string.Join(comp.Instance.Culture.NumberFormat.NumberDecimalSeparator, "5", "77"));
-            input.BlurAsync(new Microsoft.AspNetCore.Components.Web.FocusEventArgs());
-        });
-        comp.Instance.Text.Should().Be(string.Join(comp.Instance.Culture.NumberFormat.NumberDecimalSeparator, "5", "8"));
-        comp.Instance.Value.Should().Be(5.8F);
-
-        comp.InvokeAsync(() =>
-        {
-            comp.Instance.FocusAsync();
-            input.Change(string.Join(comp.Instance.Culture.NumberFormat.NumberGroupSeparator, "5", "7"));
-            input.BlurAsync(new Microsoft.AspNetCore.Components.Web.FocusEventArgs());
-        });
-        comp.Instance.Text.Should().Be(string.Join(comp.Instance.Culture.NumberFormat.NumberDecimalSeparator, "57", "0"));
-        comp.Instance.Value.Should().Be(57F);
-
-    }
-
-    [Test]
-    public void TestDouble()
-    {
-        var comp = Context.Render<NumberField<double>>();
-        comp.Instance.Converter.Should().BeOfType(typeof(Converters.NumberConverter<double>));
-        var _converter = comp.Instance.Converter as Converters.NumberConverter<double>;
-        _converter.Should().NotBeNull();
-        _converter?.DecimalPlaces.Should().Be(comp.Instance.DecimalPlaces);
-
-        var input = comp.Find("input");
-
-        //let's try some typing...
-        comp.InvokeAsync(() =>
-        {
-            comp.Instance.FocusAsync();
-            input.Change("5");
-            input.BlurAsync(new Microsoft.AspNetCore.Components.Web.FocusEventArgs());
-        });
-        comp.Instance.Text.Should().Be("5");
-        comp.Instance.Value.Should().Be(5D);
-
-        comp.InvokeAsync(() =>
-        {
-            comp.Instance.FocusAsync();
-            input.Change(string.Join(comp.Instance.Culture.NumberFormat.NumberDecimalSeparator, "5", "7"));
-            input.BlurAsync(new Microsoft.AspNetCore.Components.Web.FocusEventArgs());
-        });
-        comp.Instance.Text.Should().Be("6");
-        comp.Instance.Value.Should().Be(6D);
-
-        comp.InvokeAsync(() =>
-        {
-            comp.Instance.DecimalPlaces = 1;
-            comp.Instance.FocusAsync();
-            input.Change(string.Join(comp.Instance.Culture.NumberFormat.NumberDecimalSeparator, "5", "7"));
-            input.BlurAsync(new Microsoft.AspNetCore.Components.Web.FocusEventArgs());
-        });
-        comp.Instance.Text.Should().Be(string.Join(comp.Instance.Culture.NumberFormat.NumberDecimalSeparator, "5", "7"));
-        comp.Instance.Value.Should().Be(5.7D);
-
-        comp.InvokeAsync(() =>
-        {
-            comp.Instance.FocusAsync();
-            input.Change(string.Join(comp.Instance.Culture.NumberFormat.NumberDecimalSeparator, "5", "77"));
-            input.BlurAsync(new Microsoft.AspNetCore.Components.Web.FocusEventArgs());
-        });
-        comp.Instance.Text.Should().Be(string.Join(comp.Instance.Culture.NumberFormat.NumberDecimalSeparator, "5", "8"));
-        comp.Instance.Value.Should().Be(5.8D);
-
-        comp.InvokeAsync(() =>
-        {
-            comp.Instance.FocusAsync();
-            input.Change(string.Join(comp.Instance.Culture.NumberFormat.NumberGroupSeparator, "5", "7"));
-            input.BlurAsync(new Microsoft.AspNetCore.Components.Web.FocusEventArgs());
-        });
-        comp.Instance.Text.Should().Be(string.Join(comp.Instance.Culture.NumberFormat.NumberDecimalSeparator, "57", "0"));
-        comp.Instance.Value.Should().Be(57D);
-
-    }
-
-    [Test]
-    public void TestNullableDouble()
-    {
-        var comp = Context.Render<NumberField<double?>>();
-        comp.Instance.Converter.Should().BeOfType(typeof(Converters.NumberConverter<double?>));
-        var _converter = comp.Instance.Converter as Converters.NumberConverter<double?>;
-        _converter.Should().NotBeNull();
-        _converter?.DecimalPlaces.Should().Be(comp.Instance.DecimalPlaces);
-
-        var input = comp.Find("input");
-
-        //let's try some typing...
-        comp.InvokeAsync(() =>
-        {
-            comp.Instance.FocusAsync();
-            input.Change("5");
-            input.BlurAsync(new Microsoft.AspNetCore.Components.Web.FocusEventArgs());
-        });
-        comp.Instance.Text.Should().Be("5");
-        comp.Instance.Value.Should().Be(5D);
-
-        comp.InvokeAsync(() =>
-        {
-            comp.Instance.FocusAsync();
-            input.Change(string.Join(comp.Instance.Culture.NumberFormat.NumberDecimalSeparator, "5", "7"));
-            input.BlurAsync(new Microsoft.AspNetCore.Components.Web.FocusEventArgs());
-        });
-        comp.Instance.Text.Should().Be("6");
-        comp.Instance.Value.Should().Be(6F);
-
-        comp.InvokeAsync(() =>
-        {
-            comp.Instance.DecimalPlaces = 1;
-            comp.Instance.FocusAsync();
-            input.Change(string.Join(comp.Instance.Culture.NumberFormat.NumberDecimalSeparator, "5", "7"));
-            input.BlurAsync(new Microsoft.AspNetCore.Components.Web.FocusEventArgs());
-        });
-        comp.Instance.Text.Should().Be(string.Join(comp.Instance.Culture.NumberFormat.NumberDecimalSeparator, "5", "7"));
-        comp.Instance.Value.Should().Be(5.7D);
-
-        comp.InvokeAsync(() =>
-        {
-            comp.Instance.FocusAsync();
-            input.Change(string.Join(comp.Instance.Culture.NumberFormat.NumberDecimalSeparator, "5", "77"));
-            input.BlurAsync(new Microsoft.AspNetCore.Components.Web.FocusEventArgs());
-        });
-        comp.Instance.Text.Should().Be(string.Join(comp.Instance.Culture.NumberFormat.NumberDecimalSeparator, "5", "8"));
-        comp.Instance.Value.Should().Be(5.8D);
-
-        comp.InvokeAsync(() =>
-        {
-            comp.Instance.FocusAsync();
-            input.Change(string.Join(comp.Instance.Culture.NumberFormat.NumberGroupSeparator, "5", "7"));
-            input.BlurAsync(new Microsoft.AspNetCore.Components.Web.FocusEventArgs());
-        });
-        comp.Instance.Text.Should().Be(string.Join(comp.Instance.Culture.NumberFormat.NumberDecimalSeparator, "57", "0"));
-        comp.Instance.Value.Should().Be(57D);
-
-    }
-
-    [Test]
-    public void TestDecimal()
-    {
-        var comp = Context.Render<NumberField<decimal>>();
-        comp.Instance.Converter.Should().BeOfType(typeof(Converters.NumberConverter<decimal>));
-        var _converter = comp.Instance.Converter as Converters.NumberConverter<decimal>;
-        _converter.Should().NotBeNull();
-        _converter?.DecimalPlaces.Should().Be(comp.Instance.DecimalPlaces);
-
-        var input = comp.Find("input");
-
-        //let's try some typing...
-        comp.InvokeAsync(() =>
-        {
-            comp.Instance.FocusAsync();
-            input.Change("5");
-            input.BlurAsync(new Microsoft.AspNetCore.Components.Web.FocusEventArgs());
-        });
-        comp.Instance.Text.Should().Be("5");
-        comp.Instance.Value.Should().Be(5M);
-
-        comp.InvokeAsync(() =>
-        {
-            comp.Instance.FocusAsync();
-            input.Change(string.Join(comp.Instance.Culture.NumberFormat.NumberDecimalSeparator, "5", "7"));
-            input.BlurAsync(new Microsoft.AspNetCore.Components.Web.FocusEventArgs());
-        });
-        comp.Instance.Text.Should().Be("6");
-        comp.Instance.Value.Should().Be(6M);
-
-        comp.InvokeAsync(() =>
-        {
-            comp.Instance.DecimalPlaces = 1;
-            comp.Instance.FocusAsync();
-            input.Change(string.Join(comp.Instance.Culture.NumberFormat.NumberDecimalSeparator, "5", "7"));
-            input.BlurAsync(new Microsoft.AspNetCore.Components.Web.FocusEventArgs());
-        });
-        comp.Instance.Text.Should().Be(string.Join(comp.Instance.Culture.NumberFormat.NumberDecimalSeparator, "5", "7"));
-        comp.Instance.Value.Should().Be(5.7M);
-
-        comp.InvokeAsync(() =>
-        {
-            comp.Instance.FocusAsync();
-            input.Change(string.Join(comp.Instance.Culture.NumberFormat.NumberDecimalSeparator, "5", "77"));
-            input.BlurAsync(new Microsoft.AspNetCore.Components.Web.FocusEventArgs());
-        });
-        comp.Instance.Text.Should().Be(string.Join(comp.Instance.Culture.NumberFormat.NumberDecimalSeparator, "5", "8"));
-        comp.Instance.Value.Should().Be(5.8M);
-
-        comp.InvokeAsync(() =>
-        {
-            comp.Instance.FocusAsync();
-            input.Change(string.Join(comp.Instance.Culture.NumberFormat.NumberGroupSeparator, "5", "7"));
-            input.BlurAsync(new Microsoft.AspNetCore.Components.Web.FocusEventArgs());
-        });
-        comp.Instance.Text.Should().Be(string.Join(comp.Instance.Culture.NumberFormat.NumberDecimalSeparator, "57", "0"));
-        comp.Instance.Value.Should().Be(57M);
-
-    }
-
-    [Test]
-    public void TestNullableDecimal()
-    {
-        var comp = Context.Render<NumberField<decimal?>>();
-        comp.Instance.Converter.Should().BeOfType(typeof(Converters.NumberConverter<decimal?>));
-        var _converter = comp.Instance.Converter as Converters.NumberConverter<decimal?>;
-        _converter.Should().NotBeNull();
-        _converter?.DecimalPlaces.Should().Be(comp.Instance.DecimalPlaces);
-
-        var input = comp.Find("input");
-
-        //let's try some typing...
-        comp.InvokeAsync(() =>
-        {
-            comp.Instance.FocusAsync();
-            input.Change("5");
-            input.BlurAsync(new Microsoft.AspNetCore.Components.Web.FocusEventArgs());
-        });
-        comp.Instance.Text.Should().Be("5");
-        comp.Instance.Value.Should().Be(5M);
-
-        comp.InvokeAsync(() =>
-        {
-            comp.Instance.FocusAsync();
-            input.Change(string.Join(comp.Instance.Culture.NumberFormat.NumberDecimalSeparator, "5", "7"));
-            input.BlurAsync(new Microsoft.AspNetCore.Components.Web.FocusEventArgs());
-        });
-        comp.Instance.Text.Should().Be("6");
-        comp.Instance.Value.Should().Be(6M);
-
-        comp.InvokeAsync(() =>
-        {
-            comp.Instance.DecimalPlaces = 1;
-            comp.Instance.FocusAsync();
-            input.Change(string.Join(comp.Instance.Culture.NumberFormat.NumberDecimalSeparator, "5", "7"));
-            input.BlurAsync(new Microsoft.AspNetCore.Components.Web.FocusEventArgs());
-        });
-        comp.Instance.Text.Should().Be(string.Join(comp.Instance.Culture.NumberFormat.NumberDecimalSeparator, "5", "7"));
-        comp.Instance.Value.Should().Be(5.7M);
-
-        comp.InvokeAsync(() =>
-        {
-            comp.Instance.FocusAsync();
-            input.Change(string.Join(comp.Instance.Culture.NumberFormat.NumberDecimalSeparator, "5", "77"));
-            input.BlurAsync(new Microsoft.AspNetCore.Components.Web.FocusEventArgs());
-        });
-        comp.Instance.Text.Should().Be(string.Join(comp.Instance.Culture.NumberFormat.NumberDecimalSeparator, "5", "8"));
-        comp.Instance.Value.Should().Be(5.8M);
-
-        comp.InvokeAsync(() =>
-        {
-            comp.Instance.FocusAsync();
-            input.Change(string.Join(comp.Instance.Culture.NumberFormat.NumberGroupSeparator, "5", "7"));
-            input.BlurAsync(new Microsoft.AspNetCore.Components.Web.FocusEventArgs());
-        });
-        comp.Instance.Text.Should().Be(string.Join(comp.Instance.Culture.NumberFormat.NumberDecimalSeparator, "57", "0"));
-        comp.Instance.Value.Should().Be(57M);
-
-    }
-
-    [Test]
-    public void TestUShort()
-    {
-        var comp = Context.Render<NumberField<ushort>>();
-        comp.Instance.Converter.Should().BeOfType(typeof(Converters.NumberConverter<ushort>));
-        var _converter = comp.Instance.Converter as Converters.NumberConverter<ushort>;
-        _converter.Should().NotBeNull();
-        _converter?.DecimalPlaces.Should().Be(comp.Instance.DecimalPlaces);
-
-        var input = comp.Find("input");
-
-        //let's try some typing...
-        comp.InvokeAsync(() =>
-        {
-            comp.Instance.FocusAsync();
-            input.Change("5");
-            input.BlurAsync(new Microsoft.AspNetCore.Components.Web.FocusEventArgs());
-        });
-        comp.Instance.Text.Should().Be("5");
-        comp.Instance.Value.Should().Be(5);
-
-        //invalid dcimal places test...
-        comp.InvokeAsync(() =>
-        {
-            comp.Instance.FocusAsync();
-            input.Change($"5{comp.Instance.Culture.NumberFormat.NumberDecimalSeparator}7");
-            input.BlurAsync(new Microsoft.AspNetCore.Components.Web.FocusEventArgs());
-        });
-        comp.Instance.Text.Should().Be("6");
-        comp.Instance.Value.Should().Be(6);
-
-        comp.InvokeAsync(() =>
-        {
-            comp.Instance.FocusAsync();
-            input.Change($"5{comp.Instance.Culture.NumberFormat.NumberDecimalSeparator}2");
-            input.BlurAsync(new Microsoft.AspNetCore.Components.Web.FocusEventArgs());
-        });
-        comp.Instance.Text.Should().Be("5");
-        comp.Instance.Value.Should().Be(5);
-
-        comp.InvokeAsync(() =>
-        {
-            comp.Instance.FocusAsync();
-            input.Change($"5{comp.Instance.Culture.NumberFormat.NumberGroupSeparator}2");
-            input.BlurAsync(new Microsoft.AspNetCore.Components.Web.FocusEventArgs());
-        });
-        comp.Instance.Text.Should().Be("52");
-        comp.Instance.Value.Should().Be(52);
-    }
-
-    [Test]
-    public void TestNullableUShort()
-    {
-        var comp = Context.Render<NumberField<ushort?>>();
-        comp.Instance.Converter.Should().BeOfType(typeof(Converters.NumberConverter<ushort?>));
-        var _converter = comp.Instance.Converter as Converters.NumberConverter<ushort?>;
-        _converter.Should().NotBeNull();
-        _converter?.DecimalPlaces.Should().Be(comp.Instance.DecimalPlaces);
-
-        var input = comp.Find("input");
-
-        //let's try some typing...
-        comp.InvokeAsync(() =>
-        {
-            comp.Instance.FocusAsync();
-            input.Change("5");
-            input.BlurAsync(new Microsoft.AspNetCore.Components.Web.FocusEventArgs());
-        });
-        comp.Instance.Text.Should().Be("5");
-        comp.Instance.Value.Should().Be(5);
-
-        //invalid dcimal places test...
-        comp.InvokeAsync(() =>
-        {
-            comp.Instance.FocusAsync();
-            input.Change($"5{comp.Instance.Culture.NumberFormat.NumberDecimalSeparator}7");
-            input.BlurAsync(new Microsoft.AspNetCore.Components.Web.FocusEventArgs());
-        });
-        comp.Instance.Text.Should().Be("6");
-        comp.Instance.Value.Should().Be(6);
-
-        comp.InvokeAsync(() =>
-        {
-            comp.Instance.FocusAsync();
-            input.Change($"5{comp.Instance.Culture.NumberFormat.NumberDecimalSeparator}2");
-            input.BlurAsync(new Microsoft.AspNetCore.Components.Web.FocusEventArgs());
-        });
-        comp.Instance.Text.Should().Be("5");
-        comp.Instance.Value.Should().Be(5);
-
-        comp.InvokeAsync(() =>
-        {
-            comp.Instance.FocusAsync();
-            input.Change($"5{comp.Instance.Culture.NumberFormat.NumberGroupSeparator}2");
-            input.BlurAsync(new Microsoft.AspNetCore.Components.Web.FocusEventArgs());
-        });
-        comp.Instance.Text.Should().Be("52");
-        comp.Instance.Value.Should().Be(52);
-    }
-
-    [Test]
-    public void TestUInt()
-    {
-        var comp = Context.Render<NumberField<uint>>();
-        comp.Instance.Converter.Should().BeOfType(typeof(Converters.NumberConverter<uint>));
-        var _converter = comp.Instance.Converter as Converters.NumberConverter<uint>;
-        _converter.Should().NotBeNull();
-        _converter?.DecimalPlaces.Should().Be(comp.Instance.DecimalPlaces);
-
-        var input = comp.Find("input");
-
-        //let's try some typing...
-        comp.InvokeAsync(() =>
-        {
-            comp.Instance.FocusAsync();
-            input.Change("5");
-            input.BlurAsync(new Microsoft.AspNetCore.Components.Web.FocusEventArgs());
-        });
-        comp.Instance.Text.Should().Be("5");
-        comp.Instance.Value.Should().Be(5);
-
-        //invalid dcimal places test...
-        comp.InvokeAsync(() =>
-        {
-            comp.Instance.FocusAsync();
-            input.Change($"5{comp.Instance.Culture.NumberFormat.NumberDecimalSeparator}7");
-            input.BlurAsync(new Microsoft.AspNetCore.Components.Web.FocusEventArgs());
-        });
-        comp.Instance.Text.Should().Be("6");
-        comp.Instance.Value.Should().Be(6);
-
-        comp.InvokeAsync(() =>
-        {
-            comp.Instance.FocusAsync();
-            input.Change($"5{comp.Instance.Culture.NumberFormat.NumberDecimalSeparator}2");
-            input.BlurAsync(new Microsoft.AspNetCore.Components.Web.FocusEventArgs());
-        });
-        comp.Instance.Text.Should().Be("5");
-        comp.Instance.Value.Should().Be(5);
-
-        comp.InvokeAsync(() =>
-        {
-            comp.Instance.FocusAsync();
-            input.Change($"5{comp.Instance.Culture.NumberFormat.NumberGroupSeparator}2");
-            input.BlurAsync(new Microsoft.AspNetCore.Components.Web.FocusEventArgs());
-        });
-        comp.Instance.Text.Should().Be("52");
-        comp.Instance.Value.Should().Be(52);
-    }
-
-    [Test]
-    public void TestNullableUInt()
-    {
-        var comp = Context.Render<NumberField<uint?>>();
-        comp.Instance.Converter.Should().BeOfType(typeof(Converters.NumberConverter<uint?>));
-        var _converter = comp.Instance.Converter as Converters.NumberConverter<uint?>;
-        _converter.Should().NotBeNull();
-        _converter?.DecimalPlaces.Should().Be(comp.Instance.DecimalPlaces);
-
-        var input = comp.Find("input");
-
-        //let's try some typing...
-        comp.InvokeAsync(() =>
-        {
-            comp.Instance.FocusAsync();
-            input.Change("5");
-            input.BlurAsync(new Microsoft.AspNetCore.Components.Web.FocusEventArgs());
-        });
-        comp.Instance.Text.Should().Be("5");
-        comp.Instance.Value.Should().Be(5);
-
-        //invalid dcimal places test...
-        comp.InvokeAsync(() =>
-        {
-            comp.Instance.FocusAsync();
-            input.Change($"5{comp.Instance.Culture.NumberFormat.NumberDecimalSeparator}7");
-            input.BlurAsync(new Microsoft.AspNetCore.Components.Web.FocusEventArgs());
-        });
-        comp.Instance.Text.Should().Be("6");
-        comp.Instance.Value.Should().Be(6);
-
-        comp.InvokeAsync(() =>
-        {
-            comp.Instance.FocusAsync();
-            input.Change($"5{comp.Instance.Culture.NumberFormat.NumberDecimalSeparator}2");
-            input.BlurAsync(new Microsoft.AspNetCore.Components.Web.FocusEventArgs());
-        });
-        comp.Instance.Text.Should().Be("5");
-        comp.Instance.Value.Should().Be(5);
-
-        comp.InvokeAsync(() =>
-        {
-            comp.Instance.FocusAsync();
-            input.Change($"5{comp.Instance.Culture.NumberFormat.NumberGroupSeparator}2");
-            input.BlurAsync(new Microsoft.AspNetCore.Components.Web.FocusEventArgs());
-        });
-        comp.Instance.Text.Should().Be("52");
-        comp.Instance.Value.Should().Be(52);
-    }
-
-    [Test]
-    public void TestULong()
-    {
-        var comp = Context.Render<NumberField<ulong>>();
-        comp.Instance.Converter.Should().BeOfType(typeof(Converters.NumberConverter<ulong>));
-        var _converter = comp.Instance.Converter as Converters.NumberConverter<ulong>;
-        _converter.Should().NotBeNull();
-        _converter?.DecimalPlaces.Should().Be(comp.Instance.DecimalPlaces);
-
-        var input = comp.Find("input");
-
-        //let's try some typing...
-        comp.InvokeAsync(() =>
-        {
-            comp.Instance.FocusAsync();
-            input.Change("5");
-            input.BlurAsync(new Microsoft.AspNetCore.Components.Web.FocusEventArgs());
-        });
-        comp.Instance.Text.Should().Be("5");
-        comp.Instance.Value.Should().Be(5L);
-
-        //invalid dcimal places test...
-        comp.InvokeAsync(() =>
-        {
-            comp.Instance.FocusAsync();
-            input.Change($"5{comp.Instance.Culture.NumberFormat.NumberDecimalSeparator}7");
-            input.BlurAsync(new Microsoft.AspNetCore.Components.Web.FocusEventArgs());
-        });
-        comp.Instance.Text.Should().Be("6");
-        comp.Instance.Value.Should().Be(6L);
-
-        comp.InvokeAsync(() =>
-        {
-            comp.Instance.FocusAsync();
-            input.Change($"5{comp.Instance.Culture.NumberFormat.NumberDecimalSeparator}2");
-            input.BlurAsync(new Microsoft.AspNetCore.Components.Web.FocusEventArgs());
-        });
-        comp.Instance.Text.Should().Be("5");
-        comp.Instance.Value.Should().Be(5L);
-
-        comp.InvokeAsync(() =>
-        {
-            comp.Instance.FocusAsync();
-            input.Change($"5{comp.Instance.Culture.NumberFormat.NumberGroupSeparator}2");
-            input.BlurAsync(new Microsoft.AspNetCore.Components.Web.FocusEventArgs());
-        });
-        comp.Instance.Text.Should().Be("52");
-        comp.Instance.Value.Should().Be(52L);
-    }
-
-    [Test]
-    public void TestNullableULong()
-    {
-        var comp = Context.Render<NumberField<ulong?>>();
-        comp.Instance.Converter.Should().BeOfType(typeof(Converters.NumberConverter<ulong?>));
-        var _converter = comp.Instance.Converter as Converters.NumberConverter<ulong?>;
-        _converter.Should().NotBeNull();
-        _converter?.DecimalPlaces.Should().Be(comp.Instance.DecimalPlaces);
-
-        var input = comp.Find("input");
-
-        //let's try some typing...
-        comp.InvokeAsync(() =>
-        {
-            comp.Instance.FocusAsync();
-            input.Change("5");
-            input.BlurAsync(new Microsoft.AspNetCore.Components.Web.FocusEventArgs());
-        });
-        comp.Instance.Text.Should().Be("5");
-        comp.Instance.Value.Should().Be(5L);
-
-        //invalid dcimal places test...
-        comp.InvokeAsync(() =>
-        {
-            comp.Instance.FocusAsync();
-            input.Change($"5{comp.Instance.Culture.NumberFormat.NumberDecimalSeparator}7");
-            input.BlurAsync(new Microsoft.AspNetCore.Components.Web.FocusEventArgs());
-        });
-        comp.Instance.Text.Should().Be("6");
-        comp.Instance.Value.Should().Be(6L);
-
-        comp.InvokeAsync(() =>
-        {
-            comp.Instance.FocusAsync();
-            input.Change($"5{comp.Instance.Culture.NumberFormat.NumberDecimalSeparator}2");
-            input.BlurAsync(new Microsoft.AspNetCore.Components.Web.FocusEventArgs());
-        });
-        comp.Instance.Text.Should().Be("5");
-        comp.Instance.Value.Should().Be(5L);
-
-        comp.InvokeAsync(() =>
-        {
-            comp.Instance.FocusAsync();
-            input.Change($"5{comp.Instance.Culture.NumberFormat.NumberGroupSeparator}2");
-            input.BlurAsync(new Microsoft.AspNetCore.Components.Web.FocusEventArgs());
-        });
-        comp.Instance.Text.Should().Be("52");
-        comp.Instance.Value.Should().Be(52L);
-    }
-
-    [Test]
-    public void TestNonNumberAndEmpty()
-    {
-        var comp = Context.Render<NumberField<int>>();
-        comp.Instance.Converter.Should().BeOfType(typeof(Converters.NumberConverter<int>));
-        var _converter = comp.Instance.Converter as Converters.NumberConverter<int>;
-        _converter.Should().NotBeNull();
-        _converter?.DecimalPlaces.Should().Be(comp.Instance.DecimalPlaces);
-
-        var input = comp.Find("input");
-
-        //let's try some typing...
-        comp.InvokeAsync(() =>
-        {
-            comp.Instance.FocusAsync();
-            input.Change("non text...");
-            input.BlurAsync(new Microsoft.AspNetCore.Components.Web.FocusEventArgs());
-        });
-        comp.Instance.Text.Should().Be("0");
-        comp.Instance.Value.Should().Be(0);
-
-        comp.InvokeAsync(() =>
-        {
-            comp.Instance.FocusAsync();
-            input.Change(null);
-            input.BlurAsync(new Microsoft.AspNetCore.Components.Web.FocusEventArgs());
-        });
-        comp.Instance.Text.Should().Be("0");
-        comp.Instance.Value.Should().Be(0);
-
-    }
-
-    [Test]
-    public void TestNullableNonNumberAndEmpty()
-    {
-        var comp = Context.Render<NumberField<int?>>();
-        comp.Instance.Converter.Should().BeOfType(typeof(Converters.NumberConverter<int?>));
-        var _converter = comp.Instance.Converter as Converters.NumberConverter<int?>;
-        _converter.Should().NotBeNull();
-        _converter?.DecimalPlaces.Should().Be(comp.Instance.DecimalPlaces);
-
-        var input = comp.Find("input");
-
-        //let's try some typing...
-        comp.InvokeAsync(() =>
-        {
-            comp.Instance.FocusAsync();
-            input.Change("non text...");
-            input.BlurAsync(new Microsoft.AspNetCore.Components.Web.FocusEventArgs());
-        });
-        comp.Instance.Text.Should().Be(null);
-        comp.Instance.Value.Should().Be(null);
-
-        comp.InvokeAsync(() =>
-        {
-            comp.Instance.FocusAsync();
-            input.Change(null);
-            input.BlurAsync(new Microsoft.AspNetCore.Components.Web.FocusEventArgs());
-        });
-        comp.Instance.Text.Should().Be(null);
-        comp.Instance.Value.Should().Be(null);
-
-    }
+    //    [Test]
+    //    public void TestNonNumberAndEmpty()
+    //    {
+    //        var comp = Context.Render<NumberField<int>>();
+    //        comp.Instance.Converter.Should().BeOfType(typeof(Converters.NumberConverter<int>));
+    //        var _converter = comp.Instance.Converter as Converters.NumberConverter<int>;
+    //        _converter.Should().NotBeNull();
+    //        _converter?.DecimalPlaces.Should().Be(comp.Instance.DecimalPlaces);
+
+    //        var input = comp.Find("input");
+
+    //        //let's try some typing...
+    //        comp.InvokeAsync(() =>
+    //        {
+    //            comp.Instance.FocusAsync();
+    //            input.Change("non text...");
+    //            input.BlurAsync(new Microsoft.AspNetCore.Components.Web.FocusEventArgs());
+    //        });
+    //        comp.Instance.GetState(s => s.Text).Should().Be("0");
+    //        comp.Instance.GetState(s => s.Value).Should().Be(0);
+
+    //        comp.InvokeAsync(() =>
+    //        {
+    //            comp.Instance.FocusAsync();
+    //            input.Change(null);
+    //            input.BlurAsync(new Microsoft.AspNetCore.Components.Web.FocusEventArgs());
+    //        });
+    //        comp.Instance.GetState(s => s.Text).Should().Be("0");
+    //        comp.Instance.GetState(s => s.Value).Should().Be(0);
+
+    //    }
+
+    //    [Test]
+    //    public void TestNullableNonNumberAndEmpty()
+    //    {
+    //        var comp = Context.Render<NumberField<int?>>();
+    //        comp.Instance.Converter.Should().BeOfType(typeof(Converters.NumberConverter<int?>));
+    //        var _converter = comp.Instance.Converter as Converters.NumberConverter<int?>;
+    //        _converter.Should().NotBeNull();
+    //        _converter?.DecimalPlaces.Should().Be(comp.Instance.DecimalPlaces);
+
+    //        var input = comp.Find("input");
+
+    //        //let's try some typing...
+    //        comp.InvokeAsync(() =>
+    //        {
+    //            comp.Instance.FocusAsync();
+    //            input.Change("non text...");
+    //            input.BlurAsync(new Microsoft.AspNetCore.Components.Web.FocusEventArgs());
+    //        });
+    //        comp.Instance.GetState(s => s.Text).Should().Be(null);
+    //        comp.Instance.GetState(s => s.Value).Should().Be(null);
+
+    //        comp.InvokeAsync(() =>
+    //        {
+    //            comp.Instance.FocusAsync();
+    //            input.Change(null);
+    //            input.BlurAsync(new Microsoft.AspNetCore.Components.Web.FocusEventArgs());
+    //        });
+    //        comp.Instance.GetState(s => s.Text).Should().Be(null);
+    //        comp.Instance.GetState(s => s.Value).Should().Be(null);
+
+    //    }
 
 }

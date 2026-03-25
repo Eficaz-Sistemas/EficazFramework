@@ -1,36 +1,21 @@
-﻿namespace EficazFramework.Converters;
+﻿using EficazFramework.Extensions;
+using System.Xml.Linq;
 
-public class ObjectToBoolConverter : MudBlazor.BoolConverter<object?>
+namespace EficazFramework.Converters;
+
+public class ObjectToBoolConverter : MudBlazor.IReversibleConverter<object?, bool?>
 {
-    public ObjectToBoolConverter()
+
+    public bool? Convert(object? input)
     {
-        SetFunc = OnSet;
-        GetFunc = OnGet;
+        if (input is bool b)
+            return b;
+        else if (input is bool?)
+            return (bool?)(object?)input;
+        else
+            return null;
     }
 
-    private object? OnGet(bool? value) => value == true;
-
-    private bool? OnSet(object? arg)
-    {
-        if (arg == null)
-            return null;
-        try
-        {
-            if (arg is bool)
-                return (bool)(object)arg;
-            else if (arg is bool?)
-                return (bool?)(object)arg;
-            else
-            {
-                UpdateSetError("Unable to convert to bool? from type object");
-                return null;
-            }
-        }
-        catch (FormatException e)
-        {
-            UpdateSetError("Conversion error: " + e.Message);
-            return null;
-        }
-    }
-
+    public object? ConvertBack(bool? input) => input == true;
+        
 }

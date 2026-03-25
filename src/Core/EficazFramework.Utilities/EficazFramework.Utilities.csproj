@@ -50,7 +50,7 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="DefaultDocumentation" Version="1.2.2">
+    <PackageReference Include="DefaultDocumentation" Version="1.2.4">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
@@ -60,12 +60,12 @@
     </PackageReference>
   </ItemGroup>
   <ItemGroup Condition=" '$(TargetFramework)' == 'net9.0' ">
-    <PackageReference Include="Microsoft.AspNetCore.SignalR.Client" Version="9.0.13" />
-    <PackageReference Include="System.Security.Cryptography.Xml" Version="9.0.13" />
+    <PackageReference Include="Microsoft.AspNetCore.SignalR.Client" Version="9.0.14" />
+    <PackageReference Include="System.Security.Cryptography.Xml" Version="9.0.14" />
   </ItemGroup>
   <ItemGroup Condition=" '$(TargetFramework)' == 'net10.0' ">
-    <PackageReference Include="Microsoft.AspNetCore.SignalR.Client" Version="10.0.3" />
-    <PackageReference Include="System.Security.Cryptography.Xml" Version="10.0.3" />
+    <PackageReference Include="Microsoft.AspNetCore.SignalR.Client" Version="10.0.5" />
+    <PackageReference Include="System.Security.Cryptography.Xml" Version="10.0.5" />
   </ItemGroup>
   <ItemGroup>
     <Compile Update="Resources\Strings\Application.Designer.cs">

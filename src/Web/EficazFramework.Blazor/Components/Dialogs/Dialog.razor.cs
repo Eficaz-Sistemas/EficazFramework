@@ -64,8 +64,6 @@ public partial class Dialog : MudComponentBase
     [Category(CategoryTypes.Dialog.Appearance)]
     public string? ContentStyle { get; set; }
 
-    public DefaultFocus DefaultFocus { get; set; } = MudGlobal.DialogDefaults.DefaultFocus;
-
     public void Close(MudBlazor.DialogResult? result) =>
         MdiWindow?.CloseDialog(result);
 
