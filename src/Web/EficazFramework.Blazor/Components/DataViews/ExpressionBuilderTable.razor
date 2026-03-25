@@ -75,7 +75,7 @@
                     {
                         @foreach (@EficazFramework.Extensions.EnumMember op in context.AvailableOperators)
                         {
-                        <MudBlazor.MudSelectItem T="@EficazFramework.Enums.CompareMethod" Value="@((EficazFramework.Enums.CompareMethod)op.Value)">
+                        <MudBlazor.MudSelectItem T="@EficazFramework.Enums.CompareMethod" Value="@((EficazFramework.Enums.CompareMethod)op.Value!)">
                             @op.Description
                         </MudBlazor.MudSelectItem>
                         }
@@ -86,7 +86,7 @@
             {
                 @if(context.SelectedProperty != null)
                 {
-                    <MudBlazor.MudText Typo="@MudBlazor.Typo.body2">@context.AvailableOperators.Where((e) => (EficazFramework.Enums.CompareMethod)e.Value == context.Operator).Select((e) => e.Description).FirstOrDefault()</MudBlazor.MudText>
+                    <MudBlazor.MudText Typo="@MudBlazor.Typo.body2">@context.AvailableOperators.Where((e) => (EficazFramework.Enums.CompareMethod)e.Value! == context.Operator).Select((e) => e.Description).FirstOrDefault()</MudBlazor.MudText>
                 }
                 else
                 {
@@ -113,19 +113,19 @@
                                 break;
 
                             case EficazFramework.Expressions.ExpressionEditor.Number:
-                                <EficazFramework.Components.NumberField Margin="@MudBlazor.Margin.Dense" 
-                                                                        @bind-Value="context.Value1"
+                                <EficazFramework.Components.NumberField T="decimal" Margin="@MudBlazor.Margin.Dense" 
+                                                                        @bind-Value="context.Value1AsNumeric"
                                                                         Class="flex-grow-0 ef-expression-table-cell"
                                                                         FullWidth
                                                                         DecimalPlaces="context.SelectedProperty?.DecimalPlaces ?? 8" />
                                                     
                                 <MudBlazor.MudText Typo="@MudBlazor.Typo.body2" Class="flex-grow-0 mx-4 align-self-center">@($"  {EficazFramework.Resources.Strings.Components.ExpressionBuilder_Between_Separator}  ")</MudBlazor.MudText>
                                                     
-                                <EficazFramework.Components.NumberField Margin="@MudBlazor.Margin.Dense" 
-                                                                        @bind-Value="context.Value2"
-                                                                        Class="flex-grow-0 ef-expression-table-cell"
-                                                                        FullWidth
-                                                                        DecimalPlaces="context.SelectedProperty?.DecimalPlaces ?? 8" />
+                            <EficazFramework.Components.NumberField T="decimal" Margin="@MudBlazor.Margin.Dense"
+                                                                    @bind-Value="context.Value2AsNumeric"
+                                                                    Class="flex-grow-0 ef-expression-table-cell"
+                                                                    FullWidth
+                                                                    DecimalPlaces="context.SelectedProperty?.DecimalPlaces ?? 8" />
                                 break;
                         }
                 </div>
@@ -145,9 +145,9 @@
                                 break;
 
                             case EficazFramework.Expressions.ExpressionEditor.Number:
-                                <EficazFramework.Components.NumberField Margin="@MudBlazor.Margin.Dense"
+                                <EficazFramework.Components.NumberField T="decimal" Margin="@MudBlazor.Margin.Dense"
                                                                         Class="ef-expression-table-cell"
-                                                                        @bind-Value="context.Value1"
+                                                                        @bind-Value="context.Value1AsNumeric"
                                                                         FullWidth
                                                                         DecimalPlaces="context.SelectedProperty?.DecimalPlaces ?? 8" />
                                 break;

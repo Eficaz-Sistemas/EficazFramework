@@ -2,3 +2,12 @@
 
 <MudPopoverProvider />
 <EficazFramework.Components.ExpressionBuilder ViewModel="@expressionBuilder" Elevation="1" SearchColumnFindRequest="@(e => e.Data = new List<string> { "Find A", "Find B", "Find C" })"/>
+
+<MudIconButton OnClick=RefreshToString" 
+    Variant="Variant.Filled" 
+    Icon="@MudBlazor.Icons.Material.Filled.Refresh"
+    Class="mt-4 align-self-start"
+    Color="Color.Secondary"/>
+<br/>
+
+<pre>@_expressionString</pre>

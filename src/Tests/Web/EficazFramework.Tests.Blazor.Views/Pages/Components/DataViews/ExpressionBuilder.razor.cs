@@ -161,4 +161,20 @@ public partial class ExpressionBuilder
         expressionBuilder.Properties.Add(RelatedProperty);
     }
 
+    private string _expressionString = "";
+
+    private void RefreshToString()
+    {
+        var builder = new System.Text.StringBuilder();
+        builder.AppendLine("ExpressionTree:");
+        foreach (var item in expressionBuilder.ToExpressionObjectQuery())
+        {
+            builder.Append($"{item.FieldName} - {item.Operator} {item.Value}");
+            if (item.Operator == Enums.CompareMethod.Between)
+                builder.AppendLine($" -> {item.Value2}");
+            else
+                builder.AppendLine("");
+        }
+        _expressionString = builder.ToString();
+    }
 }

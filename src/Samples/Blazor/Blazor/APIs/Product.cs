@@ -92,6 +92,7 @@ internal static class Product
 
             // Mapper work
             productEntity.Name = product.Name;
+            productEntity.Price = product.Price;
         }
         catch (Exception ex)
         {

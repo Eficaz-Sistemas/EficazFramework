@@ -1,16 +1,16 @@
 ﻿using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Rendering;
-using Microsoft.AspNetCore.Components.Web;
 using MudBlazor;
-using System.Globalization;
+using System.Numerics;
 
 namespace EficazFramework.Components;
 
-public class NumberField<T> : MudBlazor.MudNumericField<T>
+public class NumberField<T> : MudBlazor.MudNumericField<T?> where T : struct, INumber<T>
 {
     public NumberField() : base()
     {
         SetupAttributes();
+        Converter = GetDefaultConverter();
     }
 
     protected override IConverter<T?, string?> GetDefaultConverter() =>
@@ -30,7 +30,7 @@ public class NumberField<T> : MudBlazor.MudNumericField<T>
         set
         {
             _decimals = value;
-            ((Converters.NumberConverter<T>)Converter!).DecimalPlaces = value;
+                ((Converters.NumberConverter<T>)Converter!).DecimalPlaces = value;
             SetupAttributes();
         }
     }

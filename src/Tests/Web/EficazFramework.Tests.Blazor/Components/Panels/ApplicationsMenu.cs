@@ -99,7 +99,7 @@ public class ApplicationsMenu : BunitTest
         items.Should().HaveCount(obj.Instance.ItemsSource.Count());
 
         var tbox = comp.FindComponent<MudBlazor.MudTextField<string>>();
-        await comp.InvokeAsync(() => tbox.Instance.SetText("1"));
+        await comp.InvokeAsync(async () => await tbox.Instance.SetTextAsync("1"));
 
         items = comp.FindComponents<MudBlazor.MudItem>();
         items.Should().HaveCountLessThan(obj.Instance.ItemsSource.Count());

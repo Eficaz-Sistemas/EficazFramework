@@ -189,7 +189,7 @@ internal class OperatorConverter : MudBlazor.IConverter<EficazFramework.Enums.Co
 internal class StringObjConverter : MudBlazor.IReversibleConverter<object, string>
 {
     public string Convert(object input) =>
-        input.ToString() ?? string.Empty;
+        input?.ToString() ?? string.Empty;
 
     public object ConvertBack(string input) =>
         (object)input;
