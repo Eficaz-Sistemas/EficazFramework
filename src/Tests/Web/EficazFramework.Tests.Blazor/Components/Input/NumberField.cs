@@ -14,14 +14,14 @@ using System.Threading.Tasks;
 namespace EficazFramework.Components.Input;
 
 [TestFixture]
-public class NumberField : BunitTest
+public class NumberFieldTests : BunitTest
 {
     [Test]
     [TestCase("InvariantCulture")]
     [TestCase("pt-BR")]
     [TestCase("en-US")]
     [TestCase("de-DE")]
-    public async Task Test(string cultureName)
+    public async Task FormatAndCultureTest(string cultureName)
     {
         if (cultureName == "InvariantCulture")
             cultureName = CultureInfo.InvariantCulture.Name;
@@ -112,7 +112,6 @@ public class NumberField : BunitTest
 
     }
 
-    [Test]
     private async Task TestDecimalNumberInternal<T>() where T : struct, System.Numerics.INumber<T>
     {
         var comp = Context.Render<NumberField<T>>();

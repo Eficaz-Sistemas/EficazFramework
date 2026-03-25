@@ -31,7 +31,7 @@ public class NumberConverter<T> : MudBlazor.IReversibleConverter<T?, string>, Mu
 
         var currentCulture = Culture.Invoke();
 
-        if (T.TryParse(input, NumberStyles.Any, currentCulture, out var resultT))
+        if (decimal.TryParse(input, NumberStyles.Any, currentCulture, out var resultT))
         {
             var asDecimal = System.Convert.ToDecimal(resultT, currentCulture);
             var rounded = Math.Round(asDecimal, DecimalPlaces);

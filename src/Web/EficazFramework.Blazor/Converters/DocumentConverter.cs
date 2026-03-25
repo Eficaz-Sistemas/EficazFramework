@@ -3,7 +3,7 @@ using System.Globalization;
 
 namespace EficazFramework.Converters;
 
-internal class DocumentConverter<T> : MudBlazor.IReversibleConverter<T, string>, MudBlazor.ICultureAwareConverter
+internal class DocumentConverter : MudBlazor.IReversibleConverter<string?, string?>, MudBlazor.ICultureAwareConverter
 {
     internal DocumentConverter()
     {
@@ -20,7 +20,7 @@ internal class DocumentConverter<T> : MudBlazor.IReversibleConverter<T, string>,
     public Func<CultureInfo> Culture { get; set; }
     public Func<string?> Format { get; set; }
 
-    public string Convert(T? input)
+    public string Convert(string? input)
     {
         if (input == null)
             return null;
@@ -41,9 +41,9 @@ internal class DocumentConverter<T> : MudBlazor.IReversibleConverter<T, string>,
         };
     }
 
-    public T ConvertBack(string input) =>
+    public string? ConvertBack(string? input) =>
         DocumentType switch
         {
-            Enums.Documentos.eMail => (T)(object)input,
-            _ => (T)(object)input.RemoveTextMask()};
+            Enums.Documentos.eMail => input,
+            _ => input?.RemoveTextMask()};
 }
