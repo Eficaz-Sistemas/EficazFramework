@@ -1,7 +1,6 @@
 ﻿using EficazFramework.Events;
 using EficazFramework.Extensions;
 using Microsoft.AspNetCore.Components;
-using MudBlazor;
 using System.ComponentModel;
 
 namespace EficazFramework.Components.Primitives;
@@ -11,7 +10,7 @@ public partial class ExpressionBuilderTable : MudBlazor.MudComponentBase
     // in Memory of Laudo Ferreira da Silva and Francisco Luis de Sousa
     // † 2020
 
-    private MudBlazor.PickerVariant pickerVariant = PickerVariant.Inline;
+    private MudBlazor.PickerVariant pickerVariant = MudBlazor.PickerVariant.Inline;
 
     private readonly OperatorConverter converter = new();
 
@@ -39,9 +38,9 @@ public partial class ExpressionBuilderTable : MudBlazor.MudComponentBase
     {
         var bp = await BrowserViewportService.GetCurrentBreakpointAsync();
         if (bp == MudBlazor.Breakpoint.Sm || bp == MudBlazor.Breakpoint.Xs)
-            pickerVariant = PickerVariant.Dialog;
+            pickerVariant = MudBlazor.PickerVariant.Dialog;
         else 
-            pickerVariant = PickerVariant.Inline;
+            pickerVariant = MudBlazor.PickerVariant.Inline;
     }
 
     private void OnViewModel_Changed(EficazFramework.Expressions.ExpressionBuilder OldValue, EficazFramework.Expressions.ExpressionBuilder NewValue)
@@ -181,29 +180,17 @@ public partial class ExpressionBuilderTable : MudBlazor.MudComponentBase
     }
 }
 
-internal class OperatorConverter : MudBlazor.DefaultConverter<EficazFramework.Enums.CompareMethod>
+internal class OperatorConverter : MudBlazor.IConverter<EficazFramework.Enums.CompareMethod, string>
 {
-    internal OperatorConverter()
-    {
-        SetFunc = (e) => e.GetLocalizedDescription(typeof(EficazFramework.Resources.Strings.Expressions));
-    }
+    public string Convert(EficazFramework.Enums.CompareMethod input) =>
+        input.GetLocalizedDescription(typeof(EficazFramework.Resources.Strings.Expressions));
 }
 
-internal class StringObjConverter : MudBlazor.Converter<object>
+internal class StringObjConverter : MudBlazor.IReversibleConverter<object, string>
 {
-    internal StringObjConverter()
-    {
+    public string Convert(object input) =>
+        input.ToString() ?? string.Empty;
 
-        SetFunc = (e) =>
-        {
-            if (e == null)
-                return null;
-            return e.ToString();
-        };
-
-        GetFunc = (e) =>
-        {
-            return (object)e;
-        };
-    }
+    public object ConvertBack(string input) =>
+        (object)input;
 }
