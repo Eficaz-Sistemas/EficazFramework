@@ -18,8 +18,8 @@
 }
 
 .mud-table-root .mud-table-head .mud-table-cell {
-    font-size: .875rem;
-    font-family: var(--mud-typography-default-family);
+    font-size: .875rem !important;
+    font-family: var(--mud-typography-default-family) !important;
     letter-spacing: .01071em;
     color: var(--mud-palette-text-primary);
     font-weight: 500;

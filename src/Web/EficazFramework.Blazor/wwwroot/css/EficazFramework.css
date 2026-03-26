@@ -267,8 +267,8 @@ div.mud-input-slot.mud-input-root {
 }
 
 .mud-table-root .mud-table-head .mud-table-cell {
-  font-size: 0.875rem;
-  font-family: var(--mud-typography-default-family);
+  font-size: 0.875rem !important;
+  font-family: var(--mud-typography-default-family) !important;
   letter-spacing: 0.01071em;
   color: var(--mud-palette-text-primary);
   font-weight: 500;
