@@ -128,8 +128,8 @@ public class IndexViewNavigator<T> : ViewModelService<T>, IIndexViewNavigator wh
             case Enums.CRUD.State.NovoDetalhe:
             case Enums.CRUD.State.EdicaoDeDelhe:
                 {
-                    if (DetailHasOwnPage == false)
-                        return;
+                    //if (DetailHasOwnPage == false)
+                    //    return;
 
                     if (!DetailFormIndex.TryGetValue(CurrentDetail, out int value))
                         return;
