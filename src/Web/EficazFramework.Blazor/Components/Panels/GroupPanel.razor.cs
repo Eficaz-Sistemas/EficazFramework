@@ -6,11 +6,16 @@ public partial class GroupPanel : MudBlazor.MudComponentBase
 {
     [Parameter] public RenderFragment ChildContent { get; set; }
 
-    [Parameter] public string Title { get; set; } = "Group Title";
+    [Parameter] public string Title { get; set; } = default!;
 
     [Parameter] public string TitleClass { get; set; }
 
     [Parameter] public string TitleStyle { get; set; }
+
+    [Parameter] public RenderFragment? TitleCustomContent { get; set; }
+
+    [Parameter] public RenderFragment? CustomActions { get; set; }
+
 
 
     protected string Classname =>
@@ -35,5 +40,15 @@ public partial class GroupPanel : MudBlazor.MudComponentBase
                 .AddStyle("font-size: 0.65rem;")
                 .AddStyle(TitleStyle)
                 .Build();
+
+    private bool _customActionsIsOpen = false;
+    private void OnCustomActionsToggle()
+    {
+        _customActionsIsOpen = !_customActionsIsOpen;
+        StateHasChanged();
+    }
+
+    private void CloseActionsToogle() =>
+        _customActionsIsOpen = false;
 
 }

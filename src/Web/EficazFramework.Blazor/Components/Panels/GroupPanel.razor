@@ -1,11 +1,29 @@
 ﻿@namespace EficazFramework.Components
+@using MudBlazor
 @inherits MudBlazor.MudComponentBase
 
  <MudBlazor.MudPaper Elevation="0" Outlined Class="@Classname" Style="@StyleName">
-    <MudBlazor.MudText Typo="MudBlazor.Typo.caption" 
-                       Style="@TitleStyleName"
-                       Class="@TitleClassName">
-        @Title
-    </MudBlazor.MudText>
+     <div class="d-flex">
+        <MudBlazor.MudText Typo="MudBlazor.Typo.caption"
+                           Style="@TitleStyleName"
+                           Class="@TitleClassName">
+            @Title
+        </MudBlazor.MudText>
+        <div class="d-flex flex-grow-1">
+            @TitleCustomContent
+            @if (CustomActions != null)
+            {
+                <MudSpacer />
+                <MudMenu Icon="@Icons.Material.Filled.MoreVert"
+                         Size="Size.Small"
+                         AnchorOrigin="Origin.TopLeft"
+                         TransformOrigin="Origin.TopLeft">
+                    <ChildContent>
+                        @CustomActions
+                    </ChildContent>
+                </MudMenu>
+            }
+        </div>
+    </div>
      @ChildContent
  </MudBlazor.MudPaper>
