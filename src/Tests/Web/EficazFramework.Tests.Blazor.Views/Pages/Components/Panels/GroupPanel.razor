@@ -1,0 +1,56 @@
+﻿@page "/Components/Panels/GroupPanel"
+<MudPopoverProvider />
+<div class="d-flex">
+    <MudGrid>
+        <MudItem sm="12" md="6" lg="3">
+            <EficazFramework.Components.GroupPanel Title="Group Panel Title"
+                                                   Class="m-2 p-2">
+                <MudText Typo="Typo.body1">This is the content of the group panel.</MudText>
+            </EficazFramework.Components.GroupPanel>
+        </MudItem>
+        <MudItem sm="12" md="6" lg="3">
+            <EficazFramework.Components.GroupPanel Class="m-2 p-2">
+                <TitleCustomContent>
+                    <MudIcon Icon="@MudBlazor.Icons.Material.Filled.Warning"
+                             Color="Color.Warning" />
+                    Group Panel Title w/ Custom Content (body text)
+                    <MudIcon Icon="@MudBlazor.Icons.Material.Filled.Warning"
+                             Color="Color.Warning" />
+                </TitleCustomContent>
+                <ChildContent>
+                    <MudText Typo="Typo.body1">This is the content of the group panel with Custom Title Content.</MudText>
+                </ChildContent>
+            </EficazFramework.Components.GroupPanel>
+        </MudItem>
+        <MudItem sm="12" md="6" lg="3">
+            <EficazFramework.Components.GroupPanel Class="m-2 p-2">
+                <TitleCustomContent>
+                    <MudIcon Icon="@MudBlazor.Icons.Material.Filled.Dangerous"
+                             Color="Color.Error" Class="mr-2" />
+                    <MudText Typo="Typo.h4">Group Panel Title w/ Custom Content (h4)</MudText>
+                    
+                    <MudIcon Icon="@MudBlazor.Icons.Material.Filled.Dangerous"
+                             Color="Color.Error" />
+                </TitleCustomContent>
+                <ChildContent>
+                    <MudText Typo="Typo.body1">This is the content of the group panel with Custom Title Content.</MudText>
+                </ChildContent>
+            </EficazFramework.Components.GroupPanel>
+        </MudItem>
+        <MudItem sm="12" md="6" lg="3">
+            <EficazFramework.Components.GroupPanel Title="Group Panel Title w/ Custom Actions"
+                                                   Class="m-2 p-2">
+                <CustomActions>
+                    <MudText Class="ma-4">Hello world!</MudText>
+                    <MudAlert Severity="Severity.Warning">The reactor temperature exceeds the optimal range</MudAlert>
+                    <MudButton>test</MudButton>
+                </CustomActions>
+                <ChildContent>
+                    <MudText Typo="Typo.body1">This is the content of the group panel with Custom Title Content.</MudText>
+                </ChildContent>
+            </EficazFramework.Components.GroupPanel>
+        </MudItem>
+
+    </MudGrid>
+
+</div>

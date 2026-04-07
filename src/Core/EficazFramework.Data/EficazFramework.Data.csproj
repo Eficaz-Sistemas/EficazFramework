@@ -3,9 +3,9 @@
   <PropertyGroup>
     <TargetFrameworks>net9.0;net10.0</TargetFrameworks>
     <LangVersion>latest</LangVersion>
-    <Version>6.5.3</Version>
-    <AssemblyVersion>6.5.3.0</AssemblyVersion>
-    <FileVersion>6.5.3.0</FileVersion>
+    <Version>6.5.4</Version>
+    <AssemblyVersion>6.5.4.0</AssemblyVersion>
+    <FileVersion>6.5.4.0</FileVersion>
     <RootNamespace>EficazFramework</RootNamespace>
     <SignAssembly>true</SignAssembly>
     <AssemblyOriginatorKeyFile>EfCore.snk</AssemblyOriginatorKeyFile>
