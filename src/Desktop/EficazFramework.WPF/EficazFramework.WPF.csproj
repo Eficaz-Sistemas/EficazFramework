@@ -2,9 +2,9 @@
   <PropertyGroup>
     <TargetFrameworks>net9.0-windows;net10.0-windows</TargetFrameworks>
     <UseWPF>true</UseWPF>
-    <Version>6.5.4</Version>
-    <AssemblyVersion>6.5.4.0</AssemblyVersion>
-    <FileVersion>6.5.4.0</FileVersion>
+    <Version>6.5.5</Version>
+    <AssemblyVersion>6.5.5.0</AssemblyVersion>
+    <FileVersion>6.5.5.0</FileVersion>
     <RootNamespace>EficazFramework</RootNamespace>
     <Authors>Eficaz Sistemas</Authors>
     <Company>Eficaz Sistemas de Gestão e Inteligência Tributária</Company>
@@ -43,7 +43,7 @@
     <None Remove="MarkupExtensions\TextGeometry.vb" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="DefaultDocumentation" Version="1.2.4">
+    <PackageReference Include="DefaultDocumentation" Version="1.2.5">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
@@ -51,7 +51,7 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
-    <PackageReference Include="MaterialDesignThemes" Version="5.3.1" />
+    <PackageReference Include="MaterialDesignThemes" Version="5.3.2" />
     <PackageReference Include="Microsoft.Xaml.Behaviors.Wpf" Version="1.1.142" />
   </ItemGroup>
   <ItemGroup>
