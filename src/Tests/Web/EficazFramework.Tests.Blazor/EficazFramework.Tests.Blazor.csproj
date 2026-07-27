@@ -36,7 +36,7 @@
   </ItemGroup>
 
 	<ItemGroup Condition=" '$(TargetFramework)' == 'net9.0' ">
-		<PackageReference Include="Microsoft.AspNetCore.Components" Version="9.0.17" />
+		<PackageReference Include="Microsoft.AspNetCore.Components" Version="9.0.18" />
 		<PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="9.0.17" />
 	</ItemGroup>
 
