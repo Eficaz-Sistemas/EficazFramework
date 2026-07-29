@@ -2,9 +2,9 @@
   <!--in Memory of Laudo Ferreira da Silva and Francisco Luis de Sousa † 2020-->
   <PropertyGroup>
     <TargetFrameworks>net9.0;net10.0</TargetFrameworks>
-    <Version>6.5.5</Version>
-    <AssemblyVersion>6.5.5.0</AssemblyVersion>
-    <FileVersion>6.5.5.0</FileVersion>
+    <Version>6.5.6</Version>
+    <AssemblyVersion>6.5.6.0</AssemblyVersion>
+    <FileVersion>6.5.6.0</FileVersion>
     <Nullable>enable</Nullable>
     <RootNamespace>EficazFramework</RootNamespace>
     <Authors>Eficaz Sistemas</Authors>
@@ -60,12 +60,12 @@
     </PackageReference>
   </ItemGroup>
   <ItemGroup Condition=" '$(TargetFramework)' == 'net9.0' ">
-    <PackageReference Include="Microsoft.AspNetCore.SignalR.Client" Version="9.0.17" />
-    <PackageReference Include="System.Security.Cryptography.Xml" Version="9.0.17" />
+    <PackageReference Include="Microsoft.AspNetCore.SignalR.Client" Version="9.0.18" />
+    <PackageReference Include="System.Security.Cryptography.Xml" Version="9.0.18" />
   </ItemGroup>
   <ItemGroup Condition=" '$(TargetFramework)' == 'net10.0' ">
-    <PackageReference Include="Microsoft.AspNetCore.SignalR.Client" Version="10.0.9" />
-    <PackageReference Include="System.Security.Cryptography.Xml" Version="10.0.9" />
+    <PackageReference Include="Microsoft.AspNetCore.SignalR.Client" Version="10.0.10" />
+    <PackageReference Include="System.Security.Cryptography.Xml" Version="10.0.10" />
   </ItemGroup>
   <ItemGroup>
     <Compile Update="Resources\Strings\Application.Designer.cs">

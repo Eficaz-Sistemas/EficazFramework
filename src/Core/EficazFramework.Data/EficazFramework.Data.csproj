@@ -3,9 +3,9 @@
   <PropertyGroup>
     <TargetFrameworks>net9.0;net10.0</TargetFrameworks>
     <LangVersion>latest</LangVersion>
-    <Version>6.5.5</Version>
-    <AssemblyVersion>6.5.5.0</AssemblyVersion>
-    <FileVersion>6.5.5.0</FileVersion>
+    <Version>6.5.6</Version>
+    <AssemblyVersion>6.5.6.0</AssemblyVersion>
+    <FileVersion>6.5.6.0</FileVersion>
     <RootNamespace>EficazFramework</RootNamespace>
     <SignAssembly>true</SignAssembly>
     <AssemblyOriginatorKeyFile>EfCore.snk</AssemblyOriginatorKeyFile>
@@ -94,14 +94,14 @@
     </PackageReference>
   </ItemGroup>
   <ItemGroup Condition=" '$(TargetFramework)' == 'net9.0' ">
-    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="9.0.17" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore.Relational" Version="9.0.17" />
-    <PackageReference Include="System.Security.Permissions" Version="9.0.17" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="9.0.18" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Relational" Version="9.0.18" />
+    <PackageReference Include="System.Security.Permissions" Version="9.0.18" />
   </ItemGroup>
   <ItemGroup Condition=" '$(TargetFramework)' == 'net10.0' ">
-    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="10.0.9" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore.Relational" Version="10.0.9" />
-    <PackageReference Include="System.Security.Permissions" Version="10.0.9" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="10.0.10" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Relational" Version="10.0.10" />
+    <PackageReference Include="System.Security.Permissions" Version="10.0.10" />
   </ItemGroup>
   <ItemGroup>
     <Compile Update="Resources\Strings\Commands.Designer.cs">
