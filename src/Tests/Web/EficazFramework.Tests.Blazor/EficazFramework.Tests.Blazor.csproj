@@ -15,7 +15,7 @@
 
   <ItemGroup>
     <PackageReference Include="AwesomeAssertions" Version="9.5.0" />
-    <PackageReference Include="bunit" Version="2.8.6" />
+    <PackageReference Include="bunit" Version="2.9.0" />
     <PackageReference Include="coverlet.msbuild" Version="10.0.1">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
@@ -36,7 +36,7 @@
   </ItemGroup>
 
 	<ItemGroup Condition=" '$(TargetFramework)' == 'net9.0' ">
-		<PackageReference Include="Microsoft.AspNetCore.Components" Version="9.0.18" />
+		<PackageReference Include="Microsoft.AspNetCore.Components" Version="10.0.10" />
 		<PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="9.0.18" />
 	</ItemGroup>
 
