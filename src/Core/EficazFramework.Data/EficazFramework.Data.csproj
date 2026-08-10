@@ -96,7 +96,7 @@
   <ItemGroup Condition=" '$(TargetFramework)' == 'net9.0' ">
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="9.0.18" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Relational" Version="9.0.18" />
-    <PackageReference Include="System.Security.Permissions" Version="9.0.18" />
+    <PackageReference Include="System.Security.Permissions" Version="10.0.10" />
   </ItemGroup>
   <ItemGroup Condition=" '$(TargetFramework)' == 'net10.0' ">
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="10.0.10" />
