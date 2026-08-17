@@ -24,6 +24,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Components" Version="9.0.19" />
     <EmbeddedResource Update="Resources\Strings\TestStrings.resx">
       <CustomToolNamespace>EficazFramework.Tests.Blazor.Views.Resources.Strings</CustomToolNamespace>
       <LastGenOutput>TestStrings.Designer.cs</LastGenOutput>
