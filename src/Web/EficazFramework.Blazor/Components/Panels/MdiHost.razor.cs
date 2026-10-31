@@ -222,7 +222,7 @@ public partial class MdiHost : MudComponentBase, IBrowserViewportObserver
             Width = 900,
             Height = 700,
         };
-        ApplicationInstance? instance = ApplicationsSource?.FirstOrDefault(a => a.Metadata == app && (a.SessionID == 0 || a.SessionID == CurrentSection));
+        ApplicationInstance? instance = ApplicationsSource?.FirstOrDefault(a => a.Metadata.IsSameApplicationAs(app) && (a.SessionID == 0 || a.SessionID == CurrentSection));
         if (instance == null)
         {
             instance = ApplicationInstance.Create(app, CurrentSection);
