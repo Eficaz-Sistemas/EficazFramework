@@ -24,6 +24,20 @@ public class ApplicationDefinition : IApplicationDefinition
     public string? LongTitle { get; set; }
     public string? Group { get; set; }
     public bool IsPublic { get; set; } = true;
+
+    /// <summary>
+    /// Chave de identidade opcional. Definições com a mesma <see cref="Key"/> são tratadas como o mesmo aplicativo
+    /// (não abrem duas instâncias na mesma seção). Quando nula, a identidade é a própria referência da definição.
+    /// </summary>
+    public string? Key { get; set; }
+
+    /// <summary>
+    /// Indica se <paramref name="other"/> representa o mesmo aplicativo: mesma referência ou mesma <see cref="Key"/>.
+    /// </summary>
+    public bool IsSameApplicationAs(ApplicationDefinition? other) =>
+        other is not null &&
+        (ReferenceEquals(this, other) ||
+         (!string.IsNullOrEmpty(Key) && string.Equals(Key, other.Key, System.StringComparison.Ordinal)));
     public string? TooltipTilte => LongTitle ?? Title;
     public char FirstChar => (TooltipTilte ?? "#").First();
 

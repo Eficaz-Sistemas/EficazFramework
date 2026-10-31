@@ -98,7 +98,7 @@ internal class ApplicationManager : IApplicationManager
     /// <returns></returns>
     public bool IsRunning(ApplicationDefinition application)
     {
-        return (RunningApplications.Where(app => app.Metadata == application && (app.SessionID == 0 || app.SessionID == (_sectionManager.CurrentSection?.ID ?? 0))).Any());
+        return (RunningApplications.Where(app => app.Metadata.IsSameApplicationAs(application) && (app.SessionID == 0 || app.SessionID == (_sectionManager.CurrentSection?.ID ?? 0))).Any());
     }
 
     /// <summary>
@@ -117,7 +117,7 @@ internal class ApplicationManager : IApplicationManager
         }
         else
         {
-            instance = RunningApplications.Where(app => app.Metadata == application && (app.SessionID == 0 || app.SessionID == (_sectionManager.CurrentSection?.ID ?? 0))).FirstOrDefault();
+            instance = RunningApplications.Where(app => app.Metadata.IsSameApplicationAs(application) && (app.SessionID == 0 || app.SessionID == (_sectionManager.CurrentSection?.ID ?? 0))).FirstOrDefault();
         }
         ActiveAppChanged?.Invoke(instance, EventArgs.Empty);
         return instance!;
@@ -152,6 +152,7 @@ public sealed class ApplicationInstance : ApplicationDefinition, INotifyProperty
     {
         Id = System.Guid.NewGuid();
         Metadata = fromDefinition;
+        Key = fromDefinition.Key;
         Title = fromDefinition.Title;
         LongTitle = fromDefinition.LongTitle;
         IsPublic = fromDefinition.IsPublic;
