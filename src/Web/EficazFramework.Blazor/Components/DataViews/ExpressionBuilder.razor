@@ -10,6 +10,10 @@
                     <div class="d-flex">
                         <MudBlazor.MudIcon Icon="@MudBlazor.Icons.Material.Filled.FilterList"></MudBlazor.MudIcon>
                         <MudBlazor.MudText Class="ml-4">@Header</MudBlazor.MudText>
+                        @if (HeaderCustomFragment != null)
+                        {
+                            @HeaderCustomFragment
+                        }
                     </div>
                 </TitleContent>
                 <ChildContent>

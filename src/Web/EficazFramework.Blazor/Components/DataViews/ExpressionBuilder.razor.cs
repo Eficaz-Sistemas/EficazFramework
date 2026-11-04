@@ -33,6 +33,8 @@ public partial class ExpressionBuilder : MudBlazor.MudComponentBase
 
     [Parameter] public string Header { get; set; } = EficazFramework.Resources.Strings.Components.ExpressionBuilder_Header;
 
+    [Parameter] public RenderFragment? HeaderCustomFragment { get; set; }
+
     [Parameter] public Action SearchAction { get; set; }
 
     [Parameter] public Action<Events.FindRequestEventArgs> SearchColumnFindRequest { get; set; }
