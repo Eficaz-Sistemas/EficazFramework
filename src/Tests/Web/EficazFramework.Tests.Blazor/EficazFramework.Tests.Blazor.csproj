@@ -15,7 +15,7 @@
 
   <ItemGroup>
     <PackageReference Include="AwesomeAssertions" Version="9.6.0" />
-    <PackageReference Include="bunit" Version="2.11.3" />
+    <PackageReference Include="bunit" Version="2.13.3" />
     <PackageReference Include="coverlet.msbuild" Version="10.1.0">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
@@ -27,7 +27,7 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
-    <PackageReference Include="ReportGenerator" Version="5.5.11" />
+    <PackageReference Include="ReportGenerator" Version="5.5.12" />
   </ItemGroup>
 
   <ItemGroup>
@@ -36,13 +36,13 @@
   </ItemGroup>
 
 	<ItemGroup Condition=" '$(TargetFramework)' == 'net9.0' ">
-		<PackageReference Include="Microsoft.AspNetCore.Components" Version="9.0.21" />
-		<PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="9.0.21" />
+		<PackageReference Include="Microsoft.AspNetCore.Components" Version="9.0.22" />
+		<PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="9.0.22" />
 	</ItemGroup>
 
 	<ItemGroup Condition=" '$(TargetFramework)' == 'net10.0' ">
-		<PackageReference Include="Microsoft.AspNetCore.Components" Version="10.0.13" />
-		<PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="10.0.13" />
+		<PackageReference Include="Microsoft.AspNetCore.Components" Version="10.0.14" />
+		<PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="10.0.14" />
 	</ItemGroup>
 
 </Project>
