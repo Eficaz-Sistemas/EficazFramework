@@ -62,24 +62,31 @@
                                                 Class="pa-2 d-flex flex-column"
                                                 Style="@SectionItemStyle(section.ID)">
                                 <div class="d-flex">
-                                    <MudBlazor.MudText Typo="@MudBlazor.Typo.caption" Class="flex-grow-1" Style="margin-top: -2px !important; margin-left: 4px;">
+                                    <MudBlazor.MudText Typo="@MudBlazor.Typo.caption"
+                                                       Class="flex-grow-1 ef-mdi-sections-title"
+                                                       Title="@($"{section.ID} - {section.Name}")">
                                         @($"{section.ID} - {section.Name}")
                                     </MudBlazor.MudText>
                                     <MudBlazor.MudIconButton Icon="@MudBlazor.Icons.Material.Filled.Close"
                                                              OnClick="@(() => RemoveSection(section))"
                                                              Variant="MudBlazor.Variant.Text"
                                                              Size="MudBlazor.Size.Small"
-                                                             Class="ef-mdi-sections-close"
-                                                             Style="margin-top: -6px;" />
+                                                             Class="ef-mdi-sections-close flex-shrink-0" />
                                 </div>
 
                                 <MudBlazor.MudPaper Elevation="0" 
-                                                    Class="flex-grow-1 d-flex justify-center align-center relative mt-1"
+                                                    Class="ef-mdi-sections-thumb flex-grow-1 d-flex justify-center align-center relative mt-1"
                                                     Style="background-color: var(--mud-palette-background-gray)">
 
                                     @if (SectionTemplate != null)
                                     {
-                                        @SectionTemplate
+                                        @SectionTemplate(section)
+                                    }
+                                    else if (section.Icon is byte[] logo && logo.Length > 0)
+                                    {
+                                        <img class="ef-mdi-sections-logo"
+                                             alt="@section.Name"
+                                             src="@($"data:image/png;base64,{Convert.ToBase64String(logo)}")" />
                                     }
                                     else
                                     {
