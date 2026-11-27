@@ -39,7 +39,7 @@ public partial class SectionsView : MudBlazor.MudComponentBase
     /// <summary>
     /// The template for every Section representation in list (inside Popover)
     /// </summary>
-    [Parameter] public RenderFragment SectionTemplate { get; set; }
+    [Parameter] public RenderFragment<EficazFramework.Application.Section> SectionTemplate { get; set; }
 
 
     private long _currentSection = 0;
@@ -180,6 +180,7 @@ public partial class SectionsView : MudBlazor.MudComponentBase
                     .AddStyle("background-color", "var(--mud-palette-primary)", CurrentSection == Id)
                     .AddStyle("width", "200px")
                     .AddStyle("height", "125px")
+                    .AddStyle("overflow", "hidden")
                     .AddStyle("cursor", "pointer")
                     .Build();
 
